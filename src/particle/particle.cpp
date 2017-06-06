@@ -88,16 +88,16 @@ Particle::Particle() :
 Particle::~Particle()
 {
     if (mActor != BeingId_zero &&
-        actorManager)
+        (actorManager != nullptr))
     {
         ActorSprite *const actor = actorManager->findActor(mActor);
-        if (actor)
+        if (actor != nullptr)
             actor->controlParticleDeleted(this);
     }
     // Delete child emitters and child particles
     clear();
     delete2(mAnimation);
-    if (mImage)
+    if (mImage != nullptr)
     {
         if (mType == ParticleType::Image)
         {
@@ -129,7 +129,7 @@ void Particle::updateSelf() restrict2
     if (A_LIKELY(mMomentum != 1.0F))
         mVelocity *= mMomentum;
 
-    if (mTarget && mAcceleration != 0.0F)
+    if ((mTarget != nullptr) && mAcceleration != 0.0F)
     {
         Vector dist = mPos - mTarget->mPos;
         dist.x *= SIN45;
@@ -142,7 +142,7 @@ void Particle::updateSelf() restrict2
                     dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
                 break;
             case 2:
-                if (!dist.x)
+                if (dist.x == 0.0f)
                 {
                     invHypotenuse = 0;
                     break;
@@ -158,7 +158,7 @@ void Particle::updateSelf() restrict2
                 break;
         }
 
-        if (invHypotenuse)
+        if (invHypotenuse != 0.0f)
         {
             if (mInvDieDistance > 0.0F && invHypotenuse > mInvDieDistance)
                 mAlive = AliveStatus::DEAD_IMPACT;
@@ -210,7 +210,7 @@ void Particle::updateSelf() restrict2
     }
 
     // Update child emitters
-    if (ParticleEngine::emitterSkip &&
+    if ((ParticleEngine::emitterSkip != 0) &&
         (mLifetimePast - 1) % ParticleEngine::emitterSkip == 0)
     {
         FOR_EACH (EmitterConstIterator, e, mChildEmitters)
@@ -239,7 +239,7 @@ void Particle::updateSelf() restrict2
         {
             Particle *restrict const deathEffect = particleEngine->addEffect(
                 mDeathEffect, 0, 0);
-            if (deathEffect)
+            if (deathEffect != nullptr)
                 deathEffect->moveBy(mPos);
         }
         mAlive = AliveStatus::DEAD_LONG_AGO;
@@ -262,7 +262,7 @@ bool Particle::update() restrict2
         }
         else
         {
-            if (mAnimation)
+            if (mAnimation != nullptr)
             {
                 if (mType == ParticleType::Animation)
                 {
@@ -273,7 +273,7 @@ bool Particle::update() restrict2
                 {
                     // TODO: cache velocities to avoid spamming atan2()
                     const int size = mAnimation->getLength();
-                    if (!size)
+                    if (size == 0)
                         return false;
 
                     float rad = static_cast<float>(atan2(mVelocity.x,
@@ -415,11 +415,11 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
     XML::Document *doc = Loader::getXml(particleEffectFile.substr(0, pos),
         UseVirtFs_true,
         SkipError_false);
-    if (!doc)
+    if (doc == nullptr)
         return nullptr;
     XmlNodeConstPtrConst rootNode = doc->rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "effect"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "effect"))
     {
         logger->log("Error loading particle: %s", particleEffectFile.c_str());
         doc->decRef();
@@ -437,20 +437,22 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
         XmlNodePtr node;
 
         // Animation
-        if ((node = XML::findFirstChildByName(effectChildNode, "animation")))
+        if ((node = XML::findFirstChildByName(effectChildNode, "animation")) !=
+            nullptr)
         {
             newParticle = new AnimationParticle(node, dyePalettes);
             newParticle->setMap(mMap);
         }
         // Rotational
         else if ((node = XML::findFirstChildByName(
-                 effectChildNode, "rotation")))
+                 effectChildNode, "rotation")) != nullptr)
         {
             newParticle = new RotationalParticle(node, dyePalettes);
             newParticle->setMap(mMap);
         }
         // Image
-        else if ((node = XML::findFirstChildByName(effectChildNode, "image")))
+        else if ((node = XML::findFirstChildByName(effectChildNode,
+                 "image")) != nullptr)
         {
             std::string imageSrc;
             if (XmlHaveChildContent(node))
@@ -505,7 +507,7 @@ Particle *Particle::addEffect(const std::string &restrict particleEffectFile,
             else if (xmlNameEqual(emitterNode, "deatheffect"))
             {
                 std::string deathEffect;
-                if (node && XmlHaveChildContent(node))
+                if ((node != nullptr) && XmlHaveChildContent(node))
                     deathEffect = XmlChildContent(emitterNode);
 
                 char deathEffectConditions = 0x00;
@@ -560,7 +562,7 @@ void Particle::prepareToDie() restrict2
     FOR_EACH (ParticleIterator, p, mChildParticles)
     {
         Particle *restrict const particle = *p;
-        if (!particle)
+        if (particle == nullptr)
             continue;
         particle->prepareToDie();
         if (particle->isAlive() &&

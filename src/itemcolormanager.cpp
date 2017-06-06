@@ -30,7 +30,7 @@
 
 ItemColor ItemColorManager::getColorFromCards(const int *const cards)
 {
-    if (!cards)
+    if (cards == nullptr)
         return ItemColor_one;
     if (cards[0] == CARD0_FORGE ||
         cards[0] == CARD0_CREATE ||

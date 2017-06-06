@@ -104,13 +104,13 @@ TcpNet::Socket TcpNet::open(IPaddress *const ip)
 #if !defined(__native_client__) \
     && (defined(TCP_THIN_LINEAR_TIMEOUTS) \
     || defined(TCP_THIN_DUPACK))
-    if (sock && ip)
+    if ((sock != nullptr) && (ip != nullptr))
     {
         const TCPsocketHack *const hack
             = reinterpret_cast<const TCPsocketHack *>(sock);
         // here we using some magic to compare TCPsocket and own padding
         // because actual struct TCPsocket not in headers
-        if (hack)
+        if (hack != nullptr)
         {
             const IPaddress &addr = hack->remoteAddress;
             if (addr.host == ip->host && addr.port == ip->port)
@@ -118,14 +118,14 @@ TcpNet::Socket TcpNet::open(IPaddress *const ip)
                 const int val = 1;
 #ifdef TCP_THIN_LINEAR_TIMEOUTS
                 if (setsockopt(hack->channel, IPPROTO_TCP,
-                    TCP_THIN_LINEAR_TIMEOUTS, &val, sizeof(val)))
+                    TCP_THIN_LINEAR_TIMEOUTS, &val, sizeof(val)) != 0)
                 {
                     logger->log_r("error on set TCP_THIN_LINEAR_TIMEOUTS");
                 }
 #endif  // TCP_THIN_LINEAR_TIMEOUTS
 #ifdef TCP_THIN_DUPACK
                 if (setsockopt(hack->channel, IPPROTO_TCP,
-                    TCP_THIN_DUPACK, &val, sizeof(val)))
+                    TCP_THIN_DUPACK, &val, sizeof(val)) != 0)
                 {
                     logger->log_r("error on set TCP_THIN_DUPACK");
                 }

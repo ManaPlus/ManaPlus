@@ -61,7 +61,7 @@ void PopupList::postInit()
     Popup::postInit();
     add(mScrollArea);
 
-    if (gui)
+    if (gui != nullptr)
         gui->addGlobalFocusListener(this);
 
     addKeyListener(mDropDown);
@@ -71,9 +71,9 @@ void PopupList::postInit()
 
 PopupList::~PopupList()
 {
-    if (mParent)
+    if (mParent != nullptr)
         mParent->removeFocusListener(this);
-    if (gui)
+    if (gui != nullptr)
         gui->removeGlobalFocusListener(this);
     removeKeyListener(mDropDown);
 }
@@ -105,7 +105,7 @@ void PopupList::widgetResized(const Event &event)
 
 void PopupList::setSelected(const int selected)
 {
-    if (!mListBox)
+    if (mListBox == nullptr)
         return;
 
     mListBox->setSelected(selected);
@@ -113,7 +113,7 @@ void PopupList::setSelected(const int selected)
 
 int PopupList::getSelected() const
 {
-    if (!mListBox)
+    if (mListBox == nullptr)
         return -1;
 
     return mListBox->getSelected();
@@ -121,7 +121,7 @@ int PopupList::getSelected() const
 
 void PopupList::setListModel(ListModel *const model)
 {
-    if (mListBox)
+    if (mListBox != nullptr)
         mListBox->setListModel(model);
     mListModel = model;
 }
@@ -155,7 +155,7 @@ void PopupList::mouseReleased(MouseEvent& event)
     mPressedIndex = -2;
     if (event.getSource() == mScrollArea)
         return;
-    if (mDropDown)
+    if (mDropDown != nullptr)
         mDropDown->updateSelection();
     setVisible(Visible_false);
     if (mModal == Modal_true)
@@ -174,7 +174,7 @@ void PopupList::focusGained(const Event& event)
         return;
     }
 
-    if (mDropDown)
+    if (mDropDown != nullptr)
         mDropDown->updateSelection();
     setVisible(Visible_false);
     if (mModal == Modal_true)
@@ -183,6 +183,6 @@ void PopupList::focusGained(const Event& event)
 
 void PopupList::focusLost(const Event& event A_UNUSED)
 {
-    if (mDropDown)
+    if (mDropDown != nullptr)
         mDropDown->updateSelection();
 }

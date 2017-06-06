@@ -105,7 +105,7 @@ int mkdir_r(const char *const pathname)
 /// Create a directory, making leading components first if necessary
 int mkdir_r(const char *const pathname)
 {
-    if (!pathname)
+    if (pathname == nullptr)
         return -1;
 
     const size_t len = CAST_SIZE(strlen(pathname));
@@ -121,7 +121,7 @@ int mkdir_r(const char *const pathname)
         tmp[len + 1] = '\0';
     }
 
-    for (p = tmp; *p; p++)
+    for (p = tmp; *p != 0; p++)
     {
         if (*p == '/')
         {
@@ -135,7 +135,7 @@ int mkdir_r(const char *const pathname)
 
             // check if the name already exists, but not as directory
             struct stat statbuf;
-            if (!stat(tmp, &statbuf))
+            if (stat(tmp, &statbuf) == 0)
             {
                 if (S_ISDIR(statbuf.st_mode))
                 {
@@ -149,7 +149,7 @@ int mkdir_r(const char *const pathname)
                 }
             }
 
-            if (mkdir(tmp, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH))
+            if (mkdir(tmp, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0)
             {
                 delete []tmp;
                 return -1;

@@ -132,7 +132,7 @@ Slider::Slider(Widget2 *const widget,
 
 Slider::~Slider()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     delete2(mVertexes);
@@ -158,7 +158,7 @@ void Slider::init()
     // Load resources
     if (mInstances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
         {
             for (int mode = 0; mode < 2; mode ++)
                 theme->loadRect(buttons[mode], data[mode], "slider.xml", 0, 8);
@@ -168,7 +168,7 @@ void Slider::init()
 
     mInstances++;
 
-    if (buttons[0].grid[SliderGrid::HGRIP])
+    if (buttons[0].grid[SliderGrid::HGRIP] != nullptr)
         setMarkerLength(buttons[0].grid[SliderGrid::HGRIP]->getWidth());
 }
 
@@ -184,7 +184,7 @@ void Slider::updateAlpha()
         {
             for (int d = 0; d < SliderGrid::SLIDER_MAX; d ++)
             {
-                if (buttons[f].grid[d])
+                if (buttons[f].grid[d] != nullptr)
                     buttons[f].grid[d]->setAlpha(mAlpha);
             }
         }
@@ -194,9 +194,9 @@ void Slider::updateAlpha()
 void Slider::draw(Graphics *const graphics)
 {
     BLOCK_START("Slider::draw")
-    if (!buttons[0].grid[SliderGrid::HSTART] ||
-        !buttons[1].grid[SliderGrid::HSTART] ||
-        !buttons[0].grid[SliderGrid::HEND])
+    if ((buttons[0].grid[SliderGrid::HSTART] == nullptr) ||
+        (buttons[1].grid[SliderGrid::HSTART] == nullptr) ||
+        (buttons[0].grid[SliderGrid::HEND] == nullptr))
     {
         BLOCK_END("Slider::draw")
         return;
@@ -225,7 +225,7 @@ void Slider::draw(Graphics *const graphics)
             w -= width + buttons[0].grid[SliderGrid::HEND]->getWidth();
             x += width;
 
-            if (buttons[0].grid[SliderGrid::HMID])
+            if (buttons[0].grid[SliderGrid::HMID] != nullptr)
             {
                 const Image *const hMid = buttons[0].grid[SliderGrid::HMID];
                 graphics->calcPattern(mVertexes,
@@ -240,7 +240,7 @@ void Slider::draw(Graphics *const graphics)
                 x, y);
 
             const Image *const img = buttons[0].grid[SliderGrid::HGRIP];
-            if (img)
+            if (img != nullptr)
             {
                 graphics->calcTileCollection(mVertexes,
                     img,
@@ -256,11 +256,11 @@ void Slider::draw(Graphics *const graphics)
 
             const int width = buttons[1].grid[SliderGrid::HSTART]->getWidth();
             w -= width;
-            if (buttons[1].grid[SliderGrid::HEND])
+            if (buttons[1].grid[SliderGrid::HEND] != nullptr)
                 w -= buttons[1].grid[SliderGrid::HEND]->getWidth();
             x += width;
 
-            if (buttons[1].grid[SliderGrid::HMID])
+            if (buttons[1].grid[SliderGrid::HMID] != nullptr)
             {
                 const Image *const hMid = buttons[1].grid[SliderGrid::HMID];
                 graphics->calcPattern(mVertexes,
@@ -270,14 +270,14 @@ void Slider::draw(Graphics *const graphics)
             }
 
             x += w;
-            if (buttons[1].grid[SliderGrid::HEND])
+            if (buttons[1].grid[SliderGrid::HEND] != nullptr)
             {
                 graphics->calcTileCollection(mVertexes,
                     buttons[1].grid[SliderGrid::HEND], x, y);
             }
 
             const Image *const img = buttons[1].grid[SliderGrid::HGRIP];
-            if (img)
+            if (img != nullptr)
             {
                 graphics->calcTileCollection(mVertexes,
                     img,
@@ -295,9 +295,9 @@ void Slider::draw(Graphics *const graphics)
 void Slider::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Slider::draw")
-    if (!buttons[0].grid[SliderGrid::HSTART] ||
-        !buttons[1].grid[SliderGrid::HSTART] ||
-        !buttons[0].grid[SliderGrid::HEND])
+    if ((buttons[0].grid[SliderGrid::HSTART] == nullptr) ||
+        (buttons[1].grid[SliderGrid::HSTART] == nullptr) ||
+        (buttons[0].grid[SliderGrid::HEND] == nullptr))
     {
         BLOCK_END("Slider::draw")
         return;
@@ -319,7 +319,7 @@ void Slider::safeDraw(Graphics *const graphics)
         w -= width + buttons[0].grid[SliderGrid::HEND]->getWidth();
         x += width;
 
-        if (buttons[0].grid[SliderGrid::HMID])
+        if (buttons[0].grid[SliderGrid::HMID] != nullptr)
         {
             const Image *const hMid = buttons[0].grid[SliderGrid::HMID];
             graphics->drawPattern(hMid, x, y, w, hMid->getHeight());
@@ -329,7 +329,7 @@ void Slider::safeDraw(Graphics *const graphics)
         graphics->drawImage(buttons[0].grid[SliderGrid::HEND], x, y);
 
         const Image *const img = buttons[0].grid[SliderGrid::HGRIP];
-        if (img)
+        if (img != nullptr)
         {
             graphics->drawImage(img, getMarkerPosition(),
                 (mDimension.height - img->getHeight()) / 2);
@@ -341,22 +341,22 @@ void Slider::safeDraw(Graphics *const graphics)
 
         const int width = buttons[1].grid[SliderGrid::HSTART]->getWidth();
         w -= width;
-        if (buttons[1].grid[SliderGrid::HEND])
+        if (buttons[1].grid[SliderGrid::HEND] != nullptr)
             w -= buttons[1].grid[SliderGrid::HEND]->getWidth();
         x += width;
 
-        if (buttons[1].grid[SliderGrid::HMID])
+        if (buttons[1].grid[SliderGrid::HMID] != nullptr)
         {
             const Image *const hMid = buttons[1].grid[SliderGrid::HMID];
             graphics->drawPattern(hMid, x, y, w, hMid->getHeight());
         }
 
         x += w;
-        if (buttons[1].grid[SliderGrid::HEND])
+        if (buttons[1].grid[SliderGrid::HEND] != nullptr)
             graphics->drawImage(buttons[1].grid[SliderGrid::HEND], x, y);
 
         const Image *const img = buttons[1].grid[SliderGrid::HGRIP];
-        if (img)
+        if (img != nullptr)
         {
             graphics->drawImage(img, getMarkerPosition(),
                 (mDimension.height - img->getHeight()) / 2);

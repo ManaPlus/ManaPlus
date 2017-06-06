@@ -30,7 +30,7 @@ void GameModifierListener::distributeEvent()
               it, mListeners)
     {
         GameModifierListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->gameModifiersChanged();
     }
 }

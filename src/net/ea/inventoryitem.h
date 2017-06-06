@@ -86,7 +86,7 @@ class InventoryItem final
             favorite(favorite0),
             equip(equip0)
         {
-            if (!cards0)
+            if (cards0 == nullptr)
                 return;
             for (int f = 0; f < 4; f ++)
                 cards[f] = cards0[f];

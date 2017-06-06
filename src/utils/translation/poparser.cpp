@@ -48,7 +48,7 @@ void PoParser::openFile(const std::string &name)
     int size;
     const char *buf = VirtFs::loadFile(getFileName(name), size);
 
-    if (buf)
+    if (buf != nullptr)
     {
         mFile.str(std::string(buf, size));
         delete [] buf;
@@ -66,7 +66,7 @@ PoDict *PoParser::load(const std::string &restrict lang,
     logger->log("loading lang: %s, file: %s", lang.c_str(), fileName.c_str());
 
     setLang(lang);
-    if (!dict)
+    if (dict == nullptr)
         mDict = getDict();
     else
         mDict = dict;

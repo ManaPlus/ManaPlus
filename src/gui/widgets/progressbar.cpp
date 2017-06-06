@@ -80,10 +80,10 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
     addWidgetListener(this);
     setSize(width, height);
 
-    if (theme)
+    if (theme != nullptr)
     {
         mSkin = theme->load(skin, "progressbar.xml");
-        if (mSkin)
+        if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());
             mFillPadding = mSkin->getOption("fillPadding");
@@ -99,13 +99,13 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
 
 ProgressBar::~ProgressBar()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     mInstances--;
-    if (mSkin)
+    if (mSkin != nullptr)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
         mSkin = nullptr;
     }
@@ -157,7 +157,7 @@ void ProgressBar::updateAlpha()
 void ProgressBar::draw(Graphics *const graphics)
 {
     BLOCK_START("ProgressBar::draw")
-    if (!mSkin)
+    if (mSkin == nullptr)
     {
         BLOCK_END("ProgressBar::draw")
         return;
@@ -223,7 +223,7 @@ void ProgressBar::draw(Graphics *const graphics)
         }
 
         const Image *const image = mTextChunk.img;
-        if (image)
+        if (image != nullptr)
         {
             const int textX = (mDimension.width - font->getWidth(mText)) / 2;
             const int textY = (mDimension.height - font->getHeight()) / 2;
@@ -236,7 +236,7 @@ void ProgressBar::draw(Graphics *const graphics)
 void ProgressBar::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ProgressBar::safeDraw")
-    if (!mSkin)
+    if (mSkin == nullptr)
     {
         BLOCK_END("ProgressBar::safeDraw")
         return;
@@ -294,7 +294,7 @@ void ProgressBar::safeDraw(Graphics *const graphics)
         }
 
         const Image *const image = mTextChunk.img;
-        if (image)
+        if (image != nullptr)
         {
             const int textX = (mDimension.width - font->getWidth(mText)) / 2;
             const int textY = (mDimension.height - font->getHeight()) / 2;

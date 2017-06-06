@@ -71,7 +71,7 @@ void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
     const int skillCount = (msg.getLength() - 4) / sz;
     int updateSkill = 0;
 
-    if (skillDialog)
+    if (skillDialog != nullptr)
         skillDialog->hideSkills(SkillOwner::Player);
     for (int k = 0; k < skillCount; k++)
     {
@@ -86,10 +86,10 @@ void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
         const std::string name = msg.readString(24, "skill name");
         const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-        if (oldLevel && oldLevel != level)
+        if ((oldLevel != 0) && oldLevel != level)
             updateSkill = skillId;
         PlayerInfo::setSkillLevel(skillId, level);
-        if (skillDialog)
+        if (skillDialog != nullptr)
         {
             if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
             {
@@ -98,10 +98,10 @@ void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
             }
         }
     }
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         skillDialog->update();
-        if (updateSkill)
+        if (updateSkill != 0)
             skillDialog->playUpdateEffect(updateSkill);
     }
 }
@@ -118,10 +118,10 @@ void SkillRecv::processSkillAdd(Net::MessageIn &msg)
     const std::string name = msg.readString(24, "skill name");
     const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
     const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel && oldLevel != level)
+    if ((oldLevel != 0) && oldLevel != level)
         updateSkill = skillId;
     PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
         {
@@ -129,7 +129,7 @@ void SkillRecv::processSkillAdd(Net::MessageIn &msg)
                 skillId, name, level, range, up, inf, sp);
         }
         skillDialog->update();
-        if (updateSkill)
+        if (updateSkill != 0)
             skillDialog->playUpdateEffect(updateSkill);
     }
 }
@@ -148,10 +148,10 @@ void SkillRecv::processSkillAdd2(Net::MessageIn &msg)
     const std::string name = msg.readString(24, "skill name");
     const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
     const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel && oldLevel != level)
+    if ((oldLevel != 0) && oldLevel != level)
         updateSkill = skillId;
     PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
         {
@@ -159,7 +159,7 @@ void SkillRecv::processSkillAdd2(Net::MessageIn &msg)
                 skillId, name, level, range, up, inf, sp);
         }
         skillDialog->update();
-        if (updateSkill)
+        if (updateSkill != 0)
             skillDialog->playUpdateEffect(updateSkill);
     }
 }
@@ -175,10 +175,10 @@ void SkillRecv::processSkillUpdate(Net::MessageIn &msg)
     const int range = msg.readInt16("range");
     const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
     const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel && oldLevel != level)
+    if ((oldLevel != 0) && oldLevel != level)
         updateSkill = skillId;
     PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
         {
@@ -186,7 +186,7 @@ void SkillRecv::processSkillUpdate(Net::MessageIn &msg)
                 skillId, "", level, range, up, inf, sp);
         }
         skillDialog->update();
-        if (updateSkill)
+        if (updateSkill != 0)
             skillDialog->playUpdateEffect(updateSkill);
     }
 }
@@ -204,10 +204,10 @@ void SkillRecv::processSkillUpdate2(Net::MessageIn &msg)
     const int range = msg.readInt16("range");
     const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
     const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-    if (oldLevel && oldLevel != level)
+    if ((oldLevel != 0) && oldLevel != level)
         updateSkill = skillId;
     PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
         {
@@ -215,7 +215,7 @@ void SkillRecv::processSkillUpdate2(Net::MessageIn &msg)
                 skillId, "", level, range, up, inf, sp);
         }
         skillDialog->update();
-        if (updateSkill)
+        if (updateSkill != 0)
             skillDialog->playUpdateEffect(updateSkill);
     }
 }
@@ -228,11 +228,11 @@ void SkillRecv::processSkillDelete(Net::MessageIn &msg)
     if (oldLevel != 0)
         updateSkill = skillId;
     PlayerInfo::setSkillLevel(skillId, 0);
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         skillDialog->removeSkill(skillId);
         skillDialog->update();
-        if (updateSkill)
+        if (updateSkill != 0)
             skillDialog->playRemoveEffect(updateSkill);
     }
 }
@@ -241,7 +241,7 @@ void SkillRecv::processSkillCoolDown(Net::MessageIn &msg)
 {
     const int skillId = msg.readInt16("skill id");
     const int duration = msg.readInt32("duration");
-    if (skillDialog)
+    if (skillDialog != nullptr)
         skillDialog->setSkillDuration(SkillOwner::Player, skillId, duration);
 }
 
@@ -259,7 +259,7 @@ void SkillRecv::processSkillCoolDownList(Net::MessageIn &msg)
         if (msg.getVersion() >= 20120604)
             msg.readInt32("total");
         const int duration = msg.readInt32("duration");
-        if (skillDialog)
+        if (skillDialog != nullptr)
         {
             skillDialog->setSkillDuration(SkillOwner::Player,
                 skillId, duration);
@@ -281,19 +281,19 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
         logger->log("Action: %d/%d", bskill, success);
     }
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->stopCast(true);
     std::string txt;
     if (success == CAST_S32(SKILL_FAILED) && bskill != 0)
     {
-        if (localPlayer && bskill == CAST_S32(BSKILL_EMOTE)
+        if ((localPlayer != nullptr) && bskill == CAST_S32(BSKILL_EMOTE)
             && reason == CAST_S32(RFAIL_SKILLDEP))
         {
             localPlayer->stopAdvert();
         }
 
         const SkillInfo *const info = skillDialog->getSkill(bskill);
-        if (info)
+        if (info != nullptr)
         {
             txt = info->errorText;
         }
@@ -306,7 +306,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
     else
     {
         const SkillInfo *const info = skillDialog->getSkill(skillId);
-        if (info)
+        if (info != nullptr)
         {
             txt = info->errorText + ".";
         }

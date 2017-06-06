@@ -41,10 +41,10 @@ void SkillRecv::processPlayerSkillUp(Net::MessageIn &msg)
     const int range = msg.readInt16("range");
     const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
 
-    if (skillDialog && PlayerInfo::getSkillLevel(skillId) != level)
+    if (skillDialog != nullptr && PlayerInfo::getSkillLevel(skillId) != level)
         skillDialog->playUpdateEffect(skillId);
     PlayerInfo::setSkillLevel(skillId, level);
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         if (!skillDialog->updateSkill(skillId, range,
             up, SkillType::Unknown, sp))

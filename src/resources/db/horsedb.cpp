@@ -153,7 +153,7 @@ void HorseDB::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "horses"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "horses"))
     {
         logger->log("Horse Database: Error while loading %s!",
             fileName.c_str());
@@ -189,7 +189,7 @@ void HorseDB::loadXmlFile(const std::string &fileName,
         else
             currentInfo = new HorseInfo;
 
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             continue;
         for_each_xml_child_node(spriteNode, horseNode)
         {

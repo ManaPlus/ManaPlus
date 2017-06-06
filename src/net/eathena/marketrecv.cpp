@@ -61,7 +61,7 @@ void MarketRecv::processMarketOpen(Net::MessageIn &msg)
     if (npcId != BeingTypeId_zero)
     {
         const BeingInfo *const info = NPCDB::get(npcId);
-        if (info)
+        if (info != nullptr)
             currency = info->getCurrency();
         else
             currency = DEFAULT_CURRENCY;
@@ -99,7 +99,7 @@ void MarketRecv::processMarketBuyAck(Net::MessageIn &msg)
         msg.readInt16("amount");
         msg.readInt32("price");
     }
-    if (res)
+    if (res != 0)
         NotifyManager::notify(NotifyTypes::BUY_DONE);
     else
         NotifyManager::notify(NotifyTypes::BUY_FAILED);

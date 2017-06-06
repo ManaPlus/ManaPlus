@@ -42,7 +42,7 @@ namespace
         const int variant;
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
 
             const SpriteDefLoader *const

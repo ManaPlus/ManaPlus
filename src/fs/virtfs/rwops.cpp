@@ -63,14 +63,14 @@ SDL_RWops *create_rwops(File *const file)
 {
     SDL_RWops *retval = nullptr;
 
-    if (!file)
+    if (file == nullptr)
     {
         logger->assertLog("VirtFs::rwops_seek: create rwops error.");
     }
     else
     {
         retval = SDL_AllocRW();
-        if (retval)
+        if (retval != nullptr)
         {
 #ifdef USE_SDL2
             retval->size  = file->funcs->rwops_size;

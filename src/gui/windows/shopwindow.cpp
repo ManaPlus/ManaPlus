@@ -155,7 +155,7 @@ ShopWindow::ShopWindow() :
     else
         setDefaultSize(380, 300, ImagePosition::CENTER);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     const int size = config.getIntValue("fontSize")
@@ -280,18 +280,19 @@ void ShopWindow::action(const ActionEvent &event)
     {
         if (isBuySelected)
         {
-            if (mBuyShopItemList && mBuyShopItemList->getSelected() >= 0)
+            if (mBuyShopItemList != nullptr &&
+                mBuyShopItemList->getSelected() >= 0)
             {
                 mBuyShopItems->del(mBuyShopItemList->getSelected());
-                if (isShopEmpty() && localPlayer)
+                if (isShopEmpty() && (localPlayer != nullptr))
                     localPlayer->updateStatus();
             }
         }
-        else if (mSellShopItemList
+        else if ((mSellShopItemList != nullptr)
                  && mSellShopItemList->getSelected() >= 0)
         {
             mSellShopItems->del(mSellShopItemList->getSelected());
-            if (isShopEmpty() && localPlayer)
+            if (isShopEmpty() && (localPlayer != nullptr))
                 localPlayer->updateStatus();
         }
     }
@@ -338,20 +339,20 @@ void ShopWindow::action(const ActionEvent &event)
                 std::vector<ShopItem*> &oldItems = mSellShopItems->items();
                 std::vector<ShopItem*> items;
                 const Inventory *const inv = PlayerInfo::getCartInventory();
-                if (!inv)
+                if (inv == nullptr)
                     return;
                 FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
                 {
                     ShopItem *const item = *it;
-                    if (!item)
+                    if (item == nullptr)
                         continue;
                     const Item *const cartItem = inv->findItem(item->getId(),
                         item->getColor());
-                    if (!cartItem)
+                    if (cartItem == nullptr)
                         continue;
                     item->setInvIndex(cartItem->getInvIndex());
                     const int amount = cartItem->getQuantity();
-                    if (!amount)
+                    if (amount == 0)
                         continue;
                     if (item->getQuantity() > amount)
                         item->setQuantity(amount);
@@ -380,12 +381,12 @@ void ShopWindow::action(const ActionEvent &event)
 
     const Inventory *const inv = mHaveVending && !isBuySelected
         ? PlayerInfo::getCartInventory() : PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     // +++ need support for colors
     Item *const item = inv->findItem(mSelectedItem, ItemColor_zero);
-    if (item)
+    if (item != nullptr)
     {
         if (eventId == "add")
         {
@@ -424,7 +425,7 @@ void ShopWindow::updateButtonsAndLabels()
         allowDel = !mEnableBuyingStore
             && mBuyShopItemList->getSelected() != -1
             && mBuyShopItems->getNumberOfElements() > 0;
-        if (mPublishButton)
+        if (mPublishButton != nullptr)
         {
             if (mEnableBuyingStore)
             {
@@ -449,7 +450,7 @@ void ShopWindow::updateButtonsAndLabels()
         allowDel = !mEnableVending
             && mSellShopItemList->getSelected() != -1
             && sellNotEmpty;
-        if (mPublishButton)
+        if (mPublishButton != nullptr)
         {
             if (mEnableVending)
             {
@@ -464,7 +465,7 @@ void ShopWindow::updateButtonsAndLabels()
             mPublishButton->adjustSize();
             if (sellNotEmpty
                 && mSellShopSize > 0
-                && localPlayer
+                && (localPlayer != nullptr)
                 && localPlayer->getHaveCart())
             {
                 mPublishButton->setEnabled(true);
@@ -477,7 +478,7 @@ void ShopWindow::updateButtonsAndLabels()
     }
     mAddButton->setEnabled(allowAdd);
     mDeleteButton->setEnabled(allowDel);
-    if (mRenameButton)
+    if (mRenameButton != nullptr)
         mRenameButton->setEnabled(!mEnableVending);
 }
 
@@ -489,7 +490,7 @@ void ShopWindow::setVisible(Visible visible)
 void ShopWindow::addBuyItem(const Item *const item, const int amount,
                             const int price)
 {
-    if (!item)
+    if (item == nullptr)
         return;
     const bool emp = isShopEmpty();
     mBuyShopItems->addItemNoDup(item->getId(),
@@ -497,7 +498,7 @@ void ShopWindow::addBuyItem(const Item *const item, const int amount,
         item->getColor(),
         amount,
         price);
-    if (emp && localPlayer)
+    if (emp && (localPlayer != nullptr))
         localPlayer->updateStatus();
 
     updateButtonsAndLabels();
@@ -506,7 +507,7 @@ void ShopWindow::addBuyItem(const Item *const item, const int amount,
 void ShopWindow::addSellItem(const Item *const item, const int amount,
                              const int price)
 {
-    if (!item)
+    if (item == nullptr)
         return;
     const bool emp = isShopEmpty();
     mSellShopItems->addItemNoDup(item->getId(),
@@ -514,7 +515,7 @@ void ShopWindow::addSellItem(const Item *const item, const int amount,
         item->getColor(),
         amount,
         price);
-    if (emp && localPlayer)
+    if (emp && (localPlayer != nullptr))
         localPlayer->updateStatus();
 
     updateButtonsAndLabels();
@@ -531,7 +532,7 @@ void ShopWindow::loadList()
     const std::string shopListName = settings.serverConfigDir
         + "/shoplist.txt";
 
-    if (!stat(shopListName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
+    if ((stat(shopListName.c_str(), &statbuf) == 0) && S_ISREG(statbuf.st_mode))
     {
         shopFile.open(shopListName.c_str(), std::ios::in);
         if (!shopFile.is_open())
@@ -554,10 +555,10 @@ void ShopWindow::loadList()
                 while (ss >> buf)
                     tokens.push_back(atoi(buf.c_str()));
 
-                if (tokens.size() == 5 && tokens[0])
+                if (tokens.size() == 5 && (tokens[0] != 0))
                 {
                     // +++ need impliment colors?
-                    if (tokens[1] && tokens[2])
+                    if ((tokens[1] != 0) && (tokens[2] != 0))
                     {
                         mBuyShopItems->addItem(
                             tokens[0],
@@ -566,7 +567,7 @@ void ShopWindow::loadList()
                             tokens[1],
                             tokens[2]);
                     }
-                    if (tokens[3] && tokens[4])
+                    if ((tokens[3] != 0) && (tokens[4] != 0))
                     {
                         mSellShopItems->addItem(
                             tokens[0],
@@ -601,20 +602,20 @@ void ShopWindow::saveList() const
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         ShopItem *const item = *(it);
-        if (item)
+        if (item != nullptr)
             mapItems[item->getId()] = item;
     }
 
     items = mSellShopItems->items();
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
-        if (!(*it))
+        if ((*it) == nullptr)
             continue;
         const ShopItem *const sellItem = *(it);
         const ShopItem *const buyItem = mapItems[sellItem->getId()];
 
         shopFile << sellItem->getId();
-        if (buyItem)
+        if (buyItem != nullptr)
         {
             shopFile << strprintf(" %d %d ", buyItem->getQuantity(),
                 buyItem->getPrice());
@@ -635,7 +636,7 @@ void ShopWindow::saveList() const
          ++mapIt)
     {
         const ShopItem *const buyItem = (*mapIt).second;
-        if (buyItem)
+        if (buyItem != nullptr)
         {
             shopFile << buyItem->getId();
             shopFile << strprintf(" %d %d ", buyItem->getQuantity(),
@@ -650,7 +651,7 @@ void ShopWindow::saveList() const
 #ifdef TMWA_SUPPORT
 void ShopWindow::announce(ShopItems *const list, const int mode)
 {
-    if (!list)
+    if (list == nullptr)
         return;
 
     std::string data;
@@ -659,14 +660,14 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
     else
         data.append("Sell ");
 
-    if (mAnnonceTime && (mAnnonceTime + (2 * 60) > cur_time
-        || mAnnonceTime > cur_time))
+    if (mAnnonceTime != 0 &&
+        (mAnnonceTime + (2 * 60) > cur_time || mAnnonceTime > cur_time))
     {
         return;
     }
 
     mAnnonceTime = cur_time;
-    if (mAnnounceButton)
+    if (mAnnounceButton != nullptr)
         mAnnounceButton->setEnabled(false);
 
     std::vector<ShopItem*> items = list->items();
@@ -709,20 +710,23 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
 
 void ShopWindow::startTrade()
 {
-    if (!actorManager || !tradeWindow)
+    if (actorManager == nullptr ||
+        tradeWindow == nullptr)
+    {
         return;
+    }
 
     const Being *const being = actorManager->findBeingByName(
         mTradeNick, ActorType::Player);
     tradeWindow->clear();
-    if (mTradeMoney)
+    if (mTradeMoney != 0)
     {
         tradeWindow->addAutoMoney(mTradeNick, mTradeMoney);
     }
     else
     {
         tradeWindow->addAutoItem(mTradeNick, mTradeItem,
-                                 mTradeItem->getQuantity());
+            mTradeItem->getQuantity());
     }
     tradeHandler->request(being);
     tradePartnerName = mTradeNick;
@@ -747,11 +751,11 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
         list = mSellShopItems;
         data.append("B1");
     }
-    if (!list)
+    if (list == nullptr)
         return;
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     std::vector<ShopItem*> items = list->items();
@@ -759,20 +763,20 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
-        if (!item)
+        if (item == nullptr)
             continue;
 
         if (mode == SELL)
         {
             const Item *const item2 = inv->findItem(item->getId(),
                 ItemColor_zero);
-            if (item2)
+            if (item2 != nullptr)
             {
                 int amount = item->getQuantity();
                 if (item2->getQuantity() < amount)
                     amount = item2->getQuantity();
 
-                if (amount)
+                if (amount != 0)
                 {
                     data.append(strprintf("%s%s%s",
                         encodeStr(item->getId(), 2).c_str(),
@@ -807,7 +811,7 @@ void ShopWindow::sendMessage(const std::string &nick,
                              std::string data,
                              const bool random)
 {
-    if (!chatWindow)
+    if (chatWindow == nullptr)
         return;
 
     if (random)
@@ -827,7 +831,7 @@ void ShopWindow::sendMessage(const std::string &nick,
 void ShopWindow::showList(const std::string &nick, std::string data)
 {
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     BuyDialog *buyDialog = nullptr;
@@ -847,9 +851,9 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         return;
     }
 
-    if (buyDialog)
+    if (buyDialog != nullptr)
         buyDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
-    if (sellDialog)
+    if (sellDialog != nullptr)
         sellDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
     for (unsigned f = 0; f < data.length(); f += 9)
@@ -860,7 +864,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
         const int id = decodeStr(data.substr(f, 2));
         const int price = decodeStr(data.substr(f + 2, 4));
         int amount = decodeStr(data.substr(f + 6, 3));
-        if (buyDialog && amount > 0)
+        if (buyDialog != nullptr && amount > 0)
         {
             buyDialog->addItem(id,
                 ItemType::Unknown,
@@ -868,10 +872,10 @@ void ShopWindow::showList(const std::string &nick, std::string data)
                 amount,
                 price);
         }
-        if (sellDialog)
+        if (sellDialog != nullptr)
         {
             const Item *const item = inv->findItem(id, ItemColor_zero);
-            if (item)
+            if (item != nullptr)
             {
                 if (item->getQuantity() < amount)
                     amount = item->getQuantity();
@@ -886,28 +890,29 @@ void ShopWindow::showList(const std::string &nick, std::string data)
                 amount,
                 price);
 
-            if (shopItem && amount <= 0)
+            if (shopItem != nullptr && amount <= 0)
                 shopItem->setDisabled(true);
         }
     }
-    if (buyDialog)
+    if (buyDialog != nullptr)
         buyDialog->sort();
 }
 
-void ShopWindow::processRequest(const std::string &nick, std::string data,
+void ShopWindow::processRequest(const std::string &nick,
+                                std::string data,
                                 const int mode)
 {
-    if (!localPlayer ||
+    if (localPlayer == nullptr ||
         !mTradeNick.empty() ||
         PlayerInfo::isTrading() == Trading_true ||
-        !actorManager ||
-        !actorManager->findBeingByName(nick, ActorType::Player))
+        actorManager == nullptr ||
+        actorManager->findBeingByName(nick, ActorType::Player) == nullptr)
     {
         return;
     }
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     const size_t idx = data.find(' ');
@@ -964,8 +969,9 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
         // +++ need support for colors
         const Item *const item2 = inv->findItem(mTradeItem->getId(),
             ItemColor_zero);
-        if (!item2 || item2->getQuantity() < amount
-            || !findShopItem(mTradeItem, SELL))
+        if (item2 == nullptr ||
+            item2->getQuantity() < amount ||
+            !findShopItem(mTradeItem, SELL))
         {
             sendMessage(nick,
                 // TRANSLATORS: error buy/sell shop request
@@ -1026,13 +1032,13 @@ void ShopWindow::processRequest(const std::string &nick, std::string data,
 void ShopWindow::updateTimes()
 {
     BLOCK_START("ShopWindow::updateTimes")
-    if (!mAnnounceButton)
+    if (mAnnounceButton == nullptr)
     {
         BLOCK_END("ShopWindow::updateTimes")
         return;
     }
-    if (mAnnonceTime + (2 * 60) < cur_time
-        || mAnnonceTime > cur_time)
+    if (mAnnonceTime + (2 * 60) < cur_time ||
+        mAnnonceTime > cur_time)
     {
         mAnnounceButton->setEnabled(true);
     }
@@ -1041,7 +1047,7 @@ void ShopWindow::updateTimes()
 
 bool ShopWindow::checkFloodCounter(time_t &counterTime)
 {
-    if (!counterTime || counterTime > cur_time)
+    if (counterTime == 0 || counterTime > cur_time)
         counterTime = cur_time;
     else if (counterTime + 10 > cur_time)
         return false;
@@ -1053,7 +1059,7 @@ bool ShopWindow::checkFloodCounter(time_t &counterTime)
 bool ShopWindow::findShopItem(const ShopItem *const shopItem,
                               const int mode) const
 {
-    if (!shopItem)
+    if (shopItem == nullptr)
         return false;
 
     std::vector<ShopItem*> items;
@@ -1065,7 +1071,7 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem,
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
-        if (!item)
+        if (item == nullptr)
             continue;
 
         if (item->getId() == shopItem->getId()
@@ -1081,18 +1087,18 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem,
 
 int ShopWindow::sumAmount(const Item *const shopItem)
 {
-    if (!localPlayer || !shopItem)
+    if ((localPlayer == nullptr) || (shopItem == nullptr))
         return 0;
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return 0;
     int sum = 0;
 
     for (unsigned f = 0; f < inv->getSize(); f ++)
     {
         const Item *const item = inv->getItem(f);
-        if (item && item->getId() == shopItem->getId())
+        if ((item != nullptr) && item->getId() == shopItem->getId())
             sum += item->getQuantity();
     }
     return sum;

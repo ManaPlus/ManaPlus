@@ -58,8 +58,9 @@ class SkillListBox final : public ListBox
             mTextColor(getThemeColor(ThemeColorId::TEXT)),
             mTextColor2(getThemeColor(ThemeColorId::TEXT_OUTLINE)),
             mCooldownColor(getThemeColor(ThemeColorId::SKILL_COOLDOWN)),
-            mTextPadding(mSkin ? mSkin->getOption("textPadding", 34) : 34),
-            mSpacing(mSkin ? mSkin->getOption("spacing", 0) : 0),
+            mTextPadding(mSkin != nullptr ?
+                mSkin->getOption("textPadding", 34) : 34),
+            mSpacing(mSkin != nullptr ? mSkin->getOption("spacing", 0) : 0),
             mSkillClicked(false)
         {
             mRowHeight = getFont()->getHeight() * 2 + mSpacing + 2 * mPadding;
@@ -79,7 +80,7 @@ class SkillListBox final : public ListBox
         SkillInfo *getSelectedInfo() const
         {
             const int selected = getSelected();
-            if (!mListModel || selected < 0
+            if ((mListModel == nullptr) || selected < 0
                 || selected > mListModel->getNumberOfElements())
             {
                 return nullptr;
@@ -90,7 +91,7 @@ class SkillListBox final : public ListBox
 
         void draw(Graphics *const graphics) override final A_NONNULL(2)
         {
-            if (!mListModel)
+            if (mListModel == nullptr)
                 return;
 
             SkillModel *const model = static_cast<SkillModel*>(mListModel);
@@ -121,9 +122,9 @@ class SkillListBox final : public ListBox
                  ++i, y += getRowHeight())
             {
                 SkillInfo *const e = model->getSkillAt(i);
-                if (e)
+                if (e != nullptr)
                 {
-                    if (e->cooldown)
+                    if (e->cooldown != 0)
                     {
                         graphics->fillRectangle(Rect(mPadding, y,
                             usableWidth * 100 / e->cooldown, 10));
@@ -136,7 +137,7 @@ class SkillListBox final : public ListBox
                  ++i, y += getRowHeight())
             {
                 SkillInfo *const e = model->getSkillAt(i);
-                if (e)
+                if (e != nullptr)
                 {
                     const SkillData *const data = e->data;
                     const std::string &description = data->description;
@@ -183,10 +184,10 @@ class SkillListBox final : public ListBox
         const SkillInfo *getSkillByEvent(const MouseEvent &event) const
         {
             const int y = (event.getY() + mPadding) / getRowHeight();
-            if (!mModel || y >= mModel->getNumberOfElements())
+            if (mModel == nullptr || y >= mModel->getNumberOfElements())
                 return nullptr;
             const SkillInfo *const skill = mModel->getSkillAt(y);
-            if (!skill)
+            if (skill == nullptr)
                 return nullptr;
             return skill;
         }
@@ -194,11 +195,11 @@ class SkillListBox final : public ListBox
         void mouseMoved(MouseEvent &event) override final
         {
             ListBox::mouseMoved(event);
-            if (!viewport || !dragDrop.isEmpty())
+            if ((viewport == nullptr) || !dragDrop.isEmpty())
                 return;
 
             const SkillInfo *const skill = getSkillByEvent(event);
-            if (!skill)
+            if (skill == nullptr)
                 return;
             skillPopup->show(skill,
                 skill->customSelectedLevel,
@@ -219,7 +220,7 @@ class SkillListBox final : public ListBox
                     {
                         mSkillClicked = false;
                         const SkillInfo *const skill = getSkillByEvent(event);
-                        if (!skill)
+                        if (skill == nullptr)
                             return;
                         dragDrop.dragSkill(skill, DragDropSource::Skills);
                         dragDrop.setItem(skill->id + SKILL_MIN_ID);
@@ -245,13 +246,13 @@ class SkillListBox final : public ListBox
                 button == MouseButton::RIGHT)
             {
                 const SkillInfo *const skill = getSkillByEvent(event);
-                if (!skill)
+                if (skill == nullptr)
                     return;
                 event.consume();
                 mSkillClicked = true;
                 SkillModel *const model = static_cast<SkillModel*>(
                     mListModel);
-                if (model &&
+                if ((model != nullptr) &&
                     mSelected >= 0 &&
                     model->getSkillAt(mSelected) == skill)
                 {

@@ -62,21 +62,24 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
     if (b1 == 255)
     {   // old TMWA
         const unsigned int options = msg.readInt32("options");
-        Ea::LoginRecv::mRegistrationEnabled = options & FLAG_REGISTRATION;
+        Ea::LoginRecv::mRegistrationEnabled =
+            ((options & FLAG_REGISTRATION) != 0u);
         serverVersion = 0;
         tmwServerVersion = 0;
     }
     else if (b1 >= 0x0d)
     {   // new TMWA
         const unsigned int options = msg.readInt32("options");
-        Ea::LoginRecv::mRegistrationEnabled = options & FLAG_REGISTRATION;
+        Ea::LoginRecv::mRegistrationEnabled =
+            ((options & FLAG_REGISTRATION) != 0u);
         serverVersion = 0;
         tmwServerVersion = (b1 << 16) | (b2 << 8) | b3;
     }
     else
     {   // eAthena
         const unsigned int options = msg.readInt32("options");
-        Ea::LoginRecv::mRegistrationEnabled = options & FLAG_REGISTRATION;
+        Ea::LoginRecv::mRegistrationEnabled =
+            ((options & FLAG_REGISTRATION) != 0u);
         serverVersion = 0;
         tmwServerVersion = 0;
     }

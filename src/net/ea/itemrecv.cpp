@@ -35,7 +35,7 @@ namespace Ea
 
 void ItemRecv::processItemRemove(Net::MessageIn &msg)
 {
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         if (FloorItem *const item = actorManager
             ->findItem(msg.readBeingId("floor item id")))

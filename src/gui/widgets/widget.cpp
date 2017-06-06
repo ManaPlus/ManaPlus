@@ -179,7 +179,7 @@ void Widget::setDimension(const Rect& dimension)
 
 bool Widget::isFocused() const
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return false;
 
     return (mFocusHandler->isFocused(this));
@@ -187,7 +187,7 @@ bool Widget::isFocused() const
 
 void Widget::setFocusable(const bool focusable)
 {
-    if (!focusable && isFocused() && mFocusHandler)
+    if (!focusable && isFocused() && (mFocusHandler != nullptr))
         mFocusHandler->focusNone();
     mFocusable = focusable;
 }
@@ -199,7 +199,7 @@ bool Widget::isFocusable() const
 
 void Widget::requestFocus()
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
 
     if (isFocusable())
@@ -208,19 +208,19 @@ void Widget::requestFocus()
 
 void Widget::requestMoveToTop()
 {
-    if (mParent)
+    if (mParent != nullptr)
         mParent->moveToTop(this);
 }
 
 void Widget::requestMoveToBottom()
 {
-    if (mParent)
+    if (mParent != nullptr)
         mParent->moveToBottom(this);
 }
 
 void Widget::setVisible(Visible visible)
 {
-    if (visible == Visible_false && isFocused() && mFocusHandler)
+    if (visible == Visible_false && isFocused() && (mFocusHandler != nullptr))
         mFocusHandler->focusNone();
 
     if (visible == Visible_true)
@@ -233,13 +233,13 @@ void Widget::setVisible(Visible visible)
 
 void Widget::setFocusHandler(FocusHandler *const focusHandler)
 {
-    if (mFocusHandler)
+    if (mFocusHandler != nullptr)
     {
         releaseModalFocus();
         mFocusHandler->remove(this);
     }
 
-    if (focusHandler)
+    if (focusHandler != nullptr)
         focusHandler->add(this);
 
     mFocusHandler = focusHandler;
@@ -307,7 +307,7 @@ void Widget::removeWidgetListener(WidgetListener *const widgetListener)
 
 void Widget::getAbsolutePosition(int& x, int& y) const
 {
-    if (!mParent)
+    if (mParent == nullptr)
     {
         x = mDimension.x;
         y = mDimension.y;
@@ -326,7 +326,7 @@ void Widget::getAbsolutePosition(int& x, int& y) const
 
 Font* Widget::getFont() const
 {
-    if (!mCurrentFont)
+    if (mCurrentFont == nullptr)
         return mGlobalFont;
     return mCurrentFont;
 }
@@ -337,7 +337,7 @@ void Widget::setGlobalFont(Font *const font)
 
     FOR_EACH (std::list<Widget*>::const_iterator, iter, mAllWidgets)
     {
-        if (!(*iter)->mCurrentFont)
+        if ((*iter)->mCurrentFont == nullptr)
             (*iter)->fontChanged();
     }
 }
@@ -375,38 +375,38 @@ bool Widget::isEnabled() const
 
 void Widget::requestModalFocus()
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
     mFocusHandler->requestModalFocus(this);
 }
 
 void Widget::requestModalMouseInputFocus()
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
     mFocusHandler->requestModalMouseInputFocus(this);
 }
 
 void Widget::releaseModalFocus()
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
     mFocusHandler->releaseModalFocus(this);
 }
 
 void Widget::releaseModalMouseInputFocus()
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
     mFocusHandler->releaseModalMouseInputFocus(this);
 }
 
 bool Widget::isModalFocused() const
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return false;
 
-    if (mParent)
+    if (mParent != nullptr)
     {
         return (mFocusHandler->getModalFocused() == this)
             || mParent->isModalFocused();
@@ -417,10 +417,10 @@ bool Widget::isModalFocused() const
 
 bool Widget::isModalMouseInputFocused() const
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return false;
 
-    if (mParent)
+    if (mParent != nullptr)
     {
         return (mFocusHandler->getModalMouseInputFocused() == this)
             || mParent->isModalMouseInputFocused();
@@ -506,7 +506,7 @@ void Widget::distributeShownEvent()
 
 void Widget::showPart(const Rect &rectangle)
 {
-    if (mParent)
+    if (mParent != nullptr)
         mParent->showWidgetPart(this, rectangle);
 }
 
@@ -517,7 +517,7 @@ void Widget::windowResized()
 
 Widget *Widget::callPostInit(Widget *const widget)
 {
-    if (widget)
+    if (widget != nullptr)
         widget->postInit();
     return widget;
 }

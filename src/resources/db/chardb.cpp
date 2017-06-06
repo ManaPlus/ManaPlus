@@ -54,7 +54,7 @@ void CharDB::load()
         SkipError_false);
     XmlNodeConstPtrConst root = doc->rootNode();
 
-    if (!root || !xmlNameEqual(root, "chars"))
+    if ((root == nullptr) || !xmlNameEqual(root, "chars"))
     {
         logger->log("CharDB: Failed to parse %s.",
             paths.getStringValue("charCreationFile").c_str());
@@ -113,9 +113,9 @@ void CharDB::loadMinMax(XmlNodeConstPtr node,
                         unsigned *restrict const min,
                         unsigned *restrict const max)
 {
-    if (min)
+    if (min != nullptr)
         *min = XML::getProperty(node, "min", 1);
-    if (max)
+    if (max != nullptr)
         *max = XML::getProperty(node, "max", 10);
 }
 

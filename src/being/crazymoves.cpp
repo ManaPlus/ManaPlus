@@ -95,8 +95,8 @@ void CrazyMoves::crazyMove()
 
 void CrazyMoves::crazyMove1()
 {
-    if (!localPlayer ||
-        !playerHandler ||
+    if ((localPlayer == nullptr) ||
+        (playerHandler == nullptr) ||
         localPlayer->getCurrentAction() == BeingAction::MOVE)
     {
         return;
@@ -134,8 +134,8 @@ void CrazyMoves::crazyMove1()
 
 void CrazyMoves::crazyMove2()
 {
-    if (!localPlayer ||
-        !playerHandler ||
+    if ((localPlayer == nullptr) ||
+        (playerHandler == nullptr) ||
         localPlayer->getCurrentAction() == BeingAction::MOVE)
     {
         return;
@@ -185,8 +185,8 @@ void CrazyMoves::crazyMove2()
 
 void CrazyMoves::crazyMove3()
 {
-    if (!localPlayer ||
-        !playerHandler ||
+    if ((localPlayer == nullptr) ||
+        (playerHandler == nullptr) ||
         localPlayer->getCurrentAction() == BeingAction::MOVE)
     {
         return;
@@ -223,7 +223,7 @@ void CrazyMoves::crazyMove3()
 
 void CrazyMoves::crazyMove4()
 {
-    if (!localPlayer ||
+    if ((localPlayer == nullptr) ||
         localPlayer->getCurrentAction() == BeingAction::MOVE)
     {
         return;
@@ -246,7 +246,7 @@ void CrazyMoves::crazyMove4()
 
 void CrazyMoves::crazyMove5()
 {
-    if (!localPlayer ||
+    if ((localPlayer == nullptr) ||
         localPlayer->getCurrentAction() == BeingAction::MOVE)
     {
         return;
@@ -269,7 +269,7 @@ void CrazyMoves::crazyMove5()
 
 void CrazyMoves::crazyMove6()
 {
-    if (!localPlayer ||
+    if ((localPlayer == nullptr) ||
         localPlayer->getCurrentAction() == BeingAction::MOVE)
     {
         return;
@@ -316,7 +316,7 @@ void CrazyMoves::crazyMove6()
 
 void CrazyMoves::crazyMove7()
 {
-    if (!localPlayer ||
+    if ((localPlayer == nullptr) ||
         localPlayer->getCurrentAction() == BeingAction::MOVE)
     {
         return;
@@ -347,10 +347,13 @@ void CrazyMoves::crazyMove7()
 
 void CrazyMoves::crazyMove8()
 {
-    if (!localPlayer || localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (localPlayer == nullptr ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
     const Map *const map = localPlayer->getMap();
-    if (!map)
+    if (map == nullptr)
         return;
     const int x = localPlayer->getTileX();
     const int y = localPlayer->getTileY();
@@ -456,8 +459,11 @@ void CrazyMoves::crazyMove9()
     int dx = 0;
     int dy = 0;
 
-    if (!localPlayer || localPlayer->getCurrentAction() == BeingAction::MOVE)
+    if (localPlayer == nullptr ||
+        localPlayer->getCurrentAction() == BeingAction::MOVE)
+    {
         return;
+    }
 
     switch (settings.crazyMoveState)
     {
@@ -477,7 +483,7 @@ void CrazyMoves::crazyMove9()
             settings.crazyMoveState = 2;
             if (!localPlayer->allowAction())
                 return;
-            if (playerHandler)
+            if (playerHandler != nullptr)
                 playerHandler->changeAction(BeingAction::SIT);
             break;
         case 2:
@@ -493,7 +499,7 @@ void CrazyMoves::crazyMove9()
 
 void CrazyMoves::crazyMoveAm() const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     settings.crazyMoveState ++;
@@ -538,13 +544,13 @@ void CrazyMoves::crazyMoveAm() const
             case 'f':
             {
                 const uint8_t dir = localPlayer->getDirection();
-                if (dir & BeingDirection::UP)
+                if ((dir & BeingDirection::UP) != 0)
                     dy = -1;
-                else if (dir & BeingDirection::DOWN)
+                else if ((dir & BeingDirection::DOWN) != 0)
                     dy = 1;
-                if (dir & BeingDirection::LEFT)
+                if ((dir & BeingDirection::LEFT) != 0)
                     dx = -1;
-                else if (dir & BeingDirection::RIGHT)
+                else if ((dir & BeingDirection::RIGHT) != 0)
                     dx = 1;
                 localPlayer->move(dx, dy);
                 break;
@@ -552,13 +558,13 @@ void CrazyMoves::crazyMoveAm() const
             case 'b':
             {
                 const uint8_t dir = localPlayer->getDirection();
-                if (dir & BeingDirection::UP)
+                if ((dir & BeingDirection::UP) != 0)
                     dy = 1;
-                else if (dir & BeingDirection::DOWN)
+                else if ((dir & BeingDirection::DOWN) != 0)
                     dy = -1;
-                if (dir & BeingDirection::LEFT)
+                if ((dir & BeingDirection::LEFT) != 0)
                     dx = 1;
-                else if (dir & BeingDirection::RIGHT)
+                else if ((dir & BeingDirection::RIGHT) != 0)
                     dx = -1;
                 localPlayer->move(dx, dy);
                 break;

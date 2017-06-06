@@ -35,7 +35,7 @@ namespace Actions
 
 impHandler0(prevSocialTab)
 {
-    if (socialWindow)
+    if (socialWindow != nullptr)
     {
         socialWindow->prevTab();
         return true;
@@ -45,7 +45,7 @@ impHandler0(prevSocialTab)
 
 impHandler0(nextSocialTab)
 {
-    if (socialWindow)
+    if (socialWindow != nullptr)
     {
         socialWindow->nextTab();
         return true;
@@ -55,7 +55,7 @@ impHandler0(nextSocialTab)
 
 impHandler0(nextShortcutsTab)
 {
-    if (itemShortcutWindow)
+    if (itemShortcutWindow != nullptr)
     {
         itemShortcutWindow->nextTab();
         return true;
@@ -65,7 +65,7 @@ impHandler0(nextShortcutsTab)
 
 impHandler0(prevShortcutsTab)
 {
-    if (itemShortcutWindow)
+    if (itemShortcutWindow != nullptr)
     {
         itemShortcutWindow->prevTab();
         return true;
@@ -75,7 +75,7 @@ impHandler0(prevShortcutsTab)
 
 impHandler0(nextCommandsTab)
 {
-    if (spellShortcutWindow)
+    if (spellShortcutWindow != nullptr)
     {
         spellShortcutWindow->nextTab();
         return true;
@@ -85,7 +85,7 @@ impHandler0(nextCommandsTab)
 
 impHandler0(prevCommandsTab)
 {
-    if (spellShortcutWindow)
+    if (spellShortcutWindow != nullptr)
     {
         spellShortcutWindow->prevTab();
         return true;

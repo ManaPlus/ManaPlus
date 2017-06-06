@@ -48,7 +48,7 @@ void VertContainer::add1(Widget *const widget, const int spacing)
 void VertContainer::add2(Widget *const widget, const bool resizable,
                          const int spacing)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     Container::add(widget);

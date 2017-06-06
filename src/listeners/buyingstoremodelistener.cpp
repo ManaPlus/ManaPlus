@@ -30,7 +30,7 @@ void BuyingStoreModeListener::distributeEvent(const bool b)
               it, mListeners)
     {
         BuyingStoreModeListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->buyingStoreEnabled(b);
     }
 }

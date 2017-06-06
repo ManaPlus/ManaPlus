@@ -93,8 +93,12 @@ ActorSprite::~ActorSprite()
 
     mUsedTargetCursor = nullptr;
 
-    if (localPlayer && localPlayer != this && localPlayer->getTarget() == this)
+    if (localPlayer != nullptr &&
+        localPlayer != this &&
+        localPlayer->getTarget() == this)
+    {
         localPlayer->setTarget(nullptr);
+    }
 
     // Notify listeners of the destruction.
     FOR_EACH (ActorSpriteListenerIterator, iter, mActorSpriteListeners)
@@ -118,7 +122,8 @@ void ActorSprite::logic()
         {
             const StatusEffect *const effect
                 = StatusEffectDB::getStatusEffect(*it, Enable_true);
-            if (effect && effect->mIsPersistent)
+            if (effect != nullptr &&
+                effect->mIsPersistent)
             {
                 updateStatusEffect(*it,
                     Enable_true,
@@ -143,7 +148,7 @@ void ActorSprite::setMap(Map *const map)
 
 void ActorSprite::controlAutoParticle(Particle *const particle)
 {
-    if (particle)
+    if (particle != nullptr)
     {
         particle->setActor(mId);
         mChildParticleEffects.addLocally(particle);
@@ -152,7 +157,7 @@ void ActorSprite::controlAutoParticle(Particle *const particle)
 
 void ActorSprite::controlCustomParticle(Particle *const particle)
 {
-    if (particle)
+    if (particle != nullptr)
     {
         // The effect may not die without the beings permission or we segfault
         particle->disableAutoDelete();
@@ -162,7 +167,7 @@ void ActorSprite::controlCustomParticle(Particle *const particle)
 
 void ActorSprite::controlParticleDeleted(const Particle *const particle)
 {
-    if (particle)
+    if (particle != nullptr)
         mChildParticleEffects.removeLocally(particle);
 }
 
@@ -176,7 +181,7 @@ void ActorSprite::setTargetType(const TargetCursorTypeT type)
     {
         const size_t sz = CAST_SIZE(getTargetCursorSize());
         mUsedTargetCursor = targetCursor[CAST_S32(type)][sz];
-        if (mUsedTargetCursor)
+        if (mUsedTargetCursor != nullptr)
         {
             static const int targetWidths[CAST_SIZE(
                 TargetCursorSize::NUM_TC)]
@@ -264,7 +269,8 @@ static void applyEffectByOption(ActorSprite *const actor,
             enable,
             IsStart_false);
     }
-    if (option && config.getBoolValue("unimplimentedLog"))
+    if (option != 0U &&
+        config.getBoolValue("unimplimentedLog"))
     {
         const std::string str = strprintf(
             "Error: unknown effect by %s. "
@@ -299,7 +305,8 @@ static void applyEffectByOption1(ActorSprite *const actor,
                 IsStart_false);
         }
     }
-    if (option && config.getBoolValue("unimplimentedLog"))
+    if (option != 0 &&
+        config.getBoolValue("unimplimentedLog"))
     {
         const std::string str = strprintf(
             "Error: unknown effect by %s. "
@@ -385,7 +392,7 @@ void ActorSprite::updateStatusEffect(const int32_t index,
 {
     StatusEffect *const effect = StatusEffectDB::getStatusEffect(
         index, newStatus);
-    if (!effect)
+    if (effect == nullptr)
         return;
     if (effect->mIsPoison && getType() == ActorType::Player)
         setPoison(newStatus == Enable_true);
@@ -415,9 +422,9 @@ void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
             Particle *particle = nullptr;
             if (start == IsStart_true)
                 particle = effect->getStartParticle();
-            if (!particle)
+            if (particle == nullptr)
                 particle = effect->getParticle();
-            if (particle)
+            if (particle != nullptr)
                 mStatusParticleEffects.setLocally(effectId, particle);
         }
     }
@@ -436,7 +443,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
 
     FOR_EACH (SpriteRefs, it, display.sprites)
     {
-        if (!*it)
+        if (*it == nullptr)
             continue;
         const std::string file = pathJoin(paths.getStringValue("sprites"),
             combineDye3((*it)->sprite, color));
@@ -472,11 +479,11 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
             imagePath = combineDye2(imagePath, color);
             Image *img = Loader::getImage(imagePath);
 
-            if (!img)
+            if (img == nullptr)
                 img = Theme::getImageFromTheme("unknown-item.png");
 
             addSprite(new ImageSprite(img));
-            if (img)
+            if (img != nullptr)
                 img->decRef();
         }
     }
@@ -484,7 +491,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     mChildParticleEffects.clear();
 
     // setup particle effects
-    if (ParticleEngine::enabled && particleEngine)
+    if (ParticleEngine::enabled && (particleEngine != nullptr))
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
@@ -575,7 +582,7 @@ void ActorSprite::cleanupTargetCursors()
 {
     for_each_cursors()
     {
-        if (targetCursor[type][size])
+        if (targetCursor[type][size] != nullptr)
             delete2(targetCursor[type][size])
     }
     end_foreach
@@ -592,7 +599,7 @@ std::string ActorSprite::getStatusEffectsString() const
                 StatusEffectDB::getStatusEffect(
                 *it,
                 Enable_true);
-            if (!effect)
+            if (effect == nullptr)
                 continue;
             if (!effectsStr.empty())
                 effectsStr.append(", ");

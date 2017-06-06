@@ -306,7 +306,7 @@ TEST_CASE("integrity tests", "integrity")
 
         SDL_RWops *const rw = VirtFs::rwopsOpenRead(name1);
         REQUIRE(rw != nullptr);
-        if (IMG_isPNG(rw) == false)
+        if (IMG_isPNG(rw) == 0)
         {
             SDL_RWclose(rw);
             REQUIRE(false);

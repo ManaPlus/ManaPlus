@@ -53,7 +53,7 @@ DropShortcut::~DropShortcut()
 
 void DropShortcut::dropFirst() const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (!PacketLimiter::limitPackets(PacketType::PACKET_DROP))
@@ -68,7 +68,7 @@ void DropShortcut::dropFirst() const
     {
         const Item *const item = PlayerInfo::getInventory()
             ->findItem(itemId, itemColor);
-        if (item && item->getQuantity())
+        if ((item != nullptr) && (item->getQuantity() != 0))
         {
             const int cnt = settings.quickDropCounter;
             if (localPlayer->isServerBuggy())
@@ -86,7 +86,7 @@ void DropShortcut::dropFirst() const
 
 void DropShortcut::dropItems(const int cnt)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (localPlayer->isServerBuggy())
@@ -114,7 +114,7 @@ void DropShortcut::dropItems(const int cnt)
 bool DropShortcut::dropItem(const int cnt)
 {
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return false;
 
     int itemId = 0;
@@ -133,7 +133,7 @@ bool DropShortcut::dropItem(const int cnt)
     if (itemId > 0)
     {
         const Item *const item = inv->findItem(itemId, itemColor);
-        if (item &&
+        if ((item != nullptr) &&
             item->getQuantity() > 0)
         {
             PlayerInfo::dropItem(item, cnt, Sfx_true);
@@ -158,7 +158,7 @@ bool DropShortcut::dropItem(const int cnt)
         if (itemId > 0)
         {
             const Item *const item = inv->findItem(itemId, itemColor);
-            if (item && item->getQuantity() > 0)
+            if ((item != nullptr) && item->getQuantity() > 0)
             {
                 PlayerInfo::dropItem(item, cnt, Sfx_true);
                 return true;

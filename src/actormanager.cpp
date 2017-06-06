@@ -81,7 +81,7 @@ class FindBeingFunctor final
 
         bool operator() (const ActorSprite *const actor) const
         {
-            if (!actor
+            if ((actor == nullptr)
                 || actor->getType() == ActorType::FloorItem
                 || actor->getType() == ActorType::Portal)
             {
@@ -112,7 +112,7 @@ class FindBeingEqualFunctor final
 
         bool operator() (const Being *const being) const
         {
-            if (!being || !findBeing)
+            if ((being == nullptr) || (findBeing == nullptr))
                 return false;
             return being->getId() == findBeing->getId();
         }
@@ -128,10 +128,10 @@ class SortBeingFunctor final
         bool operator() (const Being *const being1,
                          const Being *const being2) const
         {
-            if (!being1 || !being2)
+            if ((being1 == nullptr) || (being2 == nullptr))
                 return false;
 
-            if (priorityBeings)
+            if (priorityBeings != nullptr)
             {
                 int w1 = defaultPriorityIndex;
                 int w2 = defaultPriorityIndex;
@@ -171,7 +171,7 @@ class SortBeingFunctor final
 
             if (d1 != d2)
                 return d1 < d2;
-            if (attackBeings)
+            if (attackBeings != nullptr)
             {
                 int w1 = defaultAttackIndex;
                 int w2 = defaultAttackIndex;
@@ -258,7 +258,7 @@ void ActorManager::setMap(Map *const map)
 {
     mMap = map;
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->setMap(map);
 }
 
@@ -267,9 +267,9 @@ void ActorManager::setPlayer(LocalPlayer *const player)
     localPlayer = player;
     mActors.insert(player);
     mActorsIdMap[player->getId()] = player;
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->updateAttackFilter();
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->updatePickupFilter();
 }
 
@@ -291,9 +291,9 @@ Being *ActorManager::createBeing(const BeingId id,
         case ActorType::Homunculus:
         case ActorType::Npc:
             being->updateFromCache();
-            if (beingHandler)
+            if (beingHandler != nullptr)
                 beingHandler->requestNameById(id);
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->checkNewName(being);
             break;
         case ActorType::Monster:
@@ -305,15 +305,15 @@ Being *ActorManager::createBeing(const BeingId id,
             }
             break;
         case ActorType::Portal:
-            if (beingHandler &&
-                serverFeatures &&
+            if ((beingHandler != nullptr) &&
+                (serverFeatures != nullptr) &&
                 serverFeatures->haveServerWarpNames())
             {
                 beingHandler->requestNameById(id);
             }
             break;
         case ActorType::Elemental:
-            if (beingHandler)
+            if (beingHandler != nullptr)
                 beingHandler->requestNameById(id);
             break;
         case ActorType::SkillUnit:
@@ -328,12 +328,12 @@ Being *ActorManager::createBeing(const BeingId id,
 
     if (type == ActorType::Player)
     {
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateActiveList();
     }
     else if (type == ActorType::Npc)
     {
-        if (questsWindow)
+        if (questsWindow != nullptr)
             questsWindow->addEffect(being);
     }
     return being;
@@ -416,7 +416,7 @@ Being *ActorManager::findBeing(const BeingId id) const
     if (it != mActorsIdMap.end())
     {
         ActorSprite *const actor = (*it).second;
-        if (actor &&
+        if ((actor != nullptr) &&
             actor->getId() == id &&
             actor->getType() != ActorType::FloorItem)
         {
@@ -432,7 +432,7 @@ ActorSprite *ActorManager::findActor(const BeingId id) const
     if (it != mActorsIdMap.end())
     {
         ActorSprite *const actor = (*it).second;
-        if (actor &&
+        if ((actor != nullptr) &&
             actor->getId() == id)
         {
             return actor;
@@ -457,7 +457,7 @@ Being *ActorManager::findBeing(const int x, const int y,
 Being *ActorManager::findBeingByPixel(const int x, const int y,
                                       const AllPlayers allPlayers) const
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return nullptr;
 
     const bool targetDead = mTargetDeadPlayers;
@@ -499,15 +499,15 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
             Being *const being = static_cast<Being*>(*it);
 
-            if (being->getInfo() && !(being->getInfo()->isTargetSelection()
-                || modActive))
+            if (being->getInfo() != nullptr &&
+                !(being->getInfo()->isTargetSelection() || modActive))
             {
                 continue;
             }
 
-            if ((being->mAction != BeingAction::DEAD
-                || (targetDead && being->getType() == ActorType::Player))
-                && (allPlayers == AllPlayers_true || being != localPlayer))
+            if ((being->mAction != BeingAction::DEAD ||
+                (targetDead && being->getType() == ActorType::Player)) &&
+                (allPlayers == AllPlayers_true || being != localPlayer))
             {
                 const int px = being->getPixelX();
                 const int py = being->getPixelY();
@@ -524,7 +524,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
                          (py - mapTileSize * 2 <= y) &&
                          (py + mapTileSize / 2 >  y))
                 {
-                    if (tempBeing)
+                    if (tempBeing != nullptr)
                         noBeing = true;
                     else
                         tempBeing = being;
@@ -552,8 +552,8 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
 
             Being *const being = static_cast<Being*>(*it);
 
-            if (being->getInfo() && !(being->getInfo()->isTargetSelection()
-                || modActive))
+            if (being->getInfo() != nullptr &&
+                !(being->getInfo()->isTargetSelection() || modActive))
             {
                 continue;
             }
@@ -576,7 +576,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
                                      const int x, const int y,
                                      const AllPlayers allPlayers) const
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
 
     const int xtol = mapTileSize / 2;
@@ -619,9 +619,9 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
             case ActorType::Elemental:
             {
                 const Being *const being = static_cast<const Being*>(*it);
-                if (!being)
+                if (being == nullptr)
                     continue;
-                if (being->getInfo() &&
+                if ((being->getInfo() != nullptr) &&
                     !(being->getInfo()->isTargetSelection() || modActive))
                 {
                     continue;
@@ -648,7 +648,7 @@ void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
 
 Being *ActorManager::findPortalByTile(const int x, const int y) const
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return nullptr;
 
     for_actorsm
@@ -707,7 +707,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                              const int x2, const int y2,
                              const bool serverBuggy) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     bool finded(false);
@@ -796,7 +796,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
                 }
             }
         }
-        if (item && localPlayer->pickUp(item))
+        if ((item != nullptr) && localPlayer->pickUp(item))
             finded = true;
     }
     return finded;
@@ -805,7 +805,7 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
 bool ActorManager::pickUpNearest(const int x, const int y,
                                  int maxdist) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     maxdist = maxdist * maxdist;
@@ -826,9 +826,10 @@ bool ActorManager::pickUpNearest(const int x, const int y,
             const int d = (item->getTileX() - x) * (item->getTileX() - x)
                 + (item->getTileY() - y) * (item->getTileY() - y);
 
-            if ((d < dist || !closestItem) && (!mTargetOnlyReachable
-                || localPlayer->isReachable(item->getTileX(),
-                item->getTileY(), false)))
+            if ((d < dist || closestItem == nullptr) &&
+                (!mTargetOnlyReachable || localPlayer->isReachable(
+                item->getTileX(), item->getTileY(),
+                false)))
             {
                 if (allowAll)
                 {
@@ -851,7 +852,7 @@ bool ActorManager::pickUpNearest(const int x, const int y,
             }
         }
     }
-    if (closestItem && dist <= maxdist)
+    if ((closestItem != nullptr) && dist <= maxdist)
         return localPlayer->pickUp(closestItem);
 
     return false;
@@ -885,7 +886,7 @@ Being *ActorManager::findBeingByName(const std::string &name,
 Being *ActorManager::findNearestByName(const std::string &name,
                                        const ActorTypeT &type) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return nullptr;
 
     int dist = 0;
@@ -909,7 +910,7 @@ Being *ActorManager::findNearestByName(const std::string &name,
 
         Being *const being = static_cast<Being*>(*it);
 
-        if (being && being->getName() == name &&
+        if ((being != nullptr) && being->getName() == name &&
             (type == ActorType::Unknown || type == being->getType()))
         {
             if (being->getType() == ActorType::Player)
@@ -963,17 +964,17 @@ void ActorManager::logic()
         {
             const Being *const being = static_cast<const Being*>(actor);
             being->addToCache();
-            if (beingEquipmentWindow)
+            if (beingEquipmentWindow != nullptr)
                 beingEquipmentWindow->resetBeing(being);
         }
-        if (localPlayer)
+        if (localPlayer != nullptr)
         {
             if (localPlayer->getTarget() == actor)
                 localPlayer->setTarget(nullptr);
             if (localPlayer->getPickUpTarget() == actor)
                 localPlayer->unSetPickUpTarget();
         }
-        if (viewport)
+        if (viewport != nullptr)
             viewport->clearHover(*it);
     }
 
@@ -982,7 +983,7 @@ void ActorManager::logic()
         ActorSprite *actor = *it;
         mActors.erase(actor);
 
-        if (actor)
+        if (actor != nullptr)
         {
             const ActorSpritesMapIterator itr = mActorsIdMap.find(
                 actor->getId());
@@ -1000,10 +1001,10 @@ void ActorManager::logic()
 
 void ActorManager::clear()
 {
-    if (beingEquipmentWindow)
+    if (beingEquipmentWindow != nullptr)
         beingEquipmentWindow->setBeing(nullptr);
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setTarget(nullptr);
         localPlayer->unSetPickUpTarget();
@@ -1016,7 +1017,7 @@ void ActorManager::clear()
     mDeleteActors.clear();
     mActorsIdMap.clear();
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         mActors.insert(localPlayer);
         mActorsIdMap[localPlayer->getId()] = localPlayer;
@@ -1027,7 +1028,7 @@ void ActorManager::clear()
 
 Being *ActorManager::findNearestPvpPlayer() const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return nullptr;
 
     // don't attack players
@@ -1035,11 +1036,11 @@ Being *ActorManager::findNearestPvpPlayer() const
         return nullptr;
 
     const Game *const game = Game::instance();
-    if (!game)
+    if (game == nullptr)
         return nullptr;
 
     const Map *const map = game->getCurrentMap();
-    if (!map)
+    if (map == nullptr)
         return nullptr;
 
     const int mapPvpMode = map->getPvpMode();
@@ -1062,7 +1063,7 @@ Being *ActorManager::findNearestPvpPlayer() const
 
         const int teamId = being->getTeamId();
         // this condition is very TMW-specific
-        if (!(mapPvpMode || teamId))
+        if (!((mapPvpMode != 0) || (teamId != 0)))
             continue;
 
         if (!localPlayer->checAttackPermissions(being))
@@ -1101,7 +1102,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             const ActorTypeT type,
                                             const AllowSort allowSort) const
 {
-    if (!aroundBeing)
+    if (aroundBeing == nullptr)
         return nullptr;
 
     return findNearestLivingBeing(aroundBeing,
@@ -1120,7 +1121,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                                             const Being *const excluded,
                                             const AllowSort allowSort) const
 {
-    if (!aroundBeing || !localPlayer)
+    if ((aroundBeing == nullptr) || (localPlayer == nullptr))
         return nullptr;
 
     std::set<std::string> attackMobs;
@@ -1207,7 +1208,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                 }
             }
 
-            if (being->getInfo()
+            if ((being->getInfo() != nullptr)
                 && !(being->getInfo()->isTargetSelection() || modActive))
             {
                 continue;
@@ -1305,7 +1306,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                 }
             }
 
-            if (being->getInfo()
+            if ((being->getInfo() != nullptr)
                 && !(being->getInfo()->isTargetSelection() || modActive))
             {
                 continue;
@@ -1334,7 +1335,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 //            logger->log("index:" + toString(index));
 //            logger->log("d:" + toString(d));
 
-            if (!filtered && (d <= dist || !closestBeing))
+            if (!filtered && (d <= dist || (closestBeing == nullptr)))
             {
                 dist = d;
                 closestBeing = being;
@@ -1342,7 +1343,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
             else if (filtered)
             {
                 int w2 = defaultPriorityIndex;
-                if (closestBeing)
+                if (closestBeing != nullptr)
                 {
                     const StringIntMapCIter it2 =  priorityMobsMap.find(
                         being->getName());
@@ -1365,7 +1366,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
                     }
                 }
 
-                if (!closestBeing)
+                if (closestBeing == nullptr)
                 {
                     dist = d;
                     closestBeing = being;
@@ -1388,9 +1389,9 @@ bool ActorManager::validateBeing(const Being *const aroundBeing,
                                  const Being* const excluded,
                                  const int maxCost) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
-    return being && ((being->getType() == type
+    return (being != nullptr) && ((being->getType() == type
         || type == ActorType::Unknown) && (being->isAlive()
         || (mTargetDeadPlayers && type == ActorType::Player))
         && being != aroundBeing) && being != excluded
@@ -1401,7 +1402,7 @@ bool ActorManager::validateBeing(const Being *const aroundBeing,
 #ifdef TMWA_SUPPORT
 void ActorManager::healTarget() const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     heal(localPlayer->getTarget());
@@ -1412,8 +1413,8 @@ void ActorManager::heal(const Being *const target) const
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return;
 
-    if (!localPlayer ||
-        !chatWindow ||
+    if (localPlayer == nullptr ||
+        chatWindow == nullptr ||
         !localPlayer->isAlive() ||
         !playerHandler->canUseMagic())
     {
@@ -1421,7 +1422,8 @@ void ActorManager::heal(const Being *const target) const
     }
 
     // self
-    if (target && localPlayer->getName() == target->getName())
+    if (target != nullptr &&
+        localPlayer->getName() == target->getName())
     {
         if (PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 6
             && PlayerInfo::getAttribute(Attributes::PLAYER_HP)
@@ -1433,12 +1435,13 @@ void ActorManager::heal(const Being *const target) const
         }
     }
     // magic levels < 2
-    else if (PlayerInfo::getSkillLevel(340) < 2
-             || PlayerInfo::getSkillLevel(341) < 2)
+    else if (PlayerInfo::getSkillLevel(340) < 2 ||
+             PlayerInfo::getSkillLevel(341) < 2)
     {
         if (PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 6)
         {
-            if (target && target->getType() != ActorType::Monster)
+            if (target != nullptr &&
+                target->getType() != ActorType::Monster)
             {
                 if (!PacketLimiter::limitPackets(PacketType::PACKET_CHAT))
                     return;
@@ -1458,8 +1461,9 @@ void ActorManager::heal(const Being *const target) const
     else
     {
         // mp > 10 and target not monster
-        if (PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 10 && target
-            && target->getType() != ActorType::Monster)
+        if (PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 10 &&
+            target != nullptr &&
+            target->getType() != ActorType::Monster)
         {
             // target not enemy
             if (player_relations.getRelation(target->getName()) !=
@@ -1479,7 +1483,7 @@ void ActorManager::heal(const Being *const target) const
             }
         }
         // heal self if selected monster or selection empty
-        else if ((!target || target->getType() == ActorType::Monster)
+        else if ((target != nullptr || target->getType() == ActorType::Monster)
                  && PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 6
                  && PlayerInfo::getAttribute(Attributes::PLAYER_HP)
                  != PlayerInfo::getAttribute(Attributes::PLAYER_MAX_HP))
@@ -1494,7 +1498,7 @@ void ActorManager::heal(const Being *const target) const
 
 Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return nullptr;
 
     int maxDamageTaken = 0;
@@ -1507,10 +1511,10 @@ Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
 
         Being *const being = static_cast<Being*>(*it);
 
-        if (!being || !being->isAlive() ||     // don't heal dead
+        if ((being == nullptr) || !being->isAlive() ||  // don't heal dead
             player_relations.getRelation(being->getName()) ==
-            Relation::ENEMY2 ||                // don't heal enemy
-            localPlayer == being)              // don't heal self
+            Relation::ENEMY2 ||                         // don't heal enemy
+            localPlayer == being)                       // don't heal self
         {
             continue;
         }
@@ -1537,8 +1541,8 @@ void ActorManager::itenplz() const
 {
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return;
-    if (!localPlayer ||
-        !chatWindow ||
+    if (localPlayer != nullptr ||
+        chatWindow != nullptr ||
         !localPlayer->isAlive() ||
         !playerHandler->canUseMagic())
     {
@@ -1586,7 +1590,7 @@ void ActorManager::printAllToChat()
 
 void ActorManager::printBeingsToChat(const std::string &header) const
 {
-    if (!debugChatTab)
+    if (debugChatTab == nullptr)
         return;
 
     debugChatTab->chatLog("---------------------------------------",
@@ -1617,7 +1621,7 @@ void ActorManager::printBeingsToChat(const std::string &header) const
     FOR_EACH (ActorSpritesMapConstIterator, itr, mActorsIdMap)
     {
         const ActorSprite *const actor = (*itr).second;
-        if (!actor)
+        if (actor == nullptr)
             continue;
         if (actor->getId() != (*itr).first)
             debugChatTab->chatLog("Actor with wrong key in map", "");
@@ -1644,7 +1648,7 @@ void ActorManager::printBeingsToChat(const std::string &header) const
 void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
                                      const std::string &header)
 {
-    if (!debugChatTab)
+    if (debugChatTab == nullptr)
         return;
 
     debugChatTab->chatLog("---------------------------------------",
@@ -1653,7 +1657,7 @@ void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
 
     FOR_EACH (std::vector<Being*>::const_iterator, i, beings)
     {
-        if (!*i)
+        if (*i == nullptr)
             continue;
 
         const Being *const being = *i;
@@ -1798,7 +1802,7 @@ void ActorManager::parseLevels(std::string levels) const
         {
             Being *const being = findBeingByName(part.substr(0, bktPos),
                 ActorType::Player);
-            if (being)
+            if (being != nullptr)
             {
                 being->setLevel(atoi(part.substr(bktPos + 1).c_str()));
                 being->addToCache();
@@ -2034,7 +2038,7 @@ bool ActorManager::checkForPickup(const FloorItem *const item) const
             return true;
         }
     }
-    else if (item && mPickupItemsSet.find(item->getName())
+    else if ((item != nullptr) && mPickupItemsSet.find(item->getName())
              != mPickupItemsSet.end())
     {
         return true;
@@ -2078,7 +2082,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
         toInt(srcBeing->getId(), int) + id, BeingId),
         ActorType::Player,
         srcBeing->getSubType());
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return nullptr;
     dstBeing->setGender(srcBeing->getGender());
     dstBeing->setAction(srcBeing->getCurrentAction(), 0);
@@ -2123,7 +2127,7 @@ void ActorManager::updateBadges() const
         if (actor->getType() == ActorType::Player)
         {
             Being *const being = static_cast<Being*>(actor);
-            being->showBadges(showBadges);
+            being->showBadges(showBadges != 0u);
         }
     }
 }
@@ -2134,7 +2138,7 @@ void ActorManager::updateNameId(const std::string &name,
     if (!mEnableIdCollecting)
         return;
     const int id = CAST_S32(beingId);
-    if (id &&
+    if ((id != 0) &&
         (id < 2000000 ||
         id >= 110000000))
     {
@@ -2175,7 +2179,7 @@ void ActorManager::updateSeenPlayers(const std::set<std::string>
     FOR_EACH (std::set<std::string>::const_iterator, it, onlinePlayers)
     {
         const std::string name = *it;
-        if (!findBeingByName(name, ActorType::Player))
+        if (findBeingByName(name, ActorType::Player) == nullptr)
             updateNameId(name, BeingId_zero);
     }
 }
@@ -2203,7 +2207,7 @@ void ActorManager::removeRoom(const int chatId)
         {
             Being *const being = static_cast<Being*>(actor);
             const ChatObject *const chat = being->getChat();
-            if (chat && chat->chatId == chatId)
+            if ((chat != nullptr) && chat->chatId == chatId)
             {
                 being->setChat(nullptr);
             }
@@ -2213,7 +2217,7 @@ void ActorManager::removeRoom(const int chatId)
 
 void ActorManager::updateRoom(const ChatObject *const newChat)
 {
-    if (!newChat)
+    if (newChat == nullptr)
         return;
 
     for_actors
@@ -2223,7 +2227,7 @@ void ActorManager::updateRoom(const ChatObject *const newChat)
         {
             const Being *const being = static_cast<const Being*>(actor);
             ChatObject *const chat = being->getChat();
-            if (chat && chat->chatId == newChat->chatId)
+            if ((chat != nullptr) && chat->chatId == newChat->chatId)
             {
                 chat->ownerId = newChat->ownerId;
                 chat->maxUsers = newChat->maxUsers;
@@ -2247,7 +2251,7 @@ void ActorManager::addChar(const int32_t id,
 {
     mChars[id] = name;
 
-    if (!guiInput)
+    if (guiInput == nullptr)
         return;
 
     guiInput->simulateMouseMove();

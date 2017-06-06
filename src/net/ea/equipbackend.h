@@ -51,7 +51,7 @@ class EquipBackend final : public Equipment::Backend
                 return nullptr;
 
             const Inventory *const inv = PlayerInfo::getInventory();
-            if (inv)
+            if (inv != nullptr)
                 return inv->getItem(invyIndex);
             else
                 return nullptr;
@@ -60,14 +60,14 @@ class EquipBackend final : public Equipment::Backend
         void clear() override final
         {
             Inventory *const inv = PlayerInfo::getInventory();
-            if (!inv)
+            if (inv == nullptr)
                 return;
             for (int i = 0; i < EQUIPMENT_SIZE; i++)
             {
                 if (mEquipment[i] != -1)
                 {
                     Item* item = inv->getItem(i);
-                    if (item)
+                    if (item != nullptr)
                         item->setEquipped(Equipped_false);
                 }
 
@@ -78,7 +78,7 @@ class EquipBackend final : public Equipment::Backend
         void setEquipment(const int index, const int inventoryIndex)
         {
             Inventory *const inv = PlayerInfo::getInventory();
-            if (!inv)
+            if (inv == nullptr)
                 return;
 
             if (index < 0 || index >= EQUIPMENT_SIZE)
@@ -87,17 +87,17 @@ class EquipBackend final : public Equipment::Backend
             // Unequip existing item
             Item *item = inv->getItem(mEquipment[index]);
 
-            if (item)
+            if (item != nullptr)
                 item->setEquipped(Equipped_false);
 
             // not checking index because it must be safe
             mEquipment[index] = inventoryIndex;
 
             item = inv->getItem(inventoryIndex);
-            if (item)
+            if (item != nullptr)
                 item->setEquipped(Equipped_true);
 
-            if (inventoryWindow)
+            if (inventoryWindow != nullptr)
                 inventoryWindow->updateButtons();
         }
 

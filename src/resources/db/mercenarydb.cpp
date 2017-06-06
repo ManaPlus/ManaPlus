@@ -60,7 +60,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "mercenaries"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "mercenaries"))
     {
         logger->log("MercenaryDB: Error while loading %s!",
             paths.getStringValue("mercenariesFile").c_str());
@@ -92,7 +92,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
             logger->log("MercenaryDB: Redefinition of mercenary ID %d", id);
             currentInfo = mMercenaryInfos[fromInt(id + offset, BeingTypeId)];
         }
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setBlockType(BlockType::NONE);
@@ -111,7 +111,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
         currentInfo->setColorsList(XML::getProperty(mercenaryNode,
             "colors", ""));
 
-        if (currentInfo->getMaxHP())
+        if (currentInfo->getMaxHP() != 0)
             currentInfo->setStaticMaxHP(true);
 
         SpriteDisplay display;

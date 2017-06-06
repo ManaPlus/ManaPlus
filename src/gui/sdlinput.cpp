@@ -270,7 +270,8 @@ void SDLInput::pushInput(const SDL_Event &event)
              * This occurs when the mouse leaves the window and the Gui-chan
              * application loses its mousefocus.
              */
-            if ((event.active.state & SDL_APPMOUSEFOCUS) && !event.active.gain)
+            if ((event.active.state & SDL_APPMOUSEFOCUS) != 0 &&
+                event.active.gain == 0u)
             {
                 mMouseInWindow = false;
 
@@ -284,8 +285,11 @@ void SDLInput::pushInput(const SDL_Event &event)
                 }
             }
 
-            if ((event.active.state & SDL_APPMOUSEFOCUS) && event.active.gain)
+            if ((event.active.state & SDL_APPMOUSEFOCUS) != 0 &&
+                event.active.gain != 0u)
+            {
                 mMouseInWindow = true;
+            }
             break;
 #endif  // USE_SDL2
 
@@ -344,7 +348,7 @@ void SDLInput::simulateMouseClick(const int x, const int y,
 
 void SDLInput::simulateMouseMove()
 {
-    if (!gui)
+    if (gui == nullptr)
         return;
 
     int x, y;

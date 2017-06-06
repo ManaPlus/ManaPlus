@@ -52,7 +52,7 @@ LoginHandler::~LoginHandler()
 
 void LoginHandler::connect() const
 {
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return;
 
     Network::mInstance->connect(mServer);
@@ -64,7 +64,7 @@ void LoginHandler::connect() const
 
 bool LoginHandler::isConnected() const
 {
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return false;
 
     return Ea::LoginRecv::mVersionResponse &&
@@ -73,8 +73,11 @@ bool LoginHandler::isConnected() const
 
 void LoginHandler::disconnect() const
 {
-    if (Network::mInstance && Network::mInstance->getServer() == mServer)
+    if (Network::mInstance != nullptr &&
+        Network::mInstance->getServer() == mServer)
+    {
         Network::mInstance->disconnect();
+    }
 }
 
 void LoginHandler::changePassword(const std::string &restrict oldPassword,

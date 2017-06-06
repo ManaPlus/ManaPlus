@@ -82,7 +82,7 @@ MapItem::MapItem(const int type, std::string comment,
 
 MapItem::~MapItem()
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
@@ -93,7 +93,7 @@ void MapItem::setType(const int type)
 {
     std::string name;
     mType = type;
-    if (mImage)
+    if (mImage != nullptr)
         mImage->decRef();
 
     switch (type)
@@ -130,7 +130,7 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
                    const int dx, const int dy) const
 {
     BLOCK_START("MapItem::draw")
-    if (mImage)
+    if (mImage != nullptr)
         graphics->drawImage(mImage, x, y);
 
     switch (mType)

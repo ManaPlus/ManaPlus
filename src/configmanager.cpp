@@ -55,7 +55,7 @@ void ConfigManager::initServerConfig(const std::string &serverName)
 {
     settings.serverConfigDir = pathJoin(settings.configDir, serverName);
 
-    if (mkdir_r(settings.serverConfigDir.c_str()))
+    if (mkdir_r(settings.serverConfigDir.c_str()) != 0)
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
@@ -63,18 +63,18 @@ void ConfigManager::initServerConfig(const std::string &serverName)
     }
     const std::string configPath = settings.serverConfigDir + "/config.xml";
     FILE *configFile = fopen(configPath.c_str(), "r");
-    if (!configFile)
+    if (configFile == nullptr)
     {
         configFile = fopen(configPath.c_str(), "wb");
         logger->log("Creating new server config: " + configPath);
-        if (configFile)
+        if (configFile != nullptr)
         {
             fputs("<?xml version=\"1.0\"?>\n", configFile);
             fputs("<configuration>\n", configFile);
             fputs("</configuration>\n", configFile);
         }
     }
-    if (configFile)
+    if (configFile != nullptr)
     {
         fclose(configFile);
         serverConfig.init(configPath);
@@ -143,18 +143,18 @@ void ConfigManager::initConfiguration()
 #endif  // UNITTESTS
 
     FILE *configFile = fopen(configPath.c_str(), "r");
-    if (!configFile)
+    if (configFile == nullptr)
     {
         configFile = fopen(configPath.c_str(), "wb");
         logger->log1("Creating new config");
-        if (configFile)
+        if (configFile != nullptr)
         {
             fputs("<?xml version=\"1.0\"?>\n", configFile);
             fputs("<configuration>\n", configFile);
             fputs("</configuration>\n", configFile);
         }
     }
-    if (!configFile)
+    if (configFile == nullptr)
     {
         reportAlways("Can't create %s. Using defaults.",
             configPath.c_str());

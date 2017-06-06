@@ -49,7 +49,7 @@ void TextDb::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst root = doc->rootNode();
 
-    if (!root || !xmlNameEqual(root, "texts"))
+    if ((root == nullptr) || !xmlNameEqual(root, "texts"))
     {
         delete doc;
         return;

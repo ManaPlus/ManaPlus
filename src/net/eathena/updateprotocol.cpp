@@ -41,7 +41,7 @@ void updateProtocol()
 #include "net/eathena/packetsout.inc"
 #undef packet
     Network *const network = Network::mInstance;
-    if (network)
+    if (network != nullptr)
     {
         network->clearHandlers();
         network->registerHandlers();

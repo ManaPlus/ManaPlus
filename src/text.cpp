@@ -48,24 +48,25 @@ Text::Text(const std::string &text,
            const Color *const color,
            const Speech isSpeech,
            Font *const font) :
-    mFont(font ? font : (gui ? gui->getFont() : nullptr)),
+    mFont(font != nullptr ?
+        font : (gui != nullptr ? gui->getFont() : nullptr)),
     mTextChunk(),
     mX(x),
     mY(y),
-    mWidth(mFont ? mFont->getWidth(text) : 1),
-    mHeight(mFont ? mFont->getHeight() : 1),
+    mWidth(mFont != nullptr ? mFont->getWidth(text) : 1),
+    mHeight(mFont != nullptr ? mFont->getHeight() : 1),
     mXOffset(0),
     mText(text),
     mColor(color),
-    mOutlineColor(color ? (isSpeech == Speech_true ?
+    mOutlineColor(color != nullptr ? (isSpeech == Speech_true ?
         *color : theme->getColor(ThemeColorId::OUTLINE, 255)) : Color()),
     mIsSpeech(isSpeech),
     mTextChanged(true)
 {
-    if (!textManager)
+    if (textManager == nullptr)
     {
         textManager = new TextManager;
-        if (theme)
+        if (theme != nullptr)
         {
             theme->loadRect(mBubble, "bubble.xml", "");
         }
@@ -78,7 +79,7 @@ Text::Text(const std::string &text,
         const float bubbleAlpha = config.getFloatValue("speechBubbleAlpha");
         for (int i = 0; i < 9; i++)
         {
-            if (mBubble.grid[i])
+            if (mBubble.grid[i] != nullptr)
                 mBubble.grid[i]->setAlpha(bubbleAlpha);
         }
     }
@@ -99,20 +100,20 @@ Text::Text(const std::string &text,
             break;
     }
     mX = x - mXOffset;
-    if (textManager)
+    if (textManager != nullptr)
         textManager->addText(this);
 }
 
 Text::~Text()
 {
-    if (textManager)
+    if (textManager != nullptr)
         textManager->removeText(this);
     if (--mInstances == 0)
     {
         delete2(textManager);
         for (int f = 0; f < 9; f ++)
         {
-            if (mBubble.grid[f])
+            if (mBubble.grid[f] != nullptr)
             {
                 mBubble.grid[f]->decRef();
                 mBubble.grid[f] = nullptr;
@@ -138,7 +139,7 @@ void Text::setColor(const Color *const color)
 void Text::adviseXY(const int x, const int y,
                     const Move move)
 {
-    if (textManager && move == Move_true)
+    if ((textManager != nullptr) && move == Move_true)
     {
         textManager->moveText(this, x - mXOffset, y);
     }
@@ -173,7 +174,7 @@ void Text::draw(Graphics *const graphics, const int xOff, const int yOff)
     }
 
     const Image *const image = mTextChunk.img;
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, mX - xOff, mY - yOff);
 
     BLOCK_END("Text::draw")
@@ -192,7 +193,7 @@ FlashText::FlashText(const std::string &text,
 void FlashText::draw(Graphics *const graphics, const int xOff, const int yOff)
 {
     BLOCK_START("FlashText::draw")
-    if (mTime)
+    if (mTime != 0)
     {
         if ((--mTime & 4) == 0)
         {

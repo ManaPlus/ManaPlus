@@ -61,15 +61,15 @@ LayoutCell &LayoutArray::at(const int x, const int y,
 {
     resizeGrid(x + w, y + h);
     LayoutCell *&cell = mCells[CAST_SIZE(y)][static_cast<size_t>(x)];
-    if (!cell)
+    if (cell == nullptr)
         cell = new LayoutCell;
     return *cell;
 }
 
 void LayoutArray::resizeGrid(int w, const int h)
 {
-    const bool extW = w && w > CAST_S32(mSizes[0].size());
-    const bool extH = h && h > CAST_S32(mSizes[1].size());
+    const bool extW = (w != 0) && w > CAST_S32(mSizes[0].size());
+    const bool extH = (h != 0) && h > CAST_S32(mSizes[1].size());
 
     if (!extW && !extH)
         return;
@@ -132,7 +132,7 @@ LayoutCell &LayoutArray::place(Widget *const widget, const int x,
     assert(cell.mType == LayoutCell::NONE);
     cell.mType = LayoutCell::WIDGET;
     cell.mWidget = widget;
-    if (widget)
+    if (widget != nullptr)
     {
         cell.mSize[0] = w == 1 ? widget->getWidth() : 0;
         cell.mSize[1] = h == 1 ? widget->getHeight() : 0;
@@ -166,7 +166,7 @@ void LayoutArray::align(int &restrict pos, int &restrict size, const int dim,
         return;
     int size_max = sizes[0];
     int cnt = cell.mExtent[dim];
-    if (sizeCount && cell.mExtent[dim] > sizeCount)
+    if ((sizeCount != 0) && cell.mExtent[dim] > sizeCount)
         cnt = sizeCount;
 
     for (int i = 1; i < cnt; ++i)
@@ -208,7 +208,7 @@ std::vector<int> LayoutArray::getSizes(const int dim, int upp) const
         {
             const LayoutCell *const cell = mCells[CAST_SIZE(gridY)]
                 [CAST_SIZE(gridX)];
-            if (!cell || cell->mType == LayoutCell::NONE)
+            if ((cell == nullptr) || cell->mType == LayoutCell::NONE)
                 continue;
 
             if (cell->mExtent[dim] == 1)
@@ -297,7 +297,7 @@ void LayoutArray::reflow(const int nx, const int ny,
         {
             LayoutCell *const cell = mCells[CAST_SIZE(gridY)]
                 [CAST_SIZE(gridX)];
-            if (cell && cell->mType != LayoutCell::NONE)
+            if ((cell != nullptr) && cell->mType != LayoutCell::NONE)
             {
                 int dx = x, dy = y, dw = 0, dh = 0;
                 align(dx, dw, 0, *cell,

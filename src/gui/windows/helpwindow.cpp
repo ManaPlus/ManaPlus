@@ -72,7 +72,7 @@ HelpWindow::HelpWindow() :
     setResizable(true);
     setStickyButtonLock(true);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     setDefaultSize(500, 400, ImagePosition::CENTER);
@@ -80,7 +80,7 @@ HelpWindow::HelpWindow() :
     mBrowserBox->setOpaque(Opaque_false);
 
     mBrowserBox->setLinkHandler(this);
-    if (gui)
+    if (gui != nullptr)
         mBrowserBox->setFont(gui->getHelpFont());
     mBrowserBox->setProcessVars(true);
     mBrowserBox->setEnableImages(true);
@@ -196,7 +196,7 @@ void HelpWindow::search(const std::string &text0)
         }
         else
         {
-            if (!translator)
+            if (translator == nullptr)
                 return;
             mBrowserBox->clearRows();
             loadFile("header");

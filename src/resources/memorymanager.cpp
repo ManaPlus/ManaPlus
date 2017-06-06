@@ -40,7 +40,7 @@ MemoryManager::MemoryManager()
 
 int MemoryManager::getSurfaceSize(const SDL_Surface *const surface)
 {
-    if (!surface)
+    if (surface == nullptr)
         return 0;
     return CAST_S32(sizeof(SDL_Surface)) +
         CAST_S32(sizeof(SDL_PixelFormat)) +
@@ -78,7 +78,7 @@ void MemoryManager::printMemory(const std::string &name,
 
 void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
 {
-    if (!logger)
+    if (logger == nullptr)
         return;
 
 #ifdef DYECMD
@@ -86,7 +86,7 @@ void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
 #else  // DYECMD
 
     int sz = ResourceManager::calcMemory(0);
-    if (tab)
+    if (tab != nullptr)
     {
         // TRANSLATORS: memory usage chat message
         tab->chatLog(strprintf(_("Calculated memory usage: %d"), sz),

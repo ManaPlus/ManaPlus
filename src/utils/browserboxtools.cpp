@@ -80,7 +80,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
         BeingInfo *info = MonsterDB::get(id);
-        if (info)
+        if (info != nullptr)
             data = info->getName();
     }
     else if (!link.empty() && link[0] == 'p')
@@ -88,7 +88,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
         BeingInfo *info = PETDB::get(id);
-        if (info)
+        if (info != nullptr)
             data = info->getName();
     }
     else if (!link.empty() && link[0] == 'h')
@@ -96,7 +96,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
         BeingInfo *info = HomunculusDB::get(id);
-        if (info)
+        if (info != nullptr)
             data = info->getName();
     }
     else if (!link.empty() && link[0] == 'M')
@@ -104,7 +104,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
         BeingInfo *info = MercenaryDB::get(id);
-        if (info)
+        if (info != nullptr)
             data = info->getName();
     }
     else if (!link.empty() && link[0] == 'q')
@@ -118,7 +118,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
         if (idx != std::string::npos)
         {
             const int id = atoi(link.substr(0, idx).c_str());
-            if (id)
+            if (id != 0)
             {
                 std::vector<int> parts;
                 splitToIntVector(parts,
@@ -133,7 +133,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
         else
         {
             const int id = atoi(link.c_str());
-            if (id)
+            if (id != 0)
                 data = ItemDB::get(id).getName();
         }
     }

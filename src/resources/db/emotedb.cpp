@@ -75,7 +75,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "emotes"))
     {
         logger->log("Emote Database: Error while loading %s!",
             fileName.c_str());
@@ -113,7 +113,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName,
             currentInfo = mEmoteInfos[id];
         else
             currentInfo = new EmoteInfo;
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             continue;
         currentInfo->time = XML::getProperty(emoteNode, "time", 500);
         currentInfo->effectId = XML::getProperty(emoteNode, "effect", -1);
@@ -152,7 +152,7 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodePtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "emotes"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "emotes"))
     {
         logger->log1("Emote Database: Error while loading"
                      " manaplus_emotes.xml!");
@@ -186,7 +186,7 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
         EmoteInfo *currentInfo = nullptr;
         if (mEmoteInfos.find(id) != mEmoteInfos.end())
             currentInfo = mEmoteInfos[id];
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new EmoteInfo;
         currentInfo->time = XML::getProperty(emoteNode, "time", 500);
         currentInfo->effectId = XML::getProperty(emoteNode, "effect", -1);
@@ -226,7 +226,7 @@ void EmoteDB::unload()
 {
     FOR_EACH (EmoteInfos::const_iterator, i, mEmoteInfos)
     {
-        if (i->second)
+        if (i->second != nullptr)
         {
             std::list<EmoteSprite*> &sprites = i->second->sprites;
             while (!sprites.empty())
@@ -295,7 +295,7 @@ const EmoteInfo *EmoteDB::get2(int id, const bool allowNull)
 const EmoteSprite *EmoteDB::getSprite(const int id, const bool allowNull)
 {
     const EmoteInfo *const info = get(id, allowNull);
-    if (!info)
+    if (info == nullptr)
         return nullptr;
 
     return info->sprites.front();

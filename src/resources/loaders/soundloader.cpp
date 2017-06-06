@@ -42,12 +42,12 @@ namespace
 
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *>(v);
             SDL_RWops *const rw = VirtFs::rwopsOpenRead(rl->path);
-            if (!rw)
+            if (rw == nullptr)
             {
                 reportAlways("Error loading resource: %s",
                     rl->path.c_str());
@@ -56,7 +56,7 @@ namespace
             // Load the music data and free the RWops structure
             Mix_Chunk *const tmpSoundEffect = Mix_LoadWAV_RW(rw, 1);
 
-            if (tmpSoundEffect)
+            if (tmpSoundEffect != nullptr)
             {
                 return new SoundEffect(tmpSoundEffect, rl->path);
             }

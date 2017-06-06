@@ -68,7 +68,7 @@ void ChatRecv::processChatContinue(std::string chatMsg,
     const size_t pos = chatMsg.find(" : ", 0);
 
     bool allow(true);
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         allow = chatWindow->resortChatLog(chatMsg,
             ChatMsgType::BY_PLAYER,
@@ -80,7 +80,7 @@ void ChatRecv::processChatContinue(std::string chatMsg,
     if (channel.empty())
     {
         const std::string senseStr("You sense the following: ");
-        if (actorManager && !chatMsg.find(senseStr))
+        if ((actorManager != nullptr) && (chatMsg.find(senseStr) == 0u))
         {
             actorManager->parseLevels(
                 chatMsg.substr(senseStr.size()));
@@ -111,9 +111,9 @@ void ChatRecv::processChatContinue(std::string chatMsg,
 
     trim(chatMsg);
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
-        if ((chatWindow || Ea::ChatRecv::mShowMotd) && allow)
+        if (((chatWindow != nullptr) || Ea::ChatRecv::mShowMotd) && allow)
             localPlayer->setSpeech(chatMsg, channel);
     }
     BLOCK_END("ChatRecv::processChat")
@@ -131,9 +131,9 @@ void ChatRecv::processGmChat(Net::MessageIn &msg)
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
 
-    if (localChatTab)
+    if (localChatTab != nullptr)
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->addGlobalMessage(chatMsg);
     }
     BLOCK_END("ChatRecv::processChat")
@@ -177,7 +177,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
 
     if (nick != "Server")
     {
-        if (guildManager && GuildManager::getEnableGuildBot()
+        if ((guildManager != nullptr) && GuildManager::getEnableGuildBot()
             && nick == "guild" && guildManager->processGuildMessage(chatMsg))
         {
             BLOCK_END("ChatRecv::processWhisper")
@@ -190,13 +190,13 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
             const bool showMsg = !config.getBoolValue("hideShopMessages");
             if (player_relations.hasPermission(nick, PlayerRelation::TRADE))
             {
-                if (shopWindow)
+                if (shopWindow != nullptr)
                 {   // commands to shop from player
                     if (chatMsg.find("!selllist ") == 0)
                     {
                         if (tradeBot)
                         {
-                            if (showMsg && chatWindow)
+                            if (showMsg && (chatWindow != nullptr))
                                 chatWindow->addWhisper(nick, chatMsg);
                             shopWindow->giveList(nick, ShopWindow::SELL);
                         }
@@ -205,14 +205,14 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                     {
                         if (tradeBot)
                         {
-                            if (showMsg && chatWindow)
+                            if (showMsg && (chatWindow != nullptr))
                                 chatWindow->addWhisper(nick, chatMsg);
                             shopWindow->giveList(nick, ShopWindow::BUY);
                         }
                     }
                     else if (chatMsg.find("!buyitem ") == 0)
                     {
-                        if (showMsg && chatWindow)
+                        if (showMsg && (chatWindow != nullptr))
                             chatWindow->addWhisper(nick, chatMsg);
                         if (tradeBot)
                         {
@@ -222,7 +222,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                     }
                     else if (chatMsg.find("!sellitem ") == 0)
                     {
-                        if (showMsg && chatWindow)
+                        if (showMsg && (chatWindow != nullptr))
                             chatWindow->addWhisper(nick, chatMsg);
                         if (tradeBot)
                         {
@@ -234,24 +234,24 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                              && chatMsg.find("\302\202") == 0)
                     {
                         chatMsg = chatMsg.erase(0, 2);
-                        if (showMsg && chatWindow)
+                        if (showMsg && (chatWindow != nullptr))
                             chatWindow->addWhisper(nick, chatMsg);
                         if (chatMsg.find("B1") == 0 || chatMsg.find("S1") == 0)
                             shopWindow->showList(nick, chatMsg);
                     }
-                    else if (chatWindow)
+                    else if (chatWindow != nullptr)
                     {
                         chatWindow->addWhisper(nick, chatMsg);
                     }
                 }
-                else if (chatWindow)
+                else if (chatWindow != nullptr)
                 {
                     chatWindow->addWhisper(nick, chatMsg);
                 }
             }
             else
             {
-                if (chatWindow && (showMsg || (chatMsg.find("!selllist") != 0
+                if ((chatWindow != nullptr) && (showMsg || (chatMsg.find("!selllist") != 0
                     && chatMsg.find("!buylist") != 0)))
                 {
                     chatWindow->addWhisper(nick, chatMsg);
@@ -259,9 +259,9 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
             }
         }
     }
-    else if (localChatTab)
+    else if (localChatTab != nullptr)
     {
-        if (gmChatTab && strStartWith(chatMsg, "[GM] "))
+        if ((gmChatTab != nullptr) && strStartWith(chatMsg, "[GM] "))
         {
             chatMsg = chatMsg.substr(5);
             const size_t pos = chatMsg.find(": ", 0);
@@ -285,7 +285,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
 
 void ChatRecv::processBeingChat(Net::MessageIn &msg)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     BLOCK_START("ChatRecv::processBeingChat")
@@ -301,7 +301,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
 
-    if (being && being->getType() == ActorType::Player)
+    if ((being != nullptr) && being->getType() == ActorType::Player)
         being->setTalkTime();
 
     const size_t pos = chatMsg.find(" : ", 0);
@@ -311,7 +311,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     if (serverFeatures->haveIncompleteChatMessages())
     {
         // work around for "new" tmw server
-        if (being)
+        if (being != nullptr)
             sender_name = being->getName();
         if (sender_name.empty())
         {
@@ -321,7 +321,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
                 sender_name.append(" ").append(name);
         }
     }
-    else if (being &&
+    else if ((being != nullptr) &&
              sender_name != being->getName() &&
              being->getType() == ActorType::Player)
     {
@@ -339,9 +339,9 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     // We use getIgnorePlayer instead of ignoringPlayer here
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
-    if (player_relations.checkPermissionSilently(sender_name,
-        PlayerRelation::SPEECH_LOG) &&
-        chatWindow)
+    if ((player_relations.checkPermissionSilently(sender_name,
+        PlayerRelation::SPEECH_LOG) != 0u) &&
+        (chatWindow != nullptr))
     {
         allow = chatWindow->resortChatLog(
             removeColors(sender_name).append(" : ").append(chatMsg),
@@ -352,7 +352,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     }
 
     if (allow &&
-        being &&
+        (being != nullptr) &&
         player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {

@@ -60,23 +60,23 @@ GuildTab::~GuildTab()
 bool GuildTab::handleCommand(const std::string &restrict type,
                              const std::string &restrict args)
 {
-    if (type == "invite" && EAthena::taGuild)
+    if (type == "invite" && (EAthena::taGuild != nullptr))
     {
         guildHandler->invite(args);
     }
-    else if (type == "leave" && EAthena::taGuild)
+    else if (type == "leave" && (EAthena::taGuild != nullptr))
     {
         inputManager.executeChatCommand(InputAction::LEAVE_GUILD,
             std::string(),
             this);
     }
-    else if (type == "kick" && EAthena::taGuild)
+    else if (type == "kick" && (EAthena::taGuild != nullptr))
     {
         inputManager.executeChatCommand(InputAction::KICK_GUILD,
             args,
             this);
     }
-    else if (type == "notice" && EAthena::taGuild)
+    else if (type == "notice" && (EAthena::taGuild != nullptr))
     {
         inputManager.executeChatCommand(InputAction::GUILD_NOTICE,
             args,
@@ -92,7 +92,7 @@ bool GuildTab::handleCommand(const std::string &restrict type,
 
 void GuildTab::handleInput(const std::string &msg)
 {
-    if (!EAthena::taGuild)
+    if (EAthena::taGuild == nullptr)
         return;
 
     guildHandler->chat(ChatWindow::doReplace(msg));
@@ -100,7 +100,7 @@ void GuildTab::handleInput(const std::string &msg)
 
 void GuildTab::getAutoCompleteList(StringVect &names) const
 {
-    if (EAthena::taGuild)
+    if (EAthena::taGuild != nullptr)
         EAthena::taGuild->getNames(names);
 }
 

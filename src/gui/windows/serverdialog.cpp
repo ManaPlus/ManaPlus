@@ -199,7 +199,7 @@ void ServerDialog::postInit()
 
 ServerDialog::~ServerDialog()
 {
-    if (mDownload)
+    if (mDownload != nullptr)
     {
         mDownload->cancel();
         delete2(mDownload)
@@ -216,7 +216,7 @@ void ServerDialog::connectToSelectedServer()
     if (index < 0)
         return;
 
-    if (mDownload)
+    if (mDownload != nullptr)
         mDownload->cancel();
 
     mQuitButton->setEnabled(false);
@@ -244,7 +244,7 @@ void ServerDialog::connectToSelectedServer()
     settings.supportUrl = mServerInfo->supportUrl;
     settings.updateMirrors = mServerInfo->updateMirrors;
 
-    if (chatLogger)
+    if (chatLogger != nullptr)
         chatLogger->setServerName(mServerInfo->hostname);
 
     saveCustomServers(*mServerInfo);
@@ -254,7 +254,7 @@ void ServerDialog::connectToSelectedServer()
         if (mServerInfo->hostname != LoginDialog::savedPasswordKey)
         {
             LoginDialog::savedPassword.clear();
-            if (desktop)
+            if (desktop != nullptr)
                 desktop->reloadWallpaper();
         }
     }
@@ -433,7 +433,7 @@ void ServerDialog::downloadServerList()
     if (listFile.empty())
         listFile = "http://manaplus.org/serverlist.xml";
 
-    if (mDownload)
+    if (mDownload != nullptr)
     {
         mDownload->cancel();
         delete2(mDownload)
@@ -485,7 +485,7 @@ void ServerDialog::loadServers(const bool addNew)
         SkipError_false);
     XmlNodeConstPtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "serverlist"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "serverlist"))
     {
         logger->log1("Error loading server list!");
         return;
@@ -663,7 +663,7 @@ void ServerDialog::loadCustomServers()
         server.hostname = config.getValue(hostKey, "");
         server.type = ServerInfo::parseType(config.getValue(typeKey, ""));
         server.persistentIp = config.getValue(
-            persistentIpKey, 0) ? true : false;
+            persistentIpKey, 0) != 0 ? true : false;
         server.packetVersion = config.getValue(packetVersionKey, 0);
 
         const int defaultPort = defaultPortForServerType(server.type);
@@ -747,13 +747,13 @@ int ServerDialog::downloadUpdate(void *ptr,
                                  size_t total,
                                  const size_t remaining)
 {
-    if (!ptr || status == DownloadStatus::Cancelled)
+    if ((ptr == nullptr) || status == DownloadStatus::Cancelled)
         return -1;
 
     ServerDialog *const sd = reinterpret_cast<ServerDialog*>(ptr);
     bool finished = false;
 
-    if (!sd->mDownload)
+    if (sd->mDownload == nullptr)
         return -1;
 
     if (status == DownloadStatus::Complete)
@@ -769,7 +769,7 @@ int ServerDialog::downloadUpdate(void *ptr,
     else
     {
         float progress = static_cast<float>(remaining);
-        if (total)
+        if (total != 0u)
             progress /= static_cast<float>(total);
 
         if (progress != progress || progress < 0.0F)
@@ -809,7 +809,7 @@ bool ServerDialog::needUpdateServers() const
 
 void ServerDialog::close()
 {
-    if (mDownload)
+    if (mDownload != nullptr)
         mDownload->cancel();
     client->setState(State::FORCE_QUIT);
     Window::close();

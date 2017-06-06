@@ -55,7 +55,7 @@ BankWindow::BankWindow() :
     setWindowName("Bank");
     setCloseButton(true);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     mBankMoneyLabel->adjustSize();

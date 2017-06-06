@@ -42,7 +42,7 @@ ParticleList::~ParticleList()
 
 void ParticleList::addLocally(Particle *const particle)
 {
-    if (particle)
+    if (particle != nullptr)
     {
         mElements.push_back(particle);
         mSize ++;

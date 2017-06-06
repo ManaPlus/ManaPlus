@@ -47,7 +47,7 @@ class ServersListBox final : public ListBox
 
         void draw(Graphics *const graphics) override final A_NONNULL(2)
         {
-            if (!mListModel)
+            if (mListModel == nullptr)
                 return;
 
             ServersListModel *const model

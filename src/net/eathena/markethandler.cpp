@@ -86,7 +86,7 @@ void MarketHandler::buyItems(const std::vector<ShopItem*> &items) const
         const ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
         const ItemTypeT type = item->getType();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         if (type == ItemType::Weapon ||
             type == ItemType::Armor ||
@@ -110,7 +110,7 @@ void MarketHandler::buyItems(const std::vector<ShopItem*> &items) const
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         item->increaseQuantity(usedQuantity);
         item->increaseUsedQuantity(-usedQuantity);

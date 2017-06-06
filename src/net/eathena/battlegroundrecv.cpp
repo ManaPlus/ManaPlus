@@ -48,7 +48,7 @@ void BattleGroundRecv::processBattleEmblem2(Net::MessageIn &msg)
     const int teamId = msg.readInt16("team id");
 
     Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setTeamId(CAST_U16(teamId));
 }
 

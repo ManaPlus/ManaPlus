@@ -39,7 +39,7 @@ Icon::Icon(const Widget2 *const widget,
     mImage(Loader::getImage(file)),
     mAutoRelease(autoRelease)
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         const SDL_Rect &bounds = mImage->mBounds;
         setSize(bounds.w, bounds.h);
@@ -54,7 +54,7 @@ Icon::Icon(const Widget2 *const widget,
     mImage(image),
     mAutoRelease(autoRelease)
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         const SDL_Rect &bounds = mImage->mBounds;
         setSize(bounds.w, bounds.h);
@@ -64,16 +64,16 @@ Icon::Icon(const Widget2 *const widget,
 
 Icon::~Icon()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
-    if (mImage && mAutoRelease == AutoRelease_true)
+    if ((mImage != nullptr) && mAutoRelease == AutoRelease_true)
         mImage->decRef();
 }
 
 void Icon::setImage(Image *const image)
 {
     mImage = image;
-    if (mImage)
+    if (mImage != nullptr)
     {
         const SDL_Rect &bounds = mImage->mBounds;
         setSize(bounds.w, bounds.h);
@@ -83,7 +83,7 @@ void Icon::setImage(Image *const image)
 void Icon::draw(Graphics *const graphics)
 {
     BLOCK_START("Icon::draw")
-    if (mImage)
+    if (mImage != nullptr)
     {
         graphics->drawImage(mImage,
             (mDimension.width - mImage->mBounds.w) / 2,
@@ -95,7 +95,7 @@ void Icon::draw(Graphics *const graphics)
 void Icon::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Icon::draw")
-    if (mImage)
+    if (mImage != nullptr)
     {
         graphics->drawImage(mImage,
             (mDimension.width - mImage->mBounds.w) / 2,

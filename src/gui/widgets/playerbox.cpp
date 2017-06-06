@@ -76,7 +76,7 @@ PlayerBox::PlayerBox(Widget2 *const widget,
 
 PlayerBox::~PlayerBox()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     Theme::unloadRect(mBackground);
@@ -90,13 +90,13 @@ void PlayerBox::init(std::string name, std::string selectedName)
     setFrameSize(2);
     addMouseListener(this);
 
-    if (theme)
+    if (theme != nullptr)
     {
         if (name.empty())
             name = "playerbox.xml";
         mSkin = theme->loadSkinRect(mBackground,
             name, "playerbox_background.xml");
-        if (mSkin)
+        if (mSkin != nullptr)
         {
             mDrawBackground = (mSkin->getOption("drawbackground") != 0);
             mOffsetX = mSkin->getOption("offsetX", -mapTileSize / 2);
@@ -120,7 +120,7 @@ void PlayerBox::init(std::string name, std::string selectedName)
 void PlayerBox::draw(Graphics *const graphics)
 {
     BLOCK_START("PlayerBox::draw")
-    if (mBeing)
+    if (mBeing != nullptr)
     {
         const int bs = mFrameSize;
         const int x = mDimension.width / 2 + bs + mOffsetX;
@@ -133,7 +133,7 @@ void PlayerBox::draw(Graphics *const graphics)
         const float alpha = settings.guiAlpha;
         for (int a = 0; a < 9; a++)
         {
-            if (mBackground.grid[a])
+            if (mBackground.grid[a] != nullptr)
                 mBackground.grid[a]->setAlpha(alpha);
         }
     }

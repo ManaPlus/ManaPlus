@@ -79,7 +79,7 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
 {
     setMap(map);
     const ItemInfo &info = ItemDB::get(mItemId);
-    if (map)
+    if (map != nullptr)
     {
         const int maxX = info.getMaxFloorOffsetX();
         const int maxY = info.getMaxFloorOffsetY();
@@ -127,7 +127,7 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
 void FloorItem::setCards(const int *const cards,
                          int sz)
 {
-    if (sz < 0 || !cards)
+    if (sz < 0 || cards == nullptr)
         return;
     if (sz > maxCards)
         sz = maxCards;
@@ -158,7 +158,7 @@ std::string FloorItem::getName() const
 void FloorItem::draw(Graphics *const graphics,
                      const int offsetX, const int offsetY) const
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
 
     BLOCK_START("FloorItem::draw")
@@ -204,7 +204,7 @@ void FloorItem::draw(Graphics *const graphics,
 
     if (mHighlight)
     {
-        if (font && mAmount > 1)
+        if (font != nullptr && mAmount > 1)
         {
             const Color &color = userPalette->getColor(
                 UserColorId::FLOOR_ITEM_TEXT);

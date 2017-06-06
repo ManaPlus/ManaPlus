@@ -107,7 +107,7 @@ void ItemFieldDb::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "itemfields"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "itemfields"))
     {
         logger->log("ItemFieldDb: Error while loading %s!",
             fileName.c_str());

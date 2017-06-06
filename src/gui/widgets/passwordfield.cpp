@@ -29,7 +29,7 @@
 PasswordField::PasswordField(const Widget2 *const widget,
                              const std::string &text) :
     TextField(widget, text),
-    mPasswordChar(mSkin ? CAST_8(
+    mPasswordChar(mSkin != nullptr ? CAST_8(
                   mSkin->getOption("passwordChar", 42))
                   : CAST_8(42))
 {
@@ -40,7 +40,7 @@ void PasswordField::draw(Graphics *const graphics)
     BLOCK_START("PasswordField::draw")
     // std::string uses cow, thus cheap copy
     const std::string original = mText;
-    if (mPasswordChar)
+    if (mPasswordChar != 0)
         mText.assign(mText.length(), mPasswordChar);
     else
         mText.clear();

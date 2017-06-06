@@ -56,13 +56,15 @@ EmulateGuildTab::~EmulateGuildTab()
 bool EmulateGuildTab::handleCommand(const std::string &restrict type,
                                     const std::string &restrict args)
 {
-    if (type == "invite" && guildManager)
+    if (guildManager == nullptr)
+        return false;
+    if (type == "invite")
         guildManager->invite(args);
-    else if (type == "leave" && guildManager)
+    else if (type == "leave")
         guildManager->leave();
-    else if (type == "kick" && guildManager)
+    else if (type == "kick")
         guildManager->kick(args);
-    else if (type == "notice" && guildManager)
+    else if (type == "notice")
         guildManager->notice(args);
     else
         return false;
@@ -72,14 +74,14 @@ bool EmulateGuildTab::handleCommand(const std::string &restrict type,
 
 void EmulateGuildTab::handleInput(const std::string &msg)
 {
-    if (!guildManager)
+    if (guildManager == nullptr)
         return;
     guildManager->chat(ChatWindow::doReplace(msg));
 }
 
 void EmulateGuildTab::getAutoCompleteList(StringVect &names) const
 {
-    if (!guildManager)
+    if (guildManager == nullptr)
         return;
 
     guildManager->getNames(names);

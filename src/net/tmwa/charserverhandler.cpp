@@ -56,7 +56,7 @@ CharServerHandler::CharServerHandler() :
 
 void CharServerHandler::chooseCharacter(Net::Character *const character) const
 {
-    if (!character)
+    if (character == nullptr)
         return;
 
     mSelectedCharacter = character;
@@ -91,7 +91,7 @@ void CharServerHandler::deleteCharacter(Net::Character *const character,
                                         const std::string &email A_UNUSED)
                                         const
 {
-    if (!character)
+    if (character == nullptr)
         return;
 
     mSelectedCharacter = character;
@@ -113,7 +113,7 @@ void CharServerHandler::connect() const
     const Token &token =
         static_cast<LoginHandler*>(loginHandler)->getToken();
 
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return;
 
     Network::mInstance->disconnect();
@@ -137,7 +137,7 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
 {
     mCharCreateDialog = window;
 
-    if (!mCharCreateDialog)
+    if (mCharCreateDialog == nullptr)
         return;
 
     StringVect attributes;
@@ -157,13 +157,13 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
     const Token &token = static_cast<LoginHandler*>(loginHandler)->getToken();
 
     int minStat = CharDB::getMinStat();
-    if (!minStat)
+    if (minStat == 0)
         minStat = 1;
     int maxStat = CharDB::getMaxStat();
-    if (!maxStat)
+    if (maxStat == 0)
         maxStat = 9;
     int sumStat = CharDB::getSumStat();
-    if (!sumStat)
+    if (sumStat == 0)
         sumStat = 30;
 
     mCharCreateDialog->setAttributes(attributes, sumStat, minStat, maxStat);

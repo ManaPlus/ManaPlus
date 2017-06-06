@@ -47,7 +47,7 @@ void SdlScreenshotHelper::prepare()
 
 SDL_Surface *SdlScreenshotHelper::getScreenshot()
 {
-    if (!mainGraphics)
+    if (mainGraphics == nullptr)
         return nullptr;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -69,7 +69,7 @@ SDL_Surface *SdlScreenshotHelper::getScreenshot()
         rmask, gmask, bmask, amask);
 
 #ifndef USE_SDL2
-    if (screenshot)
+    if (screenshot != nullptr)
         SDL_BlitSurface(mainGraphics->mWindow, nullptr, screenshot, nullptr);
 #endif  // USE_SDL2
 

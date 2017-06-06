@@ -58,7 +58,7 @@ SkillData::SkillData() :
 
 SkillData::~SkillData()
 {
-    if (icon)
+    if (icon != nullptr)
     {
         icon->decRef();
         icon = nullptr;
@@ -70,7 +70,7 @@ void SkillData::setIcon(const std::string &iconPath)
     if (!iconPath.empty())
         icon = Loader::getImage(iconPath);
 
-    if (!icon)
+    if (icon == nullptr)
     {
         icon = Theme::getImageFromTheme(
             paths.getStringValue("unknownItemFile"));

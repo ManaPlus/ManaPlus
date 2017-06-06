@@ -79,7 +79,7 @@ Minimap::Minimap() :
     // set this to false as the minimap window size is changed
     // depending on the map size
     setResizable(true);
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     setDefaultVisible(true);
@@ -103,7 +103,7 @@ Minimap::~Minimap()
 
 void Minimap::deleteMapImage()
 {
-    if (mMapImage)
+    if (mMapImage != nullptr)
     {
         if (mCustomMapImage)
             delete mMapImage;
@@ -118,7 +118,7 @@ void Minimap::setMap(const Map *const map)
     BLOCK_START("Minimap::setMap")
     std::string caption;
 
-    if (map)
+    if (map != nullptr)
         caption = map->getName();
 
     if (caption.empty())
@@ -130,14 +130,14 @@ void Minimap::setMap(const Map *const map)
     setCaption(caption);
     deleteMapImage();
 
-    if (map)
+    if (map != nullptr)
     {
         if (config.getBoolValue("showExtMinimaps"))
         {
             SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_SWSURFACE,
                 map->getWidth(), map->getHeight(), 32,
                 0x00ff0000, 0x0000ff00, 0x000000ff, 0x00000000);
-            if (!surface)
+            if (surface == nullptr)
             {
                 if (!isSticky())
                     setVisible(Visible_false);
@@ -148,7 +148,7 @@ void Minimap::setMap(const Map *const map)
             // I'm not sure if the locks are necessary since it's a SWSURFACE
             SDL_LockSurface(surface);
             int* data = static_cast<int*>(surface->pixels);
-            if (!data)
+            if (data == nullptr)
             {
                 if (!isSticky())
                     setVisible(Visible_false);
@@ -163,7 +163,7 @@ void Minimap::setMap(const Map *const map)
 
             for (int ptr = 0; ptr < size; ptr ++)
             {
-                *(data ++) = (map->mMetaTiles[ptr].blockmask & mask) ?
+                *(data ++) = (map->mMetaTiles[ptr].blockmask & mask) != 0 ?
                     0x0 : 0x00ffffff;
             }
 
@@ -200,7 +200,7 @@ void Minimap::setMap(const Map *const map)
         }
     }
 
-    if (mMapImage && map)
+    if ((mMapImage != nullptr) && (map != nullptr))
     {
         const int width = mMapImage->mBounds.w + 2 * getPadding();
         const int height = mMapImage->mBounds.h
@@ -265,7 +265,9 @@ void Minimap::safeDraw(Graphics *const graphics)
 
 void Minimap::draw2(Graphics *const graphics)
 {
-    if (!userPalette || !localPlayer || !viewport)
+    if (userPalette == nullptr ||
+        localPlayer == nullptr ||
+        viewport == nullptr)
     {
         BLOCK_END("Minimap::draw")
         return;
@@ -275,7 +277,7 @@ void Minimap::draw2(Graphics *const graphics)
 
     graphics->pushClipArea(a);
 
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("Minimap::draw")
         return;
@@ -284,7 +286,7 @@ void Minimap::draw2(Graphics *const graphics)
     mMapOriginX = 0;
     mMapOriginY = 0;
 
-    if (mMapImage)
+    if (mMapImage != nullptr)
     {
         const SDL_Rect &rect = mMapImage->mBounds;
         const int w = rect.w;
@@ -316,11 +318,11 @@ void Minimap::draw2(Graphics *const graphics)
     const ActorSprites &actors = actorManager->getAll();
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
-        if (!(*it) || (*it)->getType() == ActorType::FloorItem)
+        if (((*it) == nullptr) || (*it)->getType() == ActorType::FloorItem)
             continue;
 
         const Being *const being = static_cast<const Being *>(*it);
-        if (!being)
+        if (being == nullptr)
             continue;
 
         int dotSize = 2;
@@ -380,7 +382,7 @@ void Minimap::draw2(Graphics *const graphics)
             }
         }
 
-        if (userPalette)
+        if (userPalette != nullptr)
             graphics->setColor(userPalette->getColor(type));
 
         const int offsetHeight = CAST_S32(static_cast<float>(
@@ -397,12 +399,12 @@ void Minimap::draw2(Graphics *const graphics)
     if (localPlayer->isInParty())
     {
         const Party *const party = localPlayer->getParty();
-        if (party)
+        if (party != nullptr)
         {
             const PartyMember *const m = party->getMember(
                 localPlayer->getName());
             const Party::MemberList *const members = party->getMembers();
-            if (m)
+            if (m != nullptr)
             {
                 const std::string curMap = m->getMap();
                 Party::MemberList::const_iterator it = members->begin();
@@ -411,10 +413,10 @@ void Minimap::draw2(Graphics *const graphics)
                 while (it != it_end)
                 {
                     const PartyMember *const member = *it;
-                    if (member && member->getMap() == curMap
+                    if ((member != nullptr) && member->getMap() == curMap
                         && member->getOnline() && member != m)
                     {
-                        if (userPalette)
+                        if (userPalette != nullptr)
                         {
                             graphics->setColor(userPalette->getColor(
                                 UserColorId::PARTY));
@@ -454,14 +456,14 @@ void Minimap::draw2(Graphics *const graphics)
 
     if (w <= a.width)
     {
-        if (x < 0 && w)
+        if (x < 0 && (w != 0))
             x = 0;
         if (x + w > a.width)
             x = a.width - w;
     }
     if (h <= a.height)
     {
-        if (y < 0 && h)
+        if (y < 0 && (h != 0))
             y = 0;
         if (y + h > a.height)
             y = a.height - h;
@@ -484,7 +486,7 @@ void Minimap::mouseReleased(MouseEvent &event)
 {
     Window::mouseReleased(event);
 
-    if (!localPlayer || !popupManager)
+    if ((localPlayer == nullptr) || (popupManager == nullptr))
         return;
 
     if (event.getButton() == MouseButton::LEFT)

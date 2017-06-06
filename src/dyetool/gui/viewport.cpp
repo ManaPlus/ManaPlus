@@ -207,7 +207,7 @@ void Viewport::mouseReleased(MouseEvent &event)
         if (eventButton == MouseButton::LEFT)
         {
             // long button press
-            if (gui && gui->isLongPress())
+            if ((gui != nullptr) && gui->isLongPress())
             {
                 if (openContextMenu(event))
                 {

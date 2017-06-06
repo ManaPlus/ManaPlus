@@ -44,7 +44,7 @@ bool ComplexInventory::addVirtualItem(const Item *const item,
                                       int index,
                                       const int amount)
 {
-    if (!item || PlayerInfo::isItemProtected(item->getId()))
+    if ((item == nullptr) || PlayerInfo::isItemProtected(item->getId()))
         return false;
 
     if (index >= 0 && index < CAST_S32(mSize))
@@ -59,7 +59,7 @@ bool ComplexInventory::addVirtualItem(const Item *const item,
                 return false;
             }
             citem = dynamic_cast<ComplexItem*>(mItems[index]);
-            if (!citem)
+            if (citem == nullptr)
             {   // if in inventory not complex item, converting it to complex
                 citem = new ComplexItem(item2->getId(),
                     item2->getType(),
@@ -109,7 +109,7 @@ bool ComplexInventory::addVirtualItem(const Item *const item,
         return false;
 
     Item *const item2 = getItem(index);
-    if (item2)
+    if (item2 != nullptr)
         item2->setTag(item->getInvIndex());
     return true;
 }
@@ -133,7 +133,7 @@ void ComplexInventory::setItem(const int index,
     }
 
     const Item *const item1 = mItems[index];
-    if (!item1 && id > 0)
+    if ((item1 == nullptr) && id > 0)
     {
         ComplexItem *const item = new ComplexItem(id,
             type,

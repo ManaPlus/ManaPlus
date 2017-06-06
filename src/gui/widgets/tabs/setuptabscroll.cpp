@@ -72,7 +72,7 @@ void SetupTabScroll::clear()
 
 void SetupTabScroll::addControl(SetupItem *const widget)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
     const std::string actionId = widget->getActionEventId();
     if (!actionId.empty())
@@ -109,7 +109,7 @@ void SetupTabScroll::apply()
          iter = mItems.begin(), iter_end = mItems.end();
          iter != iter_end; ++ iter)
     {
-        if ((*iter).second)
+        if ((*iter).second != nullptr)
             (*iter).second->apply((*iter).first);
     }
 }
@@ -120,7 +120,7 @@ void SetupTabScroll::cancel()
          iter = mItems.begin(), iter_end = mItems.end();
          iter != iter_end; ++ iter)
     {
-        if ((*iter).second)
+        if ((*iter).second != nullptr)
             (*iter).second->cancel((*iter).first);
     }
 }
@@ -132,7 +132,7 @@ void SetupTabScroll::externalUpdated()
          iter != iter_end; ++ iter)
     {
         SetupItem *const widget = (*iter).second;
-        if (widget && widget->isMainConfig() == MainConfig_false)
+        if ((widget != nullptr) && widget->isMainConfig() == MainConfig_false)
             widget->externalUpdated((*iter).first);
     }
 }
@@ -144,7 +144,7 @@ void SetupTabScroll::externalUnloaded()
          iter != iter_end; ++ iter)
     {
         SetupItem *const widget = (*iter).second;
-        if (widget && widget->isMainConfig() == MainConfig_false)
+        if ((widget != nullptr) && widget->isMainConfig() == MainConfig_false)
             widget->externalUnloaded((*iter).first);
     }
 }
@@ -158,6 +158,6 @@ void SetupTabScroll::widgetResized(const Event &event A_UNUSED)
 void SetupTabScroll::reread(const std::string &name)
 {
     SetupItem *const item = mItems[name + "Event"];
-    if (item)
+    if (item != nullptr)
         item->rereadValue();
 }

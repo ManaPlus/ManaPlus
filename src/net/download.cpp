@@ -73,12 +73,12 @@ Download::Download(void *const ptr,
     mUpload(isUpload),
     mIsXml(isXml)
 {
-    if (mError)
+    if (mError != nullptr)
         mError[0] = 0;
 
     mOptions.cancel = 0;
     mOptions.memoryWrite = 0;
-    mOptions.checkAdler = true;
+    mOptions.checkAdler = 1u;
     if (!mUpload)
     {
         const std::string serverName = settings.serverName;
@@ -96,20 +96,20 @@ Download::Download(void *const ptr,
 
 Download::~Download()
 {
-    if (mFormPost)
+    if (mFormPost != nullptr)
     {
         curl_formfree(mFormPost);
         mFormPost = nullptr;
     }
 
-    if (mHeaders)
+    if (mHeaders != nullptr)
     {
         curl_slist_free_all(mHeaders);
         mHeaders = nullptr;
     }
 
     int status;
-    if (mThread && SDL_GetThreadID(mThread))
+    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
         SDL_WaitThread(mThread, &status);
     mThread = nullptr;
     free(mError);
@@ -120,7 +120,7 @@ Download::~Download()
  */
 unsigned long Download::fadler32(FILE *const file)
 {
-    if (!file)
+    if (file == nullptr)
         return 0;
 
     // Obtain file size
@@ -169,7 +169,7 @@ void Download::setFile(const std::string &filename, const int64_t adler32)
     if (adler32 > -1)
     {
         mAdler = static_cast<unsigned long>(adler32);
-        mOptions.checkAdler = true;
+        mOptions.checkAdler = 1u;
     }
     else
     {
@@ -179,7 +179,7 @@ void Download::setFile(const std::string &filename, const int64_t adler32)
 
 void Download::setWriteFunction(WriteFunction write)
 {
-    mOptions.memoryWrite = true;
+    mOptions.memoryWrite = 1u;
     mWriteFunction = write;
 }
 
@@ -188,10 +188,10 @@ bool Download::start()
     logger->log("Starting download: %s", mUrl.c_str());
 
     mThread = SDL::createThread(&downloadThread, "download", this);
-    if (!mThread)
+    if (mThread == nullptr)
     {
         logger->log1(DOWNLOAD_ERROR_MESSAGE_THREAD);
-        if (mError)
+        if (mError != nullptr)
             strcpy(mError, DOWNLOAD_ERROR_MESSAGE_THREAD);
         mUpdateFunction(mPtr, DownloadStatus::ThreadError, 0, 0);
         if (!mIgnoreError)
@@ -205,8 +205,8 @@ void Download::cancel()
 {
     logger->log("Canceling download: %s", mUrl.c_str());
 
-    mOptions.cancel = true;
-    if (mThread && SDL_GetThreadID(mThread))
+    mOptions.cancel = 1u;
+    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
         SDL_WaitThread(mThread, nullptr);
 
     mThread = nullptr;
@@ -222,13 +222,13 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
 {
     Download *const d = reinterpret_cast<Download *>(clientp);
 
-    if (!d)
+    if (d == nullptr)
         return -5;
 
     if (d->mUpload)
         return 0;
 
-    if (d->mOptions.cancel)
+    if (d->mOptions.cancel != 0u)
     {
         return d->mUpdateFunction(d->mPtr, DownloadStatus::Cancelled,
                                   CAST_SIZE(dltotal),
@@ -247,7 +247,7 @@ int Download::downloadThread(void *ptr)
     Download *const d = reinterpret_cast<Download*>(ptr);
     CURLcode res;
 
-    if (!d)
+    if (d == nullptr)
         return 0;
 
     std::string outFilename;
@@ -258,7 +258,7 @@ int Download::downloadThread(void *ptr)
     }
     else
     {
-        if (!d->mOptions.memoryWrite)
+        if (d->mOptions.memoryWrite == 0u)
             outFilename = d->mFileName + ".part";
         else
             outFilename.clear();
@@ -274,12 +274,12 @@ int Download::downloadThread(void *ptr)
         logger->log_r("selected url: %s", d->mUrl.c_str());
         while (attempts < 3 &&
                !complete &&
-               !d->mOptions.cancel &&
+               (d->mOptions.cancel == 0u) &&
                isTerminate == false)
         {
             d->mUpdateFunction(d->mPtr, DownloadStatus::Starting, 0, 0);
 
-            if (d->mOptions.cancel || isTerminate == true)
+            if ((d->mOptions.cancel != 0u) || isTerminate == true)
             {
                 // need terminate thread?
                 d->mThread = nullptr;
@@ -287,7 +287,9 @@ int Download::downloadThread(void *ptr)
             }
             d->mCurl = curl_easy_init();
 
-            if (d->mCurl && !d->mOptions.cancel && isTerminate == false)
+            if (d->mCurl != nullptr &&
+                d->mOptions.cancel == 0u &&
+                isTerminate == false)
             {
                 FILE *file = nullptr;
 
@@ -306,7 +308,7 @@ int Download::downloadThread(void *ptr)
                     curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
                     curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER,
                         d->mHeaders);
-                    if (d->mOptions.memoryWrite)
+                    if (d->mOptions.memoryWrite != 0u)
                     {
                         curl_easy_setopt(d->mCurl, CURLOPT_FAILONERROR, 1);
                         curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
@@ -316,7 +318,7 @@ int Download::downloadThread(void *ptr)
                     else
                     {
                         file = fopen(outFilename.c_str(), "w+b");
-                        if (file)
+                        if (file != nullptr)
                         {
                             curl_easy_setopt(d->mCurl, CURLOPT_WRITEDATA,
                                 file);
@@ -343,7 +345,7 @@ int Download::downloadThread(void *ptr)
                 }
 
                 if ((res = curl_easy_perform(d->mCurl)) != 0 &&
-                    !d->mOptions.cancel &&
+                    (d->mOptions.cancel == 0u) &&
                     isTerminate == false)
                 {
                     PRAGMA45(GCC diagnostic push)
@@ -351,7 +353,7 @@ int Download::downloadThread(void *ptr)
                     switch (res)
                     {
                         case CURLE_ABORTED_BY_CALLBACK:
-                            d->mOptions.cancel = true;
+                            d->mOptions.cancel = 1u;
                             break;
                         case CURLE_COULDNT_CONNECT:
                         default:
@@ -359,9 +361,9 @@ int Download::downloadThread(void *ptr)
                     }
                     PRAGMA45(GCC diagnostic pop)
 
-                    if (res)
+                    if (res != 0u)
                     {
-                        if (d->mError)
+                        if (d->mError != nullptr)
                         {
                             logger->log_r("curl error %d: %s host: %s",
                                 res, d->mError, d->mUrl.c_str());
@@ -370,17 +372,17 @@ int Download::downloadThread(void *ptr)
                         continue;
                     }
 
-                    if (d->mOptions.cancel || isTerminate == true)
+                    if ((d->mOptions.cancel != 0u) || isTerminate == true)
                         break;
 
 //                    d->mUpdateFunction(d->mPtr, DownloadStatus::Error, 0, 0);
 
-                    if (file)
+                    if (file != nullptr)
                     {
                         fclose(file);
                         file = nullptr;
                     }
-                    if (!d->mUpload && !d->mOptions.memoryWrite)
+                    if (!d->mUpload && (d->mOptions.memoryWrite == 0u))
                         ::remove(outFilename.c_str());
                     attempts++;
                     continue;
@@ -391,7 +393,7 @@ int Download::downloadThread(void *ptr)
 
                 if (d->mUpload)
                 {
-                    if (file)
+                    if (file != nullptr)
                     {
                         fclose(file);
                         file = nullptr;
@@ -401,16 +403,16 @@ int Download::downloadThread(void *ptr)
                 }
                 else
                 {
-                    if (!d->mOptions.memoryWrite)
+                    if (d->mOptions.memoryWrite == 0u)
                     {
                         // Don't check resources.xml checksum
-                        if (d->mOptions.checkAdler)
+                        if (d->mOptions.checkAdler != 0u)
                         {
                             const unsigned long adler = fadler32(file);
 
                             if (d->mAdler != adler)
                             {
-                                if (file)
+                                if (file != nullptr)
                                 {
                                     fclose(file);
                                     file = nullptr;
@@ -427,7 +429,7 @@ int Download::downloadThread(void *ptr)
                             }
                         }
 
-                        if (file)
+                        if (file != nullptr)
                         {
                             fclose(file);
                             file = nullptr;
@@ -435,7 +437,7 @@ int Download::downloadThread(void *ptr)
 
                         // Any existing file with this name is deleted first,
                         // otherwise the rename will fail on Windows.
-                        if (!d->mOptions.cancel && isTerminate == false)
+                        if ((d->mOptions.cancel == 0u) && isTerminate == false)
                         {
                             if (d->mIsXml)
                             {
@@ -453,7 +455,7 @@ int Download::downloadThread(void *ptr)
                             // Check if we can open it and no errors were
                             // encountered during renaming
                             file = fopen(d->mFileName.c_str(), "rb");
-                            if (file)
+                            if (file != nullptr)
                             {
                                 fclose(file);
                                 file = nullptr;
@@ -469,13 +471,13 @@ int Download::downloadThread(void *ptr)
                 }
             }
 
-            if (d->mCurl)
+            if (d->mCurl != nullptr)
             {
                 curl_easy_cleanup(d->mCurl);
                 d->mCurl = nullptr;
             }
 
-            if (d->mOptions.cancel || isTerminate == true)
+            if ((d->mOptions.cancel != 0u) || isTerminate == true)
             {
                 // need ternibate thread?
                 d->mThread = nullptr;
@@ -484,13 +486,13 @@ int Download::downloadThread(void *ptr)
             attempts++;
         }
 
-        if ((complete && attempts < 3) || d->mOptions.cancel)
+        if ((complete && attempts < 3) || (d->mOptions.cancel != 0u))
             break;
     }
 
     d->mThread = nullptr;
 
-    if (d->mOptions.cancel || isTerminate == true)
+    if ((d->mOptions.cancel != 0u) || isTerminate == true)
     {
         // Nothing to do...
     }
@@ -509,7 +511,7 @@ int Download::downloadThread(void *ptr)
 void Download::addProxy(CURL *const curl)
 {
     const int mode = config.getIntValue("downloadProxyType");
-    if (!mode)
+    if (mode == 0)
         return;
 
     if (mode > 1)

@@ -194,7 +194,7 @@ void WindowManager::updateTitle()
 
 void WindowManager::setFramerate(const unsigned int fpsLimit)
 {
-    if (!fpsLimit)
+    if (fpsLimit == 0u)
         return;
 
     if (!settings.limitFps)
@@ -240,7 +240,7 @@ void WindowManager::resizeVideo(int actualWidth,
     actualWidth = std::max(470, actualWidth);
     actualHeight = std::max(320, actualHeight);
 
-    if (!mainGraphics)
+    if (mainGraphics == nullptr)
         return;
     if (!always
         && mainGraphics->mActualWidth == actualWidth
@@ -255,21 +255,21 @@ void WindowManager::resizeVideo(int actualWidth,
         const int height = mainGraphics->mHeight;
         touchManager.resize(width, height);
 
-        if (gui)
+        if (gui != nullptr)
             gui->videoResized();
 
-        if (desktop)
+        if (desktop != nullptr)
             desktop->setSize(width, height);
 
         client->moveButtons(width);
 
 #ifndef DYECMD
         Game *const game = Game::instance();
-        if (game)
+        if (game != nullptr)
             game->videoResized(width, height);
 #endif  // DYECMD
 
-        if (gui)
+        if (gui != nullptr)
             gui->draw();
 
         config.setValue("screenwidth", actualWidth);
@@ -285,7 +285,7 @@ bool WindowManager::setFullScreen(const bool fs)
     return true;
 #else  // __native_client__
 
-    if (!mainGraphics)
+    if (mainGraphics == nullptr)
         return false;
     return mainGraphics->setFullscreen(fs);
 #endif  // __native_client__
@@ -400,7 +400,7 @@ void WindowManager::setIcon()
 #else  // WIN32
 
     mIcon = MIMG_Load(iconFile.c_str());
-    if (mIcon)
+    if (mIcon != nullptr)
     {
 #ifdef USE_SDL2
         SDL_SetSurfaceAlphaMod(mIcon, SDL_ALPHA_OPAQUE);

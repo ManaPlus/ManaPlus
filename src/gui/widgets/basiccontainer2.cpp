@@ -121,7 +121,7 @@ void BasicContainer2::addXY(Widget *const widget,
                             const int x,
                             const int y)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
     widget->setPosition(x, y);
     BasicContainer::add(widget);

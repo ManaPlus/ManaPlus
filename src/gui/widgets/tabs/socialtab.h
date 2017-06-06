@@ -88,14 +88,14 @@ class SocialTab notfinal : public Tab
         virtual ~SocialTab()
         {
             // Cleanup dialogs
-            if (mInviteDialog)
+            if (mInviteDialog != nullptr)
             {
                 mInviteDialog->close();
                 mInviteDialog->scheduleDelete();
                 mInviteDialog = nullptr;
             }
 
-            if (mConfirmDialog)
+            if (mConfirmDialog != nullptr)
             {
                 mConfirmDialog->close();
                 mConfirmDialog->scheduleDelete();
@@ -122,13 +122,13 @@ class SocialTab notfinal : public Tab
 
         void updateCounter() const
         {
-            if (socialWindow)
+            if (socialWindow != nullptr)
                 socialWindow->updateCounter(this, mCounterString);
         }
 
         void updateMenu() const
         {
-            if (socialWindow)
+            if (socialWindow != nullptr)
                 socialWindow->updateMenu(this, mMenuAction);
         }
 

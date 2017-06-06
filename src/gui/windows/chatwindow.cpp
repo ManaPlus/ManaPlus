@@ -112,21 +112,23 @@ ChatWindow::ChatWindow() :
     mHighlights(),
     mGlobalsFilter(),
     mChatColor(config.getIntValue("chatColor")),
-    mEmoteButtonSpacing(mSkin ? mSkin->getOption("emoteButtonSpacing", 2) : 2),
-    mEmoteButtonY(mSkin ? mSkin->getOption("emoteButtonY", -2) : -2),
+    mEmoteButtonSpacing(mSkin != nullptr ?
+                        mSkin->getOption("emoteButtonSpacing", 2) : 2),
+    mEmoteButtonY(mSkin != nullptr ?
+                  mSkin->getOption("emoteButtonY", -2) : -2),
     mChatHistoryIndex(0),
     mReturnToggles(config.getBoolValue("ReturnToggles")),
     mGMLoaded(false),
     mHaveMouse(false),
     mAutoHide(config.getBoolValue("autohideChat")),
     mShowBattleEvents(config.getBoolValue("showBattleEvents")),
-    mShowAllLang(serverConfig.getValue("showAllLang", 0)),
+    mShowAllLang(serverConfig.getValue("showAllLang", 0) != 0),
     mEnableTradeFilter(config.getBoolValue("enableTradeFilter")),
     mTmpVisible(false)
 {
     setWindowName("Chat");
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     setShowTitle(false);
@@ -159,7 +161,7 @@ ChatWindow::ChatWindow() :
 
     setTitleBarHeight(getPadding() + getTitlePadding());
 
-    if (emoteWindow)
+    if (emoteWindow != nullptr)
         emoteWindow->addListeners(this);
 
     mChatButton->adjustSize();
@@ -191,7 +193,7 @@ ChatWindow::ChatWindow() :
     updateTabsMargin();
 
     fillCommands();
-    if (localPlayer && localPlayer->isGM())
+    if ((localPlayer != nullptr) && localPlayer->isGM())
         loadGMCommands();
     initTradeFilter();
     loadCustomList();
@@ -312,10 +314,10 @@ void ChatWindow::adjustTabSize()
     }
 
     const ChatTab *const tab = getFocused();
-    if (tab)
+    if (tab != nullptr)
     {
         Widget *const content = tab->mScrollArea;
-        if (content)
+        if (content != nullptr)
         {
             const int contentFrame2 = 2 * content->getFrameSize();
             content->setSize(mChatTabs->getWidth() - contentFrame2,
@@ -344,7 +346,7 @@ ChatTab *ChatWindow::getFocused() const
 
 void ChatWindow::clearTab(ChatTab *const tab)
 {
-    if (tab)
+    if (tab != nullptr)
         tab->clearText();
 }
 
@@ -355,7 +357,7 @@ void ChatWindow::clearTab() const
 
 void ChatWindow::prevTab()
 {
-    if (!mChatTabs)
+    if (mChatTabs == nullptr)
         return;
 
     int tab = mChatTabs->getSelectedTabIndex();
@@ -369,7 +371,7 @@ void ChatWindow::prevTab()
 
 void ChatWindow::nextTab()
 {
-    if (!mChatTabs)
+    if (mChatTabs == nullptr)
         return;
 
     int tab = mChatTabs->getSelectedTabIndex();
@@ -383,7 +385,7 @@ void ChatWindow::nextTab()
 
 void ChatWindow::selectTabByType(const ChatTabTypeT &type)
 {
-    if (!mChatTabs)
+    if (mChatTabs == nullptr)
         return;
 
     int sz = mChatTabs->getNumberOfTabs();
@@ -391,7 +393,7 @@ void ChatWindow::selectTabByType(const ChatTabTypeT &type)
     {
         ChatTab *const tab = dynamic_cast<ChatTab*>(
             mChatTabs->getTabByIndex(f));
-        if (tab && tab->getType() == type)
+        if ((tab != nullptr) && tab->getType() == type)
         {
             mChatTabs->setSelectedTab(tab);
             break;
@@ -401,12 +403,12 @@ void ChatWindow::selectTabByType(const ChatTabTypeT &type)
 
 void ChatWindow::closeTab() const
 {
-    if (!mChatTabs)
+    if (mChatTabs == nullptr)
         return;
 
     ChatTab *const tab = dynamic_cast<ChatTab*>(mChatTabs->getTabByIndex(
         mChatTabs->getSelectedTabIndex()));
-    if (!tab)
+    if (tab == nullptr)
         return;
     const ChatTabTypeT &type = tab->getType();
     if (type == ChatTabType::WHISPER || type == ChatTabType::CHANNEL)
@@ -415,7 +417,7 @@ void ChatWindow::closeTab() const
 
 void ChatWindow::defaultTab()
 {
-    if (mChatTabs)
+    if (mChatTabs != nullptr)
         mChatTabs->setSelectedTabByIndex(CAST_U32(0));
 }
 
@@ -446,7 +448,7 @@ void ChatWindow::action(const ActionEvent &event)
         {
             // Remove focus and hide input
             mChatInput->unprotectFocus();
-            if (mFocusHandler)
+            if (mFocusHandler != nullptr)
                 mFocusHandler->focusNone();
 
             // If the chatWindow is shown up because you want to send a message
@@ -457,7 +459,7 @@ void ChatWindow::action(const ActionEvent &event)
     }
     else if (eventId == "emote")
     {
-        if (emoteWindow)
+        if (emoteWindow != nullptr)
         {
             const std::string str = emoteWindow->getSelectedEmote();
             if (!str.empty())
@@ -469,7 +471,7 @@ void ChatWindow::action(const ActionEvent &event)
     }
     else if (eventId == "openemote")
     {
-        if (emoteWindow)
+        if (emoteWindow != nullptr)
         {
             if (emoteWindow->mVisible == Visible_true)
                 emoteWindow->hide();
@@ -479,7 +481,7 @@ void ChatWindow::action(const ActionEvent &event)
     }
     else if (eventId == "color")
     {
-        if (emoteWindow)
+        if (emoteWindow != nullptr)
         {
             const std::string str = emoteWindow->getSelectedColor();
             if (!str.empty())
@@ -491,7 +493,7 @@ void ChatWindow::action(const ActionEvent &event)
     }
     else if (eventId == "font")
     {
-        if (emoteWindow)
+        if (emoteWindow != nullptr)
         {
             const std::string str = emoteWindow->getSelectedFont();
             if (!str.empty())
@@ -503,7 +505,7 @@ void ChatWindow::action(const ActionEvent &event)
     }
     else if (eventId == "text")
     {
-        if (emoteWindow && reverseDictionary)
+        if ((emoteWindow != nullptr) && (reverseDictionary != nullptr))
         {
             const int idx = emoteWindow->getSelectedTextIndex();
             if (idx >= 0)
@@ -517,14 +519,14 @@ void ChatWindow::action(const ActionEvent &event)
     }
     else if (eventId == ACTION_COLOR_PICKER)
     {
-        if (mColorPicker)
+        if (mColorPicker != nullptr)
         {
             mChatColor = mColorPicker->getSelected();
             config.setValue("chatColor", mChatColor);
         }
     }
 
-    if (mColorPicker)
+    if (mColorPicker != nullptr)
     {
         const Visible vis = fromBool(config.getBoolValue(
             "showChatColorsList"), Visible);
@@ -571,7 +573,7 @@ void ChatWindow::removeTab(ChatTab *const tab)
 
 void ChatWindow::addTab(ChatTab *const tab)
 {
-    if (!tab)
+    if (tab == nullptr)
         return;
 
     mChatTabs->addTab(tab, tab->mScrollArea);
@@ -632,7 +634,7 @@ void ChatWindow::ignoreAllWhispers()
          ++ iter)
     {
         WhisperTab *const tab = iter->second;
-        if (tab)
+        if (tab != nullptr)
         {
             if (player_relations.getRelation(tab->getNick())
                 != Relation::IGNORED)
@@ -654,7 +656,7 @@ void ChatWindow::chatInput(const std::string &message) const
     if (config.getBoolValue("allowCommandsInChatTabs")
         && msg.length() > 1
         && ((msg.at(0) == '#' && msg.at(1) != '#') || msg.at(0) == '@')
-        && localChatTab)
+        && (localChatTab != nullptr))
     {
         tab = localChatTab;
     }
@@ -664,14 +666,14 @@ void ChatWindow::chatInput(const std::string &message) const
         if (tab == nullptr)
             tab = localChatTab;
     }
-    if (tab)
+    if (tab != nullptr)
         tab->chatInput(msg);
     Game::instance()->setValidSpeed();
 }
 
 void ChatWindow::localChatInput(const std::string &msg) const
 {
-    if (localChatTab)
+    if (localChatTab != nullptr)
         localChatTab->chatInput(msg);
     else
         chatInput(msg);
@@ -679,7 +681,7 @@ void ChatWindow::localChatInput(const std::string &msg) const
 
 void ChatWindow::doPresent() const
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     const ActorSprites &actors = actorManager->getAll();
@@ -702,7 +704,7 @@ void ChatWindow::doPresent() const
         _("Present: %s; %d players are present."),
         response.c_str(), playercount);
 
-    if (getFocused())
+    if (getFocused() != nullptr)
         getFocused()->chatLog(log, ChatMsgType::BY_SERVER);
 }
 
@@ -712,7 +714,7 @@ void ChatWindow::scroll(const int amount) const
         return;
 
     ChatTab *const tab = getFocused();
-    if (tab)
+    if (tab != nullptr)
         tab->scroll(amount);
 }
 
@@ -723,11 +725,11 @@ void ChatWindow::mousePressed(MouseEvent &event)
 
     if (event.getButton() == MouseButton::RIGHT)
     {
-        if (popupMenu)
+        if (popupMenu != nullptr)
         {
             ChatTab *const cTab = dynamic_cast<ChatTab*>(
                 mChatTabs->getSelectedTab());
-            if (cTab)
+            if (cTab != nullptr)
             {
                 event.consume();
                 if (inputManager.isActionActive(InputAction::CHAT_MOD))
@@ -757,13 +759,13 @@ void ChatWindow::mousePressed(MouseEvent &event)
         if (clicks == 2)
         {
             toggleChatFocus();
-            if (gui)
+            if (gui != nullptr)
                 gui->resetClickCount();
         }
         else if (clicks == 1)
         {
             const ChatTab *const tab = getFocused();
-            if (tab)
+            if (tab != nullptr)
                 mMoved = !isResizeAllowed(event);
         }
     }
@@ -862,9 +864,9 @@ void ChatWindow::keyPressed(KeyEvent &event)
              mChatInput->mVisible == Visible_true)
     {
         const ChatTab *const tab = getFocused();
-        if (tab && tab->hasRows())
+        if ((tab != nullptr) && tab->hasRows())
         {
-            if (!mChatHistoryIndex)
+            if (mChatHistoryIndex == 0u)
             {
                 mChatHistoryIndex = CAST_U32(
                     tab->getRows().size());
@@ -894,7 +896,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
              mChatInput->mVisible == Visible_true)
     {
         const ChatTab *const tab = getFocused();
-        if (tab && tab->hasRows())
+        if ((tab != nullptr) && tab->hasRows())
         {
             const std::list<std::string> &rows = tab->getRows();
             const size_t &tabSize = rows.size();
@@ -928,7 +930,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
     }
     else if (actionId == InputAction::GUI_F1)
     {
-        if (emoteWindow)
+        if (emoteWindow != nullptr)
         {
             if (emoteWindow->mVisible == Visible_true)
                 emoteWindow->hide();
@@ -998,7 +1000,7 @@ void ChatWindow::statChanged(const AttributesT id,
         return;
 
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-    if (oldVal1 > exp.first || !oldVal2)
+    if (oldVal1 > exp.first || (oldVal2 == 0))
         return;
 
     const int change = exp.first - oldVal1;
@@ -1082,7 +1084,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
                             const std::string &restrict mes,
                             const ChatMsgTypeT own)
 {
-    if (mes.empty() || !localPlayer)
+    if (mes.empty() || (localPlayer == nullptr))
         return;
 
     std::string playerName = localPlayer->getName();
@@ -1104,11 +1106,11 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
     else if (config.getBoolValue("whispertab"))
     {
         tab = addWhisperTab(nick, nick);
-        if (tab)
+        if (tab != nullptr)
             saveState();
     }
 
-    if (tab)
+    if (tab != nullptr)
     {
         if (own == ChatMsgType::BY_PLAYER)
         {
@@ -1149,7 +1151,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
             localPlayer->afkRespond(tab, nick);
         }
     }
-    else if (localChatTab)
+    else if (localChatTab != nullptr)
     {
         if (own == ChatMsgType::BY_PLAYER)
         {
@@ -1166,7 +1168,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
                 " : ").append(mes),
                 ChatMsgType::ACT_WHISPER,
                 IgnoreRecord_false);
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->afkRespond(nullptr, nick);
         }
     }
@@ -1176,7 +1178,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &caption,
                                       const std::string &nick,
                                       const bool switchTo)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return nullptr;
 
     std::string playerName = localPlayer->getName();
@@ -1198,7 +1200,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &caption,
     else
     {
         ret = new WhisperTab(this, caption, nick);
-        if (gui && !player_relations.isGoodName(nick))
+        if ((gui != nullptr) && !player_relations.isGoodName(nick))
             ret->setLabelFont(gui->getSecureFont());
         mWhispers[tempNick] = ret;
         if (config.getBoolValue("showChatHistory"))
@@ -1213,7 +1215,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &caption,
 
 WhisperTab *ChatWindow::getWhisperTab(const std::string &nick) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return nullptr;
 
     std::string playerName = localPlayer->getName();
@@ -1240,7 +1242,7 @@ ChatTab *ChatWindow::addSpecialChannelTab(const std::string &name,
     ChatTab *ret = nullptr;
     if (name == TRADE_CHANNEL)
     {
-        if (!tradeChatTab)
+        if (tradeChatTab == nullptr)
         {
             tradeChatTab = new TradeTab(chatWindow);
             tradeChatTab->setAllowHighlight(false);
@@ -1250,7 +1252,7 @@ ChatTab *ChatWindow::addSpecialChannelTab(const std::string &name,
     }
     else if (name == GM_CHANNEL)
     {
-        if (!gmChatTab)
+        if (gmChatTab == nullptr)
         {
             gmChatTab = new GmTab(chatWindow);
             chatHandler->joinChannel(gmChatTab->getChannelName());
@@ -1270,7 +1272,7 @@ ChatTab *ChatWindow::addChannelTab(const std::string &name,
     toLower(tempName);
 
     ChatTab *const tab = addSpecialChannelTab(name, switchTo);
-    if (tab)
+    if (tab != nullptr)
         return tab;
 
     const ChannelMap::const_iterator i = mChannels.find(tempName);
@@ -1304,7 +1306,7 @@ ChatTab *ChatWindow::addChatTab(const std::string &name,
         name[0] == '#')
     {
         ChatTab *const tab = addChannelTab(name, switchTo);
-        if (tab && join)
+        if ((tab != nullptr) && join)
             chatHandler->joinChannel(name);
         return tab;
     }
@@ -1319,11 +1321,11 @@ void ChatWindow::postConnection()
     FOR_EACH (ChannelMap::const_iterator, iter, mChannels)
     {
         ChatTab *const tab = iter->second;
-        if (!tab)
+        if (tab == nullptr)
             return;
         chatHandler->joinChannel(tab->getChannelName());
     }
-    if (langChatTab)
+    if (langChatTab != nullptr)
         chatHandler->joinChannel(langChatTab->getChannelName());
 }
 
@@ -1417,32 +1419,32 @@ void ChatWindow::autoComplete()
         mChatTabs->getSelectedTab());
     StringVect nameList;
 
-    if (cTab)
+    if (cTab != nullptr)
         cTab->getAutoCompleteList(nameList);
     std::string newName = autoComplete(nameList, name);
-    if (!newName.empty() && !startName)
+    if (!newName.empty() && (startName == 0))
         secureChatCommand(newName);
 
-    if (cTab && newName.empty())
+    if ((cTab != nullptr) && newName.empty())
     {
         cTab->getAutoCompleteCommands(nameList);
         newName = autoComplete(nameList, name);
     }
 
-    if (newName.empty() && actorManager)
+    if (newName.empty() && (actorManager != nullptr))
     {
         actorManager->getPlayerNames(nameList, NpcNames_true);
         newName = autoComplete(nameList, name);
-        if (!newName.empty() && !startName)
+        if (!newName.empty() && (startName == 0))
             secureChatCommand(newName);
     }
     if (newName.empty())
         newName = autoCompleteHistory(name);
-    if (newName.empty() && spellManager)
+    if (newName.empty() && (spellManager != nullptr))
         newName = spellManager->autoComplete(name);
     if (newName.empty())
         newName = autoComplete(name, &mCommands);
-    if (newName.empty() && actorManager)
+    if (newName.empty() && (actorManager != nullptr))
     {
         actorManager->getMobNames(nameList);
         newName = autoComplete(nameList, name);
@@ -1504,7 +1506,7 @@ std::string ChatWindow::autoComplete(const StringVect &names,
 std::string ChatWindow::autoComplete(const std::string &partName,
                                      const History *const words) const
 {
-    if (!words)
+    if (words == nullptr)
         return "";
 
     ChatCommands::const_iterator i = words->begin();
@@ -1585,7 +1587,7 @@ bool ChatWindow::resortChatLog(std::string line,
         prefix = std::string("##3").append(channel).append("##0");
     }
     else if (mEnableTradeFilter &&
-             tradeChatTab &&
+             (tradeChatTab != nullptr) &&
              findI(line, mTradeFilter) != std::string::npos)
     {
         // TRANSLATORS: prefix for moved message to trade tab.
@@ -1661,7 +1663,7 @@ bool ChatWindow::resortChatLog(std::string line,
                 replaceAll(line, ": \302\202\304", ": ");
             }
 
-            if (tradeChatTab)
+            if (tradeChatTab != nullptr)
             {
                 line = line.erase(idx + 2, 2);
                 tradeChatTab->chatLog(prefix + line,
@@ -1669,7 +1671,7 @@ bool ChatWindow::resortChatLog(std::string line,
                     ignoreRecord,
                     tryRemoveColors);
             }
-            else if (localChatTab)
+            else if (localChatTab != nullptr)
             {
                 line = line.erase(idx + 2, 2);
                 localChatTab->chatLog(prefix + line,
@@ -1683,7 +1685,7 @@ bool ChatWindow::resortChatLog(std::string line,
 
     if (!channel.empty())
     {
-        if (langChatTab)
+        if (langChatTab != nullptr)
         {
             if (langChatTab->getChannelName() == channel)
             {
@@ -1710,7 +1712,7 @@ bool ChatWindow::resortChatLog(std::string line,
                 tryRemoveColors);
         }
     }
-    else if (localChatTab && channel.empty())
+    else if ((localChatTab != nullptr) && channel.empty())
     {
         localChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
     }
@@ -1723,9 +1725,9 @@ void ChatWindow::battleChatLog(const std::string &line, ChatMsgTypeT own,
 {
     if (own == ChatMsgType::BY_UNKNOWN)
         own = ChatMsgType::BY_SERVER;
-    if (battleChatTab)
+    if (battleChatTab != nullptr)
         battleChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
-    else if (debugChatTab)
+    else if (debugChatTab != nullptr)
         debugChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
 }
 
@@ -1748,11 +1750,11 @@ void ChatWindow::channelChatLog(const std::string &channel,
     else
     {
         tab = addChannelTab(channel, false);
-        if (tab)
+        if (tab != nullptr)
             saveState();
     }
 
-    if (tab)
+    if (tab != nullptr)
         tab->chatLog(line, own, ignoreRecord, tryRemoveColors);
 }
 
@@ -1764,7 +1766,8 @@ void ChatWindow::initTradeFilter()
     std::ifstream tradeFile;
     struct stat statbuf;
 
-    if (!stat(tradeListName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
+    if (stat(tradeListName.c_str(), &statbuf) == 0 &&
+        S_ISREG(statbuf.st_mode))
     {
         tradeFile.open(tradeListName.c_str(), std::ios::in);
         if (tradeFile.is_open())
@@ -1785,18 +1788,18 @@ void ChatWindow::updateOnline(const std::set<std::string> &onlinePlayers) const
 {
     const Party *party = nullptr;
     const Guild *guild = nullptr;
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         party = localPlayer->getParty();
         guild = localPlayer->getGuild();
     }
     FOR_EACH (TabMap::const_iterator, iter, mWhispers)
     {
-        if (!iter->second)
+        if (iter->second == nullptr)
             return;
 
         WhisperTab *const tab = static_cast<WhisperTab*>(iter->second);
-        if (!tab)
+        if (tab == nullptr)
             continue;
 
         if (onlinePlayers.find(tab->getNick()) != onlinePlayers.end())
@@ -1806,29 +1809,29 @@ void ChatWindow::updateOnline(const std::set<std::string> &onlinePlayers) const
         else
         {
             const std::string &nick = tab->getNick();
-            if (actorManager)
+            if (actorManager != nullptr)
             {
                 const Being *const being = actorManager->findBeingByName(
                     nick, ActorType::Player);
-                if (being)
+                if (being != nullptr)
                 {
                     tab->setWhisperTabColors();
                     continue;
                 }
             }
-            if (party)
+            if (party != nullptr)
             {
                 const PartyMember *const pm = party->getMember(nick);
-                if (pm && pm->getOnline())
+                if ((pm != nullptr) && pm->getOnline())
                 {
                     tab->setWhisperTabColors();
                     continue;
                 }
             }
-            if (guild)
+            if (guild != nullptr)
             {
                 const GuildMember *const gm = guild->getMember(nick);
-                if (gm && gm->getOnline())
+                if ((gm != nullptr) && gm->getOnline())
                 {
                     tab->setWhisperTabColors();
                     continue;
@@ -1854,11 +1857,11 @@ void ChatWindow::loadState()
             "chatWhisperFlags" + toString(num), 1);
 
         ChatTab *const tab = addChatTab(nick, false, false);
-        if (tab)
+        if (tab != nullptr)
         {
-            tab->setAllowHighlight(flags & 1);
-            tab->setRemoveNames((flags & 2) / 2);
-            tab->setNoAway((flags & 4) / 4);
+            tab->setAllowHighlight((flags & 1) != 0);
+            tab->setRemoveNames(((flags & 2) / 2) != 0);
+            tab->setNoAway(((flags & 4) / 4) != 0);
         }
         num ++;
     }
@@ -1870,7 +1873,7 @@ void ChatWindow::saveState() const
     for (ChannelMap::const_iterator iter = mChannels.begin(),
          iter_end = mChannels.end(); iter != iter_end && num < 50; ++iter)
     {
-        if (!iter->second)
+        if (iter->second == nullptr)
             return;
         if (!saveTab(num, iter->second))
             continue;
@@ -1880,7 +1883,7 @@ void ChatWindow::saveState() const
     for (TabMap::const_iterator iter = mWhispers.begin(),
          iter_end = mWhispers.end(); iter != iter_end && num < 50; ++iter)
     {
-        if (!iter->second)
+        if (iter->second == nullptr)
             return;
         if (!saveTab(num, iter->second))
             continue;
@@ -1898,7 +1901,7 @@ void ChatWindow::saveState() const
 bool ChatWindow::saveTab(const int num,
                          const ChatTab *const tab) const
 {
-    if (!tab)
+    if (tab == nullptr)
         return false;
 
     serverConfig.setValue("chatWhisper" + toString(num),
@@ -1927,7 +1930,7 @@ void ChatWindow::loadCustomList()
     std::string listName = settings.serverConfigDir
         + "/customwords.txt";
 
-    if (!stat(listName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
+    if ((stat(listName.c_str(), &statbuf) == 0) && S_ISREG(statbuf.st_mode))
     {
         listFile.open(listName.c_str(), std::ios::in);
         if (listFile.is_open())
@@ -1958,7 +1961,7 @@ void ChatWindow::addToAwayLog(const std::string &line)
 
 void ChatWindow::displayAwayLog() const
 {
-    if (!localChatTab)
+    if (localChatTab == nullptr)
         return;
 
     std::list<std::string>::const_iterator i = mAwayLog.begin();
@@ -1975,7 +1978,7 @@ void ChatWindow::displayAwayLog() const
 void ChatWindow::parseHighlights()
 {
     mHighlights.clear();
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     splitToStringVector(mHighlights, config.getStringValue(
@@ -1987,7 +1990,7 @@ void ChatWindow::parseHighlights()
 void ChatWindow::parseGlobalsFilter()
 {
     mGlobalsFilter.clear();
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     splitToStringVector(mGlobalsFilter, config.getStringValue(
@@ -2004,11 +2007,11 @@ bool ChatWindow::findHighlight(const std::string &str)
 void ChatWindow::copyToClipboard(const int x, const int y) const
 {
     const ChatTab *const tab = getFocused();
-    if (!tab)
+    if (tab == nullptr)
         return;
 
     const BrowserBox *const text = tab->mTextOutput;
-    if (!text)
+    if (text == nullptr)
         return;
 
     std::string str = text->getTextAtPos(x, y);
@@ -2071,7 +2074,7 @@ void ChatWindow::safeDraw(Graphics *const graphics)
 
 void ChatWindow::updateVisibility()
 {
-    if (!gui)
+    if (gui == nullptr)
         return;
 
     int mouseX = 0;
@@ -2107,10 +2110,15 @@ void ChatWindow::logicChildren()
 
 void ChatWindow::addGlobalMessage(const std::string &line)
 {
-    if (debugChatTab && findI(line, mGlobalsFilter) != std::string::npos)
+    if (debugChatTab != nullptr &&
+        findI(line, mGlobalsFilter) != std::string::npos)
+    {
         debugChatTab->chatLog(line, ChatMsgType::BY_OTHER);
+    }
     else
+    {
         localChatTab->chatLog(line, ChatMsgType::BY_GM);
+    }
 }
 
 bool ChatWindow::isTabPresent(const ChatTab *const tab) const
@@ -2120,13 +2128,13 @@ bool ChatWindow::isTabPresent(const ChatTab *const tab) const
 
 void ChatWindow::debugMessage(const std::string &msg)
 {
-    if (debugChatTab)
+    if (debugChatTab != nullptr)
         debugChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 }
 
 void ChatWindow::showGMTab()
 {
-    if (!gmChatTab &&
+    if ((gmChatTab == nullptr) &&
         config.getBoolValue("enableGmTab") &&
         localPlayer->getGMLevel() >= paths.getIntValue("gmTabMinimalLevel"))
     {
@@ -2145,7 +2153,7 @@ void ChatWindow::toggleChatFocus()
 void ChatWindow::joinRoom(const bool isJoin)
 {
     Tab *const tab = mChatTabs->getTabByIndex(0);
-    if (tab)
+    if (tab != nullptr)
     {
         std::string name;
         if (isJoin)

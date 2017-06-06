@@ -226,10 +226,10 @@ void NpcDialog::postInit()
     enableVisibleSound(true);
     soundManager.playGuiSound(SOUND_SHOW_WINDOW);
 
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         const Being *const being = actorManager->findBeing(mNpcId);
-        if (being)
+        if (being != nullptr)
         {
             showAvatar(NPCDB::getAvatarFor(fromInt(
                 being->getSubType(), BeingTypeId)));
@@ -246,7 +246,7 @@ NpcDialog::~NpcDialog()
     CHECKLISTENERS
     clearLayout();
 
-    if (mPlayerBox)
+    if (mPlayerBox != nullptr)
     {
         delete mPlayerBox->getBeing();
         delete mPlayerBox;
@@ -276,7 +276,7 @@ NpcDialog::~NpcDialog()
 
     FOR_EACH (ImageVectorIter, it, mImages)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->decRef();
     }
 
@@ -328,7 +328,7 @@ void NpcDialog::action(const ActionEvent &event)
         else if (mActionState == NpcActionState::CLOSE
                  || mActionState == NpcActionState::WAIT)
         {
-            if (cutInWindow)
+            if (cutInWindow != nullptr)
                 cutInWindow->hide();
             closeDialog();
         }
@@ -340,9 +340,9 @@ void NpcDialog::action(const ActionEvent &event)
             {
                 case NpcInputState::LIST:
                 {
-                    if (mDialogInfo)
+                    if (mDialogInfo != nullptr)
                         return;
-                    if (gui)
+                    if (gui != nullptr)
                         gui->resetClickCount();
                     const int selectedIndex = mItemList->getSelected();
 
@@ -401,7 +401,7 @@ void NpcDialog::action(const ActionEvent &event)
                     else
                     {
                         const Item *item = mInventory->getItem(0);
-                        if (item)
+                        if (item != nullptr)
                         {
                             str = strprintf("%d,%d", item->getId(),
                                 toInt(item->getColor(), int));
@@ -414,7 +414,7 @@ void NpcDialog::action(const ActionEvent &event)
                         {
                             str.append(";");
                             item = mInventory->getItem(f);
-                            if (item)
+                            if (item != nullptr)
                             {
                                 str.append(strprintf("%d,%d", item->getId(),
                                     toInt(item->getColor(), int)));
@@ -449,7 +449,7 @@ void NpcDialog::action(const ActionEvent &event)
                     else
                     {
                         const Item *item = mInventory->getItem(0);
-                        if (item)
+                        if (item != nullptr)
                         {
                             str = strprintf("%d", item->getTag());
                         }
@@ -461,7 +461,7 @@ void NpcDialog::action(const ActionEvent &event)
                         {
                             str.append(";");
                             item = mInventory->getItem(f);
-                            if (item)
+                            if (item != nullptr)
                                 str.append(strprintf("%d", item->getTag()));
                             else
                                 str.append("-1");
@@ -600,18 +600,18 @@ void NpcDialog::action(const ActionEvent &event)
                     npcHandler->listInput(mNpcId, 255);
                     break;
             }
-            if (cutInWindow)
+            if (cutInWindow != nullptr)
                 cutInWindow->hide();
             closeDialog();
         }
     }
     else if (eventId == "add")
     {
-        if (inventoryWindow)
+        if (inventoryWindow != nullptr)
         {
             Item *const item = inventoryWindow->getSelectedItem();
             Inventory *const inventory = PlayerInfo::getInventory();
-            if (inventory)
+            if (inventory != nullptr)
             {
                 if (mInputState == NpcInputState::ITEM_CRAFT)
                 {
@@ -684,7 +684,7 @@ void NpcDialog::choiceRequest()
     mItems.clear();
     FOR_EACH (ImageVectorIter, it, mImages)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->decRef();
     }
     mImages.clear();
@@ -765,7 +765,7 @@ bool NpcDialog::isAnyInputFocused()
 {
     FOR_EACH (DialogList::const_iterator, it, instances)
     {
-        if ((*it) && (*it)->isInputFocused())
+        if (((*it) != nullptr) && (*it)->isInputFocused())
             return true;
     }
 
@@ -851,7 +851,7 @@ NpcDialog *NpcDialog::getActive()
 
     FOR_EACH (DialogList::const_iterator, it, instances)
     {
-        if ((*it) && (*it)->isFocused())
+        if (((*it) != nullptr) && (*it)->isFocused())
             return (*it);
     }
 
@@ -862,7 +862,7 @@ void NpcDialog::closeAll()
 {
     FOR_EACH (DialogList::const_iterator, it, instances)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->close();
     }
 }
@@ -908,7 +908,7 @@ void NpcDialog::placeMenuControls()
 void NpcDialog::placeSkinControls()
 {
     createSkinControls();
-    if (mDialogInfo && mDialogInfo->hideText)
+    if ((mDialogInfo != nullptr) && mDialogInfo->hideText)
     {
         if (mShowAvatar)
         {
@@ -988,7 +988,7 @@ void NpcDialog::placeIntInputControls()
 
 void NpcDialog::placeItemInputControls()
 {
-    if (mDialogInfo)
+    if (mDialogInfo != nullptr)
     {
         mItemContainer->setCellBackgroundImage(mDialogInfo->inventory.cell);
         mItemContainer->setMaxColumns(mDialogInfo->inventory.columns);
@@ -1004,7 +1004,7 @@ void NpcDialog::placeItemInputControls()
     else
         mItemContainer->setInventory(mInventory);
 
-    if (mDialogInfo && mDialogInfo->hideText)
+    if ((mDialogInfo != nullptr) && mDialogInfo->hideText)
     {
         if (mShowAvatar)
         {
@@ -1064,7 +1064,7 @@ void NpcDialog::buildLayout()
         switch (mInputState)
         {
             case NpcInputState::LIST:
-                if (!mDialogInfo)
+                if (mDialogInfo == nullptr)
                     placeMenuControls();
                 else
                     placeSkinControls();
@@ -1099,7 +1099,7 @@ void NpcDialog::buildLayout()
 
 void NpcDialog::saveCamera()
 {
-    if (!viewport || mCameraMode >= 0)
+    if ((viewport == nullptr) || mCameraMode >= 0)
         return;
 
     mCameraMode = CAST_S32(settings.cameraMode);
@@ -1109,12 +1109,12 @@ void NpcDialog::saveCamera()
 
 void NpcDialog::restoreCamera()
 {
-    if (!viewport || mCameraMode == -1)
+    if ((viewport == nullptr) || mCameraMode == -1)
         return;
 
     if (CAST_S32(settings.cameraMode) != mCameraMode)
         viewport->toggleCameraMode();
-    if (mCameraMode)
+    if (mCameraMode != 0)
     {
         viewport->setCameraRelativeX(mCameraX);
         viewport->setCameraRelativeY(mCameraY);
@@ -1139,14 +1139,14 @@ void NpcDialog::showAvatar(const BeingTypeId avatarId)
             const BeingInfo *const info = AvatarDB::get(avatarId);
             const int pad2 = 2 * mPadding;
             int width = 0;
-            if (info)
+            if (info != nullptr)
             {
                 width = info->getWidth();
                 mPlayerBox->setWidth(width + pad2);
                 mPlayerBox->setHeight(info->getHeight() + pad2);
             }
             const Sprite *const sprite = mAvatarBeing->mSprites[0];
-            if (sprite && !width)
+            if ((sprite != nullptr) && (width == 0))
             {
                 mPlayerBox->setWidth(sprite->getWidth() + pad2);
                 mPlayerBox->setHeight(sprite->getHeight() + pad2);
@@ -1172,14 +1172,14 @@ void NpcDialog::showAvatar(const BeingTypeId avatarId)
 void NpcDialog::setAvatarDirection(const uint8_t direction)
 {
     Being *const being = mPlayerBox->getBeing();
-    if (being)
+    if (being != nullptr)
         being->setDirection(direction);
 }
 
 void NpcDialog::setAvatarAction(const int actionId)
 {
     Being *const being = mPlayerBox->getBeing();
-    if (being)
+    if (being != nullptr)
         being->setAction(static_cast<BeingActionT>(actionId), 0);
 }
 
@@ -1187,13 +1187,13 @@ void NpcDialog::logic()
 {
     BLOCK_START("NpcDialog::logic")
     Window::logic();
-    if (mShowAvatar && mAvatarBeing)
+    if (mShowAvatar && (mAvatarBeing != nullptr))
     {
         mAvatarBeing->logic();
         if (mPlayerBox->getWidth() < CAST_S32(3 * getPadding()))
         {
             const Sprite *const sprite = mAvatarBeing->mSprites[0];
-            if (sprite)
+            if (sprite != nullptr)
             {
                 mPlayerBox->setWidth(sprite->getWidth() + 2 * getPadding());
                 mPlayerBox->setHeight(sprite->getHeight() + 2 * getPadding());
@@ -1228,7 +1228,7 @@ void NpcDialog::mousePressed(MouseEvent &event)
         && event.getSource() == mTextBox)
     {
         event.consume();
-        if (popupMenu)
+        if (popupMenu != nullptr)
         {
             popupMenu->showNpcDialogPopup(mNpcId,
                 viewport->mMouseX,
@@ -1252,7 +1252,7 @@ void NpcDialog::setSkin(const std::string &skin)
         return;
     }
     const NpcDialogInfo *const dialog = NpcDialogDB::getDialog(skin);
-    if (!dialog)
+    if (dialog == nullptr)
     {
         logger->log("Error: creating controls for not existing npc dialog %s",
             skin.c_str());
@@ -1271,7 +1271,7 @@ void NpcDialog::createSkinControls()
 {
     deleteSkinControls();
 
-    if (!mDialogInfo)
+    if (mDialogInfo == nullptr)
         return;
 
     FOR_EACH (std::vector<NpcImageInfo*>::const_iterator,
@@ -1280,7 +1280,7 @@ void NpcDialog::createSkinControls()
     {
         const NpcImageInfo *const info = *it;
         Image *const image = Theme::getImageFromTheme(info->name);
-        if (image)
+        if (image != nullptr)
         {
             Icon *const icon = new Icon(this, image, AutoRelease_true);
             icon->setPosition(info->x, info->y);
@@ -1338,18 +1338,18 @@ void NpcDialog::createSkinControls()
 void NpcDialog::restoreVirtuals()
 {
     Inventory *const inventory = PlayerInfo::getInventory();
-    if (inventory)
+    if (inventory != nullptr)
         inventory->restoreVirtuals();
 }
 
 std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
 {
     std::string str;
-    if (item)
+    if (item != nullptr)
     {
         const std::vector<Item*> &items = item->getChilds();
         const size_t sz = items.size();
-        if (!sz)
+        if (sz == 0u)
             return str;
 
         const Item *item2 = items[0];
@@ -1382,7 +1382,7 @@ void NpcDialog::addCraftItem(Item *const item,
 
     Inventory *const inventory = PlayerInfo::getInventory();
 
-    if (!inventory)
+    if (inventory == nullptr)
         return;
 
     if (mComplexInventory->addVirtualItem(

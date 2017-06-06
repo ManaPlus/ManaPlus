@@ -51,10 +51,10 @@ class ImageSprite final : public Sprite
                   const override final A_NONNULL(2);
 
         int getWidth() const override final A_WARN_UNUSED
-        { return mImage ? mImage->getWidth() : 0; }
+        { return mImage != nullptr ? mImage->getWidth() : 0; }
 
         int getHeight() const override final A_WARN_UNUSED
-        { return mImage ? mImage->getHeight() : 0; }
+        { return mImage != nullptr ? mImage->getHeight() : 0; }
 
         const Image* getImage() const override final A_WARN_UNUSED
         { return mImage; }

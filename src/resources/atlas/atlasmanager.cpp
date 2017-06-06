@@ -76,7 +76,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
-        if (!atlas)
+        if (atlas == nullptr)
             continue;
 
         createSDLAtlas(atlas);
@@ -105,7 +105,7 @@ AtlasResource *AtlasManager::loadEmptyAtlas(const std::string &name,
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
-        if (!atlas)
+        if (atlas == nullptr)
             continue;
 
         atlas->atlasImage = new Image(0,
@@ -132,7 +132,7 @@ void AtlasManager::loadImages(const StringVect &files,
         // check is image with same name already in cache
         // and if yes, move it to deleted set
         Resource *const res = ResourceManager::getTempResource(str);
-        if (res)
+        if (res != nullptr)
         {
             // increase counter because in moveToDeleted it will be decreased.
             res->incRef();
@@ -149,12 +149,13 @@ void AtlasManager::loadImages(const StringVect &files,
         }
 
         SDL_RWops *const rw = VirtFs::rwopsOpenRead(path);
-        if (rw)
+        if (rw != nullptr)
         {
-            Image *const image = d ? surfaceImageHelper->load(rw, *d)
-                : surfaceImageHelper->load(rw);
+            Image *const image = d != nullptr ?
+                surfaceImageHelper->load(rw, *d) :
+                surfaceImageHelper->load(rw);
 
-            if (image)
+            if (image != nullptr)
             {
                 image->mIdPath = str;
 #ifdef DEBUG_IMAGES
@@ -181,7 +182,7 @@ void AtlasManager::loadEmptyImages(const StringVect &files,
         // check is image with same name already in cache
         // and if yes, move it to deleted set
         Resource *const res = ResourceManager::getTempResource(str);
-        if (res)
+        if (res != nullptr)
         {
             // increase counter because in moveToDeleted it will be decreased.
             res->incRef();
@@ -212,7 +213,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
     for (it = images.begin(); it != it_end; ++ it)
     {
         const Image *const img = *it;
-        if (img)
+        if (img != nullptr)
         {
             atlas->name = std::string("atlas_").append(name).append(
                 "_").append(img->mIdPath);
@@ -223,7 +224,7 @@ void AtlasManager::simpleSort(const std::string &restrict name,
     for (it = images.begin(); it != it_end; ++ it)
     {
         Image *const img = *it;
-        if (img)
+        if (img != nullptr)
         {
             AtlasItem *const item = new AtlasItem(img);
             item->name = img->mIdPath;
@@ -279,7 +280,7 @@ void AtlasManager::emptySort(const std::string &restrict name,
     for (it = images.begin(); it != it_end; ++ it)
     {
         const Image *const img = *it;
-        if (img)
+        if (img != nullptr)
         {
             atlas->name = std::string("atlas_").append(name).append(
                 "_").append(img->mIdPath);
@@ -290,7 +291,7 @@ void AtlasManager::emptySort(const std::string &restrict name,
     for (it = images.begin(); it != it_end; ++ it)
     {
         Image *const img = *it;
-        if (img)
+        if (img != nullptr)
         {
             AtlasItem *const item = new AtlasItem(img);
             item->name = img->mIdPath;
@@ -340,7 +341,7 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     // temp SDL surface for atlas
     SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_SWSURFACE,
         width, height, 32U, rmask, gmask, bmask, amask);
-    if (!surface)
+    if (surface == nullptr)
     {
         reportAlways("Error creating surface for atlas. Size: %dx%d",
             width,
@@ -401,7 +402,7 @@ void AtlasManager::convertEmptyAtlas(TextureAtlas *const atlas)
     // convert surface to OpemGL image
     Image *const oldImage = atlas->atlasImage;
 
-    if (oldImage->mSDLSurface)
+    if (oldImage->mSDLSurface != nullptr)
     {
         atlas->atlasImage = imageHelper->loadSurface(
             atlas->atlasImage->mSDLSurface);
@@ -409,7 +410,7 @@ void AtlasManager::convertEmptyAtlas(TextureAtlas *const atlas)
     }
 
     Image *const image = atlas->atlasImage;
-    if (!image)
+    if (image == nullptr)
         return;
 
     image->mIdPath = atlas->name;
@@ -429,7 +430,7 @@ void AtlasManager::convertEmptyAtlas(TextureAtlas *const atlas)
         item->image = image->getSubImage(item->x, item->y,
             item->width, item->height);
         Image *const image2 = item->image;
-        if (image2)
+        if (image2 != nullptr)
         {
             image2->mIdPath = item->name;
 #ifdef DEBUG_IMAGES
@@ -448,7 +449,7 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
     // convert surface to OpemGL image
     Image *const oldImage = atlas->atlasImage;
 
-    if (oldImage->mSDLSurface)
+    if (oldImage->mSDLSurface != nullptr)
     {
         atlas->atlasImage = imageHelper->loadSurface(
             atlas->atlasImage->mSDLSurface);
@@ -456,7 +457,7 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
     }
 
     Image *const image = atlas->atlasImage;
-    if (!image)
+    if (image == nullptr)
         return;
 
     image->mIdPath = atlas->name;
@@ -476,7 +477,7 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
         item->image = image->getSubImage(item->x, item->y,
             item->width, item->height);
         Image *const image2 = item->image;
-        if (image2)
+        if (image2 != nullptr)
         {
             image2->mIdPath = item->name;
 #ifdef DEBUG_IMAGES
@@ -491,22 +492,22 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 
 void AtlasManager::injectToResources(const AtlasResource *const resource)
 {
-    if (!resource)
+    if (resource == nullptr)
         return;
     FOR_EACH (std::vector<TextureAtlas*>::const_iterator,
               it, resource->atlases)
     {
         // add each atlas image to resources
         TextureAtlas *const atlas = *it;
-        if (atlas)
+        if (atlas != nullptr)
         {
             Image *const image = atlas->atlasImage;
-            if (image)
+            if (image != nullptr)
                 ResourceManager::addResource(atlas->name, image);
             FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
-                if (!item)
+                if (item == nullptr)
                     continue;
                 // add each atlas sub image to resources
                 ResourceManager::addResource(item->name, item->image);
@@ -517,16 +518,16 @@ void AtlasManager::injectToResources(const AtlasResource *const resource)
 
 void AtlasManager::moveToDeleted(AtlasResource *const resource)
 {
-    if (!resource)
+    if (resource == nullptr)
         return;
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
     {
         // move each atlas image to deleted
         TextureAtlas *const atlas = *it;
-        if (atlas)
+        if (atlas != nullptr)
         {
             Image *const image = atlas->atlasImage;
-            if (image)
+            if (image != nullptr)
             {
                 // move each atlas image to deleted
                 ResourceManager::moveToDeleted(image);
@@ -534,10 +535,10 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
             FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
-                if (item)
+                if (item != nullptr)
                 {
                     Image *const image2 = item->image;
-                    if (image2)
+                    if (image2 != nullptr)
                     {
                         // move each atlas sub image to deleted
                         ResourceManager::moveToDeleted(image2);

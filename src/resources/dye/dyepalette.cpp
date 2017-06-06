@@ -97,7 +97,7 @@ DyePalette::DyePalette(const std::string &restrict description,
                 continue;
             }
             const DyeColor *const color = PaletteDB::getColor(str);
-            if (color)
+            if (color != nullptr)
             {
                 DyeColor color2 = *color;
                 color2.value[3] = alpha;
@@ -249,7 +249,7 @@ void DyePalette::initFunctions()
 {
 #ifdef SIMD_SUPPORTED
     const uint32_t flags = Cpu::getFlags();
-    if (flags & Cpu::FEATURE_AVX2)
+    if ((flags & Cpu::FEATURE_AVX2) != 0u)
     {
         funcReplaceSColor = &DyePalette::replaceSColorAvx2;
         funcReplaceSColorAvx2 = &DyePalette::replaceSColorAvx2;
@@ -267,7 +267,7 @@ void DyePalette::initFunctions()
         funcReplaceAOGLColorSse2 = &DyePalette::replaceAOGLColorSse2;
 #endif  // USE_OPENGL
     }
-    else if (flags & Cpu::FEATURE_SSE2)
+    else if ((flags & Cpu::FEATURE_SSE2) != 0u)
     {
         funcReplaceSColor = &DyePalette::replaceSColorSse2;
         funcReplaceSColorAvx2 = &DyePalette::replaceSColorSse2;

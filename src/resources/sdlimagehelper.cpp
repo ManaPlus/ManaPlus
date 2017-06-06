@@ -53,7 +53,7 @@ bool SDLImageHelper::mEnableAlphaCache = false;
 Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
     SDL_Surface *const tmpImage = loadPng(rw);
-    if (!tmpImage)
+    if (tmpImage == nullptr)
     {
         reportAlways("Error, image load failed: %s",
             IMG_GetError());
@@ -83,7 +83,7 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     SDL_Surface *const surf = MSDL_ConvertSurface(
         tmpImage, &rgba, SDL_SWSURFACE);
     MSDL_FreeSurface(tmpImage);
-    if (!surf)
+    if (surf == nullptr)
         return nullptr;
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
@@ -94,14 +94,14 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         case 1:
         {
             const DyePalette *const pal = dye.getSPalete();
-            if (pal)
+            if (pal != nullptr)
                 DYEPALETTEP(pal, SColor)(pixels, surf->w * surf->h);
             break;
         }
         case 2:
         {
             const DyePalette *const pal = dye.getAPalete();
-            if (pal)
+            if (pal != nullptr)
                 DYEPALETTEP(pal, AColor)(pixels, surf->w * surf->h);
             break;
         }
@@ -128,7 +128,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
                                          const int height A_UNUSED,
                                          const float alpha)
 {
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
     bool hasAlpha = false;
@@ -138,7 +138,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     uint8_t *alphaChannel = new uint8_t[sz];
 
     const SDL_PixelFormat *const fmt = tmpImage->format;
-    if (fmt->Amask)
+    if (fmt->Amask != 0u)
     {
         for (size_t i = 0; i < sz; ++ i)
         {
@@ -179,7 +179,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
         alphaChannel = nullptr;
     }
 
-    if (!image)
+    if (image == nullptr)
     {
         reportAlways("Error: Image convert failed.");
         delete [] alphaChannel;
@@ -193,7 +193,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
 
 SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
 {
-    if (!tmpImage || !tmpImage->format)
+    if ((tmpImage == nullptr) || (tmpImage->format == nullptr))
         return nullptr;
 
     return MSDL_ConvertSurface(tmpImage, tmpImage->format, SDL_SWSURFACE);
@@ -201,7 +201,7 @@ SDL_Surface* SDLImageHelper::SDLDuplicateSurface(SDL_Surface *const tmpImage)
 
 Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
 {
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
     bool hasAlpha = false;
@@ -212,7 +212,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
         reportAlways("Non 32 bit image detected");
         tmpImage = convertTo32Bit(tmpImage);
 
-        if (!tmpImage)
+        if (tmpImage == nullptr)
             return nullptr;
         converted = true;
     }
@@ -223,10 +223,10 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
     uint8_t *alphaChannel = new uint8_t[sz];
 
     // Figure out whether the image uses its alpha layer
-    if (!tmpImage->format->palette)
+    if (tmpImage->format->palette == nullptr)
     {
         const SDL_PixelFormat *const fmt = tmpImage->format;
-        if (fmt->Amask)
+        if (fmt->Amask != 0u)
         {
             const uint32_t amask = fmt->Amask;
             const uint8_t ashift = fmt->Ashift;
@@ -279,7 +279,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
         alphaChannel = nullptr;
     }
 
-    if (!image)
+    if (image == nullptr)
     {
         reportAlways("Error: Image convert failed.");
         delete [] alphaChannel;
@@ -308,7 +308,7 @@ void SDLImageHelper::copySurfaceToImage(const Image *const image,
                                         const int x, const int y,
                                         SDL_Surface *const surface) const
 {
-    if (!image || !surface)
+    if ((image == nullptr) || (surface == nullptr))
         return;
 
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);

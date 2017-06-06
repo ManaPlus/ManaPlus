@@ -75,7 +75,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     setResizable(true);
     setStickyButtonLock(true);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
     setDefaultSize(500, 400, ImagePosition::CENTER);
 
@@ -84,7 +84,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     Button *const okButton = new Button(this, _("Close"), "close", this);
 
     mBrowserBox->setLinkHandler(mItemLinkHandler);
-    if (gui)
+    if (gui != nullptr)
         mBrowserBox->setFont(gui->getHelpFont());
     mBrowserBox->setProcessVars(true);
     mBrowserBox->setEnableImages(true);
@@ -144,7 +144,7 @@ void DidYouKnowWindow::action(const ActionEvent &event)
 void DidYouKnowWindow::loadData(int num)
 {
     mBrowserBox->clearRows();
-    if (!num)
+    if (num == 0)
     {
         const int curTip = config.getIntValue("currentTip");
         if (curTip == 1)

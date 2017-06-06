@@ -97,7 +97,7 @@ bool Joystick::open()
 
     mJoystick = SDL_JoystickOpen(mNumber);
 
-    if (!mJoystick)
+    if (mJoystick == nullptr)
     {
         logger->log("Couldn't open joystick: %s", SDL_GetError());
         return false;
@@ -129,7 +129,7 @@ bool Joystick::open()
 void Joystick::close()
 {
     logger->log("close joystick %d", mNumber);
-    if (mJoystick)
+    if (mJoystick != nullptr)
     {
         SDL_JoystickClose(mJoystick);
         mJoystick = nullptr;
@@ -144,7 +144,7 @@ void Joystick::reload()
 
 void Joystick::setNumber(const int n)
 {
-    if (mJoystick)
+    if (mJoystick != nullptr)
     {
         SDL_JoystickClose(mJoystick);
         mNumber = n;
@@ -200,17 +200,17 @@ void Joystick::logic()
             logger->log("axis 4 pos: %d", SDL_JoystickGetAxis(mJoystick, 4));
 #endif  // DEBUG_JOYSTICK
 
-        if (!mDirection && mHaveHats)
+        if ((mDirection == 0u) && mHaveHats)
         {
             // reading only hat 0
             const uint8_t hat = SDL_JoystickGetHat(mJoystick, 0);
-            if (hat & SDL_HAT_RIGHT)
+            if ((hat & SDL_HAT_RIGHT) != 0)
                 mDirection |= RIGHT;
-            else if (hat & SDL_HAT_LEFT)
+            else if ((hat & SDL_HAT_LEFT) != 0)
                 mDirection |= LEFT;
-            if (hat & SDL_HAT_UP)
+            if ((hat & SDL_HAT_UP) != 0)
                 mDirection |= UP;
-            else if (hat & SDL_HAT_DOWN)
+            else if ((hat & SDL_HAT_DOWN) != 0)
                 mDirection |= DOWN;
         }
 

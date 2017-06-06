@@ -69,7 +69,7 @@ void TextSelectDialog::postInit()
     setMinHeight(220);
     setDefaultSize(260, 230, ImagePosition::CENTER);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     setActionEventId("OK");
@@ -104,7 +104,7 @@ void TextSelectDialog::postInit()
     placer = getPlacer(0, 0);
 
     placer(0, 0, mScrollArea, 8, 5).setPadding(3);
-    if (mQuitButton)
+    if (mQuitButton != nullptr)
     {
         placer(6, 5, mSelectButton);
         placer(7, 5, mQuitButton);
@@ -174,7 +174,7 @@ void TextSelectDialog::setVisible(Visible visible)
 
     if (visible == Visible_true)
     {
-        if (mItemList)
+        if (mItemList != nullptr)
             mItemList->requestFocus();
     }
     else

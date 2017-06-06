@@ -317,7 +317,7 @@ class BeingInfo final
         { mAllowDelete = b; }
 
         int getAllowDelete() const noexcept2 A_WARN_UNUSED
-        { return mAllowDelete; }
+        { return static_cast<int>(mAllowDelete); }
 
         void setQuickActionEffectId(const int n)
         { mQuickActionEffectId = n; }

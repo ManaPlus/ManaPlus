@@ -87,7 +87,7 @@ void ChatRecv::processWhisperResponseContinue(Net::MessageIn &msg,
             // Success (don't need to report)
             break;
         case 0x01:
-            if (chatWindow)
+            if (chatWindow != nullptr)
             {
                 chatWindow->addWhisper(nick,
                     // TRANSLATORS: chat message
@@ -97,7 +97,7 @@ void ChatRecv::processWhisperResponseContinue(Net::MessageIn &msg,
             }
             break;
         case 0x02:
-            if (chatWindow)
+            if (chatWindow != nullptr)
             {
                 chatWindow->addWhisper(nick,
                     // TRANSLATORS: chat message
@@ -107,7 +107,7 @@ void ChatRecv::processWhisperResponseContinue(Net::MessageIn &msg,
             }
             break;
         case 0x03:
-            if (chatWindow)
+            if (chatWindow != nullptr)
             {
                 chatWindow->addWhisper(nick,
                     // TRANSLATORS: chat message
@@ -128,10 +128,12 @@ void ChatRecv::processMVPEffect(Net::MessageIn &msg)
     BLOCK_START("ChatRecv::processMVPEffect")
     // Display MVP player
     const BeingId id = msg.readBeingId("being id");
-    if (localChatTab && actorManager && config.getBoolValue("showMVP"))
+    if (localChatTab != nullptr &&
+        actorManager != nullptr &&
+        config.getBoolValue("showMVP"))
     {
         const Being *const being = actorManager->findBeing(id);
-        if (!being)
+        if (being == nullptr)
             NotifyManager::notify(NotifyTypes::MVP_PLAYER, "");
         else
             NotifyManager::notify(NotifyTypes::MVP_PLAYER, being->getName());
@@ -144,7 +146,7 @@ void ChatRecv::processIgnoreAllResponse(Net::MessageIn &msg)
     BLOCK_START("ChatRecv::processIgnoreAllResponse")
     const uint8_t action = msg.readUInt8("action");
     const uint8_t fail = msg.readUInt8("result");
-    if (!localChatTab)
+    if (localChatTab == nullptr)
     {
         BLOCK_END("ChatRecv::processIgnoreAllResponse")
         return;

@@ -408,7 +408,7 @@ DefaultsData* getConfigDefaults()
 
 void getConfigDefaults2(DefaultsData *const configData)
 {
-    if (!configData)
+    if (configData == nullptr)
         return;
     const int density = graphicsManager.getDensity();
     int size = 12;

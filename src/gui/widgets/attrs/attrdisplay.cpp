@@ -60,7 +60,7 @@ std::string AttrDisplay::update()
     const int base = PlayerInfo::getStatBase(mId);
     const int bonus = PlayerInfo::getStatMod(mId);
     std::string value = toString(base + bonus);
-    if (bonus)
+    if (bonus != 0)
         value.append(strprintf("=%d%+d", base, bonus));
     mValue->setCaption(value);
     return mName;

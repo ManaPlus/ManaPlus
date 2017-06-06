@@ -73,7 +73,7 @@ OutfitWindow::OutfitWindow() :
         serverConfig.getValueBool("OutfitUnequip0", true))),
     // TRANSLATORS: outfits window checkbox
     mAwayOutfitCheck(new CheckBox(this, _("Away outfit"),
-        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1))),
+        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1) != 0u)),
     // TRANSLATORS: outfits window label
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),
         keyName(0).c_str()))),
@@ -100,7 +100,7 @@ OutfitWindow::OutfitWindow() :
     setMinWidth(145);
     setMinHeight(220);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     mCurrentLabel->setAlignment(Graphics::CENTER);
@@ -181,7 +181,7 @@ void OutfitWindow::load()
     if (mAwayOutfit >= CAST_S32(OUTFITS_COUNT))
         mAwayOutfit = CAST_S32(OUTFITS_COUNT) - 1;
 
-    if (mAwayOutfitCheck)
+    if (mAwayOutfitCheck != nullptr)
         mAwayOutfitCheck->setSelected(mAwayOutfit == mCurrentOutfit);
 }
 
@@ -195,7 +195,7 @@ void OutfitWindow::save() const
         for (unsigned i = 0; i < OUTFIT_ITEM_COUNT; i++)
         {
             const int val = mItems[o][i];
-            const int res = val ? val : -1;
+            const int res = val != 0 ? val : -1;
             if (res != -1)
                 good = true;
             outfitStr.append(toString(res));
@@ -255,7 +255,7 @@ void OutfitWindow::action(const ActionEvent &event)
     else if (eventId == "equip")
     {
         wearOutfit(mCurrentOutfit);
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
     }
     else if (eventId == "away")
@@ -279,9 +279,9 @@ void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
         const Item *const item = PlayerInfo::getInventory()->findItem(
             mItems[outfit][i],
             mItemColors[outfit][i]);
-        if (item
+        if ((item != nullptr)
             && item->isEquipped() == Equipped_false
-            && item->getQuantity())
+            && (item->getQuantity() != 0))
         {
             if (item->isEquipment() == Equipm_true)
             {
@@ -348,15 +348,15 @@ void OutfitWindow::draw(Graphics *const graphics)
 
         bool foundItem = false;
         const Inventory *const inv = PlayerInfo::getInventory();
-        if (inv)
+        if (inv != nullptr)
         {
             const Item *const item = inv->findItem(mItems[mCurrentOutfit][i],
                 mItemColors[mCurrentOutfit][i]);
-            if (item)
+            if (item != nullptr)
             {
                 // Draw item icon.
                 const Image *const image = item->getImage();
-                if (image)
+                if (image != nullptr)
                 {
                     graphics->drawImage(image, itemX, itemY);
                     foundItem = true;
@@ -367,7 +367,7 @@ void OutfitWindow::draw(Graphics *const graphics)
         {
             Image *const image = Item::getImage(mItems[mCurrentOutfit][i],
                 mItemColors[mCurrentOutfit][i]);
-            if (image)
+            if (image != nullptr)
             {
                 graphics->drawImage(image, itemX, itemY);
                 image->decRef();
@@ -404,15 +404,15 @@ void OutfitWindow::safeDraw(Graphics *const graphics)
 
         bool foundItem = false;
         const Inventory *const inv = PlayerInfo::getInventory();
-        if (inv)
+        if (inv != nullptr)
         {
             const Item *const item = inv->findItem(mItems[mCurrentOutfit][i],
                 mItemColors[mCurrentOutfit][i]);
-            if (item)
+            if (item != nullptr)
             {
                 // Draw item icon.
                 const Image *const image = item->getImage();
-                if (image)
+                if (image != nullptr)
                 {
                     graphics->drawImage(image, itemX, itemY);
                     foundItem = true;
@@ -423,7 +423,7 @@ void OutfitWindow::safeDraw(Graphics *const graphics)
         {
             Image *const image = Item::getImage(mItems[mCurrentOutfit][i],
                 mItemColors[mCurrentOutfit][i]);
-            if (image)
+            if (image != nullptr)
             {
                 graphics->drawImage(image, itemX, itemY);
                 image->decRef();
@@ -462,10 +462,10 @@ void OutfitWindow::mouseDragged(MouseEvent &event)
             mMoved = false;
             event.consume();
             const Inventory *const inv = PlayerInfo::getInventory();
-            if (inv)
+            if (inv != nullptr)
             {
                 Item *const item = inv->findItem(itemId, itemColor);
-                if (item)
+                if (item != nullptr)
                     dragDrop.dragItem(item, DragDropSource::Outfit);
                 else
                     dragDrop.clear();
@@ -479,7 +479,7 @@ void OutfitWindow::mouseDragged(MouseEvent &event)
 void OutfitWindow::mousePressed(MouseEvent &event)
 {
     const int index = getIndexFromGrid(event.getX(), event.getY());
-    if (event.getButton() == MouseButton::RIGHT && popupMenu)
+    if (event.getButton() == MouseButton::RIGHT && (popupMenu != nullptr))
     {
         popupMenu->showOutfitsWindowPopup(viewport->mMouseX,
             viewport->mMouseY);
@@ -565,14 +565,14 @@ void OutfitWindow::unequipNotInOutfit(const int outfit) const
     // here we think that outfit is correct index
 
     const Inventory *const inventory = PlayerInfo::getInventory();
-    if (!inventory)
+    if (inventory == nullptr)
         return;
 
     const unsigned int invSize = inventory->getSize();
     for (unsigned i = 0; i < invSize; i++)
     {
         const Item *const item = inventory->getItem(i);
-        if (item && item->isEquipped() == Equipped_true)
+        if ((item != nullptr) && item->isEquipped() == Equipped_true)
         {
             bool found = false;
             for (unsigned f = 0; f < OUTFIT_ITEM_COUNT; f++)
@@ -680,14 +680,14 @@ void OutfitWindow::copyFromEquiped()
 void OutfitWindow::copyFromEquiped(const int dst)
 {
     const Inventory *const inventory = PlayerInfo::getInventory();
-    if (!inventory)
+    if (inventory == nullptr)
         return;
 
     int outfitCell = 0;
     for (unsigned i = 0, sz = inventory->getSize(); i < sz; i++)
     {
         const Item *const item = inventory->getItem(i);
-        if (item && item->isEquipped() == Equipped_true)
+        if ((item != nullptr) && item->isEquipped() == Equipped_true)
         {
             mItems[dst][outfitCell] = item->getId();
             mItemColors[dst][outfitCell++] = item->getColor();

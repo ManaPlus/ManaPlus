@@ -88,8 +88,11 @@ static std::string getNick(const InputEvent &event)
     std::string args = event.args;
     if (args.empty())
     {
-        if (!event.tab || event.tab->getType() != ChatTabType::WHISPER)
+        if (event.tab == nullptr ||
+            event.tab->getType() != ChatTabType::WHISPER)
+        {
             return std::string();
+        }
 
         WhisperTab *const whisper = static_cast<WhisperTab *>(event.tab);
         if (whisper->getNick().empty())
@@ -109,7 +112,7 @@ static void reportRelation(const InputEvent &event,
                            const std::string &str1,
                            const std::string &str2)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         if (player_relations.getRelation(event.args) == rel)
         {
@@ -134,7 +137,7 @@ static void changeRelation(const InputEvent &event,
 
     if (player_relations.getRelation(args) == relation)
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             // TRANSLATORS: change relation
             event.tab->chatLog(strprintf(_("Player already %s!"),
@@ -157,7 +160,7 @@ static void changeRelation(const InputEvent &event,
 
 impHandler(chatAnnounce)
 {
-    if (adminHandler)
+    if (adminHandler != nullptr)
     {
         adminHandler->announce(event.args);
         return true;
@@ -184,7 +187,7 @@ impHandler(chatUnignore)
     }
     else
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             // TRANSLATORS: unignore command
             event.tab->chatLog(_("Player wasn't ignored!"),
@@ -210,7 +213,7 @@ impHandler(chatErase)
 
     if (player_relations.getRelation(args) == Relation::ERASED)
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             // TRANSLATORS: erase command
             event.tab->chatLog(_("Player already erased!"),
@@ -269,13 +272,13 @@ impHandler(chatEnemy)
 
 impHandler(chatNuke)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     const std::string nick = getNick(event);
     Being *const being = actorManager->findBeingByName(
         nick, ActorType::Player);
-    if (!being)
+    if (being == nullptr)
         return true;
 
     actorManager->addBlock(being->getId());
@@ -285,7 +288,7 @@ impHandler(chatNuke)
 
 impHandler(chatAdd)
 {
-    if (!chatWindow)
+    if (chatWindow == nullptr)
         return false;
 
     if (event.args.empty())
@@ -311,7 +314,7 @@ impHandler(chatAdd)
     const FloorItem *const floorItem = actorManager->findItem(
         fromInt(id, BeingId));
 
-    if (floorItem)
+    if (floorItem != nullptr)
     {
         str[0] =  floorItem->getItemId();
         const std::string names = ItemDB::getNamesStr(str);
@@ -322,7 +325,7 @@ impHandler(chatAdd)
 
 impHandler0(present)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->doPresent();
         return true;
@@ -332,7 +335,7 @@ impHandler0(present)
 
 impHandler0(printAll)
 {
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->printAllToChat();
         return true;
@@ -345,7 +348,7 @@ impHandler(move)
     int x = 0;
     int y = 0;
 
-    if (localPlayer && parse2Int(event.args, x, y))
+    if ((localPlayer != nullptr) && parse2Int(event.args, x, y))
     {
         localPlayer->setDestination(x, y);
         return true;
@@ -355,18 +358,18 @@ impHandler(move)
 
 impHandler(setTarget)
 {
-    if (!actorManager || !localPlayer)
+    if ((actorManager == nullptr) || (localPlayer == nullptr))
         return false;
 
     Being *const target = actorManager->findNearestByName(event.args);
-    if (target)
+    if (target != nullptr)
         localPlayer->setTarget(target);
     return true;
 }
 
 impHandler(commandOutfit)
 {
-    if (outfitWindow)
+    if (outfitWindow != nullptr)
     {
         if (!event.args.empty())
         {
@@ -397,7 +400,7 @@ impHandler(commandOutfit)
 
 impHandler(commandEmote)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->emote(CAST_U8(atoi(event.args.c_str())));
         return true;
@@ -407,7 +410,7 @@ impHandler(commandEmote)
 
 impHandler(awayMessage)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setAway(event.args);
         return true;
@@ -417,7 +420,7 @@ impHandler(awayMessage)
 
 impHandler(pseudoAway)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setPseudoAway(event.args);
         localPlayer->updateStatus();
@@ -428,7 +431,7 @@ impHandler(pseudoAway)
 
 impHandler(follow)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     if (!features.getBoolValue("allowFollow"))
@@ -438,7 +441,8 @@ impHandler(follow)
     {
         localPlayer->setFollow(event.args);
     }
-    else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
+    else if (event.tab != nullptr &&
+             event.tab->getType() == ChatTabType::WHISPER)
     {
         localPlayer->setFollow(static_cast<WhisperTab*>(event.tab)->getNick());
     }
@@ -453,7 +457,7 @@ impHandler(follow)
 
 impHandler(navigate)
 {
-    if (!localPlayer ||
+    if ((localPlayer == nullptr) ||
         !localPlayer->canMove())
     {
         return false;
@@ -471,7 +475,7 @@ impHandler(navigate)
 
 impHandler(navigateTo)
 {
-    if (!localPlayer ||
+    if ((localPlayer == nullptr) ||
         !localPlayer->canMove())
     {
         return false;
@@ -482,20 +486,24 @@ impHandler(navigateTo)
         return true;
 
     Being *const being = actorManager->findBeingByName(args);
-    if (being)
+    if (being != nullptr)
     {
         localPlayer->navigateTo(being->getTileX(), being->getTileY());
     }
     else if (localPlayer->isInParty())
     {
         const Party *const party = localPlayer->getParty();
-        if (party)
+        if (party != nullptr)
         {
             const PartyMember *const m = party->getMember(args);
             const PartyMember *const o = party->getMember(
                 localPlayer->getName());
-            if (m && o && m->getMap() == o->getMap())
+            if (m != nullptr &&
+                o != nullptr &&
+                m->getMap() == o->getMap())
+            {
                 localPlayer->navigateTo(m->getX(), m->getY());
+            }
         }
     }
     return true;
@@ -506,7 +514,7 @@ impHandler(moveCamera)
     int x = 0;
     int y = 0;
 
-    if (!viewport)
+    if (viewport == nullptr)
         return false;
 
     if (parse2Int(event.args, x, y))
@@ -516,7 +524,7 @@ impHandler(moveCamera)
 
 impHandler0(restoreCamera)
 {
-    if (!viewport)
+    if (viewport == nullptr)
         return false;
 
     viewport->returnCamera();
@@ -525,14 +533,15 @@ impHandler0(restoreCamera)
 
 impHandler(imitation)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     if (!event.args.empty())
     {
         localPlayer->setImitate(event.args);
     }
-    else if (event.tab && event.tab->getType() == ChatTabType::WHISPER)
+    else if (event.tab != nullptr &&
+             event.tab->getType() == ChatTabType::WHISPER)
     {
         localPlayer->setImitate(static_cast<WhisperTab*>(
             event.tab)->getNick());
@@ -568,19 +577,19 @@ impHandler(sendMail)
 
 impHandler(info)
 {
-    if (!event.tab ||
-        !localPlayer ||
+    if ((event.tab == nullptr) ||
+        (localPlayer == nullptr) ||
         Net::getNetworkType() == ServerType::TMWATHENA)
     {
         return false;
     }
 
-    if (event.tab &&
-        guildHandler &&
+    if ((event.tab != nullptr) &&
+        (guildHandler != nullptr) &&
         event.tab->getType() == ChatTabType::GUILD)
     {
         const Guild *const guild = localPlayer->getGuild();
-        if (guild)
+        if (guild != nullptr)
             guildHandler->info();
     }
     return true;
@@ -588,7 +597,7 @@ impHandler(info)
 
 impHandler(wait)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->waitFor(event.args);
         return true;
@@ -598,7 +607,7 @@ impHandler(wait)
 
 impHandler(addPriorityAttack)
 {
-    if (!actorManager ||
+    if ((actorManager == nullptr) ||
         actorManager->isInPriorityAttackList(event.args))
     {
         return false;
@@ -607,27 +616,27 @@ impHandler(addPriorityAttack)
     actorManager->removeAttackMob(event.args);
     actorManager->addPriorityAttackMob(event.args);
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->updateAttackFilter();
     return true;
 }
 
 impHandler(addAttack)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     actorManager->removeAttackMob(event.args);
     actorManager->addAttackMob(event.args);
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->updateAttackFilter();
     return true;
 }
 
 impHandler(removeAttack)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     if (event.args.empty())
@@ -649,20 +658,20 @@ impHandler(removeAttack)
     }
 
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->updateAttackFilter();
     return true;
 }
 
 impHandler(addIgnoreAttack)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     actorManager->removeAttackMob(event.args);
     actorManager->addIgnoreAttackMob(event.args);
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->updateAttackFilter();
     return true;
 }
@@ -675,7 +684,7 @@ impHandler(setDrop)
 
 impHandler(url)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         std::string url1 = event.args;
         if (!strStartWith(url1, "http") && !strStartWith(url1, "?"))
@@ -717,10 +726,10 @@ impHandler(execute)
 
 impHandler(enableHighlight)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         event.tab->setAllowHighlight(true);
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->saveState();
             return true;
@@ -731,10 +740,10 @@ impHandler(enableHighlight)
 
 impHandler(disableHighlight)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         event.tab->setAllowHighlight(false);
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->saveState();
             return true;
@@ -745,10 +754,10 @@ impHandler(disableHighlight)
 
 impHandler(dontRemoveName)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         event.tab->setRemoveNames(false);
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->saveState();
             return true;
@@ -759,10 +768,10 @@ impHandler(dontRemoveName)
 
 impHandler(removeName)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         event.tab->setRemoveNames(true);
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->saveState();
             return true;
@@ -773,10 +782,10 @@ impHandler(removeName)
 
 impHandler(disableAway)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         event.tab->setNoAway(true);
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->saveState();
             return true;
@@ -787,10 +796,10 @@ impHandler(disableAway)
 
 impHandler(enableAway)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         event.tab->setNoAway(false);
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->saveState();
             return true;
@@ -801,7 +810,7 @@ impHandler(enableAway)
 
 impHandler(testParticle)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setTestParticle(event.args);
         return true;
@@ -811,7 +820,7 @@ impHandler(testParticle)
 
 impHandler(talkRaw)
 {
-    if (chatHandler)
+    if (chatHandler != nullptr)
     {
         chatHandler->talkRaw(event.args);
         return true;
@@ -821,7 +830,7 @@ impHandler(talkRaw)
 
 impHandler(gm)
 {
-    if (chatHandler)
+    if (chatHandler != nullptr)
     {
         Gm::runCommand("wgm", event.args);
         return true;
@@ -831,7 +840,7 @@ impHandler(gm)
 
 impHandler(hack)
 {
-    if (chatHandler)
+    if (chatHandler != nullptr)
     {
         chatHandler->sendRaw(event.args);
         return true;
@@ -841,7 +850,7 @@ impHandler(hack)
 
 impHandler(debugSpawn)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
     int cnt = atoi(event.args.c_str());
     if (cnt < 1)
@@ -871,7 +880,7 @@ impHandler(serverIgnoreWhisper)
     if (args.empty())
         return false;
 
-    if (chatHandler)
+    if (chatHandler != nullptr)
     {
         chatHandler->ignore(args);
         return true;
@@ -885,7 +894,7 @@ impHandler(serverUnIgnoreWhisper)
     if (args.empty())
         return false;
 
-    if (chatHandler)
+    if (chatHandler != nullptr)
     {
         chatHandler->unIgnore(args);
         return true;
@@ -899,7 +908,7 @@ impHandler(setHomunculusName)
     if (args.empty())
     {
         const HomunculusInfo *const info = PlayerInfo::getHomunculus();
-        if (info)
+        if (info != nullptr)
         {
             // TRANSLATORS: dialog header
             inputActionReplayListener.openDialog(_("Rename your homun"),
@@ -909,7 +918,7 @@ impHandler(setHomunculusName)
         return false;
     }
 
-    if (homunculusHandler)
+    if (homunculusHandler != nullptr)
     {
         homunculusHandler->setName(args);
         return true;
@@ -919,7 +928,7 @@ impHandler(setHomunculusName)
 
 impHandler0(fireHomunculus)
 {
-    if (homunculusHandler)
+    if (homunculusHandler != nullptr)
     {
         homunculusHandler->fire();
         return true;
@@ -929,7 +938,7 @@ impHandler0(fireHomunculus)
 
 impHandler0(leaveParty)
 {
-    if (partyHandler)
+    if (partyHandler != nullptr)
     {
         partyHandler->leave();
         return true;
@@ -939,10 +948,10 @@ impHandler0(leaveParty)
 
 impHandler0(leaveGuild)
 {
-    if (guildHandler && localPlayer)
+    if ((guildHandler != nullptr) && (localPlayer != nullptr))
     {
         const Guild *const guild = localPlayer->getGuild();
-        if (guild)
+        if (guild != nullptr)
             guildHandler->leave(guild->getId());
         return true;
     }
@@ -954,8 +963,8 @@ impHandler(warp)
     int x = 0;
     int y = 0;
 
-    if (adminHandler &&
-        Game::instance() &&
+    if ((adminHandler != nullptr) &&
+        (Game::instance() != nullptr) &&
         parse2Int(event.args, x, y))
     {
         adminHandler->warp(Game::instance()->getCurrentMapName(),
@@ -967,13 +976,13 @@ impHandler(warp)
 
 impHandler(homunTalk)
 {
-    if (!serverFeatures || !serverFeatures->haveTalkPet())
+    if ((serverFeatures == nullptr) || !serverFeatures->haveTalkPet())
         return false;
 
     std::string args = event.args;
     if (findCutFirst(args, "/me "))
         args = textToMe(args);
-    if (homunculusHandler)
+    if (homunculusHandler != nullptr)
     {
         homunculusHandler->talk(args);
         return true;
@@ -983,17 +992,17 @@ impHandler(homunTalk)
 
 impHandler(homunEmote)
 {
-    if (!serverFeatures || !serverFeatures->haveTalkPet())
+    if ((serverFeatures == nullptr) || !serverFeatures->haveTalkPet())
         return false;
 
-    if (homunculusHandler &&
+    if ((homunculusHandler != nullptr) &&
         event.action >= InputAction::HOMUN_EMOTE_1 &&
         event.action <= InputAction::HOMUN_EMOTE_48)
     {
         const int emotion = event.action - InputAction::HOMUN_EMOTE_1;
-        if (emoteShortcut)
+        if (emoteShortcut != nullptr)
             homunculusHandler->emote(emoteShortcut->getEmote(emotion));
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -1003,10 +1012,10 @@ impHandler(homunEmote)
 
 impHandler(commandHomunEmote)
 {
-    if (!serverFeatures || !serverFeatures->haveTalkPet())
+    if ((serverFeatures == nullptr) || !serverFeatures->haveTalkPet())
         return false;
 
-    if (homunculusHandler)
+    if (homunculusHandler != nullptr)
     {
         homunculusHandler->emote(CAST_U8(
             atoi(event.args.c_str())));
@@ -1017,7 +1026,7 @@ impHandler(commandHomunEmote)
 
 impHandler(createPublicChatRoom)
 {
-    if (!chatHandler || event.args.empty())
+    if ((chatHandler == nullptr) || event.args.empty())
         return false;
     chatHandler->createChatRoom(event.args, "", 100, true);
     return true;
@@ -1025,13 +1034,13 @@ impHandler(createPublicChatRoom)
 
 impHandler(joinChatRoom)
 {
-    if (!chatHandler)
+    if (chatHandler == nullptr)
         return false;
     const std::string args = event.args;
     if (args.empty())
         return false;
     ChatObject *const chat = ChatObject::findByName(args);
-    if (!chat)
+    if (chat == nullptr)
         return false;
     chatHandler->joinChat(chat, "");
     return true;
@@ -1039,7 +1048,7 @@ impHandler(joinChatRoom)
 
 impHandler0(leaveChatRoom)
 {
-    if (chatHandler)
+    if (chatHandler != nullptr)
     {
         chatHandler->leaveChatRoom();
         return true;
@@ -1104,7 +1113,7 @@ impHandler(slide)
     int x = 0;
     int y = 0;
 
-    if (adminHandler && parse2Int(event.args, x, y))
+    if ((adminHandler != nullptr) && parse2Int(event.args, x, y))
     {
         adminHandler->slide(x, y);
         return true;
@@ -1117,7 +1126,7 @@ impHandler(selectSkillLevel)
     int skill = 0;
     int level = 0;
 
-    if (skillDialog && parse2Int(event.args, skill, level))
+    if ((skillDialog != nullptr) && parse2Int(event.args, skill, level))
     {
         skillDialog->selectSkillLevel(skill, level);
         return true;
@@ -1127,7 +1136,7 @@ impHandler(selectSkillLevel)
 
 impHandler(skill)
 {
-    if (!skillDialog)
+    if (skillDialog == nullptr)
         return false;
 
     StringVect vect;
@@ -1173,7 +1182,7 @@ impHandler(skill)
 impHandler(craft)
 {
     const std::string args = event.args;
-    if (args.empty() || !inventoryWindow)
+    if (args.empty() || (inventoryWindow == nullptr))
         return false;
 
     inventoryWindow->moveItemToCraft(atoi(args.c_str()));
@@ -1182,14 +1191,14 @@ impHandler(craft)
 
 impHandler(npcClipboard)
 {
-    if (npcHandler)
+    if (npcHandler != nullptr)
     {
         int x = 0;
         int y = 0;
 
         NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
 
-        if (dialog && parse2Int(event.args, x, y))
+        if ((dialog != nullptr) && parse2Int(event.args, x, y))
         {
             dialog->copyToClipboard(x, y);
             return true;
@@ -1209,11 +1218,11 @@ impHandler(clipboardCopy)
 
 impHandler(addPickup)
 {
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->removePickupItem(event.args);
         actorManager->addPickupItem(event.args);
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updatePickupFilter();
         return true;
     }
@@ -1222,7 +1231,7 @@ impHandler(addPickup)
 
 impHandler(removePickup)
 {
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         if (event.args.empty())
         {   // default pickup manipulation
@@ -1241,7 +1250,7 @@ impHandler(removePickup)
         {   // any other pickups
             actorManager->removePickupItem(event.args);
         }
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updatePickupFilter();
         return true;
     }
@@ -1250,11 +1259,11 @@ impHandler(removePickup)
 
 impHandler(ignorePickup)
 {
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->removePickupItem(event.args);
         actorManager->addIgnorePickupItem(event.args);
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updatePickupFilter();
         return true;
     }
@@ -1614,7 +1623,7 @@ impHandler(commandGuildRecall)
 
 impHandler(mailTo)
 {
-    if (!mailWindow)
+    if (mailWindow == nullptr)
         return false;
     mailWindow->createMail(event.args);
     return true;
@@ -1625,7 +1634,7 @@ impHandler(adoptChild)
     const std::string nick = getNick(event);
     Being *const being = actorManager->findBeingByName(
         nick, ActorType::Player);
-    if (!being)
+    if (being == nullptr)
         return true;
     familyHandler->askForChild(being);
     return true;
@@ -1638,7 +1647,7 @@ impHandler(showSkillLevels)
         return false;
     const SkillInfo *restrict const skill = skillDialog->getSkill(
         atoi(args.c_str()));
-    if (!skill)
+    if (skill == nullptr)
         return false;
     popupMenu->showSkillLevelPopup(skill);
     return true;
@@ -1651,7 +1660,7 @@ impHandler(showSkillType)
         return false;
     const SkillInfo *restrict const skill = skillDialog->getSkill(
         atoi(args.c_str()));
-    if (!skill)
+    if (skill == nullptr)
         return false;
     popupMenu->showSkillTypePopup(skill);
     return true;
@@ -1662,7 +1671,7 @@ impHandler(selectSkillType)
     int skill = 0;
     int type = 0;
 
-    if (skillDialog && parse2Int(event.args, skill, type))
+    if ((skillDialog != nullptr) && parse2Int(event.args, skill, type))
     {
         skillDialog->selectSkillCastType(skill,
             static_cast<CastTypeT>(type));
@@ -1678,7 +1687,7 @@ impHandler(showSkillOffsetX)
         return false;
     const SkillInfo *restrict const skill = skillDialog->getSkill(
         atoi(args.c_str()));
-    if (!skill)
+    if (skill == nullptr)
         return false;
     popupMenu->showSkillOffsetPopup(skill, true);
     return true;
@@ -1691,7 +1700,7 @@ impHandler(showSkillOffsetY)
         return false;
     const SkillInfo *restrict const skill = skillDialog->getSkill(
         atoi(args.c_str()));
-    if (!skill)
+    if (skill == nullptr)
         return false;
     popupMenu->showSkillOffsetPopup(skill, false);
     return true;
@@ -1702,7 +1711,7 @@ impHandler(setSkillOffsetX)
     int skill = 0;
     int offset = 0;
 
-    if (skillDialog && parse2Int(event.args, skill, offset))
+    if ((skillDialog != nullptr) && parse2Int(event.args, skill, offset))
     {
         skillDialog->setSkillOffsetX(skill, offset);
         return true;
@@ -1715,7 +1724,7 @@ impHandler(setSkillOffsetY)
     int skill = 0;
     int offset = 0;
 
-    if (skillDialog && parse2Int(event.args, skill, offset))
+    if ((skillDialog != nullptr) && parse2Int(event.args, skill, offset))
     {
         skillDialog->setSkillOffsetY(skill, offset);
         return true;
@@ -1725,7 +1734,7 @@ impHandler(setSkillOffsetY)
 
 impHandler(partyItemShare)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     if (localPlayer->isInParty() == false)
@@ -1791,7 +1800,7 @@ impHandler(partyItemShare)
 
 impHandler(partyExpShare)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     if (localPlayer->isInParty() == false)
@@ -1857,7 +1866,7 @@ impHandler(partyExpShare)
 
 impHandler(partyAutoItemShare)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     if (localPlayer->isInParty() == false)
@@ -1923,7 +1932,7 @@ impHandler(partyAutoItemShare)
 
 impHandler0(outfitToChat)
 {
-    if (!outfitWindow || !chatWindow)
+    if ((outfitWindow == nullptr) || (chatWindow == nullptr))
         return false;
 
     const std::string str = outfitWindow->getOutfitString();
@@ -1934,7 +1943,7 @@ impHandler0(outfitToChat)
 
 impHandler0(outfitClear)
 {
-    if (!outfitWindow)
+    if (outfitWindow == nullptr)
         return false;
 
     outfitWindow->clearCurrentOutfit();
@@ -1943,7 +1952,7 @@ impHandler0(outfitClear)
 
 impHandler(moveAttackUp)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
     const std::string args = event.args;
     const int idx = actorManager->getAttackMobIndex(args);
@@ -1967,7 +1976,7 @@ impHandler(moveAttackUp)
             ++ it2;
         }
 
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateAttackFilter();
         return true;
     }
@@ -1976,7 +1985,7 @@ impHandler(moveAttackUp)
 
 impHandler(moveAttackDown)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
     const std::string args = event.args;
     const int idx = actorManager->getAttackMobIndex(args);
@@ -2004,7 +2013,7 @@ impHandler(moveAttackDown)
             ++ it2;
         }
 
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateAttackFilter();
         return true;
     }
@@ -2013,7 +2022,7 @@ impHandler(moveAttackDown)
 
 impHandler(movePriorityAttackUp)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
     const std::string args = event.args;
     const int idx = actorManager->
@@ -2038,7 +2047,7 @@ impHandler(movePriorityAttackUp)
             ++ it2;
         }
 
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateAttackFilter();
         return true;
     }
@@ -2047,7 +2056,7 @@ impHandler(movePriorityAttackUp)
 
 impHandler(movePriorityAttackDown)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
     const std::string args = event.args;
     const int idx = actorManager
@@ -2076,7 +2085,7 @@ impHandler(movePriorityAttackDown)
             ++ it2;
         }
 
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateAttackFilter();
         return true;
     }

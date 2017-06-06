@@ -82,11 +82,11 @@ void DialogsManager::closeDialogs()
     BuySellDialog::closeAll();
     NpcDialog::closeAll();
     SellDialog::closeAll();
-    if (inventoryHandler)
+    if (inventoryHandler != nullptr)
         inventoryHandler->destroyStorage();
 #endif  // DYECMD
 
-    if (deathNotice)
+    if (deathNotice != nullptr)
     {
         deathNotice->scheduleDelete();
         deathNotice = nullptr;
@@ -139,7 +139,7 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
 void DialogsManager::playerDeath()
 {
 #ifndef DYECMD
-    if (!deathNotice)
+    if (deathNotice == nullptr)
     {
         CREATEWIDGETV(deathNotice, OkDialog,
             // TRANSLATORS: message header
@@ -164,7 +164,7 @@ void DialogsManager::attributeChanged(const AttributesT id,
 {
     if (id == Attributes::TOTAL_WEIGHT)
     {
-        if (!weightNotice && config.getBoolValue("weightMsg"))
+        if ((weightNotice == nullptr) && config.getBoolValue("weightMsg"))
         {
             int percent = settings.overweightPercent;
             if (percent < 1)

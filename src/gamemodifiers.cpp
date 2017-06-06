@@ -108,7 +108,7 @@ void GameModifiers::changeMode(unsigned *restrict const var,
                                const bool save,
                                const bool forward)
 {
-    if (!var)
+    if (var == nullptr)
         return;
 
     if (forward)
@@ -119,7 +119,7 @@ void GameModifiers::changeMode(unsigned *restrict const var,
     }
     else
     {
-        if (!*var)
+        if (*var == 0u)
             *var = limit - 1;
         else
             (*var) --;
@@ -408,7 +408,7 @@ addModifier(MapDrawType, mapDrawType, 7,
 
 void GameModifiers::changeMapDrawType(const bool forward A_UNUSED)
 {
-    if (viewport)
+    if (viewport != nullptr)
         viewport->toggleMapDrawType();
 }
 
@@ -424,7 +424,7 @@ addModifier(AwayMode, awayMode, 2,
 
 void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     settings.awayMode = !settings.awayMode;
@@ -436,12 +436,12 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
     GameModifierListener::distributeEvent();
     if (settings.awayMode)
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->clearAwayLog();
 
         localPlayer->cancelFollow();
         localPlayer->navigateClean();
-        if (outfitWindow)
+        if (outfitWindow != nullptr)
             outfitWindow->wearAwayOutfit();
         OkDialog *const dialog = CREATEWIDGETR(OkDialog,
             // TRANSLATORS: away message box header
@@ -463,7 +463,7 @@ void GameModifiers::changeAwayMode(const bool forward A_UNUSED)
     {
         localPlayer->setAwayDialog(nullptr);
         soundManager.volumeRestore();
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->displayAwayLog();
             chatWindow->clearAwayLog();
@@ -485,7 +485,7 @@ addModifier(CameraMode, cameraMode, 2,
 
 void GameModifiers::changeCameraMode(const bool forward A_UNUSED)
 {
-    if (viewport)
+    if (viewport != nullptr)
         viewport->toggleCameraMode();
 }
 
@@ -503,12 +503,12 @@ void GameModifiers::resetModifiers()
     settings.pickUpType = config.resetIntValue("pickUpType");
     settings.targetingType = config.resetIntValue("targetingType");
     settings.mapDrawType = MapType::NORMAL;
-    if (viewport)
+    if (viewport != nullptr)
     {
-        if (settings.cameraMode)
+        if (settings.cameraMode != 0u)
             viewport->toggleCameraMode();
         Map *const map = viewport->getMap();
-        if (map)
+        if (map != nullptr)
             map->setDrawLayersFlags(MapType::NORMAL);
     }
     settings.imitationMode = config.resetIntValue("imitationMode");

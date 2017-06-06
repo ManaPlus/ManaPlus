@@ -66,13 +66,13 @@ void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
     msg.readInt8("pickup item share (&1)");
     msg.readInt8("get item share (&2)");
 
-    if (!Ea::taParty)
+    if (Ea::taParty == nullptr)
         return;
 
     PartyMember *const member = Ea::taParty->addMember(id, nick);
-    if (member)
+    if (member != nullptr)
     {
-        if (partyTab && member->getOnline() != online)
+        if ((partyTab != nullptr) && member->getOnline() != online)
             partyTab->showOnline(nick, fromBool(online, Online));
         member->setLeader(leader);
         member->setOnline(online);
@@ -84,9 +84,9 @@ void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
 
 void PartyRecv::processPartySettings(Net::MessageIn &msg)
 {
-    if (!partyTab)
+    if (partyTab == nullptr)
     {
-        if (!chatWindow)
+        if (chatWindow == nullptr)
             return;
 
         Ea::PartyRecv::createTab();
@@ -111,15 +111,15 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
     bool isOldParty = false;
     std::set<std::string> names;
     std::set<std::string> onlineNames;
-    if (!Ea::taParty)
+    if (Ea::taParty == nullptr)
     {
         logger->log1("error: party empty in SMSG_PARTY_INFO");
         Ea::taParty = Party::getParty(1);
     }
-    if (!partyTab)
+    if (partyTab == nullptr)
         Ea::PartyRecv::createTab();
 
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
     {
         if (Ea::taParty->getNumberOfElements() > 1)
         {
@@ -131,24 +131,24 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
                 if ((*it)->getOnline())
                     onlineNames.insert((*it)->getName());
             }
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 onlineNames.insert(localPlayer->getName());
         }
     }
 
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         logger->log1("error: localPlayer==0 in SMSG_PARTY_INFO");
 
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         Ea::taParty->clearMembers();
 
     const int length = msg.readInt16("len");
     const std::string name = msg.readString(24, "party name");
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         Ea::taParty->setName(name);
 
     const int count = (length - 28) / 46;
-    if (localPlayer && Ea::taParty)
+    if ((localPlayer != nullptr) && (Ea::taParty != nullptr))
     {
         localPlayer->setParty(Ea::taParty);
         localPlayer->setPartyName(Ea::taParty->getName());
@@ -162,7 +162,7 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         const bool leader = msg.readUInt8("leader") == 0U;
         const bool online = msg.readUInt8("online") == 0U;
 
-        if (Ea::taParty)
+        if (Ea::taParty != nullptr)
         {
             bool joined(false);
 
@@ -176,9 +176,9 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
                 }
             }
             PartyMember *const member = Ea::taParty->addMember(id, nick);
-            if (member)
+            if (member != nullptr)
             {
-                if (!joined && partyTab)
+                if (!joined && (partyTab != nullptr))
                 {
                     if (!names.empty() && ((onlineNames.find(nick)
                         == onlineNames.end() && online)
@@ -202,14 +202,14 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         }
     }
 
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         Ea::taParty->sort();
 
-    if (localPlayer && Ea::taParty)
+    if ((localPlayer != nullptr) && (Ea::taParty != nullptr))
     {
         localPlayer->setParty(Ea::taParty);
         localPlayer->setPartyName(Ea::taParty->getName());
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateParty();
     }
 }
@@ -227,10 +227,10 @@ void PartyRecv::processPartyMessage(Net::MessageIn &msg)
     if (pos != std::string::npos)
         chatMsg.erase(0, pos + 3);
 
-    if (Ea::taParty && partyTab)
+    if ((Ea::taParty != nullptr) && (partyTab != nullptr))
     {
         const PartyMember *const member = Ea::taParty->getMember(id);
-        if (member)
+        if (member != nullptr)
         {
             partyTab->chatLog(member->getName(), chatMsg);
         }
@@ -244,7 +244,7 @@ void PartyRecv::processPartyMessage(Net::MessageIn &msg)
 
 void PartyRecv::processPartyInviteResponse(Net::MessageIn &msg)
 {
-    if (!partyTab)
+    if (partyTab == nullptr)
         return;
 
     const std::string nick = msg.readString(24, "nick");
@@ -307,9 +307,9 @@ void PartyRecv::processPartyLeader(Net::MessageIn &msg)
         msg.readBeingId("old leder id"));
     PartyMember *const newMember = Ea::taParty->getMember(
         msg.readBeingId("new leder id"));
-    if (oldMember)
+    if (oldMember != nullptr)
         oldMember->setLeader(false);
-    if (newMember)
+    if (newMember != nullptr)
         newMember->setLeader(true);
 }
 
@@ -318,7 +318,7 @@ void PartyRecv::processPartyInvited(Net::MessageIn &msg)
     const int id = msg.readInt32("party id");
     const std::string partyName = msg.readString(24, "party name");
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->showPartyInvite(partyName, std::string(), id);
 }
 

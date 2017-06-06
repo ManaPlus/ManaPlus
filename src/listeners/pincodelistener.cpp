@@ -32,7 +32,7 @@ void PincodeListener::action(const ActionEvent &event)
 {
     const EditDialog *const dialog = dynamic_cast<EditDialog*>(
         event.getSource());
-    if (dialog)
+    if (dialog != nullptr)
     {
         const std::string pincode = dialog->getMsg();
         charServerHandler->setNewPincode(pincode);

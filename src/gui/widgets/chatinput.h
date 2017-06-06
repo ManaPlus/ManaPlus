@@ -60,7 +60,7 @@ class ChatInput final : public TextField
             if (mFocusGaining || !config.getBoolValue("protectChatFocus"))
             {
                 processVisible(Visible_false);
-                if (chatWindow)
+                if (chatWindow != nullptr)
                     chatWindow->updateVisibility();
                 mFocusGaining = false;
                 return;
@@ -72,7 +72,7 @@ class ChatInput final : public TextField
 
         void processVisible(const Visible n)
         {
-            if (!mWindow || isVisible() == (n == Visible_true))
+            if (mWindow == nullptr || isVisible() == (n == Visible_true))
                 return;
 
             if (n == Visible_false)
@@ -83,7 +83,7 @@ class ChatInput final : public TextField
             {
                 mWindow->adjustTabSize();
             }
-            if (emoteWindow)
+            if (emoteWindow != nullptr)
             {
                 emoteWindow->hide();
             }

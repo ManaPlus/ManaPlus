@@ -223,7 +223,7 @@ class NpcDialog final : public Window,
         void mousePressed(MouseEvent &event) override final;
 
         int isCloseState() const
-        { return mActionState == NpcActionState::CLOSE; }
+        { return static_cast<int>(mActionState == NpcActionState::CLOSE); }
 
         void setSkin(const std::string &skin);
 

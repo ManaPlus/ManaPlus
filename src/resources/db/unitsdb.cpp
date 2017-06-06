@@ -193,7 +193,7 @@ void UnitsDb::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst root = doc.rootNode();
 
-    if (!root || !xmlNameEqual(root, "units"))
+    if ((root == nullptr) || !xmlNameEqual(root, "units"))
     {
         logger->log("Error loading unit definition file: "
             + paths.getStringValue("unitsFile"));
@@ -259,7 +259,7 @@ static std::string formatUnit(const int value,
             int levelAmount = CAST_S32(amount);
             int nextAmount = 0;
 
-            if (ul.count)
+            if (ul.count != 0)
                 levelAmount /= ul.count;
 
             amount -= static_cast<double>(levelAmount * ul.count);
@@ -275,7 +275,7 @@ static std::string formatUnit(const int value,
                 pl = ul;
                 ul = ud.levels[i];
 
-                if (ul.count)
+                if (ul.count != 0)
                 {
                     nextAmount = levelAmount / ul.count;
                     levelAmount %= ul.count;
@@ -287,7 +287,7 @@ static std::string formatUnit(const int value,
                         pl.separator).append(pl.symbol).append(output);
                 }
 
-                if (!nextAmount)
+                if (nextAmount == 0)
                     break;
                 levelAmount = nextAmount;
             }
@@ -305,7 +305,7 @@ static std::string formatUnit(const int value,
                     ul = ud.levels[i - 1];
                     break;
                 }
-                if (ul.count)
+                if (ul.count != 0)
                     amount /= ul.count;
             }
 

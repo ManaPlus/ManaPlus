@@ -65,12 +65,12 @@ void ItemAmountWindow::finish(Item *const item,
                               const int price,
                               const ItemAmountWindowUsageT usage)
 {
-    if (!item)
+    if (item == nullptr)
         return;
     switch (usage)
     {
         case ItemAmountWindowUsage::TradeAdd:
-            if (tradeWindow)
+            if (tradeWindow != nullptr)
                 tradeWindow->tradeItem(item, amount);
             break;
         case ItemAmountWindowUsage::ItemDrop:
@@ -88,11 +88,11 @@ void ItemAmountWindow::finish(Item *const item,
                 item->getInvIndex(), amount, InventoryType::Inventory);
             break;
         case ItemAmountWindowUsage::ShopBuyAdd:
-            if (shopWindow)
+            if (shopWindow != nullptr)
                 shopWindow->addBuyItem(item, amount, price);
             break;
         case ItemAmountWindowUsage::ShopSellAdd:
-            if (shopWindow)
+            if (shopWindow != nullptr)
                 shopWindow->addSellItem(item, amount, price);
             break;
         case ItemAmountWindowUsage::CartAdd:
@@ -104,13 +104,13 @@ void ItemAmountWindow::finish(Item *const item,
                 item->getInvIndex(), amount, InventoryType::Inventory);
             break;
         case ItemAmountWindowUsage::MailAdd:
-            if (mailEditWindow)
+            if (mailEditWindow != nullptr)
                 mailEditWindow->addItem(item, amount);
             break;
         case ItemAmountWindowUsage::CraftAdd:
         {
             NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
-            if (dialog)
+            if (dialog != nullptr)
                 dialog->addCraftItem(item, amount, price);  // price as slot
             break;
         }
@@ -130,7 +130,7 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     mItemPriceTextField(nullptr),
     mGPLabel(nullptr),
     mItem(item),
-    mItemIcon(new Icon(this, item ? item->getImage() : nullptr)),
+    mItemIcon(new Icon(this, item != nullptr ? item->getImage() : nullptr)),
     mItemAmountSlide(new Slider(this, 1.0, maxRange, 1.0)),
     mItemPriceSlide(nullptr),
     mItemDropDown(nullptr),
@@ -140,12 +140,12 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     mUsage(usage),
     mEnabledKeyboard(keyboard.isEnabled())
 {
-    if (!mItem)
+    if (mItem == nullptr)
         return;
 
     if (usage == ItemAmountWindowUsage::ShopBuyAdd)
         mMax = 10000;
-    else if (!mMax)
+    else if (mMax == 0)
         mMax = mItem->getQuantity();
 
     keyboard.setEnabled(false);
@@ -318,7 +318,7 @@ void ItemAmountWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
 
-    if (!viewport || !itemPopup)
+    if ((viewport == nullptr) || (itemPopup == nullptr))
         return;
 
     if (event.getSource() == mItemIcon)
@@ -331,7 +331,7 @@ void ItemAmountWindow::mouseMoved(MouseEvent &event)
 // Hide ItemTooltip
 void ItemAmountWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
 }
 
@@ -350,7 +350,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
     }
     else if (eventId == "ok")
     {
-        if (mItemPriceTextField)
+        if (mItemPriceTextField != nullptr)
         {
             finish(mItem,
                 mItemAmountTextField->getValue(),
@@ -379,7 +379,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
     }
     else if (eventId == "itemType")
     {
-        if (!mItemDropDown || !mItemsModal)
+        if ((mItemDropDown == nullptr) || (mItemsModal == nullptr))
             return;
 
         const int id = ItemDB::get(mItemsModal->getElementAt(
@@ -398,7 +398,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
 
         if (mUsage == ItemAmountWindowUsage::ShopBuyAdd)
             mMax = 10000;
-        else if (!mMax)
+        else if (mMax == 0)
             mMax = mItem->getQuantity();
 
         mItemIcon->setImage(mItem->getImage());
@@ -417,7 +417,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
     mItemAmountTextField->setValue(amount);
     mItemAmountSlide->setValue(amount);
 
-    if (mItemPriceTextField && mItemPriceSlide)
+    if ((mItemPriceTextField != nullptr) && (mItemPriceSlide != nullptr))
     {
         if (mPrice > 7)
             mPrice = 7;
@@ -443,7 +443,7 @@ void ItemAmountWindow::action(const ActionEvent &event)
         else if (eventId == "slidePrice")
         {
             price = CAST_S32(mItemPriceSlide->getValue());
-            if (price)
+            if (price != 0)
                 mPrice = CAST_S32(log(static_cast<float>(price)));
             else
                 mPrice = 0;
@@ -470,10 +470,10 @@ void ItemAmountWindow::showWindow(const ItemAmountWindowUsageT usage,
                                   int maxRange,
                                   int tag)
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
-    if (!maxRange)
+    if (maxRange == 0)
         maxRange = item->getQuantity();
 
     if (usage != ItemAmountWindowUsage::ShopBuyAdd &&

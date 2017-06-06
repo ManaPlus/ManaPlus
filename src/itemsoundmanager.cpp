@@ -34,7 +34,7 @@
 void ItemSoundManager::playSfx(const Item *const item,
                                const ItemSoundEvent::Type sound)
 {
-    if (!item)
+    if (item == nullptr)
         return;
     playSfx(item->getId(), sound);
 }
@@ -48,7 +48,7 @@ void ItemSoundManager::playSfx(const int itemId,
 void ItemSoundManager::playSfx(const FloorItem *const item,
                                const ItemSoundEvent::Type sound)
 {
-    if (!item)
+    if (item == nullptr)
         return;
     playSfx(ItemDB::get(item->getItemId()), sound);
 }

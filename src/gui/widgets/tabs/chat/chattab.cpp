@@ -84,7 +84,7 @@ ChatTab::ChatTab(const Widget2 *const widget,
 
     mTextOutput->setOpaque(Opaque_false);
     mTextOutput->setMaxRow(config.getIntValue("ChatLogLength"));
-    if (chatWindow)
+    if (chatWindow != nullptr)
         mTextOutput->setLinkHandler(chatWindow->mItemLinkHandler);
     mTextOutput->setAlwaysUpdate(false);
 
@@ -92,13 +92,13 @@ ChatTab::ChatTab(const Widget2 *const widget,
         ScrollArea::SHOW_ALWAYS);
     mScrollArea->setScrollAmount(0, 1);
 
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->addTab(this);
 }
 
 ChatTab::~ChatTab()
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->removeTab(this);
 
     delete2(mTextOutput);
@@ -225,7 +225,7 @@ void ChatTab::chatLog(std::string line,
 
     // if configured, move magic messages log to debug chat tab
     if (Net::getNetworkType() == ServerType::TMWATHENA
-        && localChatTab && this == localChatTab
+        && (localChatTab != nullptr) && this == localChatTab
         && ((config.getBoolValue("showMagicInDebug")
         && own == ChatMsgType::BY_PLAYER
         && tmp.text.length() > 1
@@ -235,7 +235,7 @@ void ChatTab::chatLog(std::string line,
         && (own == ChatMsgType::BY_SERVER
         || tmp.nick.empty()))))
     {
-        if (debugChatTab)
+        if (debugChatTab != nullptr)
             debugChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
         return;
     }
@@ -247,7 +247,7 @@ void ChatTab::chatLog(std::string line,
     if (config.getBoolValue("useLocalTime"))
     {
         const tm *const timeInfo = localtime(&t);
-        if (timeInfo)
+        if (timeInfo != nullptr)
         {
             line = strprintf("%s[%02d:%02d] %s%s", lineColor.c_str(),
                 timeInfo->tm_hour, timeInfo->tm_min, tmp.nick.c_str(),
@@ -292,7 +292,7 @@ void ChatTab::chatLog(std::string line,
         addRow(line);
     }
 
-    if (chatWindow && this == localChatTab)
+    if ((chatWindow != nullptr) && this == localChatTab)
         chatWindow->addToAwayLog(line);
 
     mScrollArea->logic();
@@ -307,7 +307,7 @@ void ChatTab::chatLog(std::string line,
         }
 
         const TabbedArea *const tabArea = getTabbedArea();
-        if (!tabArea)
+        if (tabArea == nullptr)
             return;
 
         const bool notFocused = WindowManager::getIsMinimized() ||
@@ -317,7 +317,8 @@ void ChatTab::chatLog(std::string line,
         {
             if (getFlash() == 0)
             {
-                if (chatWindow && chatWindow->findHighlight(tmp.text))
+                if (chatWindow != nullptr &&
+                    chatWindow->findHighlight(tmp.text))
                 {
                     setFlash(2);
                     soundManager.playGuiSound(SOUND_HIGHLIGHT);
@@ -329,8 +330,11 @@ void ChatTab::chatLog(std::string line,
             }
             else if (getFlash() == 2)
             {
-                if (chatWindow && chatWindow->findHighlight(tmp.text))
+                if (chatWindow != nullptr &&
+                    chatWindow->findHighlight(tmp.text))
+                {
                     soundManager.playGuiSound(SOUND_HIGHLIGHT);
+                }
             }
         }
 
@@ -341,13 +345,13 @@ void ChatTab::chatLog(std::string line,
         {
             if (own == ChatMsgType::BY_GM)
             {
-                if (chatWindow)
+                if (chatWindow != nullptr)
                     chatWindow->unHideWindow();
                 soundManager.playGuiSound(SOUND_GLOBAL);
             }
             else if (own != ChatMsgType::BY_SERVER)
             {
-                if (chatWindow)
+                if (chatWindow != nullptr)
                     chatWindow->unHideWindow();
                 playNewMessageSound();
             }
@@ -358,7 +362,7 @@ void ChatTab::chatLog(std::string line,
 
 void ChatTab::chatLog(const std::string &nick, std::string msg)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     const ChatMsgTypeT byWho = (nick == localPlayer->getName()
@@ -441,7 +445,7 @@ void ChatTab::handleCommandStr(const std::string &msg)
 
 void ChatTab::handleHelp(const std::string &msg)
 {
-    if (helpWindow)
+    if (helpWindow != nullptr)
     {
         helpWindow->search(msg);
         helpWindow->requestMoveToTop();
@@ -457,7 +461,7 @@ bool ChatTab::handleCommands(const std::string &type, const std::string &args)
 
 void ChatTab::saveToLogFile(const std::string &msg) const
 {
-    if (chatLogger)
+    if (chatLogger != nullptr)
     {
         if (getType() == ChatTabType::INPUT)
         {
@@ -498,7 +502,7 @@ void ChatTab::addRow(std::string &line)
 
 void ChatTab::loadFromLogFile(const std::string &name)
 {
-    if (chatLogger)
+    if (chatLogger != nullptr)
     {
         std::list<std::string> list;
         chatLogger->loadLast(name, list, 5);

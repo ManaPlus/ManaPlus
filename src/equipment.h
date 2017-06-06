@@ -66,13 +66,16 @@ class Equipment final
          * Get equipment at the given slot.
          */
         const Item *getEquipment(const int index) const A_WARN_UNUSED
-        { return mBackend ? mBackend->getEquipment(index) : nullptr; }
+        {
+            return mBackend != nullptr ?
+                mBackend->getEquipment(index) : nullptr;
+        }
 
         /**
          * Clears equipment.
          */
         void clear()
-        { if (mBackend) mBackend->clear(); }
+        { if (mBackend != nullptr) mBackend->clear(); }
 
         /**
          * Set equipment at the given slot.

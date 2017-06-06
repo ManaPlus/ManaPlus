@@ -148,7 +148,7 @@ void BeingInfo::addSound(const ItemSoundEvent::Type event,
     if (mSounds.find(event) == mSounds.end())
         mSounds[event] = new SoundInfoVect;
 
-    if (mSounds[event])
+    if (mSounds[event] != nullptr)
         mSounds[event]->push_back(SoundInfo("sfx/" + filename, delay));
 }
 
@@ -162,7 +162,7 @@ const SoundInfo &BeingInfo::getSound(const ItemSoundEvent::Type event) const
         return emptySound;
 
     const SoundInfoVect *const vect = i->second;
-    if (!vect || vect->empty())
+    if ((vect == nullptr) || vect->empty())
         return emptySound;
     else
         return vect->at(CAST_SIZE(rand()) % vect->size());
@@ -205,7 +205,7 @@ void BeingInfo::clear()
 
 void BeingInfo::init()
 {
-    if (empty)
+    if (empty != nullptr)
     {
         empty->mEffectId = paths.getIntValue("effectId");
         empty->mHitEffectId = paths.getIntValue("hitEffectId");
@@ -224,7 +224,7 @@ void BeingInfo::setColorsList(const std::string &name)
 
 std::string BeingInfo::getColor(const ItemColor idx) const
 {
-    if (!mColors)
+    if (mColors == nullptr)
         return std::string();
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator

@@ -117,21 +117,21 @@ int execFileWait(const std::string &pathName, const std::string &name,
     pid_t mon_pid;
     int status;
 
-    if (!waitTime)
+    if (waitTime == 0)
         waitTime = timeOut;
 
     if ((mon_pid = fork()) == -1)
     {   // fork error
         return -1;
     }
-    else if (!mon_pid)
+    else if (mon_pid == 0)
     {   // monitoring child
         pid_t pid;
         if ((pid = fork()) == -1)
         {   // fork error
             return -1;
         }
-        else if (!pid)
+        else if (pid == 0)
         {   // work child
             if (arg2.empty())
             {
@@ -152,7 +152,7 @@ int execFileWait(const std::string &pathName, const std::string &name,
         {   // fork error
             return -1;
         }
-        else if (!sleep_pid)
+        else if (sleep_pid == 0)
         {   // sleep pid
             sleep(waitTime);
             execl("/bin/true", "/bin/true", static_cast<char *>(nullptr));
@@ -191,7 +191,7 @@ bool execFile(const std::string &pathName, const std::string &name,
 {
     struct stat statbuf;
     // file not exists
-    if (stat(pathName.c_str(), &statbuf))
+    if (stat(pathName.c_str(), &statbuf) != 0)
         return false;
 
     pid_t pid;
@@ -199,7 +199,7 @@ bool execFile(const std::string &pathName, const std::string &name,
     {   // fork error
         return false;
     }
-    else if (!pid)
+    else if (pid == 0)
     {   // work child
         if (arg2.empty())
         {

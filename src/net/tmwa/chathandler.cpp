@@ -51,7 +51,7 @@ ChatHandler::ChatHandler() :
 void ChatHandler::talk(const std::string &restrict text,
                        const std::string &restrict channel A_UNUSED) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (tmwServerVersion >= 0x100408)

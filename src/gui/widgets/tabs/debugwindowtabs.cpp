@@ -171,7 +171,7 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 void MapDebugTab::logic()
 {
     BLOCK_START("MapDebugTab::logic")
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         // TRANSLATORS: debug window label
         mXYLabel->setCaption(strprintf("%s (%d, %d)", _("Player Position:"),
@@ -184,7 +184,7 @@ void MapDebugTab::logic()
     }
 
     const Map *const map = Game::instance()->getCurrentMap();
-    if (map && viewport)
+    if ((map != nullptr) && (viewport != nullptr))
     {
           // Get the current mouse position
         const int mouseTileX = (viewport->mMouseX + viewport->getCameraX())
@@ -329,7 +329,7 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
 void TargetDebugTab::logic()
 {
     BLOCK_START("TargetDebugTab::logic")
-    if (localPlayer && localPlayer->getTarget())
+    if ((localPlayer != nullptr) && (localPlayer->getTarget() != nullptr))
     {
         const Being *const target = localPlayer->getTarget();
 
@@ -344,7 +344,7 @@ void TargetDebugTab::logic()
         mTargetTypeLabel->setCaption(strprintf("%s %d",
             // TRANSLATORS: debug window label
             _("Target type:"), toInt(target->getSubType(), int)));
-        if (target->getLevel())
+        if (target->getLevel() != 0)
         {
             mTargetLevelLabel->setCaption(strprintf("%s %d",
                 // TRANSLATORS: debug window label
@@ -389,7 +389,7 @@ void TargetDebugTab::logic()
             _("Effects:"), target->getStatusEffectsString().c_str()));
 
         const int delay = target->getAttackDelay();
-        if (delay)
+        if (delay != 0)
         {
             mAttackDelayLabel->setCaption(strprintf("%s %d",
                 // TRANSLATORS: debug window label
@@ -469,7 +469,7 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
 void NetDebugTab::logic()
 {
     BLOCK_START("NetDebugTab::logic")
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         // TRANSLATORS: debug window label
         mPingLabel->setCaption(strprintf(_("Ping: %s ms"),

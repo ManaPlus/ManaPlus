@@ -90,7 +90,7 @@ SubImage::SubImage(Image *const parent,
     mInternalBounds(),
     mParent(parent)
 {
-    if (mParent)
+    if (mParent != nullptr)
     {
         mParent->incRef();
         mParent->SDLTerminateAlphaCache();
@@ -118,7 +118,7 @@ SubImage::SubImage(Image *const parent,
     mBounds.y = CAST_S16(y);
     mBounds.w = CAST_U16(width);
     mBounds.h = CAST_U16(height);
-    if (mParent)
+    if (mParent != nullptr)
     {
         mInternalBounds.x = mParent->mBounds.x;
         mInternalBounds.y = mParent->mBounds.y;
@@ -145,7 +145,7 @@ SubImage::SubImage(Image *const parent,
     mInternalBounds(),
     mParent(parent)
 {
-    if (mParent)
+    if (mParent != nullptr)
         mParent->incRef();
 
     // Set up the rectangle.
@@ -153,7 +153,7 @@ SubImage::SubImage(Image *const parent,
     mBounds.y = CAST_S16(y);
     mBounds.w = CAST_U16(width);
     mBounds.h = CAST_U16(height);
-    if (mParent)
+    if (mParent != nullptr)
     {
         mInternalBounds.x = mParent->mBounds.x;
         mInternalBounds.y = mParent->mBounds.y;
@@ -196,7 +196,7 @@ SubImage::~SubImage()
 #ifdef USE_OPENGL
     mGLImage = 0;
 #endif  // USE_OPENGL
-    if (mParent)
+    if (mParent != nullptr)
     {
 #ifdef DEBUG_IMAGES
         logger->log("decref from subminage: %p, parent: %p",
@@ -211,7 +211,7 @@ SubImage::~SubImage()
 Image *SubImage::getSubImage(const int x, const int y,
                              const int w, const int h)
 {
-    if (mParent)
+    if (mParent != nullptr)
         return mParent->getSubImage(mBounds.x + x, mBounds.y + y, w, h);
     else
         return nullptr;

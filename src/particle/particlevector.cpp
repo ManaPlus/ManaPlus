@@ -44,7 +44,7 @@ void ParticleVector::setLocally(const int index, Particle *const particle)
     if (mIndexedElements.size() <= CAST_SIZE(index))
         mIndexedElements.resize(index + 1, nullptr);
 
-    if (particle)
+    if (particle != nullptr)
         particle->disableAutoDelete();
     mIndexedElements[index] = particle;
 }
@@ -58,7 +58,7 @@ void ParticleVector::delLocally(const int index)
         return;
 
     Particle *const p = mIndexedElements[index];
-    if (p)
+    if (p != nullptr)
     {
         mIndexedElements[index] = nullptr;
         p->kill();
@@ -83,7 +83,7 @@ void ParticleVector::moveTo(const float x, const float y)
          it != mIndexedElements.end(); ++it)
     {
         Particle *const p = *it;
-        if (p)
+        if (p != nullptr)
         {
             p->moveTo(x, y);
 
@@ -102,7 +102,7 @@ size_t ParticleVector::usedSize() const
     for (std::vector<Particle *>::const_iterator it = mIndexedElements.begin();
          it != mIndexedElements.end(); ++it)
     {
-        if (*it)
+        if (*it != nullptr)
             cnt ++;
     }
     return cnt;

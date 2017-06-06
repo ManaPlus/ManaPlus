@@ -79,7 +79,10 @@ class EquipmentWindow final : public Window,
         void mousePressed(MouseEvent& event) override final;
 
         const Item* getEquipment(const int i) const A_WARN_UNUSED
-        { return mEquipment ? mEquipment->getEquipment(i) : nullptr; }
+        {
+            return mEquipment != nullptr ?
+                mEquipment->getEquipment(i) : nullptr;
+        }
 
         void setBeing(Being *const being);
 

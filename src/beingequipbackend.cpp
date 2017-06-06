@@ -35,7 +35,7 @@ BeingEquipBackend::BeingEquipBackend(Being *const being) :
     mEquipment()
 {
     memset(mEquipment, 0, sizeof(mEquipment));
-    if (being)
+    if (being != nullptr)
     {
         const size_t sz = being->mSprites.size();
 

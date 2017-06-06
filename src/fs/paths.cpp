@@ -79,7 +79,7 @@ std::string getRealPath(const std::string &str)
        // defined(__native_client__)
 
     char *realPath = realpath(str.c_str(), nullptr);
-    if (!realPath)
+    if (realPath == nullptr)
         return "";
 #endif  // defined(__OpenBSD__) || defined(__ANDROID__) ||
         // defined(__native_client__)

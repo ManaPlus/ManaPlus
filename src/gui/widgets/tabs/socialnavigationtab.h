@@ -72,11 +72,11 @@ class SocialNavigationTab final : public SocialTab
 
         void updateList() override final
         {
-            if (!socialWindow || !localPlayer)
+            if ((socialWindow == nullptr) || (localPlayer == nullptr))
                 return;
 
             const Map *const map = socialWindow->getMap();
-            if (!map || map->empty())
+            if ((map == nullptr) || map->empty())
                 return;
 
             if (socialWindow->getProcessedPortals())
@@ -105,7 +105,7 @@ class SocialNavigationTab final : public SocialTab
             while (i != portals.end())
             {
                 MapItem *portal = *i;
-                if (!portal)
+                if (portal == nullptr)
                     continue;
 
                 const int x = portal->getX();
@@ -115,7 +115,7 @@ class SocialNavigationTab final : public SocialTab
                     portal->getComment().c_str(), x, y);
 
                 Avatar *const ava = new Avatar(name);
-                if (localPlayer)
+                if (localPlayer != nullptr)
                     ava->setOnline(localPlayer->isReachable(x, y, true));
                 else
                     ava->setOnline(false);
@@ -130,21 +130,21 @@ class SocialNavigationTab final : public SocialTab
                 total ++;
 
                 if (config.getBoolValue("drawHotKeys")
-                    && idx < 80 && outfitWindow)
+                    && idx < 80 && (outfitWindow != nullptr))
                 {
                     Being *const being = actorManager
                         ->findPortalByTile(x, y);
-                    if (being)
+                    if (being != nullptr)
                     {
                         being->setName(keyboard.getKeyShortString(
                             outfitWindow->keyName(idx)));
                     }
 
-                    if (specialLayer)
+                    if (specialLayer != nullptr)
                     {
                         portal = specialLayer->getTile(
                             ava->getX(), ava->getY());
-                        if (portal)
+                        if (portal != nullptr)
                         {
                             portal->setName(keyboard.getKeyShortString(
                                 outfitWindow->keyName(idx)));
@@ -155,7 +155,7 @@ class SocialNavigationTab final : public SocialTab
                 ++i;
                 idx ++;
             }
-            if (socialWindow)
+            if (socialWindow != nullptr)
                 socialWindow->setProcessedPortals(true);
 
             // TRANSLATORS: social window label
@@ -167,7 +167,7 @@ class SocialNavigationTab final : public SocialTab
 
         void selectIndex(const unsigned num) override final
         {
-            if (!localPlayer)
+            if (localPlayer == nullptr)
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
@@ -175,19 +175,19 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             const Avatar *const ava = avatars->at(num);
-            if (ava && localPlayer)
+            if ((ava != nullptr) && (localPlayer != nullptr))
                 localPlayer->navigateTo(ava->getX(), ava->getY());
         }
 
         void updateNames()
         {
-            if (!socialWindow)
+            if (socialWindow == nullptr)
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
 
             const Map *const map = socialWindow->getMap();
-            if (!map)
+            if (map == nullptr)
                 return;
 
             std::vector<Avatar*>::const_iterator i = avatars->begin();
@@ -195,12 +195,12 @@ class SocialNavigationTab final : public SocialTab
             while (i != i_end)
             {
                 Avatar *const ava = *i;
-                if (!ava)
+                if (ava == nullptr)
                     break;
 
                 const  MapItem *const item = map->findPortalXY(
                     ava->getX(), ava->getY());
-                if (item)
+                if (item != nullptr)
                 {
                     const std::string name = strprintf("%s [%d %d]",
                         item->getComment().c_str(),
@@ -215,12 +215,12 @@ class SocialNavigationTab final : public SocialTab
 
         int getPortalIndex(const int x, const int y)
         {
-            if (!socialWindow)
+            if (socialWindow == nullptr)
                 return -1;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
             const Map *const map = socialWindow->getMap();
-            if (!map)
+            if (map == nullptr)
                 return -1;
 
             std::vector<Avatar*>::const_iterator i = avatars->begin();
@@ -229,7 +229,7 @@ class SocialNavigationTab final : public SocialTab
             while (i != i_end)
             {
                 const Avatar *const ava = *i;
-                if (!ava)
+                if (ava == nullptr)
                     break;
 
                 if (ava->getX() == x && ava->getY() == y)
@@ -243,23 +243,23 @@ class SocialNavigationTab final : public SocialTab
 
         void addPortal(const int x, const int y)
         {
-            if (!socialWindow || !localPlayer)
+            if ((socialWindow == nullptr) || (localPlayer == nullptr))
                 return;
 
             const Map *const map = socialWindow->getMap();
-            if (!map)
+            if (map == nullptr)
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
             const MapItem *const portal = map->findPortalXY(x, y);
-            if (!portal)
+            if (portal == nullptr)
                 return;
 
             const std::string name = strprintf("%s [%d %d]",
                 portal->getComment().c_str(), x, y);
 
             Avatar *const ava = new Avatar(name);
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 ava->setOnline(localPlayer->isReachable(x, y, true));
             else
                 ava->setOnline(false);
@@ -272,11 +272,11 @@ class SocialNavigationTab final : public SocialTab
 
         void removePortal(const int x, const int y)
         {
-            if (!socialWindow || !localPlayer)
+            if ((socialWindow == nullptr) || (localPlayer == nullptr))
                 return;
 
             const Map *const map = socialWindow->getMap();
-            if (!map)
+            if (map == nullptr)
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
@@ -287,7 +287,7 @@ class SocialNavigationTab final : public SocialTab
             {
                 Avatar *ava = (*i);
 
-                if (!ava)
+                if (ava == nullptr)
                     break;
 
                 if (ava->getX() == x && ava->getY() == y)

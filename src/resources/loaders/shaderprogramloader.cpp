@@ -45,7 +45,7 @@ namespace
 
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
 
             const ShaderProgramLoader *const rl
@@ -54,7 +54,7 @@ namespace
                 rl->vertex,
                 rl->fragment,
                 rl->isNewShader);
-            if (!resource)
+            if (resource == nullptr)
                 reportAlways("Shader program creation error");
             return resource;
         }

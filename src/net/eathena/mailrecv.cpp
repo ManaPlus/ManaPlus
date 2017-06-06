@@ -45,7 +45,7 @@ void MailRecv::processMailOpen(Net::MessageIn &msg)
     switch (flag)
     {
         case 0:  // open window
-            if (mailWindow)
+            if (mailWindow != nullptr)
             {
                 if (!mailWindow->isWindowVisible())
                     mailWindow->setVisible(Visible_true);
@@ -54,7 +54,7 @@ void MailRecv::processMailOpen(Net::MessageIn &msg)
             break;
 
         case 1:  // close window
-            if (mailWindow)
+            if (mailWindow != nullptr)
             {
                 if (mailWindow->isWindowVisible())
                     mailWindow->setVisible(Visible_false);
@@ -79,7 +79,7 @@ void MailRecv::processMailList(Net::MessageIn &msg)
         MailMessage *const mail = new MailMessage;
         mail->id = msg.readInt32("message id");
         mail->title = msg.readString(40, "title");
-        mail->unread = msg.readUInt8("unread flag") ? true : false;
+        mail->unread = msg.readUInt8("unread flag") != 0u ? true : false;
         mail->sender = msg.readString(24, "sender name");
         mail->time = msg.readInt32("time stamp");
         mail->strTime = timeToStr(mail->time);
@@ -99,7 +99,7 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     mail->itemAmount = msg.readInt32("item amount");
     mail->itemId = msg.readInt16("item id");
     mail->itemType = msg.readInt16("item type");
-    mail->itemIdentify = msg.readUInt8("identify");
+    mail->itemIdentify = (msg.readUInt8("identify") != 0u);
     mail->itemAttribute = msg.readUInt8("attribute");
     mail->itemRefine = msg.readUInt8("refine");
     for (int f = 0; f < maxCards; f ++)
@@ -166,9 +166,9 @@ void MailRecv::processSetAttachmentAck(Net::MessageIn &msg)
 {
     const int index = msg.readInt16("index");
     const int flag = msg.readUInt8("flag");
-    if (flag)
+    if (flag != 0)
     {
-        if (index)
+        if (index != 0)
             NotifyManager::notify(NotifyTypes::MAIL_ATTACH_ITEM_ERROR);
         else
             NotifyManager::notify(NotifyTypes::MAIL_ATTACH_MONEY_ERROR);
@@ -179,7 +179,7 @@ void MailRecv::processDeleteAck(Net::MessageIn &msg)
 {
     const int mail = msg.readInt32("message id");
     const int flag = msg.readInt16("fail flag");
-    if (flag)
+    if (flag != 0)
     {
         NotifyManager::notify(NotifyTypes::MAIL_DELETE_ERROR);
     }
@@ -194,7 +194,7 @@ void MailRecv::processMailReturn(Net::MessageIn &msg)
 {
     const int mail = msg.readInt32("message id");
     const int flag = msg.readInt16("fail flag");
-    if (flag)
+    if (flag != 0)
     {
         NotifyManager::notify(NotifyTypes::MAIL_RETURN_ERROR);
     }

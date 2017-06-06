@@ -30,7 +30,7 @@ void DebugMessageListener::distributeEvent(const std::string &msg)
               it, mListeners)
     {
         DebugMessageListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->debugMessage(msg);
     }
 }

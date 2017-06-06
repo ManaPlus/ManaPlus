@@ -59,7 +59,7 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "skillunits"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "skillunits"))
     {
         logger->log("SkillUnitDb: Error while loading %s!",
             fileName.c_str());
@@ -94,7 +94,7 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName,
         BeingInfo *currentInfo = nullptr;
         if (mSkillUnitInfos.find(id) != mSkillUnitInfos.end())
             currentInfo = mSkillUnitInfos[id];
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setName(XML::langProperty(skillUnitNode,

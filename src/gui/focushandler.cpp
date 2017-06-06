@@ -92,14 +92,14 @@ void FocusHandler::requestModalFocus(Widget *const widget)
     /* If there is another widget with modal focus, remove its modal focus
      * and put it on the modal widget stack.
      */
-    if (mModalFocusedWidget && mModalFocusedWidget != widget)
+    if ((mModalFocusedWidget != nullptr) && mModalFocusedWidget != widget)
     {
         mModalStack.push_front(mModalFocusedWidget);
         mModalFocusedWidget = nullptr;
     }
 
     mModalFocusedWidget = widget;
-    if (mFocusedWidget && !mFocusedWidget->isModalFocused())
+    if ((mFocusedWidget != nullptr) && !mFocusedWidget->isModalFocused())
         focusNone();
 }
 
@@ -171,7 +171,7 @@ void FocusHandler::remove(Widget *const widget)
 
 void FocusHandler::tabNext()
 {
-    if (mFocusedWidget)
+    if (mFocusedWidget != nullptr)
     {
         if (!mFocusedWidget->isTabOutEnabled())
             return;
@@ -217,7 +217,7 @@ void FocusHandler::tabNext()
 
         const Widget *const widget = mWidgets.at(focusedWidget);
         if (widget->isFocusable() && widget->isTabInEnabled() &&
-            (!mModalFocusedWidget || widget->isModalFocused()))
+            ((mModalFocusedWidget == nullptr) || widget->isModalFocused()))
         {
             done = true;
         }
@@ -242,7 +242,7 @@ void FocusHandler::tabNext()
 
 void FocusHandler::tabPrevious()
 {
-    if (mFocusedWidget)
+    if (mFocusedWidget != nullptr)
     {
         if (!mFocusedWidget->isTabOutEnabled())
             return;
@@ -288,7 +288,7 @@ void FocusHandler::tabPrevious()
 
         const Widget *const widget = mWidgets.at(focusedWidget);
         if (widget->isFocusable() && widget->isTabInEnabled() &&
-            (!mModalFocusedWidget || widget->isModalFocused()))
+            ((mModalFocusedWidget == nullptr) || widget->isModalFocused()))
         {
             done = true;
         }
@@ -313,15 +313,15 @@ void FocusHandler::tabPrevious()
 
 void FocusHandler::checkForWindow() const
 {
-    if (mFocusedWidget)
+    if (mFocusedWidget != nullptr)
     {
         Widget *widget = mFocusedWidget->getParent();
 
-        while (widget)
+        while (widget != nullptr)
         {
             Window *const window = dynamic_cast<Window*>(widget);
 
-            if (window)
+            if (window != nullptr)
             {
                 window->requestMoveToTop();
                 break;
@@ -334,12 +334,12 @@ void FocusHandler::checkForWindow() const
 
 void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
 {
-    if (gui)
+    if (gui != nullptr)
         gui->distributeGlobalFocusGainedEvent(focusEvent);
 
     const Widget *const sourceWidget = focusEvent.getSource();
 
-    if (!sourceWidget)
+    if (sourceWidget == nullptr)
         return;
     std::list<FocusListener*> focusListeners
         = sourceWidget->getFocusListeners();
@@ -356,7 +356,7 @@ void FocusHandler::distributeFocusGainedEvent(const Event &focusEvent)
 
 void FocusHandler::requestFocus(const Widget *const widget)
 {
-    if (!widget || widget == mFocusedWidget)
+    if ((widget == nullptr) || widget == mFocusedWidget)
         return;
 
     int toBeFocusedIndex = -1;
@@ -379,7 +379,7 @@ void FocusHandler::requestFocus(const Widget *const widget)
     {
         mFocusedWidget = mWidgets.at(toBeFocusedIndex);
 
-        if (oldFocused)
+        if (oldFocused != nullptr)
         {
             Event focusEvent(oldFocused);
             distributeFocusLostEvent(focusEvent);
@@ -392,7 +392,7 @@ void FocusHandler::requestFocus(const Widget *const widget)
 
 void FocusHandler::requestModalMouseInputFocus(Widget *const widget)
 {
-    if (mModalMouseInputFocusedWidget
+    if ((mModalMouseInputFocusedWidget != nullptr)
         && mModalMouseInputFocusedWidget != widget)
     {
         return;
@@ -539,7 +539,7 @@ void FocusHandler::add(Widget *const widget)
 
 void FocusHandler::focusNone()
 {
-    if (mFocusedWidget)
+    if (mFocusedWidget != nullptr)
     {
         Widget *const focused = mFocusedWidget;
         mFocusedWidget = nullptr;
@@ -552,7 +552,7 @@ void FocusHandler::focusNone()
 void FocusHandler::distributeFocusLostEvent(const Event& focusEvent)
 {
     const Widget *const sourceWidget = focusEvent.getSource();
-    if (!sourceWidget)
+    if (sourceWidget == nullptr)
         return;
 
     std::list<FocusListener*> focusListeners

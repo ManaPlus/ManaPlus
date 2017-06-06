@@ -75,7 +75,7 @@ std::string &toUpper(std::string &str)
 unsigned int atox(const std::string &str)
 {
     unsigned int value = 0;
-    if (sscanf(str.c_str(), "0x%06x", &value))
+    if (sscanf(str.c_str(), "0x%06x", &value) != 0)
         return value;
     return 0;
 }
@@ -139,7 +139,7 @@ int compareStrI(const std::string &a, const std::string &b)
     for (; itA < endA && itB < endB; ++itA, ++itB)
     {
         const int comp = tolower(*itA) - tolower(*itB);
-        if (comp)
+        if (comp != 0)
             return comp;
     }
 
@@ -240,7 +240,7 @@ const std::string encodeStr(unsigned int value, const unsigned int size)
         buf += CAST_S8(value % base + start);
         value /= base;
     }
-    while (value);
+    while (value != 0u);
 
     while (buf.length() < size)
         buf += CAST_S8(start);
@@ -320,7 +320,7 @@ const char* getSafeUtf8String(const std::string &text)
 
 void getSafeUtf8String(std::string text, char *const buf)
 {
-    if (!buf)
+    if (buf == nullptr)
         return;
     const size_t sz = text.size();
     const size_t size = sz + UTF8_MAX_SIZE;
@@ -633,7 +633,7 @@ std::string stringToHexPath(const std::string &str)
 void deleteCharLeft(std::string &str,
                     unsigned *const pos)
 {
-    if (!pos)
+    if (pos == nullptr)
         return;
 
     while (*pos > 0)
@@ -956,7 +956,7 @@ std::string timeToStr(const uint32_t time)
     char buf[101];
     const time_t tempTime = time;
     tm *const timeInfo = localtime(&tempTime);
-    if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo))
+    if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo) != 0u)
         return std::string(buf);
     else
         return "unknown";

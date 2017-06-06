@@ -51,12 +51,12 @@ void GameRecv::processMapLogin(Net::MessageIn &msg)
     mLastHost &= 0xffffff;
 
     Network *const network = Network::mInstance;
-    if (network)
+    if (network != nullptr)
         network->pauseDispatch();
 
     // Switch now or we'll have problems
     client->setState(State::GAME);
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->setTileCoords(x, y);
 }
 

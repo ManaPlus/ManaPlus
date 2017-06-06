@@ -49,7 +49,7 @@ BuySellHandler::BuySellHandler() :
 
 void BuySellHandler::requestSellList(const std::string &nick) const
 {
-    if (nick.empty() != 0 || !shopWindow)
+    if (nick.empty() || shopWindow == nullptr)
         return;
 
     const std::string data("!selllist " + toString(tick_time));
@@ -60,14 +60,14 @@ void BuySellHandler::requestSellList(const std::string &nick) const
     }
     else
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
     }
 }
 
 void BuySellHandler::requestBuyList(const std::string &nick) const
 {
-    if (nick.empty() || !shopWindow)
+    if (nick.empty() || (shopWindow == nullptr))
         return;
 
     const std::string data("!buylist " + toString(tick_time));
@@ -79,7 +79,7 @@ void BuySellHandler::requestBuyList(const std::string &nick) const
     }
     else
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->addWhisper(nick, data, ChatMsgType::BY_PLAYER);
     }
 }
@@ -88,7 +88,7 @@ void BuySellHandler::sendBuyRequest(const std::string &nick,
                                     const ShopItem *const item,
                                     const int amount) const
 {
-    if (!chatWindow || nick.empty() || !item ||
+    if ((chatWindow == nullptr) || nick.empty() || (item == nullptr) ||
         amount < 1 || amount > item->getQuantity())
     {
         return;
@@ -106,7 +106,7 @@ void BuySellHandler::sendSellRequest(const std::string &nick,
                                      const ShopItem *const item,
                                      const int amount) const
 {
-    if (!chatWindow || nick.empty() || !item ||
+    if ((chatWindow == nullptr) || nick.empty() || (item == nullptr) ||
         amount < 1 || amount > item->getQuantity())
     {
         return;

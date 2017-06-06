@@ -109,7 +109,7 @@ void GuildRecv::processGuildBasicInfo(Net::MessageIn &msg)
     std::string castle = msg.readString(16, "castles");
     msg.readInt32("unused");
 
-    if (guildTab && showBasicInfo)
+    if ((guildTab != nullptr) && showBasicInfo)
     {
         showBasicInfo = false;
         // TRANSLATORS: guild info message
@@ -142,7 +142,7 @@ void GuildRecv::processGuildBasicInfo(Net::MessageIn &msg)
     }
 
     Guild *const g = Guild::getGuild(CAST_S16(guildId));
-    if (!g)
+    if (g == nullptr)
         return;
     g->setName(name);
     g->setEmblemId(emblem);
@@ -169,7 +169,7 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
     if (length < 4)
         return;
     const int count = (length - 4) / 104;
-    if (!taGuild)
+    if (taGuild == nullptr)
     {
         logger->log1("!taGuild");
         return;
@@ -195,9 +195,9 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
         std::string name = msg.readString(24, "name");
 
         GuildMember *const m = taGuild->addMember(id, charId, name);
-        if (m)
+        if (m != nullptr)
         {
-            m->setOnline(online);
+            m->setOnline(online != 0);
             m->setID(id);
             m->setCharId(charId);
             m->setGender(Being::intToGender(CAST_U8(gender)));
@@ -205,11 +205,11 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
             m->setExp(exp);
             m->setPos(pos);
             m->setRace(race);
-            if (actorManager)
+            if (actorManager != nullptr)
             {
                 Being *const being = actorManager->findBeingByName(
                     name, ActorType::Player);
-                if (being)
+                if (being != nullptr)
                 {
                     being->setGuildName(taGuild->getName());
                     if (being->getLevel() != level)
@@ -219,24 +219,24 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
                     }
                 }
             }
-            if (online)
+            if (online != 0)
                 onlineNum ++;
             totalNum ++;
         }
     }
     taGuild->sort();
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->updatePlayerGuild();
         actorManager->updatePlayerColors();
     }
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->updateGuildCounter(onlineNum, totalNum);
 }
 
 void GuildRecv::processGuildPosNameList(Net::MessageIn &msg)
 {
-    if (!taGuild)
+    if (taGuild == nullptr)
     {
         logger->log1("!taGuild");
         return;
@@ -288,10 +288,10 @@ void GuildRecv::processGuildMemberPosChange(Net::MessageIn &msg)
     const BeingId accountId = msg.readBeingId("account id");
     const int charId = msg.readInt32("char id");
     const int pos = msg.readInt32("position");
-    if (taGuild)
+    if (taGuild != nullptr)
     {
         GuildMember *const m = taGuild->getMember(accountId, charId);
-        if (m)
+        if (m != nullptr)
             m->setPos(pos);
     }
 }
@@ -313,7 +313,7 @@ void GuildRecv::processGuildSkillInfo(Net::MessageIn &msg)
     const int count = (msg.readInt16("len") - 6) / 37;
     msg.readInt16("skill points");
 
-    if (skillDialog)
+    if (skillDialog != nullptr)
         skillDialog->hideSkills(SkillOwner::Guild);
     for (int i = 0; i < count; i++)
     {
@@ -326,7 +326,7 @@ void GuildRecv::processGuildSkillInfo(Net::MessageIn &msg)
         const std::string name = msg.readString(24, "skill name");
         const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         PlayerInfo::setSkillLevel(skillId, level);
-        if (skillDialog)
+        if (skillDialog != nullptr)
         {
             if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
             {
@@ -335,7 +335,7 @@ void GuildRecv::processGuildSkillInfo(Net::MessageIn &msg)
             }
         }
     }
-    if (skillDialog)
+    if (skillDialog != nullptr)
         skillDialog->updateModels();
 }
 
@@ -343,7 +343,7 @@ void GuildRecv::processGuildNotice(Net::MessageIn &msg)
 {
     const std::string msg1 = msg.readString(60, "msg1");
     const std::string msg2 = msg.readString(120, "msg2");
-    if (guildTab)
+    if (guildTab != nullptr)
     {
         guildTab->chatLog(msg1, ChatMsgType::BY_SERVER);
         guildTab->chatLog(msg2, ChatMsgType::BY_SERVER);
@@ -355,14 +355,14 @@ void GuildRecv::processGuildInvite(Net::MessageIn &msg)
     const int guildId = msg.readInt32("guild id");
     const std::string guildName = msg.readString(24, "guild name");
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->showGuildInvite(guildName, guildId, "");
 }
 
 void GuildRecv::processGuildInviteAck(Net::MessageIn &msg)
 {
     const uint8_t flag = msg.readUInt8("flag");
-    if (!guildTab)
+    if (guildTab == nullptr)
         return;
 
     switch (flag)
@@ -394,15 +394,15 @@ void GuildRecv::processGuildLeave(Net::MessageIn &msg)
     const std::string nick = msg.readString(24, "nick");
     msg.readString(40, "message");
 
-    if (taGuild)
+    if (taGuild != nullptr)
         taGuild->removeMember(nick);
 
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (nick == localPlayer->getName())
     {
-        if (taGuild)
+        if (taGuild != nullptr)
         {
             taGuild->removeFromMembers();
             taGuild->clearMembers();
@@ -411,22 +411,22 @@ void GuildRecv::processGuildLeave(Net::MessageIn &msg)
         NotifyManager::notify(NotifyTypes::GUILD_LEFT);
         delete2(guildTab)
 
-        if (socialWindow && taGuild)
+        if ((socialWindow != nullptr) && (taGuild != nullptr))
             socialWindow->removeTab(taGuild);
-        if (actorManager)
+        if (actorManager != nullptr)
             actorManager->updatePlayerColors();
     }
     else
     {
         NotifyManager::notify(NotifyTypes::GUILD_USER_LEFT, nick);
-        if (actorManager)
+        if (actorManager != nullptr)
         {
             Being *const b = actorManager->findBeingByName(
                 nick, ActorType::Player);
 
-            if (b)
+            if (b != nullptr)
                 b->clearGuilds();
-            if (taGuild)
+            if (taGuild != nullptr)
                 taGuild->removeMember(nick);
         }
     }
@@ -438,7 +438,7 @@ void GuildRecv::processGuildMessage(Net::MessageIn &msg)
 
     if (msgLength <= 0)
         return;
-    if (guildTab)
+    if (guildTab != nullptr)
     {
         std::string chatMsg = msg.readString(msgLength, "message");
         const size_t pos = chatMsg.find(" : ", 0);
@@ -505,15 +505,15 @@ void GuildRecv::processGuildBroken(Net::MessageIn &msg)
 
 void GuildRecv::processGuildExpulsionContinue(const std::string &nick)
 {
-    if (taGuild)
+    if (taGuild != nullptr)
         taGuild->removeMember(nick);
 
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (nick == localPlayer->getName())
     {
-        if (taGuild)
+        if (taGuild != nullptr)
         {
             taGuild->removeFromMembers();
             taGuild->clearMembers();
@@ -521,22 +521,22 @@ void GuildRecv::processGuildExpulsionContinue(const std::string &nick)
         NotifyManager::notify(NotifyTypes::GUILD_KICKED);
         delete2(guildTab)
 
-        if (socialWindow && taGuild)
+        if ((socialWindow != nullptr) && (taGuild != nullptr))
             socialWindow->removeTab(taGuild);
-        if (actorManager)
+        if (actorManager != nullptr)
             actorManager->updatePlayerColors();
     }
     else
     {
         NotifyManager::notify(NotifyTypes::GUILD_USER_KICKED, nick);
-        if (actorManager)
+        if (actorManager != nullptr)
         {
             Being *const b = actorManager->findBeingByName(
                 nick, ActorType::Player);
 
-            if (b)
+            if (b != nullptr)
                 b->clearGuilds();
-            if (taGuild)
+            if (taGuild != nullptr)
                 taGuild->removeMember(nick);
         }
     }
@@ -547,10 +547,10 @@ void GuildRecv::processGuildUpdateCoords(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("account id");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
-    if (taGuild)
+    if (taGuild != nullptr)
     {
         GuildMember *const m = taGuild->getMember(id);
-        if (m)
+        if (m != nullptr)
         {
             m->setX(x);
             m->setY(y);
@@ -569,24 +569,24 @@ void GuildRecv::processGuildPositionInfo(Net::MessageIn &msg)
     std::string guildName = msg.readString(24, "guild name");
 
     Guild *const g = Guild::getGuild(CAST_S16(guildId));
-    if (!g)
+    if (g == nullptr)
         return;
 
     g->setName(guildName);
     g->setEmblemId(emblem);
-    if (!taGuild)
+    if (taGuild == nullptr)
         taGuild = g;
-    if (!guildTab && chatWindow)
+    if ((guildTab == nullptr) && (chatWindow != nullptr))
     {
         guildTab = new GuildTab(chatWindow);
         if (config.getBoolValue("showChatHistory"))
             guildTab->loadFromLogFile("#Guild");
-        if (localPlayer)
+        if (localPlayer != nullptr)
             localPlayer->addGuild(taGuild);
         guildHandler->memberList();
     }
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setGuild(g);
         localPlayer->setGuildName(g->getName());
@@ -602,17 +602,17 @@ void GuildRecv::processGuildMemberLogin(Net::MessageIn &msg)
         msg.readInt16("sex")));
     msg.readInt16("hair");
     msg.readInt16("hair color");
-    if (taGuild)
+    if (taGuild != nullptr)
     {
         GuildMember *const m = taGuild->getMember(accountId, charId);
-        if (m)
+        if (m != nullptr)
         {
-            m->setOnline(online);
-            if (online)
+            m->setOnline(online != 0);
+            if (online != 0)
                 m->setGender(gender);
-            if (guildTab)
+            if (guildTab != nullptr)
                 guildTab->showOnline(m->getName(), fromBool(online, Online));
-            if (socialWindow)
+            if (socialWindow != nullptr)
                 socialWindow->updateGuildCounter();
         }
     }

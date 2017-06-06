@@ -42,13 +42,13 @@ struct WalkLayerLoader final
 
     static Resource *load(const void *const v)
     {
-        if (!v)
+        if (v == nullptr)
             return nullptr;
 
         const WalkLayerLoader *const rl = static_cast<const
             WalkLayerLoader *>(v);
         Resource *const resource = NavigationManager::loadWalkLayer(rl->map);
-        if (!resource)
+        if (resource == nullptr)
             reportAlways("WalkLayer creation error");
         return resource;
     }

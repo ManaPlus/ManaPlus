@@ -201,7 +201,7 @@ void ChatRecv::processColorChat(Net::MessageIn &msg)
     if (findCutFirst(msg2, "You're now in the '#") && findCutLast(msg2, "'"))
     {
         const size_t idx = msg2.find("' channel for '");
-        if (idx != std::string::npos && chatWindow)
+        if (idx != std::string::npos && (chatWindow != nullptr))
         {
             chatWindow->addChannelTab(std::string("#").append(
                 msg2.substr(0, idx)), false);
@@ -244,7 +244,7 @@ void ChatRecv::processChatContinue(std::string chatMsg,
 {
     const std::string channel = extractChannelFromMessage(chatMsg);
     bool allow(true);
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         allow = chatWindow->resortChatLog(chatMsg,
             own,
@@ -259,9 +259,9 @@ void ChatRecv::processChatContinue(std::string chatMsg,
 
     trim(chatMsg);
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
-        if ((chatWindow || Ea::ChatRecv::mShowMotd) && allow)
+        if (((chatWindow != nullptr) || Ea::ChatRecv::mShowMotd) && allow)
             localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
     }
     BLOCK_END("ChatRecv::processChat")
@@ -282,7 +282,7 @@ void ChatRecv::processGmChat(Net::MessageIn &msg)
     if (!findCutFirst(chatMsg, "ssss"))
         findCutFirst(chatMsg, "eulb");
 
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->addGlobalMessage(chatMsg);
     BLOCK_END("ChatRecv::processChat")
 }
@@ -296,7 +296,7 @@ void ChatRecv::processGmChat2(Net::MessageIn &msg)
     msg.readInt16("font align");
     msg.readInt16("font y");
     const std::string chatMsg = msg.readRawString(chatMsgLength, "message");
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->addGlobalMessage(chatMsg);
 }
 
@@ -327,7 +327,7 @@ void ChatRecv::processWhisperResponse(Net::MessageIn &msg)
     const uint8_t type = msg.readUInt8("response");
     if (msg.getVersion() >= 20131223)
         msg.readInt32("unknown");
-    if (type == 1 && chatWindow)
+    if (type == 1 && (chatWindow != nullptr))
     {
         const std::string nick = Ea::ChatRecv::getLastWhisperNick();
         if (nick.size() > 1 && nick[0] == '#')
@@ -369,7 +369,7 @@ void ChatRecv::processChatDisplay(Net::MessageIn &msg)
     obj->update();
 
     Being *const dstBeing = actorManager->findBeing(obj->ownerId);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setChat(obj);
 }
 
@@ -387,13 +387,13 @@ void ChatRecv::processChatRoomJoinAck(Net::MessageIn &msg)
 
     const ChatObject *const oldChat = ChatObject::findById(id);
 
-    if (oldChat)
+    if (oldChat != nullptr)
         PlayerInfo::setRoomName(oldChat->title);
     else
         PlayerInfo::setRoomName(std::string());
     chatWindow->joinRoom(true);
     ChatObject *const obj = new ChatObject;
-    if (oldChat)
+    if (oldChat != nullptr)
     {
         obj->ownerId = oldChat->ownerId;
         obj->chatId = oldChat->chatId;
@@ -423,26 +423,26 @@ void ChatRecv::processChatRoomLeave(Net::MessageIn &msg)
             UNIMPLEMENTEDPACKETFIELD(status);
             break;
     }
-    if (localPlayer && name == localPlayer->getName())
+    if ((localPlayer != nullptr) && name == localPlayer->getName())
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->joinRoom(false);
         PlayerInfo::setRoomName(std::string());
-        if (localPlayer)
+        if (localPlayer != nullptr)
             localPlayer->setChat(nullptr);
     }
     else
     {
         Being *const being = actorManager->findBeingByName(
             name, ActorType::Player);
-        if (being)
+        if (being != nullptr)
             being->setChat(nullptr);
     }
 }
 
 void ChatRecv::processJoinChannel(Net::MessageIn &msg)
 {
-    if (!chatWindow)
+    if (chatWindow == nullptr)
         return;
 
     const std::string channel = msg.readString(24, "channel name");
@@ -489,7 +489,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
         if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
             chatWindow->addWhisper(nick, chatMsg);
     }
-    else if (localChatTab)
+    else if (localChatTab != nullptr)
     {
         localChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
     }
@@ -498,7 +498,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
 
 void ChatRecv::processBeingChat(Net::MessageIn &msg)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     BLOCK_START("ChatRecv::processBeingChat")
@@ -513,14 +513,14 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
 
     std::string chatMsg = msg.readRawString(chatMsgLength, "message");
 
-    if (being && being->getType() == ActorType::Player)
+    if ((being != nullptr) && being->getType() == ActorType::Player)
         being->setTalkTime();
 
     const size_t pos = chatMsg.find(" : ", 0);
     std::string sender_name = ((pos == std::string::npos)
         ? "" : chatMsg.substr(0, pos));
 
-    if (being && sender_name != being->getName()
+    if ((being != nullptr) && sender_name != being->getName()
         && being->getType() == ActorType::Player)
     {
         if (!being->getName().empty())
@@ -537,8 +537,8 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     // We use getIgnorePlayer instead of ignoringPlayer here
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
-    if (player_relations.checkPermissionSilently(sender_name,
-        PlayerRelation::SPEECH_LOG) && chatWindow)
+    if ((player_relations.checkPermissionSilently(sender_name,
+        PlayerRelation::SPEECH_LOG) != 0u) && (chatWindow != nullptr))
     {
         allow = chatWindow->resortChatLog(
             removeColors(sender_name).append(" : ").append(chatMsg),
@@ -548,7 +548,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
             TryRemoveColors_true);
     }
 
-    if (allow && being && player_relations.hasPermission(sender_name,
+    if (allow && (being != nullptr) && player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
         being->setSpeech(chatMsg, GENERAL_CHANNEL);
@@ -632,7 +632,7 @@ void ChatRecv::processChatRoomAddMember(Net::MessageIn &msg)
 {
     msg.readInt16("users");
     const std::string name = msg.readString(24, "name");
-    if (!localChatTab)
+    if (localChatTab == nullptr)
         return;
     NotifyManager::notify(NotifyTypes::ROOM_JOINED, name);
 }
@@ -647,7 +647,7 @@ void ChatRecv::processChatRoomSettings(Net::MessageIn &msg)
     const uint8_t type = msg.readUInt8("type");
     const std::string &title = msg.readString(sz, "title");
     ChatObject *const chat = localPlayer->getChat();
-    if (chat && chat->chatId == chatId)
+    if ((chat != nullptr) && chat->chatId == chatId)
     {
         chat->ownerId = ownerId;
         chat->maxUsers = limit;

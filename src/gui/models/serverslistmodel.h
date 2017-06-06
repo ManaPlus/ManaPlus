@@ -42,7 +42,7 @@ class ServersListModel final : public ListModel
         ServersListModel(ServerInfos *const servers,
                          ServerDialog *const parent) :
             mServers(servers),
-            mVersionStrings(servers ? servers->size() : 0,
+            mVersionStrings(servers != nullptr ? servers->size() : 0,
                 VersionString(0, "")),
             mParent(parent)
         {
@@ -83,7 +83,7 @@ class ServersListModel final : public ListModel
             if (index < 0 || index >= CAST_S32(mVersionStrings.size()))
             return;
 
-            if (version.empty() || !gui)
+            if (version.empty() || (gui == nullptr))
             {
                 mVersionStrings[index] = VersionString(0, "");
             }

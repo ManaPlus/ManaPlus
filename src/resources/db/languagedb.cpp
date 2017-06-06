@@ -52,7 +52,7 @@ void LanguageDb::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst root = doc->rootNode();
 
-    if (!root || !xmlNameEqual(root, "languages"))
+    if ((root == nullptr) || !xmlNameEqual(root, "languages"))
     {
         delete doc;
         return;

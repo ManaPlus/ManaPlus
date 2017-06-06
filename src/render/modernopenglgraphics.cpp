@@ -125,17 +125,17 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
 void ModernOpenGLGraphics::deleteGLObjects() restrict2
 {
     delete2(mProgram);
-    if (mVbo)
+    if (mVbo != 0u)
     {
 //        logger->log("delete buffer vbo: %u", mVbo);
         mglDeleteBuffers(1, &mVbo);
     }
-    if (mEbo)
+    if (mEbo != 0u)
     {
 //        logger->log("delete buffer ebo: %u", mEbo);
         mglDeleteBuffers(1, &mEbo);
     }
-    if (mVao)
+    if (mVao != 0u)
         mglDeleteVertexArrays(1, &mVao);
 }
 
@@ -150,9 +150,9 @@ void ModernOpenGLGraphics::initArrays(const int vertCount) restrict2
     // need alocate small size, after if limit reached reallocate to double size
     const size_t sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
-    if (!mIntArray)
+    if (mIntArray == nullptr)
         mIntArray = new GLint[sz];
-    if (!mIntArrayCached)
+    if (mIntArrayCached == nullptr)
         mIntArrayCached = new GLint[sz];
 }
 
@@ -169,13 +169,13 @@ void ModernOpenGLGraphics::postInit() restrict2
 
     logger->log("Compiling shaders");
     mProgram = shaders.getSimpleProgram();
-    if (!mProgram)
+    if (mProgram == nullptr)
     {
         graphicsManager.logError();
         logger->safeError("Shader creation error. See manaplus.log.");
     }
     mProgramId = mProgram->getProgramId();
-    if (!mProgramId)
+    if (mProgramId == 0u)
         logger->error("Shaders compilation error.");
 
     logger->log("Shaders compilation done.");
@@ -333,7 +333,7 @@ void ModernOpenGLGraphics::drawImageInline(const Image *restrict const image,
                                            int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
 #ifdef DEBUG_BIND_TEXTURE
@@ -409,7 +409,7 @@ void ModernOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                              const int desiredWidth,
                                              const int desiredHeight) restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -450,7 +450,7 @@ void ModernOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                              const int w,
                                              const int h) restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -515,7 +515,7 @@ void ModernOpenGLGraphics::drawRescaledPattern(const Image *
                                                const int scaledHeight)
                                                restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     if (scaledWidth == 0 || scaledHeight == 0)
@@ -627,7 +627,7 @@ void ModernOpenGLGraphics::calcPatternInline(ImageVertexes *
                                              const int w,
                                              const int h) const restrict2
 {
-    if (!image || !vert)
+    if (image == nullptr || vert == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -683,7 +683,7 @@ void ModernOpenGLGraphics::calcTileCollection(ImageCollection *
                                               restrict const image,
                                               int x, int y) restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -736,7 +736,7 @@ void ModernOpenGLGraphics::calcPattern(ImageCollection *restrict const vertCol,
                                        const int w,
                                        const int h) const restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
@@ -811,7 +811,7 @@ void ModernOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
 void ModernOpenGLGraphics::drawTileVertexes(const ImageVertexes *
                                             restrict const vert) restrict2
 {
-    if (!vert)
+    if (vert == nullptr)
         return;
     const Image *const image = vert->image;
 
@@ -835,7 +835,7 @@ void ModernOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
 {
     ImageVertexes *vert = nullptr;
     const Image *const image = imgRect.grid[4];
-    if (!image)
+    if (image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -1215,7 +1215,7 @@ void ModernOpenGLGraphics::dumpSettings()
         test[2] = 0;
         test[3] = 0;
         mglGetIntegerv(f, &test[0]);
-        if (test[0] || test[1] || test[2] || test[3])
+        if (test[0] != 0 || test[1] != 0 || test[2] != 0 || test[3] != 0)
         {
             logger->log("\n%d = %d, %d, %d, %d", f,
                 test[0], test[1], test[2], test[3]);
@@ -1251,7 +1251,7 @@ void ModernOpenGLGraphics::createGLContext(const bool custom) restrict2
 {
     if (custom)
     {
-        if (mGLContext)
+        if (mGLContext != nullptr)
             SDL::makeCurrentContext(mGLContext);
         else
             mGLContext = SDL::createGLContext(mWindow, 3, 3, 0x01);
@@ -1265,7 +1265,7 @@ void ModernOpenGLGraphics::createGLContext(const bool custom) restrict2
 void ModernOpenGLGraphics::finalize(ImageCollection *restrict const col)
                                     restrict2
 {
-    if (!col)
+    if (col == nullptr)
         return;
     FOR_EACH (ImageCollectionIter, it, col->draws)
         finalize(*it);
@@ -1276,7 +1276,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *restrict const vert)
 {
     // in future need convert in each switchVp/continueVp
 
-    if (!vert)
+    if (vert == nullptr)
         return;
     OpenGLGraphicsVertexes &ogl = vert->ogl;
     const std::vector<int> &vp = ogl.mVp;

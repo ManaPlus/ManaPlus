@@ -129,7 +129,7 @@ static void readFields(std::string &effect,
                        XmlNodeConstPtr node,
                        const ItemFieldDb::FieldInfos &fields)
 {
-    if (!translator)
+    if (translator == nullptr)
         return;
 
     FOR_EACH (ItemFieldDb::FieldInfos::const_iterator, it, fields)
@@ -249,7 +249,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "items"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "items"))
     {
         logger->log("ItemDB: Error while loading %s!", fileName.c_str());
         mLoaded = true;
@@ -287,7 +287,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             logger->log("ItemDB: Redefinition of item ID %d", id);
             itemInfo = mItemInfos[id];
         }
-        if (!itemInfo)
+        if (itemInfo == nullptr)
             itemInfo = new ItemInfo;
 
         const std::string typeStr = XML::getProperty(node, "type", "");
@@ -375,7 +375,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         }
 
         itemInfo->setId(id);
-        if (name.empty() && inheritItemInfo)
+        if (name.empty() && (inheritItemInfo != nullptr))
             name = inheritItemInfo->getName();
         // TRANSLATORS: item info name
         itemInfo->setName(name.empty() ? _("unnamed") : name);
@@ -389,12 +389,12 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             itemInfo->setNameEn(nameEn);
         }
 
-        if (description.empty() && inheritItemInfo)
+        if (description.empty() && (inheritItemInfo != nullptr))
             description = inheritItemInfo->getDescription();
         itemInfo->setDescription(description);
         if (typeStr.empty())
         {
-            if (inheritItemInfo)
+            if (inheritItemInfo != nullptr)
                 itemInfo->setType(inheritItemInfo->getType());
             else
                 itemInfo->setType(itemTypeFromString("other"));
@@ -404,12 +404,12 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             itemInfo->setType(itemTypeFromString(typeStr));
         }
         itemInfo->setType(itemTypeFromString(typeStr));
-        if (useButton.empty() && inheritItemInfo)
+        if (useButton.empty() && (inheritItemInfo != nullptr))
             useButton = inheritItemInfo->getUseButton();
         if (useButton.empty())
             useButton = useButtonFromItemType(itemInfo->getType());
         itemInfo->setUseButton(useButton);
-        if (useButton2.empty() && inheritItemInfo)
+        if (useButton2.empty() && (inheritItemInfo != nullptr))
             useButton2 = inheritItemInfo->getUseButton();
         if (useButton2.empty())
             useButton2 = useButton2FromItemType(itemInfo->getType());
@@ -419,7 +419,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             node, "sellProtected", false));
         if (cardColor != -1)
             itemInfo->setCardColor(fromInt(cardColor, ItemColor));
-        else if (inheritItemInfo)
+        else if (inheritItemInfo != nullptr)
             itemInfo->setCardColor(inheritItemInfo->getCardColor());
 
         switch (itemInfo->getType())
@@ -462,46 +462,46 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             }
         }
 
-        if (!view && inheritItemInfo)
+        if ((view == 0) && (inheritItemInfo != nullptr))
             view = inheritItemInfo->getView();
         itemInfo->setView(view);
-        if (!weight && inheritItemInfo)
+        if ((weight == 0) && (inheritItemInfo != nullptr))
             weight = inheritItemInfo->getWeight();
         itemInfo->setWeight(weight);
-        if (attackAction.empty() && inheritItemInfo)
+        if (attackAction.empty() && (inheritItemInfo != nullptr))
             attackAction = inheritItemInfo->getAttackAction();
         itemInfo->setAttackAction(attackAction);
-        if (skyAttackAction.empty() && inheritItemInfo)
+        if (skyAttackAction.empty() && (inheritItemInfo != nullptr))
             skyAttackAction = inheritItemInfo->getSkyAttackAction();
         itemInfo->setSkyAttackAction(skyAttackAction);
-        if (waterAttackAction.empty() && inheritItemInfo)
+        if (waterAttackAction.empty() && (inheritItemInfo != nullptr))
             waterAttackAction = inheritItemInfo->getWaterAttackAction();
         itemInfo->setWaterAttackAction(waterAttackAction);
-        if (rideAttackAction.empty() && inheritItemInfo)
+        if (rideAttackAction.empty() && (inheritItemInfo != nullptr))
             rideAttackAction = inheritItemInfo->getRideAttackAction();
         itemInfo->setRideAttackAction(rideAttackAction);
-        if (!attackRange && inheritItemInfo)
+        if ((attackRange == 0) && (inheritItemInfo != nullptr))
             attackRange = inheritItemInfo->getAttackRange();
         itemInfo->setAttackRange(attackRange);
-        if (missileParticle.empty() && inheritItemInfo)
+        if (missileParticle.empty() && (inheritItemInfo != nullptr))
             missileParticle = inheritItemInfo->getMissileParticleFile();
         itemInfo->setMissileParticleFile(missileParticle);
-        if (!hitEffectId && inheritItemInfo)
+        if ((hitEffectId == 0) && (inheritItemInfo != nullptr))
             hitEffectId = inheritItemInfo->getHitEffectId();
         itemInfo->setHitEffectId(hitEffectId);
-        if (!criticalEffectId && inheritItemInfo)
+        if ((criticalEffectId == 0) && (inheritItemInfo != nullptr))
             criticalEffectId = inheritItemInfo->getCriticalHitEffectId();
         itemInfo->setCriticalHitEffectId(criticalEffectId);
-        if (!missEffectId && inheritItemInfo)
+        if ((missEffectId == 0) && (inheritItemInfo != nullptr))
             missEffectId = inheritItemInfo->getMissEffectId();
         itemInfo->setMissEffectId(missEffectId);
         itemInfo->setDrawBefore(-1, parseSpriteName(drawBefore));
         itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(-1, drawPriority);
-        if (colors.empty() && inheritItemInfo)
+        if (colors.empty() && (inheritItemInfo != nullptr))
             colors = inheritItemInfo->getColorsListName();
         itemInfo->setColorsList(colors);
-        if (iconColors.empty() && inheritItemInfo)
+        if (iconColors.empty() && (inheritItemInfo != nullptr))
             iconColors = inheritItemInfo->getIconColorsListName();
         itemInfo->setIconColorsList(iconColors);
         itemInfo->setMaxFloorOffsetX(maxFloorOffsetX);
@@ -516,7 +516,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         if (!effect.empty() && !temp.empty())
             effect.append(" / ");
         effect.append(temp);
-        if (effect.empty() && inheritItemInfo)
+        if (effect.empty() && (inheritItemInfo != nullptr))
             effect = inheritItemInfo->getEffect();
         itemInfo->setEffect(effect);
 
@@ -840,7 +840,7 @@ static int parseDirectionName(const std::string &name)
 static void loadSpriteRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 {
     const std::string gender = XML::getProperty(node, "gender", "unisex");
-    if (!node || !XmlHaveChildContent(node))
+    if ((node == nullptr) || !XmlHaveChildContent(node))
         return;
 
     const std::string filename = XmlChildContent(node);
@@ -856,7 +856,7 @@ static void loadSpriteRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 
 static void loadSoundRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 {
-    if (!node || !XmlHaveChildContent(node))
+    if ((node == nullptr) || !XmlHaveChildContent(node))
         return;
     const std::string event = XML::getProperty(node, "event", "");
     const std::string filename = XmlChildContent(node);
@@ -878,7 +878,7 @@ static void loadSoundRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 static void loadFloorSprite(SpriteDisplay &display,
                             XmlNodeConstPtrConst floorNode)
 {
-    if (!floorNode)
+    if (floorNode == nullptr)
         return;
     for_each_xml_child_node(spriteNode, floorNode)
     {
@@ -902,7 +902,7 @@ static void loadFloorSprite(SpriteDisplay &display,
 static void loadReplaceSprite(ItemInfo *const itemInfo,
                               XmlNodeConstPtr replaceNode)
 {
-    if (!replaceNode)
+    if (replaceNode == nullptr)
         return;
     const std::string removeSprite = XML::getProperty(
         replaceNode, "sprite", "");
@@ -929,7 +929,7 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
                 {
                     IntMap *const mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), f);
-                    if (!mapList)
+                    if (mapList == nullptr)
                         continue;
                     for_each_xml_child_node(itemNode, replaceNode)
                     {
@@ -963,17 +963,17 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
                     const int to = XML::getProperty(itemNode, "to", 1);
                     IntMap *mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), SpriteDirection::DOWN);
-                    if (mapList)
+                    if (mapList != nullptr)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
                         removeSprite), SpriteDirection::DOWNLEFT);
-                    if (mapList)
+                    if (mapList != nullptr)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
                         removeSprite), SpriteDirection::DOWNRIGHT);
-                    if (mapList)
+                    if (mapList != nullptr)
                         (*mapList)[from] = to;
                 }
             }
@@ -996,17 +996,17 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
                     const int to = XML::getProperty(itemNode, "to", 1);
                     IntMap *mapList = itemInfo->addReplaceSprite(
                         parseSpriteName(removeSprite), SpriteDirection::UP);
-                    if (mapList)
+                    if (mapList != nullptr)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
                         removeSprite), SpriteDirection::UPLEFT);
-                    if (mapList)
+                    if (mapList != nullptr)
                         (*mapList)[from] = to;
 
                     mapList = itemInfo->addReplaceSprite(parseSpriteName(
                         removeSprite), SpriteDirection::UPRIGHT);
-                    if (mapList)
+                    if (mapList != nullptr)
                         (*mapList)[from] = to;
                 }
             }
@@ -1016,7 +1016,7 @@ static void loadReplaceSprite(ItemInfo *const itemInfo,
         {
             IntMap *const mapList = itemInfo->addReplaceSprite(
                 parseSpriteName(removeSprite), direction);
-            if (!mapList)
+            if (mapList == nullptr)
                 return;
             for_each_xml_child_node(itemNode, replaceNode)
             {

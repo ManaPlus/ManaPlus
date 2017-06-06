@@ -114,10 +114,10 @@ ListBox::ListBox(const Widget2 *const widget,
     mForegroundColor = getThemeColor(ThemeColorId::LISTBOX);
     mForegroundColor2 = getThemeColor(ThemeColorId::LISTBOX_OUTLINE);
 
-    if (theme)
+    if (theme != nullptr)
         mSkin = theme->load(skin, "listbox.xml");
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mPadding = mSkin->getPadding();
         mItemPadding = mSkin->getOption("itemPadding");
@@ -135,10 +135,10 @@ void ListBox::postInit()
 
 ListBox::~ListBox()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
-    if (theme)
+    if (theme != nullptr)
         theme->unload(mSkin);
 }
 
@@ -153,7 +153,7 @@ void ListBox::updateAlpha()
 
 void ListBox::draw(Graphics *const graphics)
 {
-    if (!mListModel)
+    if (mListModel == nullptr)
         return;
 
     BLOCK_START("ListBox::draw")
@@ -245,9 +245,15 @@ void ListBox::keyPressed(KeyEvent &event)
     else if (action == InputAction::GUI_UP)
     {
         if (mSelected > 0)
+        {
             setSelected(mSelected - 1);
-        else if (mSelected == 0 && mWrappingEnabled && getListModel())
+        }
+        else if (mSelected == 0 &&
+                 mWrappingEnabled &&
+                 getListModel() != nullptr)
+        {
             setSelected(getListModel()->getNumberOfElements() - 1);
+        }
         event.consume();
     }
     else if (action == InputAction::GUI_DOWN)
@@ -264,7 +270,7 @@ void ListBox::keyPressed(KeyEvent &event)
         setSelected(0);
         event.consume();
     }
-    else if (action == InputAction::GUI_END && getListModel())
+    else if (action == InputAction::GUI_END && (getListModel() != nullptr))
     {
         setSelected(getListModel()->getNumberOfElements() - 1);
         event.consume();
@@ -311,7 +317,7 @@ void ListBox::mouseReleased(MouseEvent &event)
                 mOldSelected = mSelected;
                 break;
             case 2:
-                if (gui)
+                if (gui != nullptr)
                     gui->resetClickCount();
                 if (mOldSelected == mSelected)
                     mouseReleased1(event);
@@ -343,13 +349,13 @@ void ListBox::mouseDragged(MouseEvent &event)
         return;
 
     // Make list selection update on drag, but guard against negative y
-    if (getRowHeight())
+    if (getRowHeight() != 0u)
         setSelected(std::max(0, getSelectionByMouse(event.getY())));
 }
 
 void ListBox::refocus()
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
 
     if (isFocusable())
@@ -359,7 +365,7 @@ void ListBox::refocus()
 void ListBox::adjustSize()
 {
     BLOCK_START("ListBox::adjustSize")
-    if (mListModel)
+    if (mListModel != nullptr)
     {
         setHeight(CAST_S32(getRowHeight()) *
             mListModel->getNumberOfElements() + 2 * mPadding);
@@ -383,7 +389,7 @@ int ListBox::getSelectionByMouse(const int y) const
 
 void ListBox::setSelected(const int selected)
 {
-    if (!mListModel)
+    if (mListModel == nullptr)
     {
         mSelected = -1;
     }

@@ -45,9 +45,9 @@ namespace TmwAthena
 
 void PartyRecv::processPartySettings(Net::MessageIn &msg)
 {
-    if (!partyTab)
+    if (partyTab == nullptr)
     {
-        if (!chatWindow)
+        if (chatWindow == nullptr)
             return;
 
         Ea::PartyRecv::createTab();
@@ -67,12 +67,12 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
     bool isOldParty = false;
     std::set<std::string> names;
     std::set<std::string> onlineNames;
-    if (!Ea::taParty)
+    if (Ea::taParty == nullptr)
     {
         logger->log1("error: party empty in SMSG_PARTY_INFO");
         Ea::taParty = Party::getParty(1);
     }
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
     {
         if (Ea::taParty->getNumberOfElements() > 1)
         {
@@ -84,23 +84,23 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
                 if ((*it)->getOnline())
                     onlineNames.insert((*it)->getName());
             }
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 onlineNames.insert(localPlayer->getName());
         }
     }
 
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         logger->log1("error: localPlayer==0 in SMSG_PARTY_INFO");
 
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         Ea::taParty->clearMembers();
 
     const int length = msg.readInt16("len");
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         Ea::taParty->setName(msg.readString(24, "party name"));
 
     const int count = (length - 28) / 46;
-    if (localPlayer && Ea::taParty)
+    if ((localPlayer != nullptr) && (Ea::taParty != nullptr))
     {
         localPlayer->setParty(Ea::taParty);
         localPlayer->setPartyName(Ea::taParty->getName());
@@ -114,7 +114,7 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         const bool leader = msg.readUInt8("leader") == 0U;
         const bool online = msg.readUInt8("online") == 0U;
 
-        if (Ea::taParty)
+        if (Ea::taParty != nullptr)
         {
             bool joined(false);
 
@@ -128,9 +128,9 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
                 }
             }
             PartyMember *const member = Ea::taParty->addMember(id, nick);
-            if (member)
+            if (member != nullptr)
             {
-                if (!joined && partyTab)
+                if (!joined && (partyTab != nullptr))
                 {
                     if (!names.empty() && ((onlineNames.find(nick)
                         == onlineNames.end() && online)
@@ -154,14 +154,14 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         }
     }
 
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         Ea::taParty->sort();
 
-    if (localPlayer && Ea::taParty)
+    if ((localPlayer != nullptr) && (Ea::taParty != nullptr))
     {
         localPlayer->setParty(Ea::taParty);
         localPlayer->setPartyName(Ea::taParty->getName());
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateParty();
     }
 }
@@ -175,10 +175,10 @@ void PartyRecv::processPartyMessage(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("id");
     const std::string chatMsg = msg.readString(msgLength, "message");
 
-    if (Ea::taParty && partyTab)
+    if ((Ea::taParty != nullptr) && (partyTab != nullptr))
     {
         const PartyMember *const member = Ea::taParty->getMember(id);
-        if (member)
+        if (member != nullptr)
         {
             partyTab->chatLog(member->getName(), chatMsg);
         }
@@ -192,7 +192,7 @@ void PartyRecv::processPartyMessage(Net::MessageIn &msg)
 
 void PartyRecv::processPartyInviteResponse(Net::MessageIn &msg)
 {
-    if (!partyTab)
+    if (partyTab == nullptr)
         return;
 
     const std::string nick = msg.readString(24, "nick");
@@ -225,17 +225,17 @@ void PartyRecv::processPartyInvited(Net::MessageIn &msg)
     const std::string partyName = msg.readString(24, "party name");
     std::string nick;
 
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         const Being *const being = actorManager->findBeing(id);
-        if (being)
+        if (being != nullptr)
         {
             if (being->getType() == ActorType::Player)
                 nick = being->getName();
         }
     }
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->showPartyInvite(partyName, nick, 0);
 }
 
@@ -243,9 +243,9 @@ void PartyRecv::processPartyMove(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
     PartyMember *m = nullptr;
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         m = Ea::taParty->getMember(id);
-    if (m)
+    if (m != nullptr)
     {
         msg.readInt32("unused");
         m->setX(msg.readInt16("x"));
@@ -276,9 +276,9 @@ void PartyRecv::processPartyUpdateHp(Net::MessageIn &msg)
     const int hp = msg.readInt16("hp");
     const int maxhp = msg.readInt16("max hp");
     PartyMember *m = nullptr;
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         m = Ea::taParty->getMember(id);
-    if (m)
+    if (m != nullptr)
     {
         m->setHp(hp);
         m->setMaxHp(maxhp);
@@ -286,7 +286,7 @@ void PartyRecv::processPartyUpdateHp(Net::MessageIn &msg)
 
     // The server only sends this when the member is in range, so
     // lets make sure they get the party hilight.
-    if (actorManager && Ea::taParty)
+    if ((actorManager != nullptr) && (Ea::taParty != nullptr))
     {
         if (Being *const b = actorManager->findBeing(id))
             b->setParty(Ea::taParty);

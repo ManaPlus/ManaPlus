@@ -64,7 +64,7 @@ namespace Actions
 
 impHandler0(setupWindowShow)
 {
-    if (setupWindow)
+    if (setupWindow != nullptr)
     {
         if (setupWindow->isWindowVisible())
         {
@@ -82,14 +82,14 @@ impHandler0(setupWindowShow)
 
 impHandler0(hideWindows)
 {
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->hideWindows();
     return true;
 }
 
 static bool showHelpPage(const std::string &page, const bool showHide)
 {
-    if (helpWindow)
+    if (helpWindow != nullptr)
     {
         if (showHide && helpWindow->isWindowVisible())
         {
@@ -107,9 +107,9 @@ static bool showHelpPage(const std::string &page, const bool showHide)
 
 impHandler(helpWindowShow)
 {
-    if (!chatWindow || !chatWindow->isInputFocused())
+    if ((chatWindow == nullptr) || !chatWindow->isInputFocused())
         return showHelpPage("index", true);
-    if (!event.tab)
+    if (event.tab == nullptr)
         return showHelpPage("chatcommands", true);
     switch (event.tab->getType())
     {
@@ -145,7 +145,7 @@ impHandler0(aboutWindowShow)
 
 static void showHideWindow(Window *const window)
 {
-    if (window)
+    if (window != nullptr)
     {
         window->setVisible(fromBool(
             !window->isWindowVisible(), Visible));
@@ -180,7 +180,7 @@ impHandler0(skillDialogShow)
 
 impHandler0(minimapWindowShow)
 {
-    if (minimap)
+    if (minimap != nullptr)
     {
         minimap->toggle();
         return true;
@@ -280,21 +280,21 @@ impHandler0(bankWindowShow)
 impHandler0(cartWindowShow)
 {
     if (Net::getNetworkType() == ServerType::TMWATHENA ||
-        !localPlayer ||
+        (localPlayer == nullptr) ||
         !localPlayer->getHaveCart())
     {
         return false;
     }
 
     showHideWindow(cartWindow);
-    if (inventoryWindow)
+    if (inventoryWindow != nullptr)
         inventoryWindow->updateDropButton();
     return true;
 }
 
 impHandler0(updaterWindowShow)
 {
-    if (updaterWindow)
+    if (updaterWindow != nullptr)
         updaterWindow->deleteSelf();
     else
         DialogsManager::createUpdaterWindow();
@@ -303,7 +303,7 @@ impHandler0(updaterWindowShow)
 
 impHandler0(quickWindowShow)
 {
-    if (setupWindow)
+    if (setupWindow != nullptr)
     {
         if (setupWindow->isWindowVisible())
             setupWindow->doCancel();
@@ -333,23 +333,26 @@ impHandler(showItems)
     {
         being = actorManager->findBeing(fromInt(atoi(
             args.substr(1).c_str()), BeingId));
-        if (being && being->getType() == ActorType::Monster)
+        if ((being != nullptr) && being->getType() == ActorType::Monster)
             being = nullptr;
     }
     else
     {
         being = actorManager->findBeingByName(args, ActorType::Player);
     }
-    if (!being)
+    if (being == nullptr)
         return true;
     if (being == localPlayer)
     {
-        if (equipmentWindow && !equipmentWindow->isWindowVisible())
+        if (equipmentWindow != nullptr &&
+            !equipmentWindow->isWindowVisible())
+        {
             equipmentWindow->setVisible(Visible_true);
+        }
     }
     else
     {
-        if (beingEquipmentWindow)
+        if (beingEquipmentWindow != nullptr)
         {
             beingEquipmentWindow->setBeing(being);
             beingEquipmentWindow->setVisible(Visible_true);

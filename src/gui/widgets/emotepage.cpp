@@ -54,7 +54,7 @@ EmotePage::EmotePage(const Widget2 *const widget) :
 
 EmotePage::~EmotePage()
 {
-    if (mEmotes)
+    if (mEmotes != nullptr)
     {
         mEmotes->decRef();
         mEmotes = nullptr;
@@ -68,7 +68,7 @@ void EmotePage::draw(Graphics *const graphics)
 
     if (mRedraw)
     {
-        if (!mEmotes)
+        if (mEmotes == nullptr)
             return;
 
         const std::vector<Image*> &images = mEmotes->getImages();
@@ -82,7 +82,7 @@ void EmotePage::draw(Graphics *const graphics)
         FOR_EACH (std::vector<Image*>::const_iterator, it, images)
         {
             const Image *const image = *it;
-            if (image)
+            if (image != nullptr)
             {
                 graphics->calcTileCollection(mVertexes, image, x, y);
                 x += emoteWidth;
@@ -104,7 +104,7 @@ void EmotePage::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("EmotePage::safeDraw")
 
-    if (!mEmotes)
+    if (mEmotes == nullptr)
         return;
 
     const std::vector<Image*> &images = mEmotes->getImages();
@@ -116,7 +116,7 @@ void EmotePage::safeDraw(Graphics *const graphics)
     FOR_EACH (std::vector<Image*>::const_iterator, it, images)
     {
         const Image *const image = *it;
-        if (image)
+        if (image != nullptr)
         {
             graphics->drawImage(image, x, y);
             x += emoteWidth;

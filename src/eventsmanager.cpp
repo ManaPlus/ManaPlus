@@ -127,7 +127,7 @@ bool EventsManager::handleEvents() const
 {
     BLOCK_START("EventsManager::handleEvents")
 #ifndef DYECMD
-    if (Game::instance())
+    if (Game::instance() != nullptr)
     {
         // Let the game handle the events while it is active
         Game::instance()->handleInput();
@@ -517,13 +517,13 @@ void EventsManager::handleActive(const SDL_Event &event)
     const bool inGame = (client->getState() == State::GAME);
 #endif  // DYECMD
 
-    if (event.active.state & SDL_APPACTIVE)
+    if ((event.active.state & SDL_APPACTIVE) != 0)
     {
-        if (event.active.gain)
+        if (event.active.gain != 0u)
         {   // window restore
             WindowManager::setIsMinimized(false);
 #ifndef DYECMD
-            if (inGame && localPlayer)
+            if (inGame && (localPlayer != nullptr))
             {
                 if (!settings.awayMode)
                     fpsLimit = config.getIntValue("fpslimit");
@@ -540,7 +540,7 @@ void EventsManager::handleActive(const SDL_Event &event)
 #else  // ANDROID
             WindowManager::setIsMinimized(true);
 #ifndef DYECMD
-            if (inGame && localPlayer && !settings.awayMode)
+            if (inGame && (localPlayer != nullptr) && !settings.awayMode)
             {
                 fpsLimit = config.getIntValue("altfpslimit");
                 localPlayer->setHalfAway(true);
@@ -551,19 +551,19 @@ void EventsManager::handleActive(const SDL_Event &event)
 #endif  // ANDROID
         }
 #ifndef DYECMD
-        if (inGame && localPlayer)
+        if (inGame && (localPlayer != nullptr))
             localPlayer->updateStatus();
 #endif  // DYECMD
     }
 #ifndef DYECMD
-    if (inGame && localPlayer)
+    if (inGame && (localPlayer != nullptr))
         localPlayer->updateName();
 #endif  // DYECMD
 
-    if (event.active.state & SDL_APPINPUTFOCUS)
-        settings.inputFocused = event.active.gain;
-    if (event.active.state & SDL_APPMOUSEFOCUS)
-        settings.mouseFocused = event.active.gain;
+    if ((event.active.state & SDL_APPINPUTFOCUS) != 0)
+        settings.inputFocused = (event.active.gain != 0u);
+    if ((event.active.state & SDL_APPMOUSEFOCUS) != 0)
+        settings.mouseFocused = (event.active.gain != 0u);
 #ifndef DYECMD
     if (inGame)
         Game::instance()->updateFrameRate(fpsLimit);

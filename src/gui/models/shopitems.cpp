@@ -46,7 +46,7 @@ ShopItems::~ShopItems()
 std::string ShopItems::getElementAt(int i)
 {
     if (i < 0 || CAST_U32(i)
-        >= CAST_U32(mShopItems.size()) || !mShopItems.at(i))
+        >= CAST_U32(mShopItems.size()) || (mShopItems.at(i) == nullptr))
     {
         return "";
     }
@@ -79,7 +79,7 @@ ShopItem *ShopItems::addItemNoDup(const int id,
                                   const int price)
 {
     ShopItem *item = findItem(id, color);
-    if (!item)
+    if (item == nullptr)
     {
         item = new ShopItem(-1,
             id,
@@ -105,7 +105,7 @@ ShopItem *ShopItems::addItem2(const int inventoryIndex,
     if (mMergeDuplicates)
         item = findItem(id, color);
 
-    if (item)
+    if (item != nullptr)
     {
         item->addDuplicate(inventoryIndex, quantity);
     }
@@ -199,7 +199,7 @@ void ShopItems::updateList()
     FOR_EACH (std::vector<ShopItem*>::iterator, it, mAllShopItems)
     {
         ShopItem *const item = *it;
-        if (item && item->isVisible())
+        if ((item != nullptr) && item->isVisible())
             mShopItems.push_back(item);
     }
 }

@@ -40,17 +40,17 @@ class DragDrop final
     public:
         DragDrop(Item *const item,
                  const DragDropSourceT source) :
-            mItemImage(item ? item->getImage() : nullptr),
+            mItemImage(item != nullptr ? item->getImage() : nullptr),
             mText(),
             mItemData(),
             mSource(source),
-            mItem(item ? item->getId() : 0),
+            mItem(item != nullptr ? item->getId() : 0),
             mSelItem(0),
             mTag(-1),
-            mItemColor(item ? item->getColor() : ItemColor_one),
+            mItemColor(item != nullptr ? item->getColor() : ItemColor_one),
             mSelItemColor(ItemColor_one)
         {
-            if (mItemImage)
+            if (mItemImage != nullptr)
                 mItemImage->incRef();
         }
 
@@ -58,7 +58,7 @@ class DragDrop final
 
         ~DragDrop()
         {
-            if (mItemImage)
+            if (mItemImage != nullptr)
                 mItemImage->decRef();
         }
 
@@ -87,17 +87,17 @@ class DragDrop final
                       const DragDropSourceT source,
                       const int tag = 0)
         {
-            if (mItemImage)
+            if (mItemImage != nullptr)
                 mItemImage->decRef();
 
             mItemData.clear();
             mText.clear();
-            if (item)
+            if (item != nullptr)
             {
                 mItem = item->getId();
                 mItemColor = item->getColor();
                 mItemImage = item->getImage();
-                if (mItemImage)
+                if (mItemImage != nullptr)
                     mItemImage->incRef();
                 mSource = source;
                 mTag = tag;
@@ -117,17 +117,17 @@ class DragDrop final
                          const DragDropSourceT source,
                          const int tag = 0)
         {
-            if (mItemImage)
+            if (mItemImage != nullptr)
                 mItemImage->decRef();
             mItem = 0;
             mItemColor = ItemColor_one;
             mItemData.clear();
 
-            if (command)
+            if (command != nullptr)
             {
                 mText = command->getSymbol();
                 mItemImage = command->getImage();
-                if (mItemImage)
+                if (mItemImage != nullptr)
                 {
                     mItemImage->incRef();
                 }
@@ -152,7 +152,7 @@ class DragDrop final
                        const DragDropSourceT source,
                        const int tag = 0)
         {
-            if (mItemImage)
+            if (mItemImage != nullptr)
                 mItemImage->decRef();
             mItem = 0;
             mItemColor = ItemColor_zero;
@@ -161,14 +161,14 @@ class DragDrop final
             mSource = DragDropSource::Empty;
             mTag = -1;
             mItemData.clear();
-            if (info)
+            if (info != nullptr)
             {
                 const SkillData *const data = info->data;
-                if (data)
+                if (data != nullptr)
                 {
                     mText = data->name;
                     mItemImage = data->icon;
-                    if (mItemImage)
+                    if (mItemImage != nullptr)
                         mItemImage->incRef();
                     mSource = source;
                     mTag = tag;
@@ -181,7 +181,7 @@ class DragDrop final
 
         void clear()
         {
-            if (mItemImage)
+            if (mItemImage != nullptr)
                 mItemImage->decRef();
             mItem = 0;
             mItemColor = ItemColor_one;
@@ -197,7 +197,7 @@ class DragDrop final
 
         void select(const Item *const item)
         {
-            if (item)
+            if (item != nullptr)
             {
                 mSelItem = item->getId();
                 mSelItemColor = item->getColor();

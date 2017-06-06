@@ -39,7 +39,7 @@ namespace
             bool operator() (const PartyMember *const p1,
                              const PartyMember *const p2) const
             {
-                if (!p1 || !p2)
+                if ((p1 == nullptr) || (p2 == nullptr))
                     return false;
                 if (p1->getLeader())
                     return true;
@@ -89,7 +89,7 @@ PartyMember *Party::addMember(const BeingId id,
                               const std::string &name)
 {
     PartyMember *m = getMember(id);
-    if (m)
+    if (m != nullptr)
         return m;
 
     m = new PartyMember(this, id, name);
@@ -119,7 +119,7 @@ PartyMember *Party::getMember(const std::string &name) const
     const MemberList::const_iterator itr_end = mMembers.end();
     while (itr != itr_end)
     {
-        if ((*itr) && (*itr)->getName() == name)
+        if (((*itr) != nullptr) && (*itr)->getName() == name)
             return (*itr);
 
         ++itr;
@@ -130,7 +130,7 @@ PartyMember *Party::getMember(const std::string &name) const
 
 void Party::removeMember(const PartyMember *const member)
 {
-    if (!member)
+    if (member == nullptr)
         return;
 
     bool deleted = true;
@@ -142,7 +142,7 @@ void Party::removeMember(const PartyMember *const member)
         while (itr != itr_end)
         {
             PartyMember *const m = *itr;
-            if (m && m->mId == member->mId
+            if ((m != nullptr) && m->mId == member->mId
                 && m->getName() == member->getName())
             {
                 mMembers.erase(itr);
@@ -166,7 +166,7 @@ void Party::removeMember(const BeingId id)
         while (itr != itr_end)
         {
             PartyMember *const member = *itr;
-            if (member && member->mId == id)
+            if ((member != nullptr) && member->mId == id)
             {
                 mMembers.erase(itr);
                 delete member;
@@ -189,7 +189,7 @@ void Party::removeMember(const std::string &name)
         while (itr != itr_end)
         {
             PartyMember *const member = *itr;
-            if (member && member->getName() == name)
+            if ((member != nullptr) && member->getName() == name)
             {
                 mMembers.erase(itr);
                 delete member;
@@ -203,7 +203,7 @@ void Party::removeMember(const std::string &name)
 
 void Party::removeFromMembers()
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     MemberList::const_iterator itr = mMembers.begin();
@@ -212,7 +212,7 @@ void Party::removeFromMembers()
     while (itr != itr_end)
     {
         Being *const b = actorManager->findBeing((*itr)->getID());
-        if (b)
+        if (b != nullptr)
             b->setParty(nullptr);
         ++itr;
     }
@@ -232,10 +232,10 @@ void Party::setRights(const int16_t rights)
 
 bool Party::isMember(const PartyMember *const member) const
 {
-    if (!member)
+    if (member == nullptr)
         return false;
 
-    if (member->mParty && member->mParty != this)
+    if ((member->mParty != nullptr) && member->mParty != this)
         return false;
 
     MemberList::const_iterator itr = mMembers.begin();
@@ -243,8 +243,12 @@ bool Party::isMember(const PartyMember *const member) const
     while (itr != itr_end)
     {
         const PartyMember *const m = *itr;
-        if (m && m->mId == member->mId && m->getName() == member->getName())
+        if (m != nullptr &&
+            m->mId == member->mId &&
+            m->getName() == member->getName())
+        {
             return true;
+        }
         ++itr;
     }
 
@@ -258,7 +262,7 @@ bool Party::isMember(const BeingId id) const
     while (itr != itr_end)
     {
         const PartyMember *const m = *itr;
-        if (m && m->mId == id)
+        if ((m != nullptr) && m->mId == id)
             return true;
         ++itr;
     }
@@ -273,7 +277,7 @@ bool Party::isMember(const std::string &name) const
     while (itr != itr_end)
     {
         const PartyMember *const m = *itr;
-        if (m && m->getName() == name)
+        if ((m != nullptr) && m->getName() == name)
             return true;
         ++itr;
     }
@@ -289,7 +293,7 @@ void Party::getNames(StringVect &names) const
     while (it != it_end)
     {
         const PartyMember *const m = *it;
-        if (m)
+        if (m != nullptr)
             names.push_back(m->getName());
         ++it;
     }
@@ -303,7 +307,7 @@ void Party::getNamesSet(std::set<std::string> &names) const
     while (it != it_end)
     {
         const PartyMember *const m = *it;
-        if (m)
+        if (m != nullptr)
             names.insert(m->getName());
         ++it;
     }

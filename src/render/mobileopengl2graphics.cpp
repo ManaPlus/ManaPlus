@@ -128,10 +128,10 @@ MobileOpenGL2Graphics::~MobileOpenGL2Graphics()
 void MobileOpenGL2Graphics::deleteGLObjects() restrict2
 {
     delete2(mProgram);
-    if (mVbo)
+    if (mVbo != 0u)
         mglDeleteBuffers(1, &mVbo);
 #ifndef __native_client__
-    if (mVao)
+    if (mVao != 0u)
         mglDeleteVertexArrays(1, &mVao);
 #endif  // __native_client__
 }
@@ -147,9 +147,9 @@ void MobileOpenGL2Graphics::initArrays(const int vertCount) restrict2
     // need alocate small size, after if limit reached reallocate to double size
     const size_t sz = mMaxVertices * 4 + 30;
     vertexBufSize = mMaxVertices;
-    if (!mFloatArray)
+    if (mFloatArray == nullptr)
         mFloatArray = new GLfloat[sz];
-    if (!mFloatArrayCached)
+    if (mFloatArrayCached == nullptr)
         mFloatArrayCached = new GLfloat[sz];
 }
 
@@ -165,13 +165,13 @@ void MobileOpenGL2Graphics::postInit() restrict2
 
     logger->log("Compiling shaders");
     mProgram = shaders.getGles2Program();
-    if (!mProgram)
+    if (mProgram == nullptr)
     {
         graphicsManager.logError();
         logger->safeError("Shader creation error. See manaplus.log.");
     }
     mProgramId = mProgram->getProgramId();
-    if (!mProgramId)
+    if (mProgramId == 0u)
         logger->safeError("Shaders compilation error.");
 
     logger->log("Shaders compilation done.");
@@ -338,7 +338,7 @@ void MobileOpenGL2Graphics::drawImageInline(const Image *restrict const image,
                                             int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
 #ifdef DEBUG_BIND_TEXTURE
@@ -416,7 +416,7 @@ void MobileOpenGL2Graphics::drawRescaledImage(const Image *
                                               const int desiredHeight)
                                               restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -461,7 +461,7 @@ void MobileOpenGL2Graphics::drawPatternInline(const Image *
                                               const int w, const int h)
                                               restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -526,7 +526,7 @@ void MobileOpenGL2Graphics::drawRescaledPattern(const Image *
                                                 const int scaledHeight)
                                                 restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     if (scaledWidth == 0 || scaledHeight == 0)
@@ -637,7 +637,7 @@ void MobileOpenGL2Graphics::calcPatternInline(ImageVertexes *
                                               const int w,
                                               const int h) const restrict2
 {
-    if (!image || !vert)
+    if (image == nullptr || vert == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -698,7 +698,7 @@ void MobileOpenGL2Graphics::calcTileCollection(ImageCollection *
                                                restrict const image,
                                                int x, int y) restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -744,7 +744,7 @@ void MobileOpenGL2Graphics::calcPattern(ImageCollection *restrict const
                                         const int w,
                                         const int h) const restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
@@ -824,7 +824,7 @@ void MobileOpenGL2Graphics::calcTileVertexesInline(ImageVertexes *
 void MobileOpenGL2Graphics::drawTileVertexes(const ImageVertexes *
                                              restrict const vert) restrict2
 {
-    if (!vert)
+    if (vert == nullptr)
         return;
     const Image *const image = vert->image;
 
@@ -847,7 +847,7 @@ void MobileOpenGL2Graphics::calcWindow(ImageCollection *restrict const vertCol,
 {
     ImageVertexes *vert = nullptr;
     const Image *const image = imgRect.grid[4];
-    if (!image)
+    if (image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -1216,7 +1216,7 @@ void MobileOpenGL2Graphics::dumpSettings()
         test[2] = 0;
         test[3] = 0;
         mglGetIntegerv(f, &test[0]);
-        if (test[0] || test[1] || test[2] || test[3])
+        if (test[0] != 0 || test[1] != 0 || test[2] != 0 || test[3] != 0)
         {
             logger->log("\n%d = %d, %d, %d, %d", f,
                 test[0], test[1], test[2], test[3]);
@@ -1262,7 +1262,7 @@ void MobileOpenGL2Graphics::createGLContext(const bool custom) restrict2
 void MobileOpenGL2Graphics::finalize(ImageCollection *restrict const col)
                                      restrict2
 {
-    if (!col)
+    if (col == nullptr)
         return;
     FOR_EACH (ImageCollectionIter, it, col->draws)
         finalize(*it);
@@ -1273,7 +1273,7 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *restrict const vert)
 {
     // in future need convert in each switchVp/continueVp
 
-    if (!vert)
+    if (vert == nullptr)
         return;
     OpenGLGraphicsVertexes &ogl = vert->ogl;
     const std::vector<int> &vp = ogl.mVp;

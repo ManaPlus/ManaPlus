@@ -46,7 +46,7 @@ void BankRecv::processBankDeposit(Net::MessageIn &msg)
     const int money = CAST_S32(msg.readInt64("money"));
     msg.readInt32("balance");
     BankListener::distributeEvent(money);
-    if (reason)
+    if (reason != 0)
         NotifyManager::notify(NotifyTypes::BANK_DEPOSIT_FAILED);
 }
 
@@ -56,7 +56,7 @@ void BankRecv::processBankWithdraw(Net::MessageIn &msg)
     const int money = CAST_S32(msg.readInt64("money"));
     msg.readInt32("balance");
     BankListener::distributeEvent(money);
-    if (reason)
+    if (reason != 0)
         NotifyManager::notify(NotifyTypes::BANK_WITHDRAW_FAILED);
 }
 

@@ -91,7 +91,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
 
     mKeyListModel->setSize(mActionDataSize[0]);
     refreshKeys();
-    if (gui)
+    if (gui != nullptr)
         mKeyList->setFont(gui->getHelpFont());
     mKeyList->addActionListener(this);
 
@@ -106,7 +106,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mTabs->addActionListener(this);
     mTabs->setActionEventId("tabs_");
     int k = 0;
-    while (pages[k])
+    while (pages[k] != nullptr)
     {
         mTabs->addButton(gettext(pages[k]), pages[k], false);
         k ++;
@@ -257,13 +257,13 @@ void Setup_Input::action(const ActionEvent &event)
     {
         int k = 0;
         std::string str("tabs_");
-        while (pages[k])
+        while (pages[k] != nullptr)
         {
             if (str + pages[k] == id)
                 break;
             k ++;
         }
-        if (pages[k] && str + pages[k] == id)
+        if ((pages[k] != nullptr) && str + pages[k] == id)
         {
             mKeyListModel->setSelectedData(k);
             mKeyListModel->setSize(mActionDataSize[k]);

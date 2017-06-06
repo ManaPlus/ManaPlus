@@ -30,7 +30,7 @@ void PlayerDeathListener::distributeEvent()
               it, mListeners)
     {
         PlayerDeathListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->playerDeath();
     }
 }

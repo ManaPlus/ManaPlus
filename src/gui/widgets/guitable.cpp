@@ -69,7 +69,7 @@ GuiTable::GuiTable(const Widget2 *const widget,
 
 GuiTable::~GuiTable()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     uninstallActionListeners();
@@ -83,7 +83,7 @@ const TableModel *GuiTable::getModel() const
 
 void GuiTable::setModel(TableModel *const new_model)
 {
-    if (mModel)
+    if (mModel != nullptr)
     {
         uninstallActionListeners();
         mModel->removeListener(this);
@@ -98,7 +98,7 @@ void GuiTable::setModel(TableModel *const new_model)
 
 void GuiTable::recomputeDimensions()
 {
-    if (!mModel)
+    if (mModel == nullptr)
         return;
 
     const int rows_nr = mModel->getRows();
@@ -211,7 +211,7 @@ void GuiTable::installActionListeners()
         for (int column = 0; column < columns; ++column)
         {
             Widget *const widget = mModel->getElementAt(row, column);
-            if (widget)
+            if (widget != nullptr)
             {
                 mActionListeners2.push_back(new GuiTableActionListener(
                     this, widget, row, column));
@@ -225,7 +225,7 @@ void GuiTable::installActionListeners()
 // -- widget ops
 void GuiTable::draw(Graphics *const graphics)
 {
-    if (!getRowHeight())
+    if (getRowHeight() == 0)
         return;
 
     BLOCK_START("GuiTable::draw")
@@ -246,7 +246,7 @@ void GuiTable::draw(Graphics *const graphics)
     // First, determine how many rows we need to draw,
     // and where we should start.
     int rHeight = getRowHeight();
-    if (!rHeight)
+    if (rHeight == 0)
         rHeight = 1;
     int first_row = -(y / rHeight);
 
@@ -288,7 +288,7 @@ void GuiTable::draw(Graphics *const graphics)
                 CAST_S32(c));
             const int cWidth = CAST_S32(getColumnWidth(
                 CAST_S32(c)));
-            if (widget)
+            if (widget != nullptr)
             {
                 Rect bounds(x_offset, y_offset, cWidth, rHeight);
 
@@ -331,7 +331,7 @@ void GuiTable::draw(Graphics *const graphics)
         y_offset += rHeight;
     }
 
-    if (mTopWidget)
+    if (mTopWidget != nullptr)
     {
         const Rect &bounds = mTopWidget->getDimension();
         graphics->pushClipArea(bounds);
@@ -343,7 +343,7 @@ void GuiTable::draw(Graphics *const graphics)
 
 void GuiTable::safeDraw(Graphics *const graphics)
 {
-    if (!getRowHeight())
+    if (getRowHeight() == 0)
         return;
 
     BLOCK_START("GuiTable::draw")
@@ -364,7 +364,7 @@ void GuiTable::safeDraw(Graphics *const graphics)
     // First, determine how many rows we need to draw,
     // and where we should start.
     int rHeight = getRowHeight();
-    if (!rHeight)
+    if (rHeight == 0)
         rHeight = 1;
     int first_row = -(y / rHeight);
 
@@ -406,7 +406,7 @@ void GuiTable::safeDraw(Graphics *const graphics)
                 CAST_S32(c));
             const int cWidth = CAST_S32(getColumnWidth(
                 CAST_S32(c)));
-            if (widget)
+            if (widget != nullptr)
             {
                 Rect bounds(x_offset, y_offset, cWidth, rHeight);
 
@@ -449,7 +449,7 @@ void GuiTable::safeDraw(Graphics *const graphics)
         y_offset += rHeight;
     }
 
-    if (mTopWidget)
+    if (mTopWidget != nullptr)
     {
         const Rect &bounds = mTopWidget->getDimension();
         graphics->pushClipArea(bounds);
@@ -513,7 +513,7 @@ void GuiTable::keyPressed(KeyEvent& event)
         setSelectedColumn(0);
         event.consume();
     }
-    else if (action == InputAction::GUI_END && mModel)
+    else if (action == InputAction::GUI_END && (mModel != nullptr))
     {
         setSelectedRow(mModel->getRows() - 1);
         setSelectedColumn(mModel->getColumns() - 1);
@@ -596,13 +596,16 @@ Widget *GuiTable::getWidgetAt(int x, int y)
     const int row = getRowForY(y);
     const int column = getColumnForX(x);
 
-    if (mTopWidget && mTopWidget->getDimension().isPointInRect(x, y))
+    if (mTopWidget != nullptr &&
+        mTopWidget->getDimension().isPointInRect(x, y))
+    {
         return mTopWidget;
+    }
 
-    if (mModel && row > -1 && column > -1)
+    if ((mModel != nullptr) && row > -1 && column > -1)
     {
         Widget *const w = mModel->getElementAt(row, column);
-        if (w && w->isFocusable())
+        if ((w != nullptr) && w->isFocusable())
             return w;
         else
             return nullptr;  // Grab the event locally
@@ -648,7 +651,7 @@ void GuiTable::setFocusHandler(FocusHandler *const focusHandler)
 {
     // add check for focusHandler. may be need remove it?
 
-    if (!focusHandler)
+    if (focusHandler == nullptr)
         return;
 
     Widget::setFocusHandler(focusHandler);
@@ -660,7 +663,7 @@ void GuiTable::setFocusHandler(FocusHandler *const focusHandler)
         for (int c = 0; c < cols ; ++c)
         {
             Widget *const w = mModel->getElementAt(r, c);
-            if (w)
+            if (w != nullptr)
                 w->setFocusHandler(focusHandler);
         }
     }
@@ -668,7 +671,7 @@ void GuiTable::setFocusHandler(FocusHandler *const focusHandler)
 
 void GuiTable::requestFocus()
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
     Widget::requestFocus();
 }

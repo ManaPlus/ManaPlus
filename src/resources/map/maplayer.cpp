@@ -316,7 +316,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
             if (mSpecialFlag ||
                 img->mBounds.h <= mapTileSize)
             {
-                if (!lastImage ||
+                if ((lastImage == nullptr) ||
                     lastImage->mGLImage != imgGlImage)
                 {
                     if (img->mBounds.w > mapTileSize)
@@ -328,7 +328,7 @@ void MapLayer::updateOGL(Graphics *const graphics,
                     }
                     else
                     {
-                        if (lastImage)
+                        if (lastImage != nullptr)
                             imgSet[lastImage->mGLImage] = imgVert;
                         imgVert = new ImageVertexes;
                         imgVert->ogl.init();
@@ -387,7 +387,7 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
         endX1 = 0;
     int x0 = startX;
     const MapItem *item0 = mSpecialLayer->mTiles[ptr + startX];
-    if (!item0 || item0->mType == MapItemType::EMPTY)
+    if ((item0 == nullptr) || item0->mType == MapItemType::EMPTY)
     {
         x0 += mSpecialLayer->mCache[ptr + startX] + 1;
     }
@@ -395,7 +395,7 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
     {
         const int px1 = x * mapTileSize - scrollX;
         const MapItem *const item = mSpecialLayer->mTiles[ptr + x];
-        if (item)
+        if (item != nullptr)
         {
             item->draw(graphics, px1, py1,
                 mapTileSize, mapTileSize);
@@ -410,7 +410,7 @@ void MapLayer::drawSpecialLayer(Graphics *const graphics,
     if (endX1 > specialWidth)
         endX1 = specialWidth;
     item0 = mTempLayer->mTiles[ptr + startX];
-    if (!item0 || item0->mType == MapItemType::EMPTY)
+    if ((item0 == nullptr) || item0->mType == MapItemType::EMPTY)
     {
         x0 += mTempLayer->mCache[ptr + startX] + 1;
     }
@@ -434,9 +434,9 @@ void MapLayer::drawFringe(Graphics *const graphics,
                           const Actors &actors) const restrict
 {
     BLOCK_START("MapLayer::drawFringe")
-    if (!localPlayer ||
-        !mSpecialLayer ||
-        !mTempLayer)
+    if ((localPlayer == nullptr) ||
+        (mSpecialLayer == nullptr) ||
+        (mTempLayer == nullptr))
     {
         BLOCK_END("MapLayer::drawFringe")
         return;
@@ -684,7 +684,7 @@ void MapLayer::drawFringe(Graphics *const graphics,
                 h += mapTileSize;
             }
 
-            if (userPalette)
+            if (userPalette != nullptr)
             {
                 graphics->setColor(userPalette->getColorWithAlpha(
                     UserColorId::ATTACK_RANGE));
@@ -783,7 +783,7 @@ void MapLayer::updateConditionTiles(const MetaTile *const metaTiles,
         for (int x = mX; x < width1; x ++, metaPtr ++, tilePtr ++)
         {
             if (tilePtr->image != nullptr &&
-                (metaPtr->blockmask & mTileCondition ||
+                (((metaPtr->blockmask & mTileCondition) != 0) ||
                 (metaPtr->blockmask == 0 &&
                 mTileCondition == BlockMask::GROUND)))
             {
@@ -841,9 +841,9 @@ int MapLayer::calcMemoryLocal() const
 int MapLayer::calcMemoryChilds(const int level) const
 {
     int sz = 0;
-    if (mSpecialLayer)
+    if (mSpecialLayer != nullptr)
         sz += mSpecialLayer->calcMemory(level + 1);
-    if (mTempLayer)
+    if (mTempLayer != nullptr)
         sz += mTempLayer->calcMemory(level + 1);
     return sz;
 }

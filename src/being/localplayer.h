@@ -396,10 +396,10 @@ class LocalPlayer final : public Being,
                              const bool updateHash = true);
 
         int getLastAttackX() const override final
-        { return mTarget ? mTarget->mX : mLastAttackX; }
+        { return mTarget != nullptr ? mTarget->mX : mLastAttackX; }
 
         int getLastAttackY() const override final
-        { return mTarget ? mTarget->mY : mLastAttackY; }
+        { return mTarget != nullptr ? mTarget->mY : mLastAttackY; }
 
         void attributeChanged(const AttributesT id,
                               const int oldVal,

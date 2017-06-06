@@ -39,9 +39,9 @@ void CharRenameListener::action(const ActionEvent &event)
 {
     if (event.getId() != "OK")
         return;
-    if (mDialog)
+    if (mDialog != nullptr)
     {
-        if (charServerHandler)
+        if (charServerHandler != nullptr)
             charServerHandler->renameCharacter(mId, mDialog->getMsg());
         mDialog = nullptr;
     }

@@ -32,7 +32,7 @@ void AttributeListener::distributeEvent(const AttributesT id,
               it, mListeners)
     {
         AttributeListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->attributeChanged(id, oldVal, newVal);
     }
 }

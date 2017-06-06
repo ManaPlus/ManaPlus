@@ -303,12 +303,12 @@ class ItemInfo final
         { return mProtected; }
 
         int getColorsSize() const noexcept2 A_WARN_UNUSED
-        { return mColorsList ? CAST_S32(mColorsList->size()) : 0; }
+        { return mColorsList != nullptr ? CAST_S32(mColorsList->size()) : 0; }
 
         int getIconColorsSize() const noexcept2 A_WARN_UNUSED
         {
-            return mIconColorsList ? CAST_S32(mIconColorsList->size())
-                : 0;
+            return mIconColorsList != nullptr ?
+                CAST_S32(mIconColorsList->size()) : 0;
         }
 
         std::string getColorName(const ItemColor idx) const;

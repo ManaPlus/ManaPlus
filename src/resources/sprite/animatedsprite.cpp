@@ -63,7 +63,7 @@ AnimatedSprite::AnimatedSprite(SpriteDef *restrict const sprite) :
     mAlpha = 1.0F;
 
     // Take possession of the sprite
-    if (mSprite)
+    if (mSprite != nullptr)
         mSprite->incRef();
 }
 
@@ -72,7 +72,7 @@ AnimatedSprite *AnimatedSprite::load(const std::string &restrict filename,
 {
     SpriteDef *restrict const s = Loader::getSprite(
         filename, variant);
-    if (!s)
+    if (s == nullptr)
         return nullptr;
     AnimatedSprite *restrict const as = new AnimatedSprite(s);
 #ifdef DEBUG_ANIMATIONS
@@ -92,7 +92,7 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &restrict
         return load(filename, variant);
     Resource *restrict const res = ResourceManager::getFromCache(
         filename, variant);
-    if (res)
+    if (res != nullptr)
     {
         res->decRef();
         return load(filename, variant);
@@ -111,7 +111,7 @@ AnimatedSprite *AnimatedSprite::delayedLoad(const std::string &restrict
 AnimatedSprite *AnimatedSprite::clone(const AnimatedSprite *restrict const
                                       anim)
 {
-    if (!anim)
+    if (anim == nullptr)
         return nullptr;
     AnimatedSprite *restrict const sprite = new AnimatedSprite(anim->mSprite);
 #ifdef DEBUG_ANIMATIONS
@@ -124,12 +124,12 @@ AnimatedSprite *AnimatedSprite::clone(const AnimatedSprite *restrict const
 
 AnimatedSprite::~AnimatedSprite()
 {
-    if (mSprite)
+    if (mSprite != nullptr)
     {
         mSprite->decRef();
         mSprite = nullptr;
     }
-    if (mDelayLoad)
+    if (mDelayLoad != nullptr)
     {
         mDelayLoad->clearSprite();
         DelayedManager::removeDelayLoad(mDelayLoad);
@@ -147,7 +147,7 @@ bool AnimatedSprite::reset() restrict2
     mFrameTime = 0;
     mLastTime = 0;
 
-    if (mAnimation)
+    if (mAnimation != nullptr)
         mFrame = &mAnimation->mFrames[0];
     else
         mFrame = nullptr;
@@ -156,22 +156,22 @@ bool AnimatedSprite::reset() restrict2
 
 bool AnimatedSprite::play(const std::string &restrict spriteAction) restrict2
 {
-    if (!mSprite)
+    if (mSprite == nullptr)
     {
-        if (!mDelayLoad)
+        if (mDelayLoad == nullptr)
             return false;
         mDelayLoad->setAction(spriteAction);
         return true;
     }
 
     const Action *const action = mSprite->getAction(spriteAction, mNumber);
-    if (!action)
+    if (action == nullptr)
         return false;
 
     mAction = action;
     const Animation *const animation = mAction->getAnimation(mDirection);
 
-    if (animation &&
+    if ((animation != nullptr) &&
         animation != mAnimation &&
         animation->getLength() > 0)
     {
@@ -191,7 +191,7 @@ bool AnimatedSprite::update(const int time) restrict2
         mLastTime = time;
 
     // If not enough time has passed yet, do nothing
-    if (time <= mLastTime || !mAnimation)
+    if (time <= mLastTime || (mAnimation == nullptr))
         return false;
 
     const unsigned int dt = time - mLastTime;
@@ -214,8 +214,9 @@ bool AnimatedSprite::update(const int time) restrict2
 bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
 {
     // move code from Animation::isTerminator(*mFrame)
-    if (!mFrame || !mAnimation || (!mFrame->image
-        && mFrame->type == FrameType::ANIMATION))
+    if (mFrame == nullptr ||
+        mAnimation == nullptr ||
+        (mFrame->image == nullptr && mFrame->type == FrameType::ANIMATION))
     {
         return false;
     }
@@ -245,7 +246,7 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         {
             const int rand = mFrame->rand;
             if (rand == 100 ||
-                (rand && rand >= mrand() % 100))
+                ((rand != 0) && rand >= mrand() % 100))
             {
                 for (size_t i = 0; i < mAnimation->getLength(); i ++)
                 {
@@ -278,19 +279,19 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
         {
             const int rand = mFrame->rand;
             if (rand == 100 ||
-                (rand && rand >= mrand() % 100))
+                ((rand != 0) && rand >= mrand() % 100))
             {
                 play(mFrame->nextAction);
                 return true;
             }
         }
         // copy code from Animation::isTerminator(*mFrame)
-        else if (!mFrame->image &&
+        else if ((mFrame->image == nullptr) &&
                  mFrame->type == FrameType::ANIMATION)
         {
             const int rand = mFrame->rand;
             if (rand == 100 ||
-                (rand && rand >= mrand() % 100))
+                ((rand != 0) && rand >= mrand() % 100))
             {
                 mAnimation = nullptr;
                 mFrame = nullptr;
@@ -307,13 +308,13 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
             }
             else
             {
-                if (rand && mrand() % 100 <= rand)
+                if ((rand != 0) && mrand() % 100 <= rand)
                     fail = false;
             }
         }
         if (fail)
         {
-            if (mFrame)
+            if (mFrame != nullptr)
                 mFrameTime = mFrame->delay + 1;
             else
                 mFrameTime ++;
@@ -327,7 +328,7 @@ void AnimatedSprite::draw(Graphics *restrict const graphics,
                           const int posY) const restrict2
 {
     FUNC_BLOCK("AnimatedSprite::draw", 1)
-    if (!mFrame || !mFrame->image)
+    if ((mFrame == nullptr) || (mFrame->image == nullptr))
         return;
 
     Image *restrict const image = mFrame->image;
@@ -340,7 +341,7 @@ void AnimatedSprite::drawRaw(Graphics *restrict const graphics,
                              const int posX,
                              const int posY) const restrict2
 {
-    if (!mFrame || !mFrame->image)
+    if ((mFrame == nullptr) || (mFrame->image == nullptr))
         return;
 
     Image *restrict const image = mFrame->image;
@@ -357,13 +358,13 @@ bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
     {
         mDirection = direction;
 
-        if (!mAction)
+        if (mAction == nullptr)
             return false;
 
         const Animation *restrict const animation =
             mAction->getAnimation(mDirection);
 
-        if (animation &&
+        if ((animation != nullptr) &&
             animation != mAnimation &&
             animation->getLength() > 0)
         {
@@ -379,7 +380,7 @@ bool AnimatedSprite::setSpriteDirection(const SpriteDirection::Type direction)
 
 unsigned int AnimatedSprite::getFrameCount() const restrict2
 {
-    if (mAnimation)
+    if (mAnimation != nullptr)
         return CAST_U32(mAnimation->getLength());
     else
         return 0;
@@ -387,7 +388,7 @@ unsigned int AnimatedSprite::getFrameCount() const restrict2
 
 int AnimatedSprite::getWidth() const restrict2
 {
-    if (mFrame && mFrame->image)
+    if ((mFrame != nullptr) && (mFrame->image != nullptr))
         return mFrame->image->mBounds.w;
     else
         return 0;
@@ -395,7 +396,7 @@ int AnimatedSprite::getWidth() const restrict2
 
 int AnimatedSprite::getHeight() const restrict2
 {
-    if (mFrame && mFrame->image)
+    if ((mFrame != nullptr) && (mFrame->image != nullptr))
         return mFrame->image->mBounds.h;
     else
         return 0;
@@ -403,45 +404,45 @@ int AnimatedSprite::getHeight() const restrict2
 
 std::string AnimatedSprite::getIdPath() const restrict2
 {
-    if (!mSprite)
+    if (mSprite == nullptr)
         return "";
     return mSprite->mIdPath;
 }
 
 const Image* AnimatedSprite::getImage() const restrict2 noexcept2
 {
-    return mFrame ? mFrame->image : nullptr;
+    return mFrame != nullptr ? mFrame->image : nullptr;
 }
 
 void AnimatedSprite::setAlpha(float alpha) restrict2
 {
     mAlpha = alpha;
 
-    if (mFrame)
+    if (mFrame != nullptr)
     {
         Image *restrict const image = mFrame->image;
-        if (image)
+        if (image != nullptr)
             image->setAlpha(mAlpha);
     }
 }
 
 const void *AnimatedSprite::getHash() const restrict2
 {
-    if (mFrame)
+    if (mFrame != nullptr)
         return mFrame;
     return this;
 }
 
 bool AnimatedSprite::updateNumber(const unsigned num) restrict2
 {
-    if (!mSprite)
+    if (mSprite == nullptr)
         return false;
 
     if (mNumber1 != num)
     {
         mNumber1 = num;
         mNumber = mSprite->findNumber(num);
-        if (!mNumber)
+        if (mNumber == 0u)
         {
             mNumber = 100;
             return false;
@@ -454,7 +455,7 @@ bool AnimatedSprite::updateNumber(const unsigned num) restrict2
 void AnimatedSprite::setDelayLoad(const std::string &restrict filename,
                                   const int variant) restrict2
 {
-    if (mDelayLoad)
+    if (mDelayLoad != nullptr)
     {
         mDelayLoad->clearSprite();
         DelayedManager::removeDelayLoad(mDelayLoad);

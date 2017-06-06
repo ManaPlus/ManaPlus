@@ -92,7 +92,7 @@ int TestMain::exec(const bool testAudio)
     std::string info;
 
     const int videoDetectTest = invokeTest("99");
-    if (!videoDetectTest)
+    if (videoDetectTest == 0)
         detectMode = readValue2(99);
 
     int normalOpenGLTest = invokeNormalOpenGLRenderTest("2");
@@ -106,15 +106,15 @@ int TestMain::exec(const bool testAudio)
     info.append(strprintf("%d.%d,%d,%d,%d.", soundTest, softwareTest,
         normalOpenGLTest, safeOpenGLTest, modernOpenGLTest));
 
-    if (!softwareTest)
+    if (softwareTest == 0)
     {
         int softFpsTest = invokeSoftwareRenderTest("8");
         info.append(strprintf("%d", softFpsTest));
-        if (!softFpsTest)
+        if (softFpsTest == 0)
         {
             softFps = readValue2(8);
             info.append(strprintf(",%d", softFps));
-            if (!softFps)
+            if (softFps == 0)
             {
                 softwareTest = -1;
                 softFpsTest = -1;
@@ -131,15 +131,15 @@ int TestMain::exec(const bool testAudio)
         }
     }
     info.append(".");
-    if (!modernOpenGLTest)
+    if (modernOpenGLTest == 0)
     {
         int modernOpenGLFpsTest = invokeModernOpenGLRenderTest("17");
         info.append(strprintf("%d", modernOpenGLFpsTest));
-        if (!modernOpenGLFpsTest)
+        if (modernOpenGLFpsTest == 0)
         {
             modernOpenGLFps = readValue2(17);
             info.append(strprintf(",%d", modernOpenGLFps));
-            if (!modernOpenGLFps)
+            if (modernOpenGLFps == 0)
             {
                 modernOpenGLTest = -1;
                 modernOpenGLFpsTest = -1;
@@ -156,15 +156,15 @@ int TestMain::exec(const bool testAudio)
         }
     }
     info.append(".");
-    if (!normalOpenGLTest)
+    if (normalOpenGLTest == 0)
     {
         int normalOpenGLFpsTest = invokeNormalOpenGLRenderTest("9");
         info.append(strprintf("%d", normalOpenGLFpsTest));
-        if (!normalOpenGLFpsTest)
+        if (normalOpenGLFpsTest == 0)
         {
             normalOpenGLFps = readValue2(9);
             info.append(strprintf(",%d", normalOpenGLFps));
-            if (!normalOpenGLFps)
+            if (normalOpenGLFps == 0)
             {
                 normalOpenGLTest = -1;
                 normalOpenGLFpsTest = -1;
@@ -181,15 +181,15 @@ int TestMain::exec(const bool testAudio)
         }
     }
     info.append(".");
-    if (!safeOpenGLTest)
+    if (safeOpenGLTest == 0)
     {
         int safeOpenGLFpsTest = invokeSafeOpenGLRenderTest("10");
         info.append(strprintf("%d", safeOpenGLFpsTest));
-        if (!safeOpenGLFpsTest)
+        if (safeOpenGLFpsTest == 0)
         {
             safeOpenGLFps = readValue2(10);
             info.append(strprintf(",%d", safeOpenGLFps));
-            if (!safeOpenGLFps)
+            if (safeOpenGLFps == 0)
             {
                 safeOpenGLTest = -1;
                 safeOpenGLFpsTest = -1;
@@ -226,27 +226,27 @@ int TestMain::exec(const bool testAudio)
 
     int batchSize = 256;
 
-    if (!invokeNormalOpenBatchTest("11"))
+    if (invokeNormalOpenBatchTest("11") == 0)
         batchSize = readValue2(11);
     if (batchSize < 256)
         batchSize = 256;
 
-    if (!invokeNormalOpenBatchTest("14"))
+    if (invokeNormalOpenBatchTest("14") == 0)
     {
         textureSize[CAST_SIZE(RENDER_NORMAL_OPENGL)]
             = readValue2(14);
     }
-    if (!invokeModernOpenBatchTest("15"))
+    if (invokeModernOpenBatchTest("15") == 0)
     {
         textureSize[CAST_SIZE(RENDER_MODERN_OPENGL)]
             = readValue2(15);
     }
-    if (!invokeSafeOpenBatchTest("16"))
+    if (invokeSafeOpenBatchTest("16") == 0)
     {
         textureSize[CAST_SIZE(RENDER_SAFE_OPENGL)]
             = readValue2(16);
     }
-    if (!invokeMobileOpenBatchTest("20"))
+    if (invokeMobileOpenBatchTest("20") == 0)
     {
         textureSize[CAST_SIZE(RENDER_GLES_OPENGL)]
             = readValue2(20);
@@ -260,7 +260,7 @@ int TestMain::exec(const bool testAudio)
         textureSizeStr.append(strprintf(",%d", textureSize[f]));
 
     // if OpenGL implimentation is not good, disable it.
-    if (!(detectMode & 15))
+    if ((detectMode & 15) == 0)
         openGLMode = RENDER_SOFTWARE;
 
     writeConfig(openGLMode, rescaleTest[CAST_SIZE(openGLMode)],
@@ -282,8 +282,8 @@ void TestMain::writeConfig(const RenderType openGLMode,
 
     // searched values
     mConfig.setValue("opengl", CAST_S32(openGLMode));
-    mConfig.setValue("showBackground", !rescale);
-    mConfig.setValue("sound", !sound);
+    mConfig.setValue("showBackground", rescale == 0);
+    mConfig.setValue("sound", sound == 0);
 
     // better performance
     mConfig.setValue("hwaccel", true);

@@ -46,7 +46,7 @@ InventoryHandler::InventoryHandler() :
 
 InventoryHandler::~InventoryHandler()
 {
-    if (storageWindow)
+    if (storageWindow != nullptr)
     {
         storageWindow->close();
         storageWindow = nullptr;
@@ -100,7 +100,7 @@ size_t InventoryHandler::getSize(const InventoryTypeT type) const
 void InventoryHandler::destroyStorage() const
 {
     BLOCK_START("InventoryHandler::closeStorage")
-    if (storageWindow)
+    if (storageWindow != nullptr)
     {
         InventoryWindow *const inv = storageWindow;
         storageWindow->close();

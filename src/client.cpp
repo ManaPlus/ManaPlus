@@ -478,7 +478,7 @@ void Client::gameInit()
     WindowManager::createWindows();
 
     keyboard.update();
-    if (joystick)
+    if (joystick != nullptr)
         joystick->update();
 
     // Initialize default server
@@ -493,7 +493,7 @@ void Client::gameInit()
     loginData.username = settings.options.username;
     loginData.password = settings.options.password;
     LoginDialog::savedPassword = settings.options.password;
-    loginData.remember = serverConfig.getValue("remember", 1);
+    loginData.remember = (serverConfig.getValue("remember", 1) != 0);
     loginData.registerLogin = false;
 
     if (mCurrentServer.hostname.empty())
@@ -546,7 +546,7 @@ void Client::gameInit()
 #endif  // USE_MUMBLE
 
     mSkin = theme->load("windowmenu.xml", "");
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mButtonPadding = mSkin->getPadding();
         mButtonSpacing = mSkin->getOption("spacing", 3);
@@ -623,18 +623,18 @@ void Client::testsClear()
 
 void Client::gameClear()
 {
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting1");
     isTerminate = true;
     config.removeListeners(this);
 
     delete2(assertListener);
 
-    if (ipc)
+    if (ipc != nullptr)
         ipc->stop();
     eventsManager.shutdown();
     WindowManager::deleteWindows();
-    if (windowContainer)
+    if (windowContainer != nullptr)
         windowContainer->slowLogic();
 
     stopTimers();
@@ -673,13 +673,13 @@ void Client::gameClear()
     StatusEffectDB::unload();
     ModDB::unload();
 
-    if (loginHandler)
+    if (loginHandler != nullptr)
         loginHandler->clearWorlds();
 
-    if (chatHandler)
+    if (chatHandler != nullptr)
         chatHandler->clear();
 
-    if (charServerHandler)
+    if (charServerHandler != nullptr)
         charServerHandler->clear();
 
     delete2(ipc);
@@ -698,7 +698,7 @@ void Client::gameClear()
 
     player_relations.store();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting2");
 
     delete2(mCurrentDialog);
@@ -706,22 +706,22 @@ void Client::gameClear()
     delete2(dialogsManager);
     delete2(gui);
 
-    if (inventoryHandler)
+    if (inventoryHandler != nullptr)
         inventoryHandler->clear();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting3");
 
     touchManager.clear();
 
     graphicsManager.deleteRenderers();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting4");
 
     XML::cleanupXML();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting5");
 
     BeingInfo::clear();
@@ -729,26 +729,26 @@ void Client::gameClear()
     // Shutdown sound
     soundManager.close();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting6");
 
     ActorSprite::unload();
 
     ResourceManager::deleteInstance();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting8");
 
     WindowManager::deleteIcon();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting9");
 
     delete2(joystick);
 
     keyboard.deinit();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting10");
 
     soundManager.shutdown();
@@ -765,7 +765,7 @@ void Client::gameClear()
     config.clear();
     serverConfig.clear();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting11");
 
 #ifdef USE_PROFILER
@@ -807,8 +807,8 @@ int Client::testsExec()
 
 void Client::stateConnectGame1()
 {
-    if (gameHandler &&
-        loginHandler &&
+    if ((gameHandler != nullptr) &&
+        (loginHandler != nullptr) &&
         gameHandler->isConnected())
     {
         loginHandler->disconnect();
@@ -850,8 +850,8 @@ void Client::stateConnectServer1()
         settings.persistentIp = mCurrentServer.persistentIp;
         settings.supportUrl = mCurrentServer.supportUrl;
         settings.updateMirrors = mCurrentServer.updateMirrors;
-        settings.enableRemoteCommands = serverConfig.getValue(
-            "enableRemoteCommands", 1);
+        settings.enableRemoteCommands = (serverConfig.getValue(
+            "enableRemoteCommands", 1) != 0);
 
         if (settings.options.username.empty())
         {
@@ -867,7 +867,7 @@ void Client::stateConnectServer1()
         settings.login = loginData.username;
         WindowManager::updateTitle();
 
-        loginData.remember = serverConfig.getValue("remember", 1);
+        loginData.remember = (serverConfig.getValue("remember", 1) != 0);
         Net::connectToServer(mCurrentServer);
 
 #ifdef USE_MUMBLE
@@ -886,7 +886,7 @@ void Client::stateConnectServer1()
         }
     }
     else if (mOldState != State::CHOOSE_SERVER &&
-             loginHandler &&
+             (loginHandler != nullptr) &&
              loginHandler->isConnected())
     {
         mState = State::PRE_LOGIN;
@@ -896,7 +896,7 @@ void Client::stateConnectServer1()
 void Client::stateWorldSelect1()
 {
     if (mOldState == State::UPDATE &&
-        loginHandler)
+        (loginHandler != nullptr))
     {
         if (loginHandler->getWorlds().size() < 2)
             mState = State::PRE_LOGIN;
@@ -905,13 +905,13 @@ void Client::stateWorldSelect1()
 
 void Client::stateGame1()
 {
-    if (!gui)
+    if (gui == nullptr)
         return;
 
     BasicContainer2 *const top = static_cast<BasicContainer2*>(
         gui->getTop());
 
-    if (!top)
+    if (top == nullptr)
         return;
 
     CREATEWIDGETV(desktop, Desktop, nullptr);
@@ -948,7 +948,7 @@ void Client::stateGame1()
 void Client::stateSwitchLogin1()
 {
     if (mOldState == State::GAME &&
-        gameHandler)
+        (gameHandler != nullptr))
     {
         gameHandler->disconnect();
     }
@@ -965,21 +965,21 @@ int Client::gameExec()
             continue;
 
         BLOCK_START("Client::gameExec 3")
-        if (generalHandler)
+        if (generalHandler != nullptr)
             generalHandler->flushNetwork();
         BLOCK_END("Client::gameExec 3")
 
         BLOCK_START("Client::gameExec 4")
-        if (gui)
+        if (gui != nullptr)
             gui->logic();
         cur_time = time(nullptr);
         int k = 0;
         while (lastTickTime != tick_time &&
                k < 40)
         {
-            if (mGame)
+            if (mGame != nullptr)
                 mGame->logic();
-            else if (gui)
+            else if (gui != nullptr)
                 gui->handleInput();
 
             ++lastTickTime;
@@ -988,9 +988,9 @@ int Client::gameExec()
         soundManager.logic();
 
         logic_count += k;
-        if (gui)
+        if (gui != nullptr)
             gui->slowLogic();
-        if (mGame)
+        if (mGame != nullptr)
             mGame->slowLogic();
         slowLogic();
         BLOCK_END("Client::gameExec 4")
@@ -1002,7 +1002,7 @@ int Client::gameExec()
         if (!WindowManager::getIsMinimized())
         {
             frame_count++;
-            if (gui)
+            if (gui != nullptr)
                 gui->draw();
             mainGraphics->updateScreen();
         }
@@ -1054,11 +1054,11 @@ int Client::gameExec()
                 Party::clearParties();
                 Guild::clearGuilds();
                 NpcDialog::clearDialogs();
-                if (guildHandler)
+                if (guildHandler != nullptr)
                     guildHandler->clear();
-                if (partyHandler)
+                if (partyHandler != nullptr)
                     partyHandler->clear();
-                if (chatLogger)
+                if (chatLogger != nullptr)
                     chatLogger->clear();
                 if (!settings.options.dataPath.empty())
                     UpdaterWindow::unloadMods(settings.options.dataPath);
@@ -1069,8 +1069,11 @@ int Client::gameExec()
             }
             else if (mOldState == State::CHAR_SELECT)
             {
-                if (mState != State::CHANGEPASSWORD && charServerHandler)
+                if (mState != State::CHANGEPASSWORD &&
+                    charServerHandler != nullptr)
+                {
                     charServerHandler->clear();
+                }
             }
 
             mOldState = mState;
@@ -1080,7 +1083,7 @@ int Client::gameExec()
 
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore
-            if (mQuitDialog)
+            if (mQuitDialog != nullptr)
             {
                 mQuitDialog->scheduleDelete();
                 mQuitDialog = nullptr;
@@ -1223,7 +1226,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Logging in"),
                         State::SWITCH_SERVER);
-                    if (loginHandler)
+                    if (loginHandler != nullptr)
                         loginHandler->loginOrRegister(&loginData);
                     BLOCK_END("Client::gameExec State::LOGIN_ATTEMPT")
                     break;
@@ -1234,7 +1237,7 @@ int Client::gameExec()
                     {
                         TranslationManager::loadCurrentLang();
                         TranslationManager::loadDictionaryLang();
-                        if (!loginHandler)
+                        if (loginHandler == nullptr)
                         {
                             BLOCK_END("Client::gameExec State::WORLD_SELECT")
                             break;
@@ -1296,7 +1299,7 @@ int Client::gameExec()
                         settings.oldUpdates.clear();
                         UpdaterWindow::loadDirMods(settings.options.dataPath);
                     }
-                    else if (loginData.updateType & UpdateType::Skip)
+                    else if ((loginData.updateType & UpdateType::Skip) != 0)
                     {
                         settings.oldUpdates = pathJoin(settings.localDataDir,
                             settings.updatesDir);
@@ -1350,14 +1353,14 @@ int Client::gameExec()
                     paths.init("paths.xml", UseVirtFs_true);
                     paths.setDefaultValues(getPathsDefaults());
                     initPaths();
-                    if (!SpriteReference::Empty)
+                    if (SpriteReference::Empty == nullptr)
                     {
                         SpriteReference::Empty = new SpriteReference(
                             paths.getStringValue("spriteErrorFile"),
                             0);
                     }
 
-                    if (!BeingInfo::unknown)
+                    if (BeingInfo::unknown == nullptr)
                         BeingInfo::unknown = new BeingInfo;
 
                     initFeatures();
@@ -1390,7 +1393,7 @@ int Client::gameExec()
                         type == ServerType::EVOL2)
                     {
                         NetworkDb::load();
-                        if (loginHandler)
+                        if (loginHandler != nullptr)
                             loginHandler->updatePacketVersion();
                         MercenaryDB::load();
                         HomunculusDB::load();
@@ -1413,7 +1416,7 @@ int Client::gameExec()
 
                     ActorSprite::load();
 
-                    if (desktop)
+                    if (desktop != nullptr)
                         desktop->reloadWallpaper();
 
                     mState = State::GET_CHARACTERS;
@@ -1427,7 +1430,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Requesting characters"),
                         State::SWITCH_SERVER);
-                    if (charServerHandler)
+                    if (charServerHandler != nullptr)
                         charServerHandler->requestCharacters();
                     BLOCK_END("Client::gameExec State::GET_CHARACTERS")
                     break;
@@ -1470,7 +1473,7 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Connecting to the game server"),
                         State::CHOOSE_SERVER);
-                    if (gameHandler)
+                    if (gameHandler != nullptr)
                         gameHandler->connect();
                     BLOCK_END("Client::gameExec State::CONNECT_GAME")
                     break;
@@ -1482,14 +1485,14 @@ int Client::gameExec()
                         // TRANSLATORS: connection dialog header
                         _("Changing game servers"),
                         State::SWITCH_CHARACTER);
-                    if (gameHandler)
+                    if (gameHandler != nullptr)
                         gameHandler->connect();
                     BLOCK_END("Client::gameExec State::CHANGE_MAP")
                     break;
 
                 case State::GAME:
                     BLOCK_START("Client::gameExec State::GAME")
-                    if (localPlayer)
+                    if (localPlayer != nullptr)
                     {
                         logger->log("Memorizing selected character %s",
                             localPlayer->getName().c_str());
@@ -1508,7 +1511,7 @@ int Client::gameExec()
                     // Allow any alpha opacity
                     theme->setMinimumOpacity(-1.0F);
 
-                    if (chatLogger)
+                    if (chatLogger != nullptr)
                         chatLogger->setServerName(settings.serverName);
 
 #ifdef ANDROID
@@ -1526,7 +1529,7 @@ int Client::gameExec()
                     mCurrentDialog = nullptr;
 
                     logger->log1("State: GAME");
-                    if (generalHandler)
+                    if (generalHandler != nullptr)
                         generalHandler->reloadPartially();
                     mGame = new Game;
                     BLOCK_END("Client::gameExec State::GAME")
@@ -1590,7 +1593,7 @@ int Client::gameExec()
                 case State::REGISTER_ATTEMPT:
                     BLOCK_START("Client::gameExec State::REGISTER_ATTEMPT")
                     logger->log("Username is %s", loginData.username.c_str());
-                    if (loginHandler)
+                    if (loginHandler != nullptr)
                         loginHandler->registerAccount(&loginData);
                     BLOCK_END("Client::gameExec State::REGISTER_ATTEMPT")
                     break;
@@ -1608,7 +1611,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec "
                         "State::CHANGEPASSWORD_ATTEMPT")
                     logger->log1("State: CHANGE PASSWORD ATTEMPT");
-                    if (loginHandler)
+                    if (loginHandler != nullptr)
                     {
                         loginHandler->changePassword(loginData.password,
                             loginData.newPassword);
@@ -1649,7 +1652,7 @@ int Client::gameExec()
 
                 case State::CHANGEEMAIL_ATTEMPT:
                     logger->log1("State: CHANGE EMAIL ATTEMPT");
-                    if (loginHandler)
+                    if (loginHandler != nullptr)
                         loginHandler->changeEmail(loginData.email);
                     break;
 
@@ -1675,9 +1678,9 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec State::SWITCH_SERVER")
                     logger->log1("State: SWITCH SERVER");
 
-                    if (loginHandler)
+                    if (loginHandler != nullptr)
                         loginHandler->disconnect();
-                    if (gameHandler)
+                    if (gameHandler != nullptr)
                     {
                         gameHandler->disconnect();
                         gameHandler->clear();
@@ -1687,7 +1690,7 @@ int Client::gameExec()
                     WindowManager::updateTitle();
                     serverConfig.write();
                     serverConfig.unload();
-                    if (setupWindow)
+                    if (setupWindow != nullptr)
                         setupWindow->externalUnload();
 
                     mState = State::CHOOSE_SERVER;
@@ -1698,14 +1701,14 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec State::SWITCH_LOGIN")
                     logger->log1("State: SWITCH LOGIN");
 
-                    if (loginHandler)
+                    if (loginHandler != nullptr)
                     {
                         loginHandler->logout();
                         loginHandler->disconnect();
                     }
-                    if (gameHandler)
+                    if (gameHandler != nullptr)
                         gameHandler->disconnect();
-                    if (loginHandler)
+                    if (loginHandler != nullptr)
                         loginHandler->connect();
 
                     settings.login.clear();
@@ -1719,7 +1722,7 @@ int Client::gameExec()
                     logger->log1("State: SWITCH CHARACTER");
 
                     // Done with game
-                    if (gameHandler)
+                    if (gameHandler != nullptr)
                         gameHandler->disconnect();
 
                     settings.login.clear();
@@ -1746,7 +1749,7 @@ int Client::gameExec()
                 case State::FORCE_QUIT:
                     BLOCK_START("Client::gameExec State::FORCE_QUIT")
                     logger->log1("State: FORCE QUIT");
-                    if (generalHandler)
+                    if (generalHandler != nullptr)
                         generalHandler->unload();
                     mState = State::EXIT;
                     BLOCK_END("Client::gameExec State::FORCE_QUIT")
@@ -1865,7 +1868,7 @@ void Client::action(const ActionEvent &event)
         return;
     }
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
     {
         setupWindow->setVisible(fromBool(
             !setupWindow->isWindowVisible(), Visible));
@@ -1905,7 +1908,7 @@ void Client::initTradeFilter()
     std::ofstream tradeFile;
     struct stat statbuf;
 
-    if (stat(tradeListName.c_str(), &statbuf) ||
+    if ((stat(tradeListName.c_str(), &statbuf) != 0) ||
         !S_ISREG(statbuf.st_mode))
     {
         tradeFile.open(tradeListName.c_str(),
@@ -1951,7 +1954,7 @@ bool Client::isTmw()
 
 void Client::moveButtons(const int width)
 {
-    if (mSetupButton)
+    if (mSetupButton != nullptr)
     {
         int x = width - mSetupButton->getWidth() - mButtonPadding;
         mSetupButton->setPosition(x, mButtonPadding);
@@ -1994,7 +1997,7 @@ void Client::logVars()
 
 void Client::slowLogic()
 {
-    if (!gameHandler ||
+    if ((gameHandler == nullptr) ||
         !gameHandler->mustPing())
     {
         return;
@@ -2007,16 +2010,16 @@ void Client::slowLogic()
             mState == State::LOGIN ||
             mState == State::LOGIN_ATTEMPT)
         {
-            if (loginHandler)
+            if (loginHandler != nullptr)
                 loginHandler->ping();
-            if (generalHandler)
+            if (generalHandler != nullptr)
                 generalHandler->flushSend();
         }
         else if (mState == State::CHAR_SELECT)
         {
-            if (charServerHandler)
+            if (charServerHandler != nullptr)
                 charServerHandler->ping();
-            if (generalHandler)
+            if (generalHandler != nullptr)
                 generalHandler->flushSend();
         }
     }

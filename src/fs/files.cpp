@@ -183,7 +183,7 @@ int Files::copyFile(const std::string &restrict srcName,
     const int chunkSize = 512000;
     char *buf = new char[chunkSize];
     size_t sz = 0;
-    while ((sz = fread(buf, 1, chunkSize, srcFile)))
+    while ((sz = fread(buf, 1, chunkSize, srcFile)) != 0u)
     {
         if (fwrite(buf, 1, sz, dstFile) != sz)
         {
@@ -245,7 +245,7 @@ void Files::saveTextFile(const std::string &path,
                          const std::string &restrict name,
                          const std::string &restrict text)
 {
-    if (!mkdir_r(path.c_str()))
+    if (mkdir_r(path.c_str()) == 0)
     {
         std::ofstream file;
         std::string fileName = pathJoin(path, name);
@@ -269,9 +269,9 @@ void Files::deleteFilesInDirectory(std::string path)
     const struct dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 
-    if (dir)
+    if (dir != nullptr)
     {
-        while ((next_file = readdir(dir)))
+        while ((next_file = readdir(dir)) != nullptr)
         {
             const std::string file = next_file->d_name;
             if (file != "." && file != "..")
@@ -289,10 +289,10 @@ void Files::enumFiles(StringVect &files,
         path += dirSeparator;
     DIR *const dir = opendir(path.c_str());
 
-    if (dir)
+    if (dir != nullptr)
     {
         const struct dirent *next_file = nullptr;
-        while ((next_file = readdir(dir)))
+        while ((next_file = readdir(dir)) != nullptr)
         {
             const std::string file = next_file->d_name;
             if (file == "." || file == "..")

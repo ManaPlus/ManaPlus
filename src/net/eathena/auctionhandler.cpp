@@ -48,7 +48,7 @@ void AuctionHandler::cancelReg() const
 void AuctionHandler::setItem(const Item *const item,
                              const int amount) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
     createOutPacket(CMSG_AUCTION_SET_ITEM);
     outMsg.writeInt16(CAST_S16(

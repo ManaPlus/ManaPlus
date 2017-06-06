@@ -35,11 +35,11 @@ ColorPage::ColorPage(const Widget2 *const widget,
                      const std::string &skin) :
     ListBox(widget, listModel, skin)
 {
-    mItemPadding = mSkin ? mSkin->getOption("itemPadding") : 1;
+    mItemPadding = mSkin != nullptr ? mSkin->getOption("itemPadding") : 1;
     const Font *const font = getFont();
     mRowHeight = CAST_U32(font->getHeight() +
         2 * mItemPadding);
-    if (mListModel)
+    if (mListModel != nullptr)
     {
         setHeight(CAST_S32(getRowHeight()) *
             mListModel->getNumberOfElements()
@@ -114,7 +114,7 @@ void ColorPage::resetAction()
 void ColorPage::adjustSize()
 {
     BLOCK_START("ColorPage::adjustSize")
-    if (mListModel)
+    if (mListModel != nullptr)
     {
         setHeight(CAST_S32(getRowHeight()) *
             mListModel->getNumberOfElements() +

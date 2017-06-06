@@ -73,13 +73,13 @@ class SkillRectangleListBox final : public Widget,
             mTextYOffset(44),
             mSkillClicked(false)
         {
-            if (theme)
+            if (theme != nullptr)
             {
                 mSkin = theme->load("skillrectanglelistbox.xml",
                     "listbox.xml");
             }
 
-            if (mSkin)
+            if (mSkin != nullptr)
             {
                 mPadding = mSkin->getPadding();
                 mBoxWidth = mSkin->getOption("boxWidth", 80);
@@ -103,7 +103,7 @@ class SkillRectangleListBox final : public Widget,
                  ++i)
             {
                 SkillInfo *const e = model->getSkillAt(i);
-                if (e)
+                if (e != nullptr)
                 {
                     if (e->x > maxX)
                         maxX = e->x;
@@ -127,7 +127,7 @@ class SkillRectangleListBox final : public Widget,
 
         SkillInfo *getSelectedInfo() const
         {
-            if (!mModel)
+            if (mModel == nullptr)
                 return nullptr;
             const int selected = mSelected;
             if (selected < 0 ||
@@ -141,7 +141,7 @@ class SkillRectangleListBox final : public Widget,
 
         void draw(Graphics *const graphics) override final A_NONNULL(2)
         {
-            if (!mModel)
+            if (mModel == nullptr)
                 return;
 
             SkillModel *const model = mModel;
@@ -155,7 +155,7 @@ class SkillRectangleListBox final : public Widget,
             if (mSelected >= 0)
             {
                 SkillInfo *const e = model->getSkillAt(mSelected);
-                if (e)
+                if (e != nullptr)
                 {
                     const int x = e->x * mBoxWidth + mPadding;
                     const int y = e->y * mBoxHeight + mPadding;
@@ -180,7 +180,7 @@ class SkillRectangleListBox final : public Widget,
                  ++i)
             {
                 SkillInfo *const e = model->getSkillAt(i);
-                if (e)
+                if (e != nullptr)
                 {
                     if (e->x > maxX)
                         maxX = e->x;
@@ -235,7 +235,7 @@ class SkillRectangleListBox final : public Widget,
 
         const SkillInfo *getSkillByEvent(const MouseEvent &event) const
         {
-            if (!mModel)
+            if (mModel == nullptr)
                 return nullptr;
             const int posX = (event.getX() - mPadding) / mBoxWidth;
             const int posY = (event.getY() - mPadding) / mBoxHeight;
@@ -244,7 +244,7 @@ class SkillRectangleListBox final : public Widget,
                  ++i)
             {
                 SkillInfo *const e = mModel->getSkillAt(i);
-                if (e)
+                if (e != nullptr)
                 {
                     if (posX == e->x && posY == e->y)
                         return e;
@@ -255,7 +255,7 @@ class SkillRectangleListBox final : public Widget,
 
         int getSelectionByEvent(const MouseEvent &event) const
         {
-            if (!mModel)
+            if (mModel == nullptr)
                 return -1;
             const int posX = (event.getX() - mPadding) / mBoxWidth;
             const int posY = (event.getY() - mPadding) / mBoxHeight;
@@ -264,7 +264,7 @@ class SkillRectangleListBox final : public Widget,
                  ++i)
             {
                 SkillInfo *const e = mModel->getSkillAt(i);
-                if (e)
+                if (e != nullptr)
                 {
                     if (posX == e->x && posY == e->y)
                         return i;
@@ -275,11 +275,11 @@ class SkillRectangleListBox final : public Widget,
 
         void mouseMoved(MouseEvent &event) override final
         {
-            if (!viewport || !dragDrop.isEmpty())
+            if ((viewport == nullptr) || !dragDrop.isEmpty())
                 return;
 
             const SkillInfo *const skill = getSkillByEvent(event);
-            if (!skill)
+            if (skill == nullptr)
                 return;
             skillPopup->show(skill,
                 skill->customSelectedLevel,
@@ -302,7 +302,7 @@ class SkillRectangleListBox final : public Widget,
                 {
                     mSkillClicked = false;
                     const SkillInfo *const skill = getSkillByEvent(event);
-                    if (!skill)
+                    if (skill == nullptr)
                         return;
                     dragDrop.dragSkill(skill, DragDropSource::Skills);
                     dragDrop.setItem(skill->id + SKILL_MIN_ID);
@@ -321,12 +321,12 @@ class SkillRectangleListBox final : public Widget,
                 button == MouseButton::RIGHT)
             {
                 const SkillInfo *const skill = getSkillByEvent(event);
-                if (!skill)
+                if (skill == nullptr)
                     return;
                 event.consume();
                 mSkillClicked = true;
                 SkillModel *const model = mModel;
-                if (model &&
+                if ((model != nullptr) &&
                     mSelected >= 0 &&
                     model->getSkillAt(mSelected) == skill)
                 {
@@ -381,7 +381,7 @@ class SkillRectangleListBox final : public Widget,
 
         void setSelected(const int selected)
         {
-            if (!mModel)
+            if (mModel == nullptr)
             {
                 mSelected = -1;
             }

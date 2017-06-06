@@ -35,11 +35,14 @@ class SortFriendsFunctor final
         bool operator() (const Avatar *const m1,
                          const Avatar *const m2) const
         {
-            if (!m1 || !m2)
+            if ((m1 == nullptr) || (m2 == nullptr))
                 return false;
 
             if (m1->getOnline() != m2->getOnline())
-                return m1->getOnline() > m2->getOnline();
+            {
+                return static_cast<int>(m1->getOnline()) >
+                    static_cast<int>(m2->getOnline());
+            }
 
             if (m1->getName() != m2->getName())
             {

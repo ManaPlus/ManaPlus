@@ -126,13 +126,16 @@ class InventoryWindow final : public Window,
         void slotsChanged(const Inventory *const inventory) override final;
 
         bool isMainInventory() const A_WARN_UNUSED
-        { return mInventory ? mInventory->isMainInventory() : false; }
+        {
+            return mInventory != nullptr ?
+                mInventory->isMainInventory() : false;
+        }
 
         /**
          * Returns true if any instances exist.
          */
         static bool isStorageActive() A_WARN_UNUSED
-        { return storageWindow; }
+        { return storageWindow != nullptr; }
 
         void updateDropButton();
 

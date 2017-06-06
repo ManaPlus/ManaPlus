@@ -32,7 +32,7 @@
 bool ImageWriter::writePNG(SDL_Surface *const surface,
                            const std::string &filename)
 {
-    if (!surface)
+    if (surface == nullptr)
         return false;
 
 
@@ -41,14 +41,14 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
 
     png_structp png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING,
         nullptr, nullptr, nullptr);
-    if (!png_ptr)
+    if (png_ptr == nullptr)
     {
         reportAlways("Had trouble creating png_structp");
         return false;
     }
 
     png_infop info_ptr = png_create_info_struct(png_ptr);
-    if (!info_ptr)
+    if (info_ptr == nullptr)
     {
         png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
         reportAlways("Could not create png_info");
@@ -63,7 +63,7 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
     }
 
     FILE *const fp = fopen(filename.c_str(), "wb");
-    if (!fp)
+    if (fp == nullptr)
     {
         reportAlways("could not open file %s for writing",
             filename.c_str());

@@ -44,12 +44,12 @@ namespace NotifyManager
     static ChatTab *getGuildTab()
     {
         const Guild *const guild = localPlayer->getGuild();
-        if (guild)
+        if (guild != nullptr)
         {
 #ifdef TMWA_SUPPORT
             if (guild->getServerGuild())
                 return guildHandler->getTab();
-            else if (guildManager)
+            else if (guildManager != nullptr)
                 return guildManager->getTab();
 #else  // TMWA_SUPPORT
             return guildHandler->getTab();
@@ -62,18 +62,21 @@ namespace NotifyManager
     {
         if (str.empty())
             return;
-        if (tab)
+        if (tab != nullptr)
             tab->chatLog(str, ChatMsgType::BY_SERVER);
-        else if (debugChatTab)
+        else if (debugChatTab != nullptr)
             debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
     }
 
     void notify(const unsigned int message)
     {
-        if (message >= NotifyTypes::TYPE_END || !localChatTab)
+        if (message >= NotifyTypes::TYPE_END ||
+            localChatTab == nullptr)
+        {
             return;
+        }
         const NotificationInfo &info = notifications[message];
-        if (!*info.text)
+        if (*info.text == 0)
         {
             soundManager.playSfx(SoundDB::getSound(message));
             return;
@@ -88,7 +91,7 @@ namespace NotifyManager
 
             case NotifyFlags::GUILD:
             {
-                if (!localPlayer)
+                if (localPlayer == nullptr)
                     return;
                 ChatTab *const tab = getGuildTab();
                 chatLog(tab, gettext(info.text));
@@ -104,7 +107,7 @@ namespace NotifyManager
 
             case NotifyFlags::SPEECH:
             {
-                if (localPlayer)
+                if (localPlayer != nullptr)
                     localPlayer->setSpeech(gettext(info.text));
                 break;
             }
@@ -121,10 +124,14 @@ namespace NotifyManager
 
     void notify(const unsigned int message, const int num)
     {
-        if (message >= NotifyTypes::TYPE_END || !localChatTab)
+        if (message >= NotifyTypes::TYPE_END ||
+            localChatTab == nullptr)
+        {
             return;
+        }
         const NotificationInfo &info = notifications[message];
-        if (info.flags == NotifyFlags::INT && *info.text)
+        if (info.flags == NotifyFlags::INT &&
+            *info.text != 0)
         {
             localChatTab->chatLog(strprintf(gettext(info.text),
                 num), ChatMsgType::BY_SERVER);
@@ -134,10 +141,13 @@ namespace NotifyManager
 
     void notify(const unsigned int message, const std::string &str)
     {
-        if (message >= NotifyTypes::TYPE_END || !localChatTab)
+        if (message >= NotifyTypes::TYPE_END ||
+            localChatTab == nullptr)
+        {
             return;
+        }
         const NotificationInfo &info = notifications[message];
-        if (!*info.text)
+        if (*info.text == 0)
         {
             soundManager.playSfx(SoundDB::getSound(message));
             return;

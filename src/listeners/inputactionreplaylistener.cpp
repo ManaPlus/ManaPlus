@@ -55,7 +55,7 @@ void InputActionReplayListener::action(const ActionEvent &event)
         mAction = InputAction::NO_VALUE;
         return;
     }
-    if (mDialog)
+    if (mDialog != nullptr)
     {
         inputManager.executeChatCommand(mAction,
             mDialog->getMsg(),

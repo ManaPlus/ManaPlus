@@ -120,7 +120,7 @@ void TabbedArea::postInit()
 
 TabbedArea::~TabbedArea()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     // +++ virtual method calls
@@ -141,16 +141,16 @@ void TabbedArea::enableScrollButtons(const bool enable)
 {
     if (mEnableScrollButtons && !enable)
     {
-        if (mArrowButton[0])
+        if (mArrowButton[0] != nullptr)
             remove(mArrowButton[0]);
-        if (mArrowButton[1])
+        if (mArrowButton[1] != nullptr)
             remove(mArrowButton[1]);
     }
     else if (!mEnableScrollButtons && enable)
     {
-        if (mArrowButton[0])
+        if (mArrowButton[0] != nullptr)
             add(mArrowButton[0]);
-        if (mArrowButton[1])
+        if (mArrowButton[1] != nullptr)
             add(mArrowButton[1]);
     }
     mEnableScrollButtons = enable;
@@ -220,7 +220,7 @@ Widget *TabbedArea::getCurrentWidget() const
 {
     const Tab *const tab = getSelectedTab();
 
-    if (tab)
+    if (tab != nullptr)
         return getWidget(tab->getCaption());
     else
         return nullptr;
@@ -229,7 +229,7 @@ Widget *TabbedArea::getCurrentWidget() const
 void TabbedArea::addTab(Tab *const tab,
                         Widget *const widget)
 {
-    if (!tab || !widget)
+    if ((tab == nullptr) || (widget == nullptr))
         return;
 
     tab->setTabbedArea(this);
@@ -238,7 +238,7 @@ void TabbedArea::addTab(Tab *const tab,
     mTabContainer->add(tab);
     mTabs.push_back(std::pair<Tab*, Widget*>(tab, widget));
 
-    if (!mSelectedTab && tab->mVisible == Visible_true)
+    if ((mSelectedTab == nullptr) && tab->mVisible == Visible_true)
         setSelectedTab(tab);
 
     adjustTabPositions();
@@ -255,7 +255,7 @@ void TabbedArea::addTab(Tab *const tab,
 
 void TabbedArea::adjustWidget(Widget *const widget) const
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
     const int frameSize = 2 * mFrameSize;
     widget->setSize(getWidth() - frameSize,
@@ -386,7 +386,7 @@ void TabbedArea::mousePressed(MouseEvent &event)
             event.getX(), event.getY());
         Tab *const tab = dynamic_cast<Tab *>(widget);
 
-        if (tab)
+        if (tab != nullptr)
         {
             event.consume();
             setSelectedTab(tab);
@@ -414,7 +414,7 @@ void TabbedArea::setSelectedTab(Tab *const tab)
 
     Tab *const newTab = tab;
 
-    if (newTab)
+    if (newTab != nullptr)
         newTab->setCurrent();
 
     widgetResized(Event(nullptr));
@@ -428,7 +428,7 @@ void TabbedArea::setSelectedTabDefault()
         for (size_t i = 0; i < mTabs.size(); i++)
         {
             Tab *const tab = mTabs[i].first;
-            if (tab && tab->mVisible == Visible_true)
+            if ((tab != nullptr) && tab->mVisible == Visible_true)
             {
                 setSelectedTab(tab);
                 return;
@@ -454,7 +454,7 @@ void TabbedArea::setSelectedTabByName(const std::string &name)
 {
     FOR_EACH (TabContainer::const_iterator, itr, mTabs)
     {
-        if ((*itr).first && (*itr).first->getCaption() == name)
+        if (((*itr).first != nullptr) && (*itr).first->getCaption() == name)
         {
             setSelectedTab((*itr).first);
             return;
@@ -476,7 +476,7 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
 
     Widget *const w = getCurrentWidget();
     ScrollArea *const scr = dynamic_cast<ScrollArea *>(w);
-    if (scr)
+    if (scr != nullptr)
     {
         if (mFollowDownScroll && height != 0)
         {
@@ -492,14 +492,14 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
                         + rect.height - height;
                     w->setSize(mWidgetContainer->getWidth() - frameSize,
                         mWidgetContainer->getHeight() - frameSize);
-                    if (newScroll)
+                    if (newScroll != 0)
                         scr->setVerticalScrollAmount(newScroll);
                 }
             }
         }
     }
 
-    if (mArrowButton[1])
+    if (mArrowButton[1] != nullptr)
     {
         // Check whether there is room to show more tabs now.
         int innerWidth = w1 - 4 - mArrowButton[0]->getWidth()
@@ -508,10 +508,10 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
             innerWidth = 0;
 
         int newWidth = mVisibleTabsWidth;
-        while (mTabScrollIndex && newWidth < innerWidth)
+        while ((mTabScrollIndex != 0u) && newWidth < innerWidth)
         {
             Tab *const tab = mTabs[mTabScrollIndex - 1].first;
-            if (tab && tab->mVisible == Visible_true)
+            if ((tab != nullptr) && tab->mVisible == Visible_true)
             {
                 newWidth += tab->getWidth();
                 if (newWidth < innerWidth)
@@ -519,7 +519,7 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
             }
         }
 
-        if (mArrowButton[1])
+        if (mArrowButton[1] != nullptr)
         {
             // Move the right arrow to fit the windows content.
             newWidth = width - mArrowButton[1]->getWidth() - mRightMargin;
@@ -539,7 +539,7 @@ void TabbedArea::updateTabsWidth()
     FOR_EACH (TabContainer::const_iterator, itr, mTabs)
     {
         Tab *const tab = (*itr).first;
-        if (tab && tab->mVisible == Visible_true)
+        if ((tab != nullptr) && tab->mVisible == Visible_true)
             mTabsWidth += tab->getWidth();
     }
     updateVisibleTabsWidth();
@@ -551,7 +551,7 @@ void TabbedArea::updateVisibleTabsWidth()
     for (size_t i = mTabScrollIndex, sz = mTabs.size(); i < sz; ++i)
     {
         Tab *const tab = mTabs[i].first;
-        if (tab && tab->mVisible == Visible_true)
+        if ((tab != nullptr) && tab->mVisible == Visible_true)
             mVisibleTabsWidth += CAST_S32(tab->getWidth());
     }
 }
@@ -574,7 +574,7 @@ void TabbedArea::adjustSize()
     mWidgetContainer->setPosition(0, maxTabHeight);
     mWidgetContainer->setSize(width, height - maxTabHeight);
     Widget *const w = getCurrentWidget();
-    if (w)
+    if (w != nullptr)
     {
         const int wFrameSize = w->getFrameSize();
         const int frame2 = 2 * wFrameSize;
@@ -600,7 +600,7 @@ void TabbedArea::adjustTabPositions()
     for (size_t i = 0; i < sz; ++i)
     {
         const Tab *const tab = mTabs[i].first;
-        if (tab &&
+        if ((tab != nullptr) &&
             tab->mVisible == Visible_true &&
             tab->getHeight() > maxTabHeight)
         {
@@ -613,7 +613,7 @@ void TabbedArea::adjustTabPositions()
     for (size_t i = mTabScrollIndex; i < sz; ++i)
     {
         Tab *const tab = mTabs[i].first;
-        if (!tab || tab->mVisible == Visible_false)
+        if ((tab == nullptr) || tab->mVisible == Visible_false)
             continue;
         tab->setPosition(x, maxTabHeight - tab->getHeight());
         x += tab->getWidth();
@@ -626,7 +626,7 @@ void TabbedArea::adjustTabPositions()
         for (unsigned i = 0; i < mTabScrollIndex; ++i)
         {
             Tab *const tab = mTabs[i].first;
-            if (tab && tab->mVisible == Visible_true)
+            if ((tab != nullptr) && tab->mVisible == Visible_true)
             {
                 x -= tab->getWidth();
                 tab->setPosition(x, maxTabHeight - tab->getHeight());
@@ -640,7 +640,7 @@ void TabbedArea::action(const ActionEvent& actionEvent)
     Widget *const source = actionEvent.getSource();
     Tab *const tab = dynamic_cast<Tab *>(source);
 
-    if (tab)
+    if (tab != nullptr)
     {
         setSelectedTab(tab);
     }
@@ -649,7 +649,7 @@ void TabbedArea::action(const ActionEvent& actionEvent)
         const std::string &eventId = actionEvent.getId();
         if (eventId == "shift_left")
         {
-            if (mTabScrollIndex)
+            if (mTabScrollIndex != 0u)
                 --mTabScrollIndex;
         }
         else if (eventId == "shift_right")
@@ -665,7 +665,7 @@ void TabbedArea::action(const ActionEvent& actionEvent)
 void TabbedArea::updateArrowEnableState()
 {
     updateTabsWidth();
-    if (!mArrowButton[0] || !mArrowButton[1])
+    if ((mArrowButton[0] == nullptr) || (mArrowButton[1] == nullptr))
         return;
 
     const int width = mDimension.width;
@@ -684,7 +684,7 @@ void TabbedArea::updateArrowEnableState()
     }
 
     // Left arrow consistency check
-    if (!mTabScrollIndex)
+    if (mTabScrollIndex == 0u)
         mArrowButton[0]->setEnabled(false);
     else
         mArrowButton[0]->setEnabled(true);
@@ -801,7 +801,7 @@ void TabbedArea::death(const Event &event)
 {
     Tab *const tab = dynamic_cast<Tab*>(event.getSource());
 
-    if (tab)
+    if (tab != nullptr)
         removeTab(tab);
     else
         BasicContainer::death(event);

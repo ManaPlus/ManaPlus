@@ -45,7 +45,7 @@ WhisperTab::WhisperTab(const Widget2 *const widget,
 
 WhisperTab::~WhisperTab()
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->removeWhisper(mNick);
 }
 
@@ -55,7 +55,7 @@ void WhisperTab::handleInput(const std::string &msg)
     newMsg = ChatWindow::doReplace(msg);
     chatHandler->privateMessage(mNick, newMsg);
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
         chatLog(localPlayer->getName(), newMsg);
     else
         chatLog("?", newMsg);
@@ -78,7 +78,7 @@ void WhisperTab::handleCommandStr(const std::string &msg)
     {
         std::string str = textToMe(args);
         chatHandler->privateMessage(mNick, str);
-        if (localPlayer)
+        if (localPlayer != nullptr)
             chatLog(localPlayer->getName(), str);
         else
             chatLog("?", str);
@@ -94,11 +94,11 @@ bool WhisperTab::handleCommand(const std::string &restrict type,
 {
     if (type == "close")
     {
-        if (windowContainer)
+        if (windowContainer != nullptr)
             windowContainer->scheduleDelete(this);
         else
             delete this;
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->defaultTab();
     }
     else

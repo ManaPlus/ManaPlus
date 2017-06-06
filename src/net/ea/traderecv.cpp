@@ -72,7 +72,7 @@ void TradeRecv::processTradeResponseContinue(const uint8_t type)
             NotifyManager::notify(NotifyTypes::TRADE_CANCELLED_ERROR);
             break;
         case 3:  // Trade accepted
-            if (tradeWindow)
+            if (tradeWindow != nullptr)
             {
                 tradeWindow->reset();
                 // TRANSLATORS: trade header
@@ -91,7 +91,7 @@ void TradeRecv::processTradeResponseContinue(const uint8_t type)
             }
             // otherwise ignore silently
 
-            if (tradeWindow)
+            if (tradeWindow != nullptr)
             {
                 tradeWindow->setVisible(Visible_false);
 //                        tradeWindow->clear();
@@ -105,7 +105,7 @@ void TradeRecv::processTradeResponseContinue(const uint8_t type)
         default:  // Shouldn't happen as well, but to be sure
             NotifyManager::notify(NotifyTypes::TRADE_ERROR_UNKNOWN,
                 tradePartnerName);
-            if (tradeWindow)
+            if (tradeWindow != nullptr)
                 tradeWindow->clear();
             break;
     }
@@ -114,7 +114,7 @@ void TradeRecv::processTradeResponseContinue(const uint8_t type)
 void TradeRecv::processTradeOk(Net::MessageIn &msg)
 {
     // 0 means ok from myself, 1 means ok from other;
-    if (tradeWindow)
+    if (tradeWindow != nullptr)
         tradeWindow->receivedOk(msg.readUInt8("status") == 0U);
     else
         msg.readUInt8("status");
@@ -123,7 +123,7 @@ void TradeRecv::processTradeOk(Net::MessageIn &msg)
 void TradeRecv::processTradeCancel(Net::MessageIn &msg A_UNUSED)
 {
     NotifyManager::notify(NotifyTypes::TRADE_CANCELLED);
-    if (tradeWindow)
+    if (tradeWindow != nullptr)
     {
         tradeWindow->setVisible(Visible_false);
         tradeWindow->reset();
@@ -134,7 +134,7 @@ void TradeRecv::processTradeCancel(Net::MessageIn &msg A_UNUSED)
 void TradeRecv::processTradeComplete(Net::MessageIn &msg A_UNUSED)
 {
     NotifyManager::notify(NotifyTypes::TRADE_COMPLETE);
-    if (tradeWindow)
+    if (tradeWindow != nullptr)
         tradeWindow->completeTrade();
     PlayerInfo::setTrading(Trading_false);
 }
@@ -144,7 +144,7 @@ void TradeRecv::processTradeRequestContinue(const std::string &partner)
     if (player_relations.hasPermission(partner,
         PlayerRelation::TRADE))
     {
-        if (PlayerInfo::isTrading() == Trading_true || confirmDlg)
+        if (PlayerInfo::isTrading() == Trading_true || (confirmDlg != nullptr))
         {
             tradeHandler->respond(false);
             return;
@@ -152,7 +152,7 @@ void TradeRecv::processTradeRequestContinue(const std::string &partner)
 
         tradePartnerName = partner;
         PlayerInfo::setTrading(Trading_true);
-        if (tradeWindow)
+        if (tradeWindow != nullptr)
         {
             if (tradePartnerName.empty() || tradeWindow->getAutoTradeNick()
                 != tradePartnerName)

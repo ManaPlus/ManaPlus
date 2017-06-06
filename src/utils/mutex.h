@@ -97,13 +97,13 @@ inline void Mutex::unlock()
 inline MutexLocker::MutexLocker(Mutex *const mutex) :
     mMutex(mutex)
 {
-    if (mMutex)
+    if (mMutex != nullptr)
         mMutex->lock();
 }
 
 inline MutexLocker::~MutexLocker()
 {
-    if (mMutex)
+    if (mMutex != nullptr)
         mMutex->unlock();
 }
 

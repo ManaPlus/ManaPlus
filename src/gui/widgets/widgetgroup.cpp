@@ -46,7 +46,7 @@ void WidgetGroup::addButton(const std::string &restrict text,
         return;
 
     Widget *const widget = createWidget(text, pressed);
-    if (widget)
+    if (widget != nullptr)
     {
         widget->setActionEventId(mActionEventId + tag);
         widget->addActionListener(this);
@@ -66,7 +66,7 @@ void WidgetGroup::action(const ActionEvent &event)
 void WidgetGroup::addWidget(Widget *const widget,
                             const int spacing)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     Container::add(widget);

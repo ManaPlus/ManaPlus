@@ -44,7 +44,7 @@ LayoutArray &LayoutCell::getArray()
         return tempArray;
     if (mType == ARRAY)
     {
-        if (!mArray)
+        if (mArray == nullptr)
             return tempArray;
         return *mArray;
     }
@@ -90,7 +90,7 @@ void LayoutCell::computeSizes()
         while (j != i->end())
         {
             LayoutCell *const cell = *j;
-            if (cell && cell->mType == ARRAY)
+            if ((cell != nullptr) && cell->mType == ARRAY)
                 cell->computeSizes();
 
             ++j;

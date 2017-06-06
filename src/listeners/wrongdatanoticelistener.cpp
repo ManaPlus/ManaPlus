@@ -39,6 +39,6 @@ void WrongDataNoticeListener::setTarget(TextField *const textField)
 
 void WrongDataNoticeListener::action(const ActionEvent &event)
 {
-    if (event.getId() == "ok" && mTarget)
+    if (event.getId() == "ok" && (mTarget != nullptr))
         mTarget->requestFocus();
 }

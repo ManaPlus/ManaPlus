@@ -51,9 +51,9 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     ActionListener(),
     SelectionListener(),
     MouseListener(),
-    mSkin(theme ? theme->load("windowmenu.xml", "") : nullptr),
-    mPadding(mSkin ? mSkin->getPadding() : 1),
-    mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
+    mSkin(theme != nullptr ? theme->load("windowmenu.xml", "") : nullptr),
+    mPadding(mSkin != nullptr ? mSkin->getPadding() : 1),
+    mSpacing(mSkin != nullptr ? mSkin->getOption("spacing", 3) : 3),
     mButtons(),
     mButtonTexts(),
     mButtonNames(),
@@ -192,7 +192,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         _("Setup"), x, h, InputAction::WINDOW_SETUP);
 
     x += mPadding - mSpacing;
-    if (mainGraphics)
+    if (mainGraphics != nullptr)
         setDimension(Rect(mainGraphics->mWidth - x, 0, x, h));
 
     loadButtons();
@@ -219,16 +219,16 @@ WindowMenu::~WindowMenu()
     FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
     {
         Button *const btn = *it;
-        if (!btn)
+        if (btn == nullptr)
             continue;
         if (btn->mVisible == Visible_false)
             delete btn;
     }
     delete_all(mButtonTexts);
     mButtonTexts.clear();
-    if (mSkin)
+    if (mSkin != nullptr)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
         mSkin = nullptr;
     }
@@ -243,7 +243,7 @@ void WindowMenu::action(const ActionEvent &event)
         return;
 
     const ButtonInfo *const info = (*it).second;
-    if (!info)
+    if (info == nullptr)
         return;
 
     inputManager.executeAction(info->key);
@@ -272,7 +272,7 @@ void WindowMenu::addButton(const char *const text,
 
 void WindowMenu::mousePressed(MouseEvent &event)
 {
-    if (!popupManager)
+    if (popupManager == nullptr)
         return;
 
     if (event.getButton() == MouseButton::RIGHT)
@@ -282,9 +282,9 @@ void WindowMenu::mousePressed(MouseEvent &event)
 
         event.consume();
         Button *const btn = dynamic_cast<Button*>(event.getSource());
-        if (!btn)
+        if (btn == nullptr)
             return;
-        if (popupMenu)
+        if (popupMenu != nullptr)
         {
             popupMenu->showPopup(getX() + event.getX(),
                 getY() + event.getY(), btn);
@@ -296,7 +296,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
 {
     mHaveMouse = true;
 
-    if (!textPopup)
+    if (textPopup == nullptr)
         return;
 
     if (event.getSource() == this)
@@ -308,7 +308,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
     const Button *const btn = dynamic_cast<const Button *>(
         event.getSource());
 
-    if (!btn)
+    if (btn == nullptr)
     {
         textPopup->hide();
         return;
@@ -334,7 +334,7 @@ void WindowMenu::mouseMoved(MouseEvent &event)
 void WindowMenu::mouseExited(MouseEvent& event A_UNUSED)
 {
     mHaveMouse = false;
-    if (!textPopup)
+    if (textPopup == nullptr)
         return;
 
     textPopup->hide();
@@ -344,7 +344,7 @@ void WindowMenu::showButton(const std::string &name,
                             const Visible visible)
 {
     const ButtonInfo *const info = mButtonNames[name];
-    if (!info || !info->button)
+    if ((info == nullptr) || (info->button == nullptr))
         return;
 
     info->button->setVisible(visible);
@@ -362,7 +362,7 @@ void WindowMenu::updateButtons()
     FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
     {
         Button *const btn = *it;
-        if (!btn)
+        if (btn == nullptr)
             continue;
         if (btn->mVisible == Visible_true)
         {
@@ -373,7 +373,7 @@ void WindowMenu::updateButtons()
         }
     }
     x += mPadding - mSpacing;
-    if (mainGraphics)
+    if (mainGraphics != nullptr)
         setDimension(Rect(mainGraphics->mWidth - x, 0, x, h));
 }
 
@@ -388,8 +388,12 @@ void WindowMenu::loadButtons()
                  it_fend = mButtonNames.end(); it != it_fend; ++it)
             {
                 const ButtonInfo *const info = (*it).second;
-                if (!info || !info->button || info->visible == Visible_true)
+                if (info == nullptr ||
+                    info->button == nullptr ||
+                    info->visible == Visible_true)
+                {
                     continue;
+                }
                 info->button->setVisible(Visible_false);
             }
             updateButtons();
@@ -403,7 +407,7 @@ void WindowMenu::loadButtons()
             if (str.empty() || str == "SET")
                 continue;
             const ButtonInfo *const info = mButtonNames[str];
-            if (!info || !info->button)
+            if ((info == nullptr) || (info->button == nullptr))
                 continue;
             info->button->setVisible(Visible_false);
         }
@@ -415,7 +419,7 @@ void WindowMenu::loadButtons()
              it_fend = mButtonNames.end(); it != it_fend; ++it)
         {
             const ButtonInfo *const info = (*it).second;
-            if (!info || !info->button)
+            if ((info == nullptr) || (info->button == nullptr))
                 continue;
             Button *const button = info->button;
             const std::string &str = button->getActionEventId();
@@ -432,7 +436,7 @@ void WindowMenu::saveButtons() const
     FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
     {
         const Button *const btn = *it;
-        if (btn && btn->mVisible == Visible_false)
+        if ((btn != nullptr) && btn->mVisible == Visible_false)
         {
             config.setValue("windowmenu" + toString(i),
                 btn->getActionEventId());
@@ -445,8 +449,11 @@ void WindowMenu::saveButtons() const
 
 void WindowMenu::drawChildren(Graphics *const graphics)
 {
-    if (mHaveMouse || !mAutoHide || (mAutoHide == 1
-        && mainGraphics && (mSmallWindow || mainGraphics->mWidth > 800)))
+    if (mHaveMouse ||
+        mAutoHide == 0 ||
+        (mAutoHide == 1 &&
+        mainGraphics != nullptr &&
+        (mSmallWindow || mainGraphics->mWidth > 800)))
     {
         Container::drawChildren(graphics);
     }
@@ -454,8 +461,11 @@ void WindowMenu::drawChildren(Graphics *const graphics)
 
 void WindowMenu::safeDrawChildren(Graphics *const graphics)
 {
-    if (mHaveMouse || !mAutoHide || (mAutoHide == 1
-        && mainGraphics && (mSmallWindow || mainGraphics->mWidth > 800)))
+    if (mHaveMouse ||
+        mAutoHide == 0 ||
+        (mAutoHide == 1 &&
+        mainGraphics != nullptr &&
+        (mSmallWindow || mainGraphics->mWidth > 800)))
     {
         Container::safeDrawChildren(graphics);
     }

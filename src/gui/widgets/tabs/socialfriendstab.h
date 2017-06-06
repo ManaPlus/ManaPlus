@@ -71,7 +71,7 @@ class SocialFriendsTab final : public SocialTab
 
         void getPlayersAvatars()
         {
-            if (!actorManager)
+            if (actorManager == nullptr)
                 return;
 
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
@@ -90,7 +90,7 @@ class SocialFriendsTab final : public SocialTab
             const std::set<std::string> &players2
                 = whoIsOnline->getOnlineNicks();
 
-            if (!players)
+            if (players == nullptr)
                 return;
 
             int online = 0;
@@ -99,8 +99,8 @@ class SocialFriendsTab final : public SocialTab
             FOR_EACHP (StringVectCIter, it, players)
             {
                 Avatar *const ava = new Avatar(*it);
-                if (actorManager->findBeingByName(*it, ActorType::Player)
-                    || players2.find(*it) != players2.end())
+                if (actorManager->findBeingByName(*it, ActorType::Player) !=
+                    nullptr || players2.find(*it) != players2.end())
                 {
                     ava->setOnline(true);
                     online ++;

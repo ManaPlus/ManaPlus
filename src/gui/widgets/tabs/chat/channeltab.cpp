@@ -39,7 +39,7 @@ ChannelTab::ChannelTab(const Widget2 *const widget,
 
 ChannelTab::~ChannelTab()
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->removeChannel(mChannelName);
 }
 
@@ -55,11 +55,11 @@ bool ChannelTab::handleCommand(const std::string &restrict type,
 {
     if (type == "close")
     {
-        if (windowContainer)
+        if (windowContainer != nullptr)
             windowContainer->scheduleDelete(this);
         else
             delete this;
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->defaultTab();
     }
     else

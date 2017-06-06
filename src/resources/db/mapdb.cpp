@@ -67,7 +67,7 @@ void MapDB::loadRemapXmlFile(const std::string &fileName,
         skipError);
 
     XmlNodeConstPtrConst root = doc->rootNode();
-    if (!root)
+    if (root == nullptr)
     {
         delete doc;
         return;
@@ -101,7 +101,7 @@ void MapDB::loadRemapXmlFile(const std::string &fileName,
 
 void MapDB::readMap(XmlNodePtrConst node)
 {
-    if (!node)
+    if (node == nullptr)
         return;
     const std::string map = XML::getProperty(node, "name", "");
     if (map.empty())
@@ -121,7 +121,7 @@ void MapDB::readMap(XmlNodePtrConst node)
 
 void MapDB::readAtlas(XmlNodePtrConst node)
 {
-    if (!node)
+    if (node == nullptr)
         return;
     const std::string atlas = XML::getProperty(node, "name", "");
     if (atlas.empty())
@@ -154,7 +154,7 @@ void MapDB::loadInfo(const std::string &fileName,
         UseVirtFs_true,
         skipError);
     XmlNodeConstPtrConst root = doc->rootNode();
-    if (!root)
+    if (root == nullptr)
     {
         delete doc;
         return;

@@ -49,17 +49,17 @@ struct PlayerPostDeathListener final : public ActionListener
 
     void action(const ActionEvent &event A_UNUSED) override final
     {
-        if (playerHandler)
+        if (playerHandler != nullptr)
             playerHandler->respawn();
         deathNotice = nullptr;
 
         DialogsManager::closeDialogs();
 
-        if (popupManager)
+        if (popupManager != nullptr)
             popupManager->closePopupMenu();
 
         NpcDialog::clearDialogs();
-        if (localPlayer)
+        if (localPlayer != nullptr)
             localPlayer->respawn();
     }
 };

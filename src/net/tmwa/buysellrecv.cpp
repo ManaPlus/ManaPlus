@@ -95,7 +95,7 @@ void BuySellRecv::processNpcBuyResponse(Net::MessageIn &msg)
     }
     // Reset player money since buy dialog already assumed purchase
     // would go fine
-    if (Ea::BuySellRecv::mBuyDialog)
+    if (Ea::BuySellRecv::mBuyDialog != nullptr)
     {
         Ea::BuySellRecv::mBuyDialog->setMoney(
             PlayerInfo::getAttribute(Attributes::MONEY));

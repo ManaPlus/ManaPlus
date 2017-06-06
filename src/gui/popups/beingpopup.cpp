@@ -84,7 +84,7 @@ void BeingPopup::addLabels(const int fontHeight)
 
 void BeingPopup::show(const int x, const int y, Being *const b)
 {
-    if (!b)
+    if (b == nullptr)
     {
         setVisible(Visible_false);
         return;
@@ -101,7 +101,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
 
     mBeingName->setCaption(b->getName() + b->getGenderSignWithSpace());
-    if (gui)
+    if (gui != nullptr)
     {
         if (player_relations.isGoodName(b))
             mBeingName->setFont(boldFont);
@@ -130,7 +130,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     if (type == ActorType::Pet)
     {
         const PetInfo *const info = PlayerInfo::getPet();
-        if (info && info->id == b->getId())
+        if ((info != nullptr) && info->id == b->getId())
         {
             ptr = mLabels[num];
             // TRANSLATORS: being popup label
@@ -149,7 +149,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     else if (type == ActorType::Homunculus)
     {
         const HomunculusInfo *const info = PlayerInfo::getHomunculus();
-        if (info && info->id == b->getId())
+        if ((info != nullptr) && info->id == b->getId())
         {
             ptr = mLabels[num];
             // TRANSLATORS: being popup label
@@ -239,7 +239,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
 
         const ChatObject *const chat = b->getChat();
-        if (chat)
+        if (chat != nullptr)
         {
             ptr = mLabels[num];
             // TRANSLATORS: being popup label
@@ -298,7 +298,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
     {
         const Label *const label = *it;
-        if (label)
+        if (label != nullptr)
         {
             if (label->getWidth() > minWidth)
                 minWidth = label->getWidth();

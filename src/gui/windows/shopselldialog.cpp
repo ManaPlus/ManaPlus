@@ -49,11 +49,11 @@ void ShopSellDialog::sellAction(const ActionEvent &event A_UNUSED)
 
     const int selectedItem = mShopItemList->getSelected();
     ShopItem *const item = mShopItems->at(selectedItem);
-    if (!item || PlayerInfo::isItemProtected(item->getId()))
+    if (item == nullptr || PlayerInfo::isItemProtected(item->getId()))
         return;
     buySellHandler->sendSellRequest(mNick, item, mAmountItems);
 
-    if (tradeWindow)
+    if (tradeWindow != nullptr)
         tradeWindow->addAutoItem(mNick, item, mAmountItems);
 }
 

@@ -97,7 +97,7 @@ bool CompoundSprite::reset()
     bool ret = false;
     FOR_EACH (SpriteIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
             ret |= (*it)->reset();
     }
     if (ret)
@@ -112,7 +112,7 @@ bool CompoundSprite::play(const std::string &action)
     bool ret2 = true;
     FOR_EACH (SpriteIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
         {
             const bool tmpVal = (*it)->play(action);
             ret |= tmpVal;
@@ -133,7 +133,7 @@ bool CompoundSprite::update(const int time)
     mLastTime = time;
     FOR_EACH (SpriteIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
             ret |= (*it)->update(time);
     }
     mNeedsRedraw |= ret;
@@ -151,11 +151,11 @@ void CompoundSprite::drawSimple(Graphics *const graphics,
     if (mSprites.empty())  // Nothing to draw
         return;
 
-    if (mAlpha == 1.0F && mImage)
+    if (mAlpha == 1.0F && (mImage != nullptr))
     {
         graphics->drawImage(mImage, posX + mOffsetX, posY + mOffsetY);
     }
-    else if (mAlpha && mAlphaImage)
+    else if ((mAlpha != 0.0f) && (mAlphaImage != nullptr))
     {
         mAlphaImage->setAlpha(mAlpha);
         graphics->drawImage(mAlphaImage,
@@ -173,7 +173,7 @@ void CompoundSprite::drawSprites(Graphics *const graphics,
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
         {
             (*it)->setAlpha(mAlpha);
             (*it)->draw(graphics, posX, posY);
@@ -187,7 +187,7 @@ void CompoundSprite::drawSpritesSDL(Graphics *const graphics,
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->draw(graphics, posX, posY);
     }
 }
@@ -197,7 +197,7 @@ int CompoundSprite::getWidth() const
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         const Sprite *const base = *it;
-        if (base)
+        if (base != nullptr)
             return base->getWidth();
     }
 
@@ -209,7 +209,7 @@ int CompoundSprite::getHeight() const
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
         const Sprite *const base = *it;
-        if (base)
+        if (base != nullptr)
             return base->getHeight();
     }
 
@@ -226,7 +226,7 @@ bool CompoundSprite::setSpriteDirection(const SpriteDirection::Type direction)
     bool ret = false;
     FOR_EACH (SpriteIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
             ret |= (*it)->setSpriteDirection(direction);
     }
     if (ret)
@@ -237,7 +237,7 @@ bool CompoundSprite::setSpriteDirection(const SpriteDirection::Type direction)
 
 int CompoundSprite::getNumberOfLayers() const
 {
-    if (mImage || mAlphaImage)
+    if ((mImage != nullptr) || (mAlphaImage != nullptr))
         return 1;
     else
         return CAST_S32(mSprites.size());
@@ -247,7 +247,7 @@ unsigned int CompoundSprite::getCurrentFrame() const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
             return (*it)->getCurrentFrame();
     }
     return 0;
@@ -257,7 +257,7 @@ unsigned int CompoundSprite::getFrameCount() const
 {
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
             return (*it)->getFrameCount();
     }
     return 0;
@@ -283,7 +283,7 @@ void CompoundSprite::setSprite(const size_t layer, Sprite *const sprite)
 void CompoundSprite::removeSprite(const int layer)
 {
     // Skip if it won't change anything
-    if (!mSprites[layer])
+    if (mSprites[layer] == nullptr)
         return;
 
     delete2(mSprites[layer]);
@@ -334,7 +334,7 @@ void CompoundSprite::redraw() const
     SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_HWSURFACE,
         BUFFER_WIDTH, BUFFER_HEIGHT, 32, rmask, gmask, bmask, amask);
 
-    if (!surface)
+    if (surface == nullptr)
         return;
 
     SurfaceGraphics *graphics = new SurfaceGraphics;
@@ -346,10 +346,10 @@ void CompoundSprite::redraw() const
     int tileY = mapTileSize;
 
     const Game *const game = Game::instance();
-    if (game)
+    if (game != nullptr)
     {
         const Map *const map = game->getCurrentMap();
-        if (map)
+        if (map != nullptr)
         {
             tileX = map->getTileWidth() / 2;
             tileY = map->getTileWidth();
@@ -401,7 +401,7 @@ void CompoundSprite::setAlpha(float alpha)
         {
             FOR_EACH (SpriteConstIterator, it, mSprites)
             {
-                if (*it)
+                if (*it != nullptr)
                     (*it)->setAlpha(alpha);
             }
         }
@@ -437,7 +437,7 @@ void CompoundSprite::updateImages() const
 
             redraw();
 
-            if (mImage)
+            if (mImage != nullptr)
                 initCurrentCacheItem();
         }
         else
@@ -454,7 +454,7 @@ bool CompoundSprite::updateFromCache() const
 //    static int hits = 0;
 //    static int miss = 0;
 
-    if (mCacheItem && mCacheItem->image)
+    if ((mCacheItem != nullptr) && (mCacheItem->image != nullptr))
     {
         imagesCache.push_front(mCacheItem);
         mCacheItem = nullptr;
@@ -476,7 +476,7 @@ bool CompoundSprite::updateFromCache() const
     FOR_EACH (ImagesCache::iterator, it, imagesCache)
     {
         CompoundItem *const ic = *it;
-        if (ic && ic->data.size() == sz)
+        if ((ic != nullptr) && ic->data.size() == sz)
         {
             bool fail(false);
             VectorPointers::const_iterator it2 = ic->data.begin();
@@ -489,9 +489,9 @@ bool CompoundSprite::updateFromCache() const
             {
                 const void *ptr1 = nullptr;
                 const void *ptr2 = nullptr;
-                if (*it1)
+                if (*it1 != nullptr)
                     ptr1 = (*it1)->getHash();
-                if (*it2)
+                if (*it2 != nullptr)
                     ptr2 = *it2;
                 if (ptr1 != ptr2)
                 {
@@ -527,7 +527,7 @@ void CompoundSprite::initCurrentCacheItem() const
 
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
             mCacheItem->data.push_back((*it)->getHash());
         else
             mCacheItem->data.push_back(nullptr);
@@ -539,7 +539,7 @@ bool CompoundSprite::updateNumber(const unsigned num)
     bool res(false);
     FOR_EACH (SpriteConstIterator, it, mSprites)
     {
-        if (*it)
+        if (*it != nullptr)
         {
             if ((*it)->updateNumber(num))
                 res = true;

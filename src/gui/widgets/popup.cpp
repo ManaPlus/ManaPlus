@@ -60,17 +60,17 @@ Popup::Popup(const std::string &name,
     if (skin.empty())
         skin = "popup.xml";
 
-    if (theme)
+    if (theme != nullptr)
     {
         mSkin = theme->load(skin, "popup.xml");
-        if (mSkin)
+        if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());
             setPalette(mSkin->getOption("palette"));
         }
     }
 
-    if (windowContainer)
+    if (windowContainer != nullptr)
         windowContainer->add(this);
 
     // Popups are invisible by default
@@ -83,9 +83,9 @@ Popup::~Popup()
 
     delete2(mVertexes);
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
         mSkin = nullptr;
     }
@@ -106,7 +106,7 @@ void Popup::draw(Graphics *const graphics)
 {
     BLOCK_START("Popup::draw")
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         if (mRedraw)
         {
@@ -130,7 +130,7 @@ void Popup::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("Popup::safeDraw")
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         graphics->drawImageRect(0, 0,
             mDimension.width, mDimension.height,
@@ -169,7 +169,7 @@ void Popup::setContentSize(int width, int height)
 
 void Popup::setLocationRelativeTo(const Widget *const widget)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     int wx, wy;
@@ -187,7 +187,7 @@ void Popup::setLocationRelativeTo(const Widget *const widget)
 
 void Popup::setMinWidth(const int width)
 {
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mMinWidth = width > mSkin->getMinWidth()
             ? width : mSkin->getMinWidth();
@@ -200,7 +200,7 @@ void Popup::setMinWidth(const int width)
 
 void Popup::setMinHeight(const int height)
 {
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mMinHeight = height > mSkin->getMinHeight() ?
             height : mSkin->getMinHeight();
@@ -248,7 +248,7 @@ void Popup::position(const int x, const int y)
 
 void Popup::mouseMoved(MouseEvent &event A_UNUSED)
 {
-    if (popupManager)
+    if (popupManager != nullptr)
     {
         popupManager->hideBeingPopup();
         popupManager->hideTextPopup();

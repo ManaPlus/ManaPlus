@@ -193,7 +193,7 @@ void Graphics::setScale(int scale) restrict2
 {
     if (isAllowScale())
     {
-        if (!scale)
+        if (scale == 0)
             scale = 1;
         int scaleW = mActualWidth / scale;
         int scaleH = mActualHeight / scale;
@@ -266,9 +266,9 @@ bool Graphics::setOpenGLMode() restrict2
 {
 #ifdef USE_OPENGL
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    if (!(mWindow = graphicsManager.createWindow(
+    if ((mWindow = graphicsManager.createWindow(
         mActualWidth, mActualHeight,
-        mBpp, getOpenGLFlags())))
+        mBpp, getOpenGLFlags())) == nullptr)
     {
         logger->log("Window/context creation failed");
         mRect.w = 0;
@@ -315,7 +315,7 @@ bool Graphics::setOpenGLMode() restrict2
     int gotDoubleBuffer = 0;
     SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &gotDoubleBuffer);
     logger->log("Using OpenGL %s double buffering.",
-                (gotDoubleBuffer ? "with" : "without"));
+                (gotDoubleBuffer != 0 ? "with" : "without"));
 
     graphicsManager.initOpenGL();
     initArrays(graphicsManager.getMaxVertices());
@@ -404,7 +404,7 @@ void Graphics::createGLContext(const bool custom A_UNUSED) restrict2
 void Graphics::updateMemoryInfo() restrict2
 {
 #ifdef USE_OPENGL
-    if (mStartFreeMem)
+    if (mStartFreeMem != 0)
         return;
 
     if (graphicsManager.supportExtension("GL_NVX_gpu_memory_info"))
@@ -419,7 +419,7 @@ void Graphics::updateMemoryInfo() restrict2
 int Graphics::getMemoryUsage() const restrict2
 {
 #ifdef USE_OPENGL
-    if (!mStartFreeMem)
+    if (mStartFreeMem == 0)
         return 0;
 
     if (graphicsManager.supportExtension("GL_NVX_gpu_memory_info"))
@@ -474,7 +474,7 @@ bool Graphics::videoInfo() restrict2
 #else  // USE_SDL2
 
     char videoDriverName[65];
-    if (SDL_VideoDriverName(videoDriverName, 64))
+    if (SDL_VideoDriverName(videoDriverName, 64) != nullptr)
         logger->log("Using video driver: %s", videoDriverName);
     else
         logger->log1("Using video driver: unknown");
@@ -484,27 +484,27 @@ bool Graphics::videoInfo() restrict2
     ImageHelper::dumpSurfaceFormat(mWindow);
 
     const SDL_VideoInfo *restrict const vi = SDL_GetVideoInfo();
-    if (!vi)
+    if (vi == nullptr)
         return false;
 
     logger->log("Possible to create hardware surfaces: %s",
-            ((vi->hw_available) ? "yes" : "no"));
+            ((vi->hw_available) != 0u ? "yes" : "no"));
     logger->log("Window manager available: %s",
-            ((vi->wm_available) ? "yes" : "no"));
+            ((vi->wm_available) != 0u ? "yes" : "no"));
     logger->log("Accelerated hardware to hardware blits: %s",
-            ((vi->blit_hw) ? "yes" : "no"));
+            ((vi->blit_hw) != 0u ? "yes" : "no"));
     logger->log("Accelerated hardware to hardware colorkey blits: %s",
-            ((vi->blit_hw_CC) ? "yes" : "no"));
+            ((vi->blit_hw_CC) != 0u ? "yes" : "no"));
     logger->log("Accelerated hardware to hardware alpha blits: %s",
-            ((vi->blit_hw_A) ? "yes" : "no"));
+            ((vi->blit_hw_A) != 0u ? "yes" : "no"));
     logger->log("Accelerated software to hardware blits: %s",
-            ((vi->blit_sw) ? "yes" : "no"));
+            ((vi->blit_sw) != 0u ? "yes" : "no"));
     logger->log("Accelerated software to hardware colorkey blits: %s",
-            ((vi->blit_sw_CC) ? "yes" : "no"));
+            ((vi->blit_sw_CC) != 0u ? "yes" : "no"));
     logger->log("Accelerated software to hardware alpha blits: %s",
-            ((vi->blit_sw_A) ? "yes" : "no"));
+            ((vi->blit_sw_A) != 0u ? "yes" : "no"));
     logger->log("Accelerated color fills: %s",
-            ((vi->blit_fill) ? "yes" : "no"));
+            ((vi->blit_fill) != 0u ? "yes" : "no"));
 #endif  // USE_SDL2
 
     return true;

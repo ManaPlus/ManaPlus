@@ -94,7 +94,7 @@ void SpellManager::fillSpells()
 
 bool SpellManager::addSpell(TextCommand *const spell)
 {
-    if (!spell)
+    if (spell == nullptr)
         return false;
 
     const int id = spell->getId();
@@ -127,14 +127,14 @@ void SpellManager::useItem(const int itemId) const
 
 void SpellManager::invoke(const int spellId) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     const TextCommand *const spell = getSpell(spellId);
-    if (!spell)
+    if (spell == nullptr)
         return;
 
-    if (!playerHandler || spell->getCommand().empty())
+    if ((playerHandler == nullptr) || spell->getCommand().empty())
         return;
 
 #ifdef TMWA_SUPPORT
@@ -155,13 +155,14 @@ void SpellManager::invoke(const int spellId) const
             invokeSpell(spell);
         }
 #ifdef TMWA_SUPPORT
-        if ((target && (target->getType() != ActorType::Monster ||
+        if ((target != nullptr &&
+            (target->getType() != ActorType::Monster ||
             spell->getCommandType() == TextCommandType::Text)) &&
             (spell->getTargetType() == CommandTarget::AllowTarget ||
             spell->getTargetType() == CommandTarget::NeedTarget))
 #else  // TMWA_SUPPORT
 
-        if (target &&
+        if (target != nullptr &&
             (spell->getTargetType() == CommandTarget::AllowTarget ||
             spell->getTargetType() == CommandTarget::NeedTarget))
 #endif  // TMWA_SUPPORT
@@ -177,7 +178,7 @@ void SpellManager::invoke(const int spellId) const
 
 void SpellManager::invokeSpell(const TextCommand *const spell)
 {
-    if (!chatWindow || !spell)
+    if ((chatWindow == nullptr) || (spell == nullptr))
         return;
     chatWindow->localChatInput(parseCommand(spell->getCommand(), nullptr));
 }
@@ -185,15 +186,19 @@ void SpellManager::invokeSpell(const TextCommand *const spell)
 void SpellManager::invokeSpell(const TextCommand *const spell,
                                const Being *const target)
 {
-    if (!chatWindow || !spell || !target)
+    if (chatWindow == nullptr ||
+        spell == nullptr ||
+        target == nullptr)
+    {
         return;
+    }
     chatWindow->localChatInput(parseCommand(spell->getCommand(), target));
 }
 
 void SpellManager::invokeCommand(const std::string &command,
                                  const Being *const target)
 {
-    if (!chatWindow)
+    if (chatWindow == nullptr)
         return;
     chatWindow->localChatInput(parseCommand(command, target));
 }
@@ -201,14 +206,14 @@ void SpellManager::invokeCommand(const std::string &command,
 std::string SpellManager::parseCommand(std::string command,
                                        const Being *const target)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return command;
 
     std::string name;
     std::string id;
     std::string name2;
 
-    if (target)
+    if (target != nullptr)
     {
         name = target->getName();
         name2 = name;
@@ -323,7 +328,7 @@ void SpellManager::save() const
     for (unsigned i = 0; i < SPELL_SHORTCUT_ITEMS * SPELL_SHORTCUT_TABS; i++)
     {
         const TextCommand *const spell = mSpellsVector[i];
-        if (spell)
+        if (spell != nullptr)
         {
             setOrDel("commandShortcutCmd", getCommand);
             setOrDel("commandShortcutComment", getComment);
@@ -395,7 +400,7 @@ std::string SpellManager::autoComplete(const std::string &partName) const
         ++i;
     }
     if (!newName.empty() &&
-        newCommand &&
+        (newCommand != nullptr) &&
         newCommand->getTargetType() == CommandTarget::NeedTarget)
     {
         return newName.append(" ");
@@ -407,7 +412,7 @@ void SpellManager::swap(const int id1, const int id2)
 {
     TextCommand *const spell1 = mSpells[id1];
     TextCommand *const spell2 = mSpells[id2];
-    if (!spell1 || !spell2)
+    if ((spell1 == nullptr) || (spell2 == nullptr))
         return;
 
     // swap in map

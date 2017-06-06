@@ -37,7 +37,7 @@ static class SortTouchActionFunctor final
         bool operator() (const SetupActionData *const data1,
                          const SetupActionData *const data2) const
         {
-            if (!data1 || !data2)
+            if ((data1 == nullptr) || (data2 == nullptr))
                 return false;
             return data1->name < data2->name;
         }

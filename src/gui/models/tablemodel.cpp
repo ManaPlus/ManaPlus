@@ -32,13 +32,13 @@
 
 void TableModel::installListener(TableModelListener *const listener)
 {
-    if (listener)
+    if (listener != nullptr)
         listeners.insert(listener);
 }
 
 void TableModel::removeListener(TableModelListener *const listener)
 {
-    if (listener)
+    if (listener != nullptr)
         listeners.erase(listener);
 }
 
@@ -56,7 +56,7 @@ void TableModel::signalAfterUpdate()
     for (std::set<TableModelListener *>::const_iterator it = listeners.begin();
          it != listeners.end(); ++it)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->modelUpdated(true);
     }
 }
@@ -93,7 +93,7 @@ void StaticTableModel::resize()
 void StaticTableModel::set(const int row, const int column,
                            Widget *const widget)
 {
-    if (!widget || row >= mRows || row < 0
+    if ((widget == nullptr) || row >= mRows || row < 0
         || column >= mColumns || column < 0)
     {
         // raise exn?

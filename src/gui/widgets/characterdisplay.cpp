@@ -85,7 +85,7 @@ void CharacterDisplay::setCharacter(Net::Character *const character)
         return;
 
     mCharacter = character;
-    mPlayerBox->setPlayer(character ? character->dummy : nullptr);
+    mPlayerBox->setPlayer(character != nullptr ? character->dummy : nullptr);
     update();
 }
 
@@ -99,7 +99,7 @@ void CharacterDisplay::setActive(const bool active A_UNUSED)
 
 void CharacterDisplay::update()
 {
-    if (mCharacter)
+    if (mCharacter != nullptr)
         mName->setCaption(mCharacter->dummy->getName());
     else
         mName->setCaption("");
@@ -111,20 +111,24 @@ void CharacterDisplay::update()
 
 void CharacterDisplay::widgetHidden(const Event &event A_UNUSED)
 {
-    if (textPopup)
+    if (textPopup != nullptr)
         textPopup->setVisible(Visible_false);
 }
 
 void CharacterDisplay::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (textPopup)
+    if (textPopup != nullptr)
         textPopup->setVisible(Visible_false);
 }
 
 void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
 {
-    if (!gui || !textPopup || !mCharacter)
+    if (gui == nullptr ||
+        textPopup == nullptr ||
+        mCharacter == nullptr)
+    {
         return;
+    }
 
     int mouseX = 0;
     int mouseY = 0;

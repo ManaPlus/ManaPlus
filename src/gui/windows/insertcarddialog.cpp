@@ -43,7 +43,7 @@ InsertCardDialog::InsertCardDialog(const int itemIndex,
 {
     // TRANSLATORS: insert card dialog name
     setWindowName(_("Insert card"));
-    if (item)
+    if (item != nullptr)
     {
         // TRANSLATORS: insert card dialog name
         setCaption(strprintf(_("Insert card %s"),
@@ -72,7 +72,7 @@ void InsertCardDialog::sellAction(const ActionEvent &event A_UNUSED)
 
     const int selectedItem = mShopItemList->getSelected();
     const ShopItem *const item = mShopItems->at(selectedItem);
-    if (!item)
+    if (item == nullptr)
         return;
     inventoryHandler->insertCard(mItemIndex, item->getInvIndex());
     scheduleDelete();

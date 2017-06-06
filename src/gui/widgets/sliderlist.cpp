@@ -68,7 +68,7 @@ void SliderList::postInit2(ActionListener *const listener,
     if (!eventId.empty())
         setActionEventId(eventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 
     updateLabel();
@@ -135,7 +135,7 @@ void SliderList::safeDraw(Graphics *const graphics)
 
 void SliderList::updateLabel()
 {
-    if (!mListModel || mSelectedIndex < 0
+    if ((mListModel == nullptr) || mSelectedIndex < 0
         || mSelectedIndex >= mListModel->getNumberOfElements())
     {
         return;
@@ -157,7 +157,7 @@ void SliderList::updateLabel()
 
 void SliderList::action(const ActionEvent &event)
 {
-    if (!mListModel)
+    if (mListModel == nullptr)
         return;
 
     const std::string &eventId = event.getId();
@@ -179,7 +179,7 @@ void SliderList::action(const ActionEvent &event)
 
 void SliderList::setSelectedString(const std::string &str)
 {
-    if (!mListModel)
+    if (mListModel == nullptr)
         return;
 
     for (int f = 0; f < mListModel->getNumberOfElements(); f ++)
@@ -194,7 +194,7 @@ void SliderList::setSelectedString(const std::string &str)
 
 std::string SliderList::getSelectedString() const
 {
-    if (!mListModel)
+    if (mListModel == nullptr)
         return std::string();
 
     return mListModel->getElementAt(mSelectedIndex);
@@ -202,7 +202,7 @@ std::string SliderList::getSelectedString() const
 
 void SliderList::setSelected(const int idx)
 {
-    if (!mListModel)
+    if (mListModel == nullptr)
         return;
 
     mSelectedIndex = idx;
@@ -222,7 +222,7 @@ void SliderList::adjustSize()
 
 int SliderList::getMaxLabelWidth() const
 {
-    if (!mListModel || !gui)
+    if ((mListModel == nullptr) || (gui == nullptr))
         return 1;
 
     int maxWidth = 0;

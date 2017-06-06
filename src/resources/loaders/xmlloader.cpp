@@ -40,7 +40,7 @@ namespace
 
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *>(v);

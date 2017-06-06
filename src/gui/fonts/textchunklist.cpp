@@ -36,10 +36,10 @@ TextChunkList::TextChunkList() :
 void TextChunkList::insertFirst(TextChunk *restrict const item)
 {
     TextChunk *restrict const oldFirst = start;
-    if (start)
+    if (start != nullptr)
         start->prev = item;
     item->prev = nullptr;
-    if (oldFirst)
+    if (oldFirst != nullptr)
         item->next = oldFirst;
     else
         end = item;
@@ -55,15 +55,15 @@ void TextChunkList::moveToFirst(TextChunk *restrict const item)
         return;
 
     TextChunk *restrict const oldPrev = item->prev;
-    if (oldPrev)
+    if (oldPrev != nullptr)
         oldPrev->next = item->next;
     TextChunk *restrict const oldNext = item->next;
-    if (oldNext)
+    if (oldNext != nullptr)
         oldNext->prev = item->prev;
     else
         end = oldPrev;
     TextChunk *restrict const oldFirst = start;
-    if (start)
+    if (start != nullptr)
         start->prev = item;
     item->prev = nullptr;
     item->next = oldFirst;
@@ -72,16 +72,16 @@ void TextChunkList::moveToFirst(TextChunk *restrict const item)
 
 void TextChunkList::remove(const TextChunk *restrict const item)
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     TextChunk *restrict const oldPrev = item->prev;
     TextChunk *restrict const oldNext = item->next;
-    if (oldPrev)
+    if (oldPrev != nullptr)
         oldPrev->next = item->next;
     else
         start = oldNext;
-    if (oldNext)
+    if (oldNext != nullptr)
         oldNext->prev = item->prev;
     else
         end = oldPrev;
@@ -95,10 +95,10 @@ void TextChunkList::remove(const TextChunk *restrict const item)
 void TextChunkList::removeBack()
 {
     TextChunk *restrict oldEnd = end;
-    if (oldEnd)
+    if (oldEnd != nullptr)
     {
         end = oldEnd->prev;
-        if (end)
+        if (end != nullptr)
             end->next = nullptr;
         else
             start = nullptr;
@@ -113,7 +113,7 @@ void TextChunkList::removeBack()
 void TextChunkList::removeBack(int n)
 {
     TextChunk *restrict item = end;
-    while (n && item)
+    while ((n != 0) && (item != nullptr))
     {
         n --;
         TextChunk *oldEnd = item;
@@ -124,7 +124,7 @@ void TextChunkList::removeBack(int n)
         delete oldEnd;
         size --;
     }
-    if (item)
+    if (item != nullptr)
     {
         item->next = nullptr;
         end = item;
@@ -141,7 +141,7 @@ void TextChunkList::clear()
     search.clear();
     searchWidth.clear();
     TextChunk *restrict item = start;
-    while (item)
+    while (item != nullptr)
     {
         TextChunk *restrict const item2 = item->next;
         delete item;

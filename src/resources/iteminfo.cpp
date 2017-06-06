@@ -95,7 +95,7 @@ ItemInfo::~ItemInfo()
 const std::string &ItemInfo::getSprite(const GenderT gender,
                                        const BeingTypeId race) const
 {
-    if (mView)
+    if (mView != 0)
     {
         // Forward the request to the item defining how to view this item
         return ItemDB::get(mView).getSprite(gender, race);
@@ -177,7 +177,7 @@ IntMap *ItemInfo::addReplaceSprite(const int sprite,
 
     SpriteToItemMap *spMap = mSpriteToItemReplaceMap[direction];
 
-    if (!spMap)
+    if (spMap == nullptr)
     {
         spMap = new SpriteToItemMap;
         mSpriteToItemReplaceMap[direction] = spMap;
@@ -224,7 +224,7 @@ void ItemInfo::setIconColorsList(const std::string &name)
 
 std::string ItemInfo::getDyeColorsString(const ItemColor color) const
 {
-    if (!mColorsList || mColorsListName.empty())
+    if ((mColorsList == nullptr) || mColorsListName.empty())
         return "";
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
@@ -237,7 +237,7 @@ std::string ItemInfo::getDyeColorsString(const ItemColor color) const
 
 std::string ItemInfo::getDyeIconColorsString(const ItemColor color) const
 {
-    if (!mIconColorsList || mIconColorsListName.empty())
+    if ((mIconColorsList == nullptr) || mIconColorsListName.empty())
         return "";
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
@@ -267,7 +267,7 @@ const std::string ItemInfo::replaceColors(std::string str,
                                           const ItemColor color) const
 {
     std::string name;
-    if (mColorsList && !mColorsListName.empty())
+    if ((mColorsList != nullptr) && !mColorsListName.empty())
     {
         const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
             it = mColorsList->find(color);
@@ -295,7 +295,7 @@ const SpriteToItemMap *ItemInfo::getSpriteToItemReplaceMap(const int direction)
         return nullptr;
 
     const SpriteToItemMap *const spMap = mSpriteToItemReplaceMap[direction];
-    if (spMap)
+    if (spMap != nullptr)
         return spMap;
     if (direction == SpriteDirection::UPLEFT
         || direction == SpriteDirection::UPRIGHT)
@@ -410,7 +410,7 @@ void ItemInfo::setSprite(const std::string &animationFile,
 
 std::string ItemInfo::getColorName(const ItemColor idx) const
 {
-    if (!mColorsList)
+    if (mColorsList == nullptr)
         return std::string();
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
@@ -427,7 +427,7 @@ std::string ItemInfo::getColorName(const ItemColor idx) const
 
 std::string ItemInfo::getColor(const ItemColor idx) const
 {
-    if (!mColorsList)
+    if (mColorsList == nullptr)
         return std::string();
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
@@ -444,7 +444,7 @@ std::string ItemInfo::getColor(const ItemColor idx) const
 
 std::string ItemInfo::getIconColorName(const ItemColor idx) const
 {
-    if (!mIconColorsList)
+    if (mIconColorsList == nullptr)
         return std::string();
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
@@ -461,7 +461,7 @@ std::string ItemInfo::getIconColorName(const ItemColor idx) const
 
 std::string ItemInfo::getIconColor(const ItemColor idx) const
 {
-    if (!mIconColorsList)
+    if (mIconColorsList == nullptr)
         return std::string();
 
     const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator

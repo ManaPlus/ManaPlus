@@ -123,7 +123,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
 
     mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND);
 
-    if (theme)
+    if (theme != nullptr)
         mSkin = theme->load(skin, "browserbox.xml");
     if (mInstances == 0)
     {
@@ -132,15 +132,15 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     }
     mInstances ++;
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mPadding = mSkin->getPadding();
         mNewLinePadding = CAST_U32(
             mSkin->getOption("newLinePadding", 15));
         mItemPadding = mSkin->getOption("itemPadding");
-        if (mSkin->getOption("highlightBackground"))
+        if (mSkin->getOption("highlightBackground") != 0)
             mHighlightMode |= LinkHighlightMode::BACKGROUND;
-        if (mSkin->getOption("highlightUnderline"))
+        if (mSkin->getOption("highlightUnderline") != 0)
             mHighlightMode |= LinkHighlightMode::UNDERLINE;
     }
 
@@ -161,10 +161,10 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
 
 BrowserBox::~BrowserBox()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
-    if (theme)
+    if (theme != nullptr)
     {
         theme->unload(mSkin);
         mSkin = nullptr;
@@ -173,7 +173,7 @@ BrowserBox::~BrowserBox()
     mInstances --;
     if (mInstances == 0)
     {
-        if (mEmotes)
+        if (mEmotes != nullptr)
         {
             mEmotes->decRef();
             mEmotes = nullptr;
@@ -231,7 +231,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             {
                 bLink.caption = BrowserBoxTools::replaceLinkCommands(
                     bLink.link);
-                if (translator)
+                if (translator != nullptr)
                     bLink.caption = translator->getStr(bLink.caption);
             }
 
@@ -295,7 +295,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             int cnt = mTextRowLinksCount.front();
             mTextRowLinksCount.pop_front();
 
-            while (cnt && !mLinks.empty())
+            while ((cnt != 0) && !mLinks.empty())
             {
                 mLinks.erase(mLinks.begin());
                 cnt --;
@@ -413,7 +413,7 @@ void BrowserBox::clearRows()
 
 void BrowserBox::mousePressed(MouseEvent &event)
 {
-    if (!mLinkHandler)
+    if (mLinkHandler == nullptr)
         return;
 
     const LinkIterator i = std::find_if(mLinks.begin(), mLinks.end(),
@@ -462,7 +462,7 @@ void BrowserBox::draw(Graphics *const graphics)
     if (mSelectedLink >= 0 &&
         mSelectedLink < CAST_S32(mLinks.size()))
     {
-        if ((mHighlightMode & LinkHighlightMode::BACKGROUND))
+        if ((mHighlightMode & LinkHighlightMode::BACKGROUND) != 0u)
         {
             BrowserLink &link = mLinks[CAST_SIZE(mSelectedLink)];
             graphics->setColor(mHighlightColor);
@@ -473,7 +473,7 @@ void BrowserBox::draw(Graphics *const graphics)
                 link.y2 - link.y1));
         }
 
-        if ((mHighlightMode & LinkHighlightMode::UNDERLINE))
+        if ((mHighlightMode & LinkHighlightMode::UNDERLINE) != 0u)
         {
             BrowserLink &link = mLinks[CAST_SIZE(mSelectedLink)];
             graphics->setColor(mHyperLinkColor);
@@ -494,7 +494,7 @@ void BrowserBox::draw(Graphics *const graphics)
             continue;
         if (part.mY > yEnd)
             break;
-        if (!part.mType)
+        if (part.mType == 0u)
         {
             if (part.mBold)
             {
@@ -513,7 +513,7 @@ void BrowserBox::draw(Graphics *const graphics)
                     part.mX, part.mY);
             }
         }
-        else if (part.mImage)
+        else if (part.mImage != nullptr)
         {
             graphics->drawImage(part.mImage, part.mX, part.mY);
         }
@@ -580,7 +580,7 @@ int BrowserBox::calcHeight()
             if (sz > 2 && str.substr(sz - 1) == "~")
                 str = str.substr(0, sz - 1);
             Image *const img = Loader::getImage(str);
-            if (img)
+            if (img != nullptr)
             {
                 img->incRef();
                 mLineParts.push_back(LinePart(CAST_S32(x),
@@ -757,14 +757,14 @@ int BrowserBox::calcHeight()
                         const int cid = row.at(start + 2) - '0';
                         if (cid >= 0)
                         {
-                            if (mEmotes)
+                            if (mEmotes != nullptr)
                             {
                                 const size_t sz = mEmotes->size();
                                 if (CAST_SIZE(cid) < sz)
                                 {
                                     Image *const img = mEmotes->get(
                                         CAST_SIZE(cid));
-                                    if (img)
+                                    if (img != nullptr)
                                     {
                                         mLineParts.push_back(LinePart(
                                             CAST_S32(x),
@@ -890,7 +890,7 @@ int BrowserBox::calcHeight()
 void BrowserBox::updateHeight()
 {
     if (mAlwaysUpdate || mUpdateTime != cur_time
-        || mTextRows.size() < 3 || !mUpdateTime)
+        || mTextRows.size() < 3 || (mUpdateTime == 0))
     {
         mWidth = mDimension.width;
         mHeight = calcHeight();
@@ -958,7 +958,7 @@ void BrowserBox::moveSelectionDown()
 
 void BrowserBox::selectSelection()
 {
-    if (!mLinkHandler ||
+    if ((mLinkHandler == nullptr) ||
         mSelectedLink < 0 ||
         mSelectedLink >= static_cast<signed int>(mLinks.size()))
     {

@@ -54,7 +54,7 @@ void QuestDb::load()
 static void loadQuest(const int var,
                       XmlNodeConstPtr node)
 {
-    if (!node)
+    if (node == nullptr)
         return;
     QuestItem *const quest = new QuestItem;
     // TRANSLATORS: quests window quest name
@@ -85,7 +85,7 @@ static void loadQuest(const int var,
             continue;
         XmlChar *const data = reinterpret_cast<XmlChar*>(
             XmlNodeGetContent(dataNode));
-        if (!data)
+        if (data == nullptr)
             continue;
         std::string str = translator->getStr(data);
         XmlFree(data);
@@ -181,7 +181,7 @@ void QuestDb::loadXmlFile(const std::string &fileName,
         UseVirtFs_true,
         skipError);
     XmlNodeConstPtrConst root = doc.rootNode();
-    if (!root)
+    if (root == nullptr)
         return;
 
     for_each_xml_child_node(varNode, root)

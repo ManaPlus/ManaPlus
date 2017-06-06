@@ -71,18 +71,18 @@ class SocialPlayersTab final : public SocialTab
 
         void updateAvatar(const std::string &name) override final
         {
-            if (!actorManager)
+            if (actorManager == nullptr)
                 return;
 
             BLOCK_START("SocialPlayersTab::updateAvatar")
             Avatar *const avatar = findAvatarbyName(name);
-            if (!avatar)
+            if (avatar == nullptr)
                 return;
-            if (Party::getParty(1))
+            if (Party::getParty(1) != nullptr)
             {
                 const PartyMember *const
                     pm = Party::getParty(1)->getMember(name);
-                if (pm && pm->getMaxHp() > 0)
+                if ((pm != nullptr) && pm->getMaxHp() > 0)
                 {
                     avatar->setMaxHp(pm->getMaxHp());
                     avatar->setHp(pm->getHp());
@@ -90,7 +90,7 @@ class SocialPlayersTab final : public SocialTab
             }
             const Being *const being = actorManager->findBeingByName(
                 name, ActorType::Player);
-            if (being)
+            if (being != nullptr)
             {
                 avatar->setDamageHp(being->getDamageTaken());
                 avatar->setLevel(being->getLevel());
@@ -103,17 +103,17 @@ class SocialPlayersTab final : public SocialTab
 
         void resetDamage(const std::string &name) override final
         {
-            if (!actorManager)
+            if (actorManager == nullptr)
                 return;
 
             Avatar *const avatar = findAvatarbyName(name);
-            if (!avatar)
+            if (avatar == nullptr)
                 return;
             avatar->setDamageHp(0);
             Being *const being = actorManager->findBeingByName(
                 name, ActorType::Player);
 
-            if (being)
+            if (being != nullptr)
                 being->setDamageTaken(0);
         }
 
@@ -126,7 +126,7 @@ class SocialPlayersTab final : public SocialTab
             while (i != i_end)
             {
                 ava = (*i);
-                if (ava && ava->getName() == name)
+                if ((ava != nullptr) && ava->getName() == name)
                     return ava;
                 ++i;
             }
@@ -139,7 +139,7 @@ class SocialPlayersTab final : public SocialTab
         void getPlayersAvatars()
         {
             std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            if (actorManager)
+            if (actorManager != nullptr)
             {
                 StringVect names;
                 actorManager->getPlayerNames(names, NpcNames_false);
@@ -149,7 +149,7 @@ class SocialPlayersTab final : public SocialTab
                 {
                     bool finded = false;
                     const Avatar *const ava = (*ai);
-                    if (!ava)
+                    if (ava == nullptr)
                         break;
 
                     StringVectCIter i = names.begin();

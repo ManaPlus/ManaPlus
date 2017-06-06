@@ -263,7 +263,8 @@ void Dirs::initRootDir()
     const std::string portableName = settings.rootDir + "portable.xml";
     struct stat statbuf;
 
-    if (!stat(portableName.c_str(), &statbuf) && S_ISREG(statbuf.st_mode))
+    if (stat(portableName.c_str(), &statbuf) == 0 &&
+        S_ISREG(statbuf.st_mode))
     {
         std::string dir;
         Configuration portable;
@@ -356,7 +357,7 @@ void Dirs::initLocalDataDir()
 #endif  // __APPLE__
     }
 
-    if (mkdir_r(settings.localDataDir.c_str()))
+    if (mkdir_r(settings.localDataDir.c_str()) != 0)
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
@@ -371,7 +372,7 @@ void Dirs::initTempDir()
 {
     settings.tempDir = pathJoin(settings.localDataDir, "temp");
 
-    if (mkdir_r(settings.tempDir.c_str()))
+    if (mkdir_r(settings.tempDir.c_str()) != 0)
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
@@ -421,7 +422,7 @@ void Dirs::initConfigDir()
         logger->log("Generating config dir: " + settings.configDir);
     }
 
-    if (mkdir_r(settings.configDir.c_str()))
+    if (mkdir_r(settings.configDir.c_str()) != 0)
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created! "
@@ -531,7 +532,7 @@ void Dirs::initScreenshotDir()
     if (!settings.options.screenshotDir.empty())
     {
         settings.screenshotDir = settings.options.screenshotDir;
-        if (mkdir_r(settings.screenshotDir.c_str()))
+        if (mkdir_r(settings.screenshotDir.c_str()) != 0)
         {
             logger->log(strprintf(
                 // TRANSLATORS: directory creation error
@@ -584,7 +585,7 @@ void Dirs::initScreenshotDir()
 void Dirs::initUsersDir()
 {
     settings.usersDir = settings.serverConfigDir + "/users/";
-    if (mkdir_r(settings.usersDir.c_str()))
+    if (mkdir_r(settings.usersDir.c_str()) != 0)
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created!"),
@@ -592,7 +593,7 @@ void Dirs::initUsersDir()
     }
 
     settings.npcsDir = settings.serverConfigDir + "/npcs/";
-    if (mkdir_r(settings.npcsDir.c_str()))
+    if (mkdir_r(settings.npcsDir.c_str()) != 0)
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created!"),
@@ -600,7 +601,7 @@ void Dirs::initUsersDir()
     }
 
     settings.usersIdDir = settings.serverConfigDir + "/usersid/";
-    if (mkdir_r(settings.usersIdDir.c_str()))
+    if (mkdir_r(settings.usersIdDir.c_str()) != 0)
     {
         // TRANSLATORS: directory creation error
         logger->error(strprintf(_("%s doesn't exist and can't be created!"),

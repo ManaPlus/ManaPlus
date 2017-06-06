@@ -120,7 +120,7 @@ void MercenaryRecv::processMercenaryInfo(Net::MessageIn &msg)
         range);
     PlayerInfo::updateAttrs();
 
-    if (dstBeing && localPlayer)
+    if ((dstBeing != nullptr) && (localPlayer != nullptr))
     {
         MercenaryInfo *const mercenary = new MercenaryInfo;
         mercenary->id = dstBeing->getId();
@@ -134,7 +134,7 @@ void MercenaryRecv::processMercenaryInfo(Net::MessageIn &msg)
 
 void MercenaryRecv::processMercenarySkills(Net::MessageIn &msg)
 {
-    if (skillDialog)
+    if (skillDialog != nullptr)
         skillDialog->hideSkills(SkillOwner::Mercenary);
     const int count = (msg.readInt16("len") - 4) / 37;
     for (int f = 0; f < count; f ++)
@@ -148,7 +148,7 @@ void MercenaryRecv::processMercenarySkills(Net::MessageIn &msg)
         const std::string name = msg.readString(24, "skill name");
         const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         PlayerInfo::setSkillLevel(skillId, level);
-        if (skillDialog)
+        if (skillDialog != nullptr)
         {
             if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
             {
@@ -157,14 +157,14 @@ void MercenaryRecv::processMercenarySkills(Net::MessageIn &msg)
             }
         }
     }
-    if (skillDialog)
+    if (skillDialog != nullptr)
         skillDialog->updateModels();
 }
 
 void MercenaryRecv::handleMercenaryMessage(const int cmd)
 {
     PlayerInfo::setMercenary(nullptr);
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         skillDialog->hideSkills(SkillOwner::Mercenary);
         skillDialog->updateModels();

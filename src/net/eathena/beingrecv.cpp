@@ -72,7 +72,7 @@ namespace EAthena
 
 void BeingRecv::processBeingChangeLook2(Net::MessageIn &msg)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     Being *const dstBeing = actorManager->findBeing(
@@ -84,7 +84,7 @@ void BeingRecv::processBeingChangeLook2(Net::MessageIn &msg)
     if (type != 2)
         id2 = 1;
 
-    if (!localPlayer || !dstBeing)
+    if ((localPlayer == nullptr) || (dstBeing == nullptr))
         return;
 
     processBeingChangeLookContinue(msg, dstBeing, type, id, id2, nullptr);
@@ -95,7 +95,7 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
     Being *dstBeing = nullptr;
     int cards[maxCards];
 
-    if (!actorManager)
+    if (actorManager == nullptr)
     {   // here can be look from char server
         Net::Characters &chars = Net::CharServerHandler::mCharacters;
         const BeingId id = msg.readBeingId("being id");
@@ -103,7 +103,8 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
         FOR_EACH (Net::Characters::iterator, it, chars)
         {
             const Net::Character *const character = *it;
-            if (character->dummy && character->dummy->getId() == id)
+            if (character->dummy != nullptr &&
+                character->dummy->getId() == id)
             {
                 dstBeing = character->dummy;
                 break;
@@ -126,7 +127,7 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
     for (int f = 0; f < maxCards; f ++)
         cards[f] = msg.readUInt16("card");
 
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
 
     processBeingChangeLookContinue(msg, dstBeing, type, id, id2, &cards[0]);
@@ -163,21 +164,21 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             dstBeing->setWeaponId(id);
             dstBeing->setSpriteId(SPRITE_FLOOR,
                 id2);
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 3:  // LOOK_HEAD_BOTTOM
             dstBeing->setSpriteCards(SPRITE_WEAPON,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_WEAPON);
             break;
         case 4:  // LOOK_HEAD_TOP Change upper headgear for eAthena, hat for us
             dstBeing->setSpriteCards(SPRITE_CLOTHES_COLOR,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_CLOTHES_COLOR);
             break;
         case 5:  // LOOK_HEAD_MID Change middle headgear for eathena,
@@ -185,7 +186,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             dstBeing->setSpriteCards(SPRITE_HEAD_BOTTOM,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_BOTTOM);
             break;
         case 6:  // eAthena LOOK_HAIR_COLOR
@@ -202,84 +203,84 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
             dstBeing->setSpriteCards(SPRITE_FLOOR,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_FLOOR);
             break;
         case 9:  // eAthena LOOK_SHOES
             dstBeing->setSpriteCards(SPRITE_HAIR,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HAIR);
             break;
         case 10:  // LOOK_GLOVES
             dstBeing->setSpriteCards(SPRITE_SHOES,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHOES);
             break;
         case 11:  // LOOK_FLOOR
             dstBeing->setSpriteCards(SPRITE_SHIELD,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_SHIELD);
             break;
         case 12:  // LOOK_ROBE
             dstBeing->setSpriteCards(SPRITE_HEAD_TOP,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_TOP);
             break;
         case 13:  // COSTUME_HEAD_TOP
             dstBeing->setSpriteCards(SPRITE_HEAD_MID,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_HEAD_MID);
             break;
         case 14:  // COSTUME_HEAD_MID
             dstBeing->setSpriteCards(SPRITE_ROBE,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_ROBE);
             break;
         case 15:  // COSTUME_HEAD_LOW
             dstBeing->setSpriteCards(SPRITE_EVOL2,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL2);
             break;
         case 16:  // COSTUME_GARMENT
             dstBeing->setSpriteCards(SPRITE_EVOL3,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL3);
             break;
         case 17:  // ARMOR
             dstBeing->setSpriteCards(SPRITE_EVOL4,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL4);
             break;
         case 18:
             dstBeing->setSpriteCards(SPRITE_EVOL5,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL5);
             break;
         case 19:
             dstBeing->setSpriteCards(SPRITE_EVOL6,
                 id,
                 CardsList(cards));
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->imitateOutfit(dstBeing, SPRITE_EVOL6);
             break;
         default:
@@ -290,7 +291,7 @@ void BeingRecv::processBeingChangeLookContinue(const Net::MessageIn &msg,
 
 void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     // need set type based on id
@@ -326,7 +327,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
     Being *dstBeing = actorManager->findBeing(id);
 
-    if (dstBeing && dstBeing->getType() == ActorType::Monster
+    if ((dstBeing != nullptr) && dstBeing->getType() == ActorType::Monster
         && !dstBeing->isAlive())
     {
         actorManager->destroy(dstBeing);
@@ -334,13 +335,13 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         dstBeing = nullptr;
     }
 
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         if (actorManager->isBlocked(id) == true)
             return;
 
         dstBeing = createBeing2(msg, id, job, type);
-        if (!dstBeing)
+        if (dstBeing == nullptr)
             return;
     }
     else
@@ -370,7 +371,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
     dstBeing->setWalkSpeed(speed);
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
-    if (dstBeing->getType() == ActorType::Monster && localPlayer)
+    if (dstBeing->getType() == ActorType::Monster && (localPlayer != nullptr))
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
@@ -461,7 +462,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     applyPlayerAction(msg, dstBeing, msg.readUInt8("action type"));
     dstBeing->setTileCoords(x, y);
 
-    if (job == 45 && socialWindow && outfitWindow)
+    if (job == 45 && (socialWindow != nullptr) && (outfitWindow != nullptr))
     {
         const int num = socialWindow->getPortalIndex(x, y);
         if (num >= 0)
@@ -478,7 +479,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setDirection(dir);
 
     const int level = CAST_S32(msg.readInt16("level"));
-    if (level)
+    if (level != 0)
         dstBeing->setLevel(level);
     if (msg.getVersion() >= 20080102)
         msg.readInt16("font");
@@ -521,7 +522,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
 
 void BeingRecv::processBeingMove(Net::MessageIn &msg)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     if (msg.getVersion() >= 20091103)
@@ -561,7 +562,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
     Being *dstBeing = actorManager->findBeing(id);
 
-    if (dstBeing && dstBeing->getType() == ActorType::Monster
+    if ((dstBeing != nullptr) && dstBeing->getType() == ActorType::Monster
         && !dstBeing->isAlive())
     {
         actorManager->destroy(dstBeing);
@@ -569,13 +570,13 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         dstBeing = nullptr;
     }
 
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         if (actorManager->isBlocked(id) == true)
             return;
 
         dstBeing = createBeing2(msg, id, job, type);
-        if (!dstBeing)
+        if (dstBeing == nullptr)
             return;
     }
     else
@@ -597,7 +598,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
     dstBeing->setWalkSpeed(speed);
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
-    if (dstBeing->getType() == ActorType::Monster && localPlayer)
+    if (dstBeing->getType() == ActorType::Monster && (localPlayer != nullptr))
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
@@ -689,7 +690,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     msg.readInt8("ys");
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(srcX, srcY);
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
     if (serverFeatures->haveMove3())
         dstBeing->setCachedDestination(dstX, dstY);
@@ -714,11 +715,11 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     {
         d = dstBeing->calcDirection(dstX, dstY);
     }
-    if (d && dstBeing->getDirection() != d)
+    if ((d != 0u) && dstBeing->getDirection() != d)
         dstBeing->setDirection(d);
 
     const int level = CAST_S32(msg.readInt16("level"));
-    if (level)
+    if (level != 0)
         dstBeing->setLevel(level);
     if (msg.getVersion() >= 20080102)
         msg.readInt16("font");
@@ -759,7 +760,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
 
 void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     // need get type from id
@@ -792,7 +793,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 
     Being *dstBeing = actorManager->findBeing(id);
 
-    if (dstBeing && dstBeing->getType() == ActorType::Monster
+    if ((dstBeing != nullptr) && dstBeing->getType() == ActorType::Monster
         && !dstBeing->isAlive())
     {
         actorManager->destroy(dstBeing);
@@ -800,13 +801,13 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         dstBeing = nullptr;
     }
 
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         if (actorManager->isBlocked(id) == true)
             return;
 
         dstBeing = createBeing2(msg, id, job, type);
-        if (!dstBeing)
+        if (dstBeing == nullptr)
             return;
     }
     else
@@ -828,7 +829,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
 
     dstBeing->setWalkSpeed(speed);
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
-    if (dstBeing->getType() == ActorType::Monster && localPlayer)
+    if (dstBeing->getType() == ActorType::Monster && (localPlayer != nullptr))
         localPlayer->checkNewName(dstBeing);
 
     const int hairStyle = msg.readInt16("hair style");
@@ -916,7 +917,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     msg.readInt8("ys");
     dstBeing->setTileCoords(x, y);
 
-    if (job == 45 && socialWindow && outfitWindow)
+    if (job == 45 && (socialWindow != nullptr) && (outfitWindow != nullptr))
     {
         const int num = socialWindow->getPortalIndex(x, y);
         if (num >= 0)
@@ -933,7 +934,7 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setDirection(dir);
 
     const int level = CAST_S32(msg.readInt16("level"));
-    if (level)
+    if (level != 0)
         dstBeing->setLevel(level);
     if (msg.getVersion() >= 20080102)
         msg.readInt16("font");
@@ -982,10 +983,10 @@ void BeingRecv::processMapTypeProperty(Net::MessageIn &msg)
         MapTypeProperty2 props;
         props.data = CAST_U32(flags);
         const Game *const game = Game::instance();
-        if (!game)
+        if (game == nullptr)
             return;
         Map *const map = game->getCurrentMap();
-        if (!map)
+        if (map == nullptr)
             return;
         map->setPvpMode(props.bits.party | (props.bits.guild * 2));
     }
@@ -1058,7 +1059,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
                                             const SkillType2::SkillType2 inf2,
                                             const int castTime)
 {
-    if (!effectManager)
+    if (effectManager == nullptr)
         return;
 
     if (srcId == BeingId_zero)
@@ -1070,10 +1071,10 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
     if (dstId != BeingId_zero)
     {   // being to being
         Being *const dstBeing = actorManager->findBeing(dstId);
-        if (srcBeing)
+        if (srcBeing != nullptr)
         {
             srcBeing->handleSkillCasting(dstBeing, skillId, skillLevel);
-            if (dstBeing)
+            if (dstBeing != nullptr)
             {
                 srcBeing->addCast(dstBeing->getTileX(),
                     dstBeing->getTileY(),
@@ -1086,13 +1087,13 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
     }
     else if (dstX != 0 || dstY != 0)
     {   // being to position
-        if (srcBeing)
+        if (srcBeing != nullptr)
             srcBeing->setAction(BeingAction::CAST, skillId);
         skillDialog->playCastingDstTileEffect(skillId,
             skillLevel,
             dstX, dstY,
             castTime);
-        if (srcBeing)
+        if (srcBeing != nullptr)
         {
             srcBeing->addCast(dstX, dstY,
                 skillId,
@@ -1101,7 +1102,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
                 castTime / MILLISECONDS_IN_A_TICK);
         }
     }
-    if (localPlayer &&
+    if ((localPlayer != nullptr) &&
         srcBeing == localPlayer &&
         (inf2 & SkillType2::FreeCastAny) == 0)
     {
@@ -1112,7 +1113,7 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
 void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingStatusChange")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingStatusChange")
         return;
@@ -1137,7 +1138,7 @@ void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
         IsStart_false : IsStart_true;
 
     Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setStatusEffect(status, flag, start);
     BLOCK_END("BeingRecv::processBeingStatusChange")
 }
@@ -1145,7 +1146,7 @@ void BeingRecv::processBeingStatusChange(Net::MessageIn &msg)
 void BeingRecv::processBeingMove2(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingMove2")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingMove2")
         return;
@@ -1170,14 +1171,14 @@ void BeingRecv::processBeingMove2(Net::MessageIn &msg)
       * we'll just pretend the packet didn't happen
       */
 
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingMove2")
         return;
     }
 
     dstBeing->setTileCoords(srcX, srcY);
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
     if (serverFeatures->haveMove3())
         dstBeing->setCachedDestination(dstX, dstY);
@@ -1191,7 +1192,7 @@ void BeingRecv::processBeingMove2(Net::MessageIn &msg)
 void BeingRecv::processBeingAction2(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingAction2")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingAction2")
         return;
@@ -1231,16 +1232,16 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
         case AttackType::SPLASH:
         case AttackType::SKILL:
         case AttackType::REPEATE:
-            if (srcBeing)
+            if (srcBeing != nullptr)
             {
-                if (srcSpeed && srcBeing->getType() == ActorType::Player)
+                if (srcSpeed != 0 && srcBeing->getType() == ActorType::Player)
                     srcBeing->setAttackDelay(srcSpeed);
                 // attackid=1, type
                 srcBeing->handleAttack(dstBeing, param1, 1);
                 if (srcBeing->getType() == ActorType::Player)
                     srcBeing->setAttackTime();
             }
-            if (dstBeing)
+            if (dstBeing != nullptr)
             {
                 // level not present, using 1
                 dstBeing->takeDamage(srcBeing, param1,
@@ -1255,26 +1256,26 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
             break;
 
         case AttackType::SIT:
-            if (srcBeing)
+            if (srcBeing != nullptr)
             {
                 srcBeing->setAction(BeingAction::SIT, 0);
                 if (srcBeing->getType() == ActorType::Player)
                 {
                     srcBeing->setMoveTime();
-                    if (localPlayer)
+                    if (localPlayer != nullptr)
                         localPlayer->imitateAction(srcBeing, BeingAction::SIT);
                 }
             }
             break;
 
         case AttackType::STAND:
-            if (srcBeing)
+            if (srcBeing != nullptr)
             {
                 srcBeing->setAction(BeingAction::STAND, 0);
                 if (srcBeing->getType() == ActorType::Player)
                 {
                     srcBeing->setMoveTime();
-                    if (localPlayer)
+                    if (localPlayer != nullptr)
                     {
                         localPlayer->imitateAction(srcBeing,
                             BeingAction::STAND);
@@ -1307,7 +1308,7 @@ void BeingRecv::processBeingHp(Net::MessageIn &msg)
         hp = msg.readInt16("hp");
         maxHP = msg.readInt16("max hp");
     }
-    if (dstBeing)
+    if (dstBeing != nullptr)
     {
         dstBeing->setHP(hp);
         dstBeing->setMaxHP(maxHP);
@@ -1320,7 +1321,7 @@ void BeingRecv::processMonsterHp(Net::MessageIn &msg)
         msg.readBeingId("monster id"));
     const int hp = msg.readInt32("hp");
     const int maxHP = msg.readInt32("max hp");
-    if (dstBeing)
+    if (dstBeing != nullptr)
     {
         dstBeing->setHP(hp);
         dstBeing->setMaxHP(maxHP);
@@ -1338,7 +1339,7 @@ void BeingRecv::processSkillAutoCast(Net::MessageIn &msg)
     msg.readString(24, "skill name");
     msg.readInt8("unused");
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->handleSkill(localPlayer, 0, id, level);
         localPlayer->takeDamage(localPlayer, 0, AttackType::SKILL, id, level);
@@ -1400,7 +1401,7 @@ void BeingRecv::processPkRanksList(Net::MessageIn &msg)
 void BeingRecv::processBeingChangeDirection(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingChangeDirection")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingChangeDirection")
         return;
@@ -1414,26 +1415,26 @@ void BeingRecv::processBeingChangeDirection(Net::MessageIn &msg)
     const uint8_t dir = Net::MessageIn::fromServerDirection(
         CAST_U8(msg.readUInt8("player direction") & 0x0FU));
 
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingChangeDirection")
         return;
     }
 
     dstBeing->setDirection(dir);
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->imitateDirection(dstBeing, dir);
     BLOCK_END("BeingRecv::processBeingChangeDirection")
 }
 
 void BeingRecv::processBeingSpecialEffect(Net::MessageIn &msg)
 {
-    if (!effectManager || !actorManager)
+    if ((effectManager == nullptr) || (actorManager == nullptr))
         return;
 
     const BeingId id = msg.readBeingId("being id");
     Being *const being = actorManager->findBeing(id);
-    if (!being)
+    if (being == nullptr)
         return;
 
     const int effectType = msg.readInt32("effect type");
@@ -1443,7 +1444,7 @@ void BeingRecv::processBeingSpecialEffect(Net::MessageIn &msg)
 
     // +++ need dehard code effectType == 3
     if (effectType == 3 && being->getType() == ActorType::Player
-        && socialWindow)
+        && (socialWindow != nullptr))
     {   // reset received damage
         socialWindow->resetDamage(being->getName());
     }
@@ -1501,7 +1502,7 @@ void BeingRecv::processSkillEntry(Net::MessageIn &msg)
         id,
         job,
         BeingType::SKILL);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
     dstBeing->setAction(BeingAction::STAND, 0);
     dstBeing->setTileCoords(x, y);
@@ -1512,7 +1513,7 @@ void BeingRecv::processSkillEntry(Net::MessageIn &msg)
 void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processPlayerStop")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processPlayerStop")
         return;
@@ -1521,7 +1522,7 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
     // Change in players' flags
     const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
 
     const uint32_t opt1 = msg.readInt16("opt1");
@@ -1541,14 +1542,14 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
 
 void BeingRecv::processPlayerStatusChange2(Net::MessageIn &msg)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     // look like this function unused on server
 
     const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
 
     const uint32_t option = msg.readInt32("option");
@@ -1560,7 +1561,7 @@ void BeingRecv::processPlayerStatusChange2(Net::MessageIn &msg)
 void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingResurrect")
-    if (!actorManager || !localPlayer)
+    if ((actorManager == nullptr) || (localPlayer == nullptr))
     {
         BLOCK_END("BeingRecv::processBeingResurrect")
         return;
@@ -1571,7 +1572,7 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("being id");
     msg.readInt16("unused");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         DEBUGLOGSTR("insible player?");
         BLOCK_END("BeingRecv::processBeingResurrect")
@@ -1589,7 +1590,7 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processPlayerGuilPartyInfo")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processPlayerGuilPartyInfo")
         return;
@@ -1599,7 +1600,7 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     const std::string name = msg.readString(24, "char name");
     actorManager->updateNameId(name, beingId);
     Being *const dstBeing = actorManager->findBeing(beingId);
-    if (dstBeing)
+    if (dstBeing != nullptr)
     {
         if (beingId == localPlayer->getId())
         {
@@ -1623,10 +1624,10 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
 void BeingRecv::processBeingRemoveSkill(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("skill unit id");
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
     Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
     actorManager->destroy(dstBeing);
 }
@@ -1659,7 +1660,7 @@ void BeingRecv::processBeingFakeName(Net::MessageIn &msg)
     msg.skip(3, "unused");
 
     Being *const dstBeing = createBeing2(msg, id, job, type);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
     dstBeing->setSubtype(fromInt(job, BeingTypeId), 0);
     dstBeing->setTileCoords(x, y);
@@ -1673,7 +1674,7 @@ void BeingRecv::processBeingStatUpdate1(Net::MessageIn &msg)
     const int value = msg.readInt32("value");
 
     Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
 
     if (type != Sp::MANNER)
@@ -1687,7 +1688,7 @@ void BeingRecv::processBeingStatUpdate1(Net::MessageIn &msg)
 void BeingRecv::processBeingSelfEffect(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingSelfEffect")
-    if (!effectManager || !actorManager)
+    if ((effectManager == nullptr) || (actorManager == nullptr))
     {
         BLOCK_END("BeingRecv::processBeingSelfEffect")
         return;
@@ -1695,7 +1696,7 @@ void BeingRecv::processBeingSelfEffect(Net::MessageIn &msg)
 
     const BeingId id = msg.readBeingId("being id");
     Being *const being = actorManager->findBeing(id);
-    if (!being)
+    if (being == nullptr)
     {
         DEBUGLOGSTR("insible player?");
         msg.readInt32("effect type");
@@ -1718,7 +1719,7 @@ void BeingRecv::processMobInfo(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("monster id"));
     const int attackRange = msg.readInt32("range");
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setAttackRange(attackRange);
 }
 
@@ -1736,9 +1737,9 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
     int language = -1;
     if (serverVersion >= 17)
         language = msg.readInt16("language");
-    if (dstBeing)
+    if (dstBeing != nullptr)
     {
-        if (gmLevel)
+        if (gmLevel != 0)
         {
             if (dstBeing == localPlayer)
                 localPlayer->setGMLevel(gmLevel);
@@ -1785,7 +1786,7 @@ void BeingRecv::processSpiritBalls(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
     const int balls = msg.readInt16("spirits amount");
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setSpiritBalls(balls);
 }
 
@@ -1819,13 +1820,13 @@ void BeingRecv::processBeingSlide(Net::MessageIn &msg)
         msg.readBeingId("being id"));
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
     if (localPlayer == dstBeing)
     {
         localPlayer->stopAttack();
         localPlayer->navigateClean();
-        if (viewport)
+        if (viewport != nullptr)
             viewport->returnCamera();
     }
 
@@ -1929,10 +1930,10 @@ void BeingRecv::processPvpSet(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("being id");
     const int rank = msg.readInt32("rank");
     msg.readInt32("num");
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         Being *const dstBeing = actorManager->findBeing(id);
-        if (dstBeing)
+        if (dstBeing != nullptr)
             dstBeing->setPvpRank(rank);
     }
     BLOCK_END("BeingRecv::processPvpSet")
@@ -1941,7 +1942,7 @@ void BeingRecv::processPvpSet(Net::MessageIn &msg)
 void BeingRecv::processNameResponse2(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processNameResponse2")
-    if (!actorManager || !localPlayer)
+    if ((actorManager == nullptr) || (localPlayer == nullptr))
     {
         BLOCK_END("BeingRecv::processNameResponse2")
         return;
@@ -1952,7 +1953,7 @@ void BeingRecv::processNameResponse2(Net::MessageIn &msg)
     const std::string str = msg.readString(len - 8, "name");
     actorManager->updateNameId(str, beingId);
     Being *const dstBeing = actorManager->findBeing(beingId);
-    if (dstBeing)
+    if (dstBeing != nullptr)
     {
         if (beingId == localPlayer->getId())
         {
@@ -1967,15 +1968,15 @@ void BeingRecv::processNameResponse2(Net::MessageIn &msg)
             if (dstBeing->getType() == ActorType::Player)
                 dstBeing->updateColors();
 
-            if (localPlayer)
+            if (localPlayer != nullptr)
             {
                 const Party *const party = localPlayer->getParty();
-                if (party && party->isMember(dstBeing->getId()))
+                if (party != nullptr && party->isMember(dstBeing->getId()))
                 {
                     PartyMember *const member = party->getMember(
                         dstBeing->getId());
 
-                    if (member)
+                    if (member != nullptr)
                         member->setName(dstBeing->getName());
                 }
                 localPlayer->checkNewName(dstBeing);
@@ -1990,7 +1991,7 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
                                const int32_t job,
                                const BeingTypeT beingType)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return nullptr;
 
     ActorTypeT type = ActorType::Unknown;
@@ -2041,7 +2042,7 @@ Being *BeingRecv::createBeing2(Net::MessageIn &msg,
     if (beingType == BeingType::MERSOL)
     {
         const MercenaryInfo *const info = PlayerInfo::getMercenary();
-        if (info && info->id == id)
+        if ((info != nullptr) && info->id == id)
             PlayerInfo::setMercenaryBeing(being);
     }
     else if (beingType == BeingType::PET)
@@ -2061,7 +2062,7 @@ void BeingRecv::processSolveCharName(Net::MessageIn &msg)
 {
     const int id = msg.readInt32("char id");
     const std::string name = msg.readString(24, "name");
-    if (actorManager)
+    if (actorManager != nullptr)
         actorManager->addChar(id, name);
 }
 
@@ -2077,7 +2078,7 @@ void BeingRecv::processGraffiti(Net::MessageIn &msg)
     const std::string text = msg.readString(80, "text");
 
     Being *const dstBeing = createBeing2(msg, id, job, BeingType::SKILL);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
 
     dstBeing->setAction(BeingAction::STAND, 0);
@@ -2090,7 +2091,7 @@ void BeingRecv::processGraffiti(Net::MessageIn &msg)
 void BeingRecv::processSkillDamage(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processSkillDamage")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processSkillDamage")
         return;
@@ -2112,9 +2113,9 @@ void BeingRecv::processSkillDamage(Net::MessageIn &msg)
     const int level = msg.readInt16("skill level");
     msg.readInt16("div");
     msg.readUInt8("skill hit/type?");
-    if (srcBeing)
+    if (srcBeing != nullptr)
         srcBeing->handleSkill(dstBeing, param1, id, level);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->takeDamage(srcBeing, param1, AttackType::SKILL, id, level);
     BLOCK_END("BeingRecv::processSkillDamage")
 }
@@ -2138,7 +2139,7 @@ void BeingRecv::applyPlayerAction(Net::MessageIn &msg,
                                   Being *const being,
                                   const uint8_t type)
 {
-    if (!being)
+    if (being == nullptr)
         return;
     switch (type)
     {

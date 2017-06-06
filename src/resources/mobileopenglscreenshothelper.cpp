@@ -64,7 +64,7 @@ SDL_Surface *MobileOpenGLScreenshotHelper::getScreenshot()
         SDL_SWSURFACE, w, h, 32,
         0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
 
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
     // Grap the pixel buffer and write it to the SDL surface
@@ -79,7 +79,7 @@ SDL_Surface *MobileOpenGLScreenshotHelper::getScreenshot()
         SDL_SWSURFACE, w, h, 24,
         0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 
-    if (!screenshot)
+    if (screenshot == nullptr)
     {
         MSDL_FreeSurface(tmpImage);
         delete [] buf;

@@ -141,7 +141,7 @@ void WhoIsOnline::postInit()
     setStickyButtonLock(true);
     setSaveVisible(true);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     mUpdateButton->setEnabled(false);
@@ -174,7 +174,7 @@ WhoIsOnline::~WhoIsOnline()
     config.removeListeners(this);
     CHECKLISTENERS
 
-    if (mThread && SDL_GetThreadID(mThread))
+    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
         SDL_WaitThread(mThread, nullptr);
 
     free(mMemoryBuffer);
@@ -191,9 +191,9 @@ WhoIsOnline::~WhoIsOnline()
 
 void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
 {
-    if (!event || event->getButton() == MouseButton::LEFT)
+    if ((event == nullptr) || event->getButton() == MouseButton::LEFT)
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             const std::string text = decodeLinkText(link);
             if (config.getBoolValue("whispertab"))
@@ -209,18 +209,18 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
     }
     else if (event->getButton() == MouseButton::RIGHT)
     {
-        if (localPlayer && link == localPlayer->getName())
+        if ((localPlayer != nullptr) && link == localPlayer->getName())
             return;
 
-        if (popupMenu)
+        if (popupMenu != nullptr)
         {
-            if (actorManager)
+            if (actorManager != nullptr)
             {
                 const std::string text = decodeLinkText(link);
                 Being *const being = actorManager->findBeingByName(
                     text, ActorType::Player);
 
-                if (being && popupManager)
+                if ((being != nullptr) && (popupManager != nullptr))
                 {
                     popupMenu->showPopup(viewport->mMouseX,
                         viewport->mMouseY,
@@ -286,7 +286,7 @@ void WhoIsOnline::updateWindow(size_t numOnline)
 void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
                                         OnlinePlayer *const player)
 {
-    if (!player)
+    if (player == nullptr)
         return;
     switch (player_relations.getRelation(nick))
     {
@@ -350,11 +350,11 @@ void WhoIsOnline::loadList(const std::vector<OnlinePlayer*> &list)
     updateWindow(numOnline);
     if (!mOnlineNicks.empty())
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->updateOnline(mOnlineNicks);
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateActiveList();
-        if (actorManager)
+        if (actorManager != nullptr)
             actorManager->updateSeenPlayers(mOnlineNicks);
     }
     updateSize();
@@ -367,13 +367,13 @@ void WhoIsOnline::loadList(const std::vector<OnlinePlayer*> &list)
 #ifdef TMWA_SUPPORT
 void WhoIsOnline::loadWebList()
 {
-    if (!mMemoryBuffer)
+    if (mMemoryBuffer == nullptr)
         return;
 
     // Reallocate and include terminating 0 character
     mMemoryBuffer = static_cast<char*>(
         realloc(mMemoryBuffer, mDownloadedBytes + 1));
-    if (!mMemoryBuffer)
+    if (mMemoryBuffer == nullptr)
         return;
 
     mMemoryBuffer[mDownloadedBytes] = '\0';
@@ -396,7 +396,7 @@ void WhoIsOnline::loadWebList()
 
     mShowLevel = config.getBoolValue("showlevel");
 
-    while (line)
+    while (line != nullptr)
     {
         std::string nick;
         lineStr = line;
@@ -444,11 +444,11 @@ void WhoIsOnline::loadWebList()
                 if (!lineStr.empty())
                     level = atoi(lineStr.c_str());
 
-                if (actorManager)
+                if (actorManager != nullptr)
                 {
                     Being *const being = actorManager->findBeingByName(
                         nick, ActorType::Player);
-                    if (being)
+                    if (being != nullptr)
                     {
                         if (level > 0)
                         {
@@ -503,7 +503,7 @@ size_t WhoIsOnline::memoryWrite(void *restrict ptr,
                                 size_t nmemb,
                                 FILE *restrict stream)
 {
-    if (!stream)
+    if (stream == nullptr)
         return 0;
 
     WhoIsOnline *restrict const wio =
@@ -511,7 +511,7 @@ size_t WhoIsOnline::memoryWrite(void *restrict ptr,
     const size_t totalMem = size * nmemb;
     wio->mMemoryBuffer = static_cast<char*>(realloc(wio->mMemoryBuffer,
         CAST_SIZE(wio->mDownloadedBytes) + totalMem));
-    if (wio->mMemoryBuffer)
+    if (wio->mMemoryBuffer != nullptr)
     {
         memcpy(&(wio->mMemoryBuffer[wio->mDownloadedBytes]), ptr, totalMem);
         wio->mDownloadedBytes += CAST_S32(totalMem);
@@ -524,7 +524,7 @@ int WhoIsOnline::downloadThread(void *ptr)
 {
     int attempts = 0;
     WhoIsOnline *const wio = reinterpret_cast<WhoIsOnline *>(ptr);
-    if (!wio)
+    if (wio == nullptr)
         return 0;
     CURLcode res;
     const std::string url(settings.onlineListUrl + "/online.txt");
@@ -532,7 +532,7 @@ int WhoIsOnline::downloadThread(void *ptr)
     while (attempts < 1 && !wio->mDownloadComplete)
     {
         CURL *curl = curl_easy_init();
-        if (curl)
+        if (curl != nullptr)
         {
             if (!wio->mAllowUpdate)
             {
@@ -625,7 +625,7 @@ void WhoIsOnline::download()
     else if (mWebList)
     {
         mDownloadComplete = true;
-        if (mThread && SDL_GetThreadID(mThread))
+        if (mThread != nullptr && SDL_GetThreadID(mThread) != 0U)
             SDL_WaitThread(mThread, nullptr);
 
         mDownloadComplete = false;
@@ -674,7 +674,7 @@ void WhoIsOnline::slowLogic()
     {
         case UPDATE_ERROR:
             logger->assertLog("Failed to fetch the online list:");
-            if (mCurlError)
+            if (mCurlError != nullptr)
                 logger->assertLog("%s", mCurlError);
             mDownloadStatus = UPDATE_COMPLETE;
             // TRANSLATORS: who is online window name
@@ -694,11 +694,11 @@ void WhoIsOnline::slowLogic()
                 updateSize();
                 if (!mOnlineNicks.empty())
                 {
-                    if (chatWindow)
+                    if (chatWindow != nullptr)
                         chatWindow->updateOnline(mOnlineNicks);
-                    if (socialWindow)
+                    if (socialWindow != nullptr)
                         socialWindow->updateActiveList();
-                    if (actorManager)
+                    if (actorManager != nullptr)
                         actorManager->updateSeenPlayers(mOnlineNicks);
                 }
             }
@@ -722,11 +722,11 @@ void WhoIsOnline::action(const ActionEvent &event)
             if (mDownloadStatus == UPDATE_COMPLETE)
             {
                 mUpdateTimer = cur_time - 20;
-                if (mUpdateButton)
+                if (mUpdateButton != nullptr)
                     mUpdateButton->setEnabled(false);
                 // TRANSLATORS: who is online window name
                 setCaption(_("Who Is Online - Update"));
-                if (mThread && SDL_GetThreadID(mThread))
+                if (mThread != nullptr && SDL_GetThreadID(mThread) != 0U)
                 {
                     SDL_WaitThread(mThread, nullptr);
                     mThread = nullptr;
@@ -755,12 +755,12 @@ void WhoIsOnline::widgetResized(const Event &event)
 void WhoIsOnline::updateSize()
 {
     const Rect area = getChildrenArea();
-    if (mUpdateButton)
+    if (mUpdateButton != nullptr)
         mUpdateButton->setWidth(area.width - 10);
 
-    if (mScrollArea)
+    if (mScrollArea != nullptr)
         mScrollArea->setSize(area.width - 10, area.height - 10 - 30);
-    if (mBrowserBox)
+    if (mBrowserBox != nullptr)
         mBrowserBox->setWidth(area.width - 10);
 }
 
@@ -792,10 +792,10 @@ void WhoIsOnline::optionChanged(const std::string &name)
 
 void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
 {
-    if (!player)
+    if (player == nullptr)
         return;
 
-    if (actorManager && localPlayer)
+    if ((actorManager != nullptr) && (localPlayer != nullptr))
     {
         const std::string &nick = player->getNick();
         if (nick == localPlayer->getName())
@@ -806,9 +806,9 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
         if (localPlayer->isInParty())
         {
             const Party *const party = localPlayer->getParty();
-            if (party)
+            if (party != nullptr)
             {
-                if (party->getMember(nick))
+                if (party->getMember(nick) != nullptr)
                 {
                     player->setText("P");
                     return;
@@ -817,16 +817,16 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
         }
 
         const Being *const being = actorManager->findBeingByName(nick);
-        if (being)
+        if (being != nullptr)
         {
             const Guild *const guild2 = localPlayer->getGuild();
-            if (guild2)
+            if (guild2 != nullptr)
             {
                 const Guild *const guild1 = being->getGuild();
-                if (guild1)
+                if (guild1 != nullptr)
                 {
                     if (guild1->getId() == guild2->getId()
-                        || guild2->getMember(nick))
+                        || (guild2->getMember(nick) != nullptr))
                     {
                         player->setText("U");
                         return;
@@ -840,7 +840,7 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
             }
         }
         const Guild *const guild3 = Guild::getGuild(1);
-        if (guild3 && guild3->isMember(nick))
+        if ((guild3 != nullptr) && guild3->isMember(nick))
         {
             player->setText("U");
             return;
@@ -860,11 +860,11 @@ void OnlinePlayer::setText(std::string color)
 {
     mText.clear();
 
-    if (mStatus != 255 && actorManager)
+    if (mStatus != 255 && (actorManager != nullptr))
     {
         Being *const being = actorManager->findBeingByName(
             mNick, ActorType::Player);
-        if (being)
+        if (being != nullptr)
         {
             being->setState(mStatus);
             // for now highlight versions > 3
@@ -873,7 +873,7 @@ void OnlinePlayer::setText(std::string color)
         }
     }
 
-    if ((mStatus != 255 && mStatus & BeingFlag::GM) || mIsGM)
+    if ((mStatus != 255 && ((mStatus & BeingFlag::GM) != 0)) || mIsGM)
         mText.append("(GM) ");
 
     if (mLevel > 0)
@@ -886,20 +886,20 @@ void OnlinePlayer::setText(std::string color)
 
     if (mStatus > 0 && mStatus != 255)
     {
-        if (mStatus & BeingFlag::SHOP)
+        if ((mStatus & BeingFlag::SHOP) != 0)
             mText.append("$");
-        if (mStatus & BeingFlag::AWAY)
+        if ((mStatus & BeingFlag::AWAY) != 0)
         {
             // TRANSLATORS: this away status writed in player nick
             mText.append(_("A"));
         }
-        if (mStatus & BeingFlag::INACTIVE)
+        if ((mStatus & BeingFlag::INACTIVE) != 0)
         {
             // TRANSLATORS: this inactive status writed in player nick
             mText.append(_("I"));
         }
 
-        if (mStatus & BeingFlag::GM && color == "0")
+        if (((mStatus & BeingFlag::GM) != 0) && color == "0")
             color = "2";
     }
     else if (mIsGM && color == "0")

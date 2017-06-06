@@ -42,15 +42,15 @@ namespace
         const int height;
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
             const RescaledLoader *const rl
                 = static_cast<const RescaledLoader *>(v);
-            if (!rl->image)
+            if (rl->image == nullptr)
                 return nullptr;
             Image *const rescaled = rl->image->SDLgetScaledImage(
                 rl->width, rl->height);
-            if (!rescaled)
+            if (rescaled == nullptr)
             {
                 reportAlways("Rescale image failed: %s",
                     rl->image->mIdPath.c_str());
@@ -65,7 +65,7 @@ Image *Loader::getRescaled(const Image *const image,
                            const int width,
                            const int height)
 {
-    if (!image)
+    if (image == nullptr)
         return nullptr;
 
     const std::string idPath = image->mIdPath + strprintf(

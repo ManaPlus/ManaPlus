@@ -143,9 +143,9 @@ void Dye::instantiate(std::string &restrict target,
 
 int Dye::getType() const restrict2 noexcept2
 {
-    if (mDyePalettes[sPaleteIndex])
+    if (mDyePalettes[sPaleteIndex] != nullptr)
         return 1;
-    if (mDyePalettes[aPaleteIndex])
+    if (mDyePalettes[aPaleteIndex] != nullptr)
         return 2;
     return 0;
 }
@@ -153,7 +153,7 @@ int Dye::getType() const restrict2 noexcept2
 void Dye::normalDye(uint32_t *restrict pixels,
                     const int bufSize) const restrict2
 {
-    if (!pixels)
+    if (pixels == nullptr)
         return;
 
 #ifdef ENABLE_CILKPLUS
@@ -230,7 +230,7 @@ endlabel:{}
         const int alpha = p & 0xff;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        if (!alpha)
+        if (alpha == 0)
             continue;
         unsigned int color[3];
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -260,10 +260,11 @@ endlabel:{}
             continue;
         }
 
-        const unsigned int i = (color[0] != 0) | ((color[1] != 0) << 1)
-            | ((color[2] != 0) << 2);
+        const unsigned int i = static_cast<int>(color[0] != 0) |
+            (static_cast<int>(color[1] != 0) << 1) |
+            (static_cast<int>(color[2] != 0) << 2);
 
-        if (mDyePalettes[i - 1])
+        if (mDyePalettes[i - 1] != nullptr)
             mDyePalettes[i - 1]->getColor(cmax, color);
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -281,7 +282,7 @@ endlabel:{}
 void Dye::normalOGLDye(uint32_t *restrict pixels,
                        const int bufSize) const restrict2
 {
-    if (!pixels)
+    if (pixels == nullptr)
         return;
 
 #ifdef ENABLE_CILKPLUS
@@ -357,7 +358,7 @@ endlabel:{}
         const int alpha = p & 0xff000000;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        if (!alpha)
+        if (alpha == 0)
             continue;
         unsigned int color[3];
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -387,10 +388,11 @@ endlabel:{}
             continue;
         }
 
-        const unsigned int i = (color[0] != 0) | ((color[1] != 0) << 1)
-            | ((color[2] != 0) << 2);
+        const unsigned int i = static_cast<int>(color[0] != 0) |
+            (static_cast<int>(color[1] != 0) << 1) |
+            (static_cast<int>(color[2] != 0) << 2);
 
-        if (mDyePalettes[i - 1])
+        if (mDyePalettes[i - 1] != nullptr)
             mDyePalettes[i - 1]->getColor(cmax, color);
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN

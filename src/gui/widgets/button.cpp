@@ -183,7 +183,7 @@ Button::Button(const Widget2 *const widget,
     adjustSize();
     setActionEventId(actionEventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 }
 
@@ -234,7 +234,7 @@ Button::Button(const Widget2 *const widget,
     adjustSize();
     setActionEventId(actionEventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 }
 
@@ -284,7 +284,7 @@ Button::Button(const Widget2 *const widget,
     adjustSize();
     setActionEventId(actionEventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 }
 
@@ -334,7 +334,7 @@ Button::Button(const Widget2 *const widget,
     adjustSize();
     setActionEventId(actionEventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 }
 
@@ -351,12 +351,12 @@ void Button::init()
 
     if (mInstances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
         {
             for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             {
                 Skin *const skin = theme->load(data[mode], "button.xml");
-                if (skin)
+                if (skin != nullptr)
                 {
                     button[mode] = skin;
                     mSpacing[mode] = skin->getOption("spacing");
@@ -372,26 +372,26 @@ void Button::init()
 
 Button::~Button()
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->removeWidgetListener(this);
 
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     mInstances--;
 
-    if (mInstances == 0 && theme)
+    if (mInstances == 0 && (theme != nullptr))
     {
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             theme->unload(button[mode]);
     }
     delete2(mVertexes2);
-    if (mImageSet)
+    if (mImageSet != nullptr)
     {
         mImageSet->decRef();
         mImageSet = nullptr;
     }
-    if (mImages)
+    if (mImages != nullptr)
     {
         for (int f = 0; f < BUTTON_COUNT; f ++)
             mImages[f] = nullptr;
@@ -403,7 +403,7 @@ Button::~Button()
 
 void Button::loadImage(const std::string &imageName)
 {
-    if (mImageSet)
+    if (mImageSet != nullptr)
     {
         mImageSet->decRef();
         mImageSet = nullptr;
@@ -416,21 +416,21 @@ void Button::loadImage(const std::string &imageName)
 
 void Button::loadImageSet(const std::string &imageName)
 {
-    if (mImageSet)
+    if (mImageSet != nullptr)
     {
         mImageSet->decRef();
         mImageSet = nullptr;
     }
     mImageSet = Theme::getImageSetFromTheme(imageName,
         mImageWidth, mImageHeight);
-    if (!mImageSet)
+    if (mImageSet == nullptr)
         return;
     mImages = new Image*[BUTTON_COUNT];
     mImages[0] = nullptr;
     for (size_t f = 0; f < BUTTON_COUNT; f ++)
     {
         Image *const img = mImageSet->get(f);
-        if (img)
+        if (img != nullptr)
             mImages[f] = img;
         else
             mImages[f] = mImages[0];
@@ -450,11 +450,11 @@ void Button::updateAlpha()
             for (int a = 0; a < 9; a ++)
             {
                 Skin *const skin = button[mode];
-                if (skin)
+                if (skin != nullptr)
                 {
                     const ImageRect &rect = skin->getBorder();
                     Image *const image = rect.grid[a];
-                    if (image)
+                    if (image != nullptr)
                         image->setAlpha(mAlpha);
                 }
             }
@@ -477,7 +477,7 @@ void Button::draw(Graphics *const graphics)
         mode = BUTTON_STANDARD;
 
     const Skin *const skin = button[mode];
-    if (!skin)
+    if (skin == nullptr)
     {
         BLOCK_END("Button::draw")
         return;
@@ -526,7 +526,7 @@ void Button::draw(Graphics *const graphics)
     const int height = rect.height;
     Font *const font = getFont();
     int textY = height / 2 - font->getHeight() / 2;
-    if (mImages)
+    if (mImages != nullptr)
         imageY = height / 2 - mImageHeight / 2;
 
 // need move calculation from draw!!!
@@ -536,7 +536,7 @@ void Button::draw(Graphics *const graphics)
         default:
         case Graphics::LEFT:
         {
-            if (mImages)
+            if (mImages != nullptr)
             {
                 imageX = padding;
                 textX = padding + mImageWidth + spacing;
@@ -550,7 +550,7 @@ void Button::draw(Graphics *const graphics)
         case Graphics::CENTER:
         {
             const int width1 = font->getWidth(mCaption);
-            if (mImages)
+            if (mImages != nullptr)
             {
                 const int w = width1 + mImageWidth + spacing;
                 imageX = (width - w) / 2;
@@ -581,7 +581,7 @@ void Button::draw(Graphics *const graphics)
             width, height,
             skin->getBorder());
 
-        if (mImages)
+        if (mImages != nullptr)
         {
             if (isPressed())
             {
@@ -635,7 +635,7 @@ void Button::draw(Graphics *const graphics)
     }
 
     const Image *const image = mTextChunk.img;
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, textX, textY);
 
     BLOCK_END("Button::draw")
@@ -656,7 +656,7 @@ void Button::safeDraw(Graphics *const graphics)
         mode = BUTTON_STANDARD;
 
     const Skin *const skin = button[mode];
-    if (!skin)
+    if (skin == nullptr)
     {
         BLOCK_END("Button::safeDraw")
         return;
@@ -681,7 +681,7 @@ void Button::safeDraw(Graphics *const graphics)
     const int height = rect.height;
     Font *const font = getFont();
     int textY = height / 2 - font->getHeight() / 2;
-    if (mImages)
+    if (mImages != nullptr)
         imageY = height / 2 - mImageHeight / 2;
 
 // need move calculation from draw!!!
@@ -691,7 +691,7 @@ void Button::safeDraw(Graphics *const graphics)
         default:
         case Graphics::LEFT:
         {
-            if (mImages)
+            if (mImages != nullptr)
             {
                 imageX = padding;
                 textX = padding + mImageWidth + spacing;
@@ -705,7 +705,7 @@ void Button::safeDraw(Graphics *const graphics)
         case Graphics::CENTER:
         {
             const int width1 = font->getWidth(mCaption);
-            if (mImages)
+            if (mImages != nullptr)
             {
                 const int w = width1 + mImageWidth + spacing;
                 imageX = (width - w) / 2;
@@ -728,7 +728,7 @@ void Button::safeDraw(Graphics *const graphics)
 
     graphics->drawImageRect(0, 0, width, height, skin->getBorder());
 
-    if (mImages)
+    if (mImages != nullptr)
     {
         if (isPressed())
             graphics->drawImage(mImages[mode], imageX + 1, imageY + 1);
@@ -771,7 +771,7 @@ void Button::safeDraw(Graphics *const graphics)
     }
 
     const Image *const image = mTextChunk.img;
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, textX, textY);
 
     BLOCK_END("Button::safeDraw")
@@ -822,15 +822,15 @@ void Button::adjustSize()
 {
     const Font *const font = getFont();
     const Skin *const skin = button[BUTTON_STANDARD];
-    if (!skin)
+    if (skin == nullptr)
         return;
     const int padding = skin->getPadding();
 
-    if (mImages)
+    if (mImages != nullptr)
     {
         const int spacing = mSpacing[BUTTON_STANDARD];
         const int width = font->getWidth(mCaption);
-        if (width)
+        if (width != 0)
             setWidth(width + mImageWidth + spacing + 2 * padding);
         else
             setWidth(mImageWidth + 2 * padding);
@@ -916,14 +916,14 @@ void Button::mouseDragged(MouseEvent& event)
 
 void Button::setParent(Widget *widget)
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->addWidgetListener(this);
     Widget::setParent(widget);
 }
 
 void Button::setWindow(Widget *const widget)
 {
-    if (!widget && mWindow)
+    if ((widget == nullptr) && (mWindow != nullptr))
     {
         mWindow->removeWidgetListener(this);
         mWindow = nullptr;

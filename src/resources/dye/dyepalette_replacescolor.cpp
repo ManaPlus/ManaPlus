@@ -38,9 +38,9 @@ void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (!sz || !pixels)
+    if (sz == 0u || pixels == nullptr)
         return;
-    if (sz % 2)
+    if ((sz % 2) != 0u)
         -- it_end;
 
 #ifdef ENABLE_CILKPLUS
@@ -138,9 +138,9 @@ void DyePalette::replaceSColorSse2(uint32_t *restrict pixels,
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (!sz || !pixels)
+    if (sz == 0u || pixels == nullptr)
         return;
-    if (sz % 2)
+    if ((sz % 2) != 0u)
         -- it_end;
     const int mod = bufSize % 8;
     const int bufEnd = bufSize - mod;
@@ -219,9 +219,9 @@ void DyePalette::replaceSColorAvx2(uint32_t *restrict pixels,
 {
     std::vector<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (!sz || !pixels)
+    if (sz == 0u || pixels == nullptr)
         return;
-    if (sz % 2)
+    if ((sz % 2) != 0u)
         -- it_end;
     const int mod = bufSize % 8;
     const int bufEnd = bufSize - mod;

@@ -90,7 +90,7 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "status-effects"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "status-effects"))
     {
         logger->log("Error loading status effects file: " + fileName);
         return;
@@ -151,9 +151,9 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
         StatusEffect *endEffect = statusEffects[0][id];
         const std::string name = XML::getProperty(node, "name", "");
         const std::string name2 = XML::langProperty(node, "name", "");
-        if (!startEffect)
+        if (startEffect == nullptr)
             startEffect = new StatusEffect;
-        if (!endEffect)
+        if (endEffect == nullptr)
             endEffect = new StatusEffect;
 
         startEffect->mName = name2;

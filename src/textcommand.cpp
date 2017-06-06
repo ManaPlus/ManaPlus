@@ -110,7 +110,7 @@ TextCommand::TextCommand(const int id) :
 
 TextCommand::~TextCommand()
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
@@ -119,7 +119,7 @@ TextCommand::~TextCommand()
 
 void TextCommand::loadImage()
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
@@ -132,6 +132,6 @@ void TextCommand::loadImage()
     mImage = Loader::getImage(pathJoin(paths.getStringValue("itemIcons"),
         display.image));
 
-    if (!mImage)
+    if (mImage == nullptr)
         mImage = Theme::getImageFromTheme("unknown-item.png");
 }

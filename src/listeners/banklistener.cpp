@@ -30,7 +30,7 @@ void BankListener::distributeEvent(const int money)
               it, mListeners)
     {
         BankListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->bankMoneyChanged(money);
     }
 }

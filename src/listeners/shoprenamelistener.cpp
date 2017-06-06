@@ -37,7 +37,7 @@ void ShopRenameListener::action(const ActionEvent &event)
 {
     if (event.getId() != "OK")
         return;
-    if (mDialog)
+    if (mDialog != nullptr)
     {
         shopWindow->setShopName(mDialog->getMsg());
         mDialog = nullptr;

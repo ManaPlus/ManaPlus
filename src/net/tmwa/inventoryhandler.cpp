@@ -69,7 +69,7 @@ InventoryHandler::~InventoryHandler()
 
 void InventoryHandler::equipItem(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_EQUIP);
@@ -80,7 +80,7 @@ void InventoryHandler::equipItem(const Item *const item) const
 
 void InventoryHandler::unequipItem(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_UNEQUIP);
@@ -90,7 +90,7 @@ void InventoryHandler::unequipItem(const Item *const item) const
 
 void InventoryHandler::useItem(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_USE);
@@ -101,7 +101,7 @@ void InventoryHandler::useItem(const Item *const item) const
 
 void InventoryHandler::dropItem(const Item *const item, const int amount) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_DROP);

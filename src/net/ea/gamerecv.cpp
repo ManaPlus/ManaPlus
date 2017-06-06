@@ -54,13 +54,13 @@ void GameRecv::processWhoAnswer(Net::MessageIn &msg)
 
 void GameRecv::processCharSwitchResponse(Net::MessageIn &msg)
 {
-    if (msg.readUInt8("response"))
+    if (msg.readUInt8("response") != 0u)
         client->setState(State::SWITCH_CHARACTER);
 }
 
 void GameRecv::processMapQuitResponse(Net::MessageIn &msg)
 {
-    if (msg.readInt16("response"))
+    if (msg.readInt16("response") != 0)
     {
         CREATEWIDGET(OkDialog,
             // TRANSLATORS: error header

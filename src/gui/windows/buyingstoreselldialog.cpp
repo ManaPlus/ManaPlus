@@ -53,15 +53,15 @@ void BuyingStoreSellDialog::sellAction(const ActionEvent &event A_UNUSED)
 
     const int selectedItem = mShopItemList->getSelected();
     const ShopItem *const item1 = mShopItems->at(selectedItem);
-    if (!item1 || PlayerInfo::isItemProtected(item1->getId()))
+    if ((item1 == nullptr) || PlayerInfo::isItemProtected(item1->getId()))
         return;
     const Being *const being = actorManager->findBeing(mAccountId);
-    if (!being)
+    if (being == nullptr)
         return;
     const Item *const item2 = PlayerInfo::getInventory()->findItem(
         item1->getId(),
         item1->getColor());
-    if (!item2)
+    if (item2 == nullptr)
         return;
 
     mPlayerMoney += mAmountItems * item1->getPrice();

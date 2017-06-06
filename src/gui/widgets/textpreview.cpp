@@ -55,13 +55,13 @@ TextPreview::TextPreview(const Widget2 *const widget,
     mAllowLogic = false;
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
             mSkin = theme->load("textpreview.xml", "");
     }
 
     instances++;
 
-    if (mSkin)
+    if (mSkin != nullptr)
         mPadding = mSkin->getOption("padding", 0);
 
     adjustSize();
@@ -69,21 +69,21 @@ TextPreview::TextPreview(const Widget2 *const widget,
 
 TextPreview::~TextPreview()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     instances--;
 
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
     }
 }
 
 void TextPreview::draw(Graphics *const graphics)
 {
-    if (!mFont)
+    if (mFont == nullptr)
         return;
 
     BLOCK_START("TextPreview::draw")
@@ -103,7 +103,7 @@ void TextPreview::draw(Graphics *const graphics)
             mDimension.width, mDimension.height));
     }
 
-    if (mTextBGColor)
+    if (mTextBGColor != nullptr)
     {
         const int x = mFont->getWidth(mText) + 1
             + 2 * ((mOutline || mShadow) ? 1 :0);

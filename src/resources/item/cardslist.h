@@ -42,7 +42,7 @@ struct CardsList final
 
     explicit CardsList(const int *const cards0)
     {
-        if (cards0)
+        if (cards0 != nullptr)
         {
             for (int f = 0; f < maxCards; f ++)
                 cards[f] = cards0[f];

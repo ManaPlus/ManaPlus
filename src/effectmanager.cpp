@@ -53,7 +53,7 @@ void EffectManager::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst root = doc.rootNode();
 
-    if (!root ||
+    if ((root == nullptr) ||
         !xmlNameEqual(root, "being-effects"))
     {
         logger->log("Error loading being effects file: " + fileName);
@@ -119,7 +119,7 @@ bool EffectManager::trigger(const int id,
                             Being *const being,
                             const int rotation)
 {
-    if (!being || !particleEngine || id == -1)
+    if ((being == nullptr) || (particleEngine == nullptr) || id == -1)
         return false;
 
     BLOCK_START("EffectManager::trigger")
@@ -152,7 +152,7 @@ Particle *EffectManager::triggerReturn(const int id,
                                        Being *const being,
                                        const int rotation)
 {
-    if (!being || !particleEngine || id == -1)
+    if ((being == nullptr) || (particleEngine == nullptr) || id == -1)
         return nullptr;
 
     Particle *rValue = nullptr;
@@ -183,7 +183,7 @@ bool EffectManager::trigger(const int id,
                             const time_t endTime,
                             const int rotation)
 {
-    if (!particleEngine || id == -1)
+    if ((particleEngine == nullptr) || id == -1)
         return false;
 
     bool rValue = false;
@@ -199,7 +199,7 @@ bool EffectManager::trigger(const int id,
                     effect.gfx,
                     x, y,
                     rotation);
-                if (particle)
+                if (particle != nullptr)
                     mTimers.push_back(ParticleTimer(particle, endTime));
             }
             if (!effect.sfx.empty())
@@ -249,7 +249,7 @@ void EffectManager::logic()
             {
                 found = true;
                 Particle *const particle = timer.particle;
-                if (particle)
+                if (particle != nullptr)
                     particle->kill();
                 mTimers.erase(it);
                 break;
@@ -263,7 +263,7 @@ void EffectManager::clear()
     FOR_EACH (std::list<ParticleTimer>::iterator, it, mTimers)
     {
         Particle *const particle = (*it).particle;
-        if (particle)
+        if (particle != nullptr)
             particle->kill();
     }
     mTimers.clear();

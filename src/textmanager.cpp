@@ -36,7 +36,7 @@ TextManager::TextManager() :
 
 void TextManager::addText(Text *const text)
 {
-    if (!text)
+    if (text == nullptr)
         return;
     place(text, nullptr, text->mX, text->mY, text->mHeight);
     mTextList.push_back(text);
@@ -45,7 +45,7 @@ void TextManager::addText(Text *const text)
 void TextManager::moveText(Text *const text,
                            const int x, const int y) const
 {
-    if (!text)
+    if (text == nullptr)
         return;
     text->mX = x;
     text->mY = y;
@@ -83,7 +83,7 @@ void TextManager::place(const Text *const textObj,
                         int &y,
                         const int h) const
 {
-    if (!textObj)
+    if (textObj == nullptr)
         return;
     const int xLeft = textObj->mX;
     const int xRight1 = xLeft + textObj->mWidth;

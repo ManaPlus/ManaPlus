@@ -38,7 +38,7 @@ TextParticle::TextParticle(const std::string &restrict text,
     mText(text),
     mTextFont(font),
     mColor(color),
-    mTextWidth(mTextFont ? mTextFont->getWidth(mText) / 2 : 1),
+    mTextWidth(mTextFont != nullptr ? mTextFont->getWidth(mText) / 2 : 1),
     mOutline(outline)
 {
     mType = ParticleType::Text;
@@ -61,13 +61,13 @@ void TextParticle::draw(Graphics *restrict const graphics,
 
     float alpha = mAlpha * 255.0F;
 
-    if (mFadeOut && mLifetimeLeft > -1 && mLifetimeLeft < mFadeOut)
+    if ((mFadeOut != 0) && mLifetimeLeft > -1 && mLifetimeLeft < mFadeOut)
     {
         alpha *= static_cast<float>(mLifetimeLeft)
                 / static_cast<float>(mFadeOut);
     }
 
-    if (mFadeIn && mLifetimePast < mFadeIn)
+    if ((mFadeIn != 0) && mLifetimePast < mFadeIn)
     {
         alpha *= static_cast<float>(mLifetimePast)
                 / static_cast<float>(mFadeIn);

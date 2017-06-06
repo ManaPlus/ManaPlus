@@ -113,13 +113,13 @@ std::set<int> ignorePackets;
 void connectToServer(const ServerInfo &server)
 {
     BLOCK_START("Net::connectToServer")
-    if (networkType == server.type && generalHandler)
+    if (networkType == server.type && (generalHandler != nullptr))
     {
         generalHandler->reload();
     }
     else
     {
-        if (networkType != ServerType::UNKNOWN && generalHandler)
+        if (networkType != ServerType::UNKNOWN && (generalHandler != nullptr))
             generalHandler->unload();
 
         switch (server.type)
@@ -146,7 +146,7 @@ void connectToServer(const ServerInfo &server)
         networkType = server.type;
     }
 
-    if (loginHandler)
+    if (loginHandler != nullptr)
     {
         loginHandler->setServer(server);
         loginHandler->connect();
@@ -157,7 +157,7 @@ void connectToServer(const ServerInfo &server)
 void unload()
 {
     const GeneralHandler *const handler = generalHandler;
-    if (handler)
+    if (handler != nullptr)
         handler->unload();
     ignorePackets.clear();
 }

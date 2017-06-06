@@ -82,7 +82,7 @@
 inline void SDLputPixel(SDL_Surface* surface, int x, int y,
                         const Color& color)
 {
-    if (!surface)
+    if (surface == nullptr)
         return;
 
     const int bpp = surface->format->BytesPerPixel;
@@ -189,7 +189,7 @@ inline unsigned short SDLAlpha16(const unsigned short src,
 inline void SDLputPixelAlpha(SDL_Surface* surface, int x, int y,
                              const Color& color)
 {
-    if (!surface)
+    if (surface == nullptr)
         return;
     const int bpp = surface->format->BytesPerPixel;
 

@@ -57,7 +57,7 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
     const std::string &eventId = event.getId();
     const int selectedItem = mShopItemList->getSelected();
     const ShopItem *const item = mShopItems->at(selectedItem);
-    if (!item || PlayerInfo::isItemProtected(item->getId()))
+    if ((item == nullptr) || PlayerInfo::isItemProtected(item->getId()))
         return;
 
     if (eventId == "presell")
@@ -101,7 +101,7 @@ void NpcSellDialog::sellManyItems(const std::string &eventId)
         ShopItem *const item = mShopItems->at(selectedItem);
         item->increaseUsedQuantity(mAmountItems);
         item->update();
-        if (mConfirmButton)
+        if (mConfirmButton != nullptr)
             mConfirmButton->setEnabled(true);
     }
 }
@@ -130,7 +130,7 @@ void NpcSellDialog::sellOneItem()
     mAmountItems = 1;
     mSlider->setValue(0);
 
-    if (mMaxItems)
+    if (mMaxItems != 0)
     {
         updateButtonsAndLabels();
     }

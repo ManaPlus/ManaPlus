@@ -48,7 +48,7 @@ void NpcRecv::processNpcChoice(Net::MessageIn &msg)
     npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
 
-    if (mDialog)
+    if (mDialog != nullptr)
     {
         mDialog->choiceRequest();
         mDialog->parseListItems(msg.readString(msg.getLength() - 8,
@@ -70,7 +70,7 @@ void NpcRecv::processNpcMessage(Net::MessageIn &msg)
     // ignore future legacy npc commands.
     if (message.size() > 3 && message.substr(0, 3) == "###")
         return;
-    if (mDialog)
+    if (mDialog != nullptr)
         mDialog->addText(message);
 }
 
@@ -79,7 +79,7 @@ void NpcRecv::processNpcClose(Net::MessageIn &msg)
     // Show the close button
     npcHandler->getNpc(msg, NpcAction::Close);
     mRequestLang = false;
-    if (mDialog)
+    if (mDialog != nullptr)
         mDialog->showCloseButton();
 }
 
@@ -88,7 +88,7 @@ void NpcRecv::processNpcNext(Net::MessageIn &msg)
     // Show the next button
     npcHandler->getNpc(msg, NpcAction::Next);
     mRequestLang = false;
-    if (mDialog)
+    if (mDialog != nullptr)
         mDialog->showNextButton();
 }
 
@@ -97,7 +97,7 @@ void NpcRecv::processNpcIntInput(Net::MessageIn &msg)
     // Request for an integer
     npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
-    if (mDialog)
+    if (mDialog != nullptr)
         mDialog->integerRequest(0);
 }
 
@@ -110,7 +110,7 @@ void NpcRecv::processNpcStrInput(Net::MessageIn &msg)
         mRequestLang = false;
         npcHandler->stringInput(npcId, getLangSimple());
     }
-    else if (mDialog)
+    else if (mDialog != nullptr)
     {
         mDialog->textRequest("");
     }
@@ -132,12 +132,12 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
             break;
 
         case 1:
-            if (viewport)
+            if (viewport != nullptr)
                 viewport->moveCameraToActor(npcId);
             break;
 
         case 2:
-            if (viewport)
+            if (viewport != nullptr)
             {
                 if (id == BeingId_zero)
                     viewport->moveCameraToPosition(x, y);
@@ -147,29 +147,29 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
             break;
 
         case 3:
-            if (viewport)
+            if (viewport != nullptr)
                 viewport->returnCamera();
             break;
 
         case 4:
-            if (viewport)
+            if (viewport != nullptr)
             {
                 viewport->moveCameraRelative(x, y);
             }
             break;
         case 5:  // close dialog
-            if (mDialog)
+            if (mDialog != nullptr)
                 mDialog->restoreCamera();
             npcHandler->closeDialog(npcId);
             break;
         case 6:  // show avatar
-            if (mDialog)
+            if (mDialog != nullptr)
             {
                 mDialog->showAvatar(fromInt(id, BeingTypeId));
             }
             break;
         case 7:  // set avatar direction
-            if (mDialog)
+            if (mDialog != nullptr)
             {
                 mDialog->setAvatarDirection(
                     Net::MessageIn::fromServerDirection(
@@ -177,37 +177,37 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
             }
             break;
         case 8:  // set avatar action
-            if (mDialog)
+            if (mDialog != nullptr)
                 mDialog->setAvatarAction(toInt(id, int));
             break;
         case 9:  // clear npc dialog
-            if (mDialog)
+            if (mDialog != nullptr)
                 mDialog->clearRows();
             break;
         case 10:  // send selected item id
         {
             int invSize = toInt(id, int);
-            if (!invSize)
+            if (invSize == 0)
                 invSize = 1;
-            if (mDialog)
+            if (mDialog != nullptr)
                 mDialog->itemRequest(invSize);
             break;
         }
         case 11:  // send selected item index
         {
             int invSize = toInt(id, int);
-            if (!invSize)
+            if (invSize == 0)
                 invSize = 1;
-            if (mDialog)
+            if (mDialog != nullptr)
                 mDialog->itemIndexRequest(invSize);
             break;
         }
         case 12:  // send complex items
         {
             int invSize = toInt(id, int);
-            if (!invSize)
+            if (invSize == 0)
                 invSize = 1;
-            if (mDialog)
+            if (mDialog != nullptr)
                 mDialog->itemCraftRequest(invSize);
             break;
         }
@@ -217,7 +217,7 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
             if (it != NpcDialog::mNpcDialogs.end())
             {
                 NpcDialog *const dialog = (*it).second;
-                if (dialog)
+                if (dialog != nullptr)
                     dialog->close();
                 if (dialog == Ea::NpcRecv::mDialog)
                     Ea::NpcRecv::mDialog = nullptr;
@@ -237,7 +237,7 @@ void NpcRecv::processChangeTitle(Net::MessageIn &msg)
     npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
     const std::string str = msg.readString(-1, "title");
-    if (mDialog)
+    if (mDialog != nullptr)
         mDialog->setCaption(str);
 }
 

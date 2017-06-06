@@ -206,7 +206,7 @@ Inventory *getInventory()
 
 Inventory *getStorageInventory()
 {
-    if (inventoryHandler)
+    if (inventoryHandler != nullptr)
         return inventoryHandler->getStorage();
     return nullptr;
 }
@@ -218,9 +218,9 @@ Inventory *getCartInventory()
 
 void clearInventory()
 {
-    if (mEquipment)
+    if (mEquipment != nullptr)
         mEquipment->clear();
-    if (mInventory)
+    if (mInventory != nullptr)
         mInventory->clear();
 }
 
@@ -231,7 +231,7 @@ Equipment *getEquipment()
 
 const Item *getEquipment(const unsigned int slot)
 {
-    if (mEquipment)
+    if (mEquipment != nullptr)
         return mEquipment->getEquipment(slot);
     else
         return nullptr;
@@ -239,7 +239,7 @@ const Item *getEquipment(const unsigned int slot)
 
 void setEquipmentBackend(Equipment::Backend *const backend)
 {
-    if (mEquipment)
+    if (mEquipment != nullptr)
         mEquipment->setBackend(backend);
 }
 
@@ -247,7 +247,7 @@ void equipItem(const Item *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-    if (inventoryHandler)
+    if (inventoryHandler != nullptr)
         inventoryHandler->equipItem(item);
 }
 
@@ -255,7 +255,7 @@ void unequipItem(const Item *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-    if (inventoryHandler)
+    if (inventoryHandler != nullptr)
         inventoryHandler->unequipItem(item);
 }
 
@@ -263,19 +263,19 @@ void useItem(const Item *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
-    if (inventoryHandler)
+    if (inventoryHandler != nullptr)
         inventoryHandler->useItem(item);
 }
 
 void useEquipItem(const Item *const item, const Sfx sfx)
 {
-    if (item)
+    if (item != nullptr)
     {
         if (item->getType() == ItemType::Card)
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
-                if (inventoryHandler)
+                if (inventoryHandler != nullptr)
                     inventoryHandler->useCard(item);
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USECARD);
@@ -287,14 +287,14 @@ void useEquipItem(const Item *const item, const Sfx sfx)
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-                if (inventoryHandler)
+                if (inventoryHandler != nullptr)
                     inventoryHandler->unequipItem(item);
             }
             else
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-                if (inventoryHandler)
+                if (inventoryHandler != nullptr)
                     inventoryHandler->equipItem(item);
             }
         }
@@ -302,7 +302,7 @@ void useEquipItem(const Item *const item, const Sfx sfx)
         {
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
-                if (inventoryHandler)
+                if (inventoryHandler != nullptr)
                     inventoryHandler->useItem(item);
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
@@ -313,7 +313,7 @@ void useEquipItem(const Item *const item, const Sfx sfx)
 
 void useEquipItem2(const Item *const item, const Sfx sfx)
 {
-    if (item)
+    if (item != nullptr)
     {
         if (item->isEquipment() == Equipm_false)
         {
@@ -321,14 +321,14 @@ void useEquipItem2(const Item *const item, const Sfx sfx)
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::UNEQUIP);
-                if (inventoryHandler)
+                if (inventoryHandler != nullptr)
                     inventoryHandler->unequipItem(item);
             }
             else
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::EQUIP);
-                if (inventoryHandler)
+                if (inventoryHandler != nullptr)
                     inventoryHandler->equipItem(item);
             }
         }
@@ -338,7 +338,7 @@ void useEquipItem2(const Item *const item, const Sfx sfx)
             {
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
-                if (inventoryHandler)
+                if (inventoryHandler != nullptr)
                     inventoryHandler->useItem(item);
             }
         }
@@ -347,11 +347,12 @@ void useEquipItem2(const Item *const item, const Sfx sfx)
 
 void dropItem(const Item *const item, const int amount, const Sfx sfx)
 {
-    if (item && mProtectedItems.find(item->getId()) == mProtectedItems.end())
+    if (item != nullptr &&
+        mProtectedItems.find(item->getId()) == mProtectedItems.end())
     {
         if (sfx == Sfx_true)
             ItemSoundManager::playSfx(item, ItemSoundEvent::DROP);
-        if (inventoryHandler)
+        if (inventoryHandler != nullptr)
             inventoryHandler->dropItem(item, amount);
     }
 }
@@ -360,7 +361,7 @@ void pickUpItem(const FloorItem *const item, const Sfx sfx)
 {
     if (sfx == Sfx_true)
         ItemSoundManager::playSfx(item, ItemSoundEvent::PICKUP);
-    if (playerHandler)
+    if (playerHandler != nullptr)
         playerHandler->pickUp(item);
 }
 
@@ -393,7 +394,7 @@ void setTrading(const Trading trading)
 
 #define updateAttackStat(atk, delay, speed) \
     attackDelay = getStatBase(delay); \
-    if (attackDelay) \
+    if (attackDelay != 0) \
     { \
         setStatBase(speed, \
             getStatBase(atk) * 1000 / attackDelay, \
@@ -464,7 +465,7 @@ void stateChange(const StateT state)
 {
     if (state == State::GAME)
     {
-        if (!mInventory)
+        if (mInventory == nullptr)
         {
             mInventory = new Inventory(InventoryType::Inventory);
             mEquipment = new Equipment;
@@ -517,8 +518,11 @@ void setMercenary(MercenaryInfo *const info)
 
 void setMercenaryBeing(Being *const being)
 {
-    if (!being || !mMercenary)
+    if (being == nullptr ||
+        mMercenary == nullptr)
+    {
         return;
+    }
     being->setName(mMercenary->name);
     being->setOwner(localPlayer);
     being->setLevel(mMercenary->level);
@@ -548,12 +552,15 @@ void setPet(PetInfo *const info)
 
 void setPetBeing(Being *const being)
 {
-    if (being)
+    if (being != nullptr)
         mPetBeingId = being->getId();
     else
         mPetBeingId = BeingId_zero;
-    if (!being || !mPet)
+    if (being == nullptr ||
+        mPet == nullptr)
+    {
         return;
+    }
     being->setName(mPet->name);
     being->setOwner(localPlayer);
     being->setLevel(mPet->level);
@@ -577,8 +584,11 @@ void setHomunculus(HomunculusInfo *const info)
 
 void setHomunculusBeing(Being *const being)
 {
-    if (!being || !mHomunculus)
+    if (being == nullptr ||
+        mHomunculus == nullptr)
+    {
         return;
+    }
     being->setName(mHomunculus->name);
     being->setOwner(localPlayer);
 }
@@ -590,21 +600,27 @@ HomunculusInfo *getHomunculus()
 
 BeingId getHomunculusId()
 {
-    return mHomunculus ? mHomunculus->id : BeingId_zero;
+    return mHomunculus != nullptr ? mHomunculus->id : BeingId_zero;
 }
 
 BeingId getMercenaryId()
 {
-    return mMercenary ? mMercenary->id : BeingId_zero;
+    return mMercenary != nullptr ? mMercenary->id : BeingId_zero;
 }
 
 void updateAttackAi(const BeingId targetId,
                     const Keep keep)
 {
-    if (mMercenary && mercenaryHandler)
+    if (mMercenary != nullptr &&
+        mercenaryHandler != nullptr)
+    {
         mercenaryHandler->attack(targetId, keep);
-    if (mHomunculus && homunculusHandler)
+    }
+    if (mHomunculus != nullptr &&
+        homunculusHandler != nullptr)
+    {
         homunculusHandler->attack(targetId, keep);
+    }
 }
 
 std::string getRoomName()

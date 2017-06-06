@@ -176,7 +176,7 @@ void SafeOpenGLGraphics::drawImageInline(const Image *restrict const image,
                                          int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     setColorAlpha(image->mAlpha);
@@ -231,7 +231,7 @@ void SafeOpenGLGraphics::drawImageCached(const Image *restrict const image,
                                          int x, int y) restrict2
 {
     FUNC_BLOCK("Graphics::drawImageCached", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     setColorAlpha(image->mAlpha);
@@ -250,7 +250,7 @@ void SafeOpenGLGraphics::drawPatternCached(const Image *restrict const image,
                                            const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPatternCached", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -294,7 +294,7 @@ void SafeOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                            const int desiredHeight) restrict2
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -329,7 +329,7 @@ void SafeOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                            const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -369,7 +369,7 @@ void SafeOpenGLGraphics::drawRescaledPattern(const Image *restrict const image,
                                              const int scaledWidth,
                                              const int scaledHeight) restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     const int iw = scaledWidth;

@@ -71,7 +71,7 @@ namespace
         static Resource *load(const void *const v)
         {
             BLOCK_START("TestLoader::load")
-            if (!v)
+            if (v == nullptr)
             {
                 BLOCK_END("TestLoader::load")
                 return nullptr;

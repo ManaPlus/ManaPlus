@@ -75,12 +75,12 @@ void GuildHandler::create(const std::string &name) const
 
 void GuildHandler::invite(const std::string &name) const
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     const Being *const being = actorManager->findBeingByName(
         name, ActorType::Player);
-    if (being)
+    if (being != nullptr)
     {
         createOutPacket(CMSG_GUILD_INVITE);
         outMsg.writeBeingId(being->getId(), "account id");
@@ -96,7 +96,7 @@ void GuildHandler::invite(const std::string &name) const
 
 void GuildHandler::invite(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_GUILD_INVITE);
@@ -110,14 +110,14 @@ void GuildHandler::inviteResponse(const int guildId,
 {
     createOutPacket(CMSG_GUILD_INVITE_REPLY);
     outMsg.writeInt32(guildId, "guild id");
-    outMsg.writeInt8(response, "response");
+    outMsg.writeInt8(static_cast<int8_t>(response), "response");
     outMsg.writeInt8(0, "unused");
     outMsg.writeInt16(0, "unused");
 }
 
 void GuildHandler::leave(const int guildId) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     createOutPacket(CMSG_GUILD_LEAVE);
@@ -130,7 +130,7 @@ void GuildHandler::leave(const int guildId) const
 void GuildHandler::kick(const GuildMember *restrict const member,
                         const std::string &restrict reason) const
 {
-    if (!member || !member->getGuild())
+    if ((member == nullptr) || (member->getGuild() == nullptr))
         return;
 
     createOutPacket(CMSG_GUILD_EXPULSION);
@@ -142,7 +142,7 @@ void GuildHandler::kick(const GuildMember *restrict const member,
 
 void GuildHandler::chat(const std::string &text) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     const std::string str = std::string(localPlayer->getName()).append(
@@ -189,7 +189,7 @@ void GuildHandler::info() const
 void GuildHandler::changeMemberPostion(const GuildMember *const member,
                                        const int level) const
 {
-    if (!member || !member->getGuild())
+    if ((member == nullptr) || (member->getGuild() == nullptr))
         return;
 
     createOutPacket(CMSG_GUILD_CHANGE_MEMBER_POS);
@@ -216,7 +216,7 @@ void GuildHandler::checkMaster() const
 
 void GuildHandler::requestAlliance(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_GUILD_ALLIANCE_REQUEST);
@@ -230,7 +230,7 @@ void GuildHandler::requestAllianceResponse(const int beingId,
 {
     createOutPacket(CMSG_GUILD_ALLIANCE_REPLY);
     outMsg.writeInt32(beingId, "account id");
-    outMsg.writeInt32(accept, "accept flag");
+    outMsg.writeInt32(static_cast<int32_t>(accept), "accept flag");
 }
 
 void GuildHandler::endAlliance(const int guildId,
@@ -258,7 +258,7 @@ void GuildHandler::changePostionInfo(const int posId,
 
 void GuildHandler::requestOpposition(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_GUILD_OPPOSITION);

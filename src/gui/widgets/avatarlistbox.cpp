@@ -56,7 +56,7 @@ Image *AvatarListBox::offlineIcon = nullptr;
 AvatarListBox::AvatarListBox(const Widget2 *const widget,
                              AvatarListModel *const model) :
     ListBox(widget, model, "avatarlistbox.xml"),
-    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
+    mImagePadding(mSkin != nullptr ? mSkin->getOption("imagePadding") : 0),
     mShowGender(config.getBoolValue("showgender")),
     mShowLevel(config.getBoolValue("showlevel"))
 {
@@ -86,12 +86,12 @@ AvatarListBox::~AvatarListBox()
 
     if (instances == 0)
     {
-        if (onlineIcon)
+        if (onlineIcon != nullptr)
         {
             onlineIcon->decRef();
             onlineIcon = nullptr;
         }
-        if (offlineIcon)
+        if (offlineIcon != nullptr)
         {
             offlineIcon->decRef();
             offlineIcon = nullptr;
@@ -102,14 +102,14 @@ AvatarListBox::~AvatarListBox()
 void AvatarListBox::draw(Graphics *const graphics)
 {
     BLOCK_START("AvatarListBox::draw")
-    if (!mListModel || !localPlayer)
+    if ((mListModel == nullptr) || (localPlayer == nullptr))
     {
         BLOCK_END("AvatarListBox::draw")
         return;
     }
 
     const Widget *const parent = mParent;
-    if (!parent)
+    if (parent == nullptr)
         return;
 
     AvatarListModel *const model = static_cast<AvatarListModel *>(
@@ -129,7 +129,7 @@ void AvatarListBox::draw(Graphics *const graphics)
          ++i, y += fontHeight)
     {
         const Avatar *const a = model->getAvatarAt(i);
-        if (!a)
+        if (a == nullptr)
             continue;
 
         const MapItemType::Type type = static_cast<MapItemType::Type>(
@@ -139,7 +139,7 @@ void AvatarListBox::draw(Graphics *const graphics)
             // Draw online status
             const Image *const icon = a->getOnline()
                 ? onlineIcon : offlineIcon;
-            if (icon)
+            if (icon != nullptr)
             {
                 graphics->calcTileCollection(&vertexes, icon,
                     mImagePadding, y + mPadding);
@@ -155,7 +155,7 @@ void AvatarListBox::draw(Graphics *const graphics)
          ++i, y += fontHeight)
     {
         const Avatar *const a = model->getAvatarAt(i);
-        if (!a)
+        if (a == nullptr)
             continue;
 
         const MapItemType::Type type = static_cast<MapItemType::Type>(
@@ -175,7 +175,7 @@ void AvatarListBox::draw(Graphics *const graphics)
                                  a->getHp(), a->getMaxHp());
             }
             const bool isPoison = a->getPoison();
-            if (a->getMaxHp())
+            if (a->getMaxHp() != 0)
             {
                 const ProgressColorIdT themeColor = (isPoison
                     ? ProgressColorId::PROG_HP_POISON
@@ -347,14 +347,14 @@ void AvatarListBox::draw(Graphics *const graphics)
 void AvatarListBox::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("AvatarListBox::draw")
-    if (!mListModel || !localPlayer)
+    if ((mListModel == nullptr) || (localPlayer == nullptr))
     {
         BLOCK_END("AvatarListBox::draw")
         return;
     }
 
     const Widget *const parent = mParent;
-    if (!parent)
+    if (parent == nullptr)
         return;
 
     AvatarListModel *const model = static_cast<AvatarListModel *>(
@@ -373,7 +373,7 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
          ++i, y += fontHeight)
     {
         const Avatar *const a = model->getAvatarAt(i);
-        if (!a)
+        if (a == nullptr)
             continue;
 
         const MapItemType::Type type = static_cast<MapItemType::Type>(
@@ -383,7 +383,7 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
             // Draw online status
             const Image *const icon = a->getOnline()
                 ? onlineIcon : offlineIcon;
-            if (icon)
+            if (icon != nullptr)
                 graphics->drawImage(icon, mImagePadding, y + mPadding);
         }
     }
@@ -393,7 +393,7 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
          ++i, y += fontHeight)
     {
         const Avatar *const a = model->getAvatarAt(i);
-        if (!a)
+        if (a == nullptr)
             continue;
 
         const MapItemType::Type type = static_cast<MapItemType::Type>(
@@ -413,7 +413,7 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
                                  a->getHp(), a->getMaxHp());
             }
             const bool isPoison = a->getPoison();
-            if (a->getMaxHp())
+            if (a->getMaxHp() != 0)
             {
                 const ProgressColorIdT themeColor = (isPoison
                     ? ProgressColorId::PROG_HP_POISON
@@ -584,15 +584,19 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
 
 void AvatarListBox::mousePressed(MouseEvent &event)
 {
-    if (!actorManager || !localPlayer || !popupManager)
+    if (actorManager == nullptr ||
+        localPlayer == nullptr ||
+        popupManager == nullptr)
+    {
         return;
+    }
 
     const int height = getFont()->getHeight();
-    if (!height)
+    if (height == 0)
         return;
 
     const int y = (event.getY() - mPadding) / height;
-    if (!mListModel || y > mListModel->getNumberOfElements())
+    if ((mListModel == nullptr) || y > mListModel->getNumberOfElements())
         return;
 
     setSelected(y);
@@ -600,10 +604,10 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     const int selected = getSelected();
     AvatarListModel *const model = static_cast<AvatarListModel *>(
         mListModel);
-    if (!model)
+    if (model == nullptr)
         return;
     const Avatar *ava = model->getAvatarAt(selected);
-    if (!ava)
+    if (ava == nullptr)
         return;
 
     const MapItemType::Type type = static_cast<MapItemType::Type>(
@@ -618,7 +622,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
         {
             const Being *const being = actorManager->findBeingByName(
                 ava->getName(), ActorType::Player);
-            if (being)
+            if (being != nullptr)
                 actorManager->heal(being);
         }
         else
@@ -634,11 +638,11 @@ void AvatarListBox::mousePressed(MouseEvent &event)
             case MapItemType::EMPTY:
             {
                 const Avatar *const avatar = model->getAvatarAt(selected);
-                if (avatar)
+                if (avatar != nullptr)
                 {
                     const Being *const being = actorManager->findBeingByName(
                         avatar->getName(), ActorType::Player);
-                    if (being)
+                    if (being != nullptr)
                     {
                         popupMenu->showPopup(viewport->mMouseX,
                             viewport->mMouseY,
@@ -698,7 +702,7 @@ void AvatarListBox::mousePressed(MouseEvent &event)
             {
                 const Map *const map = viewport->getMap();
                 ava = model->getAvatarAt(selected);
-                if (map && ava)
+                if ((map != nullptr) && (ava != nullptr))
                 {
                     MapItem *const mapItem = map->findPortalXY(
                         ava->getX(), ava->getY());
@@ -712,12 +716,12 @@ void AvatarListBox::mousePressed(MouseEvent &event)
     }
     else if (eventButton == MouseButton::MIDDLE)
     {
-        if (type == MapItemType::EMPTY && chatWindow)
+        if (type == MapItemType::EMPTY && (chatWindow != nullptr))
         {
             const std::string &name = model->getAvatarAt(selected)->getName();
             const WhisperTab *const tab = chatWindow->addWhisperTab(
                 name, name, true);
-            if (tab)
+            if (tab != nullptr)
                 chatWindow->saveState();
         }
     }

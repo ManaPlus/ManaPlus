@@ -148,7 +148,7 @@ ScrollArea::ScrollArea(Widget2 *const widget2,
 
 ScrollArea::~ScrollArea()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     // Garbage collection
@@ -166,7 +166,7 @@ ScrollArea::~ScrollArea()
         {
             for (int f = UP; f < BUTTONS_DIR; f ++)
             {
-                if (buttons[f][i])
+                if (buttons[f][i] != nullptr)
                     buttons[f][i]->decRef();
             }
         }
@@ -201,7 +201,7 @@ void ScrollArea::init(std::string skinName)
         // +++ here probably need move background from static
         if (skinName.empty())
             skinName = "scroll_background.xml";
-        if (theme)
+        if (theme != nullptr)
         {
             theme->loadRect(background, skinName, "scroll_background.xml");
             theme->loadRect(vMarker, "scroll.xml", "");
@@ -213,14 +213,14 @@ void ScrollArea::init(std::string skinName)
         for (int i = 0; i < 2; i ++)
         {
             Skin *skin = nullptr;
-            if (theme)
+            if (theme != nullptr)
                 skin = theme->load(buttonFiles[i], "scrollbuttons.xml");
-            if (skin)
+            if (skin != nullptr)
             {
                 const ImageRect &rect = skin->getBorder();
                 for (int f = UP; f < BUTTONS_DIR; f ++)
                 {
-                    if (rect.grid[f])
+                    if (rect.grid[f] != nullptr)
                         rect.grid[f]->incRef();
                     buttons[f][i] = rect.grid[f];
                 }
@@ -236,7 +236,7 @@ void ScrollArea::init(std::string skinName)
                 for (int f = UP; f < BUTTONS_DIR; f ++)
                     buttons[f][i] = nullptr;
             }
-            if (theme)
+            if (theme != nullptr)
                 theme->unload(skin);
         }
     }
@@ -259,7 +259,7 @@ void ScrollArea::logic()
     setHorizontalScrollAmount(getHorizontalScrollAmount());
 
     Widget *const content = getContent();
-    if (content)
+    if (content != nullptr)
     {
         unsigned int frameSize = content->getFrameSize();
         content->setPosition(-mHScroll + frameSize, -mVScroll + frameSize);
@@ -301,15 +301,15 @@ void ScrollArea::updateAlpha()
         mAlpha = alpha;
         for (int a = 0; a < 9; a++)
         {
-            if (background.grid[a])
+            if (background.grid[a] != nullptr)
                 background.grid[a]->setAlpha(mAlpha);
-            if (hBackground.grid[a])
+            if (hBackground.grid[a] != nullptr)
                 hBackground.grid[a]->setAlpha(mAlpha);
-            if (vBackground.grid[a])
+            if (vBackground.grid[a] != nullptr)
                 vBackground.grid[a]->setAlpha(mAlpha);
-            if (vMarker.grid[a])
+            if (vMarker.grid[a] != nullptr)
                 vMarker.grid[a]->setAlpha(mAlpha);
-            if (vMarkerHi.grid[a])
+            if (vMarkerHi.grid[a] != nullptr)
                 vMarkerHi.grid[a]->setAlpha(mAlpha);
         }
     }
@@ -512,7 +512,7 @@ void ScrollArea::drawButton(Graphics *const graphics,
     Rect dim;
     const Image *const image = getImageByState(dim, dir);
 
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, dim.x, dim.y);
 }
 
@@ -522,7 +522,7 @@ void ScrollArea::calcButton(Graphics *const graphics,
     Rect dim;
     const Image *const image = getImageByState(dim, dir);
 
-    if (image)
+    if (image != nullptr)
     {
         static_cast<Graphics*>(graphics)->calcTileCollection(
             mVertexes, image, dim.x, dim.y);
@@ -533,18 +533,18 @@ void ScrollArea::drawVBar(Graphics *const graphics) const
 {
     const Rect &dim = getVerticalBarDimension();
 
-    if (vBackground.grid[4])
+    if (vBackground.grid[4] != nullptr)
     {
         graphics->drawPattern(vBackground.grid[4],
             dim.x, dim.y, dim.width, dim.height);
     }
-    if (vBackground.grid[1])
+    if (vBackground.grid[1] != nullptr)
     {
         graphics->drawPattern(vBackground.grid[1],
             dim.x, dim.y,
             dim.width, vBackground.grid[1]->getHeight());
     }
-    if (vBackground.grid[7])
+    if (vBackground.grid[7] != nullptr)
     {
         graphics->drawPattern(vBackground.grid[7],
             dim.x, dim.height - vBackground.grid[7]->getHeight() + dim.y,
@@ -556,21 +556,21 @@ void ScrollArea::calcVBar(const Graphics *const graphics)
 {
     const Rect &dim = getVerticalBarDimension();
 
-    if (vBackground.grid[4])
+    if (vBackground.grid[4] != nullptr)
     {
         graphics->calcPattern(mVertexes,
             vBackground.grid[4],
             dim.x, dim.y,
             dim.width, dim.height);
     }
-    if (vBackground.grid[1])
+    if (vBackground.grid[1] != nullptr)
     {
         graphics->calcPattern(mVertexes,
             vBackground.grid[1],
             dim.x, dim.y,
             dim.width, vBackground.grid[1]->getHeight());
     }
-    if (vBackground.grid[7])
+    if (vBackground.grid[7] != nullptr)
     {
         graphics->calcPattern(mVertexes,
             vBackground.grid[7],
@@ -583,21 +583,21 @@ void ScrollArea::drawHBar(Graphics *const graphics) const
 {
     const Rect &dim = getHorizontalBarDimension();
 
-    if (hBackground.grid[4])
+    if (hBackground.grid[4] != nullptr)
     {
         graphics->drawPattern(hBackground.grid[4],
             dim.x, dim.y,
             dim.width, dim.height);
     }
 
-    if (hBackground.grid[3])
+    if (hBackground.grid[3] != nullptr)
     {
         graphics->drawPattern(hBackground.grid[3],
             dim.x, dim.y,
             hBackground.grid[3]->getWidth(), dim.height);
     }
 
-    if (hBackground.grid[5])
+    if (hBackground.grid[5] != nullptr)
     {
         graphics->drawPattern(hBackground.grid[5],
             dim.x + dim.width - hBackground.grid[5]->getWidth(),
@@ -611,7 +611,7 @@ void ScrollArea::calcHBar(const Graphics *const graphics)
 {
     const Rect &dim = getHorizontalBarDimension();
 
-    if (hBackground.grid[4])
+    if (hBackground.grid[4] != nullptr)
     {
         graphics->calcPattern(mVertexes,
             hBackground.grid[4],
@@ -619,7 +619,7 @@ void ScrollArea::calcHBar(const Graphics *const graphics)
             dim.width, dim.height);
     }
 
-    if (hBackground.grid[3])
+    if (hBackground.grid[3] != nullptr)
     {
         graphics->calcPattern(mVertexes,
             hBackground.grid[3],
@@ -627,7 +627,7 @@ void ScrollArea::calcHBar(const Graphics *const graphics)
             hBackground.grid[3]->getWidth(), dim.height);
     }
 
-    if (hBackground.grid[5])
+    if (hBackground.grid[5] != nullptr)
     {
         graphics->calcPattern(mVertexes,
             hBackground.grid[5],
@@ -736,7 +736,7 @@ void ScrollArea::widgetResized(const Event &event A_UNUSED)
     mRedraw = true;
     const unsigned int frameSize = 2 * mFrameSize;
     Widget *const content = getContent();
-    if (content)
+    if (content != nullptr)
     {
         content->setSize(mDimension.width - frameSize,
             mDimension.height - frameSize);
@@ -834,7 +834,9 @@ void ScrollArea::mousePressed(MouseEvent& event)
 
 void ScrollArea::mouseReleased(MouseEvent& event)
 {
-    if (event.getButton() == MouseButton::LEFT && mClickX && mClickY)
+    if (event.getButton() == MouseButton::LEFT &&
+        mClickX != 0 &&
+        mClickY != 0)
     {
         if (!event.isConsumed())
         {
@@ -869,7 +871,7 @@ void ScrollArea::mouseReleased(MouseEvent& event)
 
                 setHorizontalScrollAmount(s);
             }
-            else if (dy)
+            else if (dy != 0)
             {
                 int s = mVScroll + dy;
                 if (s < 0)
@@ -887,7 +889,7 @@ void ScrollArea::mouseReleased(MouseEvent& event)
             }
             mClickX = 0;
             mClickY = 0;
-            if (mMouseConsume && (dx || dy))
+            if (mMouseConsume && ((dx != 0) || (dy != 0)))
                 event.consume();
         }
     }
@@ -1007,17 +1009,17 @@ Rect ScrollArea::getVerticalMarkerDimension()
         height = mDimension.height - 2 * h2;
 
     const int maxV = getVerticalMaxScroll();
-    if (mMarkerSize && maxV)
+    if ((mMarkerSize != 0) && (maxV != 0))
     {
         pos = (mVScroll * height / maxV - mMarkerSize / 2);
         length = mMarkerSize;
     }
     else
     {
-        if (content)
+        if (content != nullptr)
         {
             const int h3 = content->getHeight();
-            if (h3)
+            if (h3 != 0)
                 length = (height * getChildrenArea().height) / h3;
             else
                 length = height;
@@ -1065,17 +1067,17 @@ Rect ScrollArea::getHorizontalMarkerDimension()
         width = mDimension.width - w2 - mScrollbarWidth;
 
     const int maxH = getHorizontalMaxScroll();
-    if (mMarkerSize && maxH)
+    if ((mMarkerSize != 0) && (maxH != 0))
     {
         pos = (mHScroll * width / maxH - mMarkerSize / 2);
         length = mMarkerSize;
     }
     else
     {
-        if (content)
+        if (content != nullptr)
         {
             const int w3 = content->getWidth();
-            if (w3)
+            if (w3 != 0)
                 length = (width * getChildrenArea().width) / w3;
             else
                 length = width;
@@ -1164,7 +1166,7 @@ Rect ScrollArea::getRightButtonDimension() const
 
 void ScrollArea::setContent(Widget* widget)
 {
-    if (widget)
+    if (widget != nullptr)
     {
         clear();
         add(widget);
@@ -1242,7 +1244,7 @@ int ScrollArea::getHorizontalMaxScroll()
     checkPolicies();
 
     const Widget *const content = getContent();
-    if (!content)
+    if (content == nullptr)
         return 0;
 
     const int value = content->getWidth() - getChildrenArea().width +
@@ -1259,7 +1261,7 @@ int ScrollArea::getVerticalMaxScroll()
     checkPolicies();
 
     const Widget *const content = getContent();
-    if (!content)
+    if (content == nullptr)
         return 0;
 
     int value;
@@ -1282,7 +1284,7 @@ void ScrollArea::setScrollbarWidth(const int width)
 void ScrollArea::showWidgetPart(Widget *const widget, const Rect &area)
 {
     const Widget *const content = getContent();
-    if (widget != content || !content)
+    if (widget != content || (content == nullptr))
         return;
 
     BasicContainer::showWidgetPart(widget, area);
@@ -1362,7 +1364,7 @@ void ScrollArea::checkPolicies()
     mVBarVisible = false;
 
     const Widget *const content = getContent();
-    if (!content)
+    if (content == nullptr)
     {
         mHBarVisible = (mHPolicy == SHOW_ALWAYS);
         mVBarVisible = (mVPolicy == SHOW_ALWAYS);

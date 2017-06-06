@@ -66,7 +66,7 @@ Image *SafeOpenGLImageHelper::load(SDL_RWops *const rw,
                                    Dye const &dye)
 {
     SDL_Surface *const tmpImage = loadPng(rw);
-    if (!tmpImage)
+    if (tmpImage == nullptr)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());
         return nullptr;
@@ -74,7 +74,7 @@ Image *SafeOpenGLImageHelper::load(SDL_RWops *const rw,
 
     SDL_Surface *const surf = convertTo32Bit(tmpImage);
     MSDL_FreeSurface(tmpImage);
-    if (!surf)
+    if (surf == nullptr)
         return nullptr;
 
     uint32_t *pixels = static_cast<uint32_t *>(surf->pixels);
@@ -85,14 +85,14 @@ Image *SafeOpenGLImageHelper::load(SDL_RWops *const rw,
         case 1:
         {
             const DyePalette *const pal = dye.getSPalete();
-            if (pal)
+            if (pal != nullptr)
                 DYEPALETTEP(pal, SOGLColor)(pixels, surf->w * surf->h);
             break;
         }
         case 2:
         {
             const DyePalette *const pal = dye.getAPalete();
-            if (pal)
+            if (pal != nullptr)
                 DYEPALETTEP(pal, AOGLColor)(pixels, surf->w * surf->h);
             break;
         }
@@ -119,11 +119,11 @@ Image *SafeOpenGLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
                                                 const int height,
                                                 const float alpha)
 {
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
     Image *const img = glLoad(tmpImage, width, height);
-    if (img)
+    if (img != nullptr)
         img->setAlpha(alpha);
     return img;
 }
@@ -141,7 +141,7 @@ SDL_Surface *SafeOpenGLImageHelper::convertSurfaceNormalize(SDL_Surface
                                                             int width,
                                                             int height)
 {
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
     int realWidth = powerOfTwo(width);
@@ -190,7 +190,7 @@ SDL_Surface *SafeOpenGLImageHelper::convertSurfaceNormalize(SDL_Surface
         tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, realWidth, realHeight,
             32, rmask, gmask, bmask, amask);
 
-        if (!tmpImage)
+        if (tmpImage == nullptr)
         {
             logger->log("Error, image convert failed: out of memory");
             return nullptr;
@@ -204,7 +204,7 @@ SDL_Surface *SafeOpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
                                                    int width,
                                                    int height)
 {
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
 #ifdef USE_SDL2
@@ -243,7 +243,7 @@ SDL_Surface *SafeOpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
         tmpImage = MSDL_CreateRGBSurface(SDL_SWSURFACE, width, height,
             32, rmask, gmask, bmask, amask);
 
-        if (!tmpImage)
+        if (tmpImage == nullptr)
         {
             logger->log("Error, image convert failed: out of memory");
             return nullptr;
@@ -308,21 +308,21 @@ Image *SafeOpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
                                      int width,
                                      int height)
 {
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
     BLOCK_START("SafeOpenGLImageHelper::glLoad")
     // Flush current error flag.
     graphicsManager.getLastError();
 
-    if (!width)
+    if (width == 0)
         width = tmpImage->w;
-    if (!height)
+    if (height == 0)
         height = tmpImage->h;
 
     SDL_Surface *oldImage = tmpImage;
     tmpImage = convertSurfaceNormalize(tmpImage, width, height);
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
 
     const int realWidth = tmpImage->w;
@@ -389,7 +389,7 @@ Image *SafeOpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         MSDL_FreeSurface(tmpImage);
 
     GLenum error = graphicsManager.getLastError();
-    if (error)
+    if (error != 0u)
     {
         std::string errmsg = GraphicsManager::errorToString(error);
         logger->log("Error: Image GL import failed: %s (%u)",
@@ -469,17 +469,17 @@ void SafeOpenGLImageHelper::copySurfaceToImage(const Image *const image,
                                                const int y,
                                                SDL_Surface *surface) const
 {
-    if (!surface || !image)
+    if (surface == nullptr || image == nullptr)
         return;
 
     SDL_Surface *const oldSurface = surface;
     surface = convertSurface(surface, surface->w, surface->h);
-    if (!surface)
+    if (surface == nullptr)
         return;
 
     // +++ probably need combine
     // mglTextureSubImage2D and mglTextureSubImage2DEXT
-    if (mglTextureSubImage2D)
+    if (mglTextureSubImage2D != nullptr)
     {
         mglTextureSubImage2D(image->mGLImage,
             0,

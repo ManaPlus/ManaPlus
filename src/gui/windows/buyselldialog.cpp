@@ -64,7 +64,7 @@ void BuySellDialog::init()
     setWindowName("BuySell");
     setCloseButton(true);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     static const char *const buttonNames[] =
@@ -81,16 +81,18 @@ void BuySellDialog::init()
     int x = buttonPadding;
     const int y = buttonPadding;
 
-    for (const char *const *curBtn = buttonNames; *curBtn; curBtn++)
+    for (const char *const *curBtn = buttonNames;
+         *curBtn != nullptr;
+         curBtn++)
     {
         Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
-        if (!mBuyButton)
+        if (mBuyButton == nullptr)
             mBuyButton = btn;  // For focus request
         btn->setPosition(x, y);
         add(btn);
         x += btn->getWidth() + buttonPadding;
     }
-    if (mBuyButton)
+    if (mBuyButton != nullptr)
     {
         mBuyButton->requestFocus();
         setContentSize(x, 2 * y + mBuyButton->getHeight());
@@ -116,7 +118,7 @@ void BuySellDialog::setVisible(Visible visible)
 
     if (visible == Visible_true)
     {
-        if (mBuyButton)
+        if (mBuyButton != nullptr)
             mBuyButton->requestFocus();
     }
     else
@@ -133,7 +135,7 @@ void BuySellDialog::action(const ActionEvent &event)
         if (mNpcId != BeingId_negOne)
         {
             const Being *const being = actorManager->findBeing(mNpcId);
-            if (being)
+            if (being != nullptr)
                 npcHandler->buy(being);
             else
                 npcHandler->buy(mNpcId);
@@ -158,7 +160,7 @@ void BuySellDialog::closeAll()
 {
     FOR_EACH (DialogList::const_iterator, it, dialogInstances)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->close();
     }
 }

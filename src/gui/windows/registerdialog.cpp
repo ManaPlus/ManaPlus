@@ -211,14 +211,15 @@ void RegisterDialog::action(const ActionEvent &event)
             errorMsg = _("Passwords do not match.");
             error = 2;
         }
-        else if (mEmailField &&
+        else if ((mEmailField != nullptr) &&
                  mEmailField->getText().find('@') == std::string::npos)
         {
             // TRANSLATORS: error message
             errorMsg = _("Incorrect email.");
             error = 1;
         }
-        else if (mEmailField && mEmailField->getText().size() > 40)
+        else if (mEmailField != nullptr &&
+                 mEmailField->getText().size() > 40)
         {
             // TRANSLATORS: error message
             errorMsg = _("Email too long.");
@@ -257,7 +258,7 @@ void RegisterDialog::action(const ActionEvent &event)
             mLoginData->password = mPasswordField->getText();
             if (features.getIntValue("forceAccountGender") == -1)
             {
-                if (mFemaleButton && mFemaleButton->isSelected())
+                if ((mFemaleButton != nullptr) && mFemaleButton->isSelected())
                     mLoginData->gender = Gender::FEMALE;
                 else
                     mLoginData->gender = Gender::MALE;
@@ -268,7 +269,7 @@ void RegisterDialog::action(const ActionEvent &event)
                     CAST_U8(features.getIntValue("forceAccountGender")));
             }
 
-            if (mEmailField)
+            if (mEmailField != nullptr)
                 mLoginData->email = mEmailField->getText();
             mLoginData->registerLogin = true;
 
@@ -306,7 +307,7 @@ bool RegisterDialog::canSubmit() const
            !mPasswordField->getText().empty() &&
            !mConfirmField->getText().empty() &&
            client->getState() == State::REGISTER &&
-           (!mEmailField || !mEmailField->getText().empty());
+           ((mEmailField == nullptr) || !mEmailField->getText().empty());
 }
 
 void RegisterDialog::close()

@@ -87,7 +87,7 @@ SetupActionDropDown::~SetupActionDropDown()
 
 void SetupActionDropDown::createControls()
 {
-    if (!mModel)
+    if (mModel == nullptr)
         return;
 
     load();
@@ -115,7 +115,7 @@ void SetupActionDropDown::createControls()
 
 void SetupActionDropDown::fromWidget()
 {
-    if (!mDropDown || !mModel)
+    if ((mDropDown == nullptr) || (mModel == nullptr))
         return;
 
     mValue = toString(CAST_S32(mModel->getActionFromSelection(
@@ -124,7 +124,7 @@ void SetupActionDropDown::fromWidget()
 
 void SetupActionDropDown::toWidget()
 {
-    if (!mDropDown || !mModel)
+    if ((mDropDown == nullptr) || (mModel == nullptr))
         return;
 
     mDropDown->setSelected(mModel->getSelectionFromAction(

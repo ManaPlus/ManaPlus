@@ -301,11 +301,11 @@ class Configuration final : public ConfigurationObject
 
         inline void setValue(const std::string &key,
                              const char *const value)
-        { if (value) setValue(key, std::string(value)); }
+        { if (value != nullptr) setValue(key, std::string(value)); }
 
         inline void setSilent(const std::string &key,
                               const char *const value)
-        { if (value) setSilent(key, std::string(value)); }
+        { if (value != nullptr) setSilent(key, std::string(value)); }
 
         inline void setValue(const std::string &key,
                              const float value)

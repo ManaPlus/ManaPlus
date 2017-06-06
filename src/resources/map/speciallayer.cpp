@@ -72,7 +72,7 @@ void SpecialLayer::setTile(const int x, const int y, MapItem *const item)
 
     const int idx = x + y * mWidth;
     delete mTiles[idx];
-    if (item)
+    if (item != nullptr)
         item->setPos(x, y);
     mTiles[idx] = item;
 }
@@ -87,7 +87,7 @@ void SpecialLayer::setTile(const int x, const int y, const int type)
 
     const int idx = x + y * mWidth;
     MapItem *const tile = mTiles[idx];
-    if (tile)
+    if (tile != nullptr)
     {
         tile->setType(type);
         tile->setPos(x, y);
@@ -105,7 +105,7 @@ void SpecialLayer::addRoad(const Path &road)
     {
         const Position &pos = (*i);
         MapItem *const item = getTile(pos.x, pos.y);
-        if (!item)
+        if (item == nullptr)
             setTile(pos.x, pos.y, new MapItem(MapItemType::ROAD));
         else
             item->setType(MapItemType::ROAD);
@@ -115,13 +115,13 @@ void SpecialLayer::addRoad(const Path &road)
 
 void SpecialLayer::clean()
 {
-    if (!mTiles)
+    if (mTiles == nullptr)
         return;
 
     for (int f = 0; f < mWidth * mHeight; f ++)
     {
         MapItem *const item = mTiles[f];
-        if (item)
+        if (item != nullptr)
             item->setType(MapItemType::EMPTY);
     }
     updateCache();
@@ -148,7 +148,7 @@ void SpecialLayer::draw(Graphics *const graphics, int startX, int startY,
         for (int x = startX; x < endX; x ++)
         {
             const MapItem *const item = mTiles[x + y2];
-            if (item)
+            if (item != nullptr)
             {
                 item->draw(graphics, x * mapTileSize - scrollX, py,
                     mapTileSize, mapTileSize);

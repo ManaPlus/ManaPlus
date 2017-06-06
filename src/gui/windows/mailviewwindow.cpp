@@ -99,7 +99,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     placer(0, n++, mTimeLabel);
     placer(0, n++, mFromLabel);
     placer(0, n++, mSubjectLabel);
-    if (message->money)
+    if (message->money != 0)
     {
         // TRANSLATORS: mail view window label
         mMoneyLabel = new Label(this, strprintf("%s %d", _("Money:"),
@@ -107,7 +107,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
         placer(0, n++, mMoneyLabel);
     }
     placer(0, n++, mMessageLabel);
-    if (message->itemId)
+    if (message->itemId != 0)
     {
         const ItemInfo &item = ItemDB::get(message->itemId);
         // +++ need use message->cards and ItemColorManager for colors
@@ -135,7 +135,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
         placer(0, n, mItemLabel);
         placer(1, n++, mIcon);
     }
-    if (message->money || message->itemId)
+    if ((message->money != 0) || (message->itemId != 0))
     {
         mGetAttachButton = new Button(this,
             // TRANSLATORS: mail view attach button
@@ -158,10 +158,10 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
 
 MailViewWindow::~MailViewWindow()
 {
-    if (mIcon)
+    if (mIcon != nullptr)
     {
         Image *const image = mIcon->getImage();
-        if (image)
+        if (image != nullptr)
             image->decRef();
     }
     delete2(mMessage);
@@ -177,24 +177,24 @@ void MailViewWindow::action(const ActionEvent &event)
     }
     else if (eventId == "attach")
     {
-        if (mGetAttachButton)
+        if (mGetAttachButton != nullptr)
             mailHandler->getAttach(mMessage->id);
     }
     else if (eventId == "next")
     {
-        if (mMessage)
+        if (mMessage != nullptr)
             mailWindow->viewNext(mMessage->id);
     }
     else if (eventId == "prev")
     {
-        if (mMessage)
+        if (mMessage != nullptr)
             mailWindow->viewPrev(mMessage->id);
     }
     else if (eventId == "reply")
     {
-        if (!mMessage)
+        if (mMessage == nullptr)
             return;
-        if (mailEditWindow)
+        if (mailEditWindow != nullptr)
             mailEditWindow->scheduleDelete();
         CREATEWIDGETV0(mailEditWindow, MailEditWindow);
         mailEditWindow->setTo(mMessage->sender);

@@ -99,16 +99,16 @@ class Joystick final
         bool buttonPressed(const unsigned char no) const A_WARN_UNUSED;
 
         bool isUp() const noexcept2 A_WARN_UNUSED
-        { return mEnabled && (mDirection & UP); }
+        { return mEnabled && ((mDirection & UP) != 0); }
 
         bool isDown() const noexcept2 A_WARN_UNUSED
-        { return mEnabled && (mDirection & DOWN); }
+        { return mEnabled && ((mDirection & DOWN) != 0); }
 
         bool isLeft() const noexcept2 A_WARN_UNUSED
-        { return mEnabled && (mDirection & LEFT); }
+        { return mEnabled && ((mDirection & LEFT) != 0); }
 
         bool isRight() const noexcept2 A_WARN_UNUSED
-        { return mEnabled && (mDirection & RIGHT); }
+        { return mEnabled && ((mDirection & RIGHT) != 0); }
 
         int getNumber() const noexcept2 A_WARN_UNUSED
         { return mNumber; }

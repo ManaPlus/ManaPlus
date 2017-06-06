@@ -65,14 +65,14 @@ void updateEnv()
 
 void setEnv(const char *const name, const char *const value)
 {
-    if (!name || !value)
+    if ((name == nullptr) || (value == nullptr))
         return;
 #ifdef WIN32
     if (putenv(const_cast<char*>((std::string(name)
         + "=" + value).c_str())))
 #else  // WIN32
 
-    if (setenv(name, value, 1))
+    if (setenv(name, value, 1) != 0)
 #endif  // WIN32
     {
         logger->log("setenv failed: %s=%s", name, value);

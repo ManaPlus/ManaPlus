@@ -34,7 +34,7 @@ Container::Container(const Widget2 *const widget) :
 
 Container::~Container()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
     removeControls();
 }

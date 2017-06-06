@@ -30,7 +30,7 @@ void UpdateStatusListener::distributeEvent()
               it, mListeners)
     {
         UpdateStatusListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->updateStatus();
     }
 }

@@ -44,7 +44,7 @@ TileAnimation::~TileAnimation()
 
 bool TileAnimation::update(const int ticks)
 {
-    if (!mAnimation)
+    if (mAnimation == nullptr)
         return false;
 
     // update animation
@@ -57,7 +57,7 @@ bool TileAnimation::update(const int ticks)
     {
         FOR_EACH (TilePairVectorCIter, i, mAffected)
         {
-            if (i->first)
+            if (i->first != nullptr)
                 i->first->setTile(i->second, img);
         }
         mLastImage = img;

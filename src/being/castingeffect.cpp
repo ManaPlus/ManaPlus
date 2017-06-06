@@ -46,15 +46,15 @@ CastingEffect::CastingEffect(const int skillId,
     mRectX((x - range) * mapTileSize),
     mRectY((y - range) * mapTileSize),
     mRectSize(range * mapTileSize * 2 + mapTileSize),
-    mAnimationX(mRectX + (mRectSize - (mSprite ?
+    mAnimationX(mRectX + (mRectSize - (mSprite != nullptr ?
         mSprite->getWidth() : 0)) / 2),
-    mAnimationY(mRectY + (mRectSize - (mSprite ?
+    mAnimationY(mRectY + (mRectSize - (mSprite != nullptr ?
         mSprite->getHeight() : 0)) / 2)
 {
     mPixelX = x * mapTileSize;
     mPixelY = y * mapTileSize;
     mYDiff = range * mapTileSize + 31;
-    if (!mSprite)
+    if (mSprite == nullptr)
     {
         reportAlways("Skill %d/%d casting animation '%s' load failed",
             skillId,
@@ -79,7 +79,7 @@ void CastingEffect::draw(Graphics *const graphics,
         mRectY + offsetY,
         mRectSize,
         mRectSize));
-    if (mSprite)
+    if (mSprite != nullptr)
     {
         mSprite->draw(graphics,
             mAnimationX + offsetX,
@@ -89,13 +89,13 @@ void CastingEffect::draw(Graphics *const graphics,
 
 void CastingEffect::update(const int time)
 {
-    if (mSprite)
+    if (mSprite != nullptr)
         mSprite->update(time);
 }
 
 bool CastingEffect::isTerminated() const
 {
-    if (mSprite)
+    if (mSprite != nullptr)
         return mSprite->isTerminated();
     return false;
 }

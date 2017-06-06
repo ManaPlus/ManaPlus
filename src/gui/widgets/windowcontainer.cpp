@@ -44,7 +44,7 @@ void WindowContainer::slowLogic()
 
 void WindowContainer::scheduleDelete(Widget *const widget)
 {
-    if (widget)
+    if (widget != nullptr)
         mDeathList.push_back(widget);
 }
 

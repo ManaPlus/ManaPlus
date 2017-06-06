@@ -60,7 +60,7 @@ void GameHandler::mapLoadedEvent() const
 
 void GameHandler::connect() const
 {
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return;
 
     Network::mInstance->connect(mapServer);
@@ -71,7 +71,7 @@ void GameHandler::connect() const
     if (client->getState() == State::CONNECT_GAME)
     {
         // Change the player's ID to the account ID to match what eAthena uses
-        if (localPlayer)
+        if (localPlayer != nullptr)
         {
             Ea::GameRecv::mCharID = localPlayer->getId();
             localPlayer->setId(token.account_ID);
@@ -98,14 +98,14 @@ void GameHandler::connect() const
 
 bool GameHandler::isConnected() const
 {
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return false;
     return Network::mInstance->isConnected();
 }
 
 void GameHandler::disconnect() const
 {
-    if (Network::mInstance)
+    if (Network::mInstance != nullptr)
         Network::mInstance->disconnect();
 }
 

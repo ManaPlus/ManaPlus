@@ -33,7 +33,7 @@
 static const char *getLangName()
 {
     const char *const lang = getenv("LANG");
-    if (lang && strlen(lang) > 1000)
+    if ((lang != nullptr) && strlen(lang) > 1000)
         return nullptr;
     return lang;
 }
@@ -45,7 +45,7 @@ LangVect getLang()
     if (lang.empty())
     {
         const char *const lng = getLangName();
-        if (!lng)
+        if (lng == nullptr)
             return langs;
         lang = lng;
     }
@@ -87,7 +87,7 @@ std::string getLangSimple()
     if (lang.empty())
     {
         const char *const lng = getLangName();
-        if (!lng)
+        if (lng == nullptr)
             return "";
         return lng;
     }
@@ -104,7 +104,7 @@ std::string getLangShort()
     if (lang.empty())
     {
         const char *const lng = getLangName();
-        if (!lng)
+        if (lng == nullptr)
             return "";
         lang = lng;
     }

@@ -64,13 +64,13 @@ void StatusEffect::playSFX() const
 
 void StatusEffect::deliverMessage() const
 {
-    if (!mMessage.empty() && localChatTab)
+    if (!mMessage.empty() && (localChatTab != nullptr))
         localChatTab->chatLog(mMessage, ChatMsgType::BY_SERVER);
 }
 
 Particle *StatusEffect::getStartParticle() const
 {
-    if (!particleEngine || mStartParticleEffect.empty())
+    if ((particleEngine == nullptr) || mStartParticleEffect.empty())
         return nullptr;
     else
         return particleEngine->addEffect(mStartParticleEffect, 0, 0);
@@ -78,7 +78,7 @@ Particle *StatusEffect::getStartParticle() const
 
 Particle *StatusEffect::getParticle() const
 {
-    if (!particleEngine || mParticleEffect.empty())
+    if ((particleEngine == nullptr) || mParticleEffect.empty())
         return nullptr;
     else
         return particleEngine->addEffect(mParticleEffect, 0, 0);

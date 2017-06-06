@@ -201,7 +201,7 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
 
 Setup_Colors::~Setup_Colors()
 {
-    if (mPreviewBox && mPreviewBox->getContent() == mPreview)
+    if ((mPreviewBox != nullptr) && mPreviewBox->getContent() == mPreview)
         delete2(mTextPreview)
     else
         delete2(mPreview)
@@ -246,7 +246,7 @@ void Setup_Colors::action(const ActionEvent &event)
 
 void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
 {
-    if (!userPalette)
+    if (userPalette == nullptr)
         return;
 
     mSelected = mColorBox->getSelected();
@@ -308,7 +308,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
             break;
         case UserColorId::ATTACK_RANGE_BORDER:
         case UserColorId::HOME_PLACE_BORDER:
-            if (gui)
+            if (gui != nullptr)
                 mTextPreview->setFont(gui->getFont());
             mTextPreview->setTextColor(col);
             mTextPreview->setOutline(false);
@@ -398,21 +398,21 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
 void Setup_Colors::setEntry(Slider *const s, TextField *const t,
                             const int value)
 {
-    if (s)
+    if (s != nullptr)
         s->setValue(value);
-    if (t)
+    if (t != nullptr)
         t->setText(toString(value));
 }
 
 void Setup_Colors::apply()
 {
-    if (userPalette)
+    if (userPalette != nullptr)
         userPalette->commit();
 }
 
 void Setup_Colors::cancel()
 {
-    if (!userPalette)
+    if (userPalette == nullptr)
         return;
 
     userPalette->rollback();
@@ -430,7 +430,7 @@ void Setup_Colors::cancel()
 
 void Setup_Colors::updateGradType()
 {
-    if (mSelected == -1 || !userPalette)
+    if (mSelected == -1 || (userPalette == nullptr))
         return;
 
     mSelected = mColorBox->getSelected();
@@ -463,7 +463,7 @@ void Setup_Colors::updateGradType()
 
 void Setup_Colors::updateColor() const
 {
-    if (mSelected == -1 || !userPalette)
+    if (mSelected == -1 || (userPalette == nullptr))
         return;
 
     const UserColorIdT type = static_cast<UserColorIdT>(

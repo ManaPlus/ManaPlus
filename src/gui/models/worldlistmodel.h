@@ -53,7 +53,7 @@ class WorldListModel final : public ListModel
         std::string getElementAt(int i) override final
         {
             const WorldInfo *const si = mWorlds[i];
-            if (si)
+            if (si != nullptr)
             {
                 return std::string(si->name).append(" (").append(
                     toString(si->online_users)).append(")");

@@ -46,7 +46,7 @@ namespace
         static Resource *load(const void *const v)
         {
             BLOCK_START("DyedImageLoader::load")
-            if (!v)
+            if (v == nullptr)
             {
                 BLOCK_END("DyedImageLoader::load")
                 return nullptr;
@@ -64,17 +64,17 @@ namespace
                 path1 = path1.substr(0, p);
             }
             SDL_RWops *const rw = VirtFs::rwopsOpenRead(path1);
-            if (!rw)
+            if (rw == nullptr)
             {
                 delete d;
                 reportAlways("Image loading error: %s", path1.c_str());
                 BLOCK_END("DyedImageLoader::load")
                 return nullptr;
             }
-            Resource *const res = d ? imageHelper->load(rw, *d)
+            Resource *const res = d != nullptr ? imageHelper->load(rw, *d)
                 : imageHelper->load(rw);
             delete d;
-            if (!res)
+            if (res == nullptr)
                 reportAlways("Image loading error: %s", path1.c_str());
             BLOCK_END("DyedImageLoader::load")
             return res;

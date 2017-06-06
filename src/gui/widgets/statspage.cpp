@@ -72,7 +72,7 @@ void StatsPage::attributeChanged(const AttributesT id,
                                  const int newVal A_UNUSED)
 {
     const Attrs::const_iterator it = mAttrs.find(id);
-    if (it != mAttrs.end() && it->second)
+    if (it != mAttrs.end() && (it->second != nullptr))
         it->second->update();
 }
 
@@ -81,6 +81,6 @@ void StatsPage::statChanged(const AttributesT id,
                             const int oldVal2 A_UNUSED)
 {
     const Attrs::const_iterator it = mAttrs.find(id);
-    if (it != mAttrs.end() && it->second)
+    if (it != mAttrs.end() && (it->second != nullptr))
         it->second->update();
 }

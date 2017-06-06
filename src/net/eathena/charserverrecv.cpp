@@ -77,7 +77,7 @@ namespace CharServerRecv
 void CharServerRecv::readPlayerData(Net::MessageIn &msg,
                                     Net::Character *const character)
 {
-    if (!character)
+    if (character == nullptr)
         return;
 
     const Token &token =
@@ -202,7 +202,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     if (packetVersion >= 20110928)
         msg.readInt32("slot change");
     if (packetVersion >= 20111025)
-        tempPlayer->setRename(msg.readInt32("rename (inverse)"));
+        tempPlayer->setRename(msg.readInt32("rename (inverse)") != 0);
     uint8_t gender = 99U;
     if (packetVersion >= 20141016)
         gender = CAST_U8(msg.readUInt8("gender"));
@@ -238,7 +238,7 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
         Net::Character *const character = new Net::Character;
         readPlayerData(msg, character);
         charServerHandler->mCharacters.push_back(character);
-        if (character->dummy)
+        if (character->dummy != nullptr)
         {
             logger->log("CharServer: Player: %s (%d)",
                 character->dummy->getName().c_str(), character->slot);
@@ -290,7 +290,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
     charServerHandler->clear();
     charServerHandler->updateCharSelectDialog();
 
-    if (network)
+    if (network != nullptr)
         network->disconnect();
     client->setState(State::CONNECT_GAME);
     BLOCK_END("CharServerRecv::processCharMapInfo")
@@ -302,7 +302,7 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerRecv::processChangeMapServer")
     const GameHandler *const gh = static_cast<GameHandler*>(gameHandler);
-    if (!gh || !network)
+    if ((gh == nullptr) || (network == nullptr))
     {
         BLOCK_END("CharServerRecv::processChangeMapServer")
         return;
@@ -323,7 +323,7 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
 
     network->disconnect();
     client->setState(State::CHANGE_MAP);
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setTileCoords(x, y);
         localPlayer->setMap(nullptr);
@@ -374,7 +374,7 @@ void CharServerRecv::processCharCreate(Net::MessageIn &msg)
     charServerHandler->updateCharSelectDialog();
 
     // Close the character create dialog
-    if (charServerHandler->mCharCreateDialog)
+    if (charServerHandler->mCharCreateDialog != nullptr)
     {
         charServerHandler->mCharCreateDialog->scheduleDelete();
         charServerHandler->mCharCreateDialog = nullptr;
@@ -384,7 +384,7 @@ void CharServerRecv::processCharCreate(Net::MessageIn &msg)
 
 void CharServerRecv::processCharCheckRename(Net::MessageIn &msg)
 {
-    if (msg.readInt16("flag"))
+    if (msg.readInt16("flag") != 0)
     {
         createOutPacket(CMSG_CHAR_RENAME);
         outMsg.writeBeingId(mRenameId, "char id");
@@ -409,7 +409,7 @@ void CharServerRecv::processCharCheckRename(Net::MessageIn &msg)
 void CharServerRecv::processCharRename(Net::MessageIn &msg)
 {
     const int flag = msg.readInt16("flag");
-    if (!flag)
+    if (flag == 0)
     {
         charServerHandler->mCharSelectDialog->setName(
             mRenameId,
@@ -539,7 +539,7 @@ void CharServerRecv::processCharCharacters(Net::MessageIn &msg)
         Net::Character *const character = new Net::Character;
         readPlayerData(msg, character);
         charServerHandler->mCharacters.push_back(character);
-        if (character->dummy)
+        if (character->dummy != nullptr)
         {
             logger->log("CharServer: Player: %s (%d)",
                 character->dummy->getName().c_str(), character->slot);

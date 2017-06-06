@@ -42,7 +42,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     unsigned int val = msg.readUInt8("str");
     PlayerInfo::setStatBase(Attributes::PLAYER_STR, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_STR,
             msg.readUInt8("str cost"));
@@ -54,7 +54,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("agi");
     PlayerInfo::setStatBase(Attributes::PLAYER_AGI, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_AGI,
             msg.readUInt8("agi cost"));
@@ -66,7 +66,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("vit");
     PlayerInfo::setStatBase(Attributes::PLAYER_VIT, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_VIT,
             msg.readUInt8("vit cost"));
@@ -78,7 +78,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("int");
     PlayerInfo::setStatBase(Attributes::PLAYER_INT, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_INT,
             msg.readUInt8("int cost"));
@@ -90,7 +90,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("dex");
     PlayerInfo::setStatBase(Attributes::PLAYER_DEX, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_DEX,
             msg.readUInt8("dex cost"));
@@ -102,7 +102,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("luk");
     PlayerInfo::setStatBase(Attributes::PLAYER_LUK, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_LUK,
             msg.readUInt8("luk cost"));
@@ -157,7 +157,7 @@ void PlayerRecv::processWalkResponse(Net::MessageIn &msg)
     msg.readInt32("tick");
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
     msg.readUInt8("unused");
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->setRealPos(dstX, dstY);
     BLOCK_END("PlayerRecv::processWalkResponse")
 }

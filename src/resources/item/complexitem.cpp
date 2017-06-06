@@ -57,7 +57,7 @@ ComplexItem::~ComplexItem()
 void ComplexItem::addChild(const Item *const item,
                            const int amount)
 {
-    if (!item)
+    if (item == nullptr)
         return;
     increaseQuantity(amount);
     Item *child = nullptr;
@@ -72,7 +72,7 @@ void ComplexItem::addChild(const Item *const item,
             break;
         }
     }
-    if (child)
+    if (child != nullptr)
     {
         child->increaseQuantity(amount);
     }

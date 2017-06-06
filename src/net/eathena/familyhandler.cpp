@@ -44,7 +44,7 @@ FamilyHandler::FamilyHandler() :
 
 void FamilyHandler::askForChild(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_FAMILY_ASK_FOR_CHILD);

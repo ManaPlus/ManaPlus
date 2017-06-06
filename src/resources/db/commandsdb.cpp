@@ -64,7 +64,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "commands"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "commands"))
     {
         logger->log("Commands Database: Error while loading %s!",
             fileName.c_str());
@@ -121,7 +121,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName,
 
         TextCommand *cmd = nullptr;
 #ifdef TMWA_SUPPORT
-        if (skill1)
+        if (skill1 != 0)
         {
             cmd = new TextCommand(id,
                 name,

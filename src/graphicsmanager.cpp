@@ -500,7 +500,7 @@ void GraphicsManager::setVideoMode()
             config.setValueInt("screenheight", oldHeight);
             config.setValue("screen", oldFullscreen == 1);
             if (!mainGraphics->setVideoMode(oldWidth, oldHeight, scale, bpp,
-                oldFullscreen, hwaccel, enableResize, noFrame))
+                oldFullscreen != 0, hwaccel, enableResize, noFrame))
             {
                 logger->safeError(strprintf("Couldn't restore %dx%dx%d "
                     "video mode: %s", oldWidth, oldHeight, bpp,

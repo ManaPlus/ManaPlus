@@ -82,7 +82,7 @@ void Setup_Mods::loadMods()
     FOR_EACH (ModInfoCIterator, it, mods)
     {
         const ModInfo *const info = (*it).second;
-        if (!info)
+        if (info == nullptr)
             continue;
 
         std::string name = info->getName();
@@ -108,7 +108,7 @@ void Setup_Mods::saveMods() const
     FOR_EACH (std::set<SetupItem*>::const_iterator, it, modsList)
     {
         const SetupItem *const item = *it;
-        if (!item)
+        if (item == nullptr)
             continue;
         const std::string val = item->getValue();
         if (val == "1")

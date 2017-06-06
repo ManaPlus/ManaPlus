@@ -83,7 +83,7 @@ void StatsPageBasic::statChanged(const AttributesT id,
                                  const int oldVal2 A_UNUSED)
 {
     const Attrs::const_iterator it = mAttrs.find(id);
-    if (it != mAttrs.end() && it->second)
+    if (it != mAttrs.end() && (it->second != nullptr))
         it->second->update();
 }
 
@@ -105,7 +105,7 @@ void StatsPageBasic::attributeChanged(const AttributesT id,
             for (Attrs::const_iterator it = mAttrs.begin();
                  it != mAttrs.end(); ++it)
             {
-                if (it->second)
+                if (it->second != nullptr)
                     it->second->update();
             }
             return;
@@ -115,7 +115,7 @@ void StatsPageBasic::attributeChanged(const AttributesT id,
             for (Attrs::const_iterator it = mAttrs.begin();
                  it != mAttrs.end(); ++it)
             {
-                if (it->second)
+                if (it->second != nullptr)
                     it->second->update();
             }
             return;
@@ -125,7 +125,7 @@ void StatsPageBasic::attributeChanged(const AttributesT id,
     }
     PRAGMA45(GCC diagnostic pop)
     const Attrs::const_iterator it = mAttrs.find(id);
-    if (it != mAttrs.end() && it->second)
+    if (it != mAttrs.end() && (it->second != nullptr))
         it->second->update();
 }
 
@@ -137,7 +137,7 @@ void StatsPageBasic::setPointsNeeded(const AttributesT id,
     if (it != mAttrs.end())
     {
         AttrDisplay *const disp = it->second;
-        if (disp && disp->getType() == AttrDisplay::CHANGEABLE)
+        if ((disp != nullptr) && disp->getType() == AttrDisplay::CHANGEABLE)
             static_cast<ChangeDisplay*>(disp)->setPointsNeeded(needed);
     }
 }
@@ -151,7 +151,7 @@ std::string StatsPageBasic::getStatsStr() const
     {
         const ChangeDisplay *const attr = dynamic_cast<ChangeDisplay*>(
             (*it).second);
-        if (attr)
+        if (attr != nullptr)
         {
             str.append(strprintf("%s:%s ", attr->getShortName().c_str(),
                 attr->getValue().c_str()));

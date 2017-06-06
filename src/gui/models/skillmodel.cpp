@@ -43,7 +43,7 @@ SkillInfo *SkillModel::getSkillAt(const int i) const
 std::string SkillModel::getElementAt(int i)
 {
     const SkillInfo *const info = getSkillAt(i);
-    if (info)
+    if (info != nullptr)
         return info->data->name;
     else
         return std::string();
@@ -55,7 +55,7 @@ void SkillModel::updateVisibilities()
 
     FOR_EACH (SkillList::const_iterator, it, mSkills)
     {
-        if ((*it) && (*it)->visible == Visible_true)
+        if (((*it) != nullptr) && (*it)->visible == Visible_true)
             mVisibleSkills.push_back((*it));
     }
 }

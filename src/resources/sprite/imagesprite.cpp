@@ -28,7 +28,7 @@
 ImageSprite::ImageSprite(Image *const image) :
     mImage(image)
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         mAlpha = mImage->mAlpha;
         mImage->incRef();
@@ -41,7 +41,7 @@ ImageSprite::ImageSprite(Image *const image) :
 
 ImageSprite::~ImageSprite()
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
@@ -52,7 +52,7 @@ void ImageSprite::draw(Graphics *const graphics,
                        const int posX, const int posY) const
 {
     FUNC_BLOCK("ImageSprite::draw", 1)
-    if (!mImage)
+    if (mImage == nullptr)
         return;
 
     mImage->setAlpha(mAlpha);

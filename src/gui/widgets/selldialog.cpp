@@ -87,7 +87,7 @@ void SellDialog::postInit()
     setMinHeight(220);
     setDefaultSize(260, 230, ImagePosition::CENTER);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     // Create a ShopItems instance, that is aware of duplicate entries.
@@ -205,7 +205,7 @@ SellDialog::~SellDialog()
 void SellDialog::reset()
 {
     mShopItems->clear();
-    if (mSlider)
+    if (mSlider != nullptr)
         mSlider->setValue(0);
     mShopItemList->setSelected(-1);
     updateButtonsAndLabels();
@@ -213,7 +213,7 @@ void SellDialog::reset()
 
 void SellDialog::addItem(const Item *const item, const int price)
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     mShopItems->addItem2(item->getInvIndex(),
@@ -263,25 +263,30 @@ void SellDialog::action(const ActionEvent &event)
 
     if (eventId == "slider")
     {
-        if (mSlider)
+        if (mSlider != nullptr)
         {
             mAmountItems = CAST_S32(mSlider->getValue());
             updateButtonsAndLabels();
         }
     }
-    else if (eventId == "inc" && mSlider && mAmountItems < mMaxItems)
+    else if (eventId == "inc" &&
+             mSlider != nullptr &&
+             mAmountItems < mMaxItems)
     {
         mAmountItems++;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (eventId == "dec" && mSlider && mAmountItems > 1)
+    else if (eventId == "dec" &&
+             mSlider != nullptr &&
+             mAmountItems > 1)
     {
         mAmountItems--;
         mSlider->setValue(mAmountItems);
         updateButtonsAndLabels();
     }
-    else if (eventId == "max" && mSlider)
+    else if (eventId == "max" &&
+             mSlider != nullptr)
     {
         mAmountItems = mMaxItems;
         mSlider->setValue(mAmountItems);
@@ -300,7 +305,7 @@ void SellDialog::valueChanged(const SelectionEvent &event A_UNUSED)
 {
     // Reset amount of items and update labels
     mAmountItems = 1;
-    if (mSlider)
+    if (mSlider != nullptr)
     {
         mSlider->setValue(0);
         mSlider->setScale(1, mMaxItems);
@@ -320,10 +325,10 @@ void SellDialog::updateButtonsAndLabels()
     int income = 0;
     ShopItem *item = nullptr;
 
-    if (selectedItem > -1 && mShopItems->at(selectedItem))
+    if (selectedItem > -1 && (mShopItems->at(selectedItem) != nullptr))
     {
         item = mShopItems->at(selectedItem);
-        if (item)
+        if (item != nullptr)
         {
             mMaxItems = item->getQuantity();
             if (mAmountItems > mMaxItems)
@@ -344,27 +349,27 @@ void SellDialog::updateButtonsAndLabels()
 
     // Update Buttons and slider
     mSellButton->setEnabled(mAmountItems > 0);
-    if (mDecreaseButton)
+    if (mDecreaseButton != nullptr)
         mDecreaseButton->setEnabled(mAmountItems > 1);
-    if (mIncreaseButton)
+    if (mIncreaseButton != nullptr)
         mIncreaseButton->setEnabled(mAmountItems < mMaxItems);
-    if (mSlider)
+    if (mSlider != nullptr)
         mSlider->setEnabled(mMaxItems > 1);
 
-    if (mQuantityLabel)
+    if (mQuantityLabel != nullptr)
     {
         // Update the quantity and money labels
         mQuantityLabel->setCaption(strprintf("%d / %d",
             mAmountItems, mMaxItems));
     }
-    if (mMoneyLabel)
+    if (mMoneyLabel != nullptr)
     {
         // TRANSLATORS: sell dialog label
         mMoneyLabel->setCaption(strprintf(_("Price: %s / Total: %s"),
             UnitsDb::formatCurrency(income).c_str(),
             UnitsDb::formatCurrency(mPlayerMoney + income).c_str()));
     }
-    if (item)
+    if (item != nullptr)
         item->update();
 }
 
@@ -374,7 +379,7 @@ void SellDialog::setVisible(Visible visible)
 
     if (visible == Visible_true)
     {
-        if (mShopItemList)
+        if (mShopItemList != nullptr)
             mShopItemList->requestFocus();
     }
     else

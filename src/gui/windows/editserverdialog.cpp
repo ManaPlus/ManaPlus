@@ -228,7 +228,7 @@ void EditServerDialog::action(const ActionEvent &event)
                 mPortField->getText().c_str()));
             mServer.persistentIp = mPersistentIp->isSelected();
 
-            if (mTypeField)
+            if (mTypeField != nullptr)
             {
                 switch (mTypeField->getSelected())
                 {

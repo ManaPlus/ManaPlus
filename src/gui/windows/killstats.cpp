@@ -108,13 +108,13 @@ KillStats::KillStats() :
     setStickyButtonLock(true);
     setDefaultSize(250, 250, 350, 300);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     const int xp(PlayerInfo::getAttribute(Attributes::PLAYER_EXP));
     int xpNextLevel(PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED));
 
-    if (!xpNextLevel)
+    if (xpNextLevel == 0)
         xpNextLevel = 1;
 
     // TRANSLATORS: kill stats window label
@@ -205,7 +205,7 @@ void KillStats::gainXp(int xp)
         Attributes::PLAYER_EXP_NEEDED);
     if (xp == expNeed)
         xp = 0;
-    else if (!xp)
+    else if (xp == 0)
         return;
 
     mKillCounter++;
@@ -213,7 +213,7 @@ void KillStats::gainXp(int xp)
 
     mExpCounter = mExpCounter + xp;
     mExpTCounter = mExpTCounter + xp;
-    if (!mKillCounter)
+    if (mKillCounter == 0)
         mKillCounter = 1;
 
     const float AvgExp = static_cast<float>(mExpCounter)
@@ -223,7 +223,7 @@ void KillStats::gainXp(int xp)
     if (mKillTimer == 0)
         mKillTimer = cur_time;
 
-    if (!xpNextLevel)
+    if (xpNextLevel == 0)
         xpNextLevel = 1;
 
     double timeDiff = difftime(cur_time, mKillTimer) / 60;

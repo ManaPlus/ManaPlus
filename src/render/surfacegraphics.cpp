@@ -48,8 +48,12 @@ void SurfaceGraphics::drawImage(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
-    if (!mTarget || !image || !image->mSDLSurface)
+    if (mTarget == nullptr ||
+        image == nullptr ||
+        image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     const SDL_Rect &imageRect = image->mBounds;
     SDL_Rect dstRect;
@@ -82,8 +86,12 @@ void SurfaceGraphics::copyImage(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
-    if (!mTarget || !image || !image->mSDLSurface)
+    if (mTarget == nullptr ||
+        image == nullptr ||
+        image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     const SDL_Rect &imageRect = image->mBounds;
     SDL_Rect dstRect;
@@ -109,8 +117,12 @@ void SurfaceGraphics::drawImageCached(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawImageCached", 1)
     // Check that preconditions for blitting are met.
-    if (!mTarget || !image || !image->mSDLSurface)
+    if (mTarget == nullptr ||
+        image == nullptr ||
+        image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     const SDL_Rect &rect = image->mBounds;
 

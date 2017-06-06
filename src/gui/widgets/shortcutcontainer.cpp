@@ -61,7 +61,7 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml", "background.xml");
 
-    if (mBackgroundImg)
+    if (mBackgroundImg != nullptr)
     {
         mBackgroundImg->setAlpha(settings.guiAlpha);
         mBoxHeight = mBackgroundImg->getHeight();
@@ -76,13 +76,13 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
 
 ShortcutContainer::~ShortcutContainer()
 {
-    if (mBackgroundImg)
+    if (mBackgroundImg != nullptr)
     {
         mBackgroundImg->decRef();
         mBackgroundImg = nullptr;
     }
 
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     delete2(mVertexes);
@@ -123,7 +123,7 @@ int ShortcutContainer::getIndexFromGrid(const int pointX,
 
 void ShortcutContainer::drawBackground(Graphics *const g)
 {
-    if (mBackgroundImg)
+    if (mBackgroundImg != nullptr)
     {
         if (mRedraw)
         {
@@ -143,7 +143,7 @@ void ShortcutContainer::drawBackground(Graphics *const g)
 
 void ShortcutContainer::safeDrawBackground(Graphics *const g)
 {
-    if (mBackgroundImg)
+    if (mBackgroundImg != nullptr)
     {
         for (unsigned i = 0; i < mMaxItems; i ++)
         {

@@ -52,7 +52,7 @@ VirtShortcutContainer::VirtShortcutContainer(Widget2 *const widget,
     mUnEquipedColor2(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE)),
     mShortcut(shortcut)
 {
-    if (mShortcut)
+    if (mShortcut != nullptr)
         mMaxItems = mShortcut->getItemCount();
     else
         mMaxItems = 0;
@@ -73,21 +73,21 @@ void VirtShortcutContainer::setWidget2(const Widget2 *const widget)
 
 void VirtShortcutContainer::draw(Graphics *const graphics)
 {
-    if (!mShortcut)
+    if (mShortcut == nullptr)
         return;
 
     BLOCK_START("VirtShortcutContainer::draw")
     if (settings.guiAlpha != mAlpha)
     {
         mAlpha = settings.guiAlpha;
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
     drawBackground(graphics);
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
     {
         BLOCK_END("VirtShortcutContainer::draw")
         return;
@@ -106,12 +106,12 @@ void VirtShortcutContainer::draw(Graphics *const graphics)
         const Item *const item = inv->findItem(mShortcut->getItem(i),
             mShortcut->getItemColor(i));
 
-        if (item)
+        if (item != nullptr)
         {
             // Draw item icon.
             Image *const image = item->getImage();
 
-            if (image)
+            if (image != nullptr)
             {
                 std::string caption;
                 if (item->getQuantity() > 1)
@@ -147,21 +147,21 @@ void VirtShortcutContainer::draw(Graphics *const graphics)
 
 void VirtShortcutContainer::safeDraw(Graphics *const graphics)
 {
-    if (!mShortcut)
+    if (mShortcut == nullptr)
         return;
 
     BLOCK_START("VirtShortcutContainer::safeDraw")
     if (settings.guiAlpha != mAlpha)
     {
         mAlpha = settings.guiAlpha;
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
     safeDrawBackground(graphics);
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
     {
         BLOCK_END("VirtShortcutContainer::safeDraw")
         return;
@@ -180,12 +180,12 @@ void VirtShortcutContainer::safeDraw(Graphics *const graphics)
         const Item *const item = inv->findItem(mShortcut->getItem(i),
             mShortcut->getItemColor(i));
 
-        if (item)
+        if (item != nullptr)
         {
             // Draw item icon.
             Image *const image = item->getImage();
 
-            if (image)
+            if (image != nullptr)
             {
                 std::string caption;
                 if (item->getQuantity() > 1)
@@ -221,7 +221,7 @@ void VirtShortcutContainer::safeDraw(Graphics *const graphics)
 
 void VirtShortcutContainer::mouseDragged(MouseEvent &event)
 {
-    if (!mShortcut)
+    if (mShortcut == nullptr)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -240,12 +240,12 @@ void VirtShortcutContainer::mouseDragged(MouseEvent &event)
                 return;
 
             const Inventory *const inv = PlayerInfo::getInventory();
-            if (!inv)
+            if (inv == nullptr)
                 return;
 
             Item *const item = inv->findItem(itemId, itemColor);
 
-            if (item)
+            if (item != nullptr)
             {
                 dragDrop.dragItem(item, DragDropSource::Drop);
                 mShortcut->removeItem(index);
@@ -260,7 +260,7 @@ void VirtShortcutContainer::mouseDragged(MouseEvent &event)
 
 void VirtShortcutContainer::mousePressed(MouseEvent &event)
 {
-    if (!mShortcut || !inventoryWindow)
+    if ((mShortcut == nullptr) || (inventoryWindow == nullptr))
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -290,13 +290,13 @@ void VirtShortcutContainer::mousePressed(MouseEvent &event)
     else if (eventButton == MouseButton::RIGHT)
     {
         const Inventory *const inv = PlayerInfo::getInventory();
-        if (!inv)
+        if (inv == nullptr)
             return;
 
         Item *const item = inv->findItem(mShortcut->getItem(index),
             mShortcut->getItemColor(index));
 
-        if (popupMenu)
+        if (popupMenu != nullptr)
         {
             popupMenu->showDropPopup(viewport->mMouseX,
                 viewport->mMouseY,
@@ -307,7 +307,7 @@ void VirtShortcutContainer::mousePressed(MouseEvent &event)
 
 void VirtShortcutContainer::mouseReleased(MouseEvent &event)
 {
-    if (!mShortcut)
+    if (mShortcut == nullptr)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -339,7 +339,7 @@ void VirtShortcutContainer::mouseReleased(MouseEvent &event)
 // Show ItemTooltip
 void VirtShortcutContainer::mouseMoved(MouseEvent &event)
 {
-    if (!mShortcut)
+    if (mShortcut == nullptr)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -354,12 +354,12 @@ void VirtShortcutContainer::mouseMoved(MouseEvent &event)
         return;
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     const Item *const item = inv->findItem(itemId, itemColor);
 
-    if (item && viewport)
+    if ((item != nullptr) && (viewport != nullptr))
     {
         itemPopup->setItem(item, false);
         itemPopup->position(viewport->mMouseX, viewport->mMouseY);
@@ -372,12 +372,12 @@ void VirtShortcutContainer::mouseMoved(MouseEvent &event)
 
 void VirtShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
 }
 
 void VirtShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
 }

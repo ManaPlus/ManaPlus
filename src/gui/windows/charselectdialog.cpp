@@ -209,13 +209,13 @@ void CharSelectDialog::action(const ActionEvent &event)
             return;
         }
         else if (eventId == "delete"
-                 && mCharacterEntries[selected]->getCharacter())
+                 && (mCharacterEntries[selected]->getCharacter() != nullptr))
         {
             CREATEWIDGET(CharDeleteConfirm, this, selected);
             return;
         }
         else if (eventId == "rename"
-                 && mCharacterEntries[selected]->getCharacter())
+                 && (mCharacterEntries[selected]->getCharacter() != nullptr))
         {
             const LocalPlayer *const player = mCharacterEntries[
                 selected]->getCharacter()->dummy;
@@ -232,11 +232,11 @@ void CharSelectDialog::action(const ActionEvent &event)
         {
             Net::Character *const character = mCharacterEntries[
                 selected]->getCharacter();
-            if (!character)
+            if (character == nullptr)
                 return;
 
             const LocalPlayer *const data = character->dummy;
-            if (!data)
+            if (data == nullptr)
                 return;
 
             const std::string msg = strprintf(
@@ -282,7 +282,7 @@ void CharSelectDialog::action(const ActionEvent &event)
     }
     else if (eventId == "try delete character")
     {
-        if (mDeleteDialog && mDeleteIndex != -1)
+        if ((mDeleteDialog != nullptr) && mDeleteIndex != -1)
         {
             if (serverFeatures->haveEmailOnDelete())
             {
@@ -316,8 +316,8 @@ void CharSelectDialog::action(const ActionEvent &event)
 
 void CharSelectDialog::use(const int selected)
 {
-    if (mCharacterEntries[selected]
-        && mCharacterEntries[selected]->getCharacter())
+    if ((mCharacterEntries[selected] != nullptr)
+        && (mCharacterEntries[selected]->getCharacter() != nullptr))
     {
         attemptCharacterSelect(selected);
     }
@@ -363,7 +363,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
-                if (!idx || idx == SLOTS_PER_ROW)
+                if ((idx == 0) || idx == SLOTS_PER_ROW)
                     break;
                 idx --;
                 mCharacterView->show(idx);
@@ -406,8 +406,8 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
         {
             event.consume();
             const int idx = mCharacterView->getSelected();
-            if (idx >= 0 && mCharacterEntries[idx]
-                && mCharacterEntries[idx]->getCharacter())
+            if (idx >= 0 && (mCharacterEntries[idx] != nullptr)
+                && (mCharacterEntries[idx]->getCharacter() != nullptr))
             {
                 CREATEWIDGET(CharDeleteConfirm, this, idx);
             }
@@ -435,7 +435,7 @@ void CharSelectDialog::attemptCharacterDelete(const int index,
     if (mLocked)
         return;
 
-    if (mCharacterEntries[index])
+    if (mCharacterEntries[index] != nullptr)
     {
         mCharServerHandler->deleteCharacter(
             mCharacterEntries[index]->getCharacter(),
@@ -474,11 +474,11 @@ void CharSelectDialog::askPasswordForDeletion(const int index)
  */
 void CharSelectDialog::attemptCharacterSelect(const int index)
 {
-    if (mLocked || !mCharacterEntries[index])
+    if (mLocked || (mCharacterEntries[index] == nullptr))
         return;
 
     setVisible(Visible_false);
-    if (mCharServerHandler)
+    if (mCharServerHandler != nullptr)
     {
         mCharServerHandler->chooseCharacter(
             mCharacterEntries[index]->getCharacter());
@@ -492,7 +492,7 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
     FOR_EACH (std::vector<CharacterDisplay*>::const_iterator,
               iter, mCharacterEntries)
     {
-        if (*iter)
+        if (*iter != nullptr)
             (*iter)->setCharacter(nullptr);
     }
 
@@ -503,7 +503,7 @@ void CharSelectDialog::setCharacters(const Net::Characters &characters)
 
 void CharSelectDialog::setCharacter(Net::Character *const character)
 {
-    if (!character)
+    if (character == nullptr)
         return;
     const int characterSlot = character->slot;
     if (characterSlot >= CAST_S32(mCharacterEntries.size()))
@@ -512,7 +512,7 @@ void CharSelectDialog::setCharacter(Net::Character *const character)
         return;
     }
 
-    if (mCharacterEntries[characterSlot])
+    if (mCharacterEntries[characterSlot] != nullptr)
         mCharacterEntries[characterSlot]->setCharacter(character);
 }
 
@@ -531,17 +531,17 @@ void CharSelectDialog::setLocked(const bool locked)
 {
     mLocked = locked;
 
-    if (mSwitchLoginButton)
+    if (mSwitchLoginButton != nullptr)
         mSwitchLoginButton->setEnabled(!locked);
-    if (mChangePasswordButton)
+    if (mChangePasswordButton != nullptr)
         mChangePasswordButton->setEnabled(!locked);
     mPlayButton->setEnabled(!locked);
-    if (mDeleteButton)
+    if (mDeleteButton != nullptr)
         mDeleteButton->setEnabled(!locked);
 
     for (size_t i = 0, sz = mCharacterEntries.size(); i < sz; ++i)
     {
-        if (mCharacterEntries[i])
+        if (mCharacterEntries[i] != nullptr)
             mCharacterEntries[i]->setActive(!mLocked);
     }
 }
@@ -554,13 +554,14 @@ bool CharSelectDialog::selectByName(const std::string &name,
 
     for (size_t i = 0, sz = mCharacterEntries.size(); i < sz; ++i)
     {
-        if (mCharacterEntries[i])
+        if (mCharacterEntries[i] != nullptr)
         {
             const Net::Character *const character
                 = mCharacterEntries[i]->getCharacter();
-            if (character)
+            if (character != nullptr)
             {
-                if (character->dummy && character->dummy->getName() == name)
+                if (character->dummy != nullptr &&
+                    character->dummy->getName() == name)
                 {
                     mCharacterView->show(CAST_S32(i));
                     updateState();
@@ -597,14 +598,15 @@ void CharSelectDialog::updateState()
     }
     mPlayButton->setEnabled(true);
 
-    if (mCharacterEntries[idx] && mCharacterEntries[idx]->getCharacter())
+    if (mCharacterEntries[idx] != nullptr &&
+        mCharacterEntries[idx]->getCharacter() != nullptr)
     {
         // TRANSLATORS: char select dialog. button.
         mPlayButton->setCaption(_("Play"));
 
         const LocalPlayer *const player = mCharacterEntries[
             idx]->getCharacter()->dummy;
-        if (player && mRenameButton)
+        if ((player != nullptr) && (mRenameButton != nullptr))
             mRenameButton->setEnabled(player->getRename() ? true : false);
     }
     else
@@ -621,13 +623,13 @@ void CharSelectDialog::setName(const BeingId id, const std::string &newName)
          i < fsz;
          ++i)
     {
-        if (!mCharacterEntries[i])
+        if (mCharacterEntries[i] == nullptr)
             continue;
         CharacterDisplay *const character = mCharacterEntries[i];
-        if (!character)
+        if (character == nullptr)
             continue;
         LocalPlayer *const player = character->getCharacter()->dummy;
-        if (player && player->getId() == id)
+        if ((player != nullptr) && player->getId() == id)
         {
             player->setName(newName);
             character->update();

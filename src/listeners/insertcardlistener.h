@@ -43,7 +43,7 @@ struct InsertCardListener final : public ActionListener
     public:
         void action(const ActionEvent &event) override final
         {
-            if (event.getId() == "yes" && inventoryHandler)
+            if (event.getId() == "yes" && (inventoryHandler != nullptr))
                 inventoryHandler->insertCard(cardIndex, itemIndex);
         }
 

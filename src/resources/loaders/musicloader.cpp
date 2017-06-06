@@ -42,12 +42,12 @@ namespace
 
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *>(v);
             SDL_RWops *const rw = VirtFs::rwopsOpenRead(rl->path);
-            if (!rw)
+            if (rw == nullptr)
             {
                 reportAlways("Error loading resource: %s",
                     rl->path.c_str());

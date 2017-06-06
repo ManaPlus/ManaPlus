@@ -101,8 +101,8 @@ void SkillPopup::show(const SkillInfo *const skill,
                       const int offsetX,
                       const int offsetY)
 {
-    if (!skill ||
-        !skill->data ||
+    if ((skill == nullptr) ||
+        (skill->data == nullptr) ||
         (skill->id == mLastId &&
         level == mLastLevel &&
         castType == mCastType &&

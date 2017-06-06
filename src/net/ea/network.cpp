@@ -51,7 +51,7 @@ int networkThread(void *data)
 {
     Network *const network = static_cast<Network *>(data);
 
-    if (!network || !network->realConnect())
+    if ((network == nullptr) || !network->realConnect())
         return -1;
 
     network->receive();
@@ -125,7 +125,7 @@ bool Network::connect(const ServerInfo &server)
 
     mState = CONNECTING;
     mWorkerThread = SDL::createThread(&networkThread, "network", this);
-    if (!mWorkerThread)
+    if (mWorkerThread == nullptr)
     {
         setError("Unable to create network worker thread");
         return false;
@@ -139,13 +139,13 @@ void Network::disconnect()
     BLOCK_START("Network::disconnect")
     mState = IDLE;
 
-    if (mWorkerThread && SDL_GetThreadID(mWorkerThread))
+    if ((mWorkerThread != nullptr) && (SDL_GetThreadID(mWorkerThread) != 0u))
     {
         SDL_WaitThread(mWorkerThread, nullptr);
         mWorkerThread = nullptr;
     }
 
-    if (mSocket)
+    if (mSocket != nullptr)
     {
         TcpNet::closeSocket(mSocket);
         mSocket = nullptr;
@@ -157,7 +157,7 @@ void Network::disconnect()
 
 void Network::flush()
 {
-    if (!mOutSize || mState != CONNECTED)
+    if ((mOutSize == 0u) || mState != CONNECTED)
         return;
 
     SDL_mutexP(mMutexOut);
@@ -183,7 +183,7 @@ void Network::skip(const int len)
 {
     SDL_mutexP(mMutexIn);
     mToSkip += len;
-    if (!mInSize)
+    if (mInSize == 0u)
     {
         SDL_mutexV(mMutexIn);
         return;
@@ -227,7 +227,7 @@ bool Network::realConnect()
     mState = CONNECTING;
 
     mSocket = TcpNet::open(&ipAddress);
-    if (!mSocket)
+    if (mSocket == nullptr)
     {
         logger->log_r("Error in TcpNet::open(): %s", TcpNet::getError());
         setError(TcpNet::getError());
@@ -246,7 +246,7 @@ void Network::receive()
 {
     TcpNet::SocketSet set;
 
-    if (!(set = TcpNet::allocSocketSet(1)))
+    if ((set = TcpNet::allocSocketSet(1)) == nullptr)
     {
         setError("Error in TcpNet::allocSocketSet(): " +
             std::string(TcpNet::getError()));
@@ -287,7 +287,7 @@ void Network::receive()
                     mInBuffer + CAST_SIZE(mInSize),
                     BUFFER_SIZE - mInSize);
 
-                if (!ret)
+                if (ret == 0)
                 {
                     // We got disconnected
                     mState = IDLE;
@@ -303,7 +303,7 @@ void Network::receive()
                 {
 //                    DEBUGLOG("Receive " + toString(ret) + " bytes");
                     mInSize += ret;
-                    if (mToSkip)
+                    if (mToSkip != 0u)
                     {
                         if (mInSize >= mToSkip)
                         {

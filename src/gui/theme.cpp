@@ -158,12 +158,12 @@ Color Theme::getProgressColor(const ProgressColorIdT type,
 {
     int color[3] = {0, 0, 0};
 
-    if (theme)
+    if (theme != nullptr)
     {
         const DyePalette *const dye
             = theme->mProgressColors[CAST_SIZE(type)];
 
-        if (dye)
+        if (dye != nullptr)
         {
             dye->getColor(progress, color);
         }
@@ -187,7 +187,7 @@ Skin *Theme::load(const std::string &filename,
     const SkinIterator skinIterator = mSkins.find(filename);
     if (mSkins.end() != skinIterator)
     {
-        if (skinIterator->second)
+        if (skinIterator->second != nullptr)
             skinIterator->second->instances++;
         return skinIterator->second;
     }
@@ -196,9 +196,9 @@ Skin *Theme::load(const std::string &filename,
     if (mScreenDensity.empty())
     {   // if no density detected
         skin = readSkin(filename, full);
-        if (!skin && !filename2.empty() && filename2 != filename)
+        if ((skin == nullptr) && !filename2.empty() && filename2 != filename)
             skin = readSkin(filename2, full);
-        if (!skin && filename2 != "window.xml")
+        if ((skin == nullptr) && filename2 != "window.xml")
             skin = readSkin("window.xml", full);
     }
     else
@@ -207,25 +207,25 @@ Skin *Theme::load(const std::string &filename,
         std::string name = filename;
         if (findCutLast(name, ".xml"))
             skin = readSkin(name + endStr, full);
-        if (!skin)
+        if (skin == nullptr)
             skin = readSkin(filename, full);
-        if (!skin && !filename2.empty() && filename2 != filename)
+        if ((skin == nullptr) && !filename2.empty() && filename2 != filename)
         {
             name = filename2;
             if (findCutLast(name, ".xml"))
                 skin = readSkin(name + endStr, full);
-            if (!skin)
+            if (skin == nullptr)
                 skin = readSkin(filename2, full);
         }
-        if (!skin && filename2 != "window.xml")
+        if ((skin == nullptr) && filename2 != "window.xml")
         {
             skin = readSkin("window" + endStr, full);
-            if (!skin)
+            if (skin == nullptr)
                 skin = readSkin("window.xml", full);
         }
     }
 
-    if (!skin)
+    if (skin == nullptr)
     {
         // Try falling back on the defaultPath if this makes sense
         if (filename != defaultPath)
@@ -236,7 +236,7 @@ Skin *Theme::load(const std::string &filename,
             skin = readSkin(defaultPath, full);
         }
 
-        if (!skin)
+        if (skin == nullptr)
         {
             logger->log(strprintf("Error: Loading default skin '%s' failed. "
                                   "Make sure the skin file is valid.",
@@ -250,10 +250,10 @@ Skin *Theme::load(const std::string &filename,
 
 void Theme::unload(Skin *const skin)
 {
-    if (!skin)
+    if (skin == nullptr)
         return;
     skin->instances --;
-    if (!skin->instances)
+    if (skin->instances == 0)
     {
         SkinIterator it = mSkins.begin();
         const SkinIterator it_end = mSkins.end();
@@ -284,7 +284,7 @@ void Theme::updateAlpha()
     FOR_EACH (SkinIterator, iter, mSkins)
     {
         Skin *const skin = iter->second;
-        if (skin)
+        if (skin != nullptr)
             skin->updateAlpha(mMinimumOpacity);
     }
 }
@@ -403,10 +403,10 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     XML::Document *const doc = Loader::getXml(path,
         UseVirtFs_true,
         SkipError_true);
-    if (!doc)
+    if (doc == nullptr)
         return nullptr;
     XmlNodeConstPtr rootNode = doc->rootNode();
-    if (!rootNode || !xmlNameEqual(rootNode, "skinset"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "skinset"))
     {
         doc->decRef();
         return nullptr;
@@ -461,7 +461,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
                         partNode, "ypos", 0) + globalYPos;
                     helper.width = XML::getProperty(partNode, "width", 0);
                     helper.height = XML::getProperty(partNode, "height", 0);
-                    if (!helper.width || !helper.height)
+                    if ((helper.width == 0) || (helper.height == 0))
                         continue;
                     helper.image = dBorders;
 
@@ -528,7 +528,7 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
         }
     }
 
-    if (dBorders)
+    if (dBorders != nullptr)
         dBorders->decRef();
 
     (*mOptions)["closePadding"] = closePadding;
@@ -555,7 +555,7 @@ bool Theme::tryThemePath(const std::string &themeName)
         {
             mThemePath = path;
             mThemeName = themeName;
-            if (theme)
+            if (theme != nullptr)
                 theme->loadColors("");
             return true;
         }
@@ -960,7 +960,7 @@ static GradientTypeT readColorGradient(const std::string &grad)
 
     for (int i = 0; i < 4; i++)
     {
-        if (compareStrI(grad, grads[i]))
+        if (compareStrI(grad, grads[i]) != 0)
             return static_cast<GradientTypeT>(i);
     }
 
@@ -1008,11 +1008,11 @@ void Theme::loadColors(std::string file)
     XML::Document *const doc = Loader::getXml(resolveThemePath(file),
         UseVirtFs_true,
         SkipError_false);
-    if (!doc)
+    if (doc == nullptr)
         return;
     XmlNodeConstPtrConst root = doc->rootNode();
 
-    if (!root || !xmlNameEqual(root, "colors"))
+    if ((root == nullptr) || !xmlNameEqual(root, "colors"))
     {
         logger->log("Error loading colors file: %s", file.c_str());
         doc->decRef();
@@ -1097,7 +1097,7 @@ void Theme::loadRect(ImageRect &image,
                      const int end)
 {
     Skin *const skin = load(name, name2, false);
-    if (skin)
+    if (skin != nullptr)
     {
         loadGrid();
         unload(skin);
@@ -1111,7 +1111,7 @@ Skin *Theme::loadSkinRect(ImageRect &image,
                           const int end)
 {
     Skin *const skin = load(name, name2);
-    if (skin)
+    if (skin != nullptr)
         loadGrid();
     return skin;
 }
@@ -1122,7 +1122,7 @@ void Theme::unloadRect(const ImageRect &rect,
 {
     for (int f = start; f <= end; f ++)
     {
-        if (rect.grid[f])
+        if (rect.grid[f] != nullptr)
             rect.grid[f]->decRef();
     }
 }
@@ -1130,14 +1130,14 @@ void Theme::unloadRect(const ImageRect &rect,
 Image *Theme::getImageFromThemeXml(const std::string &name,
                                    const std::string &name2)
 {
-    if (!theme)
+    if (theme == nullptr)
         return nullptr;
 
     Skin *const skin = theme->load(name, name2, false);
-    if (skin)
+    if (skin != nullptr)
     {
         const ImageRect &rect = skin->getBorder();
-        if (rect.grid[0])
+        if (rect.grid[0] != nullptr)
         {
             Image *const image = rect.grid[0];
             image->incRef();
@@ -1153,18 +1153,18 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
                                          const std::string &name2,
                                          const int w, const int h)
 {
-    if (!theme)
+    if (theme == nullptr)
         return nullptr;
 
     Skin *const skin = theme->load(name, name2, false);
-    if (skin)
+    if (skin != nullptr)
     {
         const ImageRect &rect = skin->getBorder();
-        if (rect.grid[0])
+        if (rect.grid[0] != nullptr)
         {
             Image *const image = rect.grid[0];
             const SDL_Rect &rect2 = image->mBounds;
-            if (rect2.w && rect2.h)
+            if ((rect2.w != 0u) && (rect2.h != 0u))
             {
                 ImageSet *const imageSet = Loader::getSubImageSet(
                     image, w, h);
@@ -1218,11 +1218,11 @@ ThemeInfo *Theme::loadInfo(const std::string &themeName)
     XML::Document *const doc = Loader::getXml(path,
         UseVirtFs_true,
         SkipError_false);
-    if (!doc)
+    if (doc == nullptr)
         return nullptr;
     XmlNodeConstPtrConst rootNode = doc->rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "info"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "info"))
     {
         doc->decRef();
         return nullptr;

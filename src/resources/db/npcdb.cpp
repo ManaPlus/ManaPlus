@@ -63,7 +63,7 @@ void NPCDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "npcs"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "npcs"))
     {
         logger->log("NPC Database: Error while loading %s!",
             paths.getStringValue("npcsFile").c_str());
@@ -99,7 +99,7 @@ void NPCDB::loadXmlFile(const std::string &fileName,
             logger->log("NpcDB: Redefinition of npc ID %d", toInt(id, int));
             currentInfo = mNPCInfos[id];
         }
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setTargetSelection(XML::getBoolProperty(npcNode,
@@ -198,7 +198,7 @@ BeingInfo *NPCDB::get(const BeingTypeId id)
 BeingTypeId NPCDB::getAvatarFor(const BeingTypeId id)
 {
     const BeingInfo *const info = get(id);
-    if (!info)
+    if (info == nullptr)
         return BeingTypeId_zero;
     return info->getAvatarId();
 }

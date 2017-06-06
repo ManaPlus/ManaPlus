@@ -45,7 +45,7 @@ void HorizontContainer::add(Widget *const widget)
 
 void HorizontContainer::add(Widget *const widget, const int spacing)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     Container::add(widget);

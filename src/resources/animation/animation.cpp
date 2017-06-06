@@ -84,7 +84,7 @@ void Animation::setLastFrameDelay(const int delay) noexcept2
     for (FramesRevIter it = mFrames.rbegin(), it_end = mFrames.rend();
          it != it_end; ++ it)
     {
-        if ((*it).type == FrameType::ANIMATION && (*it).image)
+        if ((*it).type == FrameType::ANIMATION && ((*it).image != nullptr))
         {
             (*it).delay = delay;
             break;

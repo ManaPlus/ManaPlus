@@ -44,13 +44,13 @@ namespace
 
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
 
             const ShaderLoader *const rl
                 = static_cast<const ShaderLoader *>(v);
             Shader *const resource = shaders.createShader(rl->type, rl->name);
-            if (!resource)
+            if (resource == nullptr)
                 reportAlways("Shader creation error: %s", rl->name.c_str());
             return resource;
         }

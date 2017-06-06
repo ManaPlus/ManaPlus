@@ -32,13 +32,13 @@ LayoutHelper::LayoutHelper(BasicContainer2 *const container) :
     mLayout(),
     mContainer(container)
 {
-    if (mContainer)
+    if (mContainer != nullptr)
         mContainer->addWidgetListener(this);
 }
 
 LayoutHelper::~LayoutHelper()
 {
-    if (mContainer)
+    if (mContainer != nullptr)
         mContainer->removeWidgetListener(this);
 }
 
@@ -51,7 +51,7 @@ LayoutCell &LayoutHelper::place(const int x, const int y,
                                 Widget *const wg,
                                 const int w, const int h)
 {
-    if (mContainer)
+    if (mContainer != nullptr)
         mContainer->add(wg);
     return mLayout.place(wg, x, y, w, h);
 }
@@ -64,13 +64,13 @@ ContainerPlacer LayoutHelper::getPlacer(const int x, const int y)
 void LayoutHelper::reflowLayout(int w, int h)
 {
     mLayout.reflow(w, h);
-    if (mContainer)
+    if (mContainer != nullptr)
         mContainer->setSize(w, h);
 }
 
 void LayoutHelper::widgetResized(const Event &event A_UNUSED)
 {
-    if (!mContainer)
+    if (mContainer == nullptr)
         return;
     const Rect area = mContainer->getChildrenArea();
     int w = area.width;

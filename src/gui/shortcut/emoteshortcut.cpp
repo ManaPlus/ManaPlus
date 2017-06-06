@@ -56,7 +56,7 @@ void EmoteShortcut::load()
          i++)
     {
         const EmoteSprite *const sprite = EmoteDB::getSprite(i, true);
-        if (sprite)
+        if (sprite != nullptr)
         {
             mEmotes[j] = CAST_U8(i + 1);
             j ++;
@@ -68,7 +68,7 @@ void EmoteShortcut::save() const
 {
     for (int i = 0; i < SHORTCUT_EMOTES; i++)
     {
-        const unsigned char emoteId = mEmotes[i] ? mEmotes[i]
+        const unsigned char emoteId = mEmotes[i] != 0u ? mEmotes[i]
             : CAST_U8(0);
         serverConfig.setValue("emoteshortcut" + toString(i),
             CAST_U32(emoteId));
@@ -77,7 +77,7 @@ void EmoteShortcut::save() const
 
 void EmoteShortcut::useEmotePlayer(const int index) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (index > 0 &&
@@ -90,7 +90,7 @@ void EmoteShortcut::useEmotePlayer(const int index) const
 
 void EmoteShortcut::useEmote(const int index) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (index > 0 &&

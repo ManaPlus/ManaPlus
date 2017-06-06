@@ -59,7 +59,7 @@ namespace BeingRecv
 void BeingRecv::processBeingRemove(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingRemove")
-    if (!actorManager || !localPlayer)
+    if ((actorManager == nullptr) || (localPlayer == nullptr))
     {
         BLOCK_END("BeingRecv::processBeingRemove")
         return;
@@ -70,7 +70,7 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("being id");
     const uint8_t type = msg.readUInt8("remove flag");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingRemove")
         return;
@@ -94,14 +94,14 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
     else if (type == 0U && dstBeing->getType() == ActorType::Npc)
     {
         const BeingInfo *const info = dstBeing->getInfo();
-        if (!info || info->getAllowDelete())
+        if ((info == nullptr) || (info->getAllowDelete() != 0))
             actorManager->destroy(dstBeing);
     }
     else
     {
         if (dstBeing->getType() == ActorType::Player)
         {
-            if (socialWindow)
+            if (socialWindow != nullptr)
                 socialWindow->updateActiveList();
             const std::string name = dstBeing->getName();
             if (!name.empty() && config.getBoolValue("logPlayerActions"))
@@ -147,7 +147,7 @@ void BeingRecv::processBeingRemove(Net::MessageIn &msg)
 void BeingRecv::processBeingAction(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingAction")
-    if (!actorManager)
+    if (actorManager == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingAction")
         return;
@@ -174,16 +174,16 @@ void BeingRecv::processBeingAction(Net::MessageIn &msg)
         case AttackType::MULTI:  // Critical Damage
         case AttackType::REFLECT:  // Reflected Damage
         case AttackType::FLEE:  // Lucky Dodge
-            if (srcBeing)
+            if (srcBeing != nullptr)
             {
-                if (srcSpeed && srcBeing->getType() == ActorType::Player)
+                if (srcSpeed != 0 && srcBeing->getType() == ActorType::Player)
                     srcBeing->setAttackDelay(srcSpeed);
                 // attackid=1, type
                 srcBeing->handleAttack(dstBeing, param1, 1);
                 if (srcBeing->getType() == ActorType::Player)
                     srcBeing->setAttackTime();
             }
-            if (dstBeing)
+            if (dstBeing != nullptr)
             {
                 // level not present, using 1
                 dstBeing->takeDamage(srcBeing, param1,
@@ -198,26 +198,26 @@ void BeingRecv::processBeingAction(Net::MessageIn &msg)
 //                srcBeing->setAction(BeingAction::DEAD, 0);
 
         case AttackType::SIT:
-            if (srcBeing)
+            if (srcBeing != nullptr)
             {
                 srcBeing->setAction(BeingAction::SIT, 0);
                 if (srcBeing->getType() == ActorType::Player)
                 {
                     srcBeing->setMoveTime();
-                    if (localPlayer)
+                    if (localPlayer != nullptr)
                         localPlayer->imitateAction(srcBeing, BeingAction::SIT);
                 }
             }
             break;
 
         case AttackType::STAND:
-            if (srcBeing)
+            if (srcBeing != nullptr)
             {
                 srcBeing->setAction(BeingAction::STAND, 0);
                 if (srcBeing->getType() == ActorType::Player)
                 {
                     srcBeing->setMoveTime();
-                    if (localPlayer)
+                    if (localPlayer != nullptr)
                     {
                         localPlayer->imitateAction(srcBeing,
                             BeingAction::STAND);
@@ -242,7 +242,7 @@ void BeingRecv::processBeingAction(Net::MessageIn &msg)
 void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingEmotion")
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
     {
         BLOCK_END("BeingRecv::processBeingEmotion")
         return;
@@ -250,7 +250,7 @@ void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
 
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
-    if (!dstBeing)
+    if (dstBeing == nullptr)
     {
         DEBUGLOGSTR("invisible player?");
         msg.readUInt8("emote");
@@ -259,7 +259,7 @@ void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
     }
 
     const uint8_t emote = msg.readUInt8("emote");
-    if (emote &&
+    if ((emote != 0u) &&
         player_relations.hasPermission(dstBeing, PlayerRelation::EMOTE))
     {
         dstBeing->setEmote(emote, 0);
@@ -273,7 +273,7 @@ void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
 void BeingRecv::processNameResponse(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processNameResponse")
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
     {
         BLOCK_END("BeingRecv::processNameResponse")
         return;
@@ -285,7 +285,7 @@ void BeingRecv::processNameResponse(Net::MessageIn &msg)
 
     actorManager->updateNameId(name, beingId);
 
-    if (dstBeing)
+    if (dstBeing != nullptr)
     {
         if (beingId == localPlayer->getId())
         {
@@ -297,10 +297,10 @@ void BeingRecv::processNameResponse(Net::MessageIn &msg)
             {
                 dstBeing->setName(name);
             }
-            else if (viewport)
+            else if (viewport != nullptr)
             {
                 Map *const map = viewport->getMap();
-                if (map)
+                if (map != nullptr)
                 {
                     map->addPortalTile(name, MapItemType::PORTAL,
                         dstBeing->getTileX(), dstBeing->getTileY());
@@ -312,15 +312,15 @@ void BeingRecv::processNameResponse(Net::MessageIn &msg)
             if (dstBeing->getType() == ActorType::Player)
                 dstBeing->updateColors();
 
-            if (localPlayer)
+            if (localPlayer != nullptr)
             {
                 const Party *const party = localPlayer->getParty();
-                if (party && party->isMember(dstBeing->getId()))
+                if (party != nullptr && party->isMember(dstBeing->getId()))
                 {
                     PartyMember *const member = party->getMember(
                         dstBeing->getId());
 
-                    if (member)
+                    if (member != nullptr)
                         member->setName(dstBeing->getName());
                 }
                 localPlayer->checkNewName(dstBeing);
@@ -335,7 +335,7 @@ void BeingRecv::processNameResponse(Net::MessageIn &msg)
 void BeingRecv::processPlayerStop(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processPlayerStop")
-    if (!actorManager || !localPlayer)
+    if ((actorManager == nullptr) || (localPlayer == nullptr))
     {
         BLOCK_END("BeingRecv::processPlayerStop")
         return;
@@ -346,7 +346,7 @@ void BeingRecv::processPlayerStop(Net::MessageIn &msg)
     if (mSync || id != localPlayer->getId())
     {
         Being *const dstBeing = actorManager->findBeing(id);
-        if (dstBeing)
+        if (dstBeing != nullptr)
         {
             const uint16_t x = msg.readInt16("x");
             const uint16_t y = msg.readInt16("y");
@@ -372,7 +372,7 @@ void BeingRecv::processPlayerMoveToAttack(Net::MessageIn &msg)
     msg.readInt16("y");
     msg.readInt16("attack range");
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->fixAttackTarget();
     BLOCK_END("BeingRecv::processPlayerStop")
 }
@@ -391,7 +391,7 @@ void BeingRecv::processSkillNoDamage(Net::MessageIn &msg)
         msg.readBeingId("src being id"));
     msg.readUInt8("fail");
 
-    if (srcBeing)
+    if (srcBeing != nullptr)
         srcBeing->handleSkill(dstBeing, heal, id, 1);
 }
 
@@ -399,14 +399,14 @@ void BeingRecv::processPvpMapMode(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processPvpMapMode")
     const Game *const game = Game::instance();
-    if (!game)
+    if (game == nullptr)
     {
         BLOCK_END("BeingRecv::processPvpMapMode")
         return;
     }
 
     Map *const map = game->getCurrentMap();
-    if (map)
+    if (map != nullptr)
         map->setPvpMode(msg.readInt16("pvp mode"));
     BLOCK_END("BeingRecv::processPvpMapMode")
 }
@@ -414,7 +414,7 @@ void BeingRecv::processPvpMapMode(Net::MessageIn &msg)
 void BeingRecv::processBeingMove3(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingMove3")
-    if (!actorManager || !serverFeatures->haveMove3())
+    if ((actorManager == nullptr) || !serverFeatures->haveMove3())
     {
         BLOCK_END("BeingRecv::processBeingMove3")
         return;
@@ -426,7 +426,7 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     const int len = msg.readInt16("len") - 14;
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
-    if (!dstBeing || dstBeing == localPlayer)
+    if ((dstBeing == nullptr) || dstBeing == localPlayer)
     {
         DEBUGLOGSTR("invisible player?");
         msg.readInt16("speed");
@@ -443,7 +443,7 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     const unsigned char *moves = msg.readBytes(len, "moving path");
 
     Path path;
-    if (moves)
+    if (moves != nullptr)
     {
         int x2 = dstBeing->getCachedX();
         int y2 = dstBeing->getCachedY();
@@ -496,7 +496,7 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
 Being *BeingRecv::createBeing(const BeingId id,
                               const int job)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return nullptr;
 
     ActorTypeT type = ActorType::Unknown;

@@ -106,16 +106,16 @@ Label::Label(const Widget2 *const widget,
 
 Label::~Label()
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->removeWidgetListener(this);
 
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     mInstances --;
     if (mInstances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
     }
     removeMouseListener(this);
@@ -130,12 +130,12 @@ void Label::init()
     mForegroundColor2 = getThemeColor(ThemeColorId::LABEL_OUTLINE);
     if (mInstances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
             mSkin = theme->load("label.xml", "");
     }
     mInstances ++;
 
-    if (mSkin)
+    if (mSkin != nullptr)
         mPadding = mSkin->getPadding();
     else
         mPadding = 0;
@@ -179,7 +179,7 @@ void Label::draw(Graphics *const graphics)
     }
 
     const Image *const image = mTextChunk.img;
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, textX, textY);
     BLOCK_END("Label::draw")
 }
@@ -262,14 +262,14 @@ void Label::setCaption(const std::string& caption)
 
 void Label::setParent(Widget *const widget)
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->addWidgetListener(this);
     Widget::setParent(widget);
 }
 
 void Label::setWindow(Widget *const widget)
 {
-    if (!widget && mWindow)
+    if ((widget == nullptr) && (mWindow != nullptr))
     {
         mWindow->removeWidgetListener(this);
         mWindow = nullptr;

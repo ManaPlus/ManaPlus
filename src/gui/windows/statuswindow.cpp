@@ -62,7 +62,7 @@
 StatusWindow *statusWindow = nullptr;
 
 StatusWindow::StatusWindow() :
-    Window(localPlayer ? localPlayer->getName() :
+    Window(localPlayer != nullptr ? localPlayer->getName() :
         "?", Modal_false, nullptr, "status.xml"),
     ActionListener(),
     AttributeListener(),
@@ -89,7 +89,7 @@ StatusWindow::StatusWindow() :
     mCopyButton(new Button(this, _("Copy to chat"), "copy", this))
 {
     setWindowName("Status");
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
     setResizable(true);
     setCloseButton(true);
@@ -102,14 +102,14 @@ StatusWindow::StatusWindow() :
     mTabs->getWidgetContainer()->setSelectable(false);
     mTabs->getTabContainer()->setSelectable(false);
 
-    if (localPlayer && !localPlayer->getRaceName().empty())
+    if ((localPlayer != nullptr) && !localPlayer->getRaceName().empty())
     {
         setCaption(strprintf("%s (%s)", localPlayer->getName().c_str(),
             localPlayer->getRaceName().c_str()));
     }
 
     int max = PlayerInfo::getAttribute(Attributes::PLAYER_MAX_HP);
-    if (!max)
+    if (max == 0)
         max = 1;
 
     mHpBar = new ProgressBar(this,
@@ -125,7 +125,7 @@ StatusWindow::StatusWindow() :
 
     max = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
     mXpBar = new ProgressBar(this,
-        max ?
+        max != 0 ?
         static_cast<float>(PlayerInfo::getAttribute(Attributes::PLAYER_EXP)) /
         static_cast<float>(max) : static_cast<float>(0),
         80,
@@ -143,7 +143,7 @@ StatusWindow::StatusWindow() :
     mMpLabel = new Label(this, _("MP:"));
     const bool useMagic = playerHandler->canUseMagic();
     mMpBar = new ProgressBar(this,
-        max ? static_cast<float>(PlayerInfo::getAttribute(
+        max != 0 ? static_cast<float>(PlayerInfo::getAttribute(
         Attributes::PLAYER_MAX_MP)) / static_cast<float>(max)
         : static_cast<float>(0),
         80,
@@ -258,7 +258,7 @@ void StatusWindow::addTabBasic(const std::string &name)
 
 void StatusWindow::updateLevelLabel()
 {
-    if (localPlayer && localPlayer->isGM())
+    if ((localPlayer != nullptr) && localPlayer->isGM())
     {
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d (GM %d)"),
@@ -284,13 +284,13 @@ void StatusWindow::statChanged(const AttributesT id,
 
     if (id == Attributes::PLAYER_JOB)
     {
-        if (mJobLvlLabel)
+        if (mJobLvlLabel != nullptr)
         {
             int lvl = PlayerInfo::getStatBase(id);
             const int oldExp = oldVal1;
             const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
 
-            if (!lvl)
+            if (lvl == 0)
             {
                 // possible server broken and don't send job level,
                 // then we fixing it :)
@@ -381,7 +381,7 @@ void StatusWindow::setPointsNeeded(const AttributesT id,
 
 void StatusWindow::updateHPBar(ProgressBar *const bar, const bool showMax)
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     const int hp = PlayerInfo::getAttribute(Attributes::PLAYER_HP);
@@ -400,7 +400,7 @@ void StatusWindow::updateHPBar(ProgressBar *const bar, const bool showMax)
 void StatusWindow::updateMPBar(ProgressBar *const bar,
                                const bool showMax) const
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     const int mp = PlayerInfo::getAttribute(Attributes::PLAYER_MP);
@@ -435,7 +435,7 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar,
                                      const int max,
                                      const bool percent)
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     if (max == 0)
@@ -464,7 +464,7 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar,
 
 void StatusWindow::updateXPBar(ProgressBar *const bar, const bool percent)
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     updateProgressBar(bar, PlayerInfo::getAttribute(Attributes::PLAYER_EXP),
@@ -473,7 +473,7 @@ void StatusWindow::updateXPBar(ProgressBar *const bar, const bool percent)
 
 void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
@@ -491,7 +491,7 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar,
 
 void StatusWindow::updateWeightBar(ProgressBar *const bar)
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     if (PlayerInfo::getAttribute(Attributes::MAX_WEIGHT) == 0)
@@ -506,7 +506,7 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
             Attributes::TOTAL_WEIGHT);
         const int maxWeight = PlayerInfo::getAttribute(Attributes::MAX_WEIGHT);
         float progress = 1.0F;
-        if (maxWeight)
+        if (maxWeight != 0)
         {
             progress = static_cast<float>(totalWeight)
                 / static_cast<float>(maxWeight);
@@ -520,7 +520,7 @@ void StatusWindow::updateWeightBar(ProgressBar *const bar)
 
 void StatusWindow::updateMoneyBar(ProgressBar *const bar)
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     const int money = PlayerInfo::getAttribute(Attributes::MONEY);
@@ -539,13 +539,13 @@ void StatusWindow::updateMoneyBar(ProgressBar *const bar)
 
 void StatusWindow::updateArrowsBar(ProgressBar *const bar)
 {
-    if (!bar || !equipmentWindow)
+    if ((bar == nullptr) || (equipmentWindow == nullptr))
         return;
 
     const Item *const item = equipmentWindow->getEquipment(
         inventoryHandler->getProjectileSlot());
 
-    if (item && item->getQuantity() > 0)
+    if ((item != nullptr) && item->getQuantity() > 0)
         bar->setText(toString(item->getQuantity()));
     else
         bar->setText("0");
@@ -553,17 +553,17 @@ void StatusWindow::updateArrowsBar(ProgressBar *const bar)
 
 void StatusWindow::updateInvSlotsBar(ProgressBar *const bar)
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     const int usedSlots = inv->getNumberOfSlotsUsed();
     const int maxSlots = inv->getSize();
 
-    if (maxSlots)
+    if (maxSlots != 0)
     {
         bar->setProgress(static_cast<float>(usedSlots)
             / static_cast<float>(maxSlots));
@@ -576,7 +576,7 @@ std::string StatusWindow::translateLetter(const char *const letters)
 {
     char buf[2];
     char *const str = gettext(letters);
-    if (!str || strlen(str) != 3)
+    if ((str == nullptr) || strlen(str) != 3)
         return letters;
 
     buf[0] = str[1];
@@ -595,7 +595,7 @@ std::string StatusWindow::translateLetter2(const std::string &letters)
 void StatusWindow::updateStatusBar(ProgressBar *const bar,
                                    const bool percent A_UNUSED) const
 {
-    if (!bar)
+    if (bar == nullptr)
         return;
     bar->setText(translateLetter2(GameModifiers::getMoveTypeString())
         .append(translateLetter2(GameModifiers::getCrazyMoveTypeString()))
@@ -626,7 +626,7 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
 
 void StatusWindow::action(const ActionEvent &event)
 {
-    if (!chatWindow)
+    if (chatWindow == nullptr)
         return;
 
     if (event.getId() == "copy")

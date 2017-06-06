@@ -54,7 +54,7 @@ void BeingHandler::requestNameById(const BeingId id) const
 
 void BeingHandler::undress(Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
     being->unSetSprite(SPRITE_WEAPON);
     being->unSetSprite(SPRITE_HEAD_BOTTOM);
@@ -84,7 +84,7 @@ void BeingHandler::requestRanks(const RankT rank) const
 
 void BeingHandler::viewPlayerEquipment(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_VIEW_EQUIPMENT);

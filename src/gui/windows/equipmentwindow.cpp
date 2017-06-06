@@ -104,10 +104,10 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
 
     mYPadding = mTabs->getHeight() + getOption("tabPadding", 2);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
-    if (!mBoxSize)
+    if (mBoxSize == 0)
         mBoxSize = 36;
 
     // Control that shows the Player
@@ -154,7 +154,7 @@ EquipmentWindow::~EquipmentWindow()
 {
     if (this == beingEquipmentWindow)
     {
-        if (mEquipment)
+        if (mEquipment != nullptr)
             delete mEquipment->getBackend();
         delete2(mEquipment)
     }
@@ -165,14 +165,14 @@ EquipmentWindow::~EquipmentWindow()
         boxes.clear();
         delete *it;
     }
-    if (mImageSet)
+    if (mImageSet != nullptr)
     {
         mImageSet->decRef();
         mImageSet = nullptr;
     }
-    if (mSlotBackground)
+    if (mSlotBackground != nullptr)
         mSlotBackground->decRef();
-    if (mSlotHighlightedBackground)
+    if (mSlotHighlightedBackground != nullptr)
         mSlotHighlightedBackground->decRef();
     delete2(mVertexes);
 }
@@ -194,7 +194,7 @@ void EquipmentWindow::draw(Graphics *const graphics)
         FOR_EACH (std::vector<EquipmentBox*>::const_iterator, it, boxes)
         {
             const EquipmentBox *const box = *it;
-            if (!box)
+            if (box == nullptr)
             {
                 i ++;
                 continue;
@@ -217,7 +217,7 @@ void EquipmentWindow::draw(Graphics *const graphics)
     }
     graphics->drawTileCollection(mVertexes);
 
-    if (!mEquipment)
+    if (mEquipment == nullptr)
     {
         BLOCK_END("EquipmentWindow::draw")
         return;
@@ -229,14 +229,14 @@ void EquipmentWindow::draw(Graphics *const graphics)
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
-        if (!box)
+        if (box == nullptr)
             continue;
         const Item *const item = mEquipment->getEquipment(i);
-        if (item)
+        if (item != nullptr)
         {
             // Draw Item.
             Image *const image = item->getImage();
-            if (image)
+            if (image != nullptr)
             {
                 image->setAlpha(1.0F);  // Ensure the image is drawn
                                         // with maximum opacity
@@ -254,7 +254,7 @@ void EquipmentWindow::draw(Graphics *const graphics)
                 }
             }
         }
-        else if (box->image)
+        else if (box->image != nullptr)
         {
             graphics->drawImage(box->image,
                 box->x + mItemPadding,
@@ -279,7 +279,7 @@ void EquipmentWindow::safeDraw(Graphics *const graphics)
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
-        if (!box)
+        if (box == nullptr)
             continue;
         if (i == mSelected)
         {
@@ -292,7 +292,7 @@ void EquipmentWindow::safeDraw(Graphics *const graphics)
         }
     }
 
-    if (!mEquipment)
+    if (mEquipment == nullptr)
     {
         BLOCK_END("EquipmentWindow::draw")
         return;
@@ -304,14 +304,14 @@ void EquipmentWindow::safeDraw(Graphics *const graphics)
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
-        if (!box)
+        if (box == nullptr)
             continue;
         const Item *const item = mEquipment->getEquipment(i);
-        if (item)
+        if (item != nullptr)
         {
             // Draw Item.
             Image *const image = item->getImage();
-            if (image)
+            if (image != nullptr)
             {
                 image->setAlpha(1.0F);  // Ensure the image is drawn
                                         // with maximum opacity
@@ -329,7 +329,7 @@ void EquipmentWindow::safeDraw(Graphics *const graphics)
                 }
             }
         }
-        else if (box->image)
+        else if (box->image != nullptr)
         {
             graphics->drawImage(box->image,
                 box->x + mItemPadding,
@@ -344,17 +344,17 @@ void EquipmentWindow::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "unequip")
     {
-        if (!mEquipment || mSelected == -1)
+        if ((mEquipment == nullptr) || mSelected == -1)
             return;
 
         const Item *const item = mEquipment->getEquipment(mSelected);
         PlayerInfo::unequipItem(item, Sfx_true);
         setSelected(-1);
     }
-    else if (!eventId.find("tab_"))
+    else if (eventId.find("tab_") == 0u)
     {
         Button *const button = dynamic_cast<Button*>(event.getSource());
-        if (!button)
+        if (button == nullptr)
             return;
         mSelectedTab = button->getTag();
         updatePage();
@@ -367,13 +367,13 @@ void EquipmentWindow::action(const ActionEvent &event)
         {
             return;
         }
-        Inventory *const inventory = localPlayer
+        Inventory *const inventory = localPlayer != nullptr
             ? PlayerInfo::getInventory() : nullptr;
-        if (!inventory)
+        if (inventory == nullptr)
             return;
         Item *const item = inventory->findItem(dragDrop.getItem(),
             dragDrop.getItemColor());
-        if (!item)
+        if (item == nullptr)
             return;
 
         if (dragDrop.getSource() == DragDropSource::Inventory)
@@ -402,7 +402,7 @@ void EquipmentWindow::updatePage()
 
 const Item *EquipmentWindow::getItem(const int x, const int y) const
 {
-    if (!mEquipment)
+    if (mEquipment == nullptr)
         return nullptr;
 
     int i = 0;
@@ -412,7 +412,7 @@ const Item *EquipmentWindow::getItem(const int x, const int y) const
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
-        if (!box)
+        if (box == nullptr)
             continue;
         const Rect tRect(box->x, box->y, mBoxSize, mBoxSize);
 
@@ -424,7 +424,7 @@ const Item *EquipmentWindow::getItem(const int x, const int y) const
 
 void EquipmentWindow::mousePressed(MouseEvent& event)
 {
-    if (!mEquipment)
+    if (mEquipment == nullptr)
     {
         Window::mousePressed(event);
         return;
@@ -450,7 +450,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
              it_end = boxes.end(); it != it_end; ++ it, ++ i)
         {
             const EquipmentBox *const box = *it;
-            if (!box)
+            if (box == nullptr)
                 continue;
             const Item *const item = mEquipment->getEquipment(i);
             const Rect tRect(box->x, box->y, mBoxSize, mBoxSize);
@@ -458,7 +458,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
             if (tRect.isPointInRect(x, y))
             {
                 inBox = true;
-                if (item)
+                if (item != nullptr)
                 {
                     event.consume();
                     setSelected(i);
@@ -474,7 +474,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
     {
         if (const Item *const item = getItem(x, y))
         {
-            if (itemPopup)
+            if (itemPopup != nullptr)
                 itemPopup->setVisible(Visible_false);
 
             /* Convert relative to the window coordinates to absolute screen
@@ -482,7 +482,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
              */
             const int mx = x + getX();
             const int my = y + getY();
-            if (popupMenu)
+            if (popupMenu != nullptr)
             {
                 event.consume();
                 if (mForing)
@@ -510,14 +510,14 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
     {
         return;
     }
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
-    if (!inventory)
+    if (inventory == nullptr)
         return;
 
     Item *const item = inventory->findItem(dragDrop.getItem(),
         dragDrop.getItemColor());
-    if (!item)
+    if (item == nullptr)
         return;
 
     if (dragDrop.getSource() == DragDropSource::Inventory)
@@ -540,7 +540,7 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
                  it != it_end; ++ it)
             {
                 const EquipmentBox *const box = *it;
-                if (!box)
+                if (box == nullptr)
                     continue;
                 const Rect tRect(box->x, box->y, mBoxSize, mBoxSize);
 
@@ -561,7 +561,7 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
 
-    if (!itemPopup)
+    if (itemPopup == nullptr)
         return;
 
     const int x = event.getX();
@@ -569,7 +569,7 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
 
     const Item *const item = getItem(x, y);
 
-    if (item)
+    if (item != nullptr)
     {
         itemPopup->setItem(item, false);
         itemPopup->position(x + getX(), y + getY());
@@ -583,7 +583,7 @@ void EquipmentWindow::mouseMoved(MouseEvent &event)
 // Hide ItemTooltip
 void EquipmentWindow::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
 }
 
@@ -591,9 +591,9 @@ void EquipmentWindow::setSelected(const int index)
 {
     mSelected = index;
     mRedraw = true;
-    if (mUnequip)
+    if (mUnequip != nullptr)
         mUnequip->setEnabled(mSelected != -1);
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
 }
 
@@ -601,10 +601,10 @@ void EquipmentWindow::setBeing(Being *const being)
 {
     mPlayerBox->setPlayer(being);
     mBeing = being;
-    if (mEquipment)
+    if (mEquipment != nullptr)
         delete mEquipment->getBackend();
     delete mEquipment;
-    if (!being)
+    if (being == nullptr)
     {
         mEquipment = nullptr;
         return;
@@ -631,14 +631,14 @@ void EquipmentWindow::fillBoxes()
         UseVirtFs_true,
         SkipError_false);
     XmlNodeConstPtr root = doc->rootNode();
-    if (!root)
+    if (root == nullptr)
     {
         delete doc;
         fillDefault();
         return;
     }
 
-    if (mImageSet)
+    if (mImageSet != nullptr)
         mImageSet->decRef();
 
     mImageSet = Theme::getImageSetFromTheme(XML::getProperty(
@@ -668,7 +668,7 @@ void EquipmentWindow::addDefaultPage()
 
 void EquipmentWindow::loadPage(XmlNodeConstPtr node)
 {
-    if (!node)
+    if (node == nullptr)
         return;
     // TRANSLATORS: unknown equipment page name
     const std::string &name = XML::langProperty(node, "name", _("Unknown"));
@@ -696,7 +696,7 @@ void EquipmentWindow::loadSlot(XmlNodeConstPtr slotNode,
                                const ImageSet *const imageset,
                                const int page)
 {
-    if (!imageset)
+    if (imageset == nullptr)
         return;
     const int slot = parseSlotName(XML::getProperty(slotNode, "name", ""));
     if (slot < 0)
@@ -712,7 +712,7 @@ void EquipmentWindow::loadSlot(XmlNodeConstPtr slotNode,
         image = imageset->get(imageIndex);
 
     std::vector<EquipmentBox*> &boxes = mPages[page]->boxes;
-    if (boxes[slot])
+    if (boxes[slot] != nullptr)
     {
         EquipmentBox *const box = boxes[slot];
         box->x = x;
@@ -740,7 +740,7 @@ void EquipmentWindow::prepareSlotNames()
         UseVirtFs_true,
         SkipError_false);
     XmlNodeConstPtrConst root = doc.rootNode();
-    if (!root)
+    if (root == nullptr)
         return;
 
     for_each_xml_child_node(slotNode, root)
@@ -776,7 +776,7 @@ int EquipmentWindow::parseSlotName(const std::string &name)
 
 void EquipmentWindow::fillDefault()
 {
-    if (mImageSet)
+    if (mImageSet != nullptr)
         mImageSet->decRef();
 
     addDefaultPage();
@@ -802,7 +802,7 @@ void EquipmentWindow::addBox(const int idx, int x, int y, const int imageIndex)
 {
     Image *image = nullptr;
 
-    if (mImageSet && imageIndex >= 0 && imageIndex
+    if ((mImageSet != nullptr) && imageIndex >= 0 && imageIndex
         < CAST_S32(mImageSet->size()))
     {
         image = mImageSet->get(imageIndex);

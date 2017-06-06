@@ -49,7 +49,7 @@ void TextSkillListener::setSkill(const int skillId,
 
 void TextSkillListener::action(const ActionEvent &event)
 {
-    if (event.getId() == "ok" && mDialog)
+    if (event.getId() == "ok" && (mDialog != nullptr))
     {
         const std::string text = mDialog->getText();
         if (text.empty())

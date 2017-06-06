@@ -49,12 +49,12 @@ void QuestRecv::processAddQuest(Net::MessageIn &msg)
 
     msg.skipToEnd("unused");
 
-    if (questsWindow)
+    if (questsWindow != nullptr)
     {
         questsWindow->updateQuest(var, val, 0, 0, 0);
         questsWindow->rebuild(true);
     }
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         skillDialog->updateQuest(var, val, 0, 0, 0);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
@@ -70,12 +70,12 @@ void QuestRecv::processAddQuest2(Net::MessageIn &msg)
     const int val3 = msg.readInt32("count3");
     const int time = msg.readInt32("time");
 
-    if (questsWindow)
+    if (questsWindow != nullptr)
     {
         questsWindow->updateQuest(var, val1, val2, val3, time);
         questsWindow->rebuild(true);
     }
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         skillDialog->updateQuest(var, val1, val2, val3, time);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);
@@ -96,13 +96,13 @@ void QuestRecv::processAddQuests(Net::MessageIn &msg)
             msg.readInt32("time");
             msg.readInt16("objectives count");
         }
-        if (questsWindow)
+        if (questsWindow != nullptr)
             questsWindow->updateQuest(var, val, 0, 0, 0);
-        if (skillDialog)
+        if (skillDialog != nullptr)
             skillDialog->updateQuest(var, val, 0, 0, 0);
     }
 
-    if (questsWindow)
+    if (questsWindow != nullptr)
         questsWindow->rebuild(false);
 }
 
@@ -118,13 +118,13 @@ void QuestRecv::processAddQuests2(Net::MessageIn &msg)
         const int val2 = msg.readInt32("count2");
         const int val3 = msg.readInt32("count3");
         const int time = msg.readInt32("time");
-        if (questsWindow)
+        if (questsWindow != nullptr)
             questsWindow->updateQuest(var, val1, val2, val3, time);
-        if (skillDialog)
+        if (skillDialog != nullptr)
             skillDialog->updateQuest(var, val1, val2, val3, time);
     }
 
-    if (questsWindow)
+    if (questsWindow != nullptr)
         questsWindow->rebuild(false);
 }
 
@@ -170,12 +170,12 @@ void QuestRecv::processRemoveQuest(Net::MessageIn &msg)
 
     // not removing quest, because this is impossible,
     // but changing status to -1
-    if (questsWindow)
+    if (questsWindow != nullptr)
     {
         questsWindow->updateQuest(var, val, 0, 0, 0);
         questsWindow->rebuild(true);
     }
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         skillDialog->updateQuest(var, val, 0, 0, 0);
         skillDialog->playUpdateEffect(var + SKILL_VAR_MIN_ID);

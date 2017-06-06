@@ -168,7 +168,7 @@ void Logger::dlog2(const std::string &str,
 
     if (mLogFile.is_open())
     {
-        if (comment)
+        if (comment != nullptr)
         {
             mLogFile << timeStr.str();
             mLogFile.fill('0');
@@ -188,7 +188,7 @@ void Logger::dlog2(const std::string &str,
 
     if (mLogToStandardOut)
     {
-        if (comment)
+        if (comment != nullptr)
         {
             std::cout << timeStr.str();
             std::cout.fill('0');

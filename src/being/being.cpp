@@ -203,8 +203,10 @@ Being::Being(const BeingId id,
     mIsGM(false),
     mType(type),
     mSpeechBubble(nullptr),
-    mWalkSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed() : 1),
-    mSpeed(playerHandler ? playerHandler->getDefaultWalkSpeed() : 1),
+    mWalkSpeed(playerHandler != nullptr ?
+               playerHandler->getDefaultWalkSpeed() : 1),
+    mSpeed(playerHandler != nullptr ?
+           playerHandler->getDefaultWalkSpeed() : 1),
     mIp(),
     mSpriteRemap(new int[20]),
     mSpriteHide(new int[20]),
@@ -358,7 +360,7 @@ void Being::createSpeechBubble() restrict2
 void Being::setSubtype(const BeingTypeId subtype,
                        const uint16_t look) restrict2
 {
-    if (!mInfo)
+    if (mInfo == nullptr)
         return;
 
     if (subtype == mSubType && mLook == look)
@@ -371,7 +373,7 @@ void Being::setSubtype(const BeingTypeId subtype,
     {
         case ActorType::Monster:
             mInfo = MonsterDB::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
@@ -383,7 +385,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Pet:
             mInfo = PETDB::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
@@ -395,7 +397,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Mercenary:
             mInfo = MercenaryDB::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
@@ -407,7 +409,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Homunculus:
             mInfo = HomunculusDB::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
@@ -419,7 +421,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::SkillUnit:
             mInfo = SkillUnitDb::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
@@ -431,7 +433,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Elemental:
             mInfo = ElementalDb::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
@@ -443,7 +445,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Npc:
             mInfo = NPCDB::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
                 mYDiff = mInfo->getSortOffsetY();
@@ -451,7 +453,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             break;
         case ActorType::Avatar:
             mInfo = AvatarDB::get(mSubType);
-            if (mInfo)
+            if (mInfo != nullptr)
                 setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
             break;
         case ActorType::Player:
@@ -463,7 +465,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 id = -100;
                 // TRANSLATORS: default race name
                 setRaceName(_("Human"));
-                if (charServerHandler)
+                if (charServerHandler != nullptr)
                 {
                     setSpriteId(charServerHandler->baseSprite(),
                         id);
@@ -473,7 +475,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             {
                 const ItemInfo &restrict info = ItemDB::get(id);
                 setRaceName(info.getName());
-                if (charServerHandler)
+                if (charServerHandler != nullptr)
                 {
                     setSpriteColor(charServerHandler->baseSprite(),
                         id,
@@ -495,7 +497,7 @@ void Being::setSubtype(const BeingTypeId subtype,
 
 TargetCursorSizeT Being::getTargetCursorSize() const restrict2
 {
-    if (!mInfo)
+    if (mInfo == nullptr)
         return TargetCursorSize::SMALL;
 
     return mInfo->getTargetCursorSize();
@@ -507,7 +509,7 @@ void Being::setPixelPositionF(const Vector &restrict pos) restrict2
 
     updateCoords();
 
-    if (mText)
+    if (mText != nullptr)
     {
         mText->adviseXY(CAST_S32(pos.x),
             CAST_S32(pos.y) - getHeight() - mText->getHeight() - 9,
@@ -518,7 +520,7 @@ void Being::setPixelPositionF(const Vector &restrict pos) restrict2
 void Being::setDestination(const int dstX,
                            const int dstY) restrict2
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
 
     setPath(mMap->findPath(mX, mY, dstX, dstY, getBlockWalkMask()));
@@ -546,11 +548,11 @@ void Being::setSpeech(const std::string &restrict text,
                       const std::string &restrict channel,
                       int time) restrict2
 {
-    if (!userPalette)
+    if (userPalette == nullptr)
         return;
 
-    if (!channel.empty() && (!langChatTab || langChatTab->getChannelName()
-        != channel))
+    if (!channel.empty() &&
+        ((langChatTab == nullptr) || langChatTab->getChannelName() != channel))
     {
         return;
     }
@@ -569,7 +571,7 @@ void Being::setSpeech(const std::string &restrict text,
     if (mSpeech.empty())
         return;
 
-    if (!time)
+    if (time == 0)
     {
         const size_t sz = mSpeech.size();
         if (sz < 200)
@@ -634,9 +636,9 @@ void Being::setSpeech(const std::string &restrict text,
     else
     {
         const bool isShowName = (speech == BeingSpeech::NAME_IN_BUBBLE);
-        if (!mSpeechBubble)
+        if (mSpeechBubble == nullptr)
             createSpeechBubble();
-        if (mSpeechBubble)
+        if (mSpeechBubble != nullptr)
         {
             mSpeechBubble->setCaption(isShowName ? mName : "");
             mSpeechBubble->setText(mSpeech, isShowName);
@@ -650,18 +652,18 @@ void Being::takeDamage(Being *restrict const attacker,
                        const int attackId,
                        const int level) restrict2
 {
-    if (!userPalette || !attacker)
+    if ((userPalette == nullptr) || (attacker == nullptr))
         return;
 
     BLOCK_START("Being::takeDamage1")
 
     Font *font = nullptr;
-    const std::string damage = amount ? toString(amount) :
+    const std::string damage = amount != 0 ? toString(amount) :
         // TRANSLATORS: dodge or miss message in attacks
         type == AttackType::FLEE ? _("dodge") : _("miss");
     const Color *color;
 
-    if (gui)
+    if (gui != nullptr)
         font = gui->getInfoParticleFont();
 
     // Selecting the right color
@@ -680,7 +682,7 @@ void Being::takeDamage(Being *restrict const attacker,
             color = &userPalette->getColor(UserColorId::HIT_CRITICAL);
         }
     }
-    else if (!amount)
+    else if (amount == 0)
     {
         if (attacker == localPlayer)
         {
@@ -724,18 +726,18 @@ void Being::takeDamage(Being *restrict const attacker,
         color = &userPalette->getColor(UserColorId::HIT_MONSTER_PLAYER);
     }
 
-    if (chatWindow && mShowBattleEvents)
+    if ((chatWindow != nullptr) && mShowBattleEvents)
     {
         if (this == localPlayer)
         {
-            if (attacker->mType == ActorType::Player || amount)
+            if (attacker->mType == ActorType::Player || (amount != 0))
             {
                 chatWindow->battleChatLog(strprintf("%s : Hit you  -%d",
                     attacker->getName().c_str(), amount),
                     ChatMsgType::BY_OTHER);
             }
         }
-        else if (attacker == localPlayer && amount)
+        else if (attacker == localPlayer && (amount != 0))
         {
             chatWindow->battleChatLog(strprintf("%s : You hit %s -%d",
                 attacker->mName.c_str(),
@@ -744,7 +746,7 @@ void Being::takeDamage(Being *restrict const attacker,
                 ChatMsgType::BY_PLAYER);
         }
     }
-    if (font && particleEngine && color)
+    if ((font != nullptr) && (particleEngine != nullptr) && (color != nullptr))
     {
         // Show damage number
         particleEngine->addTextSplashEffect(damage,
@@ -762,11 +764,11 @@ void Being::takeDamage(Being *restrict const attacker,
 
     if (amount > 0)
     {
-        if (localPlayer && localPlayer == this)
+        if ((localPlayer != nullptr) && localPlayer == this)
             localPlayer->setLastHitFrom(attacker->mName);
 
         mDamageTaken += amount;
-        if (mInfo)
+        if (mInfo != nullptr)
         {
             playSfx(mInfo->getSound(ItemSoundEvent::HURT),
                 this,
@@ -776,11 +778,11 @@ void Being::takeDamage(Being *restrict const attacker,
 
             if (!mInfo->isStaticMaxHP())
             {
-                if (!mHP && mInfo->getMaxHP() < mDamageTaken)
+                if ((mHP == 0) && mInfo->getMaxHP() < mDamageTaken)
                     mInfo->setMaxHP(mDamageTaken);
             }
         }
-        if (mHP && isAlive())
+        if ((mHP != 0) && isAlive())
         {
             mHP -= amount;
             if (mHP < 0)
@@ -793,13 +795,13 @@ void Being::takeDamage(Being *restrict const attacker,
             updateName();
         }
         else if (mType == ActorType::Player &&
-                 socialWindow &&
+                 (socialWindow != nullptr) &&
                  !mName.empty())
         {
             socialWindow->updateAvatar(mName);
         }
 
-        if (effectManager)
+        if (effectManager != nullptr)
         {
             const int hitEffectId = getHitEffect(attacker,
                 type,
@@ -811,7 +813,7 @@ void Being::takeDamage(Being *restrict const attacker,
     }
     else
     {
-        if (effectManager)
+        if (effectManager != nullptr)
         {
             int hitEffectId = -1;
             if (type == AttackType::SKILL)
@@ -840,7 +842,7 @@ int Being::getHitEffect(const Being *restrict const attacker,
                         const int attackId,
                         const int level) const restrict2
 {
-    if (!effectManager)
+    if (effectManager == nullptr)
         return 0;
 
     BLOCK_START("Being::getHitEffect")
@@ -851,7 +853,7 @@ int Being::getHitEffect(const Being *restrict const attacker,
     {
         const SkillData *restrict const data =
             skillDialog->getSkillDataByLevel(attackId, level);
-        if (!data)
+        if (data == nullptr)
             return -1;
         if (type == AttackType::SKILL)
         {
@@ -868,11 +870,12 @@ int Being::getHitEffect(const Being *restrict const attacker,
     }
     else
     {
-        if (attacker)
+        if (attacker != nullptr)
         {
             const ItemInfo *restrict const attackerWeapon
                 = attacker->getEquippedWeapon();
-            if (attackerWeapon && attacker->getType() == ActorType::Player)
+            if (attackerWeapon != nullptr &&
+                attacker->getType() == ActorType::Player)
             {
                 if (type == AttackType::MISS)
                     hitEffectId = attackerWeapon->getMissEffectId();
@@ -884,11 +887,11 @@ int Being::getHitEffect(const Being *restrict const attacker,
             else if (attacker->getType() == ActorType::Monster)
             {
                 const BeingInfo *restrict const info = attacker->getInfo();
-                if (info)
+                if (info != nullptr)
                 {
                     const Attack *restrict const atk =
                         info->getAttack(attackId);
-                    if (atk)
+                    if (atk != nullptr)
                     {
                         if (type == AttackType::MISS)
                             hitEffectId = atk->mMissEffectId;
@@ -931,7 +934,7 @@ void Being::handleAttack(Being *restrict const victim,
                          const int damage,
                          const int attackId) restrict2
 {
-    if (!victim || !mInfo)
+    if ((victim == nullptr) || (mInfo == nullptr))
         return;
 
     BLOCK_START("Being::handleAttack")
@@ -942,9 +945,9 @@ void Being::handleAttack(Being *restrict const victim,
     mLastAttackX = victim->mX;
     mLastAttackY = victim->mY;
 
-    if (mType == ActorType::Player && mEquippedWeapon)
+    if (mType == ActorType::Player && (mEquippedWeapon != nullptr))
         fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
-    else if (mInfo->getAttack(attackId))
+    else if (mInfo->getAttack(attackId) != nullptr)
         fireMissile(victim, mInfo->getAttack(attackId)->mMissileParticle);
 
     reset();
@@ -955,11 +958,11 @@ void Being::handleAttack(Being *restrict const victim,
     {
         const uint8_t dir = calcDirection(victim->mX,
             victim->mY);
-        if (dir)
+        if (dir != 0u)
             setDirection(dir);
     }
 
-    if (damage && victim->mType == ActorType::Player
+    if ((damage != 0) && victim->mType == ActorType::Player
         && victim->mAction == BeingAction::SIT)
     {
         victim->setAction(BeingAction::STAND, 0);
@@ -971,7 +974,7 @@ void Being::handleAttack(Being *restrict const victim,
         {
             // here 10 is weapon slot
             int weaponId = mSlots[10].spriteId;
-            if (!weaponId)
+            if (weaponId == 0)
                 weaponId = -100 - toInt(mSubType, int);
             const ItemInfo &info = ItemDB::get(weaponId);
             playSfx(info.getSound(
@@ -993,7 +996,7 @@ void Being::handleSkillCasting(Being *restrict const victim,
                                const int skillId,
                                const int skillLevel) restrict2
 {
-    if (!victim || !mInfo || !skillDialog)
+    if ((victim == nullptr) || (mInfo == nullptr) || (skillDialog == nullptr))
         return;
 
     setAction(BeingAction::CAST, skillId);
@@ -1002,7 +1005,7 @@ void Being::handleSkillCasting(Being *restrict const victim,
         skillId,
         skillLevel);
 
-    if (data)
+    if (data != nullptr)
     {
         effectManager->triggerDefault(data->castingSrcEffectId,
             this,
@@ -1019,13 +1022,13 @@ void Being::handleSkill(Being *restrict const victim,
                         const int skillId,
                         const int skillLevel) restrict2
 {
-    if (!victim || !mInfo || !skillDialog)
+    if ((victim == nullptr) || (mInfo == nullptr) || (skillDialog == nullptr))
         return;
 
     const SkillInfo *restrict const skill = skillDialog->getSkill(skillId);
-    const SkillData *restrict const data = skill
+    const SkillData *restrict const data = skill != nullptr
         ? skill->getData1(skillLevel) : nullptr;
-    if (data)
+    if (data != nullptr)
     {
         effectManager->triggerDefault(data->srcEffectId,
             this,
@@ -1036,7 +1039,7 @@ void Being::handleSkill(Being *restrict const victim,
         fireMissile(victim, data->particle);
     }
 
-    if (this != localPlayer && skill)
+    if (this != localPlayer && (skill != nullptr))
     {
         const SkillType::SkillType type = skill->type;
         if ((type & SkillType::Attack) != 0 ||
@@ -1058,15 +1061,15 @@ void Being::handleSkill(Being *restrict const victim,
     {
         const uint8_t dir = calcDirection(victim->mX,
             victim->mY);
-        if (dir)
+        if (dir != 0u)
             setDirection(dir);
     }
-    if (damage && victim->mType == ActorType::Player
+    if ((damage != 0) && victim->mType == ActorType::Player
         && victim->mAction == BeingAction::SIT)
     {
         victim->setAction(BeingAction::STAND, 0);
     }
-    if (data)
+    if (data != nullptr)
     {
         if (damage > 0)
             playSfx(data->soundHit, victim, true, mX, mY);
@@ -1086,7 +1089,7 @@ void Being::handleSkill(Being *restrict const victim,
 void Being::showNameBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Name]);
-    if (show && !mName.empty() && mShowBadges)
+    if (show && !mName.empty() && (mShowBadges != 0u))
     {
         const std::string badge = BadgesDB::getNameBadge(mName);
         if (!badge.empty())
@@ -1143,7 +1146,7 @@ void Being::setShowName(const bool doShowName) restrict2
 void Being::showGuildBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Guild]);
-    if (show && !mGuildName.empty() && mShowBadges)
+    if (show && !mGuildName.empty() && (mShowBadges != 0u))
     {
         const std::string badge = BadgesDB::getGuildBadge(mGuildName);
         if (!badge.empty())
@@ -1170,21 +1173,21 @@ void Being::setGuildPos(const std::string &restrict pos A_UNUSED) restrict2
 
 void Being::addGuild(Guild *restrict const guild) restrict2
 {
-    if (!guild)
+    if (guild == nullptr)
         return;
 
     mGuilds[guild->getId()] = guild;
 
-    if (this == localPlayer && socialWindow)
+    if (this == localPlayer && (socialWindow != nullptr))
         socialWindow->addTab(guild);
 }
 
 void Being::removeGuild(const int id) restrict2
 {
-    if (this == localPlayer && socialWindow)
+    if (this == localPlayer && (socialWindow != nullptr))
         socialWindow->removeTab(mGuilds[id]);
 
-    if (mGuilds[id])
+    if (mGuilds[id] != nullptr)
         mGuilds[id]->removeMember(mName);
     mGuilds.erase(id);
 }
@@ -1195,7 +1198,7 @@ const Guild *Being::getGuild(const std::string &restrict guildName) const
     FOR_EACH (GuildsMapCIter, itr, mGuilds)
     {
         const Guild *restrict const guild = itr->second;
-        if (guild && guild->getName() == guildName)
+        if ((guild != nullptr) && guild->getName() == guildName)
             return guild;
     }
 
@@ -1226,9 +1229,9 @@ void Being::clearGuilds() restrict2
     {
         Guild *const guild = itr->second;
 
-        if (guild)
+        if (guild != nullptr)
         {
-            if (this == localPlayer && socialWindow)
+            if (this == localPlayer && (socialWindow != nullptr))
                 socialWindow->removeTab(guild);
 
             guild->removeMember(mId);
@@ -1246,37 +1249,37 @@ void Being::setParty(Party *restrict const party) restrict2
     Party *const old = mParty;
     mParty = party;
 
-    if (old)
+    if (old != nullptr)
         old->removeMember(mId);
 
-    if (party)
+    if (party != nullptr)
         party->addMember(mId, mName);
 
     updateColors();
 
-    if (this == localPlayer && socialWindow)
+    if (this == localPlayer && (socialWindow != nullptr))
     {
-        if (old)
+        if (old != nullptr)
             socialWindow->removeTab(old);
 
-        if (party)
+        if (party != nullptr)
             socialWindow->addTab(party);
     }
 }
 
 void Being::updateGuild() restrict2
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     Guild *restrict const guild = localPlayer->getGuild();
-    if (!guild)
+    if (guild == nullptr)
     {
         clearGuilds();
         updateColors();
         return;
     }
-    if (guild->getMember(mName))
+    if (guild->getMember(mName) != nullptr)
     {
         setGuild(guild);
         if (!guild->getName().empty())
@@ -1294,17 +1297,17 @@ void Being::setGuild(Guild *restrict const guild) restrict2
     clearGuilds();
     addGuild(guild);
 
-    if (old)
+    if (old != nullptr)
         old->removeMember(mName);
 
     updateColors();
 
-    if (this == localPlayer && socialWindow)
+    if (this == localPlayer && (socialWindow != nullptr))
     {
-        if (old)
+        if (old != nullptr)
             socialWindow->removeTab(old);
 
-        if (guild)
+        if (guild != nullptr)
             socialWindow->addTab(guild);
     }
 }
@@ -1312,14 +1315,14 @@ void Being::setGuild(Guild *restrict const guild) restrict2
 void Being::fireMissile(Being *restrict const victim,
                         const std::string &restrict particle) const restrict2
 {
-    if (!victim || particle.empty() || !particleEngine)
+    if ((victim == nullptr) || particle.empty() || (particleEngine == nullptr))
         return;
 
     BLOCK_START("Being::fireMissile")
 
     Particle *restrict const target = particleEngine->createChild();
 
-    if (!target)
+    if (target == nullptr)
     {
         BLOCK_END("Being::fireMissile")
         return;
@@ -1330,7 +1333,7 @@ void Being::fireMissile(Being *restrict const victim,
         mPixelX,
         mPixelY);
 
-    if (missile)
+    if (missile != nullptr)
     {
         target->moveBy(Vector(0.0F, 0.0F, 32.0F));
         target->setLifetime(1000);
@@ -1347,14 +1350,14 @@ std::string Being::getSitAction() const restrict2
 {
     if (mHorseId != 0)
         return SpriteAction::SITRIDE;
-    if (mMap)
+    if (mMap != nullptr)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
-        if (mask & BlockMask::GROUNDTOP)
+        if ((mask & BlockMask::GROUNDTOP) != 0)
             return SpriteAction::SITTOP;
-        else if (mask & BlockMask::AIR)
+        else if ((mask & BlockMask::AIR) != 0)
             return SpriteAction::SITSKY;
-        else if (mask & BlockMask::WATER)
+        else if ((mask & BlockMask::WATER) != 0)
             return SpriteAction::SITWATER;
     }
     return SpriteAction::SIT;
@@ -1365,12 +1368,12 @@ std::string Being::getMoveAction() const restrict2
 {
     if (mHorseId != 0)
         return SpriteAction::RIDE;
-    if (mMap)
+    if (mMap != nullptr)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
-        if (mask & BlockMask::AIR)
+        if ((mask & BlockMask::AIR) != 0)
             return SpriteAction::FLY;
-        else if (mask & BlockMask::WATER)
+        else if ((mask & BlockMask::WATER) != 0)
             return SpriteAction::SWIM;
     }
     return SpriteAction::MOVE;
@@ -1379,17 +1382,17 @@ std::string Being::getMoveAction() const restrict2
 std::string Being::getWeaponAttackAction(const ItemInfo *restrict const weapon)
                                          const restrict2
 {
-    if (!weapon)
+    if (weapon == nullptr)
         return getAttackAction();
 
     if (mHorseId != 0)
         return weapon->getRideAttackAction();
-    if (mMap)
+    if (mMap != nullptr)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
-        if (mask & BlockMask::AIR)
+        if ((mask & BlockMask::AIR) != 0)
             return weapon->getSkyAttackAction();
-        else if (mask & BlockMask::WATER)
+        else if ((mask & BlockMask::WATER) != 0)
             return weapon->getWaterAttackAction();
     }
     return weapon->getAttackAction();
@@ -1398,17 +1401,17 @@ std::string Being::getWeaponAttackAction(const ItemInfo *restrict const weapon)
 std::string Being::getAttackAction(const Attack *restrict const attack1) const
                                    restrict2
 {
-    if (!attack1)
+    if (attack1 == nullptr)
         return getAttackAction();
 
     if (mHorseId != 0)
         return attack1->mRideAction;
-    if (mMap)
+    if (mMap != nullptr)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
-        if (mask & BlockMask::AIR)
+        if ((mask & BlockMask::AIR) != 0)
             return attack1->mSkyAction;
-        else if (mask & BlockMask::WATER)
+        else if ((mask & BlockMask::WATER) != 0)
             return attack1->mWaterAction;
     }
     return attack1->mAction;
@@ -1417,17 +1420,17 @@ std::string Being::getAttackAction(const Attack *restrict const attack1) const
 std::string Being::getCastAction(const SkillInfo *restrict const skill) const
                                  restrict2
 {
-    if (!skill)
+    if (skill == nullptr)
         return getCastAction();
 
     if (mHorseId != 0)
         return skill->castingRideAction;
-    if (mMap)
+    if (mMap != nullptr)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
-        if (mask & BlockMask::AIR)
+        if ((mask & BlockMask::AIR) != 0)
             return skill->castingSkyAction;
-        else if (mask & BlockMask::WATER)
+        else if ((mask & BlockMask::WATER) != 0)
             return skill->castingWaterAction;
     }
     return skill->castingAction;
@@ -1458,23 +1461,23 @@ std::string Being::getStandAction() const restrict2
 {
     if (mHorseId != 0)
         return SpriteAction::STANDRIDE;
-    if (mMap)
+    if (mMap != nullptr)
     {
         const unsigned char mask = mMap->getBlockMask(mX, mY);
         if (mTrickDead)
         {
-            if (mask & BlockMask::AIR)
+            if ((mask & BlockMask::AIR) != 0)
                 return SpriteAction::DEADSKY;
-            else if (mask & BlockMask::WATER)
+            else if ((mask & BlockMask::WATER) != 0)
                 return SpriteAction::DEADWATER;
             else
                 return SpriteAction::DEAD;
         }
         else
         {
-            if (mask & BlockMask::AIR)
+            if ((mask & BlockMask::AIR) != 0)
                 return SpriteAction::STANDSKY;
-            else if (mask & BlockMask::WATER)
+            else if ((mask & BlockMask::WATER) != 0)
                 return SpriteAction::STANDWATER;
         }
     }
@@ -1489,7 +1492,7 @@ void Being::setAction(const BeingActionT &restrict action,
     switch (action)
     {
         case BeingAction::MOVE:
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 playSfx(mInfo->getSound(
                     ItemSoundEvent::MOVE), nullptr, true, mX, mY);
@@ -1501,7 +1504,7 @@ void Being::setAction(const BeingActionT &restrict action,
             break;
         case BeingAction::SIT:
             currentAction = getSitAction();
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 ItemSoundEvent::Type event;
                 if (currentAction == SpriteAction::SITTOP)
@@ -1512,21 +1515,21 @@ void Being::setAction(const BeingActionT &restrict action,
             }
             break;
         case BeingAction::ATTACK:
-            if (mEquippedWeapon)
+            if (mEquippedWeapon != nullptr)
             {
                 currentAction = getWeaponAttackAction(mEquippedWeapon);
                 reset();
             }
             else
             {
-                if (!mInfo || !mInfo->getAttack(attackId))
+                if ((mInfo == nullptr) || (mInfo->getAttack(attackId) == nullptr))
                     break;
 
                 currentAction = getAttackAction(mInfo->getAttack(attackId));
                 reset();
 
                 // attack particle effect
-                if (ParticleEngine::enabled && effectManager)
+                if (ParticleEngine::enabled && (effectManager != nullptr))
                 {
                     const int effectId = mInfo->getAttack(attackId)->mEffectId;
                     if (effectId >= 0)
@@ -1539,7 +1542,7 @@ void Being::setAction(const BeingActionT &restrict action,
             }
             break;
         case BeingAction::CAST:
-            if (skillDialog)
+            if (skillDialog != nullptr)
             {
                 const SkillInfo *restrict const info =
                     skillDialog->getSkill(attackId);
@@ -1547,7 +1550,7 @@ void Being::setAction(const BeingActionT &restrict action,
             }
             break;
         case BeingAction::HURT:
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 playSfx(mInfo->getSound(ItemSoundEvent::HURT),
                     this, false, mX, mY);
@@ -1555,7 +1558,7 @@ void Being::setAction(const BeingActionT &restrict action,
             break;
         case BeingAction::DEAD:
             currentAction = getDeadAction();
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 playSfx(mInfo->getSound(ItemSoundEvent::DIE),
                     this,
@@ -1573,7 +1576,7 @@ void Being::setAction(const BeingActionT &restrict action,
             currentAction = getStandAction();
             break;
         case BeingAction::SPAWN:
-            if (mInfo)
+            if (mInfo != nullptr)
             {
                 playSfx(mInfo->getSound(ItemSoundEvent::SPAWN),
                     nullptr, true, mX, mY);
@@ -1591,14 +1594,14 @@ void Being::setAction(const BeingActionT &restrict action,
     {
         mSpriteAction = currentAction;
         play(currentAction);
-        if (mEmotionSprite)
+        if (mEmotionSprite != nullptr)
             mEmotionSprite->play(currentAction);
-        if (mAnimationEffect)
+        if (mAnimationEffect != nullptr)
             mAnimationEffect->play(currentAction);
         for_each_badges()
         {
             AnimatedSprite *const sprite = mBadges[f];
-            if (sprite)
+            if (sprite != nullptr)
                 sprite->play(currentAction);
         }
         for_each_horses(mDownHorseSprites)
@@ -1627,29 +1630,29 @@ void Being::setDirection(const uint8_t direction) restrict2
 
     // if the direction does not change much, keep the common component
     int mFaceDirection = mDirection & direction;
-    if (!mFaceDirection)
+    if (mFaceDirection == 0)
         mFaceDirection = direction;
 
     SpriteDirection::Type dir;
-    if (mFaceDirection & BeingDirection::UP)
+    if ((mFaceDirection & BeingDirection::UP) != 0)
     {
-        if (mFaceDirection & BeingDirection::LEFT)
+        if ((mFaceDirection & BeingDirection::LEFT) != 0)
             dir = SpriteDirection::UPLEFT;
-        else if (mFaceDirection & BeingDirection::RIGHT)
+        else if ((mFaceDirection & BeingDirection::RIGHT) != 0)
             dir = SpriteDirection::UPRIGHT;
         else
             dir = SpriteDirection::UP;
     }
-    else if (mFaceDirection & BeingDirection::DOWN)
+    else if ((mFaceDirection & BeingDirection::DOWN) != 0)
     {
-        if (mFaceDirection & BeingDirection::LEFT)
+        if ((mFaceDirection & BeingDirection::LEFT) != 0)
             dir = SpriteDirection::DOWNLEFT;
-        else if (mFaceDirection & BeingDirection::RIGHT)
+        else if ((mFaceDirection & BeingDirection::RIGHT) != 0)
             dir = SpriteDirection::DOWNRIGHT;
         else
             dir = SpriteDirection::DOWN;
     }
-    else if (mFaceDirection & BeingDirection::RIGHT)
+    else if ((mFaceDirection & BeingDirection::RIGHT) != 0)
     {
         dir = SpriteDirection::RIGHT;
     }
@@ -1660,15 +1663,15 @@ void Being::setDirection(const uint8_t direction) restrict2
     mSpriteDirection = dir;
 
     CompoundSprite::setSpriteDirection(dir);
-    if (mEmotionSprite)
+    if (mEmotionSprite != nullptr)
         mEmotionSprite->setSpriteDirection(dir);
-    if (mAnimationEffect)
+    if (mAnimationEffect != nullptr)
         mAnimationEffect->setSpriteDirection(dir);
 
     for_each_badges()
     {
         AnimatedSprite *const sprite = mBadges[f];
-        if (sprite)
+        if (sprite != nullptr)
             sprite->setSpriteDirection(dir);
     }
 
@@ -1721,10 +1724,11 @@ void Being::nextTile() restrict2
     mPath.pop_front();
 
     const uint8_t dir = calcDirection(pos.x, pos.y);
-    if (dir)
+    if (dir != 0u)
         setDirection(dir);
 
-    if (!mMap || !mMap->getWalk(pos.x, pos.y, getBlockWalkMask()))
+    if (mMap == nullptr ||
+        !mMap->getWalk(pos.x, pos.y, getBlockWalkMask()))
     {
         setAction(BeingAction::STAND, 0);
         return;
@@ -1779,7 +1783,7 @@ void Being::logic() restrict2
     }
 
     const int time = tick_time * MILLISECONDS_IN_A_TICK;
-    if (mEmotionSprite)
+    if (mEmotionSprite != nullptr)
         mEmotionSprite->update(time);
     for_each_horses(mDownHorseSprites)
         (*it)->update(time);
@@ -1807,7 +1811,7 @@ void Being::logic() restrict2
     for_each_badges()
     {
         AnimatedSprite *restrict const sprite = mBadges[f];
-        if (sprite)
+        if (sprite != nullptr)
             sprite->update(time);
     }
 
@@ -1833,11 +1837,11 @@ void Being::logic() restrict2
 
         case BeingAction::ATTACK:
         {
-            if (!mActionTime)
+            if (mActionTime == 0)
                 break;
 
             int curFrame = 0;
-            if (mAttackSpeed)
+            if (mAttackSpeed != 0)
             {
                 curFrame = (get_elapsed_time(mActionTime) * frameCount)
                     / mAttackSpeed;
@@ -1864,10 +1868,10 @@ void Being::logic() restrict2
         const int yOffset = getOffset<BeingDirection::UP,
             BeingDirection::DOWN>();
         int offset = xOffset;
-        if (!offset)
+        if (offset == 0)
             offset = yOffset;
 
-        if (!xOffset && !yOffset)
+        if ((xOffset == 0) && (yOffset == 0))
             mNeedPosUpdate = false;
 
         const int halfTile = mapTileSize / 2;
@@ -1901,7 +1905,7 @@ void Being::logic() restrict2
         gameHandler->removeDeadBeings() &&
         get_elapsed_time(mActionTime) / mSpeed >= frameCount))
     {
-        if (mType != ActorType::Player && actorManager)
+        if (mType != ActorType::Player && (actorManager != nullptr))
             actorManager->destroy(this);
     }
 
@@ -1923,7 +1927,7 @@ void Being::logic() restrict2
 
 void Being::botLogic() restrict2
 {
-    if (!mOwner || !mMap || !mInfo)
+    if ((mOwner == nullptr) || (mMap == nullptr) || (mInfo == nullptr))
         return;
 
     const int time = tick_time;
@@ -1975,7 +1979,7 @@ void Being::botLogic() restrict2
         case BeingAction::ATTACK:
         {
             const Being *const target = localPlayer->getTarget();
-            if (!target)
+            if (target == nullptr)
                 return;
             const BeingId targetId = target->getId();
             if (mType == ActorType::Homunculus)
@@ -2008,7 +2012,7 @@ void Being::botLogic() restrict2
 void Being::botFixOffset(int &restrict dstX,
                          int &restrict dstY) const
 {
-    if (!mInfo || !mOwner)
+    if ((mInfo == nullptr) || (mOwner == nullptr))
         return;
 
     int offsetX1;
@@ -2068,7 +2072,7 @@ void Being::botFixOffset(int &restrict dstX,
     }
     dstX += offsetX;
     dstY += offsetY;
-    if (mMap)
+    if (mMap != nullptr)
     {
         if (!mMap->getWalk(dstX, dstY, getBlockWalkMask()))
         {
@@ -2232,7 +2236,7 @@ void Being::updateBotDirection(const int dstX,
             break;
         }
     }
-    if (newDir && newDir != mDirection)
+    if ((newDir != 0u) && newDir != mDirection)
     {
         if (mType == ActorType::Homunculus)
             homunculusHandler->setDirection(newDir);
@@ -2250,19 +2254,19 @@ void Being::drawEmotion(Graphics *restrict const graphics,
 
     const int px = mPixelX - offsetX - mapTileSize / 2;
     const int py = mPixelY - offsetY - mapTileSize * 2 - mapTileSize;
-    if (mAnimationEffect)
+    if (mAnimationEffect != nullptr)
         mAnimationEffect->draw(graphics, px, py);
-    if (mShowBadges && mBadgesCount)
+    if ((mShowBadges != 0u) && (mBadgesCount != 0u))
     {
         int x;
         int y;
-        if (mShowBadges == 2 && mDispName && gui)
+        if (mShowBadges == 2 && (mDispName != nullptr) && (gui != nullptr))
         {
             const Font *restrict const font = gui->getFont();
             x = mDispName->getX() - offsetX + mDispName->getWidth();
             y = mDispName->getY() - offsetY - font->getHeight();
         }
-        else if (mShowBadges == 3 && mDispName && gui)
+        else if (mShowBadges == 3 && (mDispName != nullptr) && (gui != nullptr))
         {
             x = px + 8 - mBadgesCount * 8;
             y = mDispName->getY() - offsetY;
@@ -2275,14 +2279,14 @@ void Being::drawEmotion(Graphics *restrict const graphics,
         for_each_badges()
         {
             const AnimatedSprite *restrict const sprite = mBadges[f];
-            if (sprite)
+            if (sprite != nullptr)
             {
                 sprite->draw(graphics, x, y);
                 x += 16;
             }
         }
     }
-    if (mEmotionSprite)
+    if (mEmotionSprite != nullptr)
         mEmotionSprite->draw(graphics, px, py);
 }
 
@@ -2301,7 +2305,7 @@ void Being::drawSpeech(const int offsetX,
     // Draw speech above this being
     if (mSpeechTime == 0)
     {
-        if (mSpeechBubble && mSpeechBubble->mVisible == Visible_true)
+        if ((mSpeechBubble != nullptr) && mSpeechBubble->mVisible == Visible_true)
             mSpeechBubble->setVisible(Visible_false);
         mSpeech.clear();
     }
@@ -2310,7 +2314,7 @@ void Being::drawSpeech(const int offsetX,
     {
         delete2(mText)
 
-        if (mSpeechBubble)
+        if (mSpeechBubble != nullptr)
         {
             mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
                 py - getHeight() - (mSpeechBubble->getHeight()));
@@ -2320,10 +2324,10 @@ void Being::drawSpeech(const int offsetX,
     }
     else if (mSpeechTime > 0 && speech == BeingSpeech::TEXT_OVERHEAD)
     {
-        if (mSpeechBubble)
+        if (mSpeechBubble != nullptr)
             mSpeechBubble->setVisible(Visible_false);
 
-        if (!mText && userPalette)
+        if ((mText == nullptr) && (userPalette != nullptr))
         {
             mText = new Text(mSpeech,
                 mPixelX,
@@ -2338,7 +2342,7 @@ void Being::drawSpeech(const int offsetX,
     }
     else if (speech == BeingSpeech::NO_SPEECH)
     {
-        if (mSpeechBubble)
+        if (mSpeechBubble != nullptr)
             mSpeechBubble->setVisible(Visible_false);
         delete2(mText)
     }
@@ -2381,12 +2385,12 @@ int Being::getOffset() const restrict2
 
 void Being::updateCoords() restrict2
 {
-    if (!mDispName)
+    if (mDispName == nullptr)
         return;
 
     int offsetX = mPixelX;
     int offsetY = mPixelY;
-    if (mInfo)
+    if (mInfo != nullptr)
     {
         offsetX += mInfo->getNameOffsetX();
         offsetY += mInfo->getNameOffsetY();
@@ -2406,7 +2410,7 @@ void Being::optionChanged(const std::string &restrict value) restrict2
 
 void Being::flashName(const int time) restrict2
 {
-    if (mDispName)
+    if (mDispName != nullptr)
         mDispName->flash(time);
 }
 
@@ -2429,7 +2433,7 @@ std::string Being::getGenderSign() const restrict2
         else if (getGender() == Gender::MALE)
             str = "\u2642";
     }
-    if (mShowPlayersStatus && !mShowBadges)
+    if (mShowPlayersStatus && (mShowBadges == 0u))
     {
         if (mShop)
             str.append("$");
@@ -2475,18 +2479,18 @@ void Being::showName() restrict2
     }
 
     Font *font = nullptr;
-    if (localPlayer && localPlayer->getTarget() == this
+    if ((localPlayer != nullptr) && localPlayer->getTarget() == this
         && mType != ActorType::Monster)
     {
         font = boldFont;
     }
     else if (mType == ActorType::Player
-             && !player_relations.isGoodName(this) && gui)
+             && !player_relations.isGoodName(this) && (gui != nullptr))
     {
         font = gui->getSecureFont();
     }
 
-    if (mInfo)
+    if (mInfo != nullptr)
     {
         mDispName = new FlashText(displayName,
             mPixelX + mInfo->getNameOffsetX(),
@@ -2530,7 +2534,7 @@ void Being::setDefaultNameColor(const UserColorIdT defaultColor) restrict2
 
 void Being::updateColors()
 {
-    if (userPalette)
+    if (userPalette != nullptr)
     {
         if (mType == ActorType::Monster)
         {
@@ -2580,12 +2584,12 @@ void Being::updateColors()
             {
                 mNameColor = &userPalette->getColor(UserColorId::ENEMY);
             }
-            else if (mParty && localPlayer
+            else if ((mParty != nullptr) && (localPlayer != nullptr)
                      && mParty == localPlayer->getParty())
             {
                 mNameColor = &userPalette->getColor(UserColorId::PARTY);
             }
-            else if (localPlayer && getGuild()
+            else if ((localPlayer != nullptr) && (getGuild() != nullptr)
                      && getGuild() == localPlayer->getGuild())
             {
                 mNameColor = &userPalette->getColor(UserColorId::GUILD);
@@ -2617,7 +2621,7 @@ void Being::updateColors()
             }
         }
 
-        if (mDispName)
+        if (mDispName != nullptr)
             mDispName->setColor(mNameColor);
     }
 }
@@ -2626,13 +2630,13 @@ void Being::updateSprite(const unsigned int slot,
                          const int id,
                          const std::string &restrict color) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
 
-    if (slot && mSlots[slot].spriteId == id)
+    if ((slot != 0u) && mSlots[slot].spriteId == id)
         return;
     setSpriteColor(slot,
         id,
@@ -2643,7 +2647,7 @@ void Being::updateSprite(const unsigned int slot,
 void Being::setSpriteId(const unsigned int slot,
                         const int id) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -2659,7 +2663,7 @@ void Being::setSpriteId(const unsigned int slot,
         mSpriteDraw[slot] = 0;
 
         const int id1 = mSlots[slot].spriteId;
-        if (id1)
+        if (id1 != 0)
             removeItemParticles(id1);
     }
     else
@@ -2677,7 +2681,7 @@ void Being::setSpriteId(const unsigned int slot,
                 pathJoin(paths.getStringValue("sprites"), filename));
         }
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
             startTime = getStartTime();
@@ -2690,7 +2694,7 @@ void Being::setSpriteId(const unsigned int slot,
         addItemParticles(id, info.getDisplay());
 
         setAction(mAction, 0);
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             if (lastTime > 0)
             {
@@ -2706,14 +2710,14 @@ void Being::setSpriteId(const unsigned int slot,
     beingSlot.colorId = ItemColor_one;
     beingSlot.cardsId = CardsList(nullptr);
     recalcSpritesOrder();
-    if (beingEquipmentWindow)
+    if (beingEquipmentWindow != nullptr)
         beingEquipmentWindow->updateBeing(this);
 }
 
 // reset sprite id, reset colors, reset cards
 void Being::unSetSprite(const unsigned int slot) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -2727,7 +2731,7 @@ void Being::unSetSprite(const unsigned int slot) restrict2
 
     BeingSlot &beingSlot = mSlots[slot];
     const int id1 = beingSlot.spriteId;
-    if (id1)
+    if (id1 != 0)
         removeItemParticles(id1);
 
     beingSlot.spriteId = 0;
@@ -2735,7 +2739,7 @@ void Being::unSetSprite(const unsigned int slot) restrict2
     beingSlot.colorId = ItemColor_one;
     beingSlot.cardsId = CardsList(nullptr);
     recalcSpritesOrder();
-    if (beingEquipmentWindow)
+    if (beingEquipmentWindow != nullptr)
         beingEquipmentWindow->updateBeing(this);
 }
 
@@ -2744,7 +2748,7 @@ void Being::setSpriteColor(const unsigned int slot,
                            const int id,
                            const std::string &color) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -2764,7 +2768,7 @@ void Being::setSpriteColor(const unsigned int slot,
         mSpriteDraw[slot] = 0;
 
         const int id1 = mSlots[slot].spriteId;
-        if (id1)
+        if (id1 != 0)
             removeItemParticles(id1);
     }
     else
@@ -2783,7 +2787,7 @@ void Being::setSpriteColor(const unsigned int slot,
                 combineDye(filename, color)));
         }
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
             startTime = getStartTime();
@@ -2796,7 +2800,7 @@ void Being::setSpriteColor(const unsigned int slot,
         addItemParticles(id, info.getDisplay());
 
         setAction(mAction, 0);
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             if (lastTime > 0)
             {
@@ -2812,7 +2816,7 @@ void Being::setSpriteColor(const unsigned int slot,
     beingSlot.colorId = ItemColor_one;
     beingSlot.cardsId = CardsList(nullptr);
     recalcSpritesOrder();
-    if (beingEquipmentWindow)
+    if (beingEquipmentWindow != nullptr)
         beingEquipmentWindow->updateBeing(this);
 }
 
@@ -2821,7 +2825,7 @@ void Being::setSpriteColorId(const unsigned int slot,
                              const int id,
                              ItemColor colorId) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -2843,7 +2847,7 @@ void Being::setSpriteColorId(const unsigned int slot,
         mSpriteDraw[slot] = 0;
 
         const int id1 = mSlots[slot].spriteId;
-        if (id1)
+        if (id1 != 0)
             removeItemParticles(id1);
     }
     else
@@ -2863,7 +2867,7 @@ void Being::setSpriteColorId(const unsigned int slot,
                 combineDye(filename, color)));
         }
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
             startTime = getStartTime();
@@ -2876,7 +2880,7 @@ void Being::setSpriteColorId(const unsigned int slot,
         addItemParticles(id, info.getDisplay());
 
         setAction(mAction, 0);
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             if (lastTime > 0)
             {
@@ -2892,7 +2896,7 @@ void Being::setSpriteColorId(const unsigned int slot,
     beingSlot.colorId = colorId;
     beingSlot.cardsId = CardsList(nullptr);
     recalcSpritesOrder();
-    if (beingEquipmentWindow)
+    if (beingEquipmentWindow != nullptr)
         beingEquipmentWindow->updateBeing(this);
 }
 
@@ -2901,7 +2905,7 @@ void Being::setSpriteCards(const unsigned int slot,
                            const int id,
                            const CardsList &cards) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -2924,7 +2928,7 @@ void Being::setSpriteCards(const unsigned int slot,
         mSpriteDraw[slot] = 0;
 
         const int id1 = mSlots[slot].spriteId;
-        if (id1)
+        if (id1 != 0)
             removeItemParticles(id1);
     }
     else
@@ -2949,7 +2953,7 @@ void Being::setSpriteCards(const unsigned int slot,
                 combineDye(filename, color)));
         }
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
             startTime = getStartTime();
@@ -2964,7 +2968,7 @@ void Being::setSpriteCards(const unsigned int slot,
             cards);
 
         setAction(mAction, 0);
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             if (lastTime > 0)
             {
@@ -2980,7 +2984,7 @@ void Being::setSpriteCards(const unsigned int slot,
     beingSlot.colorId = colorId;
     beingSlot.cardsId = CardsList(cards);
     recalcSpritesOrder();
-    if (beingEquipmentWindow)
+    if (beingEquipmentWindow != nullptr)
         beingEquipmentWindow->updateBeing(this);
 }
 
@@ -2995,7 +2999,7 @@ void Being::setWeaponId(const int id) restrict2
 void Being::setTempSprite(const unsigned int slot,
                           const int id) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -3013,7 +3017,7 @@ void Being::setTempSprite(const unsigned int slot,
         mSpriteDraw[slot] = 0;
 
         const int id1 = beingSlot.spriteId;
-        if (id1)
+        if (id1 != 0)
             removeItemParticles(id1);
     }
     else
@@ -3041,7 +3045,7 @@ void Being::setTempSprite(const unsigned int slot,
                 combineDye(filename, color)));
         }
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
             startTime = getStartTime();
@@ -3055,7 +3059,7 @@ void Being::setTempSprite(const unsigned int slot,
         addItemParticles(id, info.getDisplay());
 
         setAction(mAction, 0);
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             if (lastTime > 0)
             {
@@ -3069,7 +3073,7 @@ void Being::setTempSprite(const unsigned int slot,
 void Being::setHairTempSprite(const unsigned int slot,
                               const int id) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -3087,7 +3091,7 @@ void Being::setHairTempSprite(const unsigned int slot,
         mSpriteDraw[slot] = 0;
 
         const int id1 = mSlots[slot].spriteId;
-        if (id1)
+        if (id1 != 0)
             removeItemParticles(id1);
     }
     else
@@ -3114,7 +3118,7 @@ void Being::setHairTempSprite(const unsigned int slot,
                 combineDye(filename, color)));
         }
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
             startTime = getStartTime();
@@ -3127,7 +3131,7 @@ void Being::setHairTempSprite(const unsigned int slot,
         addItemParticles(id, info.getDisplay());
 
         setAction(mAction, 0);
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             if (lastTime > 0)
             {
@@ -3150,7 +3154,7 @@ void Being::setHairColorSpriteID(const unsigned int slot,
 void Being::setSpriteColor(const unsigned int slot,
                            const std::string &restrict color) restrict2
 {
-    if (!charServerHandler || slot >= charServerHandler->maxSprite())
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
         return;
 
     if (slot >= CAST_U32(mSprites.size()))
@@ -3186,7 +3190,7 @@ void Being::setSpriteColor(const unsigned int slot,
                 combineDye(filename, color)));
         }
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             equipmentSprite->setSpriteDirection(getSpriteDirection());
             startTime = getStartTime();
@@ -3196,7 +3200,7 @@ void Being::setSpriteColor(const unsigned int slot,
         CompoundSprite::setSprite(slot, equipmentSprite);
 
         setAction(mAction, 0);
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
             if (lastTime > 0)
             {
@@ -3208,7 +3212,7 @@ void Being::setSpriteColor(const unsigned int slot,
 
     beingSlot.color = color;
     beingSlot.colorId = ItemColor_one;
-    if (beingEquipmentWindow)
+    if (beingEquipmentWindow != nullptr)
         beingEquipmentWindow->updateBeing(this);
 }
 
@@ -3306,7 +3310,7 @@ bool Being::updateFromCache() restrict2
     const BeingCacheEntry *restrict const entry =
         Being::getCacheEntry(getId());
 
-    if (entry && entry->getTime() + 120 >= cur_time)
+    if ((entry != nullptr) && entry->getTime() + 120 >= cur_time)
     {
         if (!entry->getName().empty())
             setName(entry->getName());
@@ -3321,7 +3325,7 @@ bool Being::updateFromCache() restrict2
         if (mAdvanced)
         {
             const int flags = entry->getFlags();
-            if (serverFeatures &&
+            if ((serverFeatures != nullptr) &&
                 Net::getNetworkType() == ServerType::TMWATHENA)
             {
                 mShop = ((flags & BeingFlag::SHOP) != 0);
@@ -3343,7 +3347,7 @@ bool Being::updateFromCache() restrict2
         showInactiveBadge(mInactive);
         showAwayBadge(mAway);
         updateAwayEffect();
-        if (mType == ActorType::Player || mTeamId)
+        if (mType == ActorType::Player || (mTeamId != 0u))
             updateColors();
         return true;
     }
@@ -3356,7 +3360,7 @@ void Being::addToCache() const restrict2
         return;
 
     BeingCacheEntry *entry = Being::getCacheEntry(getId());
-    if (!entry)
+    if (entry == nullptr)
     {
         entry = new BeingCacheEntry(getId());
         beingInfoCache.push_front(entry);
@@ -3400,7 +3404,7 @@ BeingCacheEntry* Being::getCacheEntry(const BeingId id)
 {
     FOR_EACH (std::list<BeingCacheEntry*>::iterator, i, beingInfoCache)
     {
-        if (!*i)
+        if (*i == nullptr)
             continue;
 
         if (id == (*i)->getId())
@@ -3420,7 +3424,7 @@ BeingCacheEntry* Being::getCacheEntry(const BeingId id)
 
 void Being::setGender(const GenderT gender) restrict2
 {
-    if (!charServerHandler)
+    if (charServerHandler == nullptr)
         return;
 
     if (gender != mGender)
@@ -3455,7 +3459,7 @@ void Being::setGender(const GenderT gender) restrict2
                         combineDye(filename, beingSlot.color)));
                 }
 
-                if (equipmentSprite)
+                if (equipmentSprite != nullptr)
                 {
                     equipmentSprite->setSpriteDirection(getSpriteDirection());
                     startTime = getStartTime();
@@ -3464,7 +3468,7 @@ void Being::setGender(const GenderT gender) restrict2
 
                 CompoundSprite::setSprite(i, equipmentSprite);
                 setAction(mAction, 0);
-                if (equipmentSprite)
+                if (equipmentSprite != nullptr)
                 {
                     if (lastTime > 0)
                     {
@@ -3473,7 +3477,7 @@ void Being::setGender(const GenderT gender) restrict2
                     }
                 }
 
-                if (beingEquipmentWindow)
+                if (beingEquipmentWindow != nullptr)
                     beingEquipmentWindow->updateBeing(this);
             }
         }
@@ -3485,7 +3489,7 @@ void Being::setGender(const GenderT gender) restrict2
 void Being::showGmBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Gm]);
-    if (show && mIsGM && mShowBadges)
+    if (show && mIsGM && (mShowBadges != 0u))
     {
         const std::string gmBadge = paths.getStringValue("gmbadge");
         if (!gmBadge.empty())
@@ -3510,13 +3514,13 @@ void Being::setGM(const bool gm) restrict2
 
 void Being::talkTo() const restrict2
 {
-    if (!npcHandler)
+    if (npcHandler == nullptr)
         return;
 
     if (!PacketLimiter::limitPackets(PacketType::PACKET_NPC_TALK))
     {
         // using workaround...
-        if (playerHandler &&
+        if ((playerHandler != nullptr) &&
             PacketLimiter::limitPackets(PacketType::PACKET_ATTACK))
         {
             playerHandler->attack(mId, Keep_false);
@@ -3537,7 +3541,7 @@ void Being::drawPlayer(Graphics *restrict const graphics,
         const int px = mPixelX - mapTileSize / 2 + offsetX;
         // getActorY() + offsetY;
         const int py = mPixelY - mapTileSize + offsetY;
-        if (mHorseInfo)
+        if (mHorseInfo != nullptr)
         {
             HorseOffset &offset = mHorseInfo->offsets[mSpriteDirection];
             for_each_horses(mDownHorseSprites)
@@ -3571,10 +3575,10 @@ void Being::drawBeingCursor(Graphics *const graphics,
                             const int offsetX,
                             const int offsetY) const
 {
-    if (mUsedTargetCursor)
+    if (mUsedTargetCursor != nullptr)
     {
         mUsedTargetCursor->update(tick_time * MILLISECONDS_IN_A_TICK);
-        if (!mInfo)
+        if (mInfo == nullptr)
         {
             mUsedTargetCursor->draw(graphics,
                 offsetX - mCursorPaddingX,
@@ -3722,7 +3726,7 @@ void Being::drawPlayerSprites(Graphics *restrict const graphics,
             continue;
 
         Sprite *restrict const sprite = mSprites[mSpriteRemap[f]];
-        if (sprite)
+        if (sprite != nullptr)
         {
             sprite->setAlpha(mAlpha);
             sprite->draw(graphics, posX, posY);
@@ -3742,7 +3746,7 @@ void Being::drawSpritesSDL(Graphics *restrict const graphics,
             continue;
 
         const Sprite *restrict const sprite = mSprites[mSpriteRemap[f]];
-        if (sprite)
+        if (sprite != nullptr)
             sprite->draw(graphics, posX, posY);
     }
 }
@@ -3765,13 +3769,13 @@ void Being::drawCompound(Graphics *const graphics,
     if (mSprites.empty())  // Nothing to draw
         return;
 
-    if (mAlpha == 1.0F && mImage)
+    if (mAlpha == 1.0F && (mImage != nullptr))
     {
         graphics->drawImage(mImage,
             posX + mOffsetX,
             posY + mOffsetY);
     }
-    else if (mAlpha && mAlphaImage)
+    else if ((mAlpha != 0.0f) && (mAlphaImage != nullptr))
     {
         mAlphaImage->setAlpha(mAlpha);
         graphics->drawImage(mAlphaImage,
@@ -3791,7 +3795,7 @@ void Being::drawPlayerSpriteAt(Graphics *restrict const graphics,
     drawCompound(graphics, x, y);
 
     if (mShowOwnHP &&
-        mInfo &&
+        (mInfo != nullptr) &&
         localPlayer == this &&
         mAction != BeingAction::DEAD)
     {
@@ -3823,14 +3827,14 @@ void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
         mType == ActorType::Monster &&
         mAction != BeingAction::DEAD)
     {
-        if (!userPalette)
+        if (userPalette == nullptr)
         {
             CompoundSprite::drawSimple(graphics, x, y);
             return;
         }
 
         int attackRange;
-        if (mAttackRange)
+        if (mAttackRange != 0)
             attackRange = mapTileSize * mAttackRange;
         else
             attackRange = mapTileSize;
@@ -3846,14 +3850,14 @@ void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
     CompoundSprite::drawSimple(graphics, x, y);
 
     if (mShowMobHP &&
-        mInfo &&
-        localPlayer &&
+        (mInfo != nullptr) &&
+        (localPlayer != nullptr) &&
         localPlayer->getTarget() == this &&
         mType == ActorType::Monster)
     {
         // show hp bar here
         int maxHP = mMaxHP;
-        if (!maxHP)
+        if (maxHP == 0)
             maxHP = mInfo->getMaxHP();
 
         drawHpBar(graphics,
@@ -3876,14 +3880,14 @@ void Being::drawHomunculusSpriteAt(Graphics *restrict const graphics,
     if (mHighlightMonsterAttackRange &&
         mAction != BeingAction::DEAD)
     {
-        if (!userPalette)
+        if (userPalette == nullptr)
         {
             CompoundSprite::drawSimple(graphics, x, y);
             return;
         }
 
         int attackRange;
-        if (mAttackRange)
+        if (mAttackRange != 0)
             attackRange = mapTileSize * mAttackRange;
         else
             attackRange = mapTileSize;
@@ -3899,15 +3903,15 @@ void Being::drawHomunculusSpriteAt(Graphics *restrict const graphics,
     CompoundSprite::drawSimple(graphics, x, y);
 
     if (mShowMobHP &&
-        mInfo)
+        (mInfo != nullptr))
     {
         const HomunculusInfo *const info = PlayerInfo::getHomunculus();
-        if (info &&
+        if ((info != nullptr) &&
             mId == info->id)
         {
             // show hp bar here
             int maxHP = PlayerInfo::getStatBase(Attributes::HOMUN_MAX_HP);
-            if (!maxHP)
+            if (maxHP == 0)
                 maxHP = mInfo->getMaxHP();
 
             drawHpBar(graphics,
@@ -3931,14 +3935,14 @@ void Being::drawMercenarySpriteAt(Graphics *restrict const graphics,
     if (mHighlightMonsterAttackRange &&
         mAction != BeingAction::DEAD)
     {
-        if (!userPalette)
+        if (userPalette == nullptr)
         {
             CompoundSprite::drawSimple(graphics, x, y);
             return;
         }
 
         int attackRange;
-        if (mAttackRange)
+        if (mAttackRange != 0)
             attackRange = mapTileSize * mAttackRange;
         else
             attackRange = mapTileSize;
@@ -3954,15 +3958,15 @@ void Being::drawMercenarySpriteAt(Graphics *restrict const graphics,
     CompoundSprite::drawSimple(graphics, x, y);
 
     if (mShowMobHP &&
-        mInfo)
+        (mInfo != nullptr))
     {
         const MercenaryInfo *const info = PlayerInfo::getMercenary();
-        if (info &&
+        if ((info != nullptr) &&
             mId == info->id)
         {
             // show hp bar here
             int maxHP = PlayerInfo::getStatBase(Attributes::MERC_MAX_HP);
-            if (!maxHP)
+            if (maxHP == 0)
                 maxHP = mInfo->getMaxHP();
 
             drawHpBar(graphics,
@@ -3986,14 +3990,14 @@ void Being::drawElementalSpriteAt(Graphics *restrict const graphics,
     if (mHighlightMonsterAttackRange &&
         mAction != BeingAction::DEAD)
     {
-        if (!userPalette)
+        if (userPalette == nullptr)
         {
             CompoundSprite::drawSimple(graphics, x, y);
             return;
         }
 
         int attackRange;
-        if (mAttackRange)
+        if (mAttackRange != 0)
             attackRange = mapTileSize * mAttackRange;
         else
             attackRange = mapTileSize;
@@ -4009,13 +4013,13 @@ void Being::drawElementalSpriteAt(Graphics *restrict const graphics,
     CompoundSprite::drawSimple(graphics, x, y);
 
     if (mShowMobHP &&
-        mInfo)
+        (mInfo != nullptr))
     {
         if (mId == PlayerInfo::getElementalId())
         {
             // show hp bar here
             int maxHP = PlayerInfo::getStatBase(Attributes::ELEMENTAL_MAX_HP);
-            if (!maxHP)
+            if (maxHP == 0)
                 maxHP = mInfo->getMaxHP();
 
             drawHpBar(graphics,
@@ -4037,10 +4041,10 @@ void Being::drawPortalSpriteAt(Graphics *restrict const graphics,
                                const int y) const restrict2
 {
     if (mHighlightMapPortals &&
-        mMap &&
+        (mMap != nullptr) &&
         !mMap->getHasWarps())
     {
-        if (!userPalette)
+        if (userPalette == nullptr)
         {
             CompoundSprite::drawSimple(graphics, x, y);
             return;
@@ -4073,12 +4077,12 @@ void Being::drawHpBar(Graphics *restrict const graphics,
                       const int width,
                       const int height) const restrict2
 {
-    if (maxHP <= 0 || !userPalette)
+    if (maxHP <= 0 || (userPalette == nullptr))
         return;
 
     float p;
 
-    if (hp)
+    if (hp != 0)
     {
         p = static_cast<float>(maxHP) / static_cast<float>(hp);
     }
@@ -4100,8 +4104,8 @@ void Being::drawHpBar(Graphics *restrict const graphics,
 #ifdef TMWA_SUPPORT
     if (!serverFeatures->haveServerHp())
     {   // old servers
-        if ((!damage && (this != localPlayer || hp == maxHP))
-            || (!hp && maxHP == damage))
+        if ((damage == 0 && (this != localPlayer || hp == maxHP))
+            || (hp == 0 && maxHP == damage))
         {
             graphics->setColor(userPalette->getColorWithAlpha(color1));
             graphics->fillRectangle(Rect(
@@ -4218,7 +4222,7 @@ void Being::recalcSpritesOrder() restrict2
             continue;
 
         const int id = mSlots[slot].spriteId;
-        if (!id)
+        if (id == 0)
             continue;
 
         const ItemInfo &info = ItemDB::get(id);
@@ -4228,7 +4232,7 @@ void Being::recalcSpritesOrder() restrict2
             const SpriteToItemMap *restrict const spriteToItems
                 = info.getSpriteToItemReplaceMap(dir);
 
-            if (spriteToItems)
+            if (spriteToItems != nullptr)
             {
                 FOR_EACHP (SpriteToItemMapCIter, itr, spriteToItems)
                 {
@@ -4429,7 +4433,7 @@ void Being::recalcSpritesOrder() restrict2
             {
                 const BeingSlot &beingSlot = mSlots[slot];
                 const int id = beingSlot.spriteId;
-                if (!id)
+                if (id == 0)
                     continue;
 
                 updatedSprite[slot] = true;
@@ -4495,9 +4499,9 @@ void Being::updateHit(const int amount) restrict2
 {
     if (amount > 0)
     {
-        if (!mMinHit || amount < mMinHit)
+        if ((mMinHit == 0) || amount < mMinHit)
             mMinHit = amount;
-        if (amount != mCriticalHit && (!mMaxHit || amount > mMaxHit))
+        if (amount != mCriticalHit && ((mMaxHit == 0) || amount > mMaxHit))
             mMaxHit = amount;
     }
 }
@@ -4649,14 +4653,14 @@ void Being::setEmote(const uint8_t emotion,
         {
             delete2(mEmotionSprite)
             const EmoteInfo *const info = EmoteDB::get2(emotionIndex, true);
-            if (info)
+            if (info != nullptr)
             {
                 const EmoteSprite *restrict const sprite =
                     info->sprites.front();
-                if (sprite)
+                if (sprite != nullptr)
                 {
                     mEmotionSprite = AnimatedSprite::clone(sprite->sprite);
-                    if (mEmotionSprite)
+                    if (mEmotionSprite != nullptr)
                         mEmotionTime = info->time;
                     else
                         mEmotionTime = emote_time;
@@ -4669,7 +4673,7 @@ void Being::setEmote(const uint8_t emotion,
             }
         }
 
-        if (mEmotionSprite)
+        if (mEmotionSprite != nullptr)
         {
             mEmotionSprite->play(mSpriteAction);
             mEmotionSprite->setSpriteDirection(mSpriteDirection);
@@ -4683,10 +4687,10 @@ void Being::setEmote(const uint8_t emotion,
 
 void Being::updatePercentHP() restrict2
 {
-    if (!mMaxHP)
+    if (mMaxHP == 0)
         return;
     BLOCK_START("Being::updatePercentHP")
-    if (mHP)
+    if (mHP != 0)
     {
         const unsigned num = mHP * 100 / mMaxHP;
         if (num != mNumber)
@@ -4735,9 +4739,9 @@ void Being::removeAfkEffect() restrict2
 
 void Being::addSpecialEffect(const int effect) restrict2
 {
-    if (effectManager &&
+    if ((effectManager != nullptr) &&
         ParticleEngine::enabled &&
-        !mSpecialParticle &&
+        (mSpecialParticle == nullptr) &&
         effect != -1)
     {
         mSpecialParticle = effectManager->triggerReturn(effect, this);
@@ -4746,7 +4750,7 @@ void Being::addSpecialEffect(const int effect) restrict2
 
 void Being::removeSpecialEffect() restrict2
 {
-    if (effectManager && mSpecialParticle)
+    if ((effectManager != nullptr) && (mSpecialParticle != nullptr))
     {
         mChildParticleEffects.removeLocally(mSpecialParticle);
         mSpecialParticle = nullptr;
@@ -4776,7 +4780,7 @@ void Being::playSfx(const SoundInfo &sound,
 {
     BLOCK_START("Being::playSfx")
 
-    if (being)
+    if (being != nullptr)
     {
         // here need add timer and delay sound
         const int time = tick_time;
@@ -4816,7 +4820,7 @@ void Being::setTileCoords(const int x, const int y) restrict2
 {
     mX = x;
     mY = y;
-    if (mMap)
+    if (mMap != nullptr)
     {
         mPixelOffsetY = 0;
         mFixedOffsetY = mPixelOffsetY;
@@ -4830,7 +4834,7 @@ void Being::setMap(Map *restrict const map) restrict2
     mCastEndTime = 0;
     delete2(mCastingEffect);
     ActorSprite::setMap(map);
-    if (mMap)
+    if (mMap != nullptr)
     {
         mPixelOffsetY = mMap->getHeightOffset(mX, mY);
         mFixedOffsetY = mPixelOffsetY;
@@ -4861,12 +4865,12 @@ void Being::addItemParticles(const int id,
         pi = (*it).second;
     }
 
-    if (!pi || !pi->particles.empty())
+    if ((pi == nullptr) || !pi->particles.empty())
         return;
 
     // setup particle effects
     if (ParticleEngine::enabled &&
-        particleEngine)
+        (particleEngine != nullptr))
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
@@ -4899,12 +4903,12 @@ void Being::addItemParticlesCards(const int id,
         pi = (*it).second;
     }
 
-    if (!pi || !pi->particles.empty())
+    if ((pi == nullptr) || !pi->particles.empty())
         return;
 
     // setup particle effects
     if (ParticleEngine::enabled &&
-        particleEngine)
+        (particleEngine != nullptr))
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
@@ -4956,7 +4960,7 @@ void Being::removeItemParticles(const int id) restrict2
     if (it == mSpriteParticles.end())
         return;
     ParticleInfo *restrict const pi = (*it).second;
-    if (pi)
+    if (pi != nullptr)
     {
         FOR_EACH (std::vector<Particle*>::const_iterator, itp, pi->particles)
             mChildParticleEffects.removeLocally(*itp);
@@ -4970,7 +4974,7 @@ void Being::recreateItemParticles() restrict2
     FOR_EACH (SpriteParticleInfoIter, it, mSpriteParticles)
     {
         ParticleInfo *restrict const pi = (*it).second;
-        if (pi && !pi->files.empty())
+        if ((pi != nullptr) && !pi->files.empty())
         {
             FOR_EACH (std::vector<Particle*>::const_iterator,
                       itp, pi->particles)
@@ -5002,7 +5006,7 @@ void Being::setTeamId(const uint16_t teamId) restrict2
 void Being::showTeamBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Team]);
-    if (show && mTeamId && mShowBadges)
+    if (show && (mTeamId != 0u) && (mShowBadges != 0u))
     {
         const std::string name = paths.getStringValue("badges") +
             paths.getStringValue(strprintf("team%dbadge",
@@ -5028,7 +5032,7 @@ void Being::showBadges(const bool show) restrict2
 void Being::showPartyBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Party]);
-    if (show && !mPartyName.empty() && mShowBadges)
+    if (show && !mPartyName.empty() && (mShowBadges != 0u))
     {
         const std::string badge = BadgesDB::getPartyBadge(mPartyName);
         if (!badge.empty())
@@ -5053,7 +5057,7 @@ void Being::setPartyName(const std::string &restrict name) restrict2
 void Being::showShopBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Shop]);
-    if (show && mShop && mShowBadges)
+    if (show && mShop && (mShowBadges != 0u))
     {
         const std::string badge = paths.getStringValue("shopbadge");
         if (!badge.empty())
@@ -5068,7 +5072,7 @@ void Being::showShopBadge(const bool show) restrict2
 void Being::showInactiveBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Inactive]);
-    if (show && mInactive && mShowBadges)
+    if (show && mInactive && (mShowBadges != 0u))
     {
         const std::string badge = paths.getStringValue("inactivebadge");
         if (!badge.empty())
@@ -5083,7 +5087,7 @@ void Being::showInactiveBadge(const bool show) restrict2
 void Being::showAwayBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Away]);
-    if (show && mAway && mShowBadges)
+    if (show && mAway && (mShowBadges != 0u))
     {
         const std::string badge = paths.getStringValue("awaybadge");
         if (!badge.empty())
@@ -5100,7 +5104,7 @@ void Being::updateBadgesCount() restrict2
     mBadgesCount = 0;
     for_each_badges()
     {
-        if (mBadges[f])
+        if (mBadges[f] != nullptr)
             mBadgesCount ++;
     }
 }
@@ -5169,7 +5173,7 @@ void Being::addCast(const int dstX,
         skillId,
         skillLevel);
     delete2(mCastingEffect);
-    if (data)
+    if (data != nullptr)
     {
         const std::string castingAnimation = data->castingAnimation;
         mCastingEffect = new CastingEffect(skillId,
@@ -5218,7 +5222,7 @@ void Being::setHorse(const int horseId) restrict2
     if (mHorseId != 0)
     {
         mHorseInfo = HorseDB::get(horseId);
-        if (mHorseInfo)
+        if (mHorseInfo != nullptr)
         {
             FOR_EACH (SpriteRefs, it, mHorseInfo->downSprites)
             {
@@ -5281,7 +5285,7 @@ void Being::setSpiritBalls(const unsigned int balls) restrict2
 void Being::addSpiritBalls(const unsigned int balls,
                            const int effectId) restrict2
 {
-    if (!effectManager)
+    if (effectManager == nullptr)
         return;
     for (unsigned int f = 0; f < balls; f ++)
     {
@@ -5294,7 +5298,7 @@ void Being::addSpiritBalls(const unsigned int balls,
 
 void Being::removeSpiritBalls(const unsigned int balls) restrict2
 {
-    if (!particleEngine)
+    if (particleEngine == nullptr)
         return;
     for (unsigned int f = 0; f < balls && !mSpiritParticles.empty(); f ++)
     {
@@ -5314,22 +5318,22 @@ void Being::fixDirectionOffsets(int &offsetX,
                                 int &offsetY) const
 {
     const uint8_t dir = mDirection;
-    if (dir & BeingDirection::DOWN)
+    if ((dir & BeingDirection::DOWN) != 0)
     {
         // do nothing
     }
-    else if (dir & BeingDirection::UP)
+    else if ((dir & BeingDirection::UP) != 0)
     {
         offsetX = -offsetX;
         offsetY = -offsetY;
     }
-    else if (dir & BeingDirection::LEFT)
+    else if ((dir & BeingDirection::LEFT) != 0)
     {
         const int tmp = offsetY;
         offsetY = offsetX;
         offsetX = -tmp;
     }
-    else if (dir & BeingDirection::RIGHT)
+    else if ((dir & BeingDirection::RIGHT) != 0)
     {
         const int tmp = offsetY;
         offsetY = -offsetX;

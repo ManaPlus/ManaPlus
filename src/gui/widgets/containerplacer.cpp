@@ -29,15 +29,16 @@
 
 ContainerPlacer ContainerPlacer::at(const int x, const int y)
 {
-    return ContainerPlacer(mContainer, mCell ? &mCell->at(x, y) : nullptr);
+    return ContainerPlacer(mContainer,
+        mCell != nullptr ? &mCell->at(x, y) : nullptr);
 }
 
 LayoutCell &ContainerPlacer::operator()
     (const int x, const int y, Widget *const wg, const int w, const int h)
 {
-    if (mContainer)
+    if (mContainer != nullptr)
         mContainer->add(wg);
-    if (mCell)
+    if (mCell != nullptr)
         return mCell->place(wg, x, y, w, h);
     return LayoutCell::emptyCell;
 }

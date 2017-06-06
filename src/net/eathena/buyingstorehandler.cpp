@@ -53,7 +53,7 @@ void BuyingStoreHandler::create(const std::string &name,
     createOutPacket(CMSG_BUYINGSTORE_CREATE);
     outMsg.writeInt16(CAST_S16(89 + items.size() * 8), "len");
     outMsg.writeInt32(maxMoney, "limit money");
-    outMsg.writeInt8(flag, "flag");
+    outMsg.writeInt8(static_cast<int8_t>(flag), "flag");
     outMsg.writeString(name, 80, "store name");
     FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
     {
@@ -74,7 +74,7 @@ void BuyingStoreHandler::close() const
 
 void BuyingStoreHandler::open(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
     if (packetVersion < 20100420)
         return;
@@ -87,7 +87,7 @@ void BuyingStoreHandler::sell(const Being *const being,
                               const Item *const item,
                               const int amount) const
 {
-    if (!being || !item)
+    if ((being == nullptr) || (item == nullptr))
         return;
     if (packetVersion < 20100420)
         return;

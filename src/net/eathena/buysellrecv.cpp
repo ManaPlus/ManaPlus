@@ -61,7 +61,7 @@ void BuySellRecv::processNpcBuy(Net::MessageIn &msg)
     if (npcId != BeingTypeId_zero)
     {
         const BeingInfo *const info = NPCDB::get(npcId);
-        if (info)
+        if (info != nullptr)
             currency = info->getCurrency();
         else
             currency = DEFAULT_CURRENCY;

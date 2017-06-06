@@ -110,7 +110,7 @@ void InputManager::init() restrict2
 void InputManager::update()
 {
     keyboard.update();
-    if (joystick)
+    if (joystick != nullptr)
         joystick->update();
 }
 
@@ -306,7 +306,7 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
     for (int i = 0; i < CAST_S32(InputAction::TOTAL); i++)
     {
         const InputActionData &restrict kdi = inputActionData[i];
-        if (!*kdi.configField)
+        if (*kdi.configField == 0)
             continue;
 
         const InputFunction &restrict ki = mKey[i];
@@ -320,7 +320,7 @@ bool InputManager::hasConflicts(InputActionT &restrict key1,
             for (j = i, j++; j < CAST_S32(InputAction::TOTAL); j++)
             {
                 if ((kdi.grp & inputActionData[j].grp) == 0
-                    || !*kdi.configField)
+                    || (*kdi.configField == 0))
                 {
                     continue;
                 }
@@ -370,7 +370,7 @@ bool InputManager::isActionActive0(const InputActionT index)
 {
     if (keyboard.isActionActive(index))
         return true;
-    if (joystick && joystick->isActionActive(index))
+    if ((joystick != nullptr) && joystick->isActionActive(index))
         return true;
     return touchManager.isActionActive(index);
 }
@@ -539,7 +539,7 @@ void InputManager::setNewKey(const SDL_Event &event,
     int val = -1;
     if (type == InputType::KEYBOARD)
         val = KeyboardConfig::getKeyValueFromEvent(event);
-    else if (type == InputType::JOYSTICK && joystick)
+    else if (type == InputType::JOYSTICK && (joystick != nullptr))
         val = joystick->getButtonFromEvent(event);
 
     if (val != -1)
@@ -566,7 +566,7 @@ void InputManager::unassignKey() restrict2
 bool InputManager::handleAssignKey(const SDL_Event &restrict event,
                                    const InputTypeT type) restrict2
 {
-    if (setupWindow && setupWindow->isWindowVisible() &&
+    if ((setupWindow != nullptr) && setupWindow->isWindowVisible() &&
         getNewKeyIndex() > InputAction::NO_VALUE)
     {
         setNewKey(event, type);
@@ -603,11 +603,11 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
             keyboard.handleActivateKey(event);
             // send straight to gui for certain windows
 #ifndef DYECMD
-            if (quitDialog || TextDialog::isActive())
+            if ((quitDialog != nullptr) || TextDialog::isActive())
             {
-                if (guiInput)
+                if (guiInput != nullptr)
                     guiInput->pushInput(event);
-                if (gui)
+                if (gui != nullptr)
                     gui->handleInput();
                 BLOCK_END("InputManager::handleEvent")
                 return true;
@@ -660,9 +660,9 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
             break;
     }
 
-    if (guiInput)
+    if (guiInput != nullptr)
         guiInput->pushInput(event);
-    if (gui)
+    if (gui != nullptr)
     {
         const bool res = gui->handleInput();
         if (res && event.type == SDL_KEYDOWN)
@@ -683,7 +683,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
             break;
 
         case SDL_JOYBUTTONDOWN:
-            if (joystick && joystick->validate())
+            if ((joystick != nullptr) && joystick->validate())
             {
                 if (triggerAction(joystick->getActionVector(event)))
                 {
@@ -713,7 +713,7 @@ void InputManager::handleRepeat()
 {
     const int time = tick_time;
     keyboard.handleRepeat(time);
-    if (joystick)
+    if (joystick != nullptr)
         joystick->handleRepeat(time);
 }
 
@@ -723,17 +723,17 @@ void InputManager::updateConditionMask() restrict2
     if (keyboard.isEnabled())
         mMask |= InputCondition::ENABLED;
 #ifndef DYECMD
-    if ((!chatWindow || !chatWindow->isInputFocused()) &&
+    if (((chatWindow == nullptr) || !chatWindow->isInputFocused()) &&
         !NpcDialog::isAnyInputFocused() &&
         !InventoryWindow::isAnyInputFocused() &&
-        (!tradeWindow || !tradeWindow->isInpupFocused()))
+        ((tradeWindow == nullptr) || !tradeWindow->isInpupFocused()))
     {
-        if (gui)
+        if (gui != nullptr)
         {
             FocusHandler *restrict const focus = gui->getFocusHandler();
-            if (focus)
+            if (focus != nullptr)
             {
-                if (!dynamic_cast<TextField*>(focus->getFocused()))
+                if (dynamic_cast<TextField*>(focus->getFocused()) == nullptr)
                     mMask |= InputCondition::NOINPUT;
             }
             else
@@ -756,24 +756,24 @@ void InputManager::updateConditionMask() restrict2
         mMask |= InputCondition::NOROOM;
 
     const NpcDialog *restrict const dialog = NpcDialog::getActive();
-    if (!dialog || !dialog->isTextInputFocused())
+    if ((dialog == nullptr) || !dialog->isTextInputFocused())
         mMask |= InputCondition::NONPCINPUT;
-    if (!dialog || dialog->isCloseState())
+    if ((dialog == nullptr) || (dialog->isCloseState() != 0))
     {
         mMask |= InputCondition::NONPCDIALOG;
         if (!InventoryWindow::isStorageActive())
             mMask |= InputCondition::NOTALKING;
     }
-    if (!setupWindow || !setupWindow->isWindowVisible())
+    if ((setupWindow == nullptr) || !setupWindow->isWindowVisible())
         mMask |= InputCondition::NOSETUP;
 
-    if (Game::instance() && Game::instance()->getValidSpeed())
+    if ((Game::instance() != nullptr) && Game::instance()->getValidSpeed())
         mMask |= InputCondition::VALIDSPEED;
 
-    if (Game::instance())
+    if (Game::instance() != nullptr)
         mMask |= InputCondition::INGAME;
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         if (localPlayer->getFollow().empty())
             mMask |= InputCondition::NOFOLLOW;
@@ -794,7 +794,7 @@ void InputManager::updateConditionMask() restrict2
     if (!settings.awayMode)
         mMask |= InputCondition::NOAWAY;
 
-    if (gui && !gui->getFocusHandler()->getModalFocused())
+    if (gui != nullptr && gui->getFocusHandler()->getModalFocused() == nullptr)
         mMask |= InputCondition::NOMODAL;
 
     if (!settings.disableGameModifiers)
@@ -811,7 +811,7 @@ bool InputManager::checkKey(const InputActionData *restrict const key) const
                             restrict2
 {
     // logger->log("checkKey mask=%d, condition=%d", mMask, key->condition);
-    if (!key || (key->condition & mMask) != key->condition)
+    if ((key == nullptr) || (key->condition & mMask) != key->condition)
         return false;
 
     return (key->modKeyIndex == InputAction::NO_VALUE
@@ -828,7 +828,7 @@ bool InputManager::invokeKey(const InputActionData *restrict const key,
         InputEvent evt(keyNum, mMask);
         ActionFuncPtr func = *(inputActionData[
             CAST_SIZE(keyNum)].action);
-        if (func && func(evt))
+        if ((func != nullptr) && func(evt))
             return true;
     }
     return false;
@@ -842,7 +842,7 @@ void InputManager::executeAction(const InputActionT keyNum) restrict2
     InputEvent evt(keyNum, mMask);
     ActionFuncPtr func = *(inputActionData[CAST_SIZE(
         keyNum)].action);
-    if (func)
+    if (func != nullptr)
         func(evt);
 }
 
@@ -854,7 +854,7 @@ bool InputManager::executeChatCommand(const std::string &restrict cmd,
     if (it != mChatMap.end())
     {
         ActionFuncPtr func = *(inputActionData[(*it).second].action);
-        if (func)
+        if (func != nullptr)
         {
             InputEvent evt(args, tab, mMask);
             func(evt);
@@ -882,7 +882,7 @@ bool InputManager::executeRemoteChatCommand(const std::string &restrict cmd,
         if (data.isProtected == Protected_true)
             return false;
         ActionFuncPtr func = *(data.action);
-        if (func)
+        if (func != nullptr)
         {
             InputEvent evt(args, tab, mMask);
             func(evt);
@@ -900,7 +900,7 @@ bool InputManager::executeChatCommand(const InputActionT keyNum,
         return false;
     ActionFuncPtr func = *(inputActionData[CAST_SIZE(
         keyNum)].action);
-    if (func)
+    if (func != nullptr)
     {
         InputEvent evt(args, tab, mMask);
         func(evt);
@@ -921,7 +921,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
     {
         const InputFunction &restrict key = mKey[i];
         const InputActionData &restrict kd = inputActionData[i];
-        if (kd.action)
+        if (kd.action != nullptr)
         {
             for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
@@ -933,7 +933,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
                 }
             }
         }
-        if (kd.configField && (kd.grp & Input::GRP_GUICHAN))
+        if (kd.configField != nullptr && (kd.grp & Input::GRP_GUICHAN) != 0)
         {
             for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
@@ -942,7 +942,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
                     idMap[ki.value] = static_cast<InputActionT>(i);
             }
         }
-        if (kd.configField && (kd.grp & Input::GRP_REPEAT))
+        if (kd.configField != nullptr && (kd.grp & Input::GRP_REPEAT) != 0)
         {
             for (size_t i2 = 0; i2 < inputFunctionSize; i2 ++)
             {
@@ -965,7 +965,7 @@ void InputManager::updateKeyActionMap(KeyToActionMap &restrict actionMap,
 bool InputManager::triggerAction(const KeysVector *restrict const ptrs)
                                  restrict2
 {
-    if (!ptrs)
+    if (ptrs == nullptr)
         return false;
 
 //    logger->log("ptrs: %d", (int)ptrs.size());

@@ -34,7 +34,7 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
     mCharacterEntries(entries)
 {
     addKeyListener(widget);
-    if (entries)
+    if (entries != nullptr)
     {
         FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
                     it, entries)
@@ -47,7 +47,7 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
         if (mSelected >= 0 && mSelected < CAST_S32(sz))
         {
             CharacterDisplay *const display = (*mCharacterEntries)[mSelected];
-            if (display)
+            if (display != nullptr)
                 display->setSelect(false);
         }
         if (sz > 0)

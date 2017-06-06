@@ -63,7 +63,7 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
     mUnEquipedColor(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED)),
     mUnEquipedColor2(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE))
 {
-    if (itemShortcut[mNumber])
+    if (itemShortcut[mNumber] != nullptr)
         mMaxItems = itemShortcut[mNumber]->getItemCount();
     else
         mMaxItems = 0;
@@ -88,7 +88,7 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
 {
     BLOCK_START("ItemShortcutContainer::draw")
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];
-    if (!selShortcut)
+    if (selShortcut == nullptr)
     {
         BLOCK_END("ItemShortcutContainer::draw")
         return;
@@ -96,7 +96,7 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
 
     if (settings.guiAlpha != mAlpha)
     {
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
         mAlpha = settings.guiAlpha;
     }
@@ -105,7 +105,7 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
     drawBackground(graphics);
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
     {
         BLOCK_END("ItemShortcutContainer::draw")
         return;
@@ -136,11 +136,11 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
         if (itemId < SPELL_MIN_ID)
         {
             const Item *const item = inv->findItem(itemId, itemColor);
-            if (item)
+            if (item != nullptr)
             {
                 // Draw item icon.
                 Image *const image = item->getImage();
-                if (image)
+                if (image != nullptr)
                 {
                     std::string caption;
                     if (item->getQuantity() > 1)
@@ -171,17 +171,17 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                 }
             }
         }
-        else if (itemId < SKILL_MIN_ID && spellManager)
+        else if (itemId < SKILL_MIN_ID && (spellManager != nullptr))
         {   // this is magic shortcut
             const TextCommand *const spell = spellManager
                 ->getSpellByItem(itemId);
-            if (spell)
+            if (spell != nullptr)
             {
                 if (!spell->isEmpty())
                 {
                     Image *const image = spell->getImage();
 
-                    if (image)
+                    if (image != nullptr)
                     {
                         image->setAlpha(1.0F);
                         graphics->drawImage(image, itemX, itemY);
@@ -195,15 +195,15 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                     itemX + 2, itemY + mBoxHeight / 2);
             }
         }
-        else if (skillDialog)
+        else if (skillDialog != nullptr)
         {
             const SkillInfo *const skill = skillDialog->getSkill(
                 itemId - SKILL_MIN_ID);
-            if (skill)
+            if (skill != nullptr)
             {
                 Image *const image = skill->data->icon;
 
-                if (image)
+                if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
                     graphics->drawImage(image, itemX, itemY);
@@ -225,7 +225,7 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ItemShortcutContainer::draw")
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];
-    if (!selShortcut)
+    if (selShortcut == nullptr)
     {
         BLOCK_END("ItemShortcutContainer::draw")
         return;
@@ -233,7 +233,7 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
 
     if (settings.guiAlpha != mAlpha)
     {
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
         mAlpha = settings.guiAlpha;
     }
@@ -242,7 +242,7 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
     safeDrawBackground(graphics);
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
     {
         BLOCK_END("ItemShortcutContainer::draw")
         return;
@@ -273,11 +273,11 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
         if (itemId < SPELL_MIN_ID)
         {
             const Item *const item = inv->findItem(itemId, itemColor);
-            if (item)
+            if (item != nullptr)
             {
                 // Draw item icon.
                 Image *const image = item->getImage();
-                if (image)
+                if (image != nullptr)
                 {
                     std::string caption;
                     if (item->getQuantity() > 1)
@@ -308,17 +308,17 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                 }
             }
         }
-        else if (itemId < SKILL_MIN_ID && spellManager)
+        else if (itemId < SKILL_MIN_ID && (spellManager != nullptr))
         {   // this is magic shortcut
             const TextCommand *const spell = spellManager
                 ->getSpellByItem(itemId);
-            if (spell)
+            if (spell != nullptr)
             {
                 if (!spell->isEmpty())
                 {
                     Image *const image = spell->getImage();
 
-                    if (image)
+                    if (image != nullptr)
                     {
                         image->setAlpha(1.0F);
                         graphics->drawImage(image, itemX, itemY);
@@ -332,15 +332,15 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                     itemX + 2, itemY + mBoxHeight / 2);
             }
         }
-        else if (skillDialog)
+        else if (skillDialog != nullptr)
         {
             const SkillInfo *const skill = skillDialog->getSkill(
                 itemId - SKILL_MIN_ID);
-            if (skill)
+            if (skill != nullptr)
             {
                 Image *const image = skill->data->icon;
 
-                if (image)
+                if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
                     graphics->drawImage(image, itemX, itemY);
@@ -361,7 +361,7 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
 void ItemShortcutContainer::mouseDragged(MouseEvent &event)
 {
     ItemShortcut *const selShortcut = itemShortcut[mNumber];
-    if (!selShortcut)
+    if (selShortcut == nullptr)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -383,13 +383,13 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
             event.consume();
             if (itemId < SPELL_MIN_ID)
             {   // items
-                if (!PlayerInfo::getInventory())
+                if (PlayerInfo::getInventory() == nullptr)
                     return;
 
                 const Item *const item = PlayerInfo::getInventory()->findItem(
                     itemId, itemColor);
 
-                if (item)
+                if (item != nullptr)
                 {
                     selShortcut->removeItem(index);
                     dragDrop.dragItem(item, DragDropSource::Shortcuts, index);
@@ -401,7 +401,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
             }
             else if (itemId < SKILL_MIN_ID)
             {   // spells/commands
-                if (!spellManager)
+                if (spellManager == nullptr)
                 {
                     dragDrop.clear();
                     return;
@@ -409,7 +409,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
 
                 const TextCommand *const spell = spellManager->getSpellByItem(
                     itemId);
-                if (spell)
+                if (spell != nullptr)
                 {
                     selShortcut->removeItem(index);
                     dragDrop.dragCommand(spell,
@@ -423,14 +423,14 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
             }
             else
             {   // skills
-                if (!skillDialog)
+                if (skillDialog == nullptr)
                 {
                     dragDrop.clear();
                     return;
                 }
                 const SkillInfo *const skill
                     = skillDialog->getSkillByItem(itemId);
-                if (skill)
+                if (skill != nullptr)
                 {
                     const std::string itemData = selShortcut->getItemData(
                         index);
@@ -454,7 +454,7 @@ void ItemShortcutContainer::mouseDragged(MouseEvent &event)
 void ItemShortcutContainer::mousePressed(MouseEvent &event)
 {
     ItemShortcut *const selShortcut = itemShortcut[mNumber];
-    if (!selShortcut)
+    if (selShortcut == nullptr)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -466,17 +466,17 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
     {
         event.consume();
         // Stores the selected item if theirs one.
-        if (selShortcut->isItemSelected() && inventoryWindow &&
+        if (selShortcut->isItemSelected() && (inventoryWindow != nullptr) &&
             (inventoryWindow->isWindowVisible()
             || selShortcut->getSelectedItem() >= SPELL_MIN_ID))
         {
             selShortcut->setItem(index);
             selShortcut->setItemSelected(-1);
-            if (spellShortcut)
+            if (spellShortcut != nullptr)
                 spellShortcut->setItemSelected(-1);
             inventoryWindow->unselectItem();
         }
-        else if (selShortcut->getItem(index))
+        else if (selShortcut->getItem(index) != 0)
         {
             mItemClicked = true;
         }
@@ -484,7 +484,9 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
     else if (event.getButton() == MouseButton::RIGHT)
     {
         event.consume();
-        if (popupMenu && selShortcut && viewport)
+        if (popupMenu != nullptr &&
+            selShortcut != nullptr &&
+            viewport != nullptr)
         {
             popupMenu->showItemPopup(viewport->mMouseX,
                 viewport->mMouseY,
@@ -497,7 +499,7 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
 void ItemShortcutContainer::mouseReleased(MouseEvent &event)
 {
     ItemShortcut *const selShortcut = itemShortcut[mNumber];
-    if (!selShortcut)
+    if (selShortcut == nullptr)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -511,7 +513,7 @@ void ItemShortcutContainer::mouseReleased(MouseEvent &event)
 
         if (dragDrop.isEmpty())
         {
-            if (selShortcut->getItem(index) && mItemClicked)
+            if ((selShortcut->getItem(index) != 0) && mItemClicked)
                 selShortcut->useItem(index);
         }
         else
@@ -541,7 +543,7 @@ void ItemShortcutContainer::mouseReleased(MouseEvent &event)
 void ItemShortcutContainer::mouseMoved(MouseEvent &event)
 {
     const ItemShortcut *const selShortcut = itemShortcut[mNumber];
-    if (!selShortcut)
+    if (selShortcut == nullptr)
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -561,11 +563,11 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         spellPopup->setVisible(Visible_false);
 
         Inventory *const inv = PlayerInfo::getInventory();
-        if (!inv)
+        if (inv == nullptr)
             return;
 
         const Item *const item = inv->findItem(itemId, itemColor);
-        if (item && viewport)
+        if ((item != nullptr) && (viewport != nullptr))
         {
             itemPopup->setItem(item, false);
             itemPopup->position(viewport->mMouseX, viewport->mMouseY);
@@ -575,12 +577,12 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
             itemPopup->setVisible(Visible_false);
         }
     }
-    else if (itemId < SKILL_MIN_ID && spellManager)
+    else if (itemId < SKILL_MIN_ID && (spellManager != nullptr))
     {
         skillPopup->setVisible(Visible_false);
         itemPopup->setVisible(Visible_false);
         const TextCommand *const spell = spellManager->getSpellByItem(itemId);
-        if (spell && viewport)
+        if ((spell != nullptr) && (viewport != nullptr))
         {
             spellPopup->setItem(spell);
             spellPopup->view(viewport->mMouseX,
@@ -591,12 +593,12 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
             spellPopup->setVisible(Visible_false);
         }
     }
-    else if (skillDialog)
+    else if (skillDialog != nullptr)
     {
         itemPopup->setVisible(Visible_false);
         spellPopup->setVisible(Visible_false);
         const SkillInfo *const skill = skillDialog->getSkillByItem(itemId);
-        if (!skill)
+        if (skill == nullptr)
             return;
 
         const std::string data = selShortcut->getItemData(index);
@@ -629,18 +631,18 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
 // Hide ItemTooltip
 void ItemShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
-    if (spellPopup)
+    if (spellPopup != nullptr)
         spellPopup->setVisible(Visible_false);
-    if (skillPopup)
+    if (skillPopup != nullptr)
         skillPopup->setVisible(Visible_false);
 }
 
 void ItemShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
-    if (spellPopup)
+    if (spellPopup != nullptr)
         spellPopup->setVisible(Visible_false);
 }

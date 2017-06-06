@@ -70,7 +70,7 @@ void ParticleEngine::setupEngine() restrict2
     ParticleEngine::fastPhysics = config.getIntValue("particleFastPhysics");
     ParticleEngine::emitterSkip =
         config.getIntValue("particleEmitterSkip") + 1;
-    if (!ParticleEngine::emitterSkip)
+    if (ParticleEngine::emitterSkip == 0)
         ParticleEngine::emitterSkip = 1;
     ParticleEngine::enabled = config.getBoolValue("particleeffects");
     logger->log1("Particle engine set up");
@@ -78,7 +78,7 @@ void ParticleEngine::setupEngine() restrict2
 
 bool ParticleEngine::update() restrict2
 {
-    if (mChildParticles.empty() || !mMap)
+    if (mChildParticles.empty() || (mMap == nullptr))
         return true;
 
     // Update child particles
@@ -139,12 +139,12 @@ Particle *ParticleEngine::addEffect(const std::string &restrict
         particleEffectFile.substr(0, pos),
         UseVirtFs_true,
         SkipError_false);
-    if (!doc)
+    if (doc == nullptr)
         return nullptr;
 
     XmlNodeConstPtrConst rootNode = doc->rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "effect"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "effect"))
     {
         logger->log("Error loading particle: %s", particleEffectFile.c_str());
         doc->decRef();
@@ -162,20 +162,22 @@ Particle *ParticleEngine::addEffect(const std::string &restrict
         XmlNodePtr node;
 
         // Animation
-        if ((node = XML::findFirstChildByName(effectChildNode, "animation")))
+        if ((node = XML::findFirstChildByName(effectChildNode, "animation")) !=
+            nullptr)
         {
             newParticle = new AnimationParticle(node, dyePalettes);
             newParticle->setMap(mMap);
         }
         // Rotational
         else if ((node = XML::findFirstChildByName(
-                 effectChildNode, "rotation")))
+                 effectChildNode, "rotation")) != nullptr)
         {
             newParticle = new RotationalParticle(node, dyePalettes);
             newParticle->setMap(mMap);
         }
         // Image
-        else if ((node = XML::findFirstChildByName(effectChildNode, "image")))
+        else if ((node = XML::findFirstChildByName(effectChildNode,
+                 "image")) != nullptr)
         {
             std::string imageSrc;
             if (XmlHaveChildContent(node))
@@ -230,7 +232,7 @@ Particle *ParticleEngine::addEffect(const std::string &restrict
             else if (xmlNameEqual(emitterNode, "deatheffect"))
             {
                 std::string deathEffect;
-                if (node && XmlHaveChildContent(node))
+                if ((node != nullptr) && XmlHaveChildContent(node))
                     deathEffect = XmlChildContent(emitterNode);
 
                 char deathEffectConditions = 0x00;

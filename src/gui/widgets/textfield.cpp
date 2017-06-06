@@ -123,7 +123,7 @@ TextField::TextField(const Widget2 *restrict const widget,
     mCaretColor(&getThemeColor(ThemeColorId::CARET)),
     mMinimum(0),
     mMaximum(0),
-    mLastEventPaste(false),
+    mLastEventPaste(0),
     mPadding(1),
     mNumeric(false),
     mLoseFocusOnTab(loseFocusOnTab),
@@ -144,7 +144,7 @@ TextField::TextField(const Widget2 *restrict const widget,
 
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
         {
             mSkin = theme->loadSkinRect(skin, "textfield.xml",
                 "textfield_background.xml");
@@ -153,7 +153,7 @@ TextField::TextField(const Widget2 *restrict const widget,
 
     instances++;
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mPadding = mSkin->getPadding();
         mFrameSize = mSkin->getOption("frameSize", 2);
@@ -163,22 +163,22 @@ TextField::TextField(const Widget2 *restrict const widget,
     if (!eventId.empty())
         setActionEventId(eventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 }
 
 TextField::~TextField()
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->removeWidgetListener(this);
 
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     instances--;
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
         {
             theme->unload(mSkin);
             Theme::unloadRect(skin);
@@ -197,7 +197,7 @@ void TextField::updateAlpha()
         mAlpha = alpha;
         for (int a = 0; a < 9; a++)
         {
-            if (skin.grid[a])
+            if (skin.grid[a] != nullptr)
                 skin.grid[a]->setAlpha(mAlpha);
         }
     }
@@ -227,7 +227,7 @@ void TextField::draw(Graphics *const graphics)
     }
 
     const Image *const image = mTextChunk.img;
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, mPadding - mXScroll, mPadding);
 
     BLOCK_END("TextField::draw")
@@ -269,7 +269,7 @@ void TextField::setNumeric(const bool numeric)
         return;
 
     const char *const text = mText.c_str();
-    for (const char *textPtr = text; *textPtr; ++textPtr)
+    for (const char *textPtr = text; *textPtr != 0; ++textPtr)
     {
         if (*textPtr < '0' || *textPtr > '9')
         {
@@ -318,7 +318,8 @@ void TextField::keyPressed(KeyEvent &event)
     {
         if (mNumeric)
         {
-            if ((val >= '0' && val <= '9') || (val == '-' && !mCaretPosition))
+            if ((val >= '0' && val <= '9') ||
+                (val == '-' && mCaretPosition == 0u))
             {
                 char buf[2];
                 buf[0] = CAST_8(val);
@@ -333,7 +334,7 @@ void TextField::keyPressed(KeyEvent &event)
                 return;
             }
         }
-        else if (!mMaximum ||
+        else if ((mMaximum == 0) ||
                  CAST_S32(mText.size()) < mMaximum)
         {
             int len;
@@ -566,7 +567,7 @@ void TextField::handleCtrlKeys(const InputActionT action, bool &consumed)
 #else  // USE_SDL2
 
             // hack to prevent paste key sticking
-            if (mLastEventPaste && mLastEventPaste > cur_time)
+            if ((mLastEventPaste != 0) && mLastEventPaste > cur_time)
                 break;
             handlePaste();
             mLastEventPaste = cur_time + 2;
@@ -771,7 +772,7 @@ void TextField::mousePressed(MouseEvent &event)
     if (event.getButton() == MouseButton::RIGHT)
     {
 #ifndef DYECMD
-        if (popupMenu)
+        if (popupMenu != nullptr)
             popupMenu->showTextFieldPopup(this);
 #endif  // DYECMD
     }
@@ -817,14 +818,14 @@ void TextField::widgetHidden(const Event &event A_UNUSED)
 
 void TextField::setParent(Widget *widget)
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->addWidgetListener(this);
     Widget::setParent(widget);
 }
 
 void TextField::setWindow(Widget *const widget)
 {
-    if (!widget && mWindow)
+    if ((widget == nullptr) && (mWindow != nullptr))
     {
         mWindow->removeWidgetListener(this);
         mWindow = nullptr;

@@ -155,7 +155,7 @@ void NpcDialogDB::loadXmlFile(const std::string &fileName,
         skipError);
 
     XmlNodeConstPtrConst root = doc->rootNode();
-    if (!root)
+    if (root == nullptr)
     {
         delete doc;
         return;

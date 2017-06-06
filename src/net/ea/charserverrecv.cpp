@@ -111,7 +111,7 @@ void CharServerRecv::processCharCreateFailed(Net::MessageIn &msg)
         ShowCenter_true,
         nullptr,
         260);
-    if (charServerHandler->mCharCreateDialog)
+    if (charServerHandler->mCharCreateDialog != nullptr)
         charServerHandler->mCharCreateDialog->unlock();
     BLOCK_END("CharServerRecv::processCharCreateFailed")
 }

@@ -35,12 +35,12 @@ ToolTipListener::ToolTipListener() :
 
 void ToolTipListener::mouseMoved(MouseEvent &event)
 {
-    if (mToolTip.empty() || !textBoxPopup)
+    if (mToolTip.empty() || (textBoxPopup == nullptr))
         return;
 
     int x = 0;
     int y = 0;
-    if (viewport)
+    if (viewport != nullptr)
     {
         x = viewport->mMouseX;
         y = viewport->mMouseY;
@@ -56,7 +56,7 @@ void ToolTipListener::mouseMoved(MouseEvent &event)
 
 void ToolTipListener::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mToolTip.empty() || !textBoxPopup)
+    if (mToolTip.empty() || (textBoxPopup == nullptr))
         return;
     textBoxPopup->hide();
 }

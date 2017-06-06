@@ -186,6 +186,6 @@ void Setup_Players::externalUpdated()
 void Setup_Players::apply()
 {
     SetupTabScroll::apply();
-    settings.enableRemoteCommands = serverConfig.getValue(
-        "enableRemoteCommands", 1);
+    settings.enableRemoteCommands = (serverConfig.getValue(
+        "enableRemoteCommands", 1) != 0);
 }

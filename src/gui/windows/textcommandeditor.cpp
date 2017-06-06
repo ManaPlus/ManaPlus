@@ -52,7 +52,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     Window(_("Command Editor"), Modal_false, nullptr, "commandeditor.xml"),
     ActionListener(),
 #ifdef TMWA_SUPPORT
-    mIsMagicCommand(command ?
+    mIsMagicCommand(command != nullptr ?
         (command->getCommandType() == TextCommandType::Magic) : false),
 #endif  // TMWA_SUPPORT
     mCommand(command),
@@ -136,14 +136,14 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 
     mIconDropDown->setActionEventId("icon");
     mIconDropDown->addActionListener(this);
-    if (mCommand)
+    if (mCommand != nullptr)
         mIconDropDown->setSelectedString(mCommand->getIcon());
 
     mSaveButton->adjustSize();
     mCancelButton->adjustSize();
     mDeleteButton->adjustSize();
 
-    if (command)
+    if (command != nullptr)
     {
 #ifdef TMWA_SUPPORT
         if (command->getCommandType() == TextCommandType::Magic)
@@ -290,7 +290,7 @@ void TextCommandEditor::scheduleDelete()
 
 void TextCommandEditor::save()
 {
-    if (!mCommand)
+    if (mCommand == nullptr)
         return;
 #ifdef TMWA_SUPPORT
     if (mIsMagicCommand)
@@ -314,13 +314,13 @@ void TextCommandEditor::save()
     mCommand->setSchoolLvl(mSchoolLvlField->getValue());
 #endif  // TMWA_SUPPORT
 
-    if (spellManager)
+    if (spellManager != nullptr)
         spellManager->save();
 }
 
 void TextCommandEditor::deleteCommand()
 {
-    if (!mCommand)
+    if (mCommand == nullptr)
         return;
     mCommand->setSymbol("");
     mCommand->setCommand("");
@@ -335,6 +335,6 @@ void TextCommandEditor::deleteCommand()
     mCommand->setSchoolLvl(0);
 #endif  // TMWA_SUPPORT
 
-    if (spellManager)
+    if (spellManager != nullptr)
         spellManager->save();
 }

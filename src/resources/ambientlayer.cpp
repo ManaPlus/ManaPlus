@@ -55,7 +55,7 @@ AmbientLayer::AmbientLayer(const std::string &name,
     mMask(mask),
     mKeepRatio(keepRatio)
 {
-    if (!mImage)
+    if (mImage == nullptr)
         return;
 
     if (keepRatio &&
@@ -74,7 +74,7 @@ AmbientLayer::AmbientLayer(const std::string &name,
                 CAST_S32(mImage->mBounds.h) /
                 defaultScreenHeight * height);
 
-            if (rescaledOverlay)
+            if (rescaledOverlay != nullptr)
                 mImage = rescaledOverlay;
             else
                 mImage->incRef();
@@ -86,7 +86,7 @@ AmbientLayer::AmbientLayer(const std::string &name,
 
 AmbientLayer::~AmbientLayer()
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
@@ -95,7 +95,7 @@ AmbientLayer::~AmbientLayer()
 
 void AmbientLayer::update(const int timePassed, const float dx, const float dy)
 {
-    if (!mImage)
+    if (mImage == nullptr)
         return;
 
     const float time = static_cast<float>(timePassed) / 10;
@@ -126,7 +126,7 @@ void AmbientLayer::update(const int timePassed, const float dx, const float dy)
 void AmbientLayer::draw(Graphics *const graphics, const int x,
                         const int y) const
 {
-    if (!mImage)
+    if (mImage == nullptr)
         return;
 
     if (imageHelper->useOpenGL() == RENDER_SOFTWARE ||

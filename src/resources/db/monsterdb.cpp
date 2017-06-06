@@ -62,7 +62,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "monsters"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "monsters"))
     {
         logger->log("Monster Database: Error while loading %s!",
             paths.getStringValue("monstersFile").c_str());
@@ -94,7 +94,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName,
             logger->log("MonsterDB: Redefinition of monster ID %d", id);
             currentInfo = mMonsterInfos[fromInt(id + offset, BeingTypeId)];
         }
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setBlockType(BlockType::NONE);
@@ -114,7 +114,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName,
         currentInfo->setColorsList(XML::getProperty(monsterNode,
             "colors", ""));
 
-        if (currentInfo->getMaxHP())
+        if (currentInfo->getMaxHP() != 0)
             currentInfo->setStaticMaxHP(true);
 
         SpriteDisplay display;

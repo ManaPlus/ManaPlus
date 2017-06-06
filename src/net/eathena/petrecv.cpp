@@ -74,7 +74,7 @@ void PetRecv::processEggsList(Net::MessageIn &msg)
 {
     const int count = (msg.readInt16("len") - 4) / 2;
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
     menu = MenuType::Eggs;
 
@@ -92,7 +92,7 @@ void PetRecv::processEggsList(Net::MessageIn &msg)
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
         const Item *const item = inv->getItem(index);
 
-        if (item)
+        if (item != nullptr)
             dialog->addItem(item, 0);
     }
 }
@@ -103,7 +103,7 @@ void PetRecv::processPetData(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("pet id");
     Being *const dstBeing = actorManager->findBeing(id);
     const int data = msg.readInt32("data");
-    if (!cmd)  // pre init
+    if (cmd == 0)  // pre init
     {
         PetInfo *const info = new PetInfo;
         info->id = id;
@@ -112,7 +112,7 @@ void PetRecv::processPetData(Net::MessageIn &msg)
         return;
     }
     PetInfo *const info = PlayerInfo::getPet();
-    if (!info)
+    if (info == nullptr)
         return;
     switch (cmd)
     {
@@ -150,7 +150,7 @@ void PetRecv::processPetStatus(Net::MessageIn &msg)
 //        being->setLevel(level);
 
     PetInfo *const info = PlayerInfo::getPet();
-    if (!info)
+    if (info == nullptr)
         return;
     info->name = name;
     info->level = level;
@@ -167,7 +167,7 @@ void PetRecv::processPetFood(Net::MessageIn &msg)
 {
     const int result = msg.readUInt8("result");
     msg.readInt16("food id");
-    if (result)
+    if (result != 0)
         NotifyManager::notify(NotifyTypes::PET_FEED_OK);
     else
         NotifyManager::notify(NotifyTypes::PET_FEED_ERROR);

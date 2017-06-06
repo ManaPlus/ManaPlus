@@ -57,7 +57,7 @@ NpcHandler::NpcHandler() :
 
 void NpcHandler::talk(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
     createOutPacket(CMSG_NPC_TALK);
     outMsg.writeBeingId(being->getId(), "npc id");
@@ -80,7 +80,7 @@ void NpcHandler::closeDialog(const BeingId npcId)
     if (it != NpcDialog::mNpcDialogs.end())
     {
         NpcDialog *const dialog = (*it).second;
-        if (dialog)
+        if (dialog != nullptr)
             dialog->close();
         if (dialog == Ea::NpcRecv::mDialog)
             Ea::NpcRecv::mDialog = nullptr;
@@ -125,7 +125,7 @@ void NpcHandler::stringInput(const BeingId npcId,
 
 void NpcHandler::buy(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
     createOutPacket(CMSG_NPC_BUY_SELL_REQUEST);
     outMsg.writeBeingId(being->getId(), "npc id");
@@ -169,7 +169,7 @@ void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
         const ItemTypeT type = item->getType();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         if (type == ItemType::Weapon ||
             type == ItemType::Armor ||
@@ -193,7 +193,7 @@ void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         item->increaseUsedQuantity(-usedQuantity);
         item->update();
@@ -237,7 +237,7 @@ void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         cnt ++;
     }
@@ -248,7 +248,7 @@ void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         item->increaseUsedQuantity(-usedQuantity);
         item->update();
@@ -339,7 +339,7 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg,
         {
             CREATEWIDGETV(Ea::NpcRecv::mDialog, NpcDialog, npcId);
             Ea::NpcRecv::mDialog->saveCamera();
-            if (localPlayer)
+            if (localPlayer != nullptr)
                 localPlayer->stopWalking(false);
             NpcDialog::mNpcDialogs[npcId] = Ea::NpcRecv::mDialog;
         }
@@ -347,10 +347,10 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg,
     else
     {
         NpcDialog *const dialog = diag->second;
-        if (Ea::NpcRecv::mDialog && Ea::NpcRecv::mDialog != dialog)
+        if (Ea::NpcRecv::mDialog != nullptr && Ea::NpcRecv::mDialog != dialog)
             Ea::NpcRecv::mDialog->restoreCamera();
         Ea::NpcRecv::mDialog = dialog;
-        if (Ea::NpcRecv::mDialog)
+        if (Ea::NpcRecv::mDialog != nullptr)
             Ea::NpcRecv::mDialog->saveCamera();
     }
     return npcId;

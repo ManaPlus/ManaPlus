@@ -88,7 +88,7 @@ void ItemOptionDb::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "itemoptions"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "itemoptions"))
     {
         if (skipError == SkipError_true)
         {

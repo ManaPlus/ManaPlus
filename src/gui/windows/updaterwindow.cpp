@@ -81,7 +81,7 @@ static std::vector<UpdateFile> loadXMLFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_false, SkipError_false);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "updates"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "updates"))
     {
         logger->log("Error loading update file: %s", fileName.c_str());
         return files;
@@ -265,7 +265,7 @@ UpdaterWindow::~UpdaterWindow()
     if (mLoadUpdates)
         loadUpdates();
 
-    if (mDownload)
+    if (mDownload != nullptr)
     {
         mDownload->cancel();
 
@@ -297,7 +297,7 @@ void UpdaterWindow::enable()
 
     if (client->getState() != State::GAME)
     {
-        if (mUpdateType & UpdateType::Close)
+        if ((mUpdateType & UpdateType::Close) != 0)
             client->setState(State::LOAD_DATA);
     }
     else
@@ -316,7 +316,7 @@ void UpdaterWindow::action(const ActionEvent &event)
         // Skip the updating process
         if (mDownloadStatus != UpdateDownloadStatus::UPDATE_COMPLETE)
         {
-            if (mDownload)
+            if (mDownload != nullptr)
                 mDownload->cancel();
             mDownloadStatus = UpdateDownloadStatus::UPDATE_ERROR;
         }
@@ -359,7 +359,7 @@ void UpdaterWindow::keyPressed(KeyEvent &event)
 
 void UpdaterWindow::loadNews()
 {
-    if (!mMemoryBuffer)
+    if (mMemoryBuffer == nullptr)
     {
         logger->log1("Couldn't load news");
         return;
@@ -368,7 +368,7 @@ void UpdaterWindow::loadNews()
     // Reallocate and include terminating 0 character
     mMemoryBuffer = static_cast<char*>(realloc(
         mMemoryBuffer, mDownloadedBytes + 1));
-    if (!mMemoryBuffer)
+    if (mMemoryBuffer == nullptr)
     {
         logger->log1("Couldn't load news");
         return;
@@ -392,7 +392,7 @@ void UpdaterWindow::loadNews()
         {
             firstLine = false;
             const size_t i = line.find("##9 Latest client version: ##6");
-            if (!i)
+            if (i == 0u)
                 continue;
 
             if (file.is_open())
@@ -427,7 +427,7 @@ void UpdaterWindow::loadNews()
 
 void UpdaterWindow::loadPatch()
 {
-    if (!mMemoryBuffer)
+    if (mMemoryBuffer == nullptr)
     {
         logger->log1("Couldn't load patch");
         return;
@@ -436,7 +436,7 @@ void UpdaterWindow::loadPatch()
     // Reallocate and include terminating 0 character
     mMemoryBuffer = static_cast<char*>(
         realloc(mMemoryBuffer, mDownloadedBytes + 1));
-    if (!mMemoryBuffer)
+    if (mMemoryBuffer == nullptr)
     {
         logger->log1("Couldn't load patch");
         return;
@@ -447,13 +447,13 @@ void UpdaterWindow::loadPatch()
 
     // Tokenize and add each line separately
     char *line = strtok(mMemoryBuffer, "\n");
-    if (line)
+    if (line != nullptr)
     {
         version = line;
         if (serverVersion < 1)
         {
             line = strtok(nullptr, "\n");
-            if (line)
+            if (line != nullptr)
             {
                 mBrowserBox->addRow(strprintf("##9 Latest client version: "
                     "##6ManaPlus %s##0", line), true);
@@ -500,7 +500,7 @@ int UpdaterWindow::updateProgress(void *ptr,
                                   const size_t dn)
 {
     UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(ptr);
-    if (!uw)
+    if (uw == nullptr)
         return -1;
 
     if (status == DownloadStatus::Complete)
@@ -524,7 +524,7 @@ int UpdaterWindow::updateProgress(void *ptr,
         }
     }
 
-    if (!dt)
+    if (dt == 0u)
         dt = 1;
 
     float progress = static_cast<float>(dn) /
@@ -559,11 +559,11 @@ size_t UpdaterWindow::memoryWrite(void *ptr, size_t size,
 {
     UpdaterWindow *const uw = reinterpret_cast<UpdaterWindow *>(stream);
     const size_t totalMem = size * nmemb;
-    if (!uw)
+    if (uw == nullptr)
         return 0;
     uw->mMemoryBuffer = static_cast<char*>(realloc(uw->mMemoryBuffer,
         CAST_SIZE(uw->mDownloadedBytes) + totalMem));
-    if (uw->mMemoryBuffer)
+    if (uw->mMemoryBuffer != nullptr)
     {
         memcpy(&(uw->mMemoryBuffer[uw->mDownloadedBytes]), ptr, totalMem);
         uw->mDownloadedBytes += CAST_S32(totalMem);
@@ -574,7 +574,7 @@ size_t UpdaterWindow::memoryWrite(void *ptr, size_t size,
 
 void UpdaterWindow::download()
 {
-    if (mDownload)
+    if (mDownload != nullptr)
     {
         mDownload->cancel();
         delete mDownload;
@@ -757,7 +757,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
             struct stat statbuf;
             std::string fileName = pathJoin(fixPath,
                 name);
-            if (!stat(fileName.c_str(), &statbuf))
+            if (stat(fileName.c_str(), &statbuf) == 0)
             {
                 VirtFs::mountZip(fileName,
                     Append_false);
@@ -784,7 +784,7 @@ void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
             struct stat statbuf;
             const std::string file = pathJoin(
                 fixPath, name);
-            if (!stat(file.c_str(), &statbuf))
+            if (stat(file.c_str(), &statbuf) == 0)
                 VirtFs::unmountZip(file);
         }
     }
@@ -801,7 +801,7 @@ void UpdaterWindow::addUpdateFile(const std::string &restrict path,
 
     const std::string fixFile = pathJoin(fixPath, file);
     struct stat statbuf;
-    if (!stat(fixFile.c_str(), &statbuf))
+    if (stat(fixFile.c_str(), &statbuf) == 0)
         VirtFs::mountZip(fixFile, append);
 
     if (append == Append_true)
@@ -815,7 +815,7 @@ void UpdaterWindow::removeUpdateFile(const std::string &restrict path,
     VirtFs::unmountZip(pathJoin(path, file));
     const std::string fixFile = pathJoin(fixPath, file);
     struct stat statbuf;
-    if (!stat(fixFile.c_str(), &statbuf))
+    if (stat(fixFile.c_str(), &statbuf) == 0)
         VirtFs::unmountZip(fixFile);
 }
 
@@ -836,7 +836,7 @@ void UpdaterWindow::logic()
         }
 
         mProgressBar->setProgress(mDownloadProgress);
-        if (mUpdateFiles.size()
+        if ((mUpdateFiles.size() != 0u)
             && CAST_SIZE(mUpdateIndex) <= mUpdateFiles.size())
         {
             mProgressBar->setText(strprintf("%u/%u", mUpdateIndex
@@ -860,7 +860,7 @@ void UpdaterWindow::logic()
             mBrowserBox->addRow(_("##1  It is strongly recommended that"));
             // TRANSLATORS: Begins "It is strongly recommended that".
             mBrowserBox->addRow(_("##1  you try again later."));
-            if (mDownload)
+            if (mDownload != nullptr)
                 mBrowserBox->addRow(mDownload->getError());
             mScrollArea->setVerticalScrollAmount(
                     mScrollArea->getVerticalMaxScroll());
@@ -1063,7 +1063,7 @@ bool UpdaterWindow::validateFile(const std::string &filePath,
                                  const unsigned long hash)
 {
     FILE *const file = fopen(filePath.c_str(), "rb");
-    if (!file)
+    if (file == nullptr)
         return false;
 
     const unsigned long adler = Net::Download::fadler32(file);
@@ -1144,7 +1144,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
                 struct stat statbuf;
                 std::string fileName = pathJoin(fixPath,
                     name);
-                if (!stat(fileName.c_str(), &statbuf))
+                if (stat(fileName.c_str(), &statbuf) == 0)
                 {
                     VirtFs::mountZip(fileName,
                         Append_false);
@@ -1171,7 +1171,7 @@ void UpdaterWindow::loadDirMods(const std::string &dir)
         if (modIt == mods.end())
             continue;
         const ModInfo *const mod = (*modIt).second;
-        if (mod)
+        if (mod != nullptr)
         {
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())
@@ -1196,7 +1196,7 @@ void UpdaterWindow::unloadMods(const std::string &dir)
         if (modIt == mods.end())
             continue;
         const ModInfo *const mod = (*modIt).second;
-        if (mod)
+        if (mod != nullptr)
         {
             const std::string &localDir = mod->getLocalDir();
             if (!localDir.empty())

@@ -113,7 +113,7 @@ void TextChunk::generate(TTF_Font *restrict const font,
     SDL_Surface *surface = MTTF_RenderUTF8_Blended(
         font, strBuf, sdlCol);
 
-    if (!surface)
+    if (surface == nullptr)
     {
         img = nullptr;
         BLOCK_END("TextChunk::generate")
@@ -129,7 +129,7 @@ void TextChunk::generate(TTF_Font *restrict const font,
         SDL_Color sdlCol2;
         SDL_Surface *const background = imageHelper->create32BitSurface(
             width, height);
-        if (!background)
+        if (background == nullptr)
         {
             img = nullptr;
             MSDL_FreeSurface(surface);
@@ -148,7 +148,7 @@ void TextChunk::generate(TTF_Font *restrict const font,
 
         SDL_Surface *const surface2 = MTTF_RenderUTF8_Blended(
             font, strBuf, sdlCol2);
-        if (!surface2)
+        if (surface2 == nullptr)
         {
             img = nullptr;
             MSDL_FreeSurface(surface);
@@ -191,7 +191,7 @@ void TextChunk::generate(TTF_Font *restrict const font,
 
 void TextChunk::deleteImage()
 {
-    if (textFont)
+    if (textFont != nullptr)
     {
         textFont->insertChunk(this);
         img = nullptr;

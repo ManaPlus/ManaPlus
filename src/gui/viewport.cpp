@@ -121,7 +121,7 @@ Viewport::~Viewport()
 
 void Viewport::setMap(Map *const map)
 {
-    if (mMap && map)
+    if ((mMap != nullptr) && (map != nullptr))
         map->setDrawLayersFlags(mMap->getDrawLayersFlags());
     mMap = map;
     updateMaxVars();
@@ -132,7 +132,7 @@ void Viewport::draw(Graphics *const graphics)
     BLOCK_START("Viewport::draw 1")
     static int lastTick = tick_time;
 
-    if (!mMap || !localPlayer)
+    if ((mMap == nullptr) || (localPlayer == nullptr))
     {
         graphics->setColor(Color(64, 64, 64));
         graphics->fillRectangle(
@@ -247,7 +247,7 @@ void Viewport::draw(Graphics *const graphics)
     }
 
     // Draw text
-    if (textManager)
+    if (textManager != nullptr)
         textManager->draw(graphics, mPixelViewX, mPixelViewY);
 
     // Draw player names, speech, and emotion sprite as needed
@@ -261,7 +261,7 @@ void Viewport::draw(Graphics *const graphics)
         b->drawEmotion(graphics, mPixelViewX, mPixelViewY);
     }
 
-    if (miniStatusWindow)
+    if (miniStatusWindow != nullptr)
         miniStatusWindow->drawIcons(graphics);
 
     // Draw contained widgets
@@ -285,11 +285,11 @@ void Viewport::logic()
 
 void Viewport::followMouse()
 {
-    if (!gui)
+    if (gui == nullptr)
         return;
     const MouseStateType button = Gui::getMouseState(mMouseX, mMouseY);
     // If the left button is dragged
-    if (mPlayerFollowMouse && (button & SDL_BUTTON(1)))
+    if (mPlayerFollowMouse && ((button & SDL_BUTTON(1)) != 0))
     {
         // We create a mouse event and send it to mouseDragged.
         const MouseEvent event(nullptr,
@@ -305,8 +305,14 @@ void Viewport::followMouse()
 
 void Viewport::drawDebugPath(Graphics *const graphics)
 {
-    if (!localPlayer || !userPalette || !actorManager || !mMap || !gui)
+    if (localPlayer == nullptr ||
+        userPalette == nullptr ||
+        actorManager == nullptr ||
+        mMap == nullptr ||
+        gui == nullptr)
+    {
         return;
+    }
 
     Gui::getMouseState(mMouseX, mMouseY);
 
@@ -335,7 +341,7 @@ void Viewport::drawDebugPath(Graphics *const graphics)
     FOR_EACH (ActorSpritesConstIterator, it, actors)
     {
         const Being *const being = dynamic_cast<const Being*>(*it);
-        if (being && being != localPlayer)
+        if ((being != nullptr) && being != localPlayer)
         {
             const Path &beingPath = being->getPath();
             drawPath(graphics, beingPath, userPalette->getColorWithAlpha(
@@ -358,7 +364,7 @@ void Viewport::drawPath(Graphics *const graphics,
         const int squareY = i->y * mapTileSize - mPixelViewY + 12;
 
         graphics->fillRectangle(Rect(squareX, squareY, 8, 8));
-        if (mMap)
+        if (mMap != nullptr)
         {
             const std::string str = toString(cnt);
             font->drawString(graphics,
@@ -376,12 +382,12 @@ bool Viewport::openContextMenu(const MouseEvent &event)
     mPlayerFollowMouse = false;
     const int eventX = event.getX();
     const int eventY = event.getY();
-    if (!popupMenu)
+    if (popupMenu == nullptr)
         return false;
-    if (mHoverBeing)
+    if (mHoverBeing != nullptr)
     {
         validateSpeed();
-        if (actorManager)
+        if (actorManager != nullptr)
         {
             std::vector<ActorSprite*> beings;
             const int x = mMouseX + mPixelViewX;
@@ -394,21 +400,21 @@ bool Viewport::openContextMenu(const MouseEvent &event)
             return true;
         }
     }
-    else if (mHoverItem)
+    else if (mHoverItem != nullptr)
     {
         validateSpeed();
         popupMenu->showPopup(eventX, eventY, mHoverItem);
         return true;
     }
-    else if (mHoverSign)
+    else if (mHoverSign != nullptr)
     {
         validateSpeed();
         popupMenu->showPopup(eventX, eventY, mHoverSign);
         return true;
     }
-    else if (settings.cameraMode)
+    else if (settings.cameraMode != 0u)
     {
-        if (!mMap)
+        if (mMap == nullptr)
             return false;
         popupMenu->showMapPopup(eventX, eventY,
             (mMouseX + mPixelViewX) / mMap->getTileWidth(),
@@ -424,7 +430,7 @@ bool Viewport::leftMouseAction()
     const bool stopAttack = inputManager.isActionActive(
         InputAction::STOP_ATTACK);
     // Interact with some being
-    if (mHoverBeing)
+    if (mHoverBeing != nullptr)
     {
         if (!mHoverBeing->isAlive())
             return true;
@@ -442,14 +448,14 @@ bool Viewport::leftMouseAction()
             {
                 case ActorType::Player:
                     validateSpeed();
-                    if (actorManager)
+                    if (actorManager != nullptr)
                     {
 #ifdef TMWA_SUPPORT
                         if (localPlayer != mHoverBeing || mSelfMouseHeal)
                             actorManager->heal(mHoverBeing);
 #endif  // TMWA_SUPPORT
 
-                        if (localPlayer == mHoverBeing && mHoverItem)
+                        if (localPlayer == mHoverBeing && (mHoverItem != nullptr))
                             localPlayer->pickUp(mHoverItem);
                         return true;
                     }
@@ -500,14 +506,14 @@ bool Viewport::leftMouseAction()
         }
     }
     // Picks up a item if we clicked on one
-    if (mHoverItem)
+    if (mHoverItem != nullptr)
     {
         validateSpeed();
         localPlayer->pickUp(mHoverItem);
     }
     else if (stopAttack)
     {
-        if (mMap)
+        if (mMap != nullptr)
         {
             const int mouseTileX = (mMouseX + mPixelViewX)
                 / mMap->getTileWidth();
@@ -542,7 +548,7 @@ void Viewport::mousePressed(MouseEvent &event)
         return;
 
     // Check if we are alive and kickin'
-    if (!mMap || !localPlayer)
+    if ((mMap == nullptr) || (localPlayer == nullptr))
         return;
 
     // Check if we are busy
@@ -590,12 +596,12 @@ void Viewport::mousePressed(MouseEvent &event)
         mPlayerFollowMouse = false;
         validateSpeed();
         // Find the being nearest to the clicked position
-        if (actorManager)
+        if (actorManager != nullptr)
         {
             Being *const target = actorManager->findNearestLivingBeing(
                 pixelX, pixelY, 20, ActorType::Monster, nullptr);
 
-            if (target)
+            if (target != nullptr)
                 localPlayer->setTarget(target);
         }
     }
@@ -609,7 +615,7 @@ void Viewport::getMouseTile(int &destX, int &destY) const
 void Viewport::getMouseTile(const int x, const int y,
                             int &destX, int &destY) const
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
     const int tw = mMap->getTileWidth();
     const int th = mMap->getTileHeight();
@@ -656,7 +662,7 @@ void Viewport::getMouseTile(const int x, const int y,
 
 void Viewport::walkByMouse(const MouseEvent &event)
 {
-    if (!mMap || !localPlayer)
+    if ((mMap == nullptr) || (localPlayer == nullptr))
         return;
     if (mPlayerFollowMouse
         && !inputManager.isActionActive(InputAction::STOP_ATTACK)
@@ -678,7 +684,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                     / static_cast<float>(height);
                 int x = event.getX() - width;
                 int y = event.getY() - height;
-                if (!x && !y)
+                if ((x == 0) && (y == 0))
                     return;
                 const int x2 = abs(x);
                 const int y2 = abs(y);
@@ -687,7 +693,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                 int dy = 0;
                 if (x2 > y2)
                 {
-                    if (y2 && static_cast<float>(x2) / static_cast<float>(y2)
+                    if ((y2 != 0) && static_cast<float>(x2) / static_cast<float>(y2)
                         / wh > diff)
                     {
                         y = 0;
@@ -695,7 +701,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                 }
                 else
                 {
-                    if (x2 && y2 * wh / x2 > diff)
+                    if ((x2 != 0) && y2 * wh / x2 > diff)
                         x = 0;
                 }
                 if (x > 0)
@@ -718,7 +724,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                 }
                 else
                 {
-                    if (dx && dy)
+                    if ((dx != 0) && (dy != 0))
                     {
                         // try avoid diagonal collision
                         if (x2 > y2)
@@ -757,7 +763,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                     else
                     {
                         // try avoid vertical or horisontal collision
-                        if (!dx)
+                        if (dx == 0)
                         {
                             if (mMap->getWalk(playerX + 1,
                                 playerY + dy,
@@ -778,7 +784,7 @@ void Viewport::walkByMouse(const MouseEvent &event)
                                 dx = -1;
                             }
                         }
-                        if (!dy)
+                        if (dy == 0)
                         {
                             if (mMap->getWalk(playerX + dx,
                                 playerY + 1,
@@ -839,7 +845,7 @@ void Viewport::mouseDragged(MouseEvent &event)
     }
     if (mAllowMoveByMouse &&
         mMouseClicked &&
-        localPlayer &&
+        (localPlayer != nullptr) &&
         localPlayer->canMove())
     {
         if (abs(event.getX() - mMousePressX) > 32
@@ -865,7 +871,7 @@ void Viewport::mouseReleased(MouseEvent &event)
         if (eventButton == MouseButton::LEFT)
         {
             // long button press
-            if (gui && gui->isLongPress())
+            if ((gui != nullptr) && gui->isLongPress())
             {
                 if (openContextMenu(event))
                 {
@@ -906,7 +912,7 @@ void Viewport::optionChanged(const std::string &name)
 void Viewport::mouseMoved(MouseEvent &event)
 {
     // Check if we are on the map
-    if (!mMap || !localPlayer || !actorManager)
+    if ((mMap == nullptr) || (localPlayer == nullptr) || (actorManager == nullptr))
         return;
 
     if (mMouseDirectionMove)
@@ -917,9 +923,9 @@ void Viewport::mouseMoved(MouseEvent &event)
 
     ActorTypeT type = ActorType::Unknown;
     mHoverBeing = actorManager->findBeingByPixel(x, y, AllPlayers_true);
-    if (mHoverBeing)
+    if (mHoverBeing != nullptr)
         type = mHoverBeing->getType();
-    if (mHoverBeing
+    if ((mHoverBeing != nullptr)
         && (type == ActorType::Player
         || type == ActorType::Npc
         || type == ActorType::Homunculus
@@ -927,7 +933,7 @@ void Viewport::mouseMoved(MouseEvent &event)
         || type == ActorType::Pet))
     {
         popupManager->hideTextPopup();
-        if (mShowBeingPopup && beingPopup)
+        if (mShowBeingPopup && (beingPopup != nullptr))
             beingPopup->show(mMouseX, mMouseY, mHoverBeing);
     }
     else
@@ -938,10 +944,10 @@ void Viewport::mouseMoved(MouseEvent &event)
     mHoverItem = actorManager->findItem(x / mMap->getTileWidth(),
         y / mMap->getTileHeight());
 
-    if (!mHoverBeing && !mHoverItem)
+    if ((mHoverBeing == nullptr) && (mHoverItem == nullptr))
     {
         const SpecialLayer *const specialLayer = mMap->getSpecialLayer();
-        if (specialLayer)
+        if (specialLayer != nullptr)
         {
             const int mouseTileX = (mMouseX + mPixelViewX)
                 / mMap->getTileWidth();
@@ -949,12 +955,12 @@ void Viewport::mouseMoved(MouseEvent &event)
                 / mMap->getTileHeight();
 
             mHoverSign = specialLayer->getTile(mouseTileX, mouseTileY);
-            if (mHoverSign && mHoverSign->getType() != MapItemType::EMPTY)
+            if ((mHoverSign != nullptr) && mHoverSign->getType() != MapItemType::EMPTY)
             {
                 if (!mHoverSign->getComment().empty())
                 {
                     popupManager->hideBeingPopup();
-                    if (textPopup)
+                    if (textPopup != nullptr)
                     {
                         textPopup->show(mMouseX, mMouseY,
                             mHoverSign->getComment());
@@ -973,7 +979,7 @@ void Viewport::mouseMoved(MouseEvent &event)
     if (!event.isConsumed() && popupManager->isTextPopupVisible())
         popupManager->hideTextPopup();
 
-    if (mHoverBeing)
+    if (mHoverBeing != nullptr)
     {
         switch (type)
         {
@@ -998,7 +1004,7 @@ void Viewport::mouseMoved(MouseEvent &event)
         }
     }
     // Item mouseover
-    else if (mHoverItem)
+    else if (mHoverItem != nullptr)
     {
         gui->setCursorType(mHoverItem->getHoverCursor());
     }
@@ -1014,7 +1020,7 @@ void Viewport::toggleMapDrawType()
         CAST_S32(settings.mapDrawType) + 1);
     if (settings.mapDrawType > MapType::BLACKWHITE)
         settings.mapDrawType = MapType::NORMAL;
-    if (mMap)
+    if (mMap != nullptr)
         mMap->setDrawLayersFlags(settings.mapDrawType);
 }
 
@@ -1023,7 +1029,7 @@ void Viewport::toggleCameraMode()
     settings.cameraMode ++;
     if (settings.cameraMode > 1)
         settings.cameraMode = 0;
-    if (!settings.cameraMode)
+    if (settings.cameraMode == 0u)
     {
         mCameraRelativeX = 0;
         mCameraRelativeY = 0;
@@ -1058,11 +1064,11 @@ void Viewport::moveCamera(const int dx, const int dy)
 void Viewport::moveCameraToActor(const BeingId actorId,
                                  const int x, const int y)
 {
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
         return;
 
     const Actor *const actor = actorManager->findBeing(actorId);
-    if (!actor)
+    if (actor == nullptr)
         return;
     settings.cameraMode = 1;
     mCameraRelativeX = actor->mPixelX - localPlayer->mPixelX + x;
@@ -1072,7 +1078,7 @@ void Viewport::moveCameraToActor(const BeingId actorId,
 
 void Viewport::moveCameraToPosition(const int x, const int y)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     settings.cameraMode = 1;
@@ -1102,7 +1108,7 @@ void Viewport::validateSpeed()
     if (!inputManager.isActionActive(InputAction::TARGET_ATTACK) &&
         !inputManager.isActionActive(InputAction::ATTACK))
     {
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
     }
 }
@@ -1117,7 +1123,7 @@ void Viewport::updateMidVars()
 
 void Viewport::updateMaxVars()
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
     mViewXmax = mMap->getWidth() * mMap->getTileWidth()
         - mainGraphics->mWidth;

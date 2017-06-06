@@ -82,16 +82,16 @@ TextDialog::TextDialog(const std::string &restrict title,
 void TextDialog::postInit()
 {
     Window::postInit();
-    if (getParent())
+    if (getParent() != nullptr)
     {
         setLocationRelativeTo(getParent());
         getParent()->moveToTop(this);
     }
     setVisible(Visible_true);
     requestModalFocus();
-    if (mPasswordField)
+    if (mPasswordField != nullptr)
         mPasswordField->requestFocus();
-    else if (mTextField)
+    else if (mTextField != nullptr)
         mTextField->requestFocus();
 
     instances++;
@@ -113,18 +113,18 @@ void TextDialog::action(const ActionEvent &event)
 
 const std::string &TextDialog::getText() const
 {
-    if (mTextField)
+    if (mTextField != nullptr)
         return mTextField->getText();
-    else if (mPasswordField)
+    else if (mPasswordField != nullptr)
         return mPasswordField->getText();
     return emptyStr;
 }
 
 void TextDialog::setText(const std::string &text)
 {
-    if (mTextField)
+    if (mTextField != nullptr)
         mTextField->setText(text);
-    else if (mPasswordField)
+    else if (mPasswordField != nullptr)
         mPasswordField->setText(text);
 }
 

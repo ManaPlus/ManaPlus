@@ -54,7 +54,7 @@ class AttrDisplay notfinal : public Container
 
         std::string getValue() const
         {
-            if (!mValue)
+            if (mValue == nullptr)
                 return "-";
             else
                 return mValue->getCaption();

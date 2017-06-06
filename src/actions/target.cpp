@@ -33,7 +33,7 @@ namespace Actions
 
 static bool setTarget(const ActorTypeT type, const AllowSort allowSort)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
         return localPlayer->setNewTarget(type, allowSort) != nullptr;
     return false;
 }
@@ -75,10 +75,10 @@ impHandler0(targetPet)
 
 impHandler0(contextMenu)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
     const Being *const target = localPlayer->getTarget();
-    if (!target)
+    if (target == nullptr)
         return true;
 
     popupMenu->showPopup(target->getPixelX(),

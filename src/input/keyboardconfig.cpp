@@ -163,7 +163,7 @@ InputActionT KeyboardConfig::getActionId(const SDL_Event &event)
 
 bool KeyboardConfig::isActionActive(const InputActionT index) const
 {
-    if (!mActiveKeys || !mActiveKeys2)
+    if ((mActiveKeys == nullptr) || (mActiveKeys2 == nullptr))
         return false;
 
     const InputFunction &key = inputManager.getKey(index);
@@ -176,12 +176,12 @@ bool KeyboardConfig::isActionActive(const InputActionT index) const
         const int value = val.value;
         if (value >= 0)
         {
-            if (mActiveKeys[value])
+            if (mActiveKeys[value] != 0u)
                 return true;
         }
         else if (value < -1 && value > -500)
         {
-            if (mActiveKeys2[-value])
+            if (mActiveKeys2[-value] != 0u)
                 return true;
         }
     }
@@ -196,7 +196,7 @@ void KeyboardConfig::update()
 
 void KeyboardConfig::handleActivateKey(const SDL_Event &event)
 {
-    if (!mActiveKeys2)
+    if (mActiveKeys2 == nullptr)
         return;
     const int key = getKeyValueFromEvent(event);
     if (key < -1 && key > -500)
@@ -206,7 +206,7 @@ void KeyboardConfig::handleActivateKey(const SDL_Event &event)
 
 void KeyboardConfig::handleActivateKey(const int key)
 {
-    if (!mActiveKeys2)
+    if (mActiveKeys2 == nullptr)
         return;
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 1;
@@ -215,7 +215,7 @@ void KeyboardConfig::handleActivateKey(const int key)
 
 void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
 {
-    if (!mActiveKeys2)
+    if (mActiveKeys2 == nullptr)
         return;
     const int key = getKeyValueFromEvent(event);
     if (key < -1 && key > -500)
@@ -225,7 +225,7 @@ void KeyboardConfig::handleDeActicateKey(const SDL_Event &event)
 
 void KeyboardConfig::handleDeActicateKey(const int key)
 {
-    if (!mActiveKeys2)
+    if (mActiveKeys2 == nullptr)
         return;
     if (key < -1 && key > -500)
         mActiveKeys2[-key] = 0;
@@ -241,12 +241,12 @@ void KeyboardConfig::handleRepeat(const int time)
         const int key = (*it).first;
         if (key >= 0)
         {
-            if (mActiveKeys && mActiveKeys[key])
+            if ((mActiveKeys != nullptr) && (mActiveKeys[key] != 0u))
                 repeat = true;
         }
         else if (key < -1 && key > -500)
         {
-            if (mActiveKeys2 && mActiveKeys2[-key])
+            if ((mActiveKeys2 != nullptr) && (mActiveKeys2[-key] != 0u))
                 repeat = true;
         }
         if (repeat)

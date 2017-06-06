@@ -99,14 +99,14 @@ void PlayerHandler::increaseSkill(const uint16_t skillId) const
 
 void PlayerHandler::pickUp(const FloorItem *const floorItem) const
 {
-    if (!floorItem)
+    if (floorItem == nullptr)
         return;
 
     createOutPacket(CMSG_ITEM_PICKUP);
     outMsg.writeBeingId(floorItem->getId(), "object id");
     TmwAthena::InventoryHandler *const handler =
         static_cast<TmwAthena::InventoryHandler*>(inventoryHandler);
-    if (handler)
+    if (handler != nullptr)
         handler->pushPickup(floorItem->getId());
 }
 
@@ -245,11 +245,11 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             break;
         case Sp::HP:
             PlayerInfo::setAttribute(Attributes::PLAYER_HP, base);
-            if (localPlayer->isInParty() && Party::getParty(1))
+            if (localPlayer->isInParty() && (Party::getParty(1) != nullptr))
             {
                 PartyMember *const m = Party::getParty(1)
                     ->getMember(localPlayer->getId());
-                if (m)
+                if (m != nullptr)
                 {
                     m->setHp(base);
                     m->setMaxHp(PlayerInfo::getAttribute(
@@ -260,11 +260,11 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
         case Sp::MAXHP:
             PlayerInfo::setAttribute(Attributes::PLAYER_MAX_HP, base);
 
-            if (localPlayer->isInParty() && Party::getParty(1))
+            if (localPlayer->isInParty() && (Party::getParty(1) != nullptr))
             {
                 PartyMember *const m = Party::getParty(1)->getMember(
                     localPlayer->getId());
-                if (m)
+                if (m != nullptr)
                 {
                     m->setHp(PlayerInfo::getAttribute(Attributes::PLAYER_HP));
                     m->setMaxHp(base);
@@ -282,7 +282,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             break;
         case Sp::BASELEVEL:
             PlayerInfo::setAttribute(Attributes::PLAYER_LEVEL, base);
-            if (localPlayer)
+            if (localPlayer != nullptr)
             {
                 localPlayer->setLevel(base);
                 localPlayer->updateName();
@@ -290,7 +290,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             break;
         case Sp::SKILLPOINT:
             PlayerInfo::setAttribute(Attributes::PLAYER_SKILL_POINTS, base);
-            if (skillDialog)
+            if (skillDialog != nullptr)
                 skillDialog->update();
             break;
         case Sp::STR:

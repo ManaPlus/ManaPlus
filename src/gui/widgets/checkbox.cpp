@@ -115,7 +115,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
     mForegroundColor2 = getThemeColor(ThemeColorId::CHECKBOX_OUTLINE);
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
         {
             mSkin = theme->load("checkbox.xml", "");
             updateAlpha();
@@ -127,17 +127,17 @@ CheckBox::CheckBox(const Widget2 *const widget,
     if (!eventId.empty())
         setActionEventId(eventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 
     mForegroundColor = getThemeColor(ThemeColorId::CHECKBOX);
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mPadding = mSkin->getPadding();
         mImagePadding = mSkin->getOption("imagePadding");
         mImageSize = mSkin->getOption("imageSize");
         mSpacing = mSkin->getOption("spacing");
-        mDrawBox = mSkin->getOption("drawBox", 1);
+        mDrawBox = (mSkin->getOption("drawBox", 1) != 0);
         mTextX = mPadding + mImageSize + mSpacing;
     }
     adjustSize();
@@ -145,17 +145,17 @@ CheckBox::CheckBox(const Widget2 *const widget,
 
 CheckBox::~CheckBox()
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->removeWidgetListener(this);
 
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     instances--;
 
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
     }
 }
@@ -179,7 +179,7 @@ void CheckBox::draw(Graphics *const graphics)
     }
 
     const Image *const image = mTextChunk.img;
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, mTextX, mPadding);
 
     BLOCK_END("CheckBox::draw")
@@ -198,13 +198,13 @@ void CheckBox::updateAlpha()
     if (mAlpha != alpha)
     {
         mAlpha = alpha;
-        if (mSkin)
+        if (mSkin != nullptr)
         {
             const ImageRect &rect = mSkin->getBorder();
             for (int a = 0; a < 6; a ++)
             {
                 Image *const image = rect.grid[a];
-                if (image)
+                if (image != nullptr)
                     image->setAlpha(mAlpha);
             }
         }
@@ -213,7 +213,7 @@ void CheckBox::updateAlpha()
 
 void CheckBox::drawBox(Graphics *const graphics)
 {
-    if (!mSkin || !mDrawBox)
+    if ((mSkin == nullptr) || !mDrawBox)
         return;
 
     const ImageRect &rect = mSkin->getBorder();
@@ -247,7 +247,7 @@ void CheckBox::drawBox(Graphics *const graphics)
 
     updateAlpha();
 
-    if (box)
+    if (box != nullptr)
     {
         graphics->drawImage(box,
             mImagePadding,
@@ -313,7 +313,7 @@ void CheckBox::setCaption(const std::string& caption)
 
 void CheckBox::setParent(Widget *widget)
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->addWidgetListener(this);
     Widget::setParent(widget);
 }
@@ -326,7 +326,7 @@ void CheckBox::widgetHidden(const Event &event A_UNUSED)
 
 void CheckBox::setWindow(Widget *const widget)
 {
-    if (!widget && mWindow)
+    if ((widget == nullptr) && (mWindow != nullptr))
     {
         mWindow->removeWidgetListener(this);
         mWindow = nullptr;

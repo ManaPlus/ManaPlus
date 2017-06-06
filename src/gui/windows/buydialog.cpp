@@ -74,7 +74,7 @@ namespace
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
-                if (!item1 || !item2)
+                if ((item1 == nullptr) || (item2 == nullptr))
                     return false;
 
                 const int price1 = item1->getPrice();
@@ -93,7 +93,7 @@ namespace
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
-                if (!item1 || !item2)
+                if ((item1 == nullptr) || (item2 == nullptr))
                     return false;
 
                 const std::string &name1 = item1->getDisplayName();
@@ -112,7 +112,7 @@ namespace
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
-                if (!item1 || !item2)
+                if ((item1 == nullptr) || (item2 == nullptr))
                     return false;
 
                 const int id1 = item1->getId();
@@ -131,7 +131,7 @@ namespace
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
-                if (!item1 || !item2)
+                if ((item1 == nullptr) || (item2 == nullptr))
                     return false;
 
                 const int weight1 = item1->getInfo().getWeight();
@@ -150,7 +150,7 @@ namespace
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
-                if (!item1 || !item2)
+                if ((item1 == nullptr) || (item2 == nullptr))
                     return false;
 
                 const int amount1 = item1->getQuantity();
@@ -169,7 +169,7 @@ namespace
             bool operator() (const ShopItem *const item1,
                              const ShopItem *const item2) const
             {
-                if (!item1 || !item2)
+                if ((item1 == nullptr) || (item2 == nullptr))
                     return false;
 
                 const ItemDbTypeT type1 = item1->getInfo().getType();
@@ -263,7 +263,7 @@ BuyDialog::BuyDialog(const Being *const being,
     mFilterTextField(new TextField(this, "", LoseFocusOnTab_true,
         this, "namefilter", true)),
     mFilterLabel(nullptr),
-    mNick(being ? being->getName() : std::string()),
+    mNick(being != nullptr ? being->getName() : std::string()),
     mCurrency(currency),
     mNpcId(fromInt(Vending, BeingId)),
     mMoney(0),
@@ -293,7 +293,7 @@ void BuyDialog::init()
     }
 #endif  // TMWA_SUPPORT
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     mShopItems = new ShopItems(false,
@@ -376,7 +376,7 @@ void BuyDialog::init()
     placer(0, 6, mAmountLabel, 2);
     placer(2, 6, mAmountField, 2);
     placer(0, 7, mMoneyLabel, 8);
-    if (mSortDropDown)
+    if (mSortDropDown != nullptr)
     {
         placer(0, 8, mSortDropDown, 2);
     }
@@ -409,7 +409,7 @@ void BuyDialog::init()
     instances.push_back(this);
     setVisible(Visible_true);
 
-    if (mSortDropDown)
+    if (mSortDropDown != nullptr)
         mSortDropDown->setSelected(config.getIntValue("buySortOrder"));
 }
 
@@ -418,7 +418,7 @@ BuyDialog::~BuyDialog()
     delete2(mShopItems);
     delete2(mSortModel);
     instances.remove(this);
-    if (buySellHandler)
+    if (buySellHandler != nullptr)
         buySellHandler->cleanDialogReference(this);
 }
 
@@ -459,7 +459,7 @@ ShopItem *BuyDialog::addItem(const int id,
 
 void BuyDialog::sort()
 {
-    if (mSortDropDown && mShopItems)
+    if ((mSortDropDown != nullptr) && (mShopItems != nullptr))
     {
         std::vector<ShopItem*> &items = mShopItems->items();
         switch (mSortDropDown->getSelected())
@@ -525,7 +525,7 @@ void BuyDialog::action(const ActionEvent &event)
     else if (eventId == "sort")
     {
         sort();
-        if (mSortDropDown)
+        if (mSortDropDown != nullptr)
             config.setValue("buySortOrder", mSortDropDown->getSelected());
         return;
     }
@@ -576,7 +576,7 @@ void BuyDialog::action(const ActionEvent &event)
     else if (eventId == "buy" && mAmountItems > 0 && mAmountItems <= mMaxItems)
     {
         ShopItem *const item = mShopItems->at(selectedItem);
-        if (!item)
+        if (item == nullptr)
             return;
         if (mNpcId == fromInt(Items, BeingId))
         {
@@ -587,7 +587,7 @@ void BuyDialog::action(const ActionEvent &event)
 #ifdef TMWA_SUPPORT
         else if (mNpcId == fromInt(Nick, BeingId))
         {
-            if (tradeWindow)
+            if (tradeWindow != nullptr)
             {
                 buySellHandler->sendBuyRequest(mNick,
                     item, mAmountItems);
@@ -600,7 +600,7 @@ void BuyDialog::action(const ActionEvent &event)
         {
             item->increaseUsedQuantity(mAmountItems);
             item->update();
-            if (mConfirmButton)
+            if (mConfirmButton != nullptr)
                 mConfirmButton->setEnabled(true);
         }
 #ifdef TMWA_SUPPORT
@@ -613,7 +613,7 @@ void BuyDialog::action(const ActionEvent &event)
             {
                 item->increaseUsedQuantity(mAmountItems);
                 item->update();
-                if (mConfirmButton)
+                if (mConfirmButton != nullptr)
                     mConfirmButton->setEnabled(true);
             }
             else if (mNpcId == fromInt(Market, BeingId))
@@ -656,7 +656,7 @@ void BuyDialog::action(const ActionEvent &event)
             const Being *const being = actorManager->findBeingByName(
                 mNick,
                 ActorType::Player);
-            if (being)
+            if (being != nullptr)
             {
                 vendingHandler->buyItems(being,
                     items);
@@ -680,7 +680,7 @@ void BuyDialog::updateSlider(const int selectedItem)
     // that can be bought
     mMaxItems -= mAmountItems;
     const ShopItem *const item = mShopItems->at(selectedItem);
-    if (item)
+    if (item != nullptr)
         setMoney(mMoney - mAmountItems * item->getPrice());
     else
         setMoney(mMoney);
@@ -711,14 +711,14 @@ void BuyDialog::updateButtonsAndLabels()
     if (selectedItem > -1)
     {
         const ShopItem *const item = mShopItems->at(selectedItem);
-        if (item)
+        if (item != nullptr)
         {
             const int itemPrice = item->getPrice();
 
             // Calculate how many the player can afford
             if (mNpcId == fromInt(Items, BeingId))
                 mMaxItems = 100;
-            else if (itemPrice)
+            else if (itemPrice != 0)
                 mMaxItems = mMoney / itemPrice;
             else
                 mMaxItems = 1;
@@ -755,7 +755,7 @@ void BuyDialog::setVisible(Visible visible)
 {
     Window::setVisible(visible);
 
-    if (visible == Visible_true && mShopItemList)
+    if (visible == Visible_true && (mShopItemList != nullptr))
         mShopItemList->requestFocus();
     else
         scheduleDelete();
@@ -765,7 +765,7 @@ void BuyDialog::closeAll()
 {
     FOR_EACH (DialogList::const_iterator, it, instances)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->close();
     }
 }
@@ -778,7 +778,7 @@ void BuyDialog::applyNameFilter(const std::string &filter)
     FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
-        if (!item)
+        if (item == nullptr)
             continue;
         std::string name = item->getName();
         toLower(name);

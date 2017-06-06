@@ -44,7 +44,7 @@ void SpellShortcut::load()
     for (unsigned f = 0; f < SPELLS_SIZE; f ++)
         mItems[f] = -1;
 
-    if (!spellManager)
+    if (spellManager == nullptr)
         return;
 
     const std::vector<TextCommand*> &spells = spellManager->getAll();

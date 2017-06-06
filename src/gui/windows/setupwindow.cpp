@@ -111,7 +111,9 @@ void SetupWindow::postInit()
     };
     int x = width;
     mButtonPadding = getOption("buttonPadding", 5);
-    for (const char *const * curBtn = buttonNames; *curBtn; ++ curBtn)
+    for (const char *const * curBtn = buttonNames;
+         *curBtn != nullptr;
+         ++ curBtn)
     {
         Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
         mButtons.push_back(btn);
@@ -120,7 +122,7 @@ void SetupWindow::postInit()
         add(btn);
 
         // Store this button, as it needs to be enabled/disabled
-        if (!strcmp(*curBtn, "Reset Windows"))
+        if (strcmp(*curBtn, "Reset Windows") == 0)
             mResetWindows = btn;
     }
 
@@ -148,7 +150,7 @@ void SetupWindow::postInit()
     }
     add(mPanel);
 
-    if (mResetWindows)
+    if (mResetWindows != nullptr)
     {
         mVersion->setPosition(9,
             height - mVersion->getHeight() - mResetWindows->getHeight() - 9);
@@ -175,7 +177,7 @@ SetupWindow::~SetupWindow()
 
 void SetupWindow::action(const ActionEvent &event)
 {
-    if (Game::instance())
+    if (Game::instance() != nullptr)
         Game::instance()->resetAdjustLevel();
     const std::string &eventId = event.getId();
 
@@ -190,7 +192,7 @@ void SetupWindow::action(const ActionEvent &event)
     }
     else if (eventId == "Store")
     {
-        if (chatWindow)
+        if (chatWindow != nullptr)
             chatWindow->saveState();
         config.write();
         serverConfig.write();
@@ -199,12 +201,12 @@ void SetupWindow::action(const ActionEvent &event)
     {
         // Bail out if this action happens to be activated before the windows
         // are created (though it should be disabled then)
-        if (!statusWindow)
+        if (statusWindow == nullptr)
             return;
 
         FOR_EACH (std::list<Window*>::const_iterator, it, mWindowsToReset)
         {
-            if (*it)
+            if (*it != nullptr)
                 (*it)->resetToDefaultSize();
         }
     }
@@ -212,7 +214,7 @@ void SetupWindow::action(const ActionEvent &event)
 
 void SetupWindow::setInGame(const bool inGame)
 {
-    if (mResetWindows)
+    if (mResetWindows != nullptr)
         mResetWindows->setEnabled(inGame);
 }
 
@@ -227,14 +229,14 @@ void SetupWindow::externalUpdate()
     mPanel->addTab(mQuickTab->getName(), mQuickTab);
     FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->externalUpdated();
     }
 }
 
 void SetupWindow::unloadTab(SetupTab *const page)
 {
-    if (page)
+    if (page != nullptr)
     {
         mTabs.remove(page);
         mPanel->removeTab(mPanel->getTab(page->getName()));
@@ -253,7 +255,7 @@ void SetupWindow::externalUnload()
 {
     FOR_EACH (std::list<SetupTab*>::const_iterator, it, mTabs)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->externalUnloaded();
     }
     unloadAdditionalTabs();
@@ -281,7 +283,7 @@ void SetupWindow::hideWindows()
     FOR_EACH (std::list<Window*>::const_iterator, it, mWindowsToReset)
     {
         Window *const window = *it;
-        if (window && !window->isSticky())
+        if ((window != nullptr) && !window->isSticky())
             window->setVisible(Visible_false);
     }
     setVisible(Visible_false);
@@ -320,7 +322,7 @@ void SetupWindow::widgetResized(const Event &event)
         x -= btn->getWidth() + mButtonPadding;
         btn->setPosition(x, height - btn->getHeight() - mButtonPadding);
     }
-    if (mResetWindows)
+    if (mResetWindows != nullptr)
     {
         mVersion->setPosition(9,
             height - mVersion->getHeight() - mResetWindows->getHeight() - 9);

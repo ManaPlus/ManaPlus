@@ -58,7 +58,7 @@ void ExtendedNamesModel::clear()
     mNames.clear();
     FOR_EACH (std::vector<Image*>::iterator, it, mImages)
     {
-        if (*it)
+        if (*it != nullptr)
             (*it)->decRef();
     }
     mImages.clear();

@@ -41,10 +41,10 @@ void MapRecv::processSetTilesType(Net::MessageIn &msg)
     const BlockTypeT mask = static_cast<BlockTypeT>(msg.readInt32("mask"));
     const int layer = msg.readInt32("layer");
     const std::string name = msg.readString(16, "map name");
-    if (layer)
+    if (layer != 0)
         return;
     Map *const map = viewport->getMap();
-    if (map && map->getGatName() == name)
+    if ((map != nullptr) && map->getGatName() == name)
     {
         for (int y = y1; y <= y2; y ++)
         {

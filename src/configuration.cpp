@@ -376,7 +376,7 @@ Configuration::Configuration() :
 
 void Configuration::cleanDefaults()
 {
-    if (mDefaultsData)
+    if (mDefaultsData != nullptr)
     {
         for (DefaultsData::const_iterator iter = mDefaultsData->begin();
              iter != mDefaultsData->end();
@@ -417,12 +417,12 @@ int Configuration::getIntValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData)
+        if (mDefaultsData != nullptr)
         {
             const DefaultsData::const_iterator itdef
                 = mDefaultsData->find(key);
 
-            if (itdef != mDefaultsData->end() && itdef->second)
+            if (itdef != mDefaultsData->end() && (itdef->second != nullptr))
             {
                 const VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
@@ -470,11 +470,11 @@ int Configuration::resetIntValue(const std::string &key)
 {
     GETLOG();
     int defaultValue = 0;
-    if (mDefaultsData)
+    if (mDefaultsData != nullptr)
     {
         const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
         const VariableData *const data = itdef->second;
-        if (itdef != mDefaultsData->end() && data
+        if (itdef != mDefaultsData->end() && (data != nullptr)
             && data->getType() == VariableData::DATA_INT)
         {
             defaultValue = (static_cast<const IntData*>(
@@ -498,13 +498,13 @@ std::string Configuration::getStringValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData)
+        if (mDefaultsData != nullptr)
         {
             const DefaultsData::const_iterator
                 itdef = mDefaultsData->find(key);
 
             if (itdef != mDefaultsData->end() &&
-                itdef->second)
+                (itdef->second != nullptr))
             {
                 const VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
@@ -555,13 +555,13 @@ float Configuration::getFloatValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData)
+        if (mDefaultsData != nullptr)
         {
             const DefaultsData::const_iterator itdef
                 = mDefaultsData->find(key);
 
             if (itdef != mDefaultsData->end() &&
-                itdef->second)
+                (itdef->second != nullptr))
             {
                 const VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
@@ -613,13 +613,13 @@ bool Configuration::getBoolValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData)
+        if (mDefaultsData != nullptr)
         {
             const DefaultsData::const_iterator itdef
                 = mDefaultsData->find(key);
 
             if (itdef != mDefaultsData->end() &&
-                itdef->second)
+                (itdef->second != nullptr))
             {
                 const VariableData *const data = itdef->second;
                 const VariableData::DataType type = static_cast<
@@ -682,13 +682,13 @@ bool Configuration::resetBoolValue(const std::string &key)
 {
     GETLOG();
     bool defaultValue = false;
-    if (mDefaultsData)
+    if (mDefaultsData != nullptr)
     {
         const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
         const VariableData *const data = itdef->second;
 
         if (itdef != mDefaultsData->end() &&
-            data &&
+            (data != nullptr) &&
             data->getType() == VariableData::DATA_BOOL)
         {
             defaultValue = (static_cast<const BoolData*>(data))->getData();
@@ -710,7 +710,7 @@ void ConfigurationObject::initFromXML(XmlNodeConstPtrConst parentNode)
 {
     clear();
 
-    if (!parentNode)
+    if (parentNode == nullptr)
         return;
 
     for_each_xml_child_node(node, parentNode)
@@ -783,7 +783,7 @@ void Configuration::init(const std::string &filename,
         useResManager,
         skipError);
     logger->log1("init 2");
-    if (!doc.rootNode())
+    if (doc.rootNode() == nullptr)
     {
         logger->log("Couldn't open configuration file: %s", filename.c_str());
         return;
@@ -791,7 +791,7 @@ void Configuration::init(const std::string &filename,
 
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "configuration"))
     {
         logger->log("Warning: No configuration file (%s)", filename.c_str());
         return;
@@ -803,7 +803,7 @@ void Configuration::init(const std::string &filename,
 void Configuration::reInit()
 {
     XML::Document doc(mFilename, mUseResManager, SkipError_false);
-    if (!doc.rootNode())
+    if (doc.rootNode() == nullptr)
     {
         logger->log("Couldn't open configuration file: %s", mFilename.c_str());
         return;
@@ -811,7 +811,7 @@ void Configuration::reInit()
 
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "configuration"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "configuration"))
     {
         logger->log("Warning: No configuration file (%s)", mFilename.c_str());
         return;
@@ -851,7 +851,7 @@ void ConfigurationObject::writeToXML(XmlTextWriterPtr writer)
         FOR_EACH (ConfigurationList::const_iterator, elt_it, it->second)
         {
             XmlTextWriterStartElement(writer, name);
-            if (*elt_it)
+            if (*elt_it != nullptr)
                 (*elt_it)->writeToXML(writer);
             XmlTextWriterEndElement(writer);
         }
@@ -878,7 +878,7 @@ void Configuration::write()
     mUpdated = false;
     // Do not attempt to write to file that cannot be opened for writing
     FILE *const testFile = fopen(mConfigPath.c_str(), "w");
-    if (!testFile)
+    if (testFile == nullptr)
     {
         reportAlways("Configuration::write() couldn't open %s for writing",
             mConfigPath.c_str());
@@ -893,7 +893,7 @@ void Configuration::write()
     XmlTextWriterPtr writer = XmlNewTextWriterFilename(
         mConfigPath.c_str(), 0);
 
-    if (!writer)
+    if (writer == nullptr)
     {
         logger->log1("Configuration::write() error while creating writer");
         BLOCK_END("Configuration::write")

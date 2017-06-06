@@ -128,7 +128,7 @@ Font::Font(std::string filename,
         size = 4;
     }
 
-    if (!fontCounter)
+    if (fontCounter == 0)
     {
         strBuf = new char[65535];
         memset(strBuf, 0, 65535);
@@ -141,13 +141,13 @@ Font::Font(std::string filename,
         filename.c_str());
     mFont = openFont(filename.c_str(), size);
 
-    if (!mFont)
+    if (mFont == nullptr)
     {
         logger->log("Error normal loading font " + filename);
 
         filename = "fonts/dejavusans.ttf";
         mFont = openFont(fixDirSeparators(filename).c_str(), size);
-        if (!mFont)
+        if (mFont == nullptr)
         {
 #ifdef UNITTESTS
             reportAlways("Font load failed %s",
@@ -229,14 +229,14 @@ void Font::loadFont(std::string filename,
     fixDirSeparators(filename);
     TTF_Font *const font = openFont(filename.c_str(), size);
 
-    if (!font)
+    if (font == nullptr)
     {
         logger->log("Font::Font: " +
                     std::string(TTF_GetError()));
         return;
     }
 
-    if (mFont)
+    if (mFont != nullptr)
         TTF_CloseFont(mFont);
 
     mFont = font;
@@ -283,7 +283,7 @@ void Font::drawString(Graphics *const graphics,
         TextChunk *const chunk2 = (*i).second;
         cache->moveToFirst(chunk2);
         Image *const image = chunk2->img;
-        if (image)
+        if (image != nullptr)
         {
             image->setAlpha(alpha);
             graphics->drawImage(image, x, y);
@@ -309,7 +309,7 @@ void Font::drawString(Graphics *const graphics,
         cache->insertFirst(chunk2);
 
         const Image *const image = chunk2->img;
-        if (image)
+        if (image != nullptr)
             graphics->drawImage(image, x, y);
     }
     BLOCK_END("Font::drawString")
@@ -318,7 +318,7 @@ void Font::drawString(Graphics *const graphics,
 void Font::slowLogic(const int rnd)
 {
     BLOCK_START("Font::slowLogic")
-    if (!mCleanTime)
+    if (mCleanTime == 0)
     {
         mCleanTime = cur_time + CLEAN_TIME + rnd;
     }
@@ -345,7 +345,7 @@ int Font::getWidth(const std::string &text) const
         TextChunk *const chunk = (*i).second;
         cache->moveToFirst(chunk);
         const Image *const image = chunk->img;
-        if (image)
+        if (image != nullptr)
             return image->getWidth();
         else
             return 0;
@@ -476,7 +476,7 @@ void Font::generate(TextChunk &chunk)
 
 void Font::insertChunk(TextChunk *const chunk)
 {
-    if (!chunk || chunk->text.empty() || !chunk->img)
+    if ((chunk == nullptr) || chunk->text.empty() || (chunk->img == nullptr))
         return;
 //    logger->log("insert chunk: text=%s, color: %d,%d,%d",
 //        chunk->text.c_str(), chunk->color.r, chunk->color.g, chunk->color.b);

@@ -86,7 +86,7 @@ void SkillInfo::update()
         if (visible == Visible_true)
         {
             visible = Visible_false;
-            if (model)
+            if (model != nullptr)
                 model->updateVisibilities();
         }
         return;
@@ -101,7 +101,7 @@ void SkillInfo::update()
     }
     else
     {
-        if (!customSelectedLevel)
+        if (customSelectedLevel == 0)
         {
             // TRANSLATORS: skill level
             skillLevel = strprintf(_("Lvl: %d"), baseLevel);
@@ -144,7 +144,7 @@ void SkillInfo::update()
         skillEffect.append(" ").append(toString(CAST_S32(type)));
     }
 
-    if (sp)
+    if (sp != 0)
     {
         // TRANSLATORS: skill mana
         skillEffect.append(strprintf(_(" / Mana: -%d"), sp));
@@ -164,11 +164,11 @@ void SkillInfo::update()
 
     skillLevelWidth = -1;
 
-    if (updateVisibility && model)
+    if (updateVisibility && (model != nullptr))
         model->updateVisibilities();
 
     data = getData(level);
-    if (!data)
+    if (data == nullptr)
         data = dataMap[0];
 }
 

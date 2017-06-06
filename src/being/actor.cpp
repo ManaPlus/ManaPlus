@@ -37,7 +37,7 @@ Actor::Actor() :
 
 Actor::~Actor()
 {
-    if (mMap)
+    if (mMap != nullptr)
     {
         mMap->removeActor(mMapActor);
         mMap = nullptr;
@@ -47,28 +47,34 @@ Actor::~Actor()
 void Actor::setMap(Map *const map)
 {
     // Remove Actor from potential previous map
-    if (mMap)
+    if (mMap != nullptr)
         mMap->removeActor(mMapActor);
 
     mMap = map;
 
     // Add Actor to potential new map
-    if (mMap)
+    if (mMap != nullptr)
         mMapActor = mMap->addActor(this);
 }
 
 int Actor::getTileX() const
 {
-    if (!mMap || !mMap->getTileWidth())
+    if (mMap == nullptr ||
+        mMap->getTileWidth() == 0)
+    {
         return 0;
+    }
 
     return getPixelX() / mMap->getTileWidth();
 }
 
 int Actor::getTileY() const
 {
-    if (!mMap || !mMap->getTileHeight())
+    if (mMap == nullptr ||
+        mMap->getTileHeight() == 0)
+    {
         return 0;
+    }
 
     return getPixelY() / mMap->getTileHeight();
 }

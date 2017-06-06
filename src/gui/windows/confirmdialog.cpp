@@ -65,7 +65,7 @@ void ConfirmDialog::postInit()
     int inWidth = yesButton->getWidth() + noButton->getWidth() +
         (2 * mPadding);
 
-    if (ignoreButton)
+    if (ignoreButton != nullptr)
         inWidth += ignoreButton->getWidth();
 
     const int fontHeight = getFont()->getHeight();
@@ -90,7 +90,7 @@ void ConfirmDialog::postInit()
     yesButton->setPosition((width - inWidth) / 2, height + buttonPadding);
     noButton->setPosition(yesButton->getX() + yesButton->getWidth()
         + (2 * mPadding), height + buttonPadding);
-    if (ignoreButton)
+    if (ignoreButton != nullptr)
     {
         ignoreButton->setPosition(noButton->getX() + noButton->getWidth()
             + (2 * mPadding), height + buttonPadding);
@@ -100,10 +100,10 @@ void ConfirmDialog::postInit()
     add(yesButton);
     add(noButton);
 
-    if (mIgnore && ignoreButton)
+    if (mIgnore && (ignoreButton != nullptr))
         add(ignoreButton);
 
-    if (getParent())
+    if (getParent() != nullptr)
     {
         center();
         getParent()->moveToTop(this);

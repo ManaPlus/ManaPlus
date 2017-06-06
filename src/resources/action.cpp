@@ -80,7 +80,7 @@ void Action::setLastFrameDelay(const int delay) noexcept2
     FOR_EACH (AnimationIter, it, mAnimations)
     {
         Animation *const animation = (*it).second;
-        if (!animation)
+        if (animation == nullptr)
             continue;
         animation->setLastFrameDelay(delay);
     }

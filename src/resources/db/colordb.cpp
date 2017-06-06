@@ -83,7 +83,7 @@ void ColorDB::loadHair(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst root = doc->rootNode();
 
-    if (!root || !xmlNameEqual(root, "colors"))
+    if ((root == nullptr) || !xmlNameEqual(root, "colors"))
     {
         logger->log("ColorDB: Failed to find hair colors file.");
         if (colors.find(ItemColor_zero) == colors.end())
@@ -128,7 +128,7 @@ void ColorDB::loadColorLists(const std::string &fileName,
         UseVirtFs_true,
         skipError);
     XmlNodeConstPtrConst root = doc->rootNode();
-    if (!root)
+    if (root == nullptr)
     {
         delete doc;
         return;

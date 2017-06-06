@@ -40,13 +40,13 @@ struct AtlasLoader final
 
     static Resource *load(const void *const v)
     {
-        if (!v)
+        if (v == nullptr)
             return nullptr;
 
         const AtlasLoader *const rl = static_cast<const AtlasLoader *>(v);
         AtlasResource *const resource = AtlasManager::loadTextureAtlas(
             rl->name, *rl->files);
-        if (!resource)
+        if (resource == nullptr)
             reportAlways("Atlas creation error: %s", rl->name.c_str());
         return resource;
     }

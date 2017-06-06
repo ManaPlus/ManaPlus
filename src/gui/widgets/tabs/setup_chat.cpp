@@ -333,7 +333,7 @@ void Setup_Chat::apply()
 {
     SetupTabScroll::apply();
 
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->adjustTabSize();
         chatWindow->parseHighlights();

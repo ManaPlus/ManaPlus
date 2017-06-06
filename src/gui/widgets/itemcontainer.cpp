@@ -88,7 +88,7 @@ namespace
             {
                 const Item *const item1 = pair1->mItem;
                 const Item *const item2 = pair2->mItem;
-                if (!item1 || !item2)
+                if ((item1 == nullptr) || (item2 == nullptr))
                     return false;
 
                 const std::string name1 = item1->getInfo().getName(
@@ -112,7 +112,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1->mItem || !pair2->mItem)
+                if ((pair1->mItem == nullptr) || (pair2->mItem == nullptr))
                     return false;
 
                 const int id1 = pair1->mItem->getId();
@@ -134,7 +134,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1->mItem || !pair2->mItem)
+                if ((pair1->mItem == nullptr) || (pair2->mItem == nullptr))
                     return false;
 
                 const int w1 = pair1->mItem->getInfo().getWeight();
@@ -164,7 +164,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1->mItem || !pair2->mItem)
+                if ((pair1->mItem == nullptr) || (pair2->mItem == nullptr))
                     return false;
 
                 const int c1 = pair1->mItem->getQuantity();
@@ -194,7 +194,7 @@ namespace
             bool operator() (const ItemIdPair *const pair1,
                              const ItemIdPair *const pair2) const
             {
-                if (!pair1->mItem || !pair2->mItem)
+                if ((pair1->mItem == nullptr) || (pair2->mItem == nullptr))
                     return false;
 
                 const ItemInfo &info1 = pair1->mItem->getInfo();
@@ -232,7 +232,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mCellBackgroundImg(Theme::getImageFromThemeXml("inventory_cell.xml", "")),
     mName(),
     mShowMatrix(nullptr),
-    mSkin(theme ? theme->load("itemcontainer.xml", "") : nullptr),
+    mSkin(theme != nullptr ? theme->load("itemcontainer.xml", "") : nullptr),
     mVertexes(new ImageCollection),
     mEquipedColor(getThemeColor(ThemeColorId::ITEM_EQUIPPED)),
     mEquipedColor2(getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE)),
@@ -246,12 +246,12 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mTag(0),
     mSortType(0),
     mClicks(1),
-    mBoxWidth(mSkin ? mSkin->getOption("boxWidth", 35) : 35),
-    mBoxHeight(mSkin ? mSkin->getOption("boxHeight", 43) : 43),
-    mEquippedTextPadding(mSkin ? mSkin->getOption(
+    mBoxWidth(mSkin != nullptr ? mSkin->getOption("boxWidth", 35) : 35),
+    mBoxHeight(mSkin != nullptr ? mSkin->getOption("boxHeight", 43) : 43),
+    mEquippedTextPadding(mSkin != nullptr ? mSkin->getOption(
                          "equippedTextPadding", 29) : 29),
-    mPaddingItemX(mSkin ? mSkin->getOption("paddingItemX", 0) : 0),
-    mPaddingItemY(mSkin ? mSkin->getOption("paddingItemY", 0) : 0),
+    mPaddingItemX(mSkin != nullptr ? mSkin->getOption("paddingItemX", 0) : 0),
+    mPaddingItemY(mSkin != nullptr ? mSkin->getOption("paddingItemY", 0) : 0),
     mMaxColumns(maxColumns),
     mSelectionStatus(SEL_NONE),
     mForceQuantity(forceQuantity),
@@ -267,26 +267,26 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
 
 ItemContainer::~ItemContainer()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
-    if (mSelImg)
+    if (mSelImg != nullptr)
     {
         mSelImg->decRef();
         mSelImg = nullptr;
     }
-    if (mProtectedImg)
+    if (mProtectedImg != nullptr)
     {
         mProtectedImg->decRef();
         mProtectedImg = nullptr;
     }
-    if (mCellBackgroundImg)
+    if (mCellBackgroundImg != nullptr)
     {
         mCellBackgroundImg->decRef();
         mCellBackgroundImg = nullptr;
     }
 
-    if (theme)
+    if (theme != nullptr)
         theme->unload(mSkin);
 
     delete []mShowMatrix;
@@ -298,7 +298,7 @@ void ItemContainer::logic()
     BLOCK_START("ItemContainer::logic")
     Widget::logic();
 
-    if (!mInventory)
+    if (mInventory == nullptr)
     {
         BLOCK_END("ItemContainer::logic")
         return;
@@ -316,13 +316,13 @@ void ItemContainer::logic()
 
 void ItemContainer::draw(Graphics *const graphics)
 {
-    if (!mInventory || !mShowMatrix)
+    if ((mInventory == nullptr) || (mShowMatrix == nullptr))
         return;
 
     BLOCK_START("ItemContainer::draw")
     Font *const font = getFont();
 
-    if (mCellBackgroundImg)
+    if (mCellBackgroundImg != nullptr)
     {
         if (mRedraw || graphics->getRedraw())
         {
@@ -367,22 +367,22 @@ void ItemContainer::draw(Graphics *const graphics)
             const Item *const item = mInventory->getItem(
                 mShowMatrix[itemIndex]);
 
-            if (!item || item->getId() == 0)
+            if ((item == nullptr) || item->getId() == 0)
                 continue;
 
             Image *const image = item->getImage();
-            if (image)
+            if (image != nullptr)
             {
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
-                    if (mSelImg)
+                    if (mSelImg != nullptr)
                         graphics->drawImage(mSelImg, itemX, itemY);
                 }
                 image->setAlpha(1.0F);  // ensure the image if fully drawn...
                 graphics->drawImage(image,
                     itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
-                if (mProtectedImg && PlayerInfo::isItemProtected(
+                if ((mProtectedImg != nullptr) && PlayerInfo::isItemProtected(
                     item->getId()))
                 {
                     graphics->drawImage(mProtectedImg,
@@ -408,7 +408,7 @@ void ItemContainer::draw(Graphics *const graphics)
             const Item *const item = mInventory->getItem(
                 mShowMatrix[itemIndex]);
 
-            if (!item || item->getId() == 0)
+            if ((item == nullptr) || item->getId() == 0)
                 continue;
 
             // Draw item caption
@@ -447,13 +447,13 @@ void ItemContainer::draw(Graphics *const graphics)
 
 void ItemContainer::safeDraw(Graphics *const graphics)
 {
-    if (!mInventory || !mShowMatrix)
+    if ((mInventory == nullptr) || (mShowMatrix == nullptr))
         return;
 
     BLOCK_START("ItemContainer::draw")
     Font *const font = getFont();
 
-    if (mCellBackgroundImg)
+    if (mCellBackgroundImg != nullptr)
     {
         const int invSize = mInventory->getSize();
         const int maxRows = mShowEmptyRows == ShowEmptyRows_true ?
@@ -489,22 +489,22 @@ void ItemContainer::safeDraw(Graphics *const graphics)
             const Item *const item = mInventory->getItem(
                 mShowMatrix[itemIndex]);
 
-            if (!item || item->getId() == 0)
+            if ((item == nullptr) || item->getId() == 0)
                 continue;
 
             Image *const image = item->getImage();
-            if (image)
+            if (image != nullptr)
             {
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
-                    if (mSelImg)
+                    if (mSelImg != nullptr)
                         graphics->drawImage(mSelImg, itemX, itemY);
                 }
                 image->setAlpha(1.0F);  // ensure the image if fully drawn...
                 graphics->drawImage(image,
                     itemX + mPaddingItemX,
                     itemY + mPaddingItemY);
-                if (mProtectedImg && PlayerInfo::isItemProtected(
+                if ((mProtectedImg != nullptr) && PlayerInfo::isItemProtected(
                     item->getId()))
                 {
                     graphics->drawImage(mProtectedImg,
@@ -530,7 +530,7 @@ void ItemContainer::safeDraw(Graphics *const graphics)
             const Item *const item = mInventory->getItem(
                 mShowMatrix[itemIndex]);
 
-            if (!item || item->getId() == 0)
+            if ((item == nullptr) || item->getId() == 0)
                 continue;
 
             // Draw item caption
@@ -592,7 +592,7 @@ void ItemContainer::setSelectedIndex(const int newIndex)
 
 Item *ItemContainer::getSelectedItem() const
 {
-    if (mInventory)
+    if (mInventory != nullptr)
         return mInventory->getItem(mSelectedIndex);
     else
         return nullptr;
@@ -602,7 +602,7 @@ void ItemContainer::distributeValueChangedEvent()
 {
     FOR_EACH (SelectionListenerIterator, i, mSelectionListeners)
     {
-        if (*i)
+        if (*i != nullptr)
         {
             SelectionEvent event(this);
             (*i)->valueChanged(event);
@@ -620,7 +620,7 @@ void ItemContainer::keyReleased(KeyEvent &event A_UNUSED)
 
 void ItemContainer::mousePressed(MouseEvent &event)
 {
-    if (!mInventory)
+    if (mInventory == nullptr)
         return;
 
     const MouseButtonT button = event.getButton();
@@ -636,7 +636,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
         Item *const item = mInventory->getItem(index);
 
         // put item name into chat window
-        if (item && mDescItems && chatWindow)
+        if ((item != nullptr) && mDescItems && (chatWindow != nullptr))
             chatWindow->addItemText(item->getInfo().getName());
 
         DragDropSourceT src = DragDropSource::Empty;
@@ -674,7 +674,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
             dragDrop.select(item);
             mSelectionStatus = SEL_DESELECTING;
         }
-        else if (item && item->getId())
+        else if ((item != nullptr) && (item->getId() != 0))
         {
             if (index >= 0)
             {
@@ -683,16 +683,16 @@ void ItemContainer::mousePressed(MouseEvent &event)
                 setSelectedIndex(index);
                 mSelectionStatus = SEL_SELECTING;
 
-                if (itemShortcutWindow)
+                if (itemShortcutWindow != nullptr)
                 {
                     const int num = itemShortcutWindow->getTabIndex();
                     if (num >= 0 && num < CAST_S32(SHORTCUT_TABS))
                     {
-                        if (itemShortcut[num])
+                        if (itemShortcut[num] != nullptr)
                             itemShortcut[num]->setItemSelected(item);
                     }
                 }
-                if (shopWindow)
+                if (shopWindow != nullptr)
                     shopWindow->setItemSelected(item->getId());
             }
         }
@@ -712,8 +712,12 @@ void ItemContainer::mouseDragged(MouseEvent &event A_UNUSED)
 
 void ItemContainer::mouseReleased(MouseEvent &event)
 {
-    if (mClicks == 2 || !inventoryHandler || !tradeHandler)
+    if (mClicks == 2 ||
+        inventoryHandler == nullptr ||
+        tradeHandler == nullptr)
+    {
         return;
+    }
 
     switch (mSelectionStatus)
     {
@@ -742,7 +746,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         inventoryHandler->moveItem(mSelectedIndex, index);
         selectNone();
     }
-    else if (mInventory)
+    else if (mInventory != nullptr)
     {
         const DragDropSourceT src = dragDrop.getSource();
         DragDropSourceT dst = DragDropSource::Empty;
@@ -809,7 +813,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 return;
             if (index == mSelectedIndex || mSelectedIndex == -1)
                 return;
-            if (inventoryWindow)
+            if (inventoryWindow != nullptr)
                 inventoryWindow->combineItems(index, mSelectedIndex);
             return;
         }
@@ -845,7 +849,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                  || dst == DragDropSource::Mail))
         {
             inventory = PlayerInfo::getInventory();
-            if (inventory)
+            if (inventory != nullptr)
             {
                 Item *const item = inventory->getItem(dragDrop.getTag());
                 if (mInventory->addVirtualItem(
@@ -868,7 +872,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 const int index = getSlotByXY(event.getX(), event.getY());
                 if (index == Inventory::NO_SLOT_INDEX)
                 {
-                    if (inventory)
+                    if (inventory != nullptr)
                         inventory->virtualRestore(item, 1);
                     mInventory->removeItemAt(dragDrop.getTag());
                     return;
@@ -886,17 +890,17 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                     Equipm_false,
                     Equipped_false);
                 Item *const item2 = mInventory->getItem(index);
-                if (item2)
+                if (item2 != nullptr)
                     item2->setTag(item->getTag());
                 mInventory->removeItemAt(dragDrop.getTag());
             }
             else
             {
-                if (inventory)
+                if (inventory != nullptr)
                 {
                     const Item *const item = inventory->getItem(
                         dragDrop.getTag());
-                    if (item)
+                    if (item != nullptr)
                     {
                         inventory->virtualRestore(item, 1);
                         mInventory->removeItemAt(dragDrop.getTag());
@@ -909,10 +913,10 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                  dst == DragDropSource::Craft)
         {
             inventory = PlayerInfo::getInventory();
-            if (inventory)
+            if (inventory != nullptr)
             {
                 Item *const item = inventory->getItem(dragDrop.getTag());
-                if (!item || item->isEquipped() == Equipped_true)
+                if ((item == nullptr) || item->isEquipped() == Equipped_true)
                     return;
                 const int slot = getSlotByXY(event.getX(), event.getY());
                 if (item->getQuantity() > 1
@@ -948,7 +952,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 const int index = getSlotByXY(event.getX(), event.getY());
                 if (index == Inventory::NO_SLOT_INDEX)
                 {
-                    if (inventory)
+                    if (inventory != nullptr)
                     {
                         inventory->virtualRestore(item,
                             item->getQuantity());
@@ -960,11 +964,11 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             }
             else
             {
-                if (inventory)
+                if (inventory != nullptr)
                 {
                     const Item *const item = inventory->getItem(
                         dragDrop.getTag());
-                    if (item)
+                    if (item != nullptr)
                     {
                         inventory->virtualRestore(item,
                             item->getQuantity());
@@ -977,19 +981,19 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         else if (src == DragDropSource::Mail)
         {
             inventory = PlayerInfo::getInventory();
-            if (inventory)
+            if (inventory != nullptr)
             {
                 const Item *const item = inventory->getItem(dragDrop.getTag());
-                if (item)
+                if (item != nullptr)
                     mInventory->removeItemAt(dragDrop.getTag());
             }
             return;
         }
 
-        if (inventory)
+        if (inventory != nullptr)
         {
             const Item *const item = inventory->getItem(dragDrop.getTag());
-            if (item)
+            if (item != nullptr)
             {
                 if (srcContainer != InventoryType::TypeEnd)
                 {   // inventory <--> storage, cart
@@ -1013,13 +1017,13 @@ void ItemContainer::mouseReleased(MouseEvent &event)
 
 void ItemContainer::mouseMoved(MouseEvent &event)
 {
-    if (!mInventory)
+    if (mInventory == nullptr)
         return;
 
     const Item *const item = mInventory->getItem(
         getSlotIndex(event.getX(), event.getY()));
 
-    if (item && viewport)
+    if ((item != nullptr) && (viewport != nullptr))
     {
         itemPopup->setItem(item, false);
         itemPopup->position(viewport->mMouseX, viewport->mMouseY);
@@ -1057,7 +1061,7 @@ void ItemContainer::widgetMoved(const Event &event A_UNUSED)
 
 void ItemContainer::adjustHeight()
 {
-    if (!mGridColumns)
+    if (mGridColumns == 0)
         return;
 
     mGridRows = (mLastUsedSlot + 1) / mGridColumns;
@@ -1081,7 +1085,7 @@ void ItemContainer::adjustHeight()
 
 void ItemContainer::updateMatrix()
 {
-    if (!mInventory)
+    if (mInventory == nullptr)
         return;
 
     mRedraw = true;
@@ -1100,7 +1104,9 @@ void ItemContainer::updateMatrix()
     {
         Item *const item = mInventory->getItem(idx);
 
-        if (!item || item->getId() == 0 || !item->isHaveTag(mTag))
+        if (item == nullptr ||
+            item->getId() == 0 ||
+            !item->isHaveTag(mTag))
         {
             if (mShowEmptyRows == ShowEmptyRows_true)
                 sortedItems.push_back(new ItemIdPair(idx, nullptr));
@@ -1174,7 +1180,7 @@ void ItemContainer::updateMatrix()
 
 int ItemContainer::getSlotIndex(int x, int y) const
 {
-    if (!mShowMatrix)
+    if (mShowMatrix == nullptr)
         return Inventory::NO_SLOT_INDEX;
 
     if (x < mDimension.width && y < mDimension.height && x >= 0 && y >= 0)
@@ -1194,7 +1200,7 @@ int ItemContainer::getSlotIndex(int x, int y) const
 
 int ItemContainer::getSlotByXY(int x, int y) const
 {
-    if (!mShowMatrix)
+    if (mShowMatrix == nullptr)
         return Inventory::NO_SLOT_INDEX;
 
     if (x < mDimension.width && y < mDimension.height && x >= 0 && y >= 0)
@@ -1223,7 +1229,7 @@ void ItemContainer::setSortType(const int sortType)
 
 void ItemContainer::setCellBackgroundImage(const std::string &xmlName)
 {
-    if (mCellBackgroundImg)
+    if (mCellBackgroundImg != nullptr)
         mCellBackgroundImg->decRef();
     mCellBackgroundImg = Theme::getImageFromThemeXml(xmlName, "");
     mRedraw = true;

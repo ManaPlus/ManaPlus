@@ -320,7 +320,7 @@ void Client::gameInit()
     WindowManager::createWindows();
 
     keyboard.update();
-    if (joystick)
+    if (joystick != nullptr)
         joystick->update();
 
 //    if (mState != State::ERROR)
@@ -345,7 +345,7 @@ void Client::gameInit()
 #endif  // ANDROID
 
     mSkin = theme->load("windowmenu.xml", "");
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mButtonPadding = mSkin->getPadding();
         mButtonSpacing = mSkin->getOption("spacing", 3);
@@ -400,19 +400,19 @@ void Client::initGraphics()
 
 void Client::gameClear()
 {
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting1");
 
     eventsManager.shutdown();
     WindowManager::deleteWindows();
-    if (windowContainer)
+    if (windowContainer != nullptr)
         windowContainer->slowLogic();
 
     stopTimers();
 
     delete2(ipc);
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting2");
 
     delete2(mCurrentDialog);
@@ -420,41 +420,41 @@ void Client::gameClear()
     delete2(dialogsManager);
     delete2(gui);
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting3");
 
     graphicsManager.deleteRenderers();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting4");
 
     XML::cleanupXML();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting5");
 
     // Shutdown sound
     soundManager.close();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting6");
 
     touchManager.clear();
     ResourceManager::deleteInstance();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting8");
 
     WindowManager::deleteIcon();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting9");
 
     delete2(joystick);
 
     keyboard.deinit();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting10");
 
     soundManager.shutdown();
@@ -471,7 +471,7 @@ void Client::gameClear()
     config.clear();
     serverConfig.clear();
 
-    if (logger)
+    if (logger != nullptr)
         logger->log1("Quitting11");
 
 #ifdef USE_PROFILER
@@ -495,13 +495,13 @@ void Client::gameClear()
 
 void Client::stateGame()
 {
-    if (!gui)
+    if (gui == nullptr)
         return;
 
     BasicContainer2 *const top = static_cast<BasicContainer2*>(
         gui->getTop());
 
-    if (!top)
+    if (top == nullptr)
         return;
 
     CREATEWIDGETV(desktop, Desktop, nullptr);
@@ -546,7 +546,7 @@ int Client::gameExec()
             continue;
 
         BLOCK_START("Client::gameExec 4")
-        if (gui)
+        if (gui != nullptr)
             gui->logic();
         cur_time = time(nullptr);
         int k = 0;
@@ -555,7 +555,7 @@ int Client::gameExec()
 //            if (mGame)
 //                mGame->logic();
 //            else
-            if (gui)
+            if (gui != nullptr)
                 gui->handleInput();
 
             ++lastTickTime;
@@ -564,7 +564,7 @@ int Client::gameExec()
         soundManager.logic();
 
         logic_count += k;
-        if (gui)
+        if (gui != nullptr)
             gui->slowLogic();
 //        if (mGame)
 //            mGame->slowLogic();
@@ -578,7 +578,7 @@ int Client::gameExec()
         if (!WindowManager::getIsMinimized())
         {
             frame_count++;
-            if (gui)
+            if (gui != nullptr)
                 gui->draw();
             mainGraphics->updateScreen();
         }
@@ -667,7 +667,7 @@ int Client::gameExec()
                     TranslationManager::loadCurrentLang();
                     TranslationManager::loadDictionaryLang();
 
-                    if (desktop)
+                    if (desktop != nullptr)
                         desktop->reloadWallpaper();
 
                     mState = State::GET_CHARACTERS;
@@ -732,7 +732,7 @@ void Client::action(const ActionEvent &event)
 
 void Client::moveButtons(const int width)
 {
-    if (mSetupButton)
+    if (mSetupButton != nullptr)
     {
         int x = width - mSetupButton->getWidth() - mButtonPadding;
         mSetupButton->setPosition(x, mButtonPadding);

@@ -92,7 +92,7 @@ void OpenGLGraphicsVertexes::clear() restrict2
     }
 
     mVp.clear();
-    if (ptr)
+    if (ptr != 0)
     {
         ptr = 0;
         delete []mFloatTexArray;

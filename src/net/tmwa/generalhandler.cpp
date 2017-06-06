@@ -129,7 +129,7 @@ void GeneralHandler::load() const
 
 void GeneralHandler::reload() const
 {
-    if (Network::mInstance)
+    if (Network::mInstance != nullptr)
         Network::mInstance->disconnect();
 
     static_cast<LoginHandler*>(mLoginHandler)->clearWorlds();
@@ -152,7 +152,7 @@ void GeneralHandler::unload() const
 
 void GeneralHandler::flushSend() const
 {
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return;
 
     Network::mInstance->flush();
@@ -160,7 +160,7 @@ void GeneralHandler::flushSend() const
 
 void GeneralHandler::flushNetwork() const
 {
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return;
 
     BLOCK_START("GeneralHandler::flushNetwork 1")
@@ -188,19 +188,19 @@ void GeneralHandler::flushNetwork() const
 
 void GeneralHandler::clearHandlers() const
 {
-    if (Network::mInstance)
+    if (Network::mInstance != nullptr)
         Network::mInstance->clearHandlers();
 }
 
 void GeneralHandler::gameStarted() const
 {
-    if (skillDialog)
+    if (skillDialog != nullptr)
         skillDialog->loadSkills();
 }
 
 void GeneralHandler::gameEnded() const
 {
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->removeTab(Ea::taParty);
 
     delete2(partyTab);

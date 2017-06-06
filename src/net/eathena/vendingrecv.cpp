@@ -77,7 +77,7 @@ void VendingRecv::processShowBoard(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("owner id");
     const std::string shopName = msg.readString(80, "shop name");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setSellBoard(shopName);
 }
 
@@ -85,7 +85,7 @@ void VendingRecv::processHideBoard(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setSellBoard(std::string());
     if (dstBeing == localPlayer)
     {
@@ -106,7 +106,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
     const int count = (msg.readInt16("len") - offset) / packetLen;
     const BeingId id = msg.readBeingId("id");
     const Being *const being = actorManager->findBeing(id);
-    if (!being)
+    if (being == nullptr)
         return;
     int cards[maxCards];
     CREATEWIDGETV(mBuyDialog, BuyDialog, being, DEFAULT_CURRENCY);
@@ -142,7 +142,7 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
         ShopItem *const item = mBuyDialog->addItem(itemId, type,
             color, amount, value);
-        if (item)
+        if (item != nullptr)
         {
             item->setInvIndex(index);
             item->setOptions(options);
@@ -230,10 +230,10 @@ void VendingRecv::processReport(Net::MessageIn &msg)
         money = msg.readInt32("zeny");
     }
     const Inventory *const inventory = PlayerInfo::getCartInventory();
-    if (!inventory)
+    if (inventory == nullptr)
         return;
     const Item *const item = inventory->getItem(index);
-    if (!item)
+    if (item == nullptr)
         return;
 
     const ItemInfo &info = item->getInfo();

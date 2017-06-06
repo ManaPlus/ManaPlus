@@ -46,7 +46,7 @@ SpellShortcutContainer::SpellShortcutContainer(Widget2 *const widget,
     mNumber(number),
     mSpellClicked(false)
 {
-    if (spellShortcut)
+    if (spellShortcut != nullptr)
         mMaxItems = spellShortcut->getSpellsCount();
     else
         mMaxItems = 0;
@@ -65,14 +65,14 @@ void SpellShortcutContainer::setWidget2(const Widget2 *const widget)
 
 void SpellShortcutContainer::draw(Graphics *const graphics)
 {
-    if (!spellShortcut)
+    if (spellShortcut == nullptr)
         return;
 
     BLOCK_START("SpellShortcutContainer::draw")
     if (settings.guiAlpha != mAlpha)
     {
         mAlpha = settings.guiAlpha;
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
@@ -95,17 +95,17 @@ void SpellShortcutContainer::draw(Graphics *const graphics)
                 mBoxWidth - 1, mBoxHeight - 1));
         }
 
-        if (!spellManager)
+        if (spellManager == nullptr)
             continue;
 
         const TextCommand *const spell = spellManager->getSpell(itemId);
-        if (spell)
+        if (spell != nullptr)
         {
             if (!spell->isEmpty())
             {
                 Image *const image = spell->getImage();
 
-                if (image)
+                if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
                     graphics->drawImage(image, itemX, itemY);
@@ -125,14 +125,14 @@ void SpellShortcutContainer::draw(Graphics *const graphics)
 
 void SpellShortcutContainer::safeDraw(Graphics *const graphics)
 {
-    if (!spellShortcut)
+    if (spellShortcut == nullptr)
         return;
 
     BLOCK_START("SpellShortcutContainer::draw")
     if (settings.guiAlpha != mAlpha)
     {
         mAlpha = settings.guiAlpha;
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
     }
 
@@ -155,17 +155,17 @@ void SpellShortcutContainer::safeDraw(Graphics *const graphics)
                 mBoxWidth - 1, mBoxHeight - 1));
         }
 
-        if (!spellManager)
+        if (spellManager == nullptr)
             continue;
 
         const TextCommand *const spell = spellManager->getSpell(itemId);
-        if (spell)
+        if (spell != nullptr)
         {
             if (!spell->isEmpty())
             {
                 Image *const image = spell->getImage();
 
-                if (image)
+                if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
                     graphics->drawImage(image, itemX, itemY);
@@ -200,7 +200,7 @@ void SpellShortcutContainer::mouseDragged(MouseEvent &event)
                 return;
             event.consume();
             TextCommand *const spell = spellManager->getSpell(itemId);
-            if (spell)
+            if (spell != nullptr)
             {
                 dragDrop.dragCommand(spell, DragDropSource::Spells, index);
                 dragDrop.setItem(spell->getId() + SPELL_MIN_ID);
@@ -234,7 +234,7 @@ void SpellShortcutContainer::mousePressed(MouseEvent &event)
     }
     else if (eventButton == MouseButton::MIDDLE)
     {
-        if (!spellShortcut || !spellManager)
+        if ((spellShortcut == nullptr) || (spellManager == nullptr))
             return;
 
         event.consume();
@@ -245,7 +245,7 @@ void SpellShortcutContainer::mousePressed(MouseEvent &event)
 
 void SpellShortcutContainer::mouseReleased(MouseEvent &event)
 {
-    if (!spellShortcut || !spellManager)
+    if ((spellShortcut == nullptr) || (spellManager == nullptr))
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -287,11 +287,11 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
             {
                 const TextCommand *const
                     spell = spellManager->getSpell(itemId);
-                if (spell && !spell->isEmpty())
+                if ((spell != nullptr) && !spell->isEmpty())
                 {
                     const int num = itemShortcutWindow->getTabIndex();
                     if (num >= 0 && num < CAST_S32(SHORTCUT_TABS)
-                        && itemShortcut[num])
+                        && (itemShortcut[num] != nullptr))
                     {
                         itemShortcut[num]->setItemSelected(
                             spell->getId() + SPELL_MIN_ID);
@@ -303,7 +303,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
             {
                 const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < CAST_S32(SHORTCUT_TABS)
-                    && itemShortcut[num])
+                    && (itemShortcut[num] != nullptr))
                 {
                     itemShortcut[num]->setItemSelected(-1);
                 }
@@ -317,7 +317,7 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
         if (itemId >= 0)
             spell = spellManager->getSpell(itemId);
 
-        if (spell && popupMenu)
+        if ((spell != nullptr) && (popupMenu != nullptr))
         {
             popupMenu->showSpellPopup(viewport->mMouseX,
                 viewport->mMouseY,
@@ -329,8 +329,12 @@ void SpellShortcutContainer::mouseReleased(MouseEvent &event)
 // Show ItemTooltip
 void SpellShortcutContainer::mouseMoved(MouseEvent &event)
 {
-    if (!spellPopup || !spellShortcut || !spellManager)
+    if (spellPopup == nullptr ||
+        spellShortcut == nullptr ||
+        spellManager == nullptr)
+    {
         return;
+    }
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
 
@@ -340,7 +344,7 @@ void SpellShortcutContainer::mouseMoved(MouseEvent &event)
     const int itemId = getItemByIndex(index);
     spellPopup->setVisible(Visible_false);
     const TextCommand *const spell = spellManager->getSpell(itemId);
-    if (spell && !spell->isEmpty())
+    if ((spell != nullptr) && !spell->isEmpty())
     {
         spellPopup->setItem(spell);
         spellPopup->view(viewport->mMouseX, viewport->mMouseY);
@@ -353,13 +357,13 @@ void SpellShortcutContainer::mouseMoved(MouseEvent &event)
 
 void SpellShortcutContainer::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (spellPopup)
+    if (spellPopup != nullptr)
         spellPopup->setVisible(Visible_false);
 }
 
 void SpellShortcutContainer::widgetHidden(const Event &event A_UNUSED)
 {
-    if (spellPopup)
+    if (spellPopup != nullptr)
         spellPopup->setVisible(Visible_false);
 }
 

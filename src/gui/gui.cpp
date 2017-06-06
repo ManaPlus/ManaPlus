@@ -269,13 +269,13 @@ Gui::~Gui()
     config.removeListeners(mConfigListener);
     delete2(mConfigListener);
 
-    if (mMouseCursors)
+    if (mMouseCursors != nullptr)
     {
         mMouseCursors->decRef();
         mMouseCursors = nullptr;
     }
 
-    if (windowContainer)
+    if (windowContainer != nullptr)
         windowContainer->slowLogic();
     Widget *top = mTop;
     if (Widget::widgetExists(mTop))
@@ -303,7 +303,7 @@ void Gui::logic()
     BLOCK_START("Gui::logic")
     ResourceManager::clearScheduled();
 
-    if (!mTop)
+    if (mTop == nullptr)
     {
         BLOCK_END("Gui::logic")
         return;
@@ -312,7 +312,7 @@ void Gui::logic()
     handleModalFocus();
     handleModalMouseInputFocus();
 
-    if (guiInput)
+    if (guiInput != nullptr)
         handleMouseInput();
 
     mTop->logic();
@@ -334,26 +334,26 @@ void Gui::slowLogic()
     {
         mMouseCursorAlpha = std::max(0.0F, mMouseCursorAlpha - 0.005F);
     }
-    if (mGuiFont)
+    if (mGuiFont != nullptr)
         mGuiFont->slowLogic(0);
-    if (mInfoParticleFont)
+    if (mInfoParticleFont != nullptr)
         mInfoParticleFont->slowLogic(1);
-    if (mHelpFont)
+    if (mHelpFont != nullptr)
         mHelpFont->slowLogic(2);
-    if (mSecureFont)
+    if (mSecureFont != nullptr)
         mSecureFont->slowLogic(3);
-    if (boldFont)
+    if (boldFont != nullptr)
         boldFont->slowLogic(4);
-    if (mNpcFont)
+    if (mNpcFont != nullptr)
         mNpcFont->slowLogic(5);
-    if (windowContainer)
+    if (windowContainer != nullptr)
         windowContainer->slowLogic();
 
     const time_t time = cur_time;
     if (mTime != time)
     {
         logger->flush();
-        if (ipc)
+        if (ipc != nullptr)
             ipc->flush();
         mTime = time;
 
@@ -369,23 +369,23 @@ void Gui::slowLogic()
 
 void Gui::clearFonts()
 {
-    if (mGuiFont)
+    if (mGuiFont != nullptr)
         mGuiFont->clear();
-    if (mInfoParticleFont)
+    if (mInfoParticleFont != nullptr)
         mInfoParticleFont->clear();
-    if (mHelpFont)
+    if (mHelpFont != nullptr)
         mHelpFont->clear();
-    if (mSecureFont)
+    if (mSecureFont != nullptr)
         mSecureFont->clear();
-    if (boldFont)
+    if (boldFont != nullptr)
         boldFont->clear();
-    if (mNpcFont)
+    if (mNpcFont != nullptr)
         mNpcFont->clear();
 }
 
 bool Gui::handleInput()
 {
-    if (mInput)
+    if (mInput != nullptr)
         return handleKeyInput();
     else
         return false;
@@ -393,7 +393,7 @@ bool Gui::handleInput()
 
 bool Gui::handleKeyInput()
 {
-    if (!guiInput)
+    if (guiInput == nullptr)
         return false;
 
     BLOCK_START("Gui::handleKeyInput")
@@ -423,12 +423,12 @@ bool Gui::handleKeyInput()
             continue;
         }
 
-        if (mFocusHandler)
+        if (mFocusHandler != nullptr)
         {
             bool eventConsumed = false;
 
             // Send key inputs to the focused widgets
-            if (mFocusHandler->getFocused())
+            if (mFocusHandler->getFocused() != nullptr)
             {
                 KeyEvent event(getKeyEventSource(),
                     keyInput.getType(),
@@ -470,7 +470,7 @@ void Gui::draw()
 {
     BLOCK_START("Gui::draw 1")
     Widget *const top = getTop();
-    if (!top)
+    if (top == nullptr)
         return;
     mGraphics->pushClipArea(top->getDimension());
 
@@ -489,25 +489,29 @@ void Gui::draw()
     int mouseY;
     const MouseStateType button = getMouseState(mouseX, mouseY);
 
-    if ((settings.mouseFocused || button & SDL_BUTTON(1))
-        && mMouseCursors && mCustomCursor && mMouseCursorAlpha > 0.0F)
+    if ((settings.mouseFocused ||
+        ((button & SDL_BUTTON(1)) != 0)) &&
+        mMouseCursors != nullptr &&
+        mCustomCursor &&
+        mMouseCursorAlpha > 0.0F)
     {
 #ifndef DYECMD
         const Image *const image = dragDrop.getItemImage();
-        if (mGuiFont)
+        if (mGuiFont != nullptr)
         {
             const std::string &str = dragDrop.getText();
             if (!str.empty())
             {
                 const int posX = mouseX - mGuiFont->getWidth(str) / 2;
-                const int posY = mouseY + (image ? image->mBounds.h / 2 : 0);
+                const int posY = mouseY +
+                    (image != nullptr ? image->mBounds.h / 2 : 0);
                 mGuiFont->drawString(mGraphics,
                     mForegroundColor, mForegroundColor2,
                     str,
                     posX, posY);
             }
         }
-        if (image)
+        if (image != nullptr)
         {
             const int posX = mouseX - (image->mBounds.w / 2);
             const int posY = mouseY - (image->mBounds.h / 2);
@@ -517,7 +521,7 @@ void Gui::draw()
 
         Image *const mouseCursor = mMouseCursors->get(
             CAST_SIZE(mCursorType));
-        if (mouseCursor)
+        if (mouseCursor != nullptr)
         {
             mouseCursor->setAlpha(mMouseCursorAlpha);
             mGraphics->drawImage(mouseCursor, mouseX - 15, mouseY - 17);
@@ -532,7 +536,7 @@ void Gui::videoResized() const
 {
     WindowContainer *const top = static_cast<WindowContainer *>(getTop());
 
-    if (top)
+    if (top != nullptr)
     {
         const int oldWidth = top->getWidth();
         const int oldHeight = top->getHeight();
@@ -541,7 +545,7 @@ void Gui::videoResized() const
         top->adjustAfterResize(oldWidth, oldHeight);
     }
 
-    if (viewport)
+    if (viewport != nullptr)
         viewport->videoResized();
     Widget::distributeWindowResizeEvent();
 }
@@ -558,11 +562,11 @@ void Gui::setUseCustomCursor(const bool customCursor)
             SDL::showCursor(false);
 
             // Load the mouse cursor
-            if (mMouseCursors)
+            if (mMouseCursors != nullptr)
                 mMouseCursors->decRef();
             mMouseCursors = Theme::getImageSetFromTheme("mouse.png", 40, 40);
 
-            if (!mMouseCursors)
+            if (mMouseCursors == nullptr)
                 logger->log("Error: Unable to load mouse cursors.");
         }
         else
@@ -571,7 +575,7 @@ void Gui::setUseCustomCursor(const bool customCursor)
             SDL::showCursor(true);
 
             // Unload the mouse cursor
-            if (mMouseCursors)
+            if (mMouseCursors != nullptr)
             {
                 mMouseCursors->decRef();
                 mMouseCursors = nullptr;
@@ -583,9 +587,12 @@ void Gui::setUseCustomCursor(const bool customCursor)
 void Gui::handleMouseMoved(const MouseInput &mouseInput)
 {
     // Check if the mouse leaves the application window.
-    if (mTop && !mWidgetWithMouseQueue.empty() && (mouseInput.getX() < 0
-        || mouseInput.getY() < 0 || !mTop->getDimension().isPointInRect(
-        mouseInput.getX(), mouseInput.getY())))
+    if (mTop != nullptr &&
+        !mWidgetWithMouseQueue.empty() &&
+        (mouseInput.getX() < 0 ||
+        mouseInput.getY() < 0 ||
+        !mTop->getDimension().isPointInRect(mouseInput.getX(),
+        mouseInput.getY())))
     {
         // Distribute an event to all widgets in the
         // "widget with mouse" queue.
@@ -681,10 +688,10 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
     // widget with modal mouse input focus, hence we need to check if
     // that's the case. If it's not we should simply ignore to send any
     // mouse entered events.
-    if (mFocusHandler->getModalMouseInputFocused()
+    if ((mFocusHandler->getModalMouseInputFocused() != nullptr)
         && widget == mFocusHandler->getModalMouseInputFocused()
         && Widget::widgetExists(widget) &&
-        widget)
+        (widget != nullptr))
     {
         int x, y;
         widget->getAbsolutePosition(x, y);
@@ -697,7 +704,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
         }
     }
 
-    while (parent)
+    while (parent != nullptr)
     {
         parent = widget->getParent();
 
@@ -733,7 +740,7 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
         parent = swap->getParent();
     }
 
-    if (mFocusHandler->getDraggedWidget())
+    if (mFocusHandler->getDraggedWidget() != nullptr)
     {
         distributeMouseEvent(mFocusHandler->getDraggedWidget(),
                              MouseEventType::DRAGGED,
@@ -762,18 +769,18 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
 
     Widget *sourceWidget = getMouseEventSource(x, y);
 
-    if (mFocusHandler->getDraggedWidget())
+    if (mFocusHandler->getDraggedWidget() != nullptr)
         sourceWidget = mFocusHandler->getDraggedWidget();
 
-    if (!sourceWidget)
+    if (sourceWidget == nullptr)
         return;
     int sourceWidgetX;
     int sourceWidgetY;
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
 
-    if ((mFocusHandler->getModalFocused()
+    if (((mFocusHandler->getModalFocused() != nullptr)
         && sourceWidget->isModalFocused())
-        || !mFocusHandler->getModalFocused())
+        || (mFocusHandler->getModalFocused() == nullptr))
     {
         sourceWidget->requestFocus();
     }
@@ -834,7 +841,7 @@ void Gui::distributeMouseEvent(Widget *const source,
                                const bool force,
                                const bool toSourceOnly)
 {
-    if (!source || !mFocusHandler)
+    if ((source == nullptr) || (mFocusHandler == nullptr))
         return;
 
     Widget *widget = source;
@@ -858,7 +865,7 @@ void Gui::distributeMouseEvent(Widget *const source,
         x, y, mClickCount);
 
     Widget* parent = source;
-    while (parent)
+    while (parent != nullptr)
     {
         // If the widget has been removed due to input
         // cancel the distribution.
@@ -932,12 +939,12 @@ void Gui::distributeMouseEvent(Widget *const source,
             dragDrop.clear();
 #endif  // DYECMD
 
-        if (!widget || event.isConsumed())
+        if ((widget == nullptr) || event.isConsumed())
             break;
 
         // If a non modal focused widget has been reach
         // and we have modal focus cancel the distribution.
-        if (mFocusHandler->getModalFocused()
+        if ((mFocusHandler->getModalFocused() != nullptr)
             && !widget->isModalFocused())
         {
             break;
@@ -945,7 +952,7 @@ void Gui::distributeMouseEvent(Widget *const source,
 
         // If a non modal mouse input focused widget has been reach
         // and we have modal mouse input focus cancel the distribution.
-        if (mFocusHandler->getModalMouseInputFocused()
+        if ((mFocusHandler->getModalMouseInputFocused() != nullptr)
             && !widget->isModalMouseInputFocused())
         {
             break;
@@ -961,7 +968,7 @@ void Gui::resetClickCount()
 
 MouseEvent *Gui::createMouseEvent(Window *const widget)
 {
-    if (!viewport || !widget)
+    if ((viewport == nullptr) || (widget == nullptr))
         return nullptr;
 
     int x = 0;
@@ -984,11 +991,11 @@ void Gui::getAbsolutePosition(Widget *restrict widget,
                               int &restrict x,
                               int &restrict y)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
     x = 0;
     y = 0;
-    while (widget->getParent())
+    while (widget->getParent() != nullptr)
     {
         x += widget->getX();
         y += widget->getY();
@@ -1061,14 +1068,14 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
 
     int sourceWidgetX;
     int sourceWidgetY;
-    if (mFocusHandler->getDraggedWidget())
+    if (mFocusHandler->getDraggedWidget() != nullptr)
     {
         if (sourceWidget != mFocusHandler->getLastWidgetPressed())
             mFocusHandler->setLastWidgetPressed(nullptr);
 
         Widget *const oldWidget = sourceWidget;
         sourceWidget = mFocusHandler->getDraggedWidget();
-        if (oldWidget && oldWidget != sourceWidget)
+        if ((oldWidget != nullptr) && oldWidget != sourceWidget)
         {
             oldWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
             distributeMouseEvent(oldWidget,
@@ -1079,7 +1086,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
         }
     }
 
-    if (!sourceWidget)
+    if (sourceWidget == nullptr)
         return;
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
     distributeMouseEvent(sourceWidget,
@@ -1105,7 +1112,7 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
         mClickCount = 0;
     }
 
-    if (mFocusHandler->getDraggedWidget())
+    if (mFocusHandler->getDraggedWidget() != nullptr)
         mFocusHandler->setDraggedWidget(nullptr);
 }
 
@@ -1131,7 +1138,7 @@ void Gui::distributeGlobalFocusGainedEvent(const Event &focusEvent)
 
 void Gui::removeDragged(const Widget *const widget)
 {
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
 
     if (mFocusHandler->getDraggedWidget() == widget)
@@ -1149,9 +1156,9 @@ MouseStateType Gui::getMouseState(int &x, int &y)
 
 void Gui::setTop(Widget *const top)
 {
-    if (mTop)
+    if (mTop != nullptr)
         mTop->setFocusHandler(nullptr);
-    if (top)
+    if (top != nullptr)
         top->setFocusHandler(mFocusHandler);
 
     mTop = top;
@@ -1192,10 +1199,10 @@ void Gui::handleMouseWheelMovedDown(const MouseInput& mouseInput)
     Widget* sourceWidget = getMouseEventSource(
         mouseInput.getX(), mouseInput.getY());
 
-    if (mFocusHandler->getDraggedWidget())
+    if (mFocusHandler->getDraggedWidget() != nullptr)
         sourceWidget = mFocusHandler->getDraggedWidget();
 
-    if (sourceWidget)
+    if (sourceWidget != nullptr)
     {
         int sourceWidgetX = 0;
         int sourceWidgetY = 0;
@@ -1214,10 +1221,10 @@ void Gui::handleMouseWheelMovedUp(const MouseInput& mouseInput)
     Widget* sourceWidget = getMouseEventSource(
         mouseInput.getX(), mouseInput.getY());
 
-    if (mFocusHandler->getDraggedWidget())
+    if (mFocusHandler->getDraggedWidget() != nullptr)
         sourceWidget = mFocusHandler->getDraggedWidget();
 
-    if (sourceWidget)
+    if (sourceWidget != nullptr)
     {
         int sourceWidgetX;
         int sourceWidgetY;
@@ -1238,14 +1245,14 @@ Widget* Gui::getWidgetAt(const int x, const int y) const
     Widget* child = mTop;
     Widget* selectable = mTop;
 
-    while (child)
+    while (child != nullptr)
     {
         Widget *const swap = child;
         int parentX, parentY;
         parent->getAbsolutePosition(parentX, parentY);
         child = parent->getWidgetAt(x - parentX, y - parentY);
         parent = swap;
-        if (parent && parent->isSelectable())
+        if ((parent != nullptr) && parent->isSelectable())
             selectable = parent;
     }
 
@@ -1255,11 +1262,12 @@ Widget* Gui::getWidgetAt(const int x, const int y) const
 Widget* Gui::getMouseEventSource(const int x, const int y) const
 {
     Widget *const widget = getWidgetAt(x, y);
-    if (!widget)
+    if (widget == nullptr)
         return nullptr;
 
-    if (mFocusHandler && mFocusHandler->getModalMouseInputFocused()
-        && !widget->isModalMouseInputFocused())
+    if (mFocusHandler != nullptr &&
+        mFocusHandler->getModalMouseInputFocused() != nullptr &&
+        !widget->isModalMouseInputFocused())
     {
         return mFocusHandler->getModalMouseInputFocused();
     }
@@ -1271,8 +1279,9 @@ Widget* Gui::getKeyEventSource() const
 {
     Widget* widget = mFocusHandler->getFocused();
 
-    while (widget && widget->getInternalFocusHandler()
-           && widget->getInternalFocusHandler()->getFocused())
+    while (widget != nullptr &&
+           widget->getInternalFocusHandler() != nullptr &&
+           widget->getInternalFocusHandler()->getFocused() != nullptr)
     {
         widget = widget->getInternalFocusHandler()->getFocused();
     }
@@ -1285,17 +1294,20 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
     Widget* parent = event.getSource();
     Widget* widget = parent;
 
-    if (!parent)
+    if (parent == nullptr)
         return;
-    if (mFocusHandler->getModalFocused() && !widget->isModalFocused())
+    if (mFocusHandler->getModalFocused() != nullptr &&
+        !widget->isModalFocused())
+    {
         return;
-    if (mFocusHandler->getModalMouseInputFocused()
-        && !widget->isModalMouseInputFocused())
+    }
+    if (mFocusHandler->getModalMouseInputFocused() != nullptr &&
+        !widget->isModalMouseInputFocused())
     {
         return;
     }
 
-    while (parent)
+    while (parent != nullptr)
     {
         // If the widget has been removed due to input
         // cancel the distribution.
@@ -1334,8 +1346,8 @@ void Gui::distributeKeyEvent(KeyEvent &event) const
 
         // If a non modal focused widget has been reach
         // and we have modal focus cancel the distribution.
-        if (widget &&
-            mFocusHandler->getModalFocused() &&
+        if ((widget != nullptr) &&
+            (mFocusHandler->getModalFocused() != nullptr) &&
             !widget->isModalFocused())
         {
             break;
@@ -1376,7 +1388,7 @@ void Gui::handleModalMouseInputFocus()
     if (lastModalWidget != modalWidget)
     {
         // Check if modal mouse input focus has been gained by a widget.
-        if (!lastModalWidget)
+        if (lastModalWidget == nullptr)
         {
             handleModalFocusGained();
             mFocusHandler->setLastWidgetWithModalMouseInputFocus(modalWidget);
@@ -1401,7 +1413,7 @@ void Gui::handleModalFocus()
     if (lastModalWidget != modalWidget)
     {
         // Check if modal focus has been gained by a widget.
-        if (!lastModalWidget)
+        if (lastModalWidget == nullptr)
         {
             handleModalFocusGained();
             mFocusHandler->setLastWidgetWithModalFocus(modalWidget);
@@ -1450,7 +1462,7 @@ void Gui::handleModalFocusReleased()
     Widget* widget = getMouseEventSource(mLastMouseX, mLastMouseY);
     Widget* parent = widget;
 
-    while (parent)
+    while (parent != nullptr)
     {
         parent = widget->getParent();
 
@@ -1488,7 +1500,7 @@ void Gui::handleModalFocusReleased()
 
 int Gui::getMousePressLength() const
 {
-    if (!mLastMousePressTimeStamp)
+    if (mLastMousePressTimeStamp == 0u)
         return 0;
     unsigned int ticks = SDL_GetTicks();
     if (ticks > mLastMousePressTimeStamp)

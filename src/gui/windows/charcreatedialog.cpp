@@ -162,12 +162,12 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             beingSlot.cardsId);
     }
 
-    if (!maxHairColor)
+    if (maxHairColor == 0u)
         maxHairColor = ColorDB::getHairSize();
-    if (!maxHairStyle)
+    if (maxHairStyle == 0u)
         maxHairStyle = ItemDB::getNumOfHairstyles();
 
-    if (maxHairStyle)
+    if (maxHairStyle != 0u)
     {
         mHairStyle = (CAST_U32(rand())
             % maxHairStyle) + minHairStyle;
@@ -176,7 +176,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     {
         mHairStyle = 0;
     }
-    if (maxHairColor)
+    if (maxHairColor != 0u)
     {
         mHairColor = (CAST_U32(rand())
             % maxHairColor) + minHairColor;
@@ -311,13 +311,13 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     const uint32_t labelX = mPadding;
     uint32_t nameX = leftX + labelPadding;
     uint32_t y = 30;
-    if (mPrevHairColorButton)
+    if (mPrevHairColorButton != nullptr)
         nameX += mPrevHairColorButton->getWidth();
-    else if (mPrevHairStyleButton)
+    else if (mPrevHairStyleButton != nullptr)
         nameX += mPrevHairStyleButton->getWidth();
-    else if (mPrevLookButton)
+    else if (mPrevLookButton != nullptr)
         nameX += mPrevLookButton->getWidth();
-    else if (mPrevRaceButton)
+    else if (mPrevRaceButton != nullptr)
         nameX += mPrevRaceButton->getWidth();
 
     if (maxHairColor > minHairColor)
@@ -341,27 +341,27 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
     {
-        if (mPrevLookButton)
+        if (mPrevLookButton != nullptr)
             mPrevLookButton->setPosition(leftX, y);
-        if (mNextLookButton)
+        if (mNextLookButton != nullptr)
             mNextLookButton->setPosition(rightX, y);
         y += 5;
-        if (mLookLabel)
+        if (mLookLabel != nullptr)
             mLookLabel->setPosition(labelX, y);
-        if (mLookNameLabel)
+        if (mLookNameLabel != nullptr)
             mLookNameLabel->setPosition(nameX, y);  // 93
         y += 24;
     }
     if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
     {
-        if (mPrevRaceButton)
+        if (mPrevRaceButton != nullptr)
             mPrevRaceButton->setPosition(leftX, y);
-        if (mNextRaceButton)
+        if (mNextRaceButton != nullptr)
             mNextRaceButton->setPosition(rightX, y);
         y += 5;
-        if (mRaceLabel)
+        if (mRaceLabel != nullptr)
             mRaceLabel->setPosition(labelX, y);
-        if (mRaceNameLabel)
+        if (mRaceNameLabel != nullptr)
             mRaceNameLabel->setPosition(nameX, y);
     }
     mMaxY = y + 29 + getTitlePadding();
@@ -429,7 +429,7 @@ CharCreateDialog::~CharCreateDialog()
 {
     delete2(mPlayer);
 
-    if (charServerHandler)
+    if (charServerHandler != nullptr)
         charServerHandler->setCharCreateDialog(nullptr);
 }
 
@@ -688,7 +688,7 @@ void CharCreateDialog::setAttributes(const StringVect &labels,
     }
 
     updateSliders();
-    if (!available)
+    if (available == 0)
     {
         mAttributesLeft->setVisible(Visible_false);
         h = y;
@@ -744,13 +744,13 @@ void CharCreateDialog::updateHair()
         mHairStyle = minHairStyle;
     }
     const ItemInfo &item = ItemDB::get(-mHairStyle);
-    if (mHairStyleNameLabel)
+    if (mHairStyleNameLabel != nullptr)
     {
         mHairStyleNameLabel->setCaption(item.getName());
         mHairStyleNameLabel->resizeTo(150, 150);
     }
 
-    if (ColorDB::getHairSize())
+    if (ColorDB::getHairSize() != 0)
         mHairColor %= ColorDB::getHairSize();
     else
         mHairColor = 0;
@@ -761,7 +761,7 @@ void CharCreateDialog::updateHair()
     {
         mHairColor = minHairColor;
     }
-    if (mHairColorNameLabel)
+    if (mHairColorNameLabel != nullptr)
     {
         mHairColorNameLabel->setCaption(ColorDB::getHairColorName(
             fromInt(mHairColor, ItemColor)));
@@ -803,12 +803,12 @@ void CharCreateDialog::updateLook()
     }
     mPlayer->setSubtype(fromInt(mRace, BeingTypeId),
         CAST_U8(mLook));
-    if (mRaceNameLabel)
+    if (mRaceNameLabel != nullptr)
     {
         mRaceNameLabel->setCaption(item.getName());
         mRaceNameLabel->resizeTo(150, 150);
     }
-    if (mLookNameLabel)
+    if (mLookNameLabel != nullptr)
     {
         mLookNameLabel->setCaption(item.getColorName(
             fromInt(mLook, ItemColor)));
@@ -819,14 +819,14 @@ void CharCreateDialog::updateLook()
 void CharCreateDialog::logic()
 {
     BLOCK_START("CharCreateDialog::logic")
-    if (mPlayer)
+    if (mPlayer != nullptr)
         mPlayer->logic();
     BLOCK_END("CharCreateDialog::logic")
 }
 
 void CharCreateDialog::updatePlayer()
 {
-    if (mPlayer)
+    if (mPlayer != nullptr)
     {
         mPlayer->setDirection(directions[mDirection]);
         mPlayer->setAction(actions[mAction], 0);
@@ -857,7 +857,7 @@ void CharCreateDialog::setButtonsPosition(const int w, const int h)
     const int h2 = h - 5 - mCancelButton->getHeight();
     if (mainGraphics->getHeight() < 480)
     {
-        if (mMaxPoints)
+        if (mMaxPoints != 0)
         {
             mCreateButton->setPosition(337, 160);
             mCancelButton->setPosition(337 + mCreateButton->getWidth(), 160);

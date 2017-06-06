@@ -44,17 +44,17 @@ namespace
         const int height;
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
 
             const SubImageLoader *const
                 rl = static_cast<const SubImageLoader *>(v);
-            if (!rl->parent)
+            if (rl->parent == nullptr)
                 return nullptr;
 
             Image *const res = rl->parent->getSubImage(rl->x, rl->y,
                 rl->width, rl->height);
-            if (!res)
+            if (res == nullptr)
             {
                 reportAlways("SubImage loading error: %s",
                     rl->parent->mSource.c_str());
@@ -70,7 +70,7 @@ Image *Loader::getSubImage(Image *const parent,
                            const int width,
                            const int height)
 {
-    if (!parent)
+    if (parent == nullptr)
         return nullptr;
 
     const SubImageLoader rl = { parent, x, y, width, height};

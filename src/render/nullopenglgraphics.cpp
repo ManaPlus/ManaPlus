@@ -81,11 +81,11 @@ void NullOpenGLGraphics::initArrays(const int vertCount) restrict2
     // need alocate small size, after if limit reached reallocate to double size
     vertexBufSize = mMaxVertices;
     const size_t sz = mMaxVertices * 4 + 30;
-    if (!mFloatTexArray)
+    if (mFloatTexArray == nullptr)
         mFloatTexArray = new GLfloat[sz];
-    if (!mIntTexArray)
+    if (mIntTexArray == nullptr)
         mIntTexArray = new GLint[sz];
-    if (!mIntVertArray)
+    if (mIntVertArray == nullptr)
         mIntVertArray = new GLint[sz];
 }
 
@@ -172,7 +172,7 @@ void NullOpenGLGraphics::drawImageInline(const Image *restrict const image,
                                          int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     setColorAlpha(image->mAlpha);
@@ -214,7 +214,7 @@ void NullOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                            const int desiredHeight) restrict2
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -251,7 +251,7 @@ void NullOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                            const int w, const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -385,7 +385,7 @@ void NullOpenGLGraphics::drawRescaledPattern(const Image *restrict const image,
                                              const int scaledWidth,
                                              const int scaledHeight) restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     if (scaledWidth == 0 || scaledHeight == 0)
@@ -590,7 +590,7 @@ void NullOpenGLGraphics::calcPatternInline(ImageVertexes *restrict const vert,
                                            const int w,
                                            const int h) const restrict2
 {
-    if (!image || !vert)
+    if (image == nullptr || vert == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -722,7 +722,7 @@ void NullOpenGLGraphics::calcTileCollection(ImageCollection *
                                             const Image *restrict const image,
                                             int x, int y) restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -765,7 +765,7 @@ void NullOpenGLGraphics::calcPattern(ImageCollection *restrict  const vertCol,
                                      const int x, const int y,
                                      const int w, const int h) const restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
@@ -907,7 +907,7 @@ void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
 void NullOpenGLGraphics::drawTileVertexes(const ImageVertexes *
                                           restrict const vert) restrict2
 {
-    if (!vert)
+    if (vert == nullptr)
         return;
     const Image *const image = vert->image;
 
@@ -929,7 +929,7 @@ void NullOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
 {
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
-    if (!image)
+    if (image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {

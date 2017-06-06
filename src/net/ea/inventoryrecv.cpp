@@ -58,7 +58,7 @@ namespace InventoryRecv
 void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventoryUse")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
@@ -67,11 +67,11 @@ void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
     const int amount = msg.readInt16("amount");
     msg.readUInt8("type");
 
-    if (inventory)
+    if (inventory != nullptr)
     {
         if (Item *const item = inventory->getItem(index))
         {
-            if (amount)
+            if (amount != 0)
                 item->setQuantity(amount);
             else
                 inventory->removeItemAt(index);
@@ -83,7 +83,7 @@ void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
 void InventoryRecv::processItemUseResponse(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processItemUseResponse")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
@@ -95,11 +95,11 @@ void InventoryRecv::processItemUseResponse(Net::MessageIn &msg)
     }
     else
     {
-        if (inventory)
+        if (inventory != nullptr)
         {
             if (Item *const item = inventory->getItem(index))
             {
-                if (amount)
+                if (amount != 0)
                     item->setQuantity(amount);
                 else
                     inventory->removeItemAt(index);
@@ -120,7 +120,7 @@ void InventoryRecv::processPlayerStorageStatus(Net::MessageIn &msg)
     msg.readInt16("used count");
     const int size = msg.readInt16("max size");
 
-    if (!mStorage)
+    if (mStorage == nullptr)
         mStorage = new Inventory(InventoryType::Storage, size);
 
     FOR_EACH (Ea::InventoryItems::const_iterator, it, mInventoryItems)
@@ -139,7 +139,7 @@ void InventoryRecv::processPlayerStorageStatus(Net::MessageIn &msg)
     }
     mInventoryItems.clear();
 
-    if (!storageWindow)
+    if (storageWindow == nullptr)
     {
         CREATEWIDGETV(storageWindow, InventoryWindow, mStorage);
     }
@@ -151,14 +151,14 @@ void InventoryRecv::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
     BLOCK_START("InventoryRecv::processPlayerStorageClose")
     // Storage access has been closed
     // Storage window deletes itself
-    if (storageWindow)
+    if (storageWindow != nullptr)
     {
         storageWindow->unsetInventory();
         storageWindow->close();
     }
     storageWindow = nullptr;
 
-    if (mStorage)
+    if (mStorage != nullptr)
         mStorage->clear();
 
     delete2(mStorage);
@@ -169,7 +169,7 @@ void InventoryRecv::processPlayerAttackRange(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerAttackRange")
     const int range = msg.readInt16("range");
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->setAttackRange(range);
     PlayerInfo::setStatBase(Attributes::PLAYER_ATTACK_RANGE, range);
     PlayerInfo::setStatMod(Attributes::PLAYER_ATTACK_RANGE, 0);

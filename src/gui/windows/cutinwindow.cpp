@@ -69,7 +69,7 @@ void CutInWindow::safeDraw(Graphics *const graphics)
 
 void CutInWindow::draw2(Graphics *const graphics)
 {
-    if (mImage)
+    if (mImage != nullptr)
         mImage->drawRaw(graphics, mPadding, mTitleBarHeight);
 }
 
@@ -87,7 +87,7 @@ void CutInWindow::show(const std::string &name,
             pathJoin(paths.getStringValue("cutInsDir"),
             name).append(
             ".xml"));
-        if (mImage)
+        if (mImage != nullptr)
         {
             mImage->update(1);
             const bool showTitle = (cutin == CutIn::MovableClose);
@@ -145,7 +145,7 @@ void CutInWindow::hide()
 
 void CutInWindow::logic()
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         const int time = tick_time * MILLISECONDS_IN_A_TICK;
         mImage->update(time);

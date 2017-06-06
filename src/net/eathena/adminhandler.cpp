@@ -112,7 +112,7 @@ void AdminHandler::mute(const Being *const being,
                         const int type,
                         const int limit) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_ADMIN_MUTE);
@@ -129,7 +129,7 @@ void AdminHandler::muteName(const std::string &name) const
 
 void AdminHandler::requestLogin(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_ADMIN_ID_TO_LOGIN);
@@ -147,7 +147,7 @@ void AdminHandler::setTileType(const int x, const int y,
 
 void AdminHandler::unequipAll(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_ADMIN_UNEQUIP_ALL);

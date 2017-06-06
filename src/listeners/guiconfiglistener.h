@@ -47,7 +47,7 @@ class GuiConfigListener final : public ConfigListener
 
         void optionChanged(const std::string &name) override final
         {
-            if (!mGui)
+            if (mGui == nullptr)
                 return;
             if (name == "customcursor")
                 mGui->setUseCustomCursor(config.getBoolValue("customcursor"));

@@ -62,9 +62,9 @@ void Cpu::detect()
 #elif defined(__linux__) || defined(__linux)
     FILE *file = fopen("/proc/cpuinfo", "r");
     char buf[1001];
-    if (!file)
+    if (file == nullptr)
         return;
-    while (fgets(buf, 1000, file))
+    while (fgets(buf, 1000, file) != nullptr)
     {
         std::string str = buf;
         if (findFirst(str, "flags"))
@@ -102,7 +102,7 @@ void Cpu::detect()
         }
     }
     fclose(file);
-    if (logger)
+    if (logger != nullptr)
         logger->log("cpu features was not detected");
 #else  // OTHER
 
@@ -114,24 +114,24 @@ void Cpu::detect()
 
 void Cpu::printFlags()
 {
-    if (!logger)
+    if (logger == nullptr)
         return;
     std::string str("CPU features:");
-    if (mCpuFlags & FEATURE_MMX)
+    if ((mCpuFlags & FEATURE_MMX) != 0u)
         str.append(" mmx");
-    if (mCpuFlags & FEATURE_SSE)
+    if ((mCpuFlags & FEATURE_SSE) != 0u)
         str.append(" sse");
-    if (mCpuFlags & FEATURE_SSE2)
+    if ((mCpuFlags & FEATURE_SSE2) != 0u)
         str.append(" sse2");
-    if (mCpuFlags & FEATURE_SSSE3)
+    if ((mCpuFlags & FEATURE_SSSE3) != 0u)
         str.append(" ssse3");
-    if (mCpuFlags & FEATURE_SSE4)
+    if ((mCpuFlags & FEATURE_SSE4) != 0u)
         str.append(" sse4");
-    if (mCpuFlags & FEATURE_SSE42)
+    if ((mCpuFlags & FEATURE_SSE42) != 0u)
         str.append(" sse4_2");
-    if (mCpuFlags & FEATURE_AVX)
+    if ((mCpuFlags & FEATURE_AVX) != 0u)
         str.append(" avx");
-    if (mCpuFlags & FEATURE_AVX2)
+    if ((mCpuFlags & FEATURE_AVX2) != 0u)
         str.append(" avx2");
     logger->log(str);
 }

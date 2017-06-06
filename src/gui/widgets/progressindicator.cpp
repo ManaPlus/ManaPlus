@@ -39,7 +39,7 @@ ProgressIndicator::ProgressIndicator(const Widget2 *const widget) :
     ImageSet *const images = Theme::getImageSetFromTheme(
         "progress-indicator.png", 32, 32);
 
-    if (images)
+    if (images != nullptr)
     {
         Animation *const anim = new Animation("progress indicator");
         for (ImageSet::size_type i = 0, fsz = images->size();
@@ -57,7 +57,7 @@ ProgressIndicator::ProgressIndicator(const Widget2 *const widget) :
 
 ProgressIndicator::~ProgressIndicator()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     delete2(mIndicator);
@@ -66,7 +66,7 @@ ProgressIndicator::~ProgressIndicator()
 void ProgressIndicator::logic()
 {
     BLOCK_START("ProgressIndicator::logic")
-    if (mIndicator)
+    if (mIndicator != nullptr)
         mIndicator->update(10);
     BLOCK_END("ProgressIndicator::logic")
 }
@@ -74,7 +74,7 @@ void ProgressIndicator::logic()
 void ProgressIndicator::draw(Graphics *const graphics)
 {
     BLOCK_START("ProgressIndicator::draw")
-    if (mIndicator)
+    if (mIndicator != nullptr)
     {
         // Draw the indicator centered on the widget
         const int x = (mDimension.width - 32) / 2;
@@ -87,7 +87,7 @@ void ProgressIndicator::draw(Graphics *const graphics)
 void ProgressIndicator::safeDraw(Graphics *const graphics)
 {
     BLOCK_START("ProgressIndicator::draw")
-    if (mIndicator)
+    if (mIndicator != nullptr)
     {
         // Draw the indicator centered on the widget
         const int x = (mDimension.width - 32) / 2;

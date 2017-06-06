@@ -37,7 +37,7 @@
 SpeechBubble::SpeechBubble() :
     Popup("Speech", "speechbubble.xml"),
     mText(),
-    mSpacing(mSkin ? mSkin->getOption("spacing") : 2),
+    mSpacing(mSkin != nullptr ? mSkin->getOption("spacing") : 2),
     mCaption(new Label(this)),
     mSpeechBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
         "speechbrowserbox.xml"))

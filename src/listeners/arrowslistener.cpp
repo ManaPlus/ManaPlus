@@ -30,7 +30,7 @@ void ArrowsListener::distributeEvent()
               it, mListeners)
     {
         ArrowsListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->arrowsChanged();
     }
 }

@@ -138,7 +138,7 @@ int TestLauncher::testBackend() const
 {
     const Image *const img = Theme::getImageFromTheme(
         "graphics/sprites/arrow_up.png");
-    if (!img)
+    if (img == nullptr)
         return 1;
     const int cnt = 100;
 
@@ -168,7 +168,7 @@ int TestLauncher::testRescale() const
     Wallpaper::loadWallpapers();
     const std::string wallpaperName = Wallpaper::getWallpaper(800, 600);
     const volatile Image *const img = Theme::getImageFromTheme(wallpaperName);
-    if (!img)
+    if (img == nullptr)
         return 1;
 
     sleep(1);
@@ -342,7 +342,7 @@ int TestLauncher::testTextures()
         mainGraphics->clearScreen();
         SDL_Surface *const surface = imageHelper->create32BitSurface(
             nextSize, nextSize);
-        if (!surface)
+        if (surface == nullptr)
             break;
         uint32_t *pixels = static_cast<uint32_t*>(surface->pixels);
         for (int f = 0; f < 6; f ++)
@@ -351,7 +351,7 @@ int TestLauncher::testTextures()
         graphicsManager.resetCachedError();
         Image *const image = imageHelper->loadSurface(surface);
         SDL_FreeSurface(surface);
-        if (!image)
+        if (image == nullptr)
             break;
 
         if (graphicsManager.getLastErrorCached() != GL_NO_ERROR)
@@ -360,7 +360,7 @@ int TestLauncher::testTextures()
             break;
         }
         Image *const subImage = image->getSubImage(0, 0, 10, 10);
-        if (!subImage)
+        if (subImage == nullptr)
         {
             delete image;
             break;
@@ -372,7 +372,7 @@ int TestLauncher::testTextures()
         SDL_Surface *const screen1 = screenshortHelper->getScreenshot();
         SDL_Surface *const screen2 = imageHelper->convertTo32Bit(screen1);
         SDL_FreeSurface(screen1);
-        if (!screen2)
+        if (screen2 == nullptr)
             break;
         pixels = static_cast<uint32_t*>(screen2->pixels);
         bool fail(false);
@@ -460,16 +460,16 @@ int TestLauncher::testDye()
         "graphics/sprites/arrow_up.png");
     Dye *d = nullptr;
 
-    if (rw)
+    if (rw != nullptr)
     {
-        Image *image = d ? surfaceImageHelper->load(rw, *d)
+        Image *image = d != nullptr ? surfaceImageHelper->load(rw, *d)
             : surfaceImageHelper->load(rw);
-        if (image)
+        if (image != nullptr)
         {
             const SDL_Rect &rect = image->mBounds;
             SDL_Surface *surface = surfaceImageHelper->create32BitSurface(
                 rect.w, rect.h);
-            if (surface)
+            if (surface != nullptr)
             {
                 SurfaceImageHelper::combineSurface(image->mSDLSurface, nullptr,
                     surface, nullptr);
@@ -483,11 +483,11 @@ int TestLauncher::testDye()
                 "graphics/sprites/arrow_up.png");
             d = new Dye("S:#0000ff,00ff00,5c5cff,ff0000");
             image = surfaceImageHelper->load(rw, *d);
-            if (image)
+            if (image != nullptr)
             {
                 surface = surfaceImageHelper->create32BitSurface(
                     rect.w, rect.h);
-                if (surface)
+                if (surface != nullptr)
                 {
                     SurfaceImageHelper::combineSurface(image->mSDLSurface,
                         nullptr, surface, nullptr);
@@ -732,7 +732,7 @@ int TestLauncher::testDraw()
     img[1] = Theme::getImageFromTheme("graphics/sprites/arrow_right.png");
     img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
     Skin *skin = theme->load("button.xml", "button.xml");
-    if (!skin)
+    if (skin == nullptr)
         return 0;
 
     ImageCollection *const col = new ImageCollection;

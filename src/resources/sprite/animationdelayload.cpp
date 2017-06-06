@@ -40,7 +40,7 @@ AnimationDelayLoad::AnimationDelayLoad(const std::string &fileName,
 
 AnimationDelayLoad::~AnimationDelayLoad()
 {
-    if (mSprite)
+    if (mSprite != nullptr)
     {
         mSprite->clearDelayLoad();
         mSprite = nullptr;
@@ -54,10 +54,10 @@ void AnimationDelayLoad::clearSprite()
 
 void AnimationDelayLoad::load()
 {
-    if (mSprite)
+    if (mSprite != nullptr)
     {
         SpriteDef *const s = Loader::getSprite(mFileName, mVariant);
-        if (!s)
+        if (s == nullptr)
             return;
         mSprite->setSprite(s);
         mSprite->play(mAction);

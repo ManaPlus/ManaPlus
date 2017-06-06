@@ -35,7 +35,7 @@ ImageParticle::ImageParticle(Image *restrict const image) :
 {
     mType = ParticleType::Image;
     mImage = image;
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->incRef();
 
@@ -54,7 +54,7 @@ void ImageParticle::draw(Graphics *restrict const graphics,
                          const int offsetY) const restrict2
 {
     FUNC_BLOCK("ImageParticle::draw", 1)
-    if (mAlive != AliveStatus::ALIVE || !mImage)
+    if (mAlive != AliveStatus::ALIVE || (mImage == nullptr))
         return;
 
     const int w = mImage->mBounds.w;
@@ -75,13 +75,13 @@ void ImageParticle::draw(Graphics *restrict const graphics,
 
     float alphafactor = mAlpha;
 
-    if (mFadeOut && mLifetimeLeft > -1 && mLifetimeLeft < mFadeOut)
+    if ((mFadeOut != 0) && mLifetimeLeft > -1 && mLifetimeLeft < mFadeOut)
     {
         alphafactor *= static_cast<float>(mLifetimeLeft)
             / static_cast<float>(mFadeOut);
     }
 
-    if (mFadeIn && mLifetimePast < mFadeIn)
+    if ((mFadeIn != 0) && mLifetimePast < mFadeIn)
     {
         alphafactor *= static_cast<float>(mLifetimePast)
         / static_cast<float>(mFadeIn);

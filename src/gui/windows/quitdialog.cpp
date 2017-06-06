@@ -130,7 +130,7 @@ void QuitDialog::postInit()
 
 QuitDialog::~QuitDialog()
 {
-    if (mMyPointer)
+    if (mMyPointer != nullptr)
         *mMyPointer = nullptr;
     delete2(mForceQuit);
     delete2(mLogoutQuit);
@@ -150,10 +150,10 @@ void QuitDialog::action(const ActionEvent &event)
     soundManager.playGuiSound(SOUND_HIDE_WINDOW);
     if (event.getId() == "ok")
     {
-        if (viewport)
+        if (viewport != nullptr)
         {
             const Map *const map = viewport->getMap();
-            if (map)
+            if (map != nullptr)
                 map->saveExtraLayer();
         }
 
@@ -166,7 +166,7 @@ void QuitDialog::action(const ActionEvent &event)
             DialogsManager::closeDialogs();
             client->setState(State::EXIT);
         }
-        else if (mRate && mRate->isSelected())
+        else if ((mRate != nullptr) && mRate->isSelected())
         {
             openBrowser("https://play.google.com/store/apps/details?"
                 "id=org.evolonline.beta.manaplus");
@@ -241,7 +241,7 @@ void QuitDialog::keyPressed(KeyEvent &event)
 
         if (it == mOptions.end())
         {
-            if (mOptions[0])
+            if (mOptions[0] != nullptr)
                 mOptions[0]->setSelected(true);
             return;
         }

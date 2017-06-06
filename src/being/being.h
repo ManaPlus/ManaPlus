@@ -312,7 +312,7 @@ class Being notfinal : public ActorSprite,
         { return CAST_S16(mGuilds.size()); }
 
         bool isInParty() const restrict2 noexcept2 A_WARN_UNUSED
-        { return mParty; }
+        { return mParty != nullptr; }
 
         void setParty(Party *restrict const party) restrict2;
 
@@ -407,14 +407,14 @@ class Being notfinal : public ActorSprite,
 
         int getTargetOffsetX() const restrict2 override A_WARN_UNUSED
         {
-            if (!mInfo)
+            if (mInfo == nullptr)
                 return 0;
             return mInfo->getTargetOffsetX();
         }
 
         int getTargetOffsetY() const restrict2 override A_WARN_UNUSED
         {
-            if (!mInfo)
+            if (mInfo == nullptr)
                 return 0;
             return mInfo->getTargetOffsetY();
         }
@@ -424,7 +424,7 @@ class Being notfinal : public ActorSprite,
          */
         virtual unsigned char getBlockWalkMask() const restrict2 A_WARN_UNUSED
         {
-            if (!mInfo)
+            if (mInfo == nullptr)
                 return 0;
             return mInfo->getBlockWalkMask();
         }
@@ -434,7 +434,7 @@ class Being notfinal : public ActorSprite,
          */
         BlockTypeT getBlockType() const restrict2 override A_WARN_UNUSED
         {
-            if (!mInfo)
+            if (mInfo == nullptr)
                 return BlockType::NONE;
             return mInfo->getBlockType();
         }
@@ -879,7 +879,10 @@ class Being notfinal : public ActorSprite,
                          const int level) const restrict2 A_WARN_UNUSED;
 
         CursorT getHoverCursor() const restrict2 A_WARN_UNUSED
-        { return mInfo ? mInfo->getHoverCursor() : Cursor::CURSOR_POINTER; }
+        {
+            return mInfo != nullptr ?
+                mInfo->getHoverCursor() : Cursor::CURSOR_POINTER;
+        }
 
         void addAfkEffect() restrict2;
 

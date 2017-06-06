@@ -70,15 +70,15 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     mDragOffsetX = 0;
     mDragOffsetY = 0;
 
-    if (content)
+    if (content != nullptr)
         content->setWidget2(this);
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     setMinWidth(32);
     setMinHeight(32);
     const int border = SCROLL_PADDING * 2 + getPadding() * 2;
-    if (mItems)
+    if (mItems != nullptr)
     {
         const int bw = mItems->getBoxWidth();
         const int bh = mItems->getBoxHeight();
@@ -130,10 +130,10 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     mDragOffsetX = 0;
     mDragOffsetY = 0;
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
-    if (width && height)
+    if ((width != 0) && (height != 0))
         setDefaultSize(width, height, ImagePosition::LOWER_RIGHT);
 
     setMinWidth(32);
@@ -151,7 +151,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
 
 ShortcutWindow::~ShortcutWindow()
 {
-    if (mTabs)
+    if (mTabs != nullptr)
         mTabs->removeAll();
     delete2(mTabs);
     delete2(mItems);
@@ -168,7 +168,7 @@ void ShortcutWindow::addButton(const std::string &text,
 void ShortcutWindow::addTab(const std::string &name,
                             ShortcutContainer *const content)
 {
-    if (!content || !mTabs)
+    if ((content == nullptr) || (mTabs == nullptr))
         return;
     ScrollArea *const scroll = new ScrollArea(this, content, Opaque_false);
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
@@ -181,7 +181,7 @@ void ShortcutWindow::addTab(const std::string &name,
 
 int ShortcutWindow::getTabIndex() const
 {
-    if (!mTabs)
+    if (mTabs == nullptr)
         return 0;
     return mTabs->getSelectedTabIndex();
 }
@@ -189,18 +189,18 @@ int ShortcutWindow::getTabIndex() const
 void ShortcutWindow::widgetHidden(const Event &event)
 {
     Window::widgetHidden(event);
-    if (mItems)
+    if (mItems != nullptr)
         mItems->widgetHidden(event);
-    if (mTabs)
+    if (mTabs != nullptr)
     {
         ScrollArea *const scroll = static_cast<ScrollArea *>(
             mTabs->getCurrentWidget());
-        if (scroll)
+        if (scroll != nullptr)
         {
             ShortcutContainer *const content = static_cast<ShortcutContainer*>(
                 scroll->getContent());
 
-            if (content)
+            if (content != nullptr)
                 content->widgetHidden(event);
         }
     }
@@ -240,7 +240,7 @@ void ShortcutWindow::mouseDragged(MouseEvent &event)
 void ShortcutWindow::widgetMoved(const Event& event)
 {
     Window::widgetMoved(event);
-    if (mItems)
+    if (mItems != nullptr)
         mItems->setRedraw(true);
     FOR_EACH (std::vector<ShortcutContainer*>::iterator, it, mPages)
         (*it)->setRedraw(true);
@@ -248,13 +248,13 @@ void ShortcutWindow::widgetMoved(const Event& event)
 
 void ShortcutWindow::nextTab()
 {
-    if (mTabs)
+    if (mTabs != nullptr)
         mTabs->selectNextTab();
 }
 
 void ShortcutWindow::prevTab()
 {
-    if (mTabs)
+    if (mTabs != nullptr)
         mTabs->selectPrevTab();
 }
 

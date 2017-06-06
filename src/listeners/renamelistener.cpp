@@ -41,7 +41,7 @@ RenameListener::RenameListener() :
 
 void RenameListener::setMapItem(const MapItem *const mapItem)
 {
-    if (mapItem)
+    if (mapItem != nullptr)
     {
         mMapItemX = mapItem->getX();
         mMapItemY = mapItem->getY();
@@ -55,25 +55,25 @@ void RenameListener::setMapItem(const MapItem *const mapItem)
 
 void RenameListener::action(const ActionEvent &event)
 {
-    if (event.getId() == "ok" && viewport && mDialog)
+    if (event.getId() == "ok" && (viewport != nullptr) && (mDialog != nullptr))
     {
         const Map *const map = viewport->getMap();
-        if (!map)
+        if (map == nullptr)
             return;
 
         const SpecialLayer *const sl = map->getSpecialLayer();
         MapItem *item = nullptr;
-        if (sl)
+        if (sl != nullptr)
         {
             item = sl->getTile(mMapItemX, mMapItemY);
-            if (item)
+            if (item != nullptr)
                 item->setComment(mDialog->getText());
         }
         item = map->findPortalXY(mMapItemX, mMapItemY);
-        if (item)
+        if (item != nullptr)
             item->setComment(mDialog->getText());
 
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updatePortalNames();
     }
     mDialog = nullptr;

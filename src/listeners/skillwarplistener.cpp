@@ -39,7 +39,7 @@ void SkillWarpListener::action(const ActionEvent &event)
 {
     if (event.getId() != "OK")
         return;
-    if (mDialog && skillHandler)
+    if ((mDialog != nullptr) && (skillHandler != nullptr))
     {
         skillHandler->useMap(mSkillId,
             mDialog->getText());

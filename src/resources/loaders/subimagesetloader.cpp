@@ -43,13 +43,13 @@ namespace
         int height;
         static Resource *load(const void *const v)
         {
-            if (!v)
+            if (v == nullptr)
                 return nullptr;
 
             const SubImageSetLoader *const
                 rl = static_cast<const SubImageSetLoader *>(v);
 
-            if (!rl->parent)
+            if (rl->parent == nullptr)
                 return nullptr;
             ImageSet *const res = new ImageSet(rl->parent,
                 rl->width, rl->height);
@@ -62,7 +62,7 @@ ImageSet *Loader::getSubImageSet(Image *const parent,
                                  const int width,
                                  const int height)
 {
-    if (!parent)
+    if (parent == nullptr)
         return nullptr;
 
     const SubImageSetLoader rl = { parent, width, height };

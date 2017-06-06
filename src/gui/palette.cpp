@@ -93,7 +93,7 @@ void Palette::advanceGradient()
         for (size_t i = 0, sz = mGradVector.size(); i < sz; i++)
         {
             ColorElem *const elem A_NONNULLPOINTER = mGradVector[i];
-            if (!elem)
+            if (elem == nullptr)
                 continue;
 
             int delay = elem->delay;
@@ -110,9 +110,9 @@ void Palette::advanceGradient()
                 % (delay * numOfColors);
 
             const int gradIndex = elem->gradientIndex;
-            const int pos = delay ? (gradIndex % delay) : gradIndex;
+            const int pos = delay != 0 ? (gradIndex % delay) : gradIndex;
             int colIndex;
-            if (delay)
+            if (delay != 0)
                 colIndex = gradIndex / delay;
             else
                 colIndex = gradIndex;
@@ -133,9 +133,9 @@ void Palette::advanceGradient()
             }
             else if (grad == GradientType::SPECTRUM)
             {
-                if (colIndex % 2)
+                if ((colIndex % 2) != 0)
                 {   // falling curve
-                    if (delay)
+                    if (delay != 0)
                     {
                         colVal = CAST_S32(255.0 *
                              (cos(M_PI * pos / delay) + 1) / 2);
@@ -148,7 +148,7 @@ void Palette::advanceGradient()
                 }
                 else
                 {   // ascending curve
-                    if (delay)
+                    if (delay != 0)
                     {
                         colVal = CAST_S32(255.0 * (cos(M_PI *
                             (delay - pos) / delay) + 1) / 2);
@@ -175,7 +175,7 @@ void Palette::advanceGradient()
                 double startColVal;
                 double destColVal;
 
-                if (delay)
+                if (delay != 0)
                     startColVal = (cos(M_PI * pos / delay) + 1) / 2;
                 else
                     startColVal = 0;
@@ -193,7 +193,7 @@ void Palette::advanceGradient()
             }
         }
 
-        if (advance)
+        if (advance != 0)
             mRainbowTime = tick_time;
     }
 }

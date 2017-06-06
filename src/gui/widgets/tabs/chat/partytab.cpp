@@ -118,12 +118,12 @@ bool PartyTab::handleCommand(const std::string &restrict type,
 
 void PartyTab::getAutoCompleteList(StringVect &names) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     const Party *const p = localPlayer->getParty();
 
-    if (p)
+    if (p != nullptr)
         p->getNames(names);
 }
 

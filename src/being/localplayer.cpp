@@ -193,7 +193,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mLevel = 1;
     mAdvanced = true;
     mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
-    if (userPalette)
+    if (userPalette != nullptr)
         mNameColor = &userPalette->getColor(UserColorId::SELF);
     else
         mNameColor = nullptr;
@@ -235,7 +235,7 @@ LocalPlayer::~LocalPlayer()
 
     updateNavigateList();
 
-    if (mAwayDialog)
+    if (mAwayDialog != nullptr)
     {
         soundManager.volumeRestore();
         delete2(mAwayDialog)
@@ -272,10 +272,10 @@ void LocalPlayer::logic()
         if (!mSyncPlayerMove)
             dist = 20;
 
-        if ((mNavigateX || mNavigateY) &&
+        if (((mNavigateX != 0) || (mNavigateY != 0)) &&
             ((mCrossX + dist >= mX && mCrossX <= mX + dist
             && mCrossY + dist >= mY && mCrossY <= mY + dist)
-            || (!mCrossX && !mCrossY)))
+            || ((mCrossX == 0) && (mCrossY == 0))))
         {
             const Path::const_iterator i = mNavigatePath.begin();
             if ((*i).x == mX && (*i).y == mY)
@@ -292,7 +292,7 @@ void LocalPlayer::logic()
         {
             const MessagePair info = mMessages.front();
 
-            if (particleEngine && gui)
+            if ((particleEngine != nullptr) && (gui != nullptr))
             {
                 particleEngine->addTextRiseFadeOutEffect(
                     info.first,
@@ -309,7 +309,7 @@ void LocalPlayer::logic()
         mMessageTime--;
     }
 
-    if (mTarget)
+    if (mTarget != nullptr)
     {
         if (mTarget->getType() == ActorType::Npc)
         {
@@ -335,7 +335,7 @@ void LocalPlayer::logic()
                 stopAttack(true);
             }
 
-            if (mKeepAttacking && mTarget)
+            if (mKeepAttacking && (mTarget != nullptr))
                 attack(mTarget, true);
         }
     }
@@ -348,22 +348,26 @@ void LocalPlayer::slowLogic()
 {
     BLOCK_START("LocalPlayer::slowLogic")
     const time_t time = cur_time;
-    if (weightNotice && weightNoticeTime < time)
+    if ((weightNotice != nullptr) && weightNoticeTime < time)
     {
         weightNotice->scheduleDelete();
         weightNotice = nullptr;
         weightNoticeTime = 0;
     }
 
-    if (serverFeatures &&
+    if ((serverFeatures != nullptr) &&
         !serverFeatures->havePlayerStatusUpdate() &&
         mEnableAdvert &&
         !mBlockAdvert &&
         mAdvertTime < cur_time)
     {
         uint8_t smile = BeingFlag::SPECIAL;
-        if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
+        if (mTradebot &&
+            shopWindow != nullptr &&
+            !shopWindow->isShopEmpty())
+        {
             smile |= BeingFlag::SHOP;
+        }
 
         if (settings.awayMode || settings.pseudoAwayMode)
             smile |= BeingFlag::AWAY;
@@ -422,9 +426,9 @@ void LocalPlayer::setGMLevel(const int level)
     if (level > 0)
     {
         setGM(true);
-        if (statusWindow)
+        if (statusWindow != nullptr)
             statusWindow->updateLevelLabel();
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             chatWindow->loadGMCommands();
             chatWindow->showGMTab();
@@ -435,10 +439,10 @@ void LocalPlayer::setGMLevel(const int level)
 void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
 {
     const Party *const party = Party::getParty(1);
-    if (party)
+    if (party != nullptr)
     {
         PartyMember *const pm = party->getMember(mName);
-        if (pm)
+        if (pm != nullptr)
         {
             pm->setX(mX);
             pm->setY(mY);
@@ -447,19 +451,19 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
 
     if (mPath.empty())
     {
-        if (mPickUpTarget)
+        if (mPickUpTarget != nullptr)
             pickUp(mPickUpTarget);
 
-        if (mWalkingDir)
+        if (mWalkingDir != 0u)
             startWalking(mWalkingDir);
     }
     else if (mPath.size() == 1)
     {
-        if (mPickUpTarget)
+        if (mPickUpTarget != nullptr)
             pickUp(mPickUpTarget);
     }
 
-    if (mGoingToTarget && mTarget && withinAttackRange(mTarget))
+    if (mGoingToTarget && (mTarget != nullptr) && withinAttackRange(mTarget))
     {
         mAction = BeingAction::STAND;
         attack(mTarget, true);
@@ -467,7 +471,7 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
         mPath.clear();
         return;
     }
-    else if (mGoingToTarget && !mTarget)
+    else if (mGoingToTarget && (mTarget == nullptr))
     {
         mGoingToTarget = false;
         mPath.clear();
@@ -488,7 +492,7 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
 
 bool LocalPlayer::pickUp(FloorItem *const item)
 {
-    if (!item)
+    if (item == nullptr)
         return false;
 
     if (!PacketLimiter::limitPackets(PacketType::PACKET_PICKUP))
@@ -504,7 +508,7 @@ bool LocalPlayer::pickUp(FloorItem *const item)
 
     if (dx * dx + dy * dy < dist)
     {
-        if (actorManager && actorManager->checkForPickup(item))
+        if ((actorManager != nullptr) && actorManager->checkForPickup(item))
         {
             PlayerInfo::pickUpItem(item, Sfx_true);
             mPickUpTarget = nullptr;
@@ -543,20 +547,20 @@ Being *LocalPlayer::getTarget() const
 
 void LocalPlayer::setTarget(Being *const target)
 {
-    if (target == this && target)
+    if (target == this && (target != nullptr))
         return;
 
     if (target == mTarget)
         return;
 
     Being *oldTarget = nullptr;
-    if (mTarget)
+    if (mTarget != nullptr)
     {
         mTarget->untarget();
         oldTarget = mTarget;
     }
 
-    if (mTarget)
+    if (mTarget != nullptr)
     {
         if (mTarget->getType() == ActorType::Monster)
             mTarget->setShowName(false);
@@ -564,10 +568,10 @@ void LocalPlayer::setTarget(Being *const target)
 
     mTarget = target;
 
-    if (oldTarget)
+    if (oldTarget != nullptr)
         oldTarget->updateName();
 
-    if (target)
+    if (target != nullptr)
     {
         mLastTargetX = target->mX;
         mLastTargetY = target->mY;
@@ -575,21 +579,21 @@ void LocalPlayer::setTarget(Being *const target)
         if (mVisibleNames == VisibleName::ShowOnSelection)
             target->setShowName(true);
     }
-    if (oldTarget && mVisibleNames == VisibleName::ShowOnSelection)
+    if (oldTarget != nullptr && mVisibleNames == VisibleName::ShowOnSelection)
         oldTarget->setShowName(false);
-    if (target && target->getType() == ActorType::Monster)
+    if (target != nullptr && target->getType() == ActorType::Monster)
         target->setShowName(true);
 }
 
 Being *LocalPlayer::setNewTarget(const ActorTypeT type,
                                  const AllowSort allowSort)
 {
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         Being *const target = actorManager->findNearestLivingBeing(
             localPlayer, 20, type, allowSort);
 
-        if (target && target != mTarget)
+        if ((target != nullptr) && target != mTarget)
             setTarget(target);
 
         return target;
@@ -615,13 +619,13 @@ void LocalPlayer::setDestination(const int x, const int y)
         else
         {
             uint8_t newDir = 0;
-            if (mDirection & BeingDirection::UP)
+            if ((mDirection & BeingDirection::UP) != 0)
                 newDir |= BeingDirection::DOWN;
-            if (mDirection & BeingDirection::LEFT)
+            if ((mDirection & BeingDirection::LEFT) != 0)
                 newDir |= BeingDirection::RIGHT;
-            if (mDirection & BeingDirection::DOWN)
+            if ((mDirection & BeingDirection::DOWN) != 0)
                 newDir |= BeingDirection::UP;
-            if (mDirection & BeingDirection::RIGHT)
+            if ((mDirection & BeingDirection::RIGHT) != 0)
                 newDir |= BeingDirection::LEFT;
 
             playerHandler->setDestination(x, y, newDir);
@@ -644,7 +648,7 @@ void LocalPlayer::setWalkingDir(const unsigned char dir)
     mWalkingDir = dir;
 
     // If we're not already walking, start walking.
-    if (mAction != BeingAction::MOVE && dir)
+    if (mAction != BeingAction::MOVE && (dir != 0u))
         startWalking(dir);
 }
 
@@ -652,7 +656,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
 {
     // This function is called by setWalkingDir(),
     // but also by nextTile() for TMW-Athena...
-    if (!mMap || !dir)
+    if ((mMap == nullptr) || (dir == 0u))
         return;
 
     mPickUpTarget = nullptr;
@@ -664,28 +668,28 @@ void LocalPlayer::startWalking(const unsigned char dir)
     }
 
     int dx = 0, dy = 0;
-    if (dir & BeingDirection::UP)
+    if ((dir & BeingDirection::UP) != 0)
         dy--;
-    if (dir & BeingDirection::DOWN)
+    if ((dir & BeingDirection::DOWN) != 0)
         dy++;
-    if (dir & BeingDirection::LEFT)
+    if ((dir & BeingDirection::LEFT) != 0)
         dx--;
-    if (dir & BeingDirection::RIGHT)
+    if ((dir & BeingDirection::RIGHT) != 0)
         dx++;
 
     const unsigned char blockWalkMask = getBlockWalkMask();
     // Prevent skipping corners over colliding tiles
-    if (dx && !mMap->getWalk(mX + dx, mY, blockWalkMask))
+    if ((dx != 0) && !mMap->getWalk(mX + dx, mY, blockWalkMask))
         dx = 0;
-    if (dy && !mMap->getWalk(mX, mY + dy, blockWalkMask))
+    if ((dy != 0) && !mMap->getWalk(mX, mY + dy, blockWalkMask))
         dy = 0;
 
     // Choose a straight direction when diagonal target is blocked
-    if (dx && dy && !mMap->getWalk(mX + dx, mY + dy, blockWalkMask))
+    if (dx != 0 && dy != 0 && !mMap->getWalk(mX + dx, mY + dy, blockWalkMask))
         dx = 0;
 
     // Walk to where the player can actually go
-    if ((dx || dy) && mMap->getWalk(mX + dx, mY + dy, blockWalkMask))
+    if ((dx != 0 || dy != 0) && mMap->getWalk(mX + dx, mY + dy, blockWalkMask))
     {
         setDestination(mX + dx, mY + dy);
     }
@@ -703,7 +707,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
 
 void LocalPlayer::stopWalking(const bool sendToServer)
 {
-    if (mAction == BeingAction::MOVE && mWalkingDir)
+    if (mAction == BeingAction::MOVE && (mWalkingDir != 0u))
     {
         mWalkingDir = 0;
         mPickUpTarget = nullptr;
@@ -778,7 +782,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
 {
     mKeepAttacking = keep;
 
-    if (!target || target->getType() == ActorType::Npc)
+    if ((target == nullptr) || target->getType() == ActorType::Npc)
         return;
 
     if (mTarget != target)
@@ -855,7 +859,7 @@ void LocalPlayer::untarget()
     if (mAction == BeingAction::ATTACK)
         setAction(BeingAction::STAND);
 
-    if (mTarget)
+    if (mTarget != nullptr)
         setTarget(nullptr);
 }
 
@@ -867,10 +871,10 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
 {
     if (fail != Pickup::OKAY)
     {
-        if (actorManager && floorItemId != BeingId_zero)
+        if ((actorManager != nullptr) && floorItemId != BeingId_zero)
         {
             FloorItem *const item = actorManager->findItem(floorItemId);
-            if (item)
+            if (item != nullptr)
             {
                 if (!item->getShowMsg())
                     return;
@@ -920,10 +924,10 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
                 msg = N_("Unknown problem picking up item.");
                 break;
         }
-        if (localChatTab && config.getBoolValue("showpickupchat"))
+        if ((localChatTab != nullptr) && config.getBoolValue("showpickupchat"))
             localChatTab->chatLog(gettext(msg), ChatMsgType::BY_SERVER);
 
-        if (mMap && config.getBoolValue("showpickupparticle"))
+        if ((mMap != nullptr) && config.getBoolValue("showpickupparticle"))
         {
             // Show pickup notification
             addMessageToQueue(gettext(msg), UserColorId::PICKUP_INFO);
@@ -943,7 +947,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
             str = itemInfo.getName(color);
         }
 
-        if (config.getBoolValue("showpickupchat") && localChatTab)
+        if (config.getBoolValue("showpickupchat") && (localChatTab != nullptr))
         {
             // TRANSLATORS: %d is number,
             // [@@%d|%s@@] - here player can see link to item
@@ -953,7 +957,7 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
                 ChatMsgType::BY_SERVER);
         }
 
-        if (mMap && config.getBoolValue("showpickupparticle"))
+        if ((mMap != nullptr) && config.getBoolValue("showpickupparticle"))
         {
             // Show pickup notification
             if (amount > 1)
@@ -979,7 +983,7 @@ int LocalPlayer::getAttackRange() const
     {
         const Item *const weapon = PlayerInfo::getEquipment(
             EquipSlot::FIGHT1_SLOT);
-        if (weapon)
+        if (weapon != nullptr)
         {
             const ItemInfo &info = weapon->getInfo();
             return info.getAttackRange();
@@ -992,7 +996,7 @@ bool LocalPlayer::withinAttackRange(const Being *const target,
                                     const bool fixDistance,
                                     const int addRange) const
 {
-    if (!target)
+    if (target == nullptr)
         return false;
 
     int range = getAttackRange() + addRange;
@@ -1009,7 +1013,7 @@ bool LocalPlayer::withinAttackRange(const Being *const target,
 
 void LocalPlayer::setGotoTarget(Being *const target)
 {
-    if (!target)
+    if (target == nullptr)
         return;
 
     mPickUpTarget = nullptr;
@@ -1029,14 +1033,14 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
         newStatus,
         start);
 
-    if (effect)
+    if (effect != nullptr)
     {
         effect->deliverMessage();
         effect->playSFX();
 
         AnimatedSprite *const sprite = effect->getIcon();
 
-        if (!sprite)
+        if (sprite == nullptr)
         {
             // delete sprite, if necessary
             for (size_t i = 0; i < mStatusEffectIcons.size(); )
@@ -1044,7 +1048,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
                 if (mStatusEffectIcons[i] == effectId)
                 {
                     mStatusEffectIcons.erase(mStatusEffectIcons.begin() + i);
-                    if (miniStatusWindow)
+                    if (miniStatusWindow != nullptr)
                         miniStatusWindow->eraseIcon(CAST_S32(i));
                 }
                 else
@@ -1062,7 +1066,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
             {
                 if (mStatusEffectIcons[i] == effectId)
                 {
-                    if (miniStatusWindow)
+                    if (miniStatusWindow != nullptr)
                         miniStatusWindow->setIcon(CAST_S32(i), sprite);
                     found = true;
                     break;
@@ -1072,7 +1076,7 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
             if (!found)
             {   // add new
                 const int offset = CAST_S32(mStatusEffectIcons.size());
-                if (miniStatusWindow)
+                if (miniStatusWindow != nullptr)
                     miniStatusWindow->setIcon(offset, sprite);
                 mStatusEffectIcons.push_back(effectId);
             }
@@ -1235,7 +1239,7 @@ void LocalPlayer::statChanged(const AttributesT id,
     }
 
     const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-    if (oldVal1 > exp.first || !oldVal2)
+    if (oldVal1 > exp.first || (oldVal2 == 0))
         return;
 
     const int change = exp.first - oldVal1;
@@ -1314,9 +1318,9 @@ void LocalPlayer::moveToTarget(int dist)
         }
     }
 
-    if (mTarget)
+    if (mTarget != nullptr)
     {
-        if (mMap)
+        if (mMap != nullptr)
         {
             debugPath = mMap->findPath(
                 (mPixelX - mapTileSize / 2) / mapTileSize,
@@ -1333,7 +1337,7 @@ void LocalPlayer::moveToTarget(int dist)
         limit = CAST_S32(sz) - dist;
         gotPos = true;
     }
-    else if (mNavigateX || mNavigateY)
+    else if ((mNavigateX != 0) || (mNavigateY != 0))
     {
         debugPath = mNavigatePath;
         limit = dist;
@@ -1344,7 +1348,7 @@ void LocalPlayer::moveToTarget(int dist)
     {
         if (dist == 0)
         {
-            if (mTarget)
+            if (mTarget != nullptr)
                 navigateTo(mTarget->mX, mTarget->mY);
         }
         else
@@ -1361,7 +1365,7 @@ void LocalPlayer::moveToTarget(int dist)
             navigateTo(pos.x, pos.y);
         }
     }
-    else if (mLastTargetX || mLastTargetY)
+    else if ((mLastTargetX != 0) || (mLastTargetY != 0))
     {
         navigateTo(mLastTargetX, mLastTargetY);
     }
@@ -1370,11 +1374,11 @@ void LocalPlayer::moveToTarget(int dist)
 void LocalPlayer::moveToHome()
 {
     mPickUpTarget = nullptr;
-    if ((mX != mCrossX || mY != mCrossY) && mCrossX && mCrossY)
+    if ((mX != mCrossX || mY != mCrossY) && (mCrossX != 0) && (mCrossY != 0))
     {
         setDestination(mCrossX, mCrossY);
     }
-    else if (mMap)
+    else if (mMap != nullptr)
     {
         const std::map<std::string, Vector>::const_iterator iter =
             mHomes.find(mMap->getProperty("_realfilename"));
@@ -1400,8 +1404,8 @@ void LocalPlayer::moveToHome()
 void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 {
     if (settings.attackWeaponType == 1
-        || !target
-        || !PlayerInfo::getInventory())
+        || (target == nullptr)
+        || (PlayerInfo::getInventory() == nullptr))
     {
         return;
     }
@@ -1418,7 +1422,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         allowSword = true;
 
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     // if attack distance for sword
@@ -1429,12 +1433,12 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         FOR_EACH (WeaponsInfosIter, it, swords)
         {
             item = inv->findItem(*it, ItemColor_zero);
-            if (item)
+            if (item != nullptr)
                 break;
         }
 
         // no swords
-        if (!item)
+        if (item == nullptr)
             return;
 
         // if sword not equiped
@@ -1449,10 +1453,10 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
             FOR_EACH (WeaponsInfosIter, it, shields)
             {
                 item = inv->findItem(*it, ItemColor_zero);
-                if (item)
+                if (item != nullptr)
                     break;
             }
-            if (item && item->isEquipped() == Equipped_false)
+            if ((item != nullptr) && item->isEquipped() == Equipped_false)
                 PlayerInfo::equipItem(item, Sfx_true);
         }
     }
@@ -1464,12 +1468,12 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
         FOR_EACH (WeaponsInfosIter, it, bows)
         {
             item = inv->findItem(*it, ItemColor_zero);
-            if (item)
+            if (item != nullptr)
                 break;
         }
 
         // no bow
-        if (!item)
+        if (item == nullptr)
             return;
 
         if (item->isEquipped() == Equipped_false)
@@ -1480,7 +1484,7 @@ void LocalPlayer::changeEquipmentBeforeAttack(const Being *const target) const
 bool LocalPlayer::isReachable(Being *const being,
                               const int maxCost)
 {
-    if (!being || !mMap)
+    if ((being == nullptr) || (mMap == nullptr))
         return false;
 
     if (being->getReachable() == Reachable::REACH_NO)
@@ -1528,7 +1532,7 @@ bool LocalPlayer::isReachable(const int x, const int y,
                               const bool allowCollision) const
 {
     const WalkLayer *const walk = mMap->getWalkLayer();
-    if (!walk)
+    if (walk == nullptr)
         return false;
     int num = walk->getDataAt(x, y);
     if (allowCollision && num < 0)
@@ -1539,7 +1543,7 @@ bool LocalPlayer::isReachable(const int x, const int y,
 
 bool LocalPlayer::pickUpItems(int pickUpType)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     bool status = false;
@@ -1549,7 +1553,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
     // first pick up item on player position
     FloorItem *item =
         actorManager->findItem(x, y);
-    if (item)
+    if (item != nullptr)
         status = pickUp(item);
 
     if (pickUpType == 0)
@@ -1571,7 +1575,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
                 default: break;
             }
             item = actorManager->findItem(x, y);
-            if (item)
+            if (item != nullptr)
                 status = pickUp(item);
             break;
         case 2:
@@ -1642,23 +1646,23 @@ bool LocalPlayer::pickUpItems(int pickUpType)
 void LocalPlayer::moveByDirection(const unsigned char dir)
 {
     int dx = 0, dy = 0;
-    if (dir & BeingDirection::UP)
+    if ((dir & BeingDirection::UP) != 0)
         dy--;
-    if (dir & BeingDirection::DOWN)
+    if ((dir & BeingDirection::DOWN) != 0)
         dy++;
-    if (dir & BeingDirection::LEFT)
+    if ((dir & BeingDirection::LEFT) != 0)
         dx--;
-    if (dir & BeingDirection::RIGHT)
+    if ((dir & BeingDirection::RIGHT) != 0)
         dx++;
     move(dx, dy);
 }
 
 void LocalPlayer::specialMove(const unsigned char direction)
 {
-    if (direction && (mNavigateX || mNavigateY))
+    if ((direction != 0u) && ((mNavigateX != 0) || (mNavigateY != 0)))
         navigateClean();
 
-    if (direction && (settings.moveType >= 2
+    if ((direction != 0u) && (settings.moveType >= 2
         && settings.moveType <= 4))
     {
         if (mAction == BeingAction::MOVE)
@@ -1695,8 +1699,9 @@ void LocalPlayer::magicAttack() const
 {
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return;
-    if (!chatWindow || !isAlive()
-        || !playerHandler->canUseMagic())
+    if (chatWindow == nullptr ||
+        !isAlive() ||
+        !playerHandler->canUseMagic())
     {
         return;
     }
@@ -1731,7 +1736,7 @@ void LocalPlayer::magicAttack() const
 void LocalPlayer::tryMagic(const std::string &spell, const int baseMagic,
                            const int schoolMagic, const int mana)
 {
-    if (!chatWindow)
+    if (chatWindow == nullptr)
         return;
 
     if (PlayerInfo::getSkillLevel(340) >= baseMagic
@@ -1765,9 +1770,9 @@ void LocalPlayer::loadHomes()
 void LocalPlayer::setMap(Map *const map)
 {
     BLOCK_START("LocalPlayer::setMap")
-    if (map)
+    if (map != nullptr)
     {
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updateActiveList();
     }
     navigateClean();
@@ -1781,12 +1786,12 @@ void LocalPlayer::setMap(Map *const map)
 
 void LocalPlayer::setHome()
 {
-    if (!mMap || !socialWindow)
+    if ((mMap == nullptr) || (socialWindow == nullptr))
         return;
 
     SpecialLayer *const specialLayer = mMap->getSpecialLayer();
 
-    if (!specialLayer)
+    if (specialLayer == nullptr)
         return;
 
     const std::string key = mMap->getProperty("_realfilename");
@@ -1830,7 +1835,7 @@ void LocalPlayer::setHome()
             socialWindow->addPortal(mX, mY);
         }
         MapItem *const mapItem = specialLayer->getTile(mX, mY);
-        if (mapItem)
+        if (mapItem != nullptr)
         {
             const int idx = socialWindow->getPortalIndex(mX, mY);
             mapItem->setName(keyboard.getKeyShortString(
@@ -1850,15 +1855,15 @@ void LocalPlayer::setHome()
             saveHomes();
         }
 
-        if (!mapItem || mapItem->getType() == MapItemType::EMPTY)
+        if ((mapItem == nullptr) || mapItem->getType() == MapItemType::EMPTY)
         {
-            if (mDirection & BeingDirection::UP)
+            if ((mDirection & BeingDirection::UP) != 0)
                 type = MapItemType::ARROW_UP;
-            else if (mDirection & BeingDirection::LEFT)
+            else if ((mDirection & BeingDirection::LEFT) != 0)
                 type = MapItemType::ARROW_LEFT;
-            else if (mDirection & BeingDirection::DOWN)
+            else if ((mDirection & BeingDirection::DOWN) != 0)
                 type = MapItemType::ARROW_DOWN;
-            else if (mDirection & BeingDirection::RIGHT)
+            else if ((mDirection & BeingDirection::RIGHT) != 0)
                 type = MapItemType::ARROW_RIGHT;
         }
         else
@@ -1871,7 +1876,7 @@ void LocalPlayer::setHome()
         {
             socialWindow->addPortal(mX, mY);
             mapItem = specialLayer->getTile(mX, mY);
-            if (mapItem)
+            if (mapItem != nullptr)
             {
                 const int idx = socialWindow->getPortalIndex(mX, mY);
                 mapItem->setName(keyboard.getKeyShortString(
@@ -1925,7 +1930,7 @@ std::string LocalPlayer::getPingTime() const
     std::string str;
     if (!mWaitPing)
     {
-        if (!mPingTime)
+        if (mPingTime == 0)
             str = "?";
         else
             str = toString(CAST_S32(mPingTime));
@@ -2023,10 +2028,10 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
             if (config.getIntValue("afkFormat") == 1)
                 msg = "*" + msg + "*";
 
-            if (!tab)
+            if (tab == nullptr)
             {
                 chatHandler->privateMessage(nick, msg);
-                if (localChatTab)
+                if (localChatTab != nullptr)
                 {
                     localChatTab->chatLog(std::string(mName).append(
                         " : ").append(msg),
@@ -2048,11 +2053,11 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
 
 bool LocalPlayer::navigateTo(const int x, const int y)
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return false;
 
     SpecialLayer *const tmpLayer = mMap->getTempLayer();
-    if (!tmpLayer)
+    if (tmpLayer == nullptr)
         return false;
 
     mShowNavigePath = true;
@@ -2079,7 +2084,7 @@ bool LocalPlayer::navigateTo(const int x, const int y)
 
 void LocalPlayer::navigateClean()
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
 
     mShowNavigePath = false;
@@ -2094,7 +2099,7 @@ void LocalPlayer::navigateClean()
     mNavigatePath.clear();
 
     SpecialLayer *const tmpLayer = mMap->getTempLayer();
-    if (!tmpLayer)
+    if (tmpLayer == nullptr)
         return;
 
     tmpLayer->clean();
@@ -2102,7 +2107,7 @@ void LocalPlayer::navigateClean()
 
 void LocalPlayer::updateMusic() const
 {
-    if (mMap)
+    if (mMap != nullptr)
     {
         std::string str = mMap->getObjectData(mX, mY, MapItemType::MUSIC);
         if (str.empty())
@@ -2122,29 +2127,29 @@ void LocalPlayer::updateCoords()
     Being::updateCoords();
 
     // probably map not loaded.
-    if (!mPixelX || !mPixelY)
+    if ((mPixelX == 0) || (mPixelY == 0))
         return;
 
     if (mX != mOldTileX || mY != mOldTileY)
     {
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->updatePortals();
-        if (popupManager)
+        if (popupManager != nullptr)
             popupManager->hideBeingPopup();
         updateMusic();
     }
 
-    if (mMap && (mX != mOldTileX || mY != mOldTileY))
+    if ((mMap != nullptr) && (mX != mOldTileX || mY != mOldTileY))
     {
         SpecialLayer *const tmpLayer = mMap->getTempLayer();
-        if (!tmpLayer)
+        if (tmpLayer == nullptr)
             return;
 
         const int x = (mPixelX - mapTileSize / 2) / mapTileSize;
         const int y = (mPixelY - mapTileSize) / mapTileSize;
         if (mNavigateId != BeingId_zero)
         {
-            if (!actorManager)
+            if (actorManager == nullptr)
             {
                 navigateClean();
                 return;
@@ -2152,7 +2157,7 @@ void LocalPlayer::updateCoords()
 
             const Being *const being = actorManager
                 ->findBeing(mNavigateId);
-            if (!being)
+            if (being == nullptr)
             {
                 navigateClean();
                 return;
@@ -2212,7 +2217,7 @@ void LocalPlayer::targetMoved() const
 
 int LocalPlayer::getPathLength(const Being *const being) const
 {
-    if (!mMap || !being)
+    if ((mMap == nullptr) || (being == nullptr))
         return 0;
 
     if (being->mX == mX && being->mY == mY)
@@ -2258,20 +2263,22 @@ int LocalPlayer::getAttackRange2() const
 void LocalPlayer::attack2(Being *const target, const bool keep,
                           const bool dontChangeEquipment)
 {
-    if (!dontChangeEquipment && target)
+    if (!dontChangeEquipment && (target != nullptr))
         changeEquipmentBeforeAttack(target);
 
     const bool broken = (Net::getNetworkType() == ServerType::TMWATHENA);
 
     // probably need cache getPathLength(target)
-    if ((!target || settings.attackType == 0 || settings.attackType == 3)
-        || (withinAttackRange(target, broken, broken ? 1 : 0)
-        && getPathLength(target) <= getAttackRange2()))
+    if ((target == nullptr ||
+        settings.attackType == 0 ||
+        settings.attackType == 3) ||
+        (withinAttackRange(target, broken, broken ? 1 : 0) &&
+        getPathLength(target) <= getAttackRange2()))
     {
         attack(target, keep);
         if (settings.attackType == 2)
         {
-            if (!target)
+            if (target == nullptr)
             {
                 if (pickUpItems())
                     return;
@@ -2282,7 +2289,7 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
             }
         }
     }
-    else if (!mPickUpTarget)
+    else if (mPickUpTarget == nullptr)
     {
         if (settings.attackType == 2)
         {
@@ -2349,7 +2356,7 @@ void LocalPlayer::cancelFollow()
 void LocalPlayer::imitateEmote(const Being *const being,
                                const unsigned char action) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     std::string player_imitated = getImitate();
@@ -2360,7 +2367,7 @@ void LocalPlayer::imitateEmote(const Being *const being,
 void LocalPlayer::imitateAction(const Being *const being,
                                 const BeingActionT &action)
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     if (!mPlayerImitated.empty() && being->mName == mPlayerImitated)
@@ -2373,7 +2380,7 @@ void LocalPlayer::imitateAction(const Being *const being,
 void LocalPlayer::imitateDirection(const Being *const being,
                                    const unsigned char dir)
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     if (!mPlayerImitated.empty() && being->mName == mPlayerImitated)
@@ -2384,13 +2391,13 @@ void LocalPlayer::imitateDirection(const Being *const being,
         if (settings.followMode == 2)
         {
             uint8_t dir2 = 0;
-            if (dir & BeingDirection::LEFT)
+            if ((dir & BeingDirection::LEFT) != 0)
                 dir2 |= BeingDirection::RIGHT;
-            else if (dir & BeingDirection::RIGHT)
+            else if ((dir & BeingDirection::RIGHT) != 0)
                 dir2 |= BeingDirection::LEFT;
-            if (dir & BeingDirection::UP)
+            if ((dir & BeingDirection::UP) != 0)
                 dir2 |= BeingDirection::DOWN;
-            else if (dir & BeingDirection::DOWN)
+            else if ((dir & BeingDirection::DOWN) != 0)
                 dir2 |= BeingDirection::UP;
 
             setDirection(dir2);
@@ -2407,7 +2414,7 @@ void LocalPlayer::imitateDirection(const Being *const being,
 void LocalPlayer::imitateOutfit(const Being *const player,
                                 const int sprite) const
 {
-    if (!player)
+    if (player == nullptr)
         return;
 
     if (settings.imitationMode == 1 &&
@@ -2421,11 +2428,11 @@ void LocalPlayer::imitateOutfit(const Being *const player,
             = dynamic_cast<const AnimatedSprite *>(
             player->mSprites[sprite]);
 
-        if (equipmentSprite)
+        if (equipmentSprite != nullptr)
         {
 //            logger->log("have equipmentSprite");
             const Inventory *const inv = PlayerInfo::getInventory();
-            if (!inv)
+            if (inv == nullptr)
                 return;
 
             const std::string &path = equipmentSprite->getIdPath();
@@ -2435,7 +2442,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
 //            logger->log("idPath: " + path);
             const Item *const item = inv->findItemBySprite(path,
                 player->getGender(), player->getSubType());
-            if (item && item->isEquipped() == Equipped_false)
+            if ((item != nullptr) && item->isEquipped() == Equipped_false)
                 PlayerInfo::equipItem(item, Sfx_false);
         }
         else
@@ -2448,7 +2455,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
                 return;
 
             const Item *const item = PlayerInfo::getEquipment(equipmentSlot);
-            if (item)
+            if (item != nullptr)
             {
 //                logger->log("unequiping");
                 PlayerInfo::unequipItem(item, Sfx_false);
@@ -2460,7 +2467,7 @@ void LocalPlayer::imitateOutfit(const Being *const player,
 void LocalPlayer::followMoveTo(const Being *const being,
                                const int x, const int y)
 {
-    if (being &&
+    if ((being != nullptr) &&
         !mPlayerFollowed.empty() &&
         being->mName == mPlayerFollowed)
     {
@@ -2473,7 +2480,7 @@ void LocalPlayer::followMoveTo(const Being *const being,
                                const int x1, const int y1,
                                const int x2, const int y2)
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     mPickUpTarget = nullptr;
@@ -2501,9 +2508,10 @@ void LocalPlayer::followMoveTo(const Being *const being,
                 }
                 break;
             case 3:
-                if (!mTarget || mTarget->mName != mPlayerFollowed)
+                if (mTarget == nullptr ||
+                    mTarget->mName != mPlayerFollowed)
                 {
-                    if (actorManager)
+                    if (actorManager != nullptr)
                     {
                         Being *const b = actorManager->findBeingByName(
                             mPlayerFollowed, ActorType::Player);
@@ -2538,7 +2546,7 @@ bool LocalPlayer::allowAction()
 
 void LocalPlayer::fixPos()
 {
-    if (!mCrossX && !mCrossY)
+    if ((mCrossX == 0) && (mCrossY == 0))
         return;
 
     const int dx = abs(mX - mCrossX);
@@ -2558,15 +2566,15 @@ void LocalPlayer::fixPos()
 
 void LocalPlayer::setRealPos(const int x, const int y)
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
 
     SpecialLayer *const layer = mMap->getTempLayer();
-    if (layer)
+    if (layer != nullptr)
     {
         bool cacheUpdated(false);
-        if ((mCrossX || mCrossY) &&
-            layer->getTile(mCrossX, mCrossY) &&
+        if (((mCrossX != 0) || (mCrossY != 0)) &&
+            (layer->getTile(mCrossX, mCrossY) != nullptr) &&
             layer->getTile(mCrossX, mCrossY)->getType() == MapItemType::CROSS)
         {
             layer->setTile(mCrossX, mCrossY, MapItemType::EMPTY);
@@ -2578,7 +2586,7 @@ void LocalPlayer::setRealPos(const int x, const int y)
         {
             const MapItem *const mapItem = layer->getTile(x, y);
 
-            if (!mapItem || mapItem->getType() == MapItemType::EMPTY)
+            if ((mapItem == nullptr) || mapItem->getType() == MapItemType::EMPTY)
             {
                 if (mX != x && mY != y)
                 {
@@ -2600,10 +2608,10 @@ void LocalPlayer::setRealPos(const int x, const int y)
 }
 void LocalPlayer::fixAttackTarget()
 {
-    if (!mMap || !mTarget)
+    if ((mMap == nullptr) || (mTarget == nullptr))
         return;
 
-    if (settings.moveToTargetType == 11 || !settings.attackType
+    if (settings.moveToTargetType == 11 || (settings.attackType == 0u)
         || !config.getBoolValue("autofixPos"))
     {
         return;
@@ -2636,7 +2644,7 @@ int LocalPlayer::getLevel() const
 
 void LocalPlayer::updateNavigateList()
 {
-    if (mMap)
+    if (mMap != nullptr)
     {
         const std::map<std::string, Vector>::const_iterator iter =
             mHomes.find(mMap->getProperty("_realfilename"));
@@ -2644,7 +2652,7 @@ void LocalPlayer::updateNavigateList()
         if (iter != mHomes.end())
         {
             const Vector &pos = mHomes[(*iter).first];
-            if (pos.x && pos.y)
+            if ((pos.x != 0.0f) && (pos.y != 0.0f))
             {
                 mMap->addPortalTile("home", MapItemType::HOME,
                     CAST_S32(pos.x), CAST_S32(pos.y));
@@ -2665,17 +2673,17 @@ void LocalPlayer::waitFor(const std::string &nick)
 
 void LocalPlayer::checkNewName(Being *const being)
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     const std::string &nick = being->mName;
     if (being->getType() == ActorType::Player)
     {
         const Guild *const guild = getGuild();
-        if (guild)
+        if (guild != nullptr)
         {
             const GuildMember *const gm = guild->getMember(nick);
-            if (gm)
+            if (gm != nullptr)
             {
                 const int level = gm->getLevel();
                 if (level > 1 && being->getLevel() != level)
@@ -2685,10 +2693,10 @@ void LocalPlayer::checkNewName(Being *const being)
                 }
             }
         }
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             WhisperTab *const tab = chatWindow->getWhisperTab(nick);
-            if (tab)
+            if (tab != nullptr)
                 tab->setWhisperTabColors();
         }
     }
@@ -2713,7 +2721,7 @@ unsigned char LocalPlayer::getBlockWalkMask() const
 
 void LocalPlayer::removeHome()
 {
-    if (!mMap)
+    if (mMap == nullptr)
         return;
 
     const std::string key = mMap->getProperty("_realfilename");
@@ -2730,7 +2738,7 @@ void LocalPlayer::stopAdvert()
 
 bool LocalPlayer::checAttackPermissions(const Being *const target)
 {
-    if (!target)
+    if (target == nullptr)
         return false;
 
     switch (settings.pvpAttackType)
@@ -2755,8 +2763,12 @@ void LocalPlayer::updateStatus() const
         uint8_t status = 0;
         if (Net::getNetworkType() == ServerType::TMWATHENA)
         {
-            if (mTradebot && shopWindow && !shopWindow->isShopEmpty())
+            if (mTradebot &&
+                shopWindow != nullptr &&
+                !shopWindow->isShopEmpty())
+            {
                 status |= BeingFlag::SHOP;
+            }
         }
         if (settings.awayMode || settings.pseudoAwayMode)
             status |= BeingFlag::AWAY;
@@ -2773,7 +2785,7 @@ void LocalPlayer::setTestParticle(const std::string &fileName,
 {
     mTestParticleName = fileName;
     mTestParticleTime = cur_time;
-    if (mTestParticle)
+    if (mTestParticle != nullptr)
     {
         mChildParticleEffects.removeLocally(mTestParticle);
         mTestParticle = nullptr;

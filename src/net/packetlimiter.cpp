@@ -180,7 +180,7 @@ void PacketLimiter::initPacketLimiter()
         std::ifstream inPacketFile;
         struct stat statbuf;
 
-        if (stat(packetLimitsName.c_str(), &statbuf)
+        if ((stat(packetLimitsName.c_str(), &statbuf) != 0)
             || !S_ISREG(statbuf.st_mode))
         {
             // wtiting new file
@@ -253,7 +253,7 @@ bool PacketLimiter::checkPackets(const PacketTypeT type)
     const PacketLimit &limit = mPacketLimits[CAST_SIZE(type)];
     const int timeLimit = limit.timeLimit;
 
-    if (!timeLimit)
+    if (timeLimit == 0)
         return true;
 
     const int time = tick_time;
@@ -296,7 +296,7 @@ bool PacketLimiter::limitPackets(const PacketTypeT type)
     PacketLimit &pack = mPacketLimits[CAST_SIZE(type)];
     const int timeLimit = pack.timeLimit;
 
-    if (!timeLimit)
+    if (timeLimit == 0)
         return true;
 
     const int time = tick_time;

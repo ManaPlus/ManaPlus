@@ -101,14 +101,14 @@ TextBox::TextBox(const Widget2 *const widget) :
 
 TextBox::~TextBox()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 }
 
 void TextBox::setTextWrapped(const std::string &text, const int minDimension)
 {
     // Make sure parent scroll area sets width of this widget
-    if (getParent())
+    if (getParent() != nullptr)
         getParent()->logic();
 
     // Take the supplied minimum dimension as a starting
@@ -384,7 +384,7 @@ void TextBox::keyPressed(KeyEvent& event)
         {
             Widget *const par = getParent();
 
-            if (par)
+            if (par != nullptr)
             {
                 const int rowsPerPage = par->getChildrenArea().height
                     / getFont()->getHeight();
@@ -400,7 +400,7 @@ void TextBox::keyPressed(KeyEvent& event)
         {
             Widget *const par = getParent();
 
-            if (par)
+            if (par != nullptr)
             {
                 const int rowsPerPage = par->getChildrenArea().height
                     / getFont()->getHeight();
@@ -605,7 +605,7 @@ void TextBox::mousePressed(MouseEvent& event)
     if (event.getButton() == MouseButton::LEFT)
     {
         const int height = getFont()->getHeight();
-        if (!height)
+        if (height == 0)
             return;
 
         event.consume();

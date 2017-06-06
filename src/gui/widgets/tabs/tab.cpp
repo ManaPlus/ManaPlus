@@ -130,11 +130,11 @@ Tab::Tab(const Widget2 *const widget) :
 
 Tab::~Tab()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     mInstances--;
-    if (mInstances == 0 && theme)
+    if (mInstances == 0 && (theme != nullptr))
     {
         for (int mode = 0; mode < TAB_COUNT; mode ++)
             theme->unload(tabImg[mode]);
@@ -142,7 +142,7 @@ Tab::~Tab()
 
     delete2(mLabel);
 
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
@@ -162,7 +162,7 @@ void Tab::init()
     if (mInstances == 0)
     {
         // Load the skin
-        if (theme)
+        if (theme != nullptr)
         {
             for (int mode = 0; mode < TAB_COUNT; mode ++)
                 tabImg[mode] = theme->load(data[mode], "tab.xml");
@@ -174,7 +174,7 @@ void Tab::init()
     add(mLabel);
 
     const Skin *const skin = tabImg[TAB_STANDARD];
-    if (!skin)
+    if (skin == nullptr)
         return;
     const int padding = skin->getPadding();
 
@@ -194,11 +194,11 @@ void Tab::updateAlpha()
             for (int t = 0; t < TAB_COUNT; t++)
             {
                 Skin *const skin = tabImg[t];
-                if (skin)
+                if (skin != nullptr)
                 {
                     const ImageRect &rect = skin->getBorder();
                     Image *const image = rect.grid[a];
-                    if (image)
+                    if (image != nullptr)
                         image->setAlpha(mAlpha);
                 }
             }
@@ -212,7 +212,7 @@ void Tab::draw(Graphics *const graphics)
     int mode = TAB_STANDARD;
 
     // check which type of tab to draw
-    if (mTabbedArea)
+    if (mTabbedArea != nullptr)
     {
         int labelMode = mFlash;
 
@@ -223,7 +223,7 @@ void Tab::draw(Graphics *const graphics)
             // if tab is selected, it doesnt need to highlight activity
             mFlash = 0;
         }
-        else if (!labelMode)
+        else if (labelMode == 0)
         {
             if (mHasMouse)
             {
@@ -269,7 +269,7 @@ void Tab::draw(Graphics *const graphics)
     }
 
     const Skin *const skin = tabImg[mode];
-    if (!skin)
+    if (skin == nullptr)
     {
         BLOCK_END("Tab::draw")
         return;
@@ -288,10 +288,10 @@ void Tab::draw(Graphics *const graphics)
             mDimension.width, mDimension.height,
             rect);
 
-        if (mImage)
+        if (mImage != nullptr)
         {
             const Skin *const skin1 = tabImg[TAB_STANDARD];
-            if (skin1)
+            if (skin1 != nullptr)
             {
                 const int padding = skin1->getPadding();
                 graphics->calcTileCollection(mVertexes,
@@ -315,7 +315,7 @@ void Tab::safeDraw(Graphics *const graphics)
     int mode = TAB_STANDARD;
 
     // check which type of tab to draw
-    if (mTabbedArea)
+    if (mTabbedArea != nullptr)
     {
         int labelMode = mFlash;
 
@@ -326,7 +326,7 @@ void Tab::safeDraw(Graphics *const graphics)
             // if tab is selected, it doesnt need to highlight activity
             mFlash = 0;
         }
-        else if (!labelMode)
+        else if (labelMode == 0)
         {
             if (mHasMouse)
             {
@@ -370,7 +370,7 @@ void Tab::safeDraw(Graphics *const graphics)
     }
 
     const Skin *const skin = tabImg[mode];
-    if (!skin)
+    if (skin == nullptr)
     {
         BLOCK_END("Tab::draw")
         return;
@@ -381,10 +381,10 @@ void Tab::safeDraw(Graphics *const graphics)
     graphics->drawImageRect(0, 0,
         mDimension.width, mDimension.height,
         skin->getBorder());
-    if (mImage)
+    if (mImage != nullptr)
     {
         const Skin *const skin1 = tabImg[TAB_STANDARD];
-        if (skin1)
+        if (skin1 != nullptr)
         {
             const int padding = skin1->getPadding();
             graphics->drawImage(mImage, padding, padding);
@@ -407,7 +407,7 @@ void Tab::widgetMoved(const Event &event A_UNUSED)
 
 void Tab::setLabelFont(Font *const font)
 {
-    if (!mLabel)
+    if (mLabel == nullptr)
         return;
 
     mLabel->setFont(font);
@@ -420,11 +420,11 @@ void Tab::setLabelFont(Font *const font)
 void Tab::adjustSize()
 {
     const Skin *const skin = tabImg[TAB_STANDARD];
-    if (!skin)
+    if (skin == nullptr)
         return;
     const int pad2 = skin->getPadding() * 2;
 
-    if (mImage)
+    if (mImage != nullptr)
     {
         const SDL_Rect &rect = mImage->mBounds;
         setSize(rect.w + pad2, rect.h + pad2);
@@ -435,7 +435,7 @@ void Tab::adjustSize()
                 mLabel->getHeight() + pad2);
     }
 
-    if (mTabbedArea)
+    if (mTabbedArea != nullptr)
         mTabbedArea->adjustTabPositions();
 }
 
@@ -458,7 +458,7 @@ void Tab::setCaption(const std::string &caption)
 
 void Tab::setImage(Image *const image)
 {
-    if (mImage)
+    if (mImage != nullptr)
         mImage->decRef();
     mImage = image;
     adjustSize();

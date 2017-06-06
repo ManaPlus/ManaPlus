@@ -57,7 +57,7 @@ void ElementalDb::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "elementals"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "elementals"))
     {
         logger->log("Elemental Database: Error while loading %s!",
             paths.getStringValue("elementalsFile").c_str());
@@ -89,7 +89,7 @@ void ElementalDb::loadXmlFile(const std::string &fileName,
             logger->log("ElementalDb: Redefinition of elemental ID %d", id);
             currentInfo = mElementalInfos[fromInt(id + offset, BeingTypeId)];
         }
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setBlockType(BlockType::NONE);
@@ -107,7 +107,7 @@ void ElementalDb::loadXmlFile(const std::string &fileName,
         currentInfo->setColorsList(XML::getProperty(elementalNode,
             "colors", ""));
 
-        if (currentInfo->getMaxHP())
+        if (currentInfo->getMaxHP() != 0)
             currentInfo->setStaticMaxHP(true);
 
         SpriteDisplay display;

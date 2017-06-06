@@ -56,7 +56,7 @@ PRAGMACLANG6GCC(GCC diagnostic pop)
 static void dumpLinkedSdlVersion(const char *const text,
                                  const SDL_version *const version)
 {
-    if (version)
+    if (version != nullptr)
     {
         logger->log(" %s: %d.%d.%d",
             text,

@@ -147,7 +147,7 @@ PRAGMACLANG6GCC(GCC diagnostic pop)
 
     do
     {
-        if (!strm.next_out)
+        if (strm.next_out == nullptr)
         {
             inflateEnd(&strm);
             return Z_MEM_ERROR;
@@ -174,7 +174,7 @@ PRAGMACLANG6GCC(GCC diagnostic pop)
         {
             out = static_cast<unsigned char*>(realloc(out, bufferSize * 2));
 
-            if (!out)
+            if (out == nullptr)
             {
                 inflateEnd(&strm);
                 return Z_MEM_ERROR;
@@ -199,7 +199,7 @@ int inflateMemory(unsigned char *restrict const in,
     unsigned int outLength = 0;
     const int ret = inflateMemory(in, inLength, out, outLength);
 
-    if (ret != Z_OK || !out)
+    if (ret != Z_OK || (out == nullptr))
     {
         if (ret == Z_MEM_ERROR)
         {
@@ -233,7 +233,7 @@ void MapReader::addLayerToList(const std::string &fileName,
         UseVirtFs_true,
         skipError);
     XmlNodePtrConst node = doc->rootNode();
-    if (!node)
+    if (node == nullptr)
     {
         delete doc;
         return;
@@ -253,7 +253,7 @@ void MapReader::addLayerToList(const std::string &fileName,
         mKnownDocs.insert(doc);
         cnt ++;
     }
-    if (!cnt)
+    if (cnt == 0)
         delete doc;
 }
 
@@ -274,7 +274,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
 
     Map *map = nullptr;
     // Parse the inflated map data
-    if (node)
+    if (node != nullptr)
     {
         if (!xmlNameEqual(node, "map"))
             logger->log("Error: Not a map file (%s)!", realFilename.c_str());
@@ -287,7 +287,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
             realFilename.c_str());
     }
 
-    if (map)
+    if (map != nullptr)
     {
         map->setProperty("_filename", realFilename);
         map->setProperty("_realfilename", filename);
@@ -328,7 +328,7 @@ static void loadReplaceLayer(const LayerInfoIterator &it,
 
 Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 {
-    if (!node)
+    if (node == nullptr)
         return nullptr;
 
     BLOCK_START("MapReader::readMap xml")
@@ -368,7 +368,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     if (graphicsManager.getUseAtlases())
     {
         const MapInfo *const info = MapDB::getMapAtlas(fileName);
-        if (info)
+        if (info != nullptr)
         {
             map->setAtlas(Loader::getAtlas(
                 info->atlas,
@@ -388,7 +388,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         if (xmlNameEqual(childNode, "tileset"))
         {
             Tileset *const tileset = readTileset(childNode, pathDir, map);
-            if (tileset)
+            if (tileset != nullptr)
                 map->addTileset(tileset);
         }
         else if (xmlNameEqual(childNode, "layer"))
@@ -519,7 +519,7 @@ void MapReader::readProperties(XmlNodeConstPtrConst node,
                                Properties *const props)
 {
     BLOCK_START("MapReader::readProperties")
-    if (!node)
+    if (node == nullptr)
     {
         BLOCK_END("MapReader::readProperties")
         return;
@@ -564,16 +564,16 @@ inline static void setTile(Map *const map,
     {
         case MapLayerType::TILES:
         {
-            Image *const img = set ? set->get(gid - set->getFirstGid())
+            Image *const img = set != nullptr ? set->get(gid - set->getFirstGid())
                 : nullptr;
-            if (layer)
+            if (layer != nullptr)
                 layer->setTile(x, y, img);
             break;
         }
 
         case MapLayerType::COLLISION:
         {
-            if (set)
+            if (set != nullptr)
             {
                 if (map->getVersion() >= 1)
                 {
@@ -627,9 +627,9 @@ inline static void setTile(Map *const map,
 
         case MapLayerType::HEIGHTS:
         {
-            if (!set || !heights)
+            if ((set == nullptr) || (heights == nullptr))
                 break;
-            if (heights && map->getVersion() >= 2)
+            if ((heights != nullptr) && map->getVersion() >= 2)
             {
                 heights->setHeight(x, y, CAST_U8(
                     gid - set->getFirstGid() + 1));
@@ -637,7 +637,7 @@ inline static void setTile(Map *const map,
             else
             {
                 Image *const img = set->get(gid - set->getFirstGid());
-                if (layer)
+                if (layer != nullptr)
                     layer->setTile(x, y, img);
             }
             break;
@@ -658,7 +658,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
                                 int &restrict x, int &restrict y,
                                 const int w, const int h)
 {
-    if (!childNode)
+    if (childNode == nullptr)
         return false;
 
     if (!compression.empty() && compression != "gzip"
@@ -677,7 +677,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
     unsigned char *charData = new unsigned char[len + 1];
     const char *const xmlChars = XmlChildContent(childNode);
     const char *charStart = reinterpret_cast<const char*>(xmlChars);
-    if (!charStart)
+    if (charStart == nullptr)
     {
         delete [] charData;
         return false;
@@ -685,7 +685,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
 
     unsigned char *charIndex = charData;
 
-    while (*charStart)
+    while (*charStart != 0)
     {
         if (*charStart != ' ' &&
             *charStart != '\t' &&
@@ -706,7 +706,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
     delete [] charData;
 //    XmlFree(const_cast<char*>(xmlChars));
 
-    if (binData)
+    if (binData != nullptr)
     {
         if (compression == "gzip" || compression == "zlib")
         {
@@ -719,7 +719,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
             binData = inflated;
             binLen = inflatedSize;
 
-            if (!inflated)
+            if (inflated == nullptr)
             {
                 reportAlways("Error: Could not decompress layer!");
                 return false;
@@ -744,7 +744,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
                 if (it != tileAnimations.end())
                 {
                     TileAnimation *const ani = it->second;
-                    if (ani)
+                    if (ani != nullptr)
                         ani->addAffectedTile(layer, x + y * w);
                 }
 
@@ -794,7 +794,7 @@ bool MapReader::readCsvLayer(XmlNodeConstPtrConst childNode,
                              int &restrict x, int &restrict y,
                              const int w, const int h)
 {
-    if (!childNode)
+    if (childNode == nullptr)
         return false;
 
     if (!XmlHaveChildContent(childNode))
@@ -802,7 +802,7 @@ bool MapReader::readCsvLayer(XmlNodeConstPtrConst childNode,
 
     const char *const xmlChars = XmlChildContent(childNode);
     const char *const data = reinterpret_cast<const char*>(xmlChars);
-    if (!data)
+    if (data == nullptr)
         return false;
 
     std::string csv(data);
@@ -826,7 +826,7 @@ bool MapReader::readCsvLayer(XmlNodeConstPtrConst childNode,
             if (it != tileAnimations.end())
             {
                 TileAnimation *const ani = it->second;
-                if (ani)
+                if (ani != nullptr)
                     ani->addAffectedTile(layer, x + y * w);
             }
 
@@ -870,7 +870,7 @@ bool MapReader::readCsvLayer(XmlNodeConstPtrConst childNode,
 
 void MapReader::readLayer(XmlNodeConstPtr node, Map *const map)
 {
-    if (!node)
+    if (node == nullptr)
         return;
 
     // Layers are not necessarily the same size as the map
@@ -1035,7 +1035,7 @@ void MapReader::readLayer(XmlNodeConstPtr node, Map *const map)
                     if (it != tileAnimations.end())
                     {
                         TileAnimation *const ani = it->second;
-                        if (ani)
+                        if (ani != nullptr)
                             ani->addAffectedTile(layer, x + y * w);
                     }
                 }
@@ -1052,7 +1052,7 @@ void MapReader::readLayer(XmlNodeConstPtr node, Map *const map)
 
         if (y < h)
             std::cerr << "TOO SMALL!\n";
-        if (x)
+        if (x != 0)
             std::cerr << "TOO SMALL!\n";
 
         // There can be only one data element
@@ -1065,7 +1065,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                                 Map *const map)
 {
     BLOCK_START("MapReader::readTileset")
-    if (!node)
+    if (node == nullptr)
     {
         BLOCK_END("MapReader::readTileset")
         return nullptr;
@@ -1086,7 +1086,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
         doc = new XML::Document(filename, UseVirtFs_true, SkipError_false);
         node = doc->rootNode();
-        if (!node)
+        if (node == nullptr)
         {
             delete doc;
             BLOCK_END("MapReader::readTileset")
@@ -1105,7 +1105,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
         if (xmlNameEqual(childNode, "image"))
         {
             // ignore second other <image> tags in tileset
-            if (set)
+            if (set != nullptr)
                 continue;
 
             const std::string source = XML::getProperty(
@@ -1116,7 +1116,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                 Image *const tilebmp = Loader::getImage(
                     resolveRelativePath(pathDir, source));
 
-                if (tilebmp)
+                if (tilebmp != nullptr)
                 {
                     set = new Tileset(tilebmp,
                         tw, th,
@@ -1192,7 +1192,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                     }
 
                     // create animation
-                    if (!set || !config.getBoolValue("playMapAnimations"))
+                    if ((set == nullptr) || !config.getBoolValue("playMapAnimations"))
                     {
                         delete ani;
                         continue;
@@ -1230,7 +1230,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                         const int duration = XML::getProperty(
                             frameNode, "duration", 0) /  10;
 
-                        if (set)
+                        if (set != nullptr)
                         {
                             ani->addFrame(set->get(tileId),
                                 duration,
@@ -1249,7 +1249,7 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
 
     delete doc;
 
-    if (set)
+    if (set != nullptr)
         set->setProperties(props);
     BLOCK_END("MapReader::readTileset")
     return set;
@@ -1306,7 +1306,7 @@ void MapReader::loadEmptyAtlas()
 
     const MapInfo *const info = MapDB::getAtlas(
         paths.getStringValue("emptyAtlasName"));
-    if (info)
+    if (info != nullptr)
     {
         mEmptyAtlas = Loader::getEmptyAtlas(
             info->atlas,
@@ -1317,7 +1317,7 @@ void MapReader::loadEmptyAtlas()
 
 void MapReader::unloadEmptyAtlas()
 {
-    if (mEmptyAtlas)
+    if (mEmptyAtlas != nullptr)
         mEmptyAtlas->decRef();
 }
 #endif  // USE_OPENGL

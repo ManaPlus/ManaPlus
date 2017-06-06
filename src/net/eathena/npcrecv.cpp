@@ -47,7 +47,7 @@ void NpcRecv::processNpcCutin(Net::MessageIn &msg)
     Ea::NpcRecv::mRequestLang = false;
     const std::string image = msg.readString(64, "image name");
     const CutInT cutin = static_cast<CutInT>(msg.readUInt8("type"));
-    if (cutInWindow)
+    if (cutInWindow != nullptr)
         cutInWindow->show(image, cutin);
 }
 
@@ -91,7 +91,7 @@ void NpcRecv::processArea(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("npc id"));
     const int area = msg.readInt32("area size");
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setAreaSize(area);
 }
 
@@ -113,7 +113,7 @@ void NpcRecv::processNpcSkin(Net::MessageIn &msg)
     const int len = msg.readInt16("len");
     npcHandler->getNpc(msg, NpcAction::Other);
     const std::string skin = msg.readString(len - 8, "skin");
-    if (Ea::NpcRecv::mDialog)
+    if (Ea::NpcRecv::mDialog != nullptr)
         Ea::NpcRecv::mDialog->setSkin(skin);
 }
 

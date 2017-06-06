@@ -62,7 +62,7 @@ NavigationManager::~NavigationManager()
 #ifndef DYECMD
 Resource *NavigationManager::loadWalkLayer(const Map *const map)
 {
-    if (!map)
+    if (map == nullptr)
         return nullptr;
 
     const int width = map->getWidth();
@@ -73,7 +73,7 @@ Resource *NavigationManager::loadWalkLayer(const Map *const map)
 
     const MetaTile *const tiles = map->getMetaTiles();
     int *const data = walkLayer->getData();
-    if (!tiles || !data)
+    if ((tiles == nullptr) || (data == nullptr))
         return walkLayer;
 
     int x = 0;
@@ -108,9 +108,9 @@ void NavigationManager::fillNum(int x, int y,
         if (x > 0)
         {
             ptr = (x - 1) + width * y;
-            if (!data[ptr])
+            if (data[ptr] == 0)
             {
-                if (!(tiles[ptr].blockmask & blockWalkMask))
+                if ((tiles[ptr].blockmask & blockWalkMask) == 0)
                     cells.push_back(Cell(x - 1, y));
                 else
                     data[ptr] = -num;
@@ -119,9 +119,9 @@ void NavigationManager::fillNum(int x, int y,
         if (x < width - 1)
         {
             ptr = (x + 1) + width * y;
-            if (!data[ptr])
+            if (data[ptr] == 0)
             {
-                if (!(tiles[ptr].blockmask & blockWalkMask))
+                if ((tiles[ptr].blockmask & blockWalkMask) == 0)
                     cells.push_back(Cell(x + 1, y));
                 else
                     data[ptr] = -num;
@@ -130,9 +130,9 @@ void NavigationManager::fillNum(int x, int y,
         if (y > 0)
         {
             ptr = x + width * (y - 1);
-            if (!data[ptr])
+            if (data[ptr] == 0)
             {
-                if (!(tiles[ptr].blockmask & blockWalkMask))
+                if ((tiles[ptr].blockmask & blockWalkMask) == 0)
                     cells.push_back(Cell(x, y - 1));
                 else
                     data[ptr] = -num;
@@ -141,9 +141,9 @@ void NavigationManager::fillNum(int x, int y,
         if (y < height - 1)
         {
             ptr = x + width * (y + 1);
-            if (!data[ptr])
+            if (data[ptr] == 0)
             {
-                if (!(tiles[ptr].blockmask & blockWalkMask))
+                if ((tiles[ptr].blockmask & blockWalkMask) == 0)
                     cells.push_back(Cell(x, y + 1));
                 else
                     data[ptr] = -num;
@@ -164,7 +164,8 @@ bool NavigationManager::findWalkableTile(int &x1, int &y1,
         for (int x = 0; x < width; x ++)
         {
             const int ptr = x + y2;
-            if (!(tiles[ptr].blockmask & blockWalkMask) && !data[ptr])
+            if (((tiles[ptr].blockmask & blockWalkMask) == 0) &&
+                data[ptr] == 0)
             {
                 x1 = x;
                 y1 = y;

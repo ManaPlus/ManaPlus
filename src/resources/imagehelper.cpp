@@ -46,7 +46,7 @@ RenderType ImageHelper::mUseOpenGL = RENDER_SOFTWARE;
 Image *ImageHelper::load(SDL_RWops *const rw)
 {
     SDL_Surface *const tmpImage = loadPng(rw);
-    if (!tmpImage)
+    if (tmpImage == nullptr)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());
         return nullptr;
@@ -62,7 +62,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 {
     BLOCK_START("ImageHelper::load")
     SDL_Surface *const tmpImage = loadPng(rw);
-    if (!tmpImage)
+    if (tmpImage == nullptr)
     {
         logger->log("Error, image load failed: %s", IMG_GetError());
         BLOCK_END("ImageHelper::load")
@@ -91,7 +91,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         tmpImage, &rgba, SDL_SWSURFACE);
     MSDL_FreeSurface(tmpImage);
 
-    if (!surf)
+    if (surf == nullptr)
         return nullptr;
 
     uint32_t *const pixels = static_cast<uint32_t *>(surf->pixels);
@@ -102,14 +102,14 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
         case 1:
         {
             const DyePalette *const pal = dye.getSPalete();
-            if (pal)
+            if (pal != nullptr)
                 DYEPALETTEP(pal, SColor)(pixels, surf->w * surf->h);
             break;
         }
         case 2:
         {
             const DyePalette *const pal = dye.getAPalete();
-            if (pal)
+            if (pal != nullptr)
                 DYEPALETTEP(pal, AColor)(pixels, surf->w * surf->h);
             break;
         }
@@ -129,7 +129,7 @@ Image *ImageHelper::load(SDL_RWops *const rw, Dye const &dye)
 
 SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
 {
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return nullptr;
     SDL_PixelFormat RGBAFormat;
     RGBAFormat.palette = nullptr;
@@ -174,9 +174,9 @@ SDL_Surface* ImageHelper::convertTo32Bit(SDL_Surface *const tmpImage)
 
 void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
 {
-    if (!image)
+    if (image == nullptr)
         return;
-    if (image->format)
+    if (image->format != nullptr)
     {
         const SDL_PixelFormat * const format = image->format;
         logger->log("Bytes per pixel: %d", format->BytesPerPixel);
@@ -201,17 +201,17 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
 
 SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
 {
-    if (!rw)
+    if (rw == nullptr)
         return nullptr;
 
-    if (IMG_isPNG(rw))
+    if (IMG_isPNG(rw) != 0)
     {
         SDL_Surface *const tmpImage = MIMG_LoadPNG_RW(rw);
         SDL_RWclose(rw);
         return tmpImage;
     }
 
-    if (IMG_isJPG(rw))
+    if (IMG_isJPG(rw) != 0)
     {
         SDL_Surface *const tmpImage = MIMG_LoadJPG_RW(rw);
         SDL_RWclose(rw);

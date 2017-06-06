@@ -112,7 +112,7 @@ impHandler0(changeMoveToTarget)
 
 impHandler0(changeGameModifier)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         GameModifiers::changeGameModifiers(false);
         return true;
@@ -123,7 +123,7 @@ impHandler0(changeGameModifier)
 impHandler0(changeAudio)
 {
     soundManager.changeAudio();
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->updateMusic();
     return true;
 }
@@ -131,10 +131,10 @@ impHandler0(changeAudio)
 impHandler0(away)
 {
     GameModifiers::changeAwayMode(true);
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->updateStatus();
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -143,10 +143,10 @@ impHandler0(away)
 
 impHandler0(camera)
 {
-    if (viewport)
+    if (viewport != nullptr)
     {
         viewport->toggleCameraMode();
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -155,10 +155,10 @@ impHandler0(camera)
 
 impHandler0(changeMapMode)
 {
-    if (viewport)
+    if (viewport != nullptr)
         viewport->toggleMapDrawType();
     UpdateStatusListener::distributeEvent();
-    if (Game::instance())
+    if (Game::instance() != nullptr)
     {
         if (Map *const map = Game::instance()->getCurrentMap())
             map->redrawMap();
@@ -169,9 +169,9 @@ impHandler0(changeMapMode)
 impHandler0(changeTrade)
 {
     unsigned int deflt = player_relations.getDefault();
-    if (deflt & PlayerRelation::TRADE)
+    if ((deflt & PlayerRelation::TRADE) != 0u)
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             // TRANSLATORS: disable trades message
             localChatTab->chatLog(_("Ignoring incoming trade requests"),
@@ -181,7 +181,7 @@ impHandler0(changeTrade)
     }
     else
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             // TRANSLATORS: enable trades message
             localChatTab->chatLog(_("Accepting incoming trade requests"),

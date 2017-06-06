@@ -70,7 +70,7 @@ void CashShopHandler::buyItems(const int points,
         const ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
         const ItemTypeT type = item->getType();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         if (type == ItemType::Weapon ||
             type == ItemType::Armor ||
@@ -96,7 +96,7 @@ void CashShopHandler::buyItems(const int points,
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         item->increaseQuantity(usedQuantity);
         item->increaseUsedQuantity(-usedQuantity);

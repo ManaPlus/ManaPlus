@@ -40,7 +40,7 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
     mCharacterEntries(entries)
 {
     addKeyListener(widget);
-    if (entries)
+    if (entries != nullptr)
     {
         FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
                    it, entries)
@@ -81,7 +81,7 @@ void CharacterViewSmall::show(const int i)
     const int sz = CAST_S32(mCharacterEntries->size());
     if (sz <= 0)
         return;
-    if (mSelectedEntry)
+    if (mSelectedEntry != nullptr)
         mSelectedEntry->setVisible(Visible_false);
     if (i >= sz)
         mSelected = 0;

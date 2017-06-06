@@ -78,7 +78,7 @@ class SocialGuildTab final : public SocialTab,
                 const std::string name = mInviteDialog->getText();
                 guildHandler->invite(name);
 
-                if (localChatTab)
+                if (localChatTab != nullptr)
                 {
                     localChatTab->chatLog(strprintf(
                         // TRANSLATORS: chat message
@@ -96,7 +96,7 @@ class SocialGuildTab final : public SocialTab,
             else if (eventId == "yes")
             {
                 guildHandler->leave(mGuild->getId());
-                if (localChatTab)
+                if (localChatTab != nullptr)
                 {
                     localChatTab->chatLog(strprintf(
                         // TRANSLATORS: chat message
@@ -137,7 +137,7 @@ class SocialGuildTab final : public SocialTab,
 
         void buildCounter(const int online0, const int total0) override final
         {
-            if (online0 || total0)
+            if ((online0 != 0) || (total0 != 0))
             {
                 // TRANSLATORS: social window label
                 mCounterString = strprintf(_("Members: %u/%u"),
@@ -146,11 +146,11 @@ class SocialGuildTab final : public SocialTab,
             }
             else
             {
-                if (!localPlayer)
+                if (localPlayer == nullptr)
                     return;
 
                 const Guild *const guild = localPlayer->getGuild();
-                if (!guild)
+                if (guild == nullptr)
                     return;
 
                 const Guild::MemberList *const members = guild->getMembers();

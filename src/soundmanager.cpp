@@ -107,9 +107,9 @@ void SoundManager::optionChanged(const std::string &value)
     else if (value == "musicVolume")
         setMusicVolume(config.getIntValue("musicVolume"));
     else if (value == "fadeoutmusic")
-        mFadeoutMusic = config.getIntValue("fadeoutmusic");
+        mFadeoutMusic = (config.getIntValue("fadeoutmusic") != 0);
     else if (value == "uselonglivesounds")
-        mCacheSounds = config.getIntValue("uselonglivesounds");
+        mCacheSounds = (config.getIntValue("uselonglivesounds") != 0);
 }
 
 void SoundManager::init()
@@ -126,7 +126,7 @@ void SoundManager::init()
     mFadeoutMusic = config.getBoolValue("fadeoutmusic");
     mMusicVolume = config.getIntValue("musicVolume");
     mSfxVolume = config.getIntValue("sfxVolume");
-    mCacheSounds = config.getIntValue("uselonglivesounds");
+    mCacheSounds = (config.getIntValue("uselonglivesounds") != 0);
 
     config.addListener("playBattleSound", this);
     config.addListener("playGuiSound", this);
@@ -189,7 +189,7 @@ void SoundManager::testAudio()
     mFadeoutMusic = config.getBoolValue("fadeoutmusic");
     mMusicVolume = config.getIntValue("musicVolume");
     mSfxVolume = config.getIntValue("sfxVolume");
-    mCacheSounds = config.getIntValue("uselonglivesounds");
+    mCacheSounds = (config.getIntValue("uselonglivesounds") != 0);
 
     const size_t audioBuffer = 4096;
     int channels = config.getIntValue("audioChannels");
@@ -289,7 +289,7 @@ void SoundManager::info()
             compiledVersion.major,
             compiledVersion.minor,
             compiledVersion.patch);
-    if (linkedVersion)
+    if (linkedVersion != nullptr)
     {
         logger->log("SoundManager::info() SDL_mixer: %i.%i.%i (linked)",
             linkedVersion->major,
@@ -353,7 +353,7 @@ void SoundManager::playMusic(const std::string &fileName,
     {
         mMusic = loadMusic(fileName,
             skipError);
-        if (mMusic)
+        if (mMusic != nullptr)
             mMusic->play();
     }
 }
@@ -394,7 +394,7 @@ void SoundManager::fadeOutMusic(const int ms)
 
     logger->log("SoundManager::fadeOutMusic() Fading-out (%i ms)", ms);
 
-    if (mMusic && mFadeoutMusic)
+    if ((mMusic != nullptr) && mFadeoutMusic)
     {
         Mix_FadeOutMusic(ms);
         // Note: The fadeOutCallBack handler will take care about freeing
@@ -423,7 +423,7 @@ void SoundManager::logic()
     BLOCK_START("SoundManager::logic")
     if (sFadingOutEnded)
     {
-        if (mMusic)
+        if (mMusic != nullptr)
         {
             mMusic->decRef();
             mMusic = nullptr;
@@ -454,7 +454,7 @@ void SoundManager::playSfx(const std::string &path,
         return;
 
     std::string tmpPath;
-    if (!path.compare(0, 4, "sfx/"))
+    if (path.compare(0, 4, "sfx/") == 0)
     {
         tmpPath = path;
         reportAlways("Sfx sound with sfx/ in path. Please remove sfx/");
@@ -464,11 +464,11 @@ void SoundManager::playSfx(const std::string &path,
         tmpPath = pathJoin(paths.getValue("sfx", "sfx"), path);
     }
     SoundEffect *const sample = Loader::getSoundEffect(tmpPath);
-    if (sample)
+    if (sample != nullptr)
     {
         logger->log("SoundManager::playSfx() Playing: %s", path.c_str());
         int vol = 120;
-        if (localPlayer && (x > 0 || y > 0))
+        if ((localPlayer != nullptr) && (x > 0 || y > 0))
         {
             int dx = localPlayer->getTileX() - x;
             int dy = localPlayer->getTileY() - y;
@@ -508,15 +508,16 @@ void SoundManager::playGuiSfx(const std::string &path)
     }
 
     std::string tmpPath;
-    if (!path.compare(0, 4, "sfx/"))
+    if (path.compare(0, 4, "sfx/") == 0)
         tmpPath = path;
     else
         tmpPath = pathJoin(paths.getValue("sfx", "sfx"), path);
     SoundEffect *const sample = Loader::getSoundEffect(tmpPath);
-    if (sample)
+    if (sample != nullptr)
     {
         logger->log("SoundManager::playGuiSfx() Playing: %s", path.c_str());
-        const int ret = sample->play(0, 120, mGuiChannel);
+        const int ret = static_cast<const int>(
+            sample->play(0, 120, mGuiChannel));
         if (ret != -1)
             mGuiChannel = ret;
         if (!mCacheSounds)
@@ -538,7 +539,7 @@ void SoundManager::close()
 
 void SoundManager::haltMusic()
 {
-    if (!mMusic)
+    if (mMusic == nullptr)
         return;
 
     Mix_HaltMusic();

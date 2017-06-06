@@ -666,7 +666,7 @@ namespace FsZip
         if (file == nullptr)
             return -1;
 
-        return file->mPos >= file->mSize;
+        return static_cast<int>(file->mPos >= file->mSize);
     }
 
     const char *loadFile(FsEntry *restrict const entry,

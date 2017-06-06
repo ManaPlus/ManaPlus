@@ -27,7 +27,7 @@
 
 LinePart::~LinePart()
 {
-    if (mImage)
+    if (mImage != nullptr)
         mImage->decRef();
     mImage = nullptr;
 }

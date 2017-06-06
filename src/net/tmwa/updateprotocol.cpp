@@ -35,7 +35,7 @@ void updateProtocol()
 #include "net/tmwa/packetsout.inc"
 #undef packet
     Network *const network = Network::mInstance;
-    if (network)
+    if (network != nullptr)
     {
         network->clearHandlers();
         network->registerHandlers();

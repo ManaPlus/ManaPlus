@@ -40,14 +40,14 @@ struct EmptyAtlasLoader final
 
     static Resource *load(const void *const v)
     {
-        if (!v)
+        if (v == nullptr)
             return nullptr;
 
         const EmptyAtlasLoader *const rl =
             static_cast<const EmptyAtlasLoader *>(v);
         AtlasResource *const resource = AtlasManager::loadEmptyAtlas(
             rl->name, *rl->files);
-        if (!resource)
+        if (resource == nullptr)
             reportAlways("Empty atlas creation error: %s", rl->name.c_str());
         return resource;
     }

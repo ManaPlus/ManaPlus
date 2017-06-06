@@ -151,7 +151,7 @@ void SetupItem::save()
 
 std::string SetupItem::getActionEventId() const
 {
-    if (!mWidget)
+    if (mWidget == nullptr)
         return std::string();
 
     return mWidget->getActionEventId();
@@ -159,7 +159,7 @@ std::string SetupItem::getActionEventId() const
 
 void SetupItem::action(const ActionEvent &event)
 {
-    if (!mWidget)
+    if (mWidget == nullptr)
         return;
 
     if (event.getId() == mWidget->getActionEventId())
@@ -194,7 +194,7 @@ void SetupItem::externalUnloaded(const std::string &eventName A_UNUSED)
 
 void SetupItem::fixFirstItemSize(Widget *const widget)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
     const int maxSize = mParent->getPreferredFirstItemSize();
     if (widget->getWidth() < maxSize)
@@ -251,7 +251,7 @@ void SetupItemCheckBox::createControls()
 
 void SetupItemCheckBox::fromWidget()
 {
-    if (!mCheckBox)
+    if (mCheckBox == nullptr)
         return;
 
     if (mCheckBox->isSelected())
@@ -262,7 +262,7 @@ void SetupItemCheckBox::fromWidget()
 
 void SetupItemCheckBox::toWidget()
 {
-    if (!mCheckBox)
+    if (mCheckBox == nullptr)
         return;
 
     mCheckBox->setSelected(mValue != "0");
@@ -390,7 +390,7 @@ void SetupItemTextField::createControls()
 
 void SetupItemTextField::fromWidget()
 {
-    if (!mTextField)
+    if (mTextField == nullptr)
         return;
 
     mValue = mTextField->getText();
@@ -398,7 +398,7 @@ void SetupItemTextField::fromWidget()
 
 void SetupItemTextField::toWidget()
 {
-    if (!mTextField)
+    if (mTextField == nullptr)
         return;
 
     mTextField->setText(mValue);
@@ -406,11 +406,11 @@ void SetupItemTextField::toWidget()
 
 void SetupItemTextField::action(const ActionEvent &event)
 {
-    if (!mTextField)
+    if (mTextField == nullptr)
         return;
 
     const std::string &eventId = event.getId();
-    if (mWidget && eventId == mWidget->getActionEventId())
+    if ((mWidget != nullptr) && eventId == mWidget->getActionEventId())
     {
         fromWidget();
     }
@@ -528,7 +528,7 @@ void SetupItemIntTextField::createControls()
 
 void SetupItemIntTextField::fromWidget()
 {
-    if (!mTextField)
+    if (mTextField == nullptr)
         return;
 
     mValue = mTextField->getText();
@@ -536,7 +536,7 @@ void SetupItemIntTextField::fromWidget()
 
 void SetupItemIntTextField::toWidget()
 {
-    if (!mTextField)
+    if (mTextField == nullptr)
         return;
 
     mTextField->setText(mValue);
@@ -544,11 +544,11 @@ void SetupItemIntTextField::toWidget()
 
 void SetupItemIntTextField::action(const ActionEvent &event)
 {
-    if (!mTextField)
+    if (mTextField == nullptr)
         return;
 
     const std::string &eventId = event.getId();
-    if (mWidget && eventId == mWidget->getActionEventId())
+    if ((mWidget != nullptr) && eventId == mWidget->getActionEventId())
     {
         fromWidget();
     }
@@ -708,7 +708,7 @@ void SetupItemDropDown::createControls()
 
 void SetupItemDropDown::fromWidget()
 {
-    if (!mDropDown)
+    if (mDropDown == nullptr)
         return;
 
     mValue = toString(mDropDown->getSelected());
@@ -716,7 +716,7 @@ void SetupItemDropDown::fromWidget()
 
 void SetupItemDropDown::toWidget()
 {
-    if (!mDropDown)
+    if (mDropDown == nullptr)
         return;
 
     mDropDown->setSelected(atoi(mValue.c_str()));
@@ -810,7 +810,7 @@ void SetupItemSlider::createControls()
 
 void SetupItemSlider::fromWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     mValue = toString(mSlider->getValue());
@@ -818,7 +818,7 @@ void SetupItemSlider::fromWidget()
 
 void SetupItemSlider::toWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     mSlider->setValue(atof(mValue.c_str()));
@@ -945,7 +945,7 @@ void SetupItemSlider2::createControls()
 
 int SetupItemSlider2::getMaxWidth()
 {
-    if (!mValues || !gui)
+    if ((mValues == nullptr) || (gui == nullptr))
         return 1;
 
     int maxWidth = 0;
@@ -966,7 +966,7 @@ int SetupItemSlider2::getMaxWidth()
 
 void SetupItemSlider2::fromWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     int val = roundDouble(mSlider->getValue());
@@ -977,7 +977,7 @@ void SetupItemSlider2::fromWidget()
 
 void SetupItemSlider2::toWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     int val = roundDouble(atof(mValue.c_str()));
@@ -1107,7 +1107,7 @@ void SetupItemSliderList::createControls()
 
 void SetupItemSliderList::fromWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     mValue = mSlider->getSelectedString();
@@ -1115,7 +1115,7 @@ void SetupItemSliderList::fromWidget()
 
 void SetupItemSliderList::toWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     mSlider->setSelectedString(mValue);
@@ -1157,7 +1157,7 @@ void SetupItemSound::addMoreControls()
 {
     mButton = new Button(this, BUTTON_PLAY, 16, 16,
         mEventName + "_PLAY", this);
-    if (mHorizont)
+    if (mHorizont != nullptr)
         mHorizont->add(mButton);
 }
 
@@ -1165,7 +1165,7 @@ void SetupItemSound::action(const ActionEvent &event)
 {
     if (event.getId() == mEventName + "_PLAY")
     {
-        if (mSlider && mSlider->getSelected())
+        if ((mSlider != nullptr) && (mSlider->getSelected() != 0))
         {
             soundManager.playGuiSfx(pathJoin(branding.getStringValue(
                 "systemsounds"),
@@ -1202,7 +1202,7 @@ void SetupItemSliderInt::addMoreControls()
 
 void SetupItemSliderInt::fromWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     mValue = toString(mSlider->getSelected() + mMin);
@@ -1210,7 +1210,7 @@ void SetupItemSliderInt::fromWidget()
 
 void SetupItemSliderInt::toWidget()
 {
-    if (!mSlider)
+    if (mSlider == nullptr)
         return;
 
     mSlider->setSelected(atoi(mValue.c_str()) - mMin);

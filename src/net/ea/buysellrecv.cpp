@@ -79,7 +79,7 @@ void BuySellRecv::processNpcSell(Net::MessageIn &msg)
             const Item *const item = PlayerInfo::getInventory()
                 ->getItem(index);
 
-            if (item && item->isEquipped() == Equipped_false)
+            if ((item != nullptr) && item->isEquipped() == Equipped_false)
                 dialog->addItem(item, value);
         }
     }

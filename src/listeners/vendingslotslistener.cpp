@@ -30,7 +30,7 @@ void VendingSlotsListener::distributeEvent(const int slots)
               it, mListeners)
     {
         VendingSlotsListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->vendingSlotsChanged(slots);
     }
 }

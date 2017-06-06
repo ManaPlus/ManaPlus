@@ -49,7 +49,7 @@ namespace
 
         bool operator()(const Item *const item) const
         {
-            return item && item->mId >= 0 && item->mQuantity > 0;
+            return (item != nullptr) && item->mId >= 0 && item->mQuantity > 0;
         }
         typedef Item *argument_type;
     };
@@ -80,7 +80,7 @@ Inventory::~Inventory()
 
 Item *Inventory::getItem(const int index) const
 {
-    if (index < 0 || index >= CAST_S32(mSize) || !mItems[index]
+    if (index < 0 || index >= CAST_S32(mSize) || (mItems[index] == nullptr)
         || mItems[index]->mQuantity <= 0)
     {
         return nullptr;
@@ -95,7 +95,7 @@ Item *Inventory::findItem(const int itemId,
     for (unsigned i = 0; i < mSize; i++)
     {
         Item *const item = mItems[i];
-        if (item && item->mId == itemId)
+        if ((item != nullptr) && item->mId == itemId)
         {
             if (color == ItemColor_zero ||
                 item->mColor == color ||
@@ -156,7 +156,7 @@ void Inventory::setItem(const int index,
     }
 
     Item *const item1 = mItems[index];
-    if (!item1 && id > 0)
+    if ((item1 == nullptr) && id > 0)
     {
         Item *const item = new Item(id,
             type,
@@ -173,7 +173,7 @@ void Inventory::setItem(const int index,
         mUsed++;
         distributeSlotsChangedEvent();
     }
-    else if (id > 0 && item1)
+    else if (id > 0 && (item1 != nullptr))
     {
         item1->setId(id, color);
         item1->setQuantity(quantity);
@@ -183,7 +183,7 @@ void Inventory::setItem(const int index,
         item1->setDamaged(damaged);
         item1->setFavorite(favorite);
     }
-    else if (item1)
+    else if (item1 != nullptr)
     {
         removeItemAt(index);
     }
@@ -201,7 +201,7 @@ void Inventory::setCards(const int index,
     }
 
     Item *const item1 = mItems[index];
-    if (item1)
+    if (item1 != nullptr)
         item1->setCards(cards, size);
 }
 
@@ -215,7 +215,7 @@ void Inventory::setOptions(const int index,
         return;
     }
     Item *const item1 = mItems[index];
-    if (item1)
+    if (item1 != nullptr)
         item1->setOptions(options);
 }
 
@@ -230,14 +230,14 @@ void Inventory::removeItem(const int id)
     for (unsigned i = 0; i < mSize; i++)
     {
         const Item *const item = mItems[i];
-        if (item && item->mId == id)
+        if ((item != nullptr) && item->mId == id)
             removeItemAt(i);
     }
 }
 
 void Inventory::removeItemAt(const int index)
 {
-    if (!mItems[index])
+    if (mItems[index] == nullptr)
         return;
     delete2(mItems[index]);
     mUsed--;
@@ -249,14 +249,14 @@ void Inventory::removeItemAt(const int index)
 
 bool Inventory::contains(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return false;
 
     const int id = item->mId;
     for (unsigned i = 0; i < mSize; i++)
     {
         const Item *const item1 = mItems[i];
-        if (item1 && item1->mId == id)
+        if ((item1 != nullptr) && item1->mId == id)
             return true;
     }
 
@@ -311,7 +311,7 @@ const Item *Inventory::findItemBySprite(std::string spritePath,
     for (unsigned i = 0; i < mSize; i++)
     {
         const Item *const item = mItems[i];
-        if (item)
+        if (item != nullptr)
         {
             std::string path = item->getInfo().getSprite(gender, race);
             if (!path.empty())
@@ -397,7 +397,7 @@ int Inventory::findIndexByTag(const int tag) const
     for (unsigned i = 0; i < mSize; i++)
     {
         const Item *const item = mItems[i];
-        if (item && item->mTag == tag)
+        if ((item != nullptr) && item->mTag == tag)
             return i;
     }
 
@@ -408,7 +408,7 @@ bool Inventory::addVirtualItem(const Item *const item,
                                int index,
                                const int amount)
 {
-    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
     {
         if (index >= 0 && index < CAST_S32(mSize))
         {
@@ -443,7 +443,7 @@ bool Inventory::addVirtualItem(const Item *const item,
             return false;
 
         Item *const item2 = getItem(index);
-        if (item2)
+        if (item2 != nullptr)
             item2->setTag(item->getInvIndex());
         return true;
     }
@@ -453,7 +453,7 @@ bool Inventory::addVirtualItem(const Item *const item,
 void Inventory::virtualRemove(Item *const item,
                               const int amount)
 {
-    if (!item || item->mQuantity < amount)
+    if ((item == nullptr) || item->mQuantity < amount)
         return;
 
     const int index = item->getInvIndex();
@@ -475,7 +475,7 @@ void Inventory::restoreVirtuals()
         if (index < 0 || index >= sz)
             continue;
         Item *const item = mItems[index];
-        if (!item)
+        if (item == nullptr)
             continue;
         item->mQuantity += (*it).second;
     }
@@ -492,7 +492,7 @@ void Inventory::virtualRestore(const Item *const item,
         mVirtualRemove[index] -= amount;
         if (mVirtualRemove[index] < 0)
             mVirtualRemove.erase(index);
-        if (index < 0 || index >= CAST_S32(mSize) || !mItems[index])
+        if (index < 0 || index >= CAST_S32(mSize) || (mItems[index] == nullptr))
             return;
         mItems[index]->mQuantity += amount;
     }
@@ -511,9 +511,9 @@ void Inventory::moveItem(const int index1,
 
     Item *const item1 = mItems[index1];
     Item *const item2 = mItems[index2];
-    if (item1)
+    if (item1 != nullptr)
         item1->setInvIndex(index2);
-    if (item2)
+    if (item2 != nullptr)
         item2->setInvIndex(index1);
     mItems[index1] = item2;
     mItems[index2] = item1;

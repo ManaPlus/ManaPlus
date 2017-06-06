@@ -46,10 +46,10 @@ void outStringNormal(ChatTab *const tab,
                      const std::string &str,
                      const std::string &def)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
-    if (!tab)
+    if (tab == nullptr)
     {
         chatHandler->talk(str, GENERAL_CHANNEL);
         return;
@@ -65,7 +65,7 @@ void outStringNormal(ChatTab *const tab,
         case ChatTabType::GUILD:
         {
             const Guild *const guild = localPlayer->getGuild();
-            if (guild)
+            if (guild != nullptr)
             {
 #ifdef TMWA_SUPPORT
                 if (guild->getServerGuild())
@@ -74,7 +74,7 @@ void outStringNormal(ChatTab *const tab,
                         return;
                     guildHandler->chat(str);
                 }
-                else if (guildManager)
+                else if (guildManager != nullptr)
                 {
                     guildManager->chat(str);
                 }
@@ -111,18 +111,18 @@ void outStringNormal(ChatTab *const tab,
 
 void replaceVars(std::string &str)
 {
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
         return;
 
     if (str.find("<PLAYER>") != std::string::npos)
     {
         const Being *target = localPlayer->getTarget();
-        if (!target || target->getType() != ActorType::Player)
+        if ((target == nullptr) || target->getType() != ActorType::Player)
         {
             target = actorManager->findNearestLivingBeing(
                 localPlayer, 20, ActorType::Player, AllowSort_true);
         }
-        if (target)
+        if (target != nullptr)
             replaceAll(str, "<PLAYER>", target->getName());
         else
             replaceAll(str, "<PLAYER>", "");
@@ -130,12 +130,12 @@ void replaceVars(std::string &str)
     if (str.find("<MONSTER>") != std::string::npos)
     {
         const Being *target = localPlayer->getTarget();
-        if (!target || target->getType() != ActorType::Monster)
+        if ((target == nullptr) || target->getType() != ActorType::Monster)
         {
             target = actorManager->findNearestLivingBeing(
                 localPlayer, 20, ActorType::Monster, AllowSort_true);
         }
-        if (target)
+        if (target != nullptr)
             replaceAll(str, "<MONSTER>", target->getName());
         else
             replaceAll(str, "<MONSTER>", "");
@@ -167,7 +167,7 @@ void replaceVars(std::string &str)
         std::string newStr;
         const Party *party = nullptr;
         if (localPlayer->isInParty() &&
-            (party = localPlayer->getParty()))
+            ((party = localPlayer->getParty()) != nullptr))
         {
             party->getNames(names);
             FOR_EACH (StringVectCIter, it, names)

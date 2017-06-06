@@ -48,7 +48,7 @@ SDLMusic::~SDLMusic()
     Mix_FreeMusic(mMusic);
 #ifndef USE_SDL2
 #if SDL_MIXER_VERSION_ATLEAST(1, 2, 12)
-    if (mRw)
+    if (mRw != nullptr)
     {
         SDL_RWclose(mRw);
         mRw = nullptr;
@@ -60,9 +60,9 @@ SDLMusic::~SDLMusic()
 bool SDLMusic::play(const int loops, const int fadeIn)
 {
     if (fadeIn > 0)
-        return Mix_FadeInMusicPos(mMusic, loops, fadeIn, 0.0);
+        return Mix_FadeInMusicPos(mMusic, loops, fadeIn, 0.0) != 0;
     else
-        return Mix_FadeInMusicPos(mMusic, loops, 0, 0.0);
+        return Mix_FadeInMusicPos(mMusic, loops, 0, 0.0) != 0;
 }
 
 int SDLMusic::calcMemoryLocal() const

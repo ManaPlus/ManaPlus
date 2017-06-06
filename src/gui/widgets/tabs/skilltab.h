@@ -65,9 +65,9 @@ class SkillTab final : public Tab
 
         SkillInfo *getSelectedInfo() const
         {
-            if (mListBox)
+            if (mListBox != nullptr)
                 return mListBox->getSelectedInfo();
-            else if (mRectangleListBox)
+            else if (mRectangleListBox != nullptr)
                 return mRectangleListBox->getSelectedInfo();
             else
                 return nullptr;
@@ -76,7 +76,7 @@ class SkillTab final : public Tab
     protected:
         void setCurrent() override
         {
-            if (skillDialog)
+            if (skillDialog != nullptr)
                 skillDialog->updateTabSelection();
         }
 

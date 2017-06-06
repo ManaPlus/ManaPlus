@@ -84,20 +84,20 @@ DropDown::DropDown(const Widget2 *const widget,
     mPopup->setHeight(100);
 
     // Initialize graphics
-    if (instances == 0 && theme)
+    if (instances == 0 && (theme != nullptr))
     {
         // Load the background skin
         for (int i = 0; i < 2; i ++)
         {
             Skin *const skin = theme->load(dropdownFiles[i], "dropdown.xml");
-            if (skin)
+            if (skin != nullptr)
             {
-                if (!i)
+                if (i == 0)
                     mSkin = skin;
                 const ImageRect &rect = skin->getBorder();
                 for (int f = 0; f < 2; f ++)
                 {
-                    if (rect.grid[f])
+                    if (rect.grid[f] != nullptr)
                     {
                         rect.grid[f]->incRef();
                         buttons[f][i] = rect.grid[f];
@@ -108,7 +108,7 @@ DropDown::DropDown(const Widget2 *const widget,
                         buttons[f][i] = nullptr;
                     }
                 }
-                if (i)
+                if (i != 0)
                     theme->unload(skin);
             }
             else
@@ -144,12 +144,12 @@ DropDown::DropDown(const Widget2 *const widget,
     if (!eventId.empty())
         setActionEventId(eventId);
 
-    if (listener)
+    if (listener != nullptr)
         addActionListener(listener);
 
     mPopup->adjustSize();
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mSpacing = mSkin->getOption("spacing");
         mFrameSize = CAST_U32(mSkin->getOption("frameSize"));
@@ -161,7 +161,7 @@ DropDown::DropDown(const Widget2 *const widget,
 
 DropDown::~DropDown()
 {
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     instances--;
@@ -171,11 +171,11 @@ DropDown::~DropDown()
         {
             for (int i = 0; i < 2; i ++)
             {
-                if (buttons[f][i])
+                if (buttons[f][i] != nullptr)
                     buttons[f][i]->decRef();
             }
         }
-        if (theme)
+        if (theme != nullptr)
         {
             theme->unload(mSkin);
             Theme::unloadRect(skinRect);
@@ -192,18 +192,18 @@ void DropDown::updateAlpha()
     {
         mAlpha = alpha;
 
-        if (buttons[0][0])
+        if (buttons[0][0] != nullptr)
             buttons[0][0]->setAlpha(mAlpha);
-        if (buttons[0][1])
+        if (buttons[0][1] != nullptr)
             buttons[0][1]->setAlpha(mAlpha);
-        if (buttons[1][0])
+        if (buttons[1][0] != nullptr)
             buttons[1][0]->setAlpha(mAlpha);
-        if (buttons[1][1])
+        if (buttons[1][1] != nullptr)
             buttons[1][1]->setAlpha(mAlpha);
 
         for (int a = 0; a < 9; a++)
         {
-            if (skinRect.grid[a])
+            if (skinRect.grid[a] != nullptr)
                 skinRect.grid[a]->setAlpha(mAlpha);
         }
     }
@@ -227,7 +227,7 @@ void DropDown::draw(Graphics *const graphics)
     mShadowColor.a = alpha;
 
     ListModel *const model = mPopup->getListModel();
-    if (model && mPopup->getSelected() >= 0)
+    if ((model != nullptr) && mPopup->getSelected() >= 0)
     {
         Font *const font = getFont();
         if (mExtended)
@@ -236,7 +236,7 @@ void DropDown::draw(Graphics *const graphics)
             ExtendedListModel *const model2
                 = static_cast<ExtendedListModel *>(model);
             const Image *const image = model2->getImageAt(sel);
-            if (!image)
+            if (image == nullptr)
             {
                 font->drawString(graphics,
                     mForegroundColor,
@@ -320,7 +320,7 @@ void DropDown::drawButton(Graphics *const graphics)
     const int height = mDroppedDown ? mFoldedUpHeight : mDimension.height;
 
     Image *image = buttons[mDroppedDown][mPushed];
-    if (image)
+    if (image != nullptr)
     {
         graphics->drawImage(image,
             mDimension.width - image->getWidth() - mImagePadding,
@@ -356,7 +356,7 @@ void DropDown::keyPressed(KeyEvent& event)
             break;
 
         case InputAction::GUI_END:
-            if (mPopup->getListModel())
+            if (mPopup->getListModel() != nullptr)
             {
                 setSelected(mPopup->getListModel()->
                     getNumberOfElements() - 1);
@@ -441,7 +441,7 @@ void DropDown::mouseWheelMovedDown(MouseEvent& event)
 void DropDown::setSelectedString(const std::string &str)
 {
     ListModel *const listModel = mPopup->getListModel();
-    if (!listModel)
+    if (listModel == nullptr)
         return;
 
     for (int f = 0; f < listModel->getNumberOfElements(); f ++)
@@ -457,7 +457,7 @@ void DropDown::setSelectedString(const std::string &str)
 std::string DropDown::getSelectedString() const
 {
     ListModel *const listModel = mPopup->getListModel();
-    if (!listModel)
+    if (listModel == nullptr)
         return "";
 
     return listModel->getElementAt(getSelected());
@@ -472,7 +472,7 @@ void DropDown::dropDown()
 {
     if (!mDroppedDown)
     {
-        if (!mParent)
+        if (mParent == nullptr)
             return;
         mDroppedDown = true;
         mFoldedUpHeight = getHeight();

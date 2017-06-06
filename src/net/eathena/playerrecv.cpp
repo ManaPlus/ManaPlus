@@ -79,7 +79,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     unsigned int val = msg.readUInt8("str");
     PlayerInfo::setStatBase(Attributes::PLAYER_STR, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_STR,
             msg.readUInt8("str cost"));
@@ -91,7 +91,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("agi");
     PlayerInfo::setStatBase(Attributes::PLAYER_AGI, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_AGI,
             msg.readUInt8("agi cost"));
@@ -103,7 +103,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("vit");
     PlayerInfo::setStatBase(Attributes::PLAYER_VIT, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_VIT,
             msg.readUInt8("vit cost"));
@@ -115,7 +115,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("int");
     PlayerInfo::setStatBase(Attributes::PLAYER_INT, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_INT,
             msg.readUInt8("int cost"));
@@ -127,7 +127,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("dex");
     PlayerInfo::setStatBase(Attributes::PLAYER_DEX, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_DEX,
             msg.readUInt8("dex cost"));
@@ -139,7 +139,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
     val = msg.readUInt8("luk");
     PlayerInfo::setStatBase(Attributes::PLAYER_LUK, val);
-    if (statusWindow)
+    if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_LUK,
             msg.readUInt8("luk cost"));
@@ -191,12 +191,12 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 
 void PlayerRecv::processPlayerGetExp(Net::MessageIn &msg)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
     const BeingId id = msg.readBeingId("player id");
     const int exp = msg.readInt32("exp amount");
     const int stat = msg.readInt16("exp type");
-    const bool fromQuest = msg.readInt16("is from quest");
+    const bool fromQuest = msg.readInt16("is from quest") != 0;
     if (!fromQuest && id == localPlayer->getId())
     {
         if (stat == 1)
@@ -221,7 +221,7 @@ void PlayerRecv::processWalkResponse(Net::MessageIn &msg)
     msg.readInt32("tick");
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
     msg.readUInt8("(sx<<4) | (sy&0x0f)");
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->setRealPos(dstX, dstY);
     BLOCK_END("PlayerRecv::processWalkResponse")
 }
@@ -231,7 +231,7 @@ void PlayerRecv::processWalkError(Net::MessageIn &msg)
     msg.readInt32("tick");
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->failMove(x, y);
 }
 
@@ -247,7 +247,7 @@ void PlayerRecv::processPvpInfo(Net::MessageIn &msg)
 
 void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     const int type = msg.readInt16("var id");
@@ -261,11 +261,11 @@ void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
         const int base = PlayerInfo::getAttribute(Attributes::PLAYER_HP) +
             amount;
         PlayerInfo::setAttribute(Attributes::PLAYER_HP, base);
-        if (localPlayer->isInParty() && Party::getParty(1))
+        if (localPlayer->isInParty() && (Party::getParty(1) != nullptr))
         {
             PartyMember *const m = Party::getParty(1)
                 ->getMember(localPlayer->getId());
-            if (m)
+            if (m != nullptr)
             {
                 m->setHp(base);
                 m->setMaxHp(PlayerInfo::getAttribute(
@@ -390,23 +390,23 @@ void PlayerRecv::processPlayerRankPoints(Net::MessageIn &msg)
 
 void PlayerRecv::processOnlineList(Net::MessageIn &msg)
 {
-    if (!whoIsOnline)
+    if (whoIsOnline == nullptr)
         return;
 
     BLOCK_START("PlayerRecv::processOnlineList")
     const int size = msg.readInt16("len") - 4;
     std::vector<OnlinePlayer*> arr;
 
-    if (!size)
+    if (size == 0)
     {
-        if (whoIsOnline)
+        if (whoIsOnline != nullptr)
             whoIsOnline->loadList(arr);
         BLOCK_END("PlayerRecv::processOnlineList")
         return;
     }
 
     char *const start = reinterpret_cast<char*>(msg.readBytes(size, "nicks"));
-    if (!start)
+    if (start == nullptr)
     {
         BLOCK_END("PlayerRecv::processOnlineList")
         return;
@@ -417,7 +417,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
     int addVal = 3;
 
     while (buf - start + 1 < size
-           && *(buf + CAST_SIZE(addVal)))
+           && (*(buf + CAST_SIZE(addVal)) != 0))
     {
         const unsigned char status = *buf;
         buf ++;
@@ -429,9 +429,9 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
         GenderT gender = Gender::UNSPECIFIED;
         if (config.getBoolValue("showgender"))
         {
-            if (status & BeingFlag::GENDER_MALE)
+            if ((status & BeingFlag::GENDER_MALE) != 0)
                 gender = Gender::MALE;
-            else if (status & BeingFlag::GENDER_OTHER)
+            else if ((status & BeingFlag::GENDER_OTHER) != 0)
                 gender = Gender::OTHER;
             else
                 gender = Gender::FEMALE;
@@ -441,7 +441,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
         buf += strlen(buf) + 1;
     }
 
-    if (whoIsOnline)
+    if (whoIsOnline != nullptr)
         whoIsOnline->loadList(arr);
     delete [] start;
     BLOCK_END("PlayerRecv::processOnlineList")
@@ -466,7 +466,7 @@ void PlayerRecv::processKilledBy(Net::MessageIn &msg)
     else
     {
         std::string name;
-        if (dstBeing)
+        if (dstBeing != nullptr)
             name = dstBeing->getName();
         else
             name = strprintf("?%u", CAST_U32(id));

@@ -87,7 +87,7 @@ ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
     mOutputPause.set(0);
     mParticleAlpha.set(1.0F);
 
-    if (!emitterNode)
+    if (emitterNode == nullptr)
         return;
     for_each_xml_child_node(propertyNode, emitterNode)
     {
@@ -119,7 +119,7 @@ ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
                 std::string image = XML::getProperty(
                     propertyNode, "value", "");
                 // Don't leak when multiple images are defined
-                if (!image.empty() && !mParticleImage)
+                if (!image.empty() && (mParticleImage == nullptr))
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
@@ -131,12 +131,12 @@ ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
                 std::string image = XML::getProperty(
                     propertyNode, "value", "");
                 // Don't leak when multiple images are defined
-                if (!image.empty() && !mParticleImage)
+                if (!image.empty() && (mParticleImage == nullptr))
                 {
                     if (!dyePalettes.empty())
                         Dye::instantiate(image, dyePalettes);
                     Image *img = Loader::getImage(image);
-                    if (img)
+                    if (img != nullptr)
                     {
                         mParticleImage = Loader::getSubImage(img,
                             XML::getProperty(propertyNode, "x", 0),
@@ -254,15 +254,15 @@ ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
                  || xmlNameEqual(propertyNode, "animation"))
         {
             ImageSet *const imageset = getImageSet(propertyNode);
-            if (!imageset)
+            if (imageset == nullptr)
             {
                 logger->log1("Error: no valid imageset");
                 continue;
             }
             mTempSets.push_back(imageset);
 
-            Animation &animation = (xmlNameEqual(propertyNode, "rotation")) ?
-                mParticleRotation : mParticleAnimation;
+            Animation &animation = (xmlNameEqual(propertyNode, "rotation")) !=
+                0 ? mParticleRotation : mParticleAnimation;
 
             // Get animation frames
             for_each_xml_child_node(frameNode, propertyNode)
@@ -288,7 +288,7 @@ ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
 
                     Image *const img = imageset->get(index);
 
-                    if (!img)
+                    if (img == nullptr)
                     {
                         logger->log("No image at index %d", index);
                         continue;
@@ -311,7 +311,7 @@ ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
                     while (end >= start)
                     {
                         Image *const img = imageset->get(start);
-                        if (!img)
+                        if (img == nullptr)
                         {
                             logger->log("No image at index %d", start);
                             continue;
@@ -376,14 +376,14 @@ ImageSet *ParticleEmitter::getImageSet(XmlNodePtrConst node)
     {
         Image *const img = Loader::getImage(XML::getProperty(
             node, "imageset", ""));
-        if (!img)
+        if (img == nullptr)
             return nullptr;
 
         Image *const img2 = Loader::getSubImage(img, subX,
             XML::getProperty(node, "subY", 0),
             XML::getProperty(node, "subWidth", 0),
             XML::getProperty(node, "subHeight", 0));
-        if (!img2)
+        if (img2 == nullptr)
         {
             img->decRef();
             return nullptr;
@@ -438,13 +438,13 @@ ParticleEmitter & ParticleEmitter::operator=(const ParticleEmitter &o)
 
     FOR_EACH (ImageSetVectorCIter, i, mTempSets)
     {
-        if (*i)
+        if (*i != nullptr)
             (*i)->incRef();
     }
 
     mOutputPauseLeft = 0;
 
-    if (mParticleImage)
+    if (mParticleImage != nullptr)
         mParticleImage->incRef();
 
     return *this;
@@ -454,12 +454,12 @@ ParticleEmitter::~ParticleEmitter()
 {
     FOR_EACH (ImageSetVectorCIter, i, mTempSets)
     {
-        if (*i)
+        if (*i != nullptr)
             (*i)->decRef();
     }
     mTempSets.clear();
 
-    if (mParticleImage)
+    if (mParticleImage != nullptr)
     {
         mParticleImage->decRef();
         mParticleImage = nullptr;
@@ -525,7 +525,7 @@ void ParticleEmitter::createParticles(const int tick,
             break;
 
         Particle *newParticle = nullptr;
-        if (mParticleImage)
+        if (mParticleImage != nullptr)
         {
             const std::string &name = mParticleImage->mIdPath;
             if (ImageParticle::imageParticleCountByName.find(name) ==

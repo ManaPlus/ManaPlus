@@ -78,7 +78,7 @@ MailWindow::MailWindow() :
     setSaveVisible(true);
     setStickyButtonLock(true);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     setDefaultSize(310, 180, ImagePosition::CENTER);
@@ -122,7 +122,7 @@ void MailWindow::action(const ActionEvent &event)
     }
     else if (eventId == "new")
     {
-        if (!mailEditWindow)
+        if (mailEditWindow == nullptr)
         {
             CREATEWIDGETV0(mailEditWindow, MailEditWindow);
         }
@@ -164,7 +164,7 @@ void MailWindow::clear()
 
 void MailWindow::addMail(MailMessage *const message)
 {
-    if (!message)
+    if (message == nullptr)
         return;
     mMessages.push_back(message);
     mMailModel->add(strprintf("%s %s",
@@ -184,7 +184,7 @@ void MailWindow::removeMail(const int id)
     FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
-        if (message && message->id == id)
+        if ((message != nullptr) && message->id == id)
         {
             mMessages.erase(it);
             delete message;
@@ -195,7 +195,7 @@ void MailWindow::removeMail(const int id)
     FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
-        if (message)
+        if (message != nullptr)
         {
             mMailModel->add(strprintf("%s %s",
                 message->unread ? " " : "U",
@@ -206,7 +206,7 @@ void MailWindow::removeMail(const int id)
 
 void MailWindow::showMessage(MailMessage *const mail)
 {
-    if (!mail)
+    if (mail == nullptr)
         return;
     const std::map<int, MailMessage*>::const_iterator
         it = mMessagesMap.find(mail->id);
@@ -225,7 +225,7 @@ void MailWindow::viewNext(const int id)
     FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
-        if (message && message->id == id)
+        if ((message != nullptr) && message->id == id)
         {
             ++ it;
             if (it == mMessages.end())
@@ -249,7 +249,7 @@ void MailWindow::viewPrev(const int id)
     FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
-        if (message && message->id == id)
+        if ((message != nullptr) && message->id == id)
         {
             if (it == mMessages.begin())
             {
@@ -288,7 +288,7 @@ void MailWindow::postConnection()
 
 void MailWindow::createMail(const std::string &to)
 {
-    if (mailEditWindow)
+    if (mailEditWindow != nullptr)
         return;
 
     CREATEWIDGETV0(mailEditWindow, MailEditWindow);

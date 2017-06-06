@@ -51,7 +51,7 @@ MessageIn::MessageIn(const char *const data,
 
 MessageIn::~MessageIn()
 {
-    if (mLength)
+    if (mLength != 0u)
     {
         if (mPos != mLength && mPos != 2)
         {
@@ -207,7 +207,7 @@ void MessageIn::skip(const unsigned int length, const char *const str)
 void MessageIn::skipToEnd(const char *const str)
 {
     const int diff = CAST_S32(mLength - mPos);
-    if (diff)
+    if (diff != 0)
     {
         DEBUGLOG2("skip: " + toString(diff), mPos, str);
         mPos = mLength;
@@ -234,7 +234,7 @@ std::string MessageIn::readString(int length, const char *const dstr)
     const char *const stringEnd
         = static_cast<const char *>(memchr(stringBeg, '\0', length));
 
-    const std::string str(stringBeg, stringEnd
+    const std::string str(stringBeg, stringEnd != nullptr
         ? stringEnd - stringBeg : CAST_SIZE(length));
     DEBUGLOG2("readString: " + str, mPos, dstr);
     mPos += length;
@@ -259,12 +259,12 @@ std::string MessageIn::readRawString(int length, const char *const dstr)
     const char *const stringBeg = mData + CAST_SIZE(mPos);
     const char *const stringEnd
         = static_cast<const char *>(memchr(stringBeg, '\0', length));
-    std::string str(stringBeg, stringEnd
+    std::string str(stringBeg, stringEnd != nullptr
         ? stringEnd - stringBeg : CAST_SIZE(length));
 
     DEBUGLOG2("readString: " + str, mPos, dstr);
 
-    if (stringEnd)
+    if (stringEnd != nullptr)
     {
         const size_t len2 = CAST_SIZE(length)
             - (stringEnd - stringBeg) - 1;
@@ -272,7 +272,7 @@ std::string MessageIn::readRawString(int length, const char *const dstr)
         const char *const stringEnd2
             = static_cast<const char *>(memchr(stringBeg2, '\0', len2));
         const std::string hiddenPart = std::string(stringBeg2,
-            stringEnd2 ? stringEnd2 - stringBeg2 : len2);
+            stringEnd2 != nullptr ? stringEnd2 - stringBeg2 : len2);
         if (hiddenPart.length() > 0)
         {
             DEBUGLOG2("readString2: " + hiddenPart, mPos, dstr);
@@ -314,12 +314,12 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
     str += " ";
     for (int f = 0; f < length; f ++)
     {
-        if (buf[f])
+        if (buf[f] != 0u)
             str.append(strprintf("%c", buf[f]));
         else
             str.append("_");
     }
-    if (dstr)
+    if (dstr != nullptr)
         logger->dlog(dstr);
     logger->dlog("ReadBytes: " + str);
 #endif  // ENABLEDEBUGLOG

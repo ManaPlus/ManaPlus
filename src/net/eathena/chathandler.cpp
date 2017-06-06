@@ -53,7 +53,7 @@ ChatHandler::ChatHandler() :
 void ChatHandler::talk(const std::string &restrict text,
                        const std::string &restrict channel A_UNUSED) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     const std::string mes = std::string(localPlayer->getName()).append(
@@ -230,7 +230,7 @@ void ChatHandler::createChatRoom(const std::string &title,
 
 void ChatHandler::battleTalk(const std::string &text) const
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     const std::string mes = std::string(localPlayer->getName()).append(
@@ -253,7 +253,7 @@ void ChatHandler::battleTalk(const std::string &text) const
 void ChatHandler::joinChat(const ChatObject *const chat,
                            const std::string &password) const
 {
-    if (!chat)
+    if (chat == nullptr)
         return;
 
     createOutPacket(CMSG_CHAT_ROOM_JOIN);

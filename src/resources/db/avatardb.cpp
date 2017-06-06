@@ -59,7 +59,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "avatars"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "avatars"))
     {
         logger->log("Avatars Database: Error while loading %s!",
             fileName.c_str());
@@ -85,7 +85,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName,
         BeingInfo *currentInfo = nullptr;
         if (mAvatarInfos.find(id) != mAvatarInfos.end())
             currentInfo = mAvatarInfos[id];
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setName(XML::langProperty(

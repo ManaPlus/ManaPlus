@@ -50,7 +50,7 @@ void ItemRecv::processItemDropped(Net::MessageIn &msg)
     const int subY = CAST_S32(msg.readInt8("suby"));
     const int amount = msg.readInt16("count");
 
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->createItem(id,
             itemId,
@@ -84,7 +84,7 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
     const int subX = CAST_S32(msg.readInt8("subx"));
     const int subY = CAST_S32(msg.readInt8("suby"));
 
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->createItem(id,
             itemId,
@@ -124,7 +124,7 @@ void ItemRecv::processItemVisible(Net::MessageIn &msg)
     const int subX = CAST_S32(msg.readInt8("sub x"));
     const int subY = CAST_S32(msg.readInt8("sub y"));
 
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->createItem(id,
             itemId,
@@ -159,7 +159,7 @@ void ItemRecv::processItemVisible2(Net::MessageIn &msg)
     const int subX = CAST_S32(msg.readInt8("sub x"));
     const int subY = CAST_S32(msg.readInt8("sub y"));
 
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         actorManager->createItem(id,
             itemId,

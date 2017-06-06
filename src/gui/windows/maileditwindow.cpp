@@ -132,17 +132,17 @@ void MailEditWindow::action(const ActionEvent &event)
     else if (eventId == "send")
     {
         const int money = mMoneyField->getValue();
-        if (money)
+        if (money != 0)
             mailHandler->setAttachMoney(money);
         const Item *const tempItem = mInventory->getItem(0);
-        if (tempItem)
+        if (tempItem != nullptr)
         {
             const Inventory *const inv = PlayerInfo::getInventory();
-            if (inv)
+            if (inv != nullptr)
             {
                 const Item *const item = inv->findItem(
                     tempItem->getId(), ItemColor_one);
-                if (item)
+                if (item != nullptr)
                 {
                     mailHandler->setAttach(item->getInvIndex(),
                         tempItem->getQuantity());
@@ -164,7 +164,7 @@ void MailEditWindow::action(const ActionEvent &event)
     {
         Item *const item = inventoryWindow->getSelectedItem();
 
-        if (!item)
+        if (item == nullptr)
             return;
 
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::MailAdd,
@@ -175,7 +175,7 @@ void MailEditWindow::action(const ActionEvent &event)
 void MailEditWindow::addItem(const Item *const item,
                              const int amount)
 {
-    if (!item)
+    if (item == nullptr)
         return;
     mInventory->addItem(item->getId(),
         item->getType(),

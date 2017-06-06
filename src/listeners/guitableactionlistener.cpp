@@ -36,7 +36,7 @@ GuiTableActionListener::GuiTableActionListener(GuiTable *const restrict table,
     mColumn(column),
     mWidget(widget)
 {
-    if (widget && table)
+    if ((widget != nullptr) && (table != nullptr))
     {
         widget->addActionListener(this);
         widget->setParent(table);
@@ -46,7 +46,7 @@ GuiTableActionListener::GuiTableActionListener(GuiTable *const restrict table,
 
 GuiTableActionListener::~GuiTableActionListener()
 {
-    if (mWidget)
+    if (mWidget != nullptr)
     {
         mWidget->removeActionListener(this);
         mWidget->setWindow(nullptr);
@@ -56,7 +56,7 @@ GuiTableActionListener::~GuiTableActionListener()
 
 void GuiTableActionListener::action(const ActionEvent &actionEvent A_UNUSED)
 {
-    if (mTable)
+    if (mTable != nullptr)
     {
         mTable->setSelected(mRow, mColumn);
         mTable->distributeActionEvent();

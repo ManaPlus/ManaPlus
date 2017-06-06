@@ -102,7 +102,7 @@ void ShopItem::updateDisplayName(const int quantity)
     else
 #endif  // TMWA_SUPPORT
         mDisplayName = std::string(getInfo().getName(mColor));
-    if (mPrice)
+    if (mPrice != 0)
     {
         mDisplayName.append(" (").append(
             UnitsDb::formatCurrency(mCurrency, mPrice)).append(") ");
@@ -138,7 +138,7 @@ void ShopItem::addDuplicate()
 int ShopItem::sellCurrentDuplicate(const int quantity)
 {
     DuplicateItem* dupl = mDuplicates.top();
-    if (!dupl)
+    if (dupl == nullptr)
         return 0;
 
     const int sellCount = quantity <= dupl->quantity
@@ -155,7 +155,7 @@ int ShopItem::sellCurrentDuplicate(const int quantity)
 
 void ShopItem::increaseUsedQuantity(const int amount)
 {
-    if (mShowQuantity && mQuantity)
+    if (mShowQuantity && (mQuantity != 0))
     {
         if (mQuantity < mUsedQuantity + amount ||
             mUsedQuantity + amount < 0)

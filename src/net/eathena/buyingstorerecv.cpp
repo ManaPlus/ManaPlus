@@ -96,7 +96,7 @@ void BuyingStoreRecv::processBuyingStoreShowBoard(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("owner id");
     const std::string shopName = msg.readString(80, "shop name");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setBuyBoard(shopName);
 }
 
@@ -104,7 +104,7 @@ void BuyingStoreRecv::processBuyingStoreHideBoard(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
-    if (dstBeing)
+    if (dstBeing != nullptr)
         dstBeing->setBuyBoard(std::string());
     if (dstBeing == localPlayer)
     {
@@ -122,7 +122,7 @@ void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
     msg.readInt32("money limit");
 
     const Being *const dstBeing = actorManager->findBeing(id);
-    if (!dstBeing)
+    if (dstBeing == nullptr)
         return;
 
     SellDialog *const dialog = CREATEWIDGETR(BuyingStoreSellDialog,
@@ -138,10 +138,10 @@ void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
             msg.readUInt8("item type"));
         const int itemId = msg.readInt16("item id");
 
-        if (!inv)
+        if (inv == nullptr)
             continue;
         const Item *const item = inv->findItem(itemId, ItemColor_one);
-        if (!item)
+        if (item == nullptr)
             continue;
         // +++ need add colors support
         dialog->addItem(itemId, itemType, ItemColor_one, amount, price);
@@ -211,14 +211,14 @@ void BuyingStoreRecv::processBuyingStoreReport(Net::MessageIn &msg)
 
 void BuyingStoreRecv::processBuyingStoreDeleteItem(Net::MessageIn &msg)
 {
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
     msg.readInt32("price");
 
-    if (inventory)
+    if (inventory != nullptr)
     {
         if (Item *const item = inventory->getItem(index))
         {

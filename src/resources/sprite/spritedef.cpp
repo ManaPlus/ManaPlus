@@ -54,11 +54,11 @@ const Action *SpriteDef::getAction(const std::string &action,
     if (i == mActions.end() && num != 100)
         i = mActions.find(100);
 
-    if (i == mActions.end() || !(*i).second)
+    if (i == mActions.end() || ((*i).second == nullptr))
         return nullptr;
 
     const ActionMap *const actMap = (*i).second;
-    if (!actMap)
+    if (actMap == nullptr)
         return nullptr;
     const ActionMap::const_iterator it = actMap->find(action);
 
@@ -97,11 +97,11 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     XML::Document *const doc = Loader::getXml(animationFile.substr(0, pos),
         UseVirtFs_true,
         SkipError_false);
-    if (!doc)
+    if (doc == nullptr)
         return nullptr;
     XmlNodePtrConst rootNode = doc->rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "sprite"))
     {
         reportAlways("Error, failed to parse sprite %s",
             animationFile.c_str());
@@ -137,12 +137,12 @@ void SpriteDef::fixDeadAction()
     FOR_EACH (ActionsIter, it, mActions)
     {
         ActionMap *const d = (*it).second;
-        if (!d)
+        if (d == nullptr)
             continue;
         const ActionMap::iterator i = d->find(SpriteAction::DEAD);
         const ActionMap::iterator i2 = d->find(SpriteAction::STAND);
         // search dead action and check what it not same with stand action
-        if (i != d->end() && i->second && i->second != i2->second)
+        if (i != d->end() && (i->second != nullptr) && i->second != i2->second)
             (i->second)->setLastFrameDelay(0);
     }
 }
@@ -202,7 +202,7 @@ void SpriteDef::loadSprite(XmlNodeConstPtr spriteNode,
                            const std::string &palettes)
 {
     BLOCK_START("SpriteDef::loadSprite")
-    if (!spriteNode)
+    if (spriteNode == nullptr)
     {
         BLOCK_END("SpriteDef::loadSprite")
         return;
@@ -248,7 +248,7 @@ void SpriteDef::loadImageSet(XmlNodeConstPtr node,
     ImageSet *const imageSet = Loader::getImageSet(imageSrc,
         width, height);
 
-    if (!imageSet)
+    if (imageSet == nullptr)
     {
         reportAlways("%s: Couldn't load imageset: %s",
             mSource.c_str(),
@@ -278,7 +278,7 @@ const ImageSet *SpriteDef::getImageSet(const std::string &imageSetName) const
 void SpriteDef::loadAction(XmlNodeConstPtr node,
                            const int variant_offset)
 {
-    if (!node)
+    if (node == nullptr)
         return;
 
     const std::string actionName = XML::getProperty(node, "name", "");
@@ -320,8 +320,12 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
                               const ImageSet *const imageSet0,
                               const int variant_offset) const
 {
-    if (!action || !imageSet0 || !animationNode)
+    if (action == nullptr ||
+        imageSet0 == nullptr ||
+        animationNode == nullptr)
+    {
         return;
+    }
 
     const std::string directionName =
         XML::getProperty(animationNode, "direction", "");
@@ -376,7 +380,7 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
             }
 
             Image *const img = imageSet->get(index + variant_offset);
-            if (!img)
+            if (img == nullptr)
             {
                 reportAlways("%s: No image at index %d at direction '%s'",
                     mSource.c_str(),
@@ -434,7 +438,7 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
                     {
                         Image *const img = imageSet->get(atoi(
                             str.c_str()) + variant_offset);
-                        if (img)
+                        if (img != nullptr)
                         {
                             animation->addFrame(img, delay,
                                 offsetX, offsetY, rand);
@@ -491,11 +495,11 @@ void SpriteDef::includeSprite(XmlNodeConstPtr includeNode, const int variant)
     XML::Document *const doc = Loader::getXml(filename,
         UseVirtFs_true,
         SkipError_false);
-    if (!doc)
+    if (doc == nullptr)
         return;
     XmlNodeConstPtr rootNode = doc->rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "sprite"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "sprite"))
     {
         reportAlways("%s: No sprite root node in %s",
             mSource.c_str(),
@@ -526,7 +530,7 @@ SpriteDef::~SpriteDef()
 
     FOR_EACH (ImageSetIterator, i, mImageSets)
     {
-        if (i->second)
+        if (i->second != nullptr)
         {
             i->second->decRef();
             i->second = nullptr;
@@ -581,7 +585,7 @@ bool SpriteDef::addSequence(const int start,
                             const ImageSet *const imageSet,
                             Animation *const animation) const
 {
-    if (!imageSet || !animation)
+    if ((imageSet == nullptr) || (animation == nullptr))
         return true;
 
     if (start < 0 || end < 0)
@@ -600,7 +604,7 @@ bool SpriteDef::addSequence(const int start,
             {
                 Image *const img = imageSet->get(pos + variant_offset);
 
-                if (!img)
+                if (img == nullptr)
                 {
                     reportAlways("%s: No image at index %d",
                         mSource.c_str(),
@@ -625,7 +629,7 @@ bool SpriteDef::addSequence(const int start,
             {
                 Image *const img = imageSet->get(pos + variant_offset);
 
-                if (!img)
+                if (img == nullptr)
                 {
                     reportAlways("%s: No image at index %d",
                         mSource.c_str(),

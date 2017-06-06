@@ -101,7 +101,7 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
         }
     }
 
-    if (tradeWindow)
+    if (tradeWindow != nullptr)
     {
         if (type == 0)
         {
@@ -138,9 +138,9 @@ void TradeRecv::processTradeItemAddResponse(Net::MessageIn &msg)
         {
             Item *const item = PlayerInfo::getInventory()->getItem(
                 mItemIndex);
-            if (!item)
+            if (item == nullptr)
                 return;
-            if (tradeWindow)
+            if (tradeWindow != nullptr)
             {
                 tradeWindow->addItem2(item->getId(),
                     item->getType(),

@@ -71,20 +71,20 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
 {
     Shader *const vertexShader = static_cast<Shader*>(
         Loader::getShader(GL_VERTEX_SHADER, vertex));
-    if (!vertexShader)
+    if (vertexShader == nullptr)
         return nullptr;
 
     Shader *const fragmentShader = static_cast<Shader*>(
         Loader::getShader(GL_FRAGMENT_SHADER, fragment));
 
-    if (!fragmentShader)
+    if (fragmentShader == nullptr)
     {
         vertexShader->decRef();
         return nullptr;
     }
 
     GLuint programId = mglCreateProgram();
-    if (!programId)
+    if (programId == 0u)
     {
         vertexShader->decRef();
         fragmentShader->decRef();

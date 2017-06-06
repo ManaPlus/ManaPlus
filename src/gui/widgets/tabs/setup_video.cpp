@@ -360,7 +360,7 @@ void Setup_Video::action(const ActionEvent &event)
 
         if (mode == "custom")
         {
-            if (mDialog)
+            if (mDialog != nullptr)
             {
                 mode = mDialog->getText();
                 mDialog = nullptr;
@@ -379,7 +379,7 @@ void Setup_Video::action(const ActionEvent &event)
         }
         const int width = atoi(mode.substr(0, mode.find('x')).c_str());
         const int height = atoi(mode.substr(mode.find('x') + 1).c_str());
-        if (!width || !height)
+        if ((width == 0) || (height == 0))
             return;
 
         if (width != mainGraphics->mActualWidth
@@ -491,7 +491,7 @@ void Setup_Video::action(const ActionEvent &event)
     else if (id == "detect")
     {
         TestMain *test = graphicsManager.startDetection();
-        if (test)
+        if (test != nullptr)
         {
             Configuration &conf = test->getConfig();
             const int val = conf.getValueInt("opengl", -1);

@@ -34,21 +34,21 @@ AtlasResource::~AtlasResource()
     FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
-        if (atlas)
+        if (atlas != nullptr)
         {
             FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
-                if (item)
+                if (item != nullptr)
                 {
                     Image *const image2 = item->image;
-                    if (image2)
+                    if (image2 != nullptr)
                         image2->decRef();
                     delete item;
                 }
             }
             Image *const image = atlas->atlasImage;
-            if (image)
+            if (image != nullptr)
                 image->decRef();
             delete atlas;
         }
@@ -58,7 +58,7 @@ AtlasResource::~AtlasResource()
 
 void AtlasResource::incRef()
 {
-    if (!mRefCount)
+    if (mRefCount == 0u)
         AtlasManager::injectToResources(this);
     Resource::incRef();
 }
@@ -66,7 +66,7 @@ void AtlasResource::incRef()
 void AtlasResource::decRef()
 {
     Resource::decRef();
-    if (!mRefCount)
+    if (mRefCount == 0u)
         AtlasManager::moveToDeleted(this);
 }
 

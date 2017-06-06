@@ -66,7 +66,7 @@ void LoginHandler::getRegistrationDetails() const
 
 void LoginHandler::loginAccount(LoginData *const loginData1) const
 {
-    if (loginData1)
+    if (loginData1 != nullptr)
     {
         loginData1->resetCharacterSlots();
         sendLoginRegister(loginData1->username, loginData1->password, "");
@@ -77,13 +77,13 @@ void LoginHandler::chooseServer(const unsigned int server,
                                 const bool persistentIp) const
 {
     if (CAST_SIZE(server) >= LoginRecv::mWorlds.size() ||
-        !LoginRecv::mWorlds[server])
+        (LoginRecv::mWorlds[server] == nullptr))
     {
         return;
     }
 
     ServerInfo *const charServer = getCharServer();
-    if (charServer)
+    if (charServer != nullptr)
     {
         if (config.getBoolValue("usePersistentIP") || persistentIp)
         {
@@ -102,7 +102,7 @@ void LoginHandler::chooseServer(const unsigned int server,
 
 void LoginHandler::registerAccount(const LoginData *const loginData1) const
 {
-    if (!loginData1)
+    if (loginData1 == nullptr)
         return;
 
     std::string username = loginData1->username;
@@ -138,7 +138,7 @@ void LoginHandler::clearWorlds() const
 
 void LoginHandler::loginOrRegister(LoginData *const data) const
 {
-    if (!data)
+    if (data == nullptr)
         return;
 
     logger->log("Username is %s", data->username.c_str());

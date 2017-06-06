@@ -100,7 +100,7 @@ QuestsWindow::QuestsWindow() :
     setMinWidth(310);
     setMinHeight(220);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     mQuestsListBox->setActionEventId("select");
@@ -111,7 +111,7 @@ QuestsWindow::QuestsWindow() :
     mText->setLinkHandler(mItemLinkHandler);
     mTextScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mQuestsListBox->setWidth(500);
-    if (!gui || gui->getNpcFont()->getHeight() < 20)
+    if ((gui == nullptr) || gui->getNpcFont()->getHeight() < 20)
         mQuestsListBox->setRowHeight(20);
     else
         mQuestsListBox->setRowHeight(gui->getNpcFont()->getHeight());
@@ -143,12 +143,12 @@ QuestsWindow::~QuestsWindow()
     delete2(mItemLinkHandler);
     mQuestLinks.clear();
     mQuestReverseLinks.clear();
-    if (mCompleteIcon)
+    if (mCompleteIcon != nullptr)
     {
         mCompleteIcon->decRef();
         mCompleteIcon = nullptr;
     }
-    if (mIncompleteIcon)
+    if (mIncompleteIcon != nullptr)
     {
         mIncompleteIcon->decRef();
         mIncompleteIcon = nullptr;
@@ -200,7 +200,7 @@ void QuestsWindow::rebuild(const bool playSound)
         const std::vector<QuestItem*> &quests = (*mQuests)[var];
         FOR_EACH (std::vector<QuestItem*>::const_iterator, it2, quests)
         {
-            if (!*it2)
+            if (*it2 == nullptr)
                 continue;
             QuestItem *const quest = *it2;
             // complete quest
@@ -238,7 +238,7 @@ void QuestsWindow::rebuild(const bool playSound)
         mQuestLinks.push_back(quest);
         mQuestReverseLinks[quest->var] = k;
         names.push_back(quest->name);
-        if (mCompleteIcon)
+        if (mCompleteIcon != nullptr)
         {
             mCompleteIcon->incRef();
             images.push_back(mCompleteIcon);
@@ -262,7 +262,7 @@ void QuestsWindow::rebuild(const bool playSound)
         mQuestLinks.push_back(quest);
         mQuestReverseLinks[quest->var] = k;
         names.push_back(quest->name);
-        if (mIncompleteIcon)
+        if (mIncompleteIcon != nullptr)
         {
             mIncompleteIcon->incRef();
             images.push_back(mIncompleteIcon);
@@ -285,7 +285,7 @@ void QuestsWindow::rebuild(const bool playSound)
     {
         mQuestsListBox->setSelected(updatedQuest);
         showQuest(mQuestLinks[updatedQuest]);
-        if (playSound && effectManager)
+        if (playSound && (effectManager != nullptr))
         {
             switch (newCompleteStatus)
             {
@@ -306,7 +306,7 @@ void QuestsWindow::rebuild(const bool playSound)
 
 void QuestsWindow::showQuest(const QuestItem *const quest)
 {
-    if (!quest)
+    if (quest == nullptr)
         return;
 
     const std::vector<QuestItemText> &texts = quest->texts;
@@ -373,14 +373,14 @@ void QuestsWindow::setMap(const Map *const map)
     {
         mMap = map;
         mMapEffects.clear();
-        if (!mMap)
+        if (mMap == nullptr)
             return;
 
         const std::string name = mMap->getProperty("shortName");
         FOR_EACHP (std::vector<QuestEffect*>::const_iterator, it,  mAllEffects)
         {
             const QuestEffect *const effect = *it;
-            if (effect && name == effect->map)
+            if ((effect != nullptr) && name == effect->map)
                 mMapEffects.push_back(effect);
         }
         updateEffects();
@@ -396,7 +396,7 @@ void QuestsWindow::updateEffects()
               it,  mMapEffects)
     {
         const QuestEffect *const effect = *it;
-        if (effect)
+        if (effect != nullptr)
         {
             const NpcQuestVarMapCIter varIt = mVars->find(effect->var);
             if (varIt != mVars->end())
@@ -407,7 +407,7 @@ void QuestsWindow::updateEffects()
             }
         }
     }
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
 
     std::set<BeingTypeId> removeEffects;
@@ -452,7 +452,7 @@ void QuestsWindow::updateEffects()
 
 void QuestsWindow::addEffect(Being *const being)
 {
-    if (!being)
+    if (being == nullptr)
         return;
     const BeingTypeId id = being->getSubType();
     const std::map<BeingTypeId, const QuestEffect*>::const_iterator
@@ -460,7 +460,7 @@ void QuestsWindow::addEffect(Being *const being)
     if (it != mNpcEffects.end())
     {
         const QuestEffect *const effect = (*it).second;
-        if (effect)
+        if (effect != nullptr)
             being->addSpecialEffect(effect->effectId);
     }
 }

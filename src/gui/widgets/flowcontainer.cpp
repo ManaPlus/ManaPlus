@@ -34,9 +34,9 @@ FlowContainer::FlowContainer(const Widget2 *const widget,
     mGridHeight(1)
 {
     addWidgetListener(this);
-    if (!mBoxWidth)
+    if (mBoxWidth == 0)
         mBoxWidth = 1;
-    if (!mBoxHeight)
+    if (mBoxHeight == 0)
         mBoxHeight = 1;
 }
 
@@ -50,7 +50,7 @@ void FlowContainer::widgetResized(const Event &event A_UNUSED)
 
     const int itemCount = CAST_S32(mWidgets.size());
 
-    if (!mBoxWidth)
+    if (mBoxWidth == 0)
         mGridWidth = getWidth();
     else
         mGridWidth = getWidth() / mBoxWidth;
@@ -88,7 +88,7 @@ void FlowContainer::widgetResized(const Event &event A_UNUSED)
 
 void FlowContainer::add(Widget *const widget)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     Container::add(widget);

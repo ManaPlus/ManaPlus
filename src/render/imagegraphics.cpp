@@ -47,7 +47,7 @@ void ImegeGraphics::drawImage(const Image *restrict const image A_UNUSED,
 void ImegeGraphics::copyImage(const Image *restrict const image,
                               int dstX A_UNUSED, int dstY A_UNUSED) restrict2
 {
-    if (!mTarget || !image)
+    if ((mTarget == nullptr) || (image == nullptr))
         return;
 }
 

@@ -181,10 +181,10 @@ void Setup_Audio::apply()
         soundManager.init();
         if (config.getBoolValue("playMusic"))
         {
-            if (viewport)
+            if (viewport != nullptr)
             {  // in game
                 const Map *const map = viewport->getMap();
-                if (map)
+                if (map != nullptr)
                 {
                     soundManager.playMusic(map->getMusicFile(),
                         SkipError_false);

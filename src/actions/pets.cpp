@@ -83,7 +83,7 @@ impHandler(setPetName)
     if (args.empty())
     {
         const Being *const pet = getPet();
-        if (!pet)
+        if (pet == nullptr)
             return false;
         // TRANSLATORS: dialog header
         inputActionReplayListener.openDialog(_("Rename your pet"),
@@ -105,9 +105,9 @@ impHandler(petEmote)
         && event.action <= InputAction::PET_EMOTE_48)
     {
         const int emotion = event.action - InputAction::PET_EMOTE_1;
-        if (emoteShortcut)
+        if (emoteShortcut != nullptr)
             petHandler->emote(emoteShortcut->getEmote(emotion));
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -117,7 +117,7 @@ impHandler(petEmote)
 
 impHandler(catchPet)
 {
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
         return false;
 
     Being *target = nullptr;
@@ -135,11 +135,11 @@ impHandler(catchPet)
         }
     }
 
-    if (!target)
+    if (target == nullptr)
         target = localPlayer->getTarget();
     else
         localPlayer->setTarget(target);
-    if (target)
+    if (target != nullptr)
         petHandler->catchPet(target);
     return true;
 }
@@ -147,7 +147,7 @@ impHandler(catchPet)
 impHandler0(petMoveUp)
 {
     const Being *const pet = getPet();
-    if (!pet)
+    if (pet == nullptr)
         return false;
     petHandler->move(pet->getTileX(), pet->getTileY() - 1);
     return true;
@@ -156,7 +156,7 @@ impHandler0(petMoveUp)
 impHandler0(petMoveDown)
 {
     const Being *const pet = getPet();
-    if (!pet)
+    if (pet == nullptr)
         return false;
     petHandler->move(pet->getTileX(), pet->getTileY() + 1);
     return true;
@@ -165,7 +165,7 @@ impHandler0(petMoveDown)
 impHandler0(petMoveLeft)
 {
     const Being *const pet = getPet();
-    if (!pet)
+    if (pet == nullptr)
         return false;
     petHandler->move(pet->getTileX() - 1, pet->getTileY());
     return true;
@@ -174,7 +174,7 @@ impHandler0(petMoveLeft)
 impHandler0(petMoveRight)
 {
     const Being *const pet = getPet();
-    if (!pet)
+    if (pet == nullptr)
         return false;
     petHandler->move(pet->getTileX() + 1, pet->getTileY());
     return true;

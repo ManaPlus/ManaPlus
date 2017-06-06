@@ -175,7 +175,7 @@ void StatDb::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "stats"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "stats"))
     {
         logger->log("StatDb: Error while loading %s!",
             fileName.c_str());

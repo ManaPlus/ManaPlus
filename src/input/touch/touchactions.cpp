@@ -58,12 +58,12 @@ static void moveChar(int x, int y)
     const int y2 = abs(y);
     if (x2 > y2)
     {
-        if (y2 && x2 * 10 / y2 > diff)
+        if ((y2 != 0) && x2 * 10 / y2 > diff)
             y = 0;
     }
     else
     {
-        if (x2 && y2 * 10 / x2 > diff)
+        if ((x2 != 0) && y2 * 10 / x2 > diff)
             x = 0;
     }
 

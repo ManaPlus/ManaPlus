@@ -77,7 +77,7 @@ EmoteWindow::EmoteWindow() :
     setShowTitle(false);
     setResizable(true);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     addMouseListener(this);
@@ -110,12 +110,12 @@ void EmoteWindow::postInit()
     mFontPage->setCenter(true);
     mTextPage->setCenter(true);
 
-    if (mImageSet && mImageSet->size() >= 3)
+    if ((mImageSet != nullptr) && mImageSet->size() >= 3)
     {
         for (int f = 0; f < 3; f ++)
         {
             Image *const image = mImageSet->get(f);
-            if (image)
+            if (image != nullptr)
                 image->incRef();
         }
 
@@ -155,7 +155,7 @@ EmoteWindow::~EmoteWindow()
     delete2(mTextPage);
     delete2(mTextModel);
     delete2(mScrollTextPage);
-    if (mImageSet)
+    if (mImageSet != nullptr)
     {
         mImageSet->decRef();
         mImageSet = nullptr;
@@ -230,7 +230,7 @@ std::string EmoteWindow::getSelectedFont() const
     if (index < 0)
         return std::string();
 
-    if (!index)
+    if (index == 0)
         return "##b";
     else
         return "##B";

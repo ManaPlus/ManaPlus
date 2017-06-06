@@ -68,13 +68,17 @@ void SDLGraphics::drawRescaledImage(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
     // Check that preconditions for blitting are met.
-    if (!mWindow || !image || !image->mSDLSurface)
+    if (mWindow == nullptr ||
+        image == nullptr ||
+        image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     Image *const tmpImage = image->SDLgetScaledImage(
         desiredWidth, desiredHeight);
 
-    if (!tmpImage || !tmpImage->mSDLSurface)
+    if ((tmpImage == nullptr) || (tmpImage->mSDLSurface == nullptr))
         return;
 
     const ClipRect &top = mClipStack.top();
@@ -111,8 +115,12 @@ void SDLGraphics::drawImageInline(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
     // Check that preconditions for blitting are met.
-    if (!mWindow || !image || !image->mSDLSurface)
+    if (mWindow == nullptr ||
+        image == nullptr ||
+        image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     const ClipRect &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
@@ -204,8 +212,12 @@ void SDLGraphics::drawImageCached(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawImageCached", 1)
     // Check that preconditions for blitting are met.
-    if (!mWindow || !image || !image->mSDLSurface)
+    if (mWindow == nullptr ||
+        image == nullptr ||
+        image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     const ClipRect &top = mClipStack.top();
     const SDL_Rect &bounds = image->mBounds;
@@ -292,9 +304,9 @@ void SDLGraphics::drawPatternCached(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawPatternCached", 1)
     // Check that preconditions for blitting are met.
-    if (!mWindow || !image)
+    if ((mWindow == nullptr) || (image == nullptr))
         return;
-    if (!image->mSDLSurface)
+    if (image->mSDLSurface == nullptr)
         return;
 
     const SDL_Rect &bounds = image->mBounds;
@@ -413,9 +425,9 @@ void SDLGraphics::drawPatternInline(const Image *restrict const image,
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
     // Check that preconditions for blitting are met.
-    if (!mWindow || !image)
+    if ((mWindow == nullptr) || (image == nullptr))
         return;
-    if (!image->mSDLSurface)
+    if (image->mSDLSurface == nullptr)
         return;
 
     const SDL_Rect &bounds = image->mBounds;
@@ -524,9 +536,9 @@ void SDLGraphics::drawRescaledPattern(const Image *restrict const image,
                                       const int scaledHeight) restrict2
 {
     // Check that preconditions for blitting are met.
-    if (!mWindow || !image)
+    if ((mWindow == nullptr) || (image == nullptr))
         return;
-    if (!image->mSDLSurface)
+    if (image->mSDLSurface == nullptr)
         return;
 
     if (scaledHeight == 0 || scaledWidth == 0)
@@ -534,7 +546,7 @@ void SDLGraphics::drawRescaledPattern(const Image *restrict const image,
 
     Image *const tmpImage = image->SDLgetScaledImage(
         scaledWidth, scaledHeight);
-    if (!tmpImage)
+    if (tmpImage == nullptr)
         return;
 
     const SDL_Rect &bounds = tmpImage->mBounds;
@@ -597,8 +609,13 @@ void SDLGraphics::calcPatternInline(ImageVertexes *restrict const vert,
                                     const int w, const int h) const restrict2
 {
     // Check that preconditions for blitting are met.
-    if (!vert || !mWindow || !image || !image->mSDLSurface)
+    if (vert == nullptr ||
+        mWindow == nullptr ||
+        image == nullptr ||
+        image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     const SDL_Rect &bounds = image->mBounds;
     const int iw = bounds.w;
@@ -650,7 +667,7 @@ void SDLGraphics::calcPattern(ImageCollection *restrict const vertCol,
                               const int x, const int y,
                               const int w, const int h) const restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
 
     ImageVertexes *vert = nullptr;
@@ -690,8 +707,12 @@ void SDLGraphics::calcTileSDL(ImageVertexes *restrict const vert,
                               int x, int y) const restrict2
 {
     // Check that preconditions for blitting are met.
-    if (!vert || !vert->image || !vert->image->mSDLSurface)
+    if (vert == nullptr ||
+        vert->image == nullptr ||
+        vert->image->mSDLSurface == nullptr)
+    {
         return;
+    }
 
     const Image *const image = vert->image;
     const ClipRect &top = mClipStack.top();
@@ -719,7 +740,7 @@ void SDLGraphics::calcTileCollection(ImageCollection *restrict const vertCol,
                                      const Image *restrict const image,
                                      int x, int y) restrict2
 {
-    if (!vertCol)
+    if (vertCol == nullptr)
         return;
     if (vertCol->currentImage != image)
     {
@@ -760,7 +781,7 @@ void SDLGraphics::drawTileCollection(const ImageCollection
 void SDLGraphics::drawTileVertexes(const ImageVertexes *
                                    restrict const vert) restrict2
 {
-    if (!vert)
+    if (vert == nullptr)
         return;
     // vert and img must be != 0
     const Image *const img = vert->image;
@@ -796,7 +817,7 @@ void SDLGraphics::calcWindow(ImageCollection *restrict const vertCol,
 {
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
-    if (!image)
+    if (image == nullptr)
         return;
     if (vertCol->currentImage != image)
     {
@@ -821,10 +842,10 @@ int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const src,
     int srcx, srcy, w, h;
 
     // Make sure the surfaces aren't locked
-    if (!src || !dst)
+    if ((src == nullptr) || (dst == nullptr))
         return -1;
 
-    if (!srcrect || !dstrect)
+    if ((srcrect == nullptr) || (dstrect == nullptr))
         return -1;
 
     srcx = srcrect->x;
@@ -1005,7 +1026,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                     }
                 }
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-                if (!cR)
+                if (cR == nullptr)
                 {
                     cR = new unsigned int[0x100];
                     cG = new unsigned int[0x100];
@@ -1022,11 +1043,11 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                 unsigned rShift = rMask / 0xff;
                 unsigned gShift = gMask / 0xff;
                 unsigned bShift = bMask / 0xff;
-                if (!rShift)
+                if (rShift == 0u)
                     rShift = 1;
-                if (!gShift)
+                if (gShift == 0u)
                     gShift = 1;
-                if (!bShift)
+                if (bShift == 0u)
                     bShift = 1;
                 if (pixel != mOldPixel || mColor.a != mOldAlpha)
                 {
@@ -1457,8 +1478,8 @@ bool SDLGraphics::setVideoMode(const int w, const int h,
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
 
-    if (!(mWindow = graphicsManager.createWindow(w, h, bpp,
-        getSoftwareFlags())))
+    if ((mWindow = graphicsManager.createWindow(w, h, bpp,
+        getSoftwareFlags())) == nullptr)
     {
         mRect.w = 0;
         mRect.h = 0;

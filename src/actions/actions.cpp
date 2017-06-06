@@ -140,7 +140,7 @@ static int uploadUpdate(void *ptr,
         return 0;
 
     UploadChatInfo *const info = reinterpret_cast<UploadChatInfo*>(ptr);
-    if (!info)
+    if (info == nullptr)
         return 0;
 
     if (status == DownloadStatus::Complete)
@@ -153,7 +153,8 @@ static int uploadUpdate(void *ptr,
                 str = str.substr(0, sz - 1);
             str.append(info->addStr);
             ChatTab *const tab = info->tab;
-            if (chatWindow && (!tab || chatWindow->isTabPresent(tab)))
+            if (chatWindow != nullptr &&
+                (tab == nullptr || chatWindow->isTabPresent(tab)))
             {
                 str = strprintf("%s [@@%s |%s@@]",
                     info->text.c_str(), str.c_str(), str.c_str());
@@ -200,7 +201,7 @@ static void uploadFile(const std::string &str,
 
 static Being *findBeing(const std::string &name, const bool npc)
 {
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
         return nullptr;
 
     Being *being = nullptr;
@@ -214,11 +215,11 @@ static Being *findBeing(const std::string &name, const bool npc)
         being = actorManager->findBeingByName(
             name, ActorType::Unknown);
     }
-    if (!being && npc)
+    if ((being == nullptr) && npc)
     {
         being = actorManager->findNearestLivingBeing(
             localPlayer, 1, ActorType::Npc, AllowSort_true);
-        if (being)
+        if (being != nullptr)
         {
             if (abs(being->getTileX() - localPlayer->getTileX()) > 1
                 || abs(being->getTileY() - localPlayer->getTileY()) > 1)
@@ -227,11 +228,11 @@ static Being *findBeing(const std::string &name, const bool npc)
             }
         }
     }
-    if (!being && npc)
+    if ((being == nullptr) && npc)
     {
         being = actorManager->findNearestLivingBeing(
             localPlayer, 1, ActorType::Player, AllowSort_true);
-        if (being)
+        if (being != nullptr)
         {
             if (abs(being->getTileX() - localPlayer->getTileX()) > 1
                 || abs(being->getTileY() - localPlayer->getTileY()) > 1)
@@ -267,7 +268,7 @@ static Item *getItemByInvIndex(const InputEvent &event,
         default:
             break;
     }
-    if (inv)
+    if (inv != nullptr)
         return inv->getItem(index);
     return nullptr;
 }
@@ -278,7 +279,7 @@ static int getAmountFromEvent(const InputEvent &event,
 {
     Item *const item = getItemByInvIndex(event, invType);
     item0 = item;
-    if (!item)
+    if (item == nullptr)
         return 0;
 
     std::string str = event.args;
@@ -317,9 +318,9 @@ impHandler(emote)
     const int emotion = 1 + (event.action - InputAction::EMOTE_1);
     if (emotion > 0)
     {
-        if (emoteShortcut)
+        if (emoteShortcut != nullptr)
             emoteShortcut->useEmotePlayer(emotion);
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -332,10 +333,10 @@ impHandler(outfit)
     if (inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
         const int num = event.action - InputAction::OUTFIT_1;
-        if (outfitWindow && num >= 0)
+        if ((outfitWindow != nullptr) && num >= 0)
         {
             outfitWindow->wearOutfit(num);
-            if (Game::instance())
+            if (Game::instance() != nullptr)
                 Game::instance()->setValidSpeed();
             return true;
         }
@@ -343,10 +344,10 @@ impHandler(outfit)
     else if (inputManager.isActionActive(InputAction::COPY_OUTFIT))
     {
         const int num = event.action - InputAction::OUTFIT_1;
-        if (outfitWindow && num >= 0)
+        if ((outfitWindow != nullptr) && num >= 0)
         {
             outfitWindow->copyOutfit(num);
-            if (Game::instance())
+            if (Game::instance() != nullptr)
                 Game::instance()->setValidSpeed();
             return true;
         }
@@ -357,7 +358,7 @@ impHandler(outfit)
 
 impHandler0(mouseClick)
 {
-    if (!guiInput || !gui)
+    if ((guiInput == nullptr) || (gui == nullptr))
         return false;
 
     int mouseX, mouseY;
@@ -369,13 +370,13 @@ impHandler0(mouseClick)
 impHandler0(ok)
 {
     // Close the Browser if opened
-    if (helpWindow && helpWindow->isWindowVisible())
+    if ((helpWindow != nullptr) && helpWindow->isWindowVisible())
     {
         helpWindow->setVisible(Visible_false);
         return true;
     }
     // Close the config window, cancelling changes if opened
-    else if (setupWindow && setupWindow->isWindowVisible())
+    else if ((setupWindow != nullptr) && setupWindow->isWindowVisible())
     {
         setupWindow->action(ActionEvent(nullptr, "cancel"));
         return true;
@@ -394,12 +395,12 @@ impHandler0(ok)
 
 impHandler(shortcut)
 {
-    if (itemShortcutWindow)
+    if (itemShortcutWindow != nullptr)
     {
         const int num = itemShortcutWindow->getTabIndex();
         if (num >= 0 && num < CAST_S32(SHORTCUT_TABS))
         {
-            if (itemShortcut[num])
+            if (itemShortcut[num] != nullptr)
             {
                 itemShortcut[num]->useItem(event.action
                     - InputAction::SHORTCUT_1);
@@ -412,14 +413,14 @@ impHandler(shortcut)
 
 impHandler0(quit)
 {
-    if (!Game::instance())
+    if (Game::instance() == nullptr)
         return false;
-    if (popupManager && popupManager->isPopupMenuVisible())
+    if ((popupManager != nullptr) && popupManager->isPopupMenuVisible())
     {
         popupManager->closePopupMenu();
         return true;
     }
-    else if (!quitDialog)
+    else if (quitDialog == nullptr)
     {
         CREATEWIDGETV(quitDialog, QuitDialog,
             &quitDialog);
@@ -431,7 +432,7 @@ impHandler0(quit)
 
 impHandler0(dropItem0)
 {
-    if (dropShortcut)
+    if (dropShortcut != nullptr)
     {
         dropShortcut->dropFirst();
         return true;
@@ -441,7 +442,7 @@ impHandler0(dropItem0)
 
 impHandler0(dropItem)
 {
-    if (dropShortcut)
+    if (dropShortcut != nullptr)
     {
         dropShortcut->dropItems();
         return true;
@@ -452,14 +453,14 @@ impHandler0(dropItem)
 impHandler(dropItemId)
 {
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return false;
 
     // +++ ignoring item color for now
     Item *const item = inv->findItem(atoi(event.args.c_str()),
         ItemColor_one);
 
-    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
             inventoryWindow, item);
@@ -470,7 +471,7 @@ impHandler(dropItemId)
 impHandler(dropItemInv)
 {
     Item *const item = getItemByInvIndex(event, InventoryType::Inventory);
-    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
             inventoryWindow, item);
@@ -481,14 +482,14 @@ impHandler(dropItemInv)
 impHandler(dropItemIdAll)
 {
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (!inv)
+    if (inv == nullptr)
         return false;
 
     // +++ ignoring item color for now
     Item *const item = inv->findItem(atoi(event.args.c_str()),
         ItemColor_one);
 
-    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
         PlayerInfo::dropItem(item, item->getQuantity(), Sfx_true);
     return true;
 }
@@ -496,7 +497,7 @@ impHandler(dropItemIdAll)
 impHandler(dropItemInvAll)
 {
     Item *const item = getItemByInvIndex(event, InventoryType::Inventory);
-    if (item && !PlayerInfo::isItemProtected(item->getId()))
+    if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
         PlayerInfo::dropItem(item, item->getQuantity(), Sfx_true);
     return true;
 }
@@ -506,7 +507,8 @@ impHandler(heal)
 {
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-    if (actorManager && localPlayer)
+    if (actorManager != nullptr &&
+        localPlayer != nullptr)
     {
         std::string args = event.args;
 
@@ -517,14 +519,14 @@ impHandler(heal)
             {
                 being = actorManager->findBeing(fromInt(atoi(
                     args.substr(1).c_str()), BeingId));
-                if (being && being->getType() == ActorType::Monster)
+                if (being != nullptr && being->getType() == ActorType::Monster)
                     being = nullptr;
             }
             else
             {
                 being = actorManager->findBeingByName(args, ActorType::Player);
             }
-            if (being)
+            if (being != nullptr)
                 actorManager->heal(being);
         }
         else
@@ -532,7 +534,8 @@ impHandler(heal)
             Being *target = localPlayer->getTarget();
             if (inputManager.isActionActive(InputAction::STOP_ATTACK))
             {
-                if (!target || target->getType() != ActorType::Player)
+                if (target == nullptr ||
+                    target->getType() != ActorType::Player)
                 {
                     target = actorManager->findNearestLivingBeing(
                         localPlayer, 10, ActorType::Player, AllowSort_true);
@@ -540,13 +543,13 @@ impHandler(heal)
             }
             else
             {
-                if (!target)
+                if (target == nullptr)
                     target = localPlayer;
             }
             actorManager->heal(target);
         }
 
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -565,7 +568,7 @@ impHandler0(healmd)
 #ifdef TMWA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         const int matk = PlayerInfo::getStatEffective(Attributes::PLAYER_MATK);
         int maxHealingRadius;
@@ -582,10 +585,10 @@ impHandler0(healmd)
         }
 
         Being *target = actorManager->findMostDamagedPlayer(maxHealingRadius);
-        if (target)
+        if (target != nullptr)
             actorManager->heal(target);
 
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -599,9 +602,9 @@ impHandler0(itenplz)
 #ifdef TMWA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-    if (actorManager)
+    if (actorManager != nullptr)
     {
-        if (playerHandler &&
+        if (playerHandler != nullptr &&
             playerHandler->canUseMagic() &&
             PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 3)
         {
@@ -616,7 +619,7 @@ impHandler0(itenplz)
 
 impHandler0(setHome)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setHome();
         return true;
@@ -629,7 +632,7 @@ impHandler0(magicAttack)
 #ifdef TMWA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return false;
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->magicAttack();
         return true;
@@ -641,7 +644,7 @@ impHandler0(magicAttack)
 
 impHandler0(copyEquippedToOutfit)
 {
-    if (outfitWindow)
+    if (outfitWindow != nullptr)
     {
         outfitWindow->copyFromEquiped();
         return true;
@@ -651,7 +654,7 @@ impHandler0(copyEquippedToOutfit)
 
 impHandler(pickup)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
 
     const std::string args = event.args;
@@ -663,7 +666,7 @@ impHandler(pickup)
     {
         FloorItem *const item = actorManager->findItem(fromInt(
             atoi(args.c_str()), BeingId));
-        if (item)
+        if (item != nullptr)
             localPlayer->pickUp(item);
     }
     return true;
@@ -679,7 +682,7 @@ static void doSit()
 
 impHandler0(sit)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         doSit();
         return true;
@@ -700,19 +703,19 @@ impHandler0(ignoreInput)
 
 impHandler(buy)
 {
-    if (!serverFeatures)
+    if (serverFeatures == nullptr)
         return false;
     const std::string args = event.args;
     Being *being = findBeing(args, false);
-    if (!being && Net::getNetworkType() == ServerType::TMWATHENA)
+    if ((being == nullptr) && Net::getNetworkType() == ServerType::TMWATHENA)
     {
-        if (whoIsOnline)
+        if (whoIsOnline != nullptr)
         {
             const std::set<std::string> &players =
                 whoIsOnline->getOnlineNicks();
             if (players.find(args) != players.end())
             {
-                if (buySellHandler)
+                if (buySellHandler != nullptr)
                     buySellHandler->requestSellList(args);
                 return true;
             }
@@ -720,24 +723,29 @@ impHandler(buy)
         return false;
     }
 
-    if (!being)
+    if (being == nullptr)
         being = findBeing(args, true);
 
-    if (!being)
+    if (being == nullptr)
         return false;
 
     if (being->getType() == ActorType::Npc)
     {
-        if (npcHandler)
+        if (npcHandler != nullptr)
             npcHandler->buy(being);
         return true;
     }
     else if (being->getType() == ActorType::Player)
     {
-        if (vendingHandler && Net::getNetworkType() != ServerType::TMWATHENA)
+        if (vendingHandler != nullptr &&
+            Net::getNetworkType() != ServerType::TMWATHENA)
+        {
             vendingHandler->open(being);
-        else if (buySellHandler)
+        }
+        else if (buySellHandler != nullptr)
+        {
             buySellHandler->requestSellList(being->getName());
+        }
         return true;
     }
     return false;
@@ -745,20 +753,21 @@ impHandler(buy)
 
 impHandler(sell)
 {
-    if (!serverFeatures)
+    if (serverFeatures == nullptr)
         return false;
 
     const std::string args = event.args;
     Being *being = findBeing(args, false);
-    if (!being && Net::getNetworkType() == ServerType::TMWATHENA)
+    if (being == nullptr &&
+        Net::getNetworkType() == ServerType::TMWATHENA)
     {
-        if (whoIsOnline)
+        if (whoIsOnline != nullptr)
         {
             const std::set<std::string> &players =
                 whoIsOnline->getOnlineNicks();
             if (players.find(args) != players.end())
             {
-                if (buySellHandler)
+                if (buySellHandler != nullptr)
                     buySellHandler->requestBuyList(args);
                 return true;
             }
@@ -766,26 +775,26 @@ impHandler(sell)
         return false;
     }
 
-    if (!being)
+    if (being == nullptr)
         being = findBeing(args, true);
 
-    if (!being)
+    if (being == nullptr)
         return false;
 
     if (being->getType() == ActorType::Npc)
     {
-        if (npcHandler)
+        if (npcHandler != nullptr)
             npcHandler->sell(being->getId());
         return true;
     }
     else if (being->getType() == ActorType::Player)
     {
-        if (buyingStoreHandler &&
+        if ((buyingStoreHandler != nullptr) &&
             Net::getNetworkType() != ServerType::TMWATHENA)
         {
             buyingStoreHandler->open(being);
         }
-        else if (buySellHandler)
+        else if (buySellHandler != nullptr)
         {
             buySellHandler->requestBuyList(being->getName());
         }
@@ -797,7 +806,7 @@ impHandler(sell)
 impHandler(talk)
 {
     Being *being = findBeing(event.args, true);
-    if (!being)
+    if (being == nullptr)
         return false;
 
     if (being->canTalk())
@@ -814,7 +823,7 @@ impHandler(talk)
 
 impHandler0(stopAttack)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->stopAttack();
         // not consume if target attack key pressed
@@ -827,7 +836,7 @@ impHandler0(stopAttack)
 
 impHandler0(untarget)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->untarget();
         return true;
@@ -837,7 +846,7 @@ impHandler0(untarget)
 
 impHandler(attack)
 {
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
         return false;
 
     Being *target = nullptr;
@@ -852,22 +861,25 @@ impHandler(attack)
         {
             target = actorManager->findBeing(fromInt(atoi(
                 args.substr(1).c_str()), BeingId));
-            if (target && target->getType() != ActorType::Monster)
+            if (target != nullptr &&
+                target->getType() != ActorType::Monster)
+            {
                 target = nullptr;
+            }
         }
     }
-    if (!target)
+    if (target == nullptr)
         target = localPlayer->getTarget();
     else
         localPlayer->setTarget(target);
-    if (target)
+    if (target != nullptr)
         localPlayer->attack(target, true);
     return true;
 }
 
 impHandler(targetAttack)
 {
-    if (localPlayer && actorManager)
+    if ((localPlayer != nullptr) && (actorManager != nullptr))
     {
         Being *target = nullptr;
         std::string args = event.args;
@@ -884,15 +896,15 @@ impHandler(targetAttack)
             {
                 target = actorManager->findBeing(fromInt(atoi(
                     args.substr(1).c_str()), BeingId));
-                if (target && target->getType() != ActorType::Monster)
+                if ((target != nullptr) && target->getType() != ActorType::Monster)
                     target = nullptr;
             }
         }
 
-        if (!target && !settings.targetingType)
+        if ((target == nullptr) && (settings.targetingType == 0u))
             target = localPlayer->getTarget();
 
-        if (!target)
+        if (target == nullptr)
         {
             target = actorManager->findNearestLivingBeing(
                 localPlayer, 90, ActorType::Monster, AllowSort_true);
@@ -906,11 +918,11 @@ impHandler(targetAttack)
 
 impHandler0(attackHuman)
 {
-    if (!actorManager || !localPlayer)
+    if ((actorManager == nullptr) || (localPlayer == nullptr))
         return false;
 
     Being *const target = actorManager->findNearestPvpPlayer();
-    if (target)
+    if (target != nullptr)
     {
         localPlayer->setTarget(target);
         localPlayer->attack2(target, true);
@@ -927,13 +939,13 @@ impHandler0(safeVideoMode)
 
 impHandler0(stopSit)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->stopAttack();
         // not consume if target attack key pressed
         if (inputManager.isActionActive(InputAction::TARGET_ATTACK))
             return false;
-        if (!localPlayer->getTarget())
+        if (localPlayer->getTarget() == nullptr)
         {
             doSit();
             return true;
@@ -965,7 +977,7 @@ impHandler0(showKeyboard)
 
 impHandler0(showWindows)
 {
-    if (popupMenu)
+    if (popupMenu != nullptr)
     {
         popupMenu->showWindowsPopup();
         return true;
@@ -976,12 +988,12 @@ impHandler0(showWindows)
 impHandler0(openTrade)
 {
     const Being *const being = localPlayer->getTarget();
-    if (being && being->getType() == ActorType::Player)
+    if ((being != nullptr) && being->getType() == ActorType::Player)
     {
-        if (tradeHandler)
+        if (tradeHandler != nullptr)
             tradeHandler->request(being);
         tradePartnerName = being->getName();
-        if (tradeWindow)
+        if (tradeWindow != nullptr)
             tradeWindow->clear();
         return true;
     }
@@ -990,10 +1002,10 @@ impHandler0(openTrade)
 
 impHandler0(ipcToggle)
 {
-    if (ipc)
+    if (ipc != nullptr)
     {
         IPC::stop();
-        if (!ipc)
+        if (ipc == nullptr)
         {
             debugChatTab->chatLog("IPC service stopped.",
                 ChatMsgType::BY_SERVER);
@@ -1007,7 +1019,7 @@ impHandler0(ipcToggle)
     else
     {
         IPC::start();
-        if (ipc)
+        if (ipc != nullptr)
         {
             debugChatTab->chatLog(
                 strprintf("IPC service available on port %d", ipc->getPort()),
@@ -1025,7 +1037,7 @@ impHandler0(ipcToggle)
 impHandler(where)
 {
     ChatTab *const tab = event.tab != nullptr ? event.tab : debugChatTab;
-    if (!tab)
+    if (tab == nullptr)
         return false;
     std::ostringstream where;
     where << Game::instance()->getCurrentMapName() << ", coordinates: "
@@ -1037,7 +1049,7 @@ impHandler(where)
 
 impHandler0(who)
 {
-    if (chatHandler)
+    if (chatHandler != nullptr)
         chatHandler->who();
     return true;
 }
@@ -1046,7 +1058,7 @@ impHandler0(cleanGraphics)
 {
     ResourceManager::clearCache();
 
-    if (debugChatTab)
+    if (debugChatTab != nullptr)
     {
         // TRANSLATORS: clear graphics command message
         debugChatTab->chatLog(_("Cache cleaned"),
@@ -1057,9 +1069,9 @@ impHandler0(cleanGraphics)
 
 impHandler0(cleanFonts)
 {
-    if (gui)
+    if (gui != nullptr)
         gui->clearFonts();
-    if (debugChatTab)
+    if (debugChatTab != nullptr)
     {
         // TRANSLATORS: clear fonts cache message
         debugChatTab->chatLog(_("Cache cleaned"),
@@ -1070,19 +1082,19 @@ impHandler0(cleanFonts)
 
 impHandler(trade)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     const Being *being = actorManager->findBeingByName(
         event.args, ActorType::Player);
-    if (!being)
+    if (being == nullptr)
         being = localPlayer->getTarget();
-    if (being)
+    if (being != nullptr)
     {
-        if (tradeHandler)
+        if (tradeHandler != nullptr)
             tradeHandler->request(being);
         tradePartnerName = being->getName();
-        if (tradeWindow)
+        if (tradeWindow != nullptr)
             tradeWindow->clear();
     }
     return true;
@@ -1090,7 +1102,7 @@ impHandler(trade)
 
 impHandler0(priceLoad)
 {
-    if (shopWindow)
+    if (shopWindow != nullptr)
     {
         shopWindow->loadList();
         return true;
@@ -1100,7 +1112,7 @@ impHandler0(priceLoad)
 
 impHandler0(priceSave)
 {
-    if (shopWindow)
+    if (shopWindow != nullptr)
     {
         shopWindow->saveList();
         return true;
@@ -1110,7 +1122,7 @@ impHandler0(priceSave)
 
 impHandler0(cacheInfo)
 {
-    if (!chatWindow || !debugChatTab)
+    if ((chatWindow == nullptr) || (debugChatTab == nullptr))
         return false;
 
 /*
@@ -1156,14 +1168,14 @@ impHandler0(cacheInfo)
 
 impHandler0(disconnect)
 {
-    if (gameHandler)
+    if (gameHandler != nullptr)
         gameHandler->disconnect2();
     return true;
 }
 
 impHandler(undress)
 {
-    if (!actorManager || !localPlayer)
+    if ((actorManager == nullptr) || (localPlayer == nullptr))
         return false;
 
     const std::string args = event.args;
@@ -1182,7 +1194,7 @@ impHandler(undress)
         {
             target = actorManager->findBeing(fromInt(atoi(
                 pars[0].substr(1).c_str()), BeingId));
-            if (target && target->getType() == ActorType::Monster)
+            if ((target != nullptr) && target->getType() == ActorType::Monster)
                 target = nullptr;
         }
         else
@@ -1194,12 +1206,12 @@ impHandler(undress)
     if (sz == 2)
     {
         const int itemId = atoi(pars[1].c_str());
-        if (target)
+        if (target != nullptr)
             target->undressItemById(itemId);
     }
     else
     {
-        if (target && beingHandler)
+        if ((target != nullptr) && (beingHandler != nullptr))
             beingHandler->undress(target);
     }
 
@@ -1208,7 +1220,7 @@ impHandler(undress)
 
 impHandler0(dirs)
 {
-    if (!debugChatTab)
+    if (debugChatTab == nullptr)
         return false;
 
     debugChatTab->chatLog("config directory: "
@@ -1228,7 +1240,7 @@ impHandler0(dirs)
 
 impHandler0(uptime)
 {
-    if (!debugChatTab)
+    if (debugChatTab == nullptr)
         return false;
 
     if (cur_time < start_time)
@@ -1333,14 +1345,14 @@ impHandler0(dump)
 
 impHandler0(serverIgnoreAll)
 {
-    if (chatHandler)
+    if (chatHandler != nullptr)
         chatHandler->ignoreAll();
     return true;
 }
 
 impHandler0(serverUnIgnoreAll)
 {
-    if (chatHandler)
+    if (chatHandler != nullptr)
         chatHandler->unIgnoreAll();
     return true;
 }
@@ -1401,10 +1413,10 @@ impHandler(dumpGraphics)
 impHandler0(dumpEnvironment)
 {
     logger->log1("Start environment variables");
-    for (char **env = environ; *env; ++ env)
+    for (char **env = environ; *env != nullptr; ++ env)
         logger->log1(*env);
     logger->log1("End environment variables");
-    if (debugChatTab)
+    if (debugChatTab != nullptr)
     {
         // TRANSLATORS: dump environment command
         debugChatTab->chatLog(_("Environment variables dumped"),
@@ -1508,7 +1520,7 @@ impHandler0(createItems)
     FOR_EACH (ItemDB::ItemInfos::const_iterator, it, items)
     {
         const ItemInfo *const info = (*it).second;
-        if (!info)
+        if (info == nullptr)
             continue;
         const int id = info->getId();
         if (id <= 500)
@@ -1529,7 +1541,7 @@ impHandler(createItem)
     int id = 0;
     int amount = 0;
 
-    if (!adminHandler)
+    if (adminHandler == nullptr)
         return false;
 
     if (parse2Int(event.args, id, amount))
@@ -1571,7 +1583,7 @@ impHandler(uploadLog)
 
 impHandler0(mercenaryFire)
 {
-    if (mercenaryHandler)
+    if (mercenaryHandler != nullptr)
         mercenaryHandler->fire();
     return true;
 }
@@ -1583,7 +1595,7 @@ impHandler(useItem)
     if (itemId < SPELL_MIN_ID)
     {
         const Inventory *const inv = PlayerInfo::getInventory();
-        if (inv)
+        if (inv != nullptr)
         {
             // +++ ignoring item color for now
             const Item *const item = inv->findItem(itemId,
@@ -1591,11 +1603,11 @@ impHandler(useItem)
             PlayerInfo::useEquipItem(item, Sfx_true);
         }
     }
-    else if (itemId < SKILL_MIN_ID && spellManager)
+    else if (itemId < SKILL_MIN_ID && (spellManager != nullptr))
     {
         spellManager->useItem(itemId);
     }
-    else if (skillDialog)
+    else if (skillDialog != nullptr)
     {
         // +++ probably need get data parameter from args
         skillDialog->useItem(itemId,
@@ -1618,11 +1630,11 @@ impHandler(invToStorage)
     Item *item = nullptr;
     const int amount = getAmountFromEvent(event, item,
         InventoryType::Inventory);
-    if (!item)
+    if (item == nullptr)
         return true;
-    if (amount)
+    if (amount != 0)
     {
-        if (inventoryHandler)
+        if (inventoryHandler != nullptr)
         {
             inventoryHandler->moveItem2(InventoryType::Inventory,
                 item->getInvIndex(),
@@ -1643,12 +1655,12 @@ impHandler(tradeAdd)
     Item *item = nullptr;
     const int amount = getAmountFromEvent(event, item,
         InventoryType::Inventory);
-    if (!item || PlayerInfo::isItemProtected(item->getId()))
+    if ((item == nullptr) || PlayerInfo::isItemProtected(item->getId()))
         return true;
 
-    if (amount)
+    if (amount != 0)
     {
-        if (tradeWindow)
+        if (tradeWindow != nullptr)
             tradeWindow->tradeItem(item, amount, true);
     }
     else
@@ -1663,9 +1675,9 @@ impHandler(storageToInv)
 {
     Item *item = nullptr;
     const int amount = getAmountFromEvent(event, item, InventoryType::Storage);
-    if (amount)
+    if (amount != 0)
     {
-        if (inventoryHandler && item)
+        if ((inventoryHandler != nullptr) && (item != nullptr))
         {
             inventoryHandler->moveItem2(InventoryType::Storage,
                 item->getInvIndex(),
@@ -1699,7 +1711,7 @@ impHandler(unprotectItem)
 
 impHandler(kick)
 {
-    if (!localPlayer || !actorManager)
+    if ((localPlayer == nullptr) || (actorManager == nullptr))
         return false;
 
     Being *target = nullptr;
@@ -1716,23 +1728,23 @@ impHandler(kick)
                 args.substr(1).c_str()), BeingId));
         }
     }
-    if (!target)
+    if (target == nullptr)
         target = localPlayer->getTarget();
-    if (target && adminHandler)
+    if ((target != nullptr) && (adminHandler != nullptr))
         adminHandler->kick(target->getId());
     return true;
 }
 
 impHandler0(clearDrop)
 {
-    if (dropShortcut)
+    if (dropShortcut != nullptr)
         dropShortcut->clear();
     return true;
 }
 
 impHandler0(testInfo)
 {
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         logger->log("actors count: %d", CAST_S32(
             actorManager->size()));
@@ -1746,7 +1758,7 @@ impHandler(craftKey)
     const int slot = (event.action - InputAction::CRAFT_1);
     if (slot >= 0 && slot < 9)
     {
-        if (inventoryWindow)
+        if (inventoryWindow != nullptr)
             inventoryWindow->moveItemToCraft(slot);
         return true;
     }
@@ -1761,7 +1773,7 @@ impHandler0(resetGameModifiers)
 
 impHandler(barToChat)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->addInputText(event.args);
         return true;
@@ -1771,13 +1783,13 @@ impHandler(barToChat)
 
 impHandler(seen)
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     ChatTab *tab = event.tab;
-    if (!tab)
+    if (tab == nullptr)
         tab = localChatTab;
-    if (!tab)
+    if (tab == nullptr)
         return false;
 
     if (config.getBoolValue("enableIdCollecting") == false)
@@ -1825,7 +1837,7 @@ impHandler(seen)
 
 impHandler(dumpMemoryUsage)
 {
-    if (event.tab)
+    if (event.tab != nullptr)
         memoryManager.printAllMemory(event.tab);
     else
         memoryManager.printAllMemory(localChatTab);

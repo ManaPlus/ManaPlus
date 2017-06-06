@@ -64,18 +64,18 @@ void PlayerRecv::processPlayerWarp(Net::MessageIn &msg)
 
     logger->log("Warping to %s (%d, %d)", mapPath.c_str(), x, y);
 
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         logger->log1("SMSG_PLAYER_WARP localPlayer null");
 
     /*
       * We must clear the local player's target *before* the call
       * to changeMap, as it deletes all beings.
       */
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->stopAttack();
 
     Game *const game = Game::instance();
-    if (!game)
+    if (game == nullptr)
     {
         BLOCK_END("PlayerRecv::processPlayerWarp")
         return;
@@ -91,10 +91,10 @@ void PlayerRecv::processPlayerWarp(Net::MessageIn &msg)
     int scrollOffsetX = 0;
     int scrollOffsetY = 0;
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         const Map *const map = game->getCurrentMap();
-        if (map)
+        if (map != nullptr)
         {
             if (x >= map->getWidth())
                 x = map->getWidth() - 1;
@@ -126,7 +126,7 @@ void PlayerRecv::processPlayerWarp(Net::MessageIn &msg)
 
     logger->log("Adjust scrolling by %d:%d", scrollOffsetX, scrollOffsetY);
 
-    if (viewport)
+    if (viewport != nullptr)
     {
         viewport->returnCamera();
         viewport->scrollBy(scrollOffsetX, scrollOffsetY);
@@ -139,7 +139,7 @@ void PlayerRecv::processPlayerStatUpdate1(Net::MessageIn &msg)
     BLOCK_START("PlayerRecv::processPlayerStatUpdate1")
     const int type = msg.readInt16("type");
     const int value = msg.readInt32("value");
-    if (!localPlayer)
+    if (localPlayer == nullptr)
     {
         BLOCK_END("PlayerRecv::processPlayerStatUpdate1")
         return;
@@ -195,7 +195,7 @@ void PlayerRecv::processPlayerStatUpdate6(Net::MessageIn &msg)
     BLOCK_START("PlayerRecv::processPlayerStatUpdate6")
     const int type = msg.readInt16("type");
     const int value = msg.readUInt8("value");
-    if (statusWindow)
+    if (statusWindow != nullptr)
         playerHandler->setStat(msg, type, value, NoStat, Notify_true);
     BLOCK_END("PlayerRecv::processPlayerStatUpdate6")
 }
@@ -227,7 +227,7 @@ void PlayerRecv::processMapMusic(Net::MessageIn &msg)
         SkipError_false);
 
     Map *const map = viewport->getMap();
-    if (map)
+    if (map != nullptr)
         map->setMusicFile(music);
 }
 
@@ -236,7 +236,7 @@ void PlayerRecv::processMapMask(Net::MessageIn &msg)
     const int mask = msg.readInt32("mask");
     msg.readInt32("unused");
     Map *const map = Game::instance()->getCurrentMap();
-    if (map)
+    if (map != nullptr)
         map->setMask(mask);
 }
 

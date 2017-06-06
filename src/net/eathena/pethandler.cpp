@@ -58,7 +58,7 @@ void PetHandler::emote(const uint8_t emoteId)
 
 void PetHandler::catchPet(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_PET_CATCH);

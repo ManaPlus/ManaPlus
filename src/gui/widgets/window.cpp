@@ -180,10 +180,10 @@ Window::Window(const std::string &caption,
 
     int childPalette = 1;
     // Loads the skin
-    if (theme)
+    if (theme != nullptr)
     {
         mSkin = theme->load(skin, "window.xml");
-        if (mSkin)
+        if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());
             if (getOptionBool("titlebarBold"))
@@ -191,10 +191,10 @@ Window::Window(const std::string &caption,
             mTitlePadding = mSkin->getTitlePadding();
             mGripPadding = getOption("resizePadding");
             mCaptionOffsetX = getOption("captionoffsetx");
-            if (!mCaptionOffsetX)
+            if (mCaptionOffsetX == 0)
                 mCaptionOffsetX = 7;
             mCaptionOffsetY = getOption("captionoffsety");
-            if (!mCaptionOffsetY)
+            if (mCaptionOffsetY == 0)
                 mCaptionOffsetY = 5;
             mCaptionAlign = static_cast<Graphics::Alignment>(
                 getOption("captionalign"));
@@ -205,7 +205,7 @@ Window::Window(const std::string &caption,
             }
             setTitleBarHeight(CAST_U32(
                 getOption("titlebarHeight")));
-            if (!mTitleBarHeight)
+            if (mTitleBarHeight == 0u)
                 mTitleBarHeight = mCaptionFont->getHeight() + mPadding;
 
             mTitleBarHeight += getOption("titlebarHeightRelative");
@@ -219,7 +219,7 @@ Window::Window(const std::string &caption,
     }
 
     // Add this window to the window container
-    if (windowContainer)
+    if (windowContainer != nullptr)
         windowContainer->add(this);
 
     if (mModal == Modal_true)
@@ -241,11 +241,11 @@ Window::~Window()
 {
     logger->log("Window::~Window(\"%s\")", getCaption().c_str());
 
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
 #ifndef DYECMD
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->unregisterWindowForReset(this);
 #endif  // DYECMD
 
@@ -265,13 +265,13 @@ Window::~Window()
 
     windowInstances--;
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
         mSkin = nullptr;
     }
-    if (mGrip)
+    if (mGrip != nullptr)
     {
         mGrip->decRef();
         mGrip = nullptr;
@@ -290,7 +290,7 @@ void Window::setWindowContainer(WindowContainer *const wc)
 
 void Window::draw(Graphics *const graphics)
 {
-    if (!mSkin)
+    if (mSkin == nullptr)
         return;
 
     BLOCK_START("Window::draw")
@@ -318,7 +318,7 @@ void Window::draw(Graphics *const graphics)
         {
             const Image *const button = mSkin->getCloseImage(
                 mResizeHandles == CLOSE);
-            if (button)
+            if (button != nullptr)
             {
                 graphics->calcTileCollection(mVertexes,
                     button,
@@ -330,7 +330,7 @@ void Window::draw(Graphics *const graphics)
         if (mStickyButton)
         {
             const Image *const button = mSkin->getStickyImage(mSticky);
-            if (button)
+            if (button != nullptr)
             {
                 graphics->calcTileCollection(mVertexes,
                     button,
@@ -339,7 +339,7 @@ void Window::draw(Graphics *const graphics)
             }
         }
 
-        if (mGrip)
+        if (mGrip != nullptr)
         {
             graphics->calcTileCollection(mVertexes,
                 mGrip,
@@ -383,7 +383,7 @@ void Window::draw(Graphics *const graphics)
         }
 
         const Image *const image = mTextChunk.img;
-        if (image)
+        if (image != nullptr)
             graphics->drawImage(image, x, mCaptionOffsetY);
     }
 
@@ -402,7 +402,7 @@ void Window::draw(Graphics *const graphics)
 
 void Window::safeDraw(Graphics *const graphics)
 {
-    if (!mSkin)
+    if (mSkin == nullptr)
         return;
 
     BLOCK_START("Window::safeDraw")
@@ -417,18 +417,18 @@ void Window::safeDraw(Graphics *const graphics)
     {
         const Image *const button = mSkin->getCloseImage(
             mResizeHandles == CLOSE);
-        if (button)
+        if (button != nullptr)
             graphics->drawImage(button, mCloseRect.x, mCloseRect.y);
     }
     // Draw Sticky Button
     if (mStickyButton)
     {
         const Image *const button = mSkin->getStickyImage(mSticky);
-        if (button)
+        if (button != nullptr)
             graphics->drawImage(button, mStickyRect.x, mStickyRect.y);
     }
 
-    if (mGrip)
+    if (mGrip != nullptr)
         graphics->drawImage(mGrip, mGripRect.x, mGripRect.y);
 
     // Draw title
@@ -460,7 +460,7 @@ void Window::safeDraw(Graphics *const graphics)
         }
 
         const Image *const image = mTextChunk.img;
-        if (image)
+        if (image != nullptr)
             graphics->drawImage(image, x, mCaptionOffsetY);
     }
 
@@ -488,7 +488,7 @@ void Window::setContentSize(int width, int height)
 
 void Window::setLocationRelativeTo(const Widget *const widget)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     int wx, wy;
@@ -505,7 +505,7 @@ void Window::setLocationRelativeTo(const Widget *const widget)
 
 void Window::setLocationHorisontallyRelativeTo(const Widget *const widget)
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     int wx, wy;
@@ -566,7 +566,7 @@ void Window::setLocationRelativeTo(const ImagePosition::Type &position,
 
 void Window::setMinWidth(const int width)
 {
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mMinWinWidth = width > mSkin->getMinWidth()
             ? width : mSkin->getMinWidth();
@@ -579,7 +579,7 @@ void Window::setMinWidth(const int width)
 
 void Window::setMinHeight(const int height)
 {
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mMinWinHeight = height > mSkin->getMinHeight()
             ? height : mSkin->getMinHeight();
@@ -605,12 +605,12 @@ void Window::setResizable(const bool r)
     if ((mGrip != nullptr) == r)
         return;
 
-    if (mGrip)
+    if (mGrip != nullptr)
         mGrip->decRef();
     if (r)
     {
         mGrip = Theme::getImageFromThemeXml("resize.xml", "");
-        if (mGrip)
+        if (mGrip != nullptr)
         {
             mGripRect.x = mDimension.width - mGrip->getWidth() - mGripPadding;
             mGripRect.y = mDimension.height - mGrip->getHeight()
@@ -632,26 +632,26 @@ void Window::widgetResized(const Event &event A_UNUSED)
 {
     const Rect area = getChildrenArea();
 
-    if (mGrip)
+    if (mGrip != nullptr)
     {
         mGripRect.x = mDimension.width - mGrip->getWidth() - mGripPadding;
         mGripRect.y = mDimension.height - mGrip->getHeight() - mGripPadding;
     }
 
-    if (mLayout)
+    if (mLayout != nullptr)
     {
         int w = area.width;
         int h = area.height;
         mLayout->reflow(w, h);
     }
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         const bool showClose = mCloseWindowButton
-            && mSkin->getCloseImage(false);
+            && (mSkin->getCloseImage(false) != nullptr);
         if (showClose)
         {
             const Image *const button = mSkin->getCloseImage(false);
-            if (button)
+            if (button != nullptr)
             {
                 const int buttonWidth = button->getWidth();
                 mCloseRect.x = mDimension.width - buttonWidth - mClosePadding;
@@ -663,7 +663,7 @@ void Window::widgetResized(const Event &event A_UNUSED)
         if (mStickyButton)
         {
             const Image *const button = mSkin->getStickyImage(mSticky);
-            if (button)
+            if (button != nullptr)
             {
                 const int buttonWidth = button->getWidth();
                 int x = mDimension.width - buttonWidth
@@ -709,10 +709,10 @@ void Window::widgetHidden(const Event &event A_UNUSED)
     mTextChanged = true;
     mRedraw = true;
 
-    if (gui)
+    if (gui != nullptr)
         gui->setCursorType(Cursor::CURSOR_POINTER);
 
-    if (!mFocusHandler)
+    if (mFocusHandler == nullptr)
         return;
 
     for (WidgetListConstIterator it = mWidgets.begin();
@@ -732,7 +732,7 @@ void Window::setCloseButton(const bool flag)
 
 bool Window::isResizable() const
 {
-    return mGrip;
+    return mGrip != nullptr;
 }
 
 void Window::setStickyButton(const bool flag)
@@ -781,11 +781,11 @@ void Window::setVisible(const Visible visible, const bool forceSticky)
     {
         if (mPlayVisibleSound)
             soundManager.playGuiSound(SOUND_SHOW_WINDOW);
-        if (gui)
+        if (gui != nullptr)
         {
             MouseEvent *const event = reinterpret_cast<MouseEvent*>(
                 gui->createMouseEvent(this));
-            if (event)
+            if (event != nullptr)
             {
                 const int x = event->getX();
                 const int y = event->getY();
@@ -817,7 +817,7 @@ void Window::mousePressed(MouseEvent &event)
 
     if (event.getSource() == this)
     {
-        if (getParent())
+        if (getParent() != nullptr)
             getParent()->moveToTop(this);
 
         mDragOffsetX = event.getX();
@@ -832,21 +832,25 @@ void Window::mousePressed(MouseEvent &event)
         const int y = event.getY();
 
         // Handle close button
-        if (mCloseWindowButton && mSkin && mCloseRect.isPointInRect(x, y))
+        if (mCloseWindowButton &&
+            mSkin != nullptr &&
+            mCloseRect.isPointInRect(x, y))
         {
             mouseResize = 0;
-            mMoved = 0;
+            mMoved = false;
             event.consume();
             close();
             return;
         }
 
         // Handle sticky button
-        if (mStickyButton && mSkin && mStickyRect.isPointInRect(x, y))
+        if (mStickyButton &&
+            mSkin != nullptr &&
+            mStickyRect.isPointInRect(x, y))
         {
             setSticky(!isSticky());
             mouseResize = 0;
-            mMoved = 0;
+            mMoved = false;
             event.consume();
             return;
         }
@@ -856,14 +860,14 @@ void Window::mousePressed(MouseEvent &event)
         if (mouseResize != 0)
             event.consume();
         if (canMove())
-            mMoved = !mouseResize;
+            mMoved = (mouseResize == 0);
         else
             mMoved = false;
     }
 #ifndef DYECMD
     else if (button == MouseButton::RIGHT)
     {
-        if (popupMenu)
+        if (popupMenu != nullptr)
         {
             event.consume();
             popupMenu->showWindowPopup(this);
@@ -879,10 +883,10 @@ void Window::close()
 
 void Window::mouseReleased(MouseEvent &event A_UNUSED)
 {
-    if (mGrip && mouseResize)
+    if ((mGrip != nullptr) && (mouseResize != 0))
     {
         mouseResize = 0;
-        if (gui)
+        if (gui != nullptr)
             gui->setCursorType(Cursor::CURSOR_POINTER);
     }
 
@@ -896,13 +900,13 @@ void Window::mouseEntered(MouseEvent &event)
 
 void Window::mouseExited(MouseEvent &event A_UNUSED)
 {
-    if (mGrip && !mouseResize && gui)
+    if ((mGrip != nullptr) && (mouseResize == 0) && (gui != nullptr))
         gui->setCursorType(Cursor::CURSOR_POINTER);
 }
 
 void Window::updateResizeHandler(MouseEvent &event)
 {
-    if (!gui)
+    if (gui == nullptr)
         return;
 
 #ifndef DYECMD
@@ -940,7 +944,7 @@ void Window::updateResizeHandler(MouseEvent &event)
 void Window::mouseMoved(MouseEvent &event)
 {
     updateResizeHandler(event);
-    if (popupManager && !event.isConsumed())
+    if ((popupManager != nullptr) && !event.isConsumed())
     {
         popupManager->hideBeingPopup();
         popupManager->hideTextPopup();
@@ -983,31 +987,31 @@ void Window::mouseDragged(MouseEvent &event)
             std::max(0, mDimension.y)));
     }
 
-    if (mouseResize && !mMoved)
+    if ((mouseResize != 0) && !mMoved)
     {
         const int dx = event.getX() - mDragOffsetX;
         const int dy = event.getY() - mDragOffsetY;
         Rect newDim = getDimension();
 
-        if (mouseResize & (TOP | BOTTOM))
+        if ((mouseResize & (TOP | BOTTOM)) != 0)
         {
             const int newHeight = newDim.height
-                + ((mouseResize & TOP) ? -dy : dy);
+                + ((mouseResize & TOP) != 0 ? -dy : dy);
             newDim.height = std::min(mMaxWinHeight,
                 std::max(mMinWinHeight, newHeight));
 
-            if (mouseResize & TOP)
+            if ((mouseResize & TOP) != 0)
                 newDim.y -= newDim.height - getHeight();
         }
 
-        if (mouseResize & (LEFT | RIGHT))
+        if ((mouseResize & (LEFT | RIGHT)) != 0)
         {
             const int newWidth = newDim.width
-                + ((mouseResize & LEFT) ? -dx : dx);
+                + ((mouseResize & LEFT) != 0 ? -dx : dx);
             newDim.width = std::min(mMaxWinWidth,
                 std::max(mMinWinWidth, newWidth));
 
-            if (mouseResize & LEFT)
+            if ((mouseResize & LEFT) != 0)
                 newDim.x -= newDim.width - mDimension.width;
         }
 
@@ -1028,10 +1032,10 @@ void Window::mouseDragged(MouseEvent &event)
             newDim.height = mainGraphics->mHeight - newDim.y;
 
         // Update mouse offset when dragging bottom or right border
-        if (mouseResize & BOTTOM)
+        if ((mouseResize & BOTTOM) != 0)
             mDragOffsetY += newDim.height - mDimension.height;
 
-        if (mouseResize & RIGHT)
+        if ((mouseResize & RIGHT) != 0)
             mDragOffsetX += newDim.width - mDimension.width;
 
         // Set the new window and content dimensions
@@ -1046,7 +1050,7 @@ void Window::setModal(const Modal modal)
         mModal = modal;
         if (mModal == Modal_true)
         {
-            if (gui)
+            if (gui != nullptr)
                 gui->setCursorType(Cursor::CURSOR_POINTER);
             requestModalFocus();
         }
@@ -1078,7 +1082,7 @@ void Window::loadWindowState()
             + "Sticky", isSticky()));
     }
 
-    if (mGrip)
+    if (mGrip != nullptr)
     {
         int width = config.getValueInt(name + "WinWidth", mDefaultWidth);
         int height = config.getValueInt(name + "WinHeight", mDefaultHeight);
@@ -1102,7 +1106,7 @@ void Window::loadWindowState()
     // Check if the window is off screen...
     ensureOnScreen();
 
-    if (viewport)
+    if (viewport != nullptr)
     {
         int width = mDimension.width;
         int height = mDimension.height;
@@ -1133,7 +1137,7 @@ void Window::saveWindowState()
         if (mStickyButton)
             config.setValue(mWindowName + "Sticky", isSticky());
 
-        if (mGrip)
+        if (mGrip != nullptr)
         {
             if (getMinWidth() > mDimension.width)
                 setWidth(getMinWidth());
@@ -1257,7 +1261,7 @@ void Window::adjustPositionAfterResize(const int oldScreenWidth,
 
 void Window::adjustSizeToScreen()
 {
-    if (!mGrip)
+    if (mGrip == nullptr)
         return;
 
     const int screenWidth = mainGraphics->mWidth;
@@ -1289,7 +1293,7 @@ int Window::getResizeHandles(const MouseEvent &event)
 
     if (!mStickyButtonLock || !mSticky)
     {
-        if (mGrip &&
+        if ((mGrip != nullptr) &&
             (y > mTitleBarHeight ||
             (CAST_S32(y) < mPadding &&
             CAST_S32(mTitleBarHeight) > mPadding)))
@@ -1319,7 +1323,7 @@ bool Window::isResizeAllowed(const MouseEvent &event) const
 {
     const int y = event.getY();
 
-    if (mGrip &&
+    if ((mGrip != nullptr) &&
         (y > CAST_S32(mTitleBarHeight) ||
         y < mPadding))
     {
@@ -1337,7 +1341,7 @@ bool Window::isResizeAllowed(const MouseEvent &event) const
 
 Layout &Window::getLayout()
 {
-    if (!mLayout)
+    if (mLayout == nullptr)
         mLayout = new Layout;
     return *mLayout;
 }
@@ -1347,7 +1351,7 @@ void Window::clearLayout()
     clear();
 
     // Recreate layout instance when one is present
-    if (mLayout)
+    if (mLayout != nullptr)
     {
         delete mLayout;
         mLayout = new Layout;
@@ -1368,7 +1372,7 @@ ContainerPlacer Window::getPlacer(const int x, const int y)
 
 void Window::reflowLayout(int w, int h)
 {
-    if (!mLayout)
+    if (mLayout == nullptr)
         return;
 
     mLayout->reflow(w, h);
@@ -1378,7 +1382,7 @@ void Window::reflowLayout(int w, int h)
 
 void Window::redraw()
 {
-    if (mLayout)
+    if (mLayout != nullptr)
     {
         const Rect area = getChildrenArea();
         int w = area.width;
@@ -1426,10 +1430,10 @@ Rect Window::getWindowArea() const
 
 int Window::getOption(const std::string &name, const int def) const
 {
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         const int val = mSkin->getOption(name);
-        if (val)
+        if (val != 0)
             return val;
         return def;
     }
@@ -1438,8 +1442,8 @@ int Window::getOption(const std::string &name, const int def) const
 
 bool Window::getOptionBool(const std::string &name, const bool def) const
 {
-    if (mSkin)
-        return mSkin->getOption(name, def) != 0;
+    if (mSkin != nullptr)
+        return mSkin->getOption(name, static_cast<int>(def)) != 0;
     return def;
 }
 

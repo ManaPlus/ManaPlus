@@ -58,7 +58,7 @@ void HomunculusDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtr rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "homunculuses"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "homunculuses"))
     {
         logger->log("Homunculus Database: Error while loading %s!",
             paths.getStringValue("homunculusesFile").c_str());
@@ -90,7 +90,7 @@ void HomunculusDB::loadXmlFile(const std::string &fileName,
             logger->log("HomunculusDB: Redefinition of homunculus ID %d", id);
             currentInfo = mHomunculusInfos[fromInt(id + offset, BeingTypeId)];
         }
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setBlockType(BlockType::NONE);
@@ -114,7 +114,7 @@ void HomunculusDB::loadXmlFile(const std::string &fileName,
         currentInfo->setColorsList(XML::getProperty(homunculusNode,
             "colors", ""));
 
-        if (currentInfo->getMaxHP())
+        if (currentInfo->getMaxHP() != 0)
             currentInfo->setStaticMaxHP(true);
 
         SpriteDisplay display;

@@ -61,7 +61,7 @@ void PETDB::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "pets"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "pets"))
     {
         logger->log("PET Database: Error while loading %s!",
             fileName.c_str());
@@ -95,7 +95,7 @@ void PETDB::loadXmlFile(const std::string &fileName,
         BeingInfo *currentInfo = nullptr;
         if (mPETInfos.find(id) != mPETInfos.end())
             currentInfo = mPETInfos[id];
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new BeingInfo;
 
         currentInfo->setName(XML::langProperty(petNode,

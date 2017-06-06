@@ -54,7 +54,7 @@ void DeadDB::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst root = doc->rootNode();
 
-    if (!root || !xmlNameEqual(root, "messages"))
+    if ((root == nullptr) || !xmlNameEqual(root, "messages"))
     {
         logger->log("DeadDB: Failed to parse %s.",
             paths.getStringValue("deadMessagesFile").c_str());
@@ -75,9 +75,9 @@ void DeadDB::loadXmlFile(const std::string &fileName,
         {
             XmlChar *const data = reinterpret_cast<XmlChar*>(
                 XmlNodeGetContent(node));
-            if (!data)
+            if (data == nullptr)
                 continue;
-            if (!*data)
+            if (*data == 0)
             {
                 XmlFree(data);
                 continue;
@@ -99,7 +99,7 @@ void DeadDB::unload()
 std::string DeadDB::getRandomString()
 {
     const size_t sz = mMessages.size();
-    if (!sz)
+    if (sz == 0u)
         return std::string();
     return translator->getStr(mMessages[rand() % sz]);
 }

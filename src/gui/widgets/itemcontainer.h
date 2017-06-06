@@ -126,7 +126,7 @@ class ItemContainer final : public Widget,
         void updateMatrix();
 
         bool getClickCount() const noexcept2 A_WARN_UNUSED
-        { return mClicks; }
+        { return mClicks != 0; }
 
         void unsetInventory() noexcept2
         { mInventory = nullptr; }

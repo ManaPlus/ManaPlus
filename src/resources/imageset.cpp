@@ -39,7 +39,7 @@ ImageSet::ImageSet(Image *const img, const int width, const int height,
     mOffsetX(0),
     mOffsetY(0)
 {
-    if (img)
+    if (img != nullptr)
     {
         const int hAdd = height + spacing;
         const int wAdd = width + spacing;

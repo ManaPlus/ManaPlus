@@ -63,7 +63,7 @@ bool SDL::getAllVideoModes(StringVect &modeList)
     }
     else
     {
-        for (int i = 0; modes[i]; ++ i)
+        for (int i = 0; modes[i] != nullptr; ++ i)
         {
             const std::string modeString =
                 toString(CAST_S32(modes[i]->w)).append("x")
@@ -106,7 +106,7 @@ void SDL::setVsync(const int val)
 bool SDL::getWindowWMInfo(const SDL_Surface *const window A_UNUSED,
                           SDL_SysWMinfo *const info)
 {
-    return SDL_GetWMInfo(info);
+    return SDL_GetWMInfo(info) != 0;
 }
 
 SDL_Thread *SDL::createThread(int (SDLCALL *fn)(void *),

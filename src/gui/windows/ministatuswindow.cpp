@@ -114,14 +114,14 @@ MiniStatusWindow::MiniStatusWindow() :
         // TRANSLATORS: status bar name
         "status bar", _("status bar"))),
     mStatusPopup(CREATEWIDGETR0(StatusPopup)),
-    mSpacing(mSkin ? mSkin->getOption("spacing", 3) : 3),
-    mIconPadding(mSkin ? mSkin->getOption("iconPadding", 3) : 3),
-    mIconSpacing(mSkin ? mSkin->getOption("iconSpacing", 2) : 2),
+    mSpacing(mSkin != nullptr ? mSkin->getOption("spacing", 3) : 3),
+    mIconPadding(mSkin != nullptr ? mSkin->getOption("iconPadding", 3) : 3),
+    mIconSpacing(mSkin != nullptr ? mSkin->getOption("iconSpacing", 2) : 2),
     mMaxX(0)
 {
     StatusWindow::updateHPBar(mHpBar);
 
-    if (statusWindow)
+    if (statusWindow != nullptr)
         statusWindow->updateMPBar(mMpBar);
 
     const bool job = serverConfig.getValueBool("showJob", true);
@@ -145,7 +145,7 @@ MiniStatusWindow::MiniStatusWindow() :
     setVisible(Visible_true);
     addMouseListener(this);
     Inventory *const inv = PlayerInfo::getInventory();
-    if (inv)
+    if (inv != nullptr)
         inv->addInventoyListener(this);
 
     StatusWindow::updateMoneyBar(mMoneyBar);
@@ -160,13 +160,13 @@ MiniStatusWindow::~MiniStatusWindow()
     mIcons.clear();
 
     Inventory *const inv = PlayerInfo::getInventory();
-    if (inv)
+    if (inv != nullptr)
         inv->removeInventoyListener(this);
 
     FOR_EACH (ProgressBarVectorCIter, it, mBars)
     {
         ProgressBar *bar = *it;
-        if (!bar)
+        if (bar == nullptr)
             continue;
         if (bar->mVisible == Visible_false)
             delete bar;
@@ -205,7 +205,7 @@ void MiniStatusWindow::updateBars()
     FOR_EACH (ProgressBarVectorCIter, it, mBars)
     {
         ProgressBar *const bar = *it;
-        if (!bar)
+        if (bar == nullptr)
             continue;
         if (bar->mVisible == Visible_true)
         {
@@ -216,7 +216,7 @@ void MiniStatusWindow::updateBars()
         }
     }
 
-    if (lastBar)
+    if (lastBar != nullptr)
     {
         setContentSize(lastBar->getX() + lastBar->getWidth(),
             lastBar->getY() + lastBar->getHeight());
@@ -249,7 +249,7 @@ void MiniStatusWindow::drawIcons(Graphics *const graphics)
     for (size_t i = 0, sz = mIcons.size(); i < sz; i ++)
     {
         const AnimatedSprite *const icon = mIcons[i];
-        if (icon)
+        if (icon != nullptr)
         {
             icon->draw(graphics, icon_x, mIconPadding);
             icon_x += mIconSpacing + icon->getWidth();
@@ -261,7 +261,7 @@ void MiniStatusWindow::statChanged(const AttributesT id A_UNUSED,
                                    const int oldVal1 A_UNUSED,
                                    const int oldVal2 A_UNUSED)
 {
-    if (statusWindow)
+    if (statusWindow != nullptr)
         statusWindow->updateMPBar(mMpBar);
     StatusWindow::updateJobBar(mJobBar);
 }
@@ -301,9 +301,9 @@ void MiniStatusWindow::attributeChanged(const AttributesT id,
 
 void MiniStatusWindow::updateStatus()
 {
-    if (statusWindow)
+    if (statusWindow != nullptr)
         statusWindow->updateStatusBar(mStatusBar);
-    if (mStatusPopup && mStatusPopup->isPopupVisible())
+    if ((mStatusPopup != nullptr) && mStatusPopup->isPopupVisible())
         mStatusPopup->update();
 }
 
@@ -315,7 +315,7 @@ void MiniStatusWindow::logic()
     for (size_t i = 0, sz = mIcons.size(); i < sz; i++)
     {
         AnimatedSprite *const icon = mIcons[i];
-        if (icon)
+        if (icon != nullptr)
             icon->update(tick_time * 10);
     }
     BLOCK_END("MiniStatusWindow::logic")
@@ -351,7 +351,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     else if (event.getSource() == mXpBar)
     {
         std::string level;
-        if (localPlayer && localPlayer->isGM())
+        if ((localPlayer != nullptr) && localPlayer->isGM())
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d (GM %d)"),
@@ -430,7 +430,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     else if (event.getSource() == mInvSlotsBar)
     {
         const Inventory *const inv = PlayerInfo::getInventory();
-        if (inv)
+        if (inv != nullptr)
         {
             const int usedSlots = inv->getNumberOfSlotsUsed();
             const int maxSlots = inv->getSize();
@@ -459,10 +459,10 @@ void MiniStatusWindow::mousePressed(MouseEvent &event)
     {
         const ProgressBar *const bar = dynamic_cast<ProgressBar*>(
             event.getSource());
-        if (!bar)
+        if (bar == nullptr)
             return;
         event.consume();
-        if (popupManager)
+        if (popupManager != nullptr)
         {
             popupMenu->showPopup(getX() + event.getX(),
                 getY() + event.getY(), bar);
@@ -482,7 +482,7 @@ void MiniStatusWindow::showBar(const std::string &name,
                                const Visible visible)
 {
     ProgressBar *const bar = mBarNames[name];
-    if (!bar)
+    if (bar == nullptr)
         return;
     bar->setVisible(visible);
     updateBars();
@@ -491,19 +491,19 @@ void MiniStatusWindow::showBar(const std::string &name,
 
 void MiniStatusWindow::loadBars()
 {
-    if (!config.getIntValue("ministatussaved"))
+    if (config.getIntValue("ministatussaved") == 0)
     {
-        if (mWeightBar)
+        if (mWeightBar != nullptr)
             mWeightBar->setVisible(Visible_false);
-        if (mInvSlotsBar)
+        if (mInvSlotsBar != nullptr)
             mInvSlotsBar->setVisible(Visible_false);
-        if (mMoneyBar)
+        if (mMoneyBar != nullptr)
             mMoneyBar->setVisible(Visible_false);
-        if (mArrowsBar)
+        if (mArrowsBar != nullptr)
             mArrowsBar->setVisible(Visible_false);
-        if (mStatusBar)
+        if (mStatusBar != nullptr)
             mStatusBar->setVisible(Visible_false);
-        if (mJobBar)
+        if (mJobBar != nullptr)
             mJobBar->setVisible(Visible_true);
         return;
     }
@@ -515,7 +515,7 @@ void MiniStatusWindow::loadBars()
         if (str.empty())
             continue;
         ProgressBar *const bar = mBarNames[str];
-        if (!bar)
+        if (bar == nullptr)
             continue;
         bar->setVisible(Visible_false);
     }
@@ -542,7 +542,7 @@ void MiniStatusWindow::saveBars() const
 
 void MiniStatusWindow::slotsChanged(const Inventory *const inventory)
 {
-    if (!inventory)
+    if (inventory == nullptr)
         return;
 
     if (inventory->getType() == InventoryType::Inventory)

@@ -91,7 +91,7 @@ void ShopListBox::setPlayersMoney(const int money)
 void ShopListBox::draw(Graphics *const graphics)
 {
     BLOCK_START("ShopListBox::draw")
-    if (!mListModel || !mShopItems)
+    if ((mListModel == nullptr) || (mShopItems == nullptr))
     {
         BLOCK_END("ShopListBox::draw")
         return;
@@ -116,7 +116,7 @@ void ShopListBox::draw(Graphics *const graphics)
         Color* backgroundColor = &mBackgroundColor;
 
         ShopItem *const item = mShopItems->at(i);
-        if (item &&
+        if ((item != nullptr) &&
             (item->getDisabled() ||
             (mPlayerMoney < item->getPrice() && mPriceCheck) ||
             (mProtectItems && PlayerInfo::isItemProtected(item->getId()))))
@@ -155,10 +155,10 @@ void ShopListBox::draw(Graphics *const graphics)
                 width, mRowHeight));
         }
 
-        if (mShopItems && item)
+        if ((mShopItems != nullptr) && (item != nullptr))
         {
             Image *const icon = item->getImage();
-            if (icon)
+            if (icon != nullptr)
             {
                 icon->setAlpha(1.0F);
                 graphics->drawImage(icon, mPadding, y + mPadding);
@@ -194,7 +194,7 @@ void ShopListBox::safeDraw(Graphics *const graphics)
 void ShopListBox::adjustSize()
 {
     BLOCK_START("ShopListBox::adjustSize")
-    if (mListModel)
+    if (mListModel != nullptr)
     {
         setHeight(mRowHeight * mListModel->getNumberOfElements()
             + 2 * mPadding);
@@ -209,10 +209,10 @@ void ShopListBox::setPriceCheck(const bool check)
 
 void ShopListBox::mouseMoved(MouseEvent &event)
 {
-    if (!itemPopup || !mRowHeight)
+    if ((itemPopup == nullptr) || (mRowHeight == 0u))
         return;
 
-    if (!mShopItems)
+    if (mShopItems == nullptr)
     {
         itemPopup->hide();
         return;
@@ -227,7 +227,7 @@ void ShopListBox::mouseMoved(MouseEvent &event)
     else
     {
         const Item *const item = mShopItems->at(index);
-        if (item)
+        if (item != nullptr)
         {
             itemPopup->setItem(item, false);
             itemPopup->position(viewport->mMouseX, viewport->mMouseY);
@@ -265,7 +265,7 @@ void ShopListBox::mouseReleased(MouseEvent& event)
             inventory = PlayerInfo::getCartInventory();
         else
             return;
-        if (!inventory)
+        if (inventory == nullptr)
             return;
         Item *const item = inventory->getItem(dragDrop.getTag());
         if (mType == ShopListBoxType::BuyShop)
@@ -292,7 +292,7 @@ void ShopListBox::mouseReleased(MouseEvent& event)
             return;
 
         Item *const item = mShopItems->at(mSelected);
-        if (popupMenu && viewport)
+        if ((popupMenu != nullptr) && (viewport != nullptr))
         {
             popupMenu->showItemPopup(viewport->mMouseX,
             viewport->mMouseY,
@@ -303,7 +303,7 @@ void ShopListBox::mouseReleased(MouseEvent& event)
 
 void ShopListBox::mouseExited(MouseEvent& event A_UNUSED)
 {
-    if (!itemPopup)
+    if (itemPopup == nullptr)
         return;
 
     itemPopup->hide();

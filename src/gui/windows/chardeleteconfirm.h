@@ -51,7 +51,7 @@ class CharDeleteConfirm final : public ConfirmDialog
 
         void action(const ActionEvent &event) override final
         {
-            if (event.getId() == "yes" && mMaster)
+            if (event.getId() == "yes" && (mMaster != nullptr))
                 mMaster->askPasswordForDeletion(mIndex);
 
             ConfirmDialog::action(event);

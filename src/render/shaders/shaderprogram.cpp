@@ -43,11 +43,11 @@ ShaderProgram::ShaderProgram(const unsigned int id,
 
 ShaderProgram::~ShaderProgram()
 {
-    if (mProgramId)
+    if (mProgramId != 0u)
         mglDeleteProgram(mProgramId);
-    if (mVertex)
+    if (mVertex != nullptr)
         mVertex->decRef();
-    if (mFragment)
+    if (mFragment != nullptr)
         mFragment->decRef();
 }
 

@@ -234,7 +234,7 @@ void BasicContainer::setFocusHandler(FocusHandler *restrict2 const
 {
     Widget::setFocusHandler(focusHandler);
 
-    if (mInternalFocusHandler)
+    if (mInternalFocusHandler != nullptr)
         return;
 
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
@@ -243,13 +243,13 @@ void BasicContainer::setFocusHandler(FocusHandler *restrict2 const
 
 void BasicContainer::add(Widget *const widget) restrict2
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
     mWidgets.push_back(widget);
     if (widget->isAllowLogic())
         mLogicWidgets.push_back(widget);
 
-    if (!mInternalFocusHandler)
+    if (mInternalFocusHandler == nullptr)
         widget->setFocusHandler(getFocusHandler());
     else
         widget->setFocusHandler(mInternalFocusHandler);
@@ -260,7 +260,7 @@ void BasicContainer::add(Widget *const widget) restrict2
 
 void BasicContainer::remove(Widget *const restrict widget) restrict2
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
     FOR_EACH (WidgetListIterator, iter, mWidgets)
     {
@@ -391,7 +391,7 @@ void BasicContainer::logicChildren() restrict2
 void BasicContainer::showWidgetPart(Widget *restrict const widget,
                                     const Rect &restrict area) restrict2
 {
-    if (!widget)
+    if (widget == nullptr)
         return;
 
     const Rect widgetArea = getChildrenArea();
@@ -417,7 +417,7 @@ void BasicContainer::setInternalFocusHandler(FocusHandler *const restrict
 {
     Widget::setInternalFocusHandler(focusHandler);
 
-    FocusHandler *const restrict handler = mInternalFocusHandler ?
+    FocusHandler *const restrict handler = mInternalFocusHandler != nullptr ?
         mInternalFocusHandler : getFocusHandler();
     FOR_EACH (WidgetListConstIterator, iter, mWidgets)
     {

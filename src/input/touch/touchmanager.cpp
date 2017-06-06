@@ -130,7 +130,7 @@ void TouchManager::loadTouchItem(TouchItem **restrict item,
                                  const TouchFuncPtr fOut) restrict2
 {
     *item = nullptr;
-    if (!theme)
+    if (theme == nullptr)
         return;
     ImageRect *images = new ImageRect;
     for (int f = 0; f < 9; f ++)
@@ -143,10 +143,10 @@ void TouchManager::loadTouchItem(TouchItem **restrict item,
         icon = Theme::getImageFromThemeXml(imageName, "");
 
     Skin *const skin = theme->loadSkinRect(*images, name, "");
-    if (skin)
+    if (skin != nullptr)
     {
         Image *const image = images->grid[0];
-        if (image)
+        if (image != nullptr)
         {
             if (x == -1)
                 x = skin->getOption("x", 10);
@@ -208,13 +208,13 @@ void TouchManager::draw() restrict2
         FOR_EACH (TouchItemVectorCIter, it, mObjects)
         {
             const TouchItem *const item = *it;
-            if (item && item->images && (mShow ||
+            if ((item != nullptr) && (item->images != nullptr) && (mShow ||
                 (item == mKeyboard && mShowKeyboard)))
             {
                 mainGraphics->calcWindow(mVertexes, item->x, item->y,
                     item->width, item->height, *item->images);
                 const Image *const icon = item->icon;
-                if (icon)
+                if (icon != nullptr)
                 {
                     mainGraphics->calcTileCollection(mVertexes, icon,
                         item->x + (item->width - icon->mBounds.w) / 2,
@@ -233,13 +233,13 @@ void TouchManager::safeDraw() restrict2
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         const TouchItem *const item = *it;
-        if (item && item->images && (mShow ||
+        if ((item != nullptr) && (item->images != nullptr) && (mShow ||
             (item == mKeyboard && mShowKeyboard)))
         {
             mainGraphics->drawImageRect(item->x, item->y,
                 item->width, item->height, *item->images);
             const Image *const icon = item->icon;
-            if (icon)
+            if (icon != nullptr)
             {
                 mainGraphics->drawImage(icon,
                     item->x + (item->width - icon->mBounds.w) / 2,
@@ -252,7 +252,7 @@ void TouchManager::safeDraw() restrict2
 
 void TouchManager::drawText() restrict2
 {
-    if (!gui)
+    if (gui == nullptr)
         return;
 
     Font *const font = boldFont;
@@ -262,7 +262,7 @@ void TouchManager::drawText() restrict2
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         const TouchItem *const item = *it;
-        if (item && mShow && !item->text.empty())
+        if ((item != nullptr) && mShow && !item->text.empty())
         {
             const std::string str = item->text;
             const int textX = (item->rect.width - font->getWidth(str))
@@ -285,15 +285,18 @@ bool TouchManager::processEvent(const MouseInput &mouseInput) restrict2
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         const TouchItem *const item = *it;
-        if (!item || (!mShow && (item != mKeyboard || !mShowKeyboard)))
+        if (item == nullptr ||
+            (!mShow && (item != mKeyboard || !mShowKeyboard)))
+        {
             continue;
+        }
         const Rect &rect = item->rect;
         if (rect.isPointInRect(x, y))
         {
             MouseInput event = mouseInput;
             event.setX(event.getTouchX() - item->x);
             event.setY(event.getTouchY() - item->y);
-            if (item->funcAll)
+            if (item->funcAll != nullptr)
                 item->funcAll(event);
 
             switch (mouseInput.getType())
@@ -301,13 +304,13 @@ bool TouchManager::processEvent(const MouseInput &mouseInput) restrict2
                 case MouseEventType::PRESSED:
                     if (!item->eventPressed.empty())
                         executeAction(item->eventPressed);
-                    else if (item->funcPressed)
+                    else if (item->funcPressed != nullptr)
                         item->funcPressed(event);
                     break;
                 case MouseEventType::RELEASED:
                     if (!item->eventReleased.empty())
                         executeAction(item->eventReleased);
-                    else if (item->funcReleased)
+                    else if (item->funcReleased != nullptr)
                         item->funcReleased(event);
                     break;
                 default:
@@ -323,7 +326,7 @@ bool TouchManager::processEvent(const MouseInput &mouseInput) restrict2
             }
             return true;
         }
-        else if (item->funcOut)
+        else if (item->funcOut != nullptr)
         {
             item->funcOut(mouseInput);
         }
@@ -350,7 +353,7 @@ void TouchManager::resize(const int width, const int height) restrict2
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
     {
         TouchItem *const item = *it;
-        if (!item)
+        if (item == nullptr)
             continue;
 
         switch (item->type)
@@ -381,13 +384,13 @@ void TouchManager::resize(const int width, const int height) restrict2
 
 void TouchManager::unload(TouchItem *restrict const item)
 {
-    if (item)
+    if (item != nullptr)
     {
-        if (item->images)
+        if (item->images != nullptr)
         {
             Theme::unloadRect(*item->images);
             delete2(item->images);
-            if (item->icon)
+            if (item->icon != nullptr)
             {
                 item->icon->decRef();
                 item->icon = nullptr;
@@ -402,7 +405,7 @@ void TouchManager::unloadTouchItem(TouchItem *restrict *unloadItem) restrict2
     FOR_EACH (TouchItemVectorIter, it, mObjects)
     {
         TouchItem *item = *it;
-        if (item && *unloadItem == item)
+        if ((item != nullptr) && *unloadItem == item)
         {
             mObjects.erase(it);
             unload(item);
@@ -421,11 +424,11 @@ void TouchManager::loadPad() restrict2
 void TouchManager::loadButtons() restrict2
 {
     const int sz = (mButtonsSize + 1) * 50;
-    if (!theme)
+    if (theme == nullptr)
         return;
     Skin *const skin = theme->load("dbutton.xml", "");
 
-    if (skin)
+    if (skin != nullptr)
     {
         const int x = skin->getOption("x", 10);
         const int y = skin->getOption("y", 10);

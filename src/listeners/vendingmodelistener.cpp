@@ -30,7 +30,7 @@ void VendingModeListener::distributeEvent(const bool b)
               it, mListeners)
     {
         VendingModeListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->vendingEnabled(b);
     }
 }

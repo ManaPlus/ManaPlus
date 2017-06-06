@@ -57,14 +57,14 @@ EmoteShortcutContainer::EmoteShortcutContainer(Widget2 *restrict const
     mEmoteClicked(false),
     mEmoteMoved(0)
 {
-    if (mBackgroundImg)
+    if (mBackgroundImg != nullptr)
         mBackgroundImg->setAlpha(settings.guiAlpha);
 
     // Setup emote sprites
     for (int i = 0; i <= EmoteDB::getLast(); i++)
     {
         const EmoteSprite *const sprite = EmoteDB::getSprite(i, true);
-        if (sprite && sprite->sprite)
+        if ((sprite != nullptr) && (sprite->sprite != nullptr))
             mEmoteImg.push_back(sprite);
     }
 
@@ -85,13 +85,13 @@ void EmoteShortcutContainer::setWidget2(const Widget2 *restrict const widget)
 
 void EmoteShortcutContainer::draw(Graphics *restrict graphics) restrict2
 {
-    if (!emoteShortcut)
+    if (emoteShortcut == nullptr)
         return;
 
     BLOCK_START("EmoteShortcutContainer::draw")
     if (settings.guiAlpha != mAlpha)
     {
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
         mAlpha = settings.guiAlpha;
     }
@@ -105,10 +105,10 @@ void EmoteShortcutContainer::draw(Graphics *restrict graphics) restrict2
     for (unsigned i = 0; i < sz; i++)
     {
         const EmoteSprite *restrict const emoteImg = mEmoteImg[i];
-        if (emoteImg)
+        if (emoteImg != nullptr)
         {
             const AnimatedSprite *restrict const sprite = emoteImg->sprite;
-            if (sprite)
+            if (sprite != nullptr)
             {
                 sprite->draw(graphics,
                     (i % mGridWidth) * mBoxWidth + 2,
@@ -137,13 +137,13 @@ void EmoteShortcutContainer::draw(Graphics *restrict graphics) restrict2
 
 void EmoteShortcutContainer::safeDraw(Graphics *restrict graphics) restrict2
 {
-    if (!emoteShortcut)
+    if (emoteShortcut == nullptr)
         return;
 
     BLOCK_START("EmoteShortcutContainer::draw")
     if (settings.guiAlpha != mAlpha)
     {
-        if (mBackgroundImg)
+        if (mBackgroundImg != nullptr)
             mBackgroundImg->setAlpha(mAlpha);
         mAlpha = settings.guiAlpha;
     }
@@ -157,10 +157,10 @@ void EmoteShortcutContainer::safeDraw(Graphics *restrict graphics) restrict2
     for (unsigned i = 0; i < sz; i++)
     {
         const EmoteSprite *restrict const emoteImg = mEmoteImg[i];
-        if (emoteImg)
+        if (emoteImg != nullptr)
         {
             const AnimatedSprite *restrict const sprite = emoteImg->sprite;
-            if (sprite)
+            if (sprite != nullptr)
             {
                 sprite->draw(graphics,
                     (i % mGridWidth) * mBoxWidth + 2,
@@ -199,7 +199,7 @@ void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
 
     if (event.getButton() == MouseButton::LEFT)
     {
-        if (!emoteShortcut)
+        if (emoteShortcut == nullptr)
             return;
 
         const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -214,14 +214,14 @@ void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
             emoteShortcut->setEmote(index);
             emoteShortcut->setEmoteSelected(0);
         }
-        else if (emoteShortcut->getEmote(index))
+        else if (emoteShortcut->getEmote(index) != 0u)
         {
             mEmoteClicked = true;
         }
     }
     else if (event.getButton() == MouseButton::RIGHT)
     {
-        if (popupMenu)
+        if (popupMenu != nullptr)
         {
             event.consume();
             popupMenu->showEmoteType();
@@ -232,7 +232,7 @@ void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
 void EmoteShortcutContainer::mouseReleased(MouseEvent &restrict event)
                                            restrict2
 {
-    if (!emoteShortcut)
+    if (emoteShortcut == nullptr)
         return;
 
     if (event.getButton() == MouseButton::LEFT)
@@ -248,12 +248,12 @@ void EmoteShortcutContainer::mouseReleased(MouseEvent &restrict event)
             return;
         }
 
-        if (mEmoteMoved)
+        if (mEmoteMoved != 0u)
         {
             emoteShortcut->setEmotes(index, mEmoteMoved);
             mEmoteMoved = 0;
         }
-        else if (emoteShortcut->getEmote(index) && mEmoteClicked)
+        else if ((emoteShortcut->getEmote(index) != 0u) && mEmoteClicked)
         {
             emoteShortcut->useEmote(index + 1);
         }
@@ -264,7 +264,7 @@ void EmoteShortcutContainer::mouseReleased(MouseEvent &restrict event)
 
 void EmoteShortcutContainer::mouseMoved(MouseEvent &restrict event) restrict2
 {
-    if (!emoteShortcut || !textPopup)
+    if ((emoteShortcut == nullptr) || (textPopup == nullptr))
         return;
 
     const int index = getIndexFromGrid(event.getX(), event.getY());
@@ -274,7 +274,7 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &restrict event) restrict2
 
     textPopup->setVisible(Visible_false);
 
-    if (CAST_SIZE(index) < mEmoteImg.size() && mEmoteImg[index])
+    if (CAST_SIZE(index) < mEmoteImg.size() && (mEmoteImg[index] != nullptr))
     {
         const EmoteSprite *restrict const sprite = mEmoteImg[index];
         textPopup->show(viewport->mMouseX, viewport->mMouseY,
@@ -285,13 +285,13 @@ void EmoteShortcutContainer::mouseMoved(MouseEvent &restrict event) restrict2
 void EmoteShortcutContainer::mouseExited(MouseEvent &restrict event A_UNUSED)
                                          restrict2
 {
-    if (textPopup)
+    if (textPopup != nullptr)
         textPopup->setVisible(Visible_false);
 }
 
 void EmoteShortcutContainer::widgetHidden(const Event &restrict event A_UNUSED)
                                           restrict2
 {
-    if (textPopup)
+    if (textPopup != nullptr)
         textPopup->setVisible(Visible_false);
 }

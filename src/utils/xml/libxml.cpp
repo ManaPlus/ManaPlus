@@ -51,7 +51,7 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg A_UNUSED, ...)
 
 static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
 {
-    if (!msg)
+    if (msg == nullptr)
         return;
 
     size_t size = 1024;
@@ -68,7 +68,7 @@ static void xmlErrorLogger(void *ctx A_UNUSED, const char *msg, ...)
     buf[size] = 0;
     va_end(ap);
 
-    if (logger)
+    if (logger != nullptr)
         logger->log_r("%s", buf);
     else
         puts(buf);
@@ -131,12 +131,12 @@ namespace XML
             }
         }
 
-        if (data)
+        if (data != nullptr)
         {
             mDoc = xmlParseMemory(data, size);
             delete [] data;
 
-            if (!mDoc)
+            if (mDoc == nullptr)
             {
                 reportAlways("Error parsing XML file %s", filename.c_str());
             }
@@ -150,20 +150,20 @@ namespace XML
     }
 
     Document::Document(const char *const data, const int size) :
-        mDoc(data ? xmlParseMemory(data, size) : nullptr),
+        mDoc(data != nullptr ? xmlParseMemory(data, size) : nullptr),
         mIsValid(true)
     {
     }
 
     Document::~Document()
     {
-        if (mDoc)
+        if (mDoc != nullptr)
             xmlFreeDoc(mDoc);
     }
 
     XmlNodePtr Document::rootNode()
     {
-        return mDoc ? xmlDocGetRootElement(mDoc) : nullptr;
+        return mDoc != nullptr ? xmlDocGetRootElement(mDoc) : nullptr;
     }
 
     int getProperty(XmlNodeConstPtr node,
@@ -173,7 +173,7 @@ namespace XML
         int &ret = def;
 
         xmlChar *const prop = XmlGetProp(node, name);
-        if (prop)
+        if (prop != nullptr)
         {
             ret = atoi(reinterpret_cast<const char*>(prop));
             xmlFree(prop);
@@ -191,7 +191,7 @@ namespace XML
         int &ret = def;
 
         xmlChar *const prop = XmlGetProp(node, name);
-        if (prop)
+        if (prop != nullptr)
         {
             ret = atoi(reinterpret_cast<char*>(prop));
             xmlFree(prop);
@@ -210,7 +210,7 @@ namespace XML
         double &ret = def;
 
         xmlChar *const prop = XmlGetProp(node, name);
-        if (prop)
+        if (prop != nullptr)
         {
             ret = atof(reinterpret_cast<char*>(prop));
             xmlFree(prop);
@@ -224,7 +224,7 @@ namespace XML
                             const std::string &def)
     {
         xmlChar *const prop = XmlGetProp(node, name);
-        if (prop)
+        if (prop != nullptr)
         {
             std::string val = reinterpret_cast<char*>(prop);
             xmlFree(prop);
@@ -239,7 +239,7 @@ namespace XML
                              const std::string &def)
     {
         std::string str = getProperty(node, name, def);
-        if (!translator)
+        if (translator == nullptr)
             return str;
 
         return translator->getStr(str);
@@ -268,7 +268,7 @@ namespace XML
     XmlNodePtr findFirstChildByName(XmlNodeConstPtrConst parent,
                                     const char *const name)
     {
-        if (!parent)
+        if (parent == nullptr)
             return nullptr;
         for_each_xml_child_node(child, parent)
         {
@@ -300,7 +300,7 @@ namespace XML
     {
         const xmlDocPtr doc = xmlReadFile(fileName.c_str(),
             nullptr, XML_PARSE_PEDANTIC);
-        const bool valid1(doc);
+        const bool valid1(doc != nullptr);
         xmlFreeDoc(doc);
         if (!valid1)
             return false;

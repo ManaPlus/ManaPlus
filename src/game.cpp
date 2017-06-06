@@ -173,11 +173,11 @@ static void initEngines()
     particleEngine->setupEngine();
     BeingInfo::init();
 
-    if (gameHandler)
+    if (gameHandler != nullptr)
         gameHandler->initEngines();
 
     keyboard.update();
-    if (joystick)
+    if (joystick != nullptr)
         joystick->update();
 
     UpdateStatusListener::distributeEvent();
@@ -188,10 +188,10 @@ static void initEngines()
  */
 static void createGuiWindows()
 {
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->clearWindowsForReset();
 
-    if (emoteShortcut)
+    if (emoteShortcut != nullptr)
         emoteShortcut->load();
 
     GameModifiers::init();
@@ -273,7 +273,7 @@ static void createGuiWindows()
         "#Debug", ChatTabType::DEBUG);
     debugChatTab->setAllowHighlight(false);
 
-    if (assertListener)
+    if (assertListener != nullptr)
     {
         const StringVect &messages = assertListener->getMessages();
         FOR_EACH (StringVectCIter, it, messages)
@@ -299,13 +299,13 @@ static void createGuiWindows()
     if (!isSafeMode)
         chatWindow->loadState();
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->externalUpdate();
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->updateStatus();
 
-    if (generalHandler)
+    if (generalHandler != nullptr)
         generalHandler->gameStarted();
 }
 
@@ -314,14 +314,14 @@ static void createGuiWindows()
  */
 static void destroyGuiWindows()
 {
-    if (generalHandler)
+    if (generalHandler != nullptr)
         generalHandler->gameEnded();
 
-    if (whoIsOnline)
+    if (whoIsOnline != nullptr)
         whoIsOnline->setAllowUpdate(false);
 
 #ifdef TMWA_SUPPORT
-    if (guildManager)
+    if (guildManager != nullptr)
         guildManager->clear();
 #endif  // TMWA_SUPPORT
 
@@ -333,7 +333,7 @@ static void destroyGuiWindows()
     delete2(langChatTab)
     delete2(gmChatTab);
 #ifdef TMWA_SUPPORT
-    if (guildManager && GuildManager::getEnableGuildBot())
+    if (guildManager != nullptr && GuildManager::getEnableGuildBot())
         guildManager->reload();
 #endif  // TMWA_SUPPORT
 
@@ -383,7 +383,7 @@ Game::Game() :
     touchManager.setInGame(true);
 
 //    assert(!mInstance);
-    if (mInstance)
+    if (mInstance != nullptr)
         logger->log("error: double game creation");
     mInstance = this;
 
@@ -399,7 +399,7 @@ Game::Game() :
     emptyBeingSlot = new BeingSlot;
 
     BasicContainer2 *const top = static_cast<BasicContainer2*>(gui->getTop());
-    if (top)
+    if (top != nullptr)
         top->add(viewport);
     viewport->requestMoveToBottom();
 
@@ -413,7 +413,7 @@ Game::Game() :
     createGuiWindows();
     windowMenu = new WindowMenu(nullptr);
 
-    if (windowContainer)
+    if (windowContainer != nullptr)
         windowContainer->add(windowMenu);
 
 #ifdef USE_OPENGL
@@ -426,17 +426,17 @@ Game::Game() :
     mailWindow->postConnection();
 
     // Initialize beings
-    if (actorManager)
+    if (actorManager != nullptr)
         actorManager->setPlayer(localPlayer);
 
     gameHandler->ping(tick_time);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->setInGame(true);
     clearKeysArray();
 
 #ifdef TMWA_SUPPORT
-    if (guildManager && GuildManager::getEnableGuildBot())
+    if (guildManager != nullptr && GuildManager::getEnableGuildBot())
         guildManager->requestGuildInfo();
 #endif  // TMWA_SUPPORT
 
@@ -462,7 +462,7 @@ Game::~Game()
     delete2(actorManager)
     if (client->getState() != State::CHANGE_MAP)
         delete2(localPlayer)
-    if (effectManager)
+    if (effectManager != nullptr)
         effectManager->clear();
     delete2(effectManager)
     delete2(particleEngine)
@@ -485,7 +485,7 @@ Game::~Game()
 
 void Game::addWatermark()
 {
-    if (!boldFont || !config.getBoolValue("addwatermark"))
+    if ((boldFont == nullptr) || !config.getBoolValue("addwatermark"))
         return;
 
     const Color &color1 = theme->getColor(ThemeColorId::TEXT, 255);
@@ -500,12 +500,12 @@ void Game::addWatermark()
 
 bool Game::createScreenshot(const std::string &prefix)
 {
-    if (!mainGraphics || !screenshortHelper)
+    if ((mainGraphics == nullptr) || (screenshortHelper == nullptr))
         return false;
 
     SDL_Surface *screenshot = nullptr;
 
-    if (!config.getBoolValue("showip") && gui)
+    if (!config.getBoolValue("showip") && (gui != nullptr))
     {
         mainGraphics->setSecure(true);
         screenshortHelper->prepare();
@@ -520,7 +520,7 @@ bool Game::createScreenshot(const std::string &prefix)
         screenshot = screenshortHelper->getScreenshot();
     }
 
-    if (!screenshot)
+    if (screenshot == nullptr)
         return false;
 
     return saveScreenshot(screenshot, prefix);
@@ -598,7 +598,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
 
     if (success)
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             // TRANSLATORS: save file message
             std::string str = strprintf(_("Screenshot saved as %s"),
@@ -608,7 +608,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
     }
     else
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             // TRANSLATORS: save file message
             localChatTab->chatLog(_("Saving screenshot failed!"),
@@ -627,11 +627,11 @@ void Game::logic()
     handleInput();
 
     // Handle all necessary game logic
-    if (actorManager)
+    if (actorManager != nullptr)
         actorManager->logic();
-    if (particleEngine)
+    if (particleEngine != nullptr)
         particleEngine->update();
-    if (mCurrentMap)
+    if (mCurrentMap != nullptr)
         mCurrentMap->update();
 
     BLOCK_END("Game::logic")
@@ -640,7 +640,7 @@ void Game::logic()
 void Game::slowLogic()
 {
     BLOCK_START("Game::slowLogic")
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->slowLogic();
     const time_t time = cur_time;
     if (mTime != time)
@@ -649,16 +649,16 @@ void Game::slowLogic()
             mValidSpeed = false;
 
         mTime = time + 1;
-        if (debugWindow)
+        if (debugWindow != nullptr)
             debugWindow->slowLogic();
-        if (killStats)
+        if (killStats != nullptr)
             killStats->update();
-        if (socialWindow)
+        if (socialWindow != nullptr)
             socialWindow->slowLogic();
-        if (whoIsOnline)
+        if (whoIsOnline != nullptr)
             whoIsOnline->slowLogic();
         Being::reReadConfig();
-        if (killStats)
+        if (killStats != nullptr)
             cilk_spawn killStats->recalcStats();
 
         if (time > mTime2 || mTime2 - time > 10)
@@ -667,7 +667,7 @@ void Game::slowLogic()
             config.writeUpdated();
             serverConfig.writeUpdated();
         }
-        if (effectManager)
+        if (effectManager != nullptr)
             effectManager->logic();
     }
 
@@ -675,13 +675,13 @@ void Game::slowLogic()
         DelayedManager::delayedLoad();
 
 #ifdef TMWA_SUPPORT
-    if (shopWindow)
+    if (shopWindow != nullptr)
         cilk_spawn shopWindow->updateTimes();
-    if (guildManager)
+    if (guildManager != nullptr)
         guildManager->slowLogic();
 #endif  // TMWA_SUPPORT
 
-    if (skillDialog)
+    if (skillDialog != nullptr)
         cilk_spawn skillDialog->slowLogic();
 
     cilk_spawn PacketCounters::update();
@@ -694,7 +694,7 @@ void Game::slowLogic()
 
         if (client->getState() != State::ERROR)
         {
-            if (!disconnectedDialog)
+            if (disconnectedDialog == nullptr)
             {
                 // TRANSLATORS: error message text
                 errorMessage = _("The connection to the server was lost.");
@@ -708,10 +708,10 @@ void Game::slowLogic()
             }
         }
 
-        if (viewport && !errorMessage.empty())
+        if ((viewport != nullptr) && !errorMessage.empty())
         {
             const Map *const map = viewport->getMap();
-            if (map)
+            if (map != nullptr)
                 map->saveExtraLayer();
         }
         DialogsManager::closeDialogs();
@@ -731,7 +731,7 @@ void Game::slowLogic()
 
         if (mAdjustPerfomance)
             adjustPerfomance();
-        if (disconnectedDialog)
+        if (disconnectedDialog != nullptr)
         {
             disconnectedDialog->scheduleDelete();
             disconnectedDialog = nullptr;
@@ -752,8 +752,10 @@ void Game::adjustPerfomance()
     {
         mNextAdjustTime = time + adjustDelay;
 
-        if (mAdjustLevel > 3 || !localPlayer || localPlayer->getHalfAway()
-            || settings.awayMode)
+        if (mAdjustLevel > 3 ||
+            localPlayer == nullptr ||
+            localPlayer->getHalfAway() ||
+            settings.awayMode)
         {
             return;
         }
@@ -762,7 +764,7 @@ void Game::adjustPerfomance()
         if (maxFps != config.getIntValue("fpslimit"))
             return;
 
-        if (!maxFps)
+        if (maxFps == 0)
             maxFps = 30;
         else if (maxFps < 10)
             return;
@@ -785,7 +787,7 @@ void Game::adjustPerfomance()
                     {
                         config.setValue("beingopacity", false);
                         config.setSilent("beingopacity", true);
-                        if (localChatTab)
+                        if (localChatTab != nullptr)
                         {
                             localChatTab->chatLog("Auto disable Show "
                                 "beings transparency", ChatMsgType::BY_SERVER);
@@ -802,7 +804,7 @@ void Game::adjustPerfomance()
                     if (ParticleEngine::emitterSkip < 4)
                     {
                         ParticleEngine::emitterSkip = 4;
-                        if (localChatTab)
+                        if (localChatTab != nullptr)
                         {
                             localChatTab->chatLog("Auto lower Particle "
                                 "effects", ChatMsgType::BY_SERVER);
@@ -819,7 +821,7 @@ void Game::adjustPerfomance()
                     {
                         config.setValue("alphaCache", true);
                         config.setSilent("alphaCache", false);
-                        if (localChatTab)
+                        if (localChatTab != nullptr)
                         {
                             localChatTab->chatLog("Auto enable opacity cache",
                                 ChatMsgType::BY_SERVER);
@@ -867,22 +869,22 @@ void Game::resetAdjustLevel()
 void Game::handleMove()
 {
     BLOCK_START("Game::handleMove")
-    if (!localPlayer)
+    if (localPlayer == nullptr)
     {
         BLOCK_END("Game::handleMove")
         return;
     }
 
     // Moving player around
-    if (chatWindow &&
-        !quitDialog &&
+    if ((chatWindow != nullptr) &&
+        (quitDialog == nullptr) &&
         localPlayer->canMove() &&
         !chatWindow->isInputFocused() &&
         !InventoryWindow::isAnyInputFocused() &&
         !popupMenu->isPopupVisible())
     {
         NpcDialog *const dialog = NpcDialog::getActive();
-        if (dialog)
+        if (dialog != nullptr)
         {
             BLOCK_END("Game::handleMove")
             return;
@@ -902,14 +904,14 @@ void Game::handleMove()
 
         // Translate pressed keys to movement and direction
         if (inputManager.isActionActive(InputAction::MOVE_UP) ||
-            (joystick && joystick->isUp()))
+            ((joystick != nullptr) && joystick->isUp()))
         {
             direction |= BeingDirection::UP;
             setValidSpeed();
             localPlayer->cancelFollow();
         }
         else if (inputManager.isActionActive(InputAction::MOVE_DOWN) ||
-                 (joystick && joystick->isDown()))
+                 ((joystick != nullptr) && joystick->isDown()))
         {
             direction |= BeingDirection::DOWN;
             setValidSpeed();
@@ -917,14 +919,14 @@ void Game::handleMove()
         }
 
         if (inputManager.isActionActive(InputAction::MOVE_LEFT) ||
-            (joystick && joystick->isLeft()))
+            ((joystick != nullptr) && joystick->isLeft()))
         {
             direction |= BeingDirection::LEFT;
             setValidSpeed();
             localPlayer->cancelFollow();
         }
         else if (inputManager.isActionActive(InputAction::MOVE_RIGHT) ||
-                 (joystick && joystick->isRight()))
+                 ((joystick != nullptr) && joystick->isRight()))
         {
             direction |= BeingDirection::RIGHT;
             setValidSpeed();
@@ -951,26 +953,26 @@ void Game::handleMove()
 
 void Game::moveInDirection(const unsigned char direction)
 {
-    if (!viewport)
+    if (viewport == nullptr)
         return;
 
-    if (!settings.cameraMode)
+    if (settings.cameraMode == 0u)
     {
-        if (localPlayer)
+        if (localPlayer != nullptr)
             localPlayer->specialMove(direction);
     }
     else
     {
         int dx = 0;
         int dy = 0;
-        if (direction & BeingDirection::LEFT)
+        if ((direction & BeingDirection::LEFT) != 0)
             dx = -5;
-        else if (direction & BeingDirection::RIGHT)
+        else if ((direction & BeingDirection::RIGHT) != 0)
             dx = 5;
 
-        if (direction & BeingDirection::UP)
+        if ((direction & BeingDirection::UP) != 0)
             dy = -5;
-        else if (direction & BeingDirection::DOWN)
+        else if ((direction & BeingDirection::DOWN) != 0)
             dy = 5;
         viewport->moveCamera(dx, dy);
     }
@@ -978,7 +980,7 @@ void Game::moveInDirection(const unsigned char direction)
 
 void Game::updateFrameRate(int fpsLimit)
 {
-    if (!fpsLimit)
+    if (fpsLimit == 0)
     {
         if (settings.awayMode)
         {
@@ -1002,7 +1004,7 @@ void Game::updateFrameRate(int fpsLimit)
 void Game::handleInput()
 {
     BLOCK_START("Game::handleInput 1")
-    if (joystick)
+    if (joystick != nullptr)
         joystick->logic();
 
     eventsManager.handleGameEvents();
@@ -1017,7 +1019,7 @@ void Game::handleInput()
     // If pressed outfits keys, stop processing keys.
     if (inputManager.isActionActive(InputAction::WEAR_OUTFIT)
         || inputManager.isActionActive(InputAction::COPY_OUTFIT)
-        || (setupWindow && setupWindow->isWindowVisible()))
+        || ((setupWindow != nullptr) && setupWindow->isWindowVisible()))
     {
         BLOCK_END("Game::handleInput 1")
         return;
@@ -1039,27 +1041,27 @@ void Game::changeMap(const std::string &mapPath)
     resetAdjustLevel();
     ResourceManager::cleanProtected();
 
-    if (popupManager)
+    if (popupManager != nullptr)
     {
         popupManager->clearPopup();
         popupManager->closePopupMenu();
     }
 
     // Clean up floor items, beings and particles
-    if (actorManager)
+    if (actorManager != nullptr)
         actorManager->clear();
 
     // Close the popup menu on map change so that invalid options can't be
     // executed.
-    if (viewport)
+    if (viewport != nullptr)
         viewport->cleanHoverItems();
 
     // Unset the map of the player so that its particles are cleared before
     // being deleted in the next step
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->setMap(nullptr);
 
-    if (particleEngine)
+    if (particleEngine != nullptr)
         particleEngine->clear();
 
     mMapName = mapPath;
@@ -1075,33 +1077,34 @@ void Game::changeMap(const std::string &mapPath)
     // Attempt to load the new map
     Map *const newMap = MapReader::readMap(fullMap, realFullMap);
 
-    if (mCurrentMap)
+    if (mCurrentMap != nullptr)
         mCurrentMap->saveExtraLayer();
 
-    if (newMap)
+    if (newMap != nullptr)
         newMap->addExtraLayer();
 
-    if (socialWindow)
+    if (socialWindow != nullptr)
         socialWindow->setMap(newMap);
 
     // Notify the minimap and actorManager about the map change
-    if (minimap)
+    if (minimap != nullptr)
         minimap->setMap(newMap);
-    if (actorManager)
+    if (actorManager != nullptr)
         actorManager->setMap(newMap);
-    if (particleEngine)
+    if (particleEngine != nullptr)
         particleEngine->setMap(newMap);
-    if (viewport)
+    if (viewport != nullptr)
         viewport->setMap(newMap);
 
     // Initialize map-based particle effects
-    if (newMap)
+    if (newMap != nullptr)
         newMap->initializeParticleEffects();
 
     // Start playing new music file when necessary
-    const std::string oldMusic = mCurrentMap
+    const std::string oldMusic = mCurrentMap != nullptr
         ? mCurrentMap->getMusicFile() : "";
-    const std::string newMusic = newMap ? newMap->getMusicFile() : "";
+    const std::string newMusic = newMap != nullptr ?
+        newMap->getMusicFile() : "";
     if (newMusic != oldMusic)
     {
         if (newMusic.empty())
@@ -1110,13 +1113,13 @@ void Game::changeMap(const std::string &mapPath)
             soundManager.fadeOutAndPlayMusic(newMusic);
     }
 
-    if (mCurrentMap)
+    if (mCurrentMap != nullptr)
         mCurrentMap->saveExtraLayer();
 
     delete mCurrentMap;
     mCurrentMap = newMap;
 
-    if (questsWindow)
+    if (questsWindow != nullptr)
         questsWindow->setMap(mCurrentMap);
 
 #ifdef USE_MUMBLE
@@ -1124,7 +1127,7 @@ void Game::changeMap(const std::string &mapPath)
         mumbleManager->setMap(mapPath);
 #endif  // USE_MUMBLE
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->recreateItemParticles();
 
     gameHandler->mapLoadedEvent();
@@ -1133,7 +1136,7 @@ void Game::changeMap(const std::string &mapPath)
 
 void Game::updateHistory(const SDL_Event &event)
 {
-    if (!localPlayer || !settings.attackType)
+    if ((localPlayer == nullptr) || (settings.attackType == 0u))
         return;
 
     if (CAST_S32(event.key.keysym.sym) != -1)
@@ -1193,7 +1196,7 @@ void Game::checkKeys()
     const int timeRange = 120;
     const int cntInTime = 130;
 
-    if (!localPlayer || !settings.attackType)
+    if ((localPlayer == nullptr) || (settings.attackType == 0u))
         return;
 
     const time_t time = cur_time;
@@ -1230,8 +1233,8 @@ void Game::clearKeysArray()
 
 void Game::videoResized(const int width, const int height)
 {
-    if (viewport)
+    if (viewport != nullptr)
         viewport->setSize(width, height);
-    if (windowMenu)
+    if (windowMenu != nullptr)
         windowMenu->setPosition(width - windowMenu->getWidth(), 0);
 }

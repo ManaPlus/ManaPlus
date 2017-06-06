@@ -119,7 +119,7 @@ RadioButton::RadioButton(const Widget2 *const widget,
     mForegroundColor2 = getThemeColor(ThemeColorId::RADIOBUTTON_OUTLINE);
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
         {
             mSkin = theme->load("radio.xml", "");
             updateAlpha();
@@ -128,7 +128,7 @@ RadioButton::RadioButton(const Widget2 *const widget,
 
     instances++;
 
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         mPadding = mSkin->getPadding();
         mImagePadding = mSkin->getOption("imagePadding");
@@ -142,19 +142,19 @@ RadioButton::RadioButton(const Widget2 *const widget,
 
 RadioButton::~RadioButton()
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->removeWidgetListener(this);
 
     setGroup(std::string());
 
-    if (gui)
+    if (gui != nullptr)
         gui->removeDragged(this);
 
     instances--;
 
     if (instances == 0)
     {
-        if (theme)
+        if (theme != nullptr)
             theme->unload(mSkin);
     }
 }
@@ -167,13 +167,13 @@ void RadioButton::updateAlpha()
     if (mAlpha != alpha)
     {
         mAlpha = alpha;
-        if (mSkin)
+        if (mSkin != nullptr)
         {
             const ImageRect &rect = mSkin->getBorder();
             for (int a = 0; a < 4; a ++)
             {
                 Image *const image = rect.grid[a];
-                if (image)
+                if (image != nullptr)
                     image->setAlpha(mAlpha);
             }
         }
@@ -182,7 +182,7 @@ void RadioButton::updateAlpha()
 
 void RadioButton::drawBox(Graphics *const graphics)
 {
-    if (!mSkin)
+    if (mSkin == nullptr)
         return;
 
     const ImageRect &rect = mSkin->getBorder();
@@ -217,7 +217,7 @@ void RadioButton::drawBox(Graphics *const graphics)
 
     updateAlpha();
 
-    if (box)
+    if (box != nullptr)
     {
         graphics->drawImage(box,
             mImagePadding,
@@ -244,7 +244,7 @@ void RadioButton::draw(Graphics *const graphics)
     }
 
     const Image *const image = mTextChunk.img;
-    if (image)
+    if (image != nullptr)
         graphics->drawImage(image, mTextX, mPadding);
 
     BLOCK_END("RadioButton::draw")
@@ -293,7 +293,7 @@ void RadioButton::setSelected(const bool selected)
              iter != iterEnd;
              ++ iter)
         {
-            if (iter->second && iter->second->isSelected())
+            if ((iter->second != nullptr) && iter->second->isSelected())
                 iter->second->setSelected(false);
         }
     }
@@ -348,7 +348,7 @@ void RadioButton::setCaption(const std::string& caption)
 
 void RadioButton::setParent(Widget *widget)
 {
-    if (mWindow)
+    if (mWindow != nullptr)
         mWindow->addWidgetListener(this);
     Widget::setParent(widget);
 }
@@ -361,7 +361,7 @@ void RadioButton::widgetHidden(const Event &event A_UNUSED)
 
 void RadioButton::setWindow(Widget *const widget)
 {
-    if (!widget && mWindow)
+    if ((widget == nullptr) && (mWindow != nullptr))
     {
         mWindow->removeWidgetListener(this);
         mWindow = nullptr;

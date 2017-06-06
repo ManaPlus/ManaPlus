@@ -95,7 +95,7 @@ void SocialWindow::postInit()
     setMinWidth(120);
     setMinHeight(55);
     setDefaultSize(590, 200, 180, 300);
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     place(0, 0, mMenuButton);
@@ -135,10 +135,10 @@ void SocialWindow::postInit()
         mPickupFilter = nullptr;
     }
 
-    if (localPlayer && localPlayer->getParty())
+    if ((localPlayer != nullptr) && (localPlayer->getParty() != nullptr))
         addTab(localPlayer->getParty());
 
-    if (localPlayer && localPlayer->getGuild())
+    if ((localPlayer != nullptr) && (localPlayer->getGuild() != nullptr))
         addTab(localPlayer->getGuild());
 
     enableVisibleSound(true);
@@ -149,7 +149,7 @@ void SocialWindow::postInit()
 SocialWindow::~SocialWindow()
 {
     player_relations.removeListener(this);
-    if (mGuildAcceptDialog)
+    if (mGuildAcceptDialog != nullptr)
     {
         mGuildAcceptDialog->close();
         mGuildAcceptDialog->scheduleDelete();
@@ -158,7 +158,7 @@ SocialWindow::~SocialWindow()
         mGuildInvited = 0;
     }
 
-    if (mPartyAcceptDialog)
+    if (mPartyAcceptDialog != nullptr)
     {
         mPartyAcceptDialog->close();
         mPartyAcceptDialog->scheduleDelete();
@@ -185,7 +185,7 @@ SocialWindow::~SocialWindow()
 
 bool SocialWindow::addTab(Guild *const guild)
 {
-    if (!guild)
+    if (guild == nullptr)
         return false;
 
     if (mGuilds.find(guild) != mGuilds.end())
@@ -230,7 +230,7 @@ bool SocialWindow::removeTab(Guild *const guild)
 
 bool SocialWindow::addTab(Party *const party)
 {
-    if (!party)
+    if (party == nullptr)
         return false;
 
     if (mParties.find(party) != mParties.end())
@@ -270,7 +270,7 @@ void SocialWindow::action(const ActionEvent &event)
     {
         if (eventId == "yes")
         {
-            if (localChatTab)
+            if (localChatTab != nullptr)
             {
                 localChatTab->chatLog(
                     // TRANSLATORS: chat message
@@ -282,7 +282,7 @@ void SocialWindow::action(const ActionEvent &event)
         }
         else if (eventId == "no")
         {
-            if (localChatTab)
+            if (localChatTab != nullptr)
             {
                 localChatTab->chatLog(
                     // TRANSLATORS: chat message
@@ -300,7 +300,7 @@ void SocialWindow::action(const ActionEvent &event)
     {
         if (eventId == "yes")
         {
-            if (localChatTab)
+            if (localChatTab != nullptr)
             {
                 localChatTab->chatLog(
                     // TRANSLATORS: chat message
@@ -309,7 +309,7 @@ void SocialWindow::action(const ActionEvent &event)
                     ChatMsgType::BY_SERVER);
             }
 #ifdef TMWA_SUPPORT
-            if (!guildManager || !GuildManager::getEnableGuildBot())
+            if (guildManager == nullptr || !GuildManager::getEnableGuildBot())
                 guildHandler->inviteResponse(mGuildInvited, true);
             else
                 guildManager->inviteResponse(true);
@@ -320,7 +320,7 @@ void SocialWindow::action(const ActionEvent &event)
         }
         else if (eventId == "no")
         {
-            if (localChatTab)
+            if (localChatTab != nullptr)
             {
                 localChatTab->chatLog(
                     // TRANSLATORS: chat message
@@ -329,7 +329,7 @@ void SocialWindow::action(const ActionEvent &event)
                     ChatMsgType::BY_SERVER);
             }
 #ifdef TMWA_SUPPORT
-            if (!guildManager || !GuildManager::getEnableGuildBot())
+            if (guildManager == nullptr || !GuildManager::getEnableGuildBot())
                 guildHandler->inviteResponse(mGuildInvited, false);
             else
                 guildManager->inviteResponse(false);
@@ -379,7 +379,7 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
     // check there isnt already an invite showing
     if (mGuildInvited != 0)
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received guild request, but one already "
@@ -394,7 +394,7 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
         _("%s has invited you to join the guild %s."),
         inviterName.c_str(), guildName.c_str());
 
-    if (localChatTab)
+    if (localChatTab != nullptr)
         localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 
     CREATEWIDGETV(mGuildAcceptDialog, ConfirmDialog,
@@ -416,7 +416,7 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
     // check there isnt already an invite showing
     if (!mPartyInviter.empty())
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received party request, but one already "
@@ -457,7 +457,7 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
         }
     }
 
-    if (localChatTab)
+    if (localChatTab != nullptr)
         localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
 
     // show invite
@@ -519,25 +519,25 @@ void SocialWindow::updateButtons()
 
 void SocialWindow::updatePortals()
 {
-    if (mNavigation)
+    if (mNavigation != nullptr)
         mNavigation->updateList();
 }
 
 void SocialWindow::updatePortalNames()
 {
-    if (mNavigation)
+    if (mNavigation != nullptr)
         static_cast<SocialNavigationTab*>(mNavigation)->updateNames();
 }
 
 void SocialWindow::selectPortal(const unsigned num)
 {
-    if (mNavigation)
+    if (mNavigation != nullptr)
         mNavigation->selectIndex(num);
 }
 
 int SocialWindow::getPortalIndex(const int x, const int y)
 {
-    if (mNavigation)
+    if (mNavigation != nullptr)
     {
         return static_cast<SocialNavigationTab*>(
             mNavigation)->getPortalIndex(x, y);
@@ -550,47 +550,47 @@ int SocialWindow::getPortalIndex(const int x, const int y)
 
 void SocialWindow::addPortal(const int x, const int y)
 {
-    if (mNavigation)
+    if (mNavigation != nullptr)
         static_cast<SocialNavigationTab*>(mNavigation)->addPortal(x, y);
 }
 
 void SocialWindow::removePortal(const int x, const int y)
 {
-    if (mNavigation)
+    if (mNavigation != nullptr)
         static_cast<SocialNavigationTab*>(mNavigation)->removePortal(x, y);
 }
 
 void SocialWindow::nextTab()
 {
-    if (mTabs)
+    if (mTabs != nullptr)
         mTabs->selectNextTab();
 }
 
 void SocialWindow::prevTab()
 {
-    if (mTabs)
+    if (mTabs != nullptr)
         mTabs->selectPrevTab();
 }
 
 void SocialWindow::updateAttackFilter()
 {
-    if (mAttackFilter)
+    if (mAttackFilter != nullptr)
         mAttackFilter->updateList();
 }
 
 void SocialWindow::updatePickupFilter()
 {
-    if (mPickupFilter)
+    if (mPickupFilter != nullptr)
         mPickupFilter->updateList();
 }
 
 void SocialWindow::updateParty()
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     Party *const party = localPlayer->getParty();
-    if (party)
+    if (party != nullptr)
     {
         const PartyMap::iterator it = mParties.find(party);
         if (it != mParties.end())
@@ -604,7 +604,7 @@ void SocialWindow::updateParty()
 void SocialWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
-    if (mTabs)
+    if (mTabs != nullptr)
         mTabs->adjustSize();
 }
 
@@ -627,11 +627,11 @@ void SocialWindow::updateMenu(const SocialTab *const tab,
 
 void SocialWindow::updateGuildCounter(const int online, const int total)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     Guild *const guild = localPlayer->getGuild();
-    if (guild)
+    if (guild != nullptr)
     {
         const GuildMap::iterator it = mGuilds.find(guild);
         if (it != mGuilds.end())

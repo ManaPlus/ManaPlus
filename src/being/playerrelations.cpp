@@ -92,8 +92,11 @@ namespace
                 const std::pair<std::string, PlayerRelation *> &value,
                 ConfigurationObject *const cobj) const override final
             {
-                if (!cobj || !value.second)
+                if (cobj == nullptr ||
+                    value.second == nullptr)
+                {
                     return nullptr;
+                }
                 cobj->setValue(NAME, value.first);
                 cobj->setValue(RELATION, toString(
                     CAST_S32(value.second->mRelation)));
@@ -106,13 +109,16 @@ namespace
                            std::map<std::string, PlayerRelation *>
                            *const container) const override final
             {
-                if (!cobj || !container)
+                if (cobj == nullptr ||
+                    container == nullptr)
+                {
                     return container;
+                }
                 const std::string name = cobj->getValue(NAME, "");
                 if (name.empty())
                     return container;
 
-                if (!(*container)[name])
+                if ((*container)[name] == nullptr)
                 {
                     const int v = cobj->getValueInt(RELATION,
                         CAST_S32(Relation::NEUTRAL));
@@ -178,7 +184,7 @@ int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
     const std::vector<PlayerIgnoreStrategy *> *const strategies
         = getPlayerIgnoreStrategies();
 
-    if (!strategies)
+    if (strategies == nullptr)
         return -1;
 
     const size_t sz = strategies->size();
@@ -196,7 +202,7 @@ void PlayerRelationsManager::load()
     Configuration *const cfg = &serverConfig;
     clear();
 
-    mPersistIgnores = cfg->getValue(PERSIST_IGNORE_LIST, 1);
+    mPersistIgnores = (cfg->getValue(PERSIST_IGNORE_LIST, 1) != 0);
     mDefaultPermissions = CAST_S32(cfg->getValue(DEFAULT_PERMISSIONS,
                                            mDefaultPermissions));
 
@@ -243,8 +249,8 @@ void PlayerRelationsManager::store() const
     serverConfig.setValue(DEFAULT_PERMISSIONS, mDefaultPermissions);
     serverConfig.setValue(PERSIST_IGNORE_LIST, mPersistIgnores);
     serverConfig.setValue(PLAYER_IGNORE_STRATEGY,
-                          mIgnoreStrategy ? mIgnoreStrategy->mShortName
-                          : DEFAULT_IGNORE_STRATEGY);
+        mIgnoreStrategy != nullptr ? mIgnoreStrategy->mShortName :
+        DEFAULT_IGNORE_STRATEGY);
 
     serverConfig.write();
 }
@@ -254,13 +260,16 @@ void PlayerRelationsManager::signalUpdate(const std::string &name)
     FOR_EACH (PlayerRelationListenersCIter, it, mListeners)
         (*it)->updatedPlayer(name);
 
-    if (actorManager)
+    if (actorManager != nullptr)
     {
         Being *const being = actorManager->findBeingByName(
             name, ActorType::Player);
 
-        if (being && being->getType() == ActorType::Player)
+        if (being != nullptr &&
+            being->getType() == ActorType::Player)
+        {
             being->updateColors();
+        }
     }
 }
 
@@ -305,18 +314,21 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
 bool PlayerRelationsManager::hasPermission(const Being *const being,
                                            const unsigned int flags) const
 {
-    if (!being)
+    if (being == nullptr)
         return false;
 
     if (being->getType() == ActorType::Player)
-        return hasPermission(being->getName(), flags) == flags;
+    {
+        return static_cast<unsigned int>(hasPermission(
+            being->getName(), flags)) == flags;
+    }
     return true;
 }
 
 bool PlayerRelationsManager::hasPermission(const std::string &name,
                                            const unsigned int flags) const
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return false;
 
     const unsigned int rejections = flags
@@ -326,12 +338,12 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
     if (!permitted)
     {
         // execute `ignore' strategy, if possible
-        if (mIgnoreStrategy)
+        if (mIgnoreStrategy != nullptr)
         {
             Being *const b = actorManager->findBeingByName(
                 name, ActorType::Player);
 
-            if (b && b->getType() == ActorType::Player)
+            if ((b != nullptr) && b->getType() == ActorType::Player)
                 mIgnoreStrategy->ignore(b, rejections);
         }
     }
@@ -340,17 +352,17 @@ bool PlayerRelationsManager::hasPermission(const std::string &name,
 }
 
 void PlayerRelationsManager::setRelation(const std::string &player_name,
-                                         const RelationT
-                                         relation)
+                                         const RelationT relation)
 {
-    if (!localPlayer || (relation != Relation::NEUTRAL
-        && localPlayer->getName() == player_name))
+    if (localPlayer == nullptr ||
+        (relation != Relation::NEUTRAL &&
+        localPlayer->getName() == player_name))
     {
         return;
     }
 
     PlayerRelation *const r = mRelations[player_name];
-    if (!r)
+    if (r == nullptr)
         mRelations[player_name] = new PlayerRelation(relation);
     else
         r->mRelation = relation;
@@ -365,7 +377,7 @@ StringVect *PlayerRelationsManager::getPlayers() const
 
     FOR_EACH (PlayerRelationsCIter, it, mRelations)
     {
-        if (it->second)
+        if (it->second != nullptr)
             retval->push_back(it->first);
     }
 
@@ -381,8 +393,11 @@ StringVect *PlayerRelationsManager::getPlayersByRelation(
 
     FOR_EACH (PlayerRelationsCIter, it, mRelations)
     {
-        if (it->second && it->second->mRelation == rel)
+        if ((it->second != nullptr) &&
+            it->second->mRelation == rel)
+        {
             retval->push_back(it->first);
+        }
     }
 
     std::sort(retval->begin(), retval->end(), playersRelSorter);
@@ -432,10 +447,10 @@ void PlayerRelationsManager::ignoreTrade(const std::string &name) const
 
     const RelationT relation = getRelation(name);
 
-    if (relation == Relation::IGNORED
-        || relation == Relation::DISREGARDED
-        || relation == Relation::BLACKLISTED
-        || relation == Relation::ERASED)
+    if (relation == Relation::IGNORED ||
+        relation == Relation::DISREGARDED ||
+        relation == Relation::BLACKLISTED ||
+        relation == Relation::ERASED)
     {
         return;
     }
@@ -452,11 +467,11 @@ bool PlayerRelationsManager::checkBadRelation(const std::string &name) const
 
     const RelationT relation = getRelation(name);
 
-    if (relation == Relation::IGNORED
-        || relation == Relation::DISREGARDED
-        || relation == Relation::BLACKLISTED
-        || relation == Relation::ERASED
-        || relation == Relation::ENEMY2)
+    if (relation == Relation::IGNORED ||
+        relation == Relation::DISREGARDED ||
+        relation == Relation::BLACKLISTED ||
+        relation == Relation::ERASED ||
+        relation == Relation::ENEMY2)
     {
         return true;
     }
@@ -502,7 +517,7 @@ class PIS_dotdotdot final : public PlayerIgnoreStrategy
         void ignore(Being *const being,
                     const unsigned int flags A_UNUSED) const override final
         {
-            if (!being)
+            if (being == nullptr)
                 return;
 
             logger->log("ignoring: " + being->getName());
@@ -527,7 +542,7 @@ class PIS_blinkname final : public PlayerIgnoreStrategy
         void ignore(Being *const being,
                     const unsigned int flags A_UNUSED) const override final
         {
-            if (!being)
+            if (being == nullptr)
                 return;
 
             logger->log("ignoring: " + being->getName());
@@ -553,7 +568,7 @@ class PIS_emote final : public PlayerIgnoreStrategy
         void ignore(Being *const being,
                     const unsigned int flags A_UNUSED) const override final
         {
-            if (!being)
+            if (being == nullptr)
                 return;
 
             being->setEmote(mEmotion, IGNORE_EMOTE_TIME);
@@ -599,7 +614,7 @@ bool PlayerRelationsManager::isGoodName(const std::string &name) const
 
 bool PlayerRelationsManager::isGoodName(Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return false;
     if (being->getGoodStatus() != -1)
         return (being->getGoodStatus() == 1);
@@ -626,8 +641,10 @@ bool PlayerRelationsManager::checkName(const std::string &name)
     const std::string check = config.getStringValue("unsecureChars");
     const std::string lastChar = name.substr(size - 1, 1);
 
-    if (name.substr(0, 1) == " " || lastChar == " " || lastChar == "."
-        || name.find("  ") != std::string::npos)
+    if (name.substr(0, 1) == " " ||
+        lastChar == " " ||
+        lastChar == "." ||
+        name.find("  ") != std::string::npos)
     {
         return false;
     }

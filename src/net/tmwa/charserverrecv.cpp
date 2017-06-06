@@ -64,7 +64,7 @@ extern ServerInfo charServer;
 void CharServerRecv::readPlayerData(Net::MessageIn &msg,
                                     Net::Character *const character)
 {
-    if (!character)
+    if (character == nullptr)
         return;
 
     const Token &token =
@@ -193,7 +193,7 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
         Net::Character *const character = new Net::Character;
         readPlayerData(msg, character);
         charServerHandler->mCharacters.push_back(character);
-        if (character->dummy)
+        if (character->dummy != nullptr)
         {
             logger->log("CharServer: Player: %s (%d)",
                 character->dummy->getName().c_str(), character->slot);
@@ -232,7 +232,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
     charServerHandler->clear();
     charServerHandler->updateCharSelectDialog();
 
-    if (network)
+    if (network != nullptr)
         network->disconnect();
     client->setState(State::CONNECT_GAME);
     BLOCK_END("CharServerRecv::processCharMapInfo")
@@ -244,7 +244,7 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerRecv::processChangeMapServer")
     GameHandler *const gh = static_cast<GameHandler*>(gameHandler);
-    if (!gh || !network)
+    if ((gh == nullptr) || (network == nullptr))
     {
         BLOCK_END("CharServerRecv::processChangeMapServer")
         return;
@@ -265,7 +265,7 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
 
     network->disconnect();
     client->setState(State::CHANGE_MAP);
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         localPlayer->setTileCoords(x, y);
         localPlayer->setMap(nullptr);
@@ -283,7 +283,7 @@ void CharServerRecv::processCharCreate(Net::MessageIn &msg)
     charServerHandler->updateCharSelectDialog();
 
     // Close the character create dialog
-    if (charServerHandler->mCharCreateDialog)
+    if (charServerHandler->mCharCreateDialog != nullptr)
     {
         charServerHandler->mCharCreateDialog->scheduleDelete();
         charServerHandler->mCharCreateDialog = nullptr;

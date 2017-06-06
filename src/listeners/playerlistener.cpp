@@ -38,12 +38,12 @@ PlayerListener::PlayerListener() :
 
 void PlayerListener::action(const ActionEvent &event)
 {
-    if (event.getId() == "ok" && !mNick.empty() && mDialog)
+    if (event.getId() == "ok" && !mNick.empty() && (mDialog != nullptr))
     {
         std::string comment = mDialog->getText();
         Being *const being  = actorManager->findBeingByName(
             mNick, static_cast<ActorTypeT>(mType));
-        if (being)
+        if (being != nullptr)
             being->setComment(comment);
         Being::saveComment(mNick, comment, mType);
     }

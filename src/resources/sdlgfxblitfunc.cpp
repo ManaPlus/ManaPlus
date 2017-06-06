@@ -339,7 +339,7 @@ static void _SDL_gfxBlitBlitterRGBA(SDL_gfxBlitInfo *info)
     const int dstskip = info->d_skip;
     SDL_PixelFormat *srcfmt = info->src;
 
-    while (height--)
+    while ((height--) != 0)
     {
         GFX_DUFFS_LOOP4(
         {
@@ -393,7 +393,7 @@ static int _SDL_gfxBlitRGBACall(SDL_Surface *const src,
     /*
     * Set up source and destination buffer pointers, then blit
     */
-    if (srcrect->w && srcrect->h)
+    if ((srcrect->w != 0u) && (srcrect->h != 0u))
     {
         SDL_gfxBlitInfo info;
 
@@ -444,7 +444,7 @@ int SDLgfxBlitRGBA(SDL_Surface *const src,
     /*
     * Make sure the surfaces aren't locked
     */
-    if (!src || !dst)
+    if ((src == nullptr) || (dst == nullptr))
     {
         reportAlways("SDLgfxBlitRGBA: passed a NULL surface");
         return -1;
@@ -468,7 +468,7 @@ int SDLgfxBlitRGBA(SDL_Surface *const src,
     /*
     * Clip the source rectangle to the source surface
     */
-    if (srcrect)
+    if (srcrect != nullptr)
     {
         int maxw;
         int maxh;

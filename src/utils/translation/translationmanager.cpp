@@ -90,7 +90,7 @@ PoDict *TranslationManager::loadLang(const LangVect &lang,
     if (!name.empty())
         return parser.load(name, subName + name, dict);
     logger->log("can't find client data translation");
-    if (dict)
+    if (dict != nullptr)
         return dict;
     return PoParser::getEmptyDict();
 }
@@ -99,14 +99,14 @@ bool TranslationManager::translateFile(const std::string &fileName,
                                        PoDict *const dict,
                                        StringVect &lines)
 {
-    if (!dict || fileName.empty())
+    if ((dict == nullptr) || fileName.empty())
         return false;
 
     int contentsLength;
     const char *fileContents = VirtFs::loadFile(fileName,
         contentsLength);
 
-    if (!fileContents)
+    if (fileContents == nullptr)
     {
         logger->log("Couldn't load file: %s", fileName.c_str());
         return false;

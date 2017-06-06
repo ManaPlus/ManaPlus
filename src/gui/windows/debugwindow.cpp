@@ -47,7 +47,7 @@ DebugWindow::DebugWindow() :
     mNetWidget(new NetDebugTab(this))
 {
     setWindowName("Debug");
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     setResizable(true);
@@ -94,7 +94,7 @@ void DebugWindow::postInit()
 void DebugWindow::slowLogic()
 {
     BLOCK_START("DebugWindow::slowLogic")
-    if (!isWindowVisible() || !mTabs)
+    if (!isWindowVisible() || (mTabs == nullptr))
     {
         BLOCK_END("DebugWindow::slowLogic")
         return;
@@ -114,7 +114,7 @@ void DebugWindow::slowLogic()
             break;
     }
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
         localPlayer->tryPingRequest();
     BLOCK_END("DebugWindow::slowLogic")
 }
@@ -124,10 +124,10 @@ void DebugWindow::draw(Graphics *const g)
     BLOCK_START("DebugWindow::draw")
     Window::draw(g);
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         const Being *const target = localPlayer->getTarget();
-        if (target)
+        if (target != nullptr)
         {
             target->draw(g, -target->getPixelX() + mapTileSize / 2
                 + mDimension.width / 2, -target->getPixelY() + mapTileSize
@@ -142,10 +142,10 @@ void DebugWindow::safeDraw(Graphics *const g)
     BLOCK_START("DebugWindow::draw")
     Window::safeDraw(g);
 
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         const Being *const target = localPlayer->getTarget();
-        if (target)
+        if (target != nullptr)
         {
             target->draw(g, -target->getPixelX() + mapTileSize / 2
                 + mDimension.width / 2, -target->getPixelY() + mapTileSize

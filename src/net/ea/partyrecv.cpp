@@ -54,7 +54,7 @@ namespace PartyRecv
 
 void PartyRecv::processPartyCreate(Net::MessageIn &msg)
 {
-    if (msg.readUInt8("flag"))
+    if (msg.readUInt8("flag") != 0u)
         NotifyManager::notify(NotifyTypes::PARTY_CREATE_FAILED);
     else
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);
@@ -125,7 +125,7 @@ void PartyRecv::processPartyLeave(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("account id");
     const std::string nick = msg.readString(24, "nick");
     const int reason = msg.readUInt8("flag");
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (id == localPlayer->getId())
@@ -153,7 +153,7 @@ void PartyRecv::processPartyLeave(Net::MessageIn &msg)
         if (reason >= 2)
             return;
 
-        if (Ea::taParty)
+        if (Ea::taParty != nullptr)
         {
             Ea::taParty->removeFromMembers();
             Ea::taParty->clearMembers();
@@ -161,7 +161,7 @@ void PartyRecv::processPartyLeave(Net::MessageIn &msg)
 
         delete2(partyTab)
 
-        if (socialWindow && Ea::taParty)
+        if ((socialWindow != nullptr) && (Ea::taParty != nullptr))
             socialWindow->removeTab(Ea::taParty);
         localPlayer->setPartyName("");
     }
@@ -190,16 +190,16 @@ void PartyRecv::processPartyLeave(Net::MessageIn &msg)
         if (reason >= 2)
             return;
 
-        if (actorManager)
+        if (actorManager != nullptr)
         {
             Being *const b = actorManager->findBeing(id);
-            if (b && b->getType() == ActorType::Player)
+            if ((b != nullptr) && b->getType() == ActorType::Player)
             {
                 b->setParty(nullptr);
                 b->setPartyName("");
             }
         }
-        if (Ea::taParty)
+        if (Ea::taParty != nullptr)
             Ea::taParty->removeMember(id);
     }
 }
@@ -208,9 +208,9 @@ void PartyRecv::processPartyUpdateCoords(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("account id");
     PartyMember *m = nullptr;
-    if (Ea::taParty)
+    if (Ea::taParty != nullptr)
         m = Ea::taParty->getMember(id);
-    if (m)
+    if (m != nullptr)
     {
         m->setX(msg.readInt16("x"));
         m->setY(msg.readInt16("y"));

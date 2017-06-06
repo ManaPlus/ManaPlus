@@ -47,7 +47,7 @@ namespace VirtFs
             const size_t len = str.size();
 
             if (len > ext.length() &&
-                !ext.compare(str.substr(len - ext.length())))
+                (ext.compare(str.substr(len - ext.length())) == 0))
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);
@@ -66,7 +66,7 @@ namespace VirtFs
             const std::string str = *i;
             const size_t len = str.size();
             if (len > ext.length() &&
-                !ext.compare(str.substr(len - ext.length())))
+                (ext.compare(str.substr(len - ext.length())) == 0))
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);
@@ -122,7 +122,7 @@ namespace VirtFs
         int contentsLength;
         const char *fileContents = VirtFs::loadFile(fileName, contentsLength);
 
-        if (!fileContents)
+        if (fileContents == nullptr)
         {
             logger->log("Couldn't load text file: %s", fileName.c_str());
             return std::string();
@@ -138,7 +138,7 @@ namespace VirtFs
         int contentsLength;
         const char *fileContents = VirtFs::loadFile(fileName, contentsLength);
 
-        if (!fileContents)
+        if (fileContents == nullptr)
         {
             logger->log("Couldn't load text file: %s", fileName.c_str());
             return false;

@@ -48,7 +48,7 @@ void ObjectsLayer::addObject(const std::string &name, const int type,
                              const unsigned x, const unsigned y,
                              unsigned dx, unsigned dy)
 {
-    if (!mTiles)
+    if (mTiles == nullptr)
         return;
 
     if (x + dx > mWidth)
@@ -63,7 +63,7 @@ void ObjectsLayer::addObject(const std::string &name, const int type,
 
         for (unsigned i = idx1; i < idx2; i ++)
         {
-            if (!mTiles[i])
+            if (mTiles[i] == nullptr)
                 mTiles[i] = new MapObjectList;
             mTiles[i]->objects.push_back(MapObject(type, name));
         }

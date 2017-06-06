@@ -54,7 +54,7 @@ void ModDB::loadXmlFile(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, "mods"))
+    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "mods"))
     {
         logger->log("Mods Database: Error while loading %s!",
             fileName.c_str());
@@ -80,7 +80,7 @@ void ModDB::loadXmlFile(const std::string &fileName,
         ModInfo *currentInfo = nullptr;
         if (mModInfos.find(name) != mModInfos.end())
             currentInfo = mModInfos[name];
-        if (!currentInfo)
+        if (currentInfo == nullptr)
             currentInfo = new ModInfo;
 
         currentInfo->setName(name);

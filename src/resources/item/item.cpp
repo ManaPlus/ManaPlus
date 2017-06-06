@@ -78,7 +78,7 @@ Item::Item(const int id,
 
 Item::~Item()
 {
-    if (mImage)
+    if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
@@ -97,7 +97,7 @@ void Item::setId(const int id,
     mEquipment = fromBool(id && CAST_S32(getInfo().getType())
         >= 2, Equipm);
 
-    if (mImage)
+    if (mImage != nullptr)
         mImage->decRef();
 
     const ItemInfo &info = getInfo();
@@ -108,7 +108,7 @@ void Item::setId(const int id,
         info.getDyeIconColorsString(color));
     mImage = Loader::getImage(dye);
 
-    if (!mImage)
+    if (mImage == nullptr)
     {
         mImage = Theme::getImageFromTheme(paths.getValue("unknownItemFile",
             "unknown-item.png"));
@@ -131,7 +131,7 @@ Image *Item::getImage(const int id,
         "itemIcons"), info.getDisplay().image),
         info.getDyeIconColorsString(color)));
 
-    if (!image)
+    if (image == nullptr)
         image = Theme::getImageFromTheme("unknown-item.png");
     return image;
 }
@@ -167,7 +167,7 @@ int Item::getCard(const int index) const
 
 void Item::setCards(const int *const cards, const int size)
 {
-    if (size < 0 || !cards)
+    if (size < 0 || (cards == nullptr))
         return;
     int sz = size;
     if (sz > maxCards)
@@ -180,7 +180,7 @@ void Item::addCard(const int card)
 {
     for (int f = 0; f < maxCards; f ++)
     {
-        if (!mCards[f])
+        if (mCards[f] == 0)
         {
             mCards[f] = card;
             return;

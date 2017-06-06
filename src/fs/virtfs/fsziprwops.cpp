@@ -38,7 +38,7 @@ namespace FsZip
                         const RWOPSINT offset,
                         const int whence)
     {
-        if (!rw)
+        if (rw == nullptr)
             return -1;
         File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
@@ -108,7 +108,7 @@ namespace FsZip
                          const RWOPSSIZE size,
                          const RWOPSSIZE maxnum)
     {
-        if (!rw)
+        if (rw == nullptr)
             return 0;
         File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
@@ -130,7 +130,7 @@ namespace FsZip
 
     int rwops_close(SDL_RWops *const rw)
     {
-        if (!rw)
+        if (rw == nullptr)
             return 0;
         File *const handle = static_cast<File*>(
             rw->hidden.unknown.data1);

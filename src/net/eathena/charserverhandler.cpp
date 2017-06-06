@@ -61,7 +61,7 @@ CharServerHandler::CharServerHandler() :
 
 void CharServerHandler::chooseCharacter(Net::Character *const character) const
 {
-    if (!character)
+    if (character == nullptr)
         return;
 
     mSelectedCharacter = character;
@@ -140,7 +140,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
 void CharServerHandler::deleteCharacter(Net::Character *const character,
                                         const std::string &email) const
 {
-    if (!character)
+    if (character == nullptr)
         return;
 
     mSelectedCharacter = character;
@@ -165,7 +165,7 @@ void CharServerHandler::connect() const
     const Token &token =
         static_cast<LoginHandler*>(loginHandler)->getToken();
 
-    if (!Network::mInstance)
+    if (Network::mInstance == nullptr)
         return;
 
     Network::mInstance->disconnect();
@@ -186,7 +186,7 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
 {
     mCharCreateDialog = window;
 
-    if (!mCharCreateDialog)
+    if (mCharCreateDialog == nullptr)
         return;
 
     StringVect attributes;

@@ -44,12 +44,12 @@ ParticleContainer::~ParticleContainer()
 void ParticleContainer::clear()
 {
     clearLocally();
-    if (mNext)
+    if (mNext != nullptr)
         mNext->clear();
 }
 
 void ParticleContainer::moveTo(const float x, const float y)
 {
-    if (mNext)
+    if (mNext != nullptr)
         mNext->moveTo(x, y);
 }

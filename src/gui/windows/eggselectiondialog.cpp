@@ -60,7 +60,7 @@ void EggSelectionDialog::sellAction(const ActionEvent &event A_UNUSED)
 
     const int selectedItem = mShopItemList->getSelected();
     const ShopItem *const item = mShopItems->at(selectedItem);
-    if (!item)
+    if (item == nullptr)
         return;
     inventoryHandler->selectEgg(item);
     scheduleDelete();

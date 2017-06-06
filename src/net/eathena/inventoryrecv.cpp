@@ -100,12 +100,12 @@ namespace InventoryRecv
 void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerEquipment")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
     msg.readInt16("len");
     Equipment *const equipment = PlayerInfo::getEquipment();
-    if (equipment && !equipment->getBackend())
+    if ((equipment != nullptr) && (equipment->getBackend() == nullptr))
     {   // look like SMSG_PLAYER_INVENTORY was not received
         Ea::InventoryRecv::mEquips.clear();
         equipment->setBackend(&Ea::InventoryRecv::mEquips);
@@ -173,7 +173,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
             flags.byte = msg.readUInt8("flags");
         else
             flags.byte = 0;
-        if (inventory)
+        if (inventory != nullptr)
         {
             inventory->setItem(index,
                 itemId,
@@ -191,7 +191,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         }
         delete options;
 
-        if (equipType)
+        if (equipType != 0)
         {
             Ea::InventoryRecv::mEquips.setEquipment(
                 InventoryRecv::getSlot(equipType),
@@ -204,11 +204,11 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
 void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventoryAdd")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
-    if (PlayerInfo::getEquipment()
-        && !PlayerInfo::getEquipment()->getBackend())
+    if ((PlayerInfo::getEquipment() != nullptr)
+        && (PlayerInfo::getEquipment()->getBackend() == nullptr))
     {   // look like SMSG_PLAYER_INVENTORY was not received
         Ea::InventoryRecv::mEquips.clear();
         PlayerInfo::getEquipment()->setBackend(&Ea::InventoryRecv::mEquips);
@@ -259,7 +259,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         Ea::InventoryRecv::mSentPickups.pop();
     }
 
-    if (err)
+    if (err != 0u)
     {
         PickupT pickup;
         switch (err)
@@ -287,7 +287,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 UNIMPLEMENTEDPACKETFIELD(err);
                 break;
         }
-        if (localPlayer)
+        if (localPlayer != nullptr)
         {
             if (itemId == 0)
             {
@@ -309,7 +309,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     }
     else
     {
-        if (localPlayer)
+        if (localPlayer != nullptr)
         {
             if (itemId == 0)
             {
@@ -329,11 +329,11 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
             }
         }
 
-        if (inventory)
+        if (inventory != nullptr)
         {
             const Item *const item = inventory->getItem(index);
 
-            if (item && item->getId() == itemId)
+            if ((item != nullptr) && item->getId() == itemId)
                 amount += item->getQuantity();
 
             inventory->setItem(index,
@@ -359,16 +359,16 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
 void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventory")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
-    if (PlayerInfo::getEquipment())
+    if (PlayerInfo::getEquipment() != nullptr)
     {
         // Clear inventory - this will be a complete refresh
         Ea::InventoryRecv::mEquips.clear();
         PlayerInfo::getEquipment()->setBackend(&Ea::InventoryRecv::mEquips);
     }
 
-    if (inventory)
+    if (inventory != nullptr)
         inventory->clear();
 
     msg.readInt16("len");
@@ -417,7 +417,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         else
             flags.byte = 0;
 
-        if (inventory)
+        if (inventory != nullptr)
         {
             inventory->setItem(index,
                 itemId,
@@ -556,7 +556,7 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
         equipType = msg.readInt16("wear location");
     const uint8_t flag = msg.readUInt8("result");
 
-    if (flag)
+    if (flag != 0u)
     {
         NotifyManager::notify(NotifyTypes::UNEQUIP_FAILED);
     }
@@ -566,7 +566,7 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
             InventoryRecv::getSlot(equipType),
             -1);
     }
-    if (equipType & 0x8000)
+    if ((equipType & 0x8000) != 0)
         ArrowsListener::distributeEvent();
     BLOCK_END("InventoryRecv::processPlayerUnEquip")
 }
@@ -574,7 +574,7 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
 void InventoryRecv::processPlayerInventoryRemove2(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventoryRemove2")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
     const DeleteItemReasonT reason = static_cast<DeleteItemReasonT>(
@@ -582,7 +582,7 @@ void InventoryRecv::processPlayerInventoryRemove2(Net::MessageIn &msg)
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
 
-    if (inventory)
+    if (inventory != nullptr)
     {
         if (Item *const item = inventory->getItem(index))
         {
@@ -771,7 +771,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     }
     else
     {
-        if (Ea::InventoryRecv::mStorage)
+        if (Ea::InventoryRecv::mStorage != nullptr)
         {
             Ea::InventoryRecv::mStorage->setItem(index,
                 itemId,
@@ -797,7 +797,7 @@ void InventoryRecv::processPlayerUseCard(Net::MessageIn &msg)
     const Inventory *const inv = PlayerInfo::getInventory();
     const int index = inventoryHandler->getItemIndex();
     const Item *item1 = nullptr;
-    if (inv)
+    if (inv != nullptr)
         item1 = inv->getItem(index);
     SellDialog *const dialog = CREATEWIDGETR(InsertCardDialog,
         index, item1);
@@ -806,10 +806,10 @@ void InventoryRecv::processPlayerUseCard(Net::MessageIn &msg)
     for (int f = 0; f < count; f ++)
     {
         const int itemIndex = msg.readInt16("item index") - INVENTORY_OFFSET;
-        if (!inv)
+        if (inv == nullptr)
             continue;
         const Item *const item = inv->getItem(itemIndex);
-        if (!item)
+        if (item == nullptr)
             continue;
         dialog->addItem(item, 0);
     }
@@ -819,7 +819,7 @@ void InventoryRecv::processPlayerInsertCard(Net::MessageIn &msg)
 {
     const int itemIndex = msg.readInt16("item index") - INVENTORY_OFFSET;
     const int cardIndex = msg.readInt16("card index") - INVENTORY_OFFSET;
-    if (msg.readUInt8("flag"))
+    if (msg.readUInt8("flag") != 0u)
     {
         NotifyManager::notify(NotifyTypes::CARD_INSERT_FAILED);
     }
@@ -827,11 +827,11 @@ void InventoryRecv::processPlayerInsertCard(Net::MessageIn &msg)
     {
         NotifyManager::notify(NotifyTypes::CARD_INSERT_SUCCESS);
         Inventory *const inv = PlayerInfo::getInventory();
-        if (!inv)
+        if (inv == nullptr)
             return;
         Item *const card = inv->getItem(cardIndex);
         int cardId = 0;
-        if (card)
+        if (card != nullptr)
         {
             cardId = card->getId();
             card->increaseQuantity(-1);
@@ -839,7 +839,7 @@ void InventoryRecv::processPlayerInsertCard(Net::MessageIn &msg)
                 inv->removeItemAt(cardIndex);
         }
         Item *const item = inv->getItem(itemIndex);
-        if (item)
+        if (item != nullptr)
         {
             item->addCard(cardId);
             item->updateColor();
@@ -862,7 +862,7 @@ void InventoryRecv::processPlayerItemRentalTime(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerItemRentalExpired(Net::MessageIn &msg)
 {
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
@@ -871,7 +871,7 @@ void InventoryRecv::processPlayerItemRentalExpired(Net::MessageIn &msg)
 
     NotifyManager::notify(NotifyTypes::RENTAL_TIME_EXPIRED,
         info.getName());
-    if (inventory)
+    if (inventory != nullptr)
     {
         if (Item *const item = inventory->getItem(index))
         {
@@ -888,7 +888,7 @@ void InventoryRecv::processPlayerStorageRemove(Net::MessageIn &msg)
     // Move an item out of storage
     const int index = msg.readInt16("index") - STORAGE_OFFSET;
     const int amount = msg.readInt32("amount");
-    if (Ea::InventoryRecv::mStorage)
+    if (Ea::InventoryRecv::mStorage != nullptr)
     {
         if (Item *const item = Ea::InventoryRecv::mStorage->getItem(index))
         {
@@ -912,7 +912,7 @@ void InventoryRecv::processCartInfo(Net::MessageIn &msg)
         return;
 
     Inventory *const inv = PlayerInfo::getCartInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     inv->resize(size);
@@ -943,7 +943,7 @@ void InventoryRecv::processCartRemove(Net::MessageIn &msg)
 void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerCartAdd")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getCartInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
@@ -975,11 +975,11 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     }
 
     // check what cart was created, if not add delayed items
-    if (inventory && inventory->getSize() > 0)
+    if ((inventory != nullptr) && inventory->getSize() > 0)
     {
         const Item *const item = inventory->getItem(index);
 
-        if (item && item->getId() == itemId)
+        if ((item != nullptr) && item->getId() == itemId)
             amount += item->getQuantity();
 
         inventory->setItem(index,
@@ -1170,7 +1170,7 @@ void InventoryRecv::processPlayerCartRemove(Net::MessageIn &msg)
     const int amount = msg.readInt32("amount");
 
     Inventory *const inv = PlayerInfo::getCartInventory();
-    if (!inv)
+    if (inv == nullptr)
         return;
 
     if (Item *const item = inv->getItem(index))
@@ -1209,9 +1209,9 @@ void InventoryRecv::processPlayerRefine(Net::MessageIn &msg)
     const Item *item = nullptr;
     int notifyType;
     std::string itemName;
-    if (inv)
+    if (inv != nullptr)
         item = inv->getItem(index);
-    if (item)
+    if (item != nullptr)
     {
         itemName = item->getName();
     }
@@ -1340,11 +1340,11 @@ void InventoryRecv::processBindItem(Net::MessageIn &msg)
 {
     const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
     const Inventory *const inv = PlayerInfo::getInventory();
-    if (inv)
+    if (inv != nullptr)
     {
         std::string itemName;
         const Item *const item = inv->getItem(index);
-        if (item)
+        if (item != nullptr)
         {
             itemName = item->getName();
         }
@@ -1360,16 +1360,16 @@ void InventoryRecv::processBindItem(Net::MessageIn &msg)
 void InventoryRecv::processPlayerInventoryRemove(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventoryRemove")
-    Inventory *const inventory = localPlayer
+    Inventory *const inventory = localPlayer != nullptr
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
-    if (inventory)
+    if (inventory != nullptr)
     {
         if (Item *const item = inventory->getItem(index))
         {
-            if (amount)
+            if (amount != 0)
             {
                 NotifyManager::notify(NotifyTypes::DELETE_ITEM_DROPPED,
                     item->getName());
@@ -1398,12 +1398,12 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
     if (eAthenaSlot == 0)
         return EquipSlot::VECTOREND;
 
-    if (eAthenaSlot & 0x8000)
+    if ((eAthenaSlot & 0x8000) != 0)
         return inventoryHandler->getProjectileSlot();
 
     unsigned int mask = 1;
     int position = 0;
-    while (!(eAthenaSlot & mask))
+    while ((eAthenaSlot & mask) == 0u)
     {
         mask <<= 1;
         position++;

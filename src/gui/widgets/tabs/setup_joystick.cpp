@@ -73,7 +73,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mNamesDropDown->setActionEventId("name");
     mNamesDropDown->addActionListener(this);
 
-    if (joystick)
+    if (joystick != nullptr)
     {
         mNamesDropDown->setSelected(joystick->getNumber());
     }
@@ -113,12 +113,12 @@ void Setup_Joystick::action(const ActionEvent &event)
     }
     else if (source == mNamesDropDown)
     {
-        if (joystick)
+        if (joystick != nullptr)
             joystick->setNumber(mNamesDropDown->getSelected());
     }
     else if (source == mDetectButton)
     {
-        if (joystick)
+        if (joystick != nullptr)
         {
             joystick->reload();
             Joystick::getNames(mNamesModel->getNames());
@@ -127,7 +127,7 @@ void Setup_Joystick::action(const ActionEvent &event)
     }
     else
     {
-        if (!joystick)
+        if (joystick == nullptr)
             return;
 
         if (joystick->isCalibrating())
@@ -155,7 +155,7 @@ void Setup_Joystick::setTempEnabled(const bool sel)
 {
     Joystick::setEnabled(sel);
     mCalibrateButton->setEnabled(sel);
-    if (joystick)
+    if (joystick != nullptr)
     {
         if (sel)
             joystick->open();
@@ -166,7 +166,7 @@ void Setup_Joystick::setTempEnabled(const bool sel)
 
 void Setup_Joystick::cancel()
 {
-    if (joystick)
+    if (joystick != nullptr)
         joystick->setEnabled(mOriginalJoystickEnabled);
 
     if (mOriginalJoystickEnabled != mJoystickEnabled->isSelected())
@@ -177,7 +177,7 @@ void Setup_Joystick::cancel()
 
 void Setup_Joystick::apply()
 {
-    if (!joystick)
+    if (joystick == nullptr)
         return;
 
     config.setValue("joystickEnabled", joystick->isEnabled());

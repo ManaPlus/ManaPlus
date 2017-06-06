@@ -45,18 +45,18 @@ Skin::Skin(ImageRect *const restrict skin,
     mFilePath(filePath),
     mName(name),
     mBorder(skin),
-    mCloseImage(images ? images->grid[0] : nullptr),
-    mCloseImageHighlighted(images ? images->grid[1] : nullptr),
-    mStickyImageUp(images ? images->grid[2] : nullptr),
-    mStickyImageDown(images ? images->grid[3] : nullptr),
+    mCloseImage(images != nullptr ? images->grid[0] : nullptr),
+    mCloseImageHighlighted(images != nullptr ? images->grid[1] : nullptr),
+    mStickyImageUp(images != nullptr ? images->grid[2] : nullptr),
+    mStickyImageDown(images != nullptr ? images->grid[3] : nullptr),
     mPadding(padding),
     mTitlePadding(titlePadding),
     mOptions(options)
 {
-    if (!mCloseImageHighlighted)
+    if (mCloseImageHighlighted == nullptr)
     {
         mCloseImageHighlighted = mCloseImage;
-        if (mCloseImageHighlighted)
+        if (mCloseImageHighlighted != nullptr)
             mCloseImageHighlighted->incRef();
     }
 }
@@ -65,32 +65,32 @@ Skin::~Skin()
 {
     for (int i = 0; i < 9; i++)
     {
-        if (mBorder && mBorder->grid[i])
+        if ((mBorder != nullptr) && (mBorder->grid[i] != nullptr))
         {
             mBorder->grid[i]->decRef();
             mBorder->grid[i] = nullptr;
         }
     }
 
-    if (mCloseImage)
+    if (mCloseImage != nullptr)
     {
         mCloseImage->decRef();
         mCloseImage = nullptr;
     }
 
-    if (mCloseImageHighlighted)
+    if (mCloseImageHighlighted != nullptr)
     {
         mCloseImageHighlighted->decRef();
         mCloseImageHighlighted = nullptr;
     }
 
-    if (mStickyImageUp)
+    if (mStickyImageUp != nullptr)
     {
         mStickyImageUp->decRef();
         mStickyImageUp = nullptr;
     }
 
-    if (mStickyImageDown)
+    if (mStickyImageDown != nullptr)
     {
         mStickyImageDown->decRef();
         mStickyImageDown = nullptr;
@@ -106,30 +106,30 @@ void Skin::updateAlpha(const float minimumOpacityAllowed)
         std::max(static_cast<double>(minimumOpacityAllowed),
         static_cast<double>(settings.guiAlpha)));
 
-    if (mBorder)
+    if (mBorder != nullptr)
     {
         for (int i = 0; i < 9; i++)
         {
-            if (mBorder->grid[i])
+            if (mBorder->grid[i] != nullptr)
                 mBorder->grid[i]->setAlpha(alpha);
         }
     }
 
-    if (mCloseImage)
+    if (mCloseImage != nullptr)
         mCloseImage->setAlpha(alpha);
-    if (mCloseImageHighlighted)
+    if (mCloseImageHighlighted != nullptr)
         mCloseImageHighlighted->setAlpha(alpha);
-    if (mStickyImageUp)
+    if (mStickyImageUp != nullptr)
         mStickyImageUp->setAlpha(alpha);
-    if (mStickyImageDown)
+    if (mStickyImageDown != nullptr)
         mStickyImageDown->setAlpha(alpha);
 }
 
 int Skin::getMinWidth() const
 {
-    if (!mBorder ||
-        !mBorder->grid[ImagePosition::UPPER_LEFT] ||
-        !mBorder->grid[ImagePosition::UPPER_RIGHT])
+    if ((mBorder == nullptr) ||
+        (mBorder->grid[ImagePosition::UPPER_LEFT] == nullptr) ||
+        (mBorder->grid[ImagePosition::UPPER_RIGHT] == nullptr))
     {
         return 1;
     }
@@ -140,9 +140,9 @@ int Skin::getMinWidth() const
 
 int Skin::getMinHeight() const
 {
-    if (!mBorder ||
-        !mBorder->grid[ImagePosition::UPPER_LEFT] ||
-        !mBorder->grid[ImagePosition::LOWER_LEFT])
+    if ((mBorder == nullptr) ||
+        (mBorder->grid[ImagePosition::UPPER_LEFT] == nullptr) ||
+        (mBorder->grid[ImagePosition::LOWER_LEFT] == nullptr))
     {
         return 1;
     }

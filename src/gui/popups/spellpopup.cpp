@@ -60,7 +60,7 @@ SpellPopup::~SpellPopup()
 
 void SpellPopup::setItem(const TextCommand *const spell)
 {
-    if (spell)
+    if (spell != nullptr)
     {
         mItemName->setCaption(spell->getName());
         mItemComment->setCaption(spell->getComment());

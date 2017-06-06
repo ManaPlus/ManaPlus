@@ -85,7 +85,8 @@ LoginDialog::LoginDialog(LoginData &data,
     mRegisterButton(new Button(this, _("Register"), "register", this)),
     // TRANSLATORS: login dialog checkbox
     mCustomUpdateHost(new CheckBox(this, _("Custom update host"),
-        mLoginData->updateType & UpdateType::Custom, this, "customhost")),
+        (mLoginData->updateType & UpdateType::Custom) != 0,
+        this, "customhost")),
     mUpdateHostText(new TextField(this, serverConfig.getValue(
         "customUpdateHost", ""))),
     mUpdateListModel(nullptr),
@@ -96,7 +97,7 @@ LoginDialog::LoginDialog(LoginData &data,
     setCloseButton(true);
     setWindowName("Login");
 
-    if (charServerHandler)
+    if (charServerHandler != nullptr)
         charServerHandler->clear();
 
     mergeUpdateHosts();
@@ -155,7 +156,7 @@ LoginDialog::LoginDialog(LoginData &data,
     place(0, 6, mUpdateTypeLabel, 1);
     place(1, 6, mUpdateTypeDropDown, 8);
     int n = 7;
-    if (mUpdateHostDropDown)
+    if (mUpdateHostDropDown != nullptr)
     {
         place(0, 7, mUpdateHostDropDown, 9);
         n += 1;
@@ -176,7 +177,7 @@ void LoginDialog::postInit()
     setVisible(Visible_true);
 
     const int h = 200;
-    if (mUpdateHostDropDown)
+    if (mUpdateHostDropDown != nullptr)
         setContentSize(310, 250);
     setContentSize(310, h);
 #ifdef ANDROID
@@ -196,7 +197,7 @@ void LoginDialog::postInit()
         mPassField->requestFocus();
 
     mLoginButton->setEnabled(canSubmit());
-    if (loginHandler)
+    if (loginHandler != nullptr)
     {
         mRegisterButton->setEnabled(loginHandler->isRegistrationEnabled()
             || !mLoginData->registerUrl.empty());
@@ -209,9 +210,9 @@ void LoginDialog::postInit()
 
 LoginDialog::~LoginDialog()
 {
-    if (mUpdateTypeDropDown)
+    if (mUpdateTypeDropDown != nullptr)
         mUpdateTypeDropDown->hideDrop(false);
-    if (mUpdateHostDropDown)
+    if (mUpdateHostDropDown != nullptr)
         mUpdateHostDropDown->hideDrop(false);
 
     delete2(mUpdateTypeModel);
@@ -329,7 +330,7 @@ void LoginDialog::prepareUpdate()
     else
     {
         std::string str;
-        if (mUpdateHostDropDown)
+        if (mUpdateHostDropDown != nullptr)
         {
             const int sel = mUpdateHostDropDown->getSelected();
             if (sel >= 0)

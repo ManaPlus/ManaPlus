@@ -64,11 +64,11 @@ Desktop::Desktop(const Widget2 *const widget) :
 
     Wallpaper::loadWallpapers();
 
-    if (theme)
+    if (theme != nullptr)
         mSkin = theme->load("desktop.xml", "");
 
-    if (mSkin)
-        mShowBackground = mSkin->getOption("showBackground");
+    if (mSkin != nullptr)
+        mShowBackground = (mSkin->getOption("showBackground") != 0);
 
     const std::string appName = branding.getValue("appName", std::string());
     if (appName.empty())
@@ -87,18 +87,18 @@ Desktop::Desktop(const Widget2 *const widget) :
 
 Desktop::~Desktop()
 {
-    if (mWallpaper)
+    if (mWallpaper != nullptr)
     {
         mWallpaper->decRef();
         mWallpaper = nullptr;
     }
-    if (theme)
+    if (theme != nullptr)
         theme->unload(mSkin);
 }
 
 void Desktop::postInit()
 {
-    if (mSkin)
+    if (mSkin != nullptr)
     {
         addXY(mVersionLabel,
             mSkin->getOption("versionX", 25),
@@ -130,7 +130,7 @@ void Desktop::draw(Graphics *const graphics)
     const Rect &rect = mDimension;
     const int width = rect.width;
     const int height = rect.height;
-    if (mWallpaper)
+    if (mWallpaper != nullptr)
     {
         const int wallpWidth = mWallpaper->getWidth();
         const int wallpHeight = mWallpaper->getHeight();
@@ -178,9 +178,9 @@ void Desktop::setBestFittingWallpaper()
 
     Image *const nWallPaper = Theme::getImageFromTheme(wallpaperName);
 
-    if (nWallPaper)
+    if (nWallPaper != nullptr)
     {
-        if (mWallpaper)
+        if (mWallpaper != nullptr)
         {
             ResourceManager::decRefDelete(mWallpaper);
             mWallpaper = nullptr;
@@ -198,7 +198,7 @@ void Desktop::setBestFittingWallpaper()
             Image *const newRsclWlPpr = Loader::getRescaled(
                 nWallPaper, width, height);
 
-            if (newRsclWlPpr)
+            if (newRsclWlPpr != nullptr)
             {
                 ResourceManager::decRefDelete(nWallPaper);
                 // We replace the resource in the resource manager

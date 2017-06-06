@@ -50,7 +50,7 @@ Widget *TabStrip::createWidget(const std::string &text,
     widget->setStick(true);
     widget->setCaption(text);
     widget->adjustSize();
-    if ((!mCount && mPressFirst) || pressed)
+    if (((mCount == 0) && mPressFirst) || pressed)
         widget->setPressed(true);
     widget->setTag(CAST_S32(mWidgets.size()));
     return widget;
@@ -59,11 +59,11 @@ Widget *TabStrip::createWidget(const std::string &text,
 void TabStrip::action(const ActionEvent &event)
 {
     WidgetGroup::action(event);
-    if (event.getSource())
+    if (event.getSource() != nullptr)
     {
         Widget *const widget = event.getSource();
         Button *const button = static_cast<Button*>(widget);
-        if (!button)
+        if (button == nullptr)
             return;
         if (button->isPressed2())
         {

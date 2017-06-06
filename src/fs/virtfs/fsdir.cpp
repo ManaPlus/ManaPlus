@@ -198,9 +198,9 @@ namespace FsDir
             dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
-        if (dir)
+        if (dir != nullptr)
         {
-            while ((next_file = readdir(dir)))
+            while ((next_file = readdir(dir)) != nullptr)
             {
                 const std::string file = next_file->d_name;
                 if (file == "." || file == "..")
@@ -457,7 +457,7 @@ namespace FsDir
         }
         const int64_t len = static_cast<int64_t>(statbuf.st_size);
 #endif  // USE_FILE_FOPEN
-        return pos < 0 || len < 0 || pos >= len;
+        return static_cast<int>(pos < 0 || len < 0 || pos >= len);
     }
 
     const char *loadFile(FsEntry *restrict const entry,
@@ -531,9 +531,9 @@ namespace FsDir
             dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
-        if (dir)
+        if (dir != nullptr)
         {
-            while ((next_file = readdir(dir)))
+            while ((next_file = readdir(dir)) != nullptr)
             {
                 struct stat statbuf;
                 const std::string file = next_file->d_name;
@@ -581,9 +581,9 @@ namespace FsDir
             dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
-        if (dir)
+        if (dir != nullptr)
         {
-            while ((next_file = readdir(dir)))
+            while ((next_file = readdir(dir)) != nullptr)
             {
                 struct stat statbuf;
                 const std::string file = next_file->d_name;
@@ -631,9 +631,9 @@ namespace FsDir
             dirName;
         const struct dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
-        if (dir)
+        if (dir != nullptr)
         {
-            while ((next_file = readdir(dir)))
+            while ((next_file = readdir(dir)) != nullptr)
             {
                 struct stat statbuf;
                 const std::string file = next_file->d_name;

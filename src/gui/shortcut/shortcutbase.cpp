@@ -74,7 +74,7 @@ void ShortcutBase::save() const
 {
     for (int i = 0; i < mMaxSize; i++)
     {
-        const int itemId = mItems[i] ? mItems[i] : -1;
+        const int itemId = mItems[i] != 0 ? mItems[i] : -1;
         const int itemColor = (mItemColors[i] != ItemColor_zero)
             ? toInt(mItemColors[i], int) : 1;
         if (itemId != -1)
@@ -92,7 +92,7 @@ void ShortcutBase::save() const
 
 void ShortcutBase::setItemSelected(const Item *const item)
 {
-    if (item)
+    if (item != nullptr)
     {
         mItemSelected = item->getId();
         mItemColorSelected = item->getColor();

@@ -43,7 +43,7 @@ PopupManager::~PopupManager()
 void PopupManager::closePopupMenu()
 {
 #ifndef DYECMD
-    if (popupMenu)
+    if (popupMenu != nullptr)
         popupMenu->handleLink("cancel", nullptr);
 #endif  // DYECMD
 }
@@ -51,21 +51,21 @@ void PopupManager::closePopupMenu()
 void PopupManager::hideBeingPopup()
 {
 #ifndef DYECMD
-    if (beingPopup)
+    if (beingPopup != nullptr)
         beingPopup->setVisible(Visible_false);
 #endif  // DYECMD
 }
 
 void PopupManager::hideTextPopup()
 {
-    if (textPopup)
+    if (textPopup != nullptr)
         textPopup->setVisible(Visible_false);
 }
 
 void PopupManager::hidePopupMenu()
 {
 #ifndef DYECMD
-    if (popupMenu)
+    if (popupMenu != nullptr)
         popupMenu->setVisible(Visible_false);
 #endif  // DYECMD
 }
@@ -73,7 +73,7 @@ void PopupManager::hidePopupMenu()
 bool PopupManager::isPopupMenuVisible()
 {
 #ifndef DYECMD
-    return popupMenu ? popupMenu->isPopupVisible() : false;
+    return popupMenu != nullptr ? popupMenu->isPopupVisible() : false;
 #else
     return false;
 #endif  // DYECMD
@@ -82,20 +82,20 @@ bool PopupManager::isPopupMenuVisible()
 void PopupManager::clearPopup()
 {
 #ifndef DYECMD
-    if (popupMenu)
+    if (popupMenu != nullptr)
         popupMenu->clear();
 #endif  // DYECMD
 }
 
 bool PopupManager::isTextPopupVisible()
 {
-    return textPopup ? textPopup->isPopupVisible() : false;
+    return textPopup != nullptr ? textPopup->isPopupVisible() : false;
 }
 
 bool PopupManager::isBeingPopupVisible()
 {
 #ifndef DYECMD
-    return beingPopup ? beingPopup->isPopupVisible() : false;
+    return beingPopup != nullptr ? beingPopup->isPopupVisible() : false;
 #else  // DYECMD
     return false;
 #endif  // DYECMD

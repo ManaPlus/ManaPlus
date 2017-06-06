@@ -32,7 +32,7 @@ void StatListener::distributeEvent(const AttributesT id,
               it, mListeners)
     {
         StatListener *const listener = *it;
-        if (listener)
+        if (listener != nullptr)
             listener->statChanged(id, oldVal1, oldVal2);
     }
 }

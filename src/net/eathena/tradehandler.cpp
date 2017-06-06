@@ -48,7 +48,7 @@ TradeHandler::TradeHandler() :
 
 void TradeHandler::request(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_TRADE_REQUEST);
@@ -66,7 +66,7 @@ void TradeHandler::respond(const bool accept) const
 
 void TradeHandler::addItem(const Item *const item, const int amount) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     TradeRecv::mItemIndex = item->getInvIndex();

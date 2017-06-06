@@ -116,7 +116,7 @@ class LangListModel final : public ExtendedListModel
             for (int f = 0; f < langs_count; f ++)
             {
                 Image *const img = mIcons[f];
-                if (img)
+                if (img != nullptr)
                     img->decRef();
             }
         }

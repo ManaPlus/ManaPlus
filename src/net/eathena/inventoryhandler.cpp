@@ -80,7 +80,7 @@ InventoryHandler::~InventoryHandler()
 
 void InventoryHandler::equipItem(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_EQUIP);
@@ -96,7 +96,7 @@ void InventoryHandler::equipItem(const Item *const item) const
 
 void InventoryHandler::unequipItem(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_UNEQUIP);
@@ -106,7 +106,7 @@ void InventoryHandler::unequipItem(const Item *const item) const
 
 void InventoryHandler::useItem(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_USE);
@@ -117,7 +117,7 @@ void InventoryHandler::useItem(const Item *const item) const
 
 void InventoryHandler::dropItem(const Item *const item, const int amount) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     createOutPacket(CMSG_PLAYER_INVENTORY_DROP);
@@ -477,7 +477,7 @@ void InventoryHandler::moveItem2(const InventoryTypeT source,
     }
 
     // for packetVersion < 20101124 need use other packet offset
-    if (packet)
+    if (packet != 0)
     {
         createOutPacket(packet);
         outMsg.writeInt16(CAST_S16(slot + offset), "index");
@@ -487,7 +487,7 @@ void InventoryHandler::moveItem2(const InventoryTypeT source,
 
 void InventoryHandler::useCard(const Item *const item)
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     mItemIndex = item->getInvIndex();
@@ -509,7 +509,7 @@ void InventoryHandler::insertCard(const int cardIndex,
 void InventoryHandler::favoriteItem(const Item *const item,
                                     const bool favorite) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
     if (packetVersion < 20120410)
         return;
@@ -517,12 +517,12 @@ void InventoryHandler::favoriteItem(const Item *const item,
     outMsg.writeInt16(CAST_S16(item->getInvIndex()
         + INVENTORY_OFFSET),
         "item index");
-    outMsg.writeInt8(favorite, "favorite flag");
+    outMsg.writeInt8(static_cast<int8_t>(favorite), "favorite flag");
 }
 
 void InventoryHandler::selectEgg(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return;
     createOutPacket(CMSG_PET_SELECT_EGG);
     outMsg.writeInt16(CAST_S16(

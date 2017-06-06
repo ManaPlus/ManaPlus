@@ -44,14 +44,14 @@ struct ImageSetLoader final
 
     static Resource *load(const void *const v)
     {
-        if (!v)
+        if (v == nullptr)
             return nullptr;
 
         const ImageSetLoader *const
             rl = static_cast<const ImageSetLoader *>(v);
 
         Image *const img = Loader::getImage(rl->path);
-        if (!img)
+        if (img == nullptr)
         {
             reportAlways("Image loading error: %s", rl->path.c_str());
             return nullptr;

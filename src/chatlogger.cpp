@@ -80,7 +80,7 @@ void ChatLogger::setLogDir(const std::string &logDir)
         mLogFile.close();
 
     DIR *const dir = opendir(mLogDir.c_str());
-    if (!dir)
+    if (dir == nullptr)
         mkdir_r(mLogDir.c_str());
     else
         closedir(dir);
@@ -185,7 +185,7 @@ void ChatLogger::setServerName(const std::string &serverName)
     {
         const std::string name = pathJoin(mLogDir, mServerName);
         DIR *const dir = opendir(name.c_str());
-        if (!dir)
+        if (dir == nullptr)
             mkdir_r(name.c_str());
         else
             closedir(dir);

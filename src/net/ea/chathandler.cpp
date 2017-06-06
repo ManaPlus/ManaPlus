@@ -36,7 +36,7 @@ ChatHandler::ChatHandler()
     if (!ChatRecv::mSentWhispers.empty())
         ChatRecv::mSentWhispers.pop();
     ChatRecv::mMotdTime = 0;
-    ChatRecv::mShowAllLang = serverConfig.getValue("showAllLang", 0);
+    ChatRecv::mShowAllLang = (serverConfig.getValue("showAllLang", 0) != 0);
     ChatRecv::mShowMotd = config.getBoolValue("showmotd");
     ChatRecv::mSkipping = true;
 }

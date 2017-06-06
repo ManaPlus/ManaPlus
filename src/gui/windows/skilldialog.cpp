@@ -102,7 +102,7 @@ SkillDialog::SkillDialog() :
     setSaveVisible(true);
     setStickyButtonLock(true);
     setDefaultSize(windowContainer->getWidth() - 280, 30, 275, 425);
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     mUseButton->setEnabled(false);
@@ -156,11 +156,11 @@ void SkillDialog::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "inc")
     {
-        if (!playerHandler)
+        if (playerHandler == nullptr)
             return;
         const SkillTab *const tab = static_cast<const SkillTab *>(
             mTabs->getSelectedTab());
-        if (tab)
+        if (tab != nullptr)
         {
             if (const SkillInfo *const info = tab->getSelectedInfo())
                 playerHandler->increaseSkill(CAST_U16(info->id));
@@ -170,7 +170,7 @@ void SkillDialog::action(const ActionEvent &event)
     {
         const SkillTab *const tab = static_cast<const SkillTab *>(
             mTabs->getSelectedTab());
-        if (tab)
+        if (tab != nullptr)
         {
             if (const SkillInfo *const info = tab->getSelectedInfo())
             {
@@ -179,7 +179,7 @@ void SkillDialog::action(const ActionEvent &event)
                 mIncreaseButton->setEnabled(info->id < SKILL_VAR_MIN_ID);
                 const int num = itemShortcutWindow->getTabIndex();
                 if (num >= 0 && num < CAST_S32(SHORTCUT_TABS)
-                    && itemShortcut[num])
+                    && (itemShortcut[num] != nullptr))
                 {
                     itemShortcut[num]->setItemSelected(
                         info->id + SKILL_MIN_ID);
@@ -198,7 +198,7 @@ void SkillDialog::action(const ActionEvent &event)
     {
         const SkillTab *const tab = static_cast<const SkillTab *>(
             mTabs->getSelectedTab());
-        if (tab)
+        if (tab != nullptr)
         {
             const SkillInfo *const info = tab->getSelectedInfo();
             useSkill(info,
@@ -224,7 +224,7 @@ std::string SkillDialog::update(const int id)
     if (i != mSkills.end())
     {
         SkillInfo *const info = i->second;
-        if (info)
+        if (info != nullptr)
         {
             info->update();
             return info->data->name;
@@ -244,7 +244,7 @@ void SkillDialog::update()
     FOR_EACH (SkillMap::const_iterator, it, mSkills)
     {
         SkillInfo *const info = (*it).second;
-        if (info && info->modifiable == Modifiable_true)
+        if ((info != nullptr) && info->modifiable == Modifiable_true)
             info->update();
     }
 
@@ -258,17 +258,17 @@ void SkillDialog::updateModels()
     FOR_EACH (SkillMap::const_iterator, it, mSkills)
     {
         SkillInfo *const info = (*it).second;
-        if (info)
+        if (info != nullptr)
         {
             SkillModel *const model = info->model;
-            if (model)
+            if (model != nullptr)
                 models.insert(model);
         }
     }
     FOR_EACH (std::set<SkillModel*>::iterator, it, models)
     {
         SkillModel *const model = *it;
-        if (model)
+        if (model != nullptr)
             model->updateVisibilities();
     }
 }
@@ -290,7 +290,7 @@ void SkillDialog::hideSkills(const SkillOwner::Type owner)
     FOR_EACH (SkillMap::iterator, it, mSkills)
     {
         SkillInfo *const info = (*it).second;
-        if (info && info->owner == owner)
+        if ((info != nullptr) && info->owner == owner)
         {
             PlayerInfo::setSkillLevel(info->id, 0);
             if (info->alwaysVisible == Visible_false)
@@ -322,7 +322,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
 
     int setCount = 0;
 
-    if (!root || !xmlNameEqual(root, "skills"))
+    if ((root == nullptr) || !xmlNameEqual(root, "skills"))
     {
         logger->log("Error loading skills: " + fileName);
         return;
@@ -399,7 +399,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                         setTypeStr.c_str());
                     return;
             }
-            if (!mDefaultModel)
+            if (mDefaultModel == nullptr)
             {
                 mDefaultModel = model;
                 mDefaultTab = tab;
@@ -453,7 +453,7 @@ SkillInfo *SkillDialog::loadSkill(XmlNodeConstPtr node,
         strprintf(_("Skill %d"), id));
 
     SkillInfo *skill = getSkill(id);
-    if (!skill)
+    if (skill == nullptr)
     {
         skill = new SkillInfo;
         skill->id = CAST_U32(id);
@@ -495,12 +495,12 @@ SkillInfo *SkillDialog::loadSkill(XmlNodeConstPtr node,
 void SkillDialog::loadSkillData(XmlNodeConstPtr node,
                                 SkillInfo *const skill)
 {
-    if (!skill)
+    if (skill == nullptr)
         return;
     const int level = (skill->alwaysVisible == Visible_true) ?
         0 : XML::getProperty(node, "level", 0);
     SkillData *data = skill->getData(level);
-    if (!data)
+    if (data == nullptr)
         data = new SkillData;
 
     const std::string name = XML::langProperty(node, "name",
@@ -573,7 +573,7 @@ void SkillDialog::removeSkill(const int id)
     if (it != mSkills.end())
     {
         SkillInfo *const info = it->second;
-        if (info)
+        if (info != nullptr)
         {
             info->level = 0;
             info->update();
@@ -595,14 +595,14 @@ bool SkillDialog::updateSkill(const int id,
     if (it != mSkills.end())
     {
         SkillInfo *const info = it->second;
-        if (info)
+        if (info != nullptr)
         {
             info->modifiable = modifiable;
             info->range = range;
             info->type = type;
             info->sp = sp;
             info->update();
-            if (info->tab)
+            if (info->tab != nullptr)
             {
                 info->tab->setVisible(Visible_true);
                 mTabs->adjustTabPositions();
@@ -623,7 +623,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
                            const SkillType::SkillType type,
                            const int sp)
 {
-    if (mDefaultModel)
+    if (mDefaultModel != nullptr)
     {
         SkillInfo *const skill = new SkillInfo;
         skill->id = CAST_U32(id);
@@ -699,7 +699,7 @@ void SkillDialog::setSkillDuration(const SkillOwner::Type owner,
     {
         info = (*it).second;
     }
-    if (info)
+    if (info != nullptr)
     {
         info->duration = duration;
         info->durationTime = tick_time;
@@ -711,7 +711,7 @@ void SkillDialog::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 
-    if (mTabs)
+    if (mTabs != nullptr)
         mTabs->adjustSize();
 }
 
@@ -757,7 +757,7 @@ void SkillDialog::updateTabSelection()
 {
     const SkillTab *const tab = static_cast<SkillTab*>(
         mTabs->getSelectedTab());
-    if (tab)
+    if (tab != nullptr)
     {
         if (const SkillInfo *const info = tab->getSelectedInfo())
         {
@@ -786,7 +786,7 @@ void SkillDialog::updateQuest(const int var,
     if (it != mSkills.end())
     {
         SkillInfo *const info = it->second;
-        if (info)
+        if (info != nullptr)
         {
             PlayerInfo::setSkillLevel(id, val1);
             info->level = val1;
@@ -801,7 +801,7 @@ SkillData *SkillDialog::getSkillData(const int id) const
     if (it != mSkills.end())
     {
         SkillInfo *const info = it->second;
-        if (info)
+        if (info != nullptr)
             return info->data;
     }
     return nullptr;
@@ -814,7 +814,7 @@ SkillData *SkillDialog::getSkillDataByLevel(const int id,
     if (it != mSkills.end())
     {
         SkillInfo *const info = it->second;
-        if (info)
+        if (info != nullptr)
             return info->getData1(level);
     }
     return nullptr;
@@ -822,10 +822,10 @@ SkillData *SkillDialog::getSkillDataByLevel(const int id,
 
 void SkillDialog::playUpdateEffect(const int id) const
 {
-    if (!effectManager)
+    if (effectManager == nullptr)
         return;
     const SkillData *const data = getSkillData(id);
-    if (!data)
+    if (data == nullptr)
         return;
     effectManager->triggerDefault(data->updateEffectId,
         localPlayer,
@@ -834,10 +834,10 @@ void SkillDialog::playUpdateEffect(const int id) const
 
 void SkillDialog::playRemoveEffect(const int id) const
 {
-    if (!effectManager)
+    if (effectManager == nullptr)
         return;
     const SkillData *const data = getSkillData(id);
-    if (!data)
+    if (data == nullptr)
         return;
     effectManager->triggerDefault(data->removeEffectId,
         localPlayer,
@@ -850,10 +850,10 @@ void SkillDialog::playCastingDstTileEffect(const int id,
                                            const int y,
                                            const int delay) const
 {
-    if (!effectManager)
+    if (effectManager == nullptr)
         return;
     SkillData *const data = getSkillDataByLevel(id, level);
-    if (!data)
+    if (data == nullptr)
         return;
     effectManager->triggerDefault(data->castingGroundEffectId,
         x * 32,
@@ -872,7 +872,7 @@ void SkillDialog::useSkill(const int skillId,
                            const int offsetY)
 {
     SkillInfo *const info = skillDialog->getSkill(skillId);
-    if (!info)
+    if (info == nullptr)
         return;
     if (castType == CastType::Default)
         castType = info->customCastType;
@@ -895,13 +895,13 @@ void SkillDialog::useSkill(const SkillInfo *const info,
                            const int offsetX,
                            const int offsetY)
 {
-    if (!info || !localPlayer)
+    if ((info == nullptr) || (localPlayer == nullptr))
         return;
-    if (!level)
+    if (level == 0)
         level = info->level;
 
     const SkillData *data = info->getData1(level);
-    if (data)
+    if (data != nullptr)
     {
         const std::string cmd = data->invokeCmd;
         if (!cmd.empty())
@@ -973,15 +973,15 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
     SkillType::SkillType type = info->type;
     if ((type & SkillType::Attack) != 0)
     {
-        if (!being && autoTarget == AutoTarget_true)
+        if ((being == nullptr) && autoTarget == AutoTarget_true)
         {
-            if (localPlayer)
+            if (localPlayer != nullptr)
             {
                 being = localPlayer->setNewTarget(ActorType::Monster,
                     AllowSort_true);
             }
         }
-        if (being)
+        if (being != nullptr)
         {
             skillHandler->useBeing(info->id,
                 level,
@@ -990,9 +990,9 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
     }
     else if ((type & SkillType::Support) != 0)
     {
-        if (!being)
+        if (being == nullptr)
             being = localPlayer;
-        if (being)
+        if (being != nullptr)
         {
             skillHandler->useBeing(info->id,
                 level,
@@ -1007,7 +1007,7 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
     }
     else if ((type & SkillType::Ground) != 0)
     {
-        if (!being)
+        if (being == nullptr)
             return;
         being->fixDirectionOffsets(offsetX, offsetY);
         const int x = being->getTileX() + offsetX;
@@ -1157,12 +1157,12 @@ void SkillDialog::useSkillDefault(const SkillInfo *const info,
     if ((type & SkillType::Attack) != 0)
     {
         const Being *being = localPlayer->getTarget();
-        if (!being && autoTarget == AutoTarget_true)
+        if ((being == nullptr) && autoTarget == AutoTarget_true)
         {
             being = localPlayer->setNewTarget(ActorType::Monster,
                 AllowSort_true);
         }
-        if (being)
+        if (being != nullptr)
         {
             skillHandler->useBeing(info->id,
                 level,
@@ -1172,9 +1172,9 @@ void SkillDialog::useSkillDefault(const SkillInfo *const info,
     else if ((type & SkillType::Support) != 0)
     {
         const Being *being = localPlayer->getTarget();
-        if (!being)
+        if (being == nullptr)
             being = localPlayer;
-        if (being)
+        if (being != nullptr)
         {
             skillHandler->useBeing(info->id,
                 level,
@@ -1247,7 +1247,7 @@ void SkillDialog::useSkillDefault(const SkillInfo *const info,
 
 void SkillDialog::addSkillDuration(SkillInfo *const skill)
 {
-    if (!skill)
+    if (skill == nullptr)
         return;
 
     FOR_EACH (std::vector<SkillInfo*>::const_iterator, it, mDurations)
@@ -1263,7 +1263,7 @@ void SkillDialog::slowLogic()
     FOR_EACH_SAFE (std::vector<SkillInfo*>::iterator, it, mDurations)
     {
         SkillInfo *const skill = *it;
-        if (skill)
+        if (skill != nullptr)
         {
             const int time = get_elapsed_time(skill->durationTime);
             if (time >= skill->duration)
@@ -1277,7 +1277,7 @@ void SkillDialog::slowLogic()
                 if (it != mDurations.begin())
                     -- it;
             }
-            else if (time)
+            else if (time != 0)
             {
                 skill->cooldown = skill->duration * 100 / time;
             }
@@ -1289,7 +1289,7 @@ void SkillDialog::selectSkillLevel(const int skillId,
                                    const int level)
 {
     SkillInfo *const info = getSkill(skillId);
-    if (!info)
+    if (info == nullptr)
         return;
     if (level > info->level)
         info->customSelectedLevel = info->level;
@@ -1302,7 +1302,7 @@ void SkillDialog::selectSkillCastType(const int skillId,
                                       const CastTypeT type)
 {
     SkillInfo *const info = getSkill(skillId);
-    if (!info)
+    if (info == nullptr)
         return;
     info->customCastType = type;
     info->update();
@@ -1312,7 +1312,7 @@ void SkillDialog::setSkillOffsetX(const int skillId,
                                   const int offset)
 {
     SkillInfo *const info = getSkill(skillId);
-    if (!info)
+    if (info == nullptr)
         return;
     info->customOffsetX = offset;
     info->update();
@@ -1322,7 +1322,7 @@ void SkillDialog::setSkillOffsetY(const int skillId,
                                   const int offset)
 {
     SkillInfo *const info = getSkill(skillId);
-    if (!info)
+    if (info == nullptr)
         return;
     info->customOffsetY = offset;
     info->update();

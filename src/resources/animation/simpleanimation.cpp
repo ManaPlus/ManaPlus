@@ -43,7 +43,7 @@ SimpleAnimation::SimpleAnimation(Animation *const animation) :
     mAnimation(animation),
     mAnimationTime(0),
     mAnimationPhase(0),
-    mCurrentFrame(mAnimation ? &mAnimation->mFrames[0] : nullptr),
+    mCurrentFrame(mAnimation != nullptr ? &mAnimation->mFrames[0] : nullptr),
     mInitialized(true),
     mImageSet(nullptr)
 {
@@ -59,7 +59,7 @@ SimpleAnimation::SimpleAnimation(XmlNodeConstPtr animationNode,
     mImageSet(nullptr)
 {
     initializeAnimation(animationNode, dyePalettes);
-    if (mAnimation)
+    if (mAnimation != nullptr)
         mCurrentFrame = &mAnimation->mFrames[0];
     else
         mCurrentFrame = nullptr;
@@ -68,7 +68,7 @@ SimpleAnimation::SimpleAnimation(XmlNodeConstPtr animationNode,
 SimpleAnimation::~SimpleAnimation()
 {
     delete2(mAnimation);
-    if (mImageSet)
+    if (mImageSet != nullptr)
     {
         mImageSet->decRef();
         mImageSet = nullptr;
@@ -79,7 +79,7 @@ void SimpleAnimation::draw(Graphics *const graphics,
                            const int posX, const int posY) const
 {
     FUNC_BLOCK("SimpleAnimation::draw", 1)
-    if (!mCurrentFrame || !mCurrentFrame->image)
+    if ((mCurrentFrame == nullptr) || (mCurrentFrame->image == nullptr))
         return;
 
     graphics->drawImage(mCurrentFrame->image,
@@ -95,7 +95,7 @@ void SimpleAnimation::reset()
 
 void SimpleAnimation::setFrame(int frame)
 {
-    if (!mAnimation)
+    if (mAnimation == nullptr)
         return;
 
     if (frame < 0)
@@ -109,7 +109,7 @@ void SimpleAnimation::setFrame(int frame)
 
 bool SimpleAnimation::update(const int timePassed)
 {
-    if (!mCurrentFrame || !mAnimation || !mInitialized)
+    if ((mCurrentFrame == nullptr) || (mAnimation == nullptr) || !mInitialized)
         return false;
 
     bool updated(false);
@@ -131,7 +131,7 @@ bool SimpleAnimation::update(const int timePassed)
 
 int SimpleAnimation::getLength() const
 {
-    if (!mAnimation)
+    if (mAnimation == nullptr)
         return 0;
 
     return CAST_S32(mAnimation->getLength());
@@ -139,7 +139,7 @@ int SimpleAnimation::getLength() const
 
 Image *SimpleAnimation::getCurrentImage() const
 {
-    if (mCurrentFrame)
+    if (mCurrentFrame != nullptr)
         return mCurrentFrame->image;
     else
         return nullptr;
@@ -150,7 +150,7 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
 {
     mInitialized = false;
 
-    if (!animationNode)
+    if (animationNode == nullptr)
         return;
 
     std::string imagePath = XML::getProperty(
@@ -165,7 +165,7 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
         XML::getProperty(animationNode, "width", 0),
         XML::getProperty(animationNode, "height", 0));
 
-    if (!imageset)
+    if (imageset == nullptr)
         return;
 
     const int x1 = imageset->getWidth() / 2 - mapTileSize / 2;
@@ -192,13 +192,13 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
 
             Image *const img = imageset->get(index);
 
-            if (!img)
+            if (img == nullptr)
             {
                 reportAlways("No image at index %d", index);
                 continue;
             }
 
-            if (mAnimation)
+            if (mAnimation != nullptr)
                 mAnimation->addFrame(img, delay, offsetX, offsetY, rand);
         }
         else if (xmlNameEqual(frameNode, "sequence"))
@@ -216,20 +216,20 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
             {
                 Image *const img = imageset->get(start);
 
-                if (!img)
+                if (img == nullptr)
                 {
                     reportAlways("No image at index %d", start);
                     continue;
                 }
 
-                if (mAnimation)
+                if (mAnimation != nullptr)
                     mAnimation->addFrame(img, delay, offsetX, offsetY, rand);
                 start++;
             }
         }
         else if (xmlNameEqual(frameNode, "end"))
         {
-            if (mAnimation)
+            if (mAnimation != nullptr)
                 mAnimation->addTerminator(rand);
         }
     }

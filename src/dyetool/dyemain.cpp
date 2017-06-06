@@ -60,7 +60,7 @@ static void printHelp()
 
 int main(int argc, char **argv)
 {
-    if (argc == 2 && strcmp(argv[1], "--help"))
+    if (argc == 2 && (strcmp(argv[1], "--help") != 0))
     {
         return mainGui(argc, argv);
     }
@@ -101,7 +101,7 @@ int main(int argc, char **argv)
     }
 
     Image *image = Loader::getImage(src);
-    if (!image)
+    if (image == nullptr)
     {
         printf("Error loading image\n");
         return 1;

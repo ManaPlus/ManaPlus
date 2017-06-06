@@ -237,7 +237,7 @@ void Setup_Theme::updateInfo()
 {
     delete mInfo;
     mInfo = Theme::loadInfo(mTheme);
-    if (mInfo)
+    if (mInfo != nullptr)
     {
         // TRANSLATORS: theme name
         mThemeInfo = std::string(_("Name: ")).append(mInfo->name)
@@ -356,7 +356,7 @@ void Setup_Theme::apply()
     }
 
     config.setValue("selectedSkin", "");
-    if (config.getStringValue("theme") != mTheme && mInfo)
+    if (config.getStringValue("theme") != mTheme && (mInfo != nullptr))
     {
         updateField(font, mFont);
         updateField(boldFont, mBoldFont);
@@ -366,13 +366,13 @@ void Setup_Theme::apply()
         updateField(npcFont, mNpcFont);
         updateField(japanFont, mJapanFont);
         updateField(chinaFont, mChinaFont);
-        if (mInfo->fontSize)
+        if (mInfo->fontSize != 0)
         {
             const int size = mInfo->fontSize - 9;
             if (size >= 0)
                 mFontSizeDropDown->setSelected(size);
         }
-        if (mInfo->npcfontSize)
+        if (mInfo->npcfontSize != 0)
         {
             const int size = mInfo->npcfontSize - 9;
             if (size >= 0)

@@ -107,7 +107,7 @@ void deleteResourceManager()
         }
 #endif  // DEBUG_LEAKS
 
-        if (dynamic_cast<SpriteDef*>(iter->second))
+        if (dynamic_cast<SpriteDef*>(iter->second) != nullptr)
         {
             cleanUp(iter->second);
             const ResourceIterator toErase = iter;
@@ -132,7 +132,7 @@ void deleteResourceManager()
         }
 #endif  // DEBUG_LEAKS
 
-        if (dynamic_cast<ImageSet*>(iter->second))
+        if (dynamic_cast<ImageSet*>(iter->second) != nullptr)
         {
             cleanUp(iter->second);
             const ResourceIterator toErase = iter;
@@ -157,7 +157,7 @@ void deleteResourceManager()
         }
 #endif  // DEBUG_LEAKS
 
-        if (iter->second)
+        if (iter->second != nullptr)
         {
             cleanUp(iter->second);
             const ResourceIterator toErase = iter;
@@ -176,7 +176,7 @@ void deleteResourceManager()
 
 void cleanUp(Resource *const res)
 {
-    if (!res)
+    if (res == nullptr)
         return;
 
     const unsigned refCount = res->mRefCount;
@@ -201,7 +201,7 @@ void cleanProtected()
     while (iter != mResources.end())
     {
         Resource *const res = iter->second;
-        if (!res)
+        if (res == nullptr)
         {
             ++ iter;
             continue;
@@ -234,7 +234,7 @@ bool cleanOrphans(const bool always)
     while (iter != mOrphanedResources.end())
     {
         Resource *const res = iter->second;
-        if (!res)
+        if (res == nullptr)
         {
             ++iter;
             continue;
@@ -264,15 +264,15 @@ bool cleanOrphans(const bool always)
 
 void logResource(const Resource *const res)
 {
-    if (!res)
+    if (res == nullptr)
         return;
 #ifdef USE_OPENGL
     const Image *const image = dynamic_cast<const Image *>(res);
-    if (image)
+    if (image != nullptr)
     {
         std::string src = image->mSource;
         const int count = image->mRefCount;
-        if (count)
+        if (count != 0)
             src.append(" ").append(toString(count));
         logger->log("resource(%s, %u) %s", res->mIdPath.c_str(),
             image->getGLImage(), src.c_str());
@@ -322,7 +322,7 @@ void clearDeleted(const bool full)
         std::set<Resource*>::iterator resDelIter = mDeletedResources.begin();
         while (resDelIter != mDeletedResources.end())
         {
-            if (!(*resDelIter)->mRefCount)
+            if ((*resDelIter)->mRefCount == 0u)
             {
                 status = true;
                 Resource *res = *resDelIter;
@@ -354,7 +354,7 @@ void clearDeleted(const bool full)
 bool addResource(const std::string &idPath,
                  Resource *const resource)
 {
-    if (resource)
+    if (resource != nullptr)
     {
         resource->incRef();
         resource->mIdPath = idPath;
@@ -380,7 +380,7 @@ Resource *getFromCache(const std::string &filename,
 bool isInCache(const std::string &idPath)
 {
     const ResourceCIterator &resIter = mResources.find(idPath);
-    return (resIter != mResources.end() && resIter->second);
+    return (resIter != mResources.end() && (resIter->second != nullptr));
 }
 
 Resource *getTempResource(const std::string &idPath)
@@ -389,7 +389,7 @@ Resource *getTempResource(const std::string &idPath)
     if (resIter != mResources.end())
     {
         Resource *const res = resIter->second;
-        if (resIter->second)
+        if (resIter->second != nullptr)
             return res;
     }
     return nullptr;
@@ -401,7 +401,7 @@ Resource *getFromCache(const std::string &idPath)
     ResourceIterator resIter = mResources.find(idPath);
     if (resIter != mResources.end())
     {
-        if (resIter->second)
+        if (resIter->second != nullptr)
             resIter->second->incRef();
         return resIter->second;
     }
@@ -412,7 +412,7 @@ Resource *getFromCache(const std::string &idPath)
         Resource *const res = resIter->second;
         mResources.insert(*resIter);
         mOrphanedResources.erase(resIter);
-        if (res)
+        if (res != nullptr)
             res->incRef();
         return res;
     }
@@ -425,11 +425,11 @@ Resource *get(const std::string &idPath,
 {
 #ifndef DISABLE_RESOURCE_CACHING
     Resource *resource = getFromCache(idPath);
-    if (resource)
+    if (resource != nullptr)
         return resource;
     resource = fun(data);
 
-    if (resource)
+    if (resource != nullptr)
     {
         resource->incRef();
         resource->mIdPath = idPath;
@@ -469,7 +469,7 @@ Resource *get(const std::string &idPath,
 
 void release(Resource *const res)
 {
-    if (!res || mDestruction)
+    if ((res == nullptr) || mDestruction)
         return;
 
 #ifndef DISABLE_RESOURCE_CACHING
@@ -517,7 +517,7 @@ void release(Resource *const res)
 
 void moveToDeleted(Resource *const res)
 {
-    if (!res)
+    if (res == nullptr)
         return;
 
     bool found(false);
@@ -551,7 +551,7 @@ void moveToDeleted(Resource *const res)
 
 void decRefDelete(Resource *const res)
 {
-    if (!res)
+    if (res == nullptr)
         return;
 
     const int count = res->mRefCount;
@@ -596,9 +596,9 @@ void deleteInstance()
     while (iter != ResourceManager::mResources.end())
     {
         const Resource *const res = iter->second;
-        if (res)
+        if (res != nullptr)
         {
-            if (res->mRefCount)
+            if (res->mRefCount != 0u)
             {
                 logger->log(std::string("ResourceLeak: ").append(
                     res->mIdPath).append(" (").append(toString(

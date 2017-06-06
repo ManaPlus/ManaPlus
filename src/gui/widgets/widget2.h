@@ -52,7 +52,7 @@ class Widget2 notfinal
                                               bool &valid)
                                               const A_WARN_UNUSED A_INLINE
         {
-            if (!theme)
+            if (theme == nullptr)
                 return Palette::BLACK;
             const ThemeColorIdT colorId = theme->getIdByChar(c, valid);
             if (valid)
@@ -63,7 +63,7 @@ class Widget2 notfinal
 
         virtual void setWidget2(const Widget2 *const widget)
         {
-            mPaletteOffset = widget ? widget->mPaletteOffset : 0;
+            mPaletteOffset = widget != nullptr ? widget->mPaletteOffset : 0;
         }
 
         void setPalette(int palette)
@@ -101,8 +101,8 @@ class Widget2 notfinal
 
     protected:
         explicit Widget2(const Widget2 *const widget) :
-            mPaletteOffset(widget ? widget->mPaletteOffset : 0),
-            mWindow(widget ? widget->getWindow() : nullptr),
+            mPaletteOffset(widget != nullptr ? widget->mPaletteOffset : 0),
+            mWindow(widget != nullptr ? widget->getWindow() : nullptr),
             mForegroundColor2()
         {
             checkPalette();

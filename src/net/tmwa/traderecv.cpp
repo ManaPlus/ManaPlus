@@ -68,7 +68,7 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
 
-    if (tradeWindow)
+    if (tradeWindow != nullptr)
     {
         if (type == 0)
         {
@@ -98,12 +98,12 @@ void TradeRecv::processTradeItemAddResponse(Net::MessageIn &msg)
     // Trade: New Item add response (was 0x00ea, now 01b1)
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     Item *item = nullptr;
-    if (PlayerInfo::getInventory())
+    if (PlayerInfo::getInventory() != nullptr)
         item = PlayerInfo::getInventory()->getItem(index);
 
-    if (!item)
+    if (item == nullptr)
     {
-        if (tradeWindow)
+        if (tradeWindow != nullptr)
             tradeWindow->receivedOk(true);
         return;
     }
@@ -114,7 +114,7 @@ void TradeRecv::processTradeItemAddResponse(Net::MessageIn &msg)
     {
         case 0:
             // Successfully added item
-            if (tradeWindow)
+            if (tradeWindow != nullptr)
             {
                 tradeWindow->addItem2(item->getId(),
                     item->getType(),

@@ -116,7 +116,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mSlotsBar->setColor(getThemeColor(ThemeColorId::SLOTS_BAR),
         getThemeColor(ThemeColorId::SLOTS_BAR_OUTLINE));
 
-    if (inventory)
+    if (inventory != nullptr)
     {
         setCaption(gettext(inventory->getName().c_str()));
         setWindowName(inventory->getName());
@@ -151,8 +151,8 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         mSortDropDown->setSelected(0);
     }
 
-    if (setupWindow &&
-        inventory &&
+    if ((setupWindow != nullptr) &&
+        (inventory != nullptr) &&
         inventory->getType() != InventoryType::Storage)
     {
         setupWindow->registerWindowForReset(this);
@@ -184,7 +184,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     for (size_t f = 0; f < sz; f ++)
         mFilter->addButton(tags[f], tags[f], false);
 
-    if (!mInventory)
+    if (mInventory == nullptr)
     {
         invInstances.push_back(this);
         return;
@@ -352,14 +352,17 @@ void InventoryWindow::postInit()
 
     mItems->setSortType(mSortDropDown->getSelected());
     widgetResized(Event(nullptr));
-    if (mInventory && mInventory->getType() == InventoryType::Storage)
+    if (mInventory != nullptr &&
+        mInventory->getType() == InventoryType::Storage)
+    {
         setVisible(Visible_true);
+    }
 }
 
 InventoryWindow::~InventoryWindow()
 {
     invInstances.remove(this);
-    if (mInventory)
+    if (mInventory != nullptr)
         mInventory->removeInventoyListener(this);
     if (!invInstances.empty())
         invInstances.front()->updateDropButton();
@@ -370,7 +373,7 @@ InventoryWindow::~InventoryWindow()
 
 void InventoryWindow::storeSortOrder() const
 {
-    if (mInventory)
+    if (mInventory != nullptr)
     {
         switch (mInventory->getType())
         {
@@ -422,20 +425,20 @@ void InventoryWindow::action(const ActionEvent &event)
     }
     else if (eventId == "store")
     {
-        if (!inventoryWindow || !inventoryWindow->isWindowVisible())
+        if (inventoryWindow == nullptr || !inventoryWindow->isWindowVisible())
             return;
 
         Item *const item = inventoryWindow->getSelectedItem();
 
-        if (!item)
+        if (item == nullptr)
             return;
 
-        if (storageWindow)
+        if (storageWindow != nullptr)
         {
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreAdd,
                 this, item);
         }
-        else if (cartWindow && cartWindow->isWindowVisible())
+        else if ((cartWindow != nullptr) && cartWindow->isWindowVisible())
         {
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::CartAdd,
                 this, item);
@@ -452,7 +455,7 @@ void InventoryWindow::action(const ActionEvent &event)
         mItems->setName(mNameFilter->getText());
         mItems->updateMatrix();
     }
-    else if (!eventId.find("tag_"))
+    else if (eventId.find("tag_") == 0u)
     {
         std::string tagName = event.getId().substr(4);
         mItems->setFilter(ItemDB::getTagId(tagName));
@@ -461,7 +464,7 @@ void InventoryWindow::action(const ActionEvent &event)
 
     Item *const item = mItems->getSelectedItem();
 
-    if (!item)
+    if (item == nullptr)
         return;
 
     if (eventId == "use")
@@ -481,7 +484,7 @@ void InventoryWindow::action(const ActionEvent &event)
                 item->getQuantity(),
                 InventoryType::Storage);
         }
-        else if (cartWindow && cartWindow->isWindowVisible())
+        else if ((cartWindow != nullptr) && cartWindow->isWindowVisible())
         {
             inventoryHandler->moveItem2(InventoryType::Inventory,
                 item->getInvIndex(),
@@ -512,12 +515,12 @@ void InventoryWindow::action(const ActionEvent &event)
     }
     else if (eventId == "retrieve")
     {
-        if (storageWindow)
+        if (storageWindow != nullptr)
         {
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreRemove,
                 this, item);
         }
-        else if (cartWindow && cartWindow->isWindowVisible())
+        else if ((cartWindow != nullptr) && cartWindow->isWindowVisible())
         {
             ItemAmountWindow::showWindow(ItemAmountWindowUsage::CartRemove,
                 this, item);
@@ -538,7 +541,7 @@ void InventoryWindow::unselectItem()
 void InventoryWindow::widgetHidden(const Event &event)
 {
     Window::widgetHidden(event);
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->setVisible(Visible_false);
 }
 
@@ -548,23 +551,23 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
 
     const int clicks = event.getClickCount();
 
-    if (clicks == 2 && gui)
+    if (clicks == 2 && (gui != nullptr))
         gui->resetClickCount();
 
     const bool mod = (isStorageActive() &&
         inputManager.isActionActive(InputAction::STOP_ATTACK));
 
-    const bool mod2 = (tradeWindow &&
+    const bool mod2 = ((tradeWindow != nullptr) &&
         tradeWindow->isWindowVisible() &&
         inputManager.isActionActive(InputAction::STOP_ATTACK));
 
-    if (mInventory)
+    if (mInventory != nullptr)
     {
         if (!mod && !mod2 && event.getButton() == MouseButton::RIGHT)
         {
             Item *const item = mItems->getSelectedItem();
 
-            if (!item)
+            if (item == nullptr)
                 return;
 
             /* Convert relative to the window coordinates to absolute screen
@@ -573,7 +576,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             const int mx = event.getX() + getX();
             const int my = event.getY() + getY();
 
-            if (popupMenu)
+            if (popupMenu != nullptr)
             {
                 popupMenu->showPopup(this,
                     mx, my,
@@ -592,7 +595,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
     {
         Item *const item = mItems->getSelectedItem();
 
-        if (!item)
+        if (item == nullptr)
             return;
 
         if (mod)
@@ -643,7 +646,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             }
             else
             {
-                if (tradeWindow)
+                if (tradeWindow != nullptr)
                     tradeWindow->tradeItem(item, item->getQuantity(), true);
             }
         }
@@ -657,7 +660,8 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                         ItemAmountWindowUsage::StoreAdd,
                         inventoryWindow, item);
                 }
-                else if (tradeWindow && tradeWindow->isWindowVisible())
+                else if (tradeWindow != nullptr &&
+                         tradeWindow->isWindowVisible())
                 {
                     if (PlayerInfo::isItemProtected(item->getId()))
                         return;
@@ -686,11 +690,11 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
 void InventoryWindow::mouseMoved(MouseEvent &event)
 {
     Window::mouseMoved(event);
-    if (!textPopup)
+    if (textPopup == nullptr)
         return;
 
     const Widget *const src = event.getSource();
-    if (!src)
+    if (src == nullptr)
     {
         textPopup->hide();
         return;
@@ -708,7 +712,7 @@ void InventoryWindow::mouseMoved(MouseEvent &event)
     else
     {
         const Button *const btn = dynamic_cast<const Button *>(src);
-        if (!btn)
+        if (btn == nullptr)
         {
             textPopup->hide();
             return;
@@ -738,12 +742,12 @@ void InventoryWindow::keyReleased(KeyEvent &event)
 
 void InventoryWindow::valueChanged(const SelectionEvent &event A_UNUSED)
 {
-    if (!mInventory || !mInventory->isMainInventory())
+    if ((mInventory == nullptr) || !mInventory->isMainInventory())
         return;
 
     Item *const item = mItems->getSelectedItem();
 
-    if (mSplit && item && inventoryHandler->
+    if (mSplit && (item != nullptr) && inventoryHandler->
         canSplit(mItems->getSelectedItem()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemSplit,
@@ -754,29 +758,29 @@ void InventoryWindow::valueChanged(const SelectionEvent &event A_UNUSED)
 
 void InventoryWindow::updateButtons(const Item *item)
 {
-    if (!mInventory || !mInventory->isMainInventory())
+    if ((mInventory == nullptr) || !mInventory->isMainInventory())
         return;
 
     const Item *const selectedItem = mItems->getSelectedItem();
-    if (item && selectedItem != item)
+    if ((item != nullptr) && selectedItem != item)
         return;
 
-    if (!item)
+    if (item == nullptr)
         item = selectedItem;
 
-    if (!item || item->getQuantity() == 0)
+    if ((item == nullptr) || item->getQuantity() == 0)
     {
-        if (mUseButton)
+        if (mUseButton != nullptr)
             mUseButton->setEnabled(false);
-        if (mDropButton)
+        if (mDropButton != nullptr)
             mDropButton->setEnabled(false);
         return;
     }
 
-    if (mDropButton)
+    if (mDropButton != nullptr)
         mDropButton->setEnabled(true);
 
-    if (mUseButton)
+    if (mUseButton != nullptr)
     {
         const ItemInfo &info = item->getInfo();
         const std::string &str = (item->isEquipment() == Equipm_true
@@ -800,7 +804,7 @@ void InventoryWindow::updateButtons(const Item *item)
 
 void InventoryWindow::close()
 {
-    if (!mInventory)
+    if (mInventory == nullptr)
     {
         Window::close();
         return;
@@ -814,7 +818,7 @@ void InventoryWindow::close()
             break;
 
         case InventoryType::Storage:
-            if (inventoryHandler)
+            if (inventoryHandler != nullptr)
             {
                 inventoryHandler->closeStorage();
                 inventoryHandler->forgotStorage();
@@ -835,7 +839,7 @@ void InventoryWindow::close()
 
 void InventoryWindow::updateWeight()
 {
-    if (!mInventory || !mWeightBar)
+    if ((mInventory == nullptr) || (mWeightBar == nullptr))
         return;
     const InventoryTypeT type = mInventory->getType();
     if (type != InventoryType::Inventory &&
@@ -868,7 +872,7 @@ void InventoryWindow::slotsChanged(const Inventory *const inventory)
         const int usedSlots = mInventory->getNumberOfSlotsUsed();
         const int maxSlots = mInventory->getSize();
 
-        if (maxSlots)
+        if (maxSlots != 0)
         {
             mSlotsBar->setProgress(static_cast<float>(usedSlots)
                 / static_cast<float>(maxSlots));
@@ -881,10 +885,11 @@ void InventoryWindow::slotsChanged(const Inventory *const inventory)
 
 void InventoryWindow::updateDropButton()
 {
-    if (!mDropButton)
+    if (mDropButton == nullptr)
         return;
 
-    if (isStorageActive() || (cartWindow && cartWindow->isWindowVisible()))
+    if (isStorageActive() ||
+        (cartWindow != nullptr && cartWindow->isWindowVisible()))
     {
         // TRANSLATORS: inventory button
         mDropButton->setCaption(_("Store"));
@@ -892,7 +897,7 @@ void InventoryWindow::updateDropButton()
     else
     {
         const Item *const item = mItems->getSelectedItem();
-        if (item && item->getQuantity() > 1)
+        if ((item != nullptr) && item->getQuantity() > 1)
         {
             // TRANSLATORS: inventory button
             mDropButton->setCaption(_("Drop..."));
@@ -907,14 +912,14 @@ void InventoryWindow::updateDropButton()
 
 bool InventoryWindow::isInputFocused() const
 {
-    return mNameFilter && mNameFilter->isFocused();
+    return (mNameFilter != nullptr) && mNameFilter->isFocused();
 }
 
 bool InventoryWindow::isAnyInputFocused()
 {
     FOR_EACH (WindowList::const_iterator, it, invInstances)
     {
-        if ((*it) && (*it)->isInputFocused())
+        if (((*it) != nullptr) && (*it)->isInputFocused())
             return true;
     }
     return false;
@@ -925,7 +930,7 @@ InventoryWindow *InventoryWindow::getFirstVisible()
     std::set<Widget*> list;
     FOR_EACH (WindowList::const_iterator, it, invInstances)
     {
-        if ((*it) && (*it)->isWindowVisible())
+        if (((*it) != nullptr) && (*it)->isWindowVisible())
             list.insert(*it);
     }
     InventoryWindow *const window = dynamic_cast<InventoryWindow*>(
@@ -936,14 +941,14 @@ InventoryWindow *InventoryWindow::getFirstVisible()
 void InventoryWindow::nextTab()
 {
     const InventoryWindow *const window = getFirstVisible();
-    if (window)
+    if (window != nullptr)
         window->mFilter->nextTab();
 }
 
 void InventoryWindow::prevTab()
 {
     const InventoryWindow *const window = getFirstVisible();
-    if (window)
+    if (window != nullptr)
         window->mFilter->prevTab();
 }
 
@@ -951,7 +956,7 @@ void InventoryWindow::widgetResized(const Event &event)
 {
     Window::widgetResized(event);
 
-    if (!mInventory)
+    if (mInventory == nullptr)
         return;
     const InventoryTypeT type = mInventory->getType();
     if (type != InventoryType::Inventory &&
@@ -988,10 +993,10 @@ void InventoryWindow::setVisible(Visible visible)
 
 void InventoryWindow::unsetInventory()
 {
-    if (mInventory)
+    if (mInventory != nullptr)
     {
         mInventory->removeInventoyListener(this);
-        if (mItems)
+        if (mItems != nullptr)
             mItems->unsetInventory();
     }
     mInventory = nullptr;
@@ -1013,13 +1018,13 @@ void InventoryWindow::attributeChanged(const AttributesT id,
 void InventoryWindow::combineItems(const int index1,
                                    const int index2)
 {
-    if (!mInventory)
+    if (mInventory == nullptr)
         return;
     const Item *item1 = mInventory->getItem(index1);
-    if (!item1)
+    if (item1 == nullptr)
         return;
     const Item *item2 = mInventory->getItem(index2);
-    if (!item2)
+    if (item2 == nullptr)
         return;
 
     if (item1->getType() != ItemType::Card)
@@ -1046,15 +1051,15 @@ void InventoryWindow::combineItems(const int index1,
 
 void InventoryWindow::moveItemToCraft(const int craftSlot)
 {
-    if (!npcHandler)
+    if (npcHandler == nullptr)
         return;
 
     Item *const item = mItems->getSelectedItem();
-    if (!item)
+    if (item == nullptr)
         return;
 
     NpcDialog *const dialog = npcHandler->getCurrentNpcDialog();
-    if (dialog &&
+    if ((dialog != nullptr) &&
         dialog->getInputState() == NpcInputState::ITEM_CRAFT)
     {
         if (item->getQuantity() > 1

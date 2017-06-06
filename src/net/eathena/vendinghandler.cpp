@@ -52,7 +52,7 @@ void VendingHandler::close() const
 
 void VendingHandler::open(const Being *const being) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_VENDING_LIST_REQ);
@@ -63,7 +63,7 @@ void VendingHandler::buy(const Being *const being,
                          const int index,
                          const int amount) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_VENDING_BUY);
@@ -83,7 +83,7 @@ void VendingHandler::buyItems(const Being *const being,
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         cnt ++;
     }
@@ -98,7 +98,7 @@ void VendingHandler::buyItems(const Being *const being,
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
-        if (!usedQuantity)
+        if (usedQuantity == 0)
             continue;
         item->increaseQuantity(usedQuantity);
         item->increaseUsedQuantity(-usedQuantity);
@@ -113,7 +113,7 @@ void VendingHandler::buy2(const Being *const being,
                           const int index,
                           const int amount) const
 {
-    if (!being)
+    if (being == nullptr)
         return;
 
     createOutPacket(CMSG_VENDING_BUY2);

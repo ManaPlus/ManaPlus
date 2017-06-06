@@ -65,9 +65,9 @@ static void outString(ChatTab *const tab,
                       const std::string &str,
                       const std::string &def)
 {
-    if (!tab)
+    if (tab == nullptr)
     {
-        if (chatHandler)
+        if (chatHandler != nullptr)
             chatHandler->talk(def, GENERAL_CHANNEL);
         return;
     }
@@ -76,16 +76,16 @@ static void outString(ChatTab *const tab,
     {
         case ChatTabType::PARTY:
         {
-            if (partyHandler)
+            if (partyHandler != nullptr)
                 partyHandler->chat(str);
             break;
         }
         case ChatTabType::GUILD:
         {
-            if (!guildHandler || !localPlayer)
+            if ((guildHandler == nullptr) || (localPlayer == nullptr))
                 return;
             const Guild *const guild = localPlayer->getGuild();
-            if (guild)
+            if (guild != nullptr)
             {
 #ifdef TMWA_SUPPORT
                 if (guild->getServerGuild())
@@ -94,7 +94,7 @@ static void outString(ChatTab *const tab,
                         return;
                     guildHandler->chat(str);
                 }
-                else if (guildManager)
+                else if (guildManager != nullptr)
                 {
                     guildManager->chat(str);
                 }
@@ -118,7 +118,7 @@ static void outString(ChatTab *const tab,
         case ChatTabType::DEBUG:
         case ChatTabType::BATTLE:
         case ChatTabType::LANG:
-            if (chatHandler)
+            if (chatHandler != nullptr)
                 chatHandler->talk(str, GENERAL_CHANNEL);
             break;
     }
@@ -126,12 +126,12 @@ static void outString(ChatTab *const tab,
 
 impHandler0(toggleChat)
 {
-    return chatWindow ? chatWindow->requestChatFocus() : false;
+    return chatWindow != nullptr ? chatWindow->requestChatFocus() : false;
 }
 
 impHandler0(prevChatTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->prevTab();
         return true;
@@ -141,7 +141,7 @@ impHandler0(prevChatTab)
 
 impHandler0(nextChatTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->nextTab();
         return true;
@@ -151,7 +151,7 @@ impHandler0(nextChatTab)
 
 impHandler0(closeChatTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->closeTab();
         return true;
@@ -161,7 +161,7 @@ impHandler0(closeChatTab)
 
 impHandler0(closeAllChatTabs)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->removeAllWhispers();
         chatWindow->saveState();
@@ -172,7 +172,7 @@ impHandler0(closeAllChatTabs)
 
 impHandler0(ignoreAllWhispers)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->ignoreAllWhispers();
         chatWindow->saveState();
@@ -183,7 +183,7 @@ impHandler0(ignoreAllWhispers)
 
 impHandler0(scrollChatUp)
 {
-    if (chatWindow && chatWindow->isWindowVisible())
+    if ((chatWindow != nullptr) && chatWindow->isWindowVisible())
     {
         chatWindow->scroll(-DEFAULT_CHAT_WINDOW_SCROLL);
         return true;
@@ -193,7 +193,7 @@ impHandler0(scrollChatUp)
 
 impHandler0(scrollChatDown)
 {
-    if (chatWindow && chatWindow->isWindowVisible())
+    if ((chatWindow != nullptr) && chatWindow->isWindowVisible())
     {
         chatWindow->scroll(DEFAULT_CHAT_WINDOW_SCROLL);
         return true;
@@ -256,10 +256,10 @@ impHandler(msg)
 
     if (splitWhisper(event.args, recvnick, message))
     {
-        if (!chatWindow)
+        if (chatWindow == nullptr)
             return false;
         ChatTab *const tab = chatWindow->addChatTab(recvnick, false, true);
-        if (tab)
+        if (tab != nullptr)
         {
             chatWindow->saveState();
             tab->chatInput(message);
@@ -267,7 +267,7 @@ impHandler(msg)
     }
     else
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             event.tab->chatLog(
                 // TRANSLATORS: whisper send
@@ -280,7 +280,7 @@ impHandler(msg)
 
 impHandler(msgText)
 {
-    if (!chatWindow)
+    if (chatWindow == nullptr)
         return false;
 
     if (config.getBoolValue("whispertab"))
@@ -300,7 +300,7 @@ impHandler(msg2)
     std::string recvnick;
     std::string message;
 
-    if (chatHandler && splitWhisper(event.args, recvnick, message))
+    if ((chatHandler != nullptr) && splitWhisper(event.args, recvnick, message))
         chatHandler->privateMessage(recvnick, message);
     return true;
 }
@@ -308,16 +308,16 @@ impHandler(msg2)
 impHandler(query)
 {
     const std::string &args = event.args;
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
-        if (chatWindow->addChatTab(args, true, true))
+        if (chatWindow->addChatTab(args, true, true) != nullptr)
         {
             chatWindow->saveState();
             return true;
         }
     }
 
-    if (event.tab)
+    if (event.tab != nullptr)
     {
         // TRANSLATORS: new whisper or channel query
         event.tab->chatLog(strprintf(_("Cannot create a whisper tab "
@@ -329,7 +329,7 @@ impHandler(query)
 
 impHandler0(clearChatTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->clearTab();
         return true;
@@ -339,7 +339,7 @@ impHandler0(clearChatTab)
 
 impHandler(createParty)
 {
-    if (!partyHandler)
+    if (partyHandler == nullptr)
         return false;
 
     if (event.args.empty())
@@ -358,7 +358,7 @@ impHandler(createParty)
 
 impHandler(createGuild)
 {
-    if (!guildHandler ||
+    if ((guildHandler == nullptr) ||
         Net::getNetworkType() == ServerType::TMWATHENA)
     {
         return false;
@@ -382,12 +382,12 @@ impHandler(party)
 {
     if (!event.args.empty())
     {
-        if (partyHandler)
+        if (partyHandler != nullptr)
             partyHandler->invite(event.args);
     }
     else
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             // TRANSLATORS: party invite message
             event.tab->chatLog(_("Please specify a name."),
@@ -399,19 +399,19 @@ impHandler(party)
 
 impHandler(guild)
 {
-    if (!guildHandler || !localPlayer)
+    if ((guildHandler == nullptr) || (localPlayer == nullptr))
         return false;
 
     const std::string args = event.args;
     if (!args.empty())
     {
         const Guild *const guild = localPlayer->getGuild();
-        if (guild)
+        if (guild != nullptr)
         {
 #ifdef TMWA_SUPPORT
             if (guild->getServerGuild())
                 guildHandler->invite(args);
-            else if (guildManager)
+            else if (guildManager != nullptr)
                 guildManager->invite(args);
 #else  // TMWA_SUPPORT
 
@@ -421,13 +421,13 @@ impHandler(guild)
     }
     else
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             // TRANSLATORS: guild invite message
             event.tab->chatLog(_("Please specify a name."),
                 ChatMsgType::BY_SERVER);
         }
-        else if (localChatTab)
+        else if (localChatTab != nullptr)
         {
             // TRANSLATORS: guild invite message
             localChatTab->chatLog(_("Please specify a name."),
@@ -447,7 +447,7 @@ impHandler(toggle)
 {
     if (event.args.empty())
     {
-        if (chatWindow && event.tab)
+        if ((chatWindow != nullptr) && (event.tab != nullptr))
         {
             event.tab->chatLog(chatWindow->getReturnTogglesChat() ?
                 // TRANSLATORS: message from toggle chat command
@@ -460,27 +460,27 @@ impHandler(toggle)
     switch (parseBoolean(event.args))
     {
         case 1:
-            if (event.tab)
+            if (event.tab != nullptr)
             {
                 // TRANSLATORS: message from toggle chat command
                 event.tab->chatLog(_("Return now toggles chat."),
                     ChatMsgType::BY_SERVER);
             }
-            if (chatWindow)
+            if (chatWindow != nullptr)
                 chatWindow->setReturnTogglesChat(true);
             return true;
         case 0:
-            if (event.tab)
+            if (event.tab != nullptr)
             {
                 // TRANSLATORS: message from toggle chat command
                 event.tab->chatLog(_("Message now closes chat."),
                     ChatMsgType::BY_SERVER);
             }
-            if (chatWindow)
+            if (chatWindow != nullptr)
                 chatWindow->setReturnTogglesChat(false);
             return true;
         case -1:
-            if (event.tab)
+            if (event.tab != nullptr)
             {
                 event.tab->chatLog(strprintf(BOOLEAN_OPTIONS, "toggle"),
                     ChatMsgType::BY_SERVER);
@@ -495,12 +495,12 @@ impHandler(kickParty)
 {
     if (!event.args.empty())
     {
-        if (partyHandler)
+        if (partyHandler != nullptr)
             partyHandler->kick(event.args);
     }
     else
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             // TRANSLATORS: party kick message
             event.tab->chatLog(_("Please specify a name."),
@@ -514,18 +514,18 @@ impHandler(kickGuild)
 {
     if (!event.args.empty())
     {
-        if (localPlayer)
+        if (localPlayer != nullptr)
         {
             const Guild *const guild = localPlayer->getGuild();
-            if (guild)
+            if (guild != nullptr)
             {
                 if (guild->getServerGuild())
                 {
-                    if (guildHandler)
+                    if (guildHandler != nullptr)
                         guildHandler->kick(guild->getMember(event.args), "");
                 }
 #ifdef TMWA_SUPPORT
-                else if (guildManager)
+                else if (guildManager != nullptr)
                 {
                     guildManager->kick(event.args);
                 }
@@ -535,7 +535,7 @@ impHandler(kickGuild)
     }
     else
     {
-        if (event.tab)
+        if (event.tab != nullptr)
         {
             // TRANSLATORS: party kick message
             event.tab->chatLog(_("Please specify a name."),
@@ -547,77 +547,77 @@ impHandler(kickGuild)
 
 impHandler(addText)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->addInputText(event.args);
     return true;
 }
 
 impHandler0(clearChat)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->clearTab();
     return true;
 }
 
 impHandler0(chatGeneralTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::INPUT);
     return true;
 }
 
 impHandler0(chatDebugTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::DEBUG);
     return true;
 }
 
 impHandler0(chatBattleTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::BATTLE);
     return true;
 }
 
 impHandler0(chatTradeTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::TRADE);
     return true;
 }
 
 impHandler0(chatLangTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::LANG);
     return true;
 }
 
 impHandler0(chatGmTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::GM);
     return true;
 }
 
 impHandler0(chatPartyTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::PARTY);
     return true;
 }
 
 impHandler0(chatGuildTab)
 {
-    if (chatWindow)
+    if (chatWindow != nullptr)
         chatWindow->selectTabByType(ChatTabType::GUILD);
     return true;
 }
 
 impHandler(hat)
 {
-    if (!localPlayer || !charServerHandler)
+    if ((localPlayer == nullptr) || (charServerHandler == nullptr))
         return false;
 
     const int sprite = localPlayer->getSpriteID(
@@ -644,7 +644,7 @@ impHandler(chatClipboard)
     int x = 0;
     int y = 0;
 
-    if (chatWindow && parse2Int(event.args, x, y))
+    if ((chatWindow != nullptr) && parse2Int(event.args, x, y))
     {
         chatWindow->copyToClipboard(x, y);
         return true;
@@ -654,7 +654,7 @@ impHandler(chatClipboard)
 
 impHandler(guildNotice)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return false;
     const std::string args = event.args;
     if (args.empty())
@@ -671,7 +671,7 @@ impHandler(guildNotice)
     if (args.size() > 60)
         str2 = args.substr(60);
     const Guild *const guild = localPlayer->getGuild();
-    if (guild)
+    if (guild != nullptr)
         guildHandler->changeNotice(guild->getId(), str1, str2);
     return true;
 }
@@ -721,7 +721,7 @@ impHandler(translate)
 
 impHandler(sendGuiKey)
 {
-    if (!guiInput)
+    if (guiInput == nullptr)
         return false;
 
     const std::string args = event.args;
@@ -755,7 +755,7 @@ impHandler(sendGuiKey)
 
 impHandler(sendMouseKey)
 {
-    if (!guiInput)
+    if (guiInput == nullptr)
         return false;
     const std::string args = event.args;
     if (args.empty())
@@ -782,7 +782,7 @@ impHandler(sendMouseKey)
 
 impHandler(sendChars)
 {
-    if (!guiInput)
+    if (guiInput == nullptr)
         return false;
 
     const std::string args = event.args;

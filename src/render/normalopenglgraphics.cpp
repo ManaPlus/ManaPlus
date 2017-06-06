@@ -137,17 +137,17 @@ void NormalOpenGLGraphics::initArrays(const int vertCount) restrict2
     // need alocate small size, after if limit reached reallocate to double size
     vertexBufSize = mMaxVertices;
     const size_t sz = mMaxVertices * 4 + 30;
-    if (!mFloatTexArray)
+    if (mFloatTexArray == nullptr)
         mFloatTexArray = new GLfloat[sz];
-    if (!mIntTexArray)
+    if (mIntTexArray == nullptr)
         mIntTexArray = new GLint[sz];
-    if (!mIntVertArray)
+    if (mIntVertArray == nullptr)
         mIntVertArray = new GLint[sz];
-    if (!mFloatTexArrayCached)
+    if (mFloatTexArrayCached == nullptr)
         mFloatTexArrayCached = new GLfloat[sz];
-    if (!mIntTexArrayCached)
+    if (mIntTexArrayCached == nullptr)
         mIntTexArrayCached = new GLint[sz];
-    if (!mIntVertArrayCached)
+    if (mIntVertArrayCached == nullptr)
         mIntVertArrayCached = new GLint[sz];
 }
 
@@ -380,7 +380,7 @@ void NormalOpenGLGraphics::drawImageInline(const Image *restrict const image,
                                            int dstX, int dstY) restrict2
 {
     FUNC_BLOCK("Graphics::drawImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     setColorAlpha(image->mAlpha);
@@ -465,7 +465,7 @@ void NormalOpenGLGraphics::testDraw() restrict2
 void NormalOpenGLGraphics::drawImageCached(const Image *restrict const image,
                                            int x, int y) restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     if (image->mGLImage != mImageCached)
@@ -541,7 +541,7 @@ void NormalOpenGLGraphics::drawPatternCached(const Image *restrict const image,
                                              const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPatternCached", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     if (image->mGLImage != mImageCached)
@@ -623,7 +623,7 @@ void NormalOpenGLGraphics::drawPatternCached(const Image *restrict const image,
 
 void NormalOpenGLGraphics::completeCache() restrict2
 {
-    if (!mImageCached)
+    if (mImageCached == 0u)
         return;
 
     setColorAlpha(mAlphaCached);
@@ -649,7 +649,7 @@ void NormalOpenGLGraphics::drawRescaledImage(const Image *restrict const image,
                                              const int desiredHeight) restrict2
 {
     FUNC_BLOCK("Graphics::drawRescaledImage", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -688,7 +688,7 @@ void NormalOpenGLGraphics::drawPatternInline(const Image *restrict const image,
                                              const int h) restrict2
 {
     FUNC_BLOCK("Graphics::drawPattern", 1)
-    if (!image)
+    if (image == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -782,7 +782,7 @@ void NormalOpenGLGraphics::drawRescaledPattern(const Image *
                                                const int scaledHeight)
                                                restrict2
 {
-    if (!image)
+    if (image == nullptr)
         return;
 
     if (scaledWidth == 0 || scaledHeight == 0)
@@ -970,7 +970,7 @@ void NormalOpenGLGraphics::calcPatternInline(ImageVertexes *
                                              const int w,
                                              const int h) const restrict2
 {
-    if (!image || !vert)
+    if (image == nullptr || vert == nullptr)
         return;
 
     const SDL_Rect &imageRect = image->mBounds;
@@ -1062,7 +1062,7 @@ void NormalOpenGLGraphics::calcTileCollection(ImageCollection *
                                               restrict const image,
                                               int x, int y) restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -1108,7 +1108,7 @@ void NormalOpenGLGraphics::calcPattern(ImageCollection *restrict const vertCol,
                                        const int w,
                                        const int h) const restrict2
 {
-    if (!vertCol || !image)
+    if (vertCol == nullptr || image == nullptr)
         return;
     ImageVertexes *vert = nullptr;
     if (vertCol->currentGLImage != image->mGLImage)
@@ -1209,7 +1209,7 @@ void NormalOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
 void NormalOpenGLGraphics::drawTileVertexes(const ImageVertexes *
                                             restrict const vert) restrict2
 {
-    if (!vert)
+    if (vert == nullptr)
         return;
     const Image *const image = vert->image;
 
@@ -1231,7 +1231,7 @@ void NormalOpenGLGraphics::calcWindow(ImageCollection *restrict const vertCol,
 {
     ImageVertexes *vert = nullptr;
     Image *const image = imgRect.grid[4];
-    if (!image)
+    if (image == nullptr)
         return;
     if (vertCol->currentGLImage != image->mGLImage)
     {
@@ -1346,7 +1346,7 @@ void NormalOpenGLGraphics::pushClipArea(const Rect &restrict area) restrict2
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
 
-    if (transX || transY)
+    if (transX != 0 || transY != 0)
     {
         glTranslatef(static_cast<GLfloat>(transX),
                      static_cast<GLfloat>(transY), 0);
@@ -1374,7 +1374,7 @@ void NormalOpenGLGraphics::popClipArea() restrict2
     const ClipRect &clipArea = mClipStack.top();
     transX += clipArea.xOffset;
     transY += clipArea.yOffset;
-    if (transX || transY)
+    if (transX != 0 || transY != 0)
     {
         glTranslatef(static_cast<GLfloat>(transX),
                      static_cast<GLfloat>(transY), 0);
@@ -1692,7 +1692,7 @@ void NormalOpenGLGraphics::dumpSettings()
         test[2] = 0;
         test[3] = 0;
         glGetIntegerv(f, &test[0]);
-        if (test[0] || test[1] || test[2] || test[3])
+        if (test[0] != 0 || test[1] != 0 || test[2] != 0 || test[3] != 0)
         {
             logger->log("\n%d = %d, %d, %d, %d", f,
                 test[0], test[1], test[2], test[3]);

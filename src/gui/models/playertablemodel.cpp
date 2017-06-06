@@ -66,7 +66,7 @@ PlayerTableModel::~PlayerTableModel()
 
 int PlayerTableModel::getRows() const
 {
-    if (mPlayers)
+    if (mPlayers != nullptr)
         return CAST_S32(mPlayers->size());
     else
         return 0;
@@ -120,7 +120,7 @@ void PlayerTableModel::updateModelInRow(const int row) const
 {
     const DropDown *const choicebox = static_cast<DropDown *>(
         getElementAt(row, RELATION_CHOICE_COLUMN));
-    if (!choicebox)
+    if (choicebox == nullptr)
         return;
     player_relations.setRelation(getPlayerAt(row),
         static_cast<RelationT>(
@@ -141,7 +141,7 @@ void PlayerTableModel::freeWidgets()
 
 std::string PlayerTableModel::getPlayerAt(const int index) const
 {
-    if (!mPlayers || index < 0
+    if ((mPlayers == nullptr) || index < 0
         || index >= CAST_S32(mPlayers->size()))
     {
         return std::string();

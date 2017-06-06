@@ -35,13 +35,13 @@ ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
                                  const std::string &skin,
                                  const unsigned int rowHeight) :
     ListBox(widget, listModel, skin),
-    mImagePadding(mSkin ? mSkin->getOption("imagePadding") : 0),
-    mSpacing(mSkin ? mSkin->getOption("spacing") : 0),
+    mImagePadding(mSkin != nullptr ? mSkin->getOption("imagePadding") : 0),
+    mSpacing(mSkin != nullptr ? mSkin->getOption("spacing") : 0),
     mHeight(0),
     mListItems(),
     mSelectedItems()
 {
-    if (rowHeight)
+    if (rowHeight != 0u)
         mRowHeight = rowHeight;
 }
 
@@ -51,7 +51,7 @@ ExtendedListBox::~ExtendedListBox()
 
 void ExtendedListBox::draw(Graphics *const graphics)
 {
-    if (!mListModel)
+    if (mListModel == nullptr)
         return;
 
     BLOCK_START("ExtendedListBox::draw")
@@ -81,7 +81,7 @@ void ExtendedListBox::draw(Graphics *const graphics)
         int strWidth = font->getWidth(str) + 8;
 
         const Image *const image = model->getImageAt(row);
-        if (image)
+        if (image != nullptr)
             strWidth += image->getWidth() + mImagePadding;
 
         std::vector<ExtendedListBoxItem> &list =
@@ -145,7 +145,7 @@ void ExtendedListBox::draw(Graphics *const graphics)
         if (item.image)
         {
             const Image *const image = model->getImageAt(row1);
-            if (image)
+            if (image != nullptr)
             {
                 graphics->drawImage(image,
                     mImagePadding,
@@ -160,7 +160,7 @@ void ExtendedListBox::draw(Graphics *const graphics)
         const int row1 = item.row;
         const int y1 = item.y;
         const Image *const image = model->getImageAt(row1);
-        if (!image || !item.image)
+        if ((image == nullptr) || !item.image)
         {
             font->drawString(graphics,
                 mForegroundColor, mForegroundColor2,
@@ -182,7 +182,7 @@ void ExtendedListBox::draw(Graphics *const graphics)
         const int row1 = item.row;
         const int y1 = item.y;
         const Image *const image = model->getImageAt(row1);
-        if (!image || !item.image)
+        if ((image == nullptr) || !item.image)
         {
             font->drawString(graphics,
                 mForegroundSelectedColor, mForegroundSelectedColor2,
@@ -205,7 +205,7 @@ void ExtendedListBox::draw(Graphics *const graphics)
         if (item.image)
         {
             const Image *const image = model->getImageAt(row1);
-            if (image)
+            if (image != nullptr)
             {
                 graphics->drawImage(image,
                     mImagePadding,
@@ -224,7 +224,7 @@ void ExtendedListBox::safeDraw(Graphics *const graphics)
 
 void ExtendedListBox::adjustSize()
 {
-    if (mHeight)
+    if (mHeight != 0)
         setHeight(mHeight + 2 * mPadding);
     else
         ListBox::adjustSize();

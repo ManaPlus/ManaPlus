@@ -147,7 +147,7 @@ Image::Image(SDL_Surface *restrict const image, const bool hasAlphaChannel0,
     mBounds.x = 0;
     mBounds.y = 0;
 
-    if (mSDLSurface)
+    if (mSDLSurface != nullptr)
     {
         mBounds.w = CAST_U16(mSDLSurface->w);
         mBounds.h = CAST_U16(mSDLSurface->h);
@@ -191,7 +191,7 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mBounds.w = CAST_U16(width);
     mBounds.h = CAST_U16(height);
 
-    if (mGLImage)
+    if (mGLImage != 0u)
     {
         mLoaded = true;
     }
@@ -225,7 +225,7 @@ void Image::unload()
 {
     mLoaded = false;
 
-    if (mSDLSurface)
+    if (mSDLSurface != nullptr)
     {
         SDLCleanCache();
         // Free the image surface.
@@ -244,7 +244,7 @@ void Image::unload()
 #endif  // USE_SDL2
 
 #ifdef USE_OPENGL
-    if (mGLImage)
+    if (mGLImage != 0u)
     {
         glDeleteTextures(1, &mGLImage);
         mGLImage = 0;
@@ -286,12 +286,12 @@ void Image::setAlpha(const float alpha)
     if (alpha < 0.0F || alpha > 1.0F)
         return;
 
-    if (mSDLSurface)
+    if (mSDLSurface != nullptr)
     {
         if (mUseAlphaCache)
         {
             SDL_Surface *surface = getByAlpha(mAlpha);
-            if (!surface)
+            if (surface == nullptr)
             {
                 if (mAlphaCache.size() > 100)
                 {
@@ -308,7 +308,7 @@ void Image::setAlpha(const float alpha)
                     SDLCleanCache();
                 }
                 surface = mSDLSurface;
-                if (surface)
+                if (surface != nullptr)
                     mAlphaCache[mAlpha] = surface;
             }
             else
@@ -317,7 +317,7 @@ void Image::setAlpha(const float alpha)
             }
 
             surface = getByAlpha(alpha);
-            if (surface)
+            if (surface != nullptr)
             {
                 if (mSDLSurface == surface)
                     logger->log("bug");
@@ -329,7 +329,7 @@ void Image::setAlpha(const float alpha)
             else
             {
                 mSDLSurface = SDLImageHelper::SDLDuplicateSurface(mSDLSurface);
-                if (!mSDLSurface)
+                if (mSDLSurface == nullptr)
                     return;
             }
         }
@@ -368,7 +368,7 @@ void Image::setAlpha(const float alpha)
             const uint8_t aloss = fmt->Aloss;
             const uint8_t ashift = fmt->Ashift;
 
-            if (!bx && bxw == sw)
+            if ((bx == 0) && bxw == sw)
             {
                 const int i2 = (maxHeight - 1) * sw + maxWidth - 1;
                 for (int i = i1; i <= i2; i++)
@@ -443,7 +443,7 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
 
     Image* scaledImage = nullptr;
 
-    if (mSDLSurface)
+    if (mSDLSurface != nullptr)
     {
         SDL_Surface *const scaledSurface = zoomSurface(mSDLSurface,
                     static_cast<double>(width) / mBounds.w,
@@ -452,7 +452,7 @@ Image* Image::SDLgetScaledImage(const int width, const int height) const
 
         // The load function takes care of the SDL<->OpenGL implementation
         // and about freeing the given SDL_surface*.
-        if (scaledSurface)
+        if (scaledSurface != nullptr)
         {
             scaledImage = imageHelper->loadSurface(scaledSurface);
             MSDL_FreeSurface(scaledSurface);
@@ -508,7 +508,7 @@ int Image::calcMemoryLocal() const
     int sz = static_cast<int>(sizeof(Image) +
         sizeof(std::map<float, SDL_Surface*>)) +
         Resource::calcMemoryLocal();
-    if (mSDLSurface)
+    if (mSDLSurface != nullptr)
     {
         sz += CAST_S32(mAlphaCache.size()) *
             memoryManager.getSurfaceSize(mSDLSurface);
@@ -519,7 +519,7 @@ int Image::calcMemoryLocal() const
 #ifdef USE_OPENGL
 void Image::decRef()
 {
-    if (mGLImage && mRefCount <= 1)
+    if ((mGLImage != 0u) && mRefCount <= 1)
         OpenGLImageHelper::invalidate(mGLImage);
     Resource::decRef();
 }

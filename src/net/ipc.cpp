@@ -49,7 +49,7 @@ IPC::IPC() :
 IPC::~IPC()
 {
     mListen = false;
-    if (mSocket)
+    if (mSocket != nullptr)
     {
         TcpNet::closeSocket(mSocket);
         mSocket = nullptr;
@@ -57,7 +57,7 @@ IPC::~IPC()
     SDL_DestroyMutex(mMutex);
     mMutex = nullptr;
     int status;
-    if (mThread && SDL_GetThreadID(mThread))
+    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
         SDL_WaitThread(mThread, &status);
     mThread = nullptr;
 }
@@ -73,14 +73,14 @@ bool IPC::init()
     }
 
     mSocket = TcpNet::open(&ip);
-    if (!mSocket)
+    if (mSocket == nullptr)
     {
         logger->log("IPC: open error: %s", TcpNet::getError());
         return false;
     }
 
     mThread = SDL::createThread(&acceptLoop, "ipc", this);
-    if (!mThread)
+    if (mThread == nullptr)
     {
         logger->log("IPC: unable to create acceptLoop thread");
         return false;
@@ -90,7 +90,7 @@ bool IPC::init()
 
 int IPC::acceptLoop(void *ptr)
 {
-    if (!ptr)
+    if (ptr == nullptr)
         return 1;
 
     IPC *const ipc1 = reinterpret_cast<IPC*>(ptr);
@@ -101,11 +101,11 @@ int IPC::acceptLoop(void *ptr)
     while (ipc1->mListen)
     {
         TcpNet::checkSockets(set, 250);
-        if (!TcpNet::socketReady(ipc1->mSocket))
+        if (TcpNet::socketReady(ipc1->mSocket) == 0)
             continue;
 
         const TcpNet::Socket sock = TcpNet::accept(ipc1->mSocket);
-        if (!sock)
+        if (sock == nullptr)
         {
             logger->log_r("IPC: unable to accept connection");
             continue;
@@ -153,7 +153,7 @@ int IPC::acceptLoop(void *ptr)
 
 void IPC::stop()
 {
-    if (!ipc)
+    if (ipc == nullptr)
         return;
 
     logger->log("Stopping IPC...");
@@ -162,11 +162,11 @@ void IPC::stop()
 
 void IPC::start()
 {
-    if (ipc)
+    if (ipc != nullptr)
         return;
 
     unsigned short port(44007);
-    if (getenv("IPC_PORT"))
+    if (getenv("IPC_PORT") != nullptr)
         port = static_cast<unsigned short>(atoi(getenv("IPC_PORT")));
 
     logger->log("Starting IPC...");
@@ -195,7 +195,7 @@ void IPC::flush()
         SDL_mutexP(mMutex);
 #ifndef DYECMD
 // probably need enable only commands in tool
-        if (chatWindow)
+        if (chatWindow != nullptr)
         {
             FOR_EACH (std::vector<std::string>::const_iterator, it,
                       mDelayedCommands)

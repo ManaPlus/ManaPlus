@@ -33,8 +33,8 @@ struct AtlasItem final : public MemoryCounter
         name(),
         x(0),
         y(0),
-        width(image0 ? image0->mBounds.w : 0),
-        height(image0 ? image0->mBounds.h : 0)
+        width(image0 != nullptr ? image0->mBounds.w : 0),
+        height(image0 != nullptr ? image0->mBounds.h : 0)
     {
     }
 

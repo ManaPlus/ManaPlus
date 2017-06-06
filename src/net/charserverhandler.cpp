@@ -35,13 +35,13 @@ CharCreateDialog *CharServerHandler::mCharCreateDialog = nullptr;
 
 void CharServerHandler::updateCharSelectDialog()
 {
-    if (mCharSelectDialog)
+    if (mCharSelectDialog != nullptr)
         mCharSelectDialog->setCharacters(mCharacters);
 }
 
 void CharServerHandler::unlockCharSelectDialog()
 {
-    if (mCharSelectDialog)
+    if (mCharSelectDialog != nullptr)
         mCharSelectDialog->unlock();
 }
 

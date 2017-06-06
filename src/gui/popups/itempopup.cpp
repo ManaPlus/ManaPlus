@@ -125,10 +125,10 @@ void ItemPopup::postInit()
 
 ItemPopup::~ItemPopup()
 {
-    if (mIcon)
+    if (mIcon != nullptr)
     {
         Image *const image = mIcon->getImage();
-        if (image)
+        if (image != nullptr)
             image->decRef();
     }
 }
@@ -136,7 +136,7 @@ ItemPopup::~ItemPopup()
 void ItemPopup::setItem(const Item *const item,
                         const bool showImage)
 {
-    if (!item)
+    if (item == nullptr)
         return;
 
     const ItemInfo &ii = item->getInfo();
@@ -181,8 +181,8 @@ void ItemPopup::setItem(const ItemInfo &item,
                         const int *const cards,
                         const ItemOptionsList *const options)
 {
-    if (!mIcon || (item.getName() == mLastName && color == mLastColor
-        && id == mLastId))
+    if (mIcon == nullptr ||
+        (item.getName() == mLastName && color == mLastColor && id == mLastId))
     {
         return;
     }
@@ -193,7 +193,7 @@ void ItemPopup::setItem(const ItemInfo &item,
     int space = 0;
 
     Image *const oldImage = mIcon->getImage();
-    if (oldImage)
+    if (oldImage != nullptr)
         oldImage->decRef();
 
     if (showImage)
@@ -204,7 +204,7 @@ void ItemPopup::setItem(const ItemInfo &item,
             item.getDyeIconColorsString(color)));
 
         mIcon->setImage(image);
-        if (image)
+        if (image != nullptr)
         {
             mIcon->setPosition(0, 0);
             space = mIcon->getWidth();
@@ -297,7 +297,7 @@ void ItemPopup::setItem(const ItemInfo &item,
 
 std::string ItemPopup::getCardsString(const int *const cards)
 {
-    if (!cards)
+    if (cards == nullptr)
         return std::string();
 
     std::string label;
@@ -331,7 +331,7 @@ std::string ItemPopup::getCardsString(const int *const cards)
             for (int f = 0; f < maxCards; f ++)
             {
                 const int id = cards[f];
-                if (id)
+                if (id != 0)
                 {
                     if (!label.empty())
                         label.append(" / ");

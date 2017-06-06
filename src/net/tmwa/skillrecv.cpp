@@ -60,10 +60,10 @@ void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
         msg.skip(24, "unused");
         const Modifiable up = fromBool(msg.readUInt8("up flag"), Modifiable);
         const int oldLevel = PlayerInfo::getSkillLevel(skillId);
-        if (oldLevel && oldLevel != level)
+        if ((oldLevel != 0) && oldLevel != level)
             updateSkill = skillId;
         PlayerInfo::setSkillLevel(skillId, level);
-        if (skillDialog)
+        if (skillDialog != nullptr)
         {
             if (!skillDialog->updateSkill(skillId, range, up, inf, sp))
             {
@@ -72,10 +72,10 @@ void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
             }
         }
     }
-    if (skillDialog)
+    if (skillDialog != nullptr)
     {
         skillDialog->update();
-        if (updateSkill)
+        if (updateSkill != 0)
             skillDialog->playUpdateEffect(updateSkill);
     }
 }
@@ -99,7 +99,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
     if (success == CAST_S32(SKILL_FAILED)
         && skillId == CAST_S32(SKILL_BASIC))
     {
-        if (localPlayer &&
+        if ((localPlayer != nullptr) &&
             bskill == CAST_S32(BSKILL_EMOTE) &&
             reason == CAST_S32(RFAIL_SKILLDEP))
         {

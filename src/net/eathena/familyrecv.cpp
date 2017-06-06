@@ -51,7 +51,7 @@ namespace FamilyRecv
 
 void FamilyRecv::processAskForChild(Net::MessageIn &msg)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
     {
         mParent1 = msg.readBeingId("account id who ask");
         mParent2 = msg.readBeingId("acoount id for other parent");
@@ -62,10 +62,10 @@ void FamilyRecv::processAskForChild(Net::MessageIn &msg)
     mParent2 = msg.readBeingId("acoount id for other parent");
     const std::string name1 = msg.readString(24, "name who ask");
     const Party *const party = localPlayer->getParty();
-    if (party)
+    if (party != nullptr)
     {
         const PartyMember *const member = party->getMember(mParent2);
-        if (member)
+        if (member != nullptr)
         {
             const std::string name2 = member->getName();
             CREATEWIDGETV(confirmDlg, ConfirmDialog,
@@ -84,7 +84,7 @@ void FamilyRecv::processAskForChild(Net::MessageIn &msg)
 void FamilyRecv::processCallPartner(Net::MessageIn &msg)
 {
     const std::string name = msg.readString(24, "name");
-    if (localPlayer && name == localPlayer->getName())
+    if ((localPlayer != nullptr) && name == localPlayer->getName())
     {
         NotifyManager::notify(NotifyTypes::CALLED_PARTNER);
     }

@@ -63,7 +63,7 @@ SDL_Surface *OpenGLScreenshotHelper::getScreenshot()
         SDL_SWSURFACE, w, h, 24,
         0xff0000, 0x00ff00, 0x0000ff, 0x000000);
 
-    if (!screenshot)
+    if (screenshot == nullptr)
         return nullptr;
 
     if (SDL_MUSTLOCK(screenshot))

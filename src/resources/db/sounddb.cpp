@@ -51,7 +51,7 @@ void SoundDB::loadXmlFile(const std::string &fileName,
         skipError);
     XmlNodeConstPtrConst root = doc->rootNode();
 
-    if (!root || !xmlNameEqual(root, "sounds"))
+    if ((root == nullptr) || !xmlNameEqual(root, "sounds"))
     {
         delete doc;
         return;
@@ -70,7 +70,7 @@ void SoundDB::loadXmlFile(const std::string &fileName,
         {
             const std::string name = XML::getProperty(node, "name", "");
             const int id = NotifyManager::getIndexBySound(name);
-            if (id)
+            if (id != 0)
             {
                 const std::string value = XML::getProperty(node, "value", "");
                 mSounds[id] = value;

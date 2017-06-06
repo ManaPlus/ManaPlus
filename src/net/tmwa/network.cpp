@@ -132,7 +132,7 @@ void Network::dispatchMessages()
         if (msgId < messagesSize)
         {
             const PacketFuncPtr func = mPackets[msgId].func;
-            if (func)
+            if (func != nullptr)
                 func(msg);
             else
                 logger->log("Unhandled packet: %u 0x%x", msgId, msgId);

@@ -107,7 +107,7 @@ TradeWindow::TradeWindow() :
     setMinWidth(310);
     setMinHeight(180);
 
-    if (setupWindow)
+    if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
     const Font *const fnt = mOkButton->getFont();
@@ -259,7 +259,7 @@ void TradeWindow::changeQuantity(const int index, const bool own,
         item = mMyInventory->getItem(index);
     else
         item = mPartnerInventory->getItem(index);
-    if (item)
+    if (item != nullptr)
         item->setQuantity(quantity);
 }
 
@@ -271,7 +271,7 @@ void TradeWindow::increaseQuantity(const int index, const bool own,
         item = mMyInventory->getItem(index);
     else
         item = mPartnerInventory->getItem(index);
-    if (item)
+    if (item != nullptr)
         item->increaseQuantity(quantity);
 }
 
@@ -324,18 +324,18 @@ void TradeWindow::tradeItem(const Item *const item, const int quantity,
 
 void TradeWindow::valueChanged(const SelectionEvent &event)
 {
-    if (!mMyItemContainer || !mPartnerItemContainer)
+    if ((mMyItemContainer == nullptr) || (mPartnerItemContainer == nullptr))
         return;
 
     /* If an item is selected in one container, make sure no item is selected
      * in the other container.
      */
     if (event.getSource() == mMyItemContainer &&
-        mMyItemContainer->getSelectedItem())
+        (mMyItemContainer->getSelectedItem() != nullptr))
     {
         mPartnerItemContainer->selectNone();
     }
-    else if (mPartnerItemContainer->getSelectedItem())
+    else if (mPartnerItemContainer->getSelectedItem() != nullptr)
     {
         mMyItemContainer->selectNone();
     }
@@ -374,7 +374,7 @@ void TradeWindow::setStatus(const Status s)
 
 void TradeWindow::action(const ActionEvent &event)
 {
-    if (!inventoryWindow)
+    if (inventoryWindow == nullptr)
         return;
 
     Item *const item = inventoryWindow->getSelectedItem();
@@ -391,7 +391,7 @@ void TradeWindow::action(const ActionEvent &event)
             return;
         }
 
-        if (!item)
+        if (item == nullptr)
             return;
 
         if (mMyInventory->getFreeSlot() == -1)
@@ -437,7 +437,7 @@ void TradeWindow::action(const ActionEvent &event)
         const int curMoney = PlayerInfo::getAttribute(Attributes::MONEY);
         if (v > curMoney)
         {
-            if (localChatTab)
+            if (localChatTab != nullptr)
             {
                 // TRANSLATORS: trade error
                 localChatTab->chatLog(_("You don't have enough money."),
@@ -485,23 +485,23 @@ void TradeWindow::addAutoMoney(const std::string &nick, const int money)
 
 void TradeWindow::initTrade(const std::string &nick)
 {
-    if (!localPlayer)
+    if (localPlayer == nullptr)
         return;
 
     if (!mAutoAddToNick.empty() && mAutoAddToNick == nick)
     {
-        if (mAutoAddItem && mAutoAddItem->getQuantity())
+        if ((mAutoAddItem != nullptr) && (mAutoAddItem->getQuantity() != 0))
         {
             const Inventory *const inv = PlayerInfo::getInventory();
-            if (inv)
+            if (inv != nullptr)
             {
                 const Item *const item = inv->findItem(mAutoAddItem->getId(),
                     mAutoAddItem->getColor());
-                if (item)
+                if (item != nullptr)
                     tradeItem(item, mAutoAddAmount);
             }
         }
-        if (mAutoMoney)
+        if (mAutoMoney != 0)
         {
             tradeHandler->setMoney(mAutoMoney);
             mMoneyField->setText(strprintf("%d", mAutoMoney));
@@ -514,7 +514,7 @@ void TradeWindow::initTrade(const std::string &nick)
 
 bool TradeWindow::checkItem(const Item *const item) const
 {
-    if (!item)
+    if (item == nullptr)
         return false;
 
     const int itemId = item->getId();
@@ -523,10 +523,10 @@ bool TradeWindow::checkItem(const Item *const item) const
     const Item *const tItem = mMyInventory->findItem(
         itemId, item->getColor());
 
-    if (tItem && (tItem->getQuantity() > 1
+    if ((tItem != nullptr) && (tItem->getQuantity() > 1
         || item->getQuantity() > 1))
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             // TRANSLATORS: trade error
             localChatTab->chatLog(_("Failed adding item. You can not "
@@ -538,7 +538,7 @@ bool TradeWindow::checkItem(const Item *const item) const
     if (Net::getNetworkType() != ServerType::TMWATHENA &&
         item->isEquipped() == Equipped_true)
     {
-        if (localChatTab)
+        if (localChatTab != nullptr)
         {
             localChatTab->chatLog(
                 // TRANSLATORS: trade error
@@ -552,5 +552,5 @@ bool TradeWindow::checkItem(const Item *const item) const
 
 bool TradeWindow::isInpupFocused() const
 {
-    return (mMoneyField && mMoneyField->isFocused());
+    return ((mMoneyField != nullptr) && mMoneyField->isFocused());
 }

@@ -48,9 +48,9 @@ namespace Actions
 static bool closeMoveNpcDialog(bool focus)
 {
     NpcDialog *const dialog = NpcDialog::getActive();
-    if (dialog)
+    if (dialog != nullptr)
     {
-        if (dialog->isCloseState())
+        if (dialog->isCloseState() != 0)
         {
             dialog->closeDialog();
             return true;
@@ -101,10 +101,11 @@ impHandler(moveDown)
 
 impHandler(moveLeft)
 {
-    if (outfitWindow && inputManager.isActionActive(InputAction::WEAR_OUTFIT))
+    if (outfitWindow != nullptr &&
+        inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
         outfitWindow->wearPreviousOutfit();
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -121,10 +122,11 @@ impHandler(moveLeft)
 
 impHandler(moveRight)
 {
-    if (outfitWindow && inputManager.isActionActive(InputAction::WEAR_OUTFIT))
+    if (outfitWindow != nullptr &&
+        inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
         outfitWindow->wearNextOutfit();
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -149,7 +151,7 @@ impHandler(moveForward)
 impHandler(moveToPoint)
 {
     const int num = event.action - InputAction::MOVE_TO_POINT_1;
-    if (socialWindow && num >= 0)
+    if ((socialWindow != nullptr) && num >= 0)
     {
         socialWindow->selectPortal(num);
         return true;
@@ -160,7 +162,7 @@ impHandler(moveToPoint)
 
 impHandler0(crazyMoves)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         ::crazyMoves->crazyMove();
         return true;
@@ -170,8 +172,9 @@ impHandler0(crazyMoves)
 
 impHandler0(moveToTarget)
 {
-    if (localPlayer && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
-        && !inputManager.isActionActive(InputAction::ATTACK))
+    if (localPlayer != nullptr &&
+        !inputManager.isActionActive(InputAction::TARGET_ATTACK) &&
+        !inputManager.isActionActive(InputAction::ATTACK))
     {
         localPlayer->moveToTarget();
         return true;
@@ -181,11 +184,12 @@ impHandler0(moveToTarget)
 
 impHandler0(moveToHome)
 {
-    if (localPlayer && !inputManager.isActionActive(InputAction::TARGET_ATTACK)
-        && !inputManager.isActionActive(InputAction::ATTACK))
+    if (localPlayer != nullptr &&
+        !inputManager.isActionActive(InputAction::TARGET_ATTACK) &&
+        !inputManager.isActionActive(InputAction::ATTACK))
     {
         localPlayer->moveToHome();
-        if (Game::instance())
+        if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
     }
@@ -194,14 +198,14 @@ impHandler0(moveToHome)
 
 impHandler0(directUp)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         if (localPlayer->getDirection() != BeingDirection::UP)
         {
 //            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::UP);
-                if (playerHandler)
+                if (playerHandler != nullptr)
                     playerHandler->setDirection(BeingDirection::UP);
             }
         }
@@ -212,14 +216,14 @@ impHandler0(directUp)
 
 impHandler0(directDown)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         if (localPlayer->getDirection() != BeingDirection::DOWN)
         {
 //            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::DOWN);
-                if (playerHandler)
+                if (playerHandler != nullptr)
                 {
                     playerHandler->setDirection(
                         BeingDirection::DOWN);
@@ -233,14 +237,14 @@ impHandler0(directDown)
 
 impHandler0(directLeft)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         if (localPlayer->getDirection() != BeingDirection::LEFT)
         {
 //            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::LEFT);
-                if (playerHandler)
+                if (playerHandler != nullptr)
                 {
                     playerHandler->setDirection(
                         BeingDirection::LEFT);
@@ -254,14 +258,14 @@ impHandler0(directLeft)
 
 impHandler0(directRight)
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         if (localPlayer->getDirection() != BeingDirection::RIGHT)
         {
 //            if (PacketLimiter::limitPackets(PacketType::PACKET_DIRECTION))
             {
                 localPlayer->setDirection(BeingDirection::RIGHT);
-                if (playerHandler)
+                if (playerHandler != nullptr)
                 {
                     playerHandler->setDirection(
                         BeingDirection::RIGHT);

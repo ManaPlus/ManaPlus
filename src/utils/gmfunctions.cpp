@@ -66,7 +66,7 @@ void runCharCommand(const std::string &command,
                     const std::string &name,
                     const std::string &params)
 {
-    if (localPlayer && name == localPlayer->getName())
+    if ((localPlayer != nullptr) && name == localPlayer->getName())
     {
         if (params.empty())
         {
@@ -101,7 +101,7 @@ void runCharCommand(const std::string &command,
 void runCharCommand(const std::string &command,
                     const std::string &name)
 {
-    if (localPlayer && name == localPlayer->getName())
+    if ((localPlayer != nullptr) && name == localPlayer->getName())
     {
         chatHandler->talk(std::string(
             settings.gmCommandSymbol).append(

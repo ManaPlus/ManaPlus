@@ -61,11 +61,11 @@ void PartyHandler::create(const std::string &name) const
 
 void PartyHandler::invite(const std::string &name) const
 {
-    if (!actorManager)
+    if (actorManager == nullptr)
         return;
     const Being *const being = actorManager->findBeingByName(
         name, ActorType::Player);
-    if (being)
+    if (being != nullptr)
     {
         createOutPacket(CMSG_PARTY_INVITE);
         outMsg.writeBeingId(being->getId(), "account id");
@@ -82,7 +82,7 @@ void PartyHandler::invite(const std::string &name) const
 void PartyHandler::inviteResponse(const int partyId,
                                   const bool accept) const
 {
-    if (localPlayer)
+    if (localPlayer != nullptr)
     {
         createOutPacket(CMSG_PARTY_INVITED2);
         outMsg.writeInt32(partyId, "party id");
@@ -97,7 +97,7 @@ void PartyHandler::leave() const
 
 void PartyHandler::kick(const Being *const being) const
 {
-    if (being)
+    if (being != nullptr)
     {
         createOutPacket(CMSG_PARTY_KICK);
         outMsg.writeBeingId(being->getId(), "account id");
@@ -107,11 +107,11 @@ void PartyHandler::kick(const Being *const being) const
 
 void PartyHandler::kick(const std::string &name) const
 {
-    if (!Ea::taParty)
+    if (Ea::taParty == nullptr)
         return;
 
     const PartyMember *const m = Ea::taParty->getMember(name);
-    if (!m)
+    if (m == nullptr)
     {
         NotifyManager::notify(NotifyTypes::PARTY_USER_NOT_IN_PARTY, name);
         return;
@@ -183,7 +183,7 @@ void PartyHandler::changeLeader(const std::string &name) const
 {
     const Being *const being = actorManager->findBeingByName(
         name, ActorType::Player);
-    if (!being)
+    if (being == nullptr)
         return;
     createOutPacket(CMSG_PARTY_CHANGE_LEADER);
     outMsg.writeBeingId(being->getId(), "account id");

@@ -37,7 +37,7 @@ void readXmlIntVector(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
+    if (rootNode == nullptr || !xmlNameEqual(rootNode, rootName.c_str()))
     {
         logger->log("Error while loading %s!", fileName.c_str());
         return;
@@ -88,7 +88,7 @@ void readXmlStringMap(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
+    if (rootNode == nullptr || !xmlNameEqual(rootNode, rootName.c_str()))
     {
         logger->log("Error while loading %s!", fileName.c_str());
         return;
@@ -142,7 +142,7 @@ void readXmlIntMap(const std::string &fileName,
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
-    if (!rootNode || !xmlNameEqual(rootNode, rootName.c_str()))
+    if (rootNode == nullptr || !xmlNameEqual(rootNode, rootName.c_str()))
     {
         logger->log("Error while loading %s!", fileName.c_str());
         return;

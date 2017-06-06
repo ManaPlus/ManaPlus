@@ -95,7 +95,7 @@ void ItemLinkHandler::handleCommandLink(const std::string &link,
 
 void ItemLinkHandler::handleHelpLink(const std::string &link)
 {
-    if (helpWindow)
+    if (helpWindow != nullptr)
     {
         helpWindow->loadHelp(link.substr(7));
         helpWindow->requestMoveToTop();
@@ -105,7 +105,7 @@ void ItemLinkHandler::handleHelpLink(const std::string &link)
 void ItemLinkHandler::handleHttpLink(const std::string &link,
                                      const MouseEvent *const event)
 {
-    if (!event)
+    if (event == nullptr)
         return;
     std::string url = link;
     replaceAll(url, " ", "");
@@ -124,14 +124,14 @@ void ItemLinkHandler::handleHttpLink(const std::string &link,
     }
     else if (button == MouseButton::RIGHT)
     {
-        if (popupMenu)
+        if (popupMenu != nullptr)
             popupMenu->showLinkPopup(url);
     }
 }
 
 void ItemLinkHandler::handleItemLink(const std::string &link)
 {
-    if (!itemPopup || link.empty())
+    if ((itemPopup == nullptr) || link.empty())
         return;
 
     const char ch = link[0];
@@ -160,7 +160,7 @@ void ItemLinkHandler::handleItemLink(const std::string &link)
         {
             itemPopup->setVisible(Visible_false);
         }
-        else if (viewport)
+        else if (viewport != nullptr)
         {
             itemPopup->position(viewport->mMouseX,
                 viewport->mMouseY);
@@ -170,7 +170,7 @@ void ItemLinkHandler::handleItemLink(const std::string &link)
 
 void ItemLinkHandler::handleSearchLink(const std::string &link)
 {
-    if (helpWindow)
+    if (helpWindow != nullptr)
     {
         helpWindow->search(link.substr(1));
         helpWindow->requestMoveToTop();
@@ -205,7 +205,7 @@ void ItemLinkHandler::handleLink(const std::string &link,
     }
     else if (link == "news")
     {
-        if (helpWindow)
+        if (helpWindow != nullptr)
             helpWindow->loadHelpSimple("news");
     }
     else if (link == "copyright")

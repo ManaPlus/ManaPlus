@@ -80,7 +80,7 @@ class SocialPartyTab final : public SocialTab,
                 const std::string name = mInviteDialog->getText();
                 partyHandler->invite(name);
 
-                if (localChatTab)
+                if (localChatTab != nullptr)
                 {
                     localChatTab->chatLog(strprintf(
                         // TRANSLATORS: chat message
@@ -97,7 +97,7 @@ class SocialPartyTab final : public SocialTab,
             else if (eventId == "yes")
             {
                 partyHandler->leave();
-                if (localChatTab)
+                if (localChatTab != nullptr)
                 {
                     localChatTab->chatLog(strprintf(
                         // TRANSLATORS: tab in social window
@@ -139,11 +139,11 @@ class SocialPartyTab final : public SocialTab,
         void buildCounter(const int online0 A_UNUSED,
                           const int total0 A_UNUSED) override final
         {
-            if (!localPlayer)
+            if (localPlayer == nullptr)
                 return;
 
             const Party *const party = localPlayer->getParty();
-            if (!party)
+            if (party == nullptr)
                 return;
 
             const Party::MemberList *const members = party->getMembers();
