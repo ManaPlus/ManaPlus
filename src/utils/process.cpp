@@ -108,7 +108,7 @@ bool execFile(const std::string &pathName, const std::string &name A_UNUSED,
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
-#include <signal.h>
+#include <csignal>
 
 int execFileWait(const std::string &pathName, const std::string &name,
                  const std::string &arg1, const std::string &arg2,

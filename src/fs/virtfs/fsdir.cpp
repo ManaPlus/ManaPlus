@@ -37,7 +37,7 @@
 #include <unistd.h>
 
 #ifdef USE_FILE_FOPEN
-#include <stdio.h>
+#include <cstdio>
 #endif  // USE_FILE_FOPEN
 
 #include <sys/types.h>

@@ -24,7 +24,7 @@
 #include "logger.h"
 #include "settings.h"
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include "debug.h"
 

@@ -21,7 +21,7 @@
 #ifndef CONST_NET_NOSTAT_H
 #define CONST_NET_NOSTAT_H
 
-#include <limits.h>
+#include <climits>
 
 static const int NoStat = INT_MAX;
 
