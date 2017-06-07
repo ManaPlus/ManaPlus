@@ -88,7 +88,7 @@ float Tab::mAlpha = 1.0;
 
 namespace
 {
-    static std::string const data[Tab::TAB_COUNT] =
+    std::string const data[Tab::TAB_COUNT] =
     {
         "tab.xml",
         "tab_highlighted.xml",

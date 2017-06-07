@@ -68,7 +68,7 @@ namespace
         SDL_PixelFormat *dst;
     };
 
-    static unsigned int GFX_ALPHA_ADJUST_ARRAY[256] =
+    unsigned int GFX_ALPHA_ADJUST_ARRAY[256] =
     {
         0,  /* 0 */
         15,  /* 1 */

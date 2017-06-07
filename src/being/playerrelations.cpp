@@ -44,18 +44,18 @@ typedef PlayerRelations::const_iterator PlayerRelationsCIter;
 typedef std::list<PlayerRelationsListener *> PlayerRelationListeners;
 typedef PlayerRelationListeners::const_iterator PlayerRelationListenersCIter;
 
+static const char *const PLAYER_IGNORE_STRATEGY_NOP = "nop";
+static const char *const PLAYER_IGNORE_STRATEGY_EMOTE0 = "emote0";
+static const char *const DEFAULT_IGNORE_STRATEGY =
+    PLAYER_IGNORE_STRATEGY_EMOTE0;
+
+static const char *const NAME = "name";
+static const char *const RELATION = "relation";
+
+static const unsigned int IGNORE_EMOTE_TIME = 100;
+
 namespace
 {
-    static const char *const PLAYER_IGNORE_STRATEGY_NOP = "nop";
-    static const char *const PLAYER_IGNORE_STRATEGY_EMOTE0 = "emote0";
-    static const char *const DEFAULT_IGNORE_STRATEGY
-        = PLAYER_IGNORE_STRATEGY_EMOTE0;
-
-    static const char *const NAME = "name";
-    static const char *const RELATION = "relation";
-
-    static const unsigned int IGNORE_EMOTE_TIME = 100;
-
     class SortPlayersFunctor final
     {
         public:
@@ -131,10 +131,9 @@ namespace
                 return container;
             }
     };
-
-    static PlayerConfSerialiser player_conf_serialiser;  // stateless singleton
-
 }  // namespace
+
+static PlayerConfSerialiser player_conf_serialiser;  // stateless singleton
 
 const unsigned int PlayerRelation::RELATION_PERMISSIONS[RELATIONS_NR] =
 {

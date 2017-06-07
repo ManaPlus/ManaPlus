@@ -34,8 +34,8 @@
 
 namespace
 {
-    static const unsigned int emoteWidth = 17;
-    static const unsigned int emoteHeight = 18;
+    const unsigned int emoteWidth = 17;
+    const unsigned int emoteHeight = 18;
 }  // namespace
 
 EmotePage::EmotePage(const Widget2 *const widget) :

@@ -48,7 +48,7 @@
 
 namespace
 {
-    static int testResouceCounter = 0;
+    int testResouceCounter = 0;
 
     class TestResource : public Resource
     {

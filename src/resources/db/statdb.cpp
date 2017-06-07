@@ -35,9 +35,9 @@
 namespace
 {
     bool mLoaded = false;
-    static std::vector<BasicStat> mBasicStats;
-    static std::map<std::string, std::vector<BasicStat> > mStats;
-    static std::vector<std::string> mPages;
+    std::vector<BasicStat> mBasicStats;
+    std::map<std::string, std::vector<BasicStat> > mStats;
+    std::vector<std::string> mPages;
 }  // namespace
 
 void StatDb::addDefaultStats()

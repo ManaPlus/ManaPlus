@@ -29,35 +29,32 @@
 
 #include "debug.h"
 
-namespace
+static class SortPartyFunctor final
 {
-    static class SortPartyFunctor final
-    {
-        public:
-            A_DEFAULT_COPY(SortPartyFunctor)
+    public:
+        A_DEFAULT_COPY(SortPartyFunctor)
 
-            bool operator() (const PartyMember *const p1,
-                             const PartyMember *const p2) const
-            {
-                if ((p1 == nullptr) || (p2 == nullptr))
-                    return false;
-                if (p1->getLeader())
-                    return true;
-                if (p2->getLeader())
-                    return false;
-
-                if (p1->getName() != p2->getName())
-                {
-                    std::string s1 = p1->getName();
-                    std::string s2 = p2->getName();
-                    toLower(s1);
-                    toLower(s2);
-                    return s1 < s2;
-                }
+        bool operator() (const PartyMember *const p1,
+                         const PartyMember *const p2) const
+        {
+            if ((p1 == nullptr) || (p2 == nullptr))
                 return false;
+            if (p1->getLeader())
+                return true;
+            if (p2->getLeader())
+                return false;
+
+            if (p1->getName() != p2->getName())
+            {
+                std::string s1 = p1->getName();
+                std::string s2 = p2->getName();
+                toLower(s1);
+                toLower(s2);
+                return s1 < s2;
             }
-    } partySorter;
-}  // namespace
+            return false;
+        }
+} partySorter;
 
 PartyMember::PartyMember(Party *const party,
                          const BeingId id,
