@@ -27,6 +27,8 @@
 
 #include "localconsts.h"
 
+class Image;
+
 struct MockDrawItem final
 {
     MockDrawItem(const MockDrawTypeT type,
