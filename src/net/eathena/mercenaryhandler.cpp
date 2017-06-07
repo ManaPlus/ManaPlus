@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-extern Net::MercenaryHandler *mercenaryHandler;
+
 
 namespace EAthena
 {

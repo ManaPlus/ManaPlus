@@ -38,7 +38,7 @@
 
 GuildTab *guildTab = nullptr;
 
-extern Net::GuildHandler *guildHandler;
+
 extern int packetVersion;
 
 namespace EAthena

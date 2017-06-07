@@ -38,7 +38,7 @@
 
 #include "debug.h"
 
-extern Net::ChatHandler *chatHandler;
+
 extern int packetVersion;
 
 namespace EAthena

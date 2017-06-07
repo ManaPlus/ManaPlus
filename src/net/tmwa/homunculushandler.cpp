@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::HomunculusHandler *homunculusHandler;
+
 
 namespace TmwAthena
 {

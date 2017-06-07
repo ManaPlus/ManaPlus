@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-extern Net::InventoryHandler *inventoryHandler;
+
 
 // missing EQUIP_RING1_SLOT
 const EquipSlot::Type EQUIP_CONVERT[] =

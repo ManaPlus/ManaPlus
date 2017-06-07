@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::FriendsHandler *friendsHandler;
+
 
 namespace TmwAthena
 {

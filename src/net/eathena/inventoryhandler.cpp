@@ -35,7 +35,7 @@
 
 #include "debug.h"
 
-extern Net::InventoryHandler *inventoryHandler;
+
 extern int packetVersion;
 
 // this conversion from bit corrupted LOOK_* to EquipSlot

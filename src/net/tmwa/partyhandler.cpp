@@ -36,7 +36,7 @@
 
 #include "debug.h"
 
-extern Net::PartyHandler *partyHandler;
+
 
 namespace TmwAthena
 {

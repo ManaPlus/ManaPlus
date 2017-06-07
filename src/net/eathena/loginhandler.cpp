@@ -35,7 +35,7 @@
 
 #include "debug.h"
 
-extern Net::LoginHandler *loginHandler;
+
 
 namespace EAthena
 {

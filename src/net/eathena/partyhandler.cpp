@@ -37,7 +37,7 @@
 
 #include "debug.h"
 
-extern Net::PartyHandler *partyHandler;
+
 extern int packetVersion;
 
 namespace EAthena

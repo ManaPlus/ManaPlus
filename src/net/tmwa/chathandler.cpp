@@ -36,7 +36,7 @@
 
 #include "debug.h"
 
-extern Net::ChatHandler *chatHandler;
+
 extern unsigned int tmwServerVersion;
 
 namespace TmwAthena

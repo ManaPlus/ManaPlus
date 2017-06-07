@@ -72,7 +72,7 @@
 
 #include "debug.h"
 
-extern Net::GeneralHandler *generalHandler;
+
 
 namespace TmwAthena
 {

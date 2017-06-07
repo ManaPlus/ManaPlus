@@ -27,7 +27,7 @@
 
 #include "debug.h"
 
-extern Net::SkillHandler *skillHandler;
+
 
 namespace TmwAthena
 {

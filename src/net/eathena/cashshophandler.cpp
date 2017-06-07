@@ -28,7 +28,7 @@
 
 #include "debug.h"
 
-extern Net::CashShopHandler *cashShopHandler;
+
 extern int packetVersion;
 
 namespace EAthena

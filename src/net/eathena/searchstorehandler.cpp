@@ -25,7 +25,7 @@
 
 #include "debug.h"
 
-extern Net::SearchStoreHandler *searchStoreHandler;
+
 extern int packetVersion;
 
 namespace EAthena

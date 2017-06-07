@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::RouletteHandler *rouletteHandler;
+
 
 namespace EAthena
 {

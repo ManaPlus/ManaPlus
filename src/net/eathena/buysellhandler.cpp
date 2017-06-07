@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-extern Net::BuySellHandler *buySellHandler;
+
 extern int packetVersion;
 
 namespace EAthena

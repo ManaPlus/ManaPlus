@@ -25,7 +25,6 @@
 
 #include "debug.h"
 
-extern Net::BankHandler *bankHandler;
 extern int packetVersion;
 
 namespace EAthena

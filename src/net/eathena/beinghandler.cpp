@@ -28,7 +28,7 @@
 
 #include "debug.h"
 
-extern Net::BeingHandler *beingHandler;
+
 extern int packetVersion;
 extern int serverVersion;
 

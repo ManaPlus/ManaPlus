@@ -47,7 +47,7 @@
 
 #include "debug.h"
 
-extern const char *dirSeparator;
+
 
 TEST_CASE("BrowserBox leak test1", "")
 {

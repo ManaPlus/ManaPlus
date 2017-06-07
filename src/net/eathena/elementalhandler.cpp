@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::ElementalHandler *elementalHandler;
+
 
 namespace EAthena
 {

@@ -108,11 +108,9 @@ LocalPlayer *localPlayer = nullptr;
 
 class SkillDialog;
 
-extern std::list<BeingCacheEntry*> beingInfoCache;
 extern OkDialog *weightNotice;
 extern time_t weightNoticeTime;
-extern MiniStatusWindow *miniStatusWindow;
-extern SkillDialog *skillDialog;
+
 
 LocalPlayer::LocalPlayer(const BeingId id,
                          const BeingTypeId subtype) :

@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::BattleGroundHandler *battleGroundHandler;
+
 
 namespace TmwAthena
 {

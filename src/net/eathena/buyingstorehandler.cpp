@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-extern Net::BuyingStoreHandler *buyingStoreHandler;
+
 extern int packetVersion;
 
 namespace EAthena

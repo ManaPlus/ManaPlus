@@ -28,8 +28,6 @@
 
 #include "debug.h"
 
-extern ShortcutWindow *spellShortcutWindow;
-
 namespace Actions
 {
 

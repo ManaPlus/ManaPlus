@@ -34,8 +34,6 @@
 
 #include "debug.h"
 
-extern Net::TradeHandler *tradeHandler;
-
 namespace EAthena
 {
 TradeHandler::TradeHandler() :

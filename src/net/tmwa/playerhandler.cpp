@@ -44,7 +44,7 @@
 
 #include "debug.h"
 
-extern Net::PlayerHandler *playerHandler;
+
 
 namespace TmwAthena
 {

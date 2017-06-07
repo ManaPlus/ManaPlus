@@ -37,7 +37,7 @@
 
 #include "debug.h"
 
-extern Net::GameHandler *gameHandler;
+
 
 namespace TmwAthena
 {

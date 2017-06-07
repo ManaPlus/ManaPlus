@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-extern Net::AdminHandler *adminHandler;
+
 
 namespace TmwAthena
 {

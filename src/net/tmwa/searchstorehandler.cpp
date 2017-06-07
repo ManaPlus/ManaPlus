@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::SearchStoreHandler *searchStoreHandler;
+
 
 namespace TmwAthena
 {

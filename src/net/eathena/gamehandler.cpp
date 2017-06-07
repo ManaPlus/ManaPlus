@@ -39,7 +39,7 @@
 
 #include "debug.h"
 
-extern Net::GameHandler *gameHandler;
+
 extern int packetVersion;
 
 namespace EAthena

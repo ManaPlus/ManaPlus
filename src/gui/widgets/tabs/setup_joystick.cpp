@@ -40,8 +40,6 @@
 
 #include "debug.h"
 
-extern Joystick *joystick;
-
 Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     SetupTab(widget),
     mCalibrateLabel(new Label(this,

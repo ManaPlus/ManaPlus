@@ -61,8 +61,6 @@
 
 #include "debug.h"
 
-extern Graphics *mainGraphics;
-
 Setup_Video::Setup_Video(const Widget2 *const widget) :
     SetupTab(widget),
     KeyListener(),

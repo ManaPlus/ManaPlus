@@ -28,8 +28,6 @@
 
 #include "debug.h"
 
-extern Net::FamilyHandler *familyHandler;
-
 namespace EAthena
 {
 

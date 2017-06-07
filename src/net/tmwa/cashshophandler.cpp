@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::CashShopHandler *cashShopHandler;
+
 
 namespace TmwAthena
 {

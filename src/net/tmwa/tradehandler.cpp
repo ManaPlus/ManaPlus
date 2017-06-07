@@ -33,7 +33,7 @@
 
 #include "debug.h"
 
-extern Net::TradeHandler *tradeHandler;
+
 
 extern std::string tradePartnerName;
 

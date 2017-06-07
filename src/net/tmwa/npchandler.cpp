@@ -39,7 +39,7 @@
 
 #include "debug.h"
 
-extern Net::NpcHandler *npcHandler;
+
 
 namespace TmwAthena
 {

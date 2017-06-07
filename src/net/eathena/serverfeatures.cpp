@@ -25,7 +25,6 @@
 #include "debug.h"
 
 extern int serverVersion;
-extern Net::ServerFeatures *serverFeatures;
 
 namespace EAthena
 {

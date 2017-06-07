@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-extern Net::HomunculusHandler *homunculusHandler;
+
 extern int packetVersion;
 
 namespace EAthena

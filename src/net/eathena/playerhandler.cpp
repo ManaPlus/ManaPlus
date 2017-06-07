@@ -44,7 +44,7 @@
 
 #include "debug.h"
 
-extern Net::PlayerHandler *playerHandler;
+
 extern int packetVersion;
 extern int serverVersion;
 

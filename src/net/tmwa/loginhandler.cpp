@@ -32,7 +32,7 @@
 
 #include "debug.h"
 
-extern Net::LoginHandler *loginHandler;
+
 extern unsigned int tmwServerVersion;
 
 namespace TmwAthena

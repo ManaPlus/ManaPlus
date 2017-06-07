@@ -42,7 +42,7 @@
 
 #include "debug.h"
 
-extern std::string tradePartnerName;
+
 ConfirmDialog *confirmDlg = nullptr;
 
 /**

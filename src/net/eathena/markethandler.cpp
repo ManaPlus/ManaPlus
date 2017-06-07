@@ -28,7 +28,6 @@
 
 #include "debug.h"
 
-extern Net::MarketHandler *marketHandler;
 extern int packetVersion;
 
 namespace EAthena

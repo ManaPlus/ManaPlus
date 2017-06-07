@@ -54,9 +54,9 @@
 
 #include "debug.h"
 
-extern Net::CharServerHandler *charServerHandler;
+
 extern int packetVersion;
-extern int serverVersion;
+
 
 namespace EAthena
 {

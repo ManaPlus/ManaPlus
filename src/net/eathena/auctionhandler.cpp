@@ -29,7 +29,7 @@
 
 #include "debug.h"
 
-extern Net::AuctionHandler *auctionHandler;
+
 
 namespace EAthena
 {

@@ -25,7 +25,7 @@
 
 #include "debug.h"
 
-extern Net::BattleGroundHandler *battleGroundHandler;
+
 extern int packetVersion;
 
 namespace EAthena

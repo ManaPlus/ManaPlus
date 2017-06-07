@@ -22,7 +22,7 @@
 
 #include "debug.h"
 
-extern Net::MailHandler *mailHandler;
+
 
 namespace TmwAthena
 {

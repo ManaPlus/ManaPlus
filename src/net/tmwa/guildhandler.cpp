@@ -23,7 +23,7 @@
 
 #include "debug.h"
 
-extern Net::GuildHandler *guildHandler;
+
 
 namespace TmwAthena
 {

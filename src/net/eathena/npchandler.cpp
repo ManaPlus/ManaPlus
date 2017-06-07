@@ -43,7 +43,7 @@
 
 #include "debug.h"
 
-extern Net::NpcHandler *npcHandler;
+
 extern int packetVersion;
 
 namespace EAthena

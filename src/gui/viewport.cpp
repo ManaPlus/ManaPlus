@@ -61,7 +61,6 @@
 Viewport *viewport = nullptr;
 
 extern volatile int tick_time;
-extern MiniStatusWindow *miniStatusWindow;
 
 Viewport::Viewport() :
     WindowContainer(nullptr),

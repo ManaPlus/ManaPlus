@@ -52,7 +52,7 @@
 
 #include "debug.h"
 
-extern Net::CharServerHandler *charServerHandler;
+
 
 namespace TmwAthena
 {
