@@ -252,7 +252,7 @@ class LocalPlayer final : public Being,
         void navigateClean();
 
         void imitateEmote(const Being *const being,
-                          const unsigned char emote) const;
+                          const unsigned char action) const;
 
         void imitateAction(const Being *const being,
                            const BeingActionT &action);

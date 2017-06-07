@@ -205,7 +205,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
          * These are NOT the same as the status effect indices.
          */
         void setStatusEffectBlock(const int offset,
-                                  const uint16_t flags);
+                                  const uint16_t newEffects);
 
         /**
          * Notify self that a status effect has flipped.

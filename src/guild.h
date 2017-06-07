@@ -153,7 +153,7 @@ class Guild final : public AvatarListModel
         int getNumberOfElements() override final A_WARN_UNUSED
         { return CAST_S32(mMembers.size()); }
 
-        Avatar *getAvatarAt(const int i) override final A_WARN_UNUSED;
+        Avatar *getAvatarAt(const int index) override final A_WARN_UNUSED;
 
         /**
          * Get whether user can invite users to this guild.

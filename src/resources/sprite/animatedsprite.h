@@ -65,7 +65,8 @@ class AnimatedSprite final : public Sprite
 
         bool reset() restrict2 override final;
 
-        bool play(const std::string &restrict action) restrict2 override final;
+        bool play(const std::string &restrict spriteAction)
+                  restrict2 override final;
 
         bool update(const int time) restrict2 override final;
 

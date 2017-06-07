@@ -191,13 +191,13 @@ class Being notfinal : public ActorSprite,
          * Puts a damage bubble above this being.
          *
          * @param attacker the attacking being
-         * @param damage the amount of damage recieved (0 means miss)
+         * @param amount the amount of damage recieved (0 means miss)
          * @param type the attack type
          * @param attackId the attack id
          * @param level the skill level
          */
         void takeDamage(Being *restrict const attacker,
-                        const int damage,
+                        const int amount,
                         const AttackTypeT type,
                         const int attackId = 1,
                         const int level = 1) restrict2;
@@ -467,7 +467,7 @@ class Being notfinal : public ActorSprite,
          * Sets the current action.
          */
         virtual void setAction(const BeingActionT &restrict action,
-                               const int attackType) restrict2;
+                               const int attackId) restrict2;
 
         /**
          * Get the being's action currently performed.
@@ -532,7 +532,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Shoots a missile particle from this being, to target being
          */
-        void fireMissile(Being *restrict const target,
+        void fireMissile(Being *restrict const victim,
                          const std::string &restrict particle) const restrict2;
 
         /**
@@ -643,7 +643,7 @@ class Being notfinal : public ActorSprite,
 
         std::string getAttackAction() const restrict2 A_WARN_UNUSED;
 
-        std::string getAttackAction(const Attack *restrict const attack) const
+        std::string getAttackAction(const Attack *restrict const attack1) const
                                     restrict2 A_WARN_UNUSED;
 
         /**
@@ -740,7 +740,7 @@ class Being notfinal : public ActorSprite,
         void setPvpRank(const unsigned int rank) restrict2 noexcept2
         { mPvpRank = rank; }
 
-        void setHP(const int n) restrict2;
+        void setHP(const int hp) restrict2;
 
         void setMaxHP(const int hp) restrict2;
 
