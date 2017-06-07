@@ -295,7 +295,7 @@ TEST_CASE("VirtFs enumerateFiles1", "")
 
     list = VirtFs::enumerateFiles("test/units.xml");
     removeTemp(list->names);
-    REQUIRE(list->names.size() == 0);
+    REQUIRE(list->names.empty());
     VirtFs::freeList(list);
 
     VirtFs::unmountDirSilent("data");
@@ -634,8 +634,8 @@ TEST_CASE("VirtFs getRealDir1", "")
 {
     logger = new Logger();
     const std::string sep = dirSeparator;
-    REQUIRE(VirtFs::getRealDir(".") == "");
-    REQUIRE(VirtFs::getRealDir("..") == "");
+    REQUIRE(VirtFs::getRealDir(".").empty());
+    REQUIRE(VirtFs::getRealDir("..").empty());
     const bool dir1 = VirtFs::mountDirSilent("data", Append_false);
     REQUIRE((dir1 || VirtFs::mountDirSilent("../data", Append_false))
         == true);
@@ -651,7 +651,7 @@ TEST_CASE("VirtFs getRealDir1", "")
         REQUIRE(VirtFs::getRealDir("test/test.txt") ==
             "../data");
     }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::mountDirSilent("data/test", Append_false);
     VirtFs::mountDirSilent("../data/test", Append_false);
@@ -671,7 +671,7 @@ TEST_CASE("VirtFs getRealDir1", "")
         REQUIRE(VirtFs::getRealDir("test.txt") ==
             ".." + sep + "data" + sep + "test");
     }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     if (dir1 == true)
     {
@@ -710,7 +710,7 @@ TEST_CASE("VirtFs getRealDir1", "")
             ".." + sep + "data" + sep + "test" + sep + "test.zip");
     }
     REQUIRE(VirtFs::exists("dir/hide.png"));
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
@@ -734,7 +734,7 @@ TEST_CASE("VirtFs getrealDir2", "")
     VirtFs::mountDir(prefix + "data/test", Append_false);
     VirtFs::mountDir(prefix + "data", Append_false);
 
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     REQUIRE(VirtFs::getRealDir("dir1/file1.txt") ==
         prefix + "data" + sep + "test");
@@ -765,7 +765,7 @@ TEST_CASE("VirtFs getrealDir3", "")
         Append_false);
     VirtFs::mountDir(prefix + "data/test", Append_false);
 
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     REQUIRE(VirtFs::getRealDir("dir1/file1.txt") ==
         prefix + "data" + sep + "test");

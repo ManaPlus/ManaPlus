@@ -309,7 +309,6 @@ void BeingPopup::show(const int x, const int y, Being *const b)
 
     setContentSize(minWidth, height);
     position(x, y);
-    return;
 }
 
 #ifdef USE_PROFILER

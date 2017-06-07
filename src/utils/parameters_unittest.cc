@@ -28,7 +28,7 @@ TEST_CASE("parameters basic 1", "")
 {
     StringVect pars;
     REQUIRE(splitParameters(pars, "", ",", '\"') == true);
-    REQUIRE(pars.size() == 0);
+    REQUIRE(pars.empty());
 }
 
 TEST_CASE("parameters basic 2", "")
@@ -45,7 +45,7 @@ TEST_CASE("parameters basic 3", "")
 {
     StringVect pars;
     REQUIRE(splitParameters(pars, ", ,,,", ",", '\"') == true);
-    REQUIRE(pars.size() == 0);
+    REQUIRE(pars.empty());
 }
 
 TEST_CASE("parameters basic 4", "")
@@ -99,7 +99,7 @@ TEST_CASE("parameters quote 2", "")
     StringVect pars;
     REQUIRE(splitParameters(pars, "\"\",,two, tree", ",", '\"') == true);
     REQUIRE(pars.size() == 3);
-    REQUIRE(pars[0] == "");
+    REQUIRE(pars[0].empty());
     REQUIRE(pars[1] == "two");
     REQUIRE(pars[2] == "tree");
 }
@@ -315,7 +315,7 @@ TEST_CASE("parameters broken 2", "")
 {
     StringVect pars;
     REQUIRE(splitParameters(pars, ",", ",", '\"') == true);
-    REQUIRE(pars.size() == 0);
+    REQUIRE(pars.empty());
 }
 
 TEST_CASE("parameters broken 3", "")
@@ -323,5 +323,5 @@ TEST_CASE("parameters broken 3", "")
     StringVect pars;
     REQUIRE(splitParameters(pars,
         ",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,", ",", '\"') == true);
-    REQUIRE(pars.size() == 0);
+    REQUIRE(pars.empty());
 }

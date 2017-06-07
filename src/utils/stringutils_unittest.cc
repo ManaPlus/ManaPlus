@@ -53,7 +53,7 @@ TEST_CASE("stringuntils  trim 1", "")
         trim(str));
 
     str = "";
-    REQUIRE("" == trim(str));
+    REQUIRE(trim(str).empty());
 }
 
 TEST_CASE("stringuntils toLower 1", "")
@@ -71,7 +71,7 @@ TEST_CASE("stringuntils toLower 1", "")
         toLower(str));
 
     str = "";
-    REQUIRE("" == toLower(str));
+    REQUIRE(toLower(str).empty());
 }
 
 TEST_CASE("stringuntils toUpper 1", "")
@@ -89,7 +89,7 @@ TEST_CASE("stringuntils toUpper 1", "")
         toUpper(str));
 
     str = "";
-    REQUIRE("" == toUpper(str));
+    REQUIRE(toUpper(str).empty());
 }
 
 TEST_CASE("stringuntils atox 1", "")
@@ -226,12 +226,12 @@ TEST_CASE("stringuntils removeToken 1", "")
 {
     std::string str = "";
 
-    REQUIRE(removeToken(str, " ") == "");
-    REQUIRE(str == "");
+    REQUIRE(removeToken(str, " ").empty());
+    REQUIRE(str.empty());
 
     str = "test";
-    REQUIRE(removeToken(str, " ") == "");
-    REQUIRE(str == "");
+    REQUIRE(removeToken(str, " ").empty());
+    REQUIRE(str.empty());
 
     str = "test line";
     REQUIRE(removeToken(str, " ") == "line");
@@ -242,12 +242,12 @@ TEST_CASE("stringuntils removeToken 1", "")
     REQUIRE(str == "line");
 
     str = "test line";
-    REQUIRE(removeToken(str, ",") == "");
-    REQUIRE(str == "");
+    REQUIRE(removeToken(str, ",").empty());
+    REQUIRE(str.empty());
 
     str = ",line";
-    REQUIRE(removeToken(str, ",") == "");
-    REQUIRE(str == "");
+    REQUIRE(removeToken(str, ",").empty());
+    REQUIRE(str.empty());
 }
 
 TEST_CASE("stringuntils strprintf 1", "")
@@ -278,10 +278,10 @@ TEST_CASE("stringuntils toString 2", "")
 
 TEST_CASE("stringuntils removeColors 1", "")
 {
-    REQUIRE("" == removeColors(""));
+    REQUIRE(removeColors("").empty());
     REQUIRE("#" == removeColors("#"));
     REQUIRE("##" == removeColors("##"));
-    REQUIRE("" == removeColors("##1"));
+    REQUIRE(removeColors("##1").empty());
     REQUIRE("2" == removeColors("##12"));
     REQUIRE("1##" == removeColors("1##"));
     REQUIRE("1" == removeColors("1##2"));
@@ -329,7 +329,7 @@ TEST_CASE("stringuntils findSameSubstring", "")
     std::string str1 = "";
     std::string str2 = "";
 
-    REQUIRE("" == findSameSubstring("", ""));
+    REQUIRE(findSameSubstring("", "").empty());
 
     str1 = "test line";
     str2 = "test line";
@@ -341,7 +341,7 @@ TEST_CASE("stringuntils findSameSubstring", "")
 
     str1 = "test li";
     str2 = "est li";
-    REQUIRE("" == findSameSubstring(str1, str2));
+    REQUIRE(findSameSubstring(str1, str2).empty());
 }
 
 TEST_CASE("stringuntils findSameSubstringI", "")
@@ -349,7 +349,7 @@ TEST_CASE("stringuntils findSameSubstringI", "")
     std::string str1 = "";
     std::string str2 = "";
 
-    REQUIRE("" == findSameSubstringI("", ""));
+    REQUIRE(findSameSubstringI("", "").empty());
 
     str1 = "tEst line";
     str2 = "tesT line";
@@ -365,7 +365,7 @@ TEST_CASE("stringuntils findSameSubstringI", "")
 
     str1 = "teSt li";
     str2 = "est li";
-    REQUIRE("" == findSameSubstringI(str1, str2));
+    REQUIRE(findSameSubstringI(str1, str2).empty());
 }
 
 TEST_CASE("stringuntils findI 1", "")
@@ -396,7 +396,7 @@ TEST_CASE("stringuntils encodeStr 1", "")
     std::string str = encodeStr(10, 1);
     REQUIRE(10 == decodeStr(str));
 
-    str = "";
+    str.clear();
     REQUIRE(0 == decodeStr(str));
 
     str = encodeStr(10, 2);
@@ -411,7 +411,7 @@ TEST_CASE("stringuntils encodeStr 1", "")
 
 TEST_CASE("stringuntils extractNameFromSprite 1", "")
 {
-    REQUIRE("" == extractNameFromSprite(""));
+    REQUIRE(extractNameFromSprite("").empty());
     REQUIRE("test" == extractNameFromSprite("test"));
     REQUIRE("test" == extractNameFromSprite("test.qwe"));
     REQUIRE("line" == extractNameFromSprite("test/line.zzz"));
@@ -422,7 +422,7 @@ TEST_CASE("stringuntils extractNameFromSprite 1", "")
 
 TEST_CASE("stringuntils removeSpriteIndex 1", "")
 {
-    REQUIRE("" == removeSpriteIndex(""));
+    REQUIRE(removeSpriteIndex("").empty());
     REQUIRE("test" == removeSpriteIndex("test"));
     REQUIRE("test" == removeSpriteIndex("test[1]"));
     REQUIRE("line" == removeSpriteIndex("test/line[12]"));
@@ -504,22 +504,22 @@ TEST_CASE("stringutils getSafeUtf8String 2", "")
 
 TEST_CASE("stringuntils getFileName 1", "")
 {
-    REQUIRE("" == getFileName(""));
+    REQUIRE(getFileName("").empty());
     REQUIRE("file" == getFileName("file"));
     REQUIRE("file" == getFileName("test/file1\\file"));
     REQUIRE("file" == getFileName("test\\file1/file"));
-    REQUIRE("" == getFileName("file/"));
+    REQUIRE(getFileName("file/").empty());
     REQUIRE("file" == getFileName("/file"));
 }
 
 TEST_CASE("stringuntils getFileDir 1", "")
 {
-    REQUIRE("" == getFileDir(""));
+    REQUIRE(getFileDir("").empty());
     REQUIRE("file" == getFileDir("file"));
     REQUIRE("test/file1" == getFileDir("test/file1\\file"));
     REQUIRE("test\\file1" == getFileDir("test\\file1/file"));
     REQUIRE("file" == getFileDir("file/"));
-    REQUIRE("" == getFileDir("/file"));
+    REQUIRE(getFileDir("/file").empty());
 }
 
 TEST_CASE("stringuntils replaceAll 1", "")
@@ -528,7 +528,7 @@ TEST_CASE("stringuntils replaceAll 1", "")
     std::string str2 = "";
     std::string str3 = "";
 
-    REQUIRE("" == replaceAll(str1, str2, str3));
+    REQUIRE(replaceAll(str1, str2, str3).empty());
 
     str1 = "this is test line";
     str2 = "";
@@ -551,7 +551,7 @@ TEST_CASE("stringuntils replaceRecursiveAll 1", "")
     std::string str;
     str = "";
     replaceRecursiveAll(str, "line", '.');
-    REQUIRE(str == "");
+    REQUIRE(str.empty());
     str = "test line";
     replaceRecursiveAll(str, "line", '.');
     REQUIRE(str == "test .");
@@ -891,7 +891,7 @@ TEST_CASE("stringuntils replaceSpecialChars 1", "")
 
     str = "";
     replaceSpecialChars(str);
-    REQUIRE("" == str);
+    REQUIRE(str.empty());
 
     str = "test";
     replaceSpecialChars(str);
@@ -936,7 +936,7 @@ TEST_CASE("stringuntils replaceSpecialChars 1", "")
 
 TEST_CASE("stringuntils normalize 1", "")
 {
-    REQUIRE(normalize("") == "");
+    REQUIRE(normalize("").empty());
     REQUIRE(normalize("test") == "test");
     REQUIRE(normalize("Test") == "test");
     REQUIRE(normalize(" test line") == "test line");
@@ -947,7 +947,7 @@ TEST_CASE("stringuntils normalize 1", "")
 
 TEST_CASE("stringuntils combineDye 1", "")
 {
-    REQUIRE("" == combineDye("", ""));
+    REQUIRE(combineDye("", "").empty());
     REQUIRE("test" == combineDye("test", ""));
     REQUIRE("|line" == combineDye("", "line"));
     REQUIRE("test|line" == combineDye("test", "line"));
@@ -958,10 +958,10 @@ TEST_CASE("stringuntils combineDye 1", "")
 
 TEST_CASE("stringuntils combineDye 2", "")
 {
-    REQUIRE("" == combineDye2("", ""));
+    REQUIRE(combineDye2("", "").empty());
     REQUIRE("test" == combineDye2("test", ""));
     REQUIRE("test" == combineDye2("test", "W"));
-    REQUIRE("" == combineDye2("", "line"));
+    REQUIRE(combineDye2("", "line").empty());
     REQUIRE("test.xml" == combineDye2("test.xml", "123"));
     REQUIRE("test.xml|#43413d,59544f,7a706c" ==
         combineDye2("test.xml|#43413d,59544f,7a706c", ""));
@@ -973,9 +973,9 @@ TEST_CASE("stringuntils combineDye 2", "")
 
 TEST_CASE("stringuntils combineDye 3", "")
 {
-    REQUIRE("" == combineDye3("", ""));
+    REQUIRE(combineDye3("", "").empty());
     REQUIRE("test" == combineDye3("test", ""));
-    REQUIRE("" == combineDye3("", "line"));
+    REQUIRE(combineDye3("", "line").empty());
     REQUIRE("test.xml|123" == combineDye3("test.xml", "123"));
     REQUIRE("test.xml|#43413d,59544f,7a706c" ==
         combineDye3("test.xml|#43413d,59544f,7a706c", ""));
@@ -988,9 +988,9 @@ TEST_CASE("stringuntils combineDye 3", "")
 TEST_CASE("stringuntils packList 1", "")
 {
     std::list <std::string> list;
-    REQUIRE("" == packList(list));
+    REQUIRE(packList(list).empty());
 
-    list.push_back("");
+    list.push_back(std::string());
     REQUIRE("|" == packList(list));
 
     list.clear();
@@ -1014,7 +1014,7 @@ TEST_CASE("stringuntils stringToHexPath 1", "")
     std::string str;
 
     str = "";
-    REQUIRE("" == stringToHexPath(str));
+    REQUIRE(stringToHexPath(str).empty());
 
     str = "a";
     REQUIRE("%61/" == stringToHexPath(str));
@@ -1036,7 +1036,7 @@ TEST_CASE("stringuntils deleteCharLeft 1", "")
 
     str = "";
     deleteCharLeft(str, nullptr);
-    REQUIRE("" == str);
+    REQUIRE(str.empty());
 
     str = "test line";
     pos = 4;
@@ -1091,7 +1091,7 @@ TEST_CASE("stringuntils findCutLast 1", "")
 
     str = "";
     REQUIRE(findCutLast(str, ""));
-    REQUIRE("" == str);
+    REQUIRE(str.empty());
 
     str = "test line";
     REQUIRE(findCutLast(str, "line"));
@@ -1112,7 +1112,7 @@ TEST_CASE("stringuntils CutLast 1", "")
 
     str = "";
     cutLast(str, "");
-    REQUIRE("" == str);
+    REQUIRE(str.empty());
 
     str = "test line";
     cutLast(str, "line");
@@ -1133,7 +1133,7 @@ TEST_CASE("stringuntils findCutFirst 1", "")
 
     str = "";
     REQUIRE(findCutFirst(str, ""));
-    REQUIRE("" == str);
+    REQUIRE(str.empty());
 
     str = "test line";
     REQUIRE(findCutFirst(str, "test"));
@@ -1154,7 +1154,7 @@ TEST_CASE("stringuntils cutFirst 1", "")
 
     str = "";
     cutFirst(str, "");
-    REQUIRE("" == str);
+    REQUIRE(str.empty());
 
     str = "test line";
     cutFirst(str, "test");
@@ -1174,10 +1174,10 @@ TEST_CASE("stringuntils removeProtocol 1", "")
     std::string str;
 
     str = "";
-    REQUIRE("" == removeProtocol(str));
+    REQUIRE(removeProtocol(str).empty());
 
     str = "http://";
-    REQUIRE("" == removeProtocol(str));
+    REQUIRE(removeProtocol(str).empty());
 
     str = "http://test";
     REQUIRE("test" == removeProtocol(str));
@@ -1260,7 +1260,7 @@ TEST_CASE("stringuntils sanitizePath", "")
     const std::string sep = dirSeparator;
     path = "";
     sanitizePath(path);
-    REQUIRE(path == "");
+    REQUIRE(path.empty());
     path = "/";
     sanitizePath(path);
     REQUIRE(path == dirSeparator);
@@ -1437,7 +1437,7 @@ TEST_CASE("stringuntils secureChatCommand", "")
 {
     std::string str;
     secureChatCommand(str);
-    REQUIRE(str == "");
+    REQUIRE(str.empty());
     str = "test";
     secureChatCommand(str);
     REQUIRE(str == "test");
@@ -1522,7 +1522,7 @@ TEST_CASE("stringuntils replaceItemLinks", "")
 
         str = "";
         replaceItemLinks(str);
-        REQUIRE(str == "");
+        REQUIRE(str.empty());
 
         str = "[]";
         replaceItemLinks(str);

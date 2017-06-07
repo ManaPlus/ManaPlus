@@ -1980,7 +1980,7 @@ int ActorManager::getPickupItemIndex(const std::string &name) const
     i_end = list.end();\
     while (i != i_end)\
     {\
-        if (*i == "")\
+        if ((*i).empty())\
             empty = true;\
         m##mob##s.push_back(*i);\
         m##mob##sSet.insert(*i);\

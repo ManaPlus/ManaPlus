@@ -274,7 +274,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res2->mRefCount == 1);
-        REQUIRE(res2->mSource == "");
+        REQUIRE(res2->mSource.empty());
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -302,7 +302,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 2);
         REQUIRE(res2->mRefCount == 1);
-        REQUIRE(res2->mSource == "");
+        REQUIRE(res2->mSource.empty());
         REQUIRE(ResourceManager::getResources().size() == 2 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getResources()["test2"] == res2);
@@ -331,7 +331,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res2->mRefCount == 2);
         REQUIRE(res == res2);
-        REQUIRE(res2->mSource == "");
+        REQUIRE(res2->mSource.empty());
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -360,7 +360,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res2->mRefCount == 1);
         REQUIRE(res == res2);
-        REQUIRE(res2->mSource == "");
+        REQUIRE(res2->mSource.empty());
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
@@ -388,7 +388,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(res2 != nullptr);
         REQUIRE(testResouceCounter == 2);
         REQUIRE(res2->mRefCount == 1);
-        REQUIRE(res2->mSource == "");
+        REQUIRE(res2->mSource.empty());
         REQUIRE(ResourceManager::getResources().size() == 2 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res);
         REQUIRE(ResourceManager::getResources()["test2"] == res2);
@@ -473,7 +473,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res2->mRefCount == 1);
         REQUIRE(res == res2);
-        REQUIRE(res2->mSource == "");
+        REQUIRE(res2->mSource.empty());
         REQUIRE(ResourceManager::getResources().size() == 1 + resSize);
         REQUIRE(ResourceManager::getResources()["test1"] == res2);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);

@@ -156,7 +156,7 @@ class SocialPlayersTab final : public SocialTab
                     const StringVectCIter i_end = names.end();
                     while (i != i_end)
                     {
-                        if (ava->getName() == (*i) && (*i) != "")
+                        if (ava->getName() == (*i) && !(*i).empty())
                         {
                             finded = true;
                             break;
@@ -180,7 +180,7 @@ class SocialPlayersTab final : public SocialTab
 
                 while (i != i_end)
                 {
-                    if ((*i) != "")
+                    if (!(*i).empty())
                         updateAvatar(*i);
                     ++i;
                 }

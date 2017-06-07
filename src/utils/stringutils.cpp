@@ -336,7 +336,6 @@ void getSafeUtf8String(std::string text, char *const buf)
         memcpy(buf, text.c_str(), sz);
         memset(buf + sz, 0, UTF8_MAX_SIZE);
     }
-    return;
 }
 
 std::string getFileName(const std::string &path)

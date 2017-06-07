@@ -98,7 +98,7 @@ TEST_CASE("PoParser tests", "PoParser")
 
         REQUIRE(dict != nullptr);
         REQUIRE(dict->getMap() != nullptr);
-        REQUIRE(dict->getMap()->size() == 0);
+        REQUIRE(dict->getMap()->empty());
 
         delete parser;
         delete dict;

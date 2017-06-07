@@ -228,7 +228,7 @@ TEST_CASE("xml doc", "")
         REQUIRE(XmlHasProp(node, "option123") == false);
         REQUIRE(XML::getProperty(node, "name", "") == "padding");
         REQUIRE(XML::langProperty(node, "name", "") == "padding");
-        REQUIRE(XML::langProperty(node, "name123", "") == "");
+        REQUIRE(XML::langProperty(node, "name123", "").empty());
         REQUIRE(XML::getProperty(node, "value", 0) == 1);
         REQUIRE(XML::getProperty(node, "value123", -1) == -1);
         REQUIRE(XML::getBoolProperty(node, "value", true) == true);

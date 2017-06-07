@@ -162,7 +162,7 @@ TEST_CASE("Zip readArchiveInfo", "")
 
         REQUIRE(VirtFs::ZipReader::readArchiveInfo(entry));
         REQUIRE(entry->root == name);
-        REQUIRE(headers.size() == 0);
+        REQUIRE(headers.empty());
 
         delete entry;
     }

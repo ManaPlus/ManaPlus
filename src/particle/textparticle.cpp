@@ -93,5 +93,4 @@ void TextParticle::draw(Graphics *restrict const graphics,
             mText, screenX - mTextWidth, screenY);
     }
     BLOCK_END("TextParticle::draw")
-    return;
 }

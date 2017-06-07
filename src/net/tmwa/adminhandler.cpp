@@ -101,7 +101,6 @@ void AdminHandler::mute(const Being *const being A_UNUSED,
                         const int type A_UNUSED,
                         const int limit A_UNUSED) const
 {
-    return;
 }
 
 void AdminHandler::muteName(const std::string &name A_UNUSED) const

@@ -4492,7 +4492,6 @@ void Being::searchSlotValueItr(std::vector<int>::iterator &restrict it,
     }
 //    logger->log("not found");
     idx = -1;
-    return;
 }
 
 void Being::updateHit(const int amount) restrict2

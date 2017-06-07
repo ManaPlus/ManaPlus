@@ -126,7 +126,7 @@ TEST_CASE("Files saveTextFile", "")
     VirtFs::mountDirSilent("../data", Append_false);
 
     const std::string dir = VirtFs::getPath("test");
-    REQUIRE(dir.size() > 0);
+    REQUIRE(!dir.empty());
     Files::saveTextFile(dir, "tempfile.txt", "test line\ntext line2");
     std::string data = VirtFs::loadTextFileString("test/tempfile.txt");
     ::remove((dir + "/tempfile.txt").c_str());
@@ -151,7 +151,7 @@ TEST_CASE("Files copyFile1", "")
     VirtFs::mountDirSilent("../data", Append_false);
 
     const std::string dir = VirtFs::getPath("test");
-    REQUIRE(dir.size() > 0);
+    REQUIRE(!dir.empty());
     SECTION("copy")
     {
         REQUIRE(Files::copyFile(pathJoin(dir, "test.txt"),
@@ -183,7 +183,7 @@ TEST_CASE("Files loadTextFileLocal", "")
     VirtFs::mountDirSilent("../data", Append_false);
 
     const std::string dir = VirtFs::getPath("test");
-    REQUIRE(dir.size() > 0);
+    REQUIRE(!dir.empty());
     Files::saveTextFile(dir, "tempfile.txt", "test line\ntext line2");
     StringVect lines;
     REQUIRE(Files::loadTextFileLocal(pathJoin(dir, "tempfile.txt"),

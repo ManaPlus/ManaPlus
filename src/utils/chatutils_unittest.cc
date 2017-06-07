@@ -103,7 +103,7 @@ TEST_CASE("chatutils replaceVars", "")
     SECTION("empty")
     {
         replaceVars(str);
-        REQUIRE(str == "");
+        REQUIRE(str.empty());
 
         str = "test line";
         replaceVars(str);

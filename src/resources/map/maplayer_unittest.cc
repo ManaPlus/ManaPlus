@@ -1682,7 +1682,7 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
             0,
             0, 1,
             0, 0);
-        REQUIRE(mock->mDraws.size() == 0);
+        REQUIRE(mock->mDraws.empty());
 
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         layer->drawSpecialLayer(mock,
@@ -1957,13 +1957,13 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
             4,
             0, maxX,
             0, 0);
-        REQUIRE(mock->mDraws.size() == 0);
+        REQUIRE(mock->mDraws.empty());
 
         layer->drawSpecialLayer(mock,
             6,
             0, maxX,
             0, 0);
-        REQUIRE(mock->mDraws.size() == 0);
+        REQUIRE(mock->mDraws.empty());
 
         layer->drawSpecialLayer(mock,
             20,
@@ -2027,7 +2027,7 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
             0,
             0, 1,
             0, 0);
-        REQUIRE(mock->mDraws.size() == 0);
+        REQUIRE(mock->mDraws.empty());
 
         specialLayer->setTile(0, 0, MapItemType::ARROW_UP);
         layer->drawSpecialLayer(mock,
@@ -2308,13 +2308,13 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
             4,
             0, maxX,
             0, 0);
-        REQUIRE(mock->mDraws.size() == 0);
+        REQUIRE(mock->mDraws.empty());
 
         layer->drawSpecialLayer(mock,
             6,
             0, maxX,
             0, 0);
-        REQUIRE(mock->mDraws.size() == 0);
+        REQUIRE(mock->mDraws.empty());
 
         layer->drawSpecialLayer(mock,
             20,

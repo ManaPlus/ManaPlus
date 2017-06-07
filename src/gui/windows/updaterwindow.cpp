@@ -836,8 +836,8 @@ void UpdaterWindow::logic()
         }
 
         mProgressBar->setProgress(mDownloadProgress);
-        if ((mUpdateFiles.size() != 0u)
-            && CAST_SIZE(mUpdateIndex) <= mUpdateFiles.size())
+        if (!mUpdateFiles.empty() &&
+            CAST_SIZE(mUpdateIndex) <= mUpdateFiles.size())
         {
             mProgressBar->setText(strprintf("%u/%u", mUpdateIndex
                 + mUpdateIndexOffset + 1, CAST_U32(

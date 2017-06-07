@@ -71,7 +71,7 @@ TEST_CASE("VirtFs1 mountDir", "")
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
@@ -89,7 +89,7 @@ TEST_CASE("VirtFs1 mountDir", "")
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1" + sep);
@@ -114,8 +114,8 @@ TEST_CASE("VirtFs1 mountDir", "")
         REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir2");
         REQUIRE(static_cast<VirtFs::DirEntry*>(
@@ -139,8 +139,8 @@ TEST_CASE("VirtFs1 mountDir", "")
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep);
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1" + sep);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
@@ -170,9 +170,9 @@ TEST_CASE("VirtFs1 mountDir", "")
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
-        REQUIRE(VirtFs::getEntries()[2]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
+        REQUIRE(VirtFs::getEntries()[2]->subDir.empty());
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
         REQUIRE(static_cast<VirtFs::DirEntry*>(
@@ -204,9 +204,9 @@ TEST_CASE("VirtFs1 mountDir", "")
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
-        REQUIRE(VirtFs::getEntries()[2]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
+        REQUIRE(VirtFs::getEntries()[2]->subDir.empty());
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir3" + sep + "test");
         REQUIRE(static_cast<VirtFs::DirEntry*>(
@@ -226,7 +226,7 @@ TEST_CASE("VirtFs1 mountDir", "")
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
@@ -419,7 +419,7 @@ TEST_CASE("VirtFs1 mountDir", "")
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[1]->subDir == "dir2" + sep);
@@ -453,7 +453,7 @@ TEST_CASE("VirtFs1 mountDir", "")
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[1]->root == "dir1" + sep);
         REQUIRE(VirtFs::getEntries()[1]->subDir == "dir2" + sep);
@@ -466,7 +466,7 @@ TEST_CASE("VirtFs1 mountDir", "")
         REQUIRE(VirtFs::unmountDirSilent2("dir1", "dir2"));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
@@ -485,7 +485,7 @@ TEST_CASE("VirtFs1 mountDir", "")
             nullptr);
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
@@ -518,7 +518,7 @@ TEST_CASE("VirtFs1 mountZip", "")
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
     }
 
@@ -538,11 +538,11 @@ TEST_CASE("VirtFs1 mountZip", "")
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
     }
 
     SECTION("simple 3")
@@ -561,11 +561,11 @@ TEST_CASE("VirtFs1 mountZip", "")
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
     }
 
     SECTION("simple 4")
@@ -589,15 +589,15 @@ TEST_CASE("VirtFs1 mountZip", "")
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->root ==
             prefix + "data" + sep + "test" + sep + "");
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[2]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[2]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[2]->subDir.empty());
     }
 
     SECTION("simple 5")
@@ -621,15 +621,15 @@ TEST_CASE("VirtFs1 mountZip", "")
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "");
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[2]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
-        REQUIRE(VirtFs::getEntries()[2]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[2]->subDir.empty());
     }
 
     SECTION("subDir 1")
@@ -784,7 +784,7 @@ TEST_CASE("VirtFs1 mountZip", "")
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
     }
 
@@ -829,24 +829,24 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE(VirtFs::unmountDir("dir1"));
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir3");
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep + "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
         REQUIRE_THROWS(VirtFs::unmountDir("dir1"));
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir3");
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep + "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
@@ -854,7 +854,7 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE_THROWS(VirtFs::unmountDir("dir2/dir3" + sep));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir3");
@@ -866,18 +866,18 @@ TEST_CASE("VirtFs1 unmount", "")
             Append_true));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
         REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
         REQUIRE(VirtFs::unmountDir("dir1"));
-        REQUIRE(VirtFs::getEntries().size() == 0);
+        REQUIRE(VirtFs::getEntries().empty());
         REQUIRE(VirtFs::mountDirSilentTest("dir1",
             Append_true));
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root == "dir1" + sep);
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir1");
@@ -898,11 +898,11 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
         REQUIRE(VirtFs::getEntries()[1]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Zip);
 
         VirtFs::unmountZip(prefix + "data/test/test.zip");
@@ -915,7 +915,7 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE(VirtFs::getEntries().size() == 1);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
     }
 
@@ -940,15 +940,15 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE(VirtFs::getEntries().size() == 3);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
         REQUIRE(VirtFs::getEntries()[1]->root ==
             prefix + "data" + sep + "test" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
         REQUIRE(VirtFs::getEntries()[2]->root ==
             prefix + "data" + sep + "test" + sep + "test.zip");
-        REQUIRE(VirtFs::getEntries()[2]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[2]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[2]->type == FsEntryType::Zip);
 
         VirtFs::unmountZip(prefix + "data/test/test.zip");
@@ -964,11 +964,11 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE(VirtFs::getEntries().size() == 2);
         REQUIRE(VirtFs::getEntries()[0]->root ==
             prefix + "data" + sep + "test" + sep + "test2.zip");
-        REQUIRE(VirtFs::getEntries()[0]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[0]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[0]->type == FsEntryType::Zip);
         REQUIRE(VirtFs::getEntries()[1]->root ==
             prefix + "data" + sep + "test" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
     }
 
@@ -1009,7 +1009,7 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir3");
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep + "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
@@ -1021,7 +1021,7 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[0])->userDir == "dir3");
         REQUIRE(VirtFs::getEntries()[1]->root == "dir2" + sep + "dir3" + sep);
-        REQUIRE(VirtFs::getEntries()[1]->subDir == std::string());
+        REQUIRE(VirtFs::getEntries()[1]->subDir.empty());
         REQUIRE(VirtFs::getEntries()[1]->type == FsEntryType::Dir);
         REQUIRE(static_cast<VirtFs::DirEntry*>(
             VirtFs::getEntries()[1])->userDir == "dir2" + sep + "dir3");
@@ -1049,7 +1049,7 @@ TEST_CASE("VirtFs1 unmount", "")
         REQUIRE_THROWS(VirtFs::unmountDir("dir2"));
         REQUIRE_THROWS(VirtFs::unmountDir("dir1"));
         REQUIRE(VirtFs::unmountDir2("dir1", "dir2"));
-        REQUIRE(VirtFs::getEntries().size() == 0);
+        REQUIRE(VirtFs::getEntries().empty());
         REQUIRE(VirtFs::mountDirSilentTest2("dir1",
             "dir3",
             Append_true));
@@ -1324,8 +1324,8 @@ TEST_CASE("VirtFs1 getRealDir1", "")
     VirtFs::init(".");
     logger = new Logger();
     const std::string sep = dirSeparator;
-    REQUIRE(VirtFs::getRealDir(".") == "");
-    REQUIRE(VirtFs::getRealDir("..") == "");
+    REQUIRE(VirtFs::getRealDir(".").empty());
+    REQUIRE(VirtFs::getRealDir("..").empty());
     const bool dir1 = VirtFs::mountDirSilent("data",
         Append_false);
     REQUIRE((dir1 || VirtFs::mountDirSilent("../data",
@@ -1350,7 +1350,7 @@ TEST_CASE("VirtFs1 getRealDir1", "")
         REQUIRE(VirtFs::getRealDir("test//test.txt") ==
             "../data");
     }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::mountDirSilent("data/test",
         Append_false);
@@ -1376,7 +1376,7 @@ TEST_CASE("VirtFs1 getRealDir1", "")
         REQUIRE(VirtFs::getRealDir("test.txt") ==
             ".." + sep + "data" + sep + "test");
     }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");
@@ -1393,7 +1393,7 @@ TEST_CASE("VirtFs1 getRealDir1", "")
         REQUIRE(VirtFs::getRealDir("test/test.txt") ==
             ".." + sep + "data");
     }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
@@ -1413,13 +1413,13 @@ TEST_CASE("VirtFs1 getRealDir2", "")
     VirtFs::mountZip(prefix + "test2.zip",
         Append_false);
 
-    REQUIRE(VirtFs::getRealDir(".") == "");
-    REQUIRE(VirtFs::getRealDir("..") == "");
+    REQUIRE(VirtFs::getRealDir(".").empty());
+    REQUIRE(VirtFs::getRealDir("..").empty());
     REQUIRE(VirtFs::getRealDir("test.txt") == prefix + "test2.zip");
     REQUIRE(VirtFs::getRealDir("dir/1") == prefix + "test2.zip");
     REQUIRE(VirtFs::getRealDir("dir\\dye.png") ==
         prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::mountZip(prefix + "test.zip",
         Append_false);
@@ -1429,15 +1429,15 @@ TEST_CASE("VirtFs1 getRealDir2", "")
         prefix + "test.zip");
     REQUIRE(VirtFs::getRealDir("dir\\\\brimmedhat.png") ==
         prefix + "test.zip");
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::unmountZip(prefix + "test.zip");
 
-    REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png") == "");
+    REQUIRE(VirtFs::getRealDir("dir/brimmedhat.png").empty());
     REQUIRE(VirtFs::getRealDir("test.txt") == prefix + "test2.zip");
     REQUIRE(VirtFs::getRealDir("dir//dye.png") ==
         prefix + "test2.zip");
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
@@ -1449,15 +1449,15 @@ TEST_CASE("VirtFs1 getRealDir3", "")
     VirtFs::init(".");
     logger = new Logger();
     const std::string sep = dirSeparator;
-    REQUIRE(VirtFs::getRealDir(".") == "");
-    REQUIRE(VirtFs::getRealDir("..") == "");
+    REQUIRE(VirtFs::getRealDir(".").empty());
+    REQUIRE(VirtFs::getRealDir("..").empty());
     const bool dir1 = VirtFs::mountDirSilent2("data",
         "test",
         Append_false);
     REQUIRE((dir1 || VirtFs::mountDirSilent2("../data",
         "test",
         Append_false)) == true);
-    REQUIRE(VirtFs::getRealDir("file1.txt") == "");
+    REQUIRE(VirtFs::getRealDir("file1.txt").empty());
     if (dir1 == true)
     {
         REQUIRE(VirtFs::getRealDir("dir1") == "data");
@@ -1468,7 +1468,7 @@ TEST_CASE("VirtFs1 getRealDir3", "")
         REQUIRE(VirtFs::getRealDir("dir1") == ".." + sep + "data");
         REQUIRE(VirtFs::getRealDir("simplefile.txt") == ".." + sep + "data");
     }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::mountDirSilent2("data/test",
         "dir2",
@@ -1476,7 +1476,7 @@ TEST_CASE("VirtFs1 getRealDir3", "")
     VirtFs::mountDirSilent2("../data/test",
         "dir2",
         Append_false);
-    REQUIRE(VirtFs::getRealDir("dir") == "");
+    REQUIRE(VirtFs::getRealDir("dir").empty());
     if (dir1 == true)
     {
         REQUIRE(VirtFs::getRealDir("file1.txt") == "data" + sep + "test");
@@ -1488,7 +1488,7 @@ TEST_CASE("VirtFs1 getRealDir3", "")
             ".." + sep + "data" + sep + "test");
         REQUIRE(VirtFs::getRealDir("simplefile.txt") == ".." + sep + "data");
     }
-    REQUIRE(VirtFs::getRealDir("zzz") == "");
+    REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::deinit();
     delete2(logger);
@@ -1559,7 +1559,7 @@ TEST_CASE("VirtFs1 enumerateFiles1", "")
 
     VirtFs::permitLinks(true);
     list = VirtFs::enumerateFiles("test/units.xml");
-    REQUIRE(list->names.size() == 0);
+    REQUIRE(list->names.empty());
     VirtFs::freeList(list);
 
     VirtFs::permitLinks(false);
@@ -3224,7 +3224,7 @@ TEST_CASE("VirtFs1 getDirs1", "")
     list.clear();
 
     VirtFs::getDirs("dir2", list);
-    REQUIRE(list.size() == 0);
+    REQUIRE(list.empty());
 
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
     VirtFs::deinit();
@@ -3253,7 +3253,7 @@ TEST_CASE("VirtFs1 getDirs2", "")
         list.clear();
 
         VirtFs::getDirs("dir1", list);
-        REQUIRE(list.size() == 0);
+        REQUIRE(list.empty());
 
         VirtFs::unmountDir(prefix + "data/test");
     }
@@ -3300,7 +3300,7 @@ TEST_CASE("VirtFs1 getDirs3", "")
     list.clear();
 
     VirtFs::getDirs("1", list);
-    REQUIRE(list.size() == 0);
+    REQUIRE(list.empty());
 
     VirtFs::unmountZip2(prefix + "data/test/test2.zip",
         "dir");
@@ -3330,7 +3330,7 @@ TEST_CASE("VirtFs1 getDirs4", "")
         list.clear();
 
         VirtFs::getDirs("dir1", list);
-        REQUIRE(list.size() == 0);
+        REQUIRE(list.empty());
 
         VirtFs::unmountDir2(prefix + "data",
             "test");
@@ -3405,7 +3405,7 @@ TEST_CASE("VirtFs1 getFilesWithDir2", "")
 
         VirtFs::getFilesWithDir("music", list);
         REQUIRE(list.size() <= 5);
-        REQUIRE(list.size() >= 1);
+        REQUIRE(!list.empty());
         REQUIRE(inList(list, "music", "keprohm.ogg"));
         list.clear();
 
@@ -3490,7 +3490,7 @@ TEST_CASE("VirtFs1 getFilesWithDir4", "")
 
         VirtFs::getFilesWithDir("dir1", list);
         REQUIRE(list.size() <= 6);
-        REQUIRE(list.size() >= 1);
+        REQUIRE(!list.empty());
         REQUIRE(inList(list, "dir1", "file1.txt"));
         list.clear();
 

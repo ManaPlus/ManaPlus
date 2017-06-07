@@ -89,5 +89,4 @@ void ImageParticle::draw(Graphics *restrict const graphics,
 
     mImage->setAlpha(alphafactor);
     graphics->drawImage(mImage, screenX, screenY);
-    return;
 }

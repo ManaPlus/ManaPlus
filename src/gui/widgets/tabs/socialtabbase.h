@@ -45,7 +45,7 @@ ENUMS_RESOURCES_MAP_MAPITEMTYPE_H
     {\
         std::string name;\
         int level = -1;\
-        if (*i == "")\
+        if ((*i).empty())\
         {\
             name = _("(default)");\
             level = 0;\

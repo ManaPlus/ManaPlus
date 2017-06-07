@@ -682,7 +682,7 @@ namespace VirtFs
             FsEntry *const entry = *it;
             if (entry->root == oldDir &&
                 entry->type == FsEntryType::Zip &&
-                entry->subDir == std::string())
+                entry->subDir.empty())
             {
                 ZipEntry *const zipEntry = static_cast<ZipEntry*>(
                     entry);

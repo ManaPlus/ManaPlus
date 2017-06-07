@@ -181,7 +181,7 @@ void ConfigManager::backupConfig(const std::string &name)
     }
     if (Files::loadTextFileLocal(fileName3, arr) == true)
     {
-        if (arr.size() == 0)
+        if (arr.empty())
             return;
 
         arr.clear();
@@ -189,7 +189,7 @@ void ConfigManager::backupConfig(const std::string &name)
             name).append(".tmp");
         Files::copyFile(fileName3, tmpName);
         if (Files::loadTextFileLocal(tmpName, arr) == false ||
-            arr.size() == 0)
+            arr.empty())
         {
             logger->safeError("Error backuping configs. "
                 "Probably no free space on disk.");
