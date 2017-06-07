@@ -26,7 +26,7 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 typedef void (*PacketFuncPtr) (Net::MessageIn &msg);
 

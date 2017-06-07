@@ -34,6 +34,6 @@ namespace BrowserBoxTools
     std::string replaceLinkCommands(const std::string &link);
 
     void replaceTabs(std::string &data);
-}  // BrowserBoxTools
+}  // namespace BrowserBoxTools
 
 #endif  // UTILS_BROWSERBOXTOOLS_H

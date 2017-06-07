@@ -30,7 +30,7 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 namespace Ea
 {

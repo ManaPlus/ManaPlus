@@ -34,7 +34,7 @@ namespace Ea
     namespace MapRecv
     {
         void processSetTilesType(Net::MessageIn &msg);
-    }  // namespace PartyRecv
+    }  // namespace MapRecv
 }  // namespace Ea
 
 #endif  // NET_EA_MAPRECV_H

@@ -24,7 +24,7 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 namespace EAthena
 {
@@ -33,7 +33,7 @@ namespace EAthena
         void processAdminGetLoginAck(Net::MessageIn &msg);
         void processSetTileType(Net::MessageIn &msg);
         void processAccountStats(Net::MessageIn &msg);
-    }  // namespace Admin
+    }  // namespace AdminRecv
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_ADMINRECV_H

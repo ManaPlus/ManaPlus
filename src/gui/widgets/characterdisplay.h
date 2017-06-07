@@ -36,7 +36,7 @@ class Label;
 namespace Net
 {
     struct Character;
-}
+}  // namespace Net
 
 class CharacterDisplay final : public Container,
                                public MouseListener,

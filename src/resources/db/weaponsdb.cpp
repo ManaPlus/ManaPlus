@@ -32,7 +32,7 @@ namespace
     WeaponsInfos mSwords;
     WeaponsInfos mShields;
     bool mLoaded = false;
-}
+}  // namespace
 
 static void loadDB(const std::string &name,
                    WeaponsInfos &arr)

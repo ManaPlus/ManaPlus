@@ -46,7 +46,7 @@ class ServersListModel;
 namespace Net
 {
     class Download;
-}
+}  // namespace Net
 
 /**
  * The server choice dialog.

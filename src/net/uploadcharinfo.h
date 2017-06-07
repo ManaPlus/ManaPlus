@@ -30,7 +30,7 @@ class ChatTab;
 namespace Net
 {
     class Download;
-}
+}  // namespace Net
 
 struct UploadChatInfo final
 {

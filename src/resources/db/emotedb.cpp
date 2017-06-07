@@ -42,7 +42,7 @@ namespace
     EmoteInfo mUnknown;
     bool mLoaded = false;
     int mLastEmote = 0;
-}
+}  // namespace
 
 void EmoteDB::load()
 {

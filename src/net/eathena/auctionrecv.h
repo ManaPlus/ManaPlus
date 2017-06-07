@@ -24,7 +24,7 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 namespace EAthena
 {
@@ -35,7 +35,7 @@ namespace EAthena
         void processAuctionSetItem(Net::MessageIn &msg);
         void processAuctionMessage(Net::MessageIn &msg);
         void processAuctionClose(Net::MessageIn &msg);
-    }  // namespace Admin
+    }  // namespace AuctionRecv
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_AUCTIONRECV_H

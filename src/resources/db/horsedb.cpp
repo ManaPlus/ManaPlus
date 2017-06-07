@@ -38,7 +38,7 @@ namespace
     HorseInfos mHorseInfos;
     HorseInfo mUnknown;
     bool mLoaded = false;
-}
+}  // namespace
 
 #define loadSprite(name) \
     { \

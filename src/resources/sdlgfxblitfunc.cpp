@@ -327,7 +327,7 @@ namespace
         254,  /* 254 */
         255   /* 255 */
     };
-}
+}  // namespace
 
 static void _SDL_gfxBlitBlitterRGBA(SDL_gfxBlitInfo *info)
 {

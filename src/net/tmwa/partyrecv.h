@@ -25,7 +25,7 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 namespace TmwAthena
 {

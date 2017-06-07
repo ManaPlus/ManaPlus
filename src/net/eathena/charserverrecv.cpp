@@ -71,7 +71,7 @@ namespace CharServerRecv
     BeingId mPinAccountId = BeingId_zero;
     BeingId mRenameId = BeingId_zero;
     bool mNeedCreatePin = false;
-}
+}  // namespace CharServerRecv
 
 // callers must count each packet size by self
 void CharServerRecv::readPlayerData(Net::MessageIn &msg,

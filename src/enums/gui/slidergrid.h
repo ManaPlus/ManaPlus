@@ -80,6 +80,6 @@ namespace SliderGrid
         VGRIP,
         SLIDER_MAX
     };
-}  // SliderGrid
+}  // namespace SliderGrid
 
 #endif  // ENUMS_GUI_SLIDERGRID_H

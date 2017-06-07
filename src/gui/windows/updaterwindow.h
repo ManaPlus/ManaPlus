@@ -49,7 +49,7 @@ class ScrollArea;
 namespace Net
 {
     class Download;
-}
+}  // namespace Net
 
 /**
  * Update progress window GUI

@@ -40,7 +40,7 @@ namespace
 {
     BeingInfos mAvatarInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void AvatarDB::load()
 {

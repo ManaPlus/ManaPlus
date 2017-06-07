@@ -36,7 +36,7 @@ namespace
 {
     BeingInfos mElementalInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void ElementalDb::load()
 {

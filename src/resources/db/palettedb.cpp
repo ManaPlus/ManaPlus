@@ -34,7 +34,7 @@ namespace
 {
     bool mLoaded = false;
     std::map<std::string, DyeColor> mColors;
-}
+}  // namespace
 
 void PaletteDB::load()
 {

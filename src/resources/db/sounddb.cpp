@@ -33,7 +33,7 @@ namespace
 {
     std::string mDefault;
     std::vector<std::string> mSounds;
-}
+}  // namespace
 
 void SoundDB::load()
 {

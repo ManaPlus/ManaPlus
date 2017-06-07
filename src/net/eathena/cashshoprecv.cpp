@@ -48,7 +48,7 @@ namespace EAthena
 namespace CashShopRecv
 {
     BuyDialog *mBuyDialog;
-}
+}  // namespace CashShopRecv
 
 void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
 {

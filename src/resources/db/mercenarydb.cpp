@@ -37,7 +37,7 @@ namespace
 {
     BeingInfos mMercenaryInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void MercenaryDB::load()
 {

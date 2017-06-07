@@ -37,6 +37,6 @@ namespace LinkHighlightMode
         UNDERLINE  = 1,
         BACKGROUND = 2
     };
-}
+}  // namespace LinkHighlightMode
 
 #endif  // ENUMS_GUI_LINKHIGHLIGHTMODE_H

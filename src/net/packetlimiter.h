@@ -36,6 +36,6 @@ namespace PacketLimiter
     bool limitPackets(const PacketTypeT type) A_WARN_UNUSED;
 
     bool checkPackets(const PacketTypeT type) A_WARN_UNUSED;
-}
+}  // namespace PacketLimiter
 
 #endif  // NET_PACKETLIMITER_H

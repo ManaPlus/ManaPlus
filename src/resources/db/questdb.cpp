@@ -41,7 +41,7 @@ namespace
     // quests: var, quests
     std::map<int, std::vector<QuestItem*> > mQuests;
     std::vector<QuestEffect*> mAllEffects;
-}
+}  // namespace
 
 void QuestDb::load()
 {

@@ -34,7 +34,7 @@ namespace
 {
     CommandsMap mCommands;
     bool mLoaded = false;
-}
+}  // namespace
 
 void CommandsDB::load()
 {

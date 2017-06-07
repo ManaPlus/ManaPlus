@@ -50,7 +50,7 @@ namespace BuySellRecv
 {
     BeingId mNpcId = BeingId_zero;
     BuyDialog *mBuyDialog = nullptr;
-}
+}  // namespace BuySellRecv
 
 void BuySellRecv::processNpcBuySellChoice(Net::MessageIn &msg)
 {

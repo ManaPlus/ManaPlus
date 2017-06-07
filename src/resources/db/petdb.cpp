@@ -39,7 +39,7 @@ namespace
 {
     BeingInfos mPETInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void PETDB::load()
 {

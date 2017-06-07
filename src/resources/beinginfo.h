@@ -41,7 +41,7 @@ struct Attack;
 namespace ColorDB
 {
     class ItemColorData;
-}
+}  // namespace ColorDB
 
 typedef std::map<int, Attack*> Attacks;
 

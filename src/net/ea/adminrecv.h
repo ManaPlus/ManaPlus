@@ -28,14 +28,14 @@
 namespace Net
 {
     class MessageIn;
-}
+}  // namespace Net
 
 namespace Ea
 {
     namespace AdminRecv
     {
         void processKickAck(Net::MessageIn &msg);
-    }  // namespace Admin
+    }  // namespace AdminRecv
 }  // namespace Ea
 
 #endif  // NET_EA_ADMINRECV_H

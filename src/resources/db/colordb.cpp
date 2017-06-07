@@ -35,7 +35,7 @@ namespace
     bool mLoaded = false;
     std::string mFail("#ffffff");
     ColorDB::ColorLists mColorLists;
-}
+}  // namespace
 
 void ColorDB::load()
 {

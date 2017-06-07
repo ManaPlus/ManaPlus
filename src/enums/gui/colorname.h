@@ -40,6 +40,6 @@ namespace ColorName
         BROWN,
         COLORS_MAX
     };
-}
+}  // namespace ColorName
 
 #endif  // ENUMS_GUI_COLORNAME_H

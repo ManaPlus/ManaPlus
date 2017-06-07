@@ -41,7 +41,7 @@ namespace
 {
     BeingInfos mMonsterInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void MonsterDB::load()
 {

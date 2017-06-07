@@ -38,6 +38,6 @@ namespace Cursors
     };
 
     CursorT stringToCursor(const std::string &name) A_WARN_UNUSED;
-}  // namespace Cursor
+}  // namespace Cursors
 
 #endif  // RESOURCES_CURSOR_H

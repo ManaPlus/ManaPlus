@@ -41,7 +41,7 @@ namespace
 {
     BeingInfos mNPCInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void NPCDB::load()
 {

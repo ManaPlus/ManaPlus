@@ -37,7 +37,7 @@ namespace
 {
     BeingInfos mHomunculusInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void HomunculusDB::load()
 {

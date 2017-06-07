@@ -34,13 +34,13 @@ namespace
     MapDB::Maps mMaps;
     MapDB::MapInfos mInfos;
     MapDB::Atlases mAtlases;
-}
+}  // namespace
 
 namespace MapDB
 {
     void readMap(XmlNodePtrConst node);
     void readAtlas(XmlNodePtrConst node);
-}
+}  // namespace MapDB
 
 void MapDB::load()
 {

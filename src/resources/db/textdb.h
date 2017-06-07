@@ -39,6 +39,6 @@ namespace TextDb
     const StringVect &getTexts();
 
     void unload();
-}  // namespace LanguageDB
+}  // namespace TextDb
 
 #endif  // RESOURCES_DB_TEXTDB_H

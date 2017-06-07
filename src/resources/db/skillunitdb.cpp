@@ -39,7 +39,7 @@ namespace
 {
     BeingInfos mSkillUnitInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void SkillUnitDb::load()
 {

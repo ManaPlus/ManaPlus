@@ -25,6 +25,6 @@ namespace TmwAthena
 #undef packet
 PROTOCOLOUT_VOID
 PACKETSOUT_VOID
-}  // namesspace TmwAthena
+}  // namespace TmwAthena
 
 #include "debug.h"

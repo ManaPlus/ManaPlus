@@ -28,7 +28,7 @@ namespace Net
     class MessageIn;
 
     struct Character;
-}
+}  // namespace Net
 
 namespace TmwAthena
 {

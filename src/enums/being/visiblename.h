@@ -29,6 +29,6 @@ namespace VisibleName
         Show            = 1,
         ShowOnSelection = 2
     };
-}  // namespace BeingDirection
+}  // namespace VisibleName
 
 #endif  // ENUMS_BEING_VISIBLENAME_H

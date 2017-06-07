@@ -36,7 +36,7 @@ namespace
 {
     ModInfos mModInfos;
     bool mLoaded = false;
-}
+}  // namespace
 
 void ModDB::load()
 {

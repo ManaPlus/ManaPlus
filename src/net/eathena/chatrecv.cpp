@@ -56,7 +56,7 @@ namespace EAthena
 namespace ChatRecv
 {
     std::string mChatRoom;
-}
+}  // namespace ChatRecv
 
 void ChatRecv::processIgnoreNickAck(Net::MessageIn &msg)
 {

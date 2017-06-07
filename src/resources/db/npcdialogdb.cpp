@@ -34,7 +34,7 @@ namespace
 {
     bool mLoaded = false;
     NpcDialogDB::Dialogs mDialogs;
-}
+}  // namespace
 
 void NpcDialogDB::load()
 {

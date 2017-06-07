@@ -40,7 +40,7 @@
 namespace ColorDB
 {
     class ItemColorData;
-}
+}  // namespace ColorDB
 
 // sprite, <itemfrom, itemto>
 typedef std::map<int, IntMap> SpriteToItemMap;

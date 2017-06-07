@@ -41,7 +41,7 @@ class TextDialog;
 namespace Net
 {
     class CharServerHandler;
-}
+}  // namespace Net
 
 /**
  * Character selection dialog.

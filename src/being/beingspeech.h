@@ -32,6 +32,6 @@ namespace BeingSpeech
         NO_NAME_IN_BUBBLE,
         NAME_IN_BUBBLE
     };
-}  // BeingSpeech
+}  // namespace BeingSpeech
 
 #endif  // BEING_BEINGSPEECH_H

@@ -33,6 +33,6 @@ namespace GuildPositionFlags
         Invite  = 0x01,
         Expel   = 0x10
     };
-}
+}  // namespace GuildPositionFlags
 
 #endif  // ENUMS_GUILDPOSITIONFLAGS_H

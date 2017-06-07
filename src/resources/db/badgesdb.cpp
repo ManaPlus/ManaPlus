@@ -34,7 +34,7 @@ namespace
     BadgesInfos mNames;
     BadgesInfos mParties;
     bool mLoaded = false;
-}
+}  // namespace
 
 static void loadXmlFile(const std::string &file,
                         const std::string &name,
