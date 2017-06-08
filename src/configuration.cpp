@@ -494,7 +494,7 @@ int Configuration::resetIntValue(const std::string &key)
 std::string Configuration::getStringValue(const std::string &key) const
 {
     GETLOG();
-    std::string defaultValue("");
+    std::string defaultValue;
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {

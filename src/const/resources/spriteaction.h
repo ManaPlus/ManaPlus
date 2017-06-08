@@ -68,7 +68,7 @@ namespace SpriteAction
     static const std::string DEADWATER("deadwater");
     static const std::string DEADRIDE("deadride");
 
-    static const std::string INVALID("");
+    static const std::string INVALID;
 }  // namespace SpriteAction
 
 #endif  // CONST_RESOURCES_SPRITEACTION_H

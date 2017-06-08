@@ -51,8 +51,8 @@
 
 #include "debug.h"
 
-std::string LoginDialog::savedPassword("");
-std::string LoginDialog::savedPasswordKey("");
+std::string LoginDialog::savedPassword;
+std::string LoginDialog::savedPasswordKey;
 
 namespace
 {

@@ -48,7 +48,7 @@ enum
 namespace Net
 {
 
-std::string Download::mUploadResponse = "";
+std::string Download::mUploadResponse;
 
 Download::Download(void *const ptr,
                    const std::string &url,

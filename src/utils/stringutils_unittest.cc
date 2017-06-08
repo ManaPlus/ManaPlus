@@ -224,7 +224,7 @@ TEST_CASE("stringuntils parseNumber 1", "")
 
 TEST_CASE("stringuntils removeToken 1", "")
 {
-    std::string str = "";
+    std::string str;
 
     REQUIRE(removeToken(str, " ").empty());
     REQUIRE(str.empty());
@@ -292,8 +292,8 @@ TEST_CASE("stringuntils removeColors 1", "")
 
 TEST_CASE("stringuntils compareStrI 1", "")
 {
-    std::string str1 = "";
-    std::string str2 = "";
+    std::string str1;
+    std::string str2;
     REQUIRE(0 == compareStrI(str1, str2));
 
     str1 = "test";
@@ -326,8 +326,8 @@ TEST_CASE("stringuntils isWordSeparator 1", "")
 
 TEST_CASE("stringuntils findSameSubstring", "")
 {
-    std::string str1 = "";
-    std::string str2 = "";
+    std::string str1;
+    std::string str2;
 
     REQUIRE(findSameSubstring("", "").empty());
 
@@ -346,8 +346,8 @@ TEST_CASE("stringuntils findSameSubstring", "")
 
 TEST_CASE("stringuntils findSameSubstringI", "")
 {
-    std::string str1 = "";
-    std::string str2 = "";
+    std::string str1;
+    std::string str2;
 
     REQUIRE(findSameSubstringI("", "").empty());
 
@@ -524,9 +524,9 @@ TEST_CASE("stringuntils getFileDir 1", "")
 
 TEST_CASE("stringuntils replaceAll 1", "")
 {
-    std::string str1 = "";
-    std::string str2 = "";
-    std::string str3 = "";
+    std::string str1;
+    std::string str2;
+    std::string str3;
 
     REQUIRE(replaceAll(str1, str2, str3).empty());
 

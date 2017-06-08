@@ -667,7 +667,7 @@ impHandler(guildNotice)
     }
 
     const std::string str1 = args.substr(0, 60);
-    std::string str2("");
+    std::string str2;
     if (args.size() > 60)
         str2 = args.substr(60);
     const Guild *const guild = localPlayer->getGuild();
