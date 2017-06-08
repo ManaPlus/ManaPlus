@@ -905,7 +905,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     if (type == ChatTabType::WHISPER)
     {
         const WhisperTab *const wTab = static_cast<WhisperTab*>(tab);
-        std::string name = wTab->getNick();
+        const std::string &name = wTab->getNick();
 
         const Being* const being  = actorManager->findBeingByName(
             name, ActorType::Player);

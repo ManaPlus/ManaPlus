@@ -5345,7 +5345,7 @@ void Being::setLanguageId(const int lang) restrict2 noexcept2
     if (lang != mLanguageId)
     {
         delete2(mBadges[BadgeIndex::Lang]);
-        const std::string badge = LanguageDb::getIcon(lang);
+        const std::string &badge = LanguageDb::getIcon(lang);
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Lang] = AnimatedSprite::load(pathJoin(

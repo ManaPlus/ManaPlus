@@ -69,7 +69,7 @@ LangVect getServerLang()
     LangVect langs;
 #ifndef DYECMD
     const int id = PlayerInfo::getServerLanguage();
-    std::string lang = LanguageDb::getPo(id);
+    const std::string &lang = LanguageDb::getPo(id);
     if (lang.empty())
         return langs;
     langs.push_back(lang);

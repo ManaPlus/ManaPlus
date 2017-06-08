@@ -203,8 +203,8 @@ namespace
                 const ItemDbTypeT t2 = info2.getType();
                 if (t1 == t2)
                 {
-                    const std::string name1 = info1.getName();
-                    const std::string name2 = info2.getName();
+                    const std::string &name1 = info1.getName();
+                    const std::string &name2 = info2.getName();
                     if (name1 == name2)
                     {
                         return pair1->mItem->getInvIndex() <

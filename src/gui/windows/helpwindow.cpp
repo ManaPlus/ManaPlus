@@ -110,7 +110,7 @@ void HelpWindow::handleLink(const std::string &link,
 {
     if (!strStartWith(link, "http://") && !strStartWith(link, "https://"))
     {
-        std::string helpFile = link;
+        const std::string &helpFile = link;
         loadHelp(helpFile);
     }
     else
