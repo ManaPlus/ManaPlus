@@ -69,7 +69,7 @@ void Cpu::detect()
         std::string str = buf;
         if (findFirst(str, "flags"))
         {
-            size_t idx = str.find(":");
+            size_t idx = str.find(':');
             if (idx == std::string::npos)
                 continue;
             str = str.substr(idx + 1);
