@@ -454,8 +454,11 @@ bool Viewport::leftMouseAction()
                             actorManager->heal(mHoverBeing);
 #endif  // TMWA_SUPPORT
 
-                        if (localPlayer == mHoverBeing && (mHoverItem != nullptr))
+                        if (localPlayer == mHoverBeing &&
+                            mHoverItem != nullptr)
+                        {
                             localPlayer->pickUp(mHoverItem);
+                        }
                         return true;
                     }
                     break;
@@ -692,8 +695,9 @@ void Viewport::walkByMouse(const MouseEvent &event)
                 int dy = 0;
                 if (x2 > y2)
                 {
-                    if ((y2 != 0) && static_cast<float>(x2) / static_cast<float>(y2)
-                        / wh > diff)
+                    if (y2 != 0 &&
+                        static_cast<float>(x2) / static_cast<float>(y2) /
+                        wh > diff)
                     {
                         y = 0;
                     }
@@ -911,8 +915,12 @@ void Viewport::optionChanged(const std::string &name)
 void Viewport::mouseMoved(MouseEvent &event)
 {
     // Check if we are on the map
-    if ((mMap == nullptr) || (localPlayer == nullptr) || (actorManager == nullptr))
+    if (mMap == nullptr ||
+        localPlayer == nullptr ||
+        actorManager == nullptr)
+    {
         return;
+    }
 
     if (mMouseDirectionMove)
         mPlayerFollowMouse = false;
@@ -954,7 +962,8 @@ void Viewport::mouseMoved(MouseEvent &event)
                 / mMap->getTileHeight();
 
             mHoverSign = specialLayer->getTile(mouseTileX, mouseTileY);
-            if ((mHoverSign != nullptr) && mHoverSign->getType() != MapItemType::EMPTY)
+            if (mHoverSign != nullptr &&
+                mHoverSign->getType() != MapItemType::EMPTY)
             {
                 if (!mHoverSign->getComment().empty())
                 {

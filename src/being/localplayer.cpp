@@ -2584,7 +2584,8 @@ void LocalPlayer::setRealPos(const int x, const int y)
         {
             const MapItem *const mapItem = layer->getTile(x, y);
 
-            if ((mapItem == nullptr) || mapItem->getType() == MapItemType::EMPTY)
+            if (mapItem == nullptr ||
+                mapItem->getType() == MapItemType::EMPTY)
             {
                 if (mX != x && mY != y)
                 {

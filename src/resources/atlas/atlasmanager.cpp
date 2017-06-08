@@ -152,8 +152,8 @@ void AtlasManager::loadImages(const StringVect &files,
         if (rw != nullptr)
         {
             Image *const image = d != nullptr ?
-                surfaceImageHelper->load(rw, *d) :
-                surfaceImageHelper->load(rw);
+                surfaceImageHelper->load(rw, *d)
+                : surfaceImageHelper->load(rw);
 
             if (image != nullptr)
             {

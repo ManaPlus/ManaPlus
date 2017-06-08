@@ -1522,7 +1522,7 @@ void Being::setAction(const BeingActionT &restrict action,
             }
             else
             {
-                if ((mInfo == nullptr) || (mInfo->getAttack(attackId) == nullptr))
+                if (mInfo == nullptr || mInfo->getAttack(attackId) == nullptr)
                     break;
 
                 currentAction = getAttackAction(mInfo->getAttack(attackId));
@@ -2305,8 +2305,11 @@ void Being::drawSpeech(const int offsetX,
     // Draw speech above this being
     if (mSpeechTime == 0)
     {
-        if ((mSpeechBubble != nullptr) && mSpeechBubble->mVisible == Visible_true)
+        if (mSpeechBubble != nullptr &&
+            mSpeechBubble->mVisible == Visible_true)
+        {
             mSpeechBubble->setVisible(Visible_false);
+        }
         mSpeech.clear();
     }
     else if (mSpeechTime > 0 && (speech == BeingSpeech::NAME_IN_BUBBLE ||

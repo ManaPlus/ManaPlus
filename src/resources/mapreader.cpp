@@ -564,8 +564,8 @@ inline static void setTile(Map *const map,
     {
         case MapLayerType::TILES:
         {
-            Image *const img = set != nullptr ? set->get(gid - set->getFirstGid())
-                : nullptr;
+            Image *const img = set != nullptr ?
+                set->get(gid - set->getFirstGid()) : nullptr;
             if (layer != nullptr)
                 layer->setTile(x, y, img);
             break;
@@ -1192,7 +1192,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                     }
 
                     // create animation
-                    if ((set == nullptr) || !config.getBoolValue("playMapAnimations"))
+                    if (set == nullptr ||
+                        !config.getBoolValue("playMapAnimations"))
                     {
                         delete ani;
                         continue;

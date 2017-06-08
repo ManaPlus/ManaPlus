@@ -145,8 +145,12 @@ void PopupMenu::postInit()
 
 void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 {
-    if ((being == nullptr) || (localPlayer == nullptr) || (actorManager == nullptr))
+    if (being == nullptr ||
+        localPlayer == nullptr ||
+        actorManager == nullptr)
+    {
         return;
+    }
 
     mBeingId = being->getId();
     mName = being->getName();
@@ -830,8 +834,12 @@ void PopupMenu::showSpellPopup(const int x, const int y,
 
 void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 {
-    if ((tab == nullptr) || (actorManager == nullptr) || (localPlayer == nullptr))
+    if (tab == nullptr ||
+        actorManager == nullptr ||
+        localPlayer == nullptr)
+    {
         return;
+    }
 
     mTab = tab;
     mX = x;

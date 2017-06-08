@@ -896,8 +896,11 @@ impHandler(targetAttack)
             {
                 target = actorManager->findBeing(fromInt(atoi(
                     args.substr(1).c_str()), BeingId));
-                if ((target != nullptr) && target->getType() != ActorType::Monster)
+                if (target != nullptr &&
+                    target->getType() != ActorType::Monster)
+                {
                     target = nullptr;
+                }
             }
         }
 

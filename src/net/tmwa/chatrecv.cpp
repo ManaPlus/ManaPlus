@@ -251,8 +251,10 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
             }
             else
             {
-                if ((chatWindow != nullptr) && (showMsg || (chatMsg.find("!selllist") != 0
-                    && chatMsg.find("!buylist") != 0)))
+                if (chatWindow != nullptr &&
+                    (showMsg ||
+                    (chatMsg.find("!selllist") != 0 &&
+                    chatMsg.find("!buylist") != 0)))
                 {
                     chatWindow->addWhisper(nick, chatMsg);
                 }
