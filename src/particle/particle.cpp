@@ -118,8 +118,9 @@ Particle::~Particle()
     ParticleEngine::particleCount--;
 }
 
-void Particle::draw(Graphics *restrict const,
-                    const int, const int) const restrict2
+void Particle::draw(Graphics *restrict const graphics A_UNUSED,
+                    const int offsetX A_UNUSED,
+                    const int offsetY A_UNUSED) const restrict2
 {
 }
 

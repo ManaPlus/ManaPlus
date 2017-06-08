@@ -359,7 +359,7 @@ void ServerDialog::keyPressed(KeyEvent &event)
         mServersList->keyPressed(event);
 }
 
-void ServerDialog::valueChanged(const SelectionEvent &)
+void ServerDialog::valueChanged(const SelectionEvent &event A_UNUSED)
 {
     const int index = mServersList->getSelected();
     if (index == -1)

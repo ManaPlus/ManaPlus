@@ -67,7 +67,7 @@ void ConnectionDialog::postInit()
     setVisible(Visible_true);
 }
 
-void ConnectionDialog::action(const ActionEvent &)
+void ConnectionDialog::action(const ActionEvent &action A_UNUSED)
 {
     logger->log1("Cancel pressed");
     client->setState(mCancelState);

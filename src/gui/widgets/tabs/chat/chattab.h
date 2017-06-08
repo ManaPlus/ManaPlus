@@ -191,10 +191,10 @@ class ChatTab notfinal : public Tab
 
         virtual void handleHelp(const std::string &msg);
 
-        virtual void getAutoCompleteList(StringVect&) const
+        virtual void getAutoCompleteList(StringVect &names A_UNUSED) const
         {}
 
-        virtual void getAutoCompleteCommands(StringVect&) const
+        virtual void getAutoCompleteCommands(StringVect &names A_UNUSED) const
         {}
 
         void addRow(std::string &line);

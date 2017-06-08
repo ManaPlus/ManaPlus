@@ -222,7 +222,7 @@ namespace
 
             A_DELETE_COPY(AccountListener)
 
-            void action(const ActionEvent &) override final
+            void action(const ActionEvent &event A_UNUSED) override final
             {
                 client->setState(State::CHAR_SELECT);
             }
@@ -236,7 +236,7 @@ namespace
 
             A_DELETE_COPY(LoginListener)
 
-            void action(const ActionEvent &) override final
+            void action(const ActionEvent &event A_UNUSED) override final
             {
                 client->setState(State::PRE_LOGIN);
             }

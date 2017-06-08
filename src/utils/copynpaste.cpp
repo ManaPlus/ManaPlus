@@ -499,7 +499,7 @@ bool sendBuffer(const std::string &restrict text)
 }
 #else  // WIN32
 
-bool retrieveBuffer(std::string&, size_t&)
+bool retrieveBuffer(std::string &text A_UNUSED, size_t &pos A_UNUSED)
 {
     return false;
 }

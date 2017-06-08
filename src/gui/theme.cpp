@@ -289,7 +289,7 @@ void Theme::updateAlpha()
     }
 }
 
-void Theme::optionChanged(const std::string &)
+void Theme::optionChanged(const std::string &name A_UNUSED)
 {
     updateAlpha();
 }

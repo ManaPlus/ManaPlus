@@ -158,7 +158,7 @@ class Theme final : public Palette,
          */
         void setMinimumOpacity(const float minimumOpacity);
 
-        void optionChanged(const std::string &) override final;
+        void optionChanged(const std::string &name) override final;
 
         void loadRect(ImageRect &image,
                       const std::string &name,

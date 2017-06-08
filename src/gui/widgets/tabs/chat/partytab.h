@@ -48,7 +48,7 @@ class PartyTab notfinal : public ChatTab,
     protected:
         void handleInput(const std::string &msg) override final;
 
-        void getAutoCompleteList(StringVect&) const override final;
+        void getAutoCompleteList(StringVect &names) const override final;
 
         void getAutoCompleteCommands(StringVect &names) const override final;
 };
