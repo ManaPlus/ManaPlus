@@ -548,7 +548,9 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
             TryRemoveColors_true);
     }
 
-    if (allow && (being != nullptr) && player_relations.hasPermission(sender_name,
+    if (allow &&
+        being != nullptr &&
+        player_relations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
         being->setSpeech(chatMsg, GENERAL_CHANNEL);
