@@ -24,8 +24,6 @@
 #include "logger.h"
 #include "settings.h"
 
-#include <cstdlib>
-
 #include "debug.h"
 
 void updateEnv()

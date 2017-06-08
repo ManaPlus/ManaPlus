@@ -36,10 +36,6 @@
 #include <dirent.h>
 #include <unistd.h>
 
-#ifdef USE_FILE_FOPEN
-#include <cstdio>
-#endif  // USE_FILE_FOPEN
-
 #include <sys/types.h>
 #include <sys/stat.h>
 
