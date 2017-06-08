@@ -47,7 +47,7 @@ namespace VirtFs
             const size_t len = str.size();
 
             if (len > ext.length() &&
-                (ext.compare(str.substr(len - ext.length())) == 0))
+                ext == str.substr(len - ext.length()))
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);
@@ -66,7 +66,7 @@ namespace VirtFs
             const std::string str = *i;
             const size_t len = str.size();
             if (len > ext.length() &&
-                (ext.compare(str.substr(len - ext.length())) == 0))
+                ext == str.substr(len - ext.length()))
             {
                 const std::string file = path + str;
                 const std::string realPath = VirtFs::getRealDir(file);

@@ -1093,7 +1093,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
     toLower(playerName);
     toLower(tempNick);
 
-    if (tempNick.compare(playerName) == 0)
+    if (tempNick == playerName)
         return;
 
     WhisperTab *tab = nullptr;
@@ -1190,7 +1190,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &caption,
     const TabMap::const_iterator i = mWhispers.find(tempNick);
     WhisperTab *ret = nullptr;
 
-    if (tempNick.compare(playerName) == 0)
+    if (tempNick == playerName)
         return nullptr;
 
     if (i != mWhispers.end())
@@ -1227,7 +1227,7 @@ WhisperTab *ChatWindow::getWhisperTab(const std::string &nick) const
     const TabMap::const_iterator i = mWhispers.find(tempNick);
     WhisperTab *ret = nullptr;
 
-    if (tempNick.compare(playerName) == 0)
+    if (tempNick == playerName)
         return nullptr;
 
     if (i != mWhispers.end())

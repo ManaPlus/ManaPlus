@@ -241,7 +241,7 @@ static bool splitWhisper(const std::string &args,
         toLower(playerName);
         toLower(tempNick);
 
-        if (tempNick.compare(playerName) == 0 || args.empty())
+        if (tempNick == playerName || args.empty())
             return false;
 
         return true;
