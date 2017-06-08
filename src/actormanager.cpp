@@ -1483,7 +1483,7 @@ void ActorManager::heal(const Being *const target) const
             }
         }
         // heal self if selected monster or selection empty
-        else if ((target != nullptr || target->getType() == ActorType::Monster)
+        else if ((target == nullptr || target->getType() == ActorType::Monster)
                  && PlayerInfo::getAttribute(Attributes::PLAYER_MP) >= 6
                  && PlayerInfo::getAttribute(Attributes::PLAYER_HP)
                  != PlayerInfo::getAttribute(Attributes::PLAYER_MAX_HP))
@@ -1541,8 +1541,8 @@ void ActorManager::itenplz() const
 {
     if (Net::getNetworkType() != ServerType::TMWATHENA)
         return;
-    if (localPlayer != nullptr ||
-        chatWindow != nullptr ||
+    if (localPlayer == nullptr ||
+        chatWindow == nullptr ||
         !localPlayer->isAlive() ||
         !playerHandler->canUseMagic())
     {

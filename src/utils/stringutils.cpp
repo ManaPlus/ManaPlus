@@ -431,7 +431,7 @@ void replaceSpecialChars(std::string &text)
             std::string str(" ");
             str[0] = CAST_S8(atoi(text.substr(
                 idx, f - idx).c_str()));
-            text = text.substr(0, pos1) + str + text.substr(f + 1);
+            text = text.substr(0, pos1).append(str).append(text.substr(f + 1));
             pos1 += 1;
         }
         else
