@@ -30,7 +30,7 @@ Andreas Schiffler -- aschiffler at ferzkopp dot net
 #ifndef _SDL2_rotozoom_h
 #define _SDL2_rotozoom_h
 
-#include <cmath>
+#include <math.h>
 
 /* Set up for C function definitions, even when using C++ */
 #ifdef __cplusplus
