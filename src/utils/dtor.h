@@ -46,7 +46,7 @@ public std::unary_function <std::pair<T1, T2>, void>
 };
 
 template<class Cont>
-inline dtor<typename Cont::value_type> make_dtor(Cont const &d)
+inline dtor<typename Cont::value_type> make_dtor(Cont const &d A_UNUSED)
 {
     return dtor<typename Cont::value_type>();
 }
