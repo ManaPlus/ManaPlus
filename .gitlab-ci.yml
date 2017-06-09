@@ -308,7 +308,7 @@ cpplint:
 gcc-5_h_all:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -319,7 +319,7 @@ gcc-5_h_all:
 gcc-5_h_all_i386:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -2045,7 +2045,7 @@ gcc-5_default_i386:
 gcc-5_h_eathena_tmwa:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -I/usr/include/SDL
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -2056,7 +2056,7 @@ gcc-5_h_eathena_tmwa:
 gcc-5_h_pugi_all:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML
+  - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -I/usr/include/SDL
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -2067,13 +2067,35 @@ gcc-5_h_pugi_all:
 gcc-5_h_tinyxml2_all:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_TINYXML2
+  - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_TINYXML2 -I/usr/include/SDL
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+gcc-5_h_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+
+gcc-5_h_sdl2_without_opengl:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-5 g++-5 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
 gcc-5_tarball:
   stage: build

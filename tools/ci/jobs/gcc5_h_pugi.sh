@@ -18,7 +18,7 @@ do_init
 
 cd src
 export dir=$(pwd)
-export includes="-I$dir -I/usr/include -I/usr/include/SDL -I/usr/include/libxml2"
+export includes="-I$dir -I/usr/include -I/usr/include/libxml2"
 
 run_h $*
 
