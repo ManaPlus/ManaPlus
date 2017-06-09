@@ -106,11 +106,8 @@ typedef std::map<int, Guild*>::const_iterator GuildMapCIter;
 
 LocalPlayer *localPlayer = nullptr;
 
-class SkillDialog;
-
 extern OkDialog *weightNotice;
 extern time_t weightNoticeTime;
-
 
 LocalPlayer::LocalPlayer(const BeingId id,
                          const BeingTypeId subtype) :

@@ -29,7 +29,6 @@
 
 #include "debug.h"
 
-
 extern int packetVersion;
 
 namespace EAthena

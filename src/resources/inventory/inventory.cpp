@@ -492,8 +492,12 @@ void Inventory::virtualRestore(const Item *const item,
         mVirtualRemove[index] -= amount;
         if (mVirtualRemove[index] < 0)
             mVirtualRemove.erase(index);
-        if (index < 0 || index >= CAST_S32(mSize) || (mItems[index] == nullptr))
+        if (index < 0 ||
+            index >= CAST_S32(mSize) ||
+            mItems[index] == nullptr)
+        {
             return;
+        }
         mItems[index]->mQuantity += amount;
     }
 }

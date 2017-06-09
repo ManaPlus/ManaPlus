@@ -260,7 +260,7 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
         msg.readInt16("new");
         if (msg.getVersion() >= 20170315)
         {
-            for(int f = 0; f < 32; f ++)
+            for (int f = 0; f < 32; f ++)
                 msg.readUInt8("unused2");
         }
 

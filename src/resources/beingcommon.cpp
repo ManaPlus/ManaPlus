@@ -58,15 +58,16 @@ void BeingCommon::readWalkingAttributes(BeingInfo *const info,
                                         XmlNodePtrConst node,
                                         const int moreBlockFlags)
 {
-    unsigned char block = 0;
+    uint8_t block = 0;
     std::string walkStr = XML::getProperty(
         node, "walkType", "walk");
 
-    const unsigned char allFlags = BlockMask::GROUND |
+    const uint8_t allFlags = CAST_U8(
+        BlockMask::GROUND |
         BlockMask::WALL |
         BlockMask::WATER |
         BlockMask::AIR |
-        moreBlockFlags;
+        moreBlockFlags);
     StringVect tokens;
     splitToStringVector(tokens, walkStr, ',');
     FOR_EACH (StringVectCIter, it, tokens)

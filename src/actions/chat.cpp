@@ -300,8 +300,11 @@ impHandler(msg2)
     std::string recvnick;
     std::string message;
 
-    if ((chatHandler != nullptr) && splitWhisper(event.args, recvnick, message))
+    if (chatHandler != nullptr &&
+        splitWhisper(event.args, recvnick, message))
+    {
         chatHandler->privateMessage(recvnick, message);
+    }
     return true;
 }
 

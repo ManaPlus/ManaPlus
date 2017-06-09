@@ -652,7 +652,7 @@ void Being::takeDamage(Being *restrict const attacker,
                        const int attackId,
                        const int level) restrict2
 {
-    if ((userPalette == nullptr) || (attacker == nullptr))
+    if (userPalette == nullptr || attacker == nullptr)
         return;
 
     BLOCK_START("Being::takeDamage1")
@@ -726,7 +726,7 @@ void Being::takeDamage(Being *restrict const attacker,
         color = &userPalette->getColor(UserColorId::HIT_MONSTER_PLAYER);
     }
 
-    if ((chatWindow != nullptr) && mShowBattleEvents)
+    if (chatWindow != nullptr && mShowBattleEvents)
     {
         if (this == localPlayer)
         {
@@ -746,7 +746,7 @@ void Being::takeDamage(Being *restrict const attacker,
                 ChatMsgType::BY_PLAYER);
         }
     }
-    if ((font != nullptr) && (particleEngine != nullptr) && (color != nullptr))
+    if (font != nullptr && particleEngine != nullptr)
     {
         // Show damage number
         particleEngine->addTextSplashEffect(damage,
@@ -2260,13 +2260,13 @@ void Being::drawEmotion(Graphics *restrict const graphics,
     {
         int x;
         int y;
-        if (mShowBadges == 2 && (mDispName != nullptr) && (gui != nullptr))
+        if (mShowBadges == 2 && mDispName != nullptr && gui != nullptr)
         {
             const Font *restrict const font = gui->getFont();
             x = mDispName->getX() - offsetX + mDispName->getWidth();
             y = mDispName->getY() - offsetY - font->getHeight();
         }
-        else if (mShowBadges == 3 && (mDispName != nullptr) && (gui != nullptr))
+        else if (mShowBadges == 3 && mDispName != nullptr && gui != nullptr)
         {
             x = px + 8 - mBadgesCount * 8;
             y = mDispName->getY() - offsetY;

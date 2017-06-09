@@ -485,7 +485,6 @@ void ItemShortcutContainer::mousePressed(MouseEvent &event)
     {
         event.consume();
         if (popupMenu != nullptr &&
-            selShortcut != nullptr &&
             viewport != nullptr)
         {
             popupMenu->showItemPopup(viewport->mMouseX,

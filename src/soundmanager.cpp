@@ -516,8 +516,7 @@ void SoundManager::playGuiSfx(const std::string &path)
     if (sample != nullptr)
     {
         logger->log("SoundManager::playGuiSfx() Playing: %s", path.c_str());
-        const int ret = static_cast<const int>(
-            sample->play(0, 120, mGuiChannel));
+        const int ret = static_cast<int>(sample->play(0, 120, mGuiChannel));
         if (ret != -1)
             mGuiChannel = ret;
         if (!mCacheSounds)

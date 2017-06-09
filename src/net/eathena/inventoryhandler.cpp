@@ -35,7 +35,6 @@
 
 #include "debug.h"
 
-
 extern int packetVersion;
 
 // this conversion from bit corrupted LOOK_* to EquipSlot

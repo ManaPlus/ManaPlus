@@ -35,8 +35,6 @@
 
 #include "debug.h"
 
-
-
 namespace EAthena
 {
 

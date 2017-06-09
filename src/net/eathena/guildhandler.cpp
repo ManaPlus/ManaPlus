@@ -38,7 +38,6 @@
 
 GuildTab *guildTab = nullptr;
 
-
 extern int packetVersion;
 
 namespace EAthena

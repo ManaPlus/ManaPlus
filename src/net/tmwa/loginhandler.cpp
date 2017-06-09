@@ -32,7 +32,6 @@
 
 #include "debug.h"
 
-
 extern unsigned int tmwServerVersion;
 
 namespace TmwAthena

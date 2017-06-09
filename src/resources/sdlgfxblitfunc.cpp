@@ -337,7 +337,7 @@ static void _SDL_gfxBlitBlitterRGBA(SDL_gfxBlitInfo *info)
     const int srcskip = info->s_skip;
     Uint8 *dst = info->d_pixels;
     const int dstskip = info->d_skip;
-    SDL_PixelFormat *srcfmt = info->src;
+    const SDL_PixelFormat *const srcfmt = info->src;
 
     while ((height--) != 0)
     {

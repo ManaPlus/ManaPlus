@@ -39,8 +39,6 @@
 
 #include "debug.h"
 
-
-
 namespace TmwAthena
 {
 

@@ -627,9 +627,9 @@ inline static void setTile(Map *const map,
 
         case MapLayerType::HEIGHTS:
         {
-            if ((set == nullptr) || (heights == nullptr))
+            if (set == nullptr || heights == nullptr)
                 break;
-            if ((heights != nullptr) && map->getVersion() >= 2)
+            if (map->getVersion() >= 2)
             {
                 heights->setHeight(x, y, CAST_U8(
                     gid - set->getFirstGid() + 1));

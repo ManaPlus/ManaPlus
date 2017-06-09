@@ -44,7 +44,6 @@
 
 #include "debug.h"
 
-
 extern int packetVersion;
 extern int serverVersion;
 

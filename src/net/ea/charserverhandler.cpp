@@ -31,8 +31,6 @@
 
 #include "debug.h"
 
-
-
 namespace Ea
 {
 

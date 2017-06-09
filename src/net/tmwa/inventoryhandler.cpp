@@ -33,8 +33,6 @@
 
 #include "debug.h"
 
-
-
 // missing EQUIP_RING1_SLOT
 const EquipSlot::Type EQUIP_CONVERT[] =
 {

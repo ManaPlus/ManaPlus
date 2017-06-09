@@ -33,8 +33,6 @@
 
 #include "debug.h"
 
-
-
 extern std::string tradePartnerName;
 
 namespace TmwAthena

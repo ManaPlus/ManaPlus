@@ -532,7 +532,8 @@ void ShopWindow::loadList()
     const std::string shopListName = settings.serverConfigDir
         + "/shoplist.txt";
 
-    if ((stat(shopListName.c_str(), &statbuf) == 0) && S_ISREG(statbuf.st_mode))
+    if (stat(shopListName.c_str(), &statbuf) == 0 &&
+        S_ISREG(statbuf.st_mode))
     {
         shopFile.open(shopListName.c_str(), std::ios::in);
         if (!shopFile.is_open())

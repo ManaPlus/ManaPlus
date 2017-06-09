@@ -24,7 +24,6 @@
 
 extern unsigned int tmwServerVersion;
 
-
 namespace TmwAthena
 {
 

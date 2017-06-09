@@ -577,15 +577,14 @@ impHandler(sendMail)
 
 impHandler(info)
 {
-    if ((event.tab == nullptr) ||
-        (localPlayer == nullptr) ||
+    if (event.tab == nullptr ||
+        localPlayer == nullptr ||
         Net::getNetworkType() == ServerType::TMWATHENA)
     {
         return false;
     }
 
-    if ((event.tab != nullptr) &&
-        (guildHandler != nullptr) &&
+    if (guildHandler != nullptr &&
         event.tab->getType() == ChatTabType::GUILD)
     {
         const Guild *const guild = localPlayer->getGuild();

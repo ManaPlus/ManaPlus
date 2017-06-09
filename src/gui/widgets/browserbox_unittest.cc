@@ -47,8 +47,6 @@
 
 #include "debug.h"
 
-
-
 TEST_CASE("BrowserBox leak test1", "")
 {
     logger = new Logger();
