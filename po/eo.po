@@ -1858,7 +1858,7 @@ msgstr "Kartoj: "
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:382
 msgid "Options: "
-msgstr "Elektoj:"
+msgstr "Elektoj: "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
