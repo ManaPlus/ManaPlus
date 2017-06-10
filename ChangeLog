@@ -1,3 +1,13 @@
+2017-06-10 New release 1.7.6.10
+fix: use default configs in MacOSX version.
+fix: memory leak in different places.
+fix: possible issue in npc dialog.
+add: enable simd on windows and kFreeBSD.
+add: enable simd if build with clang.
+add: improve mixing images speed in most platforms.
+add: support for known packets version 2017.
+remove: codeblocks project file.
+
 2017-05-27 New release 1.7.5.27
 fix: default configuration files in NaCl builds.
 fix: simd functions working with LTO compilation flags.

@@ -1,5 +1,5 @@
 AC_PREREQ(2.60)
-AC_INIT([ManaPlus], [1.7.5.27], [akaras@inbox.ru], [manaplus])
+AC_INIT([ManaPlus], [1.7.6.10], [akaras@inbox.ru], [manaplus])
 AM_INIT_AUTOMAKE([1.9])
 AC_LANG_CPLUSPLUS
 
