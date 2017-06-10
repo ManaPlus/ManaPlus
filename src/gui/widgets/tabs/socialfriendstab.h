@@ -85,7 +85,7 @@ class SocialFriendsTab final : public SocialTab
             avatars->clear();
 
             const StringVect *const players
-                = player_relations.getPlayersByRelation(Relation::FRIEND);
+                = playerRelations.getPlayersByRelation(Relation::FRIEND);
 
             const std::set<std::string> &players2
                 = whoIsOnline->getOnlineNicks();

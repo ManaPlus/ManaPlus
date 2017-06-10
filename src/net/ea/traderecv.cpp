@@ -83,7 +83,7 @@ void TradeRecv::processTradeResponseContinue(const uint8_t type)
             }
             break;
         case 4:  // Trade cancelled
-            if (player_relations.hasPermission(tradePartnerName,
+            if (playerRelations.hasPermission(tradePartnerName,
                 PlayerRelation::SPEECH_LOG))
             {
                 NotifyManager::notify(NotifyTypes::TRADE_CANCELLED_NAME,
@@ -141,7 +141,7 @@ void TradeRecv::processTradeComplete(Net::MessageIn &msg A_UNUSED)
 
 void TradeRecv::processTradeRequestContinue(const std::string &partner)
 {
-    if (player_relations.hasPermission(partner,
+    if (playerRelations.hasPermission(partner,
         PlayerRelation::TRADE))
     {
         if (PlayerInfo::isTrading() == Trading_true || (confirmDlg != nullptr))

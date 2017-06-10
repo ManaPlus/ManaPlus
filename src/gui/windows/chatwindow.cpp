@@ -636,10 +636,10 @@ void ChatWindow::ignoreAllWhispers()
         WhisperTab *const tab = iter->second;
         if (tab != nullptr)
         {
-            if (player_relations.getRelation(tab->getNick())
+            if (playerRelations.getRelation(tab->getNick())
                 != Relation::IGNORED)
             {
-                player_relations.setRelation(tab->getNick(),
+                playerRelations.setRelation(tab->getNick(),
                     Relation::IGNORED);
             }
             tab->handleCommand("close", "");
@@ -1200,7 +1200,7 @@ WhisperTab *ChatWindow::addWhisperTab(const std::string &caption,
     else
     {
         ret = new WhisperTab(this, caption, nick);
-        if ((gui != nullptr) && !player_relations.isGoodName(nick))
+        if ((gui != nullptr) && !playerRelations.isGoodName(nick))
             ret->setLabelFont(gui->getSecureFont());
         mWhispers[tempNick] = ret;
         if (config.getBoolValue("showChatHistory"))

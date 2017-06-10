@@ -206,8 +206,8 @@ class PlayerRelationsManager final
 };
 
 
-extern PlayerRelationsManager player_relations;  // singleton representation
-                                                 // of player relations
+extern PlayerRelationsManager playerRelations;  // singleton representation
+                                                // of player relations
 
 
 #endif  // BEING_PLAYERRELATIONS_H

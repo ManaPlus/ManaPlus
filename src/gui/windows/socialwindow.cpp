@@ -143,12 +143,12 @@ void SocialWindow::postInit()
 
     enableVisibleSound(true);
     updateButtons();
-    player_relations.addListener(this);
+    playerRelations.addListener(this);
 }
 
 SocialWindow::~SocialWindow()
 {
-    player_relations.removeListener(this);
+    playerRelations.removeListener(this);
     if (mGuildAcceptDialog != nullptr)
     {
         mGuildAcceptDialog->close();

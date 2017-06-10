@@ -473,7 +473,7 @@ void Client::gameInit()
     inputManager.init();
 
     // Initialise player relations
-    player_relations.init();
+    playerRelations.init();
     Joystick::init();
     WindowManager::createWindows();
 
@@ -696,7 +696,7 @@ void Client::gameClear()
     delete2(emoteShortcut);
     delete2(dropShortcut);
 
-    player_relations.store();
+    playerRelations.store();
 
     if (logger != nullptr)
         logger->log1("Quitting2");
@@ -824,7 +824,7 @@ void Client::stateConnectServer1()
         PacketLimiter::initPacketLimiter();
         initTradeFilter();
         Dirs::initUsersDir();
-        player_relations.init();
+        playerRelations.init();
 
         // Initialize the item and emote shortcuts.
         for (unsigned f = 0; f < SHORTCUT_TABS; f ++)

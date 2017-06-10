@@ -288,7 +288,7 @@ void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
 {
     if (player == nullptr)
         return;
-    switch (player_relations.getRelation(nick))
+    switch (playerRelations.getRelation(nick))
     {
         case Relation::NEUTRAL:
         default:

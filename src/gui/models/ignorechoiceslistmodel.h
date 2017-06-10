@@ -45,7 +45,7 @@ class IgnoreChoicesListModel final : public ListModel
 
         int getNumberOfElements() override final
         {
-            return CAST_S32(player_relations.
+            return CAST_S32(playerRelations.
                 getPlayerIgnoreStrategies()->size());
         }
 
@@ -54,7 +54,7 @@ class IgnoreChoicesListModel final : public ListModel
             if (i >= getNumberOfElements() || i < 0)
                 return "???";
 
-            return (*player_relations.getPlayerIgnoreStrategies())
+            return (*playerRelations.getPlayerIgnoreStrategies())
                 [i]->mDescription;
         }
 };

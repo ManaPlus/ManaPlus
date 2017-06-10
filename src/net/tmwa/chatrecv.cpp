@@ -184,11 +184,11 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
             return;
         }
 
-        if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
+        if (playerRelations.hasPermission(nick, PlayerRelation::WHISPER))
         {
             const bool tradeBot = config.getBoolValue("tradebot");
             const bool showMsg = !config.getBoolValue("hideShopMessages");
-            if (player_relations.hasPermission(nick, PlayerRelation::TRADE))
+            if (playerRelations.hasPermission(nick, PlayerRelation::TRADE))
             {
                 if (shopWindow != nullptr)
                 {   // commands to shop from player
@@ -341,7 +341,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     // We use getIgnorePlayer instead of ignoringPlayer here
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
-    if ((player_relations.checkPermissionSilently(sender_name,
+    if ((playerRelations.checkPermissionSilently(sender_name,
         PlayerRelation::SPEECH_LOG) != 0u) &&
         (chatWindow != nullptr))
     {
@@ -355,7 +355,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
 
     if (allow &&
         (being != nullptr) &&
-        player_relations.hasPermission(sender_name,
+        playerRelations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
         being->setSpeech(chatMsg, GENERAL_CHANNEL);

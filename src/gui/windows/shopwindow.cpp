@@ -260,7 +260,7 @@ void ShopWindow::action(const ActionEvent &event)
     }
     else if (eventId == "ignore")
     {
-        player_relations.ignoreTrade(mTradeNick);
+        playerRelations.ignoreTrade(mTradeNick);
         mTradeNick.clear();
     }
     else if (eventId == "announce")

@@ -70,10 +70,10 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerScrollArea(new ScrollArea(this, mPlayerTable)),
     // TRANSLATORS: relation dialog button
     mDefaultTrading(new CheckBox(this, _("Allow trading"),
-        (player_relations.getDefault() & PlayerRelation::TRADE) != 0u)),
+        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)),
     // TRANSLATORS: relation dialog button
     mDefaultWhisper(new CheckBox(this, _("Allow whispers"),
-       (player_relations.getDefault() & PlayerRelation::WHISPER) != 0u)),
+       (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u)),
     // TRANSLATORS: relation dialog button
     mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this)),
     mIgnoreActionChoicesModel(new IgnoreChoicesListModel),
@@ -112,10 +112,10 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
 
     int ignore_strategy_index = 0;  // safe default
 
-    if (player_relations.getPlayerIgnoreStrategy() != nullptr)
+    if (playerRelations.getPlayerIgnoreStrategy() != nullptr)
     {
-        ignore_strategy_index = player_relations.getPlayerIgnoreStrategyIndex(
-            player_relations.getPlayerIgnoreStrategy()->mShortName);
+        ignore_strategy_index = playerRelations.getPlayerIgnoreStrategyIndex(
+            playerRelations.getPlayerIgnoreStrategy()->mShortName);
         if (ignore_strategy_index < 0)
             ignore_strategy_index = 0;
     }
@@ -136,14 +136,14 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     place(3, 6, mDefaultTrading, 3);
     place(3, 7, mDefaultWhisper, 3);
 
-    player_relations.addListener(this);
+    playerRelations.addListener(this);
 
     setDimension(Rect(0, 0, 500, 350));
 }
 
 Setup_Relations::~Setup_Relations()
 {
-    player_relations.removeListener(this);
+    playerRelations.removeListener(this);
     delete2(mIgnoreActionChoicesModel);
 }
 
@@ -152,13 +152,13 @@ void Setup_Relations::reset()
 {
     // We now have to search through the list of ignore choices to find the
     // current selection. We could use an index into the table of config
-    // options in player_relations instead of strategies to sidestep this.
+    // options in playerRelations instead of strategies to sidestep this.
     int selection = 0;
-    for (size_t i = 0, sz = player_relations.getPlayerIgnoreStrategies()
+    for (size_t i = 0, sz = playerRelations.getPlayerIgnoreStrategies()
          ->size(); i < sz; ++ i)
     {
-        if ((*player_relations.getPlayerIgnoreStrategies())[i] ==
-            player_relations.getPlayerIgnoreStrategy())
+        if ((*playerRelations.getPlayerIgnoreStrategies())[i] ==
+            playerRelations.getPlayerIgnoreStrategy())
         {
             selection = CAST_S32(i);
             break;
@@ -169,11 +169,11 @@ void Setup_Relations::reset()
 
 void Setup_Relations::apply()
 {
-    player_relations.store();
+    playerRelations.store();
 
-    const unsigned int old_default_relations = player_relations.getDefault() &
+    const unsigned int old_default_relations = playerRelations.getDefault() &
         ~(PlayerRelation::TRADE | PlayerRelation::WHISPER);
-    player_relations.setDefault(old_default_relations
+    playerRelations.setDefault(old_default_relations
         | (mDefaultTrading->isSelected() ? PlayerRelation::TRADE : 0)
         | (mDefaultWhisper->isSelected() ? PlayerRelation::WHISPER : 0));
 
@@ -197,13 +197,13 @@ void Setup_Relations::action(const ActionEvent &event)
         // so there is no need for asynchronous updates.  (In fact, thouse
         // might destroy the widet that triggered them, which would be rather
         // embarrassing.)
-        player_relations.removeListener(this);
+        playerRelations.removeListener(this);
 
         const int row = mPlayerTable->getSelectedRow();
         if (row >= 0)
             mPlayerTableModel->updateModelInRow(row);
 
-        player_relations.addListener(this);
+        playerRelations.addListener(this);
     }
     else if (eventId == ACTION_DELETE)
     {
@@ -212,7 +212,7 @@ void Setup_Relations::action(const ActionEvent &event)
         if (player_index < 0)
             return;
 
-        player_relations.removePlayer(mPlayerTableModel->getPlayerAt(
+        playerRelations.removePlayer(mPlayerTableModel->getPlayerAt(
             player_index));
     }
     else if (eventId == ACTION_STRATEGY)
@@ -221,9 +221,9 @@ void Setup_Relations::action(const ActionEvent &event)
         if (sel < 0)
             return;
         PlayerIgnoreStrategy *const s =
-            (*player_relations.getPlayerIgnoreStrategies())[sel];
+            (*playerRelations.getPlayerIgnoreStrategies())[sel];
 
-        player_relations.setPlayerIgnoreStrategy(s);
+        playerRelations.setPlayerIgnoreStrategy(s);
     }
 }
 
@@ -231,9 +231,9 @@ void Setup_Relations::updatedPlayer(const std::string &name A_UNUSED)
 {
     mPlayerTableModel->playerRelationsUpdated();
     mDefaultTrading->setSelected(
-            (player_relations.getDefault() & PlayerRelation::TRADE) != 0u);
+            (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u);
     mDefaultWhisper->setSelected(
-            (player_relations.getDefault() & PlayerRelation::WHISPER) != 0u);
+            (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u);
     if (localPlayer != nullptr)
         localPlayer->updateName();
 }
@@ -246,10 +246,10 @@ void Setup_Relations::updateAll()
     mPlayerTableModel = model;
     int ignore_strategy_index = 0;  // safe default
 
-    if (player_relations.getPlayerIgnoreStrategy() != nullptr)
+    if (playerRelations.getPlayerIgnoreStrategy() != nullptr)
     {
-        ignore_strategy_index = player_relations.getPlayerIgnoreStrategyIndex(
-                player_relations.getPlayerIgnoreStrategy()->mShortName);
+        ignore_strategy_index = playerRelations.getPlayerIgnoreStrategyIndex(
+                playerRelations.getPlayerIgnoreStrategy()->mShortName);
         if (ignore_strategy_index < 0)
             ignore_strategy_index = 0;
     }
@@ -260,7 +260,7 @@ void Setup_Relations::updateAll()
 void Setup_Relations::externalUpdated()
 {
     mDefaultTrading->setSelected(
-        (player_relations.getDefault() & PlayerRelation::TRADE) != 0u);
+        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u);
     mDefaultWhisper->setSelected(
-        (player_relations.getDefault() & PlayerRelation::WHISPER) != 0u);
+        (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u);
 }

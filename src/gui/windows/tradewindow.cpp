@@ -508,7 +508,7 @@ void TradeWindow::initTrade(const std::string &nick)
         }
     }
     clear();
-    if (!player_relations.isGoodName(nick))
+    if (!playerRelations.isGoodName(nick))
         setCaptionFont(gui->getSecureFont());
 }
 

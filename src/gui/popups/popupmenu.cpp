@@ -2400,7 +2400,7 @@ void PopupMenu::addNormalRelations()
 
 void PopupMenu::addPlayerRelation(const std::string &name)
 {
-    switch (player_relations.getRelation(name))
+    switch (playerRelations.getRelation(name))
     {
         case Relation::NEUTRAL:
             // TRANSLATORS: popup menu item
@@ -2501,7 +2501,7 @@ void PopupMenu::addFollow()
 
 void PopupMenu::addBuySell(const Being *const being)
 {
-    if ((player_relations.getDefault() & PlayerRelation::TRADE) != 0u)
+    if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)
     {
         mBrowserBox->addRow("##3---");
         const bool haveVending =
@@ -2535,7 +2535,7 @@ void PopupMenu::addBuySell(const Being *const being)
 
 void PopupMenu::addBuySellDefault()
 {
-    if ((player_relations.getDefault() & PlayerRelation::TRADE) != 0u)
+    if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)
     {
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item

@@ -114,7 +114,7 @@ static void reportRelation(const InputEvent &event,
 {
     if (event.tab != nullptr)
     {
-        if (player_relations.getRelation(event.args) == rel)
+        if (playerRelations.getRelation(event.args) == rel)
         {
             // TRANSLATORS: unignore command
             event.tab->chatLog(str1, ChatMsgType::BY_SERVER);
@@ -135,7 +135,7 @@ static void changeRelation(const InputEvent &event,
     if (args.empty())
         return;
 
-    if (player_relations.getRelation(args) == relation)
+    if (playerRelations.getRelation(args) == relation)
     {
         if (event.tab != nullptr)
         {
@@ -147,7 +147,7 @@ static void changeRelation(const InputEvent &event,
     }
     else
     {
-        player_relations.setRelation(args, relation);
+        playerRelations.setRelation(args, relation);
     }
 
     reportRelation(event,
@@ -180,10 +180,10 @@ impHandler(chatUnignore)
     if (args.empty())
         return false;
 
-    const RelationT rel = player_relations.getRelation(args);
+    const RelationT rel = playerRelations.getRelation(args);
     if (rel != Relation::NEUTRAL && rel != Relation::FRIEND)
     {
-        player_relations.setRelation(args, Relation::NEUTRAL);
+        playerRelations.setRelation(args, Relation::NEUTRAL);
     }
     else
     {
@@ -211,7 +211,7 @@ impHandler(chatErase)
     if (args.empty())
         return false;
 
-    if (player_relations.getRelation(args) == Relation::ERASED)
+    if (playerRelations.getRelation(args) == Relation::ERASED)
     {
         if (event.tab != nullptr)
         {
@@ -223,7 +223,7 @@ impHandler(chatErase)
     }
     else
     {
-        player_relations.setRelation(args, Relation::ERASED);
+        playerRelations.setRelation(args, Relation::ERASED);
     }
 
     reportRelation(event,

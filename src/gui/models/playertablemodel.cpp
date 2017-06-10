@@ -95,7 +95,7 @@ void PlayerTableModel::playerRelationsUpdated()
     signalBeforeUpdate();
 
     freeWidgets();
-    StringVect *const player_names = player_relations.getPlayers();
+    StringVect *const player_names = playerRelations.getPlayers();
     delete mPlayers;
     mPlayers = player_names;
 
@@ -109,7 +109,7 @@ void PlayerTableModel::playerRelationsUpdated()
 
         DropDown *const choicebox = new DropDown(this, mListModel);
         choicebox->setSelected(CAST_S32(
-            player_relations.getRelation(name)));
+            playerRelations.getRelation(name)));
         mWidgets.push_back(choicebox);
     }
 
@@ -122,7 +122,7 @@ void PlayerTableModel::updateModelInRow(const int row) const
         getElementAt(row, RELATION_CHOICE_COLUMN));
     if (choicebox == nullptr)
         return;
-    player_relations.setRelation(getPlayerAt(row),
+    playerRelations.setRelation(getPlayerAt(row),
         static_cast<RelationT>(
         choicebox->getSelected()));
 }

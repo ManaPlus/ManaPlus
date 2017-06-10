@@ -1466,7 +1466,7 @@ void ActorManager::heal(const Being *const target) const
             target->getType() != ActorType::Monster)
         {
             // target not enemy
-            if (player_relations.getRelation(target->getName()) !=
+            if (playerRelations.getRelation(target->getName()) !=
                 Relation::ENEMY2)
             {
                 if (!PacketLimiter::limitPackets(PacketType::PACKET_CHAT))
@@ -1512,7 +1512,7 @@ Being* ActorManager::findMostDamagedPlayer(const int maxTileDist) const
         Being *const being = static_cast<Being*>(*it);
 
         if ((being == nullptr) || !being->isAlive() ||  // don't heal dead
-            player_relations.getRelation(being->getName()) ==
+            playerRelations.getRelation(being->getName()) ==
             Relation::ENEMY2 ||                         // don't heal enemy
             localPlayer == being)                       // don't heal self
         {

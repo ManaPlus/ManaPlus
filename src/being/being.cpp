@@ -2461,7 +2461,7 @@ void Being::showName() restrict2
 
     delete2(mDispName);
 
-    if (mHideErased && player_relations.getRelation(mName) == Relation::ERASED)
+    if (mHideErased && playerRelations.getRelation(mName) == Relation::ERASED)
         return;
 
     std::string displayName(mName);
@@ -2488,7 +2488,7 @@ void Being::showName() restrict2
         font = boldFont;
     }
     else if (mType == ActorType::Player
-             && !player_relations.isGoodName(this) && (gui != nullptr))
+             && !playerRelations.isGoodName(this) && (gui != nullptr))
     {
         font = gui->getSecureFont();
     }
@@ -2573,7 +2573,7 @@ void Being::updateColors()
         {
             mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
 
-            if (player_relations.getRelation(mName) != Relation::ERASED)
+            if (playerRelations.getRelation(mName) != Relation::ERASED)
                 mErased = false;
             else
                 mErased = true;
@@ -2597,24 +2597,24 @@ void Being::updateColors()
             {
                 mNameColor = &userPalette->getColor(UserColorId::GUILD);
             }
-            else if (player_relations.getRelation(mName) == Relation::FRIEND)
+            else if (playerRelations.getRelation(mName) == Relation::FRIEND)
             {
                 mNameColor = &userPalette->getColor(UserColorId::FRIEND);
             }
-            else if (player_relations.getRelation(mName) ==
+            else if (playerRelations.getRelation(mName) ==
                      Relation::DISREGARDED
-                     || player_relations.getRelation(mName) ==
+                     || playerRelations.getRelation(mName) ==
                      Relation::BLACKLISTED)
             {
                 mNameColor = &userPalette->getColor(UserColorId::DISREGARDED);
             }
-            else if (player_relations.getRelation(mName)
+            else if (playerRelations.getRelation(mName)
                      == Relation::IGNORED ||
-                     player_relations.getRelation(mName) == Relation::ENEMY2)
+                     playerRelations.getRelation(mName) == Relation::ENEMY2)
             {
                 mNameColor = &userPalette->getColor(UserColorId::IGNORED);
             }
-            else if (player_relations.getRelation(mName) == Relation::ERASED)
+            else if (playerRelations.getRelation(mName) == Relation::ERASED)
             {
                 mNameColor = &userPalette->getColor(UserColorId::ERASED);
             }

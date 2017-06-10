@@ -455,7 +455,7 @@ void PlayerRelationsManager::ignoreTrade(const std::string &name) const
     }
     else
     {
-        player_relations.setRelation(name, Relation::BLACKLISTED);
+        playerRelations.setRelation(name, Relation::BLACKLISTED);
     }
 }
 
@@ -661,4 +661,4 @@ bool PlayerRelationsManager::checkName(const std::string &name)
     }
 }
 
-PlayerRelationsManager player_relations;
+PlayerRelationsManager playerRelations;

@@ -486,7 +486,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
 
     if (nick != "Server")
     {
-        if (player_relations.hasPermission(nick, PlayerRelation::WHISPER))
+        if (playerRelations.hasPermission(nick, PlayerRelation::WHISPER))
             chatWindow->addWhisper(nick, chatMsg);
     }
     else if (localChatTab != nullptr)
@@ -537,7 +537,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     // We use getIgnorePlayer instead of ignoringPlayer here
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
-    if ((player_relations.checkPermissionSilently(sender_name,
+    if ((playerRelations.checkPermissionSilently(sender_name,
         PlayerRelation::SPEECH_LOG) != 0u) && (chatWindow != nullptr))
     {
         allow = chatWindow->resortChatLog(
@@ -550,7 +550,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
 
     if (allow &&
         being != nullptr &&
-        player_relations.hasPermission(sender_name,
+        playerRelations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
         being->setSpeech(chatMsg, GENERAL_CHANNEL);
