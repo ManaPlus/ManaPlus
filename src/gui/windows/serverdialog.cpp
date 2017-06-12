@@ -37,6 +37,7 @@
 #include "gui/widgets/desktop.h"
 #include "gui/windows/editserverdialog.h"
 #include "gui/windows/logindialog.h"
+#include "gui/windows/serverinfowindow.h"
 
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
@@ -115,6 +116,8 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mDeleteButton(new Button(this, _("Delete"), "remove", this)),
     // TRANSLATORS: servers dialog button
     mLoadButton(new Button(this, _("Load"), "load", this)),
+    // TRANSLATORS: servers dialog button
+    mInfoButton(new Button(this, _("Info"), "info", this)),
     mServersListModel(new ServersListModel(&mServers, this)),
     mServersList(CREATEWIDGETR(ServersListBox, this, mServersListModel)),
     mDownload(nullptr),
@@ -151,15 +154,16 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mServersList->addSelectionListener(this);
     usedScroll->setVerticalScrollAmount(0);
 
-    place(0, 0, usedScroll, 7, 5).setPadding(3);
-    place(0, 5, mDescription, 7);
-    place(0, 6, mPersistentIPCheckBox, 7);
-    place(0, 7, mAddEntryButton);
-    place(1, 7, mEditEntryButton);
-    place(2, 7, mLoadButton);
-    place(3, 7, mDeleteButton);
-    place(5, 7, mQuitButton);
-    place(6, 7, mConnectButton);
+    place(0, 0, usedScroll, 8, 5).setPadding(3);
+    place(0, 5, mDescription, 8);
+    place(0, 6, mPersistentIPCheckBox, 8);
+    place(0, 7, mInfoButton);
+    place(1, 7, mAddEntryButton);
+    place(2, 7, mEditEntryButton);
+    place(3, 7, mLoadButton);
+    place(4, 7, mDeleteButton);
+    place(6, 7, mQuitButton);
+    place(7, 7, mConnectButton);
 
     // Make sure the list has enough height
     getLayout().setRowHeight(0, 80);
@@ -302,6 +306,15 @@ void ServerDialog::action(const ActionEvent &event)
             mServersList->setSelected(0);
             mServers.erase(mServers.begin() + index);
             saveCustomServers();
+        }
+    }
+    else if (eventId == "info")
+    {
+        const int index = mServersList->getSelected();
+        if (index >= 0)
+        {
+            CREATEWIDGET(ServerInfoWindow,
+                mServers.at(index));
         }
     }
 }

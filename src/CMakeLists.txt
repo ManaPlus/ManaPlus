@@ -428,6 +428,8 @@ SET(SRCS
     gui/widgets/selldialog.h
     gui/windows/serverdialog.cpp
     gui/windows/serverdialog.h
+    gui/windows/serverinfowindow.cpp
+    gui/windows/serverinfowindow.h
     gui/windows/setupwindow.cpp
     gui/windows/setupwindow.h
     gui/widgets/tabs/setup_audio.cpp

@@ -135,6 +135,7 @@ class ServerDialog final : public Window,
         Button *mEditEntryButton A_NONNULLPOINTER;
         Button *mDeleteButton A_NONNULLPOINTER;
         Button *mLoadButton A_NONNULLPOINTER;
+        Button *mInfoButton A_NONNULLPOINTER;
         ServersListModel *mServersListModel A_NONNULLPOINTER;
         ListBox *mServersList A_NONNULLPOINTER;
 

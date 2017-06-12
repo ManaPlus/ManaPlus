@@ -1216,6 +1216,8 @@ SRC = ${BASE_SRC} \
 	      gui/windows/setupwindow.h \
 	      gui/windows/serverdialog.cpp \
 	      gui/windows/serverdialog.h \
+	      gui/windows/serverinfowindow.cpp \
+	      gui/windows/serverinfowindow.h \
 	      gui/windows/quitdialog.cpp \
 	      gui/windows/quitdialog.h \
 	      gui/windows/questswindow.cpp \
