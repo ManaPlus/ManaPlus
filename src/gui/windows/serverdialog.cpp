@@ -240,6 +240,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->defaultHostName = server.defaultHostName;
     mServerInfo->save = true;
     mServerInfo->persistentIp = server.persistentIp;
+    mServerInfo->freeType = server.freeType;
     mServerInfo->updateMirrors = server.updateMirrors;
     mServerInfo->packetVersion = server.packetVersion;
     mServerInfo->updateHosts = server.updateHosts;
@@ -524,6 +525,9 @@ void ServerDialog::loadServers(const bool addNew)
             serverNode, "type", "unknown");
         ServerInfo server;
         server.type = ServerInfo::parseType(type);
+        const std::string licenseType = XML::getProperty(
+            serverNode, "licenseType", "notset");
+        server.freeType = ServerInfo::parseFreeType(licenseType);
 
         // Ignore unknown server types
         if (server.type == ServerType::UNKNOWN)
@@ -630,6 +634,7 @@ void ServerDialog::loadServers(const bool addNew)
                 // Use the name listed in the server list
                 mServers[i].name = server.name;
                 mServers[i].type = server.type;
+                mServers[i].freeType = server.freeType;
                 mServers[i].version = server.version;
                 mServers[i].description = server.description;
                 mServers[i].registerUrl = server.registerUrl;

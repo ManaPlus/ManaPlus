@@ -31,6 +31,8 @@
 
 #include "gui/models/listmodel.h"
 
+#include "utils/gettext.h"
+
 /**
  * Server and Port List Model
  */
@@ -68,6 +70,18 @@ class ServersListModel final : public ListModel
             MutexLocker lock = mParent->lock();
             const ServerInfo &server = mServers->at(elementIndex);
             std::string myServer;
+            if (server.freeType == ServerFreeType::NonFree)
+            {
+                // TRANSLATORS: server license comment
+                myServer.append(_("(NON FREE)"));
+                myServer.append(" ");
+            }
+            else if (server.freeType == ServerFreeType::Unknown)
+            {
+                // TRANSLATORS: server license comment
+                myServer.append(_("(UNKNOWN)"));
+                myServer.append(" ");
+            }
             myServer.append(server.hostname);
             return myServer;
         }

@@ -403,6 +403,7 @@ BASE_SRC += events/actionevent.h \
 	      enums/net/npcaction.h \
 	      enums/net/packettype.h \
 	      enums/net/partyshare.h \
+	      enums/net/serverfreetype.h \
 	      enums/net/servertype.h \
 	      enums/net/storesearchtype.h \
 	      enums/net/updatetype.h \

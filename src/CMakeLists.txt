@@ -572,6 +572,7 @@ SET(SRCS
     const/net/nostat.h
     net/partyhandler.h
     enums/net/partyshare.h
+    enums/net/serverfreetype.h
     enums/net/servertype.h
     enums/net/storesearchtype.h
     net/pethandler.h

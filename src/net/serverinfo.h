@@ -23,6 +23,7 @@
 #ifndef NET_SERVERINFO_H
 #define NET_SERVERINFO_H
 
+#include "enums/net/serverfreetype.h"
 #include "enums/net/servertype.h"
 
 #include "net/hostsgroup.h"
@@ -37,6 +38,7 @@ class ServerInfo final
         typedef std::pair<int, std::string> VersionString;
 
         ServerTypeT type;
+        ServerFreeTypeT freeType;
         std::string name;
         std::string hostname;
         std::string althostname;
@@ -55,6 +57,7 @@ class ServerInfo final
 
         ServerInfo() :
             type(ServerType::TMWATHENA),
+            freeType(ServerFreeType::NotSet),
             name(),
             hostname(),
             althostname(),
@@ -80,6 +83,7 @@ class ServerInfo final
 
         ServerInfo(const ServerInfo &info) :
             type(info.type),
+            freeType(info.freeType),
             name(info.name),
             hostname(info.hostname),
             althostname(info.althostname),
@@ -105,6 +109,7 @@ class ServerInfo final
         ServerInfo &operator=(const ServerInfo &info)
         {
             type = info.type;
+            freeType = info.freeType;
             name = info.name;
             hostname = info.hostname;
             althostname = info.althostname;
@@ -150,6 +155,7 @@ class ServerInfo final
             packetVersion = 0;
             save = false;
             persistentIp = true;
+            freeType = ServerFreeType::Unknown;
         }
 
         bool operator==(const ServerInfo &other) const
@@ -179,6 +185,18 @@ class ServerInfo final
             else if (compareStrI(serverType, "evol2") == 0)
                 return ServerType::EVOL2;
             return ServerType::UNKNOWN;
+        }
+
+        static ServerFreeTypeT parseFreeType(const std::string &serverFreeType)
+                                             A_WARN_UNUSED
+        {
+            if (compareStrI(serverFreeType, "free") == 0)
+                return ServerFreeType::Free;
+            else if (compareStrI(serverFreeType, "nonfree") == 0)
+                return ServerFreeType::NonFree;
+            else if (compareStrI(serverFreeType, "unknown") == 0)
+                return ServerFreeType::Unknown;
+            return ServerFreeType::NotSet;
         }
 };
 
