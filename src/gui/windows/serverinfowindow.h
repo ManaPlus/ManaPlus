@@ -54,6 +54,9 @@ class ServerInfoWindow final : public Window,
     protected:
         void showServerInfo();
 
+        void addSourcesList(const std::vector<ServerUrlInfo> &list,
+                            const std::string &comment);
+
     private:
         ServerInfo mServerInfo;
         BrowserBox *mBrowserBox A_NONNULLPOINTER;

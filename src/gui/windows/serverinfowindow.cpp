@@ -103,4 +103,58 @@ void ServerInfoWindow::handleLink(const std::string &link,
 
 void ServerInfoWindow::showServerInfo()
 {
+    const ServerFreeTypeT type = mServerInfo.freeType;
+    if (type == ServerFreeType::Free)
+    {
+        // TRANSLATORS: server info comment
+        mBrowserBox->addRow(_("Server with free license."));
+    }
+    else if (type == ServerFreeType::NonFree)
+    {
+        // TRANSLATORS: server info comment
+        mBrowserBox->addRow(_("Server with non free license."));
+    }
+    else if (type == ServerFreeType::Unknown ||
+             type == ServerFreeType::NotSet)
+    {
+        // TRANSLATORS: server info comment
+        mBrowserBox->addRow(_("Server unknown licesne."));
+    }
+    addSourcesList(mServerInfo.nonFreeSources,
+        // TRANSLATORS: server info non free comment
+        _("##BNon free sources"));
+    addSourcesList(mServerInfo.freeSources,
+        // TRANSLATORS: server info non free comment
+        _("##BFree sources"));
+}
+
+void ServerInfoWindow::addSourcesList(const std::vector<ServerUrlInfo> &list,
+                                      const std::string &comment)
+{
+    if (!list.empty())
+    {
+        mBrowserBox->addRow("");
+        mBrowserBox->addRow(comment);
+        FOR_EACH (std::vector<ServerUrlInfo>::const_iterator, it, list)
+        {
+            const ServerUrlInfo &info = *it;
+            const std::string url = info.url;
+            std::string str;
+            if (strStartWith(url, "http://") ||
+                strStartWith(url, "https://"))
+            {
+                str = strprintf("%s: @@%s|@@##0",
+                    info.name.c_str(),
+                    url.c_str());
+            }
+            else
+            {
+                str = strprintf("%s: %s",
+                    info.name.c_str(),
+                    url.c_str());
+            }
+            mBrowserBox->addRow(str);
+        }
+        mBrowserBox->addRow("");
+    }
 }
