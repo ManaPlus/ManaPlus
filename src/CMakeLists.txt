@@ -581,6 +581,7 @@ SET(SRCS
     net/sdltcpnet.h
     net/serverfeatures.h
     net/serverinfo.h
+    net/serverurlinfo.h
     net/skillhandler.h
     net/tradehandler.h
     net/updatetypeoperators.cpp

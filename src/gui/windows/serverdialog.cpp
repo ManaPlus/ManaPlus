@@ -244,6 +244,8 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->updateMirrors = server.updateMirrors;
     mServerInfo->packetVersion = server.packetVersion;
     mServerInfo->updateHosts = server.updateHosts;
+    mServerInfo->freeSources = server.freeSources;
+    mServerInfo->nonFreeSources = server.nonFreeSources;
 
     settings.persistentIp = mServerInfo->persistentIp;
     settings.supportUrl = mServerInfo->supportUrl;
@@ -474,8 +476,11 @@ static void loadHostsGroup(XmlNodeConstPtr node,
         _("Unknown"));
     for_each_xml_child_node(hostNode, node)
     {
-        if (!xmlNameEqual(hostNode, "host"))
+        if (!xmlNameEqual(hostNode, "host") ||
+            !XmlHaveChildContent(hostNode))
+        {
             continue;
+        }
         const std::string host = XmlChildContent(hostNode);
         if (host.empty())
             continue;
@@ -489,6 +494,44 @@ static void loadHostsGroup(XmlNodeConstPtr node,
     }
     if (!group.hosts.empty())
         server.updateHosts.push_back(group);
+}
+
+static void loadServerSourcesList(XmlNodeConstPtr node,
+                                  std::vector<ServerUrlInfo> &list)
+{
+    for_each_xml_child_node(urlNode, node)
+    {
+        if (!xmlNameEqual(urlNode, "url") ||
+            !XmlHaveChildContent(urlNode))
+        {
+            continue;
+        }
+        const std::string name = XML::langProperty(urlNode,
+            "name",
+            "");
+        if (name.empty())
+            continue;
+        const std::string url = XmlChildContent(urlNode);
+        if (url.empty())
+            continue;
+        list.push_back(ServerUrlInfo(name, url));
+    }
+}
+
+static void loadServerSources(XmlNodeConstPtr node,
+                              ServerInfo &server)
+{
+    for_each_xml_child_node(subNode, node)
+    {
+        if (xmlNameEqual(subNode, "free"))
+        {
+            loadServerSourcesList(subNode, server.freeSources);
+        }
+        else if (xmlNameEqual(subNode, "nonfree"))
+        {
+            loadServerSourcesList(subNode, server.nonFreeSources);
+        }
+    }
 }
 
 void ServerDialog::loadServers(const bool addNew)
@@ -618,6 +661,10 @@ void ServerDialog::loadServers(const bool addNew)
                     // TRANSLATORS: default hosts group name
                     subNode, "name", _("default"));
             }
+            else if (xmlNameEqual(subNode, "sources"))
+            {
+                loadServerSources(subNode, server);
+            }
         }
 
         server.version.first = font->getWidth(version);
@@ -646,6 +693,8 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].defaultHostName = server.defaultHostName;
                 mServers[i].updateHosts = server.updateHosts;
                 mServers[i].packetVersion = server.packetVersion;
+                mServers[i].freeSources = server.freeSources;
+                mServers[i].nonFreeSources = server.nonFreeSources;
                 mServersListModel->setVersionString(i, version);
                 found = true;
                 break;

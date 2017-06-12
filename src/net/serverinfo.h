@@ -27,6 +27,7 @@
 #include "enums/net/servertype.h"
 
 #include "net/hostsgroup.h"
+#include "net/serverurlinfo.h"
 
 #include "utils/stringutils.h"
 
@@ -49,6 +50,8 @@ class ServerInfo final
         std::string defaultHostName;
         std::vector<std::string> updateMirrors;
         std::vector<HostsGroup> updateHosts;
+        std::vector<ServerUrlInfo> freeSources;
+        std::vector<ServerUrlInfo> nonFreeSources;
         uint16_t port;
         VersionString version;
         int packetVersion;
@@ -68,6 +71,8 @@ class ServerInfo final
             defaultHostName(),
             updateMirrors(),
             updateHosts(),
+            freeSources(),
+            nonFreeSources(),
 #ifdef TMWA_SUPPORT
             port(6901),
 #else  // TMWA_SUPPORT
@@ -94,6 +99,8 @@ class ServerInfo final
             defaultHostName(info.defaultHostName),
             updateMirrors(info.updateMirrors),
             updateHosts(info.updateHosts),
+            freeSources(info.freeSources),
+            nonFreeSources(info.nonFreeSources),
             port(info.port),
             version(),
             packetVersion(info.packetVersion),
@@ -120,6 +127,8 @@ class ServerInfo final
             defaultHostName = info.defaultHostName;
             updateMirrors = info.updateMirrors;
             updateHosts = info.updateHosts;
+            freeSources = info.freeSources;
+            nonFreeSources = info.nonFreeSources;
             port = info.port;
             save = info.save;
             persistentIp = info.persistentIp;
@@ -150,6 +159,8 @@ class ServerInfo final
             defaultHostName.clear();
             updateMirrors.clear();
             updateHosts.clear();
+            freeSources.clear();
+            nonFreeSources.clear();
             version.first = 0;
             version.second.clear();
             packetVersion = 0;
