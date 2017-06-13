@@ -95,6 +95,7 @@
 
 #include "render/vertexes/imagecollection.h"
 
+#include "utils/checkutils.h"
 #include "utils/delete2.h"
 
 #include "debug.h"
@@ -278,8 +279,8 @@ Window::~Window()
     }
     if (!mInit)
     {
-        logger->log("error: Window created without calling postInit(): "
-            + mWindowName);
+        reportAlways("error: Window created without calling postInit(): %s",
+            mWindowName.c_str());
     }
 }
 
