@@ -250,7 +250,7 @@ TEST_CASE("Windows tests", "windowmanager")
         Map *map = new Map("test map",
             10, 10,
             32, 32);
-        Being *being = new Being(BeingId_zero,
+        Being *being = Being::createBeing(BeingId_zero,
             ActorType::Avatar,
             id,
             map);
@@ -404,7 +404,7 @@ TEST_CASE("Windows tests", "windowmanager")
     {
         Equipment *equipment = new Equipment;
         Map *map = new Map("test", 100, 100, 32, 32);
-        Being *being = new Being(BeingId_zero,
+        Being *being = Being::createBeing(BeingId_zero,
             ActorType::Player,
             BeingTypeId_zero,
             map);

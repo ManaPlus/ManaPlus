@@ -132,7 +132,7 @@ TEST_CASE("chatutils replaceVars", "")
 
     SECTION("player")
     {
-        Being *player1 = new Being(static_cast<BeingId>(2),
+        Being *player1 = Being::createBeing(static_cast<BeingId>(2),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -147,7 +147,7 @@ TEST_CASE("chatutils replaceVars", "")
 
     SECTION("monster")
     {
-        Being *const monster = new Being(static_cast<BeingId>(3),
+        Being *const monster = Being::createBeing(static_cast<BeingId>(3),
             ActorType::Monster,
             BeingTypeId_zero,
             nullptr);
@@ -167,7 +167,7 @@ TEST_CASE("chatutils replaceVars", "")
         replaceVars(str);
         REQUIRE(str == "test ");
 
-        Being *const player1 = new Being(static_cast<BeingId>(2),
+        Being *const player1 = Being::createBeing(static_cast<BeingId>(2),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -178,7 +178,7 @@ TEST_CASE("chatutils replaceVars", "")
         replaceVars(str);
         REQUIRE(str == "test player1");
 
-        Being *const player2 = new Being(static_cast<BeingId>(4),
+        Being *const player2 = Being::createBeing(static_cast<BeingId>(4),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -203,7 +203,7 @@ TEST_CASE("chatutils replaceVars", "")
         replaceVars(str);
         REQUIRE(str == "test ");
 
-        Being *const player1 = new Being(static_cast<BeingId>(2),
+        Being *const player1 = Being::createBeing(static_cast<BeingId>(2),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -215,7 +215,7 @@ TEST_CASE("chatutils replaceVars", "")
         replaceVars(str);
         REQUIRE(str == "test player1");
 
-        Being *const player2 = new Being(static_cast<BeingId>(4),
+        Being *const player2 = Being::createBeing(static_cast<BeingId>(4),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);
@@ -229,7 +229,7 @@ TEST_CASE("chatutils replaceVars", "")
 
         Party *const party2 = Party::getParty(2);
 
-        Being *const player3 = new Being(static_cast<BeingId>(5),
+        Being *const player3 = Being::createBeing(static_cast<BeingId>(5),
             ActorType::Player,
             BeingTypeId_zero,
             nullptr);

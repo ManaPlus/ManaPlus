@@ -102,9 +102,7 @@ class Being notfinal : public ActorSprite,
          * @param map     the map the being is on
          */
         Being(const BeingId id,
-              const ActorTypeT type,
-              const BeingTypeId subtype,
-              Map *const map);
+              const ActorTypeT type);
 
         A_DELETE_COPY(Being)
 
@@ -1084,6 +1082,11 @@ class Being notfinal : public ActorSprite,
         void fixDirectionOffsets(int &offsetX,
                                  int &offsetY) const;
 
+        static Being *createBeing(const BeingId id,
+                                  const ActorTypeT type,
+                                  const BeingTypeId subtype,
+                                  Map *const map);
+
     protected:
         void drawPlayerSpriteAt(Graphics *restrict const graphics,
                                 const int x,
@@ -1206,6 +1209,9 @@ class Being notfinal : public ActorSprite,
         bool mIsGM;
 
     protected:
+        void postInit(const BeingTypeId subType,
+                      Map *const map);
+
         /**
          * Calculates the offset in the given directions.
          * If walking in direction 'neg' the value is negated.

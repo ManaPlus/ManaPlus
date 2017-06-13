@@ -1128,7 +1128,7 @@ void NpcDialog::showAvatar(const BeingTypeId avatarId)
     if (needShow)
     {
         delete mAvatarBeing;
-        mAvatarBeing = new Being(BeingId_zero,
+        mAvatarBeing = Being::createBeing(BeingId_zero,
             ActorType::Avatar,
             avatarId,
             nullptr);

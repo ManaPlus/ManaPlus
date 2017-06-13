@@ -156,9 +156,7 @@ static const unsigned int SPEECH_MAX_TIME = 800;
     FOR_EACH (std::vector<AnimatedSprite*>::const_iterator, it, name)
 
 Being::Being(const BeingId id,
-             const ActorTypeT type,
-             const BeingTypeId subtype,
-             Map *const map) :
+             const ActorTypeT type) :
     ActorSprite(id),
     mNextSound(),
     mInfo(BeingInfo::unknown),
@@ -277,7 +275,11 @@ Being::Being(const BeingId id,
 
     for_each_badges()
         mBadges[f] = nullptr;
+}
 
+void Being::postInit(const BeingTypeId subtype,
+                     Map *const map)
+{
     setMap(map);
     setSubtype(subtype, 0);
 
@@ -5358,4 +5360,16 @@ void Being::setLanguageId(const int lang) restrict2 noexcept2
 
         mLanguageId = lang;
     }
+}
+
+Being *Being::createBeing(const BeingId id,
+                          const ActorTypeT type,
+                          const BeingTypeId subType,
+                          Map *const map)
+{
+    Being *const being = new Being(id,
+        type);
+    being->postInit(subType,
+        map);
+    return being;
 }

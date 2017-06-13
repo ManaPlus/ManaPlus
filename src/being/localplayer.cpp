@@ -110,8 +110,8 @@ extern OkDialog *weightNotice;
 extern time_t weightNoticeTime;
 
 LocalPlayer::LocalPlayer(const BeingId id,
-                         const BeingTypeId subtype) :
-    Being(id, ActorType::Player, subtype, nullptr),
+                         const BeingTypeId subType) :
+    Being(id, ActorType::Player),
     ActorSpriteListener(),
     AttributeListener(),
     PlayerDeathListener(),
@@ -184,6 +184,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
 {
     logger->log1("LocalPlayer::LocalPlayer");
 
+    postInit(subType, nullptr);
     mAttackRange = 0;
     mLevel = 1;
     mAdvanced = true;

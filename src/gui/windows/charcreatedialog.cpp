@@ -112,7 +112,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mCreateButton(new Button(this, _("Create"), "create", this)),
     // TRANSLATORS: char create dialog button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
-    mPlayer(new Being(BeingId_zero,
+    mPlayer(Being::createBeing(BeingId_zero,
             ActorType::Player,
             BeingTypeId_zero,
             nullptr)),

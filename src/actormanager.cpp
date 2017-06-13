@@ -277,7 +277,10 @@ Being *ActorManager::createBeing(const BeingId id,
                                  const ActorTypeT type,
                                  const BeingTypeId subtype)
 {
-    Being *const being = new Being(id, type, subtype, mMap);
+    Being *const being = Being::createBeing(id,
+        type,
+        subtype,
+        mMap);
 
     mActors.insert(being);
 
