@@ -2811,6 +2811,19 @@ gcc-6_SDL_default_old_sanitize:
   tags:
     - docker
 
+clang-tidy:
+  stage: build
+  script:
+  - ./tools/ci/jobs/clang_tidy.sh
+  <<: *job-push
+  variables:
+    PACKAGES: clang clang-tidy 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+    FLAGS: "-readability-implicit-bool-cast,-clang-analyzer-optin.cplusplus.VirtualCall,-performance-unnecessary-value-param,-misc-unused-parameters,-modernize-use-default,-clang-analyzer-alpha.deadcode.UnreachableCode,-clang-analyzer-alpha.cplusplus.VirtualCall,-clang-analyzer-alpha.unix.Stream,-clang-analyzer-alpha.security.taint.TaintPropagation,-clang-analyzer-alpha.core.CastToStruct,-clang-analyzer-alpha.core.BoolAssignment"
+  tags:
+    - docker
+
 gcc-6_openglerrors_i386:
   stage: build
   script:
