@@ -25,8 +25,6 @@
 
 #include "gui/widgets/linkhandler.h"
 
-#include "listeners/actionlistener.h"
-
 #include "net/serverinfo.h"
 
 class BrowserBox;
@@ -34,19 +32,16 @@ class ScrollArea;
 class ServerInfo;
 
 class ServerInfoWindow final : public Window,
-                               public LinkHandler,
-                               public ActionListener
+                               public LinkHandler
 {
     public:
-        ServerInfoWindow(ServerInfo &serverInfo);
+        explicit ServerInfoWindow(ServerInfo &serverInfo);
 
         A_DELETE_COPY(ServerInfoWindow)
 
         void postInit() override final;
 
         ~ServerInfoWindow();
-
-        void action(const ActionEvent &event) override final;
 
         void handleLink(const std::string &link,
                         MouseEvent *const event A_UNUSED) override final;

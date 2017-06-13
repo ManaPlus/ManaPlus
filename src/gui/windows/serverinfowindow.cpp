@@ -38,7 +38,6 @@ ServerInfoWindow::ServerInfoWindow(ServerInfo &serverInfo) :
     // TRANSLATORS: servers dialog name
     Window(_("Server info"), Modal_false, nullptr, "server_info.xml"),
     LinkHandler(),
-    ActionListener(),
     mServerInfo(serverInfo),
     mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
         "browserbox.xml")),
@@ -81,14 +80,6 @@ void ServerInfoWindow::postInit()
 
 ServerInfoWindow::~ServerInfoWindow()
 {
-}
-
-void ServerInfoWindow::action(const ActionEvent &event)
-{
-    const std::string &eventId = event.getId();
-    if (eventId == "close")
-    {
-    }
 }
 
 void ServerInfoWindow::handleLink(const std::string &link,
