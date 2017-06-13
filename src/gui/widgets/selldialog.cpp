@@ -79,6 +79,7 @@ SellDialog::SellDialog(const IsSell isSell,
 
 void SellDialog::postInit()
 {
+    Window::postInit();
     setWindowName("Sell");
     setResizable(true);
     setCloseButton(true);

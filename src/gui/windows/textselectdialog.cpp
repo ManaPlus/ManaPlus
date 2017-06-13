@@ -61,6 +61,7 @@ TextSelectDialog::TextSelectDialog(const std::string &name,
 
 void TextSelectDialog::postInit()
 {
+    Window::postInit();
     setWindowName("TextSelectDialog");
     setResizable(true);
     setCloseButton(mAllowQuit == AllowQuit_true);
