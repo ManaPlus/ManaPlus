@@ -107,19 +107,27 @@ void ServerInfoWindow::showServerInfo()
     if (type == ServerFreeType::Free)
     {
         // TRANSLATORS: server info comment
-        mBrowserBox->addRow(_("Server with free license."));
+        mBrowserBox->addRow(_("##BServer with free license."));
     }
     else if (type == ServerFreeType::NonFree)
     {
         // TRANSLATORS: server info comment
-        mBrowserBox->addRow(_("Server with non free license."));
+        mBrowserBox->addRow(_("##BServer with non free license."));
     }
     else if (type == ServerFreeType::Unknown ||
              type == ServerFreeType::NotSet)
     {
         // TRANSLATORS: server info comment
-        mBrowserBox->addRow(_("Server unknown licesne."));
+        mBrowserBox->addRow(_("##BServer unknown licesne."));
     }
+    mBrowserBox->addRow("");
+    addServerComment(mServerInfo.supportUrl,
+        // TRANSLATORS: server info comment
+        _("Support url"));
+    addServerComment(mServerInfo.registerUrl,
+        // TRANSLATORS: server info comment
+        _("Register url"));
+
     addSourcesList(mServerInfo.nonFreeSources,
         // TRANSLATORS: server info non free comment
         _("##BNon free sources"));
@@ -138,23 +146,32 @@ void ServerInfoWindow::addSourcesList(const std::vector<ServerUrlInfo> &list,
         FOR_EACH (std::vector<ServerUrlInfo>::const_iterator, it, list)
         {
             const ServerUrlInfo &info = *it;
-            const std::string url = info.url;
-            std::string str;
-            if (strStartWith(url, "http://") ||
-                strStartWith(url, "https://"))
-            {
-                str = strprintf("%s: @@%s|@@##0",
-                    info.name.c_str(),
-                    url.c_str());
-            }
-            else
-            {
-                str = strprintf("%s: %s",
-                    info.name.c_str(),
-                    url.c_str());
-            }
-            mBrowserBox->addRow(str);
+            addServerComment(info.url,
+                info.name);
         }
         mBrowserBox->addRow("");
+    }
+}
+
+void ServerInfoWindow::addServerComment(const std::string &url,
+                                        const std::string &comment)
+{
+    std::string str;
+    if (!url.empty())
+    {
+        if (strStartWith(url, "http://") ||
+            strStartWith(url, "https://"))
+        {
+            str = strprintf("%s: @@%s|@@##0",
+                comment.c_str(),
+                url.c_str());
+        }
+        else
+        {
+            str = strprintf("%s: %s",
+                comment.c_str(),
+                url.c_str());
+        }
+        mBrowserBox->addRow(str);
     }
 }
