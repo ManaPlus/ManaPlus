@@ -730,7 +730,7 @@ class Widget notfinal : public Widget2
           * @throws Exception if another widget already has modal focus.
           * @see releaseModalFocus, isModalFocused
           */
-        virtual void requestModalFocus();
+        void requestModalFocus();
 
         /**
           * Requests modal mouse input focus. When a widget has modal input focus

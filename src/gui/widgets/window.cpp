@@ -230,12 +230,23 @@ Window::Window(const std::string &caption,
     }
 
     // Windows are invisible by default
-    setVisible(Visible_false);
+    setVisible(Visible_false, false);
 
     addWidgetListener(this);
     mForegroundColor = getThemeColor(ThemeColorId::WINDOW);
     mForegroundColor2 = getThemeColor(ThemeColorId::WINDOW_OUTLINE);
     setPalette(childPalette);
+}
+
+void Window::postInit()
+{
+    if (mInit)
+    {
+        reportAlways("error: Window created with calling postInit() "
+            "more than once: %s",
+            mWindowName.c_str());
+    }
+    mInit = true;
 }
 
 Window::~Window()

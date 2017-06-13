@@ -298,8 +298,7 @@ class Window notfinal : public BasicContainer2,
         void setSaveVisible(const bool save)
         { mSaveVisible = save; }
 
-        void postInit() override
-        { mInit = true; }
+        void postInit() override;
 
         /**
          * Returns the parent window.
