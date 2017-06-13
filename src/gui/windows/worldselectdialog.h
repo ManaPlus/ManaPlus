@@ -49,7 +49,7 @@ class WorldSelectDialog final : public Window,
          *
          * @see Window::Window
          */
-        explicit WorldSelectDialog(Worlds worlds);
+        explicit WorldSelectDialog(const Worlds &worlds);
 
         A_DELETE_COPY(WorldSelectDialog)
 

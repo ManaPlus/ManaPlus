@@ -35,7 +35,7 @@
 class WorldListModel final : public ListModel
 {
     public:
-        explicit WorldListModel(Worlds worlds) :
+        explicit WorldListModel(const Worlds &worlds) :
             mWorlds(worlds)
         {
         }

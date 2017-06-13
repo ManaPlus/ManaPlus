@@ -31,7 +31,7 @@ class ShortcutTab final : public Tab
 {
     public:
         ShortcutTab(const Widget2 *const widget,
-                    std::string name,
+                    const std::string &name,
                     ShortcutContainer *const content) :
             Tab(widget),
             mContent(content)

@@ -42,7 +42,7 @@
 
 extern WorldInfo **server_info;
 
-WorldSelectDialog::WorldSelectDialog(Worlds worlds) :
+WorldSelectDialog::WorldSelectDialog(const Worlds &worlds) :
     // TRANSLATORS: world select dialog name
     Window(_("Select World"), Modal_false, nullptr, "world.xml"),
     ActionListener(),

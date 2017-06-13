@@ -39,9 +39,13 @@ class MapItem final
 
         explicit MapItem(const int type);
 
-        MapItem(const int type, std::string comment);
+        MapItem(const int type,
+                const std::string &comment);
 
-        MapItem(const int type, std::string comment, const int x, const int y);
+        MapItem(const int type,
+                const std::string &comment,
+                const int x,
+                const int y);
 
         A_DELETE_COPY(MapItem)
 

@@ -33,8 +33,8 @@ struct ServerUrlInfo final
     {
     }
 
-    ServerUrlInfo(const std::string name0,
-                  const std::string url0) :
+    ServerUrlInfo(const std::string &name0,
+                  const std::string &url0) :
         name(name0),
         url(url0)
     {

@@ -31,7 +31,7 @@ PoDict *reverseDictionary = nullptr;
 PoDict *mainTranslator = nullptr;
 #endif  // ENABLE_CUSTOMNLS
 
-PoDict::PoDict(std::string lang) :
+PoDict::PoDict(const std::string &lang) :
     mPoLines(),
     mLang(lang)
 {

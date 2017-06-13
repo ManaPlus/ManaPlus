@@ -57,7 +57,8 @@ MapItem::MapItem(const int type) :
     setType(type);
 }
 
-MapItem::MapItem(const int type, std::string comment) :
+MapItem::MapItem(const int type,
+                 const std::string &comment) :
     mImage(nullptr),
     mComment(comment),
     mName(),
@@ -68,8 +69,10 @@ MapItem::MapItem(const int type, std::string comment) :
     setType(type);
 }
 
-MapItem::MapItem(const int type, std::string comment,
-                 const int x, const int y) :
+MapItem::MapItem(const int type,
+                 const std::string &comment,
+                 const int x,
+                 const int y) :
     mImage(nullptr),
     mComment(comment),
     mName(),

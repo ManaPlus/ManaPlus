@@ -31,7 +31,7 @@ typedef std::map <std::string, std::string> PoMap;
 class PoDict final
 {
     public:
-        explicit PoDict(std::string lang);
+        explicit PoDict(const std::string &lang);
 
         A_DELETE_COPY(PoDict)
 
