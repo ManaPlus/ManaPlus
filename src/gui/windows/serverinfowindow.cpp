@@ -121,12 +121,15 @@ void ServerInfoWindow::showServerInfo()
         mBrowserBox->addRow(_("##BServer unknown licesne."));
     }
     mBrowserBox->addRow("");
+    addServerComment(mServerInfo.serverUrl,
+        // TRANSLATORS: server info comment
+        _("Server"));
     addServerComment(mServerInfo.supportUrl,
         // TRANSLATORS: server info comment
-        _("Support url"));
+        _("Support"));
     addServerComment(mServerInfo.registerUrl,
         // TRANSLATORS: server info comment
-        _("Register url"));
+        _("Register"));
 
     addSourcesList(mServerInfo.nonFreeSources,
         // TRANSLATORS: server info non free comment
@@ -149,7 +152,6 @@ void ServerInfoWindow::addSourcesList(const std::vector<ServerUrlInfo> &list,
             addServerComment(info.url,
                 info.name);
         }
-        mBrowserBox->addRow("");
     }
 }
 

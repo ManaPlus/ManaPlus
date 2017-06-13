@@ -47,6 +47,7 @@ class ServerInfo final
         std::string registerUrl;
         std::string onlineListUrl;
         std::string supportUrl;
+        std::string serverUrl;
         std::string defaultHostName;
         std::vector<std::string> updateMirrors;
         std::vector<HostsGroup> updateHosts;
@@ -68,6 +69,7 @@ class ServerInfo final
             registerUrl(),
             onlineListUrl(),
             supportUrl(),
+            serverUrl(),
             defaultHostName(),
             updateMirrors(),
             updateHosts(),
@@ -96,6 +98,7 @@ class ServerInfo final
             registerUrl(info.registerUrl),
             onlineListUrl(info.onlineListUrl),
             supportUrl(info.supportUrl),
+            serverUrl(info.serverUrl),
             defaultHostName(info.defaultHostName),
             updateMirrors(info.updateMirrors),
             updateHosts(info.updateHosts),
@@ -124,6 +127,7 @@ class ServerInfo final
             registerUrl = info.registerUrl;
             onlineListUrl = info.onlineListUrl;
             supportUrl = info.supportUrl;
+            serverUrl = info.serverUrl;
             defaultHostName = info.defaultHostName;
             updateMirrors = info.updateMirrors;
             updateHosts = info.updateHosts;
@@ -156,6 +160,7 @@ class ServerInfo final
             registerUrl.clear();
             onlineListUrl.clear();
             supportUrl.clear();
+            serverUrl.clear();
             defaultHostName.clear();
             updateMirrors.clear();
             updateHosts.clear();

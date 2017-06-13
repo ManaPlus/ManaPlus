@@ -650,6 +650,10 @@ void ServerDialog::loadServers(const bool addNew)
                 {
                     server.updateMirrors.push_back(XmlChildContent(subNode));
                 }
+                else if (xmlNameEqual(subNode, "site"))
+                {
+                    server.serverUrl = XmlChildContent(subNode);
+                }
             }
             if (xmlNameEqual(subNode, "updates"))
             {
@@ -687,6 +691,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].registerUrl = server.registerUrl;
                 mServers[i].onlineListUrl = server.onlineListUrl;
                 mServers[i].supportUrl = server.supportUrl;
+                mServers[i].serverUrl = server.serverUrl;
                 mServers[i].althostname = server.althostname;
                 mServers[i].persistentIp = server.persistentIp;
                 mServers[i].updateMirrors = server.updateMirrors;
