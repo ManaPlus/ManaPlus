@@ -307,6 +307,10 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
     if (mMode == BrowserBoxMode::AUTO_SIZE)
     {
         std::string plain = newRow;
+        // workaround if used only one string started from bold
+        // width for this string can be calculated wrong
+        // this workaround fix width if string start from bold sign
+        const bool startBold = (plain.find("##B") == 0);
         for (idx1 = plain.find("##");
              idx1 != std::string::npos;
              idx1 = plain.find("##"))
@@ -315,7 +319,8 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         }
 
         // Adjust the BrowserBox size
-        const int w = font->getWidth(plain);
+        const int w = startBold ?
+            boldFont->getWidth(plain) : font->getWidth(plain);
         if (w > getWidth())
             setWidth(w);
     }
