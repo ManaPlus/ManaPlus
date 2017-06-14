@@ -61,12 +61,18 @@ function send_command {
 
 function check_exists {
     if [ ! -f "logs/home/Desktop/ManaPlus/$1" ]; then
-        echo "Error: image $1 not exists"
-        exit 1
+        sleep 10s
+        if [ ! -f "logs/home/Desktop/ManaPlus/$1" ]; then
+            echo "Error: image $1 not exists"
+            exit 1
+        fi
     fi
     if [ ! -f "logs/home/Desktop/ManaPlus/$2" ]; then
-        echo "Error: image $2 not exists"
-        exit 1
+        sleep 10s
+        if [ ! -f "logs/home/Desktop/ManaPlus/$2" ]; then
+            echo "Error: image $2 not exists"
+            exit 1
+        fi
     fi
 }
 
