@@ -30,7 +30,6 @@
 
 #include "utils/gettext.h"
 #include "utils/process.h"
-#include "utils/stringutils.h"
 
 #include "debug.h"
 
