@@ -127,6 +127,9 @@ void ServerInfoWindow::showServerInfo()
     addSourcesList(mServerInfo.freeSources,
         // TRANSLATORS: server info non free comment
         _("##BFree sources"));
+    addSourcesList(mServerInfo.docs,
+        // TRANSLATORS: server info documentation comment
+        _("##BDocumentation"));
 }
 
 void ServerInfoWindow::addSourcesList(const std::vector<ServerUrlInfo> &list,

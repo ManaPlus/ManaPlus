@@ -53,6 +53,7 @@ class ServerInfo final
         std::vector<HostsGroup> updateHosts;
         std::vector<ServerUrlInfo> freeSources;
         std::vector<ServerUrlInfo> nonFreeSources;
+        std::vector<ServerUrlInfo> docs;
         uint16_t port;
         VersionString version;
         int packetVersion;
@@ -75,6 +76,7 @@ class ServerInfo final
             updateHosts(),
             freeSources(),
             nonFreeSources(),
+            docs(),
 #ifdef TMWA_SUPPORT
             port(6901),
 #else  // TMWA_SUPPORT
@@ -104,6 +106,7 @@ class ServerInfo final
             updateHosts(info.updateHosts),
             freeSources(info.freeSources),
             nonFreeSources(info.nonFreeSources),
+            docs(info.docs),
             port(info.port),
             version(),
             packetVersion(info.packetVersion),
@@ -133,6 +136,7 @@ class ServerInfo final
             updateHosts = info.updateHosts;
             freeSources = info.freeSources;
             nonFreeSources = info.nonFreeSources;
+            docs = info.docs;
             port = info.port;
             save = info.save;
             persistentIp = info.persistentIp;
@@ -166,6 +170,7 @@ class ServerInfo final
             updateHosts.clear();
             freeSources.clear();
             nonFreeSources.clear();
+            docs.clear();
             version.first = 0;
             version.second.clear();
             packetVersion = 0;

@@ -245,6 +245,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->updateHosts = server.updateHosts;
     mServerInfo->freeSources = server.freeSources;
     mServerInfo->nonFreeSources = server.nonFreeSources;
+    mServerInfo->docs = server.docs;
 
     settings.persistentIp = mServerInfo->persistentIp;
     settings.supportUrl = mServerInfo->supportUrl;
@@ -668,6 +669,10 @@ void ServerDialog::loadServers(const bool addNew)
             {
                 loadServerSources(subNode, server);
             }
+            else if (xmlNameEqual(subNode, "docs"))
+            {
+                loadServerSourcesList(subNode, server.docs);
+            }
         }
 
         server.version.first = font->getWidth(version);
@@ -699,6 +704,7 @@ void ServerDialog::loadServers(const bool addNew)
                 mServers[i].packetVersion = server.packetVersion;
                 mServers[i].freeSources = server.freeSources;
                 mServers[i].nonFreeSources = server.nonFreeSources;
+                mServers[i].docs = server.docs;
                 mServersListModel->setVersionString(i, version);
                 found = true;
                 break;
