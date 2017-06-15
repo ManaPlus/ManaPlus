@@ -21,6 +21,7 @@
 #include "actions/windows.h"
 
 #include "actormanager.h"
+#include "client.h"
 
 #include "actions/actiondef.h"
 
@@ -45,9 +46,12 @@
 #include "gui/windows/minimap.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/setupwindow.h"
+#include "gui/windows/serverinfowindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 #include "gui/windows/updaterwindow.h"
+
+#include "gui/widgets/createwidget.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
@@ -317,6 +321,23 @@ impHandler0(quickWindowShow)
 impHandler0(mailWindowShow)
 {
     showHideWindow(mailWindow);
+    return true;
+}
+
+impHandler0(serverInfoWindowShow)
+{
+    if (serverInfoWindow != nullptr &&
+        serverInfoWindow->isWindowVisible())
+    {
+        serverInfoWindow->close();
+        serverInfoWindow = nullptr;
+    }
+    else
+    {
+        serverInfoWindow = CREATEWIDGETR(ServerInfoWindow,
+            client->getCurrentServer());
+        serverInfoWindow->requestMoveToTop();
+    }
     return true;
 }
 

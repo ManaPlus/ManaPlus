@@ -700,6 +700,7 @@ enumStart(InputAction)
     COMMAND_GOTO_PC,
     COMMAND_RECALL_PC,
     COMMAND_IP_CHECK,
+    WINDOW_SERVER_INFO,
     TOTAL
 }
 enumEnd(InputAction);

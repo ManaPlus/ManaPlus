@@ -171,6 +171,11 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         // TRANSLATORS: long button name for mail window.
         _("Mail"), x, h, InputAction::WINDOW_MAIL,
         Visible_true);
+    // TRANSLATORS: short button name for server info window.
+    addButton(N_("SI"),
+        // TRANSLATORS: long button name for server info window.
+        _("Server info"), x, h, InputAction::WINDOW_SERVER_INFO,
+        Visible_true);
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
         // TRANSLATORS: long button name for debug window.

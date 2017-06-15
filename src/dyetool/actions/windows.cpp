@@ -54,6 +54,7 @@ impHandlerVoid(cartWindowShow)
 impHandlerVoid(updaterWindowShow)
 impHandlerVoid(quickWindowShow)
 impHandlerVoid(mailWindowShow)
+impHandlerVoid(serverInfoWindowShow)
 impHandlerVoid(showItems)
 
 }  // namespace Actions

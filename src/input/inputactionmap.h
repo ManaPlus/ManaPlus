@@ -5690,6 +5690,12 @@ static const InputActionData inputActionData
         "ipcheck|checkip",
         UseArgs_true,
         Protected_true},
+    {"keyWindowServerInfo",
+        defaultAction(&Actions::serverInfoWindowShow),
+        InputCondition::GAME | InputCondition::NOTARGET,
+        "serverinfo|infoserver",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

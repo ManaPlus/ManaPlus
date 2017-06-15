@@ -95,6 +95,9 @@ class Client final : public ConfigListener,
 
         void slowLogic();
 
+        ServerInfo &getCurrentServer()
+        { return mCurrentServer; }
+
     private:
         void initSoundManager();
 

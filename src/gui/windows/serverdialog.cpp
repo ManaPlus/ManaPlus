@@ -246,6 +246,7 @@ void ServerDialog::connectToSelectedServer()
     mServerInfo->freeSources = server.freeSources;
     mServerInfo->nonFreeSources = server.nonFreeSources;
     mServerInfo->docs = server.docs;
+    mServerInfo->serverUrl = server.serverUrl;
 
     settings.persistentIp = mServerInfo->persistentIp;
     settings.supportUrl = mServerInfo->supportUrl;
@@ -316,7 +317,9 @@ void ServerDialog::action(const ActionEvent &event)
         const int index = mServersList->getSelected();
         if (index >= 0)
         {
-            CREATEWIDGET(ServerInfoWindow,
+            if (serverInfoWindow != nullptr)
+                serverInfoWindow->scheduleDelete();
+            serverInfoWindow = CREATEWIDGETR(ServerInfoWindow,
                 mServers.at(index));
         }
     }

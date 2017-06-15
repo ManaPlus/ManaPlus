@@ -46,6 +46,8 @@ class ServerInfoWindow final : public Window,
         void handleLink(const std::string &link,
                         MouseEvent *const event A_UNUSED) override final;
 
+        void close() override final;
+
     protected:
         void showServerInfo();
 
@@ -60,5 +62,7 @@ class ServerInfoWindow final : public Window,
         BrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
 };
+
+extern ServerInfoWindow *serverInfoWindow;
 
 #endif  // GUI_WINDOWS_SERVERINFOWINDOW_H

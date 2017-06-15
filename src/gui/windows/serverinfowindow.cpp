@@ -33,6 +33,8 @@
 
 #include "debug.h"
 
+ServerInfoWindow *serverInfoWindow = nullptr;
+
 ServerInfoWindow::ServerInfoWindow(ServerInfo &serverInfo) :
     // TRANSLATORS: servers dialog name
     Window(_("Server info"), Modal_false, nullptr, "server_info.xml"),
@@ -169,4 +171,12 @@ void ServerInfoWindow::addServerComment(const std::string &url,
         }
         mBrowserBox->addRow(str);
     }
+}
+
+void ServerInfoWindow::close()
+{
+    Window::close();
+    if (serverInfoWindow == this)
+        serverInfoWindow = nullptr;
+    scheduleDelete();
 }

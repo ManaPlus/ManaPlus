@@ -67,6 +67,12 @@ SetupActionData setupActionDataWindows[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Server Info Window"),
+        InputAction::WINDOW_SERVER_INFO,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Status Window"),
         InputAction::WINDOW_STATUS,
         "",

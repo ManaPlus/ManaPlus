@@ -75,6 +75,12 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
 
     std::string data = link;
 
+    if (strStartWith(data, "http://") ||
+        strStartWith(data, "https://"))
+    {
+        return data;
+    }
+
     if (!link.empty() && link[0] == 'm')
     {  // monster link
         const BeingTypeId id = static_cast<BeingTypeId>(
