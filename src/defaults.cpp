@@ -129,7 +129,6 @@ DefaultsData* getConfigDefaults()
     AddDEF("mouseDirectionMove", true);
     AddDEF("showScreenKeyboard", true);
     AddDEF("fpslimit", 100);
-    AddDEF("theme", "jewelry");
     AddDEF("showChatColorsList", false);
     AddDEF("customcursor", false);
     AddDEF("showDidYouKnow", false);
@@ -144,13 +143,13 @@ DefaultsData* getConfigDefaults()
     AddDEF("mouseDirectionMove", false);
     AddDEF("showScreenKeyboard", false);
     AddDEF("fpslimit", 60);
-    AddDEF("theme", "");
     AddDEF("showChatColorsList", true);
     AddDEF("customcursor", true);
     AddDEF("showDidYouKnow", true);
     AddDEF("longmouseclick", false);
 #endif  // ANDROID
 
+    AddDEF("theme", "jewelry");
     AddDEF("showEmotesButton", true);
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
