@@ -119,6 +119,7 @@ void Desktop::reloadWallpaper()
 void Desktop::widgetResized(const Event &event A_UNUSED)
 {
     mVersionLabel->setSize(getWidth(), getHeight());
+    mVersionLabel->updateHeight();
     setBestFittingWallpaper();
 }
 
