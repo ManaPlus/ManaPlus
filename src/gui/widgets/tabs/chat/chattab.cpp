@@ -94,6 +94,7 @@ ChatTab::ChatTab(const Widget2 *const widget,
 
     if (chatWindow != nullptr)
         chatWindow->addTab(this);
+    mTextOutput->updateHeight();
 }
 
 ChatTab::~ChatTab()

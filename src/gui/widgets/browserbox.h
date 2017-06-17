@@ -24,8 +24,6 @@
 #ifndef GUI_WIDGETS_BROWSERBOX_H
 #define GUI_WIDGETS_BROWSERBOX_H
 
-#include "listeners/mouselistener.h"
-
 #include "enums/simpletypes/opaque.h"
 
 #include "enums/gui/browserboxmode.h"
@@ -36,6 +34,9 @@
 #include "gui/widgets/linepart.h"
 #include "gui/widgets/widget.h"
 
+#include "listeners/mouselistener.h"
+#include "listeners/widgetlistener.h"
+
 #include "localconsts.h"
 
 class LinkHandler;
@@ -45,7 +46,8 @@ class LinkHandler;
  * parent conteiner.
  */
 class BrowserBox final : public Widget,
-                         public MouseListener
+                         public MouseListener,
+                         public WidgetListener
 {
     public:
         /**
@@ -154,6 +156,8 @@ class BrowserBox final : public Widget,
         void moveSelectionDown();
 
         void selectSelection();
+
+        void widgetResized(const Event &event) override final;
 
     private:
         int calcHeight() A_WARN_UNUSED;

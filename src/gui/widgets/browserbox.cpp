@@ -65,6 +65,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
                        const std::string &skin) :
     Widget(widget),
     MouseListener(),
+    WidgetListener(),
     mTextRows(),
     mTextRowLinksCount(),
     mLineParts(),
@@ -98,6 +99,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
 
     setFocusable(true);
     addMouseListener(this);
+    addWidgetListener(this);
 
     mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND);
 
@@ -953,4 +955,9 @@ void BrowserBox::selectSelection()
 
     mLinkHandler->handleLink(mLinks[CAST_SIZE(mSelectedLink)].link,
         nullptr);
+}
+
+void BrowserBox::widgetResized(const Event &event A_UNUSED)
+{
+    updateHeight();
 }
