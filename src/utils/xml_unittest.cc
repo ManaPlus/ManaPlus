@@ -77,14 +77,15 @@ TEST_CASE("xml doc", "")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
-    theme = new Theme;
-    Theme::selectSkin();
-
     Dirs::initRootDir();
     Dirs::initHomeDir();
 
     ConfigManager::initConfiguration();
     getConfigDefaults2(config.getDefaultValues());
+    branding.setDefaultValues(getBrandingDefaults());
+
+    theme = new Theme;
+    Theme::selectSkin();
 
     const char *const tempXmlName = "tempxml.xml";
     ActorSprite::load();

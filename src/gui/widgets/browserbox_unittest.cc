@@ -84,6 +84,7 @@ TEST_CASE("BrowserBox tests", "browserbox")
 
     ConfigManager::initConfiguration();
     getConfigDefaults2(config.getDefaultValues());
+    branding.setDefaultValues(getBrandingDefaults());
 
     ActorSprite::load();
     gui = new Gui();

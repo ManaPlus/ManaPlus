@@ -93,6 +93,7 @@ TEST_CASE("DyePalette tests", "")
 
     ConfigManager::initConfiguration();
     getConfigDefaults2(config.getDefaultValues());
+    branding.setDefaultValues(getBrandingDefaults());
 
     ActorSprite::load();
     gui = new Gui();

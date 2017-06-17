@@ -186,6 +186,7 @@ TEST_CASE("Windows tests", "windowmanager")
 
     ConfigManager::initConfiguration();
     getConfigDefaults2(config.getDefaultValues());
+    branding.setDefaultValues(getBrandingDefaults());
     ConfigManager::initServerConfig("nonexistserver");
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
@@ -846,6 +847,7 @@ TEST_CASE("WindowManager", "create windows")
 
     ConfigManager::initConfiguration();
     getConfigDefaults2(config.getDefaultValues());
+    branding.setDefaultValues(getBrandingDefaults());
     ConfigManager::initServerConfig("nonexistserver");
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
