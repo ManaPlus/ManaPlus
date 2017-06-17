@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <colors>
     <palette id="0">
-        <color id="BROWSERBOX" color="#402600" />
+        <color id="BROWSERBOX" color="#000000" />
         <color id="SELFNICK" color="#402600" />
         <color id="TEXT" color="#402600" />
         <color id="TEXT_DISABLED" color="#402600" />
@@ -275,8 +275,8 @@
         <color id="IS_OUTLINE" color="#02232e" />
         <color id="SERVER" color="#a7ff2a" />
         <color id="SERVER_OUTLINE" color="#142200" />
-        <color id="BROWSERBOX" color="#dbdbdb" />
-        <color id="BROWSERBOX_OUTLINE" color="#333333" />
+        <color id="BROWSERBOX" color="#999999" />
+        <color id="BROWSERBOX_OUTLINE" color="#000000" />
         <color id="BLACK" color="#999999" />
         <color id="BLACK_OUTLINE" color="#000000" />
         <color id="RED" color="#ff6565" />
@@ -411,7 +411,7 @@
         <color id="PLAYER_ADVANCED" color="#005000" />
         <color id="BUBBLE_NAME" color="#cccccc" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
-        <color id="BROWSERBOX" color="#999999" />
+        <color id="BROWSERBOX" color="#000000" />
         <color id="BLACK" color="#000000" />
         <color id="RED" color="#b71313" />
         <color id="GREEN" color="#307200" />
