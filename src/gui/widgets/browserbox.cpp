@@ -43,6 +43,7 @@
 #include "resources/loaders/imagesetloader.h"
 
 #include "utils/browserboxtools.h"
+#include "utils/checkutils.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 #include "utils/translation/podict.h"
@@ -432,7 +433,10 @@ void BrowserBox::draw(Graphics *const graphics)
         mYStart = 0;
 
     if (mDimension.width != mWidth)
+    {
         updateHeight();
+        reportAlways("browserbox resize in draw");
+    }
 
     if (mOpaque == Opaque_true)
     {
