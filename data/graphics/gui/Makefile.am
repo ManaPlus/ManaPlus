@@ -71,6 +71,7 @@ gui_DATA =				\
 	scrollbuttons_pressed.xml\
 	sell.xml			\
 	server.xml			\
+	serverinfo.xml			\
 	shop.xml			\
 	skillrectanglelistbox.xml	\
 	slider.xml			\

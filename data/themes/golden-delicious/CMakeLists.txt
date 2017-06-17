@@ -95,6 +95,7 @@ SET (FILES
     sell.xml
     serverslistbox.xml
     server.xml
+    serverinfo.xml
     shoplistbox.xml
     shop.xml
     skilllistbox.xml

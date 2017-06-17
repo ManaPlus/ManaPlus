@@ -16,6 +16,7 @@ SET (FILES
     quests.xml
     sell.xml
     server.xml
+    serverinfo.xml
     shop.xml
     unknown-item.png
     window.png

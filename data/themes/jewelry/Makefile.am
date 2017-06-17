@@ -96,6 +96,7 @@ gui_DATA =				\
 	scrollbuttons_pressed.xml		\
 	sell.xml		\
 	server.xml		\
+	serverinfo.xml		\
 	serverslistbox.xml		\
 	shop.xml		\
 	shoplistbox.xml		\

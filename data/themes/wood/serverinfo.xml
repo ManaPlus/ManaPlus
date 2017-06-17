@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="260" ypos="0">
+        <option name="padding" value="6" />
+
+        <!-- Top Row -->
+        <part type="top-left-corner" width="10" height="10" />
+        <part type="top-edge" xpos="11" ypos="0" width="127" height="10" />
+        <part type="top-right-corner" xpos="139" ypos="0" width="12" height="10" />
+
+        <!-- Middle Row -->
+        <part type="left-edge" xpos="0" ypos="11" width="10" height="81" />
+        <part type="bg-quad" xpos="11" ypos="11" width="127" height="81" />
+        <part type="right-edge" xpos="139" ypos="11" width="12" height="81" />
+
+        <!-- Bottom Row -->
+        <part type="bottom-left-corner" xpos="0" ypos="93" width="10" height="12" />
+        <part type="bottom-edge" xpos="11" ypos="93" width="127" height="12" />
+        <part type="bottom-right-corner" xpos="139" ypos="93" width="12" height="12" />
+
+        <part type="closeImage" xpos="-130" ypos="0" width="15" height="15" />
+        <part type="stickyImageUp" xpos="-130" ypos="51" width="15" height="15" />
+        <part type="stickyImageDown" xpos="-115" ypos="51" width="15" height="15" />
+    </widget>
+</skinset>

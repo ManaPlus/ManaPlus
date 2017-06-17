@@ -37,7 +37,7 @@ ServerInfoWindow *serverInfoWindow = nullptr;
 
 ServerInfoWindow::ServerInfoWindow(ServerInfo &serverInfo) :
     // TRANSLATORS: servers dialog name
-    Window(_("Server info"), Modal_false, nullptr, "server_info.xml"),
+    Window(_("Server info"), Modal_false, nullptr, "serverinfo.xml"),
     LinkHandler(),
     mServerInfo(serverInfo),
     mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,

@@ -17,6 +17,7 @@ gui_DATA =				\
 	quests.xml		\
 	sell.xml		\
 	server.xml		\
+	serverinfo.xml		\
 	shop.xml		\
 	window.png			\
 	window.xml			\
