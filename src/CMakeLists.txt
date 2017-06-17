@@ -373,6 +373,7 @@ SET(SRCS
     gui/gui.cpp
     gui/gui.h
     gui/mailmessage.h
+    gui/mouseoverlink.h
     gui/windows/helpwindow.cpp
     gui/windows/helpwindow.h
     gui/windows/insertcarddialog.cpp

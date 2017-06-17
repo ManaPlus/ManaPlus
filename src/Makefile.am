@@ -367,6 +367,7 @@ BASE_SRC += events/actionevent.h \
 	      gui/gui.cpp \
 	      gui/gui.h \
 	      gui/mailmessage.h \
+	      gui/mouseoverlink.h \
 	      gui/windows/okdialog.cpp \
 	      gui/windows/okdialog.h \
 	      gui/onlineplayer.h \

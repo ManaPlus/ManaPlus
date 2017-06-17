@@ -26,6 +26,7 @@
 #include "enums/gui/linkhighlightmode.h"
 
 #include "gui/gui.h"
+#include "gui/mouseoverlink.h"
 #include "gui/skin.h"
 
 #include "gui/fonts/font.h"
@@ -49,30 +50,6 @@
 #include <algorithm>
 
 #include "debug.h"
-
-namespace
-{
-    struct MouseOverLink final
-    {
-        MouseOverLink(const int x,
-                      const int y) :
-            mX(x),
-            mY(y)
-        { }
-
-        A_DEFAULT_COPY(MouseOverLink)
-
-        bool operator() (const BrowserLink &link) const
-        {
-            return (mX >= link.x1 &&
-                mX < link.x2 &&
-                mY >= link.y1 &&
-                mY < link.y2);
-        }
-        const int mX;
-        const int mY;
-    };
-}  // namespace
 
 ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
