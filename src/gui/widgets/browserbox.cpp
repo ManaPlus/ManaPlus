@@ -320,7 +320,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
 
         // Adjust the BrowserBox size
         const int w = startBold ?
-            boldFont->getWidth(plain) : font->getWidth(plain);
+            boldFont->getWidth(plain) : font->getWidth(plain) + 2 * mPadding;
         if (w > getWidth())
             setWidth(w);
     }
