@@ -143,7 +143,7 @@ gcc-4.4:
   script:
   - ./tools/ci/jobs/gcc44.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldoldstable
+  image: debian:wheezy
   <<: *job-push
   variables:
     PACKAGES: gcc-4.4 g++-4.4 
@@ -1217,7 +1217,7 @@ gcc-4.6:
   script:
   - ./tools/ci/jobs/gcc46.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldoldstable
+  image: debian:wheezy
   <<: *job-push
   variables:
     PACKAGES: gcc-4.6 g++-4.6 
@@ -1249,7 +1249,7 @@ gcc-4.7:
   script:
   - ./tools/ci/jobs/gcc47.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldoldstable
+  image: debian:wheezy
   <<: *job-push
   variables:
     PACKAGES: gcc-4.7 g++-4.7 
@@ -1281,7 +1281,7 @@ gcc-4.7_c++11:
   script:
   - ./tools/ci/jobs/gcc47_c++11.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldoldstable
+  image: debian:wheezy
   <<: *job-push
   variables:
     PACKAGES: gcc-4.7 g++-4.7 
@@ -1327,7 +1327,7 @@ clang-3.0:
   script:
   - ./tools/ci/jobs/clang.sh clang
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldoldstable
+  image: debian:wheezy
   <<: *job-push
   variables:
     PACKAGES: clang libc++-dev 
