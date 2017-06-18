@@ -143,7 +143,7 @@ gcc-4.4:
   script:
   - ./tools/ci/jobs/gcc44.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldstable
+  image: debian:oldoldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.4 g++-4.4 
@@ -1217,7 +1217,7 @@ gcc-4.6:
   script:
   - ./tools/ci/jobs/gcc46.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldstable
+  image: debian:oldoldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.6 g++-4.6 
@@ -1249,7 +1249,7 @@ gcc-4.7:
   script:
   - ./tools/ci/jobs/gcc47.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldstable
+  image: debian:oldoldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.7 g++-4.7 
@@ -1281,7 +1281,7 @@ gcc-4.7_c++11:
   script:
   - ./tools/ci/jobs/gcc47_c++11.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldstable
+  image: debian:oldoldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.7 g++-4.7 
@@ -1297,7 +1297,7 @@ gcc-4.8:
   script:
   - ./tools/ci/jobs/gcc48.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.8 g++-4.8 
@@ -1327,7 +1327,7 @@ clang-3.0:
   script:
   - ./tools/ci/jobs/clang.sh clang
   - ./tools/ci/scripts/runtests.sh
-  image: debian:oldstable
+  image: debian:oldoldstable
   <<: *job-push
   variables:
     PACKAGES: clang libc++-dev 
@@ -1391,7 +1391,7 @@ clang-3.4:
   script:
   - ./tools/ci/jobs/clang34.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: clang-3.4 libc++-dev 
@@ -1421,7 +1421,7 @@ clang-3.5:
   script:
   - ./tools/ci/jobs/clang35.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: clang-3.5 libc++-dev 
@@ -1589,7 +1589,7 @@ gcc-4.8_c++11:
   script:
   - ./tools/ci/jobs/gcc48_c++11.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.8 g++-4.8 
@@ -1603,7 +1603,7 @@ gcc-4.9:
   script:
   - ./tools/ci/jobs/gcc49.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
@@ -1633,7 +1633,7 @@ gcc-4.9_c++11:
   script:
   - ./tools/ci/jobs/gcc49_c++11.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
@@ -1647,7 +1647,7 @@ cmake_gcc-4.9:
   script:
   - ./tools/ci/jobs/cmake_gcc49.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
@@ -1830,7 +1830,7 @@ gcc49_cilkplus:
   script:
   - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
@@ -1962,7 +1962,7 @@ gcc-4.8_sdl2:
   script:
   - ./tools/ci/jobs/gcc48.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.8 g++-4.8 
@@ -1976,7 +1976,7 @@ gcc-4.9_sdl2:
   script:
   - ./tools/ci/jobs/gcc49.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
-  image: debian:stable
+  image: debian:oldstable
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
