@@ -23,6 +23,8 @@
 #ifndef GUI_MOUSEOVERLINK_H
 #define GUI_MOUSEOVERLINK_H
 
+#include "gui/browserlink.h"
+
 #include "localconsts.h"
 
 struct MouseOverLink final
