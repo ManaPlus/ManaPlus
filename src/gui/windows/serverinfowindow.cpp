@@ -24,9 +24,9 @@
 
 #include "gui/gui.h"
 
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/staticbrowserbox.h"
 
 #include "utils/gettext.h"
 #include "utils/process.h"
@@ -40,7 +40,7 @@ ServerInfoWindow::ServerInfoWindow(ServerInfo &serverInfo) :
     Window(_("Server info"), Modal_false, nullptr, "serverinfo.xml"),
     LinkHandler(),
     mServerInfo(serverInfo),
-    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
         Opaque_true, "serverinfo_background.xml"))
@@ -132,6 +132,7 @@ void ServerInfoWindow::showServerInfo()
     addSourcesList(mServerInfo.docs,
         // TRANSLATORS: server info documentation comment
         _("##BDocumentation"));
+    mBrowserBox->updateHeight();
 }
 
 void ServerInfoWindow::addSourcesList(const std::vector<ServerUrlInfo> &list,

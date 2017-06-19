@@ -27,9 +27,9 @@
 
 #include "net/serverinfo.h"
 
-class BrowserBox;
 class ScrollArea;
 class ServerInfo;
+class StaticBrowserBox;
 
 class ServerInfoWindow final : public Window,
                                public LinkHandler
@@ -59,7 +59,7 @@ class ServerInfoWindow final : public Window,
 
     private:
         ServerInfo mServerInfo;
-        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        StaticBrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
 };
 
