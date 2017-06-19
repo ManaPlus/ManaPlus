@@ -200,6 +200,11 @@ void ModernOpenGLGraphics::postInit() restrict2
     mglUniform2f(mScreenUniform,
         static_cast<float>(mWidth) / 2.0f,
         static_cast<float>(mHeight) / 2.0f);
+    mglUniform4f(mSimpleColorUniform,
+        0.0F,
+        0.0F,
+        0.0F,
+        0.0F);
 }
 
 void ModernOpenGLGraphics::screenResized() restrict2
@@ -208,6 +213,7 @@ void ModernOpenGLGraphics::screenResized() restrict2
     mVboBinded = 0U;
     mEboBinded = 0U;
     mAttributesBinded = 0U;
+    mColor = Color(0, 0, 0, 0);
     postInit();
 }
 

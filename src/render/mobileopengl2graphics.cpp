@@ -198,6 +198,11 @@ void MobileOpenGL2Graphics::postInit() restrict2
     mglUniform2f(mTextureSizeUniform,
         1.0f,
         1.0f);
+    mglUniform4f(mSimpleColorUniform,
+        0.0F,
+        0.0F,
+        0.0F,
+        0.0F);
 
     mglActiveTexture(GL_TEXTURE0);
 }
@@ -207,6 +212,7 @@ void MobileOpenGL2Graphics::screenResized() restrict2
     deleteGLObjects();
     mVboBinded = 0U;
     mAttributesBinded = 0U;
+    mColor = Color(0, 0, 0, 0);
     postInit();
 }
 
