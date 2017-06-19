@@ -35,7 +35,7 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/browserbox.h"
+#include "gui/widgets/staticbrowserbox.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
 
@@ -58,7 +58,7 @@ HelpWindow::HelpWindow() :
     ActionListener(),
     // TRANSLATORS: help window. button.
     mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
-    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
         Opaque_true, "help_background.xml")),
@@ -128,6 +128,7 @@ void HelpWindow::loadHelp(const std::string &helpFile)
     loadFile(helpFile);
     loadFile("footer");
     mScrollArea->setVerticalScrollAmount(0);
+    mBrowserBox->updateHeight();
     setVisible(Visible_true);
 }
 
@@ -138,6 +139,7 @@ void HelpWindow::loadHelpSimple(const std::string &helpFile)
     mBrowserBox->clearRows();
     loadFile(helpFile);
     mScrollArea->setVerticalScrollAmount(0);
+    mBrowserBox->updateHeight();
     setVisible(Visible_true);
 }
 
@@ -209,6 +211,7 @@ void HelpWindow::search(const std::string &text0)
             }
             loadFile("footer");
             mScrollArea->setVerticalScrollAmount(0);
+            mBrowserBox->updateHeight();
             setVisible(Visible_true);
         }
     }

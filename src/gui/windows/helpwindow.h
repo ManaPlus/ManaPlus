@@ -31,8 +31,8 @@
 #include "localconsts.h"
 
 class Button;
-class BrowserBox;
 class ScrollArea;
+class StaticBrowserBox;
 
 typedef std::set<std::string> HelpNames;
 typedef HelpNames::const_iterator HelpNamesCIter;
@@ -82,7 +82,7 @@ class HelpWindow final : public Window,
         void loadFile(std::string file);
 
         Button *mDYKButton A_NONNULLPOINTER;
-        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        StaticBrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
         HelpTagsMap mTagFileMap;
 };
