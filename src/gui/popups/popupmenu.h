@@ -43,18 +43,18 @@
 
 class ActorSprite;
 class Being;
-class BrowserBox;
 class Button;
 class ChatTab;
 class FloorItem;
 class Item;
 class ListModel;
 class MapItem;
+class ProgressBar;
 class ScrollArea;
+class StaticBrowserBox;
 class TextCommand;
 class TextDialog;
 class TextField;
-class ProgressBar;
 class Window;
 
 struct SkillInfo;
@@ -268,7 +268,7 @@ class PopupMenu final : public Popup, public LinkHandler
 
         bool addBeingMenu();
 
-        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        StaticBrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
 
         BeingId mBeingId;

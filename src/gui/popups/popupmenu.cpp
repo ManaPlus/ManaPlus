@@ -59,6 +59,7 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/staticbrowserbox.h"
 #include "gui/widgets/textfield.h"
 
 #include "gui/widgets/tabs/chat/whispertab.h"
@@ -100,7 +101,7 @@ PopupMenu *popupMenu = nullptr;
 
 PopupMenu::PopupMenu() :
     Popup("PopupMenu", "popupmenu.xml"),
-    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "popupbrowserbox.xml")),
     mScrollArea(nullptr),
     mBeingId(BeingId_zero),
@@ -2348,22 +2349,22 @@ void PopupMenu::showSkillTypePopup(const SkillInfo *const info)
 void PopupMenu::showPopup(int x, int y)
 {
     const int pad2 = 2 * mPadding;
-    const int bPad2 = 2 * mBrowserBox->getPadding();
     mBrowserBox->setPosition(mPadding, mPadding);
     mScrollArea->setPosition(mPadding, mPadding);
+    mBrowserBox->updateHeight();
     // add padding to initial size before draw browserbox
     int height = mBrowserBox->getHeight();
     if (height + pad2 >= mainGraphics->getHeight())
     {
-        height = mainGraphics->getHeight() - bPad2 - pad2;
-        mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2 + 5);
+        height = mainGraphics->getHeight() - pad2;
+        mBrowserBox->setWidth(mBrowserBox->getWidth() + 5);
         mScrollArea->setWidth(mBrowserBox->getWidth() + pad2 + 10);
         setContentSize(mBrowserBox->getWidth() + pad2 + 20,
             height + pad2);
     }
     else
     {
-        mBrowserBox->setWidth(mBrowserBox->getWidth() + bPad2);
+        mBrowserBox->setWidth(mBrowserBox->getWidth());
         mScrollArea->setWidth(mBrowserBox->getWidth() + pad2);
         setContentSize(mBrowserBox->getWidth() + pad2,
             height + pad2);
