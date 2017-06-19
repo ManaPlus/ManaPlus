@@ -192,6 +192,12 @@
 
 #define const2 const
 
+#if GCC_VERSION >= 80000
+#define PRAGMA8(str) _Pragma(#str)
+#else  // GCC_VERSION > 80000
+#define PRAGMA8(str)
+#endif  // GCC_VERSION > 80000
+
 #if GCC_VERSION >= 60000
 #define PRAGMA6(str) _Pragma(#str)
 #else  // GCC_VERSION > 60000

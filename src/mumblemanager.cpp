@@ -189,7 +189,10 @@ void MumbleManager::setPlayer(const std::string &userName)
     // (e.g. the ingame Name).
     mbstowcs(mLinkedMemCache.identity, userName.c_str(), 256);
     mLinkedMemCache.uiTick ++;
+PRAGMA8(GCC diagnostic push)
+PRAGMA8(GCC diagnostic ignored "-Wclass-memaccess")
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
+PRAGMA8(GCC diagnostic pop)
 }
 
 void MumbleManager::setAction(const int action)
@@ -217,7 +220,10 @@ void MumbleManager::setAction(const int action)
     mLinkedMemCache.fCameraPosition[1] = mLinkedMemCache.fAvatarPosition[1];
 
     mLinkedMemCache.uiTick++;
+PRAGMA8(GCC diagnostic push)
+PRAGMA8(GCC diagnostic ignored "-Wclass-memaccess")
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
+PRAGMA8(GCC diagnostic pop)
 }
 
 void MumbleManager::setPos(const int tileX, const int tileY,
@@ -267,7 +273,10 @@ void MumbleManager::setPos(const int tileX, const int tileY,
     }
 
     mLinkedMemCache.uiTick ++;
+PRAGMA8(GCC diagnostic push)
+PRAGMA8(GCC diagnostic ignored "-Wclass-memaccess")
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
+PRAGMA8(GCC diagnostic pop)
 }
 
 void MumbleManager::setMap(const std::string &mapName)
@@ -293,11 +302,17 @@ void MumbleManager::setServer(const std::string &serverName)
         size = sizeof(mLinkedMemCache.context) - 1;
 
     memset(mLinkedMemCache.context, 0, sizeof(mLinkedMemCache.context));
+PRAGMA8(GCC diagnostic push)
+PRAGMA8(GCC diagnostic ignored "-Wclass-memaccess")
     memcpy(mLinkedMemCache.context, serverName.c_str(), size);
+PRAGMA8(GCC diagnostic pop)
     mLinkedMemCache.context[size] = '\0';
     mLinkedMemCache.context_len = size;
     mLinkedMemCache.uiTick ++;
+PRAGMA8(GCC diagnostic push)
+PRAGMA8(GCC diagnostic ignored "-Wclass-memaccess")
     memcpy(mLinkedMem, &mLinkedMemCache, sizeof(mLinkedMemCache));
+PRAGMA8(GCC diagnostic pop)
 }
 
 #endif  // USE_MUMBLE
