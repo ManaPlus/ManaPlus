@@ -117,6 +117,8 @@ class BrowserBox final : public Widget,
 
         void updateHeight();
 
+        void updateSize(const bool always);
+
         typedef std::list<std::string> TextRows;
 
         TextRows &getRows() noexcept2 A_WARN_UNUSED

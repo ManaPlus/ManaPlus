@@ -887,6 +887,13 @@ void BrowserBox::updateHeight()
     }
 }
 
+void BrowserBox::updateSize(const bool always)
+{
+    if (always)
+        mUpdateTime = 0;
+    updateHeight();
+}
+
 std::string BrowserBox::getTextAtPos(const int x, const int y) const
 {
     int textX = 0;
