@@ -29,8 +29,8 @@
 
 #include "gui/fonts/font.h"
 
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/label.h"
+#include "gui/widgets/staticbrowserbox.h"
 
 #include "debug.h"
 
@@ -39,7 +39,7 @@ SpeechBubble::SpeechBubble() :
     mText(),
     mSpacing(mSkin != nullptr ? mSkin->getOption("spacing") : 2),
     mCaption(new Label(this)),
-    mSpeechBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
+    mSpeechBox(new StaticBrowserBox(this, Opaque_true,
         "speechbrowserbox.xml"))
 {
     setContentSize(140, 46);
@@ -80,6 +80,7 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
     mSpeechBox->clearRows();
     mSpeechBox->addRow(text);
     mSpeechBox->setWidth(mSpeechBox->getDataWidth());
+    mSpeechBox->updateHeight();
 
     const int speechWidth = mSpeechBox->getWidth();
     const int nameHeight = showName ? mCaption->getHeight() + mSpacing : 0;

@@ -27,7 +27,7 @@
 #include "gui/widgets/popup.h"
 
 class Label;
-class BrowserBox;
+class StaticBrowserBox;
 
 class SpeechBubble final : public Popup
 {
@@ -61,7 +61,7 @@ class SpeechBubble final : public Popup
         std::string mText;
         int mSpacing;
         Label *mCaption A_NONNULLPOINTER;
-        BrowserBox *mSpeechBox A_NONNULLPOINTER;
+        StaticBrowserBox *mSpeechBox A_NONNULLPOINTER;
 };
 
 #endif  // GUI_POPUPS_SPEECHBUBBLE_H
