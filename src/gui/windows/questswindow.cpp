@@ -36,7 +36,6 @@
 
 #include "gui/windows/setupwindow.h"
 
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/createwidget.h"
@@ -44,6 +43,7 @@
 #include "gui/widgets/extendedlistbox.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/staticbrowserbox.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -70,7 +70,7 @@ QuestsWindow::QuestsWindow() :
         fromBool(getOptionBool("showlistbackground"), Opaque),
         "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
-    mText(new BrowserBox(this, BrowserBoxMode::AUTO_WRAP, Opaque_true,
+    mText(new StaticBrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mTextScrollArea(new ScrollArea(this, mText,
         fromBool(getOptionBool("showtextbackground"), Opaque),
@@ -365,6 +365,7 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
                 break;
         }
     }
+    mText->updateHeight();
 }
 
 void QuestsWindow::setMap(const Map *const map)
