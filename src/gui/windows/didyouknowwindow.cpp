@@ -31,11 +31,11 @@
 #include "gui/windows/setupwindow.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/checkbox.h"
 #include "gui/widgets/itemlinkhandler.h"
 #include "gui/widgets/layout.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/staticbrowserbox.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -55,7 +55,7 @@ DidYouKnowWindow::DidYouKnowWindow() :
     Window(_("Did You Know?"), Modal_false, nullptr, "didyouknow.xml"),
     ActionListener(),
     mItemLinkHandler(new ItemLinkHandler),
-    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
         Opaque_true, "didyouknow_background.xml")),
@@ -160,6 +160,7 @@ void DidYouKnowWindow::loadData(int num)
 
     loadFile(num);
 
+    mBrowserBox->updateHeight();
     mScrollArea->setVerticalScrollAmount(0);
 }
 

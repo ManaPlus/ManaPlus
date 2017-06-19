@@ -28,10 +28,10 @@
 #include "listeners/actionlistener.h"
 
 class Button;
-class BrowserBox;
 class CheckBox;
 class ItemLinkHandler;
 class ScrollArea;
+class StaticBrowserBox;
 
 /**
  * The help dialog.
@@ -64,7 +64,7 @@ class DidYouKnowWindow final : public Window,
         void loadFile(const int num);
 
         ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
-        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        StaticBrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
         Button *mButtonPrev A_NONNULLPOINTER;
         Button *mButtonNext A_NONNULLPOINTER;
