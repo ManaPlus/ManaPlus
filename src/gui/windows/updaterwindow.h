@@ -39,12 +39,12 @@
 #include "listeners/actionlistener.h"
 #include "listeners/keylistener.h"
 
-class BrowserBox;
 class Button;
 class ItemLinkHandler;
 class Label;
 class ProgressBar;
 class ScrollArea;
+class StaticBrowserBox;
 
 namespace Net
 {
@@ -211,7 +211,7 @@ class UpdaterWindow final : public Window,
         Button *mCancelButton A_NONNULLPOINTER;
         Button *mPlayButton A_NONNULLPOINTER;
         ProgressBar *mProgressBar A_NONNULLPOINTER;
-        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        StaticBrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
 
         /** Status of the current download. */

@@ -35,7 +35,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/itemlinkhandler.h"
@@ -43,6 +42,7 @@
 #include "gui/widgets/layout.h"
 #include "gui/widgets/progressbar.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/staticbrowserbox.h"
 
 #include "net/download.h"
 #include "net/updatetypeoperators.h"
@@ -195,7 +195,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mProgressBar(new ProgressBar(this, 0.0, 310, 0,
         ProgressColorId::PROG_UPDATE,
         "updateprogressbar.xml", "updateprogressbar_fill.xml")),
-    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,
         Opaque_true, "update_background.xml")),
@@ -422,6 +422,7 @@ void UpdaterWindow::loadNews()
     mMemoryBuffer = nullptr;
     mDownloadedBytes = 0;
 
+    mBrowserBox->updateHeight();
     mScrollArea->setVerticalScrollAmount(0);
 }
 
@@ -491,6 +492,7 @@ void UpdaterWindow::loadPatch()
     mMemoryBuffer = nullptr;
     mDownloadedBytes = 0;
 
+    mBrowserBox->updateHeight();
     mScrollArea->setVerticalScrollAmount(0);
 }
 
@@ -862,6 +864,7 @@ void UpdaterWindow::logic()
             mBrowserBox->addRow(_("##1  you try again later."));
             if (mDownload != nullptr)
                 mBrowserBox->addRow(mDownload->getError());
+            mBrowserBox->updateHeight();
             mScrollArea->setVerticalScrollAmount(
                     mScrollArea->getVerticalMaxScroll());
             mDownloadStatus = UpdateDownloadStatus::UPDATE_COMPLETE;
@@ -1092,6 +1095,7 @@ void UpdaterWindow::loadFile(std::string file)
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
         mBrowserBox->addRow(lines[i]);
+    mBrowserBox->updateHeight();
 }
 
 void UpdaterWindow::loadMods(const std::string &dir,
