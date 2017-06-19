@@ -30,7 +30,7 @@
 
 #include "localconsts.h"
 
-class BrowserBox;
+class StaticBrowserBox;
 class Image;
 class Skin;
 
@@ -77,7 +77,7 @@ class Desktop final : public Container,
         void setBestFittingWallpaper();
 
         Image *mWallpaper;
-        BrowserBox *mVersionLabel;
+        StaticBrowserBox *mVersionLabel;
         Skin *mSkin;
         Color mBackgroundGrayColor;
         bool mShowBackground;

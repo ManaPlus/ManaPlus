@@ -26,7 +26,7 @@
 
 #include "gui/skin.h"
 
-#include "gui/widgets/browserbox.h"
+#include "gui/widgets/staticbrowserbox.h"
 
 #include "input/inputmanager.h"
 
@@ -52,7 +52,7 @@ Desktop::Desktop(const Widget2 *const widget) :
     LinkHandler(),
     WidgetListener(),
     mWallpaper(nullptr),
-    mVersionLabel(new BrowserBox(this, BrowserBoxMode::AUTO_WRAP, Opaque_false,
+    mVersionLabel(new StaticBrowserBox(this, Opaque_false,
         "browserbox.xml")),
     mSkin(nullptr),
     mBackgroundGrayColor(getThemeColor(ThemeColorId::BACKGROUND_GRAY)),
@@ -83,6 +83,7 @@ Desktop::Desktop(const Widget2 *const widget) :
     mVersionLabel->addRow("copyright",
         "(C) ManaPlus developers, http://manaplus.org");
     mVersionLabel->setLinkHandler(this);
+    mVersionLabel->updateHeight();
 }
 
 Desktop::~Desktop()
@@ -101,8 +102,8 @@ void Desktop::postInit()
     if (mSkin != nullptr)
     {
         addXY(mVersionLabel,
-            mSkin->getOption("versionX", 25),
-            mSkin->getOption("versionY", 2));
+              mSkin->getOption("versionX", 25),
+              mSkin->getOption("versionY", 2));
     }
     else
     {
@@ -119,7 +120,7 @@ void Desktop::reloadWallpaper()
 void Desktop::widgetResized(const Event &event A_UNUSED)
 {
     mVersionLabel->setSize(getWidth(), getHeight());
-    mVersionLabel->updateSize(true);
+    mVersionLabel->updateHeight();
     setBestFittingWallpaper();
 }
 
