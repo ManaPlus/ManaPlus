@@ -256,8 +256,8 @@ void Viewport::draw(Graphics *const graphics)
         if ((*it)->getType() == ActorType::FloorItem)
             continue;
         Being *const b = static_cast<Being*>(*it);
-        b->drawSpeech(mPixelViewX, mPixelViewY);
         b->drawEmotion(graphics, mPixelViewX, mPixelViewY);
+        b->drawSpeech(mPixelViewX, mPixelViewY);
     }
 
     if (miniStatusWindow != nullptr)
