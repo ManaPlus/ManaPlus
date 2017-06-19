@@ -424,8 +424,6 @@ Skin *Theme::readSkin(const std::string &filename, const bool full)
     Image *const dBorders = Theme::getImageFromTheme(skinSetImage);
     ImageRect *const border = new ImageRect;
     ImageRect *const images = new ImageRect;
-    memset(border, 0, sizeof(ImageRect));
-    memset(images, 0, sizeof(ImageRect));
     int padding = 3;
     int titlePadding = 4;
     int titlebarHeight = 0;
