@@ -42,6 +42,7 @@
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
+#include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 
 #include "net/character.h"
@@ -66,6 +67,7 @@
 #include "debug.h"
 
 extern int serverVersion;
+extern OkDialog *deathNotice;
 
 namespace EAthena
 {
@@ -1561,7 +1563,8 @@ void BeingRecv::processPlayerStatusChange2(Net::MessageIn &msg)
 void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingResurrect")
-    if ((actorManager == nullptr) || (localPlayer == nullptr))
+    if (actorManager == nullptr ||
+        localPlayer == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingResurrect")
         return;
@@ -1582,6 +1585,12 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
     // If this is player's current target, clear it.
     if (dstBeing == localPlayer->getTarget())
         localPlayer->stopAttack();
+    if (dstBeing == localPlayer &&
+        deathNotice != nullptr)
+    {
+        deathNotice->scheduleDelete();
+        deathNotice = nullptr;
+    }
 
     dstBeing->setAction(BeingAction::STAND, 0);
     BLOCK_END("BeingRecv::processBeingResurrect")

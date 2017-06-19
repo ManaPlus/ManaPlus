@@ -33,6 +33,7 @@
 
 #include "input/keyboardconfig.h"
 
+#include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/socialwindow.h"
 
@@ -54,6 +55,8 @@
 #include "utils/timer.h"
 
 #include "debug.h"
+
+extern OkDialog *deathNotice;
 
 namespace TmwAthena
 {
@@ -1253,7 +1256,7 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
 void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingResurrect")
-    if ((actorManager == nullptr) || (localPlayer == nullptr))
+    if (actorManager == nullptr || localPlayer == nullptr)
     {
         BLOCK_END("BeingRecv::processBeingResurrect")
         return;
@@ -1274,6 +1277,12 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
     // If this is player's current target, clear it.
     if (dstBeing == localPlayer->getTarget())
         localPlayer->stopAttack();
+    if (dstBeing == localPlayer &&
+        deathNotice != nullptr)
+    {
+        deathNotice->scheduleDelete();
+        deathNotice = nullptr;
+    }
 
     if (msg.readInt16("flag?") == 1)
         dstBeing->setAction(BeingAction::STAND, 0);
