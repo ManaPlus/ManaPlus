@@ -1106,6 +1106,8 @@ SRC = ${BASE_SRC} \
 	      gui/widgets/itemshortcutcontainer.h \
 	      gui/widgets/spellshortcutcontainer.cpp \
 	      gui/widgets/spellshortcutcontainer.h \
+	      gui/widgets/staticbrowserbox.cpp \
+	      gui/widgets/staticbrowserbox.h \
 	      gui/widgets/statspage.cpp \
 	      gui/widgets/statspage.h \
 	      gui/widgets/statspagebasic.cpp \
