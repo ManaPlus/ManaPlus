@@ -28,10 +28,10 @@
 
 #include "listeners/actionlistener.h"
 
-class BrowserBox;
 class Button;
 class OnlinePlayer;
 class ScrollArea;
+class StaticBrowserBox;
 
 /**
  * Update progress window GUI
@@ -147,7 +147,7 @@ class WhoIsOnline final : public Window,
         /** Buffer to handler human readable error provided by curl. */
         char *mCurlError A_NONNULLPOINTER;
 
-        BrowserBox *mBrowserBox A_NONNULLPOINTER;
+        StaticBrowserBox *mBrowserBox A_NONNULLPOINTER;
         ScrollArea *mScrollArea A_NONNULLPOINTER;
         Button *mUpdateButton A_NONNULLPOINTER;
 

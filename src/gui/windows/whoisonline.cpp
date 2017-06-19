@@ -41,8 +41,8 @@
 #include "gui/windows/socialwindow.h"
 
 #include "gui/widgets/button.h"
-#include "gui/widgets/browserbox.h"
 #include "gui/widgets/scrollarea.h"
+#include "gui/widgets/staticbrowserbox.h"
 
 #include "being/beingflag.h"
 #include "being/localplayer.h"
@@ -101,7 +101,7 @@ WhoIsOnline::WhoIsOnline() :
     mThread(nullptr),
     mMemoryBuffer(nullptr),
     mCurlError(new char[CURL_ERROR_SIZE]),
-    mBrowserBox(new BrowserBox(this, BrowserBoxMode::AUTO_SIZE, Opaque_true,
+    mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "onlinebrowserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox, Opaque_false)),
     // TRANSLATORS: who is online. button.
@@ -281,6 +281,7 @@ void WhoIsOnline::updateWindow(size_t numOnline)
         mScrollArea->setVerticalScrollAmount(
             mScrollArea->getVerticalMaxScroll());
     }
+    mBrowserBox->updateHeight();
 }
 
 void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
@@ -488,6 +489,7 @@ void WhoIsOnline::loadWebList()
     }
 
     updateWindow(numOnline);
+    mBrowserBox->updateHeight();
 
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
