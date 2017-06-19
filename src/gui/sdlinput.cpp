@@ -84,7 +84,10 @@
 
 #include "render/graphics.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_timer.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

@@ -37,15 +37,21 @@
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
 #endif  // USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_opengl.h>
+#pragma GCC diagnostic pop
 #endif  // ANDROID
 #endif  // USE_OPENGL
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifdef USE_SDL2
 #include <SDL_render.h>
 #else  // USE_SDL2
 #include <SDL_video.h>
 #endif  // USE_SDL2
+#pragma GCC diagnostic pop
 
 #include <map>
 

@@ -28,7 +28,10 @@ UTILS_SDL2HELPER_H
 #else
 #include "utils/stringvector.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_thread.h>
+#pragma GCC diagnostic pop
 
 #include "localconsts.h"
 

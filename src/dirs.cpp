@@ -53,7 +53,10 @@
 #endif  // __APPLE__
 
 #ifdef WIN32
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>
+#pragma GCC diagnostic pop
 #include "fs/specialfolder.h"
 #undef ERROR
 #endif  // WIN32

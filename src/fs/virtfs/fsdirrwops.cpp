@@ -24,7 +24,10 @@
 
 #include "fs/virtfs/file.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_rwops.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

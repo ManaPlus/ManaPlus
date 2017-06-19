@@ -24,9 +24,12 @@
 
 #include "resources/dye/dyepalette.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
+#pragma GCC diagnostic pop
 
 #ifdef SIMD_SUPPORTED
 // avx2

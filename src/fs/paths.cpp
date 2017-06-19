@@ -55,11 +55,14 @@
 #include <pwd.h>
 #endif  // WIN32
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifdef ANDROID
 #ifdef USE_SDL2
 #include <SDL_system.h>
 #endif  // USE_SDL2
 #endif  // ANDROID
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

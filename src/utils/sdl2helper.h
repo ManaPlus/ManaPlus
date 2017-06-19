@@ -26,7 +26,10 @@
 
 #include "localconsts.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_thread.h>
+#pragma GCC diagnostic pop
 
 struct SDL_Surface;
 struct SDL_SysWMinfo;

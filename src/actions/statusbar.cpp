@@ -39,11 +39,14 @@
 
 #include "utils/gettext.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
 #endif  // USE_SDL2
 #endif  // ANDROID
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

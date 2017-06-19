@@ -23,7 +23,10 @@
 #include "maingui.h"
 
 #ifdef WIN32
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL.h>
+#pragma GCC diagnostic pop
 #endif  // WIN32
 
 #include "debug.h"

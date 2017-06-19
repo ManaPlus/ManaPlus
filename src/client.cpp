@@ -168,14 +168,20 @@
 #endif  // USE_OPENGL
 
 #ifdef WIN32
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>
+#pragma GCC diagnostic pop
 #include "fs/specialfolder.h"
 #undef ERROR
 #endif  // WIN32
 
 #ifdef ANDROID
 #ifndef USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_screenkeyboard.h>
+#pragma GCC diagnostic pop
 #include <fstream>
 #endif  // USE_SDL2
 #endif  // ANDROID
@@ -186,11 +192,14 @@
 #include "mumblemanager.h"
 #endif  // USE_MUMBLE
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifdef USE_SDL2
 #include <SDL2_framerate.h>
 #else  // USE_SDL2
 #include <SDL_framerate.h>
 #endif  // USE_SDL2
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

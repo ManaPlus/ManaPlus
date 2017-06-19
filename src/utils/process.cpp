@@ -24,11 +24,14 @@
 
 #include "localconsts.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifdef USE_SDL2
 #ifdef ANDROID
 #include <SDL_system.h>
 #endif  // ANDROID
 #endif  // USE_SDL2
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 
@@ -258,7 +261,10 @@ bool openBrowser(std::string url)
 #elif defined ANDROID
 #include "utils/stringutils.h"
 #ifndef USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_screenkeyboard.h>
+#pragma GCC diagnostic pop
 #endif  // USE_SDL2
 
 bool openBrowser(std::string url)

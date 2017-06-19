@@ -30,8 +30,11 @@
 #include "utils/glxhelper.h"
 #endif  // defined(USE_X11) && defined(USE_OPENGL)
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>
 #include <SDL_video.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

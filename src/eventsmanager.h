@@ -23,7 +23,10 @@
 
 #include "listeners/configlistener.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_events.h>
+#pragma GCC diagnostic pop
 
 #include "localconsts.h"
 

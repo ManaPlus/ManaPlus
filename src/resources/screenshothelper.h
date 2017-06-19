@@ -25,7 +25,10 @@
 
 #include "localconsts.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_video.h>
+#pragma GCC diagnostic pop
 
 class ScreenshotHelper notfinal
 {

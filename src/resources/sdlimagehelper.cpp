@@ -32,14 +32,20 @@
 #include "utils/checkutils.h"
 #include "utils/sdlcheckutils.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_image.h>
+#pragma GCC diagnostic pop
 
 #include "localconsts.h"
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
 #include "resources/sdlgfxblitfunc.h"
 #else  // SDL_BYTEORDER == SDL_LIL_ENDIAN
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_gfxBlitFunc.h>
+#pragma GCC diagnostic pop
 #endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN
 
 #ifndef SDL_BIG_ENDIAN

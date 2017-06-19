@@ -27,7 +27,10 @@
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_video.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

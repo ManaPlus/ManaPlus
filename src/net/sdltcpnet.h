@@ -23,7 +23,10 @@
 
 #include "localconsts.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_net.h>
+#pragma GCC diagnostic pop
 
 namespace TcpNet
 {

@@ -69,7 +69,10 @@
 
 #include "gui/fonts/textchunklist.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_ttf.h>
+#pragma GCC diagnostic pop
 
 #include "localconsts.h"
 

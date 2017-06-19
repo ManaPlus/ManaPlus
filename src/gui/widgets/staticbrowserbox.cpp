@@ -45,7 +45,6 @@
 #include "utils/browserboxtools.h"
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"
-#include "utils/timer.h"
 #include "utils/translation/podict.h"
 
 #include <algorithm>

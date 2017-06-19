@@ -25,7 +25,10 @@
 
 #include "resources/resource.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_mixer.h>
+#pragma GCC diagnostic pop
 
 #include "localconsts.h"
 

@@ -47,9 +47,12 @@
 
 #include "utils/timer.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifndef SDL_BIG_ENDIAN
 #include <SDL_endian.h>
 #endif  // SDL_BYTEORDER
+#pragma GCC diagnostic pop
 #endif  // USE_SDL2
 
 #include "debug.h"

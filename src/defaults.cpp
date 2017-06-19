@@ -39,7 +39,10 @@
 #include "const/net/net.h"
 
 #ifndef USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_keyboard.h>
+#pragma GCC diagnostic pop
 #endif  // USE_SDL2
 
 #include "debug.h"

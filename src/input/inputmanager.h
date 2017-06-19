@@ -29,7 +29,10 @@
 
 #include <list>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_events.h>
+#pragma GCC diagnostic pop
 
 class Setup_Input;
 

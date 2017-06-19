@@ -25,6 +25,8 @@
 #include "utils/stringutils.h"
 
 #include <png.h>
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 PRAGMACLANG6GCC(GCC diagnostic push)
@@ -32,6 +34,8 @@ PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
 PRAGMACLANG6GCC(GCC diagnostic pop)
 #include <SDL_ttf.h>
+#pragma GCC diagnostic pop
+
 #include <zlib.h>
 
 #include <curl/curl.h>

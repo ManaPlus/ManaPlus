@@ -31,7 +31,10 @@
 
 #include "utils/timer.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

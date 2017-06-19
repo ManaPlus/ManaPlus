@@ -37,11 +37,14 @@
 
 #include "utils/sdlcheckutils.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifdef USE_SDL2
 #include <SDL2_rotozoom.h>
 #else  // USE_SDL2
 #include <SDL_rotozoom.h>
 #endif  // USE_SDL2
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

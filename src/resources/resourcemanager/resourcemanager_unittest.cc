@@ -40,9 +40,12 @@
 
 #include <unistd.h>
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #ifndef USE_SDL2
 #include <SDL.h>
 #endif  // USE_SDL2
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

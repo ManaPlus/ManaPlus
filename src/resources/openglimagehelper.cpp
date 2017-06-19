@@ -46,7 +46,10 @@
 #include "utils/checkutils.h"
 #include "utils/sdlcheckutils.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_image.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

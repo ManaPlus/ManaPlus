@@ -29,7 +29,10 @@
 
 #include "localconsts.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_events.h>
+#pragma GCC diagnostic pop
 
 static const int MAX_LASTKEYS = 10;
 

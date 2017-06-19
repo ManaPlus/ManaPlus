@@ -44,7 +44,10 @@
 #include "resources/sdlimagehelper.h"
 #endif  // USE_SDL2
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

@@ -25,7 +25,10 @@
 
 #include "localconsts.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_mutex.h>
+#pragma GCC diagnostic pop
 
 #include <fstream>
 #include <vector>

@@ -38,7 +38,10 @@
 #include "debug.h"
 
 #ifdef USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_clipboard.h>
+#pragma GCC diagnostic pop
 
 #else  // USE_SDL2
 
@@ -52,12 +55,18 @@
 
 #include "utils/sdlhelper.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>
+#pragma GCC diagnostic pop
 #include <unistd.h>
 #elif defined __native_client__
 #include "utils/naclmessages.h"
 #elif defined WIN32
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>
+#pragma GCC diagnostic pop
 #endif  // defined(__APPLE__)
 
 #endif  // USE_SDL2

@@ -31,7 +31,10 @@ LGPL (c) A. Schiffler
 
 #include "utils/checkutils.h"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_video.h>
+#pragma GCC diagnostic pop
 
 #include "debug.h"
 

@@ -320,7 +320,10 @@
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
 #endif  // USE_SDL2
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow")
 #include <SDL_version.h>
+#pragma GCC diagnostic pop
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic pop)
 #endif  // USE_SDL2
