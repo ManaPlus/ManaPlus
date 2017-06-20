@@ -26,7 +26,6 @@
 
 #include "enums/simpletypes/opaque.h"
 
-#include "enums/gui/browserboxmode.h"
 #include "enums/gui/colorname.h"
 
 #include "gui/browserlink.h"
@@ -54,7 +53,6 @@ class BrowserBox final : public Widget,
          * Constructor.
          */
         BrowserBox(const Widget2 *const widget,
-                   const BrowserBoxModeT mode,
                    const Opaque opaque,
                    const std::string &skin);
 
@@ -180,7 +178,6 @@ class BrowserBox final : public Widget,
 
         LinkHandler *mLinkHandler;
         Skin *mSkin;
-        BrowserBoxModeT mMode;
         unsigned int mHighlightMode;
         int mSelectedLink;
         unsigned int mMaxRows;

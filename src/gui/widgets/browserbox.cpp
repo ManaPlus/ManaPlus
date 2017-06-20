@@ -60,7 +60,6 @@ int BrowserBox::mInstances = 0;
     mColors[1][ColorName::color] = getThemeColor(ThemeColorId::color##_OUTLINE)
 
 BrowserBox::BrowserBox(const Widget2 *const widget,
-                       const BrowserBoxModeT mode,
                        const Opaque opaque,
                        const std::string &skin) :
     Widget(widget),
@@ -72,7 +71,6 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mLinks(),
     mLinkHandler(nullptr),
     mSkin(nullptr),
-    mMode(mode),
     mHighlightMode(0),
     mSelectedLink(-1),
     mMaxRows(0),
@@ -283,87 +281,58 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
         }
     }
 
-    // Auto size mode
-    if (mMode == BrowserBoxMode::AUTO_SIZE)
-    {
-        std::string plain = newRow;
-        // workaround if used only one string started from bold
-        // width for this string can be calculated wrong
-        // this workaround fix width if string start from bold sign
-        const bool startBold = (plain.find("##B") == 0);
-        for (idx1 = plain.find("##");
-             idx1 != std::string::npos;
-             idx1 = plain.find("##"))
-        {
-            plain.erase(idx1, 3);
-        }
-
-        // Adjust the BrowserBox size
-        const int w = startBold ?
-            boldFont->getWidth(plain) : font->getWidth(plain) + 2 * mPadding;
-        if (w > getWidth())
-            setWidth(w);
-    }
-
     const int fontHeight = font->getHeight();
-    if (mMode == BrowserBoxMode::AUTO_WRAP)
+    unsigned int y = 0;
+    unsigned int nextChar;
+    const char *const hyphen = "~";
+    const unsigned int hyphenWidth = CAST_U32(
+        font->getWidth(hyphen));
+    unsigned int x = 0;
+
+    FOR_EACH (TextRowCIter, i, mTextRows)
     {
-        unsigned int y = 0;
-        unsigned int nextChar;
-        const char *const hyphen = "~";
-        const unsigned int hyphenWidth = CAST_U32(
-            font->getWidth(hyphen));
-        unsigned int x = 0;
-
-        FOR_EACH (TextRowCIter, i, mTextRows)
+        std::string tempRow = *i;
+        for (uint32_t j = 0, sz = CAST_U32(tempRow.size());
+             j < sz;
+             j++)
         {
-            std::string tempRow = *i;
-            for (uint32_t j = 0, sz = CAST_U32(tempRow.size());
-                 j < sz;
-                 j++)
+            const std::string character = tempRow.substr(j, 1);
+            x += CAST_U32(font->getWidth(character));
+            nextChar = j + 1;
+
+            // Wraping between words (at blank spaces)
+            if (nextChar < sz && tempRow.at(nextChar) == ' ')
             {
-                const std::string character = tempRow.substr(j, 1);
-                x += CAST_U32(font->getWidth(character));
-                nextChar = j + 1;
+                int nextSpacePos = CAST_U32(
+                    tempRow.find(' ', (nextChar + 1)));
+                if (nextSpacePos <= 0)
+                    nextSpacePos = CAST_U32(sz) - 1U;
 
-                // Wraping between words (at blank spaces)
-                if (nextChar < sz && tempRow.at(nextChar) == ' ')
-                {
-                    int nextSpacePos = CAST_U32(
-                        tempRow.find(' ', (nextChar + 1)));
-                    if (nextSpacePos <= 0)
-                        nextSpacePos = CAST_U32(sz) - 1U;
+                const unsigned int nextWordWidth =
+                    CAST_U32(font->getWidth(
+                    tempRow.substr(nextChar,
+                    (CAST_U32(nextSpacePos) - nextChar))));
 
-                    const unsigned int nextWordWidth =
-                        CAST_U32(font->getWidth(
-                        tempRow.substr(nextChar,
-                        (CAST_U32(nextSpacePos) - nextChar))));
-
-                    if ((x + nextWordWidth + 10)
-                        > CAST_U32(getWidth()))
-                    {
-                        x = mNewLinePadding;  // Ident in new line
-                        y += 1;
-                        j ++;
-                    }
-                }
-                // Wrapping looong lines (brutal force)
-                else if ((x + 2 * hyphenWidth)
-                         > CAST_U32(getWidth()))
+                if ((x + nextWordWidth + 10)
+                    > CAST_U32(getWidth()))
                 {
                     x = mNewLinePadding;  // Ident in new line
                     y += 1;
+                    j ++;
                 }
             }
+            // Wrapping looong lines (brutal force)
+            else if ((x + 2 * hyphenWidth)
+                     > CAST_U32(getWidth()))
+            {
+                x = mNewLinePadding;  // Ident in new line
+                y += 1;
+            }
         }
+    }
 
-        setHeight(fontHeight * (CAST_S32(
-            CAST_U32(mTextRows.size()) + y)));
-    }
-    else
-    {
-        setHeight(fontHeight * CAST_S32(mTextRows.size()));
-    }
+    setHeight(fontHeight * (CAST_S32(
+        CAST_U32(mTextRows.size()) + y)));
     mUpdateTime = 0;
     updateHeight();
 }
@@ -789,8 +758,7 @@ int BrowserBox::calcHeight()
                 width = font->getWidth(part);
 
             // Auto wrap mode
-            if (mMode == BrowserBoxMode::AUTO_WRAP &&
-                wWidth > 0 &&
+            if (wWidth > 0 &&
                 width > 0 &&
                 (x + CAST_U32(width) + 10) > wWidth)
             {
@@ -856,11 +824,8 @@ int BrowserBox::calcHeight()
             else
                 width = font->getWidth(part);
 
-            if (mMode == BrowserBoxMode::AUTO_WRAP &&
-                (width == 0 && !processed))
-            {
+            if (width == 0 && !processed)
                 break;
-            }
 
             x += CAST_U32(width);
             if (x > mDataWidth)

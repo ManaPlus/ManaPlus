@@ -93,7 +93,6 @@ TEST_CASE("BrowserBox tests", "browserbox")
     Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
         "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
     BrowserBox *const box = new BrowserBox(nullptr,
-        BrowserBoxMode::AUTO_WRAP,
         Opaque_true,
         "");
     box->setWidth(100);

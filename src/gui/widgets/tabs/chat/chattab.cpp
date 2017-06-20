@@ -69,7 +69,7 @@ ChatTab::ChatTab(const Widget2 *const widget,
                  const std::string &logName,
                  const ChatTabTypeT &type) :
     Tab(widget),
-    mTextOutput(new BrowserBox(this, BrowserBoxMode::AUTO_WRAP, Opaque_true,
+    mTextOutput(new BrowserBox(this, Opaque_true,
        "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mTextOutput, Opaque_false)),
     mChannelName(channel),
