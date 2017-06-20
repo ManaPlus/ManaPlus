@@ -23,6 +23,8 @@
 
 #ifdef USE_OPENGL
 
+#include "localconsts.h"
+
 #ifdef ANDROID
 #include <GLES/gl.h>
 #include <GLES/glext.h>
@@ -37,8 +39,6 @@ PRAGMA48(GCC diagnostic pop)
 #include <GL/glext.h>
 #endif  // defined(__APPLE__)
 #endif  // ANDROID
-
-#include "localconsts.h"
 
 struct FBOInfo final
 {
