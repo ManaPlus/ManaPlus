@@ -19,6 +19,7 @@
  */
 
 #ifndef USE_SDL2
+#include "localconsts.h"
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_endian.h>
@@ -40,7 +41,6 @@ PRAGMA48(GCC diagnostic pop)
 #include "render/sdlgraphics.h"
 
 #include "resources/sdlimagehelper.h"
-
 
 #include "debug.h"
 

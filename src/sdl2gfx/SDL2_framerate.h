@@ -38,6 +38,8 @@ extern "C"
 
     /* --- */
 
+#include "localconsts.h"
+
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL.h>
