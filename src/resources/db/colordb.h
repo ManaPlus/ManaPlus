@@ -22,11 +22,11 @@
 #ifndef RESOURCES_DB_COLORDB_H
 #define RESOURCES_DB_COLORDB_H
 
-#include "enums/simpletypes/itemcolor.h"
 #include "enums/simpletypes/skiperror.h"
 
+#include "resources/itemcolordata.h"
+
 #include <map>
-#include <string>
 
 #include "localconsts.h"
 
@@ -35,31 +35,6 @@
  */
 namespace ColorDB
 {
-    class ItemColorData final
-    {
-        public:
-            ItemColorData() :
-                id(ItemColor_zero),
-                name(),
-                color()
-            { }
-
-            ItemColorData(const ItemColor id0,
-                          const std::string &name0,
-                          const std::string &color0) :
-                id(id0),
-                name(name0),
-                color(color0)
-            {
-            }
-
-            A_DEFAULT_COPY(ItemColorData)
-
-            ItemColor id;
-            std::string name;
-            std::string color;
-    };
-
     /**
      * Loads the color data from <code>colors.xml</code>.
      */

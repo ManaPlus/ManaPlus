@@ -227,7 +227,7 @@ std::string ItemInfo::getDyeColorsString(const ItemColor color) const
     if ((mColorsList == nullptr) || mColorsListName.empty())
         return "";
 
-    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+    const std::map <ItemColor, ItemColorData>::const_iterator
         it = mColorsList->find(color);
     if (it == mColorsList->end())
         return "";
@@ -240,7 +240,7 @@ std::string ItemInfo::getDyeIconColorsString(const ItemColor color) const
     if ((mIconColorsList == nullptr) || mIconColorsListName.empty())
         return "";
 
-    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+    const std::map <ItemColor, ItemColorData>::const_iterator
         it = mIconColorsList->find(color);
     if (it == mIconColorsList->end())
         return "";
@@ -269,7 +269,7 @@ const std::string ItemInfo::replaceColors(std::string str,
     std::string name;
     if ((mColorsList != nullptr) && !mColorsListName.empty())
     {
-        const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+        const std::map <ItemColor, ItemColorData>::const_iterator
             it = mColorsList->find(color);
         if (it == mColorsList->end())
             name = "unknown";
@@ -413,7 +413,7 @@ std::string ItemInfo::getColorName(const ItemColor idx) const
     if (mColorsList == nullptr)
         return std::string();
 
-    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+    const std::map <ItemColor, ItemColorData>::const_iterator
         it = mColorsList->find(idx);
     if (it == mColorsList->end())
     {
@@ -430,7 +430,7 @@ std::string ItemInfo::getColor(const ItemColor idx) const
     if (mColorsList == nullptr)
         return std::string();
 
-    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+    const std::map <ItemColor, ItemColorData>::const_iterator
         it = mColorsList->find(idx);
     if (it == mColorsList->end())
     {
@@ -447,7 +447,7 @@ std::string ItemInfo::getIconColorName(const ItemColor idx) const
     if (mIconColorsList == nullptr)
         return std::string();
 
-    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+    const std::map <ItemColor, ItemColorData>::const_iterator
         it = mIconColorsList->find(idx);
     if (it == mIconColorsList->end())
     {
@@ -464,7 +464,7 @@ std::string ItemInfo::getIconColor(const ItemColor idx) const
     if (mIconColorsList == nullptr)
         return std::string();
 
-    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+    const std::map <ItemColor, ItemColorData>::const_iterator
         it = mIconColorsList->find(idx);
     if (it == mIconColorsList->end())
     {

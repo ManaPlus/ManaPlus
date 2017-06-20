@@ -31,16 +31,12 @@
 #include "enums/simpletypes/itemcolor.h"
 
 #include "resources/cursors.h"
+#include "resources/itemcolordata.h"
 #include "resources/soundinfo.h"
 
 #include "resources/sprite/spritedisplay.h"
 
 #include "utils/intmap.h"
-
-namespace ColorDB
-{
-    class ItemColorData;
-}  // namespace ColorDB
 
 // sprite, <itemfrom, itemto>
 typedef std::map<int, IntMap> SpriteToItemMap;
@@ -364,8 +360,8 @@ class ItemInfo final
         /** Stores the names of sounds to be played at certain event. */
         std::map <ItemSoundEvent::Type, SoundInfoVect> mSounds;
         std::map <int, int> mTags;
-        const std::map <ItemColor, ColorDB::ItemColorData> *mColorsList;
-        const std::map <ItemColor, ColorDB::ItemColorData> *mIconColorsList;
+        const std::map <ItemColor, ItemColorData> *mColorsList;
+        const std::map <ItemColor, ItemColorData> *mIconColorsList;
         std::string mColorsListName;
         std::string mIconColorsListName;
         ItemColor mCardColor;

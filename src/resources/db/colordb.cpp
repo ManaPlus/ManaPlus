@@ -214,7 +214,7 @@ int ColorDB::getHairSize()
     return mHairColorsSize;
 }
 
-const std::map <ItemColor, ColorDB::ItemColorData>
+const std::map <ItemColor, ItemColorData>
      *ColorDB::getColorsList(const std::string &name)
 {
     const ColorListsIterator it = mColorLists.find(name);

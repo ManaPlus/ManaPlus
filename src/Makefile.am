@@ -443,6 +443,7 @@ BASE_SRC += events/actionevent.h \
 	      resources/imageset.h \
 	      resources/imagewriter.cpp \
 	      resources/imagewriter.h \
+	      resources/itemcolordata.h \
 	      resources/mstack.h \
 	      resources/notificationinfo.h \
 	      resources/notifications.h \

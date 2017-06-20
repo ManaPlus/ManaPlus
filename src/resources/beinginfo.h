@@ -38,10 +38,7 @@
 
 struct Attack;
 
-namespace ColorDB
-{
-    class ItemColorData;
-}  // namespace ColorDB
+class ItemColorData;
 
 typedef std::map<int, Attack*> Attacks;
 
@@ -361,7 +358,7 @@ class BeingInfo final
         std::string mCurrency;
         unsigned char mBlockWalkMask;
         BlockTypeT mBlockType;
-        const std::map <ItemColor, ColorDB::ItemColorData> *mColors;
+        const std::map <ItemColor, ItemColorData> *mColors;
         int mTargetOffsetX;
         int mTargetOffsetY;
         int mNameOffsetX;

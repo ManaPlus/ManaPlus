@@ -227,7 +227,7 @@ std::string BeingInfo::getColor(const ItemColor idx) const
     if (mColors == nullptr)
         return std::string();
 
-    const std::map <ItemColor, ColorDB::ItemColorData>::const_iterator
+    const std::map <ItemColor, ItemColorData>::const_iterator
         it = mColors->find(idx);
     if (it == mColors->end())
         return std::string();

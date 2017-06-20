@@ -675,6 +675,7 @@ SET(SRCS
     resources/imageset.cpp
     resources/imagewriter.cpp
     resources/imagewriter.h
+    resources/itemcolordata.h
     resources/db/itemdb.cpp
     resources/db/itemdb.h
     resources/basicstat.h
@@ -1736,6 +1737,7 @@ SET(DYE_CMD_SRCS
     resources/imageset.h
     resources/imagewriter.cpp
     resources/imagewriter.h
+    resources/itemcolordata.h
     resources/resource.cpp
     resources/resource.h
     resources/resourcefunctiontypes.h
