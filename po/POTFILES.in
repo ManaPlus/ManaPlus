@@ -23,6 +23,7 @@ src/gui/models/fontsizechoicelistmodel.h
 src/gui/models/langlistmodel.h
 src/gui/models/magicschoolmodel.h
 src/gui/models/playerrelationlistmodel.h
+src/gui/models/serverslistmodel.h
 src/gui/models/sortlistmodelbuy.h
 src/gui/models/sortlistmodelinv.h
 src/gui/models/targettypemodel.h
@@ -113,6 +114,7 @@ src/gui/windows/questswindow.cpp
 src/gui/windows/quitdialog.cpp
 src/gui/windows/registerdialog.cpp
 src/gui/windows/serverdialog.cpp
+src/gui/windows/serverinfowindow.cpp
 src/gui/windows/setupwindow.cpp
 src/gui/windows/shopwindow.cpp
 src/gui/windows/skilldialog.cpp
