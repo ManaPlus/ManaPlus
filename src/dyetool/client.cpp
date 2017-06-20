@@ -78,10 +78,10 @@
 #include "net/ipc.h"
 
 #ifdef WIN32
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 #include <sys/time.h>
 #include "fs/specialfolder.h"
 #undef ERROR
@@ -89,22 +89,22 @@
 
 #ifdef ANDROID
 #ifndef USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_screenkeyboard.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 #include <fstream>
 #endif  // USE_SDL2
 #endif  // ANDROID
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #ifdef USE_SDL2
 #include <SDL2_framerate.h>
 #else  // USE_SDL2
 #include <SDL_framerate.h>
 #endif  // USE_SDL2
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 

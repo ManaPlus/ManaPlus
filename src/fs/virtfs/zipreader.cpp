@@ -29,10 +29,10 @@
 #include "utils/stringutils.h"
 
 #include <zlib.h>
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_endian.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
 #include <byteswap.h>

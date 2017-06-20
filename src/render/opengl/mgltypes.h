@@ -28,13 +28,14 @@
 #include <GLES/glext.h>
 #define APIENTRY GL_APIENTRY
 #else  // ANDROID
+#include "localconsts.h"
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
 #endif  // USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_opengl.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 #ifdef __native_client__
 #include <GL/Regal.h>
 #else  // __native_client__

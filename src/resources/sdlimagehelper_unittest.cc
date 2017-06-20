@@ -19,10 +19,10 @@
  */
 
 #ifndef USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_endian.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
 
 #include "test/unittests.h"

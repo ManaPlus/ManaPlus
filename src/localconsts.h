@@ -210,6 +210,12 @@
 #define A_FALLTHROUGH
 #endif  // ADVGCC
 
+#if GCC_VERSION >= 48000
+#define PRAGMA48(str) _Pragma(#str)
+#else  // GCC_VERSION > 48000
+#define PRAGMA48(str)
+#endif  // GCC_VERSION > 48000
+
 #if GCC_VERSION >= 49000
 #define PRAGMA49(str) _Pragma(#str)
 #else  // GCC_VERSION > 49000
@@ -326,10 +332,10 @@
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")
 #endif  // USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_version.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic pop)
 #endif  // USE_SDL2

@@ -75,14 +75,14 @@
 
 #include "resources/mstack.h"
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #ifdef USE_SDL2
 #include <SDL_render.h>
 #else  // USE_SDL2
 #include <SDL_video.h>
 #endif  // USE_SDL2
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #include "localconsts.h"
 

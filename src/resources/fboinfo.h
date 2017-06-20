@@ -27,10 +27,10 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #else  // ANDROID
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_opengl.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)

@@ -66,10 +66,10 @@
 
 #include "gui/color.h"
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #ifndef SDL_BYTEORDER
 #error missing SDL_endian.h

@@ -65,8 +65,8 @@
 #include "utils/naclmessages.h"
 #endif  // __native_client__
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
@@ -84,7 +84,7 @@
 #ifdef WIN32
 #include <SDL_syswm.h>
 #endif  // WIN32
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 

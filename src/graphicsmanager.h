@@ -23,16 +23,18 @@
 
 #ifdef USE_OPENGL
 
+#include "localconsts.h"
+
 #ifdef ANDROID
 #include <GLES/gl.h>
 #else  // ANDROID
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
 #endif  // USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_opengl.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 // hack to hide warnings
 #undef GL_GLEXT_VERSION
 #undef GL_GLEXT_PROTOTYPES
@@ -45,8 +47,6 @@
 #include "utils/stringvector.h"
 
 #include <set>
-
-#include "localconsts.h"
 
 class TestMain;
 

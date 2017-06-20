@@ -108,14 +108,14 @@
 #include "utils/parameters.h"
 #include "utils/timer.h"
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #ifdef ANDROID
 #ifndef USE_SDL2
 #include <SDL_screenkeyboard.h>
 #endif  // USE_OPENGL
 #endif  // ANDROID
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #include <sstream>
 

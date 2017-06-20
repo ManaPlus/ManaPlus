@@ -29,10 +29,10 @@
 #include <EGL/egl.h>
 
 #ifndef USE_SDL2
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_android.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 #endif  // USE_SDL2
 #elif defined(__native_client__)
 #include <GL/Regal.h>
@@ -93,10 +93,10 @@
 #include "render/renderers.h"
 #endif  // USE_OPENGL
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 

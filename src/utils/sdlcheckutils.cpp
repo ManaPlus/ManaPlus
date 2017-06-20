@@ -29,11 +29,11 @@
 
 #include <map>
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 

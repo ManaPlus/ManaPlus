@@ -40,12 +40,12 @@
 #include "resources/resourcetypes.h"
 #endif  // defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wshadow")
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #ifndef USE_OPENGL
 #include <SDL_image.h>
 #endif  // USE_OPENGL
-#pragma GCC diagnostic pop
+PRAGMA48(GCC diagnostic pop)
 
 #include <sstream>
 
