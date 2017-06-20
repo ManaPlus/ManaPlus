@@ -57,8 +57,6 @@ RENDER_OPENGL_MGLDEFINES_H
 #ifndef USE_SDL2
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #include <cstdint>
-#else  // defined(__GXX_EXPERIMENTAL_CXX0X__)
-#include <stdint.h>
 #endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 #endif  // USE_SDL2
 

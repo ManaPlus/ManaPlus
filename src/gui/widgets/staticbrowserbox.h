@@ -26,7 +26,6 @@
 
 #include "enums/simpletypes/opaque.h"
 
-#include "enums/gui/browserboxmode.h"
 #include "enums/gui/colorname.h"
 
 #include "gui/browserlink.h"

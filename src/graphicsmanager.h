@@ -21,10 +21,9 @@
 #ifndef GRAPHICSMANAGER_H
 #define GRAPHICSMANAGER_H
 
-#ifdef USE_OPENGL
-
 #include "localconsts.h"
 
+#ifdef USE_OPENGL
 #ifdef ANDROID
 #include <GLES/gl.h>
 #else  // ANDROID

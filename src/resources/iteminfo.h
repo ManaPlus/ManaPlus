@@ -28,7 +28,6 @@
 #include "enums/resources/item/itemdbtype.h"
 
 #include "enums/simpletypes/beingtypeid.h"
-#include "enums/simpletypes/itemcolor.h"
 
 #include "resources/cursors.h"
 #include "resources/itemcolordata.h"
