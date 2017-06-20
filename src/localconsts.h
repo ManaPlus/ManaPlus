@@ -18,6 +18,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef LOCALCONSTS_H
+#define LOCALCONSTS_H
+
 #define ENABLEDEBUGLOG 1
 
 #define CAST_8 static_cast<char>
@@ -405,3 +408,5 @@ UTILS_PERFOMANCE_H  // guard for protect previous include
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif  // HAVE_CONFIG_H
+
+#endif  // LOCALCONSTS_H
