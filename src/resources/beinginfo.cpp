@@ -149,7 +149,7 @@ void BeingInfo::addSound(const ItemSoundEvent::Type event,
         mSounds[event] = new SoundInfoVect;
 
     if (mSounds[event] != nullptr)
-        mSounds[event]->push_back(SoundInfo("sfx/" + filename, delay));
+        mSounds[event]->push_back(SoundInfo(filename, delay));
 }
 
 const SoundInfo &BeingInfo::getSound(const ItemSoundEvent::Type event) const

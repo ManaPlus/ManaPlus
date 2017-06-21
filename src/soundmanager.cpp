@@ -456,16 +456,7 @@ void SoundManager::playSfx(const std::string &path,
     if (!mInstalled || path.empty() || !mPlayBattle)
         return;
 
-    std::string tmpPath;
-    if (path.compare(0, 4, "sfx/") == 0)
-    {
-        tmpPath = path;
-        reportAlways("Sfx sound with sfx/ in path. Please remove sfx/");
-    }
-    else
-    {
-        tmpPath = pathJoin(paths.getValue("sfx", "sfx"), path);
-    }
+    std::string tmpPath = pathJoin(paths.getStringValue("sfx"), path);
     SoundEffect *const sample = Loader::getSoundEffect(tmpPath);
     if (sample != nullptr)
     {
