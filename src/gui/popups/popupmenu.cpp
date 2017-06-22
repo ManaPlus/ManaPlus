@@ -380,7 +380,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("/petfeed", _("Feed"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet drop loot
-                mBrowserBox->addRow("pet drop loot", _("Drop loot"));
+                mBrowserBox->addRow("/petdroploot", _("Drop loot"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet unequip item
                 mBrowserBox->addRow("pet unequip", _("Unequip"));
@@ -1301,10 +1301,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         showCraftPopup();
         return;
-    }
-    else if (link == "pet drop loot")
-    {
-        petHandler->dropLoot();
     }
     else if (link == "pet to egg")
     {

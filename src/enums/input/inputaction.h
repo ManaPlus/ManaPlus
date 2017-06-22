@@ -705,6 +705,7 @@ enumStart(InputAction)
     HOMUNCULUS_TO_MASTER,
     HOMUNCULUS_FEED,
     PET_FEED,
+    PET_DROP_LOOT,
     TOTAL
 }
 enumEnd(InputAction);

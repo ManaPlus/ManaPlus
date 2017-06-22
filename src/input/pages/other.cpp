@@ -440,6 +440,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Drop pet's loot"),
+        InputAction::PET_DROP_LOOT,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

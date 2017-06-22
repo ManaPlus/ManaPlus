@@ -1624,6 +1624,13 @@ impHandler0(petFeed)
     return true;
 }
 
+impHandler0(petDropLoot)
+{
+    if (petHandler != nullptr)
+        petHandler->dropLoot();
+    return true;
+}
+
 impHandler(useItem)
 {
     const int itemId = atoi(event.args.c_str());

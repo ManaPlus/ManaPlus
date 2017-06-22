@@ -5720,6 +5720,12 @@ static const InputActionData inputActionData
         "petfeed|feedpet",
         UseArgs_false,
         Protected_false},
+    {"keyPetDropLoot",
+        defaultAction(&Actions::petDropLoot),
+        InputCondition::INGAME,
+        "petdroploot|petloot",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction
