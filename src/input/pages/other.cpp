@@ -428,6 +428,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Feed homunculus"),
+        InputAction::HOMUNCULUS_FEED,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

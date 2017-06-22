@@ -358,7 +358,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                     _("Move to master"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: feed homunculus
-                mBrowserBox->addRow("homunculus feed", _("Feed"));
+                mBrowserBox->addRow("/homunculusfeed", _("Feed"));
                 mBrowserBox->addRow("##3---");
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet rename item
@@ -1296,10 +1296,6 @@ void PopupMenu::handleLink(const std::string &link,
         const ChatObject *const chat = being->getChat();
         if (chat != nullptr)
             chatHandler->joinChat(chat, "");
-    }
-    else if (link == "homunculus feed")
-    {
-        homunculusHandler->feed();
     }
     else if (link == "homunculus delete")
     {

@@ -5708,6 +5708,12 @@ static const InputActionData inputActionData
         "homunculustomaster|homunmaster",
         UseArgs_false,
         Protected_false},
+    {"keyHomunculusFeed",
+        defaultAction(&Actions::homunculusFeed),
+        InputCondition::INGAME,
+        "homunculusfeed|homunfeed|feedhomun|feedhomunculus",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

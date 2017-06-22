@@ -1609,6 +1609,13 @@ impHandler0(homunculusToMaster)
     return true;
 }
 
+impHandler0(homunculusFeed)
+{
+    if (homunculusHandler != nullptr)
+        homunculusHandler->feed();
+    return true;
+}
+
 impHandler(useItem)
 {
     const int itemId = atoi(event.args.c_str());

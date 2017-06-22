@@ -703,6 +703,7 @@ enumStart(InputAction)
     WINDOW_SERVER_INFO,
     MERCENARY_TO_MASTER,
     HOMUNCULUS_TO_MASTER,
+    HOMUNCULUS_FEED,
     TOTAL
 }
 enumEnd(InputAction);

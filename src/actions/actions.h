@@ -103,6 +103,7 @@ namespace Actions
     decHandler(mercenaryFire);
     decHandler(mercenaryToMaster);
     decHandler(homunculusToMaster);
+    decHandler(homunculusFeed);
     decHandler(useItem);
     decHandler(useItemInv);
     decHandler(invToStorage);
