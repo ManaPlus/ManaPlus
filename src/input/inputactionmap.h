@@ -5702,6 +5702,12 @@ static const InputActionData inputActionData
         "mercenarytomaster|mercmaster",
         UseArgs_false,
         Protected_false},
+    {"keyHomunculusToMaster",
+        defaultAction(&Actions::homunculusToMaster),
+        InputCondition::INGAME,
+        "homunculustomaster|homunmaster",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

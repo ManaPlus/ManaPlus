@@ -352,9 +352,9 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             const HomunculusInfo *const info = PlayerInfo::getHomunculus();
             if (info != nullptr)
             {
-                mBrowserBox->addRow("homunculus to master",
+                mBrowserBox->addRow("/homunculustomaster",
                     // TRANSLATORS: popup menu item
-                    // TRANSLATORS: Mercenary move to master
+                    // TRANSLATORS: homunculus move to master
                     _("Move to master"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: feed homunculus
@@ -1296,10 +1296,6 @@ void PopupMenu::handleLink(const std::string &link,
         const ChatObject *const chat = being->getChat();
         if (chat != nullptr)
             chatHandler->joinChat(chat, "");
-    }
-    else if (link == "homunculus to master")
-    {
-        homunculusHandler->moveToMaster();
     }
     else if (link == "homunculus feed")
     {

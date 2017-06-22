@@ -84,6 +84,7 @@
 #include "net/buysellhandler.h"
 #include "net/chathandler.h"
 #include "net/download.h"
+#include "net/homunculushandler.h"
 #include "net/gamehandler.h"
 #include "net/inventoryhandler.h"
 #include "net/ipc.h"
@@ -1598,6 +1599,13 @@ impHandler0(mercenaryToMaster)
 {
     if (mercenaryHandler != nullptr)
         mercenaryHandler->moveToMaster();
+    return true;
+}
+
+impHandler0(homunculusToMaster)
+{
+    if (homunculusHandler != nullptr)
+        homunculusHandler->moveToMaster();
     return true;
 }
 

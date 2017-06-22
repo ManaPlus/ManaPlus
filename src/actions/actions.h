@@ -102,6 +102,7 @@ namespace Actions
     decHandler(uploadLog);
     decHandler(mercenaryFire);
     decHandler(mercenaryToMaster);
+    decHandler(homunculusToMaster);
     decHandler(useItem);
     decHandler(useItemInv);
     decHandler(invToStorage);
