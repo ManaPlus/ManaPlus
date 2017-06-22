@@ -231,4 +231,11 @@ impHandler0(petDropLoot)
     return true;
 }
 
+impHandler0(petReturnToEgg)
+{
+    if (petHandler != nullptr)
+        petHandler->returnToEgg();
+    return true;
+}
+
 }  // namespace Actions

@@ -446,6 +446,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Return pet to egg"),
+        InputAction::PET_RETURN_TO_EGG,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""

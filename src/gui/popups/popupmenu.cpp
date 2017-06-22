@@ -396,13 +396,14 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                     msg = info->getString(0);
                 if (!msg.empty())
                 {
-                    mBrowserBox->addRow("pet to egg", msg.c_str());
+                    mBrowserBox->addRow("/petreturnegg", msg.c_str());
                 }
                 else
                 {
-                    // TRANSLATORS: popup menu item
-                    // TRANSLATORS: pet return to egg
-                    mBrowserBox->addRow("pet to egg", _("Return to egg"));
+                    mBrowserBox->addRow("/petreturnegg",
+                        // TRANSLATORS: popup menu item
+                        // TRANSLATORS: pet return to egg
+                        _("Return to egg"));
                 }
                 mBrowserBox->addRow("##3---");
             }
@@ -1301,10 +1302,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         showCraftPopup();
         return;
-    }
-    else if (link == "pet to egg")
-    {
-        petHandler->returnToEgg();
     }
     else if (link == "pet unequip")
     {

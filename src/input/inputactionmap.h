@@ -5726,6 +5726,12 @@ static const InputActionData inputActionData
         "petdroploot|petloot",
         UseArgs_false,
         Protected_true},
+    {"keyPetReturnToEgg",
+        defaultAction(&Actions::petReturnToEgg),
+        InputCondition::INGAME,
+        "pettoegg|petegg|petreturn|returnpet|petreturnegg",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction
