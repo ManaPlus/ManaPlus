@@ -238,4 +238,11 @@ impHandler0(petReturnToEgg)
     return true;
 }
 
+impHandler0(petUnequip)
+{
+    if (petHandler != nullptr)
+        petHandler->unequip();
+    return true;
+}
+
 }  // namespace Actions

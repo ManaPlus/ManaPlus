@@ -383,7 +383,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("/petdroploot", _("Drop loot"));
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet unequip item
-                mBrowserBox->addRow("pet unequip", _("Unequip"));
+                mBrowserBox->addRow("/petunequip", _("Unequip"));
                 addGmCommands();
                 mBrowserBox->addRow("##3---");
                 // TRANSLATORS: popup menu item
@@ -1302,10 +1302,6 @@ void PopupMenu::handleLink(const std::string &link,
     {
         showCraftPopup();
         return;
-    }
-    else if (link == "pet unequip")
-    {
-        petHandler->unequip();
     }
     else if (link.compare(0, 10, "guild-pos-") == 0)
     {

@@ -707,6 +707,7 @@ enumStart(InputAction)
     PET_FEED,
     PET_DROP_LOOT,
     PET_RETURN_TO_EGG,
+    PET_UNEQUIP,
     TOTAL
 }
 enumEnd(InputAction);

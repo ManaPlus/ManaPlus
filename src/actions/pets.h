@@ -44,6 +44,7 @@ namespace Actions
     decHandler(petFeed);
     decHandler(petDropLoot);
     decHandler(petReturnToEgg);
+    decHandler(petUnequip);
 }  // namespace Actions
 
 #undef decHandler

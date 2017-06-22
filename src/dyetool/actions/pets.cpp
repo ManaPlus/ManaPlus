@@ -44,5 +44,6 @@ impHandlerVoid(petMove)
 impHandlerVoid(petFeed)
 impHandlerVoid(petDropLoot)
 impHandlerVoid(petReturnToEgg)
+impHandlerVoid(petUnequip)
 
 }  // namespace Actions

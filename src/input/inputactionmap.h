@@ -5732,6 +5732,12 @@ static const InputActionData inputActionData
         "pettoegg|petegg|petreturn|returnpet|petreturnegg",
         UseArgs_false,
         Protected_false},
+    {"keyPetUnequip",
+        defaultAction(&Actions::petUnequip),
+        InputCondition::INGAME,
+        "petunequip|unequippet",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

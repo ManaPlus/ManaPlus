@@ -452,6 +452,12 @@ SetupActionData setupActionDataOther[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Unequip pet"),
+        InputAction::PET_UNEQUIP,
+        "",
+    },
+    {
         "",
         InputAction::NO_VALUE,
         ""
