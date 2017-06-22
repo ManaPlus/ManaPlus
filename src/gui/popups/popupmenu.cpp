@@ -366,7 +366,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addRow("##3---");
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: delete homunculus
-                mBrowserBox->addRow("homunculus delete", _("Kill"));
+                mBrowserBox->addRow("/homunculusfire", _("Kill"));
                 mBrowserBox->addRow("##3---");
             }
             addGmCommands();
@@ -1296,10 +1296,6 @@ void PopupMenu::handleLink(const std::string &link,
         const ChatObject *const chat = being->getChat();
         if (chat != nullptr)
             chatHandler->joinChat(chat, "");
-    }
-    else if (link == "homunculus delete")
-    {
-        homunculusHandler->fire();
     }
     else if (link == "craftmenu")
     {

@@ -4156,7 +4156,7 @@ static const InputActionData inputActionData
     {"keyHomunculusFire",
         defaultAction(&Actions::fireHomunculus),
         InputCondition::INGAME,
-        "firehomunculus|homunculusfire",
+        "firehomunculus|homunculusfire|firehomun|homunfire",
         UseArgs_false,
         Protected_true},
     {"keyWindowBank",
