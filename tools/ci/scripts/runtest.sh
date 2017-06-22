@@ -8,6 +8,8 @@ function check_is_run {
         echo "Run with gdb"
         cp ./src/manaplus ./logs/
         cp -r core* ./logs/
+        sleep 10s
+        ls
         COREFILE=$(find . -maxdepth 1 -name "core*" | head -n 1)
         if [[ -f "$COREFILE" ]]; then
             gdb -c "$COREFILE" ./src/manaplus -ex "thread apply all bt" -ex "set pagination 0" -batch
