@@ -429,16 +429,14 @@ void StaticBrowserBox::safeDraw(Graphics *const graphics)
 int StaticBrowserBox::calcHeight()
 {
     unsigned int y = CAST_U32(mPadding);
-    int wrappedLines = 0;
     int moreHeight = 0;
     int maxWidth = mDimension.width - mPadding;
-    int link = 0;
-    bool bold = false;
-    unsigned int wWidth = CAST_U32(maxWidth);
-
     if (maxWidth < 0)
         return 1;
 
+    int link = 0;
+    bool bold = false;
+    const unsigned int wWidth = CAST_U32(maxWidth);
     const Font *const font = getFont();
     const int fontHeight = font->getHeight() + 2 * mItemPadding;
     const int fontWidthMinus = font->getWidth("-");
@@ -451,7 +449,6 @@ int StaticBrowserBox::calcHeight()
     {
         unsigned int x = CAST_U32(mPadding);
         const std::string row = *(i);
-        bool wrapped = false;
         int objects = 0;
 
         // Check for separator lines
@@ -496,20 +493,10 @@ int StaticBrowserBox::calcHeight()
         prevColor[1] = selColor[1];
         bold = false;
 
-        const int xPadding = CAST_S32(mNewLinePadding) + mPadding;
-
         for (size_t start = 0, end = std::string::npos;
              start != std::string::npos;
              start = end, end = std::string::npos)
         {
-            // Wrapped line continuation shall be indented
-            if (wrapped)
-            {
-                y += CAST_U32(fontHeight);
-                x = CAST_U32(xPadding);
-                wrapped = false;
-            }
-
             size_t idx1 = end;
             size_t idx2 = end;
 
@@ -711,7 +698,7 @@ int StaticBrowserBox::calcHeight()
     if (CAST_S32(wWidth) != maxWidth)
         setWidth(maxWidth);
 
-    return (CAST_S32(mTextRows.size()) + wrappedLines)
+    return CAST_S32(mTextRows.size())
         * fontHeight + moreHeight + 2 * mPadding;
 }
 
