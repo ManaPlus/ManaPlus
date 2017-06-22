@@ -701,6 +701,7 @@ enumStart(InputAction)
     COMMAND_RECALL_PC,
     COMMAND_IP_CHECK,
     WINDOW_SERVER_INFO,
+    MERCENARY_TO_MASTER,
     TOTAL
 }
 enumEnd(InputAction);

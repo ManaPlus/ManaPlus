@@ -338,7 +338,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         case ActorType::Mercenary:
             // TRANSLATORS: popup menu item
             // TRANSLATORS: Mercenary move to master
-            mBrowserBox->addRow("mercenary to master", _("Move to master"));
+            mBrowserBox->addRow("/mercenarytomaster", _("Move to master"));
             addGmCommands();
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
@@ -1296,10 +1296,6 @@ void PopupMenu::handleLink(const std::string &link,
         const ChatObject *const chat = being->getChat();
         if (chat != nullptr)
             chatHandler->joinChat(chat, "");
-    }
-    else if (link == "mercenary to master")
-    {
-        mercenaryHandler->moveToMaster();
     }
     else if (link == "homunculus to master")
     {

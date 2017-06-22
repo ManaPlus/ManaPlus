@@ -92,6 +92,12 @@ SetupActionData setupActionDataMove[] =
     },
     {
         // TRANSLATORS: input action name
+        N_("Move mercenary to master"),
+        InputAction::MERCENARY_TO_MASTER,
+        "",
+    },
+    {
+        // TRANSLATORS: input action name
         N_("Move to navigation point shortcuts"),
         InputAction::NO_VALUE,
         ""

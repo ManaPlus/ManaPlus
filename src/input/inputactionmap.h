@@ -5696,6 +5696,12 @@ static const InputActionData inputActionData
         "serverinfo|infoserver",
         UseArgs_false,
         Protected_false},
+    {"keyMercenaryToMaster",
+        defaultAction(&Actions::mercenaryToMaster),
+        InputCondition::INGAME,
+        "mercenarytomaster|mercmaster",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

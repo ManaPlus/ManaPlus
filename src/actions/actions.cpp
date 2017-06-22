@@ -1594,6 +1594,13 @@ impHandler0(mercenaryFire)
     return true;
 }
 
+impHandler0(mercenaryToMaster)
+{
+    if (mercenaryHandler != nullptr)
+        mercenaryHandler->moveToMaster();
+    return true;
+}
+
 impHandler(useItem)
 {
     const int itemId = atoi(event.args.c_str());

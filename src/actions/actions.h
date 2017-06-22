@@ -101,6 +101,7 @@ namespace Actions
     decHandler(uploadServerConfig);
     decHandler(uploadLog);
     decHandler(mercenaryFire);
+    decHandler(mercenaryToMaster);
     decHandler(useItem);
     decHandler(useItemInv);
     decHandler(invToStorage);
