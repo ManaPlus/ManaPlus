@@ -67,11 +67,8 @@
 #include "net/adminhandler.h"
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
-#include "net/homunculushandler.h"
-#include "net/mercenaryhandler.h"
 #include "net/npchandler.h"
 #include "net/net.h"
-#include "net/pethandler.h"
 
 #ifdef TMWA_SUPPORT
 #include "net/tmwa/guildmanager.h"
