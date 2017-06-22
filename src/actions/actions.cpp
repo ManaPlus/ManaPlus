@@ -90,12 +90,13 @@
 #include "net/ipc.h"
 #include "net/mercenaryhandler.h"
 #include "net/net.h"
-#include "net/vendinghandler.h"
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
+#include "net/pethandler.h"
 #include "net/serverfeatures.h"
 #include "net/uploadcharinfo.h"
 #include "net/tradehandler.h"
+#include "net/vendinghandler.h"
 
 #include "resources/iteminfo.h"
 #include "resources/memorymanager.h"
@@ -1613,6 +1614,13 @@ impHandler0(homunculusFeed)
 {
     if (homunculusHandler != nullptr)
         homunculusHandler->feed();
+    return true;
+}
+
+impHandler0(petFeed)
+{
+    if (petHandler != nullptr)
+        petHandler->feed();
     return true;
 }
 

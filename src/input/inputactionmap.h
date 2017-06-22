@@ -5714,6 +5714,12 @@ static const InputActionData inputActionData
         "homunculusfeed|homunfeed|feedhomun|feedhomunculus",
         UseArgs_false,
         Protected_false},
+    {"keyPetFeed",
+        defaultAction(&Actions::petFeed),
+        InputCondition::INGAME,
+        "petfeed|feedpet",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction
