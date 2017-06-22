@@ -343,7 +343,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: fire mercenary
-            mBrowserBox->addRow("fire mercenary", _("Fire"));
+            mBrowserBox->addRow("/firemercenary", _("Fire"));
             mBrowserBox->addRow("##3---");
             break;
 
@@ -1296,10 +1296,6 @@ void PopupMenu::handleLink(const std::string &link,
         const ChatObject *const chat = being->getChat();
         if (chat != nullptr)
             chatHandler->joinChat(chat, "");
-    }
-    else if (link == "fire mercenary")
-    {
-        mercenaryHandler->fire();
     }
     else if (link == "mercenary to master")
     {
