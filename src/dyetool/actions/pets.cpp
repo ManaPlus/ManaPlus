@@ -41,5 +41,7 @@ impHandlerVoid(petDirectDown)
 impHandlerVoid(petDirectLeft)
 impHandlerVoid(petDirectRight)
 impHandlerVoid(petMove)
+impHandlerVoid(petFeed)
+impHandlerVoid(petDropLoot)
 
 }  // namespace Actions

@@ -104,8 +104,6 @@ namespace Actions
     decHandler(mercenaryToMaster);
     decHandler(homunculusToMaster);
     decHandler(homunculusFeed);
-    decHandler(petFeed);
-    decHandler(petDropLoot);
     decHandler(useItem);
     decHandler(useItemInv);
     decHandler(invToStorage);

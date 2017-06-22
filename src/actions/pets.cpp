@@ -217,4 +217,18 @@ impHandler(petMove)
     return false;
 }
 
+impHandler0(petFeed)
+{
+    if (petHandler != nullptr)
+        petHandler->feed();
+    return true;
+}
+
+impHandler0(petDropLoot)
+{
+    if (petHandler != nullptr)
+        petHandler->dropLoot();
+    return true;
+}
+
 }  // namespace Actions

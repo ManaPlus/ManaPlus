@@ -92,7 +92,6 @@
 #include "net/net.h"
 #include "net/npchandler.h"
 #include "net/playerhandler.h"
-#include "net/pethandler.h"
 #include "net/serverfeatures.h"
 #include "net/uploadcharinfo.h"
 #include "net/tradehandler.h"
@@ -1614,20 +1613,6 @@ impHandler0(homunculusFeed)
 {
     if (homunculusHandler != nullptr)
         homunculusHandler->feed();
-    return true;
-}
-
-impHandler0(petFeed)
-{
-    if (petHandler != nullptr)
-        petHandler->feed();
-    return true;
-}
-
-impHandler0(petDropLoot)
-{
-    if (petHandler != nullptr)
-        petHandler->dropLoot();
     return true;
 }
 
