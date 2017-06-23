@@ -131,7 +131,7 @@ static void printVersion()
 
 void parseOptions(const int argc, char *const argv[])
 {
-    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r";
+    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r:e";
 
     const struct option long_options[] =
     {
@@ -159,6 +159,7 @@ void parseOptions(const int argc, char *const argv[])
         { "server-type",    required_argument, nullptr, 'y' },
         { "enable-ipc",     no_argument,       nullptr, 'I' },
         { "default-cursor", no_argument,       nullptr, 'q' },
+        { "error",          no_argument,       nullptr, 'e' },
         { nullptr,          0,                 nullptr, 0 }
     };
 
@@ -255,6 +256,9 @@ void parseOptions(const int argc, char *const argv[])
                 break;
             case 'q':
                 options.defaultCursor = true;
+                break;
+            case 'e':
+                options.error = true;
                 break;
             default:
                 break;

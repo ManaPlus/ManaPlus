@@ -65,7 +65,8 @@ struct Options final
         safeMode(false),
         testMode(false),
         ipc(false),
-        defaultCursor(false)
+        defaultCursor(false),
+        error(false)
     {}
 
     A_DELETE_COPY(Options)
@@ -96,6 +97,7 @@ struct Options final
     bool testMode;
     bool ipc;
     bool defaultCursor;
+    bool error;
 };
 
 #endif  // OPTIONS_H

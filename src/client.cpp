@@ -560,6 +560,8 @@ void Client::gameInit()
         mButtonPadding = mSkin->getPadding();
         mButtonSpacing = mSkin->getOption("spacing", 3);
     }
+    if (settings.options.error)
+        inputManager.executeAction(InputAction::ERROR);
 }
 
 Client::~Client()
