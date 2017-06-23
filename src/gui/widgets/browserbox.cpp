@@ -168,7 +168,6 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
 {
     std::string tmp = row;
     std::string newRow;
-    size_t idx1;
     const Font *const font = getFont();
     int linksCount = 0;
 
@@ -193,7 +192,7 @@ void BrowserBox::addRow(const std::string &row, const bool atTop)
             BrowserBoxTools::replaceKeys(tmp);
         }
 
-        idx1 = tmp.find("@@");
+        size_t idx1 = tmp.find("@@");
         while (idx1 != std::string::npos)
         {
             const size_t idx2 = tmp.find('|', idx1);

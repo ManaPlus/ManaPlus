@@ -332,7 +332,7 @@ namespace
     };
 }  // namespace
 
-static void _SDL_gfxBlitBlitterRGBA(SDL_gfxBlitInfo *info)
+static void _SDL_gfxBlitBlitterRGBA(const SDL_gfxBlitInfo *const info)
 {
     const int width = info->d_width;
     int height = info->d_height;
@@ -388,10 +388,10 @@ static void _SDL_gfxBlitBlitterRGBA(SDL_gfxBlitInfo *info)
     }
 }
 
-static int _SDL_gfxBlitRGBACall(SDL_Surface *const src,
-                                SDL_Rect *const srcrect,
-                                SDL_Surface *const dst,
-                                SDL_Rect *const dstrect)
+static int _SDL_gfxBlitRGBACall(const SDL_Surface *const src,
+                                const SDL_Rect *const srcrect,
+                                const SDL_Surface *const dst,
+                                const SDL_Rect *const dstrect)
 {
     /*
     * Set up source and destination buffer pointers, then blit
@@ -433,9 +433,9 @@ static int _SDL_gfxBlitRGBACall(SDL_Surface *const src,
 }
 
 int SDLgfxBlitRGBA(SDL_Surface *const src,
-                   SDL_Rect *const srcrect,
+                   const SDL_Rect *const srcrect,
                    SDL_Surface *const dst,
-                   SDL_Rect *const dstrect)
+                   const SDL_Rect *const dstrect)
 {
     SDL_Rect sr;
     SDL_Rect dr;
@@ -447,7 +447,8 @@ int SDLgfxBlitRGBA(SDL_Surface *const src,
     /*
     * Make sure the surfaces aren't locked
     */
-    if ((src == nullptr) || (dst == nullptr))
+    if (src == nullptr ||
+        dst == nullptr)
     {
         reportAlways("SDLgfxBlitRGBA: passed a NULL surface");
         return -1;
@@ -499,7 +500,7 @@ int SDLgfxBlitRGBA(SDL_Surface *const src,
     /*
     * Clip the destination rectangle against the clip rectangle
     */
-    SDL_Rect *clip = &dst->clip_rect;
+    const SDL_Rect *const clip = &dst->clip_rect;
     int dx;
     int dy;
 

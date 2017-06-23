@@ -57,7 +57,8 @@ SDLMusic::~SDLMusic()
 #endif  // USE_SDL2
 }
 
-bool SDLMusic::play(const int loops, const int fadeIn)
+bool SDLMusic::play(const int loops,
+                    const int fadeIn) const
 {
     if (fadeIn > 0)
         return Mix_FadeInMusicPos(mMusic, loops, fadeIn, 0.0) != 0;

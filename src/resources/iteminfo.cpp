@@ -31,10 +31,9 @@
 #include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"
 
-#include "configuration.h"
-
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 

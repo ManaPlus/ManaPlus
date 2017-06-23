@@ -161,6 +161,7 @@ TEST_CASE("BrowserBox tests", "browserbox")
     row = "11|22<####>";
     box->addRow(row);
     row = "11|22##><##";
+    box->addRow(row);
     row = "%%@@11|22@@";
     box->addRow(row);
     row = "%%2@@11|22@@";

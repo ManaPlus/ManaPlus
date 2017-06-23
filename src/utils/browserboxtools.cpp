@@ -85,7 +85,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
     {  // monster link
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
-        BeingInfo *info = MonsterDB::get(id);
+        BeingInfo *const info = MonsterDB::get(id);
         if (info != nullptr)
             data = info->getName();
     }
@@ -93,7 +93,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
     {  // pet link
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
-        BeingInfo *info = PETDB::get(id);
+        BeingInfo *const info = PETDB::get(id);
         if (info != nullptr)
             data = info->getName();
     }
@@ -101,7 +101,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
     {  // homunculus link
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
-        BeingInfo *info = HomunculusDB::get(id);
+        BeingInfo *const info = HomunculusDB::get(id);
         if (info != nullptr)
             data = info->getName();
     }
@@ -109,7 +109,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
     {  // mercenary link
         const BeingTypeId id = static_cast<BeingTypeId>(
             atoi(link.substr(1).c_str()));
-        BeingInfo *info = MercenaryDB::get(id);
+        BeingInfo *const info = MercenaryDB::get(id);
         if (info != nullptr)
             data = info->getName();
     }
