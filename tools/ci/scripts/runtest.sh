@@ -9,7 +9,6 @@ function check_is_run {
         cp ./src/manaplus ./logs/
         cp -r core* ./logs/
         sleep 10s
-        systemd-coredumpctl --output=cored ./src/manaplus || true
         COREFILE=$(find . -maxdepth 1 -name "core*" | head -n 1)
         if [[ -f "$COREFILE" ]]; then
             gdb -c "$COREFILE" ./src/manaplus -ex "thread apply all bt" -ex "set pagination 0" -batch

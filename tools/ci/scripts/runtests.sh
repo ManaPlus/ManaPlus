@@ -9,6 +9,7 @@ export SDL_VIDEODRIVER="dummy"
 ulimit -c unlimited -S
 ulimit -c unlimited
 rm -rf core*
+sysctl -w kernel.core_pattern=core
 
 export HOME="logs/home"
 rm -rf $HOME
