@@ -91,6 +91,7 @@
 #include "gui/windows/quitdialog.h"
 #include "gui/windows/registerdialog.h"
 #include "gui/windows/serverdialog.h"
+#include "gui/windows/serverinfowindow.h"
 #include "gui/windows/setupwindow.h"
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
@@ -591,6 +592,15 @@ TEST_CASE("Windows tests", "windowmanager")
         gui->draw();
         mainGraphics->updateScreen();
         delete2(serverDialog);
+    }
+    SECTION("serversInfoWindow")
+    {
+        ServerInfo mCurrentServer;
+        ServerInfoWindow *serverInfoWindow = CREATEWIDGETR(ServerInfoWindow,
+            mCurrentServer);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(serverInfoWindow);
     }
     SECTION("setupWindow")
     {
