@@ -36,7 +36,7 @@
 #include "debug.h"
 
 const struct PPB_OpenGLES2* gles2Interface = nullptr;
-PP_Resource gles2Context = nullptr;
+PP_Resource gles2Context = 0;
 const struct PPB_Graphics3D_1_0 *graphics3dInterface = nullptr;
 
 void NaclGles::initGles()
