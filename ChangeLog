@@ -1,3 +1,14 @@
+2017-06-24 New release 1.7.6.24
+fix: browserbox width with small bold lines.
+fix: draw color in some renderers after window resize.
+add: server info window
+add: mark all server with free / non free / unknown label.
+add: set default theme to jewelry.
+add: improve speed in some windows.
+add: auto close death dialog if player resurrected.
+add: new chat commands.
+remove: auto adding sfx/ in sound files paths.
+
 2017-06-10 New release 1.7.6.10
 fix: use default configs in MacOSX version.
 fix: memory leak in different places.
