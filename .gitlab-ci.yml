@@ -13,8 +13,8 @@ before_script:
   - ":; cat /proc/sys/kernel/core_pattern"
   - ":; mkdir logs || true"
   - ":; ${UPDATEREPOS}"
-  - ":; tools/ci/scripts/dockerretry.sh ${PMUPDATE} >logs/apt.log"
-  - ":; tools/ci/scripts/dockerretry.sh ${PMINSTALL} ${PACKAGES} >>logs/apt.log"
+  - ":; ${DOCKERRETRY} ${PMUPDATE} >logs/apt.log"
+  - ":; ${DOCKERRETRY} ${PMINSTALL} ${PACKAGES} >>logs/apt.log"
 
 image: debian:unstable
 variables:
@@ -23,6 +23,7 @@ variables:
   UPDATEREPOS: "tools/ci/scripts/updaterepos.sh"
   PMUPDATE: "apt-get update"
   PMINSTALL: "apt-get install -y -qq"
+  DOCKERRETRY: "./tools/ci/scripts/dockerretry.sh"
 
 .job-push: &job-push
   artifacts:
