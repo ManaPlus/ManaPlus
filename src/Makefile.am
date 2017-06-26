@@ -245,6 +245,7 @@ BASE_SRC += events/actionevent.h \
 	      gui/models/colorlistmodel.h \
 	      gui/widgets/browserbox.cpp \
 	      gui/widgets/browserbox.h \
+	      gui/widgets/browserbox.inc \
 	      gui/widgets/staticbrowserbox.cpp \
 	      gui/widgets/staticbrowserbox.h \
 	      gui/widgets/button.cpp \

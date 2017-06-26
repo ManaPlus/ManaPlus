@@ -31,6 +31,7 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/widgets/browserbox.inc"
 #include "gui/widgets/linkhandler.h"
 
 #include "render/graphics.h"
@@ -54,10 +55,6 @@
 
 ImageSet *BrowserBox::mEmotes = nullptr;
 int BrowserBox::mInstances = 0;
-
-#define readColor(color) \
-    mColors[0][ColorName::color] = getThemeColor(ThemeColorId::color); \
-    mColors[1][ColorName::color] = getThemeColor(ThemeColorId::color##_OUTLINE)
 
 BrowserBox::BrowserBox(const Widget2 *const widget,
                        const Opaque opaque,

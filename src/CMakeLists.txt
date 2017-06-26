@@ -119,6 +119,7 @@ SET(SRCS
     gui/widgets/tabs/chat/channeltab.h
     gui/widgets/browserbox.cpp
     gui/widgets/browserbox.h
+    gui/widgets/browserbox.inc
     gui/widgets/button.cpp
     gui/widgets/button.h
     gui/widgets/characterdisplay.cpp
