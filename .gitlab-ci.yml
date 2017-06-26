@@ -97,6 +97,22 @@ gcc-6-i386:
   tags:
     - docker
 
+gcc-7-i386:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc7.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
 clang-3.9:
   stage: prebuild
   script:
@@ -123,6 +139,19 @@ gcc-6:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
+gcc-7:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/gcc7.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+
 gcc-6_default:
   stage: prebuild
   script:
@@ -135,6 +164,23 @@ gcc-6_default:
     CXX: g++-6
     CXXFLAGS: "-Wall -Wextra"
     PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+
+gcc-7_default:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LOGFILE: gcc6.log
+    CC: gcc-7
+    CXX: g++-7
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -237,37 +283,37 @@ gcc-5_sdl2:
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_game_only:
+gcc-7_game_only:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc6.sh --without-dyecmd
+  - ./tools/ci/jobs/gcc7.sh --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_dyecmd_only:
+gcc-7_dyecmd_only:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc6.sh --without-manaplusgame
+  - ./tools/ci/jobs/gcc7.sh --without-manaplusgame
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
-gcc-6_unittestsbin:
+gcc-7_unittestsbin:
   stage: prebuild
   script:
-  - ./tools/ci/jobs/gcc6_silent.sh --enable-unittestsbin --without-manaplusgame --without-dyecmd
+  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin --without-manaplusgame --without-dyecmd
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -472,6 +518,39 @@ gcc-6_sanitize_doctest_tests_i386:
   tags:
     - docker
 
+# out of memory
+.gcc-7_sanitize_doctest_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+# out of memory
+.gcc-7_sanitize_doctest_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
+  - ldd ./src/manaplustests | grep "libasan"
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
 gcc-5_sanitize_no_opengl_tests:
   stage: build
   script:
@@ -543,6 +622,38 @@ gcc-6_sanitize_i386:
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-7_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sanitize.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+# out of memory
+.gcc-7_sanitize_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sanitize.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -684,6 +795,20 @@ gcc-6_tests_simd:
   tags:
     - docker
 
+gcc-7_tests_simd:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
 gcc-6_tests_lto:
   stage: build
   script:
@@ -708,6 +833,37 @@ gcc-6_tests_lto_i386:
   variables:
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
     PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_tests_lto:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_tests_lto_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -744,17 +900,46 @@ gcc-5_tests_i386:
   tags:
     - docker
 
-gcc-6_tests_gcov:
+gcc-7_tests_gcov:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests_gcov.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc7_tests_gcov.sh --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              gcovr 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-6_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              gcovr 
               valgrind
   tags:
     - docker
@@ -788,13 +973,27 @@ gcc-6_tests_glibcdebug:
   tags:
     - docker
 
-gcc-6_pugixml_tests:
+gcc-7_tests_glibcdebug:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_pugixml_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -802,14 +1001,14 @@ gcc-6_pugixml_tests:
   tags:
     - docker
 
-gcc-6_pugixml_tests_i386:
+gcc-7_pugixml_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -832,10 +1031,40 @@ gcc-6_tests_glibcdebug_i386:
   tags:
     - docker
 
-gcc-6_sdl2_tests_gcov:
+gcc-7_tests_glibcdebug_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_sdl2_tests_gcov:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
+              gcovr
+              valgrind
+  tags:
+    - docker
+
+gcc-6_sdl2_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc6_sdl2_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -855,6 +1084,21 @@ gcc-6_sdl2_tests_i386:
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_sdl2_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
@@ -992,14 +1236,49 @@ gcc-6_tests_valgrind_i386:
   tags:
     - docker
 
-gcc-6_tests_jmalloc:
+gcc-7_tests_valgrind:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
+  - echo test valgrind
+  - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
+  - grep "invalid" logs/valg.log && exit 1 || true
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_tests_valgrind_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
+  - echo test valgrind
+  - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
+  - grep "invalid" logs/valg.log && exit 1 || true
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-7_tests_jmalloc:
   stage: build
   script:
   - ls ${MALLOC}
-  - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -1008,20 +1287,51 @@ gcc-6_tests_jmalloc:
   tags:
     - docker
 
-gcc-6_tests_jmalloc_i386:
+gcc-7_tests_jmalloc_i386:
   stage: build
   script:
   - ls ${MALLOC}
-  - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind libjemalloc1
     MALLOC: /usr/lib/i386-linux-gnu/libjemalloc.so.1
+  tags:
+    - docker
+
+gcc-7_lto:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_lto.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+    POST_CXXFLAGS: "-Wno-null-dereference"
+
+gcc-7_lto_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_lto.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+    POST_CXXFLAGS: "-Wno-null-dereference"
   tags:
     - docker
 
@@ -1573,14 +1883,14 @@ clang-3.8_i386:
   tags:
     - docker
 
-gcc-6_all_and_unittestsbin:
+gcc-7_all_and_unittestsbin:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_silent.sh --enable-unittestsbin
+  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -1867,54 +2177,67 @@ gcc-6_cilkplus:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_pugixml:
+gcc-7_cilkplus:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc7.sh --enable-cilkplus
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+
+gcc-7_pugixml:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7.sh --enable-libxml=pugixml
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_pugixml_i386:
+gcc-7_pugixml_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc7.sh --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_pugixml_sdl2:
+gcc-7_pugixml_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_pugixml_sdl2_i386:
+gcc-7_pugixml_sdl2_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-libxml=pugixml
+  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
@@ -1923,11 +2246,11 @@ gcc-6_pugixml_sdl2_i386:
 gcc_portable:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --with-opengl --enable-tmwa --enable-portable=yes
+  - ./tools/ci/jobs/gcc7.sh --with-opengl --enable-tmwa --enable-portable=yes
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -1946,14 +2269,14 @@ clang-3.9_sdl2:
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_no_asserts:
+gcc-7_no_asserts:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --disable-asserts
+  - ./tools/ci/jobs/gcc7.sh --disable-asserts
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -2000,6 +2323,26 @@ gcc-6_default_i386:
     CXX: g++-6
     CXXFLAGS: "-Wall -Wextra"
     PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-7_default_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    LOGFILE: gcc7.log
+    CC: gcc-7
+    CXX: g++-7
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -2868,28 +3211,28 @@ clang-tidy_sdl2:
   tags:
     - docker
 
-gcc-6_openglerrors_i386:
+gcc-7_openglerrors_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --enable-openglerrors
+  - ./tools/ci/jobs/gcc7.sh --enable-openglerrors
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-6_openglerrors:
+gcc-7_openglerrors:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6.sh --enable-openglerrors
+  - ./tools/ci/jobs/gcc7.sh --enable-openglerrors
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -5083,8 +5426,8 @@ pages:
   dependencies:
     - doxygen
     - gitstats
-    - gcc-6_tests_gcov
-    - gcc-6_sdl2_tests_gcov
+    - gcc-7_tests_gcov
+    - gcc-7_sdl2_tests_gcov
   variables:
     PACKAGES: git-core python
   artifacts:
