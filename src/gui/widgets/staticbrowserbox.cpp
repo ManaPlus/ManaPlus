@@ -60,7 +60,6 @@ StaticBrowserBox::StaticBrowserBox(const Widget2 *const widget,
                                    const std::string &skin) :
     Widget(widget),
     MouseListener(),
-    WidgetListener(),
     mTextRows(),
     mTextRowLinksCount(),
     mLineParts(),
@@ -75,7 +74,6 @@ StaticBrowserBox::StaticBrowserBox(const Widget2 *const widget,
     mPadding(0),
     mNewLinePadding(15U),
     mItemPadding(0),
-    mDataWidth(0),
     mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
     mHyperLinkColor(getThemeColor(ThemeColorId::HYPERLINK)),
     mOpaque(opaque),
@@ -90,7 +88,6 @@ StaticBrowserBox::StaticBrowserBox(const Widget2 *const widget,
 
     setFocusable(true);
     addMouseListener(this);
-    addWidgetListener(this);
 
     mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND);
 
@@ -270,7 +267,7 @@ void StaticBrowserBox::addRow(const std::string &row,
         plain.erase(idx1, 3);
     }
 
-    // Adjust the StaticBrowserBox size
+    // Adjust the StaticBrowserBox size. This need only for implementing "---"
     const int w = startBold ?
         boldFont->getWidth(plain) : font->getWidth(plain) + 2 * mPadding;
     if (w > getWidth())
@@ -301,7 +298,6 @@ void StaticBrowserBox::clearRows()
     setWidth(0);
     setHeight(0);
     mSelectedLink = -1;
-    mDataWidth = 0;
 }
 
 void StaticBrowserBox::mousePressed(MouseEvent &event)
@@ -345,7 +341,7 @@ void StaticBrowserBox::draw(Graphics *const graphics)
     if (mDimension.width != mWidth)
     {
         updateHeight();
-        reportAlways("browserbox resize in draw");
+        reportAlways("browserbox resize in draw: %d, %d", mDimension.width, mWidth);
     }
 
     if (mOpaque == Opaque_true)
@@ -423,17 +419,13 @@ void StaticBrowserBox::safeDraw(Graphics *const graphics)
     StaticBrowserBox::draw(graphics);
 }
 
-int StaticBrowserBox::calcHeight()
+void StaticBrowserBox::updateHeight()
 {
     unsigned int y = CAST_U32(mPadding);
     int moreHeight = 0;
-    int maxWidth = mDimension.width - mPadding;
-    if (maxWidth < 0)
-        return 1;
-
     int link = 0;
     bool bold = false;
-    const unsigned int wWidth = CAST_U32(maxWidth);
+    const unsigned int wWidth = CAST_U32(mDimension.width - mPadding);
     const Font *const font = getFont();
     const int fontHeight = font->getHeight() + 2 * mItemPadding;
     const int fontWidthMinus = font->getWidth("-");
@@ -441,6 +433,7 @@ int StaticBrowserBox::calcHeight()
     Color selColor[2] = {mForegroundColor, mForegroundColor2};
     const Color textColor[2] = {mForegroundColor, mForegroundColor2};
     mLineParts.clear();
+    uint32_t dataWidth = 0;
 
     FOR_EACH (TextRowCIter, i, mTextRows)
     {
@@ -479,8 +472,8 @@ int StaticBrowserBox::calcHeight()
                     selColor[0], selColor[1], img));
                 y += CAST_U32(img->getHeight() + 2);
                 moreHeight += img->getHeight();
-                if (img->getWidth() > maxWidth)
-                    maxWidth = img->getWidth() + 2;
+                if (img->getWidth() + mPadding + 2 > CAST_S32(dataWidth))
+                    dataWidth = img->getWidth() + 2 + mPadding;
             }
             continue;
         }
@@ -659,8 +652,8 @@ int StaticBrowserBox::calcHeight()
                     start += 3;
                     if (start == row.size())
                     {
-                        if (x > mDataWidth)
-                            mDataWidth = x;
+                        if (x > dataWidth)
+                            dataWidth = x;
                         break;
                     }
                 }
@@ -687,23 +680,16 @@ int StaticBrowserBox::calcHeight()
                 width = font->getWidth(part);
 
             x += CAST_U32(width);
-            if (x > mDataWidth)
-                mDataWidth = x;
+            if (x > dataWidth)
+                dataWidth = x;
         }
         y += CAST_U32(fontHeight);
     }
-    if (CAST_S32(wWidth) != maxWidth)
-        setWidth(maxWidth);
-
-    return CAST_S32(mTextRows.size())
+    mWidth = dataWidth + mPadding;
+    mHeight = CAST_S32(mTextRows.size())
         * fontHeight + moreHeight + 2 * mPadding;
-}
-
-void StaticBrowserBox::updateHeight()
-{
-    mWidth = mDimension.width;
-    mHeight = calcHeight();
-    setHeight(mHeight);
+    setSize(mWidth,
+        mHeight);
 }
 
 std::string StaticBrowserBox::getTextAtPos(const int x,
@@ -775,9 +761,4 @@ void StaticBrowserBox::selectSelection()
 
     mLinkHandler->handleLink(mLinks[CAST_SIZE(mSelectedLink)].link,
         nullptr);
-}
-
-void StaticBrowserBox::widgetResized(const Event &event A_UNUSED)
-{
-    updateHeight();
 }

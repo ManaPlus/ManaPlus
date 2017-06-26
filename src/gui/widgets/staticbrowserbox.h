@@ -34,7 +34,6 @@
 #include "gui/widgets/widget.h"
 
 #include "listeners/mouselistener.h"
-#include "listeners/widgetlistener.h"
 
 #include "localconsts.h"
 
@@ -45,8 +44,7 @@ class LinkHandler;
  * parent conteiner.
  */
 class StaticBrowserBox final : public Widget,
-                         public MouseListener,
-                         public WidgetListener
+                               public MouseListener
 {
     public:
         /**
@@ -142,20 +140,13 @@ class StaticBrowserBox final : public Widget,
         void setForegroundColorAll(const Color &color1,
                                    const Color &color2);
 
-        unsigned int getDataWidth() const noexcept2 A_WARN_UNUSED
-        { return mDataWidth; }
-
         void moveSelectionUp();
 
         void moveSelectionDown();
 
         void selectSelection();
 
-        void widgetResized(const Event &event) override final;
-
     private:
-        int calcHeight() A_WARN_UNUSED;
-
         typedef TextRows::iterator TextRowIterator;
         typedef TextRows::const_iterator TextRowCIter;
         TextRows mTextRows;
@@ -180,7 +171,6 @@ class StaticBrowserBox final : public Widget,
         int mPadding;
         unsigned int mNewLinePadding;
         int mItemPadding;
-        unsigned int mDataWidth;
 
         Color mHighlightColor;
         Color mHyperLinkColor;

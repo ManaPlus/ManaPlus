@@ -79,7 +79,6 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
     int width = mCaption->getWidth();
     mSpeechBox->clearRows();
     mSpeechBox->addRow(text);
-    mSpeechBox->setWidth(mSpeechBox->getDataWidth());
     mSpeechBox->updateHeight();
 
     const int speechWidth = mSpeechBox->getWidth();
