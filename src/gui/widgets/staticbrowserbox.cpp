@@ -341,7 +341,9 @@ void StaticBrowserBox::draw(Graphics *const graphics)
     if (mDimension.width != mWidth)
     {
         updateHeight();
-        reportAlways("browserbox resize in draw: %d, %d", mDimension.width, mWidth);
+        reportAlways("browserbox resize in draw: %d, %d",
+            mDimension.width,
+            mWidth);
     }
 
     if (mOpaque == Opaque_true)
