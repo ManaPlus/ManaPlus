@@ -155,8 +155,22 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
     if (Ea::taParty != nullptr)
         Ea::taParty->setName(name);
 
-    const int count = (length - 28) / 46;
-    if ((localPlayer != nullptr) && (Ea::taParty != nullptr))
+    int partySize = 0;
+    int offset = 0;
+    if (msg.getVersion() >= 20170502)
+    {
+        partySize = 50;
+        offset = 28 + 6;
+    }
+    else
+    {
+        partySize = 46;
+        offset = 28;
+    }
+
+    const int count = (length - offset) / partySize;
+    if (localPlayer != nullptr &&
+        Ea::taParty != nullptr)
     {
         localPlayer->setParty(Ea::taParty);
         localPlayer->setPartyName(Ea::taParty->getName());
@@ -169,6 +183,12 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         std::string map = msg.readString(16, "map name");
         const bool leader = msg.readUInt8("leader") == 0U;
         const bool online = msg.readUInt8("online") == 0U;
+        int level = 0;
+        if (msg.getVersion() >= 20170502)
+        {
+            msg.readInt16("class");
+            level = msg.readInt16("level");
+        }
 
         if (Ea::taParty != nullptr)
         {
@@ -195,19 +215,21 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
                     {
                         partyTab->showOnline(nick, fromBool(online, Online));
                     }
-
-                    member->setLeader(leader);
-                    member->setOnline(online);
-                    member->setMap(map);
                 }
-                else
-                {
-                    member->setLeader(leader);
-                    member->setOnline(online);
-                    member->setMap(map);
-                }
+                member->setLeader(leader);
+                member->setOnline(online);
+                member->setMap(map);
+                if (level != 0)
+                    member->setLevel(level);
             }
         }
+    }
+
+    if (msg.getVersion() >= 20170502)
+    {
+        msg.readInt8("pickup item share (&1)");
+        msg.readInt8("get item share (&2)");
+        msg.readInt32("unknown");
     }
 
     if (Ea::taParty != nullptr)
