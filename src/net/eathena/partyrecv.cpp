@@ -37,6 +37,8 @@
 
 #include "net/ea/partyrecv.h"
 
+#include "utils/checkutils.h"
+
 #include "debug.h"
 
 namespace EAthena
@@ -87,6 +89,28 @@ void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
         member->setY(y);
         if (level != 0)
             member->setLevel(level);
+    }
+}
+
+void PartyRecv::processPartyMemberJobLevel(Net::MessageIn &msg)
+{
+    const BeingId id = msg.readBeingId("account id");
+    msg.readInt16("class");
+    const int level = msg.readInt16("level");
+
+    if (Ea::taParty == nullptr)
+        return;
+
+    PartyMember *const member = Ea::taParty->getMember(id);
+    if (member != nullptr)
+    {
+        member->setOnline(true);
+        if (level != 0)
+            member->setLevel(level);
+    }
+    else
+    {
+        reportAlways("processPartyMemberJobLevel: party member not exists.");
     }
 }
 

@@ -44,6 +44,7 @@ namespace EAthena
         void processPartyItemPickup(Net::MessageIn &msg);
         void processPartyLeader(Net::MessageIn &msg);
         void processPartyInvited(Net::MessageIn &msg);
+        void processPartyMemberJobLevel(Net::MessageIn &msg);
 
         void processPartyAutoItemSettingsContinue(Net::MessageIn &msg,
                                                   const PartyShareT item);
