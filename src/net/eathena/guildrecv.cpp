@@ -41,6 +41,7 @@
 #include "net/eathena/guildhandler.h"
 
 #include "utils/delete2.h"
+#include "utils/checkutils.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -183,7 +184,18 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
     const int length = msg.readInt16("len");
     if (length < 4)
         return;
-    const int count = (length - 4) / 104;
+    int guildSize = 0;
+    if (msg.getVersion() >= 20161026)
+    {
+        guildSize = 34;
+        reportAlways("missing guild member names");
+    }
+    else
+    {
+        guildSize = 104;
+    }
+
+    const int count = (length - 4) / guildSize;
     if (taGuild == nullptr)
     {
         logger->log1("!taGuild");
@@ -206,8 +218,16 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
         const int exp = msg.readInt32("exp");
         const int online = msg.readInt32("online");
         const int pos = msg.readInt32("position");
-        msg.skip(50, "unused");
-        std::string name = msg.readString(24, "name");
+        std::string name;
+        if (msg.getVersion() < 20161026)
+        {
+            msg.skip(50, "unused");
+            name = msg.readString(24, "name");
+        }
+        else
+        {
+            continue;
+        }
 
         GuildMember *const m = taGuild->addMember(id, charId, name);
         if (m != nullptr)

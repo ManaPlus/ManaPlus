@@ -900,6 +900,12 @@ if (packetVersion >= 20160921)
     packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 20160921);
 }
 
+// 20161026
+if (packetVersion >= 20161026)
+{
+    packet(SMSG_GUILD_MEMBER_LIST,         0x0aa5,  -1, &GuildRecv::processGuildMemberList,             20161026);
+}
+
 // 20170315
 if (packetVersion >= 20170315)
 {
