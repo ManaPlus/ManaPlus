@@ -97,8 +97,10 @@ void VendingRecv::processHideBoard(Net::MessageIn &msg)
 void VendingRecv::processItemsList(Net::MessageIn &msg)
 {
     int packetLen = 22;
-    if (msg.getVersion() >= 20150226)
-        packetLen += 25;
+    if (msg.getVersion() >= 20160921)
+        packetLen = 53;
+    else if (msg.getVersion() >= 20150226)
+        packetLen = 47;
     int offset = 8;
     if (msg.getVersion() >= 20100105)
         offset += 4;
@@ -137,6 +139,11 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
                 msg.readUInt8("option param");
                 options->add(idx, val);
             }
+        }
+        if (msg.getVersion() >= 20160921)
+        {
+            msg.readInt32("equip type?");
+            msg.readInt16("look");
         }
 
         const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
