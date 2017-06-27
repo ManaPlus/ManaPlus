@@ -22,6 +22,8 @@ while true; do
     rm "/root/.config/mana/mana/config.xml"
     rm "${HOME}/.config/mana/mana/serverlistplus.xml"
     rm "/root/.config/mana/mana/serverlistplus.xml"
+    rm "${HOME}/.local/share/mana/manaplus.log"
+    rm "/root/.local/share/mana/manaplus.log"
     ./tools/ci/scripts/runtest.sh
     if [ "$?" != 0 ]; then
         exit 1
@@ -37,8 +39,8 @@ echo "existing config runs"
 n=0
 while true; do
     echo "run test ${n}"
-    rm "${HOME}/.config/mana/mana/serverlistplus.xml"
-    rm "/root/.config/mana/mana/serverlistplus.xml"
+    rm "${HOME}/.local/share/mana/manaplus.log"
+    rm "/root/.local/share/mana/manaplus.log"
     ./tools/ci/scripts/runtest.sh
     if [ "$?" != 0 ]; then
         exit 1

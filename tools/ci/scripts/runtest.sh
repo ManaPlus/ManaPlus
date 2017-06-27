@@ -17,12 +17,36 @@ function check_is_run {
     fi
 }
 
+function wait_for_servers_list {
+    n=0
+    while true; do
+        echo "wait for servers list ${n}"
+        check_is_run
+        # check here
+        grep "Skipping servers list update" "${HOME}/.local/share/mana/manaplus.log" && return
+        grep "Servers list updated" "${HOME}/.local/share/mana/manaplus.log" && return
+        grep "Error: servers list updating error" "${HOME}/.local/share/mana/manaplus.log"
+        if [ "$?" == 0 ]; then
+            echo "Servers list downloading error"
+            exit 1
+        fi
+
+        if [[ $n -ge 150 ]]; then
+            break
+        fi
+        sleep 5s
+        n=$((n+1))
+    done
+    echo "Waiting time for servers list update is up"
+    exit 1
+}
+
 function run {
     ./src/manaplus --default-cursor --enable-ipc --renderer=0 >logs/run.log 2>&1 &
     export PID=$!
-    sleep 30s
+    sleep 20s
     echo "pause after run"
-    sleep 30s
+    wait_for_servers_list
 }
 
 function kill_app {
