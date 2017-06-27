@@ -105,19 +105,34 @@ void GuildRecv::processGuildBasicInfo(Net::MessageIn &msg)
     msg.skip(12, "unused");
     const int emblem = msg.readInt32("emblem id");
     std::string name = msg.readString(24, "guild name");
-    std::string master = msg.readString(24, "master name");
-    std::string castle = msg.readString(16, "castles");
-    msg.readInt32("unused");
+    std::string castle;
+    std::string master;
+    if (msg.getVersion() >= 20160622)
+    {
+        castle = msg.readString(16, "castles");
+        msg.readInt32("money, unused");
+        msg.readBeingId("leader char id");
+    }
+    else
+    {
+        master = msg.readString(24, "master name");
+        castle = msg.readString(16, "castles");
+        msg.readInt32("money, unused");
+    }
 
-    if ((guildTab != nullptr) && showBasicInfo)
+    if (guildTab != nullptr &&
+        showBasicInfo)
     {
         showBasicInfo = false;
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild name: %s"),
             name.c_str()), ChatMsgType::BY_SERVER);
-        // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Guild master: %s"),
-            master.c_str()), ChatMsgType::BY_SERVER);
+        if (!master.empty())
+        {
+            // TRANSLATORS: guild info message
+            guildTab->chatLog(strprintf(_("Guild master: %s"),
+                master.c_str()), ChatMsgType::BY_SERVER);
+        }
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild level: %d"), level),
             ChatMsgType::BY_SERVER);

@@ -887,6 +887,12 @@ if (packetVersion >= 20160330)
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  13, &GameRecv::processMapLogin,                     20080102);
 }
 
+// 20160622
+if (packetVersion >= 20160622)
+{
+    packet(SMSG_GUILD_BASIC_INFO,          0x0a84,  94, &GuildRecv::processGuildBasicInfo,              20160622);
+}
+
 // 20160921
 if (packetVersion >= 20160921)
 {
