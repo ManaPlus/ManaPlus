@@ -20,7 +20,9 @@ function check_is_run {
 function run {
     ./src/manaplus --default-cursor --enable-ipc --renderer=0 >logs/run.log 2>&1 &
     export PID=$!
-    sleep 20s
+    sleep 30s
+    echo "pause after run"
+    sleep 30s
 }
 
 function kill_app {
