@@ -110,7 +110,7 @@ void ServerInfoWindow::showServerInfo()
              type == ServerFreeType::NotSet)
     {
         // TRANSLATORS: server info comment
-        mBrowserBox->addRow(_("##BServer unknown licesne."));
+        mBrowserBox->addRow(_("##BServer unknown license."));
     }
     mBrowserBox->addRow("");
     addServerComment(mServerInfo.serverUrl,
