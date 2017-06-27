@@ -9,7 +9,7 @@ dist: trusty
 before_script:
   - uname -a
   - echo before_script
-  - sudo apt-get install docker
+  - ./tools/ci/scripts/retry.sh sudo apt-get install docker
 
 script:
   - travis_wait 50 sleep infinity &
