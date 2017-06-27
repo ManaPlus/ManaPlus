@@ -57,6 +57,12 @@ void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("account id");
     const bool leader = msg.readInt32("leader") == 0U;
+    int level = 0;
+    if (msg.getVersion() >= 20170502)
+    {
+        msg.readInt16("class");
+        level = msg.readInt16("level");
+    }
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const bool online = msg.readInt8("online") == 0U;
@@ -79,6 +85,8 @@ void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
         member->setMap(map);
         member->setX(x);
         member->setY(y);
+        if (level != 0)
+            member->setLevel(level);
     }
 }
 

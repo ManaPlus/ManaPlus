@@ -906,6 +906,12 @@ if (packetVersion >= 20170329)
     packet(SMSG_CHAR_MAP_INFO,             0x0ac5, 156, &CharServerRecv::processCharMapInfo,            20170329);
 }
 
+// 20170502
+if (packetVersion >= 20170502)
+{
+    packet(SMSG_PARTY_MEMBER_INFO,         0x0a43,  85, &PartyRecv::processPartyMemberInfo,             20170502);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
