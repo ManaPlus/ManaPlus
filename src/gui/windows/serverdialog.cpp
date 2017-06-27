@@ -198,6 +198,8 @@ void ServerDialog::postInit()
 
     if (needUpdateServers())
         downloadServerList();
+    else
+        logger->log("Skipping servers list update");
 }
 
 ServerDialog::~ServerDialog()
@@ -413,6 +415,7 @@ void ServerDialog::logic()
             loadServers();
             mDownloadStatus = ServerDialogDownloadStatus::OVER;
             mDescription->setCaption(std::string());
+            logger->log("Servers list updated");
         }
         else if (mDownloadStatus == ServerDialogDownloadStatus::IN_PROGRESS)
         {
@@ -434,6 +437,7 @@ void ServerDialog::logic()
         {
             // TRANSLATORS: servers dialog label
             mDescription->setCaption(_("Error retreiving server list!"));
+            logger->log("Error: servers list updating error");
         }
     }
 
