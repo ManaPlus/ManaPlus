@@ -28,12 +28,14 @@ while true; do
     if [ "$?" != 0 ]; then
         exit 1
     fi
-    if [[ $n -ge 1 ]]; then
+    if [[ $n -ge 3 ]]; then
         break
     fi
     sleep 5s
     n=$((n+1))
 done
+
+exit 0
 
 echo "existing config runs"
 n=0
