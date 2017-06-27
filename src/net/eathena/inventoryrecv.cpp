@@ -219,6 +219,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     const uint8_t identified = msg.readUInt8("identified");
     const uint8_t damaged = msg.readUInt8("is damaged");
     const uint8_t refine = msg.readUInt8("refine");
+    Favorite favorite = Favorite_false;
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
         cards[f] = msg.readUInt16("card");
@@ -245,6 +246,11 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
             msg.readUInt8("option param");
             options->add(idx, val);
         }
+    }
+    if (msg.getVersion() >= 20160921)
+    {
+        favorite = fromBool(msg.readUInt8("favorite"), Favorite);
+        msg.readInt16("look");
     }
 
     const ItemColor color = ItemColorManager::getColorFromCards(&cards[0]);
@@ -344,7 +350,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 color,
                 fromBool(identified, Identified),
                 fromBool(damaged, Damaged),
-                Favorite_false,
+                favorite,
                 fromBool(equipType, Equipm),
                 Equipped_false);
             inventory->setCards(index, cards, 4);

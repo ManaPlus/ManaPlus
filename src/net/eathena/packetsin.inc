@@ -887,6 +887,12 @@ if (packetVersion >= 20160330)
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  13, &GameRecv::processMapLogin,                     20080102);
 }
 
+// 20160921
+if (packetVersion >= 20160921)
+{
+    packet(SMSG_PLAYER_INVENTORY_ADD,      0x0a37,  59, &InventoryRecv::processPlayerInventoryAdd,      20160921);
+}
+
 // 20170315
 if (packetVersion >= 20170315)
 {
