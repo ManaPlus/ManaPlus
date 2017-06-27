@@ -336,7 +336,7 @@ void Logger::log_r(const char *const log_text, ...)
 
     if (mLogFile.is_open())
     {
-        timeStr << buf << std::endl;
+        timeStr << buf;
         mThreadLocked = true;
         mDelayedLog.push_back(timeStr.str());
         mThreadLocked = false;
@@ -357,7 +357,7 @@ void Logger::flush()
     {
         SDL_mutexP(mMutex);
         FOR_EACH (std::vector<std::string>::const_iterator, it, mDelayedLog)
-            mLogFile << *it;
+            mLogFile << *it << std::endl;
         mDelayedLog.clear();
         SDL_mutexV(mMutex);
     }
