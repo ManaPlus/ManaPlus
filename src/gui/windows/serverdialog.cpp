@@ -546,10 +546,11 @@ void ServerDialog::loadServers(const bool addNew)
     XML::Document doc(pathJoin(mDir,
         branding.getStringValue("onlineServerFile")),
         UseVirtFs_false,
-        SkipError_false);
+        SkipError_true);
     XmlNodeConstPtr rootNode = doc.rootNode();
 
-    if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "serverlist"))
+    if (rootNode == nullptr ||
+        !xmlNameEqual(rootNode, "serverlist"))
     {
         logger->log1("Error loading server list!");
         return;
