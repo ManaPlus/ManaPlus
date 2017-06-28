@@ -95,7 +95,7 @@ namespace XML
                 }
                 file.close();
             }
-            else
+            else if (skipError == SkipError_false)
             {
                 reportAlways("Error loading XML file %s",
                     filename.c_str());
