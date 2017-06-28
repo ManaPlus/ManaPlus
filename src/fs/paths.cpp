@@ -206,21 +206,24 @@ std::string getPicturesDir()
         file = pathJoin(xdg, "user-dirs.dirs");
     }
 
-    StringVect arr;
-    Files::loadTextFileLocal(file, arr);
-    FOR_EACH (StringVectCIter, it, arr)
+    if (Files::existsLocal(file))
     {
-        std::string str = *it;
-        if (findCutFirst(str, "XDG_PICTURES_DIR=\""))
+        StringVect arr;
+        Files::loadTextFileLocal(file, arr);
+        FOR_EACH (StringVectCIter, it, arr)
         {
-            str = str.substr(0, str.size() - 1);
-            // use hack to replace $HOME var.
-            // if in string other vars, fallback to default path
-            replaceAll(str, "$HOME/", VirtFs::getUserDir());
-            str = getRealPath(str);
-            if (str.empty())
-                str = pathJoin(VirtFs::getUserDir(), "Desktop");
-            return str;
+            std::string str = *it;
+            if (findCutFirst(str, "XDG_PICTURES_DIR=\""))
+            {
+                str = str.substr(0, str.size() - 1);
+                // use hack to replace $HOME var.
+                // if in string other vars, fallback to default path
+                replaceAll(str, "$HOME/", VirtFs::getUserDir());
+                str = getRealPath(str);
+                if (str.empty())
+                    str = pathJoin(VirtFs::getUserDir(), "Desktop");
+                return str;
+            }
         }
     }
 #endif  // WIN32
