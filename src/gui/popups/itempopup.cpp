@@ -392,7 +392,7 @@ std::string ItemPopup::getOptionsString(const ItemOptionsList *const options)
             if (!effect.empty())
                 effect.append(" / ");
             if (field->sign && value[0] != '-')
-                value.append("+").append(value);
+                value = std::string("+").append(value);
             const std::string format = translator->getStr(field->description);
             effect.append(strprintf(format.c_str(),
                 value.c_str()));

@@ -145,7 +145,7 @@ static void readFields(std::string &effect,
         if (!effect.empty())
             effect.append(" / ");
         if (field->sign && isDigit(value))
-            value.append("+").append(value);
+            value = std::string("+").append(value);
         const std::string format = translator->getStr(field->description);
         effect.append(strprintf(format.c_str(),
             value.c_str()));
