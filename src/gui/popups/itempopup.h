@@ -89,6 +89,8 @@ class ItemPopup final : public Popup
         ItemDbTypeT mItemType;
         Icon *mIcon A_NONNULLPOINTER;
         std::string mLastName;
+        std::string mCardsStr;
+        std::string mItemOptionsStr;
         int mLastId;
         ItemColor mLastColor;
 

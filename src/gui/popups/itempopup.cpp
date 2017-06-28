@@ -69,6 +69,8 @@ ItemPopup::ItemPopup() :
     mItemType(ItemDbType::UNUSABLE),
     mIcon(new Icon(this, nullptr)),
     mLastName(),
+    mCardsStr(),
+    mItemOptionsStr(),
     mLastId(0),
     mLastColor(ItemColor_one)
 {
@@ -181,11 +183,31 @@ void ItemPopup::setItem(const ItemInfo &item,
                         const int *const cards,
                         const ItemOptionsList *const options)
 {
-    if (mIcon == nullptr ||
-        (item.getName() == mLastName && color == mLastColor && id == mLastId))
-    {
+    if (mIcon == nullptr)
         return;
+
+    std::string cardsStr;
+    std::string optionsStr;
+
+    if (item.getName() == mLastName &&
+        color == mLastColor &&
+        id == mLastId)
+    {
+        cardsStr = getCardsString(cards);
+        optionsStr = getOptionsString(options);
+        if (mItemOptionsStr == optionsStr &&
+            mCardsStr == cardsStr)
+        {
+            return;
+        }
     }
+    else
+    {
+        cardsStr = getCardsString(cards);
+        optionsStr = getOptionsString(options);
+    }
+    mItemOptionsStr = optionsStr;
+    mCardsStr = cardsStr;
 
     if (id == -1)
         id = item.getId();
@@ -244,8 +266,8 @@ void ItemPopup::setItem(const ItemInfo &item,
     // TRANSLATORS: popup label
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
         UnitsDb::formatWeight(item.getWeight()).c_str()), 196);
-    mItemCards->setTextWrapped(getCardsString(cards), 196);
-    mItemOptions->setTextWrapped(getOptionsString(options), 196);
+    mItemCards->setTextWrapped(mCardsStr, 196);
+    mItemOptions->setTextWrapped(optionsStr, 196);
 
     int minWidth = mItemName->getWidth() + space;
 
