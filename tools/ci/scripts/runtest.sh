@@ -17,6 +17,14 @@ function check_is_run {
     fi
 }
 
+function check_assert {
+    grep "Assert:" "${HOME}/.local/share/mana/manaplus.log"
+    if [ "$?" == 0 ]; then
+        echo "Assert found in log"
+        exit 1
+    fi
+}
+
 function wait_for_servers_list {
     n=0
     while true; do
@@ -47,6 +55,7 @@ function run {
     sleep 20s
     echo "pause after run"
     wait_for_servers_list
+    check_assert
 }
 
 function kill_app {
@@ -84,6 +93,7 @@ function send_command {
     echo -n "$1" | nc 127.0.0.1 44007
     sleep 5s
     check_is_run
+    check_assert
 }
 
 function check_exists {
@@ -242,5 +252,6 @@ sleep 5s
 
 kill_app
 final_log
+check_assert
 
 exit 0
