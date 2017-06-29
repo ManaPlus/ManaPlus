@@ -46,6 +46,7 @@
 #include "utils/browserboxtools.h"
 #include "utils/checkutils.h"
 #include "utils/foreach.h"
+#include "utils/stdmove.h"
 #include "utils/stringutils.h"
 #include "utils/translation/podict.h"
 
@@ -256,7 +257,7 @@ void StaticBrowserBox::addRow(const std::string &row,
         mTextRowLinksCount.push_back(linksCount);
     }
 
-    std::string plain = newRow;
+    std::string plain = STD_MOVE(newRow);
     // workaround if used only one string started from bold
     // width for this string can be calculated wrong
     // this workaround fix width if string start from bold sign

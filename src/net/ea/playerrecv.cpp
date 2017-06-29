@@ -44,6 +44,7 @@
 
 #include "net/playerhandler.h"
 
+#include "utils/stdmove.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -256,7 +257,7 @@ void PlayerRecv::processPlayerClientCommand(Net::MessageIn &msg)
 
     if (!parse2Str(command, cmd, args))
     {
-        cmd = command;
+        cmd = STD_MOVE(command);
         args.clear();
     }
     inputManager.executeRemoteChatCommand(cmd, args, nullptr);

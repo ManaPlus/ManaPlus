@@ -1452,6 +1452,7 @@ SET(SRCS
     utils/sdlpixel.h
     utils/sdlsharedhelper.cpp
     utils/sdlsharedhelper.h
+    utils/stdmove.h
     gui/widgets/widget.h
     listeners/weightlistener.h
     listeners/widgetlistener.h

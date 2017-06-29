@@ -34,7 +34,14 @@
 #include "gui/widgets/label.h"
 #include "gui/widgets/textbox.h"
 
+#include "net/beinghandler.h"
+#include "net/net.h"
+
+#include "utils/foreach.h"
 #include "utils/gettext.h"
+#include "utils/stdmove.h"
+
+#include "utils/translation/podict.h"
 
 #include "resources/iteminfo.h"
 
@@ -48,13 +55,6 @@
 #include "resources/item/itemoptionslist.h"
 
 #include "resources/loaders/imageloader.h"
-
-#include "net/beinghandler.h"
-#include "net/net.h"
-
-#include "utils/foreach.h"
-
-#include "utils/translation/podict.h"
 
 #include "debug.h"
 
@@ -208,8 +208,8 @@ void ItemPopup::setItem(const ItemInfo &item,
         cardsStr = getCardsString(cards);
         optionsStr = getOptionsString(options);
     }
-    mItemOptionsStr = optionsStr;
-    mCardsStr = cardsStr;
+    mItemOptionsStr = STD_MOVE(optionsStr);
+    mCardsStr = STD_MOVE(cardsStr);
 
     if (id == -1)
         id = item.getId();
@@ -269,7 +269,7 @@ void ItemPopup::setItem(const ItemInfo &item,
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
         UnitsDb::formatWeight(item.getWeight()).c_str()), 196);
     mItemCards->setTextWrapped(mCardsStr, 196);
-    mItemOptions->setTextWrapped(optionsStr, 196);
+    mItemOptions->setTextWrapped(mItemOptionsStr, 196);
 
     int minWidth = mItemName->getWidth() + space;
 

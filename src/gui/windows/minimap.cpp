@@ -54,6 +54,7 @@
 #include "utils/gettext.h"
 #include "utils/foreach.h"
 #include "utils/sdlcheckutils.h"
+#include "utils/stdmove.h"
 
 #include "debug.h"
 
@@ -190,7 +191,7 @@ void Minimap::setMap(const Map *const map)
                 tempname = pathJoin("graphics/minimaps",
                     map->getFilename()).append(".png");
                 if (VirtFs::exists(tempname))
-                    minimapName = tempname;
+                    minimapName = STD_MOVE(tempname);
             }
 
             if (!minimapName.empty())

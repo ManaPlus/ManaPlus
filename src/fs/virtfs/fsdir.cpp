@@ -32,6 +32,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/foreach.h"
+#include "utils/stdmove.h"
 #include "utils/stringutils.h"
 
 #include <dirent.h>
@@ -274,7 +275,7 @@ namespace FsDir
     bool setWriteDir(std::string newDir)
     {
         prepareFsPath(newDir);
-        mWriteDir = newDir;
+        mWriteDir = STD_MOVE(newDir);
         if (findLast(mWriteDir, std::string(dirSeparator)) == false)
             mWriteDir += dirSeparator;
         return true;

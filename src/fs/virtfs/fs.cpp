@@ -34,6 +34,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/foreach.h"
+#include "utils/stdmove.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -153,7 +154,7 @@ namespace VirtFs
             return list;
         }
 
-        std::string rootDir = dirName;
+        std::string rootDir = STD_MOVE(dirName);
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
         StringVect &names = list->names;
@@ -178,7 +179,7 @@ namespace VirtFs
             return;
         }
 
-        std::string rootDir = dirName;
+        std::string rootDir = STD_MOVE(dirName);
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
@@ -200,7 +201,7 @@ namespace VirtFs
             return;
         }
 
-        std::string rootDir = dirName;
+        std::string rootDir = STD_MOVE(dirName);
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
@@ -223,7 +224,7 @@ namespace VirtFs
             return;
         }
 
-        std::string rootDir = dirName;
+        std::string rootDir = STD_MOVE(dirName);
         if (findLast(rootDir, std::string(dirSeparator)) == false)
             rootDir += dirSeparator;
 
@@ -243,7 +244,7 @@ namespace VirtFs
                 name.c_str());
             return false;
         }
-        std::string dirName = name;
+        std::string dirName = STD_MOVE(name);
         if (findLast(dirName, std::string(dirSeparator)) == false)
             dirName += dirSeparator;
 

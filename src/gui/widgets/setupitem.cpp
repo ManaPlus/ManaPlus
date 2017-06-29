@@ -44,6 +44,7 @@
 
 #include "utils/base64.h"
 #include "utils/gettext.h"
+#include "utils/stdmove.h"
 #include "utils/mathutils.h"
 
 #include "debug.h"
@@ -324,7 +325,7 @@ void SetupItemTextField::save()
         std::string normalValue = mValue;
         mValue = encodeBase64String(mValue);
         SetupItem::save();
-        mValue = normalValue;
+        mValue = STD_MOVE(normalValue);
     }
     else
     {

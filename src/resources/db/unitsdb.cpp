@@ -27,6 +27,7 @@
 #include "const/resources/currency.h"
 
 #include "utils/checkutils.h"
+#include "utils/stdmove.h"
 
 #include "resources/beingcommon.h"
 
@@ -372,7 +373,7 @@ static std::string splitNumber(std::string str,
             if (!result.empty())
                 result = std::string(str).append(separator).append(result);
             else
-                result = str;
+                result = STD_MOVE(str);
         }
     }
 

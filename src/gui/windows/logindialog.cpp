@@ -48,6 +48,7 @@
 #include "net/updatetypeoperators.h"
 
 #include "utils/delete2.h"
+#include "utils/stdmove.h"
 
 #include "debug.h"
 
@@ -357,7 +358,7 @@ void LoginDialog::prepareUpdate()
         if (!str.empty() && checkPath(str))
         {
             mLoginData->updateHost = str;
-            *mUpdateHost = str;
+            *mUpdateHost = STD_MOVE(str);
         }
         else
         {

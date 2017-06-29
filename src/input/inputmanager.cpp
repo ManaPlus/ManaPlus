@@ -55,6 +55,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/gettext.h"
+#include "utils/stdmove.h"
 #include "utils/timer.h"
 
 #include "gui/focushandler.h"
@@ -468,7 +469,7 @@ void InputManager::updateKeyString(const InputFunction &ki,
     }
     else
     {
-        mKeyStr[actionIdx] = keyStr;
+        mKeyStr[actionIdx] = STD_MOVE(keyStr);
     }
 }
 

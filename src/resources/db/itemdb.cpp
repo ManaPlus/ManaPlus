@@ -45,6 +45,7 @@
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/foreach.h"
+#include "utils/stdmove.h"
 #include "utils/stringmap.h"
 
 #include "utils/translation/podict.h"
@@ -355,7 +356,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         SpriteDisplay display;
         display.image = image;
         if (!floor.empty())
-            display.floor = floor;
+            display.floor = STD_MOVE(floor);
         else
             display.floor = image;
 
