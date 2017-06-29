@@ -63,6 +63,7 @@ PRAGMA48(GCC diagnostic pop)
 #elif defined __native_client__
 #include "utils/naclmessages.h"
 #elif defined WIN32
+#include "utils/cast.h"
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_syswm.h>

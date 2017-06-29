@@ -26,6 +26,7 @@
     && (GCC_VERSION >= 40800) && !defined(ANDROID)
 // nothing
 #elif defined(__linux__) || defined(__linux)
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 #endif  // (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__)
         // && (GCC_VERSION >= 40800) && !defined(ANDROID)

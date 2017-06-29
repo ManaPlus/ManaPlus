@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 PRAGMA48(GCC diagnostic push)
