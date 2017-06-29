@@ -64,6 +64,8 @@
 #ifndef GUI_COLOR_H
 #define GUI_COLOR_H
 
+#include "utils/cast.h"
+
 #include "localconsts.h"
 
 /**

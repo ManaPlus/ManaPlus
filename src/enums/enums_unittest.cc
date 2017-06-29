@@ -22,6 +22,8 @@
 
 #include "enums/being/gender.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 TEST_CASE("Gender", "Enums")

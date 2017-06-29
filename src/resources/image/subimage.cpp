@@ -22,6 +22,8 @@
 
 #include "resources/image/subimage.h"
 
+#include "utils/cast.h"
+
 #ifdef DEBUG_IMAGES
 #include "logger.h"
 #endif  // DEBUG_IMAGES

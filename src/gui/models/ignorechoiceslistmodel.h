@@ -28,6 +28,8 @@
 #include "being/playerignorestrategy.h"
 #include "being/playerrelations.h"
 
+#include "utils/cast.h"
+
 /**
  * Class for choosing one of the various `what to do when ignoring a player' options
  */

@@ -25,6 +25,7 @@
 
 #include "events/inputevent.h"
 
+#include "utils/cast.h"
 #include "utils/stringmap.h"
 
 #include <list>

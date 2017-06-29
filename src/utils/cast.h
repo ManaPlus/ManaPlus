@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2012-2017  The ManaPlus Developers
+ *  Copyright (C) 2011-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,29 +18,16 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INPUT_INPUTACTIONSORTFUNCTOR_H
-#define INPUT_INPUTACTIONSORTFUNCTOR_H
+#ifndef UTILS_CAST_H
+#define UTILS_CAST_H
 
-#include "input/inputactiondata.h"
+#define CAST_8 static_cast<char>
+#define CAST_S8 static_cast<int8_t>
+#define CAST_U8 static_cast<uint8_t>
+#define CAST_S16 static_cast<int16_t>
+#define CAST_U16 static_cast<uint16_t>
+#define CAST_S32 static_cast<int32_t>
+#define CAST_U32 static_cast<uint32_t>
+#define CAST_SIZE static_cast<size_t>
 
-#include "utils/cast.h"
-
-#include "localconsts.h"
-
-class InputActionSortFunctor final
-{
-    public:
-        A_DEFAULT_COPY(InputActionSortFunctor)
-
-        bool operator() (const InputActionT key1,
-                         const InputActionT key2) const
-        {
-            const size_t k1 = CAST_SIZE(key1);
-            const size_t k2 = CAST_SIZE(key2);
-            return keys[k1].priority > keys[k2].priority;
-        }
-
-        const InputActionData *keys A_NONNULLPOINTER;
-};
-
-#endif  // INPUT_INPUTACTIONSORTFUNCTOR_H
+#endif  // UTILS_CAST_H

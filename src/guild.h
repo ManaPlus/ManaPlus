@@ -25,6 +25,7 @@
 
 #include "gui/models/avatarlistmodel.h"
 
+#include "utils/cast.h"
 #include "utils/dtor.h"
 #include "utils/stringvector.h"
 

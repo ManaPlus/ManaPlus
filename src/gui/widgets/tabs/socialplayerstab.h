@@ -30,6 +30,7 @@
 
 #include "gui/models/beingslistmodel.h"
 
+#include "utils/cast.h"
 #include "utils/gettext.h"
 #include "utils/delete2.h"
 #include "utils/stringutils.h"

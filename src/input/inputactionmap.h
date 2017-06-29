@@ -41,6 +41,8 @@
 #include "input/inputactiondata.h"
 #include "input/inputmanager.h"
 
+#include "utils/cast.h"
+
 #include "localconsts.h"
 
 #define defaultAction(name) \

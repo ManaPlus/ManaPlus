@@ -23,6 +23,8 @@
 #ifndef UTILS_MATHUTILS_H
 #define UTILS_MATHUTILS_H
 
+#include "utils/cast.h"
+
 #include <string>
 
 #ifndef USE_SDL2

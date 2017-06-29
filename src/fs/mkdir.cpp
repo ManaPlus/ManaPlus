@@ -21,6 +21,8 @@
 
 #include "fs/mkdir.h"
 
+#include "utils/cast.h"
+
 #if defined WIN32
 #include <limits.h>
 #include <windows.h>

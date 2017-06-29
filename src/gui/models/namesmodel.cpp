@@ -20,6 +20,7 @@
 
 #include "gui/models/namesmodel.h"
 
+#include "utils/cast.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

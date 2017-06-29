@@ -27,6 +27,7 @@
 
 #include "fs/paths.h"
 
+#include "utils/cast.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 

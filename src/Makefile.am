@@ -553,6 +553,7 @@ BASE_SRC += events/actionevent.h \
 	      utils/browserboxtools.cpp \
 	      utils/browserboxtools.h \
 	      utils/buildhex.h \
+	      utils/cast.h \
 	      utils/checkutils.cpp \
 	      utils/checkutils.h \
 	      utils/copynpaste.cpp \

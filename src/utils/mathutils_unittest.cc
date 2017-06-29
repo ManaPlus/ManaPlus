@@ -20,6 +20,7 @@
 
 #include "test/unittests.h"
 
+#include "utils/cast.h"
 #include "utils/mathutils.h"
 
 #include "debug.h"

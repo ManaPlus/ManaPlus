@@ -20,6 +20,8 @@
 
 #include "input/inputactionoperators.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 InputActionT operator+(InputActionT action, const int& i)

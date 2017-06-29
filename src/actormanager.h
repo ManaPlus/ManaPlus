@@ -38,6 +38,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "utils/cast.h"
 #include "utils/stringmap.h"
 #include "utils/stringvector.h"
 

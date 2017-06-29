@@ -33,11 +33,13 @@
 #include "enums/resources/map/maplayerposition.h"
 #include "enums/resources/map/maptype.h"
 
+#include "utils/cast.h"
+
+#include "listeners/configlistener.h"
+
 #include "resources/memorycounter.h"
 
 #include "resources/map/properties.h"
-
-#include "listeners/configlistener.h"
 
 #include <vector>
 

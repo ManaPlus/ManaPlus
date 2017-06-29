@@ -23,6 +23,8 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include "utils/cast.h"
+
 #include "localconsts.h"
 
 PRAGMA48(GCC diagnostic push)

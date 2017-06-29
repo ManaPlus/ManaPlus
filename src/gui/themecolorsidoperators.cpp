@@ -20,6 +20,8 @@
 
 #include "gui/themecolorsidoperators.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 ThemeColorIdT operator+(const ThemeColorIdT &id, const int& i)

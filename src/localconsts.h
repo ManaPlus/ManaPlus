@@ -23,15 +23,6 @@
 
 #define ENABLEDEBUGLOG 1
 
-#define CAST_8 static_cast<char>
-#define CAST_S8 static_cast<int8_t>
-#define CAST_U8 static_cast<uint8_t>
-#define CAST_S16 static_cast<int16_t>
-#define CAST_U16 static_cast<uint16_t>
-#define CAST_S32 static_cast<int32_t>
-#define CAST_U32 static_cast<uint32_t>
-#define CAST_SIZE static_cast<size_t>
-
 #define GCC_VERSION (__GNUC__ * 10000 \
     + __GNUC_MINOR__ * 100 \
     + __GNUC_PATCHLEVEL__)

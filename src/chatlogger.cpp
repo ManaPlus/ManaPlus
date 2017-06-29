@@ -22,6 +22,12 @@
 
 #include "chatlogger.h"
 
+#include "configuration.h"
+
+#include "fs/mkdir.h"
+
+#include "utils/cast.h"
+
 #include <iostream>
 #include <dirent.h>
 
@@ -31,10 +37,6 @@
 #elif defined __APPLE__
 #include <Carbon/Carbon.h>
 #endif  // WIN32
-
-#include "configuration.h"
-
-#include "fs/mkdir.h"
 
 #include "debug.h"
 

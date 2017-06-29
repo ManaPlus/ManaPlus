@@ -30,6 +30,7 @@
 #include "resources/db/itemdb.h"
 #endif  // DYECMD
 
+#include "utils/cast.h"
 #include "utils/gettext.h"
 #include "utils/foreach.h"
 

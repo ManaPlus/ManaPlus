@@ -25,6 +25,8 @@
 
 #include "particle/particle.h"
 
+#include "utils/cast.h"
+
 class TextParticle final : public Particle
 {
     public:

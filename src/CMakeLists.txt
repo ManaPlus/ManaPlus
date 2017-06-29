@@ -855,6 +855,7 @@ SET(SRCS
     utils/browserboxtools.cpp
     utils/browserboxtools.h
     utils/buildhex.h
+    utils/cast.h
     utils/chatutils.cpp
     utils/chatutils.h
     utils/checkutils.cpp

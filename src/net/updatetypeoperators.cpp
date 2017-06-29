@@ -20,6 +20,8 @@
 
 #include "net/updatetypeoperators.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 int operator&(const UpdateTypeT &a, const UpdateTypeT &b)

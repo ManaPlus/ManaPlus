@@ -35,6 +35,7 @@
 
 #include "resources/sprite/spritedisplay.h"
 
+#include "utils/cast.h"
 #include "utils/intmap.h"
 
 // sprite, <itemfrom, itemto>

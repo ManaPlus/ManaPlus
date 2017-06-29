@@ -25,6 +25,8 @@
 
 #include "enums/simpletypes/beingid.h"
 
+#include "utils/cast.h"
+
 #include <string>
 
 #include "localconsts.h"

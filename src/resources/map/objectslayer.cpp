@@ -20,6 +20,8 @@
 
 #include "resources/map/objectslayer.h"
 
+#include "utils/cast.h"
+
 #include "resources/map/mapobjectlist.h"
 
 #include "debug.h"

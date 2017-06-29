@@ -29,6 +29,7 @@
 
 #include "resources/wallpaperdata.h"
 
+#include "utils/cast.h"
 #include "utils/foreach.h"
 
 #include <algorithm>

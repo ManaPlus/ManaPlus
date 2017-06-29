@@ -28,6 +28,8 @@
 
 #include "net/messagein.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 namespace EAthena

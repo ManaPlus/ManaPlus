@@ -32,6 +32,8 @@
 
 #include "gui/models/listmodel.h"
 
+#include "utils/cast.h"
+
 /**
  * Class controlling the game's color palette.
  */

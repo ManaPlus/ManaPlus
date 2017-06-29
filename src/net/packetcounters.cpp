@@ -22,6 +22,8 @@
 
 #include "net/packetcounters.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 extern volatile time_t cur_time;

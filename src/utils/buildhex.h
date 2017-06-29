@@ -21,6 +21,8 @@
 #ifndef UTILS_BUILDHEX_H
 #define UTILS_BUILDHEX_H
 
+#include "utils/cast.h"
+
 #include "localconsts.h"
 
 PRAGMA48(GCC diagnostic push)

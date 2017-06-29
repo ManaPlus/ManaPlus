@@ -20,6 +20,8 @@
 
 #include "gui/models/extendednamesmodel.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 ExtendedNamesModel::ExtendedNamesModel() :

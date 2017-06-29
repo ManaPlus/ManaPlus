@@ -46,6 +46,7 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
+#include "utils/cast.h"
 #include "utils/env.h"
 #include "utils/delete2.h"
 #include "utils/foreach.h"

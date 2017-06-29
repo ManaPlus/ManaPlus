@@ -23,6 +23,8 @@
 
 #include "resources/memorycounter.h"
 
+#include "utils/cast.h"
+
 #include "localconsts.h"
 
 class MapHeights final : public MemoryCounter

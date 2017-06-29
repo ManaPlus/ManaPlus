@@ -39,6 +39,7 @@
 #include "gui/popups/popupmenu.h"
 #include "gui/popups/skillpopup.h"
 
+#include "utils/cast.h"
 #include "utils/delete2.h"
 #include "utils/stringutils.h"
 

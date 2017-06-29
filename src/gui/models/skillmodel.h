@@ -25,6 +25,8 @@
 
 #include "gui/models/listmodel.h"
 
+#include "utils/cast.h"
+
 #include "resources/skill/skillinfo.h"
 
 #include "localconsts.h"

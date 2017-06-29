@@ -24,6 +24,8 @@
 
 #include "vector.h"
 
+#include "utils/cast.h"
+
 #include <list>
 
 #include "localconsts.h"
