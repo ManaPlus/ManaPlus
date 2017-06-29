@@ -47,6 +47,7 @@
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

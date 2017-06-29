@@ -65,6 +65,7 @@
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
+#include "utils/foreach.h"
 #include "utils/timer.h"
 
 #include <queue>

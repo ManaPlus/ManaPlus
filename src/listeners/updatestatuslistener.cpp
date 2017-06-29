@@ -20,6 +20,8 @@
 
 #include "listeners/updatestatuslistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(UpdateStatusListener)

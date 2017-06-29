@@ -30,14 +30,15 @@
 #include "resources/db/itemdb.h"
 #endif  // DYECMD
 
+#include "utils/gettext.h"
+#include "utils/foreach.h"
+
 #include <algorithm>
 #include <sstream>
 
 #ifdef WIN32
 #include <sys/time.h>
 #endif  // WIN32
-
-#include "utils/gettext.h"
 
 #include "debug.h"
 

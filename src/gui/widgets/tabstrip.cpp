@@ -22,6 +22,8 @@
 
 #include "gui/widgets/button.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 TabStrip::TabStrip(const Widget2 *const widget,

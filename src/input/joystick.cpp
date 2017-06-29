@@ -29,6 +29,7 @@
 
 #include "input/inputmanager.h"
 
+#include "utils/foreach.h"
 #include "utils/timer.h"
 
 PRAGMA48(GCC diagnostic push)

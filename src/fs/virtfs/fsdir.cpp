@@ -31,6 +31,7 @@
 #include "fs/virtfs/list.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 #include <dirent.h>

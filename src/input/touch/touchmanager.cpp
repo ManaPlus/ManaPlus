@@ -34,6 +34,7 @@
 #include "input/touch/touchactions.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 
 #include "render/graphics.h"
 

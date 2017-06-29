@@ -21,6 +21,7 @@
 #include "resources/item/complexitem.h"
 
 #include "utils/dtor.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

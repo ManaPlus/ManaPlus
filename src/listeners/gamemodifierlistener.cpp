@@ -20,6 +20,8 @@
 
 #include "listeners/gamemodifierlistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(GameModifierListener)

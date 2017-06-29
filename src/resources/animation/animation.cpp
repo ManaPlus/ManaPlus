@@ -22,6 +22,8 @@
 
 #include "resources/animation/animation.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 Animation::Animation() noexcept2 :

@@ -38,6 +38,7 @@
 #include "net/tmwa/guildmanager.h"
 #endif  // TMWA_SUPPORT
 
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"

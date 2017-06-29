@@ -51,6 +51,7 @@
 #include "input/inputmanager.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 
 #include "resources/map/map.h"
 #include "resources/map/mapitem.h"

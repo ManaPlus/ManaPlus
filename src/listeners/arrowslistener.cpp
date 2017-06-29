@@ -20,6 +20,8 @@
 
 #include "listeners/arrowslistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(ArrowsListener)

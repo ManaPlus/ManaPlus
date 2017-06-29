@@ -80,6 +80,7 @@
 #include "resources/db/networkdb.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

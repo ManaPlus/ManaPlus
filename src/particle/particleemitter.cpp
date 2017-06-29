@@ -29,6 +29,8 @@
 #include "particle/animationparticle.h"
 #include "particle/rotationalparticle.h"
 
+#include "utils/foreach.h"
+
 #include "resources/imageset.h"
 
 #include "resources/dye/dye.h"

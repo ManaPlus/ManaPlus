@@ -34,6 +34,7 @@
 #include "gui/widgets/tabs/socialfriendsfunctor.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 
 #include "localconsts.h"

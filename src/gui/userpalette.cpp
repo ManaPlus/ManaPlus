@@ -25,6 +25,7 @@
 
 #include "configuration.h"
 
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

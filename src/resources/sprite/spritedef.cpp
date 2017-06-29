@@ -30,6 +30,7 @@
 #include "const/resources/map/map.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 
 #include "resources/action.h"
 #include "resources/imageset.h"

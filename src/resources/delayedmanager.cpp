@@ -22,6 +22,7 @@
 
 #include "resources/sprite/animationdelayload.h"
 
+#include "utils/foreach.h"
 #include "utils/timer.h"
 
 #include "debug.h"

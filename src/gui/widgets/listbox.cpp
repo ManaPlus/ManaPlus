@@ -77,6 +77,8 @@
 
 #include "listeners/selectionlistener.h"
 
+#include "utils/foreach.h"
+
 #include "render/graphics.h"
 
 #include "debug.h"

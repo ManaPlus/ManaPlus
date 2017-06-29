@@ -24,6 +24,8 @@
 
 #include "gui/widgets/characterdisplay.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,

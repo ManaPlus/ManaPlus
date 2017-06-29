@@ -27,6 +27,7 @@
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/list.h"
 
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 #include <algorithm>

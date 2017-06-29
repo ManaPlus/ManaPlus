@@ -28,6 +28,7 @@
 #include "gui/widgets/scrollarea.h"
 #include "gui/widgets/staticbrowserbox.h"
 
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
 

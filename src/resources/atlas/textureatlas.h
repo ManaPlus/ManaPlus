@@ -23,6 +23,7 @@
 
 #ifdef USE_OPENGL
 
+#include "utils/foreach.h"
 #include "utils/stringvector.h"
 
 #include "resources/atlas/atlasitem.h"

@@ -31,6 +31,8 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
+#include "utils/foreach.h"
+
 #include "resources/item/item.h"
 
 #include "debug.h"

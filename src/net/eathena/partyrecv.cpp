@@ -38,6 +38,7 @@
 #include "net/ea/partyrecv.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

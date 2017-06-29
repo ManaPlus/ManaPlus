@@ -35,6 +35,8 @@
 #include "fs/files.h"
 #endif  // USE_X11
 
+#include "utils/foreach.h"
+
 #ifdef __native_client__
 #include <limits.h>
 #define realpath(N, R) strcpy(R, N)

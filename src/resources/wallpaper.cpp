@@ -29,6 +29,8 @@
 
 #include "resources/wallpaperdata.h"
 
+#include "utils/foreach.h"
+
 #include <algorithm>
 
 #ifdef WIN32

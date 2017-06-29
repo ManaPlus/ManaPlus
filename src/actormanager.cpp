@@ -45,6 +45,7 @@
 #include "input/inputmanager.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 #include "utils/mathutils.h"
 #include "utils/gettext.h"
 

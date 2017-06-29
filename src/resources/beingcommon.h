@@ -23,10 +23,12 @@
 
 #include "fs/virtfs/tools.h"
 
+#include "utils/foreach.h"
 #include "utils/xml.h"
 
 #include "localconsts.h"
 
+UTILS_FOREACH_H
 UTILS_VIRTFSTOOLS_H
 
 class BeingInfo;

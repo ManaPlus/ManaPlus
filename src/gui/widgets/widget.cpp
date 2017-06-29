@@ -73,6 +73,8 @@
 #include "listeners/widgetdeathlistener.h"
 #include "listeners/widgetlistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 Font* Widget::mGlobalFont = nullptr;

@@ -40,6 +40,8 @@
 
 #include "gui/windows/socialwindow.h"
 
+#include "utils/foreach.h"
+
 #include "resources/map/map.h"
 
 #include "net/messagein.h"

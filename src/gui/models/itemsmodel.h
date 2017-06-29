@@ -29,6 +29,8 @@
 
 #include "resources/db/itemdb.h"
 
+#include "utils/foreach.h"
+
 #include <list>
 
 #include "localconsts.h"

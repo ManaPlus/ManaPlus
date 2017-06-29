@@ -42,6 +42,7 @@
 #include "resources/image/image.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
 

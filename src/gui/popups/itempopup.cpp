@@ -52,6 +52,8 @@
 #include "net/beinghandler.h"
 #include "net/net.h"
 
+#include "utils/foreach.h"
+
 #include "utils/translation/podict.h"
 
 #include "debug.h"

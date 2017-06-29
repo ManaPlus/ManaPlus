@@ -44,6 +44,7 @@
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
+#include "utils/foreach.h"
 #include "utils/stringmap.h"
 
 #include "utils/translation/podict.h"

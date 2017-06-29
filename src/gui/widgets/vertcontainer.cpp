@@ -21,6 +21,8 @@
 
 #include "gui/widgets/vertcontainer.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 VertContainer::VertContainer(const Widget2 *const widget,

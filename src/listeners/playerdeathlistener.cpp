@@ -20,6 +20,8 @@
 
 #include "listeners/playerdeathlistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(PlayerDeathListener)

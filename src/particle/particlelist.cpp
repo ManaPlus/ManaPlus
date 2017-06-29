@@ -22,6 +22,8 @@
 
 #include "particle/particlelist.h"
 
+#include "utils/foreach.h"
+
 #include "particle/particle.h"
 
 #include "debug.h"

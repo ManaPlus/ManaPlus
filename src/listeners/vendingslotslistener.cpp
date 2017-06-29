@@ -20,6 +20,8 @@
 
 #include "listeners/vendingslotslistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(VendingSlotsListener)

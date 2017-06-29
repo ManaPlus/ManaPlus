@@ -38,6 +38,8 @@
 
 #include "net/ea/partyrecv.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 namespace TmwAthena

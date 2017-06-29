@@ -23,6 +23,8 @@
 
 #include "gui/models/touchactionmodel.h"
 
+#include "utils/foreach.h"
+
 #include <algorithm>
 
 #include "debug.h"

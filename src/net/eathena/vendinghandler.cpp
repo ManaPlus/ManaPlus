@@ -29,6 +29,8 @@
 #include "net/eathena/protocolout.h"
 #include "net/eathena/vendingrecv.h"
 
+#include "utils/foreach.h"
+
 #include "resources/item/shopitem.h"
 
 #include "debug.h"

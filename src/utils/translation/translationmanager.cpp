@@ -25,6 +25,8 @@
 #include "utils/delete2.h"
 #include "utils/stringutils.h"
 
+#include "utils/foreach.h"
+
 #include "utils/translation/podict.h"
 #include "utils/translation/poparser.h"
 

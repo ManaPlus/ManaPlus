@@ -71,6 +71,8 @@
 
 #include "listeners/focuslistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 FocusHandler::FocusHandler() :

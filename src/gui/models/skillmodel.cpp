@@ -22,6 +22,8 @@
 
 #include "gui/models/skillmodel.h"
 
+#include "utils/foreach.h"
+
 #include "resources/skill/skilldata.h"
 
 #include "debug.h"

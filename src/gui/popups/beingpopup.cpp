@@ -36,6 +36,7 @@
 #include "resources/chatobject.h"
 
 #include "utils/gettext.h"
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"

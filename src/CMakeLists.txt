@@ -869,6 +869,7 @@ SET(SRCS
     utils/dumplibs.h
     utils/env.cpp
     utils/env.h
+    utils/foreach.h
     fs/files.cpp
     fs/files.h
     utils/fuzzer.cpp

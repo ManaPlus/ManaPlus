@@ -62,6 +62,7 @@
 #include "resources/map/map.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 #include "utils/timer.h"
 
 #include "debug.h"

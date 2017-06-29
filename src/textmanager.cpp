@@ -23,6 +23,8 @@
 
 #include "text.h"
 
+#include "utils/foreach.h"
+
 #include <cstring>
 
 #include "debug.h"

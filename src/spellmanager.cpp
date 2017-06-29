@@ -37,6 +37,7 @@
 #include "resources/db/commandsdb.h"
 
 #include "utils/dtor.h"
+#include "utils/foreach.h"
 
 #include <sstream>
 

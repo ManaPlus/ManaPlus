@@ -35,6 +35,7 @@
 #include "resources/sprite/spritedef.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 
 #if !defined(DEBUG_DUMP_LEAKS) && !defined(UNITTESTS)
 #include "resources/resourcetypes.h"

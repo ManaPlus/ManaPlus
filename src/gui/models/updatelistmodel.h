@@ -27,6 +27,8 @@
 
 #include "net/serverinfo.h"
 
+#include "utils/foreach.h"
+
 #include "localconsts.h"
 
 class UpdateListModel final : public ListModel

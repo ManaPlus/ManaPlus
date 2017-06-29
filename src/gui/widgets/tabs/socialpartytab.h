@@ -31,6 +31,7 @@
 #include "net/partyhandler.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
 

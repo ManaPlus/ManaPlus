@@ -20,6 +20,8 @@
 
 #include "listeners/debugmessagelistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(DebugMessageListener)

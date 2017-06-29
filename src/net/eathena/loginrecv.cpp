@@ -40,6 +40,7 @@
 #include "net/eathena/updateprotocol.h"
 
 #include "utils/gettext.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

@@ -59,6 +59,7 @@
 #include "resources/db/unitsdb.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 
 #include <algorithm>
 

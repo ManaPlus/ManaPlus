@@ -27,6 +27,7 @@
 #endif  // DYECMD
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/sdlhelper.h"
 #include "utils/stringutils.h"
 

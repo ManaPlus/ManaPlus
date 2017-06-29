@@ -48,6 +48,7 @@
 #include "resources/loaders/xmlloader.h"
 
 #include "utils/dtor.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

@@ -25,6 +25,8 @@
 
 #include "gui/widgets/attrs/derdisplay.h"
 
+#include "utils/foreach.h"
+
 #include "resources/db/statdb.h"
 
 #include "debug.h"

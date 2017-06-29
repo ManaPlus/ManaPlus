@@ -48,6 +48,7 @@
 
 #include "utils/env.h"
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")

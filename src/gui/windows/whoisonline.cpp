@@ -55,6 +55,7 @@
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 

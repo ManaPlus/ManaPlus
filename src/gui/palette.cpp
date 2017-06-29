@@ -23,6 +23,7 @@
 
 #include "gui/palette.h"
 
+#include "utils/foreach.h"
 #include "utils/timer.h"
 
 #ifndef USE_SDL2

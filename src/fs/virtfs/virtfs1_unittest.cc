@@ -29,6 +29,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 PRAGMA48(GCC diagnostic push)

@@ -20,6 +20,8 @@
 
 #include "listeners/buyingstoremodelistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(BuyingStoreModeListener)

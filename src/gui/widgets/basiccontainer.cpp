@@ -63,6 +63,8 @@
 
 #include "gui/widgets/basiccontainer.h"
 
+#include "utils/foreach.h"
+
 #include "render/graphics.h"
 
 #include <algorithm>

@@ -39,6 +39,8 @@
 
 #include "net/eathena/protocolout.h"
 
+#include "utils/foreach.h"
+
 #include "resources/item/shopitem.h"
 
 #include "debug.h"

@@ -41,6 +41,7 @@
 
 #include "input/inputmanager.h"
 
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 #include "utils/process.h"
 

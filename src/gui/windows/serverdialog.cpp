@@ -46,6 +46,7 @@
 #include "gui/widgets/scrollarea.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/langs.h"
 
 #include "debug.h"

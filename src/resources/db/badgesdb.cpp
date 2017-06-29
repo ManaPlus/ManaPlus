@@ -24,6 +24,7 @@
 
 #include "fs/virtfs/tools.h"
 
+#include "utils/foreach.h"
 #include "utils/xmlutils.h"
 
 #include "debug.h"

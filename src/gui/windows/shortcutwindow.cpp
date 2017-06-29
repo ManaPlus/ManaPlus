@@ -36,6 +36,7 @@
 #include "gui/widgets/tabs/shortcuttab.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

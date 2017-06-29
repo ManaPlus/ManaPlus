@@ -44,6 +44,7 @@ PRAGMA48(GCC diagnostic pop)
 #ifdef SIMD_SUPPORTED
 #include "utils/cpu.h"
 #endif  // SIMD_SUPPORTED
+#include "utils/foreach.h"
 
 #include "debug.h"
 

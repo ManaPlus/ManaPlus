@@ -98,6 +98,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/langs.h"
 #include "utils/sdlsharedhelper.h"
 #include "utils/timer.h"

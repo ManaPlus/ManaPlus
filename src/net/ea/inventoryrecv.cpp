@@ -38,6 +38,7 @@
 #include "net/ea/equipbackend.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 
 #include "listeners/arrowslistener.h"
 

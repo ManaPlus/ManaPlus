@@ -20,6 +20,8 @@
 
 #include "listeners/statlistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(StatListener)

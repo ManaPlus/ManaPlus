@@ -20,6 +20,8 @@
 
 #include "listeners/banklistener.h"
 
+#include "utils/foreach.h"
+
 #include "debug.h"
 
 defineListener(BankListener)

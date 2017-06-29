@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014-2017  The ManaPlus Developers
+ *  Copyright (C) 2011-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,23 +18,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "listeners/attributelistener.h"
+#ifndef UTILS_FOREACH_H
+#define UTILS_FOREACH_H
 
-#include "utils/foreach.h"
+#define FOR_EACH(type, iter, array) for (type iter = array.begin(), \
+    iter##_fend = array.end(); iter != iter##_fend; ++ iter)
 
-#include "debug.h"
+#define FOR_EACHR(type, iter, array) for (type iter = array.rbegin(), \
+    iter##_fend = array.rend(); iter != iter##_fend; ++ iter)
 
-defineListener(AttributeListener)
+#define FOR_EACHP(type, iter, array) for (type iter = array->begin(), \
+    iter##_fend = array->end(); iter != iter##_fend; ++ iter)
 
-void AttributeListener::distributeEvent(const AttributesT id,
-                                        const int oldVal,
-                                        const int newVal)
-{
-    FOR_EACH (std::vector<AttributeListener*>::iterator,
-              it, mListeners)
-    {
-        AttributeListener *const listener = *it;
-        if (listener != nullptr)
-            listener->attributeChanged(id, oldVal, newVal);
-    }
-}
+#define FOR_EACH_SAFE(type, iter, array) for (type iter = array.begin(); \
+    iter != array.end(); ++ iter)
+
+#endif  // UTILS_FOREACH_H

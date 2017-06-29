@@ -29,6 +29,7 @@
 #include "fs/virtfs/ziplocalheader.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"

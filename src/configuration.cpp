@@ -33,6 +33,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #ifdef DEBUG_CONFIG
 #include "utils/stringmap.h"
 #endif  // DEBUG_CONFIG

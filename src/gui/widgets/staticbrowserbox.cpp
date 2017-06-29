@@ -45,6 +45,7 @@
 
 #include "utils/browserboxtools.h"
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 #include "utils/translation/podict.h"
 

@@ -52,6 +52,7 @@
 #include "resources/loaders/imageloader.h"
 
 #include "utils/gettext.h"
+#include "utils/foreach.h"
 #include "utils/sdlcheckutils.h"
 
 #include "debug.h"

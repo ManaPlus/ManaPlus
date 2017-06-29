@@ -31,6 +31,8 @@
 
 #include "gui/userpalette.h"
 
+#include "utils/foreach.h"
+
 #include "render/graphics.h"
 
 #include "resources/image/image.h"

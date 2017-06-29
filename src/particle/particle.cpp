@@ -42,6 +42,7 @@
 
 #include "utils/delete2.h"
 #include "utils/dtor.h"
+#include "utils/foreach.h"
 #include "utils/mathutils.h"
 #include "utils/mrand.h"
 

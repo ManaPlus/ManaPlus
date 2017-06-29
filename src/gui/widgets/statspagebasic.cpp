@@ -28,6 +28,7 @@
 #include "gui/widgets/attrs/changedisplay.h"
 
 #include "utils/gettext.h"
+#include "utils/foreach.h"
 #include "utils/stringutils.h"
 
 #include "resources/db/statdb.h"
