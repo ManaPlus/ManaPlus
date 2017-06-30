@@ -23,14 +23,18 @@
 
 #define ENABLEDEBUGLOG 1
 
+#ifndef GCC_VERSION
 #define GCC_VERSION (__GNUC__ * 10000 \
     + __GNUC_MINOR__ * 100 \
     + __GNUC_PATCHLEVEL__)
+#endif  // GCC_VERSION
 
 #ifdef __clang__
+#ifndef CLANG_VERSION
 #define CLANG_VERSION (__clang_major__ * 10000 \
     + __clang_minor__ * 100 \
     + __clang_patchlevel__)
+#endif  // CLANG_VERSION
 #endif  // __clang__
 
 #define A_DEFAULT_COPY(func)
