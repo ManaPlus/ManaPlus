@@ -37,6 +37,7 @@
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/foreach.h"
+#include "utils/likely.h"
 #include "utils/sdlcheckutils.h"
 
 #ifndef USE_SDL2

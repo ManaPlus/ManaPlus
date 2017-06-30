@@ -885,6 +885,7 @@ SET(SRCS
     utils/intmap.h
     utils/langs.cpp
     utils/langs.h
+    utils/likely.h
     utils/mathutils.h
     utils/parameters.cpp
     utils/parameters.h

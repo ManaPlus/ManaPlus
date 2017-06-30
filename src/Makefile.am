@@ -580,6 +580,7 @@ BASE_SRC += events/actionevent.h \
 	      utils/intmap.h \
 	      utils/langs.cpp \
 	      utils/langs.h \
+	      utils/likely.h \
 	      utils/mathutils.h \
 	      fs/mkdir.cpp \
 	      fs/mkdir.h \

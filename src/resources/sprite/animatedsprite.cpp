@@ -40,6 +40,7 @@
 #include "resources/sprite/animationdelayload.h"
 
 #include "utils/delete2.h"
+#include "utils/likely.h"
 #include "utils/mrand.h"
 
 #include "debug.h"
