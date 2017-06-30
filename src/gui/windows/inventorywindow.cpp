@@ -69,6 +69,7 @@
 #include "resources/item/item.h"
 
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

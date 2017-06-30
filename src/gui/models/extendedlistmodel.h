@@ -23,8 +23,6 @@
 
 #include "gui/models/listmodel.h"
 
-#include "utils/foreach.h"
-
 #include "resources/image/image.h"
 
 class ExtendedListModel notfinal : public ListModel

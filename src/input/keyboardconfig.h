@@ -25,7 +25,9 @@
 
 #include "localconsts.h"
 
+#ifndef USE_SDL2
 #include "utils/cast.h"
+#endif  // USE_SDL2
 
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")

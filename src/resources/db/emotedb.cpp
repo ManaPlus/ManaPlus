@@ -26,7 +26,6 @@
 #include "configuration.h"
 
 #include "utils/checkutils.h"
-#include "utils/foreach.h"
 
 #include "resources/beingcommon.h"
 #include "resources/emoteinfo.h"

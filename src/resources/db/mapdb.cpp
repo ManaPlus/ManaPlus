@@ -24,8 +24,6 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "utils/foreach.h"
-
 #include "resources/beingcommon.h"
 
 #include "debug.h"

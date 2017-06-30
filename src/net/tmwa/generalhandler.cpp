@@ -67,7 +67,6 @@
 #include "net/tmwa/searchstorehandler.h"
 #include "net/tmwa/vendinghandler.h"
 
-#include "utils/cast.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 

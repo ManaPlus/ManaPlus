@@ -88,6 +88,7 @@
 #include "resources/skill/skillinfo.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

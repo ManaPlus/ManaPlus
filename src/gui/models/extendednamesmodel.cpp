@@ -21,6 +21,7 @@
 #include "gui/models/extendednamesmodel.h"
 
 #include "utils/cast.h"
+#include "utils/foreach.h"
 
 #include "debug.h"
 

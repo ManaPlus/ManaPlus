@@ -27,7 +27,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "utils/cast.h"
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 

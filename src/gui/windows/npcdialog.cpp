@@ -73,6 +73,7 @@
 
 #include "utils/copynpaste.h"
 #include "utils/delete2.h"
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 
 #include <sstream>

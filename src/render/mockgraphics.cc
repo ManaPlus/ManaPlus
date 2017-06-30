@@ -24,7 +24,6 @@
 
 #include "graphicsmanager.h"
 
-#include "utils/cast.h"
 #include "utils/sdlcheckutils.h"
 
 #include "render/vertexes/imagecollection.h"

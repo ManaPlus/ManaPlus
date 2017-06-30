@@ -54,6 +54,7 @@
 #include "gui/windows/tradewindow.h"
 
 #include "utils/checkutils.h"
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 #include "utils/stdmove.h"
 #include "utils/timer.h"
