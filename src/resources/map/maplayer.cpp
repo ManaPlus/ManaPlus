@@ -31,7 +31,9 @@
 
 #include "gui/userpalette.h"
 
+#ifdef USE_OPENGL
 #include "utils/foreach.h"
+#endif  // USE_OPENGL
 
 #include "render/graphics.h"
 

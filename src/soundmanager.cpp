@@ -30,7 +30,9 @@
 
 #include "fs/virtfs/fs.h"
 
+#ifndef TMWA_SUPPORT
 #include "utils/cast.h"
+#endif  // TMWA_SUPPORT
 
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"

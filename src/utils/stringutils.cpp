@@ -24,13 +24,13 @@
 
 #include "const/utils/utf8.h"
 
-#ifndef DYECMD
+#ifdef DYECMD
+#include "utils/cast.h"
+#else  // DYECMD
 #include "resources/iteminfo.h"
-
 #include "resources/db/itemdb.h"
 #endif  // DYECMD
 
-#include "utils/cast.h"
 #include "utils/gettext.h"
 #include "utils/foreach.h"
 
