@@ -27,8 +27,6 @@
 
 #include "gui/models/serverslistmodel.h"
 
-#include "utils/cast.h"
-
 #include "localconsts.h"
 
 class ServersListBox final : public ListBox

@@ -27,6 +27,7 @@
 #include "net/net.h"
 #include "net/packetcounters.h"
 
+#include "utils/cast.h"
 #include "utils/stringutils.h"
 
 PRAGMA48(GCC diagnostic push)

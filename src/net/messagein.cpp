@@ -24,6 +24,7 @@
 
 #include "net/packetcounters.h"
 
+#include "utils/cast.h"
 #include "utils/stringutils.h"
 
 #include "logger.h"

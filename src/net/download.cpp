@@ -26,6 +26,8 @@
 #include "settings.h"
 
 #include "fs/files.h"
+
+#include "utils/cast.h"
 #include "utils/sdlhelper.h"
 
 #include <zlib.h>

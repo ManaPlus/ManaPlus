@@ -31,7 +31,6 @@
 
 #include "gui/models/listmodel.h"
 
-#include "utils/cast.h"
 #include "utils/gettext.h"
 
 /**

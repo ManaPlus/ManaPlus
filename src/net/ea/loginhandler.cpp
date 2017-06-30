@@ -27,6 +27,7 @@
 #include "logger.h"
 #include "settings.h"
 
+#include "utils/cast.h"
 #include "utils/dtor.h"
 
 #include "net/logindata.h"

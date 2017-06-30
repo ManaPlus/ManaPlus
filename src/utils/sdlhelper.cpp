@@ -24,6 +24,7 @@
 
 #include "logger.h"
 
+#include "utils/cast.h"
 #include "utils/stringutils.h"
 
 #if defined(USE_X11) && defined(USE_OPENGL)

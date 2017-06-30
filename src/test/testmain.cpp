@@ -27,6 +27,7 @@
 
 #include "fs/paths.h"
 
+#include "utils/cast.h"
 #include "utils/delete2.h"
 #include "utils/process.h"
 

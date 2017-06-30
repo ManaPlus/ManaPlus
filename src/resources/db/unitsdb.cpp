@@ -26,6 +26,7 @@
 
 #include "const/resources/currency.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/stdmove.h"
 

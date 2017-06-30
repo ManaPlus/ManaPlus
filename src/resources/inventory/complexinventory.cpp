@@ -26,6 +26,8 @@
 
 #include "being/playerinfo.h"
 
+#include "utils/cast.h"
+
 #include "resources/item/complexitem.h"
 
 #include "debug.h"

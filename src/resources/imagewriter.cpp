@@ -22,6 +22,7 @@
 
 #include "resources/imagewriter.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 
 #include <png.h>

@@ -32,6 +32,7 @@
 #include "fs/mkdir.h"
 #include "fs/paths.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/gettext.h"
 

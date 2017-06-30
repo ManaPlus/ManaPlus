@@ -26,6 +26,7 @@
 
 #include "resources/image/image.h"
 
+#include "utils/cast.h"
 #include "utils/dtor.h"
 
 #include "debug.h"

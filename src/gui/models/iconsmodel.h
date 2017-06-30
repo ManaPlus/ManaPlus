@@ -25,7 +25,6 @@
 
 #include "gui/models/listmodel.h"
 
-#include "utils/cast.h"
 #include "utils/foreach.h"
 
 #include "resources/iteminfo.h"

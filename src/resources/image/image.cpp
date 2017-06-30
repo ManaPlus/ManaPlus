@@ -35,6 +35,7 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
+#include "utils/cast.h"
 #include "utils/sdlcheckutils.h"
 
 PRAGMA48(GCC diagnostic push)

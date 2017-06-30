@@ -24,6 +24,8 @@
 
 #include "logger.h"
 
+#include "utils/cast.h"
+
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "debug.h"

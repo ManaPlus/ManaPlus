@@ -30,6 +30,8 @@
 
 #include "fs/virtfs/fs.h"
 
+#include "utils/cast.h"
+
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
 

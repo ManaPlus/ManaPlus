@@ -31,6 +31,7 @@
 
 #include "resources/sprite/spritereference.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/gettext.h"

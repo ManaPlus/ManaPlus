@@ -73,8 +73,6 @@
 #include "listeners/keylistener.h"
 #include "listeners/mouselistener.h"
 
-#include "utils/cast.h"
-
 #include "localconsts.h"
 
 /**

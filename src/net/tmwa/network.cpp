@@ -59,6 +59,8 @@
 
 #include "net/tmwa/messagein.h"
 
+#include "utils/cast.h"
+
 #include "debug.h"
 
 namespace TmwAthena

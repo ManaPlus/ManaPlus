@@ -25,6 +25,8 @@
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/fsfuncs.h"
 
+#include "utils/cast.h"
+
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_rwops.h>

@@ -31,6 +31,8 @@
 
 #include "localconsts.h"
 
+UTILS_CAST_H
+
 #define createOutPacket(name) MessageOut outMsg(name); \
     outMsg.writeInt16(CAST_S16(name), #name)
 

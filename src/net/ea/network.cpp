@@ -27,6 +27,7 @@
 
 #include "net/packetinfo.h"
 
+#include "utils/cast.h"
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"

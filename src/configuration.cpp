@@ -31,6 +31,7 @@
 
 #include "listeners/configlistener.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/foreach.h"

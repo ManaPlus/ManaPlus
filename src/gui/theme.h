@@ -34,7 +34,6 @@
 
 #include "gui/palette.h"
 
-#include "utils/cast.h"
 #include "utils/stringvector.h"
 
 #include "localconsts.h"

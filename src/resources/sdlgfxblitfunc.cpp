@@ -29,6 +29,7 @@ LGPL (c) A. Schiffler
 #ifndef USE_SDL2
 #include "resources/sdlgfxblitfunc.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 
 PRAGMA48(GCC diagnostic push)

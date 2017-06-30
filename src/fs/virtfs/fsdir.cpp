@@ -30,6 +30,7 @@
 #include "fs/virtfs/fsfuncs.h"
 #include "fs/virtfs/list.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/foreach.h"
 #include "utils/stdmove.h"

@@ -29,7 +29,6 @@
 
 #include "resources/db/itemdb.h"
 
-#include "utils/cast.h"
 #include "utils/foreach.h"
 
 #include <list>

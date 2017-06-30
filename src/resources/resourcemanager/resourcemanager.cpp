@@ -34,6 +34,7 @@
 
 #include "resources/sprite/spritedef.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/foreach.h"
 

@@ -26,6 +26,7 @@
 
 #include "fs/virtfs/fs.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/fuzzer.h"
 #include "utils/stringutils.h"

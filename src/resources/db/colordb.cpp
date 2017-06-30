@@ -23,6 +23,7 @@
 
 #include "configuration.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/foreach.h"
 

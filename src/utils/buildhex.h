@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+UTILS_CAST_H
+
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #ifndef SDL_BIG_ENDIAN

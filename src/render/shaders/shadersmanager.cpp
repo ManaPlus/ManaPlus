@@ -27,6 +27,8 @@
 
 #include "fs/virtfs/tools.h"
 
+#include "utils/cast.h"
+
 #include "render/opengl/mgl.h"
 #ifdef __native_client__
 #include "render/opengl/naclglfunctions.h"

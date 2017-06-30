@@ -28,8 +28,6 @@
 
 #include "gui/color.h"
 
-#include "utils/cast.h"
-
 #include <map>
 #include <set>
 #include <string>

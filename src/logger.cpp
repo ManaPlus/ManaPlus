@@ -26,6 +26,7 @@
 
 #include "listeners/debugmessagelistener.h"
 
+#include "utils/cast.h"
 #include "utils/foreach.h"
 #include "utils/stringutils.h"
 

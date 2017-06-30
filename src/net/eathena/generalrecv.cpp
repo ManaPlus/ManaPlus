@@ -27,6 +27,7 @@
 
 #include "net/messagein.h"
 
+#include "utils/cast.h"
 #include "utils/gettext.h"
 
 #include "debug.h"

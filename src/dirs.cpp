@@ -38,6 +38,8 @@
 #include "fs/files.h"
 #endif  // defined(__native_client__) || (defined(ANDROID) &&
         // defined(USE_SDL2))
+
+#include "utils/cast.h"
 #include "utils/gettext.h"
 
 #ifdef ANDROID

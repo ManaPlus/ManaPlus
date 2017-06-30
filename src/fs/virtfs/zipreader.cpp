@@ -25,6 +25,7 @@
 #include "fs/virtfs/zipentry.h"
 #include "fs/virtfs/ziplocalheader.h"
 
+#include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"
 
