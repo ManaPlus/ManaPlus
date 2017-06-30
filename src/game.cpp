@@ -199,7 +199,14 @@ static void createGuiWindows()
 
     // Create dialogs
     CREATEWIDGETV0(emoteWindow, EmoteWindow);
-    CREATEWIDGETV0(chatWindow, ChatWindow);
+    delete2(debugChatTab)
+    if (chatWindow)
+    {
+        chatWindow->scheduleDelete();
+        chatWindow = nullptr;
+    }
+    CREATEWIDGETV(chatWindow, ChatWindow,
+        "Chat");
     CREATEWIDGETV0(tradeWindow, TradeWindow);
     CREATEWIDGETV(equipmentWindow, EquipmentWindow,
         PlayerInfo::getEquipment(),

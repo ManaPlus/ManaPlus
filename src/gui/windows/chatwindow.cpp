@@ -89,7 +89,7 @@ ChatWindow *chatWindow = nullptr;
 
 static const char *const ACTION_COLOR_PICKER = "color picker";
 
-ChatWindow::ChatWindow() :
+ChatWindow::ChatWindow(const std::string &name) :
     // TRANSLATORS: chat window name
     Window(_("Chat"), Modal_false, nullptr, "chat.xml"),
     ActionListener(),
@@ -127,7 +127,7 @@ ChatWindow::ChatWindow() :
     mEnableTradeFilter(config.getBoolValue("enableTradeFilter")),
     mTmpVisible(false)
 {
-    setWindowName("Chat");
+    setWindowName(name);
 
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
@@ -669,7 +669,9 @@ void ChatWindow::chatInput(const std::string &message) const
     }
     if (tab != nullptr)
         tab->chatInput(msg);
-    Game::instance()->setValidSpeed();
+    Game *const game = Game::instance();
+    if (game)
+        game->setValidSpeed();
 }
 
 void ChatWindow::localChatInput(const std::string &msg) const

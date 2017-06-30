@@ -48,9 +48,14 @@
 #include "gui/popups/spellpopup.h"
 #include "gui/popups/textboxpopup.h"
 
+#include "gui/windows/chatwindow.h"
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/setupwindow.h"
+
+#include "gui/widgets/tabs/chat/chattab.h"
+
+#include "utils/gettext.h"
 #endif  // DYECMD
 
 #include "gui/widgets/createwidget.h"
@@ -123,6 +128,19 @@ void WindowManager::createWindows()
     CREATEWIDGETV0(itemPopup, ItemPopup);
     CREATEWIDGETV0(spellPopup, SpellPopup);
     CREATEWIDGETV0(skillPopup, SkillPopup);
+    delete2(debugChatTab);
+    if (chatWindow)
+    {
+        chatWindow->scheduleDelete();
+        chatWindow = nullptr;
+    }
+    CREATEWIDGETV(chatWindow, ChatWindow,
+        "DebugChat");
+    // TRANSLATORS: chat tab header
+    debugChatTab = new ChatTab(chatWindow, _("Debug"), "",
+        "#Debug", ChatTabType::DEBUG);
+    debugChatTab->setAllowHighlight(false);
+    chatWindow->setVisible(Visible_false);
 #endif  // DYECMD
 
     CREATEWIDGETV0(textPopup, TextPopup);
@@ -143,6 +161,9 @@ void WindowManager::deleteWindows()
     delete2(userPalette);
     delete2(spellManager)
     delete2(spellShortcut)
+
+    delete2(debugChatTab);
+    delete2(chatWindow);
 #endif  // DYECMD
 
     delete2(textPopup);

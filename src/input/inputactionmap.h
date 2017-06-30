@@ -582,7 +582,7 @@ static const InputActionData inputActionData
         Input::GRP_DEFAULT | Input::GRP_GUI,
         &Actions::chatWindowShow,
         InputAction::NO_VALUE, 50,
-        InputCondition::GAME | InputCondition::NOTARGET,
+        InputCondition::SHORTCUT0,
         "openchat",
         UseArgs_false,
         Protected_false},
@@ -2234,7 +2234,7 @@ static const InputActionData inputActionData
         &Actions::toggleChat,
         InputAction::NO_VALUE, 50,
         InputCondition::NOINPUT | InputCondition::NOAWAY
-            | InputCondition::NOMODAL | InputCondition::INGAME,
+            | InputCondition::NOMODAL,
         "chat",
         UseArgs_false,
         Protected_false},
