@@ -226,6 +226,7 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
         }
         else
         {
+            msg.readInt32("last login");  // for now unused
             continue;
         }
 

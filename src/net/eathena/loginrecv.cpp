@@ -225,7 +225,20 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
 
     loginHandler->clearWorlds();
 
-    const int worldCount = (msg.getLength() - 47) / 32;
+    int offset = 0;
+    int serverLen = 0;
+    if (msg.getVersion() >= 20170315)
+    {
+        offset = 47 + 17;
+        serverLen = 32 + 128;
+    }
+    else
+    {
+        offset = 47;
+        serverLen = 32;
+    }
+
+    const int worldCount = (msg.getLength() - offset) / serverLen;
 
     Ea::LoginRecv::mToken.session_ID1 = msg.readInt32("session id1");
     Ea::LoginRecv::mToken.account_ID = msg.readBeingId("accound id");
@@ -262,7 +275,7 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
         if (msg.getVersion() >= 20170315)
         {
             for (int f = 0; f < 32; f ++)
-                msg.readUInt8("unused2");
+                msg.readInt32("unused2");
         }
 
         logger->log("Network: Server: %s (%s:%d)", world->name.c_str(),

@@ -276,6 +276,11 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
         server.hostname = ipToString(msg.readInt32("map ip address"));
     }
     server.port = msg.readInt16("map ip port");
+    if (msg.getVersion() >= 20170329)
+    {
+        for (int f = 0; f < 32; f ++)
+            msg.readInt32("unused");
+    }
 
     // Prevent the selected local player from being deleted
     localPlayer = charServerHandler->mSelectedCharacter->dummy;
