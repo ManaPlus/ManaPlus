@@ -763,8 +763,6 @@ void WhoIsOnline::updateSize()
 
     if (mScrollArea != nullptr)
         mScrollArea->setSize(area.width - 10, area.height - 10 - 30);
-    if (mBrowserBox != nullptr)
-        mBrowserBox->setWidth(area.width - 10);
 }
 
 const std::string WhoIsOnline::prepareNick(const std::string &restrict nick,
