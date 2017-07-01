@@ -64,7 +64,7 @@ class ChatWindow final : public Window,
         /**
          * Constructor.
          */
-        ChatWindow(const std::string &name);
+        explicit ChatWindow(const std::string &name);
 
         A_DELETE_COPY(ChatWindow)
 

@@ -33,9 +33,9 @@
 
 #ifdef USE_X11
 #include "fs/files.h"
-#endif  // USE_X11
 
 #include "utils/foreach.h"
+#endif  // USE_X11
 
 #ifdef __native_client__
 #include <limits.h>
