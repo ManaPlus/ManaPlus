@@ -29,6 +29,10 @@
 #include "fs/virtfs/list.h"
 #endif  // defined(ANDROID) || defined(__native_client__)
 
+#if defined(ANDROID) || defined(__native_client__)
+#include "utils/foreach.h"
+#endif  // defined(ANDROID) || defined(__native_client__)
+
 #include "utils/checkutils.h"
 #include "utils/stringutils.h"
 
