@@ -41,7 +41,9 @@ struct SpriteDisplay;
         VirtFs::getFilesInDir(paths.getStringValue( \
             name), listVect, ".xml"); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
+        { \
             function(*itVect, SkipError_true); \
+        } \
     }
 
 #define loadXmlDir2(name, function, ext, skipError) \
@@ -49,7 +51,9 @@ struct SpriteDisplay;
         StringVect listVect; \
         VirtFs::getFilesInDir(name, listVect, ext); \
         FOR_EACH (StringVectCIter, itVect, listVect) \
+        { \
             function(*itVect, skipError); \
+        } \
     }
 
 namespace BeingCommon
