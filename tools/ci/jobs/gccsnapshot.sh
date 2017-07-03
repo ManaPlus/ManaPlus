@@ -11,6 +11,10 @@ if [ "$NEWCXX" != "" ]; then
     export CXX="$NEWCXX"
 fi
 
+if [ "$FLAGS" == "" ]; then
+    export FLAGS="gccsnapshot.sh"
+fi
+
 export PATH=/usr/lib/gcc-snapshot/bin:$PATH
 
 source ./tools/ci/scripts/init.sh
@@ -20,7 +24,7 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -std=gnu++1z -Wformat=1 \
 -Wno-attributes -fno-omit-frame-pointer"
 
-source ./tools/ci/flags/gccsnapshot.sh
+source ./tools/ci/flags/${FLAGS}
 
 export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"
 
