@@ -330,7 +330,8 @@ TEST_CASE("Windows tests", "windowmanager")
     }
     SECTION("ChatWindow")
     {
-        CREATEWIDGETV0(chatWindow, ChatWindow);
+        CREATEWIDGETV(chatWindow, ChatWindow,
+            "Chat");
         gui->draw();
         mainGraphics->updateScreen();
         delete2(chatWindow);
@@ -596,7 +597,7 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("serversInfoWindow")
     {
         ServerInfo mCurrentServer;
-        ServerInfoWindow *serverInfoWindow = CREATEWIDGETR(ServerInfoWindow,
+        CREATEWIDGETV(serverInfoWindow, ServerInfoWindow,
             mCurrentServer);
         gui->draw();
         mainGraphics->updateScreen();
