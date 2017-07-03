@@ -422,7 +422,7 @@ nsiqcppstyle:
     LIBVERSION: SDL-1.2_asan
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
               wget unzip
     ASAN_OPTIONS: "detect_leaks=0"
@@ -447,7 +447,7 @@ nsiqcppstyle:
     LIBVERSION: default_asan
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
               wget unzip
     ASAN_OPTIONS: "detect_leaks=0"
@@ -705,7 +705,7 @@ gcc-6_SDL_SDL-1.2_sanitize_test:
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
@@ -726,7 +726,7 @@ gcc-6_SDL_default_sanitize_test:
     LIBVERSION: default
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
@@ -750,7 +750,7 @@ gcc-6_SDL_SDL-1.2_old_sanitize_test:
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
               libjpeg-dev libtiff-dev
               wget unzip
@@ -773,7 +773,7 @@ gcc-6_SDL_default_old_sanitize_test:
     LIBVERSION: default_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
               libjpeg-dev libtiff-dev
               wget unzip
@@ -2934,7 +2934,7 @@ gcc-6_SDL_SDL-1.2:
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev
               wget unzip gdb valgrind netcat-openbsd procps
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
@@ -2954,7 +2954,7 @@ gcc-6_SDL_default:
     LIBVERSION: default
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev
               wget unzip gdb valgrind netcat-openbsd procps
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
@@ -2975,7 +2975,7 @@ gcc-6_SDL_SDL-1.2_test:
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
@@ -2995,7 +2995,7 @@ gcc-6_SDL_default_test:
     LIBVERSION: default
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
@@ -3017,7 +3017,7 @@ gcc-6_SDL_SDL-1.2_old:
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               libjpeg-dev libtiff-dev 
               wget unzip gdb valgrind netcat-openbsd procps
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
@@ -3039,7 +3039,7 @@ gcc-6_SDL_default_old:
     LIBVERSION: default_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev
               libjpeg-dev libtiff-dev
               wget unzip gdb valgrind netcat-openbsd procps
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_v1.2.5.sh
@@ -3062,7 +3062,7 @@ gcc-6_SDL_SDL-1.2_old_test:
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
               libjpeg-dev libtiff-dev
               wget unzip
@@ -3084,7 +3084,7 @@ gcc-6_SDL_default_old_test:
     LIBVERSION: default_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
               libjpeg-dev libtiff-dev
               wget unzip
@@ -3109,7 +3109,7 @@ gcc-6_SDL_SDL-1.2_sanitize:
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind netcat-openbsd
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
@@ -3130,7 +3130,7 @@ gcc-6_SDL_default_sanitize:
     LIBVERSION: default
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind netcat-openbsd
               wget unzip
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
@@ -3154,7 +3154,7 @@ gcc-6_SDL_SDL-1.2_old_sanitize:
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind netcat-openbsd
               libjpeg-dev libtiff-dev
               wget unzip
@@ -3177,7 +3177,7 @@ gcc-6_SDL_default_old_sanitize:
     LIBVERSION: default_old
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext pkg-config 
-              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind netcat-openbsd
               libjpeg-dev libtiff-dev
               wget unzip
