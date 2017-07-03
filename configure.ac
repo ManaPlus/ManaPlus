@@ -193,6 +193,7 @@ AC_TYPE_SSIZE_T
 # Search for *-config
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 AC_PATH_PROG(CURL_CONFIG, curl-config)
+AC_PATH_PROG(ICU_CONFIG, icu-config)
 
 LIBS="$LIBS `$PKG_CONFIG --libs zlib`"
 CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags zlib`"
@@ -398,8 +399,18 @@ if test "$xmllib" == "libxml"; then
         AC_CHECK_LIB([xml2], [xmlInitParser], ,
         AC_MSG_ERROR([ *** Unable to find libxml2 library (http://xmlsoft.org/)]))
     fi
-    AC_CHECK_HEADERS([libxml/xmlreader.h], ,
-    AC_MSG_ERROR([ *** libxml2 library found but cannot find headers (http://xmlsoft.org/)]))
+    AC_CHECK_HEADERS(
+        [libxml/xmlreader.h],
+        ,
+        CPPFLAGS="$CPPFLAGS `$ICU_CONFIG --cxxflags`"
+        AC_MSG_RESULT([no])
+        AC_MSG_CHECKING([Checking libxml2 headers with icu bug fix])
+        AC_CHECK_HEADERS(
+            [libxml/xmlreader.h],
+            ,
+            AC_MSG_ERROR([ *** libxml2 library found but cannot find headers (http://xmlsoft.org/)])
+        )
+    )
 fi
 
 if test "$xmllib" == "pugixml"; then
