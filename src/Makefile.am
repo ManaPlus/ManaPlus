@@ -932,6 +932,8 @@ SRC = ${BASE_SRC} \
 	      actions/windows.h \
 	      client.cpp \
 	      client.h \
+	      resources/dbmanager.cpp \
+	      resources/dbmanager.h \
 	      resources/sprite/imagesprite.cpp \
 	      resources/sprite/imagesprite.h \
 	      resources/inventory/inventory.cpp \

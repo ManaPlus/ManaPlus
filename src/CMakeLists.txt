@@ -637,6 +637,8 @@ SET(SRCS
     resources/db/commandsdb.h
     resources/cursors.cpp
     resources/cursors.h
+    resources/dbmanager.cpp
+    resources/dbmanager.h
     resources/delayedmanager.cpp
     resources/delayedmanager.h
     resources/db/deaddb.cpp
