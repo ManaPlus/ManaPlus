@@ -1588,6 +1588,7 @@ void Being::setAction(const BeingActionT &restrict action,
             currentAction = getSpawnAction();
             break;
         case BeingAction::PRESTAND:
+            break;
         default:
             logger->log("Being::setAction unknown action: "
                 + toString(CAST_U32(action)));
