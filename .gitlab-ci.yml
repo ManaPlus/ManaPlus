@@ -1462,6 +1462,40 @@ gentoo_gcc-4.9_tests_sdl2:
 
 # simple builds
 
+gcc-gentoo_sdl1:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc_sdl1
+  <<: *job-push
+  variables:
+    LOGFILE: gcc.log
+    CC: gcc
+    CXX: g++
+    CXXFLAGS: "-Wall -Wextra"
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+  tags:
+    - docker
+
+gcc-gentoo_sdl2:
+  stage: prebuild
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --with-sdl2 --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc_sdl2
+  <<: *job-push
+  variables:
+    LOGFILE: gcc.log
+    CC: gcc
+    CXX: g++
+    CXXFLAGS: "-Wall -Wextra"
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+  tags:
+    - docker
+
 gcc-3_sdl1:
   stage: build
   script:
