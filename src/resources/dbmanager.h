@@ -25,6 +25,6 @@ namespace DbManager
 {
     void loadDb();
     void unloadDb();
-}
+}  // namespace DbManager
 
 #endif  // RESOURCES_DBMANAGER_H
