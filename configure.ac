@@ -402,15 +402,20 @@ if test "$xmllib" == "libxml"; then
     AC_CHECK_HEADERS(
         [libxml/xmlreader.h],
         ,
-        CPPFLAGS="$CPPFLAGS `$ICU_CONFIG --cxxflags`"
+        # workaround for icu-59 issue.
+        CPPFLAGS="$CPPFLAGS --std=c++0x"
         AC_MSG_RESULT([no])
         AC_MSG_CHECKING([Checking libxml2 headers with icu bug fix])
+        icu_bug=yes
+        $as_unset ac_cv_header_libxml_xmlreader_h
+    )
+    if test "$icu_bug" == "yes"; then
         AC_CHECK_HEADERS(
             [libxml/xmlreader.h],
             ,
             AC_MSG_ERROR([ *** libxml2 library found but cannot find headers (http://xmlsoft.org/)])
         )
-    )
+    fi
 fi
 
 if test "$xmllib" == "pugixml"; then
