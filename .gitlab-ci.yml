@@ -2188,6 +2188,32 @@ gcc-snapshot_sdl2_i386:
   tags:
     - docker
 
+gcc7_checks_sdl1:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7.sh --enable-checks --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+
+gcc7_checks_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-checks --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              gdb valgrind netcat-openbsd procps
+
 gcc7_without_mumble_sdl1:
   stage: build
   script:
