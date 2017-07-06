@@ -2912,6 +2912,101 @@ gcc-6_libpng_libpng10:
   tags:
     - docker
 
+gcc-6_tinyxml2_master:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: tinyxml2
+    LIBVERSION: master
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-6_tinyxml2_5.0.1:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: tinyxml2
+    LIBVERSION: 5.0.1
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-6_tinyxml2_4.0.1:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: tinyxml2
+    LIBVERSION: 4.0.1
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-6_tinyxml2_3.0.0:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: tinyxml2
+    LIBVERSION: 3.0.0
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-6_tinyxml2_2.2.0:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: tinyxml2
+    LIBVERSION: 2.2.0
+    PACKAGES: gcc-6 g++-6 
+              make autoconf automake autopoint gettext 
+              libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
 gcc-6_libxml2_v2.9.4:
   stage: build
   script:
