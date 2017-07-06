@@ -1339,6 +1339,64 @@ gcc-7_tests_jmalloc_sdl2_i386:
   tags:
     - docker
 
+gcc-7_tests_tcmalloc:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --enable-tcmalloc --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind libgoogle-perftools-dev
+  tags:
+    - docker
+
+gcc-7_tests_tcmalloc_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --enable-tcmalloc --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind libgoogle-perftools-dev
+  tags:
+    - docker
+
+gcc-7_tests_tcmalloc_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --enable-tcmalloc --with-sdl2 --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind libgoogle-perftools-dev
+  tags:
+    - docker
+
+gcc-7_tests_tcmalloc_sdl2_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_tests.sh --enable-tcmalloc --with-sdl2 --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind libgoogle-perftools-dev
+  tags:
+    - docker
+
 gcc-7_lto:
   stage: build
   script:
