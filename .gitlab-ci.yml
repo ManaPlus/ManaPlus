@@ -1306,6 +1306,39 @@ gcc-7_tests_jmalloc_i386:
   tags:
     - docker
 
+gcc-7_tests_jmalloc_sdl2:
+  stage: build
+  script:
+  - ls ${MALLOC}
+  - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind libjemalloc1
+    MALLOC: /usr/lib/x86_64-linux-gnu/libjemalloc.so.1
+  tags:
+    - docker
+
+gcc-7_tests_jmalloc_sdl2_i386:
+  stage: build
+  script:
+  - ls ${MALLOC}
+  - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              valgrind libjemalloc1
+    MALLOC: /usr/lib/i386-linux-gnu/libjemalloc.so.1
+  tags:
+    - docker
+
 gcc-7_lto:
   stage: build
   script:
