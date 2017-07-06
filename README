@@ -17,7 +17,7 @@ THE MANA PLUS CLIENT
  Dependencies:
 
   - SDL, SDL_image, SDL_mixer, SDL_ttf, SDL_net (Media framework), SDL_gfx
-  - libxml2 or pugixml (XML parsing and writing)
+  - libxml2 or pugixml or tinyxml2 (XML parsing and writing)
   - libcurl (HTTP downloads)
   - libpng (save screenshots)
   - zlib (Archives)
