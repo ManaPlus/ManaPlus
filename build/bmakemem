@@ -1,55 +1,38 @@
-#!/bin/sh
+#!/bin/bash
 
+mkdir tmp
 cd ..
 
 dir=`pwd`
 
-export CC=gcc
-export CXX=g++
+export CCACHE_DIR="${dir}/build/ccache/bmakemem"
+export CC="ccache gcc"
+export CXX="ccache g++"
 
 export LANG=C
 
-export CXXFLAGS="-ggdb3 -O2 -pipe -ffast-math \
--funswitch-loops \
--Wvariadic-macros -Wvla -Wredundant-decls \
--Wpacked-bitfield-compat -Wtrampolines \
--Wsuggest-attribute=noreturn -Wunused -Wstrict-aliasing=2 \
--fstrict-aliasing -Wunreachable-code -Wabi -Wdisabled-optimization \
--Wvolatile-register-var -Winvalid-pch -Wredundant-decls \
--Wnormalized=nfkc -Wmissing-format-attribute -Wmissing-noreturn \
--Wswitch-default -Wsign-promo -Waddress -Wmissing-declarations \
--Wctor-dtor-privacy -Wstrict-null-sentinel -Wlogical-op \
--Wcast-align -Wpointer-arith -Wundef \
--Wmissing-include-dirs -Winit-self -pedantic -Wall \
--Wpacked -Wextra -fstrict-overflow -Wstrict-overflow=1 -Wunknown-pragmas \
--Wwrite-strings -Wstack-protector -Wshadow -Wunused-macros -Wsynth \
--Wbuiltin-macro-redefined -Wctor-dtor-privacy -Wdeprecated \
--Wendif-labels -Wformat=1 -Wimport -Wnon-virtual-dtor -Wpsabi \
--Wsign-promo -Wwrite-strings -D_FORTIFY_SOURCE=2 -Wc++11-compat -std=c++0x \
--Wdelete-non-virtual-dtor -Wmaybe-uninitialized -Wunused-local-typedefs \
--Wvector-operation-performance -Wfree-nonheap-object -Winvalid-memory-model \
--Wnarrowing -Wzero-as-null-pointer-constant -funsafe-loop-optimizations \
--Wabi-tag -Waggressive-loop-optimizations -Wclobbered -Wempty-body \
--Wignored-qualifiers -Wliteral-suffix -Wmissing-field-initializers \
--Woverlength-strings -Wpedantic -Wsign-compare -Wsizeof-pointer-memaccess \
--Wsuggest-attribute=format -Wtype-limits -Wuninitialized \
--Wunused-but-set-parameter -Wunused-but-set-variable -Wunused-function \
--Wunused-label -Wunused-parameter -Wunused-value -Wunused-variable \
--fsched-pressure \
--Wconditionally-supported -Wdate-time \
--Wno-attributes"
+export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
+-D_FORTIFY_SOURCE=2 \
+-std=gnu++1z \
+-fno-var-tracking -Wno-attributes"
+
+source ./tools/ci/flags/gcc7.sh
+
+export CXXFLAGS="$CXXFLAGS -Wno-null-dereference"
 
 autoreconf -i
-./configure --prefix=$dir/run \
+cd build/tmp
+../../configure --prefix=$dir/run \
 --datadir=$dir/run/share/games \
 --bindir=$dir/run/bin \
 --mandir=$dir/run/share/man \
 --enable-memdebug=yes \
 --enable-tcmalloc=no \
---enable-googleprofiler=no
+--enable-googleprofiler=no \
+--enable-werror
 
 cd po
-make -j8 update-gmo 2>../build/make1.log
+make -j8 update-gmo 2>../../make1.log
 cd ..
-make -j8 2>build/make2.log
+make -j8 2>../make2.log
 
