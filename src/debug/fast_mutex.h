@@ -2,7 +2,7 @@
 // vim:tabstop=4:shiftwidth=4:expandtab:
 
 /*
- * Copyright (C) 2004-2008 Wu Yongwei <adah at users dot sourceforge dot net>
+ * Copyright (C) 2004-2015 Wu Yongwei <adah at users dot sourceforge dot net>
  *
  * This software is provided 'as-is', without any express or implied
  * warranty.  In no event will the authors be held liable for any
@@ -24,27 +24,40 @@
  * This file is part of Stones of Nvwa:
  *      http://sourceforge.net/projects/nvwa
  *
- * original version changed for ManaPlus
- *
- * Copyright (C) 2011-2017  The ManaPlus Developers
  */
 
 /**
- * @file    fast_mutex.h
+ * @file  fast_mutex.h
  *
- * A fast mutex implementation for POSIX and Win32.
+ * A fast mutex implementation for POSIX, Win32, and modern C++.
  *
- * @version 1.18, 2005/05/06
- * @author  Wu Yongwei
- *
+ * @date  2015-05-19
  */
 
-#ifndef M_FAST_MUTEX_H
-#define M_FAST_MUTEX_H
+#ifndef NVWA_FAST_MUTEX_H
+#define NVWA_FAST_MUTEX_H
 
-#include "localconsts.h"
+#include "debug/_nvwa.h"              // NVWA_NAMESPACE_*
+#include "debug/c++11.h"              // HAVE_CXX11_MUTEX
 
 # if !defined(_NOTHREADS)
+#   if !defined(NVWA_USE_CXX11_MUTEX) && HAVE_CXX11_MUTEX != 0 && \
+            !defined(_WIN32THREADS) && !defined(NVWA_WIN32THREADS) && \
+            !defined(NVWA_PTHREADS) && !defined(NVWA_NOTHREADS) && \
+            defined(_WIN32) && defined(_MT) && \
+            (!defined(_MSC_VER) || defined(_DLL))
+//      Prefer using std::mutex on Windows to avoid the namespace
+//      pollution caused by <windows.h>.  However, MSVC has a re-entry
+//      issue with its std::mutex implementation, and std::mutex should
+//      not be used unless /MD or /MDd is used.  For more information,
+//      check out:
+//
+//        https://connect.microsoft.com/VisualStudio/feedback/details/776596/std-mutex-not-a-constexpr-with-mtd-compiler-flag
+//        http://stackoverflow.com/questions/14319344/stdmutex-lock-hangs-when-overriding-the-new-operator
+//
+#       define NVWA_USE_CXX11_MUTEX 1
+#   endif
+
 #   if !defined(_WIN32THREADS) && \
             (defined(_WIN32) && defined(_MT))
 //      Automatically use _WIN32THREADS when specifying -MT/-MD in MSVC,
@@ -52,24 +65,54 @@
 #       define _WIN32THREADS
 #   elif !defined(_PTHREADS) && \
             defined(_REENTRANT)
-//      Automatically use _PTHREADS when specifying -pthread in GCC.
-//      N.B. I do not detect on _PTHREAD_H since libstdc++-v3 under
-//      Linux will silently include <pthread.h> anyway.
+//      Automatically use _PTHREADS when specifying -pthread in GCC or Clang.
 #       define _PTHREADS
 #   endif
 # endif
 
-# if !defined(_PTHREADS) && !defined(_WIN32THREADS) && !defined(_NOTHREADS)
+# ifndef NVWA_USE_CXX11_MUTEX
+#   if HAVE_CXX11_MUTEX != 0 && \
+            !defined(_NOTHREADS)    && !defined(NVWA_NOTHREADS) && \
+            !defined(_PTHREADS)     && !defined(NVWA_PTHREADS) && \
+            !defined(_WIN32THREADS) && !defined(NVWA_WIN32THREADS)
+#       define NVWA_USE_CXX11_MUTEX 1
+#   else
+#       define NVWA_USE_CXX11_MUTEX 0
+#   endif
+# endif
+
+# if !defined(_PTHREADS) && !defined(_WIN32THREADS) && \
+        !defined(_NOTHREADS) && NVWA_USE_CXX11_MUTEX == 0
 #   define _NOTHREADS
 # endif
 
 # if defined(_NOTHREADS)
-#   if defined(_PTHREADS) || defined(_WIN32THREADS)
+#   if defined(_PTHREADS) || defined(_WIN32THREADS) || \
+            NVWA_USE_CXX11_MUTEX != 0
 #       undef _NOTHREADS
 #       error "Cannot define multi-threaded mode with -D_NOTHREADS"
-#       if defined(__MINGW32__) && defined(_WIN32THREADS) && !defined(_MT)
-#           error "Be sure to specify -mthreads with -D_WIN32THREADS"
-#       endif
+#   endif
+# endif
+
+# if defined(__MINGW32__) && defined(_WIN32THREADS) && !defined(_MT)
+#   error "Be sure to specify -mthreads with -D_WIN32THREADS"
+# endif
+
+// With all the heuristics above, things may still go wrong, maybe even
+// due to a specific inclusion order.  So they may be overridden by
+// manually defining the NVWA_* macros below.
+# if NVWA_USE_CXX11_MUTEX == 0 && \
+        !defined(NVWA_WIN32THREADS) && \
+        !defined(NVWA_PTHREADS) && \
+        !defined(NVWA_NOTHREADS)
+//  _WIN32THREADS takes precedence, as some C++ libraries have _PTHREADS
+//  defined even on Win32 platforms.
+#   if defined(_WIN32THREADS)
+#       define NVWA_WIN32THREADS
+#   elif defined(_PTHREADS)
+#       define NVWA_PTHREADS
+#   else
+#       define NVWA_NOTHREADS
 #   endif
 # endif
 
@@ -85,13 +128,8 @@
 #   define _FAST_MUTEX_CHECK_INITIALIZATION 1
 # endif
 
-# if defined(_PTHREADS) && defined(_WIN32THREADS)
-//  Some C++ libraries have _PTHREADS defined even on Win32 platforms.
-//  Thus this hack.
-#   undef _PTHREADS
-# endif
-
 # ifdef _DEBUG
+#   include <stdio.h>
 #   include <stdlib.h>
 /** Macro for fast_mutex assertions.  Real version (for debug mode). */
 #   define _FAST_MUTEX_ASSERT(_Expr, _Msg) \
@@ -105,8 +143,76 @@
         ((void)0)
 # endif
 
-# ifdef _PTHREADS
+# if NVWA_USE_CXX11_MUTEX != 0
+#   include <mutex>
+NVWA_NAMESPACE_BEGIN
+/**
+ * Macro alias to `volatile' semantics.  Here it is truly volatile since
+ * it is in a multi-threaded (C++11) environment.
+ */
+#   define __VOLATILE volatile
+    /**
+     * Class for non-reentrant fast mutexes.  This is the implementation
+     * using the C++11 mutex.
+     */
+    class fast_mutex
+    {
+        std::mutex _M_mtx_impl;
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+        bool _M_initialized;
+#       endif
+#       ifdef _DEBUG
+        bool _M_locked;
+#       endif
+    public:
+        fast_mutex()
+#       ifdef _DEBUG
+            : _M_locked(false)
+#       endif
+        {
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            _M_initialized = true;
+#       endif
+        }
+        ~fast_mutex()
+        {
+            _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            _M_initialized = false;
+#       endif
+        }
+        void lock()
+        {
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            if (!_M_initialized)
+                return;
+#       endif
+            _M_mtx_impl.lock();
+#       ifdef _DEBUG
+            _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
+            _M_locked = true;
+#       endif
+        }
+        void unlock()
+        {
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            if (!_M_initialized)
+                return;
+#       endif
+#       ifdef _DEBUG
+            _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
+            _M_locked = false;
+#       endif
+            _M_mtx_impl.unlock();
+        }
+    private:
+        fast_mutex(const fast_mutex&);
+        fast_mutex& operator=(const fast_mutex&);
+    };
+NVWA_NAMESPACE_END
+# elif defined(NVWA_PTHREADS)
 #   include <pthread.h>
+NVWA_NAMESPACE_BEGIN
 /**
  * Macro alias to `volatile' semantics.  Here it is truly volatile since
  * it is in a multi-threaded (POSIX threads) environment.
@@ -118,69 +224,72 @@
      */
     class fast_mutex
     {
-            pthread_mutex_t _M_mtx_impl;
-#           if _FAST_MUTEX_CHECK_INITIALIZATION
-            bool _M_initialized;
-#           endif
-#           ifdef _DEBUG
-            bool _M_locked;
-#           endif
-        public:
-            fast_mutex()
-#           ifdef _DEBUG
-                : _M_locked(false)
-#           endif
-            {
-                ::pthread_mutex_init(&_M_mtx_impl, nullptr);
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                _M_initialized = true;
-#               endif
-            }
-            ~fast_mutex()
-            {
-                _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                _M_initialized = false;
-#               endif
-                ::pthread_mutex_destroy(&_M_mtx_impl);
-            }
-            void lock()
-            {
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                if (!_M_initialized)
-                    return;
-#               endif
-                ::pthread_mutex_lock(&_M_mtx_impl);
-#               ifdef _DEBUG
-                // The following assertion should _always_ be true for a
-                // real `fast' pthread_mutex.  However, this assertion can
-                // help sometimes, when people forget to use `-lpthread' and
-                // glibc provides an empty implementation.  Having this
-                // assertion is also more consistent.
-                _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
-                _M_locked = true;
-#               endif
-            }
-            void unlock()
-            {
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                if (!_M_initialized)
-                    return;
-#               endif
-#               ifdef _DEBUG
-                _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
-                _M_locked = false;
-#               endif
-                ::pthread_mutex_unlock(&_M_mtx_impl);
-            }
-        private:
-            fast_mutex(const fast_mutex&);
-            fast_mutex& operator=(const fast_mutex&);
+        pthread_mutex_t _M_mtx_impl;
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+        bool _M_initialized;
+#       endif
+#       ifdef _DEBUG
+        bool _M_locked;
+#       endif
+    public:
+        fast_mutex()
+#       ifdef _DEBUG
+            : _M_locked(false)
+#       endif
+        {
+            ::pthread_mutex_init(&_M_mtx_impl, NULL);
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            _M_initialized = true;
+#       endif
+        }
+        ~fast_mutex()
+        {
+            _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            _M_initialized = false;
+#       endif
+            ::pthread_mutex_destroy(&_M_mtx_impl);
+        }
+        void lock()
+        {
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            if (!_M_initialized)
+                return;
+#       endif
+            ::pthread_mutex_lock(&_M_mtx_impl);
+#       ifdef _DEBUG
+            // The following assertion should _always_ be true for a
+            // real `fast' pthread_mutex.  However, this assertion can
+            // help sometimes, when people forget to use `-lpthread' and
+            // glibc provides an empty implementation.  Having this
+            // assertion is also more consistent.
+            _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
+            _M_locked = true;
+#       endif
+        }
+        void unlock()
+        {
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            if (!_M_initialized)
+                return;
+#       endif
+#       ifdef _DEBUG
+            _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
+            _M_locked = false;
+#       endif
+            ::pthread_mutex_unlock(&_M_mtx_impl);
+        }
+    private:
+        fast_mutex(const fast_mutex&);
+        fast_mutex& operator=(const fast_mutex&);
     };
-# endif  // _PTHREADS
-
-# ifdef _WIN32THREADS
+NVWA_NAMESPACE_END
+# elif defined(NVWA_WIN32THREADS)
+#   ifndef WIN32_LEAN_AND_MEAN
+#     define WIN32_LEAN_AND_MEAN
+#   endif /* WIN32_LEAN_AND_MEAN */
 #   include <windows.h>
+NVWA_NAMESPACE_BEGIN
 /**
  * Macro alias to `volatile' semantics.  Here it is truly volatile since
  * it is in a multi-threaded (Win32 threads) environment.
@@ -192,63 +301,63 @@
      */
     class fast_mutex
     {
-            CRITICAL_SECTION _M_mtx_impl;
-#           if _FAST_MUTEX_CHECK_INITIALIZATION
-            bool _M_initialized;
-#           endif
-#           ifdef _DEBUG
-            bool _M_locked;
-#           endif
-        public:
-            fast_mutex()
-#           ifdef _DEBUG
-                : _M_locked(false)
-#           endif
-            {
-                ::InitializeCriticalSection(&_M_mtx_impl);
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                _M_initialized = true;
-#               endif
-            }
-            ~fast_mutex()
-            {
-                _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                _M_initialized = false;
-#               endif
-                ::DeleteCriticalSection(&_M_mtx_impl);
-            }
-            void lock()
-            {
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                if (!_M_initialized)
-                    return;
-#               endif
-                ::EnterCriticalSection(&_M_mtx_impl);
-#               ifdef _DEBUG
-                _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
-                _M_locked = true;
-#               endif
-            }
-            void unlock()
-            {
-#               if _FAST_MUTEX_CHECK_INITIALIZATION
-                if (!_M_initialized)
-                    return;
-#               endif
-#               ifdef _DEBUG
-                _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
-                _M_locked = false;
-#               endif
-                ::LeaveCriticalSection(&_M_mtx_impl);
-            }
-        private:
-            fast_mutex(const fast_mutex&);
-            fast_mutex& operator=(const fast_mutex&);
+        CRITICAL_SECTION _M_mtx_impl;
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+        bool _M_initialized;
+#       endif
+#       ifdef _DEBUG
+        bool _M_locked;
+#       endif
+    public:
+        fast_mutex()
+#       ifdef _DEBUG
+            : _M_locked(false)
+#       endif
+        {
+            ::InitializeCriticalSection(&_M_mtx_impl);
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            _M_initialized = true;
+#       endif
+        }
+        ~fast_mutex()
+        {
+            _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            _M_initialized = false;
+#       endif
+            ::DeleteCriticalSection(&_M_mtx_impl);
+        }
+        void lock()
+        {
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            if (!_M_initialized)
+                return;
+#       endif
+            ::EnterCriticalSection(&_M_mtx_impl);
+#       ifdef _DEBUG
+            _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
+            _M_locked = true;
+#       endif
+        }
+        void unlock()
+        {
+#       if _FAST_MUTEX_CHECK_INITIALIZATION
+            if (!_M_initialized)
+                return;
+#       endif
+#       ifdef _DEBUG
+            _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
+            _M_locked = false;
+#       endif
+            ::LeaveCriticalSection(&_M_mtx_impl);
+        }
+    private:
+        fast_mutex(const fast_mutex&);
+        fast_mutex& operator=(const fast_mutex&);
     };
-# endif  // _WIN32THREADS
-
-# ifdef _NOTHREADS
+NVWA_NAMESPACE_END
+# elif defined(NVWA_NOTHREADS)
+NVWA_NAMESPACE_BEGIN
 /**
  * Macro alias to `volatile' semantics.  Here it is not truly volatile
  * since it is in a single-threaded environment.
@@ -260,56 +369,59 @@
      */
     class fast_mutex
     {
-#           ifdef _DEBUG
-            bool _M_locked;
-#           endif
-        public:
-            fast_mutex()
-#           ifdef _DEBUG
-                : _M_locked(false)
-#           endif
-            {
-            }
-            ~fast_mutex()
-            {
-                _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
-            }
-            void lock()
-            {
-#               ifdef _DEBUG
-                _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
-                _M_locked = true;
-#               endif
-            }
-            void unlock()
-            {
-#               ifdef _DEBUG
-                _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
-                _M_locked = false;
-#               endif
-            }
-        private:
-            fast_mutex(const fast_mutex&);
-            fast_mutex& operator=(const fast_mutex&);
-    };
-# endif  // _NOTHREADS
-
-/** An acquistion-on-initialization lock class based on fast_mutex. */
-class fast_mutex_autolock
-{
-        fast_mutex& _M_mtx;
+#       ifdef _DEBUG
+        bool _M_locked;
+#       endif
     public:
-        explicit fast_mutex_autolock(fast_mutex& __mtx) : _M_mtx(__mtx)
+        fast_mutex()
+#       ifdef _DEBUG
+            : _M_locked(false)
+#       endif
         {
-            _M_mtx.lock();
         }
-        ~fast_mutex_autolock()
+        ~fast_mutex()
         {
-            _M_mtx.unlock();
+            _FAST_MUTEX_ASSERT(!_M_locked, "~fast_mutex(): still locked");
+        }
+        void lock()
+        {
+#       ifdef _DEBUG
+            _FAST_MUTEX_ASSERT(!_M_locked, "lock(): already locked");
+            _M_locked = true;
+#       endif
+        }
+        void unlock()
+        {
+#       ifdef _DEBUG
+            _FAST_MUTEX_ASSERT(_M_locked, "unlock(): not locked");
+            _M_locked = false;
+#       endif
         }
     private:
-        fast_mutex_autolock(const fast_mutex_autolock&);
-        fast_mutex_autolock& operator=(const fast_mutex_autolock&);
-};
+        fast_mutex(const fast_mutex&);
+        fast_mutex& operator=(const fast_mutex&);
+    };
+NVWA_NAMESPACE_END
+# endif // Definition of class fast_mutex
 
-#endif  // M_FAST_MUTEX_H
+NVWA_NAMESPACE_BEGIN
+/** RAII lock class for fast_mutex. */
+class fast_mutex_autolock
+{
+    fast_mutex& _M_mtx;
+public:
+    explicit fast_mutex_autolock(fast_mutex& mtx) : _M_mtx(mtx)
+    {
+        _M_mtx.lock();
+    }
+    ~fast_mutex_autolock()
+    {
+        _M_mtx.unlock();
+    }
+private:
+    fast_mutex_autolock(const fast_mutex_autolock&);
+    fast_mutex_autolock& operator=(const fast_mutex_autolock&);
+};
+NVWA_NAMESPACE_END
+
+#endif // NVWA_FAST_MUTEX_H

@@ -115,11 +115,15 @@ if ENABLE_MEM_DEBUG
 dyecmd_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 manaplus_CXXFLAGS += -DENABLE_MEM_DEBUG -DDEBUG_DUMP_LEAKS
 
-manaplus_SOURCES = debug/debug_new.cpp \
+manaplus_SOURCES = debug/_nvwa.h \
+	      debug/c++11.h \
+	      debug/debug_new.cpp \
 	      debug/debug_new.h \
 	      debug/fast_mutex.h \
 	      debug/static_assert.h
-dyecmd_SOURCES = debug/debug_new.cpp \
+dyecmd_SOURCES =  debug/_nvwa.h \
+	      debug/c++11.h \
+	      debug/debug_new.cpp \
 	      debug/debug_new.h \
 	      debug/fast_mutex.h \
 	      debug/static_assert.h
