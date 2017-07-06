@@ -34,6 +34,14 @@
  * @date  2016-10-14
  */
 
+#include "localconsts.h"
+
+PRAGMACLANG6GCC(GCC diagnostic push)
+PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
+
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wcast-qual")
+
 #include <new>                  // std::bad_alloc/nothrow_t
 #include <assert.h>             // assert
 #include <stdio.h>              // fprintf/stderr
@@ -199,9 +207,9 @@
  *
  * Value of the padding bytes at the end of a memory block.
  */
-#ifndef _DEBUG_NEW_TAILCHECK_CHAR
-#define _DEBUG_NEW_TAILCHECK_CHAR 0xCC
-#endif
+//#ifndef _DEBUG_NEW_TAILCHECK_CHAR
+//#define _DEBUG_NEW_TAILCHECK_CHAR 0xCC
+//#endif
 
 /**
  * @def _DEBUG_NEW_USE_ADDR2LINE
@@ -1036,7 +1044,7 @@ void* operator new[](size_t size, const char* file, int line)
  *              insufficient (#_DEBUG_NEW_STD_OPER_NEW is 0)
  * @throw bad_alloc memory is insufficient (#_DEBUG_NEW_STD_OPER_NEW is 1)
  */
-void* operator new(size_t size) throw(std::bad_alloc)
+void* operator new(size_t size)
 {
     return operator new(size, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
@@ -1049,7 +1057,7 @@ void* operator new(size_t size) throw(std::bad_alloc)
  *              insufficient (#_DEBUG_NEW_STD_OPER_NEW is 0)
  * @throw bad_alloc memory is insufficient (#_DEBUG_NEW_STD_OPER_NEW is 1)
  */
-void* operator new[](size_t size) throw(std::bad_alloc)
+void* operator new[](size_t size)
 {
     return operator new[](size, (char*)_DEBUG_NEW_CALLER_ADDRESS, 0);
 }
@@ -1183,4 +1191,7 @@ void operator delete[](void* ptr, const std::nothrow_t&) _NOEXCEPT
 
 // This is to make Doxygen happy
 #undef _DEBUG_NEW_REMEMBER_STACK_TRACE
-#define _DEBUG_NEW_REMEMBER_STACK_TRACE 0
+//#define _DEBUG_NEW_REMEMBER_STACK_TRACE 0
+
+PRAGMA45(GCC diagnostic pop)
+PRAGMACLANG6GCC(GCC diagnostic pop)

@@ -1340,7 +1340,7 @@ impHandler(dump)
 #elif defined ENABLE_MEM_DEBUG
 impHandler0(dump)
 {
-    check_leaks();
+    nvwa::check_leaks();
     return true;
 }
 #else  // DEBUG_DUMP_LEAKS1

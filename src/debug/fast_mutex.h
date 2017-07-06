@@ -237,7 +237,7 @@ NVWA_NAMESPACE_BEGIN
             : _M_locked(false)
 #       endif
         {
-            ::pthread_mutex_init(&_M_mtx_impl, NULL);
+            ::pthread_mutex_init(&_M_mtx_impl, _NULLPTR);
 #       if _FAST_MUTEX_CHECK_INITIALIZATION
             _M_initialized = true;
 #       endif
