@@ -11,8 +11,8 @@ mkdir -p public/stats
 mkdir -p public/gcov
 mkdir -p public/version
 
-cp logs/gcc-6.* public/gcov
-cp logs/gcc-6_SDL2.* public/gcov
+cp logs/gcc-?.* public/gcov
+cp logs/gcc-?_SDL2.* public/gcov
 echo "Url: $CI_PROJECT_URL" >public/version/commit.txt
 echo "Ref name: $CI_BUILD_REF_NAME" >>public/version/commit.txt
 echo "Ref: $CI_BUILD_REF" >>public/version/commit.txt
