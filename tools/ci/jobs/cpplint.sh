@@ -40,7 +40,7 @@ find src -type f -name "*.h" -exec $CHECKER {} \; 2>>${ERRFILE}2
 find src -type f -name "*.cc" -exec $CHECKER {} \; 2>>${ERRFILE}2
 
 grep ":  " ${ERRFILE}2 | \
-grep -v "debug_new" | \
+grep -v "src/debug/" | \
 grep -v "test/doctest.h" | \
 grep -v "debug/fast_mutex" | \
 grep -v "sdl2gfx/SDL2" \
