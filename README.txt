@@ -26,6 +26,10 @@ THE MANA PLUS CLIENT
 
   - gettext (translations)
 
+ Embedded libs:
+
+  - catch and doctest for unit testing.
+
  Additiona run time deps:
   - xsel (for clipboard access, used only in SDL 1.2)
   - xdg-open (from xdg-utils, for open url in browser)

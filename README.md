@@ -33,6 +33,10 @@ Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg
 
  - [gettext](https://www.gnu.org/software/gettext/) (translations)
 
+#### Embedded libs:
+
+  - [catch](https://github.com/philsquared/Catch) and [doctest](https://github.com/onqtam/doctest) for unit testing.
+
 ### Additional run time deps:
  - xsel (for clipboard access, used only in SDL 1.2)
  - xdg-open (from xdg-utils, for open url in browser)
