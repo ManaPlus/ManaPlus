@@ -58,7 +58,7 @@ MumbleManager::~MumbleManager()
 #elif defined BSD4_4
 #else  // WIN32
 
-        munmap(mLinkedMem, sizeof(struct LinkedMem));
+        munmap(mLinkedMem, sizeof(LinkedMem));
 #endif  // WIN32
 
         mLinkedMem = nullptr;
@@ -134,7 +134,7 @@ void MumbleManager::init()
     }
 
     mLinkedMem = static_cast<LinkedMem *>(mmap(nullptr,
-        sizeof(struct LinkedMem), PROT_READ | PROT_WRITE,
+        sizeof(LinkedMem), PROT_READ | PROT_WRITE,
         MAP_SHARED, shmfd, 0));
 
     if (mLinkedMem == reinterpret_cast<void *>(-1))
