@@ -2034,7 +2034,12 @@ manaplustests_LDFLAGS += -mconsole
 endif
 
 manaplustests_SOURCES += \
-	      unittests/fs/virtfs/virtfs1_unittest.cc \
+	      unittests/fs/virtfs/virtfs1_basic.cc \
+	      unittests/fs/virtfs/virtfs1_enumerate.cc \
+	      unittests/fs/virtfs/virtfs1_exists.cc \
+	      unittests/fs/virtfs/virtfs1_getrealdir.cc \
+	      unittests/fs/virtfs/virtfs1_mount.cc \
+	      unittests/fs/virtfs/virtfs1_unmount.cc \
 	      unittests/fs/virtfs/virtfs2_unittest.cc \
 	      unittests/fs/virtfs/zip_unittest.cc \
 	      unittests/fs/virtfs/virtfs_unittest.cc \

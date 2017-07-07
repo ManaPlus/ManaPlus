@@ -43,6 +43,67 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
+static bool inList(const VirtFs::List *const list,
+                   const std::string &name)
+{
+    FOR_EACH (StringVectCIter, it, list->names)
+    {
+        if (*it == name)
+            return true;
+    }
+    return false;
+}
+
+static bool inList(StringVect list,
+                   const std::string &name)
+{
+    FOR_EACH (StringVectCIter, it, list)
+    {
+        if (*it == name)
+            return true;
+    }
+    return false;
+}
+
+static bool inList(StringVect list,
+                   const std::string &dir,
+                   const std::string &name)
+{
+    const std::string path = pathJoin(dir, name);
+    FOR_EACH (StringVectCIter, it, list)
+    {
+        if (*it == path)
+            return true;
+    }
+    return false;
+}
+
+static void removeTemp(StringVect &restrict list)
+{
+    int cnt = 0;
+    std::sort(list.begin(), list.end());
+
+    FOR_EACH (StringVectIter, it, list)
+    {
+        if (*it != "serverlistplus.xml.part")
+        {
+            logger->log("file: %d %s",
+                cnt,
+                (*it).c_str());
+            cnt ++;
+        }
+    }
+
+    FOR_EACH (StringVectIter, it, list)
+    {
+        if (*it == "serverlistplus.xml.part")
+        {
+            list.erase(it);
+            return;
+        }
+    }
+}
+
 TEST_CASE("VirtFs2 isDirectory1", "")
 {
     VirtFs::init(".");
