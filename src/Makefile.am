@@ -2009,7 +2009,7 @@ if ENABLE_OPENGLERRORS
 manaplustests_CXXFLAGS += -DOPENGLERRORS
 endif
 
-manaplustests_SOURCES = ${SRC} \
+manaplustests_SOURCES = \
 	      unittests/unittests.h \
 	      unittests/enums/render/mockdrawtype.h \
 	      unittests/render/mockdrawitem.h \
@@ -2069,6 +2069,8 @@ manaplustests_SOURCES += \
 	      unittests/resources/resourcemanager/resourcemanager_unittest.cc \
 	      unittests/resources/sdlimagehelper_unittest.cc \
 	      unittests/gui/windowmanager_unittest.cc
+
+manaplustests_SOURCES += ${SRC}
 
 if ENABLE_UNITTESTS
 TESTS = manaplustests
