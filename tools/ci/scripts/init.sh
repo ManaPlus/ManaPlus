@@ -188,7 +188,8 @@ function run_make {
         export JOBS=2
         echo "No JOBS defined"
     fi
-
+    echo make clean
+    make clean || true
     echo "make -j${JOBS} V=0 $*"
     make -j${JOBS} V=0 $* 2>$ERRFILE
     check_error $?
@@ -200,6 +201,8 @@ function run_make_check {
         export JOBS=2
         echo "No JOBS defined"
     fi
+    echo make clean
+    make clean || true
     echo "make -j${JOBS} V=0 check $*"
     make -j${JOBS} V=0 check $* 2>$ERRFILE
     export ERR=$?
