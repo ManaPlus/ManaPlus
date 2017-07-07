@@ -6774,13 +6774,10 @@ namespace Catch {
                 message2.append(strings[i]).append("\n");
             free(strings);
             }
-
-            tempResult.message = message2;
-#else  // HAVE_EXECINFO
-
-            tempResult.message = message;
 #endif  // HAVE_EXECINFO
 // stack
+
+            tempResult.message = message2;
 
             AssertionResult result(m_lastAssertionInfo, tempResult);
             getResultCapture().assertionEnded(result);
