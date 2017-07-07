@@ -2010,14 +2010,14 @@ manaplustests_CXXFLAGS += -DOPENGLERRORS
 endif
 
 manaplustests_SOURCES = ${SRC} \
-	      test/unittests.h \
-	      enums/render/mockdrawtype.h \
-	      render/mockdrawitem.h \
-	      render/mockgraphics.cc \
-	      render/mockgraphics.h \
-	      enums/enums_unittest.cc \
-	      utils/dumplibs_unittest.cc \
-	      utils/checkutils_unittest.cc
+	      unittests/unittests.h \
+	      unittests/enums/render/mockdrawtype.h \
+	      unittests/render/mockdrawitem.h \
+	      unittests/render/mockgraphics.cc \
+	      unittests/render/mockgraphics.h \
+	      unittests/enums/enums_unittest.cc \
+	      unittests/utils/dumplibs_unittest.cc \
+	      unittests/utils/checkutils_unittest.cc
 
 if ENABLE_UNITTESTS_CATCH
 manaplustests_SOURCES += \
@@ -2034,32 +2034,32 @@ manaplustests_LDFLAGS += -mconsole
 endif
 
 manaplustests_SOURCES += \
-	      fs/virtfs/virtfs1_unittest.cc \
-	      fs/virtfs/zip_unittest.cc \
-	      fs/virtfs/virtfs_unittest.cc \
-	      utils/xml_unittest.cc \
-	      configuration_unittest.cc \
-	      utils/timer_unittest.cc \
-	      utils/xmlutils_unittest.cc \
-	      utils/mathutils_unittest.cc \
-	      fs/files_unittest.cc \
-	      utils/stringutils_unittest.cc \
-	      utils/parameters_unittest.cc \
-	      resources/mstack_unittest.cc \
-	      utils/translation/poparser_unittest.cc \
-	      utils/langs_unittest.cc \
-	      resources/sprite/animatedsprite_unittest.cc \
-	      gui/fonts/textchunklist_unittest.cc \
-	      gui/widgets/browserbox_unittest.cc \
-	      resources/dye/dye_unittest.cc \
-	      resources/dye/dyepalette_unittest.cc \
-	      integrity_unittest.cc \
-	      utils/chatutils_unittest.cc \
-	      resources/map/speciallayer_unittest.cc \
-	      resources/map/maplayer_unittest.cc \
-	      resources/resourcemanager/resourcemanager_unittest.cc \
-	      resources/sdlimagehelper_unittest.cc \
-	      gui/windowmanager_unittest.cc
+	      unittests/fs/virtfs/virtfs1_unittest.cc \
+	      unittests/fs/virtfs/zip_unittest.cc \
+	      unittests/fs/virtfs/virtfs_unittest.cc \
+	      unittests/utils/xml_unittest.cc \
+	      unittests/configuration_unittest.cc \
+	      unittests/utils/timer_unittest.cc \
+	      unittests/utils/xmlutils_unittest.cc \
+	      unittests/utils/mathutils_unittest.cc \
+	      unittests/fs/files_unittest.cc \
+	      unittests/utils/stringutils_unittest.cc \
+	      unittests/utils/parameters_unittest.cc \
+	      unittests/resources/mstack_unittest.cc \
+	      unittests/utils/translation/poparser_unittest.cc \
+	      unittests/utils/langs_unittest.cc \
+	      unittests/resources/sprite/animatedsprite_unittest.cc \
+	      unittests/gui/fonts/textchunklist_unittest.cc \
+	      unittests/gui/widgets/browserbox_unittest.cc \
+	      unittests/resources/dye/dye_unittest.cc \
+	      unittests/resources/dye/dyepalette_unittest.cc \
+	      unittests/integrity_unittest.cc \
+	      unittests/utils/chatutils_unittest.cc \
+	      unittests/resources/map/speciallayer_unittest.cc \
+	      unittests/resources/map/maplayer_unittest.cc \
+	      unittests/resources/resourcemanager/resourcemanager_unittest.cc \
+	      unittests/resources/sdlimagehelper_unittest.cc \
+	      unittests/gui/windowmanager_unittest.cc
 
 if ENABLE_UNITTESTS
 TESTS = manaplustests
