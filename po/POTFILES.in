@@ -11,6 +11,7 @@ src/being/playerrelations.cpp
 src/client.cpp
 src/commandline.cpp
 src/configmanager.cpp
+src/debug/c++11.h
 src/dirs.cpp
 src/dyetool/client.cpp
 src/dyetool/dyemain.cpp
@@ -76,7 +77,7 @@ src/gui/widgets/tabs/socialpartytab.h
 src/gui/widgets/tabs/socialpickuptab.h
 src/gui/widgets/tabs/socialplayerstab.h
 src/gui/widgets/tabs/socialtabbase.h
-src/gui/windowmanager_unittest.cc
+src/gui/windowmanager.cpp
 src/gui/windowmenu.cpp
 src/gui/windows/bankwindow.cpp
 src/gui/windows/buydialog.cpp
@@ -191,6 +192,7 @@ src/resources/skill/skillinfo.cpp
 src/resources/skill/skilltypelist.h
 src/test/catch.hpp
 src/test/doctest.h
+src/unittests/gui/windowmanager_unittest.cc
 src/utils/booleanoptions.h
 src/utils/gettext.h
 src/utils/stringutils.cpp
