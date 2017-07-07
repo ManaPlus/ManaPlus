@@ -2056,7 +2056,15 @@ manaplustests_SOURCES += \
 	      unittests/integrity_unittest.cc \
 	      unittests/utils/chatutils_unittest.cc \
 	      unittests/resources/map/speciallayer_unittest.cc \
-	      unittests/resources/map/maplayer_unittest.cc \
+	      unittests/resources/map/maplayer/draw.cc \
+	      unittests/resources/map/maplayer/drawfringenormal.cc \
+	      unittests/resources/map/maplayer/drawfringesimple.cc \
+	      unittests/resources/map/maplayer/drawspeciallayer1.cc \
+	      unittests/resources/map/maplayer/drawspeciallayer2.cc \
+	      unittests/resources/map/maplayer/getemptytiledrawwidth.cc \
+	      unittests/resources/map/maplayer/gettiledrawwidth.cc \
+	      unittests/resources/map/maplayer/updatecache.cc \
+	      unittests/resources/map/maplayer/updateconditiontiles.cc \
 	      unittests/resources/resourcemanager/resourcemanager_unittest.cc \
 	      unittests/resources/sdlimagehelper_unittest.cc \
 	      unittests/gui/windowmanager_unittest.cc
