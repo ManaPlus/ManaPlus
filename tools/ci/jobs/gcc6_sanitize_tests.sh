@@ -14,7 +14,7 @@ export LOGFILE=gcc6.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
+export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -Wstrict-aliasing=2 \
 -Wstrict-overflow=1 -Wformat=1 -D_FORTIFY_SOURCE=2 \
 -fno-omit-frame-pointer \
 -fsanitize=address -fsanitize=undefined \
