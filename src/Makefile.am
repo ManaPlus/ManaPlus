@@ -2035,6 +2035,7 @@ endif
 
 manaplustests_SOURCES += \
 	      unittests/fs/virtfs/virtfs1_unittest.cc \
+	      unittests/fs/virtfs/virtfs2_unittest.cc \
 	      unittests/fs/virtfs/zip_unittest.cc \
 	      unittests/fs/virtfs/virtfs_unittest.cc \
 	      unittests/utils/xml_unittest.cc \
