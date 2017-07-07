@@ -32,7 +32,7 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -Wstrict-aliasing=2 \
 -std=gnu++1z -Wformat=1 \
 -Wno-attributes"
 
-source ./tools/ci/flags/${FLAGS}
+#source ./tools/ci/flags/${FLAGS}
 
 export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"
 
