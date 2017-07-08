@@ -20,29 +20,9 @@
 
 #include "unittests/unittests.h"
 
-#include "graphicsmanager.h"
-
-#include "being/localplayer.h"
-
-#include "enums/resources/map/blockmask.h"
-#include "enums/resources/map/mapitemtype.h"
-
-#include "fs/virtfs/fs.h"
-
-#include "gui/theme.h"
-
-#include "unittests/render/mockgraphics.h"
-
-#include "utils/delete2.h"
-#include "utils/env.h"
-
-#include "resources/sdlimagehelper.h"
-
 #include "resources/image/image.h"
 
-#include "resources/map/map.h"
 #include "resources/map/maplayer.h"
-#include "resources/map/speciallayer.h"
 
 #include "debug.h"
 

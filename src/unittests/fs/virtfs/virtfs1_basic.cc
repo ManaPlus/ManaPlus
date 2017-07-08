@@ -20,22 +20,9 @@
 
 #include "unittests/unittests.h"
 
-#include "fs/files.h"
-
-#include "fs/virtfs/direntry.h"
 #include "fs/virtfs/fs.h"
-#include "fs/virtfs/rwops.h"
-#include "fs/virtfs/list.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
-#include "utils/foreach.h"
-#include "utils/stringutils.h"
-
-PRAGMA48(GCC diagnostic push)
-PRAGMA48(GCC diagnostic ignored "-Wshadow")
-#include <SDL_rwops.h>
-PRAGMA48(GCC diagnostic pop)
 
 #ifndef UNITTESTS_CATCH
 #include <algorithm>

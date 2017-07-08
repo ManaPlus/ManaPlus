@@ -24,7 +24,6 @@
 
 #include "being/localplayer.h"
 
-#include "enums/resources/map/blockmask.h"
 #include "enums/resources/map/mapitemtype.h"
 
 #include "fs/virtfs/fs.h"

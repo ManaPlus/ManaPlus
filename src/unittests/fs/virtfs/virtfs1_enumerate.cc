@@ -22,20 +22,12 @@
 
 #include "fs/files.h"
 
-#include "fs/virtfs/direntry.h"
 #include "fs/virtfs/fs.h"
-#include "fs/virtfs/rwops.h"
 #include "fs/virtfs/list.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/foreach.h"
-#include "utils/stringutils.h"
-
-PRAGMA48(GCC diagnostic push)
-PRAGMA48(GCC diagnostic ignored "-Wshadow")
-#include <SDL_rwops.h>
-PRAGMA48(GCC diagnostic pop)
 
 #ifndef UNITTESTS_CATCH
 #include <algorithm>
@@ -75,30 +67,6 @@ static bool inList(const VirtFs::List *const list,
     FOR_EACH (StringVectCIter, it, list->names)
     {
         if (*it == name)
-            return true;
-    }
-    return false;
-}
-
-static bool inList(StringVect list,
-                   const std::string &name)
-{
-    FOR_EACH (StringVectCIter, it, list)
-    {
-        if (*it == name)
-            return true;
-    }
-    return false;
-}
-
-static bool inList(StringVect list,
-                   const std::string &dir,
-                   const std::string &name)
-{
-    const std::string path = pathJoin(dir, name);
-    FOR_EACH (StringVectCIter, it, list)
-    {
-        if (*it == path)
             return true;
     }
     return false;

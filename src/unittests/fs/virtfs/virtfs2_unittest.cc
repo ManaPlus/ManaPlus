@@ -22,10 +22,8 @@
 
 #include "fs/files.h"
 
-#include "fs/virtfs/direntry.h"
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/rwops.h"
-#include "fs/virtfs/list.h"
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
@@ -42,17 +40,6 @@ PRAGMA48(GCC diagnostic pop)
 #endif  // UNITTESTS_CATCH
 
 #include "debug.h"
-
-static bool inList(const VirtFs::List *const list,
-                   const std::string &name)
-{
-    FOR_EACH (StringVectCIter, it, list->names)
-    {
-        if (*it == name)
-            return true;
-    }
-    return false;
-}
 
 static bool inList(StringVect list,
                    const std::string &name)

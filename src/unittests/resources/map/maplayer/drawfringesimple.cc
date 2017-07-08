@@ -24,9 +24,6 @@
 
 #include "being/localplayer.h"
 
-#include "enums/resources/map/blockmask.h"
-#include "enums/resources/map/mapitemtype.h"
-
 #include "fs/virtfs/fs.h"
 
 #include "gui/theme.h"
@@ -42,7 +39,6 @@
 
 #include "resources/map/map.h"
 #include "resources/map/maplayer.h"
-#include "resources/map/speciallayer.h"
 
 #include "debug.h"
 
