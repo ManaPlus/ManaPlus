@@ -404,6 +404,56 @@ nsiqcppstyle:
 
 # tests
 
+gcc-7_sanitize_doctest_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
+  - ldd ./src/manaplustests | grep "libasan"
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+    JOBS: 1
+  tags:
+    - docker
+
+gcc-7_sanitize_doctest_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
+  - ldd ./src/manaplustests | grep "libasan"
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+    JOBS: 1
+  tags:
+    - docker
+
+gcc-7_sanitize_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc7_sanitize.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps
+    JOBS: 1
+  tags:
+    - docker
+
 # disabled due memory issue. Probably out of memory of gcc issues
 .gcc-6_SDL_SDL-1.2_sanitize2_test:
   stage: build
@@ -518,39 +568,6 @@ gcc-6_sanitize_doctest_tests_i386:
   tags:
     - docker
 
-# out of memory
-.gcc-7_sanitize_doctest_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-# out of memory
-.gcc-7_sanitize_doctest_tests_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
 gcc-5_sanitize_no_opengl_tests:
   stage: build
   script:
@@ -644,22 +661,6 @@ gcc-7_sanitize:
   tags:
     - docker
 
-# out of memory
-.gcc-7_sanitize_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_sanitize.sh
-  - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-  tags:
-    - docker
 
 .fedora_gcc-snapshot_sanitize_tests:
   stage: build
