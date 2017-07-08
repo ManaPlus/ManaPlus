@@ -1,3 +1,12 @@
+2017-07-08 New release 1.7.7.8
+fix: flushing background logs.
+fix: stats in item popups.
+fix: workaround to build with libicu-59 (need by libxml2)
+add: new hercules packets.
+add: allow open chat window before connection to server.
+add: update readmes.
+add: update doctest library.
+
 2017-06-24 New release 1.7.6.24
 fix: browserbox width with small bold lines.
 fix: draw color in some renderers after window resize.
