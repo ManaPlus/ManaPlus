@@ -10,7 +10,11 @@ general:
     - "logs"
 test:
   override:
-    - ./tools/ci/scripts/circleci.sh:
+    - ./tools/ci/scripts/circleci1.sh:
+        parallel: true
+    - ./tools/ci/scripts/circleci2.sh:
+        parallel: true
+    - ./tools/ci/scripts/circleci3.sh:
         parallel: true
   post:
     - mv logs $CIRCLE_ARTIFACTS/ || true
