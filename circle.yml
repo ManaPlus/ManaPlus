@@ -10,11 +10,19 @@ general:
     - "logs"
 test:
   override:
-    - ./tools/ci/scripts/circleci1.sh:
+    - ./tools/ci/scripts/circleci/gcc5.sh:
         parallel: true
-    - ./tools/ci/scripts/circleci2.sh:
+    - ./tools/ci/scripts/circleci/gcc6_tests.sh:
         parallel: true
-    - ./tools/ci/scripts/circleci3.sh:
+    - ./tools/ci/scripts/circleci/gcc7.sh:
+        parallel: true
+    - ./tools/ci/scripts/circleci/gcc7_tests.sh:
+        parallel: true
+    - ./tools/ci/scripts/circleci/gcc6.sh:
+        parallel: true
+    - ./tools/ci/scripts/circleci/gcc6_sanitize_tests.sh:
+        parallel: true
+    - ./tools/ci/scripts/circleci/gcc7_sanitize_tests.sh:
         parallel: true
   post:
     - mv logs $CIRCLE_ARTIFACTS/ || true
