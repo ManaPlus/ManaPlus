@@ -428,13 +428,15 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
     const int len = msg.readInt16("len") - 14;
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
-    if ((dstBeing == nullptr) || dstBeing == localPlayer)
+    if (dstBeing == nullptr ||
+        dstBeing == localPlayer)
     {
         DEBUGLOGSTR("invisible player?");
         msg.readInt16("speed");
         msg.readInt16("x");
         msg.readInt16("y");
-        msg.readBytes(len, "moving path");
+        unsigned char *bytes = msg.readBytes(len, "moving path");
+        delete [] bytes;
         BLOCK_END("BeingRecv::processBeingMove3")
         return;
     }
