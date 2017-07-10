@@ -66,7 +66,8 @@ struct Options final
         testMode(false),
         ipc(false),
         defaultCursor(false),
-        error(false)
+        error(false),
+        validate(false)
     {}
 
     A_DELETE_COPY(Options)
@@ -98,6 +99,7 @@ struct Options final
     bool ipc;
     bool defaultCursor;
     bool error;
+    bool validate;
 };
 
 #endif  // OPTIONS_H

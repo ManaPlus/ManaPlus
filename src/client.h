@@ -130,6 +130,16 @@ class Client final : public ConfigListener,
 
         void stateSwitchLogin1();
 
+        void loadData();
+
+        void unloadData();
+
+        void runValidate()
+#ifndef BAD_CILKPLUS
+        __attribute__ ((noreturn))
+#endif  // BAD_CILKPLUS
+;
+
         ServerInfo mCurrentServer;
 
         Game *mGame;

@@ -50,8 +50,11 @@
 
 #include "gui/windows/chatwindow.h"
 #include "gui/windows/didyouknowwindow.h"
+#include "gui/windows/equipmentwindow.h"
 #include "gui/windows/helpwindow.h"
 #include "gui/windows/setupwindow.h"
+#include "gui/windows/skilldialog.h"
+#include "gui/windows/questswindow.h"
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
@@ -144,6 +147,26 @@ void WindowManager::createWindows()
 #endif  // DYECMD
 
     CREATEWIDGETV0(textPopup, TextPopup);
+}
+
+void WindowManager::createValidateWindows()
+{
+#ifndef DYECMD
+    CREATEWIDGETV0(skillDialog, SkillDialog);
+    skillDialog->loadSkills();
+    CREATEWIDGETV(beingEquipmentWindow, EquipmentWindow,
+        nullptr, nullptr, true);
+    CREATEWIDGETV0(questsWindow, QuestsWindow);
+#endif  // DYECMD
+}
+
+void WindowManager::deleteValidateWindows()
+{
+#ifndef DYECMD
+    delete2(skillDialog);
+    delete2(beingEquipmentWindow);
+    delete2(questsWindow);
+#endif  // DYECMD
 }
 
 void WindowManager::deleteWindows()

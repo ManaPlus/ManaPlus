@@ -390,6 +390,7 @@ void Client::gameInit()
     if (!settings.options.safeMode &&
         settings.options.renderer < 0 &&
         settings.options.test.empty() &&
+        !settings.options.validate &&
         !config.getBoolValue("videodetected"))
     {
         graphicsManager.detectVideoSettings();
@@ -533,6 +534,9 @@ void Client::gameInit()
     }
     if (settings.options.error)
         inputManager.executeAction(InputAction::ERROR);
+
+    if (settings.options.validate == true)
+        runValidate();
 }
 
 Client::~Client()
@@ -1046,40 +1050,7 @@ int Client::gameExec()
                 {
                     BLOCK_START("Client::gameExec STATE_CHOOSE_SERVER")
                     logger->log1("State: CHOOSE SERVER");
-                    mCurrentServer.supportUrl.clear();
-                    settings.supportUrl.clear();
-                    if (settings.options.dataPath.empty())
-                    {
-                        // Add customdata directory
-                        VirtFs::searchAndRemoveArchives(
-                            "customdata/",
-                            "zip");
-                    }
-
-                    if (!settings.oldUpdates.empty())
-                    {
-                        UpdaterWindow::unloadUpdates(settings.oldUpdates);
-                        settings.oldUpdates.clear();
-                    }
-
-                    if (!settings.options.skipUpdate)
-                    {
-                        VirtFs::searchAndRemoveArchives(
-                            pathJoin(settings.updatesDir, "local/"),
-                            "zip");
-
-                        VirtFs::unmountDirSilent(pathJoin(
-                            settings.localDataDir,
-                            settings.updatesDir,
-                            "local/"));
-                    }
-
-                    ResourceManager::clearCache();
-
-                    loginData.clearUpdateHost();
-                    serverVersion = 0;
-                    packetVersion = 0;
-                    tmwServerVersion = 0;
+                    unloadData();
 
                     // Allow changing this using a server choice dialog
                     // We show the dialog box only if the command-line
@@ -1273,63 +1244,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec State::LOAD_DATA")
                     logger->log1("State: LOAD DATA");
 
-                    // If another data path has been set,
-                    // we don't load any other files...
-                    if (settings.options.dataPath.empty())
-                    {
-                        // Add customdata directory
-                        VirtFs::searchAndAddArchives(
-                            "customdata/",
-                            "zip",
-                            Append_false);
-                    }
-
-                    if (!settings.options.skipUpdate)
-                    {
-                        VirtFs::searchAndAddArchives(
-                            settings.updatesDir + "/local/",
-                            "zip",
-                            Append_false);
-
-                        VirtFs::mountDir(pathJoin(
-                            settings.localDataDir,
-                            settings.updatesDir,
-                            "local/"),
-                            Append_false);
-                    }
-
-                    logger->log("Init paths");
-                    paths.init("paths.xml", UseVirtFs_true);
-                    paths.setDefaultValues(getPathsDefaults());
-                    initPaths();
-                    if (SpriteReference::Empty == nullptr)
-                    {
-                        SpriteReference::Empty = new SpriteReference(
-                            paths.getStringValue("spriteErrorFile"),
-                            0);
-                    }
-
-                    if (BeingInfo::unknown == nullptr)
-                        BeingInfo::unknown = new BeingInfo;
-
-                    initFeatures();
-                    TranslationManager::loadCurrentLang();
-                    TranslationManager::loadDictionaryLang();
-                    PlayerInfo::stateChange(mState);
-
-                    delete spellManager;
-                    spellManager = new SpellManager;
-                    delete spellShortcut;
-                    spellShortcut = new SpellShortcut;
-
-                    AttributesEnum::init();
-                    DbManager::loadDb();
-                    EquipmentWindow::prepareSlotNames();
-
-                    ActorSprite::load();
-
-                    if (desktop != nullptr)
-                        desktop->reloadWallpaper();
+                    loadData();
 
                     mState = State::GET_CHARACTERS;
                     BLOCK_END("Client::gameExec State::LOAD_DATA")
@@ -1935,4 +1850,115 @@ void Client::slowLogic()
                 generalHandler->flushSend();
         }
     }
+}
+
+void Client::loadData()
+{
+    // If another data path has been set,
+    // we don't load any other files...
+    if (settings.options.dataPath.empty())
+    {
+        // Add customdata directory
+        VirtFs::searchAndAddArchives(
+            "customdata/",
+            "zip",
+            Append_false);
+    }
+
+    if (!settings.options.skipUpdate)
+    {
+        VirtFs::searchAndAddArchives(
+            settings.updatesDir + "/local/",
+            "zip",
+            Append_false);
+
+        VirtFs::mountDir(pathJoin(
+            settings.localDataDir,
+            settings.updatesDir,
+            "local/"),
+            Append_false);
+    }
+
+    logger->log("Init paths");
+    paths.init("paths.xml", UseVirtFs_true);
+    paths.setDefaultValues(getPathsDefaults());
+    initPaths();
+    if (SpriteReference::Empty == nullptr)
+    {
+        SpriteReference::Empty = new SpriteReference(
+            paths.getStringValue("spriteErrorFile"),
+            0);
+    }
+
+    if (BeingInfo::unknown == nullptr)
+        BeingInfo::unknown = new BeingInfo;
+
+    initFeatures();
+    TranslationManager::loadCurrentLang();
+    TranslationManager::loadDictionaryLang();
+    PlayerInfo::stateChange(mState);
+
+    delete spellManager;
+    spellManager = new SpellManager;
+    delete spellShortcut;
+    spellShortcut = new SpellShortcut;
+
+    AttributesEnum::init();
+    DbManager::loadDb();
+    EquipmentWindow::prepareSlotNames();
+
+    ActorSprite::load();
+
+    if (desktop != nullptr)
+        desktop->reloadWallpaper();
+}
+
+void Client::unloadData()
+{
+    mCurrentServer.supportUrl.clear();
+    settings.supportUrl.clear();
+    if (settings.options.dataPath.empty())
+    {
+        // Add customdata directory
+        VirtFs::searchAndRemoveArchives(
+            "customdata/",
+            "zip");
+    }
+
+    if (!settings.oldUpdates.empty())
+    {
+        UpdaterWindow::unloadUpdates(settings.oldUpdates);
+        settings.oldUpdates.clear();
+    }
+
+    if (!settings.options.skipUpdate)
+    {
+        VirtFs::searchAndRemoveArchives(
+            pathJoin(settings.updatesDir, "local/"),
+            "zip");
+
+        VirtFs::unmountDirSilent(pathJoin(
+            settings.localDataDir,
+            settings.updatesDir,
+            "local/"));
+    }
+
+    ResourceManager::clearCache();
+
+    loginData.clearUpdateHost();
+    serverVersion = 0;
+    packetVersion = 0;
+    tmwServerVersion = 0;
+}
+
+void Client::runValidate()
+{
+    loadData();
+    WindowManager::createValidateWindows();
+
+    WindowManager::deleteValidateWindows();
+    unloadData();
+    delete2(client);
+    VirtFs::deinit();
+    exit(0);
 }

@@ -78,6 +78,10 @@ namespace WindowManager
     void deleteIcon();
 
     void updateTitle();
+
+    void createValidateWindows();
+
+    void deleteValidateWindows();
 }  // namespace WindowManager
 
 #endif  // GUI_WINDOWMANAGER_H

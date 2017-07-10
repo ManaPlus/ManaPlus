@@ -113,6 +113,9 @@ static void printHelp()
         // TRANSLATORS: command line help
         _("  -T --tests          : Start testing drivers and "
             "auto configuring") <<
+        std::endl <<
+        // TRANSLATORS: command line help
+        _("  -V --validate       : Start validating client data") <<
         std::endl
 #ifdef USE_OPENGL
         <<
@@ -132,7 +135,7 @@ static void printVersion()
 
 void parseOptions(const int argc, char *const argv[])
 {
-    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r:e";
+    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r:e:V";
 
     const struct option long_options[] =
     {
@@ -161,6 +164,7 @@ void parseOptions(const int argc, char *const argv[])
         { "enable-ipc",     no_argument,       nullptr, 'I' },
         { "default-cursor", no_argument,       nullptr, 'q' },
         { "error",          no_argument,       nullptr, 'e' },
+        { "validate",       no_argument,       nullptr, 'V' },
         { nullptr,          0,                 nullptr, 0 }
     };
 
@@ -260,6 +264,9 @@ void parseOptions(const int argc, char *const argv[])
                 break;
             case 'e':
                 options.error = true;
+                break;
+            case 'V':
+                options.validate = true;
                 break;
             default:
                 break;
