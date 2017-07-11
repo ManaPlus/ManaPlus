@@ -41,7 +41,8 @@ find src -type f -name "*.cc" -exec $CHECKER {} \; 2>>${ERRFILE}2
 
 grep ":  " ${ERRFILE}2 | \
 grep -v "src/debug/" | \
-grep -v "test/doctest.h" | \
+grep -v "test/unittests/doctest.h" | \
+grep -v "test/unittests/catch.hpp" | \
 grep -v "debug/fast_mutex" | \
 grep -v "sdl2gfx/SDL2" \
 >${ERRFILE}

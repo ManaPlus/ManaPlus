@@ -18,8 +18,8 @@ check_error $?
 cd ..
 
 grep "warning:" logs/clang_tidy.txt \
-| grep -v "/src/test/doctest.h" \
-| grep -v "/src/test/catch.hpp" \
+| grep -v "/src/unittests/doctest.h" \
+| grep -v "/src/unittests/catch.hpp" \
 | grep -v "/src/sdl2gfx/" \
 | grep -v "/src/debug/" \
 >${ERRFILE}

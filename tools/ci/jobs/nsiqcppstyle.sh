@@ -9,6 +9,7 @@ rm -rf nsiqcppstyle.git
 
 ./nsiqcppstyle.git/nsiqcppstyle --ci --show-url src \
 | grep -v "catch.hpp" \
+| grep -v "doctest.h" \
 | grep -v "sdl2gfx" \
 | grep -v "/debug/" \
 >logs/nsiqcppstyle1.log

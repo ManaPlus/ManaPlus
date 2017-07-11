@@ -280,7 +280,8 @@ function run_mplint {
     rm $ERRFILE
     echo "mplint/src/mplint $*"
     mplint/src/mplint $* \
-    | grep -v "src/test/doctest.h" \
+    | grep -v "src/unittests/doctest.h" \
+    | grep -v "src/unittests/catch.hpp" \
     | grep -v "src/debug/" \
     >$ERRFILE
     run_check_warnings

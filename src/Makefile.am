@@ -2021,11 +2021,11 @@ manaplustests_SOURCES = \
 
 if ENABLE_UNITTESTS_CATCH
 manaplustests_SOURCES += \
-	      test/catch.hpp
+	      unittests/catch.hpp
 endif
 if ENABLE_UNITTESTS_DOCTEST
 manaplustests_SOURCES += \
-	      test/doctest.h
+	      unittests/doctest.h
 endif
 
 if MINGW
