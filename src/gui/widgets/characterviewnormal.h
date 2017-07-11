@@ -44,6 +44,7 @@ class CharacterViewNormal final : public CharacterViewBase
 
     private:
         std::vector<CharacterDisplay*> *mCharacterEntries;
+        int mRows;
 };
 
 #endif  // GUI_WIDGETS_CHARACTERVIEWNORMAL_H

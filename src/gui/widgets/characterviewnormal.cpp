@@ -28,12 +28,18 @@
 
 #include "debug.h"
 
+namespace
+{
+    int perRowCount = 5;
+}  // namespace
+
 CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
                                          std::vector<CharacterDisplay*>
                                          *const entries,
                                          const int padding) :
     CharacterViewBase(widget, padding),
-    mCharacterEntries(entries)
+    mCharacterEntries(entries),
+    mRows(2)
 {
     addKeyListener(widget);
     if (entries != nullptr)
@@ -57,14 +63,19 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
             mSelected = 0;
             CharacterDisplay *const display = (*mCharacterEntries)[0];
             display->setSelect(true);
-            setWidth(display->getWidth() * 5 + mPadding * 2);
+            setWidth(display->getWidth() * perRowCount + mPadding * 2);
         }
         else
         {
             mSelected = -1;
         }
+        mRows = CAST_S32(sz / perRowCount);
+
+        if (mRows * perRowCount != CAST_S32(sz))
+            mRows ++;
     }
-    setHeight(210 + config.getIntValue("fontSize") * 2);
+
+    setHeight((105 + config.getIntValue("fontSize")) * mRows);
 }
 
 CharacterViewNormal::~CharacterViewNormal()
@@ -86,19 +97,23 @@ void CharacterViewNormal::show(const int i)
 
 void CharacterViewNormal::resize()
 {
-    const int sz = CAST_S32(mCharacterEntries->size());
-    if (sz <= 0)
+    const size_t sz = mCharacterEntries->size();
+    if (sz == 0)
         return;
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
     int y = 0;
     const int width = firtChar->getWidth();
     const int height = firtChar->getHeight();
-    for (int f = 0; f < 5; f ++)
-        (*mCharacterEntries)[f]->setPosition(f * width, y);
-    y += height;
-
-    for (int f = 5; f < sz; f ++)
-        (*mCharacterEntries)[f]->setPosition((f - 5) * width, y);
+    int x = 0;
+    for (size_t f = 0; f < sz; f ++, x ++)
+    {
+        if (x >= perRowCount)
+        {
+            x = 0;
+            y += height;
+        }
+        (*mCharacterEntries)[f]->setPosition(x * width, y);
+    }
 }
 
 void CharacterViewNormal::action(const ActionEvent &event A_UNUSED)
