@@ -114,10 +114,7 @@ class LocalPlayer final : public Being,
         void attack2(Being *const target = nullptr, const bool keep = false,
                      const bool dontChangeEquipment = false);
 
-        void setGroupId(const int id);
-
-        int getGroupId() const noexcept2 A_WARN_UNUSED
-        { return mGroupId; }
+        void setGroupId(const int id) override final;
 
         void stopAttack(const bool keepAttack = false);
 
@@ -453,8 +450,6 @@ class LocalPlayer final : public Being,
 #endif  // TMWA_SUPPORT
 
         void loadHomes();
-
-        int mGroupId;
 
         // move state. used if mMoveType == 2
         unsigned int mMoveState;

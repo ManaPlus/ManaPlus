@@ -1070,6 +1070,12 @@ class Being notfinal : public ActorSprite,
         uint16_t getTeamId() const restrict2 noexcept2 A_WARN_UNUSED
         { return mTeamId; }
 
+        virtual void setGroupId(const int id)
+        { mGroupId = id; }
+
+        int getGroupId() const noexcept2 A_WARN_UNUSED
+        { return mGroupId; }
+
         void serverRemove() restrict2 noexcept2;
 
         void addCast(const int dstX,
@@ -1193,6 +1199,7 @@ class Being notfinal : public ActorSprite,
         int mAttackSpeed;     /**< Attack speed */
 
         int mLevel;
+        int mGroupId;
         int mAttackRange;
         int mLastAttackX;
         int mLastAttackY;

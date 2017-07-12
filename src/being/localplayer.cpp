@@ -117,7 +117,6 @@ LocalPlayer::LocalPlayer(const BeingId id,
     AttributeListener(),
     PlayerDeathListener(),
     StatListener(),
-    mGroupId(0),
     mMoveState(0),
     mLastTargetX(0),
     mLastTargetY(0),
@@ -418,7 +417,7 @@ void LocalPlayer::setAction(const BeingActionT &action,
 
 void LocalPlayer::setGroupId(const int id)
 {
-    mGroupId = id;
+    Being::setGroupId(id);
 
     if (id > 0)
     {
