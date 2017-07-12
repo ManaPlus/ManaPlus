@@ -261,7 +261,7 @@ void StatusWindow::addTabBasic(const std::string &name)
 void StatusWindow::updateLevelLabel()
 {
     const int groupId = localPlayer->getGroupId();
-    const std::string name = GroupDb::getName(groupId);
+    const std::string &name = GroupDb::getName(groupId);
     if (localPlayer != nullptr &&
         !name.empty())
     {

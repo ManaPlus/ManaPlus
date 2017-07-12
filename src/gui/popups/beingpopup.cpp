@@ -171,7 +171,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     else
     {
         const int groupId = b->getGroupId();
-        const std::string groupName = GroupDb::getLongName(groupId);
+        const std::string &groupName = GroupDb::getLongName(groupId);
         if (!groupName.empty())
         {
             ptr = mLabels[num];
