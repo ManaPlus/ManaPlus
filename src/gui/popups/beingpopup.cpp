@@ -35,6 +35,8 @@
 
 #include "resources/chatobject.h"
 
+#include "resources/db/groupdb.h"
+
 #include "utils/gettext.h"
 #include "utils/foreach.h"
 #include "utils/stringutils.h"
@@ -168,6 +170,19 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     else
     {
+        const int groupId = b->getGroupId();
+        const std::string groupName = GroupDb::getLongName(groupId);
+        if (!groupName.empty())
+        {
+            ptr = mLabels[num];
+            // TRANSLATORS: being popup label
+            ptr->setCaption(strprintf(_("Group: %s (%d)"),
+                groupName.c_str(),
+                groupId));
+            ptr->adjustSize();
+            num ++;
+        }
+
         if (!(b->getPartyName().empty()))
         {
             ptr = mLabels[num];

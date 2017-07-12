@@ -48,6 +48,7 @@
 #include "net/inventoryhandler.h"
 #include "net/playerhandler.h"
 
+#include "resources/db/groupdb.h"
 #include "resources/db/unitsdb.h"
 #include "resources/db/statdb.h"
 
@@ -259,12 +260,16 @@ void StatusWindow::addTabBasic(const std::string &name)
 
 void StatusWindow::updateLevelLabel()
 {
-    if ((localPlayer != nullptr) && localPlayer->isGM())
+    const int groupId = localPlayer->getGroupId();
+    const std::string name = GroupDb::getName(groupId);
+    if (localPlayer != nullptr &&
+        !name.empty())
     {
         // TRANSLATORS: status window label
-        mLvlLabel->setCaption(strprintf(_("Level: %d (GM %d)"),
+        mLvlLabel->setCaption(strprintf(_("Level: %d (%s %d)"),
             PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL),
-            localPlayer->getGroupId()));
+            name.c_str(),
+            groupId));
     }
     else
     {
