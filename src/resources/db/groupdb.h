@@ -42,6 +42,6 @@ namespace GroupDb
     const std::string &getLongName(const int id);
 
     typedef std::map<int, GroupInfo> GroupInfos;
-}  // namespace ItemOptionDb
+}  // namespace GroupDb
 
 #endif  // RESOURCES_DB_GROUPDB_H
