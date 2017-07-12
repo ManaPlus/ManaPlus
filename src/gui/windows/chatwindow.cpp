@@ -2139,7 +2139,7 @@ void ChatWindow::showGMTab()
 {
     if ((gmChatTab == nullptr) &&
         config.getBoolValue("enableGmTab") &&
-        localPlayer->getGMLevel() >= paths.getIntValue("gmTabMinimalLevel"))
+        localPlayer->getGroupId() >= paths.getIntValue("gmTabMinimalLevel"))
     {
         addSpecialChannelTab(GM_CHANNEL, false);
     }

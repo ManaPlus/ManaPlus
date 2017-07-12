@@ -117,7 +117,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     AttributeListener(),
     PlayerDeathListener(),
     StatListener(),
-    mGMLevel(0),
+    mGroupId(0),
     mMoveState(0),
     mLastTargetX(0),
     mLastTargetY(0),
@@ -416,11 +416,11 @@ void LocalPlayer::setAction(const BeingActionT &action,
 #endif  // USE_MUMBLE
 }
 
-void LocalPlayer::setGMLevel(const int level)
+void LocalPlayer::setGroupId(const int id)
 {
-    mGMLevel = level;
+    mGroupId = id;
 
-    if (level > 0)
+    if (id > 0)
     {
         setGM(true);
         if (chatWindow != nullptr)

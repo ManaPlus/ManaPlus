@@ -264,7 +264,7 @@ void StatusWindow::updateLevelLabel()
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d (GM %d)"),
             PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL),
-            localPlayer->getGMLevel()));
+            localPlayer->getGroupId()));
     }
     else
     {

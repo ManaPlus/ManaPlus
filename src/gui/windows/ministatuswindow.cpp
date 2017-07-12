@@ -357,7 +357,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d (GM %d)"),
                 PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL),
-                localPlayer->getGMLevel());
+                localPlayer->getGroupId());
         }
         else
         {

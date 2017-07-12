@@ -114,10 +114,10 @@ class LocalPlayer final : public Being,
         void attack2(Being *const target = nullptr, const bool keep = false,
                      const bool dontChangeEquipment = false);
 
-        void setGMLevel(const int level);
+        void setGroupId(const int id);
 
-        int getGMLevel() const noexcept2 A_WARN_UNUSED
-        { return mGMLevel; }
+        int getGroupId() const noexcept2 A_WARN_UNUSED
+        { return mGroupId; }
 
         void stopAttack(const bool keepAttack = false);
 
@@ -454,7 +454,7 @@ class LocalPlayer final : public Being,
 
         void loadHomes();
 
-        int mGMLevel;
+        int mGroupId;
 
         // move state. used if mMoveType == 2
         unsigned int mMoveState;

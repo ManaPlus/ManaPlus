@@ -1752,7 +1752,7 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
         if (serverVersion <= 17 &&
             dstBeing == localPlayer)
         {
-            localPlayer->setGMLevel(gmLevel);
+            localPlayer->setGroupId(gmLevel);
         }
         if (gmLevel != 0)
             dstBeing->setGM(true);

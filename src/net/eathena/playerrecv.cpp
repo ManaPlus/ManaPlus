@@ -488,7 +488,7 @@ void PlayerRecv::processPlayerAttrs(Net::MessageIn &msg)
     if (localPlayer == nullptr)
         return;
 
-    localPlayer->setGMLevel(gmLevel);
+    localPlayer->setGroupId(gmLevel);
 }
 
 }  // namespace EAthena
