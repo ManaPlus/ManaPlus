@@ -52,7 +52,7 @@ Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg
 2. Commands
 3. Skills
 4. Support
-
+5. License
 
 ## 1. Account
 

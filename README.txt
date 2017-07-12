@@ -46,6 +46,7 @@ THE MANA PLUS CLIENT
 2. Commands
 3. Skills
 4. Support
+5. License
 
 1. Account
 ----------
@@ -169,3 +170,4 @@ they not have any rights to do so.
 This hostings have rights to remove ManaPlus repositories if they want violate given licenses.
 
 ManaPlus main repository hosted on https://gitlab.com/manaplus/manaplus/
+
