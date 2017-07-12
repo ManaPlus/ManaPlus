@@ -190,8 +190,8 @@ src/resources/modinfo.cpp
 src/resources/notifications.h
 src/resources/skill/skillinfo.cpp
 src/resources/skill/skilltypelist.h
-src/test/catch.hpp
-src/test/doctest.h
+src/unittests/catch.hpp
+src/unittests/doctest.h
 src/unittests/gui/windowmanager_unittest.cc
 src/utils/booleanoptions.h
 src/utils/gettext.h
