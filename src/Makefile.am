@@ -440,6 +440,7 @@ BASE_SRC += events/actionevent.h \
 	      resources/dye/dyepaletteptr.h \
 	      resources/fboinfo.h \
 	      resources/frame.h \
+	      resources/groupinfo.h \
 	      resources/image/image.cpp \
 	      resources/image/image.h \
 	      resources/imagehelper.cpp \
@@ -1374,6 +1375,8 @@ SRC = ${BASE_SRC} \
 	      resources/db/elementaldb.h \
 	      resources/db/emotedb.cpp \
 	      resources/db/emotedb.h \
+	      resources/db/groupdb.cpp \
+	      resources/db/groupdb.h \
 	      resources/db/homunculusdb.cpp \
 	      resources/db/homunculusdb.h \
 	      resources/db/horsedb.cpp \

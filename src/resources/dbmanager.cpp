@@ -32,6 +32,7 @@
 #include "resources/db/deaddb.h"
 #include "resources/db/elementaldb.h"
 #include "resources/db/emotedb.h"
+#include "resources/db/groupdb.h"
 #include "resources/db/homunculusdb.h"
 #include "resources/db/horsedb.h"
 #include "resources/db/itemdb.h"
@@ -60,6 +61,7 @@
 void DbManager::loadDb()
 {
     CharDB::load();
+    GroupDb::load();
     StatDb::load();
     DeadDB::load();
     PaletteDB::load();
@@ -101,6 +103,7 @@ void DbManager::loadDb()
 void DbManager::unloadDb()
 {
     CharDB::unload();
+    GroupDb::unload();
     StatDb::unload();
     DeadDB::unload();
     ColorDB::unload();

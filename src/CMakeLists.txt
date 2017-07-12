@@ -661,12 +661,15 @@ SET(SRCS
     resources/equipmentslots.h
     resources/db/emotedb.cpp
     resources/db/emotedb.h
+    resources/db/groupdb.cpp
+    resources/db/groupdb.h
     resources/db/homunculusdb.cpp
     resources/db/homunculusdb.h
     resources/db/horsedb.cpp
     resources/db/horsedb.h
     resources/fboinfo.h
     resources/frame.h
+    resources/groupinfo.h
     resources/horseinfo.h
     resources/horseoffset.h
     resources/image/image.cpp

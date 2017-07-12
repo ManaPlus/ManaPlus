@@ -659,6 +659,9 @@ DefaultsData* getPathsDefaults()
     AddDEF("statFile", "stats.xml");
     AddDEF("statPatchFile", "stats_patch.xml");
     AddDEF("statPatchDir", "stats.d");
+    AddDEF("groupsFile", "groups.xml");
+    AddDEF("groupsPatchFile", "groups_patch.xml");
+    AddDEF("groupsPatchDir", "groups.d");
     AddDEF("equipmentSlotsFile", "equipmentslots.xml");
     AddDEF("weaponsFile", "weapons.xml");
     AddDEF("poisonEffectName", "poison");
