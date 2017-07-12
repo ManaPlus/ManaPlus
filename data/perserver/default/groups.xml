@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author: 4144
+Copyright (C) 2017 Evol Online -->
+
+<groups>
+    <group
+        id="0"
+    />
+    <group
+        id="1"
+        name="Bot"
+        longName="Bot"
+    />
+    <group
+        id="40"
+        name="Dev"
+        longName="Developer"
+    />
+    <group
+        id="50"
+        name="Event"
+        longName="Event coordinator"
+    />
+    <group
+        id="60"
+        name="GM"
+        longName="Game master"
+    />
+    <group
+        id="80"
+        name="Dev"
+        longName="Developer high"
+    />
+    <group
+        id="98"
+        name="Admin"
+        longName="Administrator"
+    />
+    <group
+        id="99"
+        name="Admin"
+        longName="Administrator"
+    />
+</groups>

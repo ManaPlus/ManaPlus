@@ -5,6 +5,7 @@ SET (FILES
     defaultcommands.xml
     features.xml
     gmcommands.txt
+    groups.xml
     weapons.xml
     )
 

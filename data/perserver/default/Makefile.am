@@ -7,6 +7,7 @@ default_DATA =				\
 	defaultcommands.xml		\
 	features.xml		\
 	gmcommands.txt		\
+	groups.xml		\
 	weapons.xml
 
 EXTRA_DIST =				\
