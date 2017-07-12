@@ -483,12 +483,16 @@ void PlayerRecv::processPlayerAttrs(Net::MessageIn &msg)
     if (len < 8)
         return;
 
-    const int gmLevel = msg.readInt32("group id");
+    const int groupId = msg.readInt32("group id");
 
     if (localPlayer == nullptr)
         return;
 
-    localPlayer->setGroupId(gmLevel);
+    localPlayer->setGroupId(groupId);
+    if (groupId > 0)
+        localPlayer->setGM(true);
+    else
+        localPlayer->setGM(false);
 }
 
 }  // namespace EAthena

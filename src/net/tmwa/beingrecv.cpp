@@ -61,6 +61,31 @@ extern OkDialog *deathNotice;
 namespace TmwAthena
 {
 
+static void setGm(Being *const dstBeing,
+                  const uint16_t gmstatus)
+{
+    if (dstBeing != localPlayer)
+    {
+        if ((gmstatus & 0x80) != 0)
+        {
+            dstBeing->setGroupId(60);
+            dstBeing->setGM(true);
+        }
+        else
+        {
+            dstBeing->setGroupId(0);
+            dstBeing->setGM(false);
+        }
+    }
+    else
+    {
+        if ((gmstatus & 0x80) != 0)
+            dstBeing->setGM(true);
+        else
+            dstBeing->setGM(false);
+    }
+}
+
 void BeingRecv::processBeingChangeLook(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processBeingChangeLook")
@@ -349,8 +374,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
 
     const uint16_t gmstatus = msg.readInt16("gm status");
 
-    if ((gmstatus & 0x80) != 0)
-        dstBeing->setGM(true);
+    setGm(dstBeing, gmstatus);
 
     applyPlayerAction(msg, dstBeing, msg.readUInt8("action type"));
     const int level = CAST_S32(msg.readUInt8("level"));
@@ -494,8 +518,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
 
     const uint16_t gmstatus = msg.readInt16("gm status");
 
-    if ((gmstatus & 0x80) != 0)
-        dstBeing->setGM(true);
+    setGm(dstBeing, gmstatus);
 
     applyPlayerAction(msg, dstBeing, msg.readUInt8("action type"));
     const int level = CAST_S32(msg.readUInt8("level"));
@@ -659,8 +682,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
 
     const uint16_t gmstatus = msg.readInt16("gm status");
 
-    if ((gmstatus & 0x80) != 0)
-        dstBeing->setGM(true);
+    setGm(dstBeing, gmstatus);
 
     msg.readUInt8("unused");
 
