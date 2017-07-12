@@ -1741,26 +1741,23 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
 
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("player id"));
-    const int gmLevel = msg.readInt32("gm level");
+    const int gmLevel = msg.readInt32("group id");
     uint16_t mount = 0;
     mount = msg.readInt16("mount");
     int language = -1;
-    if (serverVersion >= 17)
+    if (serverVersion >= 17 && len > 14)
         language = msg.readInt16("language");
     if (dstBeing != nullptr)
     {
+        if (serverVersion <= 17 &&
+            dstBeing == localPlayer)
+        {
+            localPlayer->setGMLevel(gmLevel);
+        }
         if (gmLevel != 0)
-        {
-            if (dstBeing == localPlayer)
-                localPlayer->setGMLevel(gmLevel);
             dstBeing->setGM(true);
-        }
         else
-        {
-            if (dstBeing == localPlayer)
-                localPlayer->setGMLevel(0);
             dstBeing->setGM(false);
-        }
         dstBeing->setHorse(mount);
         dstBeing->setLanguageId(language);
         if (dstBeing == localPlayer)

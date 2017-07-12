@@ -423,14 +423,18 @@ void LocalPlayer::setGMLevel(const int level)
     if (level > 0)
     {
         setGM(true);
-        if (statusWindow != nullptr)
-            statusWindow->updateLevelLabel();
         if (chatWindow != nullptr)
         {
             chatWindow->loadGMCommands();
             chatWindow->showGMTab();
         }
     }
+    else
+    {
+        setGM(false);
+    }
+    if (statusWindow != nullptr)
+        statusWindow->updateLevelLabel();
 }
 
 void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)

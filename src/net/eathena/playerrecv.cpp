@@ -477,4 +477,18 @@ void PlayerRecv::processKilledBy(Net::MessageIn &msg)
     }
 }
 
+void PlayerRecv::processPlayerAttrs(Net::MessageIn &msg)
+{
+    const int len = msg.readInt16("len");
+    if (len < 8)
+        return;
+
+    const int gmLevel = msg.readInt32("group id");
+
+    if (localPlayer == nullptr)
+        return;
+
+    localPlayer->setGMLevel(gmLevel);
+}
+
 }  // namespace EAthena
