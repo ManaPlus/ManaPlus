@@ -132,6 +132,18 @@ manaplus_SOURCES =
 dyecmd_SOURCES =
 endif
 
+if ENABLE_STLDEBUG
+dyecmd_CXXFLAGS += -DENABLE_STL_DEBUG
+manaplus_CXXFLAGS += -DENABLE_STL_DEBUG -DDEBUG_DUMP_LEAKS
+
+manaplus_SOURCES += debug/mse/msemsevector.h \
+	      debug/mse/msemstdvector.h \
+	      debug/mse/mseprimitives.h
+dyecmd_SOURCES += debug/mse/msemsevector.h \
+	      debug/mse/msemstdvector.h \
+	      debug/mse/mseprimitives.h
+endif
+
 if MINGW
 manaplus_SOURCES += manaplus.rc
 dyecmd_SOURCES += manaplus.rc

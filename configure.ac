@@ -92,6 +92,19 @@ esac],[glibcdebug_enabled=false])
 
 AM_CONDITIONAL(ENABLE_GLIBCDEBUG, test x$glibcdebug_enabled = xtrue)
 
+# Enable mse classes replacements for stl
+AC_ARG_ENABLE(stldebug,
+[  --enable-stldebug    Enable mse libs],
+[case "${enableval}" in
+  yes) stldebug_enabled=true
+ ;;
+  no)  stldebug_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-stldebug) ;;
+esac],[stldebug_enabled=false])
+
+AM_CONDITIONAL(ENABLE_STLDEBUG, test x$stldebug_enabled = xtrue)
+
 # Enable OpenGL error reporting
 AC_ARG_ENABLE(openglerrors,
 [  --enable-openglerrors    Enable OpenGL errors reporting],
