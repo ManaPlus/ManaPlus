@@ -22,11 +22,12 @@
 #define UTILS_PERFOMANCE_H
 
 #ifdef USE_PROFILER
+#include "utils/vector.h"
+
 #include <string>
 #include <sstream>
 #include <list>
 #include <set>
-#include <vector>
 
 #include "localconsts.h"
 

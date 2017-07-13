@@ -24,9 +24,9 @@
 
 #include "utils/xml.h"
 
-#include "resources/beingslot.h"
+#include "utils/vector.h"
 
-#include <vector>
+#include "resources/beingslot.h"
 
 /**
  * Char information database.

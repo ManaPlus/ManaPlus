@@ -25,10 +25,11 @@
 
 #include "resources/dye/dyecolor.h"
 
+#include "utils/vector.h"
+
 #include "resources/dye/dyepaletteptr.h"
 
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

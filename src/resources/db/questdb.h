@@ -23,10 +23,11 @@
 
 #include "enums/simpletypes/skiperror.h"
 
+#include "utils/vector.h"
+
 #include "resources/questvar.h"
 
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

@@ -23,9 +23,10 @@
 
 #include "enums/simpletypes/skiperror.h"
 
+#include "utils/vector.h"
+
 #include <string>
 #include <map>
-#include <vector>
 
 void readXmlIntVector(const std::string &fileName,
                       const std::string &rootName,

@@ -25,7 +25,7 @@
 
 #include "particle/particlecontainer.h"
 
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

@@ -32,7 +32,7 @@
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/itemcolor.h"
 
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

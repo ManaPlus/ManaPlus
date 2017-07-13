@@ -23,6 +23,8 @@
 #ifndef NET_WORLDINFO_H
 #define NET_WORLDINFO_H
 
+#include "utils/vector.h"
+
 #if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #if defined(__APPLE__)
 #include <tr1/cstdint>
@@ -30,7 +32,6 @@
 #endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

@@ -23,7 +23,7 @@
 #ifndef GUI_WIDGETS_LAYOUTARRAY_H
 #define GUI_WIDGETS_LAYOUTARRAY_H
 
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

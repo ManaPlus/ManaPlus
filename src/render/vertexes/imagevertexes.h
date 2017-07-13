@@ -26,7 +26,7 @@
 #ifdef USE_OPENGL
 #include "render/vertexes/openglgraphicsvertexes.h"
 #else  // USE_OPENGL
-#include <vector>
+#include "utils/vector.h"
 #endif  // USE_OPENGL
 
 #include "localconsts.h"

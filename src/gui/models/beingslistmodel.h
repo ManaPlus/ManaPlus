@@ -26,8 +26,7 @@
 
 #include "utils/cast.h"
 #include "utils/dtor.h"
-
-#include <vector>
+#include "utils/vector.h"
 
 class BeingsListModel final : public AvatarListModel
 {

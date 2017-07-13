@@ -25,13 +25,14 @@
 
 #include "localconsts.h"
 
+#include "utils/vector.h"
+
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_mutex.h>
 PRAGMA48(GCC diagnostic pop)
 
 #include <fstream>
-#include <vector>
 
 #ifdef ENABLEDEBUGLOG
 #define DEBUGLOG(str) \

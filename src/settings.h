@@ -27,7 +27,7 @@
 
 #include "enums/resources/map/maptype.h"
 
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

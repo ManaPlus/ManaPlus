@@ -31,9 +31,9 @@
 
 #include "enums/resources/map/maptype.h"
 
-#include "resources/map/tileinfo.h"
+#include "utils/vector.h"
 
-#include <vector>
+#include "resources/map/tileinfo.h"
 
 class Image;
 class MapRowVertexes;

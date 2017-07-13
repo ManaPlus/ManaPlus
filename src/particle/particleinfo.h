@@ -23,7 +23,7 @@
 
 #include "particle/particle.h"
 
-#include <vector>
+#include "utils/vector.h"
 
 struct ParticleInfo final
 {

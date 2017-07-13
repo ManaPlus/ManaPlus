@@ -21,8 +21,9 @@
 #ifndef NET_VENDINGHANDLER_H
 #define NET_VENDINGHANDLER_H
 
+#include "utils/vector.h"
+
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

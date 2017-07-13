@@ -23,8 +23,9 @@
 #ifndef GUI_MODELS_TABLEMODEL_H
 #define GUI_MODELS_TABLEMODEL_H
 
+#include "utils/vector.h"
+
 #include <set>
-#include <vector>
 
 #include "localconsts.h"
 

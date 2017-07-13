@@ -23,8 +23,9 @@
 
 #include "enums/simpletypes/skiperror.h"
 
+#include "utils/vector.h"
+
 #include <map>
-#include <vector>
 #include <string>
 
 typedef std::map<int32_t, int32_t> NetworkInPacketInfos;

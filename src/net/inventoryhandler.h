@@ -25,9 +25,9 @@
 
 #include "enums/simpletypes/beingid.h"
 
-#include "resources/inventory/inventory.h"
+#include "utils/vector.h"
 
-#include <vector>
+#include "resources/inventory/inventory.h"
 
 namespace Net
 {

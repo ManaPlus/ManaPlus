@@ -29,8 +29,9 @@
 
 #include "net/characters.h"
 
+#include "utils/vector.h"
+
 #include <string>
-#include <vector>
 
 class CharCreateDialog;
 class CharSelectDialog;

@@ -23,7 +23,7 @@
 
 #include "fs/virtfs/fsentry.h"
 
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

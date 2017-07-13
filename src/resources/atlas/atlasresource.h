@@ -23,9 +23,9 @@
 
 #ifdef USE_OPENGL
 
-#include "resources/resource.h"
+#include "utils/vector.h"
 
-#include <vector>
+#include "resources/resource.h"
 
 struct TextureAtlas;
 

@@ -21,8 +21,9 @@
 #ifndef UTILS_STRINGVECTOR_H
 #define UTILS_STRINGVECTOR_H
 
+#include "utils/vector.h"
+
 #include <string>
-#include <vector>
 
 typedef std::vector<std::string> StringVect;
 typedef StringVect::iterator StringVectIter;

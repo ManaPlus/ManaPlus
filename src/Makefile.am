@@ -633,6 +633,7 @@ BASE_SRC += events/actionevent.h \
 	      utils/stringvector.h \
 	      utils/timer.cpp \
 	      utils/timer.h \
+	      utils/vector.h \
 	      fs/virtfs/file.cpp \
 	      fs/virtfs/file.h \
 	      utils/mutex.h \

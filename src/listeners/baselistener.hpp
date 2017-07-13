@@ -21,7 +21,7 @@
 #ifndef LISTENERS_BASELISTENER_HPP
 #define LISTENERS_BASELISTENER_HPP
 
-#include <vector>
+#include "utils/vector.h"
 
 #define defineListener(name) \
     std::vector<name*> name::mListeners; \

@@ -23,9 +23,9 @@
 
 #include "enums/simpletypes/skiperror.h"
 
-#include "resources/basicstat.h"
+#include "utils/vector.h"
 
-#include <vector>
+#include "resources/basicstat.h"
 
 #include "localconsts.h"
 

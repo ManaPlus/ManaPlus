@@ -28,8 +28,9 @@ PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
 #include "net/sdltcpnet.h"
 PRAGMACLANG6GCC(GCC diagnostic pop)
 
+#include "utils/vector.h"
+
 #include <string>
-#include <vector>
 
 class IPC final
 {

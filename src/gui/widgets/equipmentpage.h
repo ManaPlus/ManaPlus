@@ -21,7 +21,7 @@
 #ifndef GUI_WIDGETS_EQUIPMENTPAGE_H
 #define GUI_WIDGETS_EQUIPMENTPAGE_H
 
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

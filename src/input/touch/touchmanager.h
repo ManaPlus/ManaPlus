@@ -28,8 +28,7 @@
 #include "gui/rect.h"
 
 #include "utils/cast.h"
-
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

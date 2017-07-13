@@ -25,7 +25,7 @@
 
 #include "resources/map/mapobject.h"
 
-#include <vector>
+#include "utils/vector.h"
 
 #include "localconsts.h"
 

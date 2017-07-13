@@ -27,11 +27,12 @@
 
 #include "enums/simpletypes/skiperror.h"
 
+#include "utils/vector.h"
+
 #include "particle/particletimer.h"
 
 #include "resources/effectdescription.h"
 
-#include <vector>
 #include <list>
 
 #include "localconsts.h"

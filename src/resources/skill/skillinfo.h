@@ -30,8 +30,9 @@
 #include "enums/resources/skill/skillowner.h"
 #include "enums/resources/skill/skilltype.h"
 
+#include "utils/vector.h"
+
 #include <string>
-#include <vector>
 #include <map>
 
 #include "localconsts.h"

@@ -29,9 +29,9 @@
 
 #include "unittests/render/mockdrawitem.h"
 
-#include "localconsts.h"
+#include "utils/vector.h"
 
-#include <vector>
+#include "localconsts.h"
 
 class MockGraphics final : public Graphics
 {

@@ -23,8 +23,9 @@
 #ifndef RESOURCES_MAP_TILEANIMATION_H
 #define RESOURCES_MAP_TILEANIMATION_H
 
+#include "utils/vector.h"
+
 #include <map>
-#include <vector>
 
 #include "localconsts.h"
 

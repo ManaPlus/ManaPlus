@@ -28,10 +28,11 @@
 
 #include "gui/color.h"
 
+#include "utils/vector.h"
+
 #include <map>
 #include <set>
 #include <string>
-#include <vector>
 
 // Default Gradient Delay
 #define GRADIENT_DELAY 40

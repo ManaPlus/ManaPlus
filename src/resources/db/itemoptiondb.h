@@ -23,9 +23,10 @@
 
 #include "enums/simpletypes/skiperror.h"
 
+#include "utils/vector.h"
+
 #include <map>
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

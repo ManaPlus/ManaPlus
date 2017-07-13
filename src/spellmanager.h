@@ -23,9 +23,10 @@
 #ifndef SPELLMANAGER_H
 #define SPELLMANAGER_H
 
+#include "utils/vector.h"
+
 #include <string>
 #include <map>
-#include <vector>
 
 #include "localconsts.h"
 

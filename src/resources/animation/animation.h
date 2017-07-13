@@ -23,10 +23,11 @@
 #ifndef RESOURCES_ANIMATION_ANIMATION_H
 #define RESOURCES_ANIMATION_ANIMATION_H
 
-#include "resources/frame.h"
 #include "resources/memorycounter.h"
 
-#include <vector>
+#include "utils/vector.h"
+
+#include "resources/frame.h"
 
 #include "localconsts.h"
 

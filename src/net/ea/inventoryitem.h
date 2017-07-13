@@ -33,9 +33,9 @@
 #include "enums/simpletypes/identified.h"
 #include "enums/simpletypes/itemcolor.h"
 
-#include "resources/item/itemoptionslist.h"
+#include "utils/vector.h"
 
-#include <vector>
+#include "resources/item/itemoptionslist.h"
 
 #include "localconsts.h"
 

@@ -23,8 +23,9 @@
 
 #include "resources/questitemtext.h"
 
+#include "utils/vector.h"
+
 #include <set>
-#include <vector>
 
 #include "localconsts.h"
 

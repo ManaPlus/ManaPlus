@@ -24,8 +24,9 @@
 
 #include "resources/sprite/sprite.h"
 
+#include "utils/vector.h"
+
 #include <list>
-#include <vector>
 
 #include "localconsts.h"
 

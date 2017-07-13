@@ -23,9 +23,10 @@
 
 #include "enums/resources/item/itemsoundevent.h"
 
+#include "utils/vector.h"
+
 #include <map>
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

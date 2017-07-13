@@ -21,8 +21,9 @@
 #ifndef NET_BUYINGSTOREHANDLER_H
 #define NET_BUYINGSTOREHANDLER_H
 
+#include "utils/vector.h"
+
 #include <string>
-#include <vector>
 
 #include "localconsts.h"
 

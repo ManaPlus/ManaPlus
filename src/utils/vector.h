@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2017  The ManaPlus Developers
+ *  Copyright (C) 2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,24 +18,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UTILS_LANGS_H
-#define UTILS_LANGS_H
+#ifndef UTILS_VECTOR_H
+#define UTILS_VECTOR_H
 
-#include "utils/vector.h"
+#ifdef ENABLE_STLDEBUG
+#include "debug/mse/msemstdvector.h"
+#define STD_VECTOR mse::mstd::vector
+#else  // ENABLE_STLDEBUG
+#include <vector>
+#define STD_VECTOR std::vector
+#endif  // ENABLE_STLDEBUG
 
-#include <string>
-
-#include "localconsts.h"
-
-typedef std::vector<std::string> LangVect;
-typedef LangVect::const_iterator LangIter;
-
-LangVect getLang() A_WARN_UNUSED;
-
-LangVect getServerLang() A_WARN_UNUSED;
-
-std::string getLangSimple() A_WARN_UNUSED;
-
-std::string getLangShort() A_WARN_UNUSED;
-
-#endif  // UTILS_LANGS_H
+#endif  // UTILS_VECTOR_H

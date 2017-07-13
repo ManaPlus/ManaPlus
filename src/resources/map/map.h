@@ -35,11 +35,11 @@
 
 #include "listeners/configlistener.h"
 
+#include "utils/vector.h"
+
 #include "resources/memorycounter.h"
 
 #include "resources/map/properties.h"
-
-#include <vector>
 
 class AmbientLayer;
 class MapHeights;

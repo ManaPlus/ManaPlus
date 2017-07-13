@@ -37,7 +37,7 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 PRAGMA48(GCC diagnostic pop)
 #endif  // ANDROID
 
-#include <vector>
+#include "utils/vector.h"
 
 class OpenGLGraphicsVertexes final
 {
