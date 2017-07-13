@@ -127,3 +127,10 @@ const std::string &GroupDb::getLongName(const int id)
     }
     return (*it).second.longName;
 }
+
+#ifdef UNITTESTS
+GroupDb::GroupInfos &GroupDb::getGroups()
+{
+    return mGroups;
+}
+#endif  // UNITTESTS

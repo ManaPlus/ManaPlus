@@ -117,8 +117,10 @@
 
 #include "render/sdlgraphics.h"
 
+#include "resources/groupinfo.h"
 #include "resources/sdlimagehelper.h"
 
+#include "resources/db/groupdb.h"
 #include "resources/db/unitsdb.h"
 
 #include "resources/item/item.h"
@@ -655,10 +657,14 @@ TEST_CASE("Windows tests", "windowmanager")
     }
     SECTION("StatusWindow")
     {
+        GroupDb::GroupInfos &groups = GroupDb::getGroups();
+        groups[0].name = std::string();
+        groups[0].longName = std::string();
         CREATEWIDGETV0(statusWindow, StatusWindow);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(statusWindow);
+        groups.clear();
     }
     SECTION("TextCommandEditor")
     {
