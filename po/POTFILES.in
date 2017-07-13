@@ -11,7 +11,7 @@ src/being/playerrelations.cpp
 src/client.cpp
 src/commandline.cpp
 src/configmanager.cpp
-src/debug/c++11.h
+src/debug/nvwa/c++11.h
 src/dirs.cpp
 src/dyetool/client.cpp
 src/dyetool/dyemain.cpp
