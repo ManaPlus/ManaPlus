@@ -36,7 +36,7 @@
 
 #ifndef STATIC_ASSERT
 
-#include "debug/c++11.h"
+#include "debug/nvwa/c++11.h"
 
 #if HAVE_CXX11_STATIC_ASSERT
 

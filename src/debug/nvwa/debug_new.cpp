@@ -78,7 +78,7 @@ PRAGMA45(GCC diagnostic ignored "-Wcast-qual")
  * is defined to \c 0 to disable the redefinition of \c new.
  */
 #define _DEBUG_NEW_REDEFINE_NEW 0
-#include "debug/debug_new.h"
+#include "debug/nvwa/debug_new.h"
 
 #if !_FAST_MUTEX_CHECK_INITIALIZATION && !defined(_NOTHREADS)
 #error "_FAST_MUTEX_CHECK_INITIALIZATION not set: check_leaks may not work"

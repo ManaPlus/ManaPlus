@@ -37,8 +37,8 @@
 #ifndef NVWA_FAST_MUTEX_H
 #define NVWA_FAST_MUTEX_H
 
-#include "debug/_nvwa.h"              // NVWA_NAMESPACE_*
-#include "debug/c++11.h"              // HAVE_CXX11_MUTEX
+#include "debug/nvwa/_nvwa.h"              // NVWA_NAMESPACE_*
+#include "debug/nvwa/c++11.h"              // HAVE_CXX11_MUTEX
 
 # if !defined(_NOTHREADS)
 #   if !defined(NVWA_USE_CXX11_MUTEX) && HAVE_CXX11_MUTEX != 0 && \

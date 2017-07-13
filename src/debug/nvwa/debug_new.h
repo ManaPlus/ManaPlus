@@ -39,8 +39,8 @@
 
 #include <new>                  // size_t/std::bad_alloc
 #include <stdio.h>              // FILE
-#include "debug/_nvwa.h"              // NVWA_NAMESPACE_*
-#include "debug/c++11.h"              // _NOEXCEPT
+#include "debug/nvwa/_nvwa.h"              // NVWA_NAMESPACE_*
+#include "debug/nvwa/c++11.h"              // _NOEXCEPT
 
 /* Special allocation/deallocation functions in the global scope */
 void* operator new(size_t size, const char* file, int line);
