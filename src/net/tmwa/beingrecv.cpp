@@ -52,7 +52,6 @@
 
 #include "resources/db/itemdb.h"
 
-#include "utils/stringutils.h"
 #include "utils/timer.h"
 
 #include "debug.h"
