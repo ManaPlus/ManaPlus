@@ -38,9 +38,10 @@ namespace GroupDb
 
     void loadXmlFile(const std::string &fileName,
                      const SkipError skipError);
-    const std::string &getName(const int id);
-    const std::string &getLongName(const int id);
-    bool getShowBadge(const int id);
+    const std::string &getName(const int id) A_WARN_UNUSED;
+    const std::string &getLongName(const int id) A_WARN_UNUSED;
+    bool getShowBadge(const int id) A_WARN_UNUSED;
+    const std::string &getBadge(const int id) A_WARN_UNUSED;
 
     typedef std::map<int, GroupInfo> GroupInfos;
 

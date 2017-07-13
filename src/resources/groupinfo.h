@@ -30,6 +30,7 @@ struct GroupInfo final
     GroupInfo() :
         name(),
         longName(),
+        badge(),
         showBadge(false)
     { }
 
@@ -37,6 +38,7 @@ struct GroupInfo final
 
     std::string name;
     std::string longName;
+    std::string badge;
     bool showBadge;
 };
 
