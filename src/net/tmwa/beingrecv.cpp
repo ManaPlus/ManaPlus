@@ -23,6 +23,7 @@
 #include "net/tmwa/beingrecv.h"
 
 #include "actormanager.h"
+#include "configuration.h"
 #include "effectmanager.h"
 #include "guild.h"
 #include "party.h"
@@ -68,7 +69,7 @@ static void setGm(Being *const dstBeing,
     {
         if ((gmstatus & 0x80) != 0)
         {
-            dstBeing->setGroupId(60);
+            dstBeing->setGroupId(paths.getIntValue("gmDefaultLevel"));
             dstBeing->setGM(true);
         }
         else

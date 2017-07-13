@@ -684,11 +684,14 @@ DefaultsData* getPathsDefaults()
     AddDEF("emptyAtlasName", "ignored");
     AddDEF("skillCastingAnimation", "");
     AddDEF("languageIcons", "graphics/badges/flags");
-
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");
 
     AddDEF("overweightPercent", 50);
+
+#ifdef TMWA_SUPPORT
+    AddDEF("gmDefaultLevel", 60);
+#endif  // TMWA_SUPPORT
 
     return configData;
 }
