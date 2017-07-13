@@ -32,7 +32,7 @@ struct GroupInfo final
         longName()
     { }
 
-    A_DELETE_COPY(GroupInfo)
+    A_DEFAULT_COPY(GroupInfo)
 
     std::string name;
     std::string longName;
