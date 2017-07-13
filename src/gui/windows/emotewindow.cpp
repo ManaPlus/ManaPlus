@@ -169,7 +169,7 @@ void EmoteWindow::show()
     if (dictionary != nullptr)
     {
         mTextModel->clear();
-        const std::vector<std::string> &texts = TextDb::getTexts();
+        const STD_VECTOR<std::string> &texts = TextDb::getTexts();
         FOR_EACH (StringVectCIter, it, texts)
         {
             mTextModel->add(dictionary->getStr(*it));

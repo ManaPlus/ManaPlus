@@ -62,7 +62,7 @@ void ComplexItem::addChild(const Item *const item,
         return;
     increaseQuantity(amount);
     Item *child = nullptr;
-    FOR_EACH (std::vector<Item*>::iterator, it, mChildItems)
+    FOR_EACH (STD_VECTOR<Item*>::iterator, it, mChildItems)
     {
         Item *const item1 = *it;
         if (item1->getId() == item->getId() &&

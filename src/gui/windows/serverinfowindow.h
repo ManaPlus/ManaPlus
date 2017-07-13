@@ -51,7 +51,7 @@ class ServerInfoWindow final : public Window,
     protected:
         void showServerInfo();
 
-        void addSourcesList(const std::vector<ServerUrlInfo> &list,
+        void addSourcesList(const STD_VECTOR<ServerUrlInfo> &list,
                             const std::string &comment);
 
         void addServerComment(const std::string &url,

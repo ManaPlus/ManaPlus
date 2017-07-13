@@ -45,7 +45,7 @@ void VendingHandler::buy(const Being *const being A_UNUSED,
 }
 
 void VendingHandler::buyItems(const Being *const being A_UNUSED,
-                              const std::vector<ShopItem*> &items A_UNUSED)
+                              const STD_VECTOR<ShopItem*> &items A_UNUSED)
                               const
 {
 }
@@ -59,7 +59,7 @@ void VendingHandler::buy2(const Being *const being A_UNUSED,
 
 void VendingHandler::createShop(const std::string &name A_UNUSED,
                                 const bool flag A_UNUSED,
-                                const std::vector<ShopItem*> &items A_UNUSED)
+                                const STD_VECTOR<ShopItem*> &items A_UNUSED)
                                 const
 {
 }

@@ -48,8 +48,8 @@ struct HorseInfo final
 
     A_DELETE_COPY(HorseInfo)
 
-    std::vector<SpriteReference*> downSprites;
-    std::vector<SpriteReference*> upSprites;
+    STD_VECTOR<SpriteReference*> downSprites;
+    STD_VECTOR<SpriteReference*> upSprites;
     HorseOffset offsets[10];  // by direction
 };
 

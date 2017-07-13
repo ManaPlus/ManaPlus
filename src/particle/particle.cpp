@@ -218,9 +218,9 @@ void Particle::updateSelf() restrict2
     {
         FOR_EACH (EmitterConstIterator, e, mChildEmitters)
         {
-            std::vector<Particle*> newParticles;
+            STD_VECTOR<Particle*> newParticles;
             (*e)->createParticles(mLifetimePast, newParticles);
-            FOR_EACH (std::vector<Particle*>::const_iterator,
+            FOR_EACH (STD_VECTOR<Particle*>::const_iterator,
                       it,
                       newParticles)
             {

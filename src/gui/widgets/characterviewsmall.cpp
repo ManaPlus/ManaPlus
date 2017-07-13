@@ -30,7 +30,7 @@
 #include "debug.h"
 
 CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
-                                       std::vector<CharacterDisplay*>
+                                       STD_VECTOR<CharacterDisplay*>
                                        *const entries,
                                        const int padding) :
     CharacterViewBase(widget, padding),
@@ -43,7 +43,7 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
     addKeyListener(widget);
     if (entries != nullptr)
     {
-        FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
+        FOR_EACHP (STD_VECTOR<CharacterDisplay*>::iterator,
                    it, entries)
         {
             add(*it);
@@ -106,8 +106,8 @@ void CharacterViewSmall::resize()
     const int h = mDimension.height;
     const int x = (w - firtChar->getWidth()) / 2;
     const int y = (h - firtChar->getHeight()) / 2;
-    FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
-                it, mCharacterEntries)
+    FOR_EACHP (STD_VECTOR<CharacterDisplay*>::iterator,
+               it, mCharacterEntries)
     {
         (*it)->setPosition(x, y);
     }

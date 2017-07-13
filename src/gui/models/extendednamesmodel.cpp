@@ -59,7 +59,7 @@ const Image *ExtendedNamesModel::getImageAt(int i)
 void ExtendedNamesModel::clear()
 {
     mNames.clear();
-    FOR_EACH (std::vector<Image*>::iterator, it, mImages)
+    FOR_EACH (STD_VECTOR<Image*>::iterator, it, mImages)
     {
         if (*it != nullptr)
             (*it)->decRef();

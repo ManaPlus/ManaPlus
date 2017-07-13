@@ -124,7 +124,7 @@ bool EffectManager::trigger(const int id,
 
     BLOCK_START("EffectManager::trigger")
     bool rValue = false;
-    FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
+    FOR_EACH (STD_VECTOR<EffectDescription>::const_iterator, i, mEffects)
     {
         const EffectDescription &effect = *i;
         if (effect.id == id)
@@ -156,7 +156,7 @@ Particle *EffectManager::triggerReturn(const int id,
         return nullptr;
 
     Particle *rValue = nullptr;
-    FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
+    FOR_EACH (STD_VECTOR<EffectDescription>::const_iterator, i, mEffects)
     {
         const EffectDescription &effect = *i;
         if (effect.id == id)
@@ -187,7 +187,7 @@ bool EffectManager::trigger(const int id,
         return false;
 
     bool rValue = false;
-    FOR_EACH (std::vector<EffectDescription>::const_iterator, i, mEffects)
+    FOR_EACH (STD_VECTOR<EffectDescription>::const_iterator, i, mEffects)
     {
         const EffectDescription &effect = *i;
         if (effect.id == id)

@@ -317,7 +317,7 @@ void SetupWindow::widgetResized(const Event &event)
     const int height = area.height;
     const int width = area.width;
     mPanel->setDimension(Rect(5, 5, width - 10, height - 40));
-    FOR_EACH (std::vector<Button*>::iterator, it, mButtons)
+    FOR_EACH (STD_VECTOR<Button*>::iterator, it, mButtons)
     {
         Button *const btn = *it;
         x -= btn->getWidth() + mButtonPadding;

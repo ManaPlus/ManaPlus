@@ -513,7 +513,7 @@ void splitToStringSet(std::set<std::string> &tokens,
     }
 }
 
-void splitToIntVector(std::vector<int> &tokens,
+void splitToIntVector(STD_VECTOR<int> &tokens,
                       const std::string &text,
                       const char separator)
 {

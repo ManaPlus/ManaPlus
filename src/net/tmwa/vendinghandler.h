@@ -42,7 +42,7 @@ class VendingHandler final : public Net::VendingHandler
                  const int amount) const override final A_CONST;
 
         void buyItems(const Being *const being,
-                      const std::vector<ShopItem*> &items) const
+                      const STD_VECTOR<ShopItem*> &items) const
                       override final A_CONST;
 
         void buy2(const Being *const being,
@@ -52,7 +52,7 @@ class VendingHandler final : public Net::VendingHandler
 
         void createShop(const std::string &name,
                         const bool flag,
-                        const std::vector<ShopItem*> &items) const
+                        const STD_VECTOR<ShopItem*> &items) const
                         override final A_CONST;
 };
 

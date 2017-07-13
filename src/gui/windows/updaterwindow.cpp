@@ -75,10 +75,10 @@ const std::string updateServer5
 /**
  * Load the given file into a vector of updateFiles.
  */
-static std::vector<UpdateFile> loadXMLFile(const std::string &fileName,
+static STD_VECTOR<UpdateFile> loadXMLFile(const std::string &fileName,
                                            const bool loadMods)
 {
-    std::vector<UpdateFile> files;
+    STD_VECTOR<UpdateFile> files;
     XML::Document doc(fileName, UseVirtFs_false, SkipError_false);
     XmlNodeConstPtrConst rootNode = doc.rootNode();
 
@@ -129,9 +129,9 @@ static std::vector<UpdateFile> loadXMLFile(const std::string &fileName,
     return files;
 }
 
-static std::vector<UpdateFile> loadTxtFile(const std::string &fileName)
+static STD_VECTOR<UpdateFile> loadTxtFile(const std::string &fileName)
 {
-    std::vector<UpdateFile> files;
+    STD_VECTOR<UpdateFile> files;
     std::ifstream fileHandler;
     fileHandler.open(fileName.c_str(), std::ios::in);
 
@@ -242,7 +242,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
 
     if (mUpdateHost.empty())
     {
-        const std::vector<std::string> &mirrors = settings.updateMirrors;
+        const STD_VECTOR<std::string> &mirrors = settings.updateMirrors;
         if (mirrors.begin() != mirrors.end())
             mUpdateHost = *mirrors.begin();
         mSkipPatches = true;
@@ -613,8 +613,8 @@ void UpdaterWindow::download()
         }
         else
         {
-            const std::vector<std::string> &mirrors = settings.updateMirrors;
-            FOR_EACH (std::vector<std::string>::const_iterator, it, mirrors)
+            const STD_VECTOR<std::string> &mirrors = settings.updateMirrors;
+            FOR_EACH (STD_VECTOR<std::string>::const_iterator, it, mirrors)
             {
                 mDownload->addMirror(pathJoin(*it,
                     mCurrentFile));
@@ -683,7 +683,7 @@ void UpdaterWindow::loadUpdates()
 
 void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 {
-    std::vector<UpdateFile> updateFiles = loadXMLFile(
+    STD_VECTOR<UpdateFile> updateFiles = loadXMLFile(
         pathJoin(dir, xmlUpdateFile),
         false);
 
@@ -716,7 +716,7 @@ void UpdaterWindow::loadLocalUpdates(const std::string &dir)
 
 void UpdaterWindow::unloadUpdates(const std::string &dir)
 {
-    std::vector<UpdateFile> updateFiles = loadXMLFile(
+    STD_VECTOR<UpdateFile> updateFiles = loadXMLFile(
         pathJoin(dir, xmlUpdateFile),
         true);
 
@@ -742,7 +742,7 @@ void UpdaterWindow::unloadUpdates(const std::string &dir)
 void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
 {
     std::string fixPath = dir + "/fix";
-    std::vector<UpdateFile> updateFiles = loadXMLFile(
+    STD_VECTOR<UpdateFile> updateFiles = loadXMLFile(
         pathJoin(fixPath, xmlUpdateFile),
         false);
 
@@ -772,7 +772,7 @@ void UpdaterWindow::loadManaPlusUpdates(const std::string &dir)
 void UpdaterWindow::unloadManaPlusUpdates(const std::string &dir)
 {
     const std::string fixPath = dir + "/fix";
-    const std::vector<UpdateFile> updateFiles = loadXMLFile(
+    const STD_VECTOR<UpdateFile> updateFiles = loadXMLFile(
         pathJoin(fixPath, xmlUpdateFile),
         true);
 
@@ -1100,7 +1100,7 @@ void UpdaterWindow::loadFile(std::string file)
 }
 
 void UpdaterWindow::loadMods(const std::string &dir,
-                             const std::vector<UpdateFile> &updateFiles)
+                             const STD_VECTOR<UpdateFile> &updateFiles)
 {
     ModDB::load();
     std::string modsString = serverConfig.getValue("mods", "");
@@ -1127,7 +1127,7 @@ void UpdaterWindow::loadMods(const std::string &dir,
         }
     }
 
-    std::vector<UpdateFile> updateFiles2 = loadXMLFile(
+    STD_VECTOR<UpdateFile> updateFiles2 = loadXMLFile(
         pathJoin(fixPath, xmlUpdateFile),
         true);
 

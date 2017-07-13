@@ -45,7 +45,7 @@ class BeingsListModel final : public AvatarListModel
             mMembers.clear();
         }
 
-        std::vector<Avatar*> *getMembers() RETURNS_NONNULL A_WARN_UNUSED
+        STD_VECTOR<Avatar*> *getMembers() RETURNS_NONNULL A_WARN_UNUSED
         {
             return &mMembers;
         }
@@ -60,7 +60,7 @@ class BeingsListModel final : public AvatarListModel
             return CAST_S32(mMembers.size());
         }
 
-        std::vector<Avatar*> mMembers;
+        STD_VECTOR<Avatar*> mMembers;
 };
 
 #endif  // GUI_MODELS_BEINGSLISTMODEL_H

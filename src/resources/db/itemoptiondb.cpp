@@ -33,7 +33,7 @@
 namespace
 {
     ItemOptionDb::OptionInfos mOptions;
-    const std::vector<ItemFieldType*> mEmptyOption;
+    const STD_VECTOR<ItemFieldType*> mEmptyOption;
     bool mLoaded = false;
 }  // namespace
 
@@ -48,7 +48,7 @@ void ItemOptionDb::load()
     mLoaded = true;
 }
 
-static void addFieldByName(std::vector<ItemFieldType*> &options,
+static void addFieldByName(STD_VECTOR<ItemFieldType*> &options,
                            XmlNodeConstPtr node,
                            const ItemFieldDb::FieldInfos &fields,
                            const char *const name)
@@ -68,7 +68,7 @@ static void addFieldByName(std::vector<ItemFieldType*> &options,
     }
 }
 
-static void readOptionFields(std::vector<ItemFieldType*> &options,
+static void readOptionFields(STD_VECTOR<ItemFieldType*> &options,
                              XmlNodeConstPtr node,
                              const ItemFieldDb::FieldInfos &fields)
 {
@@ -127,7 +127,7 @@ void ItemOptionDb::loadXmlFile(const std::string &fileName,
                 reportAlways("Empty id field in ItemOptionDb");
                 continue;
             }
-            std::vector<ItemFieldType*> &options = mOptions[id];
+            STD_VECTOR<ItemFieldType*> &options = mOptions[id];
             readOptionFields(options, node, requiredFields);
             readOptionFields(options, node, addFields);
         }
@@ -140,7 +140,7 @@ void ItemOptionDb::unload()
     mLoaded = false;
 }
 
-const std::vector<ItemFieldType*> &ItemOptionDb::getFields(const int id)
+const STD_VECTOR<ItemFieldType*> &ItemOptionDb::getFields(const int id)
 {
     OptionInfos::const_iterator it = mOptions.find(id);
     if (it == mOptions.end())

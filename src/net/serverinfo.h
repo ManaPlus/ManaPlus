@@ -49,11 +49,11 @@ class ServerInfo final
         std::string supportUrl;
         std::string serverUrl;
         std::string defaultHostName;
-        std::vector<std::string> updateMirrors;
-        std::vector<HostsGroup> updateHosts;
-        std::vector<ServerUrlInfo> freeSources;
-        std::vector<ServerUrlInfo> nonFreeSources;
-        std::vector<ServerUrlInfo> docs;
+        STD_VECTOR<std::string> updateMirrors;
+        STD_VECTOR<HostsGroup> updateHosts;
+        STD_VECTOR<ServerUrlInfo> freeSources;
+        STD_VECTOR<ServerUrlInfo> nonFreeSources;
+        STD_VECTOR<ServerUrlInfo> docs;
         uint16_t port;
         VersionString version;
         int packetVersion;
@@ -221,6 +221,6 @@ class ServerInfo final
         }
 };
 
-typedef std::vector<ServerInfo> ServerInfos;
+typedef STD_VECTOR<ServerInfo> ServerInfos;
 
 #endif  // NET_SERVERINFO_H

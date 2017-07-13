@@ -219,7 +219,7 @@ class SkillDialog final : public Window,
 
         typedef std::map<int, SkillInfo*> SkillMap;
         SkillMap mSkills;
-        std::vector<SkillInfo*> mDurations;
+        STD_VECTOR<SkillInfo*> mDurations;
         TabbedArea *mTabs A_NONNULLPOINTER;
         std::list<Tab*> mDeleteTabs;
         Label *mPointsLabel A_NONNULLPOINTER;

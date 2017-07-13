@@ -31,12 +31,12 @@
 
 AtlasResource::~AtlasResource()
 {
-    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
+    FOR_EACH (STD_VECTOR<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
         if (atlas != nullptr)
         {
-            FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
+            FOR_EACH (STD_VECTOR<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (item != nullptr)
@@ -80,7 +80,7 @@ int AtlasResource::calcMemoryLocal() const
 int AtlasResource::calcMemoryChilds(const int level) const
 {
     int sz = 0;
-    FOR_EACH (std::vector<TextureAtlas*>::const_iterator, it, atlases)
+    FOR_EACH (STD_VECTOR<TextureAtlas*>::const_iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
         sz += atlas->calcMemory(level + 1);

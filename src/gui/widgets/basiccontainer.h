@@ -180,7 +180,7 @@ class BasicContainer notfinal : public Widget,
         /**
           * Typedef.
           */
-        typedef std::vector<Widget *> WidgetList;
+        typedef STD_VECTOR<Widget *> WidgetList;
 
           /**
           * Typedef.

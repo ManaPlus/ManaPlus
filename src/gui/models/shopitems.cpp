@@ -133,10 +133,10 @@ ShopItem *ShopItems::at(const size_t i) const
     return mShopItems.at(i);
 }
 
-bool ShopItems::findInAllItems(std::vector<ShopItem*>::iterator &it,
+bool ShopItems::findInAllItems(STD_VECTOR<ShopItem*>::iterator &it,
                                const ShopItem *const item)
 {
-    const std::vector<ShopItem*>::iterator it_end = mAllShopItems.end();
+    const STD_VECTOR<ShopItem*>::iterator it_end = mAllShopItems.end();
     for (it = mAllShopItems.begin(); it != it_end; ++ it)
     {
         if (*it == item)
@@ -151,7 +151,7 @@ void ShopItems::erase(const unsigned int i)
         return;
 
     const ShopItem *const item = *(mShopItems.begin() + i);
-    std::vector<ShopItem*>::iterator it;
+    STD_VECTOR<ShopItem*>::iterator it;
     if (findInAllItems(it, item))
         mAllShopItems.erase(it);
     mShopItems.erase(mShopItems.begin() + i);
@@ -163,7 +163,7 @@ void ShopItems::del(const unsigned int i)
         return;
 
     ShopItem *item = *(mShopItems.begin() + i);
-    std::vector<ShopItem*>::iterator it;
+    STD_VECTOR<ShopItem*>::iterator it;
     if (findInAllItems(it, item))
         mAllShopItems.erase(it);
     mShopItems.erase(mShopItems.begin() + i);
@@ -180,8 +180,8 @@ void ShopItems::clear()
 ShopItem *ShopItems::findItem(const int id,
                               const ItemColor color) const
 {
-    std::vector<ShopItem*>::const_iterator it = mShopItems.begin();
-    const std::vector<ShopItem*>::const_iterator e = mShopItems.end();
+    STD_VECTOR<ShopItem*>::const_iterator it = mShopItems.begin();
+    const STD_VECTOR<ShopItem*>::const_iterator e = mShopItems.end();
     while (it != e)
     {
         ShopItem *const item = *it;
@@ -197,7 +197,7 @@ ShopItem *ShopItems::findItem(const int id,
 void ShopItems::updateList()
 {
     mShopItems.clear();
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, mAllShopItems)
+    FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, mAllShopItems)
     {
         ShopItem *const item = *it;
         if ((item != nullptr) && item->isVisible())

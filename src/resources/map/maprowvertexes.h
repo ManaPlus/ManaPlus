@@ -27,7 +27,7 @@
 
 #include "localconsts.h"
 
-typedef std::vector<ImageVertexes*> MapRowImages;
+typedef STD_VECTOR<ImageVertexes*> MapRowImages;
 
 class MapRowVertexes final
 {

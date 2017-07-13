@@ -148,7 +148,7 @@ void OutfitWindow::load()
         std::string buf;
         std::stringstream ss(outfit);
 
-        std::vector<int> tokens;
+        STD_VECTOR<int> tokens;
 
         while (ss >> buf)
             tokens.push_back(atoi(buf.c_str()));
@@ -164,7 +164,7 @@ void OutfitWindow::load()
 
         tokens.clear();
 
-        std::vector<unsigned char> tokens2;
+        STD_VECTOR<unsigned char> tokens2;
         while (ss2 >> buf)
             tokens2.push_back(CAST_U8(atoi(buf.c_str())));
 
@@ -734,7 +734,7 @@ std::string OutfitWindow::getOutfitString() const
             continue;
 
         const ItemColor color = mItemColors[mCurrentOutfit][i];
-        std::vector<int> ids;
+        STD_VECTOR<int> ids;
         ids.push_back(id);
         ids.push_back(CAST_S32(color));
 

@@ -98,7 +98,7 @@ namespace VirtFs
                           const Append append);
     bool unmountDirInternal(std::string oldDir,
                             std::string subDir);
-    std::vector<FsEntry*> &getEntries();
+    STD_VECTOR<FsEntry*> &getEntries();
     FsEntry *searchByRootInternal(const std::string &restrict root,
                                   const std::string &restrict subDir);
     FsEntry *searchByTypeInternal(const std::string &restrict root,

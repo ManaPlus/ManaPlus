@@ -48,7 +48,7 @@ class CharServerHandler final : public Ea::CharServerHandler
                           const int hairColor,
                           const unsigned char race,
                           const uint16_t look,
-                          const std::vector<int> &stats) const override final;
+                          const STD_VECTOR<int> &stats) const override final;
 
         void deleteCharacter(Net::Character *const character,
                              const std::string &email) const override final;

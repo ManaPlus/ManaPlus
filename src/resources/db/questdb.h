@@ -45,9 +45,9 @@ namespace QuestDb
 
     NpcQuestVarMap *getVars();
 
-    std::map<int, std::vector<QuestItem*> > *getQuests();
+    std::map<int, STD_VECTOR<QuestItem*> > *getQuests();
 
-    std::vector<QuestEffect*> *getAllEffects();
+    STD_VECTOR<QuestEffect*> *getAllEffects();
 
     std::string getName(const int id);
 }  // namespace QuestDb

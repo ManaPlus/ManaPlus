@@ -358,7 +358,7 @@ void Logger::flush()
     if (!mThreadLocked)
     {
         SDL_mutexP(mMutex);
-        FOR_EACH (std::vector<std::string>::const_iterator, it, mDelayedLog)
+        FOR_EACH (STD_VECTOR<std::string>::const_iterator, it, mDelayedLog)
             mLogFile << *it << std::endl;
         mDelayedLog.clear();
         SDL_mutexV(mMutex);

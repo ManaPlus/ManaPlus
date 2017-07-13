@@ -61,14 +61,14 @@ class NpcHandler final : public Ea::NpcHandler
                      const ItemColor color,
                      const int amount) const override final;
 
-        void buyItems(std::vector<ShopItem*> &items) const
+        void buyItems(STD_VECTOR<ShopItem*> &items) const
                       override final;
 
         void sellItem(const BeingId beingId,
                       const int itemId,
                       const int amount) const override final;
 
-        void sellItems(std::vector<ShopItem*> &items) const override final;
+        void sellItems(STD_VECTOR<ShopItem*> &items) const override final;
 
         void completeProgressBar() const override final;
 

@@ -1184,7 +1184,7 @@ class Being notfinal : public ActorSprite,
         typedef std::map<int, ParticleInfo*> SpriteParticleInfo;
         typedef SpriteParticleInfo::iterator SpriteParticleInfoIter;
 
-        std::vector<BeingSlot> mSlots;
+        STD_VECTOR<BeingSlot> mSlots;
         SpriteParticleInfo mSpriteParticles;
 
         // Character guild information
@@ -1226,12 +1226,12 @@ class Being notfinal : public ActorSprite,
         template<signed char pos, signed char neg>
         int getOffset() const restrict2 A_WARN_UNUSED;
 
-        int searchSlotValue(const std::vector<int> &restrict slotRemap,
+        int searchSlotValue(const STD_VECTOR<int> &restrict slotRemap,
                             const int val) const restrict2 A_WARN_UNUSED;
 
-        static void searchSlotValueItr(std::vector<int>::iterator &restrict it,
+        static void searchSlotValueItr(STD_VECTOR<int>::iterator &restrict it,
                                        int &idx,
-                                       std::vector<int> &restrict slotRemap,
+                                       STD_VECTOR<int> &restrict slotRemap,
                                        const int val);
 
         void addSpiritBalls(const unsigned int balls,
@@ -1286,9 +1286,9 @@ class Being notfinal : public ActorSprite,
         Particle *restrict mSpecialParticle;
         ChatObject *restrict mChat;
         HorseInfo *restrict mHorseInfo;
-        std::vector<AnimatedSprite*> mDownHorseSprites;
-        std::vector<AnimatedSprite*> mUpHorseSprites;
-        std::vector<Particle*> mSpiritParticles;
+        STD_VECTOR<AnimatedSprite*> mDownHorseSprites;
+        STD_VECTOR<AnimatedSprite*> mUpHorseSprites;
+        STD_VECTOR<Particle*> mSpiritParticles;
 
         int mX;             // position in tiles
         int mY;             // position in tiles

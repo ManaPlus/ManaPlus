@@ -28,7 +28,7 @@ defineListener(VendingSlotsListener)
 
 void VendingSlotsListener::distributeEvent(const int slots)
 {
-    FOR_EACH (std::vector<VendingSlotsListener*>::iterator,
+    FOR_EACH (STD_VECTOR<VendingSlotsListener*>::iterator,
               it, mListeners)
     {
         VendingSlotsListener *const listener = *it;

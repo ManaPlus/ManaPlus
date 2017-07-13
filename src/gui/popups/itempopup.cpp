@@ -382,12 +382,12 @@ std::string ItemPopup::getOptionsString(const ItemOptionsList *const options)
         const ItemOption &option = options->get(f);
         if (option.index == 0)
             continue;
-        const std::vector<ItemFieldType*> &fields = ItemOptionDb::getFields(
+        const STD_VECTOR<ItemFieldType*> &fields = ItemOptionDb::getFields(
             option.index);
         if (fields.empty())
             continue;
         const std::string valueStr = toString(option.value);
-        FOR_EACH (std::vector<ItemFieldType*>::const_iterator, it, fields)
+        FOR_EACH (STD_VECTOR<ItemFieldType*>::const_iterator, it, fields)
         {
             const ItemFieldType *const field = *it;
             std::string value = valueStr;

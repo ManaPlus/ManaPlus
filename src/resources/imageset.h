@@ -62,7 +62,7 @@ class ImageSet notfinal : public Resource
         int getHeight() const noexcept2 A_WARN_UNUSED
         { return mHeight; }
 
-        typedef std::vector<Image*>::size_type size_type;
+        typedef STD_VECTOR<Image*>::size_type size_type;
 
         Image* get(const size_type i) const A_WARN_UNUSED;
 
@@ -81,13 +81,13 @@ class ImageSet notfinal : public Resource
         void setOffsetY(const int n) noexcept2
         { mOffsetY = n; }
 
-        const std::vector<Image*> &getImages() const noexcept2 A_WARN_UNUSED
+        const STD_VECTOR<Image*> &getImages() const noexcept2 A_WARN_UNUSED
         { return mImages; }
 
         int calcMemoryLocal() const override;
 
     private:
-        std::vector<Image*> mImages;
+        STD_VECTOR<Image*> mImages;
 
         int mWidth;  /**< Width of the images in the image set. */
         int mHeight; /**< Height of the images in the image set. */

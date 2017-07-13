@@ -216,7 +216,7 @@ class MapLayer final: public MemoryCounter, public ConfigListener
         const SpecialLayer *restrict mSpecialLayer;
         const SpecialLayer *restrict mTempLayer;
         const std::string mName;
-        typedef std::vector<MapRowVertexes*> MapRows;
+        typedef STD_VECTOR<MapRowVertexes*> MapRows;
         MapRows mTempRows;
         int mMask;
         int mTileCondition;

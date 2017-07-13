@@ -100,7 +100,7 @@ struct SkillInfo final
     }
 };
 
-typedef std::vector<SkillInfo*> SkillList;
+typedef STD_VECTOR<SkillInfo*> SkillList;
 typedef SkillList::iterator SkillListIter;
 
 #endif  // GUI_WIDGETS_SKILLINFO_H

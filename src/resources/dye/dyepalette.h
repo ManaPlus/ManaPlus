@@ -181,7 +181,7 @@ class DyePalette final
 #ifndef UNITTESTS
     private:
 #endif  // UNITTESTS
-        std::vector<DyeColor> mColors;
+        STD_VECTOR<DyeColor> mColors;
 };
 
 #endif  // RESOURCES_DYE_DYEPALETTE_H

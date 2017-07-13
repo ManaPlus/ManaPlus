@@ -31,7 +31,7 @@ class CharacterViewSmall final : public CharacterViewBase
 {
     public:
         CharacterViewSmall(CharSelectDialog *const widget,
-                           std::vector<CharacterDisplay*> *const entries,
+                           STD_VECTOR<CharacterDisplay*> *const entries,
                            const int padding);
         A_DELETE_COPY(CharacterViewSmall)
 
@@ -48,7 +48,7 @@ class CharacterViewSmall final : public CharacterViewBase
         Button *mPrevious;
         Button *mNext;
         Label *mNumber;
-        std::vector<CharacterDisplay*> *mCharacterEntries;
+        STD_VECTOR<CharacterDisplay*> *mCharacterEntries;
 };
 
 #endif  // GUI_WIDGETS_CHARACTERVIEWSMALL_H

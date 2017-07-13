@@ -67,7 +67,7 @@ class QuitDialog final : public Window,
     private:
         void placeOption(ContainerPlacer &placer,
                          RadioButton *const option);
-        std::vector<RadioButton*> mOptions;
+        STD_VECTOR<RadioButton*> mOptions;
 
         RadioButton *mLogoutQuit A_NONNULLPOINTER;
         RadioButton *mForceQuit A_NONNULLPOINTER;

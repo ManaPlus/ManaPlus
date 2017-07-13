@@ -118,7 +118,7 @@ class InventoryItem final
         }
 };
 
-typedef std::vector<InventoryItem> InventoryItems;
+typedef STD_VECTOR<InventoryItem> InventoryItems;
 
 }  // namespace Ea
 

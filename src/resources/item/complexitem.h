@@ -55,11 +55,11 @@ class ComplexItem final : public Item
         void addChild(const Item *const item,
                       const int amount);
 
-        const std::vector<Item*> &getChilds() const noexcept2 A_WARN_UNUSED
+        const STD_VECTOR<Item*> &getChilds() const noexcept2 A_WARN_UNUSED
         { return mChildItems; }
 
     protected:
-        std::vector<Item*> mChildItems;
+        STD_VECTOR<Item*> mChildItems;
 };
 
 #endif  // RESOURCES_ITEM_COMPLEXITEM_H

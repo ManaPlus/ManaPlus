@@ -167,12 +167,12 @@ class BrowserBox final : public Widget,
         TextRows mTextRows;
         std::list<int> mTextRowLinksCount;
 
-        typedef std::vector<LinePart> LinePartList;
+        typedef STD_VECTOR<LinePart> LinePartList;
         typedef LinePartList::iterator LinePartIterator;
         typedef LinePartList::const_iterator LinePartCIter;
         LinePartList mLineParts;
 
-        typedef std::vector<BrowserLink> Links;
+        typedef STD_VECTOR<BrowserLink> Links;
         typedef Links::iterator LinkIterator;
         Links mLinks;
 

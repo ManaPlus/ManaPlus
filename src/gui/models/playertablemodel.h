@@ -61,7 +61,7 @@ class PlayerTableModel final : public Widget2,
 
     protected:
         StringVect *mPlayers;
-        std::vector<Widget *> mWidgets;
+        STD_VECTOR<Widget *> mWidgets;
         PlayerRelationListModel *mListModel;
 };
 

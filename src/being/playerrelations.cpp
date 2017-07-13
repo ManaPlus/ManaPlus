@@ -181,7 +181,7 @@ static const char *const DEFAULT_PERMISSIONS = "default-player-permissions";
 int PlayerRelationsManager::getPlayerIgnoreStrategyIndex(
     const std::string &name)
 {
-    const std::vector<PlayerIgnoreStrategy *> *const strategies
+    const STD_VECTOR<PlayerIgnoreStrategy *> *const strategies
         = getPlayerIgnoreStrategies();
 
     if (strategies == nullptr)
@@ -576,7 +576,7 @@ class PIS_emote final : public PlayerIgnoreStrategy
         uint8_t mEmotion;
 };
 
-std::vector<PlayerIgnoreStrategy *> *
+STD_VECTOR<PlayerIgnoreStrategy *> *
 PlayerRelationsManager::getPlayerIgnoreStrategies()
 {
     if (mIgnoreStrategies.empty())

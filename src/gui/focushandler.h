@@ -345,7 +345,7 @@ class FocusHandler final
         /**
          * Typedef.
          */
-        typedef std::vector<Widget*> WidgetVector;
+        typedef STD_VECTOR<Widget*> WidgetVector;
 
         /**
          * Typedef.

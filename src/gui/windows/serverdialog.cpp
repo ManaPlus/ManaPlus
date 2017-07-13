@@ -505,7 +505,7 @@ static void loadHostsGroup(XmlNodeConstPtr node,
 }
 
 static void loadServerSourcesList(XmlNodeConstPtr node,
-                                  std::vector<ServerUrlInfo> &list)
+                                  STD_VECTOR<ServerUrlInfo> &list)
 {
     for_each_xml_child_node(urlNode, node)
     {

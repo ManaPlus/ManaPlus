@@ -69,7 +69,7 @@ namespace CharDB
 
     unsigned getMaxRace() A_WARN_UNUSED;
 
-    const std::vector<BeingSlot> &getDefaultItems() A_WARN_UNUSED;
+    const STD_VECTOR<BeingSlot> &getDefaultItems() A_WARN_UNUSED;
 }  // namespace CharDB
 
 #endif  // RESOURCES_DB_CHARDB_H

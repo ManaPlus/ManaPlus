@@ -55,7 +55,7 @@
 MiniStatusWindow *miniStatusWindow = nullptr;
 extern volatile int tick_time;
 
-typedef std::vector <ProgressBar*>::const_iterator ProgressBarVectorCIter;
+typedef STD_VECTOR <ProgressBar*>::const_iterator ProgressBarVectorCIter;
 
 MiniStatusWindow::MiniStatusWindow() :
     Window("MiniStatus", Modal_false, nullptr, "ministatus.xml"),

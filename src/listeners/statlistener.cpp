@@ -30,7 +30,7 @@ void StatListener::distributeEvent(const AttributesT id,
                                    const int oldVal1,
                                    const int oldVal2)
 {
-    FOR_EACH (std::vector<StatListener*>::iterator,
+    FOR_EACH (STD_VECTOR<StatListener*>::iterator,
               it, mListeners)
     {
         StatListener *const listener = *it;

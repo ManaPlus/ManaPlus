@@ -171,7 +171,7 @@ void InventoryHandler::identifyItem(const Item *const item A_UNUSED) const
 {
 }
 
-void InventoryHandler::mergeItemsAck(const std::vector<Item*> &items A_UNUSED)
+void InventoryHandler::mergeItemsAck(const STD_VECTOR<Item*> &items A_UNUSED)
                                      const
 {
 }

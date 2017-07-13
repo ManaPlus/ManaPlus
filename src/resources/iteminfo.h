@@ -338,7 +338,7 @@ class ItemInfo final
         // sprite, <itemfrom, itemto> [direction]
         SpriteToItemMap *mSpriteToItemReplaceMap[10];
 
-        std::vector<SpriteToItemMap*> mSpriteToItemReplaceList;
+        STD_VECTOR<SpriteToItemMap*> mSpriteToItemReplaceList;
 
         // Equipment related members.
         /** Attack type, in case of weapon.

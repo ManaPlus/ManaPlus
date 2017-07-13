@@ -85,7 +85,7 @@ class MiniStatusWindow final : public Window,
 
         void slotsChanged(const Inventory *const inventory) override final;
 
-        std::vector <ProgressBar*> &getBars() A_WARN_UNUSED
+        STD_VECTOR <ProgressBar*> &getBars() A_WARN_UNUSED
         { return mBars; }
 
         Rect getChildrenArea() override final A_WARN_UNUSED;
@@ -122,9 +122,9 @@ class MiniStatusWindow final : public Window,
 
         void saveBars() const;
 
-        std::vector <ProgressBar*> mBars;
+        STD_VECTOR <ProgressBar*> mBars;
         std::map <std::string, ProgressBar*> mBarNames;
-        std::vector<AnimatedSprite *> mIcons;
+        STD_VECTOR<AnimatedSprite *> mIcons;
 
         /*
          * Mini Status Bars

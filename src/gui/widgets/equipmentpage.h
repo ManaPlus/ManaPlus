@@ -42,7 +42,7 @@ struct EquipmentPage final
 
     A_DELETE_COPY(EquipmentPage)
 
-    std::vector<EquipmentBox*> boxes;
+    STD_VECTOR<EquipmentBox*> boxes;
     int x;
     int y;
     int width;

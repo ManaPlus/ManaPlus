@@ -42,7 +42,7 @@ class TouchActionsModel final : public NamesModel
         int getSelectionFromAction(const InputActionT action) const;
 
     private:
-        std::vector<InputActionT> mActionId;
+        STD_VECTOR<InputActionT> mActionId;
         std::map<InputActionT, int> mActionToSelection;
 };
 

@@ -606,7 +606,7 @@ void ItemShortcutContainer::mouseMoved(MouseEvent &event)
         int offsetY = 0;
         if (!data.empty())
         {
-            std::vector<int> vect;
+            STD_VECTOR<int> vect;
             splitToIntVector(vect, data, ' ');
             const size_t sz = vect.size();
             if (sz > 0)

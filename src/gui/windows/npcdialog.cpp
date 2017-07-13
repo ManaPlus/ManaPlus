@@ -92,7 +92,7 @@
 NpcDialog::DialogList NpcDialog::instances;
 NpcDialogs NpcDialog::mNpcDialogs;
 
-typedef std::vector<Image *>::iterator ImageVectorIter;
+typedef STD_VECTOR<Image *>::iterator ImageVectorIter;
 
 NpcDialog::NpcDialog(const BeingId npcId) :
     // TRANSLATORS: npc dialog name
@@ -1275,7 +1275,7 @@ void NpcDialog::createSkinControls()
     if (mDialogInfo == nullptr)
         return;
 
-    FOR_EACH (std::vector<NpcImageInfo*>::const_iterator,
+    FOR_EACH (STD_VECTOR<NpcImageInfo*>::const_iterator,
         it,
         mDialogInfo->menu.images)
     {
@@ -1288,7 +1288,7 @@ void NpcDialog::createSkinControls()
             mSkinContainer->add(icon);
         }
     }
-    FOR_EACH (std::vector<NpcTextInfo*>::const_iterator,
+    FOR_EACH (STD_VECTOR<NpcTextInfo*>::const_iterator,
         it,
         mDialogInfo->menu.texts)
     {
@@ -1314,7 +1314,7 @@ void NpcDialog::createSkinControls()
             box->addRow(*it2);
         }
     }
-    FOR_EACH (std::vector<NpcButtonInfo*>::const_iterator,
+    FOR_EACH (STD_VECTOR<NpcButtonInfo*>::const_iterator,
         it,
         mDialogInfo->menu.buttons)
     {
@@ -1347,7 +1347,7 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
     std::string str;
     if (item != nullptr)
     {
-        const std::vector<Item*> &items = item->getChilds();
+        const STD_VECTOR<Item*> &items = item->getChilds();
         const size_t sz = items.size();
         if (sz == 0u)
             return str;

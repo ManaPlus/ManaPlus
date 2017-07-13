@@ -66,7 +66,7 @@ class IPC final
 
         unsigned int mNumReqs;
         TcpNet::Socket mSocket;
-        std::vector<std::string> mDelayedCommands;
+        STD_VECTOR<std::string> mDelayedCommands;
         SDL_Thread *mThread;
         SDL_mutex *mMutex;
         unsigned short mPort;

@@ -100,7 +100,7 @@ class StatusWindow final : public Window,
         static std::string translateLetter(const char *const letters);
         static std::string translateLetter2(const std::string &letters);
 
-        std::vector<StatsPage*> mPages;
+        STD_VECTOR<StatsPage*> mPages;
 
         TabbedArea *mTabs A_NONNULLPOINTER;
         Label *mLvlLabel A_NONNULLPOINTER;

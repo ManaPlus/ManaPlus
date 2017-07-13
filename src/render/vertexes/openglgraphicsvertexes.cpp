@@ -56,28 +56,28 @@ OpenGLGraphicsVertexes::~OpenGLGraphicsVertexes()
 
 void OpenGLGraphicsVertexes::clear() restrict2
 {
-    for (std::vector<GLfloat*>::iterator it = mFloatTexPool.begin();
+    for (STD_VECTOR<GLfloat*>::iterator it = mFloatTexPool.begin();
         it != mFloatTexPool.end(); ++ it)
     {
         delete [] (*it);
     }
     mFloatTexPool.clear();
 
-    for (std::vector<GLint*>::iterator it = mIntVertPool.begin();
+    for (STD_VECTOR<GLint*>::iterator it = mIntVertPool.begin();
         it != mIntVertPool.end(); ++ it)
     {
         delete [] (*it);
     }
     mIntVertPool.clear();
 
-    for (std::vector<GLshort*>::iterator it = mShortVertPool.begin();
+    for (STD_VECTOR<GLshort*>::iterator it = mShortVertPool.begin();
         it != mShortVertPool.end(); ++ it)
     {
         delete [] (*it);
     }
     mShortVertPool.clear();
 
-    for (std::vector<GLint*>::iterator it = mIntTexPool.begin();
+    for (STD_VECTOR<GLint*>::iterator it = mIntTexPool.begin();
         it != mIntTexPool.end(); ++ it)
     {
         delete [] (*it);

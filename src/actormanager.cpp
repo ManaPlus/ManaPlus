@@ -576,7 +576,7 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
     }
 }
 
-void ActorManager::findBeingsByPixel(std::vector<ActorSprite*> &beings,
+void ActorManager::findBeingsByPixel(STD_VECTOR<ActorSprite*> &beings,
                                      const int x, const int y,
                                      const AllPlayers allPlayers) const
 {
@@ -1181,7 +1181,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
 
     if (cycleSelect)
     {
-        std::vector<Being*> sortedBeings;
+        STD_VECTOR<Being*> sortedBeings;
 
         FOR_EACH (ActorSprites::iterator, i, mActors)
         {
@@ -1264,7 +1264,7 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
         }
 
         beingEqualActorFinder.findBeing = localPlayer->getTarget();
-        std::vector<Being*>::const_iterator i = std::find_if(
+        STD_VECTOR<Being*>::const_iterator i = std::find_if(
             sortedBeings.begin(), sortedBeings.end(), beingEqualActorFinder);
 
         if (i == sortedBeings.end() || ++i == sortedBeings.end())
@@ -1649,7 +1649,7 @@ void ActorManager::printBeingsToChat(const std::string &header) const
     }
 }
 
-void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
+void ActorManager::printBeingsToChat(const STD_VECTOR<Being*> &beings,
                                      const std::string &header)
 {
     if (debugChatTab == nullptr)
@@ -1659,7 +1659,7 @@ void ActorManager::printBeingsToChat(const std::vector<Being*> &beings,
         ChatMsgType::BY_SERVER);
     debugChatTab->chatLog(header, ChatMsgType::BY_SERVER);
 
-    FOR_EACH (std::vector<Being*>::const_iterator, i, beings)
+    FOR_EACH (STD_VECTOR<Being*>::const_iterator, i, beings)
     {
         if (*i == nullptr)
             continue;

@@ -318,7 +318,7 @@ void ShopWindow::action(const ActionEvent &event)
             }
             else
             {
-                std::vector<ShopItem*> &items = mBuyShopItems->items();
+                STD_VECTOR<ShopItem*> &items = mBuyShopItems->items();
                 if (!items.empty())
                 {
                     buyingStoreHandler->create(mSellShopName,
@@ -337,12 +337,12 @@ void ShopWindow::action(const ActionEvent &event)
             }
             else
             {
-                std::vector<ShopItem*> &oldItems = mSellShopItems->items();
-                std::vector<ShopItem*> items;
+                STD_VECTOR<ShopItem*> &oldItems = mSellShopItems->items();
+                STD_VECTOR<ShopItem*> items;
                 const Inventory *const inv = PlayerInfo::getCartInventory();
                 if (inv == nullptr)
                     return;
-                FOR_EACH (std::vector<ShopItem*>::iterator, it, oldItems)
+                FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, oldItems)
                 {
                     ShopItem *const item = *it;
                     if (item == nullptr)
@@ -551,7 +551,7 @@ void ShopWindow::loadList()
             const std::string str = line;
             if (!str.empty())
             {
-                std::vector<int> tokens;
+                STD_VECTOR<int> tokens;
                 std::stringstream ss(str);
 
                 while (ss >> buf)
@@ -600,8 +600,8 @@ void ShopWindow::saveList() const
         return;
     }
 
-    std::vector<ShopItem*> items = mBuyShopItems->items();
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    STD_VECTOR<ShopItem*> items = mBuyShopItems->items();
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         ShopItem *const item = *(it);
         if (item != nullptr)
@@ -609,7 +609,7 @@ void ShopWindow::saveList() const
     }
 
     items = mSellShopItems->items();
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         if ((*it) == nullptr)
             continue;
@@ -672,9 +672,9 @@ void ShopWindow::announce(ShopItems *const list, const int mode)
     if (mAnnounceButton != nullptr)
         mAnnounceButton->setEnabled(false);
 
-    std::vector<ShopItem*> items = list->items();
+    STD_VECTOR<ShopItem*> items = list->items();
 
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
         if (item->getQuantity() > 1)
@@ -760,9 +760,9 @@ void ShopWindow::giveList(const std::string &nick, const int mode)
     if (inv == nullptr)
         return;
 
-    std::vector<ShopItem*> items = list->items();
+    STD_VECTOR<ShopItem*> items = list->items();
 
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
         if (item == nullptr)
@@ -1064,13 +1064,13 @@ bool ShopWindow::findShopItem(const ShopItem *const shopItem,
     if (shopItem == nullptr)
         return false;
 
-    std::vector<ShopItem*> items;
+    STD_VECTOR<ShopItem*> items;
     if (mode == SELL)
         items = mSellShopItems->items();
     else
         items = mBuyShopItems->items();
 
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *(it);
         if (item == nullptr)

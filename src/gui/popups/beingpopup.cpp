@@ -67,7 +67,7 @@ void BeingPopup::postInit()
 {
     Popup::postInit();
     add(mBeingName);
-    FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
+    FOR_EACH (STD_VECTOR<Label*>::iterator, it, mLabels)
     {
         add(*it);
     }
@@ -124,7 +124,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
 
     mBeingName->adjustSize();
-    FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
+    FOR_EACH (STD_VECTOR<Label*>::iterator, it, mLabels)
     {
         (*it)->setCaption(std::string());
     }
@@ -311,7 +311,7 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     int minWidth = mBeingName->getWidth();
     const int height1 = getFont()->getHeight();
     int height = height1;
-    FOR_EACH (std::vector<Label*>::iterator, it, mLabels)
+    FOR_EACH (STD_VECTOR<Label*>::iterator, it, mLabels)
     {
         const Label *const label = *it;
         if (label != nullptr)

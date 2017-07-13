@@ -141,7 +141,7 @@ class EquipmentWindow final : public Window,
         Image *mSlotBackground;
         Image *mSlotHighlightedBackground;
         ImageCollection *mVertexes A_NONNULLPOINTER;
-        std::vector<EquipmentPage*> mPages;
+        STD_VECTOR<EquipmentPage*> mPages;
         TabStrip *mTabs;
         Color mHighlightColor;
         Color mBorderColor;

@@ -75,9 +75,9 @@ class SocialFriendsTab final : public SocialTab
             if (actorManager == nullptr)
                 return;
 
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
 
-            std::vector<Avatar*>::iterator ia = avatars->begin();
+            STD_VECTOR<Avatar*>::iterator ia = avatars->begin();
             while (ia != avatars->end())
             {
                 delete *ia;

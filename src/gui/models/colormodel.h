@@ -63,7 +63,7 @@ class ColorModel final : public ListModel
 
     protected:
         StringVect mNames;
-        std::vector<ColorPair> mColors;
+        STD_VECTOR<ColorPair> mColors;
 };
 
 #endif  // GUI_MODELS_COLORMODEL_H

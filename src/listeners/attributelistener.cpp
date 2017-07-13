@@ -30,7 +30,7 @@ void AttributeListener::distributeEvent(const AttributesT id,
                                         const int oldVal,
                                         const int newVal)
 {
-    FOR_EACH (std::vector<AttributeListener*>::iterator,
+    FOR_EACH (STD_VECTOR<AttributeListener*>::iterator,
               it, mListeners)
     {
         AttributeListener *const listener = *it;

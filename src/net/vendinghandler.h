@@ -53,7 +53,7 @@ class VendingHandler notfinal
                          const int amount) const = 0;
 
         virtual void buyItems(const Being *const being,
-                              const std::vector<ShopItem*> &items) const = 0;
+                              const STD_VECTOR<ShopItem*> &items) const = 0;
 
         virtual void buy2(const Being *const being,
                           const int vendId,
@@ -62,7 +62,7 @@ class VendingHandler notfinal
 
         virtual void createShop(const std::string &name,
                                 const bool flag,
-                                const std::vector<ShopItem*> &items) const = 0;
+                                const STD_VECTOR<ShopItem*> &items) const = 0;
 };
 
 }  // namespace Net

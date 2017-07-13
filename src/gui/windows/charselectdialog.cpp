@@ -491,7 +491,7 @@ void CharSelectDialog::attemptCharacterSelect(const int index)
 void CharSelectDialog::setCharacters(const Net::Characters &characters)
 {
     // Reset previous characters
-    FOR_EACH (std::vector<CharacterDisplay*>::const_iterator,
+    FOR_EACH (STD_VECTOR<CharacterDisplay*>::const_iterator,
               iter, mCharacterEntries)
     {
         if (*iter != nullptr)

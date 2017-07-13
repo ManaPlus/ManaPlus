@@ -156,7 +156,7 @@ static const unsigned int SPEECH_MAX_TIME = 800;
     for (int f = 0; f < BadgeIndex::BadgeIndexSize; f++)
 
 #define for_each_horses(name) \
-    FOR_EACH (std::vector<AnimatedSprite*>::const_iterator, it, name)
+    FOR_EACH (STD_VECTOR<AnimatedSprite*>::const_iterator, it, name)
 
 Being::Being(const BeingId id,
              const ActorTypeT type) :
@@ -3265,8 +3265,8 @@ void Being::setSpriteSlot(const unsigned int slot,
 
 void Being::dumpSprites() const restrict2
 {
-    std::vector<BeingSlot>::const_iterator it1 = mSlots.begin();
-    const std::vector<BeingSlot>::const_iterator it1_end = mSlots.end();
+    STD_VECTOR<BeingSlot>::const_iterator it1 = mSlots.begin();
+    const STD_VECTOR<BeingSlot>::const_iterator it1_end = mSlots.end();
 
     logger->log("sprites");
     for (; it1 != it1_end;
@@ -4195,10 +4195,10 @@ void Being::recalcSpritesOrder() restrict2
     if (sz < 1)
         return;
 
-    std::vector<int> slotRemap;
+    STD_VECTOR<int> slotRemap;
     IntMap itemSlotRemap;
 
-    std::vector<int>::iterator it;
+    STD_VECTOR<int>::iterator it;
     int oldHide[20];
     bool updatedSprite[20];
     int dir = mSpriteDirection;
@@ -4471,7 +4471,7 @@ void Being::recalcSpritesOrder() restrict2
     }
 }
 
-int Being::searchSlotValue(const std::vector<int> &restrict slotRemap,
+int Being::searchSlotValue(const STD_VECTOR<int> &restrict slotRemap,
                            const int val) const restrict2
 {
     const size_t sz = mSprites.size();
@@ -4483,14 +4483,14 @@ int Being::searchSlotValue(const std::vector<int> &restrict slotRemap,
     return CompoundSprite::getNumberOfLayers() - 1;
 }
 
-void Being::searchSlotValueItr(std::vector<int>::iterator &restrict it,
+void Being::searchSlotValueItr(STD_VECTOR<int>::iterator &restrict it,
                                int &restrict idx,
-                               std::vector<int> &restrict slotRemap,
+                               STD_VECTOR<int> &restrict slotRemap,
                                const int val)
 {
 //    logger->log("searching %d", val);
     it = slotRemap.begin();
-    const std::vector<int>::iterator it_end = slotRemap.end();
+    const STD_VECTOR<int>::iterator it_end = slotRemap.end();
     idx = 0;
     while (it != it_end)
     {
@@ -4974,7 +4974,7 @@ void Being::removeItemParticles(const int id) restrict2
     ParticleInfo *restrict const pi = (*it).second;
     if (pi != nullptr)
     {
-        FOR_EACH (std::vector<Particle*>::const_iterator, itp, pi->particles)
+        FOR_EACH (STD_VECTOR<Particle*>::const_iterator, itp, pi->particles)
             mChildParticleEffects.removeLocally(*itp);
         delete pi;
     }
@@ -4988,13 +4988,13 @@ void Being::recreateItemParticles() restrict2
         ParticleInfo *restrict const pi = (*it).second;
         if ((pi != nullptr) && !pi->files.empty())
         {
-            FOR_EACH (std::vector<Particle*>::const_iterator,
+            FOR_EACH (STD_VECTOR<Particle*>::const_iterator,
                       itp, pi->particles)
             {
                 mChildParticleEffects.removeLocally(*itp);
             }
 
-            FOR_EACH (std::vector<std::string>::const_iterator, str, pi->files)
+            FOR_EACH (STD_VECTOR<std::string>::const_iterator, str, pi->files)
             {
                 Particle *const p = particleEngine->addEffect(
                     *str, 0, 0);

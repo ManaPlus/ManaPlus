@@ -74,7 +74,7 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         void identifyItem(const Item *const item) const override final;
 
-        void mergeItemsAck(const std::vector<Item*> &items) const
+        void mergeItemsAck(const STD_VECTOR<Item*> &items) const
                            override final;
 
         void mergetItemsCancel() const override final;

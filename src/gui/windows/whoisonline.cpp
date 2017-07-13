@@ -245,7 +245,7 @@ void WhoIsOnline::updateWindow(size_t numOnline)
     std::sort(mNeutral.begin(), mNeutral.end(), nameCompare);
     std::sort(mDisregard.begin(), mDisregard.end(), nameCompare);
     bool addedFromSection(false);
-    FOR_EACH (std::vector<OnlinePlayer*>::const_iterator, it, mFriends)
+    FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mFriends)
     {
         mBrowserBox->addRow((*it)->getText());
         addedFromSection = true;
@@ -255,7 +255,7 @@ void WhoIsOnline::updateWindow(size_t numOnline)
         mBrowserBox->addRow("---");
         addedFromSection = false;
     }
-    FOR_EACH (std::vector<OnlinePlayer*>::const_iterator, it, mEnemy)
+    FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mEnemy)
     {
         mBrowserBox->addRow((*it)->getText());
         addedFromSection = true;
@@ -265,7 +265,7 @@ void WhoIsOnline::updateWindow(size_t numOnline)
         mBrowserBox->addRow("---");
         addedFromSection = false;
     }
-    FOR_EACH (std::vector<OnlinePlayer*>::const_iterator, it, mNeutral)
+    FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mNeutral)
     {
         mBrowserBox->addRow((*it)->getText());
         addedFromSection = true;
@@ -273,7 +273,7 @@ void WhoIsOnline::updateWindow(size_t numOnline)
     if (addedFromSection == true && !mDisregard.empty())
         mBrowserBox->addRow("---");
 
-    FOR_EACH (std::vector<OnlinePlayer*>::const_iterator, it, mDisregard)
+    FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mDisregard)
         mBrowserBox->addRow((*it)->getText());
 
     if (mScrollArea->getVerticalMaxScroll() <
@@ -324,7 +324,7 @@ void WhoIsOnline::handlerPlayerRelation(const std::string &nick,
     }
 }
 
-void WhoIsOnline::loadList(const std::vector<OnlinePlayer*> &list)
+void WhoIsOnline::loadList(const STD_VECTOR<OnlinePlayer*> &list)
 {
     mBrowserBox->clearRows();
     const size_t numOnline = list.size();
@@ -336,7 +336,7 @@ void WhoIsOnline::loadList(const std::vector<OnlinePlayer*> &list)
 
     mShowLevel = config.getBoolValue("showlevel");
 
-    FOR_EACH (std::vector<OnlinePlayer*>::const_iterator, it, list)
+    FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, list)
     {
         OnlinePlayer *player = *it;
         const std::string nick = player->getNick();

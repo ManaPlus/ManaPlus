@@ -27,7 +27,7 @@
 
 #include "localconsts.h"
 
-typedef std::vector<std::string> LangVect;
+typedef STD_VECTOR<std::string> LangVect;
 typedef LangVect::const_iterator LangIter;
 
 LangVect getLang() A_WARN_UNUSED;

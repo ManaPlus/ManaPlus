@@ -24,7 +24,7 @@
 #include "utils/vector.h"
 
 #define defineListener(name) \
-    std::vector<name*> name::mListeners; \
+    STD_VECTOR<name*> name::mListeners; \
     \
     name::name() \
     { \
@@ -44,7 +44,7 @@
     \
     void name::removeListener(const name *const listener) \
     { \
-        std::vector<name*>::iterator it = mListeners.begin(); \
+        STD_VECTOR<name*>::iterator it = mListeners.begin(); \
         while (it != mListeners.end()) \
         { \
             if (*it == listener) \
@@ -65,6 +65,6 @@
         static void removeListener(const name *const listener); \
         \
     private: \
-        static std::vector<name*> mListeners;
+        static STD_VECTOR<name*> mListeners;
 
 #endif  // LISTENERS_BASELISTENER_HPP

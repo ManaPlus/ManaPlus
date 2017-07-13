@@ -46,12 +46,12 @@ class VendingHandler final : public Net::VendingHandler
                   const int amount) const override final;
 
         void buyItems(const Being *const being,
-                      const std::vector<ShopItem*> &items) const
+                      const STD_VECTOR<ShopItem*> &items) const
                       override final;
 
         void createShop(const std::string &name,
                         const bool flag,
-                        const std::vector<ShopItem*> &items) const
+                        const STD_VECTOR<ShopItem*> &items) const
                         override final;
 };
 

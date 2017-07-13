@@ -52,7 +52,7 @@ namespace
     {
         A_DEFAULT_COPY(UnitDescription)
 
-        std::vector<struct UnitLevel> levels;
+        STD_VECTOR<struct UnitLevel> levels;
         double conversion;
         bool mix;
     };

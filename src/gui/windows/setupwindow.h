@@ -82,7 +82,7 @@ class SetupWindow final : public Window,
 
         std::list<SetupTab*> mTabs;
         std::list<Window*> mWindowsToReset;
-        std::vector<Button*> mButtons;
+        STD_VECTOR<Button*> mButtons;
         SetupTab *mModsTab;
         SetupTab *mQuickTab;
         Button *mResetWindows;

@@ -95,7 +95,7 @@ void NavigationManager::fillNum(int x, int y,
                                 const MetaTile *const tiles,
                                 int *const data)
 {
-    std::vector<Cell> cells;
+    STD_VECTOR<Cell> cells;
     cells.push_back(Cell(x, y));
     while (!cells.empty())
     {

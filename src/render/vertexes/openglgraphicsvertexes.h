@@ -56,16 +56,16 @@ class OpenGLGraphicsVertexes final
 
         GLshort *switchShortVertArray() restrict2;
 
-        std::vector<GLfloat*> *getFloatTexPool() restrict2 A_WARN_UNUSED
+        STD_VECTOR<GLfloat*> *getFloatTexPool() restrict2 A_WARN_UNUSED
         { return &mFloatTexPool; }
 
-        std::vector<GLint*> *getIntVertPool() restrict2 A_WARN_UNUSED
+        STD_VECTOR<GLint*> *getIntVertPool() restrict2 A_WARN_UNUSED
         { return &mIntVertPool; }
 
-        std::vector<GLshort*> *getShortVertPool() restrict2 A_WARN_UNUSED
+        STD_VECTOR<GLshort*> *getShortVertPool() restrict2 A_WARN_UNUSED
         { return &mShortVertPool; }
 
-        std::vector<GLint*> *getIntTexPool() restrict2 A_WARN_UNUSED
+        STD_VECTOR<GLint*> *getIntTexPool() restrict2 A_WARN_UNUSED
         { return &mIntTexPool; }
 
         void switchVp(const int n) restrict2;
@@ -82,7 +82,7 @@ class OpenGLGraphicsVertexes final
 
         void updateVp(const int n) restrict2;
 
-        std::vector<int> *getVp() restrict2 A_WARN_UNUSED
+        STD_VECTOR<int> *getVp() restrict2 A_WARN_UNUSED
         { return &mVp; }
 
         void init() restrict2;
@@ -95,12 +95,12 @@ class OpenGLGraphicsVertexes final
         GLint *mIntTexArray;
         GLint *mIntVertArray;
         GLshort *mShortVertArray;
-        std::vector<int> mVp;
-        std::vector<GLfloat*> mFloatTexPool;
-        std::vector<GLint*> mIntVertPool;
-        std::vector<GLshort*> mShortVertPool;
-        std::vector<GLint*> mIntTexPool;
-        std::vector<GLuint> mVbo;
+        STD_VECTOR<int> mVp;
+        STD_VECTOR<GLfloat*> mFloatTexPool;
+        STD_VECTOR<GLint*> mIntVertPool;
+        STD_VECTOR<GLshort*> mShortVertPool;
+        STD_VECTOR<GLint*> mIntTexPool;
+        STD_VECTOR<GLuint> mVbo;
 };
 
 extern unsigned int vertexBufSize;

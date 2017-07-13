@@ -72,7 +72,7 @@ void EmotePage::draw(Graphics *const graphics)
         if (mEmotes == nullptr)
             return;
 
-        const std::vector<Image*> &images = mEmotes->getImages();
+        const STD_VECTOR<Image*> &images = mEmotes->getImages();
 
         const unsigned int width = mDimension.width;
         unsigned int x = 0;
@@ -80,7 +80,7 @@ void EmotePage::draw(Graphics *const graphics)
 
         mRedraw = false;
         mVertexes->clear();
-        FOR_EACH (std::vector<Image*>::const_iterator, it, images)
+        FOR_EACH (STD_VECTOR<Image*>::const_iterator, it, images)
         {
             const Image *const image = *it;
             if (image != nullptr)
@@ -108,13 +108,13 @@ void EmotePage::safeDraw(Graphics *const graphics)
     if (mEmotes == nullptr)
         return;
 
-    const std::vector<Image*> &images = mEmotes->getImages();
+    const STD_VECTOR<Image*> &images = mEmotes->getImages();
 
     const unsigned int width = mDimension.width;
     unsigned int x = 0;
     unsigned int y = 0;
 
-    FOR_EACH (std::vector<Image*>::const_iterator, it, images)
+    FOR_EACH (STD_VECTOR<Image*>::const_iterator, it, images)
     {
         const Image *const image = *it;
         if (image != nullptr)

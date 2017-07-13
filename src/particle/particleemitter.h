@@ -71,7 +71,7 @@ class ParticleEmitter final
          * Spawns new particles
          */
         void createParticles(const int tick,
-                             std::vector<Particle*> &newParticles);
+                             STD_VECTOR<Particle*> &newParticles);
 
         /**
          * Sets the target of the particles that are created
@@ -161,7 +161,7 @@ class ParticleEmitter final
         // List of emitters the spawned particles are equipped with
         std::list<ParticleEmitter> mParticleChildEmitters;
 
-        std::vector<ImageSet*> mTempSets;
+        STD_VECTOR<ImageSet*> mTempSets;
 
         int mOutputPauseLeft;
 

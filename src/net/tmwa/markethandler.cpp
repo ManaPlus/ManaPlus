@@ -42,7 +42,7 @@ void MarketHandler::buyItem(const int itemId A_UNUSED,
 {
 }
 
-void MarketHandler::buyItems(const std::vector<ShopItem*> &items A_UNUSED)
+void MarketHandler::buyItems(const STD_VECTOR<ShopItem*> &items A_UNUSED)
                              const
 {
 }

@@ -558,13 +558,13 @@ void InventoryHandler::identifyItem(const Item *const item) const
         "item index");
 }
 
-void InventoryHandler::mergeItemsAck(const std::vector<Item*> &items) const
+void InventoryHandler::mergeItemsAck(const STD_VECTOR<Item*> &items) const
 {
     createOutPacket(CMSG_MERGE_ITEM_ACK);
     const size_t sz = items.size();
     outMsg.writeInt16(CAST_S16(sz * 2 + 4),
         "len");
-    FOR_EACH (std::vector<Item*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<Item*>::const_iterator, it, items)
     {
         outMsg.writeInt16(CAST_S16((*it)->getInvIndex() + 2),
             "item index");

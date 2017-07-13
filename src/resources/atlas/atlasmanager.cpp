@@ -61,8 +61,8 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
                                               const StringVect &files)
 {
     BLOCK_START("AtlasManager::loadTextureAtlas")
-    std::vector<TextureAtlas*> atlases;
-    std::vector<Image*> images;
+    STD_VECTOR<TextureAtlas*> atlases;
+    STD_VECTOR<Image*> images;
     AtlasResource *resource = new AtlasResource;
 
     loadImages(files, images);
@@ -76,7 +76,7 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
     // sorting images on atlases.
     simpleSort(name, atlases, images, maxSize);
 
-    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
+    FOR_EACH (STD_VECTOR<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
         if (atlas == nullptr)
@@ -96,8 +96,8 @@ AtlasResource *AtlasManager::loadTextureAtlas(const std::string &name,
 AtlasResource *AtlasManager::loadEmptyAtlas(const std::string &name,
                                             const StringVect &files)
 {
-    std::vector<TextureAtlas*> atlases;
-    std::vector<Image*> images;
+    STD_VECTOR<TextureAtlas*> atlases;
+    STD_VECTOR<Image*> images;
     AtlasResource *resource = new AtlasResource;
 
     loadEmptyImages(files, images);
@@ -105,7 +105,7 @@ AtlasResource *AtlasManager::loadEmptyAtlas(const std::string &name,
     // sorting images on atlases.
     emptySort(name, atlases, images);
 
-    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, atlases)
+    FOR_EACH (STD_VECTOR<TextureAtlas*>::iterator, it, atlases)
     {
         TextureAtlas *const atlas = *it;
         if (atlas == nullptr)
@@ -125,7 +125,7 @@ AtlasResource *AtlasManager::loadEmptyAtlas(const std::string &name,
 }
 
 void AtlasManager::loadImages(const StringVect &files,
-                              std::vector<Image*> &images)
+                              STD_VECTOR<Image*> &images)
 {
     BLOCK_START("AtlasManager::loadImages")
 
@@ -175,7 +175,7 @@ void AtlasManager::loadImages(const StringVect &files,
 }
 
 void AtlasManager::loadEmptyImages(const StringVect &files,
-                                   std::vector<Image*> &images)
+                                   STD_VECTOR<Image*> &images)
 {
     BLOCK_START("AtlasManager::loadEmptyImages")
 
@@ -202,8 +202,8 @@ void AtlasManager::loadEmptyImages(const StringVect &files,
 }
 
 void AtlasManager::simpleSort(const std::string &restrict name,
-                              std::vector<TextureAtlas*> &restrict atlases,
-                              const std::vector<Image*> &restrict images,
+                              STD_VECTOR<TextureAtlas*> &restrict atlases,
+                              const STD_VECTOR<Image*> &restrict images,
                               int size)
 {
     BLOCK_START("AtlasManager::simpleSort")
@@ -211,8 +211,8 @@ void AtlasManager::simpleSort(const std::string &restrict name,
     int y = 0;
     int tempHeight = 0;
     TextureAtlas *atlas = new TextureAtlas;
-    std::vector<Image*>::const_iterator it = images.begin();
-    const std::vector<Image*>::const_iterator it_end = images.end();
+    STD_VECTOR<Image*>::const_iterator it = images.begin();
+    const STD_VECTOR<Image*>::const_iterator it_end = images.end();
     for (it = images.begin(); it != it_end; ++ it)
     {
         const Image *const img = *it;
@@ -273,13 +273,13 @@ void AtlasManager::simpleSort(const std::string &restrict name,
 }
 
 void AtlasManager::emptySort(const std::string &restrict name,
-                             std::vector<TextureAtlas*> &restrict atlases,
-                             const std::vector<Image*> &restrict images)
+                             STD_VECTOR<TextureAtlas*> &restrict atlases,
+                             const STD_VECTOR<Image*> &restrict images)
 {
     BLOCK_START("AtlasManager::simpleSort")
     TextureAtlas *atlas = new TextureAtlas;
-    std::vector<Image*>::const_iterator it = images.begin();
-    const std::vector<Image*>::const_iterator it_end = images.end();
+    STD_VECTOR<Image*>::const_iterator it = images.begin();
+    const STD_VECTOR<Image*>::const_iterator it_end = images.end();
     for (it = images.begin(); it != it_end; ++ it)
     {
         const Image *const img = *it;
@@ -370,7 +370,7 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     }
 
     // drawing SDL images to surface
-    FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
+    FOR_EACH (STD_VECTOR<AtlasItem*>::iterator, it, atlas->items)
     {
         AtlasItem *const item = *it;
         imageHelper->copySurfaceToImage(image, item->x, item->y,
@@ -424,7 +424,7 @@ void AtlasManager::convertEmptyAtlas(TextureAtlas *const atlas)
 
     image->incRef();
 
-    FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
+    FOR_EACH (STD_VECTOR<AtlasItem*>::iterator, it, atlas->items)
     {
         AtlasItem *const item = *it;
         // delete SDL Image
@@ -471,7 +471,7 @@ void AtlasManager::convertAtlas(TextureAtlas *const atlas)
 
     image->incRef();
 
-    FOR_EACH (std::vector<AtlasItem*>::iterator, it, atlas->items)
+    FOR_EACH (STD_VECTOR<AtlasItem*>::iterator, it, atlas->items)
     {
         AtlasItem *const item = *it;
         // delete SDL Image
@@ -497,7 +497,7 @@ void AtlasManager::injectToResources(const AtlasResource *const resource)
 {
     if (resource == nullptr)
         return;
-    FOR_EACH (std::vector<TextureAtlas*>::const_iterator,
+    FOR_EACH (STD_VECTOR<TextureAtlas*>::const_iterator,
               it, resource->atlases)
     {
         // add each atlas image to resources
@@ -507,7 +507,7 @@ void AtlasManager::injectToResources(const AtlasResource *const resource)
             Image *const image = atlas->atlasImage;
             if (image != nullptr)
                 ResourceManager::addResource(atlas->name, image);
-            FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
+            FOR_EACH (STD_VECTOR<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (item == nullptr)
@@ -523,7 +523,7 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
 {
     if (resource == nullptr)
         return;
-    FOR_EACH (std::vector<TextureAtlas*>::iterator, it, resource->atlases)
+    FOR_EACH (STD_VECTOR<TextureAtlas*>::iterator, it, resource->atlases)
     {
         // move each atlas image to deleted
         TextureAtlas *const atlas = *it;
@@ -535,7 +535,7 @@ void AtlasManager::moveToDeleted(AtlasResource *const resource)
                 // move each atlas image to deleted
                 ResourceManager::moveToDeleted(image);
             }
-            FOR_EACH (std::vector<AtlasItem*>::iterator, it2, atlas->items)
+            FOR_EACH (STD_VECTOR<AtlasItem*>::iterator, it2, atlas->items)
             {
                 AtlasItem *const item = *it2;
                 if (item != nullptr)

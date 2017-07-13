@@ -28,7 +28,7 @@ defineListener(BuyingStoreModeListener)
 
 void BuyingStoreModeListener::distributeEvent(const bool b)
 {
-    FOR_EACH (std::vector<BuyingStoreModeListener*>::iterator,
+    FOR_EACH (STD_VECTOR<BuyingStoreModeListener*>::iterator,
               it, mListeners)
     {
         BuyingStoreModeListener *const listener = *it;

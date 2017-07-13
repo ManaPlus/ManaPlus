@@ -50,7 +50,7 @@ struct QuestItem final
     std::string group;
     std::set<int> incomplete;
     std::set<int> complete;
-    std::vector<QuestItemText> texts;
+    STD_VECTOR<QuestItemText> texts;
     int completeFlag;
     bool broken;
 };

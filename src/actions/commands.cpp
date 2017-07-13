@@ -294,7 +294,7 @@ impHandler(chatAdd)
     if (event.args.empty())
         return true;
 
-    std::vector<int> str;
+    STD_VECTOR<int> str;
     splitToIntVector(str, event.args, ',');
     if (str.empty())
         return true;

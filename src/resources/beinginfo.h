@@ -328,7 +328,7 @@ class BeingInfo final
 
         void addMenu(const std::string &name, const std::string &command);
 
-        const std::vector<BeingMenuItem> &getMenu() const A_CONST;
+        const STD_VECTOR<BeingMenuItem> &getMenu() const A_CONST;
 
         void setString(const int idx,
                        const std::string &value)
@@ -353,7 +353,7 @@ class BeingInfo final
         CursorT mHoverCursor;
         ItemSoundEvents mSounds;
         Attacks mAttacks;
-        std::vector<BeingMenuItem> mMenu;
+        STD_VECTOR<BeingMenuItem> mMenu;
         std::map<int, std::string> mStrings;
         std::string mCurrency;
         unsigned char mBlockWalkMask;

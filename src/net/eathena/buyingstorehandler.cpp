@@ -47,7 +47,7 @@ BuyingStoreHandler::BuyingStoreHandler()
 void BuyingStoreHandler::create(const std::string &name,
                                 const int maxMoney,
                                 const bool flag,
-                                const std::vector<ShopItem*> &items) const
+                                const STD_VECTOR<ShopItem*> &items) const
 {
     if (packetVersion < 20100303)
         return;
@@ -56,7 +56,7 @@ void BuyingStoreHandler::create(const std::string &name,
     outMsg.writeInt32(maxMoney, "limit money");
     outMsg.writeInt8(static_cast<int8_t>(flag), "flag");
     outMsg.writeString(name, 80, "store name");
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *it;
         outMsg.writeInt16(CAST_S16(item->getId()), "item id");

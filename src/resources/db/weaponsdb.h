@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-typedef std::vector<int> WeaponsInfos;
+typedef STD_VECTOR<int> WeaponsInfos;
 typedef WeaponsInfos::const_iterator WeaponsInfosIter;
 
 namespace WeaponsDB

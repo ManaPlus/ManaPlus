@@ -212,7 +212,7 @@ class Logger final
 
     private:
         std::ofstream mLogFile;
-        std::vector<std::string> mDelayedLog;
+        STD_VECTOR<std::string> mDelayedLog;
         SDL_mutex *mMutex;
         volatile bool mThreadLocked;
         bool mLogToStandardOut;

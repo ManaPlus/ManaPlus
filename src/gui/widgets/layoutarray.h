@@ -111,15 +111,15 @@ class LayoutArray final
          * Gets the column/row sizes along a given axis.
          * @param upp target size for the array. Ignored if AUTO_DEF.
          */
-        std::vector<int> getSizes(const int dim, int upp) const A_WARN_UNUSED;
+        STD_VECTOR<int> getSizes(const int dim, int upp) const A_WARN_UNUSED;
 
         /**
          * Gets the total size along a given axis.
          */
         int getSize(const int dim) const A_WARN_UNUSED;
 
-        std::vector<int> mSizes[2];
-        std::vector< std::vector < LayoutCell * > > mCells;
+        STD_VECTOR<int> mSizes[2];
+        STD_VECTOR< STD_VECTOR < LayoutCell * > > mCells;
 
         int mSpacing;
 };

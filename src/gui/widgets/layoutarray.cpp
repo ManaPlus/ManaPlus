@@ -39,14 +39,14 @@ LayoutArray::LayoutArray() :
 
 LayoutArray::~LayoutArray()
 {
-    std::vector <std::vector <LayoutCell *> >::iterator
+    STD_VECTOR <STD_VECTOR <LayoutCell *> >::iterator
         i = mCells.begin();
-    const std::vector <std::vector <LayoutCell *> >::iterator
+    const STD_VECTOR <STD_VECTOR <LayoutCell *> >::iterator
         i_end = mCells.end();
     while (i != i_end)
     {
-        std::vector< LayoutCell * >::iterator j = i->begin();
-        const std::vector< LayoutCell * >::iterator j_end = i->end();
+        STD_VECTOR< LayoutCell * >::iterator j = i->begin();
+        const STD_VECTOR< LayoutCell * >::iterator j_end = i->end();
         while (j != j_end)
         {
             delete *j;
@@ -85,9 +85,9 @@ void LayoutArray::resizeGrid(int w, const int h)
     if (extW)
         mSizes[0].resize(CAST_SIZE(w), LayoutType::DEF);
 
-    std::vector <std::vector <LayoutCell *> >::iterator
+    STD_VECTOR <STD_VECTOR <LayoutCell *> >::iterator
         i = mCells.begin();
-    const std::vector <std::vector <LayoutCell *> >::iterator
+    const STD_VECTOR <STD_VECTOR <LayoutCell *> >::iterator
         i_end = mCells.end();
     while (i != i_end)
     {
@@ -111,7 +111,7 @@ void LayoutArray::setRowHeight(const int n, const int h)
 void LayoutArray::matchColWidth(const int n1, const int n2)
 {
     resizeGrid(std::max(n1, n2) + 1, 0);
-    const std::vector<int> widths = getSizes(0, LayoutType::DEF);
+    const STD_VECTOR<int> widths = getSizes(0, LayoutType::DEF);
     const int s = std::max(widths[CAST_SIZE(n1)],
         widths[CAST_SIZE(n2)]);
     mSizes[0][CAST_SIZE(n1)] = s;
@@ -192,14 +192,14 @@ void LayoutArray::align(int &restrict pos, int &restrict size, const int dim,
     }
 }
 
-std::vector<int> LayoutArray::getSizes(const int dim, int upp) const
+STD_VECTOR<int> LayoutArray::getSizes(const int dim, int upp) const
 {
     if (dim < 0 || dim >= 2)
         return mSizes[1];
 
     const int gridW = CAST_S32(mSizes[0].size());
     const int gridH = CAST_S32(mSizes[1].size());
-    std::vector<int> sizes = mSizes[dim];
+    STD_VECTOR<int> sizes = mSizes[dim];
 
     // Compute minimum sizes.
     for (int gridY = 0; gridY < gridH; ++gridY)
@@ -266,7 +266,7 @@ std::vector<int> LayoutArray::getSizes(const int dim, int upp) const
 
 int LayoutArray::getSize(const int dim) const
 {
-    std::vector<int> sizes = getSizes(dim, LayoutType::DEF);
+    STD_VECTOR<int> sizes = getSizes(dim, LayoutType::DEF);
     int size = 0;
     const int nb = CAST_S32(sizes.size());
     for (int i = 0; i < nb; ++i)
@@ -284,8 +284,8 @@ void LayoutArray::reflow(const int nx, const int ny,
     const int gridW = CAST_S32(mSizes[0].size());
     const int gridH = CAST_S32(mSizes[1].size());
 
-    std::vector<int> widths  = getSizes(0, nw);
-    std::vector<int> heights = getSizes(1, nh);
+    STD_VECTOR<int> widths  = getSizes(0, nw);
+    STD_VECTOR<int> heights = getSizes(1, nh);
 
     const int szW = CAST_S32(widths.size());
     const int szH = CAST_S32(heights.size());

@@ -198,7 +198,7 @@ void IPC::flush()
 // probably need enable only commands in tool
         if (chatWindow != nullptr)
         {
-            FOR_EACH (std::vector<std::string>::const_iterator, it,
+            FOR_EACH (STD_VECTOR<std::string>::const_iterator, it,
                       mDelayedCommands)
             {
                 chatWindow->chatInput(*it);
@@ -206,7 +206,7 @@ void IPC::flush()
         }
         else
         {
-            FOR_EACH (std::vector<std::string>::const_iterator, it,
+            FOR_EACH (STD_VECTOR<std::string>::const_iterator, it,
                       mDelayedCommands)
             {
                 std::string msg = *it;

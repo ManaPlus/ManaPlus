@@ -41,9 +41,9 @@ namespace ItemOptionDb
     void loadXmlFile(const std::string &fileName,
                      const SkipError skipError);
 
-    const std::vector<ItemFieldType*> &getFields(const int id);
+    const STD_VECTOR<ItemFieldType*> &getFields(const int id);
 
-    typedef std::map<int, std::vector<ItemFieldType*> > OptionInfos;
+    typedef std::map<int, STD_VECTOR<ItemFieldType*> > OptionInfos;
 }  // namespace ItemOptionDb
 
 #endif  // RESOURCES_DB_ITEMOPTIONDB_H

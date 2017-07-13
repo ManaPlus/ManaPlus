@@ -28,7 +28,7 @@ defineListener(PlayerDeathListener)
 
 void PlayerDeathListener::distributeEvent()
 {
-    FOR_EACH (std::vector<PlayerDeathListener*>::iterator,
+    FOR_EACH (STD_VECTOR<PlayerDeathListener*>::iterator,
               it, mListeners)
     {
         PlayerDeathListener *const listener = *it;

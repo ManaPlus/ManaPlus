@@ -68,10 +68,10 @@ class WindowMenu final : public Container,
         std::map <std::string, ButtonInfo*> &getButtonNames() A_WARN_UNUSED
         { return mButtonNames; }
 
-        std::vector <Button*> &getButtons() A_WARN_UNUSED
+        STD_VECTOR <Button*> &getButtons() A_WARN_UNUSED
         { return mButtons; }
 
-        std::vector <ButtonText*> &getButtonTexts() A_WARN_UNUSED
+        STD_VECTOR <ButtonText*> &getButtonTexts() A_WARN_UNUSED
         { return mButtonTexts; }
 
         void showButton(const std::string &name, const Visible visible);
@@ -105,8 +105,8 @@ class WindowMenu final : public Container,
         Skin *mSkin;
         int mPadding;
         int mSpacing;
-        std::vector <Button*> mButtons;
-        std::vector <ButtonText*> mButtonTexts;
+        STD_VECTOR <Button*> mButtons;
+        STD_VECTOR <ButtonText*> mButtonTexts;
         std::map <std::string, ButtonInfo*> mButtonNames;
         bool mHaveMouse;
         int mAutoHide;

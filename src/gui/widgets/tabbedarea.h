@@ -244,7 +244,7 @@ class TabbedArea final : public ActionListener,
         { return mWidgetContainer; }
 
     private:
-        typedef std::vector <std::pair<Tab*, Widget*> > TabContainer;
+        typedef STD_VECTOR <std::pair<Tab*, Widget*> > TabContainer;
 
         /** The tab arrows */
         Button *mArrowButton[2] A_NONNULLPOINTER;
@@ -261,7 +261,7 @@ class TabbedArea final : public ActionListener,
         Tab* mSelectedTab;
         BasicContainer2* mTabContainer A_NONNULLPOINTER;
         BasicContainer2* mWidgetContainer A_NONNULLPOINTER;
-        std::vector<Tab*> mTabsToDelete;
+        STD_VECTOR<Tab*> mTabsToDelete;
         TabContainer mTabs;
 
         /**

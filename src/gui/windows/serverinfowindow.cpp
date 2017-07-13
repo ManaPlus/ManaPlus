@@ -136,14 +136,14 @@ void ServerInfoWindow::showServerInfo()
     mBrowserBox->updateHeight();
 }
 
-void ServerInfoWindow::addSourcesList(const std::vector<ServerUrlInfo> &list,
+void ServerInfoWindow::addSourcesList(const STD_VECTOR<ServerUrlInfo> &list,
                                       const std::string &comment)
 {
     if (!list.empty())
     {
         mBrowserBox->addRow("");
         mBrowserBox->addRow(comment);
-        FOR_EACH (std::vector<ServerUrlInfo>::const_iterator, it, list)
+        FOR_EACH (STD_VECTOR<ServerUrlInfo>::const_iterator, it, list)
         {
             const ServerUrlInfo &info = *it;
             addServerComment(info.url,

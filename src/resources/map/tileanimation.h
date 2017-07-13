@@ -34,7 +34,7 @@ class Image;
 class MapLayer;
 class SimpleAnimation;
 
-typedef std::vector<std::pair<MapLayer*, int> > TilePairVector;
+typedef STD_VECTOR<std::pair<MapLayer*, int> > TilePairVector;
 typedef TilePairVector::const_iterator TilePairVectorCIter;
 
 /**

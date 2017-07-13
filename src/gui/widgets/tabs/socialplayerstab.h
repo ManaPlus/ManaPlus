@@ -119,10 +119,10 @@ class SocialPlayersTab final : public SocialTab
 
         Avatar* findAvatarbyName(const std::string &name)
         {
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
             Avatar *ava = nullptr;
-            std::vector<Avatar*>::const_iterator i = avatars->begin();
-            const std::vector<Avatar*>::const_iterator i_end = avatars->end();
+            STD_VECTOR<Avatar*>::const_iterator i = avatars->begin();
+            const STD_VECTOR<Avatar*>::const_iterator i_end = avatars->end();
             while (i != i_end)
             {
                 ava = (*i);
@@ -138,13 +138,13 @@ class SocialPlayersTab final : public SocialTab
 
         void getPlayersAvatars()
         {
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
             if (actorManager != nullptr)
             {
                 StringVect names;
                 actorManager->getPlayerNames(names, NpcNames_false);
 
-                std::vector<Avatar*>::iterator ai = avatars->begin();
+                STD_VECTOR<Avatar*>::iterator ai = avatars->begin();
                 while (ai != avatars->end())
                 {
                     bool finded = false;

@@ -222,7 +222,7 @@ WindowMenu::~WindowMenu()
         delete (*it).second;
     }
     mButtonNames.clear();
-    FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
+    FOR_EACH (STD_VECTOR <Button*>::iterator, it, mButtons)
     {
         Button *const btn = *it;
         if (btn == nullptr)
@@ -362,10 +362,10 @@ void WindowMenu::updateButtons()
 {
     int x = mPadding;
     int h = 0;
-    FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
+    FOR_EACH (STD_VECTOR <Button*>::const_iterator, it, mButtons)
         safeRemove(*it);
     const int pad2 = 2 * mPadding;
-    FOR_EACH (std::vector <Button*>::iterator, it, mButtons)
+    FOR_EACH (STD_VECTOR <Button*>::iterator, it, mButtons)
     {
         Button *const btn = *it;
         if (btn == nullptr)
@@ -439,7 +439,7 @@ void WindowMenu::loadButtons()
 void WindowMenu::saveButtons() const
 {
     int i = 0;
-    FOR_EACH (std::vector <Button*>::const_iterator, it, mButtons)
+    FOR_EACH (STD_VECTOR <Button*>::const_iterator, it, mButtons)
     {
         const Button *const btn = *it;
         if ((btn != nullptr) && btn->mVisible == Visible_false)

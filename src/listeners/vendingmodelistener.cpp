@@ -28,7 +28,7 @@ defineListener(VendingModeListener)
 
 void VendingModeListener::distributeEvent(const bool b)
 {
-    FOR_EACH (std::vector<VendingModeListener*>::iterator,
+    FOR_EACH (STD_VECTOR<VendingModeListener*>::iterator,
               it, mListeners)
     {
         VendingModeListener *const listener = *it;

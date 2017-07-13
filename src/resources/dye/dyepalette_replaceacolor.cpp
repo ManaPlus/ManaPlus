@@ -39,7 +39,7 @@ PRAGMA48(GCC diagnostic pop)
 void DyePalette::replaceAColorDefault(uint32_t *restrict pixels,
                                       const int bufSize) const restrict2
 {
-    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
     if ((sz == 0u) || (pixels == nullptr))
         return;
@@ -52,7 +52,7 @@ void DyePalette::replaceAColorDefault(uint32_t *restrict pixels,
         uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
         const unsigned int data = pixels[ptr];
 
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
             const DyeColor &col = *it;
@@ -94,7 +94,7 @@ void DyePalette::replaceAColorDefault(uint32_t *restrict pixels,
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
         const unsigned int data = *pixels;
 
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
             const DyeColor &col = *it;
@@ -141,7 +141,7 @@ __attribute__ ((target ("sse2")))
 void DyePalette::replaceAColorSse2(uint32_t *restrict pixels,
                                    const int bufSize) const restrict2
 {
-    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
     if ((sz == 0u) || (pixels == nullptr))
         return;
@@ -156,7 +156,7 @@ void DyePalette::replaceAColorSse2(uint32_t *restrict pixels,
         __m128i base = _mm_loadu_si128(reinterpret_cast<__m128i*>(
             &pixels[ptr]));
 
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
             const DyeColor &col = *it;
@@ -182,7 +182,7 @@ void DyePalette::replaceAColorSse2(uint32_t *restrict pixels,
         uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
         const unsigned int data = pixels[ptr];
 
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
             const DyeColor &col = *it;
@@ -212,7 +212,7 @@ __attribute__ ((target ("avx2")))
 void DyePalette::replaceAColorAvx2(uint32_t *restrict pixels,
                                    const int bufSize) const restrict2
 {
-    std::vector<DyeColor>::const_iterator it_end = mColors.end();
+    STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
     if ((sz == 0u) || (pixels == nullptr))
         return;
@@ -227,7 +227,7 @@ void DyePalette::replaceAColorAvx2(uint32_t *restrict pixels,
         __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(
             &pixels[ptr]));
 
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
             const DyeColor &col = *it;
@@ -253,7 +253,7 @@ void DyePalette::replaceAColorAvx2(uint32_t *restrict pixels,
         uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
         const unsigned int data = pixels[ptr];
 
-        std::vector<DyeColor>::const_iterator it = mColors.begin();
+        STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
             const DyeColor &col = *it;

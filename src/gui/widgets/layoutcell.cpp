@@ -80,13 +80,13 @@ void LayoutCell::computeSizes()
     if (mType != ARRAY)
         return;
 
-    std::vector <std::vector <LayoutCell *> >::const_iterator
+    STD_VECTOR <STD_VECTOR <LayoutCell *> >::const_iterator
         i = mArray->mCells.begin();
-    const std::vector <std::vector <LayoutCell *> >::const_iterator
+    const STD_VECTOR <STD_VECTOR <LayoutCell *> >::const_iterator
         i_end = mArray->mCells.end();
     while (i != i_end)
     {
-        std::vector <LayoutCell *>::const_iterator j = i->begin();
+        STD_VECTOR <LayoutCell *>::const_iterator j = i->begin();
         while (j != i->end())
         {
             LayoutCell *const cell = *j;

@@ -460,8 +460,8 @@ bool PopupMenu::addBeingMenu()
     if (info == nullptr)
         return false;
 
-    const std::vector<BeingMenuItem> &menu = info->getMenu();
-    FOR_EACH (std::vector<BeingMenuItem>::const_iterator, it, menu)
+    const STD_VECTOR<BeingMenuItem> &menu = info->getMenu();
+    FOR_EACH (STD_VECTOR<BeingMenuItem>::const_iterator, it, menu)
     {
         const BeingMenuItem &item = *it;
         mBrowserBox->addRow("/" + item.command, item.name.c_str());
@@ -499,14 +499,14 @@ void PopupMenu::setMousePos2()
 }
 
 void PopupMenu::showPopup(const int x, const int y,
-                          const std::vector<ActorSprite*> &beings)
+                          const STD_VECTOR<ActorSprite*> &beings)
 {
     mX = x;
     mY = y;
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Players"));
-    FOR_EACH (std::vector<ActorSprite*>::const_iterator, it, beings)
+    FOR_EACH (STD_VECTOR<ActorSprite*>::const_iterator, it, beings)
     {
         const Being *const being = dynamic_cast<const Being*>(*it);
         const ActorSprite *const actor = *it;
@@ -1806,8 +1806,8 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
     mY = y;
 
     mBrowserBox->clearRows();
-    std::vector<Button *> names = windowMenu->getButtons();
-    for (std::vector<Button *>::const_iterator it = names.begin(),
+    STD_VECTOR<Button *> names = windowMenu->getButtons();
+    for (STD_VECTOR<Button *>::const_iterator it = names.begin(),
          it_end = names.end(); it != it_end; ++ it)
     {
         const Button *const btn = *it;
@@ -1848,12 +1848,12 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
     mY = y;
 
     mBrowserBox->clearRows();
-    std::vector <ProgressBar*> bars = miniStatusWindow->getBars();
+    STD_VECTOR <ProgressBar*> bars = miniStatusWindow->getBars();
     ProgressBar *onlyBar = nullptr;
     int cnt = 0;
 
     // search for alone visible bar
-    for (std::vector <ProgressBar*>::const_iterator it = bars.begin(),
+    for (STD_VECTOR <ProgressBar*>::const_iterator it = bars.begin(),
          it_end = bars.end(); it != it_end; ++it)
     {
         ProgressBar *const bar = *it;
@@ -1869,7 +1869,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
     if (cnt > 1)
         onlyBar = nullptr;
 
-    for (std::vector <ProgressBar*>::const_iterator it = bars.begin(),
+    for (STD_VECTOR <ProgressBar*>::const_iterator it = bars.begin(),
          it_end = bars.end(); it != it_end; ++it)
     {
         ProgressBar *const bar = *it;
@@ -2107,11 +2107,11 @@ void PopupMenu::showWindowsPopup()
 {
     setMousePos();
     mBrowserBox->clearRows();
-    const std::vector<ButtonText*> &names = windowMenu->getButtonTexts();
+    const STD_VECTOR<ButtonText*> &names = windowMenu->getButtonTexts();
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Show window"));
 
-    FOR_EACH (std::vector<ButtonText*>::const_iterator, it, names)
+    FOR_EACH (STD_VECTOR<ButtonText*>::const_iterator, it, names)
     {
         const ButtonText *const btn = *it;
         if (btn == nullptr)

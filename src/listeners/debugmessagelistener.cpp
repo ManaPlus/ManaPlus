@@ -28,7 +28,7 @@ defineListener(DebugMessageListener)
 
 void DebugMessageListener::distributeEvent(const std::string &msg)
 {
-    FOR_EACH (std::vector<DebugMessageListener*>::iterator,
+    FOR_EACH (STD_VECTOR<DebugMessageListener*>::iterator,
               it, mListeners)
     {
         DebugMessageListener *const listener = *it;

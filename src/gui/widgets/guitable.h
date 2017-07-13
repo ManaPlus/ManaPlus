@@ -188,7 +188,7 @@ class GuiTable final : public Widget,
         Widget *mTopWidget;
 
         /** Vector for compactness; used as a list in practice. */
-        std::vector<GuiTableActionListener *> mActionListeners2;
+        STD_VECTOR<GuiTableActionListener *> mActionListeners2;
 
         /**
          * Holds the background color of the table.

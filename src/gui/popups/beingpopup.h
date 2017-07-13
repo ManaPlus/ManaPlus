@@ -60,7 +60,7 @@ class BeingPopup final : public Popup
         void addLabels(const int fontHeight);
 
         Label *mBeingName A_NONNULLPOINTER;
-        std::vector<Label*> mLabels;
+        STD_VECTOR<Label*> mLabels;
 };
 
 extern BeingPopup *beingPopup;

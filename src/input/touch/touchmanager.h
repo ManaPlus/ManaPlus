@@ -94,7 +94,7 @@ struct TouchItem final
     TouchFuncPtr funcOut;
 };
 
-typedef std::vector<TouchItem*> TouchItemVector;
+typedef STD_VECTOR<TouchItem*> TouchItemVector;
 typedef TouchItemVector::const_iterator TouchItemVectorCIter;
 typedef TouchItemVector::iterator TouchItemVectorIter;
 

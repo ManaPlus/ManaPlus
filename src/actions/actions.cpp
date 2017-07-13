@@ -1479,7 +1479,7 @@ impHandler0(testSdlFont)
     timespec time1;
     timespec time2;
     NullOpenGLGraphics *nullGraphics = new NullOpenGLGraphics;
-    std::vector<std::string> data;
+    STD_VECTOR<std::string> data;
     volatile int width = 0;
 
     for (int f = 0; f < 300; f ++)
@@ -1491,12 +1491,12 @@ impHandler0(testSdlFont)
 
     for (int f = 0; f < 500; f ++)
     {
-        FOR_EACH (std::vector<std::string>::const_iterator, it, data)
+        FOR_EACH (STD_VECTOR<std::string>::const_iterator, it, data)
         {
             width += font->getWidth(*it);
             font->drawString(nullGraphics, color, color, *it, 10, 10);
         }
-        FOR_EACH (std::vector<std::string>::const_iterator, it, data)
+        FOR_EACH (STD_VECTOR<std::string>::const_iterator, it, data)
             font->drawString(nullGraphics, color, color, *it, 10, 10);
 
         font->doClean();

@@ -153,7 +153,7 @@ class Party final : public AvatarListModel
 
         void sort();
 
-        typedef std::vector<PartyMember*> MemberList;
+        typedef STD_VECTOR<PartyMember*> MemberList;
 
         const MemberList *getMembers() const RETURNS_NONNULL A_WARN_UNUSED
         { return &mMembers; }

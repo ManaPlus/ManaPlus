@@ -337,7 +337,7 @@ void TabbedArea::removeTab(Tab *const tab)
         }
     }
 
-    for (std::vector<Tab*>::iterator iter2 = mTabsToDelete.begin();
+    for (STD_VECTOR<Tab*>::iterator iter2 = mTabsToDelete.begin();
          iter2 != mTabsToDelete.end(); ++iter2)
     {
         if (*iter2 == tab)

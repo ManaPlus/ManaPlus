@@ -236,8 +236,8 @@ void StatusWindow::addTabs()
 {
     // TRANSLATORS: status window tab name
     addTabBasic(_("Basic"));
-    const std::vector<std::string> &pages = StatDb::getPages();
-    FOR_EACH(std::vector<std::string>::const_iterator, it, pages)
+    const STD_VECTOR<std::string> &pages = StatDb::getPages();
+    FOR_EACH(STD_VECTOR<std::string>::const_iterator, it, pages)
     {
         addTab(*it);
     }

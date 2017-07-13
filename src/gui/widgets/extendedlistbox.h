@@ -54,8 +54,8 @@ class ExtendedListBox final : public ListBox
         int mImagePadding;
         int mSpacing;
         int mHeight;
-        std::vector<ExtendedListBoxItem> mListItems;
-        std::vector<ExtendedListBoxItem> mSelectedItems;
+        STD_VECTOR<ExtendedListBoxItem> mListItems;
+        STD_VECTOR<ExtendedListBoxItem> mSelectedItems;
 };
 
 #endif  // GUI_WIDGETS_EXTENDEDLISTBOX_H

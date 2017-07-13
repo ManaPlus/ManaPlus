@@ -45,7 +45,7 @@ struct SoundInfo final
     int delay;
 };
 
-typedef std::vector<SoundInfo> SoundInfoVect;
+typedef STD_VECTOR<SoundInfo> SoundInfoVect;
 typedef std::map<ItemSoundEvent::Type, SoundInfoVect*> ItemSoundEvents;
 
 #endif  // RESOURCES_SOUNDINFO_H

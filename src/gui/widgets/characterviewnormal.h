@@ -29,7 +29,7 @@ class CharacterViewNormal final : public CharacterViewBase
 {
     public:
         CharacterViewNormal(CharSelectDialog *const widget,
-                            std::vector<CharacterDisplay*> *const entries,
+                            STD_VECTOR<CharacterDisplay*> *const entries,
                             const int padding);
 
         A_DELETE_COPY(CharacterViewNormal)
@@ -43,7 +43,7 @@ class CharacterViewNormal final : public CharacterViewBase
         void action(const ActionEvent &event A_UNUSED) override final A_CONST;
 
     private:
-        std::vector<CharacterDisplay*> *mCharacterEntries;
+        STD_VECTOR<CharacterDisplay*> *mCharacterEntries;
         int mRows;
 };
 

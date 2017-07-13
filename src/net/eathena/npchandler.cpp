@@ -160,12 +160,12 @@ void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
     outMsg.writeInt16(CAST_S16(itemId), "item id");
 }
 
-void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
+void NpcHandler::buyItems(STD_VECTOR<ShopItem*> &items) const
 {
     int cnt = 0;
     const int pairSize = 4;
 
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
@@ -190,7 +190,7 @@ void NpcHandler::buyItems(std::vector<ShopItem*> &items) const
 
     createOutPacket(CMSG_NPC_BUY_REQUEST);
     outMsg.writeInt16(CAST_S16(4 + pairSize * cnt), "len");
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
@@ -229,12 +229,12 @@ void NpcHandler::sellItem(const BeingId beingId A_UNUSED,
     outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
-void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
+void NpcHandler::sellItems(STD_VECTOR<ShopItem*> &items) const
 {
     const int pairSize = 4;
     int cnt = 0;
 
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
@@ -245,7 +245,7 @@ void NpcHandler::sellItems(std::vector<ShopItem*> &items) const
 
     createOutPacket(CMSG_NPC_SELL_REQUEST);
     outMsg.writeInt16(CAST_S16(4 + pairSize * cnt), "len");
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();

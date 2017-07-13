@@ -48,7 +48,7 @@ class MockGraphics final : public Graphics
         #include "render/softwaregraphicsdef.hpp"
         RENDER_SOFTWAREGRAPHICSDEF_HPP
 
-        std::vector<MockDrawItem> mDraws;
+        STD_VECTOR<MockDrawItem> mDraws;
 };
 
 #endif  // UNITTESTS

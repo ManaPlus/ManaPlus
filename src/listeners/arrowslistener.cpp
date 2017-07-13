@@ -28,7 +28,7 @@ defineListener(ArrowsListener)
 
 void ArrowsListener::distributeEvent()
 {
-    FOR_EACH (std::vector<ArrowsListener*>::iterator,
+    FOR_EACH (STD_VECTOR<ArrowsListener*>::iterator,
               it, mListeners)
     {
         ArrowsListener *const listener = *it;

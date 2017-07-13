@@ -36,8 +36,8 @@ class Image;
 class CompoundSprite notfinal : public Sprite
 {
     public:
-        typedef std::vector<Sprite*>::iterator SpriteIterator;
-        typedef std::vector<Sprite*>::const_iterator SpriteConstIterator;
+        typedef STD_VECTOR<Sprite*>::iterator SpriteIterator;
+        typedef STD_VECTOR<Sprite*>::const_iterator SpriteConstIterator;
 
         CompoundSprite();
 
@@ -107,7 +107,7 @@ class CompoundSprite notfinal : public Sprite
         int getStartTime() const noexcept2 A_WARN_UNUSED
         { return mStartTime; }
 
-        std::vector<Sprite*> mSprites;
+        STD_VECTOR<Sprite*> mSprites;
 
     protected:
         void redraw() const;

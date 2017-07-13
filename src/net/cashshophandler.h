@@ -49,7 +49,7 @@ class CashShopHandler notfinal
                              const int amount) const = 0;
 
         virtual void buyItems(const int points,
-                              const std::vector<ShopItem*> &items) const = 0;
+                              const STD_VECTOR<ShopItem*> &items) const = 0;
 
         virtual void close() const = 0;
 

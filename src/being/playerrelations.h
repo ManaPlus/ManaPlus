@@ -118,7 +118,7 @@ class PlayerRelationsManager final
          * The player ignore strategies are allocated statically and must
          * not be deleted.
          */
-        std::vector<PlayerIgnoreStrategy *> *getPlayerIgnoreStrategies()
+        STD_VECTOR<PlayerIgnoreStrategy *> *getPlayerIgnoreStrategies()
             A_WARN_UNUSED;
 
         /**
@@ -202,7 +202,7 @@ class PlayerRelationsManager final
         PlayerIgnoreStrategy *mIgnoreStrategy;
         std::map<std::string, PlayerRelation *> mRelations;
         std::list<PlayerRelationsListener *> mListeners;
-        std::vector<PlayerIgnoreStrategy *> mIgnoreStrategies;
+        STD_VECTOR<PlayerIgnoreStrategy *> mIgnoreStrategies;
 };
 
 

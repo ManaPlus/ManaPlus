@@ -182,7 +182,7 @@ void MailWindow::removeMail(const int id)
 
     mMailModel->clear();
 
-    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
         if ((message != nullptr) && message->id == id)
@@ -193,7 +193,7 @@ void MailWindow::removeMail(const int id)
         }
     }
 
-    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
         if (message != nullptr)
@@ -223,7 +223,7 @@ void MailWindow::showMessage(MailMessage *const mail)
 
 void MailWindow::viewNext(const int id)
 {
-    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
         if ((message != nullptr) && message->id == id)
@@ -247,7 +247,7 @@ void MailWindow::viewNext(const int id)
 
 void MailWindow::viewPrev(const int id)
 {
-    FOR_EACH (std::vector<MailMessage*>::iterator, it, mMessages)
+    FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
         if ((message != nullptr) && message->id == id)

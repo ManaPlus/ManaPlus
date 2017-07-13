@@ -48,7 +48,7 @@ class AtlasResource final : public Resource
 
         int calcMemoryChilds(const int level) const override final;
 
-        std::vector<TextureAtlas*> atlases;
+        STD_VECTOR<TextureAtlas*> atlases;
 };
 
 #endif  // USE_OPENGL

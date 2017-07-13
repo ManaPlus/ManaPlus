@@ -40,11 +40,11 @@ namespace StatDb
 
     void addDefaultStats();
 
-    const std::vector<BasicStat> &getBasicStats();
+    const STD_VECTOR<BasicStat> &getBasicStats();
 
-    const std::vector<BasicStat> &getStats(const std::string &page);
+    const STD_VECTOR<BasicStat> &getStats(const std::string &page);
 
-    const std::vector<std::string> &getPages();
+    const STD_VECTOR<std::string> &getPages();
 }  // namespace StatDb
 
 #endif  // RESOURCES_DB_STATDB_H

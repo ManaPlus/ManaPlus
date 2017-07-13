@@ -39,7 +39,7 @@ class MapObjectList final
 
         A_DELETE_COPY(MapObjectList)
 
-        std::vector<MapObject> objects;
+        STD_VECTOR<MapObject> objects;
 };
 
 #endif  // RESOURCES_MAP_MAPOBJECTLIST_H

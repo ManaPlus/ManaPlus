@@ -79,7 +79,7 @@ class Animation final : public MemoryCounter
 
         void setLastFrameDelay(const int delay) noexcept2;
 
-        typedef std::vector<Frame> Frames;
+        typedef STD_VECTOR<Frame> Frames;
         typedef Frames::iterator FramesIter;
         typedef Frames::const_iterator FramesCIter;
         typedef Frames::reverse_iterator FramesRevIter;

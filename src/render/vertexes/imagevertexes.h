@@ -33,7 +33,7 @@
 
 class Image;
 
-typedef std::vector<DoubleRect*> DoubleRects;
+typedef STD_VECTOR<DoubleRect*> DoubleRects;
 
 class ImageVertexes final
 {
@@ -52,7 +52,7 @@ class ImageVertexes final
         DoubleRects sdl;
 };
 
-typedef std::vector<ImageVertexes*> ImageVertexesVector;
+typedef STD_VECTOR<ImageVertexes*> ImageVertexesVector;
 typedef ImageVertexesVector::iterator ImageCollectionIter;
 typedef ImageVertexesVector::const_iterator ImageCollectionCIter;
 

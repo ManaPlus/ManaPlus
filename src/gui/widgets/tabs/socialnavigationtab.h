@@ -82,13 +82,13 @@ class SocialNavigationTab final : public SocialTab
             if (socialWindow->getProcessedPortals())
                 return;
 
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            std::vector<MapItem*> portals = map->getPortals();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<MapItem*> portals = map->getPortals();
 
-            std::vector<MapItem*>::const_iterator i = portals.begin();
+            STD_VECTOR<MapItem*>::const_iterator i = portals.begin();
             const SpecialLayer *const specialLayer = map->getSpecialLayer();
 
-            std::vector<Avatar*>::iterator ia = avatars->begin();
+            STD_VECTOR<Avatar*>::iterator ia = avatars->begin();
 
             while (ia != avatars->end())
             {
@@ -170,7 +170,7 @@ class SocialNavigationTab final : public SocialTab
             if (localPlayer == nullptr)
                 return;
 
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
             if (avatars->size() <= CAST_SIZE(num))
                 return;
 
@@ -184,14 +184,14 @@ class SocialNavigationTab final : public SocialTab
             if (socialWindow == nullptr)
                 return;
 
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
 
             const Map *const map = socialWindow->getMap();
             if (map == nullptr)
                 return;
 
-            std::vector<Avatar*>::const_iterator i = avatars->begin();
-            const std::vector<Avatar*>::const_iterator i_end = avatars->end();
+            STD_VECTOR<Avatar*>::const_iterator i = avatars->begin();
+            const STD_VECTOR<Avatar*>::const_iterator i_end = avatars->end();
             while (i != i_end)
             {
                 Avatar *const ava = *i;
@@ -218,13 +218,13 @@ class SocialNavigationTab final : public SocialTab
             if (socialWindow == nullptr)
                 return -1;
 
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
             const Map *const map = socialWindow->getMap();
             if (map == nullptr)
                 return -1;
 
-            std::vector<Avatar*>::const_iterator i = avatars->begin();
-            const std::vector<Avatar*>::const_iterator i_end = avatars->end();
+            STD_VECTOR<Avatar*>::const_iterator i = avatars->begin();
+            const STD_VECTOR<Avatar*>::const_iterator i_end = avatars->end();
             unsigned num = 0;
             while (i != i_end)
             {
@@ -250,7 +250,7 @@ class SocialNavigationTab final : public SocialTab
             if (map == nullptr)
                 return;
 
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
             const MapItem *const portal = map->findPortalXY(x, y);
             if (portal == nullptr)
                 return;
@@ -279,9 +279,9 @@ class SocialNavigationTab final : public SocialTab
             if (map == nullptr)
                 return;
 
-            std::vector<Avatar*> *const avatars = mBeings->getMembers();
-            std::vector<Avatar*>::iterator i = avatars->begin();
-            const std::vector<Avatar*>::iterator i_end = avatars->end();
+            STD_VECTOR<Avatar*> *const avatars = mBeings->getMembers();
+            STD_VECTOR<Avatar*>::iterator i = avatars->begin();
+            const STD_VECTOR<Avatar*>::iterator i_end = avatars->end();
 
             while (i != i_end)
             {

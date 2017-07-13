@@ -32,7 +32,7 @@
 namespace
 {
     std::string mDefault;
-    std::vector<std::string> mSounds;
+    STD_VECTOR<std::string> mSounds;
 }  // namespace
 
 void SoundDB::load()

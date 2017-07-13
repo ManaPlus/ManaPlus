@@ -48,6 +48,6 @@ struct SpriteReference final
     int variant;
 };
 
-typedef std::vector<SpriteReference*>::const_iterator SpriteRefs;
+typedef STD_VECTOR<SpriteReference*>::const_iterator SpriteRefs;
 
 #endif  // RESOURCES_SPRITE_SPRITEREFERENCE_H

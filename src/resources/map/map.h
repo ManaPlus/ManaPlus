@@ -54,11 +54,11 @@ class WalkLayer;
 
 struct MetaTile;
 
-typedef std::vector<Tileset*> Tilesets;
-typedef std::vector<MapLayer*> Layers;
+typedef STD_VECTOR<Tileset*> Tilesets;
+typedef STD_VECTOR<MapLayer*> Layers;
 typedef Layers::const_iterator LayersCIter;
 
-typedef std::vector<AmbientLayer*> AmbientLayerVector;
+typedef STD_VECTOR<AmbientLayer*> AmbientLayerVector;
 typedef AmbientLayerVector::const_iterator AmbientLayerVectorCIter;
 typedef AmbientLayerVector::iterator AmbientLayerVectorIter;
 
@@ -264,7 +264,7 @@ class Map final : public Properties,
                               const int x, const int y,
                               const bool addNew = true) restrict2;
 
-        const std::vector<MapItem*> &getPortals() const restrict2 noexcept2
+        const STD_VECTOR<MapItem*> &getPortals() const restrict2 noexcept2
                                                 A_WARN_UNUSED
         { return mMapPortals; }
 
@@ -450,9 +450,9 @@ class Map final : public Properties,
             const2 int w;
             const2 int h;
         };
-        std::vector<ParticleEffectData> mParticleEffects;
+        STD_VECTOR<ParticleEffectData> mParticleEffects;
 
-        std::vector<MapItem*> mMapPortals;
+        STD_VECTOR<MapItem*> mMapPortals;
 
         std::map<int, TileAnimation*> mTileAnimations;
 

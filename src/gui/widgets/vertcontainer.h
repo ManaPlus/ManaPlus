@@ -54,7 +54,7 @@ class VertContainer final : public Container,
         void widgetResized(const Event &event) override final;
 
     private:
-        std::vector<Widget*> mResizableWidgets;
+        STD_VECTOR<Widget*> mResizableWidgets;
         int mVerticalItemSize;
         int mCount;
         int mNextY;

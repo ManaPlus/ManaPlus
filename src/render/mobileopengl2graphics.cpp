@@ -604,11 +604,11 @@ inline void MobileOpenGL2Graphics::drawVertexes(const
                                                 OpenGLGraphicsVertexes &
                                                 restrict ogl) restrict2
 {
-    const std::vector<int> &vp = ogl.mVp;
-    const std::vector<GLuint> &vbos = ogl.mVbo;
-    std::vector<int>::const_iterator ivp;
-    std::vector<GLuint>::const_iterator ivbo;
-    const std::vector<int>::const_iterator ivp_end = vp.end();
+    const STD_VECTOR<int> &vp = ogl.mVp;
+    const STD_VECTOR<GLuint> &vbos = ogl.mVbo;
+    STD_VECTOR<int>::const_iterator ivp;
+    STD_VECTOR<GLuint>::const_iterator ivbo;
+    const STD_VECTOR<int>::const_iterator ivp_end = vp.end();
 
     for (ivp = vp.begin(), ivbo = vbos.begin();
          ivp != ivp_end;
@@ -1283,14 +1283,14 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *restrict const vert)
     if (vert == nullptr)
         return;
     OpenGLGraphicsVertexes &ogl = vert->ogl;
-    const std::vector<int> &vp = ogl.mVp;
-    std::vector<int>::const_iterator ivp;
-    const std::vector<int>::const_iterator ivp_end = vp.end();
-    std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
-    std::vector<GLfloat*>::const_iterator ft;
-    const std::vector<GLfloat*>::const_iterator ft_end = floatTexPool.end();
-    std::vector<GLuint> &vbos = ogl.mVbo;
-    std::vector<GLuint>::const_iterator ivbo;
+    const STD_VECTOR<int> &vp = ogl.mVp;
+    STD_VECTOR<int>::const_iterator ivp;
+    const STD_VECTOR<int>::const_iterator ivp_end = vp.end();
+    STD_VECTOR<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
+    STD_VECTOR<GLfloat*>::const_iterator ft;
+    const STD_VECTOR<GLfloat*>::const_iterator ft_end = floatTexPool.end();
+    STD_VECTOR<GLuint> &vbos = ogl.mVbo;
+    STD_VECTOR<GLuint>::const_iterator ivbo;
 
     const int sz = CAST_S32(floatTexPool.size());
     vbos.resize(sz);
@@ -1305,7 +1305,7 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *restrict const vert)
             *ft, GL_STATIC_DRAW);
     }
 
-    for (std::vector<GLfloat*>::iterator it = floatTexPool.begin();
+    for (STD_VECTOR<GLfloat*>::iterator it = floatTexPool.begin();
         it != floatTexPool.end(); ++ it)
     {
         delete [] (*it);

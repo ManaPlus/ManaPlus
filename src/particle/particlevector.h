@@ -65,7 +65,7 @@ class ParticleVector final : public ParticleContainer
         size_t usedSize() const;
 
     protected:
-        std::vector<Particle *> mIndexedElements;
+        STD_VECTOR<Particle *> mIndexedElements;
 };
 
 #endif  // PARTICLE_PARTICLEVECTOR_H

@@ -198,7 +198,7 @@ class Guild final : public AvatarListModel
         bool getServerGuild() const noexcept2 A_WARN_UNUSED
         { return mServerGuild; }
 
-        typedef std::vector<GuildMember*> MemberList;
+        typedef STD_VECTOR<GuildMember*> MemberList;
 
         const MemberList *getMembers() const RETURNS_NONNULL A_WARN_UNUSED
         { return &mMembers; }

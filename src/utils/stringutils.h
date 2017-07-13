@@ -201,7 +201,7 @@ void splitToStringVector(StringVect &tokens,
 void splitToStringSet(std::set<std::string> &tokens,
                       const std::string &text, const char separator);
 
-void splitToIntVector(std::vector<int> &tokens,
+void splitToIntVector(STD_VECTOR<int> &tokens,
                       const std::string &text, const char separator);
 
 std::string combineDye(std::string file, const std::string &dye) A_WARN_UNUSED;

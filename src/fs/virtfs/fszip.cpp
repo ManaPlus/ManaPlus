@@ -102,7 +102,7 @@ namespace FsZip
             filename = pathJoin(subDir, filename);
             dirName = pathJoin(subDir, dirName);
         }
-        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+        FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
         {
@@ -112,7 +112,7 @@ namespace FsZip
                 return true;
             }
         }
-        FOR_EACH (std::vector<std::string>::const_iterator,
+        FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                   it2,
                   zipEntry->mDirs)
         {
@@ -136,14 +136,14 @@ namespace FsZip
             filename = pathJoin(subDir, filename);
             dirName = pathJoin(subDir, dirName);
         }
-        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+        FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
         {
             if ((*it2)->fileName == filename)
                 return true;
         }
-        FOR_EACH (std::vector<std::string>::const_iterator,
+        FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                   it2,
                   zipEntry->mDirs)
         {
@@ -163,7 +163,7 @@ namespace FsZip
             dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -188,7 +188,7 @@ namespace FsZip
         }
         else
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -226,7 +226,7 @@ namespace FsZip
             dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -250,7 +250,7 @@ namespace FsZip
                     std::string dirName2 = pathJoin(dirName, fileName);
                     if (findLast(dirName2, std::string(dirSeparator)) == false)
                         dirName2 += dirSeparator;
-                    FOR_EACH (std::vector<std::string>::const_iterator,
+                    FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                               it,
                               zipEntry->mDirs)
                     {
@@ -267,7 +267,7 @@ namespace FsZip
         }
         else
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -296,7 +296,7 @@ namespace FsZip
                         {
                             dirName2 += dirSeparator;
                         }
-                        FOR_EACH (std::vector<std::string>::const_iterator,
+                        FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                                   it,
                                   zipEntry->mDirs)
                         {
@@ -327,7 +327,7 @@ namespace FsZip
             dirNameFull = dirName;
         if (dirNameFull == dirSeparator)
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -351,7 +351,7 @@ namespace FsZip
                     std::string dirName2 = pathJoin(dirNameFull, fileName);
                     if (findLast(dirName2, std::string(dirSeparator)) == false)
                         dirName2 += dirSeparator;
-                    FOR_EACH (std::vector<std::string>::const_iterator,
+                    FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                               it,
                               zipEntry->mDirs)
                     {
@@ -368,7 +368,7 @@ namespace FsZip
         }
         else
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -397,7 +397,7 @@ namespace FsZip
                         {
                             dirName2 += dirSeparator;
                         }
-                        FOR_EACH (std::vector<std::string>::const_iterator,
+                        FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                                   it,
                                   zipEntry->mDirs)
                         {
@@ -425,7 +425,7 @@ namespace FsZip
             dirName = pathJoin(subDir, dirName);
         if (dirName == dirSeparator)
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -449,7 +449,7 @@ namespace FsZip
                     std::string dirName2 = pathJoin(dirName, fileName);
                     if (findLast(dirName2, std::string(dirSeparator)) == false)
                         dirName2 += dirSeparator;
-                    FOR_EACH (std::vector<std::string>::const_iterator,
+                    FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                               it,
                               zipEntry->mDirs)
                     {
@@ -466,7 +466,7 @@ namespace FsZip
         }
         else
         {
-            FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+            FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                       it2,
                       zipEntry->mHeaders)
             {
@@ -495,7 +495,7 @@ namespace FsZip
                         {
                             dirName2 += dirSeparator;
                         }
-                        FOR_EACH (std::vector<std::string>::const_iterator,
+                        FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                                   it,
                                   zipEntry->mDirs)
                         {
@@ -521,7 +521,7 @@ namespace FsZip
         std::string subDir = zipEntry->subDir;
         if (!subDir.empty())
             dirName = pathJoin(subDir, dirName);
-        FOR_EACH (std::vector<std::string>::const_iterator,
+        FOR_EACH (STD_VECTOR<std::string>::const_iterator,
                   it2,
                   zipEntry->mDirs)
         {
@@ -546,7 +546,7 @@ namespace FsZip
         std::string subDir = zipEntry->subDir;
         if (!subDir.empty())
             filename = pathJoin(subDir, filename);
-        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+        FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
         {
@@ -679,7 +679,7 @@ namespace FsZip
         const std::string subDir = zipEntry->subDir;
         if (!subDir.empty())
             filename = pathJoin(subDir, filename);
-        FOR_EACH (std::vector<ZipLocalHeader*>::const_iterator,
+        FOR_EACH (STD_VECTOR<ZipLocalHeader*>::const_iterator,
                   it2,
                   zipEntry->mHeaders)
         {

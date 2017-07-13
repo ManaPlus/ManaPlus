@@ -86,14 +86,14 @@ class QuestsWindow final : public Window,
         Button *mCloseButton A_NONNULLPOINTER;
         Image *mCompleteIcon;
         Image *mIncompleteIcon;
-        std::vector<const QuestEffect*> mMapEffects;
+        STD_VECTOR<const QuestEffect*> mMapEffects;
         NpcQuestVarMap *mVars;
-        std::map<int, std::vector<QuestItem*> > *mQuests;
-        std::vector<QuestEffect*> *mAllEffects;
+        std::map<int, STD_VECTOR<QuestItem*> > *mQuests;
+        STD_VECTOR<QuestEffect*> *mAllEffects;
 
         // npc effects for current map and values: npc, effect
         NpcQuestEffectMap mNpcEffects;
-        std::vector<QuestItem*> mQuestLinks;
+        STD_VECTOR<QuestItem*> mQuestLinks;
         std::map<int, int> mQuestReverseLinks;
         int mNewQuestEffectId;
         int mCompleteQuestEffectId;

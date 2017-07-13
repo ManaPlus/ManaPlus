@@ -389,7 +389,7 @@ bool Viewport::openContextMenu(const MouseEvent &event)
         validateSpeed();
         if (actorManager != nullptr)
         {
-            std::vector<ActorSprite*> beings;
+            STD_VECTOR<ActorSprite*> beings;
             const int x = mMouseX + mPixelViewX;
             const int y = mMouseY + mPixelViewY;
             actorManager->findBeingsByPixel(beings, x, y, AllPlayers_true);

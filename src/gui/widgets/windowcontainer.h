@@ -64,7 +64,7 @@ class WindowContainer notfinal : public Container
         /**
          * List of widgets that are scheduled to be deleted.
          */
-        typedef std::vector<Widget*> Widgets;
+        typedef STD_VECTOR<Widget*> Widgets;
         typedef Widgets::iterator WidgetIterator;
         Widgets mDeathList;
 };

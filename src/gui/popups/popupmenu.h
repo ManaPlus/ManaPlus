@@ -83,7 +83,7 @@ class PopupMenu final : public Popup, public LinkHandler
          * Shows the beings related popup menu at the specified mouse coords.
          */
         void showPopup(const int x, const int y,
-                       const std::vector<ActorSprite*> &beings);
+                       const STD_VECTOR<ActorSprite*> &beings);
 
         void showPlayerPopup(const std::string &nick);
 

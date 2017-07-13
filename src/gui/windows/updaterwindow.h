@@ -137,7 +137,7 @@ class UpdaterWindow final : public Window,
         static unsigned long getFileHash(const std::string &filePath);
 
         static void loadMods(const std::string &dir,
-                             const std::vector<UpdateFile> &updateFiles);
+                             const STD_VECTOR<UpdateFile> &updateFiles);
 
         static void loadDirMods(const std::string &dir);
 
@@ -199,10 +199,10 @@ class UpdaterWindow final : public Window,
         Net::Download *mDownload;
 
         /** List of files to download. */
-        std::vector<UpdateFile> mUpdateFiles;
+        STD_VECTOR<UpdateFile> mUpdateFiles;
 
         /** List of temp files to download. */
-        std::vector<UpdateFile> mTempUpdateFiles;
+        STD_VECTOR<UpdateFile> mTempUpdateFiles;
 
         std::string mUpdateServerPath;
 

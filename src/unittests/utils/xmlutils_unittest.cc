@@ -73,7 +73,7 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
 
     ActorSprite::load();
 
-    std::vector<int> arr;
+    STD_VECTOR<int> arr;
 
     readXmlIntVector("graphics/gui/browserbox.xml",
         "skinset",

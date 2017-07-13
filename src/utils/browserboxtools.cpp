@@ -126,7 +126,7 @@ std::string BrowserBoxTools::replaceLinkCommands(const std::string &link)
             const int id = atoi(link.substr(0, idx).c_str());
             if (id != 0)
             {
-                std::vector<int> parts;
+                STD_VECTOR<int> parts;
                 splitToIntVector(parts,
                     link.substr(idx), ',');
                 while (parts.size() < maxCards)

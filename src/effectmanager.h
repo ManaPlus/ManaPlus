@@ -92,7 +92,7 @@ class EffectManager final
         void clear();
 
     private:
-        std::vector<EffectDescription> mEffects;
+        STD_VECTOR<EffectDescription> mEffects;
         std::list<ParticleTimer> mTimers;
 };
 

@@ -471,7 +471,7 @@ class LocalPlayer final : public Being,
 
         int mLastAction;      // Time stamp of the last action, -1 if none.
 
-        std::vector<int32_t> mStatusEffectIcons;
+        STD_VECTOR<int32_t> mStatusEffectIcons;
 
         typedef std::pair<std::string, UserColorIdT> MessagePair;
         /** Queued messages*/

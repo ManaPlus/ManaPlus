@@ -50,8 +50,8 @@ StatsPage::StatsPage(const Widget2 *const widget,
     mAttrCont->setSelectable(false);
 
     add(mAttrScroll);
-    const std::vector<BasicStat> &basicStats = StatDb::getStats(page);
-    FOR_EACH (std::vector<BasicStat>::const_iterator, it, basicStats)
+    const STD_VECTOR<BasicStat> &basicStats = StatDb::getStats(page);
+    FOR_EACH (STD_VECTOR<BasicStat>::const_iterator, it, basicStats)
     {
         const BasicStat &stat = *it;
         AttrDisplay *disp = new DerDisplay(this,

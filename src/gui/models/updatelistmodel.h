@@ -40,7 +40,7 @@ class UpdateListModel final : public ListModel
             mNames(),
             mServer(server)
         {
-            FOR_EACH(std::vector<HostsGroup>::const_iterator,
+            FOR_EACH(STD_VECTOR<HostsGroup>::const_iterator,
                      it,
                      server->updateHosts)
             {

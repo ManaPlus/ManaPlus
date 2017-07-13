@@ -85,7 +85,7 @@ class Joystick final
         constexpr2 static void setEnabled(const bool enabled) noexcept2
         { mEnabled = enabled; }
 
-        static void getNames(std::vector <std::string> &names);
+        static void getNames(STD_VECTOR <std::string> &names);
 
         /**
          * Updates the direction and button information.

@@ -84,7 +84,7 @@ void ExtendedListBox::draw(Graphics *const graphics)
         if (image != nullptr)
             strWidth += image->getWidth() + mImagePadding;
 
-        std::vector<ExtendedListBoxItem> &list =
+        STD_VECTOR<ExtendedListBoxItem> &list =
             row == mSelected ? mSelectedItems : mListItems;
 
         if (insideWidth < strWidth)

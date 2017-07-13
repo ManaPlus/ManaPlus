@@ -132,10 +132,10 @@ class ShopItems final : public ListModel
          */
         void clear();
 
-        std::vector<ShopItem*> &items() A_WARN_UNUSED
+        STD_VECTOR<ShopItem*> &items() A_WARN_UNUSED
         { return mShopItems; }
 
-        std::vector<ShopItem*> &allItems() A_WARN_UNUSED
+        STD_VECTOR<ShopItem*> &allItems() A_WARN_UNUSED
         { return mAllShopItems; }
 
         void setMergeDuplicates(const bool b)
@@ -153,13 +153,13 @@ class ShopItems final : public ListModel
         ShopItem *findItem(const int id,
                            const ItemColor color) const A_WARN_UNUSED;
 
-        bool findInAllItems(std::vector<ShopItem*>::iterator &it,
+        bool findInAllItems(STD_VECTOR<ShopItem*>::iterator &it,
                             const ShopItem *const item);
 
         /** The list of items in the shop. */
-        std::vector<ShopItem*> mAllShopItems;
+        STD_VECTOR<ShopItem*> mAllShopItems;
 
-        std::vector<ShopItem*> mShopItems;
+        STD_VECTOR<ShopItem*> mShopItems;
 
         std::string mCurrency;
 

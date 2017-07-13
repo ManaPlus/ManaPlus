@@ -28,7 +28,7 @@ defineListener(UpdateStatusListener)
 
 void UpdateStatusListener::distributeEvent()
 {
-    FOR_EACH (std::vector<UpdateStatusListener*>::iterator,
+    FOR_EACH (STD_VECTOR<UpdateStatusListener*>::iterator,
               it, mListeners)
     {
         UpdateStatusListener *const listener = *it;

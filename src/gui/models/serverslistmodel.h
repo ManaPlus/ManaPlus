@@ -109,7 +109,7 @@ class ServersListModel final : public ListModel
         }
 
     private:
-        typedef std::vector<VersionString> VersionStrings;
+        typedef STD_VECTOR<VersionString> VersionStrings;
 
         ServerInfos *mServers;
         VersionStrings mVersionStrings;

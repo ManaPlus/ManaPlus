@@ -39,8 +39,8 @@ namespace
     // quest variables: var, (val1, val2, val3, time)
     NpcQuestVarMap mVars;
     // quests: var, quests
-    std::map<int, std::vector<QuestItem*> > mQuests;
-    std::vector<QuestEffect*> mAllEffects;
+    std::map<int, STD_VECTOR<QuestItem*> > mQuests;
+    STD_VECTOR<QuestEffect*> mAllEffects;
 }  // namespace
 
 void QuestDb::load()
@@ -213,11 +213,11 @@ void QuestDb::loadXmlFile(const std::string &fileName,
 
 void QuestDb::unload()
 {
-    for (std::map<int, std::vector<QuestItem*> >::iterator it
+    for (std::map<int, STD_VECTOR<QuestItem*> >::iterator it
          = mQuests.begin(), it_end = mQuests.end(); it != it_end; ++ it)
     {
-        std::vector<QuestItem*> &quests = (*it).second;
-        for (std::vector<QuestItem*>::iterator it2 = quests.begin(),
+        STD_VECTOR<QuestItem*> &quests = (*it).second;
+        for (STD_VECTOR<QuestItem*>::iterator it2 = quests.begin(),
              it2_end = quests.end(); it2 != it2_end; ++ it2)
         {
             delete *it2;
@@ -233,26 +233,26 @@ NpcQuestVarMap *QuestDb::getVars()
     return &mVars;
 }
 
-std::map<int, std::vector<QuestItem*> > *QuestDb::getQuests()
+std::map<int, STD_VECTOR<QuestItem*> > *QuestDb::getQuests()
 {
     return &mQuests;
 }
 
-std::vector<QuestEffect*> *QuestDb::getAllEffects()
+STD_VECTOR<QuestEffect*> *QuestDb::getAllEffects()
 {
     return &mAllEffects;
 }
 
 std::string QuestDb::getName(const int id)
 {
-    std::map<int, std::vector<QuestItem*> >::const_iterator it =
+    std::map<int, STD_VECTOR<QuestItem*> >::const_iterator it =
         mQuests.find(id);
     if (it == mQuests.end())
     {
         // TRANSLATORS: quests window quest name
         return _("unknown");
     }
-    const std::vector<QuestItem*> &items = (*it).second;
+    const STD_VECTOR<QuestItem*> &items = (*it).second;
     if (items.empty())
     {
         // TRANSLATORS: quests window quest name

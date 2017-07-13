@@ -281,7 +281,7 @@ bool Joystick::buttonPressed(const unsigned char no) const
     return (mEnabled && no < MAX_BUTTONS) ? mActiveButtons[no] : false;
 }
 
-void Joystick::getNames(std::vector <std::string> &names)
+void Joystick::getNames(STD_VECTOR <std::string> &names)
 {
     names.clear();
     for (int i = 0; i < joystickCount; i++)

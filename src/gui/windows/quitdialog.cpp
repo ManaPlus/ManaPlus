@@ -229,8 +229,8 @@ void QuitDialog::keyPressed(KeyEvent &event)
 
     if (dir != 0)
     {
-        std::vector<RadioButton*>::const_iterator it = mOptions.begin();
-        const std::vector<RadioButton*>::const_iterator
+        STD_VECTOR<RadioButton*>::const_iterator it = mOptions.begin();
+        const STD_VECTOR<RadioButton*>::const_iterator
             it_end = mOptions.end();
 
         for (; it < it_end; ++it)

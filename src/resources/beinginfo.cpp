@@ -240,7 +240,7 @@ void BeingInfo::addMenu(const std::string &name, const std::string &command)
     mMenu.push_back(BeingMenuItem(name, command));
 }
 
-const std::vector<BeingMenuItem> &BeingInfo::getMenu() const
+const STD_VECTOR<BeingMenuItem> &BeingInfo::getMenu() const
 {
     return mMenu;
 }

@@ -395,7 +395,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
 
     BLOCK_START("PlayerRecv::processOnlineList")
     const int size = msg.readInt16("len") - 4;
-    std::vector<OnlinePlayer*> arr;
+    STD_VECTOR<OnlinePlayer*> arr;
 
     if (size == 0)
     {

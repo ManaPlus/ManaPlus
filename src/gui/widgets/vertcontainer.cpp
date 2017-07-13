@@ -84,6 +84,6 @@ void VertContainer::clear()
 
 void VertContainer::widgetResized(const Event &event A_UNUSED)
 {
-    FOR_EACH (std::vector<Widget*>::const_iterator, it, mResizableWidgets)
+    FOR_EACH (STD_VECTOR<Widget*>::const_iterator, it, mResizableWidgets)
         (*it)->setWidth(getWidth());
 }

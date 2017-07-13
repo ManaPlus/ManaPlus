@@ -28,7 +28,7 @@ defineListener(GameModifierListener)
 
 void GameModifierListener::distributeEvent()
 {
-    FOR_EACH (std::vector<GameModifierListener*>::iterator,
+    FOR_EACH (STD_VECTOR<GameModifierListener*>::iterator,
               it, mListeners)
     {
         GameModifierListener *const listener = *it;

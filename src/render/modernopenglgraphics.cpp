@@ -589,11 +589,11 @@ inline void ModernOpenGLGraphics::drawVertexes(const
                                                OpenGLGraphicsVertexes &
                                                restrict ogl) restrict2
 {
-    const std::vector<int> &vp = ogl.mVp;
-    const std::vector<GLuint> &vbos = ogl.mVbo;
-    std::vector<int>::const_iterator ivp;
-    std::vector<GLuint>::const_iterator ivbo;
-    const std::vector<int>::const_iterator ivp_end = vp.end();
+    const STD_VECTOR<int> &vp = ogl.mVp;
+    const STD_VECTOR<GLuint> &vbos = ogl.mVbo;
+    STD_VECTOR<int>::const_iterator ivp;
+    STD_VECTOR<GLuint>::const_iterator ivbo;
+    const STD_VECTOR<int>::const_iterator ivp_end = vp.end();
 
 /*
     if (vp.size() != vbos.size())
@@ -1286,14 +1286,14 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *restrict const vert)
     if (vert == nullptr)
         return;
     OpenGLGraphicsVertexes &ogl = vert->ogl;
-    const std::vector<int> &vp = ogl.mVp;
-    std::vector<int>::const_iterator ivp;
-    const std::vector<int>::const_iterator ivp_end = vp.end();
-    std::vector<GLint*> &intTexPool = ogl.mIntTexPool;
-    std::vector<GLint*>::const_iterator ft;
-    const std::vector<GLint*>::const_iterator ft_end = intTexPool.end();
-    std::vector<GLuint> &vbos = ogl.mVbo;
-    std::vector<GLuint>::const_iterator ivbo;
+    const STD_VECTOR<int> &vp = ogl.mVp;
+    STD_VECTOR<int>::const_iterator ivp;
+    const STD_VECTOR<int>::const_iterator ivp_end = vp.end();
+    STD_VECTOR<GLint*> &intTexPool = ogl.mIntTexPool;
+    STD_VECTOR<GLint*>::const_iterator ft;
+    const STD_VECTOR<GLint*>::const_iterator ft_end = intTexPool.end();
+    STD_VECTOR<GLuint> &vbos = ogl.mVbo;
+    STD_VECTOR<GLuint>::const_iterator ivbo;
 
     const int sz = CAST_S32(intTexPool.size());
     vbos.resize(sz);
@@ -1316,7 +1316,7 @@ void ModernOpenGLGraphics::finalize(ImageVertexes *restrict const vert)
             *ft, GL_STATIC_DRAW);
     }
 
-    for (std::vector<GLint*>::iterator it = intTexPool.begin();
+    for (STD_VECTOR<GLint*>::iterator it = intTexPool.begin();
         it != intTexPool.end(); ++ it)
     {
         delete [] (*it);

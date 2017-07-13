@@ -46,7 +46,7 @@
 
 static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b);
 
-static std::vector<WallpaperData> wallpaperData;
+static STD_VECTOR<WallpaperData> wallpaperData;
 static bool haveBackup;  // Is the backup (no size given) version available?
 
 static std::string wallpaperPath;
@@ -140,7 +140,7 @@ std::string Wallpaper::getWallpaper(const int width, const int height)
     // Wallpaper filename container
     StringVect wallPaperVector;
 
-    FOR_EACH (std::vector<WallpaperData>::const_iterator, iter, wallpaperData)
+    FOR_EACH (STD_VECTOR<WallpaperData>::const_iterator, iter, wallpaperData)
     {
         wp = *iter;
         if (wp.width <= width && wp.height <= height)

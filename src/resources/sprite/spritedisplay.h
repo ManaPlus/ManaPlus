@@ -43,7 +43,7 @@ struct SpriteDisplay final
 
     std::string image;
     std::string floor;
-    std::vector<SpriteReference*> sprites;
+    STD_VECTOR<SpriteReference*> sprites;
     StringVect particles;
 };
 

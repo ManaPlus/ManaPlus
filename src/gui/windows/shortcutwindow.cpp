@@ -243,7 +243,7 @@ void ShortcutWindow::widgetMoved(const Event& event)
     Window::widgetMoved(event);
     if (mItems != nullptr)
         mItems->setRedraw(true);
-    FOR_EACH (std::vector<ShortcutContainer*>::iterator, it, mPages)
+    FOR_EACH (STD_VECTOR<ShortcutContainer*>::iterator, it, mPages)
         (*it)->setRedraw(true);
 }
 

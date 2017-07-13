@@ -82,8 +82,8 @@ namespace ZipReader
             return false;
         }
         const std::string archiveName = entry->root;
-        std::vector<ZipLocalHeader*> &restrict headers = entry->mHeaders;
-        std::vector<std::string> &restrict dirs = entry->mDirs;
+        STD_VECTOR<ZipLocalHeader*> &restrict headers = entry->mHeaders;
+        STD_VECTOR<std::string> &restrict dirs = entry->mDirs;
         FILE *restrict const arcFile = fopen(archiveName.c_str(),
             "rb");
         if (arcFile == nullptr)

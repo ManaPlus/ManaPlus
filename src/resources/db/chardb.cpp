@@ -40,7 +40,7 @@ namespace
     unsigned mMaxLook = 0;
     unsigned mMinRace = 0;
     unsigned mMaxRace = 30;
-    std::vector<BeingSlot> mDefaultItems;
+    STD_VECTOR<BeingSlot> mDefaultItems;
 }  // namespace
 
 void CharDB::load()
@@ -181,7 +181,7 @@ unsigned CharDB::getMaxRace()
     return mMaxRace;
 }
 
-const std::vector<BeingSlot> &CharDB::getDefaultItems()
+const STD_VECTOR<BeingSlot> &CharDB::getDefaultItems()
 {
     return mDefaultItems;
 }

@@ -32,7 +32,7 @@
 
 class ChatTab;
 
-typedef std::vector<InputActionT> KeysVector;
+typedef STD_VECTOR<InputActionT> KeysVector;
 typedef KeysVector::iterator KeysVectorIter;
 typedef KeysVector::const_iterator KeysVectorCIter;
 

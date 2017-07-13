@@ -59,7 +59,7 @@ struct TextureAtlas final : public MemoryCounter
     int calcMemoryChilds(const int level) const override final
     {
         int sz = 0;
-        FOR_EACH (std::vector<AtlasItem*>::const_iterator, it, items)
+        FOR_EACH (STD_VECTOR<AtlasItem*>::const_iterator, it, items)
         {
             AtlasItem *const item = *it;
             sz += item->calcMemory(level + 1);
@@ -74,7 +74,7 @@ struct TextureAtlas final : public MemoryCounter
     Image *atlasImage;
     int width;
     int height;
-    std::vector <AtlasItem*> items;
+    STD_VECTOR <AtlasItem*> items;
 };
 
 #endif  // USE_OPENGL

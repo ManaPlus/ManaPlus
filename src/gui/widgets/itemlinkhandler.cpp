@@ -138,7 +138,7 @@ void ItemLinkHandler::handleItemLink(const std::string &link)
     if (ch < '0' || ch > '9')
         return;
 
-    std::vector<int> str;
+    STD_VECTOR<int> str;
     splitToIntVector(str, link, ',');
     if (str.empty())
         return;

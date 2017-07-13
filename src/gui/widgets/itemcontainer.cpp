@@ -1093,7 +1093,7 @@ void ItemContainer::updateMatrix()
     delete []mShowMatrix;
     mShowMatrix = new int[CAST_SIZE(mGridRows * mGridColumns)];
 
-    std::vector<ItemIdPair*> sortedItems;
+    STD_VECTOR<ItemIdPair*> sortedItems;
     int i = 0;
     int j = 0;
 
@@ -1156,7 +1156,7 @@ void ItemContainer::updateMatrix()
 
     int jMult = j * mGridColumns;
     const int maxSize = mGridRows * mGridColumns;
-    FOR_EACH (std::vector<ItemIdPair*>::const_iterator, iter, sortedItems)
+    FOR_EACH (STD_VECTOR<ItemIdPair*>::const_iterator, iter, sortedItems)
     {
         if (jMult >= maxSize)
             break;

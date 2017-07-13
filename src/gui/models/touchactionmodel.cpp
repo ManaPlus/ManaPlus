@@ -50,7 +50,7 @@ TouchActionsModel::TouchActionsModel() :
     mActionId(),
     mActionToSelection()
 {
-    std::vector<SetupActionData*> data;
+    STD_VECTOR<SetupActionData*> data;
 
     for (int f = 0, fsz = touchActionDataSize; f < fsz; f ++)
     {
@@ -64,7 +64,7 @@ TouchActionsModel::TouchActionsModel() :
 
     std::sort(data.begin(), data.end(), touchActionSorter);
     int cnt = 0;
-    FOR_EACH (std::vector<SetupActionData*>::iterator, it, data)
+    FOR_EACH (STD_VECTOR<SetupActionData*>::iterator, it, data)
     {
         const SetupActionData *const data1 = *it;
         mNames.push_back(data1->name);

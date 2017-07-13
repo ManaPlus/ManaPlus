@@ -913,19 +913,19 @@ inline void NormalOpenGLGraphics::drawVertexes(const
                                                OpenGLGraphicsVertexes
                                                &restrict ogl) restrict2
 {
-    const std::vector<GLint*> &intVertPool = ogl.mIntVertPool;
-    std::vector<GLint*>::const_iterator iv;
-    const std::vector<GLint*>::const_iterator iv_end = intVertPool.end();
-    const std::vector<int> &vp = ogl.mVp;
-    std::vector<int>::const_iterator ivp;
-    const std::vector<int>::const_iterator ivp_end = vp.end();
+    const STD_VECTOR<GLint*> &intVertPool = ogl.mIntVertPool;
+    STD_VECTOR<GLint*>::const_iterator iv;
+    const STD_VECTOR<GLint*>::const_iterator iv_end = intVertPool.end();
+    const STD_VECTOR<int> &vp = ogl.mVp;
+    STD_VECTOR<int>::const_iterator ivp;
+    const STD_VECTOR<int>::const_iterator ivp_end = vp.end();
 
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
-        const std::vector<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
-        std::vector<GLfloat*>::const_iterator ft;
-        const std::vector<GLfloat*>::const_iterator
+        const STD_VECTOR<GLfloat*> &floatTexPool = ogl.mFloatTexPool;
+        STD_VECTOR<GLfloat*>::const_iterator ft;
+        const STD_VECTOR<GLfloat*>::const_iterator
             ft_end = floatTexPool.end();
 
         for (iv = intVertPool.begin(), ft = floatTexPool.begin(),
@@ -938,9 +938,9 @@ inline void NormalOpenGLGraphics::drawVertexes(const
     }
     else
     {
-        const std::vector<GLint*> &intTexPool = ogl.mIntTexPool;
-        std::vector<GLint*>::const_iterator it;
-        const std::vector<GLint*>::const_iterator it_end = intTexPool.end();
+        const STD_VECTOR<GLint*> &intTexPool = ogl.mIntTexPool;
+        STD_VECTOR<GLint*>::const_iterator it;
+        const STD_VECTOR<GLint*>::const_iterator it_end = intTexPool.end();
 
         for (iv = intVertPool.begin(), it = intTexPool.begin(),
              ivp = vp.begin();
@@ -1158,7 +1158,7 @@ void NormalOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
 
     OpenGLGraphicsVertexes &ogl = vert->ogl;
 
-//    std::vector<int> *vps = ogl.getVp();
+//    STD_VECTOR<int> *vps = ogl.getVp();
     unsigned int vp = ogl.continueVp();
 
     // Draw a set of textured rectangles

@@ -68,7 +68,7 @@ class MailWindow final : public Window,
         void createMail(const std::string &to);
 
     private:
-        std::vector<MailMessage*> mMessages;
+        STD_VECTOR<MailMessage*> mMessages;
         std::map<int, MailMessage*> mMessagesMap;
         ExtendedNamesModel *mMailModel;
         ExtendedListBox *mListBox;

@@ -462,7 +462,7 @@ void BuyDialog::sort()
 {
     if ((mSortDropDown != nullptr) && (mShopItems != nullptr))
     {
-        std::vector<ShopItem*> &items = mShopItems->items();
+        STD_VECTOR<ShopItem*> &items = mShopItems->items();
         switch (mSortDropDown->getSelected())
         {
             case 1:
@@ -646,7 +646,7 @@ void BuyDialog::action(const ActionEvent &event)
     }
     else if (eventId == "confirm")
     {
-        std::vector<ShopItem*> &items = mShopItems->allItems();
+        STD_VECTOR<ShopItem*> &items = mShopItems->allItems();
 
         if (mNpcId == fromInt(Market, BeingId))
         {
@@ -773,10 +773,10 @@ void BuyDialog::closeAll()
 
 void BuyDialog::applyNameFilter(const std::string &filter)
 {
-    std::vector<ShopItem*> &items = mShopItems->allItems();
+    STD_VECTOR<ShopItem*> &items = mShopItems->allItems();
     std::string filterStr = filter;
     toLower(filterStr);
-    FOR_EACH (std::vector<ShopItem*>::iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, items)
     {
         ShopItem *const item = *it;
         if (item == nullptr)

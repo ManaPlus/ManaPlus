@@ -148,11 +148,11 @@ class Palette notfinal
                         committedColor.b;
             }
         };
-        typedef std::vector<ColorElem> Colors;
+        typedef STD_VECTOR<ColorElem> Colors;
         typedef std::map<unsigned char, int> CharColors;
         Colors mColors;
         CharColors mCharColors;
-        std::vector<ColorElem*> mGradVector;
+        STD_VECTOR<ColorElem*> mGradVector;
 };
 
 #endif  // GUI_PALETTE_H

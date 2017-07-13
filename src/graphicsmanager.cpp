@@ -462,7 +462,7 @@ void GraphicsManager::setVideoMode()
     SDL::getAllVideoModes(videoModes);
     if (videoModes.empty())
         logger->error("no video modes detected");
-    std::vector<int> res;
+    STD_VECTOR<int> res;
     splitToIntVector(res, videoModes[0], 'x');
     if (res.size() != 2)
         logger->error("no video modes detected");
@@ -589,7 +589,7 @@ void GraphicsManager::initGraphics()
     }
 #if !defined(ANDROID) && !defined(__APPLE__)
     const std::string str = config.getStringValue("textureSize");
-    std::vector<int> sizes;
+    STD_VECTOR<int> sizes;
     splitToIntVector(sizes, str, ',');
     const size_t pos = CAST_SIZE(openGLMode);
     if (sizes.size() <= pos)

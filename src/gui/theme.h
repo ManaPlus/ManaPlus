@@ -200,7 +200,7 @@ class Theme final : public Palette,
          */
         float mMinimumOpacity;
 
-        typedef std::vector<DyePalette*> ProgressColors;
+        typedef STD_VECTOR<DyePalette*> ProgressColors;
         ProgressColors mProgressColors;
 };
 

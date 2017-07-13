@@ -79,7 +79,7 @@ void ParticleVector::moveTo(const float x, const float y)
 {
     ParticleContainer::moveTo(x, y);
 
-    for (std::vector<Particle *>::iterator it = mIndexedElements.begin();
+    for (STD_VECTOR<Particle *>::iterator it = mIndexedElements.begin();
          it != mIndexedElements.end(); ++it)
     {
         Particle *const p = *it;
@@ -99,7 +99,7 @@ void ParticleVector::moveTo(const float x, const float y)
 size_t ParticleVector::usedSize() const
 {
     size_t cnt = 0;
-    for (std::vector<Particle *>::const_iterator it = mIndexedElements.begin();
+    for (STD_VECTOR<Particle *>::const_iterator it = mIndexedElements.begin();
          it != mIndexedElements.end(); ++it)
     {
         if (*it != nullptr)

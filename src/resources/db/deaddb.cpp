@@ -32,7 +32,7 @@
 namespace
 {
     bool mLoaded = false;
-    std::vector<std::string> mMessages;
+    STD_VECTOR<std::string> mMessages;
 }  // namespace
 
 void DeadDB::load()

@@ -403,7 +403,7 @@ class SetupItemSlider final : public SetupItem
         OnTheFly mOnTheFly;
 };
 
-typedef std::vector<std::string> SetupItemNames;
+typedef STD_VECTOR<std::string> SetupItemNames;
 typedef SetupItemNames::iterator SetupItemNamesIter;
 typedef SetupItemNames::const_iterator SetupItemNamesConstIter;
 

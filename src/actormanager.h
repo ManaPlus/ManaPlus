@@ -143,7 +143,7 @@ class ActorManager final: public ConfigListener
         /**
          * Returns a beings at the specific pixel.
          */
-        void findBeingsByPixel(std::vector<ActorSprite*> &beings,
+        void findBeingsByPixel(STD_VECTOR<ActorSprite*> &beings,
                                const int x, const int y,
                                const AllPlayers allPlayers) const;
 
@@ -271,7 +271,7 @@ class ActorManager final: public ConfigListener
 
         void printBeingsToChat(const std::string &header) const;
 
-        static void printBeingsToChat(const std::vector<Being*> &beings,
+        static void printBeingsToChat(const STD_VECTOR<Being*> &beings,
                                       const std::string &header);
 
         void getPlayerNames(StringVect &names,

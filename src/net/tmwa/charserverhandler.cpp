@@ -71,7 +71,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
                                      const int hairColor,
                                      const unsigned char race A_UNUSED,
                                      const uint16_t look A_UNUSED,
-                                     const std::vector<int> &stats) const
+                                     const STD_VECTOR<int> &stats) const
 {
     createOutPacket(CMSG_CHAR_CREATE);
     outMsg.writeString(name, 24, "name");

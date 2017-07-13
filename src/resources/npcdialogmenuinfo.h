@@ -40,9 +40,9 @@ struct NpcDialogMenuInfo final
 
     A_DELETE_COPY(NpcDialogMenuInfo)
 
-    std::vector<NpcButtonInfo*> buttons;
-    std::vector<NpcImageInfo*> images;
-    std::vector<NpcTextInfo*> texts;
+    STD_VECTOR<NpcButtonInfo*> buttons;
+    STD_VECTOR<NpcImageInfo*> images;
+    STD_VECTOR<NpcTextInfo*> texts;
 };
 
 #endif  // RESOURCES_NPCDIALOGMENUINFO_H

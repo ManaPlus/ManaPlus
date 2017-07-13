@@ -124,7 +124,7 @@ class CharSelectDialog final : public Window,
         Button *mRenameButton;
         CharacterViewBase *mCharacterView;
 
-        std::vector<CharacterDisplay*> mCharacterEntries;
+        STD_VECTOR<CharacterDisplay*> mCharacterEntries;
 
         Net::CharServerHandler *mCharServerHandler;
         TextDialog *mDeleteDialog;

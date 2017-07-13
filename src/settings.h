@@ -118,7 +118,7 @@ class Settings final
         std::string gmCharCommandSymbol;
         std::string linkCommandSymbol;
         std::string userAgent;
-        std::vector<std::string> updateMirrors;
+        STD_VECTOR<std::string> updateMirrors;
         Options options;
         float guiAlpha;
         unsigned int textureSize;

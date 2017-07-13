@@ -1105,7 +1105,7 @@ void Map::initializeParticleEffects() const restrict2
 
     if (config.getBoolValue("particleeffects"))
     {
-        for (std::vector<ParticleEffectData>::const_iterator
+        for (STD_VECTOR<ParticleEffectData>::const_iterator
              i = mParticleEffects.begin();
              i != mParticleEffects.end();
              ++i)
@@ -1315,7 +1315,7 @@ void Map::updatePortalTile(const std::string &restrict name,
 
 MapItem *Map::findPortalXY(const int x, const int y) const restrict2
 {
-    FOR_EACH (std::vector<MapItem*>::const_iterator, it, mMapPortals)
+    FOR_EACH (STD_VECTOR<MapItem*>::const_iterator, it, mMapPortals)
     {
         if (*it == nullptr)
             continue;
@@ -1378,8 +1378,8 @@ std::string Map::getObjectData(const unsigned x, const unsigned y,
     if (list == nullptr)
         return "";
 
-    std::vector<MapObject>::const_iterator it = list->objects.begin();
-    const std::vector<MapObject>::const_iterator it_end = list->objects.end();
+    STD_VECTOR<MapObject>::const_iterator it = list->objects.begin();
+    const STD_VECTOR<MapObject>::const_iterator it_end = list->objects.end();
     while (it != it_end)
     {
         if ((*it).type == type)

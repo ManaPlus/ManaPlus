@@ -53,18 +53,18 @@ class AtlasManager final
 
     private:
         static void loadImages(const StringVect &files,
-                               std::vector<Image*> &images);
+                               STD_VECTOR<Image*> &images);
 
         static void loadEmptyImages(const StringVect &files,
-                                    std::vector<Image*> &images);
+                                    STD_VECTOR<Image*> &images);
 
         static void emptySort(const std::string &restrict name,
-                              std::vector<TextureAtlas*> &restrict atlases,
-                              const std::vector<Image*> &restrict images);
+                              STD_VECTOR<TextureAtlas*> &restrict atlases,
+                              const STD_VECTOR<Image*> &restrict images);
 
         static void simpleSort(const std::string &restrict name,
-                               std::vector<TextureAtlas*> &restrict atlases,
-                               const std::vector<Image*> &restrict images,
+                               STD_VECTOR<TextureAtlas*> &restrict atlases,
+                               const STD_VECTOR<Image*> &restrict images,
                                int size);
 
         static void createSDLAtlas(TextureAtlas *const atlas) A_NONNULL(1);

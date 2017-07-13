@@ -127,9 +127,9 @@ class CharCreateDialog final : public Window,
         Button *mActionButton;
         Button *mRotateButton;
 
-        std::vector<Slider*> mAttributeSlider;
-        std::vector<Label*> mAttributeLabel;
-        std::vector<Label*> mAttributeValue;
+        STD_VECTOR<Slider*> mAttributeSlider;
+        STD_VECTOR<Label*> mAttributeLabel;
+        STD_VECTOR<Label*> mAttributeValue;
         Label *mAttributesLeft;
 
         Button *mCreateButton;

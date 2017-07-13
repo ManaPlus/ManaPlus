@@ -149,9 +149,9 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     setContentSize(w, h);
 
     mPlayer->setGender(Gender::MALE);
-    const std::vector<BeingSlot> &items = CharDB::getDefaultItems();
+    const STD_VECTOR<BeingSlot> &items = CharDB::getDefaultItems();
     int i = 1;
-    for (std::vector<BeingSlot>::const_iterator it = items.begin(),
+    for (STD_VECTOR<BeingSlot>::const_iterator it = items.begin(),
          it_fend = items.end();
          it != it_fend;
          ++ it, i ++)
@@ -443,7 +443,7 @@ void CharCreateDialog::action(const ActionEvent &event)
             // Attempt to create the character
             mCreateButton->setEnabled(false);
 
-            std::vector<int> atts;
+            STD_VECTOR<int> atts;
             const size_t sz = mAttributeSlider.size();
             for (size_t i = 0; i < sz; i++)
             {

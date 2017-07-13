@@ -187,10 +187,10 @@ void QuestsWindow::rebuild(const bool playSound)
     mQuestLinks.clear();
     mQuestReverseLinks.clear();
     StringVect &names = mQuestsModel->getNames();
-    std::vector<Image*> &images = mQuestsModel->getImages();
-    std::vector<QuestItem*> complete;
-    std::vector<QuestItem*> incomplete;
-    std::vector<QuestItem*> hidden;
+    STD_VECTOR<Image*> &images = mQuestsModel->getImages();
+    STD_VECTOR<QuestItem*> complete;
+    STD_VECTOR<QuestItem*> incomplete;
+    STD_VECTOR<QuestItem*> hidden;
     int updatedQuest = -1;
     int newCompleteStatus = -1;
 
@@ -198,8 +198,8 @@ void QuestsWindow::rebuild(const bool playSound)
     {
         const int var = (*it).first;
         const QuestVar &val = (*it).second;
-        const std::vector<QuestItem*> &quests = (*mQuests)[var];
-        FOR_EACH (std::vector<QuestItem*>::const_iterator, it2, quests)
+        const STD_VECTOR<QuestItem*> &quests = (*mQuests)[var];
+        FOR_EACH (STD_VECTOR<QuestItem*>::const_iterator, it2, quests)
         {
             if (*it2 == nullptr)
                 continue;
@@ -225,7 +225,7 @@ void QuestsWindow::rebuild(const bool playSound)
 
     int k = 0;
 
-    for (std::vector<QuestItem*>::const_iterator it = complete.begin(),
+    for (STD_VECTOR<QuestItem*>::const_iterator it = complete.begin(),
         it_end = complete.end(); it != it_end; ++ it, k ++)
     {
         QuestItem *const quest = *it;
@@ -250,7 +250,7 @@ void QuestsWindow::rebuild(const bool playSound)
         }
     }
 
-    for (std::vector<QuestItem*>::const_iterator it = incomplete.begin(),
+    for (STD_VECTOR<QuestItem*>::const_iterator it = incomplete.begin(),
         it_end = incomplete.end(); it != it_end; ++ it, k ++)
     {
         QuestItem *const quest = *it;
@@ -274,7 +274,7 @@ void QuestsWindow::rebuild(const bool playSound)
         }
     }
 
-    FOR_EACH (std::vector<QuestItem*>::const_iterator, it, hidden)
+    FOR_EACH (STD_VECTOR<QuestItem*>::const_iterator, it, hidden)
         (*it)->completeFlag = -1;
 
     if (updatedQuest == -1 || updatedQuest >= CAST_S32(
@@ -310,14 +310,14 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
     if (quest == nullptr)
         return;
 
-    const std::vector<QuestItemText> &texts = quest->texts;
+    const STD_VECTOR<QuestItemText> &texts = quest->texts;
     const QuestVar &var = (*mVars)[quest->var];
     const std::string var1 = toString(var.var1);
     const std::string var2 = toString(var.var2);
     const std::string var3 = toString(var.var3);
     const std::string timeStr = timeDiffToString(var.time1);
     mText->clearRows();
-    FOR_EACH (std::vector<QuestItemText>::const_iterator, it, texts)
+    FOR_EACH (STD_VECTOR<QuestItemText>::const_iterator, it, texts)
     {
         const QuestItemText &data = *it;
         std::string text = data.text;
@@ -379,7 +379,7 @@ void QuestsWindow::setMap(const Map *const map)
             return;
 
         const std::string name = mMap->getProperty("shortName");
-        FOR_EACHP (std::vector<QuestEffect*>::const_iterator, it,  mAllEffects)
+        FOR_EACHP (STD_VECTOR<QuestEffect*>::const_iterator, it,  mAllEffects)
         {
             const QuestEffect *const effect = *it;
             if ((effect != nullptr) && name == effect->map)
@@ -394,7 +394,7 @@ void QuestsWindow::updateEffects()
     NpcQuestEffectMap oldNpc = mNpcEffects;
     mNpcEffects.clear();
 
-    FOR_EACH (std::vector<const QuestEffect*>::const_iterator,
+    FOR_EACH (STD_VECTOR<const QuestEffect*>::const_iterator,
               it,  mMapEffects)
     {
         const QuestEffect *const effect = *it;

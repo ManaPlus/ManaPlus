@@ -28,7 +28,7 @@ defineListener(BankListener)
 
 void BankListener::distributeEvent(const int money)
 {
-    FOR_EACH (std::vector<BankListener*>::iterator,
+    FOR_EACH (STD_VECTOR<BankListener*>::iterator,
               it, mListeners)
     {
         BankListener *const listener = *it;

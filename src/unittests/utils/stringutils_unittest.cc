@@ -379,7 +379,7 @@ TEST_CASE("stringuntils findI 1", "")
 
 TEST_CASE("stringuntils findI 2", "")
 {
-    std::vector <std::string> vect1;
+    STD_VECTOR <std::string> vect1;
     vect1.push_back("test");
     vect1.push_back("line");
     vect1.push_back("qwe");
@@ -800,7 +800,7 @@ TEST_CASE("stringuntils splitToStringSet 1", "")
 
 TEST_CASE("stringuntils splitToIntVector 1", "")
 {
-    std::vector<int> tokens;
+    STD_VECTOR<int> tokens;
     splitToIntVector(tokens, "", ',');
     REQUIRE(tokens.empty() == true);
 
@@ -847,7 +847,7 @@ TEST_CASE("stringuntils splitToIntVector 1", "")
 
 TEST_CASE("stringuntils splitToStringVector 1", "")
 {
-    std::vector<std::string> tokens;
+    STD_VECTOR<std::string> tokens;
     splitToStringVector(tokens, "", ',');
     REQUIRE(tokens.empty() == true);
 

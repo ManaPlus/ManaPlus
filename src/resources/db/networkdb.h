@@ -30,7 +30,7 @@
 
 typedef std::map<int32_t, int32_t> NetworkInPacketInfos;
 typedef NetworkInPacketInfos::const_iterator NetworkInPacketInfosIter;
-typedef std::vector<int> NetworkRemovePacketInfos;
+typedef STD_VECTOR<int> NetworkRemovePacketInfos;
 typedef NetworkRemovePacketInfos::const_iterator NetworkRemovePacketInfosIter;
 
 namespace NetworkDb

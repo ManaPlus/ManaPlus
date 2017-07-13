@@ -34,7 +34,7 @@ namespace
 }  // namespace
 
 CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
-                                         std::vector<CharacterDisplay*>
+                                         STD_VECTOR<CharacterDisplay*>
                                          *const entries,
                                          const int padding) :
     CharacterViewBase(widget, padding),
@@ -44,8 +44,8 @@ CharacterViewNormal::CharacterViewNormal(CharSelectDialog *const widget,
     addKeyListener(widget);
     if (entries != nullptr)
     {
-        FOR_EACHP (std::vector<CharacterDisplay*>::iterator,
-                    it, entries)
+        FOR_EACHP (STD_VECTOR<CharacterDisplay*>::iterator,
+                   it, entries)
         {
             CharacterDisplay *const character = *it;
             add(character);

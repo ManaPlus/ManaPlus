@@ -732,7 +732,7 @@ void SkillDialog::useItem(const int itemId,
 
     if (!data.empty())
     {
-        std::vector<int> vect;
+        STD_VECTOR<int> vect;
         splitToIntVector(vect, data, ' ');
         const size_t sz = vect.size();
         if (sz > 0)
@@ -1250,7 +1250,7 @@ void SkillDialog::addSkillDuration(SkillInfo *const skill)
     if (skill == nullptr)
         return;
 
-    FOR_EACH (std::vector<SkillInfo*>::const_iterator, it, mDurations)
+    FOR_EACH (STD_VECTOR<SkillInfo*>::const_iterator, it, mDurations)
     {
         if ((*it)->id == skill->id)
             return;
@@ -1260,7 +1260,7 @@ void SkillDialog::addSkillDuration(SkillInfo *const skill)
 
 void SkillDialog::slowLogic()
 {
-    FOR_EACH_SAFE (std::vector<SkillInfo*>::iterator, it, mDurations)
+    FOR_EACH_SAFE (STD_VECTOR<SkillInfo*>::iterator, it, mDurations)
     {
         SkillInfo *const skill = *it;
         if (skill != nullptr)

@@ -55,6 +55,6 @@ struct WorldInfo final
     std::string updateHost;
 };
 
-typedef std::vector<WorldInfo*> Worlds;
+typedef STD_VECTOR<WorldInfo*> Worlds;
 
 #endif  // NET_WORLDINFO_H

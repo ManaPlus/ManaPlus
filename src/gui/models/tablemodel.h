@@ -146,8 +146,8 @@ class StaticTableModel final : public TableModel
         int mRows;
         int mColumns;
         int mHeight;
-        std::vector<Widget *> mTableModel;
-        std::vector<int> mWidths;
+        STD_VECTOR<Widget *> mTableModel;
+        STD_VECTOR<int> mWidths;
 };
 
 #endif  // GUI_MODELS_TABLEMODEL_H

@@ -83,7 +83,7 @@ class EmoteShortcutContainer final : public ShortcutContainer
                         restrict2 override final;
 
     private:
-        std::vector<const EmoteSprite*> mEmoteImg;
+        STD_VECTOR<const EmoteSprite*> mEmoteImg;
 
         bool mEmoteClicked;
         unsigned char mEmoteMoved;

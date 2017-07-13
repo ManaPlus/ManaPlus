@@ -85,13 +85,13 @@ class NpcHandler notfinal
                              const ItemColor color,
                              const int amount) const = 0;
 
-        virtual void buyItems(std::vector<ShopItem*> &items) const = 0;
+        virtual void buyItems(STD_VECTOR<ShopItem*> &items) const = 0;
 
         virtual void sellItem(const BeingId beingId,
                               const int itemId,
                               const int amount) const = 0;
 
-        virtual void sellItems(std::vector<ShopItem*> &items) const = 0;
+        virtual void sellItems(STD_VECTOR<ShopItem*> &items) const = 0;
 
         virtual void completeProgressBar() const = 0;
 

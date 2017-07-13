@@ -51,7 +51,7 @@ class SpellManager final
 
         TextCommand *createNewSpell() const A_WARN_UNUSED;
 
-        const std::vector<TextCommand*> &getAll() const A_CONST A_WARN_UNUSED;
+        const STD_VECTOR<TextCommand*> &getAll() const A_CONST A_WARN_UNUSED;
 
         void useItem(const int itemId) const;
 
@@ -82,7 +82,7 @@ class SpellManager final
                                         A_WARN_UNUSED;
 
         std::map<unsigned int, TextCommand*> mSpells;
-        std::vector<TextCommand*> mSpellsVector;
+        STD_VECTOR<TextCommand*> mSpellsVector;
 };
 
 extern SpellManager *spellManager;

@@ -47,7 +47,7 @@
 static const float SIN45 = 0.707106781F;
 static const float DEG_RAD_FACTOR = 0.017453293F;
 
-typedef std::vector<ImageSet*>::const_iterator ImageSetVectorCIter;
+typedef STD_VECTOR<ImageSet*>::const_iterator ImageSetVectorCIter;
 typedef std::list<ParticleEmitter>::const_iterator ParticleEmitterListCIter;
 
 ParticleEmitter::ParticleEmitter(XmlNodeConstPtrConst emitterNode,
@@ -511,7 +511,7 @@ ParticleEmitter::readParticleEmitterProp(XmlNodePtrConst propertyNode, T def)
 }
 
 void ParticleEmitter::createParticles(const int tick,
-                                      std::vector<Particle*> &newParticles)
+                                      STD_VECTOR<Particle*> &newParticles)
 {
     if (mOutputPauseLeft > 0)
     {

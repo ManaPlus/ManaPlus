@@ -159,9 +159,9 @@ EquipmentWindow::~EquipmentWindow()
             delete mEquipment->getBackend();
         delete2(mEquipment)
     }
-    FOR_EACH (std::vector<EquipmentPage*>::iterator, it, mPages)
+    FOR_EACH (STD_VECTOR<EquipmentPage*>::iterator, it, mPages)
     {
-        std::vector<EquipmentBox*> &boxes = (*it)->boxes;
+        STD_VECTOR<EquipmentBox*> &boxes = (*it)->boxes;
         delete_all(boxes);
         boxes.clear();
         delete *it;
@@ -187,12 +187,12 @@ void EquipmentWindow::draw(Graphics *const graphics)
     int i = 0;
     Font *const font = getFont();
     const int fontHeight = font->getHeight();
-    const std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+    const STD_VECTOR<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
 
     if (mLastRedraw)
     {
         mVertexes->clear();
-        FOR_EACH (std::vector<EquipmentBox*>::const_iterator, it, boxes)
+        FOR_EACH (STD_VECTOR<EquipmentBox*>::const_iterator, it, boxes)
         {
             const EquipmentBox *const box = *it;
             if (box == nullptr)
@@ -226,7 +226,7 @@ void EquipmentWindow::draw(Graphics *const graphics)
 
     i = 0;
     const int projSlot = inventoryHandler->getProjectileSlot();
-    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+    for (STD_VECTOR<EquipmentBox*>::const_iterator it = boxes.begin(),
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
@@ -274,9 +274,9 @@ void EquipmentWindow::safeDraw(Graphics *const graphics)
     int i = 0;
     Font *const font = getFont();
     const int fontHeight = font->getHeight();
-    const std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+    const STD_VECTOR<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
 
-    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+    for (STD_VECTOR<EquipmentBox*>::const_iterator it = boxes.begin(),
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
@@ -301,7 +301,7 @@ void EquipmentWindow::safeDraw(Graphics *const graphics)
 
     i = 0;
     const int projSlot = inventoryHandler->getProjectileSlot();
-    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+    for (STD_VECTOR<EquipmentBox*>::const_iterator it = boxes.begin(),
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
@@ -408,8 +408,8 @@ const Item *EquipmentWindow::getItem(const int x, const int y) const
 
     int i = 0;
 
-    std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
-    for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+    STD_VECTOR<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+    for (STD_VECTOR<EquipmentBox*>::const_iterator it = boxes.begin(),
          it_end = boxes.end(); it != it_end; ++ it, ++ i)
     {
         const EquipmentBox *const box = *it;
@@ -446,8 +446,8 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
 
         bool inBox(false);
 
-        std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
-        for (std::vector<EquipmentBox*>::const_iterator it = boxes.begin(),
+        STD_VECTOR<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+        for (STD_VECTOR<EquipmentBox*>::const_iterator it = boxes.begin(),
              it_end = boxes.end(); it != it_end; ++ it, ++ i)
         {
             const EquipmentBox *const box = *it;
@@ -535,8 +535,8 @@ void EquipmentWindow::mouseReleased(MouseEvent &event)
         {
             const int x = event.getX();
             const int y = event.getY();
-            std::vector<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
-            for (std::vector<EquipmentBox*>::const_iterator
+            STD_VECTOR<EquipmentBox*> &boxes = mPages[mSelectedTab]->boxes;
+            for (STD_VECTOR<EquipmentBox*>::const_iterator
                  it = boxes.begin(), it_end = boxes.end();
                  it != it_end; ++ it)
             {
@@ -712,7 +712,7 @@ void EquipmentWindow::loadSlot(XmlNodeConstPtr slotNode,
     if (imageIndex >= 0 && imageIndex < CAST_S32(imageset->size()))
         image = imageset->get(imageIndex);
 
-    std::vector<EquipmentBox*> &boxes = mPages[page]->boxes;
+    STD_VECTOR<EquipmentBox*> &boxes = mPages[page]->boxes;
     if (boxes[slot] != nullptr)
     {
         EquipmentBox *const box = boxes[slot];
@@ -811,7 +811,7 @@ void EquipmentWindow::addBox(const int idx, int x, int y, const int imageIndex)
 
     x += getPadding();
     y += getTitleBarHeight() + mYPadding;
-    std::vector<EquipmentBox*> &boxes = mPages[0]->boxes;
+    STD_VECTOR<EquipmentBox*> &boxes = mPages[0]->boxes;
     boxes[idx] = new EquipmentBox(x, y, image);
 
     if (x < mMinX)
@@ -837,7 +837,7 @@ int EquipmentWindow::addPage(const std::string &name)
 {
     EquipmentPage *const page = new EquipmentPage;
     mPages.push_back(page);
-    std::vector<EquipmentBox*> &boxes = page->boxes;
+    STD_VECTOR<EquipmentBox*> &boxes = page->boxes;
 
     boxes.reserve(BOX_COUNT);
     for (int f = 0; f < BOX_COUNT; f ++)

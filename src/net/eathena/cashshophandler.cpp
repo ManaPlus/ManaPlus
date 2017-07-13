@@ -58,7 +58,7 @@ void CashShopHandler::buyItem(const int points,
 }
 
 void CashShopHandler::buyItems(const int points,
-                               const std::vector<ShopItem*> &items) const
+                               const STD_VECTOR<ShopItem*> &items) const
 {
     if (packetVersion < 20101124)
         return;
@@ -66,7 +66,7 @@ void CashShopHandler::buyItems(const int points,
     int cnt = 0;
     const int pairSize = 4;
 
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();
@@ -93,7 +93,7 @@ void CashShopHandler::buyItems(const int points,
     outMsg.writeInt16(CAST_S16(10 + pairSize * cnt), "len");
     outMsg.writeInt32(points, "points");
     outMsg.writeInt16(CAST_S16(cnt), "count");
-    FOR_EACH (std::vector<ShopItem*>::const_iterator, it, items)
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         ShopItem *const item = *it;
         const int usedQuantity = item->getUsedQuantity();

@@ -279,7 +279,7 @@ class NpcDialog final : public Window,
 
         // Used for choice input
         StringVect mItems;
-        std::vector<Image *> mImages;
+        STD_VECTOR<Image *> mImages;
         ExtendedListBox *mItemList A_NONNULLPOINTER;
         ScrollArea *mListScrollArea A_NONNULLPOINTER;
         Container *mSkinContainer A_NONNULLPOINTER;
@@ -308,7 +308,7 @@ class NpcDialog final : public Window,
 
         NpcInputStateT mInputState;
         NpcActionStateT mActionState;
-        std::vector<Widget*> mSkinControls;
+        STD_VECTOR<Widget*> mSkinControls;
         std::string mSkinName;
         PlayerBox *mPlayerBox A_NONNULLPOINTER;
         Being *mAvatarBeing;

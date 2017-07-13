@@ -25,7 +25,7 @@
 
 #include <string>
 
-typedef std::vector<std::string> StringVect;
+typedef STD_VECTOR<std::string> StringVect;
 typedef StringVect::iterator StringVectIter;
 typedef StringVect::const_iterator StringVectCIter;
 

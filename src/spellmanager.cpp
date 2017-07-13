@@ -116,7 +116,7 @@ bool SpellManager::addSpell(TextCommand *const spell)
     return false;
 }
 
-const std::vector<TextCommand*> &SpellManager::getAll() const
+const STD_VECTOR<TextCommand*> &SpellManager::getAll() const
 {
     return mSpellsVector;
 }
@@ -370,8 +370,8 @@ void SpellManager::save() const
 
 std::string SpellManager::autoComplete(const std::string &partName) const
 {
-    std::vector<TextCommand*>::const_iterator i = mSpellsVector.begin();
-    const std::vector<TextCommand*>::const_iterator
+    STD_VECTOR<TextCommand*>::const_iterator i = mSpellsVector.begin();
+    const STD_VECTOR<TextCommand*>::const_iterator
         i_end = mSpellsVector.end();
     std::string newName;
     const TextCommand *newCommand = nullptr;

@@ -43,7 +43,7 @@ class ExtendedNamesModel notfinal : public ExtendedListModel
         StringVect &getNames() A_WARN_UNUSED
         { return mNames; }
 
-        std::vector<Image*> &getImages() A_WARN_UNUSED
+        STD_VECTOR<Image*> &getImages() A_WARN_UNUSED
         { return mImages; }
 
         size_t size() A_WARN_UNUSED
@@ -56,7 +56,7 @@ class ExtendedNamesModel notfinal : public ExtendedListModel
 
     protected:
         StringVect mNames;
-        std::vector<Image*> mImages;
+        STD_VECTOR<Image*> mImages;
 };
 
 #endif  // GUI_MODELS_EXTENDEDNAMESMODEL_H

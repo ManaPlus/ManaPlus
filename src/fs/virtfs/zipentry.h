@@ -42,8 +42,8 @@ struct ZipEntry final : public FsEntry
 
     ~ZipEntry();
 
-    std::vector<ZipLocalHeader*> mHeaders;
-    std::vector<std::string> mDirs;
+    STD_VECTOR<ZipLocalHeader*> mHeaders;
+    STD_VECTOR<std::string> mDirs;
 };
 
 }  // namespace VirtFs

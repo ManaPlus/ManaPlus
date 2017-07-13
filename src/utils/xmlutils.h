@@ -33,7 +33,7 @@ void readXmlIntVector(const std::string &fileName,
                       const std::string &sectionName,
                       const std::string &itemName,
                       const std::string &attributeName,
-                      std::vector<int> &arr,
+                      STD_VECTOR<int> &arr,
                       const SkipError skipError);
 
 void readXmlStringMap(const std::string &fileName,

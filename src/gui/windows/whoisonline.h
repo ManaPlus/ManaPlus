@@ -65,7 +65,7 @@ class WhoIsOnline final : public Window,
         void loadWebList();
 #endif  // TMWA_SUPPORT
 
-        void loadList(const std::vector<OnlinePlayer*> &list);
+        void loadList(const STD_VECTOR<OnlinePlayer*> &list);
 
         void handleLink(const std::string& link,
                         MouseEvent *event) override final;
@@ -154,10 +154,10 @@ class WhoIsOnline final : public Window,
         std::set<OnlinePlayer*> mOnlinePlayers;
         std::set<std::string> mOnlineNicks;
 
-        std::vector<OnlinePlayer*> mFriends;
-        std::vector<OnlinePlayer*> mNeutral;
-        std::vector<OnlinePlayer*> mDisregard;
-        std::vector<OnlinePlayer*> mEnemy;
+        STD_VECTOR<OnlinePlayer*> mFriends;
+        STD_VECTOR<OnlinePlayer*> mNeutral;
+        STD_VECTOR<OnlinePlayer*> mDisregard;
+        STD_VECTOR<OnlinePlayer*> mEnemy;
 
         /** Byte count currently downloaded in mMemoryBuffer. */
         int mDownloadedBytes;

@@ -35,9 +35,9 @@
 namespace
 {
     bool mLoaded = false;
-    std::vector<BasicStat> mBasicStats;
-    std::map<std::string, std::vector<BasicStat> > mStats;
-    std::vector<std::string> mPages;
+    STD_VECTOR<BasicStat> mBasicStats;
+    std::map<std::string, STD_VECTOR<BasicStat> > mStats;
+    STD_VECTOR<std::string> mPages;
 }  // namespace
 
 void StatDb::addDefaultStats()
@@ -68,17 +68,17 @@ void StatDb::addDefaultStats()
         _("Luck")));
 }
 
-const std::vector<BasicStat> &StatDb::getBasicStats()
+const STD_VECTOR<BasicStat> &StatDb::getBasicStats()
 {
     return mBasicStats;
 }
 
-const std::vector<BasicStat> &StatDb::getStats(const std::string &page)
+const STD_VECTOR<BasicStat> &StatDb::getStats(const std::string &page)
 {
     return mStats[page];
 }
 
-const std::vector<std::string> &StatDb::getPages()
+const STD_VECTOR<std::string> &StatDb::getPages()
 {
     return mPages;
 }
@@ -135,7 +135,7 @@ static void loadStats(XmlNodeConstPtr rootNode,
                       const std::string &page)
 {
     const int maxAttr = static_cast<int>(Attributes::MAX_ATTRIBUTE);
-    std::vector<BasicStat> &stats = mStats[page];
+    STD_VECTOR<BasicStat> &stats = mStats[page];
     mPages.push_back(page);
     for_each_xml_child_node(node, rootNode)
     {

@@ -47,10 +47,10 @@ void SpellShortcut::load()
     if (spellManager == nullptr)
         return;
 
-    const std::vector<TextCommand*> &spells = spellManager->getAll();
+    const STD_VECTOR<TextCommand*> &spells = spellManager->getAll();
     unsigned k = 0;
 
-    for (std::vector<TextCommand*>::const_iterator i = spells.begin(),
+    for (STD_VECTOR<TextCommand*>::const_iterator i = spells.begin(),
          i_end = spells.end(); i != i_end && k < SPELLS_SIZE; ++i)
     {
         mItems[k++] = (*i)->getId();

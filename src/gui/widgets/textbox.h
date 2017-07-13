@@ -301,7 +301,7 @@ class TextBox final : public Widget,
         /**
          * Holds all the rows of the text.
          */
-        std::vector<std::string> mTextRows;
+        STD_VECTOR<std::string> mTextRows;
 
         /**
          * Holds the current column of the caret.
