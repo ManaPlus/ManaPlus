@@ -14,6 +14,8 @@ sysctl -w kernel.core_pattern=core
 export HOME="logs/home"
 rm -rf $HOME
 
+export ASAN_OPTIONS=detect_stack_use_after_return=true:strict_init_order=true
+
 echo "clean config runs"
 n=0
 while true; do

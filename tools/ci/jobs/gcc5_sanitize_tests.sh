@@ -60,7 +60,7 @@ export CXXFLAGS="-ggdb3 -O2 -ffast-math \
 do_init
 run_configure --enable-unittests=yes $*
 export SDL_VIDEODRIVER=dummy
-export ASAN_OPTIONS=detect_leaks=0
+export ASAN_OPTIONS=detect_leaks=0:detect_stack_use_after_return=true:strict_init_order=true
 export LSAN_OPTIONS=suppressions=$(pwd)/tools/ci/scripts/lsansuppression_tests.txt
 run_make_check
 
