@@ -86,6 +86,7 @@
 
 #include "resources/db/avatardb.h"
 #include "resources/db/badgesdb.h"
+#include "resources/db/groupdb.h"
 #include "resources/db/elementaldb.h"
 #include "resources/db/emotedb.h"
 #include "resources/db/homunculusdb.h"
@@ -3498,7 +3499,10 @@ void Being::setGender(const GenderT gender) restrict2
 void Being::showGmBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Gm]);
-    if (show && mIsGM && (mShowBadges != 0u))
+    if (show &&
+        mIsGM &&
+        mShowBadges != 0u &&
+        GroupDb::getShowBadge(mGroupId))
     {
         const std::string gmBadge = paths.getStringValue("gmbadge");
         if (!gmBadge.empty())

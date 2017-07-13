@@ -40,6 +40,7 @@ namespace GroupDb
                      const SkipError skipError);
     const std::string &getName(const int id);
     const std::string &getLongName(const int id);
+    bool getShowBadge(const int id);
 
     typedef std::map<int, GroupInfo> GroupInfos;
 

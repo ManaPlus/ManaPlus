@@ -29,13 +29,15 @@ struct GroupInfo final
 {
     GroupInfo() :
         name(),
-        longName()
+        longName(),
+        showBadge(false)
     { }
 
     A_DEFAULT_COPY(GroupInfo)
 
     std::string name;
     std::string longName;
+    bool showBadge;
 };
 
 #endif  // RESOURCES_GROUPINFO_H

@@ -25,6 +25,7 @@ Copyright (C) 2017 Evol Online -->
         id="60"
         name="GM"
         longName="Game master"
+        showBadge="true"
     />
     <group
         id="80"
