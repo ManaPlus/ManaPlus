@@ -47,7 +47,7 @@ PRAGMA45(GCC diagnostic ignored "-Wcast-qual")
 #include <stdio.h>              // fprintf/stderr
 #include <stdlib.h>             // abort
 #include <string.h>             // strcpy/strncpy/sprintf
-#include "debug/_nvwa.h"              // NVWA macros
+#include "debug/nvwa/_nvwa.h"              // NVWA macros
 
 #if NVWA_UNIX
 #include <alloca.h>             // alloca
