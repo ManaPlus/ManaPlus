@@ -145,6 +145,8 @@
 #define XML_NAME "pugixml"
 #elif defined(ENABLE_LIBXML)
 #define XML_NAME "libxml2"
+#elif defined(ENABLE_TINYXML2)
+#define XML_NAME "tinyxml2"
 #else  // defined(ENABLE_PUGIXML)
 #define XML_NAME "unknown"
 #endif  // defined(ENABLE_PUGIXML)
