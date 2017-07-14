@@ -23,6 +23,7 @@ grep "deheader:" ${LOGFILE} \
 | grep -v "deheader: remove <netdb.h> from ./src/net/sdltcpnet.cpp" \
 | grep -v "deheader: remove <netinet/in.h> from ./src/net/sdltcpnet.cpp" \
 | grep -v "deheader: remove <climits> from ./src/resources/map/map.cpp" \
+| grep -v "deheader: remove <vector> from ./src/utils/vector.h" \
 | grep -v "has more than one inclusion of \"resources/dye/dyepalette_replace" \
 | grep -v "deheader: remove <climits> from ./src/units.cpp" > ${LOGFILE2}
 
