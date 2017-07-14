@@ -67,9 +67,9 @@ PRAGMA45(GCC diagnostic ignored "-Wcast-qual")
 #include <windows.h>            // CaptureStackBackTrace
 #endif
 
-#include "debug/c++11.h"              // _NOEXCEPT/_NULLPTR
-#include "debug/fast_mutex.h"         // nvwa::fast_mutex
-#include "debug/static_assert.h"      // STATIC_ASSERT
+#include "debug/nvwa/c++11.h"              // _NOEXCEPT/_NULLPTR
+#include "debug/nvwa/fast_mutex.h"         // nvwa::fast_mutex
+#include "debug/nvwa/static_assert.h"      // STATIC_ASSERT
 
 #undef  _DEBUG_NEW_EMULATE_MALLOC
 #undef  _DEBUG_NEW_REDEFINE_NEW
