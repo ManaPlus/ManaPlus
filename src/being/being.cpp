@@ -3504,7 +3504,7 @@ void Being::showGmBadge(const bool show) restrict2
         mShowBadges != 0u &&
         GroupDb::getShowBadge(mGroupId))
     {
-        const std::string gmBadge = GroupDb::getBadge(mGroupId);
+        const std::string &gmBadge = GroupDb::getBadge(mGroupId);
         if (!gmBadge.empty())
         {
             mBadges[BadgeIndex::Gm] = AnimatedSprite::load(
