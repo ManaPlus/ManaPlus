@@ -1,0 +1,39 @@
+#!/bin/bash
+
+mkdir tmp
+cd ..
+
+dir=`pwd`
+
+export CCACHE_DIR="${dir}/build/ccache/bmake"
+export CC="ccache gcc"
+export CXX="ccache g++"
+
+export LANG=C
+
+export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
+-D_FORTIFY_SOURCE=2 \
+-std=gnu++1z \
+-fno-var-tracking -Wno-attributes"
+
+source ./tools/ci/flags/gcc7.sh
+
+export CXXFLAGS="$CXXFLAGS -Wno-null-dereference"
+
+autoreconf -i
+cd build/tmp
+../../configure --prefix=$dir/run \
+--datadir=$dir/run/share/games \
+--bindir=$dir/run/bin \
+--mandir=$dir/run/share/man \
+--enable-stldebug=yes \
+--enable-memdebug=no \
+--enable-tcmalloc=no \
+--enable-googleprofiler=no \
+--enable-werror
+
+cd po
+make -j8 update-gmo 2>../../make1.log
+cd ..
+make -j8 2>../make2.log
+
