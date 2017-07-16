@@ -118,6 +118,7 @@
 #include "utils/foreach.h"
 #include "utils/gettext.h"
 #include "utils/likely.h"
+#include "utils/stdmove.h"
 #include "utils/timer.h"
 
 #include "debug.h"
@@ -2902,7 +2903,7 @@ void Being::setSpriteColorId(const unsigned int slot,
 
     BeingSlot &beingSlot = mSlots[slot];
     beingSlot.spriteId = id;
-    beingSlot.color = color;
+    beingSlot.color = STD_MOVE(color);
     beingSlot.colorId = colorId;
     beingSlot.cardsId = CardsList(nullptr);
     recalcSpritesOrder();
@@ -2990,7 +2991,7 @@ void Being::setSpriteCards(const unsigned int slot,
 
     BeingSlot &beingSlot = mSlots[slot];
     beingSlot.spriteId = id;
-    beingSlot.color = color;
+    beingSlot.color = STD_MOVE(color);
     beingSlot.colorId = colorId;
     beingSlot.cardsId = CardsList(cards);
     recalcSpritesOrder();
