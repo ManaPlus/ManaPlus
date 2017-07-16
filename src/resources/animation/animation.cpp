@@ -59,25 +59,25 @@ void Animation::addTerminator(const int rand) noexcept2
 
 void Animation::addJump(const std::string &name, const int rand) noexcept2
 {
-    Frame frame = { nullptr, 0, 0, 0, rand, FrameType::JUMP, name };
+    const Frame frame = { nullptr, 0, 0, 0, rand, FrameType::JUMP, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addLabel(const std::string &name) noexcept2
 {
-    Frame frame = { nullptr, 0, 0, 0, 100, FrameType::LABEL, name };
+    const Frame frame = { nullptr, 0, 0, 0, 100, FrameType::LABEL, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addGoto(const std::string &name, const int rand) noexcept2
 {
-    Frame frame = { nullptr, 0, 0, 0, rand, FrameType::GOTO, name };
+    const Frame frame = { nullptr, 0, 0, 0, rand, FrameType::GOTO, name };
     mFrames.push_back(frame);
 }
 
 void Animation::addPause(const int delay, const int rand) noexcept2
 {
-    Frame frame = { nullptr, delay, 0, 0, rand, FrameType::PAUSE, "" };
+    const Frame frame = { nullptr, delay, 0, 0, rand, FrameType::PAUSE, "" };
     mFrames.push_back(frame);
 }
 
