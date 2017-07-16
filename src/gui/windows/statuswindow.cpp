@@ -260,10 +260,12 @@ void StatusWindow::addTabBasic(const std::string &name)
 
 void StatusWindow::updateLevelLabel()
 {
+    if (!localPlayer)
+        return;
+
     const int groupId = localPlayer->getGroupId();
     const std::string &name = GroupDb::getName(groupId);
-    if (localPlayer != nullptr &&
-        !name.empty())
+    if (!name.empty())
     {
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d (%s %d)"),
