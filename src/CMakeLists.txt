@@ -669,6 +669,7 @@ SET(SRCS
     resources/db/horsedb.h
     resources/fboinfo.h
     resources/frame.h
+    resources/groupinfo.cpp
     resources/groupinfo.h
     resources/horseinfo.h
     resources/horseoffset.h
@@ -750,6 +751,8 @@ SET(SRCS
     resources/questitemtext.h
     resources/questvar.h
     enums/resources/questtype.h
+    enums/resources/servercommandenable.h
+    enums/resources/servercommandtype.h
     resources/db/palettedb.cpp
     resources/db/palettedb.h
     resources/db/petdb.cpp

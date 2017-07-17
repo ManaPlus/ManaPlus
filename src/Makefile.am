@@ -452,6 +452,7 @@ BASE_SRC += events/actionevent.h \
 	      resources/dye/dyepaletteptr.h \
 	      resources/fboinfo.h \
 	      resources/frame.h \
+	      resources/groupinfo.cpp \
 	      resources/groupinfo.h \
 	      resources/image/image.cpp \
 	      resources/image/image.h \
@@ -485,6 +486,8 @@ BASE_SRC += events/actionevent.h \
 	      resources/questitemtext.h \
 	      resources/questvar.h \
 	      enums/resources/questtype.h \
+	      enums/resources/servercommandenable.h \
+	      enums/resources/servercommandtype.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
 	      resources/resourcefunctiontypes.h \

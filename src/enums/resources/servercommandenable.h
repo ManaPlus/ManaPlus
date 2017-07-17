@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2017  The ManaPlus Developers
+ *  Copyright (C) 2012-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,33 +18,20 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_GROUPINFO_H
-#define RESOURCES_GROUPINFO_H
+#ifndef ENUMS_RESOURCES_SERVERCOMMANDENABLE_H
+#define ENUMS_RESOURCES_SERVERCOMMANDENABLE_H
 
-#include "localconsts.h"
+#include "enums/simpletypes/enumdefines.h"
 
-#include "enums/resources/servercommandenable.h"
-#include "enums/resources/servercommandtype.h"
-#include "enums/resources/serverpermissiontype.h"
-
-#include "enums/simpletypes/enable.h"
-
-#include "utils/cast.h"
-
-#include <string>
-
-struct GroupInfo final
+namespace ServerCommandEnable
 {
-    GroupInfo();
+    enum Type
+    {
+        No    = 0,
+        Self  = 1,
+        Other = 2,
+        Both  = 3
+    };
+}  // namespace ServerCommandEnable
 
-    A_DEFAULT_COPY(GroupInfo)
-
-    ServerCommandEnable::Type mCommands[CAST_SIZE(ServerCommandType::Max)];
-    Enable mPermissions[CAST_SIZE(ServerPermissionType::Max)];
-    std::string name;
-    std::string longName;
-    std::string badge;
-    bool showBadge;
-};
-
-#endif  // RESOURCES_GROUPINFO_H
+#endif  // ENUMS_RESOURCES_SERVERCOMMANDENABLE_H
