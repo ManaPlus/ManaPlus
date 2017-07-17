@@ -455,8 +455,7 @@ gcc-7_sanitize_doctest_tests_i386:
   tags:
     - docker
 
-# disabled due memory issue. Probably out of memory of gcc issues
-.gcc-6_SDL_SDL-1.2_sanitize2_test:
+gcc-6_SDL_SDL-1.2_sanitize2_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -476,14 +475,14 @@ gcc-7_sanitize_doctest_tests_i386:
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
               wget unzip
+    JOBS: 1
     ASAN_OPTIONS: "detect_leaks=0"
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
   tags:
     - docker
 
-# disabled due memory issue. Probably out of memory of gcc issues
-.gcc-6_SDL_default_sanitize2_test:
+gcc-6_SDL_default_sanitize2_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -501,6 +500,7 @@ gcc-7_sanitize_doctest_tests_i386:
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
               wget unzip
+    JOBS: 1
     ASAN_OPTIONS: "detect_leaks=0"
     runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
     runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
