@@ -27,6 +27,7 @@
 
 #include "utils/cast.h"
 #include "utils/checkutils.h"
+#include "utils/delete2.h"
 #include "utils/stringutils.h"
 
 #include <zlib.h>
@@ -55,7 +56,7 @@ extern const char *dirSeparator;
     { \
         reportAlways("Error reading " msg " in file %s", \
             archiveName.c_str()); \
-        delete header; \
+        delete2(header); \
         delete [] buf; \
         fclose(arcFile); \
         return false; \
@@ -290,7 +291,10 @@ namespace ZipReader
         const size_t outSize = header->uncompressSize;
         uint8_t *restrict const out = new uint8_t[outSize];
         if (outSize == 0)
+        {
+            delete [] in;
             return out;
+        }
 
         z_stream strm;
         strm.zalloc = nullptr;

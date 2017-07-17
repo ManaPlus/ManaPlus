@@ -161,6 +161,7 @@ void ComplexInventory::setItem(const int index,
             equipped);
         item2->setInvIndex(index);
         item->addChild(item2, quantity);
+        delete item2;
 
         mItems[index] = item;
         mUsed ++;

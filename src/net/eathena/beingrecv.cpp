@@ -703,7 +703,9 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     // because server don't send direction in move packet, we fixing it
 
     uint8_t d = 0;
-    if (srcX == dstX && srcY == dstY)
+    if (localPlayer != nullptr &&
+        srcX == dstX &&
+        srcY == dstY)
     {   // if player did one step from invisible area to visible,
         // move path is broken
         int x2 = localPlayer->getTileX();

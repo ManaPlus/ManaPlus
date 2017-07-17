@@ -38,7 +38,7 @@ struct DirEntry final : public FsEntry
 
     A_DELETE_COPY(DirEntry)
 
-    ~DirEntry();
+    virtual ~DirEntry();
 
     std::string userDir;
     std::string rootSubDir;

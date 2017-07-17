@@ -377,6 +377,11 @@ namespace FsDir
         }
 #ifdef USE_FILE_FOPEN
         const long pos = ftell(fd);
+        if (pos < 0)
+        {
+            reportAlways("FsDir::fileLength ftell error.");
+            return -1;
+        }
         fseek(fd, 0, SEEK_END);
         const long sz = ftell(fd);
         fseek(fd, pos, SEEK_SET);
@@ -483,6 +488,13 @@ namespace FsDir
 #ifdef USE_FILE_FOPEN
         fseek(fd, 0, SEEK_END);
         const long sz = ftell(fd);
+        if (sz < 0)
+        {
+            reportAlways("FsDir::fileLength ftell error.");
+            if (fd != FILEHDEFAULT)
+                FILECLOSE(fd);
+            return nullptr;
+        }
         fseek(fd, 0, SEEK_SET);
         fileSize = static_cast<int>(sz);
 #else  // USE_FILE_FOPEN

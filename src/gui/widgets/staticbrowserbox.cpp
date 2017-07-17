@@ -668,16 +668,12 @@ void StaticBrowserBox::updateHeight()
                 break;
 
             std::string part = row.substr(start, len);
-            int width = 0;
-            if (bold)
-                width = boldFont->getWidth(part);
-            else
-                width = font->getWidth(part);
 
             mLineParts.push_back(LinePart(CAST_S32(x),
                 CAST_S32(y) + mItemPadding,
                 selColor[0], selColor[1], part.c_str(), bold));
 
+            int width = 0;
             if (bold)
                 width = boldFont->getWidth(part);
             else

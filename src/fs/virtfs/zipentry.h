@@ -40,7 +40,7 @@ struct ZipEntry final : public FsEntry
 
     A_DELETE_COPY(ZipEntry)
 
-    ~ZipEntry();
+    virtual ~ZipEntry();
 
     STD_VECTOR<ZipLocalHeader*> mHeaders;
     STD_VECTOR<std::string> mDirs;

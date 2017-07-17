@@ -39,7 +39,7 @@ struct FsEntry notfinal
 
     A_DELETE_COPY(FsEntry)
 
-    ~FsEntry();
+    virtual ~FsEntry();
 
     std::string root;
 

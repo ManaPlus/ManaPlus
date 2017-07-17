@@ -25,6 +25,7 @@
 #include "fs/virtfs/file.h"
 
 #include "utils/cast.h"
+#include "utils/checkutils.h"
 
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
@@ -86,6 +87,11 @@ namespace FsDir
             int64_t len = 0;
 #ifdef USE_FILE_FOPEN
             const long curpos = ftell(fd);
+            if (curpos < 0)
+            {
+                reportAlways("FsDir::fileLength ftell error.");
+                return -1;
+            }
             fseek(fd, 0, SEEK_END);
             len = ftell(fd);
 //            fseek(fd, curpos, SEEK_SET);
@@ -105,7 +111,10 @@ namespace FsDir
             if (len == -1)
             {
 #ifdef USE_FILE_FOPEN
-                fseek(fd, curpos, SEEK_SET);
+                if (fseek(fd, curpos, SEEK_SET) < 0)
+                {
+                    reportAlways("FsDir::fileLength fseek error.");
+                }
 #endif  // USE_FILE_FOPEN
                 logger->assertLog(
                     "VirtFs::rwops_seek:Can't find end of file.");

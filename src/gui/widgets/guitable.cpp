@@ -593,6 +593,9 @@ void GuiTable::modelUpdated(const bool completed)
 
 Widget *GuiTable::getWidgetAt(int x, int y)
 {
+    if (mModel == nullptr)
+        return nullptr;
+
     const int row = getRowForY(y);
     const int column = getColumnForX(x);
 
@@ -602,7 +605,7 @@ Widget *GuiTable::getWidgetAt(int x, int y)
         return mTopWidget;
     }
 
-    if ((mModel != nullptr) && row > -1 && column > -1)
+    if (row > -1 && column > -1)
     {
         Widget *const w = mModel->getElementAt(row, column);
         if ((w != nullptr) && w->isFocusable())
