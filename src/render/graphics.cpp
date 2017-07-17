@@ -107,6 +107,18 @@ RENDER_OPENGL_MGLDEFINES_H
 
 Graphics *mainGraphics A_NONNULLPOINTER = nullptr;
 
+#ifdef USE_SDL2
+SDL_Renderer *restrict Graphics::mRenderer = nullptr;
+#endif  // USE_SDL2
+#ifdef USE_OPENGL
+#ifdef USE_SDL2
+SDL_GLContext Graphics::mGLContext = nullptr;
+#else  // USE_SDL2
+
+void *restrict Graphics::mGLContext = nullptr;
+#endif  // USE_SDL2
+#endif  // USE_OPENGL
+
 Graphics::Graphics() :
     mWidth(0),
     mHeight(0),
@@ -114,12 +126,6 @@ Graphics::Graphics() :
     mActualHeight(0),
     mClipStack(1000),
     mWindow(nullptr),
-#ifdef USE_SDL2
-    mRenderer(nullptr),
-#endif  // USE_SDL2
-#ifdef USE_OPENGL
-    mGLContext(nullptr),
-#endif  // USE_OPENGL
     mBpp(0),
     mAlpha(false),
     mFullscreen(false),
@@ -146,6 +152,10 @@ Graphics::Graphics() :
 Graphics::~Graphics()
 {
     endDraw();
+}
+
+void Graphics::cleanUp()
+{
 #ifdef USE_SDL2
     if (mRenderer)
     {

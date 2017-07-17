@@ -120,6 +120,8 @@ class Graphics notfinal
          */
         virtual ~Graphics();
 
+        static void cleanUp();
+
         /**
          * Alignments for text drawing.
          */
@@ -518,14 +520,14 @@ class Graphics notfinal
         SDL_Window *restrict mWindow;
 
 #ifdef USE_SDL2
-        SDL_Renderer *restrict mRenderer;
+        static SDL_Renderer *restrict mRenderer;
 #endif  // USE_SDL2
 #ifdef USE_OPENGL
 #ifdef USE_SDL2
-        SDL_GLContext mGLContext;
+        static SDL_GLContext mGLContext;
 #else  // USE_SDL2
 
-        void *restrict mGLContext;
+        static void *restrict mGLContext;
 #endif  // USE_SDL2
 #endif  // USE_OPENGL
 

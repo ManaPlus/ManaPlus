@@ -730,6 +730,11 @@ void Client::gameClear()
         logger->log("textures left: %d", textures_count);
 #endif  // DEBUG_OPENGL_LEAKS
 
+    Graphics::cleanUp();
+
+    if (logger != nullptr)
+        logger->log1("Quitting12");
+
     delete2(chatLogger);
     TranslationManager::close();
 }
