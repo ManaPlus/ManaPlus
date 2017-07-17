@@ -43,7 +43,8 @@ namespace GroupDb
     bool getShowBadge(const int id) A_WARN_UNUSED;
     const std::string &getBadge(const int id) A_WARN_UNUSED;
 
-    typedef std::map<int, GroupInfo> GroupInfos;
+    typedef std::map<int, GroupInfo*> GroupInfos;
+    typedef GroupInfos::iterator GroupInfosIter;
 
 #ifdef UNITTESTS
     GroupDb::GroupInfos &getGroups();

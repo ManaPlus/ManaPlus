@@ -90,16 +90,29 @@ void GroupDb::loadXmlFile(const std::string &fileName,
                 reportAlways("Empty id field in GroupDb");
                 continue;
             }
-            mGroups[id].name = XML::langProperty(node,
+            GroupInfosIter it = mGroups.find(id);
+            GroupInfo *group = nullptr;
+            if (it != mGroups.end())
+            {
+                reportAlways("GroupDb: group with id %d already added",
+                    id);
+                group = (*it).second;
+            }
+            else
+            {
+                group = new GroupInfo;
+                mGroups[id] = group;
+            }
+            group->name = XML::langProperty(node,
                 "name",
                 "");
-            mGroups[id].longName = XML::langProperty(node,
+            group->longName = XML::langProperty(node,
                 "longName",
                 "");
-            mGroups[id].badge = XML::langProperty(node,
+            group->badge = XML::langProperty(node,
                 "badge",
                 paths.getStringValue("gmbadge"));
-            mGroups[id].showBadge = XML::getBoolProperty(node,
+            group->showBadge = XML::getBoolProperty(node,
                 "showBadge",
                 false);
         }
@@ -108,6 +121,11 @@ void GroupDb::loadXmlFile(const std::string &fileName,
 
 void GroupDb::unload()
 {
+    mGroups.clear();
+    FOR_EACH (GroupInfosIter, it, mGroups)
+    {
+        delete (*it).second;
+    }
     mGroups.clear();
     mLoaded = false;
 }
@@ -120,7 +138,7 @@ const std::string &GroupDb::getName(const int id)
         reportAlways("Unknown group id requested: %d", id);
         return mEmptyGroup.name;
     }
-    return (*it).second.name;
+    return (*it).second->name;
 }
 
 const std::string &GroupDb::getLongName(const int id)
@@ -131,7 +149,7 @@ const std::string &GroupDb::getLongName(const int id)
         reportAlways("Unknown group id requested: %d", id);
         return mEmptyGroup.longName;
     }
-    return (*it).second.longName;
+    return (*it).second->longName;
 }
 
 bool GroupDb::getShowBadge(const int id)
@@ -142,7 +160,7 @@ bool GroupDb::getShowBadge(const int id)
         reportAlways("Unknown group id requested: %d", id);
         return mEmptyGroup.showBadge;
     }
-    return (*it).second.showBadge;
+    return (*it).second->showBadge;
 }
 
 const std::string &GroupDb::getBadge(const int id)
@@ -153,7 +171,7 @@ const std::string &GroupDb::getBadge(const int id)
         reportAlways("Unknown group id requested: %d", id);
         return mEmptyGroup.badge;
     }
-    return (*it).second.badge;
+    return (*it).second->badge;
 }
 
 #ifdef UNITTESTS

@@ -37,7 +37,7 @@ struct GroupInfo final
 {
     GroupInfo();
 
-    A_DEFAULT_COPY(GroupInfo)
+    A_DELETE_COPY(GroupInfo)
 
     ServerCommandEnable::Type mCommands[CAST_SIZE(ServerCommandType::Max)];
     Enable mPermissions[CAST_SIZE(ServerPermissionType::Max)];
