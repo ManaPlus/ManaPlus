@@ -488,6 +488,7 @@ BASE_SRC += events/actionevent.h \
 	      enums/resources/questtype.h \
 	      enums/resources/servercommandenable.h \
 	      enums/resources/servercommandtype.h \
+	      enums/resources/serverpermissiontype.h \
 	      resources/resource.cpp \
 	      resources/resource.h \
 	      resources/resourcefunctiontypes.h \

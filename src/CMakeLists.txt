@@ -753,6 +753,7 @@ SET(SRCS
     enums/resources/questtype.h
     enums/resources/servercommandenable.h
     enums/resources/servercommandtype.h
+    enums/resources/serverpermissiontype.h
     resources/db/palettedb.cpp
     resources/db/palettedb.h
     resources/db/petdb.cpp
