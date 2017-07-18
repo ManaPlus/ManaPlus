@@ -20,8 +20,6 @@
 
 #include "fs/virtfs/fsdirrwops.h"
 
-#include "logger.h"
-
 #include "fs/virtfs/file.h"
 
 #include "utils/cast.h"

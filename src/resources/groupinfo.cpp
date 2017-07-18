@@ -20,8 +20,6 @@
 
 #include "resources/groupinfo.h"
 
-#include <string>
-
 #include "debug.h"
 
 GroupInfo::GroupInfo() :

@@ -21,7 +21,7 @@
 #ifndef ENUMS_RESOURCES_SERVERCOMMANDENABLE_H
 #define ENUMS_RESOURCES_SERVERCOMMANDENABLE_H
 
-#include "enums/simpletypes/enumdefines.h"
+#include "localconsts.h"
 
 namespace ServerCommandEnable
 {
