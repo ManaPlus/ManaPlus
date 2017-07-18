@@ -658,12 +658,14 @@ TEST_CASE("Windows tests", "windowmanager")
     SECTION("StatusWindow")
     {
         GroupDb::GroupInfos &groups = GroupDb::getGroups();
-        groups[0].name = std::string();
-        groups[0].longName = std::string();
+        groups[0] = new GroupInfo;
+        groups[0]->name = std::string();
+        groups[0]->longName = std::string();
         CREATEWIDGETV0(statusWindow, StatusWindow);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(statusWindow);
+        delete groups[0];
         groups.clear();
     }
     SECTION("TextCommandEditor")
