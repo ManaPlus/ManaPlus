@@ -121,7 +121,6 @@ void GroupDb::loadXmlFile(const std::string &fileName,
 
 void GroupDb::unload()
 {
-    mGroups.clear();
     FOR_EACH (GroupInfosIter, it, mGroups)
     {
         delete (*it).second;
