@@ -20,9 +20,9 @@
 
 #include "resources/groupinfo.h"
 
-#include "debug.h"
-
 #include <string>
+
+#include "debug.h"
 
 GroupInfo::GroupInfo() :
     mCommands(),
