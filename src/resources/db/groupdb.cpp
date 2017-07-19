@@ -144,6 +144,39 @@ static void loadSubNodes(XmlNodePtr groupNode,
     }
 }
 
+static void parseInherit(XmlNodePtr groupNode,
+                         const int id,
+                         GroupInfo *groupInfo) A_NONNULL(3);
+static void parseInherit(XmlNodePtr groupNode,
+                         const int id,
+                         GroupInfo *groupInfo)
+{
+    const std::string inherit = XML::langProperty(groupNode,
+        "inherit",
+        "");
+    STD_VECTOR<int> parts;
+    splitToIntVector(parts, inherit, ',');
+    FOR_EACH (STD_VECTOR<int>::const_iterator, it, parts)
+    {
+        const int id2 = *it;
+        GroupDb::GroupInfos::const_iterator it2 = mGroups.find(id2);
+        if (it2 == mGroups.end())
+        {
+            reportAlways("Unknown inherit group id '%d' in group '%d'",
+                id2,
+                id);
+            continue;
+        }
+        GroupInfo *const groupInfo2 = (*it2).second;
+        for (size_t f = 0; f < CAST_SIZE(ServerCommandType::Max); f ++)
+        {
+            ServerCommandEnable::Type enable = groupInfo2->mCommands[f];
+            if (enable != ServerCommandEnable::No)
+                groupInfo->mCommands[f] = enable;
+        }
+    }
+}
+
 void GroupDb::loadXmlFile(const std::string &fileName,
                           const SkipError skipError)
 {
@@ -213,6 +246,7 @@ void GroupDb::loadXmlFile(const std::string &fileName,
                 "showBadge",
                 false);
             loadSubNodes(node, id, group);
+            parseInherit(node, id, group);
         }
     }
 }
