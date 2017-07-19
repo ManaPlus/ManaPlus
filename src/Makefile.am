@@ -549,6 +549,7 @@ BASE_SRC += events/actionevent.h \
 	      enums/resources/skill/skillsettype.h \
 	      enums/resources/skill/skilltype.h \
 	      enums/resources/skill/skilltype2.h \
+	      resources/servercommands.inc \
 	      resources/soundeffect.cpp \
 	      resources/soundeffect.h \
 	      resources/soundinfo.h \

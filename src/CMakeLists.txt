@@ -834,6 +834,7 @@ SET(SRCS
     resources/db/unitsdb.h
     resources/db/weaponsdb.cpp
     resources/db/weaponsdb.h
+    resources/servercommands.inc
     resources/soundeffect.cpp
     resources/soundeffect.h
     resources/soundinfo.h
@@ -1793,6 +1794,7 @@ SET(DYE_CMD_SRCS
     resources/sdlmusic.cpp
     resources/sdlmusic.h
     resources/skillconsts.h
+    resources/servercommands.inc
     resources/soundeffect.cpp
     resources/soundeffect.h
     resources/image/subimage.cpp

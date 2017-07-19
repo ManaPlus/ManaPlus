@@ -47,6 +47,103 @@ void GroupDb::load()
     mLoaded = true;
 }
 
+#define servercommandFirst(name) \
+    if (str == #name) \
+        return ServerCommandType::name; \
+    else
+#define servercommand(name) \
+    if (str == #name) \
+        return ServerCommandType::name; \
+    else
+#define servercommand2(name1, name2) \
+    if (str == #name2) \
+        return ServerCommandType::name1; \
+    else
+
+static ServerCommandTypeT parseName(const std::string &str,
+                                    const int id)
+{
+#include "resources/servercommands.inc"
+    {
+        reportAlways("GroupsDb: unknown command name: '%s' in group id '%d'.",
+            str.c_str(),
+            id);
+    }
+
+    return ServerCommandType::Max;
+}
+
+#undef servercommandFirst
+#undef servercommand
+#undef servercommand2
+
+static ServerCommandEnable::Type parseUseFlag(const std::string &str,
+                                              const int id)
+{
+    if (str == "self")
+    {
+        return ServerCommandEnable::Self;
+    }
+    else if (str == "other")
+    {
+        return ServerCommandEnable::Other;
+    }
+    else if (str == "both")
+    {
+        return ServerCommandEnable::Both;
+    }
+    else
+    {
+        reportAlways("GroupsDb: unknown use flag: '%s' in group id '%d'."
+            "Possible values 'self', 'other', 'both'.",
+            str.c_str(),
+            id);
+        return ServerCommandEnable::No;
+    }
+}
+
+static void loadCommands(XmlNodePtr rootNode,
+                         const int id,
+                         GroupInfo *groupInfo) A_NONNULL(3);
+static void loadCommands(XmlNodePtr rootNode,
+                         const int id,
+                         GroupInfo *groupInfo)
+{
+    for_each_xml_child_node(node, rootNode)
+    {
+        if (xmlNameEqual(node, "command"))
+        {
+            const std::string nameStr = XML::getProperty(node,
+                "name",
+                "");
+            const std::string useStr = XML::getProperty(node,
+                "use",
+                "");
+            ServerCommandTypeT name = parseName(nameStr, id);
+            if (name == ServerCommandType::Max)
+                continue;
+            ServerCommandEnable::Type useFlag = parseUseFlag(useStr, id);
+            if (useFlag == ServerCommandEnable::No)
+                continue;
+            groupInfo->mCommands[CAST_SIZE(name)] = useFlag;
+        }
+    }
+}
+
+static void loadSubNodes(XmlNodePtr groupNode,
+                         const int id,
+                         GroupInfo *groupInfo) A_NONNULL(3);
+static void loadSubNodes(XmlNodePtr groupNode,
+                         const int id,
+                         GroupInfo *groupInfo)
+{
+    for_each_xml_child_node(node, groupNode)
+    {
+        if (xmlNameEqual(node, "commands"))
+            loadCommands(node, id, groupInfo);
+    }
+}
+
 void GroupDb::loadXmlFile(const std::string &fileName,
                           const SkipError skipError)
 {
@@ -115,6 +212,7 @@ void GroupDb::loadXmlFile(const std::string &fileName,
             group->showBadge = XML::getBoolProperty(node,
                 "showBadge",
                 false);
+            loadSubNodes(node, id, group);
         }
     }
 }
