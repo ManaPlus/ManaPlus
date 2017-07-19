@@ -62,11 +62,6 @@ env:
         PACKAGES="gcc-6 g++-6
                   ${LIBS_PACKAGES} ${SDL1}
                   valgrind"
-      - IMAGE=debian:unstable
-        COMMAND="./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --disable-tmwa --without-dyecmd --without-manaplusgame"
-        PACKAGES="gcc-7 g++-7
-                  ${LIBS_PACKAGES} ${SDL1}
-                  valgrind"
 
 # i386, sdl1, --disable-tmwa
       - IMAGE=vicamo/debian:sid-i386
@@ -143,11 +138,6 @@ env:
       - IMAGE=debian:unstable
         COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
         PACKAGES="gcc-6 g++-6
-                  ${LIBS_PACKAGES} ${SDL2}
-                  valgrind"
-      - IMAGE=debian:unstable
-        COMMAND="./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
-        PACKAGES="gcc-7 g++-7
                   ${LIBS_PACKAGES} ${SDL2}
                   valgrind"
 
