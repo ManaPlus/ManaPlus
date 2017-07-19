@@ -12,17 +12,24 @@ test:
   override:
     - ./tools/ci/scripts/circleci/gcc5.sh:
         parallel: true
+        timeout: 108000
     - ./tools/ci/scripts/circleci/gcc6_tests.sh:
         parallel: true
+        timeout: 108000
     - ./tools/ci/scripts/circleci/gcc7.sh:
         parallel: true
+        timeout: 108000
     - ./tools/ci/scripts/circleci/gcc7_tests.sh:
         parallel: true
+        timeout: 108000
     - ./tools/ci/scripts/circleci/gcc6.sh:
         parallel: true
+        timeout: 108000
     - ./tools/ci/scripts/circleci/gcc6_sanitize_tests.sh:
         parallel: true
+        timeout: 108000
     - ./tools/ci/scripts/circleci/gcc7_sanitize_tests.sh:
         parallel: true
+        timeout: 108000
   post:
     - mv logs $CIRCLE_ARTIFACTS/ || true
