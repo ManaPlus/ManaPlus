@@ -37,5 +37,6 @@ enumEnd(ServerPermissionType);
 #undef serverpermission
 
 SERVERPERMISSION_VOID
+#undef SERVERPERMISSION_VOID
 #endif  // ENUMS_RESOURCES_SERVERPERMISSIONTYPE_H
 
