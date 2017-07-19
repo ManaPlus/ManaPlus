@@ -20,8 +20,6 @@
 
 #include "unittests/unittests.h"
 
-#include "fs/files.h"
-
 #include "fs/virtfs/direntry.h"
 #include "fs/virtfs/fs.h"
 
