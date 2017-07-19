@@ -73,6 +73,7 @@ static ServerCommandTypeT parseCommand(const std::string &str,
     return ServerCommandType::Max;
 }
 
+SERVERCOMMANDS_VOID
 #undef servercommandFirst
 #undef servercommand
 #undef servercommand2

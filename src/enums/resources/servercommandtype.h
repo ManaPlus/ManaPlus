@@ -38,4 +38,6 @@ enumEnd(ServerCommandType);
 #undef servercommand
 #undef servercommand2
 
+SERVERCOMMANDS_VOID
+
 #endif  // ENUMS_RESOURCES_SERVERCOMMANDTYPE_H

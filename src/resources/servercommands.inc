@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define SERVERCOMMANDS_VOID
+
 // Hercules commands
 servercommandFirst(warp)
 servercommand(where)
