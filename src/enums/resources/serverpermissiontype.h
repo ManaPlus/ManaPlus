@@ -23,44 +23,19 @@
 
 #include "enums/simpletypes/enumdefines.h"
 
+#define serverpermissionFirst(name) name = 0,
+#define serverpermission(name) name,
+
 enumStart(ServerPermissionType)
 {
-// Hercules permissions
-    can_trade = 0,
-    can_party,
-    all_skill,
-    all_equipment,
-    skill_unconditional,
-    join_chat,
-    kick_chat,
-    hide_session,
-    who_display_aid,
-    hack_info,
-    any_warp,
-    view_hpmeter,
-    view_equipment,
-    use_check,
-    use_changemaptype,
-    all_commands,
-    receive_requests,
-    show_bossmobs,
-    disable_pvm,
-    disable_pvp,
-    disable_commands_when_dead,
-    hchsys_admin,
-    can_trade_bound,
-    disable_pickup,
-    disable_store,
-    disable_exp,
-    disable_skill_usage,
-
-// Evol permissions
-    send_gm,
-    show_client_version,
-
+#include "resources/serverpermissions.inc"
     Max
 }
 enumEnd(ServerPermissionType);
 
+#undef serverpermissionFirst
+#undef serverpermission
+
+SERVERPERMISSION_VOID
 #endif  // ENUMS_RESOURCES_SERVERPERMISSIONTYPE_H
 

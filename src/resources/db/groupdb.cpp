@@ -60,8 +60,8 @@ void GroupDb::load()
         return ServerCommandType::name1; \
     else
 
-static ServerCommandTypeT parseName(const std::string &str,
-                                    const int id)
+static ServerCommandTypeT parseCommand(const std::string &str,
+                                       const int id)
 {
 #include "resources/servercommands.inc"
     {
@@ -77,6 +77,33 @@ static ServerCommandTypeT parseName(const std::string &str,
 #undef servercommand
 #undef servercommand2
 
+#define serverpermissionFirst(name) \
+    if (str == #name) \
+        return ServerPermissionType::name; \
+    else
+#define serverpermission(name) \
+    if (str == #name) \
+        return ServerPermissionType::name; \
+    else
+
+static ServerPermissionTypeT parsePermission(const std::string &str,
+                                             const int id)
+{
+#include "resources/serverpermissions.inc"
+    {
+        reportAlways("GroupsDb: unknown permission name: "
+            "'%s' in group id '%d'.",
+            str.c_str(),
+            id);
+    }
+
+    return ServerPermissionType::Max;
+}
+
+SERVERPERMISSION_VOID
+#undef serverpermissionFirst
+#undef serverpermission
+
 static ServerCommandEnable::Type parseUseFlag(const std::string &str,
                                               const int id)
 {
@@ -91,6 +118,10 @@ static ServerCommandEnable::Type parseUseFlag(const std::string &str,
     else if (str == "both")
     {
         return ServerCommandEnable::Both;
+    }
+    else if (str == "false")
+    {
+        return ServerCommandEnable::No;
     }
     else
     {
@@ -119,13 +150,41 @@ static void loadCommands(XmlNodePtr rootNode,
             const std::string useStr = XML::getProperty(node,
                 "use",
                 "");
-            ServerCommandTypeT name = parseName(nameStr, id);
+            ServerCommandTypeT name = parseCommand(nameStr, id);
             if (name == ServerCommandType::Max)
                 continue;
             ServerCommandEnable::Type useFlag = parseUseFlag(useStr, id);
             if (useFlag == ServerCommandEnable::No)
                 continue;
             groupInfo->mCommands[CAST_SIZE(name)] = useFlag;
+        }
+    }
+}
+
+static void loadPermissions(XmlNodePtr rootNode,
+                            const int id,
+                            GroupInfo *groupInfo) A_NONNULL(3);
+static void loadPermissions(XmlNodePtr rootNode,
+                            const int id,
+                            GroupInfo *groupInfo)
+{
+    for_each_xml_child_node(node, rootNode)
+    {
+        if (xmlNameEqual(node, "permission"))
+        {
+            const std::string nameStr = XML::getProperty(node,
+                "name",
+                "");
+            ServerPermissionTypeT perm = parsePermission(nameStr, id);
+            if (perm == ServerPermissionType::Max)
+                continue;
+            if (!XML::getBoolProperty(node,
+                "enable",
+                true))
+            {
+                continue;
+            }
+            groupInfo->mPermissions[CAST_SIZE(perm)] = Enable_true;
         }
     }
 }
@@ -141,6 +200,8 @@ static void loadSubNodes(XmlNodePtr groupNode,
     {
         if (xmlNameEqual(node, "commands"))
             loadCommands(node, id, groupInfo);
+        if (xmlNameEqual(node, "permissions"))
+            loadPermissions(node, id, groupInfo);
     }
 }
 
@@ -173,6 +234,11 @@ static void parseInherit(XmlNodePtr groupNode,
             ServerCommandEnable::Type enable = groupInfo2->mCommands[f];
             if (enable != ServerCommandEnable::No)
                 groupInfo->mCommands[f] = enable;
+        }
+        for (size_t f = 0; f < CAST_SIZE(ServerPermissionType::Max); f ++)
+        {
+            if (groupInfo2->mPermissions[f] == Enable_true)
+                groupInfo->mPermissions[f] = Enable_true;
         }
     }
 }
