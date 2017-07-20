@@ -239,10 +239,15 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             addGmCommands();
             mBrowserBox->addSeparator("##3---");
 
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: heal player
-            mBrowserBox->addRow("/heal :'BEINGID'", _("Heal"));
-            mBrowserBox->addSeparator("##3---");
+#ifdef TMWA_SUPPORT
+            if (Net::getNetworkType() == ServerType::TMWATHENA)
+            {
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: heal player
+                mBrowserBox->addRow("/heal :'BEINGID'", _("Heal"));
+                mBrowserBox->addSeparator("##3---");
+            }
+#endif  // TMWA_SUPPORT
 
             addPlayerRelation(name);
             mBrowserBox->addSeparator("##3---");
