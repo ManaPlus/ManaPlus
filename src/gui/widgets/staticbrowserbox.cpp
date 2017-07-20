@@ -450,6 +450,12 @@ void StaticBrowserBox::updateHeight()
     mLineParts.clear();
     uint32_t dataWidth = 0;
 
+    if (mSeparator)
+    {
+        mSeparator = false;
+        mTextRows.pop_back();
+    }
+
     FOR_EACH (TextRowCIter, i, mTextRows)
     {
         unsigned int x = CAST_U32(mPadding);
