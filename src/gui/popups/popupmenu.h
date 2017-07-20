@@ -57,6 +57,7 @@ class TextDialog;
 class TextField;
 class Window;
 
+struct GroupInfo;
 struct SkillInfo;
 
 /**
@@ -203,6 +204,8 @@ class PopupMenu final : public Popup, public LinkHandler
         void select();
 
     private:
+        void initPopup();
+
         void setMousePos();
 
         void setMousePos2();
@@ -285,6 +288,7 @@ class PopupMenu final : public Popup, public LinkHandler
         PlayerListener mPlayerListener;
         TextDialog *mDialog;
         Button *mButton;
+        const GroupInfo *mGroup;
         std::string mName;
         std::string mExtName;
         TextField *mTextField;

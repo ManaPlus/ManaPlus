@@ -77,6 +77,7 @@
 #include "resources/chatobject.h"
 #include "resources/iteminfo.h"
 
+#include "resources/db/groupdb.h"
 #include "resources/db/npcdb.h"
 
 #include "resources/item/item.h"
@@ -115,6 +116,7 @@ PopupMenu::PopupMenu() :
     mPlayerListener(),
     mDialog(nullptr),
     mButton(nullptr),
+    mGroup(nullptr),
     mName(),
     mExtName(),
     mTextField(nullptr),
@@ -142,6 +144,14 @@ void PopupMenu::postInit()
     add(mScrollArea);
 }
 
+void PopupMenu::initPopup()
+{
+    if (localPlayer == nullptr)
+        return;
+    const int groupId = localPlayer->getGroupId();
+    mGroup = GroupDb::getGroup(groupId);
+}
+
 void PopupMenu::showPopup(const int x, const int y, const Being *const being)
 {
     if (being == nullptr ||
@@ -151,6 +161,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
         return;
     }
 
+    initPopup();
     mBeingId = being->getId();
     mName = being->getName();
     mExtName = being->getExtName();
@@ -501,6 +512,7 @@ void PopupMenu::setMousePos2()
 void PopupMenu::showPopup(const int x, const int y,
                           const STD_VECTOR<ActorSprite*> &beings)
 {
+    initPopup();
     mX = x;
     mY = y;
     mBrowserBox->clearRows();
@@ -537,6 +549,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     if (nick.empty() || (localPlayer == nullptr))
         return;
 
+    initPopup();
     setMousePos();
     mName = nick;
     mExtName = nick;
@@ -644,6 +657,7 @@ void PopupMenu::showPopup(const int x, const int y,
     if (floorItem == nullptr)
         return;
 
+    initPopup();
     mX = x;
     mY = y;
     mFloorItemId = floorItem->getId();
@@ -697,6 +711,7 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
     if (mapItem == nullptr)
         return;
 
+    initPopup();
     mMapItem = mapItem;
     mX = x;
     mY = y;
@@ -731,6 +746,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
                              const int x2, const int y2,
                              const bool isMinimap)
 {
+    initPopup();
     mX = x2;
     mY = y2;
 
@@ -776,6 +792,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
 
 void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
 {
+    initPopup();
     mX = x;
     mY = y;
     mCallerWindow = outfitWindow;
@@ -813,6 +830,7 @@ void PopupMenu::showSpellPopup(const int x, const int y,
     if (cmd == nullptr)
         return;
 
+    initPopup();
     mBrowserBox->clearRows();
 
     mSpell = cmd;
@@ -841,6 +859,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         return;
     }
 
+    initPopup();
     mTab = tab;
     mX = x;
     mY = y;
@@ -1036,6 +1055,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
 
 void PopupMenu::showChangePos(const int x, const int y)
 {
+    initPopup();
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Change guild position"));
@@ -1084,6 +1104,7 @@ void PopupMenu::showWindowPopup(Window *const window)
     if (window == nullptr)
         return;
 
+    initPopup();
     setMousePos();
     mCallerWindow = window;
     mBrowserBox->clearRows();
@@ -1104,6 +1125,7 @@ void PopupMenu::addWindowMenu(const Window *const window)
     if (window == nullptr)
         return;
 
+    initPopup();
     if (window->getAlowClose())
     {
         // TRANSLATORS: popup menu item
@@ -1130,6 +1152,7 @@ void PopupMenu::addWindowMenu(const Window *const window)
 
 void PopupMenu::showEmoteType()
 {
+    initPopup();
     setMousePos();
 
     mBrowserBox->clearRows();
@@ -1496,6 +1519,7 @@ void PopupMenu::showPopup(Window *const parent,
     if (item == nullptr)
         return;
 
+    initPopup();
     mItemId = item->getId();
     mItemIndex = item->getInvIndex();
     for (int f = 0; f < maxCards; f ++)
@@ -1664,6 +1688,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
     }
     else
     {
+        initPopup();
         mItemId = itemId;
         mItemIndex = -1;
         mItemColor = color;
@@ -1693,6 +1718,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
 void PopupMenu::showItemPopup(const int x, const int y,
                               const Item *const item)
 {
+    initPopup();
     mX = x;
     mY = y;
     if (item != nullptr)
@@ -1751,6 +1777,7 @@ void PopupMenu::showDropPopup(const int x,
                               const int y,
                               const Item *const item)
 {
+    initPopup();
     mX = x;
     mY = y;
     mName.clear();
@@ -1801,6 +1828,7 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
     if ((button == nullptr) || (windowMenu == nullptr))
         return;
 
+    initPopup();
     mButton = button;
     mX = x;
     mY = y;
@@ -1842,6 +1870,7 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
     if ((b == nullptr) || (miniStatusWindow == nullptr))
         return;
 
+    initPopup();
     mName = b->text();
     mExtName = mName;
     mX = x;
@@ -1915,6 +1944,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
     if ((localPlayer == nullptr) || (actorManager == nullptr))
         return;
 
+    initPopup();
     mName = name;
     mExtName = name;
     mType = ActorType::Monster;
@@ -1997,6 +2027,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
     if ((localPlayer == nullptr) || (actorManager == nullptr))
         return;
 
+    initPopup();
     mName = name;
     mExtName = name;
     mType = ActorType::FloorItem;
@@ -2034,6 +2065,7 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     if ((being == nullptr) || (item == nullptr))
         return;
 
+    initPopup();
     mBeingId = being->getId();
     mItemId = item->getId();
     mItemColor = item->getColor();
@@ -2062,6 +2094,7 @@ void PopupMenu::showUndressPopup(const int x, const int y,
 
 void PopupMenu::showTextFieldPopup(TextField *const input)
 {
+    initPopup();
     setMousePos();
     mTextField = input;
 
@@ -2083,6 +2116,7 @@ void PopupMenu::showTextFieldPopup(TextField *const input)
 
 void PopupMenu::showLinkPopup(const std::string &link)
 {
+    initPopup();
     setMousePos();
     mName = link;
     mExtName = link;
@@ -2105,6 +2139,7 @@ void PopupMenu::showLinkPopup(const std::string &link)
 
 void PopupMenu::showWindowsPopup()
 {
+    initPopup();
     setMousePos();
     mBrowserBox->clearRows();
     const STD_VECTOR<ButtonText*> &names = windowMenu->getButtonTexts();
@@ -2132,6 +2167,7 @@ void PopupMenu::showWindowsPopup()
 void PopupMenu::showNpcDialogPopup(const BeingId npcId,
                                    const int x, const int y)
 {
+    initPopup();
     mBeingId = npcId;
     mX = x;
     mY = y;
@@ -2151,6 +2187,8 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
 {
     if (info == nullptr)
         return;
+
+    initPopup();
     setMousePos();
 
     // using mItemId as skill id
@@ -2189,6 +2227,8 @@ void PopupMenu::showSkillOffsetPopup(const SkillInfo *const info,
 {
     if (info == nullptr)
         return;
+
+    initPopup();
     setMousePos2();
 
     // using mItemId as skill id
@@ -2235,6 +2275,8 @@ void PopupMenu::showSkillLevelPopup(const SkillInfo *const info)
 {
     if (info == nullptr)
         return;
+
+    initPopup();
     setMousePos2();
 
     // using mItemId as skill id
@@ -2271,6 +2313,8 @@ void PopupMenu::showSkillTypePopup(const SkillInfo *const info)
 {
     if (info == nullptr)
         return;
+
+    initPopup();
     setMousePos2();
 
     // using mItemId as skill id
@@ -3180,6 +3224,7 @@ void PopupMenu::showAdoptCommands()
 
 void PopupMenu::addSocialMenu()
 {
+    initPopup();
     mBrowserBox->clearRows();
     setMousePos();
     const Party *const party = localPlayer->getParty();

@@ -372,6 +372,17 @@ const std::string &GroupDb::getBadge(const int id)
     return (*it).second->badge;
 }
 
+const GroupInfo *GroupDb::getGroup(const int id)
+{
+    GroupInfos::const_iterator it = mGroups.find(id);
+    if (it == mGroups.end())
+    {
+        reportAlways("Unknown group id requested: %d", id);
+        return &mEmptyGroup;
+    }
+    return (*it).second;
+}
+
 #ifdef UNITTESTS
 GroupDb::GroupInfos &GroupDb::getGroups()
 {
