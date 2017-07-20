@@ -3052,15 +3052,17 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
         }
         if (isAllowCommand(ServerCommandType::slaveclone))
         {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: spawn slave player clone
-            mBrowserBox->addRow("/spawnslaveclone 'NAME'", _("Spawn slave clone"));
+            mBrowserBox->addRow("/spawnslaveclone 'NAME'",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: spawn slave player clone
+                _("Spawn slave clone"));
         }
         if (isAllowCommand(ServerCommandType::evilclone))
         {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: spawn evil player clone
-            mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
+            mBrowserBox->addRow("/spawnevilclone 'NAME'",
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: spawn evil player clone
+                _("Spawn evil clone"));
         }
         mBrowserBox->addSeparator("##3---");
         if (isAllowOtherCommand(ServerCommandType::breakguild))
