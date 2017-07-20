@@ -33,12 +33,5 @@ GroupInfo::GroupInfo() :
     for (size_t f = 0; f < CAST_SIZE(ServerCommandType::Max); f ++)
         mCommands[f] = ServerCommandEnable::No;
     for (size_t f = 0; f < CAST_SIZE(ServerPermissionType::Max); f ++)
-    {
-#ifdef TMWA_SUPPORT
-        mPermissions[f] = Enable_true;
-#else  // TMWA_SUPPORT
-
         mPermissions[f] = Enable_false;
-#endif  // TMWA_SUPPORT
-    }
 }

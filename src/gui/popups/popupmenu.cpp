@@ -75,6 +75,7 @@
 #endif  // TMWA_SUPPORT
 
 #include "resources/chatobject.h"
+#include "resources/groupinfo.h"
 #include "resources/iteminfo.h"
 
 #include "resources/db/groupdb.h"
@@ -150,6 +151,45 @@ void PopupMenu::initPopup()
         return;
     const int groupId = localPlayer->getGroupId();
     mGroup = GroupDb::getGroup(groupId);
+}
+
+bool PopupMenu::isAllowCommand(const ServerCommandTypeT command)
+{
+    if (mGroup == nullptr)
+        return false;
+#ifdef TMWA_SUPPORT
+    // allow any commands for legacy if group > 0
+    if (Net::getNetworkType() == ServerType::TMWATHENA &&
+        localPlayer != nullptr &&
+        localPlayer->isGM())
+    {
+        return true;
+    }
+#endif
+    const ServerCommandEnable::Type enabled =
+        mGroup->mCommands[CAST_SIZE(command)];
+    return (enabled & ServerCommandEnable::Self) != 0;
+}
+
+bool PopupMenu::isAllowOtherCommand(const ServerCommandTypeT command)
+{
+    if (mGroup == nullptr ||
+        localPlayer == nullptr)
+        return false;
+#ifdef TMWA_SUPPORT
+    // allow any commands for legacy if group > 0
+    if (Net::getNetworkType() == ServerType::TMWATHENA &&
+        localPlayer->isGM())
+    {
+        return true;
+    }
+#endif
+    const ServerCommandEnable::Type enabled =
+        mGroup->mCommands[CAST_SIZE(command)];
+    if (mName == localPlayer->getName())
+        return (enabled & ServerCommandEnable::Self) != 0;
+    else
+        return (enabled & ServerCommandEnable::Other) != 0;
 }
 
 void PopupMenu::showPopup(const int x, const int y, const Being *const being)
@@ -727,7 +767,7 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
     // TRANSLATORS: remove map item
     mBrowserBox->addRow("remove map", _("Remove"));
 
-    if ((localPlayer != nullptr) && localPlayer->isGM())
+    if (isAllowCommand(ServerCommandType::slide))
     {
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
@@ -758,7 +798,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Map Item"));
 
-    if ((localPlayer != nullptr) && localPlayer->isGM())
+    if (isAllowCommand(ServerCommandType::slide))
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: warp to map item
@@ -2767,30 +2807,54 @@ void PopupMenu::showPlayerMenu()
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(strprintf(_("Show %s"),
         mName.c_str()));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player account info
-    mBrowserBox->addRow("/showaccountinfo 'NAME'", _("Account info"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player level
-    mBrowserBox->addRow("/showlevel 'NAME'", _("Level"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player stats
-    mBrowserBox->addRow("/showstats 'NAME'", _("Stats"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player inventory list
-    mBrowserBox->addRow("/showinventory 'NAME'", _("Inventory"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player storage list
-    mBrowserBox->addRow("/showstorage 'NAME'", _("Storage"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show player cart list
-    mBrowserBox->addRow("/showcart 'NAME'", _("Cart"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm commands
-    mBrowserBox->addRow("/gmcommands 'NAME'", _("Commands"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm char commands
-    mBrowserBox->addRow("/gmcharcommands 'NAME'", _("Char commands"));
+    if (isAllowCommand(ServerCommandType::accinfo))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show player account info
+        mBrowserBox->addRow("/showaccountinfo 'NAME'", _("Account info"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::exp))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show player level
+        mBrowserBox->addRow("/showlevel 'NAME'", _("Level"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::stats))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show player stats
+        mBrowserBox->addRow("/showstats 'NAME'", _("Stats"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::itemlist))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show player inventory list
+        mBrowserBox->addRow("/showinventory 'NAME'", _("Inventory"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::storagelist))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show player storage list
+        mBrowserBox->addRow("/showstorage 'NAME'", _("Storage"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::cartlist))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show player cart list
+        mBrowserBox->addRow("/showcart 'NAME'", _("Cart"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::commands))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm commands
+        mBrowserBox->addRow("/gmcommands 'NAME'", _("Commands"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::charcommands))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm char commands
+        mBrowserBox->addRow("/gmcharcommands 'NAME'", _("Char commands"));
+    }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: back to gm menu
     mBrowserBox->addRow("gm", _("Back"));
@@ -2802,8 +2866,10 @@ void PopupMenu::showPlayerMenu()
 
 void PopupMenu::showPlayerGMCommands(const std::string &name)
 {
+    if (localPlayer == nullptr)
+        return;
     const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
-    if (!legacy)
+    if (!legacy && isAllowCommand(ServerCommandType::where))
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: find player position
@@ -2815,29 +2881,40 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
         // TRANSLATORS: check player ip
         mBrowserBox->addRow("/ipcheck 'NAME'", _("Check ip"));
     }
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: go to player position
-    mBrowserBox->addRow("/gotopc 'NAME'", _("Goto"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: recall player to current position
-    mBrowserBox->addRow("/recallpc 'NAME'", _("Recall"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: revive player
-    mBrowserBox->addRow("/alive 'NAME'", _("Revive"));
+    if (isAllowCommand(ServerCommandType::jumpto))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: go to player position
+        mBrowserBox->addRow("/gotopc 'NAME'", _("Goto"));
+    }
+    if (isAllowCommand(ServerCommandType::recall))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: recall player to current position
+        mBrowserBox->addRow("/recallpc 'NAME'", _("Recall"));
+    }
+    if (isAllowOtherCommand(ServerCommandType::alive))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: revive player
+        mBrowserBox->addRow("/alive 'NAME'", _("Revive"));
+    }
     if (!legacy)
     {
         Being *const being = actorManager->findBeingByName(name,
             ActorType::Player);
-        if (being != nullptr)
+        if (being != nullptr && being == localPlayer)
         {
-            if (!being->getPartyName().empty())
+            if (!being->getPartyName().empty() &&
+                isAllowCommand(ServerCommandType::partyrecall))
             {
                 mBrowserBox->addRow("/partyrecall 'PARTY'",
                     // TRANSLATORS: popup menu item
                     // TRANSLATORS: recall all party members to player location
                     _("Recall party"));
             }
-            if (!being->getGuildName().empty())
+            if (!being->getGuildName().empty() &&
+                isAllowCommand(ServerCommandType::guildrecall))
             {
                 mBrowserBox->addRow("/guildrecall 'PARTY'",
                     // TRANSLATORS: popup menu item
@@ -2845,10 +2922,12 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
                     _("Recall guild"));
             }
         }
-        if ((localPlayer != nullptr) && localPlayer->isInParty())
+        if (localPlayer->isInParty())
         {
             const Party *const party = localPlayer->getParty();
-            if ((party != nullptr) && party->isMember(name))
+            if (party != nullptr &&
+                party->isMember(name) &&
+                isAllowCommand(ServerCommandType::changeleader))
             {
                 mBrowserBox->addRow("/gmpartyleader 'NAME'",
                     // TRANSLATORS: popup menu item
@@ -2857,12 +2936,18 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
             }
         }
 
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: nuke player
-        mBrowserBox->addRow("/gmnuke 'NAME'", _("Nuke"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: kill player
-        mBrowserBox->addRow("/kill 'NAME'", _("Kill"));
+        if (isAllowCommand(ServerCommandType::nuke))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: nuke player
+            mBrowserBox->addRow("/gmnuke 'NAME'", _("Nuke"));
+        }
+        if (isAllowOtherCommand(ServerCommandType::kill))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: kill player
+            mBrowserBox->addRow("/kill 'NAME'", _("Kill"));
+        }
         if (mBeingId != BeingId_zero)
         {
             mBrowserBox->addRow("##3---");
@@ -2886,53 +2971,97 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
     }
     else
     {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: heal player
-        mBrowserBox->addRow("/gmheal 'NAME'", _("Heal"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: enable immortal mode for player
-        mBrowserBox->addRow("/immortal 'NAME'", _("Immortal"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: send player to jail
-        mBrowserBox->addRow("/jail 'NAME'", _("Jail"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: restore player from jail
-        mBrowserBox->addRow("/unjail 'NAME'", _("Unjail"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: hide player
-        mBrowserBox->addRow("/hide 'NAME'", _("Hide"));
+        if (isAllowOtherCommand(ServerCommandType::heal))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: heal player
+            mBrowserBox->addRow("/gmheal 'NAME'", _("Heal"));
+        }
+        if (isAllowOtherCommand(ServerCommandType::monsterignore))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: enable immortal mode for player
+            mBrowserBox->addRow("/immortal 'NAME'", _("Immortal"));
+        }
+        if (isAllowCommand(ServerCommandType::jail))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: send player to jail
+            mBrowserBox->addRow("/jail 'NAME'", _("Jail"));
+        }
+        if (isAllowCommand(ServerCommandType::unjail))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: restore player from jail
+            mBrowserBox->addRow("/unjail 'NAME'", _("Unjail"));
+        }
+        if (name == localPlayer->getName() &&
+            isAllowCommand(ServerCommandType::hide))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: hide player
+            mBrowserBox->addRow("/hide 'NAME'", _("Hide"));
+        }
         mBrowserBox->addRow("##3---");
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: set player as killer
-        mBrowserBox->addRow("/killer 'NAME'", _("Killer"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: set player as killable
-        mBrowserBox->addRow("/killable 'NAME'", _("Killable"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: set player save position
-        mBrowserBox->addRow("/savepos 'NAME'", _("Set save"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: warp player to save position
-        mBrowserBox->addRow("/loadpos 'NAME'", _("Warp to save"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: warp player to random position on same map
-        mBrowserBox->addRow("/randomwarp 'NAME'", _("Warp to random"));
+        if (isAllowOtherCommand(ServerCommandType::killer))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: set player as killer
+            mBrowserBox->addRow("/killer 'NAME'", _("Killer"));
+        }
+        if (isAllowOtherCommand(ServerCommandType::killable))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: set player as killable
+            mBrowserBox->addRow("/killable 'NAME'", _("Killable"));
+        }
+        if (isAllowOtherCommand(ServerCommandType::save))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: set player save position
+            mBrowserBox->addRow("/savepos 'NAME'", _("Set save"));
+        }
+        if (isAllowOtherCommand(ServerCommandType::load))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: warp player to save position
+            mBrowserBox->addRow("/loadpos 'NAME'", _("Warp to save"));
+        }
+        if (isAllowOtherCommand(ServerCommandType::jump))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: warp player to random position on same map
+            mBrowserBox->addRow("/randomwarp 'NAME'", _("Warp to random"));
+        }
         mBrowserBox->addRow("##3---");
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: spawn player clone
-        mBrowserBox->addRow("/spawnclone 'NAME'", _("Spawn clone"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: spawn slave player clone
-        mBrowserBox->addRow("/spawnslaveclone 'NAME'", _("Spawn slave clone"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: spawn evil player clone
-        mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
+        if (isAllowCommand(ServerCommandType::clone))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: spawn player clone
+            mBrowserBox->addRow("/spawnclone 'NAME'", _("Spawn clone"));
+        }
+        if (isAllowCommand(ServerCommandType::slaveclone))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: spawn slave player clone
+            mBrowserBox->addRow("/spawnslaveclone 'NAME'", _("Spawn slave clone"));
+        }
+        if (isAllowCommand(ServerCommandType::evilclone))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: spawn evil player clone
+            mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
+        }
         mBrowserBox->addRow("##3---");
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: break guild
-        mBrowserBox->addRow("/gmbreakguild 'NAME'", _("Break guild"));
+        if (isAllowOtherCommand(ServerCommandType::breakguild))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: break guild
+            mBrowserBox->addRow("/gmbreakguild 'NAME'", _("Break guild"));
+        }
     }
-    if (mBeingId != BeingId_zero)
+    if (mBeingId != BeingId_zero &&
+        isAllowCommand(ServerCommandType::kick))
     {
         mBrowserBox->addRow("##3---");
         // TRANSLATORS: popup menu item
@@ -2948,7 +3077,8 @@ void PopupMenu::showMuteCommands()
     mBrowserBox->addRow(strprintf(_("Mute %s"),
         mName.c_str()));
     if (mBeingId != BeingId_zero &&
-        Net::getNetworkType() != ServerType::TMWATHENA)
+        Net::getNetworkType() != ServerType::TMWATHENA &&
+        isAllowCommand(ServerCommandType::mute))
     {
         mBrowserBox->addRow("mute_+1",
             // TRANSLATORS: popup menu item
@@ -3006,26 +3136,42 @@ void PopupMenu::showNpcGMCommands()
 {
     if (mBeingId != BeingId_zero)
     {
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: kick player
-        mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+        if (isAllowCommand(ServerCommandType::kick))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: kick player
+            mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+        }
         const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
         if (!legacy)
         {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: hide npc
-            mBrowserBox->addRow("/hidenpc 'EXTNAME'", _("Hide"));
-            mBrowserBox->addRow("##3---");
-            mBrowserBox->addRow("/npcmove 'EEXTNAME' 'PLAYERX' 'PLAYERY'",
+            if (isAllowCommand(ServerCommandType::hidenpc))
+            {
                 // TRANSLATORS: popup menu item
-                // TRANSLATORS: warp npc to player location
-                _("Recall"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: disguise to npc
-            mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'", _("Disguise"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: warp to npc
-            mBrowserBox->addRow("/gotonpc 'EXTNAME'", _("Goto"));
+                // TRANSLATORS: hide npc
+                mBrowserBox->addRow("/hidenpc 'EXTNAME'", _("Hide"));
+            }
+            mBrowserBox->addRow("##3---");
+            if (isAllowCommand(ServerCommandType::npcmove))
+            {
+                mBrowserBox->addRow("/npcmove 'EEXTNAME' 'PLAYERX' 'PLAYERY'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: warp npc to player location
+                    _("Recall"));
+            }
+            if (isAllowCommand(ServerCommandType::disguise))
+            {
+                mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: disguise to npc
+                    _("Disguise"));
+            }
+            if (isAllowCommand(ServerCommandType::tonpc))
+            {
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: warp to npc
+                mBrowserBox->addRow("/gotonpc 'EXTNAME'", _("Goto"));
+            }
         }
     }
 }
@@ -3035,32 +3181,56 @@ void PopupMenu::showMonsterGMCommands()
     if (mBeingId != BeingId_zero)
     {
         const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: kick monster
-        mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
-        // TRANSLATORS: popup menu item
-        // TRANSLATORS: spawn monster
-        mBrowserBox->addRow("/spawn 'BEINGSUBTYPEID'", _("Spawn same"));
+        if (isAllowCommand(ServerCommandType::kick))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: kick monster
+            mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
+        }
+        if (isAllowCommand(ServerCommandType::monster))
+        {
+            // TRANSLATORS: popup menu item
+            // TRANSLATORS: spawn monster
+            mBrowserBox->addRow("/spawn 'BEINGSUBTYPEID'", _("Spawn same"));
+        }
         if (!legacy)
         {
-            mBrowserBox->addRow("/spawnslave 'BEINGSUBTYPEID'",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: spawn slave monster
-                _("Spawn slave"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: disguise to monster
-            mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'", _("Disguise"));
+            if (isAllowCommand(ServerCommandType::summon))
+            {
+                mBrowserBox->addRow("/spawnslave 'BEINGSUBTYPEID'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: spawn slave monster
+                    _("Spawn slave"));
+            }
+            if (isAllowCommand(ServerCommandType::disguise))
+            {
+                mBrowserBox->addRow("/disguise 'BEINGSUBTYPEID'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: disguise to monster
+                    _("Disguise"));
+            }
             mBrowserBox->addRow("##3---");
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: show monster information
-            mBrowserBox->addRow("/monsterinfo 'BEINGSUBTYPEID'", _("Info"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: show selected monster in current map
-            mBrowserBox->addRow("/mobsearch 'BEINGSUBTYPEID'", _("Search"));
-            mBrowserBox->addRow("/mobspawnsearch 'BEINGSUBTYPEID'",
-                // TRANSLATORS: popup menu item
-                // TRANSLATORS: show selected monster spawns in all maps
-                _("Search spawns"));
+            if (isAllowCommand(ServerCommandType::mobinfo))
+            {
+                mBrowserBox->addRow("/monsterinfo 'BEINGSUBTYPEID'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: show monster information
+                    _("Info"));
+            }
+            if (isAllowCommand(ServerCommandType::mobsearch))
+            {
+                mBrowserBox->addRow("/mobsearch 'BEINGSUBTYPEID'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: show selected monster in current map
+                    _("Search"));
+            }
+            if (isAllowCommand(ServerCommandType::whereis))
+            {
+                mBrowserBox->addRow("/mobspawnsearch 'BEINGSUBTYPEID'",
+                    // TRANSLATORS: popup menu item
+                    // TRANSLATORS: show selected monster spawns in all maps
+                    _("Search spawns"));
+            }
         }
     }
 }
@@ -3070,12 +3240,18 @@ void PopupMenu::showFloorItemGMCommands()
     const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
     if (legacy)
         return;
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show item information
-    mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show who drops item
-    mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
+    if (isAllowCommand(ServerCommandType::iteminfo))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show item information
+        mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
+    }
+    if (isAllowCommand(ServerCommandType::whodrops))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show who drops item
+        mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
+    }
 }
 
 void PopupMenu::showItemGMCommands()
@@ -3083,31 +3259,40 @@ void PopupMenu::showItemGMCommands()
     const bool legacy = Net::getNetworkType() == ServerType::TMWATHENA;
     if (legacy)
         return;
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show item information
-    mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: show who drops item
-    mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
+    if (isAllowCommand(ServerCommandType::iteminfo))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show item information
+        mBrowserBox->addRow("/iteminfo 'ITEMID'", _("Info"));
+    }
+    if (isAllowCommand(ServerCommandType::whodrops))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: show who drops item
+        mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
+    }
     mBrowserBox->addRow("##3---");
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm create item
-    mBrowserBox->addRow("/createitem 'ITEMID' 1", _("Add 1"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm create item
-    mBrowserBox->addRow("/createitem 'ITEMID' 5", _("Add 5"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm create item
-    mBrowserBox->addRow("/createitem 'ITEMID' 10", _("Add 10"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm create item
-    mBrowserBox->addRow("/createitem 'ITEMID' 100", _("Add 100"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm create item
-    mBrowserBox->addRow("/createitem 'ITEMID' 1000", _("Add 1000"));
-    // TRANSLATORS: popup menu item
-    // TRANSLATORS: gm create item
-    mBrowserBox->addRow("/createitem 'ITEMID' 10000", _("Add 10000"));
+    if (isAllowCommand(ServerCommandType::item))
+    {
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm create item
+        mBrowserBox->addRow("/createitem 'ITEMID' 1", _("Add 1"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm create item
+        mBrowserBox->addRow("/createitem 'ITEMID' 5", _("Add 5"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm create item
+        mBrowserBox->addRow("/createitem 'ITEMID' 10", _("Add 10"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm create item
+        mBrowserBox->addRow("/createitem 'ITEMID' 100", _("Add 100"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm create item
+        mBrowserBox->addRow("/createitem 'ITEMID' 1000", _("Add 1000"));
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: gm create item
+        mBrowserBox->addRow("/createitem 'ITEMID' 10000", _("Add 10000"));
+    }
 }
 
 void PopupMenu::showGMPopup(const std::string &name)

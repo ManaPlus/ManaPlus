@@ -29,6 +29,8 @@
 
 #include "enums/inventorytype.h"
 
+#include "enums/resources/servercommandtype.h"
+
 #include "enums/simpletypes/beingid.h"
 #include "enums/simpletypes/beingtypeid.h"
 #include "enums/simpletypes/itemcolor.h"
@@ -205,6 +207,10 @@ class PopupMenu final : public Popup, public LinkHandler
 
     private:
         void initPopup();
+
+        bool isAllowCommand(const ServerCommandTypeT command);
+
+        bool isAllowOtherCommand(const ServerCommandTypeT command);
 
         void setMousePos();
 
