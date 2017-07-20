@@ -166,6 +166,11 @@ bool PopupMenu::isAllowCommand(const ServerCommandTypeT command)
         return true;
     }
 #endif
+    if (mGroup->mPermissions[CAST_SIZE(ServerPermissionType::all_commands)] ==
+        Enable_true)
+    {
+        return true;
+    }
     const ServerCommandEnable::Type enabled =
         mGroup->mCommands[CAST_SIZE(command)];
     return (enabled & ServerCommandEnable::Self) != 0;
