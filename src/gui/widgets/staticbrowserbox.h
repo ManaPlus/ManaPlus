@@ -72,6 +72,8 @@ class StaticBrowserBox final : public Widget,
         void setOpaque(Opaque opaque)
         { mOpaque = opaque; }
 
+        void addSeparator(const std::string &row);
+
         /**
          * Adds a text row to the browser.
          */
@@ -183,6 +185,7 @@ class StaticBrowserBox final : public Widget,
         bool mEnableImages;
         bool mEnableKeys;
         bool mEnableTabs;
+        bool mSeparator;
 
         static ImageSet *mEmotes;
         static int mInstances;

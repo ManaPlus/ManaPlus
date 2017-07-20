@@ -84,7 +84,8 @@ StaticBrowserBox::StaticBrowserBox(const Widget2 *const widget,
     mProcessVars(false),
     mEnableImages(false),
     mEnableKeys(false),
-    mEnableTabs(false)
+    mEnableTabs(false),
+    mSeparator(false)
 {
     mAllowLogic = false;
 
@@ -156,6 +157,14 @@ void StaticBrowserBox::setLinkHandler(LinkHandler* linkHandler)
     mLinkHandler = linkHandler;
 }
 
+void StaticBrowserBox::addSeparator(const std::string &row)
+{
+    if (mSeparator)
+        return;
+    addRow(row, false);
+    mSeparator = true;
+}
+
 void StaticBrowserBox::addRow(const std::string &row,
                               const bool atTop)
 {
@@ -167,6 +176,8 @@ void StaticBrowserBox::addRow(const std::string &row,
 
     if (getWidth() < 0)
         return;
+
+    mSeparator = false;
 
     if (mProcessVars)
     {

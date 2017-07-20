@@ -237,15 +237,15 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
             addMailCommands();
             addGmCommands();
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
 
             // TRANSLATORS: popup menu item
             // TRANSLATORS: heal player
             mBrowserBox->addRow("/heal :'BEINGID'", _("Heal"));
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
 
             addPlayerRelation(name);
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
 
             addFollow();
             addPartyName(being->getPartyName());
@@ -338,7 +338,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             }
 
             addGmCommands();
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to npc location
             mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
@@ -356,11 +356,11 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow("/attack :'BEINGID'", _("Attack"));
             addCatchPetCommands();
             addGmCommands();
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
 
             if (config.getBoolValue("enableAttackFilter"))
             {
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
                 if (actorManager->isInAttackList(name)
                     || actorManager->isInIgnoreAttackList(name)
                     || actorManager->isInPriorityAttackList(name))
@@ -394,11 +394,11 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             // TRANSLATORS: Mercenary move to master
             mBrowserBox->addRow("/mercenarytomaster", _("Move to master"));
             addGmCommands();
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: fire mercenary
             mBrowserBox->addRow("/firemercenary", _("Fire"));
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             break;
 
         case ActorType::Homunculus:
@@ -413,15 +413,15 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: feed homunculus
                 mBrowserBox->addRow("/homunculusfeed", _("Feed"));
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet rename item
                 mBrowserBox->addRow("/sethomunname", _("Rename"));
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: delete homunculus
                 mBrowserBox->addRow("/homunculusfire", _("Kill"));
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
             }
             addGmCommands();
             break;
@@ -439,11 +439,11 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 // TRANSLATORS: pet unequip item
                 mBrowserBox->addRow("/petunequip", _("Unequip"));
                 addGmCommands();
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: pet rename item
                 mBrowserBox->addRow("/setpetname", _("Rename"));
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
                 const BeingInfo *const info = being->getInfo();
                 std::string msg;
                 if (info != nullptr)
@@ -459,7 +459,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                         // TRANSLATORS: pet return to egg
                         _("Return to egg"));
                 }
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
             }
             else
             {
@@ -496,7 +496,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add being name to chat
     mBrowserBox->addRow("/addtext 'NAME'", _("Add name to chat"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -582,7 +582,7 @@ void PopupMenu::showPopup(const int x, const int y,
                 floorItem->getName().c_str()));
         }
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -612,10 +612,10 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
     addMailCommands();
     addGmCommands();
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     addPlayerRelation(name);
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     addFollow();
     // TRANSLATORS: popup menu item
@@ -633,7 +633,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: kick player from party
                 mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
                 const PartyMember *const o = party->getMember(
                     localPlayer->getName());
                 showAdoptCommands();
@@ -688,7 +688,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add player name to chat
     mBrowserBox->addRow("/addtext 'NAME'", _("Add name to chat"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -727,7 +727,7 @@ void PopupMenu::showPopup(const int x, const int y,
             // TRANSLATORS: popup menu item
             // TRANSLATORS: pickup item from ground
             mBrowserBox->addRow("/pickup 'FLOORID'", _("Pick up"));
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
         }
         addPickupFilter(name);
     }
@@ -741,7 +741,7 @@ void PopupMenu::showPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
     mBrowserBox->addRow("/addchat 'FLOORID''CARDS'", _("Add to chat"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     addGmCommands();
 
     // TRANSLATORS: popup menu item
@@ -774,12 +774,12 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
 
     if (isAllowCommand(ServerCommandType::slide))
     {
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: warp to map item
         mBrowserBox->addRow("/slide 'MAPX' 'MAPY'", _("Warp"));
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -821,13 +821,13 @@ void PopupMenu::showMapPopup(const int x, const int y,
         // TRANSLATORS: restore camera to default view
         mBrowserBox->addRow("/restorecamera", _("Restore camera"));
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     if (isMinimap)
     {
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("window close", _("Close"));
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -849,18 +849,18 @@ void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy selected outfit to chat input
     mBrowserBox->addRow("/outfittochat", _("Add to chat"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy equipment from player to outfit
     mBrowserBox->addRow("/itemstooutfit", _("Copy from player"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: clear selected outfit
     mBrowserBox->addRow("/clearoutfit", _("Clear outfit"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     addWindowMenu(outfitWindow);
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -887,7 +887,7 @@ void PopupMenu::showSpellPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: edit selected spell
     mBrowserBox->addRow("edit spell", _("Edit spell"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -923,7 +923,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
     // TRANSLATORS: popup menu item
     // TRANSLATORS: remove all text from chat tab
     mBrowserBox->addRow("/chatclear", _("Clear"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     if (tab->getAllowHighlight())
     {
@@ -961,18 +961,18 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
         // TRANSLATORS: disable away messages in chat tab
         mBrowserBox->addRow("/disableaway", _("Disable away"));
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     if (type == ChatTabType::PARTY)
     {
         // TRANSLATORS: popup menu item
         // TRANSLATORS: enable away messages in chat tab
         mBrowserBox->addRow("/leaveparty", _("Leave"));
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy selected text to clipboard
     mBrowserBox->addRow("/chatclipboard 'X' 'Y'", _("Copy to clipboard"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     if (type == ChatTabType::WHISPER)
     {
@@ -998,20 +998,20 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             // TRANSLATORS: attack player
             mBrowserBox->addRow("/attack 'NAME'", _("Attack"));
             addMailCommands();
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: heal player
             mBrowserBox->addRow("/heal :'BEINGID'", _("Heal"));
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             addPlayerRelation(name);
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             addFollow();
             // TRANSLATORS: popup menu item
             // TRANSLATORS: move to player position
             mBrowserBox->addRow("/navigateto 'NAME'", _("Move"));
             addPlayerMisc();
             addBuySell(being);
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             addParty(wTab->getNick());
             const Guild *const guild1 = being->getGuild();
             const Guild *const guild2 = localPlayer->getGuild();
@@ -1064,7 +1064,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             mType = ActorType::Player;
             mSubType = BeingTypeId_zero;
             addPlayerRelation(name);
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             addMailCommands();
             addFollow();
 
@@ -1086,7 +1086,7 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
             addBuySellDefault();
             if (Net::getNetworkType() != ServerType::TMWATHENA)
                 addParty(wTab->getNick());
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
         }
     }
 
@@ -1222,7 +1222,7 @@ void PopupMenu::showEmoteType()
         // TRANSLATORS: show emotes for mercenary
         mBrowserBox->addRow("/setemotetype merc", _("Mercenary"));
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
@@ -1612,7 +1612,7 @@ void PopupMenu::showPopup(Window *const parent,
                         // TRANSLATORS: add all amount item to trade
                         _("Add to trade all"));
                 }
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
             }
             if (InventoryWindow::isStorageActive())
             {
@@ -1641,7 +1641,7 @@ void PopupMenu::showPopup(Window *const parent,
                         // TRANSLATORS: add all item amount to storage
                         _("Store all"));
                 }
-                mBrowserBox->addRow("##3---");
+                mBrowserBox->addSeparator("##3---");
             }
             if (npcHandler != nullptr)
             {
@@ -1703,14 +1703,14 @@ void PopupMenu::showPopup(Window *const parent,
     {
         mName = item->getName();
         mExtName = mName;
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         addPickupFilter(mName);
     }
     addGmCommands();
     // TRANSLATORS: popup menu item
     // TRANSLATORS: add item name to chat
     mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1751,7 +1751,7 @@ void PopupMenu::showItemPopup(const int x, const int y,
         }
         addProtection();
         addGmCommands();
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: close menu
         mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1804,13 +1804,13 @@ void PopupMenu::showItemPopup(const int x, const int y,
         {
             mName = item->getName();
             mExtName = mName;
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             addPickupFilter(mName);
         }
     }
     addProtection();
     addGmCommands();
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1852,15 +1852,15 @@ void PopupMenu::showDropPopup(const int x,
         {
             mName = item->getName();
             mExtName = mName;
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             addPickupFilter(mName);
         }
     }
     addGmCommands();
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("/cleardrops", _("Clear drop window"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1902,7 +1902,7 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
                 btn->getDescription().c_str(), btn->getCaption().c_str()));
         }
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -1966,12 +1966,12 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
         }
     }
 
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("/yellowbar", _("Open yellow bar settings"));
     // TRANSLATORS: popup menu item
     mBrowserBox->addRow("/resetmodifiers", _("Reset yellow bar"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy status to chat
     mBrowserBox->addRow("/bartochat 'NAME'", _("Copy to chat"));
@@ -2058,7 +2058,7 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: remove attack target
     mBrowserBox->addRow("/removeattack 'NAME'", _("Remove"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2095,7 +2095,7 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: remove item from pickup filter
     mBrowserBox->addRow("/removepickup 'NAME'", _("Remove"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2129,7 +2129,7 @@ void PopupMenu::showUndressPopup(const int x, const int y,
     // TRANSLATORS: add item name to chat
     mBrowserBox->addRow("/addchat 'ITEMID''CARDS'", _("Add to chat"));
     addGmCommands();
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2151,7 +2151,7 @@ void PopupMenu::showTextFieldPopup(TextField *const input)
     // TRANSLATORS: popup menu item
     // TRANSLATORS: paste text from clipboard
     mBrowserBox->addRow("clipboard paste", _("Paste"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2174,7 +2174,7 @@ void PopupMenu::showLinkPopup(const std::string &link)
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy link to clipboard
     mBrowserBox->addRow("/clipboardcopy 'NAME'", _("Copy to clipboard"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2201,7 +2201,7 @@ void PopupMenu::showWindowsPopup()
             CAST_S32(btn->key)),
             btn->text.c_str());
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2220,7 +2220,7 @@ void PopupMenu::showNpcDialogPopup(const BeingId npcId,
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy npc text to clipboard
     mBrowserBox->addRow("/npcclipboard 'X' 'Y'", _("Copy to clipboard"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2346,7 +2346,7 @@ void PopupMenu::showSkillLevelPopup(const SkillInfo *const info)
         // TRANSLATORS: popup menu item
         // TRANSLATORS: skill level
         _("Max level"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2390,7 +2390,7 @@ void PopupMenu::showSkillTypePopup(const SkillInfo *const info)
         // TRANSLATORS: popup menu item
         // TRANSLATORS: skill cast type
         _("Self"));
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -2556,7 +2556,7 @@ void PopupMenu::addBuySell(const Being *const being)
 {
     if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)
     {
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         const bool haveVending =
             (Net::getNetworkType() != ServerType::TMWATHENA);
         if (being->isSellShopEnabled())
@@ -2590,7 +2590,7 @@ void PopupMenu::addBuySellDefault()
 {
     if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)
     {
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: buy item
         mBrowserBox->addRow("/buy 'NAME'", _("Buy (?)"));
@@ -2619,7 +2619,7 @@ void PopupMenu::addPartyName(const std::string &partyName)
                 mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
                 showAdoptCommands();
             }
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
         }
     }
 }
@@ -2644,7 +2644,7 @@ void PopupMenu::addParty(const std::string &nick)
                 mBrowserBox->addRow("/kickparty 'NAME'", _("Kick from party"));
                 showAdoptCommands();
             }
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
         }
     }
 }
@@ -2660,7 +2660,7 @@ void PopupMenu::addChat(const Being *const being)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: invite player to party
             strprintf(_("Join chat %s"), chat->title.c_str()).c_str());
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
     }
 }
 
@@ -2740,7 +2740,7 @@ void PopupMenu::addProtection()
 {
     if (PlayerInfo::isItemProtected(mItemId))
     {
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: remove protection from item
         mBrowserBox->addRow("/unprotectitem 'ITEMID'", _("Unprotect item"));
@@ -2749,7 +2749,7 @@ void PopupMenu::addProtection()
     {
         if (mItemId < SPELL_MIN_ID)
         {
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: add protection to item
             mBrowserBox->addRow("/protectitem 'ITEMID'", _("Protect item"));
@@ -2777,7 +2777,7 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
 
     if (!isProtected)
     {
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         if (item->getQuantity() > 1)
         {
             // TRANSLATORS: popup menu item
@@ -2955,7 +2955,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
         }
         if (mBeingId != BeingId_zero)
         {
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             // TRANSLATORS: popup menu item
             // TRANSLATORS: show menu
             mBrowserBox->addRow("show", _("Show..."));
@@ -2971,7 +2971,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
             // TRANSLATORS: popup menu item
             // TRANSLATORS: hide player
             mBrowserBox->addRow("/hide", _("Hide"));
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
         }
     }
     else
@@ -3007,7 +3007,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
             // TRANSLATORS: hide player
             mBrowserBox->addRow("/hide 'NAME'", _("Hide"));
         }
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         if (isAllowOtherCommand(ServerCommandType::killer))
         {
             // TRANSLATORS: popup menu item
@@ -3038,7 +3038,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
             // TRANSLATORS: warp player to random position on same map
             mBrowserBox->addRow("/randomwarp 'NAME'", _("Warp to random"));
         }
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         if (isAllowCommand(ServerCommandType::clone))
         {
             // TRANSLATORS: popup menu item
@@ -3057,7 +3057,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
             // TRANSLATORS: spawn evil player clone
             mBrowserBox->addRow("/spawnevilclone 'NAME'", _("Spawn evil clone"));
         }
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         if (isAllowOtherCommand(ServerCommandType::breakguild))
         {
             // TRANSLATORS: popup menu item
@@ -3068,7 +3068,7 @@ void PopupMenu::showPlayerGMCommands(const std::string &name)
     if (mBeingId != BeingId_zero &&
         isAllowCommand(ServerCommandType::kick))
     {
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
         // TRANSLATORS: popup menu item
         // TRANSLATORS: kick player
         mBrowserBox->addRow("/kick :'BEINGID'", _("Kick"));
@@ -3126,7 +3126,7 @@ void PopupMenu::showMuteCommands()
             // TRANSLATORS: popup menu item
             // TRANSLATORS: mute player
             strprintf(_("Unmute %d"), 30).c_str());
-        mBrowserBox->addRow("##3---");
+        mBrowserBox->addSeparator("##3---");
     }
     // TRANSLATORS: popup menu item
     // TRANSLATORS: back to gm menu
@@ -3156,7 +3156,7 @@ void PopupMenu::showNpcGMCommands()
                 // TRANSLATORS: hide npc
                 mBrowserBox->addRow("/hidenpc 'EXTNAME'", _("Hide"));
             }
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             if (isAllowCommand(ServerCommandType::npcmove))
             {
                 mBrowserBox->addRow("/npcmove 'EEXTNAME' 'PLAYERX' 'PLAYERY'",
@@ -3214,7 +3214,7 @@ void PopupMenu::showMonsterGMCommands()
                     // TRANSLATORS: disguise to monster
                     _("Disguise"));
             }
-            mBrowserBox->addRow("##3---");
+            mBrowserBox->addSeparator("##3---");
             if (isAllowCommand(ServerCommandType::mobinfo))
             {
                 mBrowserBox->addRow("/monsterinfo 'BEINGSUBTYPEID'",
@@ -3276,7 +3276,7 @@ void PopupMenu::showItemGMCommands()
         // TRANSLATORS: show who drops item
         mBrowserBox->addRow("/whodrops 'ITEMID'", _("Who drops"));
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     if (isAllowCommand(ServerCommandType::item))
     {
         // TRANSLATORS: popup menu item
@@ -3344,7 +3344,7 @@ void PopupMenu::showGMPopup(const std::string &name)
         }
     }
 
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
     // TRANSLATORS: popup menu item
     // TRANSLATORS: close menu
     mBrowserBox->addRow("cancel", _("Cancel"));
@@ -3447,7 +3447,7 @@ void PopupMenu::addSocialMenu()
             mBrowserBox->addRow("/createguild", _("Create guild"));
         }
     }
-    mBrowserBox->addRow("##3---");
+    mBrowserBox->addSeparator("##3---");
 }
 
 void PopupMenu::showPartyPopup()
