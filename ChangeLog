@@ -1,3 +1,15 @@
+2017-07-22 New release 1.7.7.22
+fix: memory leak if player not totally visible while moving.
+fix: character select dialog size if slots more than two rows.
+fix: show own group level if group hidden from public.
+fix: show tinyxml2 in client name if it was used.
+fix: possible crash on exit if compiled with SDL 2.
+add: command line flag for validate client data.
+add: show group name in being popups.
+add: load group name, badge, commands, permissions from xml file.
+add: mse lib with secure vector (for debug).
+add: show gm commands based on allowed commands for local player.
+
 2017-07-08 New release 1.7.7.8
 fix: flushing background logs.
 fix: stats in item popups.

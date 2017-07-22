@@ -40,8 +40,8 @@
  * by the map, interleaved with the tiles in the fringe layer.
  */
 
-#define SMALL_VERSION "1.7.7.8"
-#define CHECK_VERSION "01.07.07.08"
+#define SMALL_VERSION "1.7.7.22"
+#define CHECK_VERSION "01.07.07.22"
 
 #ifdef HAVE_CONFIG_H
 #include "../config.h"
