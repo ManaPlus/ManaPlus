@@ -36,6 +36,8 @@ Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg
 #### Embedded libs:
 
   - [catch](https://github.com/philsquared/Catch) and [doctest](https://github.com/onqtam/doctest) for unit testing.
+  - [nvwa](https://github.com/adah1972/nvwa) for debug memory leaks.
+  - [SaferCPlusPlus](https://github.com/duneroadrunner/SaferCPlusPlus) for debug issues in std::vector usage.
 
 ### Additional run time deps:
  - xsel (for clipboard access, used only in SDL 1.2)

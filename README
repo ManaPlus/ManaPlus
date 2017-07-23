@@ -29,6 +29,8 @@ THE MANA PLUS CLIENT
  Embedded libs:
 
   - catch and doctest for unit testing.
+  - nvwa for debug memory leaks.
+  - SaferCPlusPlus for debug issues in std::vector usage.
 
  Additiona run time deps:
   - xsel (for clipboard access, used only in SDL 1.2)
