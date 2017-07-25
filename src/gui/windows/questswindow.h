@@ -32,12 +32,12 @@
 #include "resources/questvar.h"
 
 class Being;
+class BrowserBox;
 class Button;
 class ExtendedListBox;
 class ItemLinkHandler;
 class Map;
 class ScrollArea;
-class StaticBrowserBox;
 class QuestsModel;
 
 struct QuestEffect;
@@ -81,7 +81,7 @@ class QuestsWindow final : public Window,
         ExtendedListBox *mQuestsListBox A_NONNULLPOINTER;
         ScrollArea *mQuestScrollArea A_NONNULLPOINTER;
         ItemLinkHandler *mItemLinkHandler A_NONNULLPOINTER;
-        StaticBrowserBox *mText A_NONNULLPOINTER;
+        BrowserBox *mText A_NONNULLPOINTER;
         ScrollArea *mTextScrollArea A_NONNULLPOINTER;
         Button *mCloseButton A_NONNULLPOINTER;
         Image *mCompleteIcon;
