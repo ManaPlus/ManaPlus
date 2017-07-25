@@ -50,7 +50,7 @@ function wait_for_servers_list {
 }
 
 function run {
-    ./src/manaplus --default-cursor --enable-ipc --renderer=0 >logs/run.log 2>&1 &
+    ./src/manaplus --hide-cursor --enable-ipc --renderer=0 >logs/run.log 2>&1 &
     export PID=$!
     sleep 20s
     echo "pause after run"

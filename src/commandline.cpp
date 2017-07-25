@@ -162,7 +162,7 @@ void parseOptions(const int argc, char *const argv[])
         { "renderer",       required_argument, nullptr, 'r' },
         { "server-type",    required_argument, nullptr, 'y' },
         { "enable-ipc",     no_argument,       nullptr, 'I' },
-        { "default-cursor", no_argument,       nullptr, 'q' },
+        { "hide-cursor",    no_argument,       nullptr, 'q' },
         { "error",          no_argument,       nullptr, 'e' },
         { "validate",       no_argument,       nullptr, 'V' },
         { nullptr,          0,                 nullptr, 0 }
@@ -260,7 +260,7 @@ void parseOptions(const int argc, char *const argv[])
                 options.ipc = true;
                 break;
             case 'q':
-                options.defaultCursor = true;
+                options.hideCursor = true;
                 break;
             case 'e':
                 options.error = true;

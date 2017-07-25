@@ -258,8 +258,7 @@ void Gui::postInit(Graphics *const graphics)
     Widget::setGlobalFont(mGuiFont);
 
     // Initialize mouse cursor and listen for changes to the option
-    setUseCustomCursor(config.getBoolValue("customcursor") &&
-        !settings.options.defaultCursor);
+    setUseCustomCursor(config.getBoolValue("customcursor"));
     setDoubleClick(config.getBoolValue("doubleClick"));
     config.addListener("customcursor", mConfigListener);
     config.addListener("doubleClick", mConfigListener);
@@ -554,6 +553,11 @@ void Gui::videoResized() const
 
 void Gui::setUseCustomCursor(const bool customCursor)
 {
+    if (settings.options.hideCursor)
+    {
+        SDL::showCursor(false);
+        return;
+    }
     if (customCursor != mCustomCursor)
     {
         mCustomCursor = customCursor;

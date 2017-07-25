@@ -65,7 +65,7 @@ struct Options final
         safeMode(false),
         testMode(false),
         ipc(false),
-        defaultCursor(false),
+        hideCursor(false),
         error(false),
         validate(false)
     {}
@@ -97,7 +97,7 @@ struct Options final
     bool safeMode;
     bool testMode;
     bool ipc;
-    bool defaultCursor;
+    bool hideCursor;
     bool error;
     bool validate;
 };
