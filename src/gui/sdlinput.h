@@ -380,6 +380,7 @@ class SDLInput final
 
         std::queue<KeyInput> mKeyInputQueue;
         std::queue<MouseInput> mMouseInputQueue;
+        time_t mMouseMoveTime;
 
         bool mMouseDown;
         bool mMouseInWindow;

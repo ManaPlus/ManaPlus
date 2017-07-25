@@ -362,6 +362,7 @@ void Gui::slowLogic()
         {
             mTime10 = time + 10;
             ResourceManager::cleanOrphans();
+            guiInput->simulateMouseMove();
         }
     }
 

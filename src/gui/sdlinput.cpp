@@ -91,11 +91,14 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
+extern volatile time_t cur_time;
+
 SDLInput *guiInput = nullptr;
 
 SDLInput::SDLInput() :
     mKeyInputQueue(),
     mMouseInputQueue(),
+    mMouseMoveTime(0),
     mMouseDown(false),
     mMouseInWindow(true)
 {
@@ -265,6 +268,7 @@ void SDLInput::pushInput(const SDL_Event &event)
             mouseInput.setType(MouseEventType::MOVED);
             mouseInput.setTimeStamp(SDL_GetTicks());
             mMouseInputQueue.push(mouseInput);
+            mMouseMoveTime = cur_time;
             break;
         }
 #ifndef USE_SDL2
@@ -285,6 +289,7 @@ void SDLInput::pushInput(const SDL_Event &event)
                     mouseInput.setButton(MouseButton::EMPTY);
                     mouseInput.setType(MouseEventType::MOVED);
                     mMouseInputQueue.push(mouseInput);
+                    mMouseMoveTime = cur_time;
                 }
             }
 
@@ -354,6 +359,10 @@ void SDLInput::simulateMouseMove()
     if (gui == nullptr)
         return;
 
+    if (mMouseMoveTime == cur_time)
+        return;
+
+    mMouseMoveTime = cur_time;
     int x, y;
     Gui::getMouseState(x, y);
 
