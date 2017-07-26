@@ -18,6 +18,8 @@ Coverage: [![coverage report](https://gitlab.com/manaplus/manaplus/badges/master
 
 Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg)](http://stats.manaplus.org/docs/index.html)
 
+Coverity: [![coverity](https://scan.coverity.com/projects/318/badge.svg)](https://scan.coverity.com/projects/manaplus)
+
 ### Development team:
  - See [AUTHORS](AUTHORS) file for a list
 
