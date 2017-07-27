@@ -222,6 +222,25 @@ send_command "/guikey 13 keyGUISelect2"
 send_command "/screenshot new_server.png"
 imagesdiff add_server_url2.png new_server.png
 
+# press about button
+send_command "/sendmousekey 500 20 1"
+send_command "/screenshot about.png"
+imagesdiff new_server.png about.png
+
+# open about page
+send_command "/sendmousekey 500 20 1"
+send_command "/screenshot about.png"
+
+# open about manaplus page
+send_command "/sendmousekey 300 395 1"
+send_command "/screenshot about2.png"
+imagesdiff about.png about2.png
+
+# open help window again
+send_command "/sendmousekey 220 200 1"
+send_command "/screenshot help2.png"
+imagesdiff about2.png help2.png
+
 # other comparisions
 imagesdiff downkey.png help.png
 imagesdiff help.png setup.png
@@ -235,6 +254,9 @@ imagesdiff run5.png add_server_description2.png
 imagesdiff run5.png add_server_url1.png
 imagesdiff run5.png add_server_url2.png
 imagesdiff run5.png new_server.png
+imagesdiff run5.png about.png
+imagesdiff run5.png about2.png
+imagesdiff run5.png help2.png
 
 imagesdiff run4.png add_server_name.png
 imagesdiff run4.png add_server_adress1.png
@@ -246,6 +268,12 @@ imagesdiff run4.png add_server_description2.png
 imagesdiff run4.png add_server_url1.png
 imagesdiff run4.png add_server_url2.png
 imagesdiff run4.png new_server.png
+imagesdiff run4.png about.png
+imagesdiff run4.png about2.png
+imagesdiff run4.png help2.png
+
+imagesdiff help.png about.png
+imagesdiff help.png help2.png
 
 # final delay
 sleep 5s
