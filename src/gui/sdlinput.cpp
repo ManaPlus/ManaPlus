@@ -392,13 +392,14 @@ void SDLInput::simulateKey(const int guiKey,
 
     keyInput.setKey(Key(KeyValue::TEXTINPUT));
     keyInput.setText(str);
-#else  // USE_SDL2
-
-    keyInput.setKey(Key(guiKey));
-
+    if (guiKey >= 32)
+        mKeyInputQueue.push(keyInput);
 #endif  // USE_SDL2
 
+    keyInput.setKey(Key(guiKey));
     if (actionId > InputAction::NO_VALUE)
         keyInput.setActionId(actionId);
+    mKeyInputQueue.push(keyInput);
+    keyInput.setType(KeyEventType::RELEASED);
     mKeyInputQueue.push(keyInput);
 }
