@@ -345,6 +345,10 @@ void SDLInput::simulateMouseClick(const int x, const int y,
     mouseInput.setX(x);
     mouseInput.setY(y);
     mouseInput.setReal(x, y);
+    mouseInput.setButton(MouseButton::EMPTY);
+    mouseInput.setType(MouseEventType::MOVED);
+    mouseInput.setTimeStamp(SDL_GetTicks());
+    mMouseInputQueue.push(mouseInput);
     mouseInput.setButton(button);
     mouseInput.setType(MouseEventType::PRESSED);
     mouseInput.setTimeStamp(SDL_GetTicks());
