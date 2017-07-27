@@ -10,10 +10,10 @@
  and diverse interactive world. It is licensed under the GPL, making
  sure this game can't ever run away from you.>>
 
-##9 Copyright (C) 2012-2014  The ManaPlus Developers
+##9 Copyright (C) 2012-2017  The ManaPlus Developers
  -> @@team|<<Manaplus Developers>>, http://manaplus.org@@
 
-##9 Copyright (C) 2004-2014  The Mana World Development Team
+##9 Copyright (C) 2004-2017  The Mana World Development Team
  -> @@about-tmw|<<About The Mana World>>@@
 
  -> @@about-server|<<About current server>>@@
