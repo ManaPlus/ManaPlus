@@ -1267,11 +1267,23 @@ void LocalPlayer::attributeChanged(const AttributesT id,
         }
         case Attributes::PLAYER_LEVEL:
             mLevel = newVal;
+            addMessageToQueue(strprintf("%s %d", _("Level"), newVal));
             break;
         case Attributes::PLAYER_HP:
             if (oldVal != 0 && newVal == 0)
                 PlayerDeathListener::distributeEvent();
             break;
+        case Attributes::TOTAL_WEIGHT:
+        {
+            // If player exceeds half weight show Encumbered message.
+            const int max = PlayerInfo::getAttribute(Attributes::MAX_WEIGHT) / 2;
+            const int total = oldVal;
+            if (newVal >= max && total < max)
+            {
+                addMessageToQueue(gettext(N_("Encumbered")), UserPalette::PICKUP_INFO);
+            }
+            break;
+        }
         default:
             break;
     }
