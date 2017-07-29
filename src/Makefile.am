@@ -768,6 +768,7 @@ BASE_SRC += events/actionevent.h \
 	      enums/being/targetcursorsize.h \
 	      enums/being/targetcursortype.h \
 	      enums/being/visiblename.h \
+	      enums/being/visiblenamepos.h \
 	      position.cpp \
 	      position.h \
 	      render/safeopenglgraphics.cpp\
@@ -1055,6 +1056,7 @@ SRC = ${BASE_SRC} \
 	      enums/being/attributes.h \
 	      enums/being/attributesstrings.cpp \
 	      enums/being/attributesstrings.h \
+	      enums/being/badgedrawtype.h \
 	      enums/being/badgeindex.h \
 	      dragdrop.h \
 	      gui/shortcut/dropshortcut.cpp \

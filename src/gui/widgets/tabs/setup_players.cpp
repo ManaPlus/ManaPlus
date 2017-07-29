@@ -63,10 +63,21 @@ static const char *const visibleNamesList[] =
     N_("show on selection")
 };
 
+static const int topDownListSize = 2;
+
+static const char *const topDownList[] =
+{
+    // TRANSLATORS: show on top or down
+    N_("top"),
+    // TRANSLATORS: show on top or down
+    N_("buttom")
+};
+
 Setup_Players::Setup_Players(const Widget2 *const widget) :
     SetupTabScroll(widget),
     mBadgesList(new NamesModel),
-    mVisibleNamesList(new NamesModel)
+    mVisibleNamesList(new NamesModel),
+    mVisibleNamesPosList(new NamesModel)
 {
     // TRANSLATORS: settings tab name
     setName(_("Players"));
@@ -101,6 +112,13 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
     new SetupItemDropDown(_("Show player names"), "",
         "visiblenames", this, "visiblenamesEvent",
         mVisibleNamesList, 150);
+
+    mVisibleNamesPosList->fillFromArray(&topDownList[0],
+        topDownListSize);
+    // TRANSLATORS: settings option
+    new SetupItemDropDown(_("Show player names at"), "",
+        "visiblenamespos", this, "visiblenamesposEvent",
+        mVisibleNamesPosList, 150);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto move names"), "",
@@ -176,6 +194,7 @@ Setup_Players::~Setup_Players()
 {
     delete2(mBadgesList);
     delete2(mVisibleNamesList);
+    delete2(mVisibleNamesPosList);
 }
 
 void Setup_Players::externalUpdated()

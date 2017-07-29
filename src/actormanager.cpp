@@ -243,6 +243,7 @@ ActorManager::ActorManager() :
     config.addListener("extMouseTargeting", this);
     config.addListener("showBadges", this);
     config.addListener("enableIdCollecting", this);
+    config.addListener("visiblenamespos", this);
 
     loadAttackList();
 }
@@ -1835,6 +1836,8 @@ void ActorManager::optionChanged(const std::string &name)
         mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
     else if (name == "showBadges")
         updateBadges();
+    else if (name == "visiblenamespos")
+        updateBadges();
     else if (name == "enableIdCollecting")
         mEnableIdCollecting = config.getBoolValue("enableIdCollecting");
 }
@@ -2122,16 +2125,19 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
 
 void ActorManager::updateBadges() const
 {
-    const uint8_t showBadges = CAST_U8(
+    const BadgeDrawType::Type showBadges = static_cast<BadgeDrawType::Type>(
         config.getIntValue("showBadges"));
     Being::mShowBadges = showBadges;
+    Being::mVisibleNamePos = static_cast<VisibleNamePos::Type>(
+        config.getIntValue("visiblenamespos"));
+
     for_actors
     {
         ActorSprite *const actor = *it;
         if (actor->getType() == ActorType::Player)
         {
             Being *const being = static_cast<Being*>(actor);
-            being->showBadges(showBadges != 0u);
+            being->showBadges(showBadges != BadgeDrawType::Hide);
         }
     }
 }

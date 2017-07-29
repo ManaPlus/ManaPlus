@@ -142,8 +142,9 @@ bool Being::mEnableReorderSprites = true;
 bool Being::mHideErased = false;
 Move Being::mMoveNames = Move_false;
 bool Being::mUseDiagonal = true;
-uint8_t Being::mShowBadges = 1;
+BadgeDrawType::Type Being::mShowBadges = BadgeDrawType::Top;
 int Being::mAwayEffect = -1;
+VisibleNamePos::Type Being::mVisibleNamePos = VisibleNamePos::Buttom;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
@@ -1096,7 +1097,9 @@ void Being::handleSkill(Being *restrict const victim,
 void Being::showNameBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Name]);
-    if (show && !mName.empty() && (mShowBadges != 0u))
+    if (show &&
+        !mName.empty() &&
+        mShowBadges != BadgeDrawType::Hide)
     {
         const std::string badge = BadgesDB::getNameBadge(mName);
         if (!badge.empty())
@@ -1153,7 +1156,9 @@ void Being::setShowName(const bool doShowName) restrict2
 void Being::showGuildBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Guild]);
-    if (show && !mGuildName.empty() && (mShowBadges != 0u))
+    if (show &&
+        !mGuildName.empty() &&
+        mShowBadges != BadgeDrawType::Hide)
     {
         const std::string badge = BadgesDB::getGuildBadge(mGuildName);
         if (!badge.empty())
@@ -2264,25 +2269,36 @@ void Being::drawEmotion(Graphics *restrict const graphics,
     const int py = mPixelY - offsetY - mapTileSize * 2 - mapTileSize;
     if (mAnimationEffect != nullptr)
         mAnimationEffect->draw(graphics, px, py);
-    if ((mShowBadges != 0u) && (mBadgesCount != 0u))
+    if (mShowBadges != BadgeDrawType::Hide &&
+        mBadgesCount != 0u)
     {
         int x;
         int y;
-        if (mShowBadges == 2 && mDispName != nullptr && gui != nullptr)
+        if (mShowBadges == BadgeDrawType::Right &&
+            mDispName != nullptr &&
+            gui != nullptr)
         {
             const Font *restrict const font = gui->getFont();
             x = mDispName->getX() - offsetX + mDispName->getWidth();
             y = mDispName->getY() - offsetY - font->getHeight();
         }
-        else if (mShowBadges == 3 && mDispName != nullptr && gui != nullptr)
+        else if (mShowBadges == BadgeDrawType::Bottom &&
+                 mDispName != nullptr &&
+                 gui != nullptr)
         {
             x = px + 8 - mBadgesCount * 8;
-            y = mDispName->getY() - offsetY;
+            if (mVisibleNamePos == VisibleNamePos::Buttom)
+                y = mDispName->getY() - offsetY;
+            else
+                y = py + getHeight() + 16;
         }
         else
         {
             x = px + 8 - mBadgesCount * 8;
-            y = py;
+            if (mVisibleNamePos == VisibleNamePos::Top)
+                y = py - mDispName->getHeight();
+            else
+                y = py;
         }
         for_each_badges()
         {
@@ -2407,8 +2423,11 @@ void Being::updateCoords() restrict2
         offsetY += mInfo->getNameOffsetY();
     }
     // Monster names show above the sprite instead of below it
-    if (mType == ActorType::Monster)
+    if (mType == ActorType::Monster ||
+        mVisibleNamePos == VisibleNamePos::Top)
+    {
         offsetY += - getHeight() - mDispName->getHeight();
+    }
 
     mDispName->adviseXY(offsetX, offsetY, mMoveNames);
 }
@@ -2444,7 +2463,8 @@ std::string Being::getGenderSign() const restrict2
         else if (getGender() == Gender::MALE)
             str = "\u2642";
     }
-    if (mShowPlayersStatus && (mShowBadges == 0u))
+    if (mShowPlayersStatus &&
+        mShowBadges == BadgeDrawType::Hide)
     {
         if (mShop)
             str.append("$");
@@ -3309,7 +3329,10 @@ void Being::reReadConfig()
         mHideErased = config.getBoolValue("hideErased");
         mMoveNames = fromBool(config.getBoolValue("moveNames"), Move);
         mUseDiagonal = config.getBoolValue("useDiagonalSpeed");
-        mShowBadges = CAST_U8(config.getIntValue("showBadges"));
+        mShowBadges = static_cast<BadgeDrawType::Type>(
+            config.getIntValue("showBadges"));
+        mVisibleNamePos = static_cast<VisibleNamePos::Type>(
+            config.getIntValue("visiblenamespos"));
 
         mUpdateConfigTime = cur_time;
     }
@@ -3502,7 +3525,7 @@ void Being::showGmBadge(const bool show) restrict2
     delete2(mBadges[BadgeIndex::Gm]);
     if (show &&
         mIsGM &&
-        mShowBadges != 0u &&
+        mShowBadges != BadgeDrawType::Hide &&
         GroupDb::getShowBadge(mGroupId))
     {
         const std::string &gmBadge = GroupDb::getBadge(mGroupId);
@@ -5019,7 +5042,9 @@ void Being::setTeamId(const uint16_t teamId) restrict2
 void Being::showTeamBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Team]);
-    if (show && (mTeamId != 0u) && (mShowBadges != 0u))
+    if (show &&
+        mTeamId != 0u &&
+        mShowBadges != BadgeDrawType::Hide)
     {
         const std::string name = paths.getStringValue("badges") +
             paths.getStringValue(strprintf("team%dbadge",
@@ -5045,7 +5070,9 @@ void Being::showBadges(const bool show) restrict2
 void Being::showPartyBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Party]);
-    if (show && !mPartyName.empty() && (mShowBadges != 0u))
+    if (show &&
+        !mPartyName.empty() &&
+        mShowBadges != BadgeDrawType::Hide)
     {
         const std::string badge = BadgesDB::getPartyBadge(mPartyName);
         if (!badge.empty())
@@ -5070,7 +5097,9 @@ void Being::setPartyName(const std::string &restrict name) restrict2
 void Being::showShopBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Shop]);
-    if (show && mShop && (mShowBadges != 0u))
+    if (show &&
+        mShop &&
+        mShowBadges != BadgeDrawType::Hide)
     {
         const std::string badge = paths.getStringValue("shopbadge");
         if (!badge.empty())
@@ -5085,7 +5114,9 @@ void Being::showShopBadge(const bool show) restrict2
 void Being::showInactiveBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Inactive]);
-    if (show && mInactive && (mShowBadges != 0u))
+    if (show &&
+        mInactive &&
+        mShowBadges != BadgeDrawType::Hide)
     {
         const std::string badge = paths.getStringValue("inactivebadge");
         if (!badge.empty())
@@ -5100,7 +5131,9 @@ void Being::showInactiveBadge(const bool show) restrict2
 void Being::showAwayBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Away]);
-    if (show && mAway && (mShowBadges != 0u))
+    if (show &&
+        mAway &&
+        mShowBadges != BadgeDrawType::Hide)
     {
         const std::string badge = paths.getStringValue("awaybadge");
         if (!badge.empty())

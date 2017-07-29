@@ -32,12 +32,15 @@
 
 #include "enums/simpletypes/move.h"
 
+#include "enums/being/visiblenamepos.h"
+
 #include "resources/beinginfo.h"
 #include "resources/beingslot.h"
 
 #include "being/actorsprite.h"
 
 #include "enums/being/attacktype.h"
+#include "enums/being/badgedrawtype.h"
 #include "enums/being/beingaction.h"
 #include "enums/being/gender.h"
 
@@ -1324,8 +1327,9 @@ class Being notfinal : public ActorSprite,
         static bool mHideErased;
         static Move mMoveNames;
         static bool mUseDiagonal;
-        static uint8_t mShowBadges;
+        static BadgeDrawType::Type mShowBadges;
         static int mAwayEffect;
+        static VisibleNamePos::Type mVisibleNamePos;
 
         time_t mMoveTime;
         time_t mAttackTime;

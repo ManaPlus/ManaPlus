@@ -30,7 +30,9 @@
 
 #include "enums/screendensity.h"
 
+#include "enums/being/badgedrawtype.h"
 #include "enums/being/visiblename.h"
+#include "enums/being/visiblenamepos.h"
 
 #include "enums/input/inputaction.h"
 
@@ -88,6 +90,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
     AddDEF("visiblenames", VisibleName::Show);
+    AddDEF("visiblenamespos", VisibleNamePos::Buttom);
     AddDEF("speech", CAST_S32(BeingSpeech::NO_NAME_IN_BUBBLE));
     AddDEF("showgender", true);
     AddDEF("showlevel", false);
@@ -394,7 +397,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("ignorelogpackets", "");
     AddDEF("disableLoggingInGame", false);
     AddDEF("sellShopName", "unnamed");
-    AddDEF("showBadges", 1);
+    AddDEF("showBadges", BadgeDrawType::Top);
     AddDEF("tradescreenshot", false);
     AddDEF("skillAutotarget", true);
     AddDEF("logPlayerActions", false);
