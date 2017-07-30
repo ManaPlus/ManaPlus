@@ -30,6 +30,6 @@ namespace BadgeDrawType
         Right  = 2,
         Bottom = 3
     };
-}  // namespace VisibleNamePos
+}  // namespace BadgeDrawType
 
 #endif  // ENUMS_BEING_BADGEDRAWTYPE_H
