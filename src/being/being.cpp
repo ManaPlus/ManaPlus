@@ -2274,31 +2274,52 @@ void Being::drawEmotion(Graphics *restrict const graphics,
     {
         int x;
         int y;
-        if (mShowBadges == BadgeDrawType::Right &&
-            mDispName != nullptr &&
+        if (mDispName != nullptr &&
             gui != nullptr)
         {
-            const Font *restrict const font = gui->getFont();
-            x = mDispName->getX() - offsetX + mDispName->getWidth();
-            y = mDispName->getY() - offsetY - font->getHeight();
-        }
-        else if (mShowBadges == BadgeDrawType::Bottom &&
-                 mDispName != nullptr &&
-                 gui != nullptr)
-        {
-            x = px + 8 - mBadgesCount * 8;
-            if (mVisibleNamePos == VisibleNamePos::Buttom)
-                y = mDispName->getY() - offsetY;
+            if (mShowBadges == BadgeDrawType::Right)
+            {
+                const Font *restrict const font = gui->getFont();
+                x = mDispName->getX() - offsetX + mDispName->getWidth();
+                y = mDispName->getY() - offsetY - font->getHeight();
+            }
+            else if (mShowBadges == BadgeDrawType::Bottom)
+            {
+                x = px + 8 - mBadgesCount * 8;
+                if (mVisibleNamePos == VisibleNamePos::Buttom)
+                    y = mDispName->getY() - offsetY;
+                else
+                    y = py + getHeight() + 16;
+            }
             else
-                y = py + getHeight() + 16;
+            {
+                x = px + 8 - mBadgesCount * 8;
+                if (mVisibleNamePos == VisibleNamePos::Top)
+                    y = py - mDispName->getHeight();
+                else
+                    y = py;
+            }
         }
         else
         {
-            x = px + 8 - mBadgesCount * 8;
-            if (mVisibleNamePos == VisibleNamePos::Top)
-                y = py - mDispName->getHeight();
-            else
+            if (mShowBadges == BadgeDrawType::Right)
+            {
+                x = px + getWidth();
                 y = py;
+            }
+            else if (mShowBadges == BadgeDrawType::Bottom)
+            {
+                x = px + 8 - mBadgesCount * 8;
+                if (mVisibleNamePos == VisibleNamePos::Buttom)
+                    y = py + getHeight();
+                else
+                    y = py + getHeight() + 16;
+            }
+            else
+            {
+                x = px + 8 - mBadgesCount * 8;
+                y = py;
+            }
         }
         for_each_badges()
         {
