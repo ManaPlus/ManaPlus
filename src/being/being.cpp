@@ -2287,9 +2287,16 @@ void Being::drawEmotion(Graphics *restrict const graphics,
             {
                 x = px + 8 - mBadgesCount * 8;
                 if (mVisibleNamePos == VisibleNamePos::Buttom)
+                {
                     y = mDispName->getY() - offsetY;
+                }
                 else
-                    y = py + getHeight() + 16;
+                {
+                    int height = getHeight();
+                    if (height < 64)
+                        height = 64;
+                    y = py + height + 16;
+                }
             }
             else
             {
@@ -2310,10 +2317,13 @@ void Being::drawEmotion(Graphics *restrict const graphics,
             else if (mShowBadges == BadgeDrawType::Bottom)
             {
                 x = px + 8 - mBadgesCount * 8;
+                int height = getHeight();
+                if (height < 64)
+                    height = 64;
                 if (mVisibleNamePos == VisibleNamePos::Buttom)
-                    y = py + getHeight();
+                    y = py + height;
                 else
-                    y = py + getHeight() + 16;
+                    y = py + height + 16;
             }
             else
             {
@@ -2447,7 +2457,10 @@ void Being::updateCoords() restrict2
     if (mType == ActorType::Monster ||
         mVisibleNamePos == VisibleNamePos::Top)
     {
-        offsetY += - getHeight() - mDispName->getHeight();
+        int height = getHeight();
+        if (height < 64)
+            height = 64;
+        offsetY += - height - mDispName->getHeight();
     }
 
     mDispName->adviseXY(offsetX, offsetY, mMoveNames);
