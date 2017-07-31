@@ -2309,7 +2309,7 @@ void Being::drawEmotion(Graphics *restrict const graphics,
         {
             if (mShowBadges == BadgeDrawType::Right)
             {
-                x = px + getWidth();
+                x = px + settings.playerBadgeAtRightOffset;
                 y = py;
             }
             else if (mShowBadges == BadgeDrawType::Bottom)

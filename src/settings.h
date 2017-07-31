@@ -77,6 +77,7 @@ class Settings final
             targetingType(0U),
             overweightPercent(50U),
             playerNameOffset(64),
+            playerBadgeAtRightOffset(32),
             mapDrawType(MapType::NORMAL),
             emoteType(EmoteType::Player),
             persistentIp(true),
@@ -139,6 +140,7 @@ class Settings final
         unsigned int targetingType;
         unsigned int overweightPercent;
         int playerNameOffset;
+        int playerBadgeAtRightOffset;
         MapTypeT mapDrawType;
         EmoteTypeT emoteType;
         bool persistentIp;

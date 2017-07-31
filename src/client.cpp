@@ -1732,6 +1732,8 @@ void Client::initPaths()
     settings.overweightPercent = paths.getIntValue("overweightPercent");
     settings.playerNameOffset = paths.getIntValue(
         "playerNameOffset");
+    settings.playerBadgeAtRightOffset = paths.getIntValue(
+        "playerBadgeAtRightOffset");
 }
 
 void Client::initTradeFilter()
