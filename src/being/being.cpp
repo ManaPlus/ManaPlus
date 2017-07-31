@@ -2292,9 +2292,7 @@ void Being::drawEmotion(Graphics *restrict const graphics,
                 }
                 else
                 {
-                    int height = getHeight();
-                    if (height < 64)
-                        height = 64;
+                    int height = settings.playerNameOffset;
                     y = py + height + 16;
                 }
             }
@@ -2317,9 +2315,7 @@ void Being::drawEmotion(Graphics *restrict const graphics,
             else if (mShowBadges == BadgeDrawType::Bottom)
             {
                 x = px + 8 - mBadgesCount * 8;
-                int height = getHeight();
-                if (height < 64)
-                    height = 64;
+                int height = settings.playerNameOffset;
                 if (mVisibleNamePos == VisibleNamePos::Buttom)
                     y = py + height;
                 else
@@ -2457,9 +2453,7 @@ void Being::updateCoords() restrict2
     if (mType == ActorType::Monster ||
         mVisibleNamePos == VisibleNamePos::Top)
     {
-        int height = getHeight();
-        if (height < 64)
-            height = 64;
+        int height = settings.playerNameOffset;
         offsetY += - height - mDispName->getHeight();
     }
 

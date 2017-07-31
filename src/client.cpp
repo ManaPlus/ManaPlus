@@ -1730,6 +1730,8 @@ void Client::initPaths()
     if (settings.linkCommandSymbol.empty())
         settings.linkCommandSymbol = "=";
     settings.overweightPercent = paths.getIntValue("overweightPercent");
+    settings.playerNameOffset = paths.getIntValue(
+        "playerNameOffset");
 }
 
 void Client::initTradeFilter()

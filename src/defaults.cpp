@@ -691,6 +691,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("defaultPaletteFile", "palette.gpl");
 
     AddDEF("overweightPercent", 50);
+    AddDEF("playerNameStandOffset", 64);
 
 #ifdef TMWA_SUPPORT
     AddDEF("gmDefaultLevel", 60);
