@@ -1222,6 +1222,8 @@ class Being notfinal : public ActorSprite,
         void postInit(const BeingTypeId subType,
                       Map *const map);
 
+        void updateBadgesPosition();
+
         /**
          * Calculates the offset in the given directions.
          * If walking in direction 'neg' the value is negated.
@@ -1349,6 +1351,8 @@ class Being notfinal : public ActorSprite,
         int mAreaSize;
         int mCastEndTime;
         int mLanguageId;
+        int mBadgesX;
+        int mBadgesY;
         BeingId mCreatorId;
         uint16_t mTeamId;
         uint16_t mLook;

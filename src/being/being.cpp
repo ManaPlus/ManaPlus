@@ -257,6 +257,8 @@ Being::Being(const BeingId id,
     mAreaSize(11),
     mCastEndTime(0),
     mLanguageId(-1),
+    mBadgesX(0),
+    mBadgesY(0),
     mCreatorId(BeingId_zero),
     mTeamId(0U),
     mLook(0U),
@@ -2258,6 +2260,68 @@ void Being::updateBotDirection(const int dstX,
     }
 }
 
+void Being::updateBadgesPosition()
+{
+    const int px = mPixelX - mapTileSize / 2;
+    const int py = mPixelY - mapTileSize * 2 - mapTileSize;
+    if (mShowBadges != BadgeDrawType::Hide &&
+        mBadgesCount != 0u)
+    {
+        if (mDispName != nullptr &&
+            gui != nullptr)
+        {
+            if (mShowBadges == BadgeDrawType::Right)
+            {
+                const Font *restrict const font = gui->getFont();
+                mBadgesX = mDispName->getX() + mDispName->getWidth();
+                mBadgesY = mDispName->getY() - font->getHeight();
+            }
+            else if (mShowBadges == BadgeDrawType::Bottom)
+            {
+                mBadgesX = px + 8 - mBadgesCount * 8;
+                if (mVisibleNamePos == VisibleNamePos::Buttom)
+                {
+                    mBadgesY = mDispName->getY();
+                }
+                else
+                {
+                    mBadgesY = py + settings.playerNameOffset + 16;
+                }
+            }
+            else
+            {
+                mBadgesX = px + 8 - mBadgesCount * 8;
+                if (mVisibleNamePos == VisibleNamePos::Top)
+                    mBadgesY = py - mDispName->getHeight();
+                else
+                    mBadgesY = py;
+            }
+        }
+        else
+        {
+            if (mShowBadges == BadgeDrawType::Right)
+            {
+                mBadgesX = px + settings.playerBadgeAtRightOffset;
+                mBadgesY = py;
+            }
+            else if (mShowBadges == BadgeDrawType::Bottom)
+            {
+                mBadgesX = px + 8 - mBadgesCount * 8;
+                const int height = settings.playerNameOffset;
+                if (mVisibleNamePos == VisibleNamePos::Buttom)
+                    mBadgesY = py + height;
+                else
+                    mBadgesY = py + height + 16;
+            }
+            else
+            {
+                mBadgesX = px + 8 - mBadgesCount * 8;
+                mBadgesY = py;
+            }
+        }
+    }
+}
+
 void Being::drawEmotion(Graphics *restrict const graphics,
                         const int offsetX,
                         const int offsetY) const restrict2
@@ -2272,60 +2336,8 @@ void Being::drawEmotion(Graphics *restrict const graphics,
     if (mShowBadges != BadgeDrawType::Hide &&
         mBadgesCount != 0u)
     {
-        int x;
-        int y;
-        if (mDispName != nullptr &&
-            gui != nullptr)
-        {
-            if (mShowBadges == BadgeDrawType::Right)
-            {
-                const Font *restrict const font = gui->getFont();
-                x = mDispName->getX() - offsetX + mDispName->getWidth();
-                y = mDispName->getY() - offsetY - font->getHeight();
-            }
-            else if (mShowBadges == BadgeDrawType::Bottom)
-            {
-                x = px + 8 - mBadgesCount * 8;
-                if (mVisibleNamePos == VisibleNamePos::Buttom)
-                {
-                    y = mDispName->getY() - offsetY;
-                }
-                else
-                {
-                    y = py + settings.playerNameOffset + 16;
-                }
-            }
-            else
-            {
-                x = px + 8 - mBadgesCount * 8;
-                if (mVisibleNamePos == VisibleNamePos::Top)
-                    y = py - mDispName->getHeight();
-                else
-                    y = py;
-            }
-        }
-        else
-        {
-            if (mShowBadges == BadgeDrawType::Right)
-            {
-                x = px + settings.playerBadgeAtRightOffset;
-                y = py;
-            }
-            else if (mShowBadges == BadgeDrawType::Bottom)
-            {
-                x = px + 8 - mBadgesCount * 8;
-                const int height = settings.playerNameOffset;
-                if (mVisibleNamePos == VisibleNamePos::Buttom)
-                    y = py + height;
-                else
-                    y = py + height + 16;
-            }
-            else
-            {
-                x = px + 8 - mBadgesCount * 8;
-                y = py;
-            }
-        }
+        int x = mBadgesX - offsetX;
+        const int y = mBadgesY - offsetY;
         for_each_badges()
         {
             const AnimatedSprite *restrict const sprite = mBadges[f];
@@ -2438,30 +2450,33 @@ int Being::getOffset() const restrict2
 
 void Being::updateCoords() restrict2
 {
-    if (mDispName == nullptr)
-        return;
-
-    int offsetX = mPixelX;
-    int offsetY = mPixelY;
-    if (mInfo != nullptr)
+    if (mDispName != nullptr)
     {
-        offsetX += mInfo->getNameOffsetX();
-        offsetY += mInfo->getNameOffsetY();
+        int offsetX = mPixelX;
+        int offsetY = mPixelY;
+        if (mInfo != nullptr)
+        {
+            offsetX += mInfo->getNameOffsetX();
+            offsetY += mInfo->getNameOffsetY();
+        }
+        // Monster names show above the sprite instead of below it
+        if (mType == ActorType::Monster ||
+            mVisibleNamePos == VisibleNamePos::Top)
+        {
+            offsetY += - settings.playerNameOffset - mDispName->getHeight();
+        }
+        mDispName->adviseXY(offsetX, offsetY, mMoveNames);
     }
-    // Monster names show above the sprite instead of below it
-    if (mType == ActorType::Monster ||
-        mVisibleNamePos == VisibleNamePos::Top)
-    {
-        offsetY += - settings.playerNameOffset - mDispName->getHeight();
-    }
-
-    mDispName->adviseXY(offsetX, offsetY, mMoveNames);
+    updateBadgesPosition();
 }
 
 void Being::optionChanged(const std::string &restrict value) restrict2
 {
     if (mType == ActorType::Player && value == "visiblenames")
+    {
         setShowName(config.getIntValue("visiblenames") == VisibleName::Show);
+        updateBadgesPosition();
+    }
 }
 
 void Being::flashName(const int time) restrict2
@@ -3562,6 +3577,7 @@ void Being::showGmBadge(const bool show) restrict2
         }
     }
     updateBadgesCount();
+    updateBadgesPosition();
 }
 
 void Being::setGM(const bool gm) restrict2
@@ -5079,6 +5095,7 @@ void Being::showTeamBadge(const bool show) restrict2
             mBadges[BadgeIndex::Team] = AnimatedSprite::load(name);
     }
     updateBadgesCount();
+    updateBadgesPosition();
 }
 
 void Being::showBadges(const bool show) restrict2
@@ -5108,6 +5125,7 @@ void Being::showPartyBadge(const bool show) restrict2
         }
     }
     updateBadgesCount();
+    updateBadgesPosition();
 }
 
 
@@ -5135,6 +5153,7 @@ void Being::showShopBadge(const bool show) restrict2
         }
     }
     updateBadgesCount();
+    updateBadgesPosition();
 }
 
 void Being::showInactiveBadge(const bool show) restrict2
@@ -5152,6 +5171,7 @@ void Being::showInactiveBadge(const bool show) restrict2
         }
     }
     updateBadgesCount();
+    updateBadgesPosition();
 }
 
 void Being::showAwayBadge(const bool show) restrict2
@@ -5169,6 +5189,7 @@ void Being::showAwayBadge(const bool show) restrict2
         }
     }
     updateBadgesCount();
+    updateBadgesPosition();
 }
 
 void Being::updateBadgesCount() restrict2
