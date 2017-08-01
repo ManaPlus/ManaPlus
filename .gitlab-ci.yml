@@ -202,37 +202,37 @@ gcc-4.4:
   tags:
     - docker
 
-mxe_gcc5_shared_32:
+mxe_gcc6_shared_32:
   stage: prebuild
   script:
   - ls /mxe
-  - ./tools/ci/jobs/mxe_gcc5.sh
+  - ./tools/ci/jobs/mxe_gcc6.sh
   <<: *job-push
-  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_32
+  image: registry.gitlab.com/manaplus/mxe:gcc6_shared_32
   variables:
     PACKAGES: bash
     CROSS: i686-w64-mingw32.shared
   tags:
     - docker
 
-mxe_gcc5_shared_64:
+mxe_gcc6_shared_64:
   stage: prebuild
   script:
   - ls /mxe
-  - ./tools/ci/jobs/mxe_gcc5.sh
+  - ./tools/ci/jobs/mxe_gcc6.sh
   <<: *job-push
-  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_64
+  image: registry.gitlab.com/manaplus/mxe:gcc6_shared_64
   variables:
     PACKAGES: bash
     CROSS: x86_64-w64-mingw32.shared
   tags:
     - docker
 
-mxe_gcc5_shared_32_testsbin:
+mxe_gcc6_shared_32_testsbin:
   stage: prebuild
   script:
   - ls /mxe
-  - ./tools/ci/jobs/mxe_gcc5_tests.sh --without-manaplusgame --without-dyecmd
+  - ./tools/ci/jobs/mxe_gcc6_tests.sh --without-manaplusgame --without-dyecmd
   artifacts:
     paths:
     - logs
@@ -240,7 +240,7 @@ mxe_gcc5_shared_32_testsbin:
     when: always
     expire_in: 1 week
   dependencies: []
-  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_32
+  image: registry.gitlab.com/manaplus/mxe:gcc6_shared_32
   variables:
     PACKAGES: bash
     CROSS: i686-w64-mingw32.shared
@@ -249,11 +249,11 @@ mxe_gcc5_shared_32_testsbin:
   tags:
     - docker
 
-mxe_gcc5_shared_64_testsbin:
+mxe_gcc6_shared_64_testsbin:
   stage: prebuild
   script:
   - ls /mxe
-  - ./tools/ci/jobs/mxe_gcc5_tests.sh --without-manaplusgame --without-dyecmd
+  - ./tools/ci/jobs/mxe_gcc6_tests.sh --without-manaplusgame --without-dyecmd
   artifacts:
     paths:
     - logs
@@ -261,7 +261,7 @@ mxe_gcc5_shared_64_testsbin:
     when: always
     expire_in: 1 week
   dependencies: []
-  image: registry.gitlab.com/manaplus/mxe:gcc5_shared_64
+  image: registry.gitlab.com/manaplus/mxe:gcc6_shared_64
   variables:
     PACKAGES: bash
     CROSS: x86_64-w64-mingw32.shared
@@ -6052,7 +6052,7 @@ gitstats:
   only:
     - master
 
-mxe_gcc5_shared_32_tests:
+mxe_gcc6_shared_32_tests:
   stage: build
   script:
   - tools\ci\jobs\windowstest.cmd files32
@@ -6063,14 +6063,14 @@ mxe_gcc5_shared_32_tests:
     when: always
     expire_in: 3 week
   dependencies:
-    - mxe_gcc5_shared_32_testsbin
+    - mxe_gcc6_shared_32_testsbin
   when: manual
   except:
     - triggers
   tags:
     - windows
 
-mxe_gcc5_shared_64_tests:
+mxe_gcc6_shared_64_tests:
   stage: build
   script:
   - tools\ci\jobs\windowstest.cmd files64
@@ -6080,7 +6080,7 @@ mxe_gcc5_shared_64_tests:
     when: always
     expire_in: 3 week
   dependencies:
-    - mxe_gcc5_shared_64_testsbin
+    - mxe_gcc6_shared_64_testsbin
   when: manual
   except:
     - triggers

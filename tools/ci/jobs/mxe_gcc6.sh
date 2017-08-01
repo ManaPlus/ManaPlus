@@ -1,9 +1,9 @@
 #!/bin/bash
 
-export LOGFILE=mxe_gcc5.log
+export LOGFILE=mxe_gcc6.log
 
 source ./tools/ci/scripts/winvars.sh || exit 1
-source ./tools/ci/flags/mingw5.sh || exit 1
+source ./tools/ci/flags/mingw6.sh || exit 1
 
 $CC --version
 $CXX --version

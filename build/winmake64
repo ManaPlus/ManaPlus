@@ -2,6 +2,6 @@
 
 export CROSS="x86_64-w64-mingw32.shared"
 export CXXFLAGS="-Wall -g1 -O5 -ffast-math -std=gnu++1z -funswitch-loops -funsafe-loop-optimizations -pipe"
-source ./mingw5flags.sh
+source ../tools/ci/flags/mingw6.sh
 
 ./win_make
