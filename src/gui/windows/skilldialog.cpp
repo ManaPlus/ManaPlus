@@ -508,7 +508,10 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
         strprintf(_("Skill %u"), skill->id));
     data->name = name;
     const std::string icon = XML::getProperty(node, "icon", "");
-    data->setIcon(icon);
+    if (icon.empty())
+        data->setIcon(paths.getStringValue("missingSkillIcon"));
+    else
+        data->setIcon(icon);
     if (skill->id < SKILL_VAR_MIN_ID)
     {
         data->dispName = strprintf("%s, %u",
@@ -614,6 +617,40 @@ bool SkillDialog::updateSkill(const int id,
     return false;
 }
 
+std::string SkillDialog::getDefaultSkillIcon(const SkillType::SkillType type)
+{
+    std::string icon;
+    switch (type)
+    {
+        case SkillType::Attack:
+            icon = paths.getStringValue("attackSkillIcon");
+            break;
+        case SkillType::Ground:
+            icon = paths.getStringValue("groundSkillIcon");
+            break;
+        case SkillType::Self:
+            icon = paths.getStringValue("selfSkillIcon");
+            break;
+        case SkillType::Unused:
+            icon = paths.getStringValue("unusedSkillIcon");
+            break;
+        case SkillType::Support:
+            icon = paths.getStringValue("supportSkillIcon");
+            break;
+        case SkillType::TargetTrap:
+            icon = paths.getStringValue("trapSkillIcon");
+            break;
+        case SkillType::Unknown:
+            icon = paths.getStringValue("unknownSkillIcon");
+            break;
+        default:
+            break;
+    }
+    if (icon.empty())
+        return paths.getStringValue("missingSkillIcon");
+    return icon;
+}
+
 void SkillDialog::addSkill(const SkillOwner::Type owner,
                            const int id,
                            const std::string &name,
@@ -641,7 +678,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
             data->dispName = strprintf("%s, %u", name.c_str(), skill->id);
         }
         data->description.clear();
-        data->setIcon("");
+        data->setIcon(getDefaultSkillIcon(type));
         data->shortName = toString(skill->id);
         skill->modifiable = modifiable;
         skill->visible = Visible_false;

@@ -689,6 +689,14 @@ DefaultsData* getPathsDefaults()
     AddDEF("languageIcons", "graphics/badges/flags");
     AddDEF("palettesDir", "");
     AddDEF("defaultPaletteFile", "palette.gpl");
+    AddDEF("unknownSkillIcon", "graphics/sprites/error.png");
+    AddDEF("attackSkillIcon", "graphics/sprites/error.png");
+    AddDEF("groundSkillIcon", "graphics/sprites/error.png");
+    AddDEF("selfSkillIcon", "graphics/sprites/error.png");
+    AddDEF("unusedSkillIcon", "graphics/sprites/error.png");
+    AddDEF("supportSkillIcon", "graphics/sprites/error.png");
+    AddDEF("trapSkillIcon", "graphics/sprites/error.png");
+    AddDEF("missingSkillIcon", "graphics/sprites/error.png");
 
     AddDEF("overweightPercent", 50);
     AddDEF("playerNameOffset", 64);

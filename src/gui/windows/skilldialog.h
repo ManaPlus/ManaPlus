@@ -207,6 +207,9 @@ class SkillDialog final : public Window,
                                      int offsetX,
                                      int offsetY);
 
+        static std::string getDefaultSkillIcon(const SkillType::SkillType
+                                               type);
+
         void addSkillDuration(SkillInfo *const skill);
 
         SkillInfo *loadSkill(XmlNodeConstPtr node,
