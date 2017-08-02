@@ -54,6 +54,7 @@ struct SkillData final
     int srcEffectId;
     int dstEffectId;
     bool haveIcon;
+    bool autoTab;
 
     SkillData();
     A_DELETE_COPY(SkillData)

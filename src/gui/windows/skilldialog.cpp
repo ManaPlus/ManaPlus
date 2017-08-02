@@ -253,7 +253,8 @@ void SkillDialog::update()
         if (info->modifiable == Modifiable_true)
             info->update();
         if (info->visible == Visible_false ||
-            idx >= SHORTCUT_ITEMS)
+            idx >= SHORTCUT_ITEMS ||
+            !info->data->autoTab)
         {
             continue;
         }
@@ -598,6 +599,8 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
         node, "dstEffectId", -1);
     data->castingGroundEffectId = XML::getProperty(
         node, "castingGroundEffectId", -1);
+    data->autoTab = XML::getBoolProperty(
+        node, "autoTab", true);
 
     skill->addData(level, data);
 }

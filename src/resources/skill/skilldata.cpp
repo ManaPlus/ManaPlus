@@ -52,7 +52,9 @@ SkillData::SkillData() :
     castingDstEffectId(-1),
     castingGroundEffectId(-1),
     srcEffectId(-1),
-    dstEffectId(-1)
+    dstEffectId(-1),
+    haveIcon(false),
+    autoTab(true)
 {
 }
 
