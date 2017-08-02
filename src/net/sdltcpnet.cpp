@@ -54,6 +54,14 @@ PRAGMACLANG6GCC(GCC diagnostic pop)
 // because actual struct is hidden in SDL_net we reinroducing it here
 struct TCPsocketHack final
 {
+    TCPsocketHack() :
+        ready(0),
+        channel(0),
+        remoteAddress(),
+        localAddress(),
+        sflag()
+    { }
+
     A_DELETE_COPY(TCPsocketHack)
 
     int ready;
