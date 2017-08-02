@@ -697,6 +697,7 @@ DefaultsData* getPathsDefaults()
     AddDEF("supportSkillIcon", "graphics/sprites/error.png");
     AddDEF("trapSkillIcon", "graphics/sprites/error.png");
     AddDEF("missingSkillIcon", "graphics/sprites/error.png");
+    AddDEF("unknownSkillsAutoTab", true);
 
     AddDEF("overweightPercent", 50);
     AddDEF("playerNameOffset", 64);

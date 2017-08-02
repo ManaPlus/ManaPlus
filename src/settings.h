@@ -91,7 +91,8 @@ class Settings final
             disableLoggingInGame(false),
             legacyEffects(true),
             enableRemoteCommands(true),
-            uselonglivesprites(false)
+            uselonglivesprites(false),
+            unknownSkillsAutoTab(true)
         { }
 
         A_DELETE_COPY(Settings)
@@ -155,6 +156,7 @@ class Settings final
         bool legacyEffects;
         bool enableRemoteCommands;
         bool uselonglivesprites;
+        bool unknownSkillsAutoTab;
 };
 
 extern Settings settings;

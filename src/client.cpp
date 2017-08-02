@@ -1734,6 +1734,7 @@ void Client::initPaths()
         "playerNameOffset");
     settings.playerBadgeAtRightOffset = paths.getIntValue(
         "playerBadgeAtRightOffset");
+    settings.unknownSkillsAutoTab = paths.getBoolValue("unknownSkillsAutoTab");
 }
 
 void Client::initTradeFilter()

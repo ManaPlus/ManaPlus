@@ -723,6 +723,7 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
             data->setIcon(icon);
             data->haveIcon = true;
         }
+        data->autoTab = settings.unknownSkillsAutoTab;
         data->shortName = toString(skill->id);
         skill->modifiable = modifiable;
         skill->visible = Visible_false;
