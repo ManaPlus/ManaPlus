@@ -236,8 +236,11 @@ static void createGuiWindows()
         itemShortcutWindow->addTab(toString(f + 1),
             new ItemShortcutContainer(nullptr, f));
     }
-    itemShortcutWindow->addTab("A",
-        new ItemShortcutContainer(nullptr, SHORTCUT_TABS - 1));
+    if (Net::getNetworkType() != ServerType::TMWATHENA)
+    {
+        itemShortcutWindow->addTab("A",
+            new ItemShortcutContainer(nullptr, SHORTCUT_TABS - 1));
+    }
     if (config.getBoolValue("showDidYouKnow"))
     {
         didYouKnowWindow->setVisible(Visible_true);
