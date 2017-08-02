@@ -208,13 +208,15 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                     image->setAlpha(1.0F);
                     graphics->drawImage(image, itemX, itemY);
                 }
-
-                font->drawString(graphics,
-                    mForegroundColor,
-                    mForegroundColor,
-                    skill->data->shortName,
-                    itemX + 2,
-                    itemY + mBoxHeight / 2);
+                if (!skill->data->haveIcon)
+                {
+                    font->drawString(graphics,
+                        mForegroundColor,
+                        mForegroundColor,
+                        skill->data->shortName,
+                        itemX + 2,
+                        itemY + mBoxHeight / 2);
+                }
             }
         }
     }
@@ -345,13 +347,15 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                     image->setAlpha(1.0F);
                     graphics->drawImage(image, itemX, itemY);
                 }
-
-                font->drawString(graphics,
-                    mForegroundColor,
-                    mForegroundColor,
-                    skill->data->shortName,
-                    itemX + 2,
-                    itemY + mBoxHeight / 2);
+                if (!skill->data->haveIcon)
+                {
+                    font->drawString(graphics,
+                        mForegroundColor,
+                        mForegroundColor,
+                        skill->data->shortName,
+                        itemX + 2,
+                        itemY + mBoxHeight / 2);
+                }
             }
         }
     }

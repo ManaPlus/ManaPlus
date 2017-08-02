@@ -536,9 +536,15 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
     data->name = name;
     const std::string icon = XML::getProperty(node, "icon", "");
     if (icon.empty())
+    {
         data->setIcon(paths.getStringValue("missingSkillIcon"));
+        data->haveIcon = false;
+    }
     else
+    {
         data->setIcon(icon);
+        data->haveIcon = true;
+    }
     if (skill->id < SKILL_VAR_MIN_ID)
     {
         data->dispName = strprintf("%s, %u",
@@ -673,8 +679,6 @@ std::string SkillDialog::getDefaultSkillIcon(const SkillType::SkillType type)
         default:
             break;
     }
-    if (icon.empty())
-        return paths.getStringValue("missingSkillIcon");
     return icon;
 }
 
@@ -705,7 +709,17 @@ void SkillDialog::addSkill(const SkillOwner::Type owner,
             data->dispName = strprintf("%s, %u", name.c_str(), skill->id);
         }
         data->description.clear();
-        data->setIcon(getDefaultSkillIcon(type));
+        const std::string icon = getDefaultSkillIcon(type);
+        if (icon.empty())
+        {
+            data->setIcon(paths.getStringValue("missingSkillIcon"));
+            data->haveIcon = false;
+        }
+        else
+        {
+            data->setIcon(icon);
+            data->haveIcon = true;
+        }
         data->shortName = toString(skill->id);
         skill->modifiable = modifiable;
         skill->visible = Visible_false;

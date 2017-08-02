@@ -53,6 +53,7 @@ struct SkillData final
     int castingGroundEffectId;
     int srcEffectId;
     int dstEffectId;
+    bool haveIcon;
 
     SkillData();
     A_DELETE_COPY(SkillData)
