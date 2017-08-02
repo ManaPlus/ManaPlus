@@ -31,6 +31,7 @@
 #include "resources/sprite/animatedsprite.h"
 
 #include "utils/checkutils.h"
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -65,6 +66,7 @@ CastingEffect::CastingEffect(const int skillId,
 
 CastingEffect::~CastingEffect()
 {
+    delete2(mSprite);
 }
 
 void CastingEffect::draw(Graphics *const graphics,
