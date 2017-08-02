@@ -30,7 +30,8 @@
 #include "localconsts.h"
 
 const unsigned int SHORTCUT_ITEMS = 20;
-const unsigned int SHORTCUT_TABS = 4;
+const unsigned int SHORTCUT_TABS = 5;
+const unsigned int SHORTCUT_AUTO_TAB = 4;
 
 class Item;
 
@@ -103,6 +104,10 @@ class ItemShortcut final
                      const int item,
                      const ItemColor color);
 
+        void setItemFast(const int index,
+                         const int item,
+                         const ItemColor color);
+
         /**
          * Adds an item to the items store specified by the index.
          *
@@ -160,6 +165,8 @@ class ItemShortcut final
         void unequipItem(const int index) const;
 
         void swap(const int index1, const int index2);
+
+        void clear();
 
     private:
         int mItems[SHORTCUT_ITEMS];             /**< The items. */

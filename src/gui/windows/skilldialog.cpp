@@ -241,11 +241,38 @@ void SkillDialog::update()
         PlayerInfo::getAttribute(Attributes::PLAYER_SKILL_POINTS)));
     mPointsLabel->adjustSize();
 
+    ItemShortcut *const shortcuts = itemShortcut[SHORTCUT_AUTO_TAB];
+    shortcuts->clear();
+    size_t idx = 0;
+
     FOR_EACH (SkillMap::const_iterator, it, mSkills)
     {
         SkillInfo *const info = (*it).second;
-        if ((info != nullptr) && info->modifiable == Modifiable_true)
+        if (info == nullptr)
+            continue;
+        if (info->modifiable == Modifiable_true)
             info->update();
+        if (info->visible == Visible_false ||
+            idx >= SHORTCUT_ITEMS)
+        {
+            continue;
+        }
+        const SkillType::SkillType type = info->type;
+        if (type == SkillType::Attack ||
+            type == SkillType::Ground ||
+            type == SkillType::Self ||
+            type == SkillType::Support)
+        {
+            shortcuts->setItemFast(idx,
+                info->id + SKILL_MIN_ID,
+                fromInt(info->customSelectedLevel, ItemColor));
+
+            shortcuts->setItemData(idx, strprintf("%d %d %d",
+                CAST_S32(info->customCastType),
+                info->customOffsetX,
+                info->customOffsetY));
+            idx ++;
+        }
     }
 
     skillPopup->reset();

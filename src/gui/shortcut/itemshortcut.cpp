@@ -62,8 +62,10 @@ void ItemShortcut::load()
     std::string name;
     std::string color;
     std::string data;
-    const Configuration *cfg = &serverConfig;
+    if (mNumber == SHORTCUT_AUTO_TAB)
+        return;
 
+    const Configuration *cfg = &serverConfig;
     if (mNumber != 0)
     {
         name = std::string("shortcut").append(toString(mNumber)).append("_");
@@ -96,6 +98,8 @@ void ItemShortcut::save() const
     std::string name;
     std::string color;
     std::string data;
+    if (mNumber == SHORTCUT_AUTO_TAB)
+        return;
     if (mNumber != 0)
     {
         name = std::string("shortcut").append(toString(mNumber)).append("_");
@@ -128,6 +132,16 @@ void ItemShortcut::save() const
             serverConfig.deleteKey(color + toString(i));
             serverConfig.deleteKey(data + toString(i));
         }
+    }
+}
+
+void ItemShortcut::clear()
+{
+    for (size_t i = 0; i < SHORTCUT_ITEMS; i++)
+    {
+        mItems[i] = 0;
+        mItemColors[i] = ItemColor_zero;
+        mItemData[i].clear();
     }
 }
 
@@ -230,6 +244,14 @@ void ItemShortcut::setItem(const int index,
     mItems[index] = item;
     mItemColors[index] = color;
     save();
+}
+
+void ItemShortcut::setItemFast(const int index,
+                               const int item,
+                               const ItemColor color)
+{
+    mItems[index] = item;
+    mItemColors[index] = color;
 }
 
 void ItemShortcut::swap(const int index1, const int index2)

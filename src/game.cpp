@@ -231,11 +231,13 @@ static void createGuiWindows()
     CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
         "ItemShortcut", "items.xml", 83, 460);
 
-    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
+    for (unsigned f = 0; f < SHORTCUT_TABS - 1; f ++)
     {
         itemShortcutWindow->addTab(toString(f + 1),
             new ItemShortcutContainer(nullptr, f));
     }
+    itemShortcutWindow->addTab("A",
+        new ItemShortcutContainer(nullptr, SHORTCUT_TABS - 1));
     if (config.getBoolValue("showDidYouKnow"))
     {
         didYouKnowWindow->setVisible(Visible_true);

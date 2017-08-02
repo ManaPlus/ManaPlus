@@ -360,6 +360,8 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
 
 void ItemShortcutContainer::mouseDragged(MouseEvent &event)
 {
+    if (mNumber == SHORTCUT_AUTO_TAB)
+        return;
     ItemShortcut *const selShortcut = itemShortcut[mNumber];
     if (selShortcut == nullptr)
         return;
