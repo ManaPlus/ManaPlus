@@ -126,6 +126,7 @@ void connectToServer(const ServerInfo &server)
             generalHandler != nullptr)
         {
             generalHandler->unload();
+            delete2(generalHandler);
         }
 
         switch (server.type)

@@ -1925,6 +1925,7 @@ void Client::loadData()
 
 void Client::unloadData()
 {
+    DbManager::unloadDb();
     mCurrentServer.supportUrl.clear();
     settings.supportUrl.clear();
     if (settings.options.dataPath.empty())
