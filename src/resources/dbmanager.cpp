@@ -91,7 +91,7 @@ void DbManager::loadDb()
     AvatarDB::load();
     BadgesDB::load();
     WeaponsDB::load();
-    UnitsDb::loadUnits();
+    UnitsDb::load();
     NPCDB::load();
     NpcDialogDB::load();
     PETDB::load();
@@ -131,6 +131,7 @@ void DbManager::unloadDb()
     AvatarDB::unload();
     BadgesDB::unload();
     WeaponsDB::unload();
+    UnitsDb::unload();
     PaletteDB::unload();
     PETDB::unload();
     StatusEffectDB::unload();

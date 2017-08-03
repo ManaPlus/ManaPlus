@@ -41,7 +41,7 @@ void NpcDialogDB::load()
     if (mLoaded)
         unload();
 
-    logger->log1("Loading npcdialog database...");
+    logger->log1("Loading npc dialog database...");
     loadXmlFile(paths.getStringValue("npcDialogsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("npcDialogsPatchFile"), SkipError_true);
     loadXmlDir("npcDialogsPatchDir", loadXmlFile);
@@ -205,7 +205,7 @@ void NpcDialogDB::deleteDialog(const std::string &name)
 
 void NpcDialogDB::unload()
 {
-    logger->log1("Unloading npcdialog database...");
+    logger->log1("Unloading npc dialog database...");
 
     FOR_EACH (DialogsIter, it, mDialogs)
     {

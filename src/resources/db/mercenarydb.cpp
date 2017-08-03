@@ -130,6 +130,7 @@ void MercenaryDB::loadXmlFile(const std::string &fileName,
 
 void MercenaryDB::unload()
 {
+    logger->log1("Unloading mercenary database...");
     delete_all(mMercenaryInfos);
     mMercenaryInfos.clear();
 

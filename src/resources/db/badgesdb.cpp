@@ -21,6 +21,7 @@
 #include "resources/db/badgesdb.h"
 
 #include "configuration.h"
+#include "logger.h"
 
 #include "fs/virtfs/tools.h"
 
@@ -73,6 +74,7 @@ void BadgesDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing Badges database...");
     loadDB("guild", mGuilds);
     loadDB("name", mNames);
     loadDB("party", mParties);
@@ -80,6 +82,7 @@ void BadgesDB::load()
 
 void BadgesDB::unload()
 {
+    logger->log1("Unloading Badges database...");
     mParties.clear();
     mGuilds.clear();
     mNames.clear();

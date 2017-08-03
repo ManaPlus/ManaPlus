@@ -49,6 +49,8 @@ void EmoteDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing emote database...");
+
     EmoteSprite *const unknownSprite = new EmoteSprite;
     unknownSprite->sprite = AnimatedSprite::load(pathJoin(paths.getStringValue(
         "sprites"), paths.getStringValue(
@@ -56,8 +58,6 @@ void EmoteDB::load()
     unknownSprite->name = "unknown";
     unknownSprite->id = 0;
     mUnknown.sprites.push_back(unknownSprite);
-
-    logger->log1("Initializing emote database...");
 
     mLastEmote = 0;
     loadXmlFile(paths.getStringValue("emotesFile"), SkipError_false);
@@ -224,6 +224,7 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
 
 void EmoteDB::unload()
 {
+    logger->log1("Unloading emote database...");
     FOR_EACH (EmoteInfos::const_iterator, i, mEmoteInfos)
     {
         if (i->second != nullptr)

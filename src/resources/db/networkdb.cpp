@@ -71,6 +71,7 @@ void NetworkDb::loadXmlFile(const std::string &fileName,
 
 void NetworkDb::unload()
 {
+    logger->log1("Unloading network database...");
     mInPackets.clear();
     mRemovePackets.clear();
     mLoaded = false;

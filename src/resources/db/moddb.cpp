@@ -42,6 +42,7 @@ void ModDB::load()
 {
     if (mLoaded)
         unload();
+    logger->log1("Initializing mod database...");
     loadXmlFile(paths.getStringValue("modsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("modsPatchFile"), SkipError_true);
     loadXmlDir("modsPatchDir", loadXmlFile);
@@ -97,6 +98,7 @@ void ModDB::loadXmlFile(const std::string &fileName,
 
 void ModDB::unload()
 {
+    logger->log1("Unloading mod database...");
     delete_all(mModInfos);
     mModInfos.clear();
     mLoaded = false;

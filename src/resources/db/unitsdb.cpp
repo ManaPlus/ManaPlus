@@ -69,8 +69,9 @@ static std::string formatUnit(const int value,
 static std::string splitNumber(std::string str,
                                const std::string &separator);
 
-void UnitsDb::loadUnits()
+void UnitsDb::load()
 {
+    logger->log1("Initializing unit database...");
     {   // Setup default weight
         UnitDescription ud;
 
@@ -113,6 +114,12 @@ void UnitsDb::loadUnits()
     loadXmlFile(paths.getStringValue("unitsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("unitsPatchFile"), SkipError_true);
     loadXmlDir("unitsPatchDir", loadXmlFile);
+}
+
+void UnitsDb::unload()
+{
+    logger->log1("Unloading unit database...");
+    mCurrencies.clear();
 }
 
 static UnitDescription loadUnit(XmlNodePtr node)

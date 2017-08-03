@@ -48,6 +48,8 @@ void CharDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing char database...");
+
     XML::Document *doc = new XML::Document(
         paths.getStringValue("charCreationFile"),
         UseVirtFs_true,
@@ -121,7 +123,7 @@ void CharDB::loadMinMax(XmlNodeConstPtr node,
 
 void CharDB::unload()
 {
-    logger->log1("Unloading chars database...");
+    logger->log1("Unloading char database...");
 
     mLoaded = false;
 }

@@ -41,6 +41,7 @@ void PaletteDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing palette database...");
     loadPalette();
 }
 
@@ -100,6 +101,7 @@ void PaletteDB::loadPalette()
 
 void PaletteDB::unload()
 {
+    logger->log1("Unloading palette database...");
     mColors.clear();
 }
 

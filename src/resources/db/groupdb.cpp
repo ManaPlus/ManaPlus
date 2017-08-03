@@ -41,6 +41,8 @@ void GroupDb::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing group database...");
+
     loadXmlFile(paths.getStringValue("groupsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("groupsPatchFile"), SkipError_true);
     loadXmlDir("groupsPatchDir", loadXmlFile);
@@ -320,6 +322,7 @@ void GroupDb::loadXmlFile(const std::string &fileName,
 
 void GroupDb::unload()
 {
+    logger->log1("Unloading group database...");
     FOR_EACH (GroupInfosIter, it, mGroups)
     {
         delete (*it).second;

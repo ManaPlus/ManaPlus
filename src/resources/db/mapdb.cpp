@@ -47,6 +47,7 @@ void MapDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing maps database...");
     loadRemapXmlFile(paths.getStringValue("mapsRemapFile"),
         SkipError_true);
     loadRemapXmlFile(paths.getStringValue("mapsRemapPatchFile"),

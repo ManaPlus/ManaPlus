@@ -40,6 +40,8 @@ void DeadDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing dead database...");
+
     loadXmlFile(paths.getStringValue("deadMessagesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("deadMessagesPatchFile"), SkipError_true);
     loadXmlDir("deadMessagesPatchDir", loadXmlFile);
@@ -92,6 +94,7 @@ void DeadDB::loadXmlFile(const std::string &fileName,
 
 void DeadDB::unload()
 {
+    logger->log1("Unloading dead database...");
     mMessages.clear();
     mLoaded = false;
 }

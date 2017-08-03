@@ -21,6 +21,7 @@
 #include "resources/db/sounddb.h"
 
 #include "configuration.h"
+#include "logger.h"
 #include "notifymanager.h"
 
 #include "enums/resources/notifytypes.h"
@@ -38,6 +39,7 @@ namespace
 void SoundDB::load()
 {
     unload();
+    logger->log1("Initializing sound database...");
     loadXmlFile(paths.getStringValue("soundsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("soundsPatchFile"), SkipError_true);
     loadXmlDir("soundsPatchDir", loadXmlFile);
@@ -83,6 +85,7 @@ void SoundDB::loadXmlFile(const std::string &fileName,
 
 void SoundDB::unload()
 {
+    logger->log1("Unloading sound database...");
     mSounds.resize(NotifyTypes::TYPE_END);
     for (int f = 0; f < NotifyTypes::TYPE_END; f ++)
         mSounds[f].clear();

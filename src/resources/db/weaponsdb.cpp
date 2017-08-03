@@ -21,6 +21,7 @@
 #include "resources/db/weaponsdb.h"
 
 #include "configuration.h"
+#include "logger.h"
 
 #include "utils/xmlutils.h"
 
@@ -51,6 +52,8 @@ void WeaponsDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing weapon database...");
+
     loadDB("swords", mSwords);
     loadDB("bows", mBows);
     loadDB("shields", mShields);
@@ -58,6 +61,8 @@ void WeaponsDB::load()
 
 void WeaponsDB::unload()
 {
+    logger->log1("Unloading weapon database...");
+
     mBows.clear();
     mSwords.clear();
     mShields.clear();

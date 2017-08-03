@@ -133,6 +133,7 @@ void MonsterDB::loadXmlFile(const std::string &fileName,
 
 void MonsterDB::unload()
 {
+    logger->log1("Unloading monster database...");
     delete_all(mMonsterInfos);
     mMonsterInfos.clear();
 

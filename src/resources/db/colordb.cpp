@@ -43,6 +43,8 @@ void ColorDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing color database...");
+
     std::map<ItemColor, ItemColorData> colors;
     ColorListsIterator it = mColorLists.find("hair");
     if (it != mColorLists.end())

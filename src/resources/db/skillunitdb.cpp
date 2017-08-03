@@ -139,6 +139,7 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName,
 
 void SkillUnitDb::unload()
 {
+    logger->log1("Unloading skill unit database...");
     delete_all(mSkillUnitInfos);
     mSkillUnitInfos.clear();
 

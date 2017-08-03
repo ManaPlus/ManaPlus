@@ -126,6 +126,7 @@ void ElementalDb::loadXmlFile(const std::string &fileName,
 
 void ElementalDb::unload()
 {
+    logger->log1("Unloading elemental database...");
     delete_all(mElementalInfos);
     mElementalInfos.clear();
 

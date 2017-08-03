@@ -199,7 +199,7 @@ TEST_CASE("Windows tests", "windowmanager")
     gui = new Gui();
     gui->postInit(mainGraphics);
     touchManager.init();
-    UnitsDb::loadUnits();
+    UnitsDb::load();
     charServerHandler = new EAthena::CharServerHandler;
     serverFeatures = new EAthena::ServerFeatures;
     inventoryHandler = new EAthena::InventoryHandler;
@@ -808,6 +808,7 @@ TEST_CASE("Windows tests", "windowmanager")
         delete2(connectionDialog);
     }
 
+    UnitsDb::unload();
     delete2(localPlayer);
     delete2(userPalette);
     delete2(client);
@@ -876,7 +877,7 @@ TEST_CASE("WindowManager", "create windows")
     gui = new Gui();
     gui->postInit(mainGraphics);
     touchManager.init();
-    UnitsDb::loadUnits();
+    UnitsDb::load();
     charServerHandler = new EAthena::CharServerHandler;
     serverFeatures = new EAthena::ServerFeatures;
     inventoryHandler = new EAthena::InventoryHandler;
@@ -965,6 +966,7 @@ TEST_CASE("WindowManager", "create windows")
     settings.login = std::string();
     settings.limitFps = true;
 
+    UnitsDb::unload();
     delete2(localPlayer);
     delete2(client);
     delete2(serverFeatures);

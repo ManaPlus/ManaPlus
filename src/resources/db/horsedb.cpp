@@ -61,6 +61,8 @@ void HorseDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing horse database...");
+
     SpriteReference *currentSprite = new SpriteReference;
     currentSprite->sprite = pathJoin(paths.getStringValue("sprites"),
         paths.getStringValue("spriteErrorFile"));
@@ -72,8 +74,6 @@ void HorseDB::load()
         paths.getStringValue("spriteErrorFile"));
     currentSprite->variant = 0;
     mUnknown.upSprites.push_back(currentSprite);
-
-    logger->log1("Initializing horse database...");
 
     loadXmlFile(paths.getStringValue("horsesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("horsesPatchFile"), SkipError_true);
@@ -264,6 +264,7 @@ static void loadUpSprites(XmlNodePtrConst parentNode,
 
 void HorseDB::unload()
 {
+    logger->log1("Unloading horse database...");
     FOR_EACH (HorseInfos::const_iterator, i, mHorseInfos)
     {
         delete_all(i->second->upSprites);

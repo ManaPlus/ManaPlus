@@ -46,6 +46,8 @@ void AvatarDB::load()
 {
     if (mLoaded)
         unload();
+
+    logger->log1("Initializing avatar database...");
     loadXmlFile(paths.getStringValue("avatarsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("avatarsPatchFile"), SkipError_true);
     loadXmlDir("avatarsPatchDir", loadXmlFile);
@@ -129,6 +131,7 @@ void AvatarDB::loadXmlFile(const std::string &fileName,
 
 void AvatarDB::unload()
 {
+    logger->log1("Unloading avatar database...");
     delete_all(mAvatarInfos);
     mAvatarInfos.clear();
     mLoaded = false;

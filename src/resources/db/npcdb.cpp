@@ -174,6 +174,7 @@ void NPCDB::loadXmlFile(const std::string &fileName,
 
 void NPCDB::unload()
 {
+    logger->log1("Unloading NPC database...");
     delete_all(mNPCInfos);
     mNPCInfos.clear();
 

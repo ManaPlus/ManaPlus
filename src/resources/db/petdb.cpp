@@ -146,6 +146,7 @@ void PETDB::loadXmlFile(const std::string &fileName,
 
 void PETDB::unload()
 {
+    logger->log1("Unloading PET database...");
     delete_all(mPETInfos);
     mPETInfos.clear();
 

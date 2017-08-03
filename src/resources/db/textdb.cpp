@@ -36,6 +36,7 @@ namespace
 void TextDb::load()
 {
     unload();
+    logger->log1("Initializing text database...");
     loadXmlFile(paths.getStringValue("textsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("textsPatchFile"), SkipError_true);
     loadXmlDir("textsPatchDir", loadXmlFile);
@@ -83,6 +84,7 @@ void TextDb::loadXmlFile(const std::string &fileName,
 
 void TextDb::unload()
 {
+    logger->log1("Unloading text database...");
     mTexts.clear();
 }
 

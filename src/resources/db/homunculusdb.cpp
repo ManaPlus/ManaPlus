@@ -133,12 +133,12 @@ void HomunculusDB::loadXmlFile(const std::string &fileName,
 
 void HomunculusDB::unload()
 {
+    logger->log1("Unloading homunculus database...");
     delete_all(mHomunculusInfos);
     mHomunculusInfos.clear();
 
     mLoaded = false;
 }
-
 
 BeingInfo *HomunculusDB::get(const BeingTypeId id)
 {

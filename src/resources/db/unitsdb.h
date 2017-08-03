@@ -34,7 +34,9 @@ namespace UnitsDb
     /**
     * Loads and parses the units.xml file (if found).
     */
-    void loadUnits();
+    void load();
+
+    void unload();
 
     void loadXmlFile(const std::string &fileName,
                      const SkipError skipError);

@@ -39,6 +39,7 @@ namespace
 void LanguageDb::load()
 {
     unload();
+    logger->log1("Initializing languages database...");
     loadXmlFile(paths.getStringValue("languagesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("languagesPatchFile"), SkipError_true);
     loadXmlDir("languagesPatchDir", loadXmlFile);
@@ -101,6 +102,7 @@ void LanguageDb::loadXmlFile(const std::string &fileName,
 
 void LanguageDb::unload()
 {
+    logger->log1("Unloading languages database...");
     mIcons.clear();
     mPo.clear();
 }

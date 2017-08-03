@@ -71,6 +71,8 @@ void StatusEffectDB::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing status effect database...");
+
     loadXmlFile(paths.getStringValue("statusEffectsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("statusEffectsPatchFile"),
         SkipError_true);
@@ -212,6 +214,8 @@ void StatusEffectDB::unload()
 {
     if (!mLoaded)
         return;
+
+    logger->log1("Unloading status effect database...");
 
     fakeId = 10000;
     unloadMap(statusEffects[0]);

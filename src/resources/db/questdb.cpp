@@ -46,6 +46,7 @@ namespace
 void QuestDb::load()
 {
     unload();
+    logger->log1("Initializing quest database...");
     loadXmlFile(paths.getStringValue("questsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("questsPatchFile"), SkipError_true);
     loadXmlDir("questsPatchDir", loadXmlFile);
@@ -213,6 +214,7 @@ void QuestDb::loadXmlFile(const std::string &fileName,
 
 void QuestDb::unload()
 {
+    logger->log1("Unloading quest database...");
     for (std::map<int, STD_VECTOR<QuestItem*> >::iterator it
          = mQuests.begin(), it_end = mQuests.end(); it != it_end; ++ it)
     {

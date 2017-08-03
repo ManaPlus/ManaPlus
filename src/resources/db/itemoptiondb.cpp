@@ -42,6 +42,7 @@ void ItemOptionDb::load()
     if (mLoaded)
         unload();
 
+    logger->log1("Initializing item options database...");
     loadXmlFile(paths.getStringValue("itemOptionsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("itemOptionsPatchFile"), SkipError_true);
     loadXmlDir("itemOptionsPatchDir", loadXmlFile);
@@ -136,6 +137,7 @@ void ItemOptionDb::loadXmlFile(const std::string &fileName,
 
 void ItemOptionDb::unload()
 {
+    logger->log1("Unloading item options database...");
     mOptions.clear();
     mLoaded = false;
 }

@@ -40,6 +40,7 @@ void CommandsDB::load()
 {
     if (mLoaded)
         unload();
+    logger->log1("Initializing commands database...");
     loadXmlFile(paths.getStringValue("defaultCommandsFile"),
         SkipError_false);
     loadXmlFile(paths.getStringValue("defaultCommandsPatchFile"),
@@ -150,6 +151,7 @@ void CommandsDB::loadXmlFile(const std::string &fileName,
 
 void CommandsDB::unload()
 {
+    logger->log1("Unloading commands database...");
     mCommands.clear();
     mLoaded = false;
 }
