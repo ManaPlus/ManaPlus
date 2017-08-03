@@ -53,6 +53,8 @@ GuildHandler::GuildHandler() :
 GuildHandler::~GuildHandler()
 {
     delete2(guildTab);
+    guildHandler = nullptr;
+    taGuild = nullptr;
 }
 
 void GuildHandler::clear() const

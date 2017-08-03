@@ -30,6 +30,11 @@ FriendsHandler::FriendsHandler()
     friendsHandler = this;
 }
 
+FriendsHandler::~FriendsHandler()
+{
+    friendsHandler = nullptr;
+}
+
 void FriendsHandler::invite(const std::string &name A_UNUSED) const
 {
 }

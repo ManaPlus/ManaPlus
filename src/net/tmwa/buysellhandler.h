@@ -35,6 +35,8 @@ class BuySellHandler final : public Ea::BuySellHandler
 
         A_DELETE_COPY(BuySellHandler)
 
+        ~BuySellHandler();
+
         void requestSellList(const std::string &nick)
                              const override final;
 

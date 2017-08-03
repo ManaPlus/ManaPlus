@@ -31,6 +31,11 @@ PetHandler::PetHandler() :
     petHandler = this;
 }
 
+PetHandler::~PetHandler()
+{
+    petHandler = nullptr;
+}
+
 void PetHandler::move(const int x A_UNUSED,
                       const int y A_UNUSED) const
 {

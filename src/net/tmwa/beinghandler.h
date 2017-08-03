@@ -35,6 +35,8 @@ class BeingHandler final : public Ea::BeingHandler
 
         A_DELETE_COPY(BeingHandler)
 
+        ~BeingHandler();
+
         void requestNameById(const BeingId id) const override final;
 
         void undress(Being *const being) const override final;

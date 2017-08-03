@@ -30,6 +30,11 @@ MercenaryHandler::MercenaryHandler()
     mercenaryHandler = this;
 }
 
+MercenaryHandler::~MercenaryHandler()
+{
+    mercenaryHandler = nullptr;
+}
+
 void MercenaryHandler::fire() const
 {
 }

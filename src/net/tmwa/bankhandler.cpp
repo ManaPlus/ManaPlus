@@ -31,6 +31,11 @@ BankHandler::BankHandler() :
     bankHandler = this;
 }
 
+BankHandler::~BankHandler()
+{
+    bankHandler = nullptr;
+}
+
 void BankHandler::deposit(const int money A_UNUSED) const
 {
 }

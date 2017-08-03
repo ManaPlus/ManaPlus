@@ -34,6 +34,11 @@ QuestHandler::QuestHandler() :
     questHandler = this;
 }
 
+QuestHandler::~QuestHandler()
+{
+    questHandler = nullptr;
+}
+
 void QuestHandler::setQeustActiveState(const int questId,
                                        const bool active) const
 {

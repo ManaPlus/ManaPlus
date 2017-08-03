@@ -31,6 +31,8 @@ namespace TmwAthena
             ElementalHandler();
 
             A_DELETE_COPY(ElementalHandler)
+
+            ~ElementalHandler();
     };
 }  // namespace TmwAthena
 

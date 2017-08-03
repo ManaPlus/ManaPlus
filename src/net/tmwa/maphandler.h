@@ -32,6 +32,8 @@ class MapHandler final : public Net::MapHandler
         MapHandler();
 
         A_DELETE_COPY(MapHandler)
+
+        ~MapHandler();
 };
 
 }  // namespace TmwAthena

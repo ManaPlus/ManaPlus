@@ -31,6 +31,8 @@ class RouletteHandler final : public Net::RouletteHandler
         RouletteHandler();
 
         A_DELETE_COPY(RouletteHandler)
+
+        ~RouletteHandler();
 };
 
 }  // namespace TmwAthena

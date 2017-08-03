@@ -34,6 +34,7 @@ GuildHandler::GuildHandler() :
 
 GuildHandler::~GuildHandler()
 {
+    guildHandler = nullptr;
 }
 
 void GuildHandler::clear() const

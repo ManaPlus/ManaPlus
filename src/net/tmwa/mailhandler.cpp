@@ -30,6 +30,11 @@ MailHandler::MailHandler()
     mailHandler = this;
 }
 
+MailHandler::~MailHandler()
+{
+    mailHandler = nullptr;
+}
+
 void MailHandler::refresh() const
 {
 }

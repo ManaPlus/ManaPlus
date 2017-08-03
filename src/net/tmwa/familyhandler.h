@@ -33,6 +33,8 @@ class FamilyHandler final : public Net::FamilyHandler
 
         A_DELETE_COPY(FamilyHandler)
 
+        ~FamilyHandler();
+
         void askForChild(const Being *const being) const override final
                          A_CONST;
 

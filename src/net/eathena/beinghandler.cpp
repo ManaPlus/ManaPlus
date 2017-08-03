@@ -40,6 +40,11 @@ BeingHandler::BeingHandler(const bool enableSync) :
     beingHandler = this;
 }
 
+BeingHandler::~BeingHandler()
+{
+    beingHandler = nullptr;
+}
+
 void BeingHandler::requestNameById(const BeingId id) const
 {
     createOutPacket(CMSG_NAME_REQUEST);

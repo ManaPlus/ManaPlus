@@ -30,6 +30,11 @@ AuctionHandler::AuctionHandler()
     auctionHandler = this;
 }
 
+AuctionHandler::~AuctionHandler()
+{
+    auctionHandler = nullptr;
+}
+
 void AuctionHandler::cancelReg() const
 {
 }

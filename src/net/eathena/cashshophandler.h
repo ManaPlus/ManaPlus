@@ -32,6 +32,8 @@ class CashShopHandler final : public Net::CashShopHandler
 
         A_DELETE_COPY(CashShopHandler)
 
+        ~CashShopHandler();
+
         void buyItem(const int points,
                      const int itemId,
                      const ItemColor color,

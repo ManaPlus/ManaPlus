@@ -41,6 +41,11 @@ CharServerHandler::CharServerHandler() :
 {
 }
 
+CharServerHandler::~CharServerHandler()
+{
+    clear();
+}
+
 void CharServerHandler::setCharSelectDialog(CharSelectDialog *const window)
                                             const
 {

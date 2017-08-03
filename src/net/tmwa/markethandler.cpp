@@ -31,6 +31,11 @@ MarketHandler::MarketHandler() :
     marketHandler = this;
 }
 
+MarketHandler::~MarketHandler()
+{
+    marketHandler = nullptr;
+}
+
 void MarketHandler::close() const
 {
 }

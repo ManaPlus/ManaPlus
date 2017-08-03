@@ -31,6 +31,11 @@ SearchStoreHandler::SearchStoreHandler() :
     searchStoreHandler = this;
 }
 
+SearchStoreHandler::~SearchStoreHandler()
+{
+    searchStoreHandler = nullptr;
+}
+
 void SearchStoreHandler::search(const StoreSearchTypeT type A_UNUSED,
                                 const int minPrice A_UNUSED,
                                 const int maxPrice A_UNUSED,

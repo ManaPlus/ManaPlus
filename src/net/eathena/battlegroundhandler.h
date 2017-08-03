@@ -32,6 +32,8 @@ class BattleGroundHandler final : public Net::BattleGroundHandler
 
         A_DELETE_COPY(BattleGroundHandler)
 
+        ~BattleGroundHandler();
+
         void registerBg(const BattleGroundTypeT &type,
                         const std::string &name) const override final;
 

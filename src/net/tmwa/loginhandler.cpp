@@ -47,6 +47,7 @@ LoginHandler::LoginHandler() :
 
 LoginHandler::~LoginHandler()
 {
+    loginHandler = nullptr;
 }
 
 void LoginHandler::connect() const

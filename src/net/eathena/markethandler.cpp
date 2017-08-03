@@ -42,6 +42,11 @@ MarketHandler::MarketHandler() :
     MarketRecv::mBuyDialog = nullptr;
 }
 
+MarketHandler::~MarketHandler()
+{
+    marketHandler = nullptr;
+}
+
 void MarketHandler::close() const
 {
     if (packetVersion < 20131218)

@@ -35,6 +35,8 @@ class TradeHandler final : public Ea::TradeHandler
 
         A_DELETE_COPY(TradeHandler)
 
+        ~TradeHandler();
+
         void request(const Being *const being) const override final;
 
         void respond(const bool accept) const override final;

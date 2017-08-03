@@ -47,6 +47,11 @@ ChatHandler::ChatHandler() :
     chatHandler = this;
 }
 
+ChatHandler::~ChatHandler()
+{
+    chatHandler = nullptr;
+}
+
 void ChatHandler::talk(const std::string &restrict text,
                        const std::string &restrict channel A_UNUSED) const
 {

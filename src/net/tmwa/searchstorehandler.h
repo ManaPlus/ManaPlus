@@ -32,6 +32,8 @@ class SearchStoreHandler final : public Net::SearchStoreHandler
 
         A_DELETE_COPY(SearchStoreHandler)
 
+        ~SearchStoreHandler();
+
         void search(const StoreSearchTypeT type,
                     const int minPrice,
                     const int maxPrice,

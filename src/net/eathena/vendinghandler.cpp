@@ -44,6 +44,11 @@ VendingHandler::VendingHandler()
     VendingRecv::mBuyDialog = nullptr;
 }
 
+VendingHandler::~VendingHandler()
+{
+    vendingHandler = nullptr;
+}
+
 void VendingHandler::close() const
 {
     createOutPacket(CMSG_VENDING_CLOSE);

@@ -44,6 +44,11 @@ TradeHandler::TradeHandler() :
     tradeHandler = this;
 }
 
+TradeHandler::~TradeHandler()
+{
+    tradeHandler = nullptr;
+}
+
 void TradeHandler::request(const Being *const being) const
 {
     if (being == nullptr)

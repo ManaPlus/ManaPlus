@@ -63,6 +63,7 @@ InventoryHandler::InventoryHandler() :
 
 InventoryHandler::~InventoryHandler()
 {
+    inventoryHandler = nullptr;
 }
 
 void InventoryHandler::equipItem(const Item *const item) const

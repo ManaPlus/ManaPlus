@@ -53,6 +53,11 @@ PlayerHandler::PlayerHandler() :
     playerHandler = this;
 }
 
+PlayerHandler::~PlayerHandler()
+{
+    playerHandler = nullptr;
+}
+
 void PlayerHandler::attack(const BeingId id,
                            const Keep keep) const
 {

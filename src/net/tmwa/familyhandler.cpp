@@ -31,6 +31,11 @@ FamilyHandler::FamilyHandler() :
     familyHandler = this;
 }
 
+FamilyHandler::~FamilyHandler()
+{
+    familyHandler = nullptr;
+}
+
 void FamilyHandler::askForChild(const Being *const being A_UNUSED) const
 {
 }

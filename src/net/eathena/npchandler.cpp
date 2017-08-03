@@ -56,6 +56,11 @@ NpcHandler::NpcHandler() :
     npcHandler = this;
 }
 
+NpcHandler::~NpcHandler()
+{
+    npcHandler = nullptr;
+}
+
 void NpcHandler::talk(const Being *const being) const
 {
     if (being == nullptr)

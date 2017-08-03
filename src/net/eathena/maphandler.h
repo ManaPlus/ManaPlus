@@ -38,14 +38,7 @@ class MapHandler final : public Net::MapHandler
 
         A_DELETE_COPY(MapHandler)
 
-    protected:
-        void processInstanceStart(Net::MessageIn &msg);
-
-        void processInstanceCreate(Net::MessageIn &msg);
-
-        void processInstanceInfo(Net::MessageIn &msg);
-
-        void processInstanceDelete(Net::MessageIn &msg);
+        ~MapHandler();
 };
 
 }  // namespace EAthena

@@ -33,6 +33,11 @@ FriendsHandler::FriendsHandler()
     friendsHandler = this;
 }
 
+FriendsHandler::~FriendsHandler()
+{
+    friendsHandler = nullptr;
+}
+
 void FriendsHandler::invite(const std::string &name) const
 {
     createOutPacket(CMSG_FRIENDS_ADD_PLAYER);

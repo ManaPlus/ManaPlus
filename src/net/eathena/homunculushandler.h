@@ -32,6 +32,8 @@ class HomunculusHandler final : public Net::HomunculusHandler
 
         A_DELETE_COPY(HomunculusHandler)
 
+        ~HomunculusHandler();
+
         void setName(const std::string &name) const override final;
 
         void moveToMaster() const override final;

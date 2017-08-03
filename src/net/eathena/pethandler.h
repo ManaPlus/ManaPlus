@@ -33,6 +33,8 @@ class PetHandler final :  public Net::PetHandler
 
         A_DELETE_COPY(PetHandler)
 
+        ~PetHandler();
+
         void move(const int x,
                   const int y) const override final;
 

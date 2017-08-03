@@ -31,6 +31,8 @@ class ElementalHandler final : public Net::ElementalHandler
         ElementalHandler();
 
         A_DELETE_COPY(ElementalHandler)
+
+        ~ElementalHandler();
 };
 
 }  // namespace EAthena

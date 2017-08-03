@@ -31,4 +31,9 @@ MapHandler::MapHandler() :
     mapHandler = this;
 }
 
+MapHandler::~MapHandler()
+{
+    mapHandler = nullptr;
+}
+
 }  // namespace EAthena

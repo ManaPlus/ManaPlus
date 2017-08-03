@@ -33,6 +33,8 @@ class BuyingStoreHandler final : public Net::BuyingStoreHandler
 
         A_DELETE_COPY(BuyingStoreHandler)
 
+        ~BuyingStoreHandler();
+
         void create(const std::string &name,
                     const int maxMoney,
                     const bool flag,

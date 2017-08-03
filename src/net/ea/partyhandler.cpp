@@ -45,6 +45,7 @@ PartyHandler::PartyHandler() :
 PartyHandler::~PartyHandler()
 {
     delete2(partyTab);
+    taParty = nullptr;
 }
 
 void PartyHandler::join(const int partyId A_UNUSED) const

@@ -30,6 +30,11 @@ VendingHandler::VendingHandler()
     vendingHandler = this;
 }
 
+VendingHandler::~VendingHandler()
+{
+    vendingHandler = nullptr;
+}
+
 void VendingHandler::close() const
 {
 }

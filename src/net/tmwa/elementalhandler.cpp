@@ -31,4 +31,9 @@ ElementalHandler::ElementalHandler() :
     elementalHandler = this;
 }
 
+ElementalHandler::~ElementalHandler()
+{
+    elementalHandler = nullptr;
+}
+
 }  // namespace TmwAthena

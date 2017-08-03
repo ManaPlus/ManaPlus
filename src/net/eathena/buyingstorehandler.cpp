@@ -44,6 +44,11 @@ BuyingStoreHandler::BuyingStoreHandler()
     buyingStoreHandler = this;
 }
 
+BuyingStoreHandler::~BuyingStoreHandler()
+{
+    buyingStoreHandler = nullptr;
+}
+
 void BuyingStoreHandler::create(const std::string &name,
                                 const int maxMoney,
                                 const bool flag,

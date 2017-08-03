@@ -52,6 +52,11 @@ GameHandler::GameHandler() :
     gameHandler = this;
 }
 
+GameHandler::~GameHandler()
+{
+    gameHandler = nullptr;
+}
+
 void GameHandler::mapLoadedEvent() const
 {
     createOutPacket(CMSG_MAP_LOADED);

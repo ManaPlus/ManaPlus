@@ -32,6 +32,8 @@
 
 #include "net/eathena/generalhandler.h"
 
+#include "utils/delete2.h"
+
 #include "debug.h"
 
 namespace Net
@@ -165,6 +167,7 @@ void unload()
     if (handler != nullptr)
         handler->unload();
     ignorePackets.clear();
+    delete2(generalHandler);
 }
 
 ServerTypeT getNetworkType()

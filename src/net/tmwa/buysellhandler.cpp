@@ -45,6 +45,11 @@ BuySellHandler::BuySellHandler() :
     Ea::BuySellRecv::mBuyDialog = nullptr;
 }
 
+BuySellHandler::~BuySellHandler()
+{
+    buySellHandler = nullptr;
+}
+
 void BuySellHandler::requestSellList(const std::string &nick) const
 {
     if (nick.empty() || shopWindow == nullptr)

@@ -40,6 +40,11 @@ FamilyHandler::FamilyHandler() :
     familyHandler = this;
 }
 
+FamilyHandler::~FamilyHandler()
+{
+    familyHandler = nullptr;
+}
+
 void FamilyHandler::askForChild(const Being *const being) const
 {
     if (being == nullptr)

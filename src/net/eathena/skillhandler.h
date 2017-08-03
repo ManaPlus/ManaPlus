@@ -35,6 +35,8 @@ class SkillHandler final : public Ea::SkillHandler
 
         A_DELETE_COPY(SkillHandler)
 
+        ~SkillHandler();
+
         void useBeing(const int id,
                       const int level,
                       const BeingId beingId) const override final;

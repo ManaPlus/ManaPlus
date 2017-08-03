@@ -36,12 +36,18 @@
 
 namespace EAthena
 {
+
 TradeHandler::TradeHandler() :
     Ea::TradeHandler()
 {
     tradeHandler = this;
     TradeRecv::mItemIndex = -1;
     TradeRecv::mQuantity = 0;
+}
+
+TradeHandler::~TradeHandler()
+{
+    tradeHandler = nullptr;
 }
 
 void TradeHandler::request(const Being *const being) const

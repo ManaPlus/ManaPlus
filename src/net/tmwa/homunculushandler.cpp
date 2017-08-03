@@ -30,6 +30,11 @@ HomunculusHandler::HomunculusHandler()
     homunculusHandler = this;
 }
 
+HomunculusHandler::~HomunculusHandler()
+{
+    homunculusHandler = nullptr;
+}
+
 void HomunculusHandler::setName(const std::string &name A_UNUSED) const
 {
 }

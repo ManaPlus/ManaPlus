@@ -58,6 +58,11 @@ CharServerHandler::CharServerHandler() :
     charServerHandler = this;
 }
 
+CharServerHandler::~CharServerHandler()
+{
+    charServerHandler = nullptr;
+}
+
 void CharServerHandler::chooseCharacter(Net::Character *const character) const
 {
     if (character == nullptr)

@@ -35,6 +35,11 @@ BattleGroundHandler::BattleGroundHandler()
     battleGroundHandler = this;
 }
 
+BattleGroundHandler::~BattleGroundHandler()
+{
+    battleGroundHandler = nullptr;
+}
+
 void BattleGroundHandler::registerBg(const BattleGroundTypeT &type,
                                      const std::string &name) const
 {

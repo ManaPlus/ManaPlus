@@ -41,6 +41,11 @@ ChatHandler::ChatHandler()
     ChatRecv::mSkipping = true;
 }
 
+ChatHandler::~ChatHandler()
+{
+    clear();
+}
+
 void ChatHandler::clear() const
 {
     ChatRecv::mShowMotd = config.getBoolValue("showmotd");

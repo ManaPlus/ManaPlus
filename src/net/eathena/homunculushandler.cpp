@@ -39,6 +39,11 @@ HomunculusHandler::HomunculusHandler()
     homunculusHandler = this;
 }
 
+HomunculusHandler::~HomunculusHandler()
+{
+    homunculusHandler = nullptr;
+}
+
 void HomunculusHandler::setName(const std::string &name) const
 {
     createOutPacket(CMSG_HOMUNCULUS_SET_NAME);

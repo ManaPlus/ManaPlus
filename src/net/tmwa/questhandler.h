@@ -33,6 +33,8 @@ class QuestHandler final : public Net::QuestHandler
 
         A_DELETE_COPY(QuestHandler)
 
+        ~QuestHandler();
+
         void setQeustActiveState(const int questId,
                                  const bool active) const override final
                                  A_CONST;

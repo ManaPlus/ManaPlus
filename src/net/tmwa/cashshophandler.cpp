@@ -31,6 +31,11 @@ CashShopHandler::CashShopHandler() :
     cashShopHandler = this;
 }
 
+CashShopHandler::~CashShopHandler()
+{
+    cashShopHandler = nullptr;
+}
+
 void CashShopHandler::buyItem(const int points A_UNUSED,
                               const int itemId A_UNUSED,
                               const ItemColor color A_UNUSED,

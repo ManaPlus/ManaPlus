@@ -32,6 +32,8 @@ class AuctionHandler final : public Net::AuctionHandler
 
         A_DELETE_COPY(AuctionHandler)
 
+        ~AuctionHandler();
+
         void cancelReg() const override final;
 
         void setItem(const Item *const item,

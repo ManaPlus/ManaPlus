@@ -36,6 +36,8 @@ class CharServerHandler notfinal : public Net::CharServerHandler
     public:
         A_DELETE_COPY(CharServerHandler)
 
+        ~CharServerHandler();
+
         void setCharSelectDialog(CharSelectDialog *const window) const
                                  override final;
 

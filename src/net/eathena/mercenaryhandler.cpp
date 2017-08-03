@@ -37,6 +37,11 @@ MercenaryHandler::MercenaryHandler()
     mercenaryHandler = this;
 }
 
+MercenaryHandler::~MercenaryHandler()
+{
+    mercenaryHandler = nullptr;
+}
+
 void MercenaryHandler::fire() const
 {
     createOutPacket(CMSG_MERCENARY_ACTION);

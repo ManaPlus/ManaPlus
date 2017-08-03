@@ -39,6 +39,11 @@ SkillHandler::SkillHandler() :
     skillHandler = this;
 }
 
+SkillHandler::~SkillHandler()
+{
+    skillHandler = nullptr;
+}
+
 void SkillHandler::useBeing(const int id, const int level,
                             const BeingId beingId) const
 {

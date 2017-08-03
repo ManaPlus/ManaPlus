@@ -31,4 +31,9 @@ RouletteHandler::RouletteHandler() :
     rouletteHandler = this;
 }
 
+RouletteHandler::~RouletteHandler()
+{
+    rouletteHandler = nullptr;
+}
+
 }  // namespace TmwAthena

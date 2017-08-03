@@ -32,6 +32,8 @@ class BankHandler final : public Net::BankHandler
 
         A_DELETE_COPY(BankHandler)
 
+        ~BankHandler();
+
         void deposit(const int money) const override final;
 
         void withdraw(const int money) const override final;

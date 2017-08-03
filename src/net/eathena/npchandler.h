@@ -35,6 +35,8 @@ class NpcHandler final : public Ea::NpcHandler
 
         A_DELETE_COPY(NpcHandler)
 
+        ~NpcHandler();
+
         void talk(const Being *const being) const override final;
 
         void nextDialog(const BeingId npcId) const override final;

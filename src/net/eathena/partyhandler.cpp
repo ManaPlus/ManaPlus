@@ -50,6 +50,7 @@ PartyHandler::PartyHandler() :
 
 PartyHandler::~PartyHandler()
 {
+    partyHandler = nullptr;
 }
 
 void PartyHandler::create(const std::string &name) const

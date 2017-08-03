@@ -37,6 +37,11 @@ AuctionHandler::AuctionHandler()
     auctionHandler = this;
 }
 
+AuctionHandler::~AuctionHandler()
+{
+    auctionHandler = nullptr;
+}
+
 void AuctionHandler::cancelReg() const
 {
     createOutPacket(CMSG_AUCTION_CANCEL_REG);

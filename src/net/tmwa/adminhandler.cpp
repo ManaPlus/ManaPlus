@@ -41,6 +41,11 @@ AdminHandler::AdminHandler() :
     adminHandler = this;
 }
 
+AdminHandler::~AdminHandler()
+{
+    adminHandler = nullptr;
+}
+
 void AdminHandler::announce(const std::string &text) const
 {
     createOutPacket(CMSG_ADMIN_ANNOUNCE);

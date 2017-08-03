@@ -35,6 +35,8 @@ class PlayerHandler final : public Ea::PlayerHandler
 
         A_DELETE_COPY(PlayerHandler)
 
+        ~PlayerHandler();
+
         void attack(const BeingId id,
                     const Keep keep) const override final;
         void stopAttack() const override final;

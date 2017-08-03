@@ -42,6 +42,11 @@ CashShopHandler::CashShopHandler() :
     CashShopRecv::mBuyDialog = nullptr;
 }
 
+CashShopHandler::~CashShopHandler()
+{
+    cashShopHandler = nullptr;
+}
+
 void CashShopHandler::buyItem(const int points,
                               const int itemId,
                               const ItemColor color A_UNUSED,

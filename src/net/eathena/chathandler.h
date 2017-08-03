@@ -36,6 +36,8 @@ class ChatHandler final : public Ea::ChatHandler
 
         A_DELETE_COPY(ChatHandler)
 
+        ~ChatHandler();
+
         void talk(const std::string &restrict text,
                   const std::string &restrict channel) const override final;
 
