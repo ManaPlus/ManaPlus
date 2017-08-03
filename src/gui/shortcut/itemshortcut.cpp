@@ -41,13 +41,13 @@
 
 ItemShortcut *itemShortcut[SHORTCUT_TABS];
 
-ItemShortcut::ItemShortcut(const int number) :
+ItemShortcut::ItemShortcut(const size_t number) :
     mItems(),
     mItemColors(),
     mItemData(),
+    mNumber(number),
     mItemSelected(-1),
-    mItemColorSelected(ItemColor_one),
-    mNumber(number)
+    mItemColorSelected(ItemColor_one)
 {
     load();
 }

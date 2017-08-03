@@ -31,7 +31,7 @@
 
 const unsigned int SHORTCUT_ITEMS = 20;
 const unsigned int SHORTCUT_TABS = 5;
-const unsigned int SHORTCUT_AUTO_TAB = 4;
+const size_t SHORTCUT_AUTO_TAB = 4;
 
 class Item;
 
@@ -44,7 +44,7 @@ class ItemShortcut final
         /**
          * Constructor.
          */
-        explicit ItemShortcut(const int number);
+        explicit ItemShortcut(const size_t number);
 
         A_DELETE_COPY(ItemShortcut)
 
@@ -172,9 +172,9 @@ class ItemShortcut final
         int mItems[SHORTCUT_ITEMS];             /**< The items. */
         ItemColor mItemColors[SHORTCUT_ITEMS];  /**< The item colors. */
         std::string mItemData[SHORTCUT_ITEMS];
+        size_t mNumber;
         int mItemSelected;
         ItemColor mItemColorSelected;
-        int mNumber;
 };
 
 extern ItemShortcut *itemShortcut[SHORTCUT_TABS];

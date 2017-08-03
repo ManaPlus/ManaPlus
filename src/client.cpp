@@ -436,7 +436,7 @@ void Client::gameInit()
     touchManager.init();
 
     // Initialize the item and emote shortcuts.
-    for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
+    for (size_t f = 0; f < SHORTCUT_TABS; f ++)
         itemShortcut[f] = new ItemShortcut(f);
     emoteShortcut = new EmoteShortcut;
     dropShortcut = new DropShortcut;
