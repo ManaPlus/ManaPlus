@@ -246,7 +246,7 @@ void ItemShortcut::setItem(const int index,
     save();
 }
 
-void ItemShortcut::setItemFast(const int index,
+void ItemShortcut::setItemFast(const size_t index,
                                const int item,
                                const ItemColor color)
 {

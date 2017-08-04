@@ -23,11 +23,6 @@
 
 #include "net/maphandler.h"
 
-namespace Net
-{
-    class MessageIn;
-}  // namespace Net
-
 namespace EAthena
 {
 
