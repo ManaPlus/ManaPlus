@@ -1845,7 +1845,9 @@ void Client::slowLogic()
         mPing = tick_time;
         if (mState == State::UPDATE ||
             mState == State::LOGIN ||
-            mState == State::LOGIN_ATTEMPT)
+            mState == State::LOGIN_ATTEMPT ||
+            mState == State::REGISTER ||
+            mState == State::REGISTER_ATTEMPT)
         {
             if (loginHandler != nullptr)
                 loginHandler->ping();
