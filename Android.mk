@@ -81,6 +81,7 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/net/tmwa/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/net/ea/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/test/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/ints/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/fs/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/fs/virtfs/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/enums/*.cpp) \
