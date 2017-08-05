@@ -68,11 +68,12 @@ void ItemShortcut::load()
     const Configuration *cfg = &serverConfig;
     if (mNumber != 0)
     {
-        name = std::string("shortcut").append(toString(mNumber)).append("_");
+        name = std::string("shortcut").append(
+            toString(CAST_S32(mNumber))).append("_");
         color = std::string("shortcutColor").append(
-            toString(mNumber)).append("_");
+            toString(CAST_U32(mNumber))).append("_");
         data = std::string("shortcutData").append(
-            toString(mNumber)).append("_");
+            toString(CAST_U32(mNumber))).append("_");
     }
     else
     {
@@ -102,11 +103,12 @@ void ItemShortcut::save() const
         return;
     if (mNumber != 0)
     {
-        name = std::string("shortcut").append(toString(mNumber)).append("_");
+        name = std::string("shortcut").append(
+            toString(CAST_S32(mNumber))).append("_");
         color = std::string("shortcutColor").append(
-            toString(mNumber)).append("_");
+            toString(CAST_U32(mNumber))).append("_");
         data = std::string("shortcutData").append(
-            toString(mNumber)).append("_");
+            toString(CAST_U32(mNumber))).append("_");
     }
     else
     {
