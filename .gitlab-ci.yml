@@ -455,14 +455,14 @@ gcc-7_sanitize_doctest_tests_i386:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_sanitize2_test:
+gcc-7_SDL_SDL-1.2_sanitize2_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
-  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3
+  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
   - export LD_PRELOAD
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
@@ -470,7 +470,7 @@ gcc-6_SDL_SDL-1.2_sanitize2_test:
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_asan
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
@@ -482,12 +482,12 @@ gcc-6_SDL_SDL-1.2_sanitize2_test:
   tags:
     - docker
 
-gcc-6_SDL_default_sanitize2_test:
+gcc-7_SDL_default_sanitize2_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
+  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
   - export LD_PRELOAD
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
@@ -495,7 +495,7 @@ gcc-6_SDL_default_sanitize2_test:
   variables:
     LIBNAME: SDL
     LIBVERSION: default_asan
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
@@ -692,20 +692,20 @@ gcc-7_sanitize:
   - docker
 
 
-gcc-6_SDL_SDL-1.2_sanitize_test:
+gcc-7_SDL_SDL-1.2_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
@@ -715,18 +715,18 @@ gcc-6_SDL_SDL-1.2_sanitize_test:
   tags:
     - docker
 
-gcc-6_SDL_default_sanitize_test:
+gcc-7_SDL_default_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
@@ -737,20 +737,20 @@ gcc-6_SDL_default_sanitize_test:
     - docker
 
 
-gcc-6_SDL_SDL-1.2_old_sanitize_test:
+gcc-7_SDL_SDL-1.2_old_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
@@ -762,18 +762,18 @@ gcc-6_SDL_SDL-1.2_old_sanitize_test:
   tags:
     - docker
 
-gcc-6_SDL_default_old_sanitize_test:
+gcc-7_SDL_default_old_sanitize_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
@@ -1241,17 +1241,17 @@ gcc-5_sdl2_no_opengl_tests_i386:
   tags:
     - docker
 
-gcc-6_zlib_v1.2.3.9_tests:
+gcc-7_zlib_v1.2.3.9_tests:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: v1.2.3.9
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -1260,17 +1260,17 @@ gcc-6_zlib_v1.2.3.9_tests:
   tags:
     - docker
 
-gcc-6_zlib_master_tests:
+gcc-7_zlib_master_tests:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: master
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3046,18 +3046,18 @@ fedora_gcc-snapshot_sdl2:
 
 # build with other libs versions
 
-gcc-6_zlib_v1.2.3.9:
+gcc-7_zlib_v1.2.3.9:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: v1.2.3.9
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3066,18 +3066,18 @@ gcc-6_zlib_v1.2.3.9:
   tags:
     - docker
 
-gcc-6_zlib_v1.2.6.1:
+gcc-7_zlib_v1.2.6.1:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: v1.2.6.1
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3086,18 +3086,18 @@ gcc-6_zlib_v1.2.6.1:
   tags:
     - docker
 
-gcc-6_zlib_v1.2.9:
+gcc-7_zlib_v1.2.9:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: v1.2.9
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3105,18 +3105,18 @@ gcc-6_zlib_v1.2.9:
   tags:
     - docker
 
-gcc-6_zlib_v1.2.10:
+gcc-7_zlib_v1.2.10:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: v1.2.10
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3124,18 +3124,18 @@ gcc-6_zlib_v1.2.10:
   tags:
     - docker
 
-gcc-6_zlib_v1.2.11:
+gcc-7_zlib_v1.2.11:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: v1.2.11
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3143,18 +3143,18 @@ gcc-6_zlib_v1.2.11:
   tags:
     - docker
 
-gcc-6_zlib_master:
+gcc-7_zlib_master:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: master
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3162,18 +3162,18 @@ gcc-6_zlib_master:
   tags:
     - docker
 
-gcc-6_zlib_develop:
+gcc-7_zlib_develop:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib
     LIBVERSION: develop
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3182,18 +3182,18 @@ gcc-6_zlib_develop:
     - docker
 
 # error compilation. cant find SDL.
-.gcc-6_zlib_ng_develop:
+.gcc-7_zlib_ng_develop:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: zlib_ng
     LIBVERSION: develop
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3201,18 +3201,18 @@ gcc-6_zlib_develop:
   tags:
     - docker
 
-gcc-6_libpng_master:
+gcc-7_libpng_master:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
     LIBVERSION: master
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3220,18 +3220,18 @@ gcc-6_libpng_master:
   tags:
     - docker
 
-gcc-6_libpng_libpng17:
+gcc-7_libpng_libpng17:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
     LIBVERSION: libpng17
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3239,18 +3239,18 @@ gcc-6_libpng_libpng17:
   tags:
     - docker
 
-gcc-6_libpng_libpng16:
+gcc-7_libpng_libpng16:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
     LIBVERSION: libpng16
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3258,18 +3258,18 @@ gcc-6_libpng_libpng16:
   tags:
     - docker
 
-gcc-6_libpng_libpng15:
+gcc-7_libpng_libpng15:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
     LIBVERSION: libpng15
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3277,18 +3277,18 @@ gcc-6_libpng_libpng15:
   tags:
     - docker
 
-gcc-6_libpng_libpng14:
+gcc-7_libpng_libpng14:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
     LIBVERSION: libpng14
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3296,18 +3296,18 @@ gcc-6_libpng_libpng14:
   tags:
     - docker
 
-gcc-6_libpng_libpng12:
+gcc-7_libpng_libpng12:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
     LIBVERSION: libpng12
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3315,18 +3315,18 @@ gcc-6_libpng_libpng12:
   tags:
     - docker
 
-gcc-6_libpng_libpng10:
+gcc-7_libpng_libpng10:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libpng
     LIBVERSION: libpng10
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3334,18 +3334,18 @@ gcc-6_libpng_libpng10:
   tags:
     - docker
 
-gcc-6_tinyxml2_master:
+gcc-7_tinyxml2_master:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh --enable-libxml=tinyxml2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: tinyxml2
     LIBVERSION: master
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3353,18 +3353,18 @@ gcc-6_tinyxml2_master:
   tags:
     - docker
 
-gcc-6_tinyxml2_5.0.1:
+gcc-7_tinyxml2_5.0.1:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh --enable-libxml=tinyxml2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: tinyxml2
     LIBVERSION: 5.0.1
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3372,18 +3372,18 @@ gcc-6_tinyxml2_5.0.1:
   tags:
     - docker
 
-gcc-6_tinyxml2_4.0.1:
+gcc-7_tinyxml2_4.0.1:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh --enable-libxml=tinyxml2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: tinyxml2
     LIBVERSION: 4.0.1
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3391,18 +3391,18 @@ gcc-6_tinyxml2_4.0.1:
   tags:
     - docker
 
-gcc-6_tinyxml2_3.0.0:
+gcc-7_tinyxml2_3.0.0:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh --enable-libxml=tinyxml2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: tinyxml2
     LIBVERSION: 3.0.0
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3410,18 +3410,18 @@ gcc-6_tinyxml2_3.0.0:
   tags:
     - docker
 
-gcc-6_tinyxml2_2.2.0:
+gcc-7_tinyxml2_2.2.0:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh --enable-libxml=tinyxml2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh --enable-libxml=tinyxml2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: tinyxml2
     LIBVERSION: 2.2.0
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3429,18 +3429,18 @@ gcc-6_tinyxml2_2.2.0:
   tags:
     - docker
 
-gcc-6_libxml2_v2.9.4:
+gcc-7_libxml2_v2.9.4:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libxml2
     LIBVERSION: v2.9.4
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3449,18 +3449,18 @@ gcc-6_libxml2_v2.9.4:
     - docker
 
 # conflict with system libxml2 in gettext
-.gcc-6_libxml2_v2.8.0:
+.gcc-7_libxml2_v2.8.0:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: libxml2
     LIBVERSION: v2.8.0
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libcurl4-gnutls-dev libpng-dev zlib1g-dev libicu-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3468,18 +3468,18 @@ gcc-6_libxml2_v2.9.4:
   tags:
     - docker
 
-gcc-6_curl_curl-7_9_8:
+gcc-7_curl_curl-7_9_8:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: curl
     LIBVERSION: curl-7_9_8
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3487,18 +3487,18 @@ gcc-6_curl_curl-7_9_8:
   tags:
     - docker
 
-gcc-6_curl_curl-7_40_0:
+gcc-7_curl_curl-7_40_0:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: curl
     LIBVERSION: curl-7_40_0
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3506,18 +3506,18 @@ gcc-6_curl_curl-7_40_0:
   tags:
     - docker
 
-gcc-6_curl_curl-7_52_1:
+gcc-7_curl_curl-7_52_1:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: curl
     LIBVERSION: curl-7_52_1
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3525,18 +3525,18 @@ gcc-6_curl_curl-7_52_1:
   tags:
     - docker
 
-gcc-6_curl_curl-7_53_1:
+gcc-7_curl_curl-7_53_1:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: curl
     LIBVERSION: curl-7_53_1
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3544,18 +3544,18 @@ gcc-6_curl_curl-7_53_1:
   tags:
     - docker
 
-gcc-6_curl_curl-7_54_1:
+gcc-7_curl_curl-7_54_1:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: curl
     LIBVERSION: curl-7_54_1
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3563,18 +3563,18 @@ gcc-6_curl_curl-7_54_1:
   tags:
     - docker
 
-gcc-6_curl_master_no_oldies:
+gcc-7_curl_master_no_oldies:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: curl
     LIBVERSION: master
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -3583,20 +3583,20 @@ gcc-6_curl_master_no_oldies:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2:
+gcc-7_SDL_SDL-1.2:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev
               wget unzip gdb valgrind netcat-openbsd procps
@@ -3605,18 +3605,18 @@ gcc-6_SDL_SDL-1.2:
   tags:
     - docker
 
-gcc-6_SDL_default:
+gcc-7_SDL_default:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh --with-sdl2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7.sh --with-sdl2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev
               wget unzip gdb valgrind netcat-openbsd procps
@@ -3625,19 +3625,19 @@ gcc-6_SDL_default:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_test:
+gcc-7_SDL_SDL-1.2_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_tests.sh --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
@@ -3647,17 +3647,17 @@ gcc-6_SDL_SDL-1.2_test:
   tags:
     - docker
 
-gcc-6_SDL_default_test:
+gcc-7_SDL_default_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
@@ -3667,19 +3667,19 @@ gcc-6_SDL_default_test:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_old:
+gcc-7_SDL_SDL-1.2_old:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               libjpeg-dev libtiff-dev 
@@ -3690,18 +3690,18 @@ gcc-6_SDL_SDL-1.2_old:
   tags:
     - docker
 
-gcc-6_SDL_default_old:
+gcc-7_SDL_default_old:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6.sh --with-sdl2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7.sh --with-sdl2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev
               libjpeg-dev libtiff-dev
@@ -3712,19 +3712,19 @@ gcc-6_SDL_default_old:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_old_test:
+gcc-7_SDL_SDL-1.2_old_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_tests.sh --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind 
@@ -3736,17 +3736,17 @@ gcc-6_SDL_SDL-1.2_old_test:
   tags:
     - docker
 
-gcc-6_SDL_default_old_test:
+gcc-7_SDL_default_old_test:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind 
@@ -3758,20 +3758,20 @@ gcc-6_SDL_default_old_test:
   tags:
     - docker
 
-gcc-6_SDL_SDL-1.2_sanitize:
+gcc-7_SDL_SDL-1.2_sanitize:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind netcat-openbsd
@@ -3781,18 +3781,18 @@ gcc-6_SDL_SDL-1.2_sanitize:
   tags:
     - docker
 
-gcc-6_SDL_default_sanitize:
+gcc-7_SDL_default_sanitize:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize.sh --with-sdl2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize.sh --with-sdl2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind netcat-openbsd
@@ -3803,20 +3803,20 @@ gcc-6_SDL_default_sanitize:
     - docker
 
 
-gcc-6_SDL_SDL-1.2_old_sanitize:
+gcc-7_SDL_SDL-1.2_old_sanitize:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize.sh
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libglu1-mesa-dev libicu-dev 
               valgrind netcat-openbsd
@@ -3828,18 +3828,18 @@ gcc-6_SDL_SDL-1.2_old_sanitize:
   tags:
     - docker
 
-gcc-6_SDL_default_old_sanitize:
+gcc-7_SDL_default_old_sanitize:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc6_sanitize.sh --with-sdl2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize.sh --with-sdl2
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
     LIBNAME: SDL
     LIBVERSION: default_old
-    PACKAGES: gcc-6 g++-6 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
               valgrind netcat-openbsd
