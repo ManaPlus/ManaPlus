@@ -1,3 +1,18 @@
+2017-08-05 New release 1.7.8.5
+fix: quests window redraw speed and render too long lines.
+fix: mouse cursor update each 10 seconds.
+fix: crash in help window links with old compilers.
+fix: server command with name "int" in groups.xml.
+fix: memory leak in skill casting animation.
+fix: free network related memory or reconnecting to other servers.
+fix: prevent server connection timeout in register dialog.
+add: improve mouse move and click emulation.
+add: option to show player name at top or bottom.
+add: improve badges drawing with hidden player name.
+add: use gcc-6 for windows builds.
+add: default icons for unknown skills by types.
+add: shortcuts tab with automatically added active skills (not for legacy servers).
+
 2017-07-22 New release 1.7.7.22
 fix: memory leak if player not totally visible while moving.
 fix: character select dialog size if slots more than two rows.
