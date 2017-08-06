@@ -38,7 +38,7 @@
 
 DebugWindow *debugWindow = nullptr;
 
-DebugWindow::DebugWindow() :
+DebugWindow::DebugWindow(const std::string &name) :
     // TRANSLATORS: debug window name
     Window(_("Debug"), Modal_false, nullptr, "debug.xml"),
     mTabs(CREATEWIDGETR(TabbedArea, this)),
@@ -46,7 +46,7 @@ DebugWindow::DebugWindow() :
     mTargetWidget(new TargetDebugTab(this)),
     mNetWidget(new NetDebugTab(this))
 {
-    setWindowName("Debug");
+    setWindowName(name);
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 

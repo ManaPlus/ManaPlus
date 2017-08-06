@@ -41,7 +41,7 @@ class DebugWindow final : public Window
         /**
          * Constructor.
          */
-        DebugWindow();
+        DebugWindow(const std::string &name);
 
         A_DELETE_COPY(DebugWindow)
 

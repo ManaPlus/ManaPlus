@@ -227,7 +227,13 @@ static void createGuiWindows()
     CREATEWIDGETV0(shopWindow, ShopWindow);
     CREATEWIDGETV0(skillDialog, SkillDialog);
     CREATEWIDGETV0(minimap, Minimap);
-    CREATEWIDGETV0(debugWindow, DebugWindow);
+    if (debugWindow)
+    {
+        debugWindow->scheduleDelete();
+        debugWindow = nullptr;
+    }
+    CREATEWIDGETV(debugWindow, DebugWindow, 
+        "Debug");
     CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
         "ItemShortcut", "items.xml", 83, 460);
 

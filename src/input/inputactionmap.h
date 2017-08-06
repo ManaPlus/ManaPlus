@@ -613,7 +613,7 @@ static const InputActionData inputActionData
         Input::GRP_DEFAULT | Input::GRP_GUI,
         &Actions::debugWindowShow,
         InputAction::NO_VALUE, 50,
-        InputCondition::GAME | InputCondition::NOTARGET,
+        InputCondition::SHORTCUT0 | InputCondition::NOTARGET,
         "debug|opendebug",
         UseArgs_false,
         Protected_false},

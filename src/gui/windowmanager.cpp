@@ -49,6 +49,7 @@
 #include "gui/popups/textboxpopup.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/debugwindow.h"
 #include "gui/windows/didyouknowwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/helpwindow.h"
@@ -144,6 +145,13 @@ void WindowManager::createWindows()
         "#Debug", ChatTabType::DEBUG);
     debugChatTab->setAllowHighlight(false);
     chatWindow->setVisible(Visible_false);
+    if (debugWindow)
+    {
+        debugWindow->scheduleDelete();
+        debugWindow = nullptr;
+    }
+    CREATEWIDGETV(debugWindow, DebugWindow,
+        "DebugDebug");
 #endif  // DYECMD
 
     CREATEWIDGETV0(textPopup, TextPopup);
@@ -187,6 +195,7 @@ void WindowManager::deleteWindows()
 
     delete2(debugChatTab);
     delete2(chatWindow);
+    delete2(debugWindow);
 #endif  // DYECMD
 
     delete2(textPopup);

@@ -183,8 +183,10 @@ void MapDebugTab::logic()
         mXYLabel->setCaption(strprintf("%s (?, ?)", _("Player Position:")));
     }
 
-    const Map *const map = Game::instance()->getCurrentMap();
-    if ((map != nullptr) && (viewport != nullptr))
+    Game *const game = Game::instance();
+    const Map *const map = game != nullptr ? game->getCurrentMap() : nullptr;
+    if (map != nullptr &&
+        viewport != nullptr)
     {
           // Get the current mouse position
         const int mouseTileX = (viewport->mMouseX + viewport->getCameraX())
