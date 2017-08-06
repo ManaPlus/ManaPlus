@@ -26,7 +26,10 @@
 PRAGMA49(GCC diagnostic push)
 PRAGMA49(GCC diagnostic ignored "-Wzero-as-null-pointer-constant")
 PRAGMA49(GCC diagnostic ignored "-Wsuggest-override")
+PRAGMACLANG6GCC(GCC diagnostic push)
+PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
 #include <tinyxml2.h>
+PRAGMACLANG6GCC(GCC diagnostic pop)
 PRAGMA49(GCC diagnostic pop)
 
 TINYXML2_INCLUDED

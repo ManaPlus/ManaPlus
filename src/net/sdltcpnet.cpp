@@ -154,7 +154,10 @@ TcpNet::SocketSet TcpNet::allocSocketSet(const int maxsockets)
 
 int TcpNet::addSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
 {
+    PRAGMACLANG6GCC(GCC diagnostic push)
+    PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
     return SDLNet_TCP_AddSocket(set, sock);
+    PRAGMACLANG6GCC(GCC diagnostic pop)
 }
 
 int TcpNet::socketReady(const TcpNet::Socket sock)
@@ -177,7 +180,10 @@ int TcpNet::recv(const TcpNet::Socket sock, void *const data, const int maxlen)
 
 int TcpNet::delSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
 {
+    PRAGMACLANG6GCC(GCC diagnostic push)
+    PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
     return SDLNet_TCP_DelSocket(set, sock);
+    PRAGMACLANG6GCC(GCC diagnostic pop)
 }
 
 void TcpNet::freeSocketSet(const TcpNet::SocketSet set)
