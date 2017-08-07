@@ -23,15 +23,13 @@
 #ifndef GUI_SHORTCUT_ITEMSHORTCUT_H
 #define GUI_SHORTCUT_ITEMSHORTCUT_H
 
+#include "const/itemshortcut.h"
+
 #include "enums/simpletypes/itemcolor.h"
 
 #include <string>
 
 #include "localconsts.h"
-
-const unsigned int SHORTCUT_ITEMS = 20;
-const unsigned int SHORTCUT_TABS = 5;
-const size_t SHORTCUT_AUTO_TAB = 4;
 
 class Item;
 

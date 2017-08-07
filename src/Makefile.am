@@ -672,6 +672,7 @@ BASE_SRC += events/actionevent.h \
 	      eventsmanager.cpp \
 	      eventsmanager.h \
 	      const/equipment.h \
+	      const/itemshortcut.h \
 	      const/spells.h \
 	      const/utils/timer.h \
 	      const/utils/utf8.h \
