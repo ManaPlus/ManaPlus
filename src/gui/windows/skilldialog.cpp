@@ -569,7 +569,7 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
     missile.z = static_cast<float>(XML::getFloatProperty(
         node, "missile-z", 32.0f));
     missile.lifeTime = static_cast<float>(XML::getProperty(
-        node, "missile-lifetime", 3000));
+        node, "missile-lifetime", 500));
     missile.speed = static_cast<float>(XML::getFloatProperty(
         node, "missile-speed", 7.0f));
     missile.dieDistance = static_cast<float>(
@@ -581,7 +581,7 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
     castingMissile.z = static_cast<float>(XML::getFloatProperty(
         node, "castingMissile-z", 32.0f));
     castingMissile.lifeTime = static_cast<float>(XML::getProperty(
-        node, "castingMissile-lifetime", 3000));
+        node, "castingMissile-lifetime", 500));
     castingMissile.speed = static_cast<float>(XML::getFloatProperty(
         node, "castingMissile-speed", 7.0f));
     castingMissile.dieDistance = static_cast<float>(

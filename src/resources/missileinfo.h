@@ -32,7 +32,7 @@ struct MissileInfo final
         z(32.0F),
         speed(7.0F),
         dieDistance(8.0F),
-        lifeTime(3000)
+        lifeTime(500)
     { }
 
     A_DELETE_COPY(MissileInfo)

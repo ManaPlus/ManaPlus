@@ -234,7 +234,7 @@ bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
         const float missileZ = static_cast<float>(XML::getFloatProperty(
             spriteNode, "missile-z", 32.0f));
         const int missileLifeTime = static_cast<float>(XML::getProperty(
-            spriteNode, "missile-lifetime", 3000));
+            spriteNode, "missile-lifetime", 500));
         const float missileSpeed = static_cast<float>(XML::getFloatProperty(
             spriteNode, "missile-speed", 7.0f));
         const float missileDieDistance = static_cast<float>(

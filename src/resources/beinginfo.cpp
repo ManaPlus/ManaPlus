@@ -55,7 +55,7 @@ Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK,
     32.0F,
     7.0F,
     8.0F,
-    3000);
+    500);
 
 BeingInfo::BeingInfo() :
     mDisplay(),

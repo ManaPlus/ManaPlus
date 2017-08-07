@@ -348,7 +348,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         float missileZ = static_cast<float>(XML::getFloatProperty(
             node, "missile-z", 32.0f));
         int missileLifeTime = static_cast<float>(XML::getProperty(
-            node, "missile-lifetime", 3000));
+            node, "missile-lifetime", 500));
         float missileSpeed = static_cast<float>(XML::getFloatProperty(
             node, "missile-speed", 7.0f));
         float missileDieDistance = static_cast<float>(XML::getFloatProperty(
@@ -502,7 +502,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
                 missileParticle = inheritMissile.particle;
             if (missileZ == 32.0F)
                 missileZ = inheritMissile.z;
-            if (missileLifeTime == 3000)
+            if (missileLifeTime == 500)
                 missileLifeTime = inheritMissile.lifeTime;
             if (missileSpeed == 7.0F)
                 missileSpeed = inheritMissile.speed;
