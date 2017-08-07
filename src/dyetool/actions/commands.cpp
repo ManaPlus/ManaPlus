@@ -162,5 +162,6 @@ impHandlerVoid(moveAttackUp)
 impHandlerVoid(moveAttackDown)
 impHandlerVoid(movePriorityAttackUp)
 impHandlerVoid(movePriorityAttackDown)
+impHandlerVoid(addSkillShortcut)
 
 }  // namespace Actions

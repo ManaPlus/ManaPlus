@@ -98,6 +98,8 @@ struct SkillInfo final
             || type == SkillType::Self
             || type == SkillType::Support;
     }
+
+    std::string toDataStr() const A_WARN_UNUSED;
 };
 
 typedef STD_VECTOR<SkillInfo*> SkillList;

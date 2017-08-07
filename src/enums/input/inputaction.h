@@ -708,6 +708,7 @@ enumStart(InputAction)
     PET_DROP_LOOT,
     PET_RETURN_TO_EGG,
     PET_UNEQUIP,
+    ADD_SKILL_SHORTCUT,
     TOTAL
 }
 enumEnd(InputAction);

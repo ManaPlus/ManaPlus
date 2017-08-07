@@ -168,6 +168,8 @@ class ItemShortcut final
 
         void clear();
 
+        size_t getFreeIndex() const A_WARN_UNUSED;
+
     private:
         int mItems[SHORTCUT_ITEMS];             /**< The items. */
         ItemColor mItemColors[SHORTCUT_ITEMS];  /**< The item colors. */

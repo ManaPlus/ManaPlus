@@ -306,10 +306,7 @@ class SkillRectangleListBox final : public Widget,
                         return;
                     dragDrop.dragSkill(skill, DragDropSource::Skills);
                     dragDrop.setItem(skill->id + SKILL_MIN_ID);
-                    dragDrop.setItemData(strprintf("%d %d %d",
-                        CAST_S32(skill->customCastType),
-                        skill->customOffsetX,
-                        skill->customOffsetY));
+                    dragDrop.setItemData(skill->toDataStr());
                 }
             }
         }

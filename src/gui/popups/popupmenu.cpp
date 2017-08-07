@@ -2249,6 +2249,11 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
 
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(_("Skill"));
+    mBrowserBox->addRow("/addskillshortcut 'ITEMID'",
+        // TRANSLATORS: popup menu item
+        // TRANSLATORS: add skill to shortcurs tab
+        _("Add skill shortcut"));
+    mBrowserBox->addSeparator("##3---");
     mBrowserBox->addRow("/showskilllevels 'ITEMID'",
         // TRANSLATORS: popup menu item
         // TRANSLATORS: set skill level

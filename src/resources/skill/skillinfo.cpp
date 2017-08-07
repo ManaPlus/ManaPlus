@@ -194,3 +194,11 @@ SkillData *SkillInfo::getData1(const int lev) const
         return (*dataMap.begin()).second;
     return (*it).second;
 }
+
+std::string SkillInfo::toDataStr() const
+{
+    return strprintf("%d %d %d",
+        CAST_S32(customCastType),
+        customOffsetX,
+        customOffsetY);
+}

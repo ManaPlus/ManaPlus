@@ -268,10 +268,8 @@ void SkillDialog::update()
                 info->id + SKILL_MIN_ID,
                 fromInt(info->customSelectedLevel, ItemColor));
 
-            shortcuts->setItemData(idx, strprintf("%d %d %d",
-                CAST_S32(info->customCastType),
-                info->customOffsetX,
-                info->customOffsetY));
+            shortcuts->setItemData(idx,
+                info->toDataStr());
             idx ++;
         }
     }

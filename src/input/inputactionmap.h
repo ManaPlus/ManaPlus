@@ -5738,6 +5738,12 @@ static const InputActionData inputActionData
         "petunequip|unequippet",
         UseArgs_false,
         Protected_false},
+    {"keyAddSkillShortcut",
+        defaultAction(&Actions::addSkillShortcut),
+        InputCondition::INGAME,
+        "addskillshortcut|skillshortcut",
+        UseArgs_true,
+        Protected_false},
 };
 
 #undef defaultAction

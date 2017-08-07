@@ -277,3 +277,13 @@ void ItemShortcut::swap(const int index1, const int index2)
     mItemData[index2] = tmpData;
     save();
 }
+
+size_t ItemShortcut::getFreeIndex() const
+{
+    for (size_t i = 0; i < SHORTCUT_ITEMS; i++)
+    {
+        if (mItems[i] < 0)
+            return i;
+    }
+    return -1;
+}

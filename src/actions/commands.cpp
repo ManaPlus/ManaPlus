@@ -33,11 +33,14 @@
 #include "being/homunculusinfo.h"
 #include "being/playerinfo.h"
 
+#include "const/resources/skill.h"
+
 #include "gui/viewport.h"
 
 #include "gui/popups/popupmenu.h"
 
 #include "gui/shortcut/emoteshortcut.h"
+#include "gui/shortcut/itemshortcut.h"
 
 #include "gui/windows/mailwindow.h"
 
@@ -45,6 +48,7 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
 #include "gui/windows/outfitwindow.h"
+#include "gui/windows/shortcutwindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 
@@ -70,6 +74,8 @@
 #include "resources/db/itemdb.h"
 
 #include "resources/map/map.h"
+
+#include "resources/skill/skillinfo.h"
 
 #include "utils/booleanoptions.h"
 #include "utils/chatutils.h"
@@ -2089,6 +2095,42 @@ impHandler(movePriorityAttackDown)
         return true;
     }
     return false;
+}
+
+impHandler(addSkillShortcut)
+{
+    const std::string args = event.args;
+    if (args.empty() ||
+        itemShortcutWindow == nullptr)
+    {
+        return false;
+    }
+    const SkillInfo *restrict const skill = skillDialog->getSkill(
+        atoi(args.c_str()));
+    if (skill == nullptr)
+        return false;
+
+    const int num = itemShortcutWindow->getTabIndex();
+    if (num < 0 ||
+        num >= CAST_S32(SHORTCUT_TABS) ||
+        num == SHORTCUT_AUTO_TAB)
+    {
+        return false;
+    }
+
+    ItemShortcut *const selShortcut = itemShortcut[num];
+    const int index = selShortcut->getFreeIndex();
+    if (index < 0)
+        return true;
+
+    selShortcut->setItem(index,
+        skill->id + SKILL_MIN_ID,
+        fromInt(skill->customSelectedLevel, ItemColor));
+    selShortcut->setItemData(index,
+        skill->toDataStr());
+
+//    popupMenu->showSkillLevelPopup(skill);
+    return true;
 }
 
 }  // namespace Actions
