@@ -356,7 +356,8 @@ TEST_CASE("Windows tests", "windowmanager")
     }
     SECTION("DebugWindow")
     {
-        CREATEWIDGETV0(debugWindow, DebugWindow);
+        CREATEWIDGETV(debugWindow, DebugWindow,
+            "Debug");
         gui->draw();
         mainGraphics->updateScreen();
         delete2(debugWindow);
