@@ -472,30 +472,43 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             }
         }
 
-        if (view == 0 && inheritItemInfo != nullptr)
-            view = inheritItemInfo->getView();
-        itemInfo->setView(view);
-        if (weight == 0 && inheritItemInfo != nullptr)
-            weight = inheritItemInfo->getWeight();
-        itemInfo->setWeight(weight);
-        if (attackAction.empty() && inheritItemInfo != nullptr)
-            attackAction = inheritItemInfo->getAttackAction();
-        itemInfo->setAttackAction(attackAction);
-        if (skyAttackAction.empty() && inheritItemInfo != nullptr)
-            skyAttackAction = inheritItemInfo->getSkyAttackAction();
-        itemInfo->setSkyAttackAction(skyAttackAction);
-        if (waterAttackAction.empty() && inheritItemInfo != nullptr)
-            waterAttackAction = inheritItemInfo->getWaterAttackAction();
-        itemInfo->setWaterAttackAction(waterAttackAction);
-        if (rideAttackAction.empty() && inheritItemInfo != nullptr)
-            rideAttackAction = inheritItemInfo->getRideAttackAction();
-        itemInfo->setRideAttackAction(rideAttackAction);
-        if (attackRange == 0 && inheritItemInfo != nullptr)
-            attackRange = inheritItemInfo->getAttackRange();
-        itemInfo->setAttackRange(attackRange);
+        std::string effect;
+        readFields(effect, node, requiredFields);
+        readFields(effect, node, addFields);
+        std::string temp = XML::langProperty(node, "effect", "");
+        if (!effect.empty() && !temp.empty())
+            effect.append(" / ");
+        effect.append(temp);
 
         if (inheritItemInfo)
         {
+            if (view == 0)
+                view = inheritItemInfo->getView();
+            if (weight == 0)
+                weight = inheritItemInfo->getWeight();
+            if (attackAction.empty())
+                attackAction = inheritItemInfo->getAttackAction();
+            if (skyAttackAction.empty())
+                skyAttackAction = inheritItemInfo->getSkyAttackAction();
+            if (waterAttackAction.empty())
+                waterAttackAction = inheritItemInfo->getWaterAttackAction();
+            if (rideAttackAction.empty())
+                rideAttackAction = inheritItemInfo->getRideAttackAction();
+            if (attackRange == 0)
+                attackRange = inheritItemInfo->getAttackRange();
+            if (hitEffectId == 0)
+                hitEffectId = inheritItemInfo->getHitEffectId();
+            if (criticalEffectId == 0)
+                criticalEffectId = inheritItemInfo->getCriticalHitEffectId();
+            if (missEffectId == 0)
+                missEffectId = inheritItemInfo->getMissEffectId();
+            if (colors.empty())
+                colors = inheritItemInfo->getColorsListName();
+            if (iconColors.empty())
+                iconColors = inheritItemInfo->getIconColorsListName();
+            if (effect.empty())
+                effect = inheritItemInfo->getEffect();
+
             const MissileInfo &inheritMissile =
                 inheritItemInfo->getMissileConst();
             if (missileParticle.empty())
@@ -509,46 +522,34 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             if (missileDieDistance == 8.0F)
                 missileDieDistance = inheritMissile.dieDistance;
         }
+
+        itemInfo->setView(view);
+        itemInfo->setWeight(weight);
+        itemInfo->setAttackAction(attackAction);
+        itemInfo->setSkyAttackAction(skyAttackAction);
+        itemInfo->setWaterAttackAction(waterAttackAction);
+        itemInfo->setRideAttackAction(rideAttackAction);
+        itemInfo->setAttackRange(attackRange);
+        itemInfo->setHitEffectId(hitEffectId);
+        itemInfo->setCriticalHitEffectId(criticalEffectId);
+        itemInfo->setMissEffectId(missEffectId);
+        itemInfo->setDrawBefore(-1, parseSpriteName(drawBefore));
+        itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
+        itemInfo->setDrawPriority(-1, drawPriority);
+        itemInfo->setColorsList(colors);
+        itemInfo->setIconColorsList(iconColors);
+        itemInfo->setMaxFloorOffsetX(maxFloorOffsetX);
+        itemInfo->setMaxFloorOffsetY(maxFloorOffsetY);
+        itemInfo->setPickupCursor(XML::getProperty(
+            node, "pickupCursor", "pickup"));
+        itemInfo->setEffect(effect);
+
         MissileInfo &missile = itemInfo->getMissile();
         missile.particle = missileParticle;
         missile.z = missileZ;
         missile.lifeTime = missileLifeTime;
         missile.speed = missileSpeed;
         missile.dieDistance = missileDieDistance;
-
-        if (hitEffectId == 0 && inheritItemInfo != nullptr)
-            hitEffectId = inheritItemInfo->getHitEffectId();
-        itemInfo->setHitEffectId(hitEffectId);
-        if (criticalEffectId == 0 && inheritItemInfo != nullptr)
-            criticalEffectId = inheritItemInfo->getCriticalHitEffectId();
-        itemInfo->setCriticalHitEffectId(criticalEffectId);
-        if (missEffectId == 0 && inheritItemInfo != nullptr)
-            missEffectId = inheritItemInfo->getMissEffectId();
-        itemInfo->setMissEffectId(missEffectId);
-        itemInfo->setDrawBefore(-1, parseSpriteName(drawBefore));
-        itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
-        itemInfo->setDrawPriority(-1, drawPriority);
-        if (colors.empty() && inheritItemInfo != nullptr)
-            colors = inheritItemInfo->getColorsListName();
-        itemInfo->setColorsList(colors);
-        if (iconColors.empty() && inheritItemInfo != nullptr)
-            iconColors = inheritItemInfo->getIconColorsListName();
-        itemInfo->setIconColorsList(iconColors);
-        itemInfo->setMaxFloorOffsetX(maxFloorOffsetX);
-        itemInfo->setMaxFloorOffsetY(maxFloorOffsetY);
-        itemInfo->setPickupCursor(XML::getProperty(
-            node, "pickupCursor", "pickup"));
-
-        std::string effect;
-        readFields(effect, node, requiredFields);
-        readFields(effect, node, addFields);
-        std::string temp = XML::langProperty(node, "effect", "");
-        if (!effect.empty() && !temp.empty())
-            effect.append(" / ");
-        effect.append(temp);
-        if (effect.empty() && inheritItemInfo != nullptr)
-            effect = inheritItemInfo->getEffect();
-        itemInfo->setEffect(effect);
 
         for_each_xml_child_node(itemChild, node)
         {
