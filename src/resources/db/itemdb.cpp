@@ -347,8 +347,8 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             node, "missile-particle", "");
         float missileZ = static_cast<float>(XML::getFloatProperty(
             node, "missile-z", 32.0f));
-        int missileLifeTime = static_cast<float>(XML::getProperty(
-            node, "missile-lifetime", 500));
+        int missileLifeTime = XML::getProperty(
+            node, "missile-lifetime", 500);
         float missileSpeed = static_cast<float>(XML::getFloatProperty(
             node, "missile-speed", 7.0f));
         float missileDieDistance = static_cast<float>(XML::getFloatProperty(
