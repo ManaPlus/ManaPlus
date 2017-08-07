@@ -232,7 +232,7 @@ static void createGuiWindows()
         debugWindow->scheduleDelete();
         debugWindow = nullptr;
     }
-    CREATEWIDGETV(debugWindow, DebugWindow, 
+    CREATEWIDGETV(debugWindow, DebugWindow,
         "Debug");
     CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
         "ItemShortcut", "items.xml", 83, 460);
