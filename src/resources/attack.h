@@ -23,9 +23,7 @@
 #ifndef RESOURCES_ATTACK_H
 #define RESOURCES_ATTACK_H
 
-#include <string>
-
-#include "localconsts.h"
+#include "resources/missileinfo.h"
 
 struct Attack final
 {
@@ -37,7 +35,7 @@ struct Attack final
     int mHitEffectId;
     int mCriticalHitEffectId;
     int mMissEffectId;
-    std::string mMissileParticle;
+    MissileInfo mMissile;
 
     Attack(const std::string &action,
            const std::string &skyAction,
@@ -47,7 +45,11 @@ struct Attack final
            const int hitEffectId,
            const int criticalHitEffectId,
            const int missEffectId,
-           const std::string &missileParticle) :
+           const std::string &missileParticle,
+           const float missileZ,
+           const float missileSpeed,
+           const float missileDieDistance,
+           const int missileLifeTime) :
         mAction(action),
         mSkyAction(skyAction),
         mWaterAction(waterAction),
@@ -56,8 +58,13 @@ struct Attack final
         mHitEffectId(hitEffectId),
         mCriticalHitEffectId(criticalHitEffectId),
         mMissEffectId(missEffectId),
-        mMissileParticle(missileParticle)
+        mMissile()
     {
+        mMissile.particle = missileParticle;
+        mMissile.z = missileZ;
+        mMissile.speed = missileSpeed;
+        mMissile.dieDistance = missileDieDistance;
+        mMissile.lifeTime = missileLifeTime;
     }
 
     A_DELETE_COPY(Attack)

@@ -105,7 +105,11 @@ class BeingInfo final
                        const int hitEffectId,
                        const int criticalHitEffectId,
                        const int missEffectId,
-                       const std::string &missileParticle);
+                       const std::string &missileParticle,
+                       const float missileZ,
+                       const float missileSpeed,
+                       const float missileDieDistance,
+                       const int missileLifeTime);
 
         const Attack *getAttack(const int id) const A_WARN_UNUSED;
 

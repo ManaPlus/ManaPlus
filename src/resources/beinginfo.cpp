@@ -47,8 +47,15 @@ Attack *BeingInfo::empty = new Attack(SpriteAction::ATTACK,
     SpriteAction::ATTACKSKY,
     SpriteAction::ATTACKWATER,
     SpriteAction::ATTACKRIDE,
-    -1, -1, -1, -1,
-    std::string());
+    -1,
+    -1,
+    -1,
+    -1,
+    std::string(),
+    32.0F,
+    7.0F,
+    8.0F,
+    3000);
 
 BeingInfo::BeingInfo() :
     mDisplay(),
@@ -184,7 +191,11 @@ void BeingInfo::addAttack(const int id,
                           const int hitEffectId,
                           const int criticalHitEffectId,
                           const int missEffectId,
-                          const std::string &missileParticle)
+                          const std::string &missileParticle,
+                          const float missileZ,
+                          const float missileSpeed,
+                          const float missileDieDistance,
+                          const int missileLifeTime)
 {
     delete mAttacks[id];
     mAttacks[id] = new Attack(action,
@@ -195,7 +206,11 @@ void BeingInfo::addAttack(const int id,
         hitEffectId,
         criticalHitEffectId,
         missEffectId,
-        missileParticle);
+        missileParticle,
+        missileZ,
+        missileSpeed,
+        missileDieDistance,
+        missileLifeTime);
 }
 
 void BeingInfo::clear()

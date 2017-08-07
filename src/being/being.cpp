@@ -958,7 +958,7 @@ void Being::handleAttack(Being *restrict const victim,
     if (mType == ActorType::Player && (mEquippedWeapon != nullptr))
         fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
     else if (mInfo->getAttack(attackId) != nullptr)
-        fireMissile(victim, mInfo->getAttack(attackId)->mMissileParticle);
+        fireMissile(victim, mInfo->getAttack(attackId)->mMissile.particle);
 
     reset();
     mActionTime = tick_time;
