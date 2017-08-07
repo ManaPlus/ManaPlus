@@ -38,8 +38,8 @@
 #include "debug.h"
 
 ItemInfo::ItemInfo() :
-    mMissileParticleFile(),
     mDisplay(),
+    mMissile(),
     mName(),
     mNameEn(),
     mDescription(),

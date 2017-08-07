@@ -719,6 +719,7 @@ SET(SRCS
     resources/memorycounter.h
     resources/memorymanager.cpp
     resources/memorymanager.h
+    resources/missileinfo.h
     resources/mobileopenglscreenshothelper.cpp
     resources/mobileopenglscreenshothelper.h
     resources/modinfo.cpp

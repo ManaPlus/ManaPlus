@@ -345,6 +345,14 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         int attackRange = XML::getProperty(node, "attack-range", 0);
         std::string missileParticle = XML::getProperty(
             node, "missile-particle", "");
+        float missileZ = static_cast<float>(XML::getFloatProperty(
+            node, "missile-z", 32.0f));
+        int missileLifeTime = static_cast<float>(XML::getProperty(
+            node, "missile-lifetime", 3000));
+        float missileSpeed = static_cast<float>(XML::getFloatProperty(
+            node, "missile-speed", 7.0f));
+        float missileDieDistance = static_cast<float>(XML::getFloatProperty(
+            node, "missile-diedistance", 8.0f));
         int hitEffectId = XML::getProperty(node, "hit-effect-id",
             paths.getIntValue("hitEffectId"));
         int criticalEffectId = XML::getProperty(
@@ -464,46 +472,66 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             }
         }
 
-        if ((view == 0) && (inheritItemInfo != nullptr))
+        if (view == 0 && inheritItemInfo != nullptr)
             view = inheritItemInfo->getView();
         itemInfo->setView(view);
-        if ((weight == 0) && (inheritItemInfo != nullptr))
+        if (weight == 0 && inheritItemInfo != nullptr)
             weight = inheritItemInfo->getWeight();
         itemInfo->setWeight(weight);
-        if (attackAction.empty() && (inheritItemInfo != nullptr))
+        if (attackAction.empty() && inheritItemInfo != nullptr)
             attackAction = inheritItemInfo->getAttackAction();
         itemInfo->setAttackAction(attackAction);
-        if (skyAttackAction.empty() && (inheritItemInfo != nullptr))
+        if (skyAttackAction.empty() && inheritItemInfo != nullptr)
             skyAttackAction = inheritItemInfo->getSkyAttackAction();
         itemInfo->setSkyAttackAction(skyAttackAction);
-        if (waterAttackAction.empty() && (inheritItemInfo != nullptr))
+        if (waterAttackAction.empty() && inheritItemInfo != nullptr)
             waterAttackAction = inheritItemInfo->getWaterAttackAction();
         itemInfo->setWaterAttackAction(waterAttackAction);
-        if (rideAttackAction.empty() && (inheritItemInfo != nullptr))
+        if (rideAttackAction.empty() && inheritItemInfo != nullptr)
             rideAttackAction = inheritItemInfo->getRideAttackAction();
         itemInfo->setRideAttackAction(rideAttackAction);
-        if ((attackRange == 0) && (inheritItemInfo != nullptr))
+        if (attackRange == 0 && inheritItemInfo != nullptr)
             attackRange = inheritItemInfo->getAttackRange();
         itemInfo->setAttackRange(attackRange);
-        if (missileParticle.empty() && (inheritItemInfo != nullptr))
-            missileParticle = inheritItemInfo->getMissileParticleFile();
-        itemInfo->setMissileParticleFile(missileParticle);
-        if ((hitEffectId == 0) && (inheritItemInfo != nullptr))
+
+        if (inheritItemInfo)
+        {
+            const MissileInfo &inheritMissile =
+                inheritItemInfo->getMissileConst();
+            if (missileParticle.empty())
+                missileParticle = inheritMissile.particle;
+            if (missileZ == 32.0F)
+                missileZ = inheritMissile.z;
+            if (missileLifeTime == 3000)
+                missileLifeTime = inheritMissile.lifeTime;
+            if (missileSpeed == 7.0F)
+                missileSpeed = inheritMissile.speed;
+            if (missileDieDistance == 8.0F)
+                missileDieDistance = inheritMissile.dieDistance;
+        }
+        MissileInfo &missile = itemInfo->getMissile();
+        missile.particle = missileParticle;
+        missile.z = missileZ;
+        missile.lifeTime = missileLifeTime;
+        missile.speed = missileSpeed;
+        missile.dieDistance = missileDieDistance;
+
+        if (hitEffectId == 0 && inheritItemInfo != nullptr)
             hitEffectId = inheritItemInfo->getHitEffectId();
         itemInfo->setHitEffectId(hitEffectId);
-        if ((criticalEffectId == 0) && (inheritItemInfo != nullptr))
+        if (criticalEffectId == 0 && inheritItemInfo != nullptr)
             criticalEffectId = inheritItemInfo->getCriticalHitEffectId();
         itemInfo->setCriticalHitEffectId(criticalEffectId);
-        if ((missEffectId == 0) && (inheritItemInfo != nullptr))
+        if (missEffectId == 0 && inheritItemInfo != nullptr)
             missEffectId = inheritItemInfo->getMissEffectId();
         itemInfo->setMissEffectId(missEffectId);
         itemInfo->setDrawBefore(-1, parseSpriteName(drawBefore));
         itemInfo->setDrawAfter(-1, parseSpriteName(drawAfter));
         itemInfo->setDrawPriority(-1, drawPriority);
-        if (colors.empty() && (inheritItemInfo != nullptr))
+        if (colors.empty() && inheritItemInfo != nullptr)
             colors = inheritItemInfo->getColorsListName();
         itemInfo->setColorsList(colors);
-        if (iconColors.empty() && (inheritItemInfo != nullptr))
+        if (iconColors.empty() && inheritItemInfo != nullptr)
             iconColors = inheritItemInfo->getIconColorsListName();
         itemInfo->setIconColorsList(iconColors);
         itemInfo->setMaxFloorOffsetX(maxFloorOffsetX);
@@ -518,7 +546,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         if (!effect.empty() && !temp.empty())
             effect.append(" / ");
         effect.append(temp);
-        if (effect.empty() && (inheritItemInfo != nullptr))
+        if (effect.empty() && inheritItemInfo != nullptr)
             effect = inheritItemInfo->getEffect();
         itemInfo->setEffect(effect);
 

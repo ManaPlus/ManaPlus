@@ -31,6 +31,7 @@
 
 #include "resources/cursors.h"
 #include "resources/itemcolordata.h"
+#include "resources/missileinfo.h"
 #include "resources/soundinfo.h"
 
 #include "resources/sprite/spritedisplay.h"
@@ -153,11 +154,17 @@ class ItemInfo final
         // Handlers for seting and getting the string
         // used for particles when attacking
         void setMissileParticleFile(const std::string &s) noexcept2
-        { mMissileParticleFile = s; }
+        { mMissile.particle = s; }
 
         const std::string &getMissileParticleFile() const noexcept2
                                                   A_WARN_UNUSED
-        { return mMissileParticleFile; }
+        { return mMissile.particle; }
+
+        MissileInfo &getMissile() noexcept2 A_WARN_UNUSED
+        { return mMissile; }
+
+        const MissileInfo &getMissileConst() const noexcept2 A_WARN_UNUSED
+        { return mMissile; }
 
         void setHitEffectId(const int s) noexcept2
         { mHitEffectId = s; }
@@ -246,9 +253,6 @@ class ItemInfo final
         ItemColor getCardColor() const noexcept2
         { return mCardColor; }
 
-        /** Effects to be shown when weapon attacks - see also effects.xml */
-        std::string mMissileParticleFile;
-
         int getReplaceToSpriteId(int id) const A_WARN_UNUSED;
 
         IntMap *addReplaceSprite(const int sprite,
@@ -324,6 +328,7 @@ class ItemInfo final
                                    const int def = -1) A_NONNULL(1);
 
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
+        MissileInfo mMissile;
         std::string mName;
         std::string mNameEn;
         std::string mDescription;   /**< Short description. */

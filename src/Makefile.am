@@ -881,6 +881,7 @@ BASE_SRC += events/actionevent.h \
 	      resources/memorycounter.h \
 	      resources/memorymanager.cpp \
 	      resources/memorymanager.h \
+	      resources/missileinfo.h \
 	      winver.h \
 	      enums/fs/fsentrytype.h \
 	      fs/virtfs/fileapi.h \

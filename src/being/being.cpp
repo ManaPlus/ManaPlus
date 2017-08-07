@@ -1329,10 +1329,15 @@ void Being::setGuild(Guild *restrict const guild) restrict2
 void Being::fireMissile(Being *restrict const victim,
                         const std::string &restrict particle) const restrict2
 {
-    if ((victim == nullptr) || particle.empty() || (particleEngine == nullptr))
-        return;
-
     BLOCK_START("Being::fireMissile")
+
+    if (victim == nullptr ||
+        particle.empty() ||
+        particleEngine == nullptr)
+    {
+        BLOCK_END("Being::fireMissile")
+        return;
+    }
 
     Particle *restrict const target = particleEngine->createChild();
 
@@ -1350,12 +1355,12 @@ void Being::fireMissile(Being *restrict const victim,
     if (missile != nullptr)
     {
         target->moveBy(Vector(0.0F, 0.0F, 32.0F));
-        target->setLifetime(1000);
+        target->setLifetime(10000);
         victim->controlAutoParticle(target);
 
-        missile->setDestination(target, 7, 0);
-        missile->setDieDistance(8);
-        missile->setLifetime(900);
+        missile->setDestination(target, 1.0F, 0.0F);
+        missile->setDieDistance(1);
+        missile->setLifetime(9000);
     }
     BLOCK_END("Being::fireMissile")
 }
