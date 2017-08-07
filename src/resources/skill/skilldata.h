@@ -23,6 +23,7 @@
 #ifndef GUI_WIDGETS_SKILLDATA_H
 #define GUI_WIDGETS_SKILLDATA_H
 
+#include "resources/missileinfo.h"
 #include "resources/soundinfo.h"
 
 class Image;
@@ -34,8 +35,8 @@ struct SkillData final
     std::string dispName;
     std::string description;
 
-    std::string missileParticle;
-    std::string castingMissileParticle;
+    MissileInfo missile;
+    MissileInfo castingMissile;
     std::string invokeCmd;
     std::string castingAnimation;
 
