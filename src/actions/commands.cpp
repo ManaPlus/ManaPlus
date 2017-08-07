@@ -2113,7 +2113,7 @@ impHandler(addSkillShortcut)
     const int num = itemShortcutWindow->getTabIndex();
     if (num < 0 ||
         num >= CAST_S32(SHORTCUT_TABS) ||
-        num == SHORTCUT_AUTO_TAB)
+        num == CAST_S32(SHORTCUT_AUTO_TAB))
     {
         return false;
     }
