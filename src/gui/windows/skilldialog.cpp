@@ -562,10 +562,10 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
         "shortName", name.substr(0, 3));
     data->description = XML::langProperty(
         node, "description", "");
-    data->particle = XML::getProperty(
-        node, "particle", "");
-    data->castingParticle = XML::getProperty(
-        node, "castingParticle", "");
+    data->missileParticle = XML::getProperty(
+        node, "missile-particle", "");
+    data->castingMissileParticle = XML::getProperty(
+        node, "castingMissile-particle", "");
     data->castingAnimation = XML::getProperty(
         node,
         "castingAnimation",

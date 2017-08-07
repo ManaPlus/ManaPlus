@@ -1023,7 +1023,7 @@ void Being::handleSkillCasting(Being *restrict const victim,
         effectManager->triggerDefault(data->castingDstEffectId,
             victim,
             paths.getIntValue("skillCastingDstEffectId"));
-        fireMissile(victim, data->castingParticle);
+        fireMissile(victim, data->castingMissileParticle);
     }
 }
 
@@ -1046,7 +1046,7 @@ void Being::handleSkill(Being *restrict const victim,
         effectManager->triggerDefault(data->dstEffectId,
             victim,
             paths.getIntValue("skillDstEffectId"));
-        fireMissile(victim, data->particle);
+        fireMissile(victim, data->missileParticle);
     }
 
     if (this != localPlayer && (skill != nullptr))
