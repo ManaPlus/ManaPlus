@@ -956,9 +956,9 @@ void Being::handleAttack(Being *restrict const victim,
     mLastAttackY = victim->mY;
 
     if (mType == ActorType::Player && (mEquippedWeapon != nullptr))
-        fireMissile(victim, mEquippedWeapon->getMissileParticleFile());
+        fireMissile(victim, mEquippedWeapon->getMissileConst());
     else if (mInfo->getAttack(attackId) != nullptr)
-        fireMissile(victim, mInfo->getAttack(attackId)->mMissile.particle);
+        fireMissile(victim, mInfo->getAttack(attackId)->mMissile);
 
     reset();
     mActionTime = tick_time;
@@ -1023,7 +1023,7 @@ void Being::handleSkillCasting(Being *restrict const victim,
         effectManager->triggerDefault(data->castingDstEffectId,
             victim,
             paths.getIntValue("skillCastingDstEffectId"));
-        fireMissile(victim, data->castingMissile.particle);
+        fireMissile(victim, data->castingMissile);
     }
 }
 
@@ -1046,7 +1046,7 @@ void Being::handleSkill(Being *restrict const victim,
         effectManager->triggerDefault(data->dstEffectId,
             victim,
             paths.getIntValue("skillDstEffectId"));
-        fireMissile(victim, data->missile.particle);
+        fireMissile(victim, data->missile);
     }
 
     if (this != localPlayer && (skill != nullptr))
@@ -1327,12 +1327,12 @@ void Being::setGuild(Guild *restrict const guild) restrict2
 }
 
 void Being::fireMissile(Being *restrict const victim,
-                        const std::string &restrict particle) const restrict2
+                        const MissileInfo &restrict missile) const restrict2
 {
     BLOCK_START("Being::fireMissile")
 
     if (victim == nullptr ||
-        particle.empty() ||
+        missile.particle.empty() ||
         particleEngine == nullptr)
     {
         BLOCK_END("Being::fireMissile")
@@ -1347,20 +1347,20 @@ void Being::fireMissile(Being *restrict const victim,
         return;
     }
 
-    Particle *restrict const missile = target->addEffect(
-        particle,
+    Particle *restrict const missileParticle = target->addEffect(
+        missile.particle,
         mPixelX,
         mPixelY);
 
-    if (missile != nullptr)
-    {
-        target->moveBy(Vector(0.0F, 0.0F, 32.0F));
-        target->setLifetime(10000);
-        victim->controlAutoParticle(target);
+    target->moveBy(Vector(0.0F, 0.0F, missile.z));
+    target->setLifetime(missile.lifeTime);
+    victim->controlAutoParticle(target);
 
-        missile->setDestination(target, 1.0F, 0.0F);
-        missile->setDieDistance(1);
-        missile->setLifetime(9000);
+    if (missileParticle != nullptr)
+    {
+        missileParticle->setDestination(target, missile.speed, 0.0F);
+        missileParticle->setDieDistance(missile.dieDistance);
+        missileParticle->setLifetime(missile.lifeTime);
     }
     BLOCK_END("Being::fireMissile")
 }

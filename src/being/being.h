@@ -36,6 +36,7 @@
 
 #include "resources/beinginfo.h"
 #include "resources/beingslot.h"
+#include "resources/missileinfo.h"
 
 #include "being/actorsprite.h"
 
@@ -534,7 +535,7 @@ class Being notfinal : public ActorSprite,
          * Shoots a missile particle from this being, to target being
          */
         void fireMissile(Being *restrict const victim,
-                         const std::string &restrict particle) const restrict2;
+                         const MissileInfo &restrict missile) const restrict2;
 
         /**
          * Returns the path this being is following. An empty path is returned
