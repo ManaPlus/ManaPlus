@@ -24,6 +24,8 @@
 
 #include "const/emoteshortcut.h"
 
+#include "utils/cast.h"
+
 #include "localconsts.h"
 
 /**
@@ -105,7 +107,7 @@ class EmoteShortcut final
          * Remove a Emote from the shortcut.
          */
         void removeEmote(const size_t index)
-        { if (index < SHORTCUT_EMOTES) mEmotes[index] = 0; }
+        { if (index < CAST_SIZE(SHORTCUT_EMOTES)) mEmotes[index] = 0; }
 
         /**
          * Try to use the Emote specified by the index.

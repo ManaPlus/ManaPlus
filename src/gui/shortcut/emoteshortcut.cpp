@@ -80,7 +80,7 @@ void EmoteShortcut::useEmotePlayer(const size_t index) const
     if (localPlayer == nullptr)
         return;
 
-    if (index <= SHORTCUT_EMOTES)
+    if (index <= CAST_SIZE(SHORTCUT_EMOTES))
     {
         if (mEmotes[index - 1] > 0)
             localPlayer->emote(mEmotes[index - 1]);
@@ -92,7 +92,7 @@ void EmoteShortcut::useEmote(const size_t index) const
     if (localPlayer == nullptr)
         return;
 
-    if (index <= SHORTCUT_EMOTES)
+    if (index <= CAST_SIZE(SHORTCUT_EMOTES))
     {
         if (mEmotes[index - 1] > 0)
         {
