@@ -54,7 +54,7 @@ class EmoteShortcut final
          *
          * @param index Index of the shortcut Emote.
          */
-        unsigned char getEmote(const int index) const A_WARN_UNUSED
+        unsigned char getEmote(const size_t index) const A_WARN_UNUSED
         { return mEmotes[index]; }
 
         /**
@@ -74,7 +74,7 @@ class EmoteShortcut final
          *
          * @param index Index of the emotes.
          */
-        void setEmote(const int index)
+        void setEmote(const size_t index)
         { mEmotes[index] = mEmoteSelected; }
 
         /**
@@ -83,7 +83,8 @@ class EmoteShortcut final
          * @param index Index of the emote.
          * @param emoteId ID of the emote.
          */
-        void setEmotes(const int index, const unsigned char emoteId)
+        void setEmotes(const size_t index,
+                       const unsigned char emoteId)
         { mEmotes[index] = emoteId; }
 
         /**
@@ -103,17 +104,17 @@ class EmoteShortcut final
         /**
          * Remove a Emote from the shortcut.
          */
-        void removeEmote(const int index)
-        { if (index >= 0 && index < SHORTCUT_EMOTES) mEmotes[index] = 0; }
+        void removeEmote(const size_t index)
+        { if (index < SHORTCUT_EMOTES) mEmotes[index] = 0; }
 
         /**
          * Try to use the Emote specified by the index.
          *
          * @param index Index of the emote shortcut.
          */
-        void useEmote(const int index) const;
+        void useEmote(const size_t index) const;
 
-        void useEmotePlayer(const int index) const;
+        void useEmotePlayer(const size_t index) const;
 
     private:
         /**

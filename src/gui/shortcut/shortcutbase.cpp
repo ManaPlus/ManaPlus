@@ -35,8 +35,8 @@ ShortcutBase::ShortcutBase(const std::string &itemName,
     mItemColors(new ItemColor[maxSize]),
     mItemName(itemName),
     mColorName(colorName),
-    mItemSelected(-1),
     mMaxSize(maxSize),
+    mItemSelected(-1),
     mItemColorSelected(ItemColor_one)
 {
     clear(false);
@@ -55,7 +55,7 @@ void ShortcutBase::load()
 {
     const Configuration *cfg = &serverConfig;
 
-    for (int i = 0; i < mMaxSize; i++)
+    for (size_t i = 0; i < mMaxSize; i++)
     {
         const int itemId = cfg->getValue(mItemName + toString(i), -1);
         const ItemColor itemColor = fromInt(
@@ -72,7 +72,7 @@ void ShortcutBase::load()
 
 void ShortcutBase::save() const
 {
-    for (int i = 0; i < mMaxSize; i++)
+    for (size_t i = 0; i < mMaxSize; i++)
     {
         const int itemId = mItems[i] != 0 ? mItems[i] : -1;
         const int itemColor = (mItemColors[i] != ItemColor_zero)
@@ -104,9 +104,9 @@ void ShortcutBase::setItemSelected(const Item *const item)
     }
 }
 
-void ShortcutBase::setItem(const int index)
+void ShortcutBase::setItem(const size_t index)
 {
-    if (index < 0 || index >= mMaxSize)
+    if (index >= mMaxSize)
         return;
 
     mItems[index] = mItemSelected;
@@ -116,7 +116,7 @@ void ShortcutBase::setItem(const int index)
 
 void ShortcutBase::clear(const bool isSave)
 {
-    for (int i = 0; i < mMaxSize; i++)
+    for (size_t i = 0; i < mMaxSize; i++)
     {
         mItems[i] = -1;
         mItemColors[i] = ItemColor_one;

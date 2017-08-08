@@ -75,7 +75,7 @@ class SpellShortcut final
          *
          * @param index Index of the shortcut item.
          */
-        int getItem(const int index) const
+        int getItem(const size_t index) const
         { return mItems[index]; }
 
     private:

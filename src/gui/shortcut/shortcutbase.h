@@ -25,6 +25,8 @@
 
 #include "enums/simpletypes/itemcolor.h"
 
+#include "utils/cast.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -66,17 +68,17 @@ class ShortcutBase notfinal
          *
          * @param index Index of the shortcut item.
          */
-        int getItem(const int index) const A_WARN_UNUSED
+        int getItem(const size_t index) const A_WARN_UNUSED
         { return mItems[index]; }
 
-        ItemColor getItemColor(const int index) const A_WARN_UNUSED
+        ItemColor getItemColor(const size_t index) const A_WARN_UNUSED
         { return mItemColors[index]; }
 
         /**
          * Returns the amount of shortcut items.
          */
         int getItemCount() const noexcept2 A_WARN_UNUSED
-        { return mMaxSize; }
+        { return CAST_S32(mMaxSize); }
 
         /**
          * Returns the item ID that is currently selected.
@@ -89,7 +91,7 @@ class ShortcutBase notfinal
          *
          * @param index Index of the items.
          */
-        void setItem(const int index);
+        void setItem(const size_t index);
 
         /**
          * Adds an item to the items store specified by the index.
@@ -97,7 +99,7 @@ class ShortcutBase notfinal
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(const int index,
+        void setItems(const size_t index,
                       const int itemId,
                       const ItemColor color)
         { mItems[index] = itemId; mItemColors[index] = color; save(); }
@@ -121,7 +123,7 @@ class ShortcutBase notfinal
         /**
          * Remove a item from the shortcut.
          */
-        void removeItem(const int index)
+        void removeItem(const size_t index)
         { mItems[index] = -1; save(); }
 
         void clear(const bool isSave = true);
@@ -131,8 +133,8 @@ class ShortcutBase notfinal
         ItemColor *mItemColors A_NONNULLPOINTER;
         std::string mItemName;
         std::string mColorName;
+        size_t mMaxSize;
         int mItemSelected;
-        int mMaxSize;
         ItemColor mItemColorSelected;
 };
 

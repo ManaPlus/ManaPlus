@@ -75,26 +75,24 @@ void EmoteShortcut::save() const
     }
 }
 
-void EmoteShortcut::useEmotePlayer(const int index) const
+void EmoteShortcut::useEmotePlayer(const size_t index) const
 {
     if (localPlayer == nullptr)
         return;
 
-    if (index > 0 &&
-        index <= SHORTCUT_EMOTES)
+    if (index <= SHORTCUT_EMOTES)
     {
         if (mEmotes[index - 1] > 0)
             localPlayer->emote(mEmotes[index - 1]);
     }
 }
 
-void EmoteShortcut::useEmote(const int index) const
+void EmoteShortcut::useEmote(const size_t index) const
 {
     if (localPlayer == nullptr)
         return;
 
-    if (index > 0 &&
-        index <= SHORTCUT_EMOTES)
+    if (index <= SHORTCUT_EMOTES)
     {
         if (mEmotes[index - 1] > 0)
         {
