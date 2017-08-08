@@ -66,10 +66,10 @@ class ItemShortcut final
          *
          * @param index Index of the shortcut item.
          */
-        int getItem(const int index) const A_WARN_UNUSED
+        int getItem(const size_t index) const A_WARN_UNUSED
         { return mItems[index]; }
 
-        ItemColor getItemColor(const int index) const A_WARN_UNUSED
+        ItemColor getItemColor(const size_t index) const A_WARN_UNUSED
         { return mItemColors[index]; }
 
         void setItemData(const size_t index,
@@ -96,9 +96,9 @@ class ItemShortcut final
          *
          * @param index Index of the items.
          */
-        void setItem(const int index);
+        void setItem(const size_t index);
 
-        void setItem(const int index,
+        void setItem(const size_t index,
                      const int item,
                      const ItemColor color);
 
@@ -112,7 +112,7 @@ class ItemShortcut final
          * @param index Index of the item.
          * @param itemId ID of the item.
          */
-        void setItems(const int index,
+        void setItems(const size_t index,
                       const int itemId,
                       const ItemColor color)
         { mItems[index] = itemId; mItemColors[index] = color; save(); }
@@ -142,7 +142,7 @@ class ItemShortcut final
         /**
          * Remove a item from the shortcut.
          */
-        void removeItem(const int index)
+        void removeItem(const size_t index)
         { mItems[index] = -1;  save(); }
 
         /**
@@ -150,19 +150,20 @@ class ItemShortcut final
          *
          * @param index Index of the item shortcut.
          */
-        void useItem(const int index) const;
+        void useItem(const size_t index) const;
 
         /**
          * Equip a item from the shortcut.
          */
-        void equipItem(const int index) const;
+        void equipItem(const size_t index) const;
 
         /**
          * UnEquip a item from the shortcut.
          */
-        void unequipItem(const int index) const;
+        void unequipItem(const size_t index) const;
 
-        void swap(const int index1, const int index2);
+        void swap(const size_t index1,
+                  const size_t index2);
 
         void clear();
 

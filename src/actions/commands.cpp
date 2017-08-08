@@ -2119,8 +2119,8 @@ impHandler(addSkillShortcut)
     }
 
     ItemShortcut *const selShortcut = itemShortcut[num];
-    const int index = selShortcut->getFreeIndex();
-    if (index < 0)
+    const size_t index = selShortcut->getFreeIndex();
+    if (index == SHORTCUT_ITEMS)
         return true;
 
     selShortcut->setItem(index,

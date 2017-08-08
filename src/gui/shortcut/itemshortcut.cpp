@@ -147,7 +147,7 @@ void ItemShortcut::clear()
     }
 }
 
-void ItemShortcut::useItem(const int index) const
+void ItemShortcut::useItem(const size_t index) const
 {
     const Inventory *const inv = PlayerInfo::getInventory();
     if (inv == nullptr)
@@ -177,7 +177,7 @@ void ItemShortcut::useItem(const int index) const
     }
 }
 
-void ItemShortcut::equipItem(const int index) const
+void ItemShortcut::equipItem(const size_t index) const
 {
     const Inventory *const inv = PlayerInfo::getInventory();
     if (inv == nullptr)
@@ -197,7 +197,7 @@ void ItemShortcut::equipItem(const int index) const
         }
     }
 }
-void ItemShortcut::unequipItem(const int index) const
+void ItemShortcut::unequipItem(const size_t index) const
 {
     const Inventory *const inv = PlayerInfo::getInventory();
     if (inv == nullptr)
@@ -232,14 +232,14 @@ void ItemShortcut::setItemSelected(const Item *const item)
     }
 }
 
-void ItemShortcut::setItem(const int index)
+void ItemShortcut::setItem(const size_t index)
 {
     mItems[index] = mItemSelected;
     mItemColors[index] = mItemColorSelected;
     save();
 }
 
-void ItemShortcut::setItem(const int index,
+void ItemShortcut::setItem(const size_t index,
                            const int item,
                            const ItemColor color)
 {
@@ -256,11 +256,11 @@ void ItemShortcut::setItemFast(const size_t index,
     mItemColors[index] = color;
 }
 
-void ItemShortcut::swap(const int index1, const int index2)
+void ItemShortcut::swap(const size_t index1,
+                        const size_t index2)
 {
-    if (index1 < 0 || index2 < 0
-        || CAST_U32(index1) >= SHORTCUT_ITEMS
-        || CAST_U32(index2) >= SHORTCUT_ITEMS)
+    if (CAST_U32(index1) >= SHORTCUT_ITEMS ||
+        CAST_U32(index2) >= SHORTCUT_ITEMS)
     {
         return;
     }
@@ -285,5 +285,5 @@ size_t ItemShortcut::getFreeIndex() const
         if (mItems[i] < 0)
             return i;
     }
-    return -1;
+    return SHORTCUT_ITEMS;
 }
