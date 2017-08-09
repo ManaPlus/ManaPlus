@@ -51,6 +51,9 @@ class InventoryHandler notfinal
 
         virtual void useItem(const Item *const item) const = 0;
 
+        virtual void useItem(const Item *const item,
+                             const int16_t useType) const = 0;
+
         virtual void dropItem(const Item *const item,
                               const int amount) const = 0;
 

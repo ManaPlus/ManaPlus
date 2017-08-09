@@ -160,8 +160,8 @@ void ItemShortcut::useItem(const size_t index) const
         if (itemId < SPELL_MIN_ID)
         {
             const Item *const item = inv->findItem(itemId, itemColor);
-            if ((item != nullptr) && (item->getQuantity() != 0))
-                PlayerInfo::useEquipItem(item, Sfx_true);
+            if (item != nullptr && item->getQuantity() != 0)
+                PlayerInfo::useEquipItem(item, 0, Sfx_true);
         }
         else if (itemId < SKILL_MIN_ID && (spellManager != nullptr))
         {

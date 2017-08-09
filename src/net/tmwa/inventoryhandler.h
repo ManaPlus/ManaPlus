@@ -43,6 +43,9 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         void useItem(const Item *const item) const override final;
 
+        void useItem(const Item *const item,
+                     const int16_t useType) const override final;
+
         void dropItem(const Item *const item,
                       const int amount) const override final;
 

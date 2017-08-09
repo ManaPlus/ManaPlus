@@ -267,7 +267,9 @@ void useItem(const Item *const item, const Sfx sfx)
         inventoryHandler->useItem(item);
 }
 
-void useEquipItem(const Item *const item, const Sfx sfx)
+void useEquipItem(const Item *const item,
+                  const int16_t useType,
+                  const Sfx sfx)
 {
     if (item != nullptr)
     {
@@ -303,7 +305,12 @@ void useEquipItem(const Item *const item, const Sfx sfx)
             if (mProtectedItems.find(item->getId()) == mProtectedItems.end())
             {
                 if (inventoryHandler != nullptr)
-                    inventoryHandler->useItem(item);
+                {
+                    if (useType == 0)
+                        inventoryHandler->useItem(item);
+                    else
+                        inventoryHandler->useItem(item, useType);
+                }
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
             }
@@ -311,7 +318,9 @@ void useEquipItem(const Item *const item, const Sfx sfx)
     }
 }
 
-void useEquipItem2(const Item *const item, const Sfx sfx)
+void useEquipItem2(const Item *const item,
+                   const int16_t useType,
+                   const Sfx sfx)
 {
     if (item != nullptr)
     {
@@ -339,7 +348,12 @@ void useEquipItem2(const Item *const item, const Sfx sfx)
                 if (sfx == Sfx_true)
                     ItemSoundManager::playSfx(item, ItemSoundEvent::USE);
                 if (inventoryHandler != nullptr)
-                    inventoryHandler->useItem(item);
+                {
+                    if (useType == 0)
+                        inventoryHandler->useItem(item);
+                    else
+                        inventoryHandler->useItem(item, useType);
+                }
             }
         }
     }

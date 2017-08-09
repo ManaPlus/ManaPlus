@@ -249,10 +249,9 @@ static Being *findBeing(const std::string &name, const bool npc)
     return being;
 }
 
-static Item *getItemByInvIndex(const InputEvent &event,
+static Item *getItemByInvIndex(const int index,
                                const InventoryTypeT invType)
 {
-    const int index = atoi(event.args.c_str());
     const Inventory *inv = nullptr;
     switch (invType)
     {
@@ -282,7 +281,8 @@ static int getAmountFromEvent(const InputEvent &event,
                               Item *&item0,
                               const InventoryTypeT invType)
 {
-    Item *const item = getItemByInvIndex(event, invType);
+    Item *const item = getItemByInvIndex(atoi(event.args.c_str()),
+        invType);
     item0 = item;
     if (item == nullptr)
         return 0;
@@ -475,7 +475,8 @@ impHandler(dropItemId)
 
 impHandler(dropItemInv)
 {
-    Item *const item = getItemByInvIndex(event, InventoryType::Inventory);
+    Item *const item = getItemByInvIndex(atoi(event.args.c_str()),
+        InventoryType::Inventory);
     if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
@@ -501,7 +502,8 @@ impHandler(dropItemIdAll)
 
 impHandler(dropItemInvAll)
 {
-    Item *const item = getItemByInvIndex(event, InventoryType::Inventory);
+    Item *const item = getItemByInvIndex(atoi(event.args.c_str()),
+        InventoryType::Inventory);
     if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
         PlayerInfo::dropItem(item, item->getQuantity(), Sfx_true);
     return true;
@@ -1629,7 +1631,7 @@ impHandler(useItem)
             // +++ ignoring item color for now
             const Item *const item = inv->findItem(itemId,
                 ItemColor_one);
-            PlayerInfo::useEquipItem(item, Sfx_true);
+            PlayerInfo::useEquipItem(item, 0, Sfx_true);
         }
     }
     else if (itemId < SKILL_MIN_ID && (spellManager != nullptr))
@@ -1649,8 +1651,21 @@ impHandler(useItem)
 
 impHandler(useItemInv)
 {
-    Item *const item = getItemByInvIndex(event, InventoryType::Inventory);
-    PlayerInfo::useEquipItem(item, Sfx_true);
+    int param1 = 0;
+    int param2 = 0;
+    const std::string args = event.args;
+    if (parse2Int(args, param1, param2))
+    {
+        Item *const item = getItemByInvIndex(param1,
+            InventoryType::Inventory);
+        PlayerInfo::useEquipItem(item, param2, Sfx_true);
+    }
+    else
+    {
+        Item *const item = getItemByInvIndex(atoi(event.args.c_str()),
+            InventoryType::Inventory);
+        PlayerInfo::useEquipItem(item, 0, Sfx_true);
+    }
     return true;
 }
 

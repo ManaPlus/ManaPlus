@@ -38,6 +38,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int serverVersion;
 
 // this conversion from bit corrupted LOOK_* to EquipSlot
 // for how it corrupted, see BeingRecv::processBeingChangeLookContinue
@@ -115,6 +116,28 @@ void InventoryHandler::useItem(const Item *const item) const
     outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     outMsg.writeInt32(item->getId(), "unused");
+}
+
+void InventoryHandler::useItem(const Item *const item,
+                               const int16_t useType) const
+{
+    if (item == nullptr)
+        return;
+
+    if (serverVersion >= 19)
+    {
+        createOutPacket(CMSG_PLAYER_INVENTORY_USE2);
+        outMsg.writeInt16(CAST_S16(
+            item->getInvIndex() + INVENTORY_OFFSET), "index");
+        outMsg.writeInt16(useType, "use type");
+    }
+    else
+    {
+        createOutPacket(CMSG_PLAYER_INVENTORY_USE);
+        outMsg.writeInt16(CAST_S16(
+            item->getInvIndex() + INVENTORY_OFFSET), "index");
+        outMsg.writeInt32(item->getId(), "unused");
+    }
 }
 
 void InventoryHandler::dropItem(const Item *const item, const int amount) const

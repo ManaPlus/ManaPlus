@@ -259,6 +259,8 @@ packet(CMSG_SET_STATUS,                   0x0b0e,   0, nullptr);
 
 packet(CMSG_ONLINE_LIST,                  0x0b0f,   0, nullptr);
 
+packet(CMSG_PLAYER_INVENTORY_USE2,        0x0b26,   6, nullptr);
+
 #ifndef PACKETS_UPDATE
 // 0
 packet(CMSG_ALCHEMIST_RANKS,              0x0000,   0, nullptr);

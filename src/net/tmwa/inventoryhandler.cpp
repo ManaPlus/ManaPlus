@@ -98,6 +98,18 @@ void InventoryHandler::useItem(const Item *const item) const
     outMsg.writeInt32(item->getId(), "item id");
 }
 
+void InventoryHandler::useItem(const Item *const item,
+                               const int16_t useType A_UNUSED) const
+{
+    if (item == nullptr)
+        return;
+
+    createOutPacket(CMSG_PLAYER_INVENTORY_USE);
+    outMsg.writeInt16(CAST_S16(
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt32(item->getId(), "item id");
+}
+
 void InventoryHandler::dropItem(const Item *const item, const int amount) const
 {
     if (item == nullptr)

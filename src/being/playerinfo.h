@@ -239,9 +239,13 @@ namespace PlayerInfo
 
     void useItem(const Item *const item, const Sfx sfx);
 
-    void useEquipItem(const Item *const item, const Sfx sfx);
+    void useEquipItem(const Item *const item,
+                      const int16_t useType,
+                      const Sfx sfx);
 
-    void useEquipItem2(const Item *const item, const Sfx sfx);
+    void useEquipItem2(const Item *const item,
+                       const int16_t useType,
+                       const Sfx sfx);
 
     void dropItem(const Item *const item, const int amount, const Sfx sfx);
 

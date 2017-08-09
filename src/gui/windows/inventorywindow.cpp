@@ -470,11 +470,11 @@ void InventoryWindow::action(const ActionEvent &event)
 
     if (eventId == "use")
     {
-        PlayerInfo::useEquipItem(item, Sfx_true);
+        PlayerInfo::useEquipItem(item, 0, Sfx_true);
     }
     if (eventId == "equip")
     {
-        PlayerInfo::useEquipItem2(item, Sfx_true);
+        PlayerInfo::useEquipItem2(item, 0, Sfx_true);
     }
     else if (eventId == "drop")
     {
@@ -672,7 +672,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
                 }
                 else
                 {
-                    PlayerInfo::useEquipItem(item, Sfx_true);
+                    PlayerInfo::useEquipItem(item, 0, Sfx_true);
                 }
             }
             else
