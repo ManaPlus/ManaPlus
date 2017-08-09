@@ -31,6 +31,7 @@
 
 #include "resources/cursors.h"
 #include "resources/itemcolordata.h"
+#include "resources/itemmenuitem.h"
 #include "resources/missileinfo.h"
 #include "resources/soundinfo.h"
 
@@ -313,6 +314,20 @@ class ItemInfo final
         std::string getIconColorName(const ItemColor idx) const;
         std::string getIconColor(const ItemColor idx) const;
 
+        STD_VECTOR<ItemMenuItem> &getInventoryMenu()
+        { return mInventoryMenu; }
+        STD_VECTOR<ItemMenuItem> &getStorageMenu()
+        { return mStorageMenu; }
+        STD_VECTOR<ItemMenuItem> &getCartMenu()
+        { return mCartMenu; }
+
+        const STD_VECTOR<ItemMenuItem> &getInventoryMenuConst() const A_CONST
+        { return mInventoryMenu; }
+        const STD_VECTOR<ItemMenuItem> &getStorageMenuConst() const A_CONST
+        { return mStorageMenu; }
+        const STD_VECTOR<ItemMenuItem> &getCartMenuConst() const A_CONST
+        { return mCartMenu; }
+
         int mDrawBefore[10];
         int mDrawAfter[10];
         int mDrawPriority[10];
@@ -363,6 +378,9 @@ class ItemInfo final
         std::map <int, int> mTags;
         const std::map <ItemColor, ItemColorData> *mColorsList;
         const std::map <ItemColor, ItemColorData> *mIconColorsList;
+        STD_VECTOR<ItemMenuItem> mInventoryMenu;
+        STD_VECTOR<ItemMenuItem> mStorageMenu;
+        STD_VECTOR<ItemMenuItem> mCartMenu;
         std::string mColorsListName;
         std::string mIconColorsListName;
         ItemColor mCardColor;

@@ -694,6 +694,7 @@ SET(SRCS
     resources/db/languagedb.h
     resources/iteminfo.h
     resources/iteminfo.cpp
+    resources/itemmenuitem.h
     enums/resources/cursor.h
     enums/resources/frametype.h
     enums/resources/imageposition.h

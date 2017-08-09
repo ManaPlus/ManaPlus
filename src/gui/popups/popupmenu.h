@@ -234,8 +234,13 @@ class PopupMenu final : public Popup, public LinkHandler
 
         void addProtection();
 
-        void addUseDrop(const Item *const item,
-                        const bool isProtected) A_NONNULL(2);
+        void addUse(const Item *const item) A_NONNULL(2);
+
+        void addItemMenu(const Item *const item,
+                         const InventoryTypeT type) A_NONNULL(2);
+
+        void addDrop(const Item *const item,
+                     const bool isProtected) A_NONNULL(2);
 
         void addGmCommands();
 

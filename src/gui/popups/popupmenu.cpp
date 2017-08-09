@@ -1660,7 +1660,8 @@ void PopupMenu::showPopup(Window *const parent,
                         _("Move to craft..."));
                 }
             }
-            addUseDrop(item, isProtected);
+            addItemMenu(item, InventoryType::Inventory);
+            addDrop(item, isProtected);
             break;
 
         case InventoryType::Storage:
@@ -1688,12 +1689,16 @@ void PopupMenu::showPopup(Window *const parent,
                     // TRANSLATORS: popup menu item
                     // TRANSLATORS: get all item amount from storage
                     _("Retrieve all"));
+                mBrowserBox->addSeparator("##3---");
             }
+            addItemMenu(item, InventoryType::Storage);
+            break;
+        case InventoryType::Cart:
+            addItemMenu(item, InventoryType::Cart);
             break;
 
         case InventoryType::Trade:
         case InventoryType::Npc:
-        case InventoryType::Cart:
         case InventoryType::Vending:
         case InventoryType::Mail:
         case InventoryType::Craft:
@@ -1794,7 +1799,8 @@ void PopupMenu::showItemPopup(const int x, const int y,
     if (item != nullptr)
     {
         const bool isProtected = PlayerInfo::isItemProtected(mItemId);
-        addUseDrop(item, isProtected);
+        addUse(item);
+        addDrop(item, isProtected);
         if (InventoryWindow::isStorageActive())
         {
             // TRANSLATORS: popup menu item
@@ -1842,7 +1848,8 @@ void PopupMenu::showDropPopup(const int x,
         for (int f = 0; f < maxCards; f ++)
             mItemCards[f] = item->getCard(f);
         const bool isProtected = PlayerInfo::isItemProtected(mItemId);
-        addUseDrop(item, isProtected);
+        addUse(item);
+        addDrop(item, isProtected);
         if (InventoryWindow::isStorageActive())
         {
             // TRANSLATORS: popup menu item
@@ -2767,7 +2774,7 @@ void PopupMenu::addProtection()
     }
 }
 
-void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
+void PopupMenu::addUse(const Item *const item)
 {
     const ItemInfo &info = item->getInfo();
     const std::string &str = (item->isEquipment() == Equipm_true
@@ -2784,7 +2791,58 @@ void PopupMenu::addUseDrop(const Item *const item, const bool isProtected)
         // TRANSLATORS: popup menu item
         mBrowserBox->addRow("/useinv 'INVINDEX'", str.c_str());
     }
+}
 
+void PopupMenu::addItemMenu(const Item *const item,
+                            const InventoryTypeT type)
+{
+    const ItemInfo &info = item->getInfo();
+    const STD_VECTOR<ItemMenuItem> *menu = nullptr;
+    switch (type)
+    {
+        case InventoryType::Inventory:
+            menu = &info.getInventoryMenuConst();
+            break;
+        case InventoryType::Storage:
+            menu = &info.getStorageMenuConst();
+            break;
+        case InventoryType::Cart:
+            menu = &info.getCartMenuConst();
+            break;
+        case InventoryType::Trade:
+        case InventoryType::Npc:
+        case InventoryType::Vending:
+        case InventoryType::Mail:
+        case InventoryType::Craft:
+        case InventoryType::TypeEnd:
+        default:
+            return;
+    }
+
+    const bool firstMode = (item->isEquipment() == Equipm_true ?
+        (item->isEquipped() != Equipped_true) :
+        (item->getQuantity() == 1));
+
+    FOR_EACHP (STD_VECTOR<ItemMenuItem>::const_iterator, it, menu)
+    {
+        const ItemMenuItem &menuItem = *it;
+        const std::string &name = firstMode ?
+            menuItem.name1 : menuItem.name2;
+        const std::string &command = firstMode ?
+            menuItem.command1 : menuItem.command2;
+        if (command.empty() ||
+            name.empty())
+        {
+            continue;
+        }
+        mBrowserBox->addRow("/" + command, name.c_str());
+    }
+    mBrowserBox->addSeparator("##3---");
+}
+
+void PopupMenu::addDrop(const Item *const item,
+                        const bool isProtected)
+{
     if (!isProtected)
     {
         mBrowserBox->addSeparator("##3---");

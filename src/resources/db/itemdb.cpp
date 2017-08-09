@@ -236,6 +236,56 @@ void ItemDB::load()
     }
 }
 
+static void loadMenu(XmlNodePtrConst parentNode,
+                     STD_VECTOR<ItemMenuItem> &menu)
+{
+    for_each_xml_child_node(node, parentNode)
+    {
+        if (xmlNameEqual(node, "menu"))
+        {
+            const std::string name1 = XML::langProperty(node,
+                "name1", "");
+            const std::string name2 = XML::langProperty(node,
+                "name2", "");
+            const std::string command1 = XML::getProperty(node,
+                "command1", "");
+            const std::string command2 = XML::getProperty(node,
+                "command2", command1);
+            menu.push_back(ItemMenuItem(name1,
+                name2,
+                command1,
+                command2));
+        }
+    }
+}
+
+static bool getIsEquipment(const ItemDbType type)
+{
+    switch (type)
+    {
+        case ItemDbType::EQUIPMENT_ONE_HAND_WEAPON:
+        case ItemDbType::EQUIPMENT_TWO_HANDS_WEAPON:
+        case ItemDbType::EQUIPMENT_TORSO:
+        case ItemDbType::EQUIPMENT_ARMS:
+        case ItemDbType::EQUIPMENT_HEAD:
+        case ItemDbType::EQUIPMENT_LEGS:
+        case ItemDbType::EQUIPMENT_SHIELD:
+        case ItemDbType::EQUIPMENT_RING:
+        case ItemDbType::EQUIPMENT_NECKLACE:
+        case ItemDbType::EQUIPMENT_FEET:
+        case ItemDbType::EQUIPMENT_AMMO:
+        case ItemDbType::EQUIPMENT_CHARM:
+            return true;
+        case ItemDbType::UNUSABLE:
+        case ItemDbType::USABLE:
+        case ItemDbType::CARD:
+        case ItemDbType::SPRITE_RACE:
+        case ItemDbType::SPRITE_HAIR:
+        default:
+            return false;
+    }
+}
+
 void ItemDB::loadXmlFile(const std::string &fileName,
                          int &tagNum,
                          const SkipError skipError)
@@ -582,6 +632,18 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             {
                 loadOrderSprite(itemInfo, itemChild, false);
             }
+            else if (xmlNameEqual(itemChild, "inventory"))
+            {
+                loadMenu(itemChild, itemInfo->getInventoryMenu());
+            }
+            else if (xmlNameEqual(itemChild, "storage"))
+            {
+                loadMenu(itemChild, itemInfo->getStorageMenu());
+            }
+            else if (xmlNameEqual(itemChild, "cart"))
+            {
+                loadMenu(itemChild, itemInfo->getCartMenu());
+            }
         }
 
 /*
@@ -641,6 +703,47 @@ void ItemDB::loadXmlFile(const std::string &fileName,
                 reportAlways("ItemDB: Missing attack range from weapon %i!",
                     id);
             }
+        }
+
+        STD_VECTOR<ItemMenuItem> &inventoryMenu = itemInfo->getInventoryMenu();
+
+        if (inventoryMenu.empty())
+        {
+            std::string name1 = itemInfo->getUseButton();
+            std::string name2 = itemInfo->getUseButton2();
+            const bool isEquipment = getIsEquipment(itemInfo->getType());
+
+            if (isEquipment)
+            {
+                if (name1.empty())
+                {
+                    // TRANSLATORS: popup menu item
+                    name1 = _("Equip");
+                }
+                if (name2.empty())
+                {
+                    // TRANSLATORS: popup menu item
+                    name2 = _("Unequip");
+                }
+            }
+            else
+            {
+                if (name1.empty())
+                {
+                    // TRANSLATORS: popup menu item
+                    name1 = _("Use");
+                }
+                if (name2.empty())
+                {
+                    // TRANSLATORS: popup menu item
+                    name2 = _("Use");
+                }
+            }
+            inventoryMenu.push_back(ItemMenuItem(
+                name1,
+                name2,
+                "useinv 'INVINDEX'",
+                "useinv 'INVINDEX'"));
         }
 
 #define CHECK_PARAM(param) \
