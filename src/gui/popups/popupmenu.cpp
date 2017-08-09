@@ -2820,8 +2820,7 @@ void PopupMenu::addItemMenu(const Item *const item,
     }
 
     const bool firstMode = (item->isEquipment() == Equipm_true ?
-        (item->isEquipped() != Equipped_true) :
-        (item->getQuantity() == 1));
+        (item->isEquipped() != Equipped_true) : (item->getQuantity() == 1));
 
     FOR_EACHP (STD_VECTOR<ItemMenuItem>::const_iterator, it, menu)
     {
