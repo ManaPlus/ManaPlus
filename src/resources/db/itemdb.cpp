@@ -259,7 +259,7 @@ static void loadMenu(XmlNodePtrConst parentNode,
     }
 }
 
-static bool getIsEquipment(const ItemDbType type)
+static bool getIsEquipment(const ItemDbTypeT type)
 {
     switch (type)
     {
