@@ -90,4 +90,10 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
         msg.readString(24, "name");
 }
 
+void Mail2Recv::processSendResult(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("result");
+}
+
 }  // namespace EAthena

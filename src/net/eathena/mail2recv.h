@@ -35,6 +35,7 @@ namespace EAthena
         void processAddItemResult(Net::MessageIn &msg);
         void processRemoveItemResult(Net::MessageIn &msg);
         void processCheckNameResult(Net::MessageIn &msg);
+        void processSendResult(Net::MessageIn &msg);
     }  // namespace MailRecv
 }  // namespace EAthena
 

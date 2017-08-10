@@ -788,6 +788,9 @@ if (packetVersion >= 20131223)
     packet(SMSG_SKILL_NO_DAMAGE,           0x09cb,  17, &Ea::BeingRecv::processSkillNoDamage,           20131223);
 }
 
+// 20131230
+packet(SMSG_RODEX_SEND_RESULT,             0x09ed,   3, &Mail2Recv::processSendResult,                  20131230);
+
 // 20140416
 packet(SMSG_RODEX_OPEN_NEW_MAIL_WINDOW,    0x0a12,  27, &Mail2Recv::processOpenNewMailWindow,           20140416);
 
