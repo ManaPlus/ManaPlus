@@ -31,6 +31,7 @@ namespace EAthena
     namespace Mail2Recv
     {
         void processMailIcon(Net::MessageIn &msg);
+        void processOpenNewMailWindow(Net::MessageIn &msg);
     }  // namespace MailRecv
 }  // namespace EAthena
 

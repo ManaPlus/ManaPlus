@@ -35,4 +35,11 @@ void Mail2Recv::processMailIcon(Net::MessageIn &msg)
     msg.readUInt8("show icon");
 }
 
+void Mail2Recv::processOpenNewMailWindow(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readString(24, "receiver");
+    msg.readUInt8("result");
+}
+
 }  // namespace EAthena
