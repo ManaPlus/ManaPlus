@@ -1528,7 +1528,16 @@ void BeingRecv::processPlayerStatusChange(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("account id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing == nullptr)
+    {
+        msg.readInt16("opt1");
+        msg.readInt16("opt2");
+        if (msg.getVersion() >= 7)
+            msg.readInt32("option");
+        else
+            msg.readInt16("option");
+        msg.readUInt8("karma");
         return;
+    }
 
     const uint32_t opt1 = msg.readInt16("opt1");
     const uint32_t opt2 = msg.readInt16("opt2");
