@@ -789,7 +789,10 @@ if (packetVersion >= 20131223)
 }
 
 // 20140416
-packet(SMSG_RODEX_OPEN_NEW_MAIL_WINDOW,    0x0a12, 27, &Mail2Recv::processOpenNewMailWindow,            20140416);
+packet(SMSG_RODEX_OPEN_NEW_MAIL_WINDOW,    0x0a12,  27, &Mail2Recv::processOpenNewMailWindow,            20140416);
+
+// 20140521
+packet(SMSG_RODEX_REMOVE_ITEM_RESULT,      0x0a07,   9, &Mail2Recv::processRemoveItemResult,             20140521);
 
 // 20140613
 if (packetVersion >= 20140613)

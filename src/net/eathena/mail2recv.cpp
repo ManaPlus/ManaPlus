@@ -71,4 +71,13 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
     msg.readUInt8("unknown 5");
 }
 
+void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("result");
+    msg.readInt16("index");
+    msg.readInt16("count");
+    msg.readInt16("weight");
+}
+
 }  // namespace EAthena

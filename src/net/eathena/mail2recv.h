@@ -33,6 +33,7 @@ namespace EAthena
         void processMailIcon(Net::MessageIn &msg);
         void processOpenNewMailWindow(Net::MessageIn &msg);
         void processAddItemResult(Net::MessageIn &msg);
+        void processRemoveItemResult(Net::MessageIn &msg);
     }  // namespace MailRecv
 }  // namespace EAthena
 
