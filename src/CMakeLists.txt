@@ -1611,10 +1611,12 @@ SET(SRCS
     net/eathena/loginhandler.h
     net/eathena/loginrecv.cpp
     net/eathena/loginrecv.h
-    net/eathena/mailhandler.cpp
-    net/eathena/mailhandler.h
+    net/eathena/mail2recv.cpp
+    net/eathena/mail2recv.h
     net/eathena/mail2handler.cpp
     net/eathena/mail2handler.h
+    net/eathena/mailhandler.cpp
+    net/eathena/mailhandler.h
     net/eathena/mailrecv.cpp
     net/eathena/mailrecv.h
     net/eathena/maphandler.cpp

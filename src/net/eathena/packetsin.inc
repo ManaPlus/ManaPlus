@@ -794,6 +794,9 @@ if (packetVersion >= 20140613)
     packet(SMSG_BATTLE_UPDATE_HP,          0x0a0e,  14, &BattleGroundRecv::processBattleUpdateHp,       20140613);
 }
 
+// 20140716
+packet(SMSG_MAIL2_ICON,                    0x09e7,   3, &Mail2Recv::processMailIcon,                    20140716);
+
 // 20141016
 packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
 packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20141016);

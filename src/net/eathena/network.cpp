@@ -60,6 +60,7 @@
 #include "net/eathena/inventoryrecv.h"
 #include "net/eathena/itemrecv.h"
 #include "net/eathena/loginrecv.h"
+#include "net/eathena/mail2recv.h"
 #include "net/eathena/mailrecv.h"
 #include "net/eathena/maprecv.h"
 #include "net/eathena/marketrecv.h"
