@@ -5454,6 +5454,8 @@ void Being::setLanguageId(const int lang) restrict2 noexcept2
 
         mLanguageId = lang;
     }
+    updateBadgesCount();
+    updateBadgesPosition();
 }
 
 Being *Being::createBeing(const BeingId id,
