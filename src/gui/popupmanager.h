@@ -57,6 +57,8 @@ class PopupManager final
 
         static void hideTextPopup();
 
+        static void hideItemPopup();
+
         static bool isPopupMenuVisible() A_WARN_UNUSED;
 
         static void clearPopup();

@@ -24,8 +24,11 @@
 
 #include "sdlshared.h"
 
+#ifndef DYECMD
 #include "gui/popups/beingpopup.h"
+#include "gui/popups/itempopup.h"
 #include "gui/popups/popupmenu.h"
+#endif  // DYECMD
 #include "gui/popups/textpopup.h"
 
 #include "debug.h"
@@ -67,6 +70,14 @@ void PopupManager::hidePopupMenu()
 #ifndef DYECMD
     if (popupMenu != nullptr)
         popupMenu->setVisible(Visible_false);
+#endif  // DYECMD
+}
+
+void PopupManager::hideItemPopup()
+{
+#ifndef DYECMD
+    if (itemPopup)
+        itemPopup->hide();
 #endif  // DYECMD
 }
 
