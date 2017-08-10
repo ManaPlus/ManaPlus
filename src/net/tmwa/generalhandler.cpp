@@ -59,6 +59,7 @@
 #include "net/tmwa/familyhandler.h"
 #include "net/tmwa/friendshandler.h"
 #include "net/tmwa/homunculushandler.h"
+#include "net/tmwa/mail2handler.h"
 #include "net/tmwa/mailhandler.h"
 #include "net/tmwa/maphandler.h"
 #include "net/tmwa/markethandler.h"
@@ -103,6 +104,7 @@ GeneralHandler::GeneralHandler() :
     mFamilyHandler(new FamilyHandler),
     mFriendsHandler(new FriendsHandler),
     mHomunculusHandler(new HomunculusHandler),
+    mMail2Handler(new Mail2Handler),
     mMailHandler(new MailHandler),
     mMapHandler(new MapHandler),
     mMarketHandler(new MarketHandler),
@@ -145,6 +147,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mFamilyHandler);
     delete2(mFriendsHandler);
     delete2(mHomunculusHandler);
+    delete2(mMail2Handler);
     delete2(mMailHandler);
     delete2(mMapHandler);
     delete2(mMarketHandler);

@@ -51,6 +51,7 @@
 #include "net/eathena/itemhandler.h"
 #include "net/eathena/loginhandler.h"
 #include "net/eathena/maphandler.h"
+#include "net/eathena/mail2handler.h"
 #include "net/eathena/mailhandler.h"
 #include "net/eathena/markethandler.h"
 #include "net/eathena/mercenaryhandler.h"
@@ -94,6 +95,7 @@ GeneralHandler::GeneralHandler() :
     mTradeHandler(new TradeHandler),
     mQuestHandler(new QuestHandler),
     mServerFeatures(new ServerFeatures),
+    mMail2Handler(new Mail2Handler),
     mMailHandler(new MailHandler),
     mAuctionHandler(new AuctionHandler),
     mCashShopHandler(new CashShopHandler),
@@ -136,6 +138,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mTradeHandler);
     delete2(mQuestHandler);
     delete2(mServerFeatures);
+    delete2(mMail2Handler);
     delete2(mMailHandler);
     delete2(mAuctionHandler);
     delete2(mCashShopHandler);

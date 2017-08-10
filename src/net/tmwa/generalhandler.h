@@ -54,6 +54,7 @@ class ElementalHandler;
 class FamilyHandler;
 class FriendsHandler;
 class HomunculusHandler;
+class Mail2Handler;
 class MailHandler;
 class MapHandler;
 class MarketHandler;
@@ -117,6 +118,7 @@ class GeneralHandler final : public Net::GeneralHandler
         FamilyHandler *mFamilyHandler;
         FriendsHandler *mFriendsHandler;
         HomunculusHandler *mHomunculusHandler;
+        Mail2Handler *mMail2Handler;
         MailHandler *mMailHandler;
         MapHandler *mMapHandler;
         MarketHandler *mMarketHandler;

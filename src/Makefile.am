@@ -1750,6 +1750,8 @@ SRC += \
 	      net/tmwa/homunculushandler.h \
 	      net/tmwa/mailhandler.cpp \
 	      net/tmwa/mailhandler.h \
+	      net/tmwa/mail2handler.cpp \
+	      net/tmwa/mail2handler.h \
 	      net/tmwa/maphandler.cpp \
 	      net/tmwa/maphandler.h \
 	      net/tmwa/markethandler.cpp \
@@ -1811,6 +1813,7 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/homunculushandler.h \
 	      net/hostsgroup.h \
 	      net/mailhandler.h \
+	      net/mail2handler.h \
 	      net/maphandler.h \
 	      net/markethandler.h \
 	      net/mercenaryhandler.h \
@@ -1901,6 +1904,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/loginrecv.h \
 	      net/eathena/mailhandler.cpp \
 	      net/eathena/mailhandler.h \
+	      net/eathena/mail2handler.cpp \
+	      net/eathena/mail2handler.h \
 	      net/eathena/mailrecv.cpp \
 	      net/eathena/mailrecv.h \
 	      net/eathena/maphandler.cpp \

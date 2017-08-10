@@ -56,6 +56,7 @@ class FamilyHandler;
 class FriendsHandler;
 class HomunculusHandler;
 class MailHandler;
+class Mail2Handler;
 class MapHandler;
 class MarketHandler;
 class MercenaryHandler;
@@ -109,6 +110,7 @@ class GeneralHandler final : public Net::GeneralHandler
         TradeHandler *mTradeHandler;
         QuestHandler *mQuestHandler;
         ServerFeatures *mServerFeatures;
+        Mail2Handler *mMail2Handler;
         MailHandler *mMailHandler;
         AuctionHandler *mAuctionHandler;
         CashShopHandler *mCashShopHandler;
