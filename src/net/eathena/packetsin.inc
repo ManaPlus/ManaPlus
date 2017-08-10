@@ -775,6 +775,9 @@ if (packetVersion >= 20130731)
     packet(SMSG_SKILL_ENTRY,               0x09ca,  -1, &BeingRecv::processSkillEntry,                  20130731);
 }
 
+// 20131218
+packet(SMSG_RODEX_MAIL_LIST_PAGE,          0x09f0,  -1, &Mail2Recv::processMailListPage,                20131218);
+
 // 20131223
 if (packetVersion >= 20131223)
 {
@@ -933,6 +936,12 @@ if (packetVersion >= 20170315)
 if (packetVersion >= 20160316)
 {
     packet(SMSG_RODEX_CHECK_NAME_RESULT,   0x0a51,  34, &Mail2Recv::processCheckNameResult,             20160316);
+}
+
+// 20160601
+if (packetVersion >= 20160601)
+{
+    packet(SMSG_RODEX_MAIL_LIST_PAGE,      0x0a7d,  -1, &Mail2Recv::processMailListPage,                20160601);
 }
 
 // 20170329

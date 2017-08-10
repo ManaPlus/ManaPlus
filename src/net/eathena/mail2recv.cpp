@@ -96,4 +96,23 @@ void Mail2Recv::processSendResult(Net::MessageIn &msg)
     msg.readUInt8("result");
 }
 
+void Mail2Recv::processMailListPage(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readInt16("len");
+    msg.readUInt8("open type");
+    const int cnt = msg.readUInt8("cnt");
+    msg.readUInt8("isEnd");
+    for (int f = 0; f < cnt; f ++)
+    {
+        msg.readInt64("mail id");
+        msg.readUInt8("is read");
+        msg.readUInt8("type");
+        msg.readString(24, "sender name");
+        msg.readInt32("reg time");
+        msg.readInt32("expire time");
+        msg.readString(-1, "title");
+    }
+}
+
 }  // namespace EAthena
