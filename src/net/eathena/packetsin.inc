@@ -789,10 +789,11 @@ if (packetVersion >= 20131223)
 }
 
 // 20140416
-packet(SMSG_RODEX_OPEN_NEW_MAIL_WINDOW,    0x0a12,  27, &Mail2Recv::processOpenNewMailWindow,            20140416);
+packet(SMSG_RODEX_OPEN_NEW_MAIL_WINDOW,    0x0a12,  27, &Mail2Recv::processOpenNewMailWindow,           20140416);
 
 // 20140521
-packet(SMSG_RODEX_REMOVE_ITEM_RESULT,      0x0a07,   9, &Mail2Recv::processRemoveItemResult,             20140521);
+packet(SMSG_RODEX_REMOVE_ITEM_RESULT,      0x0a07,   9, &Mail2Recv::processRemoveItemResult,            20140521);
+packet(SMSG_RODEX_CHECK_NAME_RESULT,       0x0a14,  10, &Mail2Recv::processCheckNameResult,             20140521);
 
 // 20140613
 if (packetVersion >= 20140613)
@@ -923,6 +924,12 @@ if (packetVersion >= 20161026)
 if (packetVersion >= 20170315)
 {
     packet(SMSG_LOGIN_DATA,                0x0ac4,  -1, &LoginRecv::processLoginData,                   20170315);
+}
+
+// 20160316
+if (packetVersion >= 20160316)
+{
+    packet(SMSG_RODEX_CHECK_NAME_RESULT,   0x0a51,  34, &Mail2Recv::processCheckNameResult,             20160316);
 }
 
 // 20170329

@@ -80,4 +80,14 @@ void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)
     msg.readInt16("weight");
 }
 
+void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readInt32("char id");
+    msg.readInt16("class");
+    msg.readInt16("level");
+    if (msg.getVersion() >= 20160316)
+        msg.readString(24, "name");
+}
+
 }  // namespace EAthena
