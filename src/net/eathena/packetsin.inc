@@ -820,6 +820,9 @@ if (packetVersion >= 20141022)
     packet(SMSG_VENDING_OPEN_STATUS,       0x0a28,   3, &VendingRecv::processOpenStatus,                20141022);
 }
 
+// 20141119
+packet(SMSG_RODEX_ADD_ITEM_RESULT,         0x0a05,  53, &Mail2Recv::processAddItemResult,               20141119);
+
 // 0
 // evol packets
 if (serverVersion > 0)

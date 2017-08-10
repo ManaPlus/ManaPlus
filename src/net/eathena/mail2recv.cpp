@@ -24,6 +24,8 @@
 
 #include "net/messagein.h"
 
+#include "const/resources/item/cards.h"
+
 #include "debug.h"
 
 namespace EAthena
@@ -40,6 +42,33 @@ void Mail2Recv::processOpenNewMailWindow(Net::MessageIn &msg)
     UNIMPLEMENTEDPACKET;
     msg.readString(24, "receiver");
     msg.readUInt8("result");
+}
+
+void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("result");
+    msg.readInt16("index");
+    msg.readInt16("count");
+    msg.readInt16("itid");
+    msg.readUInt8("type");
+    msg.readUInt8("identify");
+    msg.readUInt8("damaged");
+    msg.readUInt8("refine");
+    for (int f = 0; f < maxCards; f++)
+        msg.readUInt16("card");
+    for (int f = 0; f < 5; f ++)
+    {
+        msg.readInt16("option index");
+        msg.readInt16("option value");
+        msg.readUInt8("option param");
+    }
+    msg.readInt16("weight");
+    msg.readUInt8("unknown 1");
+    msg.readUInt8("unknown 2");
+    msg.readUInt8("unknown 3");
+    msg.readUInt8("unknown 4");
+    msg.readUInt8("unknown 5");
 }
 
 }  // namespace EAthena
