@@ -62,6 +62,9 @@ class Mail2Handler final : public Net::Mail2Handler
 
         void requestItems(const int openType,
                           const int64_t mailId) const override final;
+
+        void refreshMailList(const int openType,
+                             const int64_t mailId) const override final;
 };
 
 }  // namespace EAthena

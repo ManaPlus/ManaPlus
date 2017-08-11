@@ -191,4 +191,17 @@ void Mail2Handler::requestItems(const int openType,
     outMsg.writeInt8(openType, "open type");
 }
 
+void Mail2Handler::refreshMailList(const int openType,
+                                   const int64_t mailId) const
+{
+    if (packetVersion < 20131218 ||
+        serverVersion < 19)
+    {
+        return;
+    }
+    createOutPacket(CMSG_MAIL2_REFRESH_MAIL_LIST);
+    outMsg.writeInt8(openType, "open type");
+    outMsg.writeInt64(mailId, "mail id");
+}
+
 }  // namespace EAthena

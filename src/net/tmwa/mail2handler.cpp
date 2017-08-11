@@ -81,4 +81,9 @@ void Mail2Handler::requestItems(const int openType A_UNUSED,
 {
 }
 
+void Mail2Handler::refreshMailList(const int openType A_UNUSED,
+                                   const int64_t mailId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
