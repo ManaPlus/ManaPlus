@@ -51,7 +51,7 @@ Mail2Handler::~Mail2Handler()
 void Mail2Handler::openWriteMail(const std::string &receiver) const
 {
     if (packetVersion < 20140416 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -65,7 +65,7 @@ void Mail2Handler::addItem(const Item *const item,
     if (item == nullptr)
         return;
     if (packetVersion < 20140416 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -82,7 +82,7 @@ void Mail2Handler::removeItem(const Item *const item,
     if (item == nullptr)
         return;
     if (packetVersion < 20140416 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -99,7 +99,7 @@ void Mail2Handler::sendMail(const std::string &to,
                             const int64_t &money) const
 {
     if (packetVersion < 20131230 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -130,7 +130,7 @@ void Mail2Handler::nextPage(const int openType,
                             const int64_t mailId) const
 {
     if (packetVersion < 20131218 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -143,7 +143,7 @@ void Mail2Handler::readMail(const int openType,
                             const int64_t mailId) const
 {
     if (packetVersion < 20131223 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -156,7 +156,7 @@ void Mail2Handler::deleteMail(const int openType,
                               const int64_t mailId) const
 {
     if (packetVersion < 20131218 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -169,7 +169,7 @@ void Mail2Handler::requestMoney(const int openType,
                                 const int64_t mailId) const
 {
     if (packetVersion < 20140326 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -182,7 +182,7 @@ void Mail2Handler::requestItems(const int openType,
                                 const int64_t mailId) const
 {
     if (packetVersion < 20140326 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -195,7 +195,7 @@ void Mail2Handler::refreshMailList(const int openType,
                                    const int64_t mailId) const
 {
     if (packetVersion < 20131218 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -207,7 +207,7 @@ void Mail2Handler::refreshMailList(const int openType,
 void Mail2Handler::openMailBox(const int openType) const
 {
     if (packetVersion < 20140212 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -219,7 +219,7 @@ void Mail2Handler::openMailBox(const int openType) const
 void Mail2Handler::closeMailBox() const
 {
     if (packetVersion < 20131211 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
@@ -229,7 +229,7 @@ void Mail2Handler::closeMailBox() const
 void Mail2Handler::cancelWriteMail() const
 {
     if (packetVersion < 20140326 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
