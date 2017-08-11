@@ -30,6 +30,9 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+extern int serverVersion;
+
 namespace EAthena
 {
 
@@ -45,6 +48,11 @@ Mail2Handler::~Mail2Handler()
 
 void Mail2Handler::openWriteMail(const std::string &receiver) const
 {
+    if (packetVersion < 20140416 ||
+        serverVersion < 19)
+    {
+        return;
+    }
     createOutPacket(CMSG_MAIL2_OPEN_WRITE_MAIL);
     outMsg.writeString(receiver, 24, "receiver name");
 }
@@ -54,6 +62,11 @@ void Mail2Handler::addItem(const Item *const item,
 {
     if (item == nullptr)
         return;
+    if (packetVersion < 20140416 ||
+        serverVersion < 19)
+    {
+        return;
+    }
 
     createOutPacket(CMSG_MAIL2_ADD_ITEM_TO_MAIL);
     outMsg.writeInt16(CAST_S16(
@@ -66,6 +79,11 @@ void Mail2Handler::removeItem(const Item *const item,
 {
     if (item == nullptr)
         return;
+    if (packetVersion < 20140416 ||
+        serverVersion < 19)
+    {
+        return;
+    }
 
     createOutPacket(CMSG_MAIL2_REMOVE_ITEM_MAIL);
     outMsg.writeInt16(CAST_S16(

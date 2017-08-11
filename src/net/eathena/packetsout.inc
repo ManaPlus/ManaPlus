@@ -1378,6 +1378,9 @@ if (packetVersion == 20140416)
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
     packet(CMSG_STORAGE_PASSWORD,         0x095c,  36, clif->pStoragePassword);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
+}
+if (packetVersion >= 20140416)
+{
     packet(CMSG_MAIL2_OPEN_WRITE_MAIL,    0x0a08,  26, clif->pRodexOpenWriteMail);
     packet(CMSG_MAIL2_ADD_ITEM_TO_MAIL,   0x0a04,   6, clif->pRodexAddItem);
     packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,   0x0a06,   6, clif->pRodexRemoveItem);
