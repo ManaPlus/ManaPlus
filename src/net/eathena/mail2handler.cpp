@@ -216,4 +216,14 @@ void Mail2Handler::openMailBox(const int openType) const
     outMsg.writeInt64(0, "mail id");
 }
 
+void Mail2Handler::closeMailBox() const
+{
+    if (packetVersion < 20131211 ||
+        serverVersion < 19)
+    {
+        return;
+    }
+    createOutPacket(CMSG_MAIL2_CLOSE_MAILBOX);
+}
+
 }  // namespace EAthena

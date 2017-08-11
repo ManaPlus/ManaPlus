@@ -329,6 +329,7 @@ packet(CMSG_MAIL2_REQUEST_MONEY,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REQUEST_ITEMS,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REFRESH_MAIL_LIST,      0x0000,   0, nullptr);
 packet(CMSG_MAIL2_OPEN_MAILBOX,           0x0000,   0, nullptr);
+packet(CMSG_MAIL2_CLOSE_MAILBOX,          0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1136,6 +1137,12 @@ if (packetVersion >= 20130814)
 if (packetVersion >= 20130814)
 {
     packet(CMSG_ADMIN_MONSTER_ITEM,       0x09ce, 102, clif->pGM_Monster_Item);
+}
+
+// 20131211
+if (packetVersion >= 20131211)
+{
+    packet(CMSG_MAIL2_CLOSE_MAILBOX,      0x09e9,   2, clif->pRodexCloseMailbox);
 }
 
 // 20131218

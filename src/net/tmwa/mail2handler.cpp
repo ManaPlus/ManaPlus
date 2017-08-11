@@ -90,4 +90,8 @@ void Mail2Handler::openMailBox(const int openType A_UNUSED) const
 {
 }
 
+void Mail2Handler::closeMailBox() const
+{
+}
+
 }  // namespace TmwAthena
