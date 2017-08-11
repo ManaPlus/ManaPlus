@@ -153,4 +153,12 @@ void Mail2Recv::processMailDelete(Net::MessageIn &msg)
     msg.readInt64("mail id");
 }
 
+void Mail2Recv::processRequestMoney(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readInt64("mail id");
+    msg.readUInt8("open type");
+    msg.readUInt8("result");
+}
+
 }  // namespace EAthena

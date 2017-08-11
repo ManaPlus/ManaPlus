@@ -795,6 +795,9 @@ if (packetVersion >= 20131223)
 // 20131230
 packet(SMSG_RODEX_SEND_RESULT,             0x09ed,   3, &Mail2Recv::processSendResult,                  20131230);
 
+// 20140409
+packet(SMSG_RODEX_REQUEST_MONEY,           0x09f2,  12, &Mail2Recv::processRequestMoney,                20140409);
+
 // 20140115
 packet(SMSG_RODEX_READ_MAIL,               0x09eb,  -1, &Mail2Recv::processReadMail,                    20140115);
 
