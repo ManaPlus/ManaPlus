@@ -324,6 +324,7 @@ packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,       0x0000,   0, nullptr);
 packet(CMSG_MAIL2_SEND_MAIL,              0x0000,   0, nullptr);
 packet(CMSG_MAIL2_NEXT_PAGE,              0x0000,   0, nullptr);
 packet(CMSG_MAIL2_READ_MAIL,              0x0000,   0, nullptr);
+packet(CMSG_MAIL2_DELETE_MAIL,            0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1169,6 +1170,7 @@ if (packetVersion >= 20131218)
 if (packetVersion >= 20131218)
 {
     packet(CMSG_MAIL2_NEXT_PAGE,          0x09ee,  11, clif->pRodexNextMaillist);
+    packet(CMSG_MAIL2_DELETE_MAIL,        0x09f5,  11, clif->pRodexDeleteMail);
 }
 
 // 20131223

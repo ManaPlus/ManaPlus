@@ -66,4 +66,9 @@ void Mail2Handler::readMail(const int openType A_UNUSED,
 {
 }
 
+void Mail2Handler::deleteMail(const int openType A_UNUSED,
+                              const int64_t mailId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

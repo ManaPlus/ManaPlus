@@ -59,6 +59,9 @@ class Mail2Handler notfinal
 
         virtual void readMail(const int openType,
                               const int64_t mailId) const = 0;
+
+        virtual void deleteMail(const int openType,
+                                const int64_t mailId) const = 0;
 };
 
 }  // namespace Net
