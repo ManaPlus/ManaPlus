@@ -115,4 +115,35 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
     }
 }
 
+void Mail2Recv::processReadMail(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readInt16("len");
+    msg.readUInt8("open type");
+    msg.readInt64("mail id");
+    const int textLen = msg.readInt16("text len");
+    msg.readInt64("money");
+    const int itemsCount = msg.readUInt8("item count");
+    msg.readString(textLen, "text message");
+    for (int f = 0; f < itemsCount; f ++)
+    {
+        msg.readInt16("amount");
+        msg.readInt16("item id");
+        msg.readUInt8("identify");
+        msg.readUInt8("damaged");
+        msg.readUInt8("refine");
+        for (int d = 0; d < maxCards; d ++)
+            msg.readUInt16("card");
+        msg.readInt32("unknown");
+        msg.readUInt8("type");
+        msg.readInt32("unknown");
+        for (int d = 0; d < 5; d ++)
+        {
+            msg.readInt16("option index");
+            msg.readInt16("option value");
+            msg.readUInt8("option param");
+        }
+    }
+}
+
 }  // namespace EAthena
