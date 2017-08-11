@@ -50,6 +50,9 @@ class Mail2Handler final : public Net::Mail2Handler
 
         void nextPage(const int openType,
                       const int64_t mailId) const override final;
+
+        void readMail(const int openType,
+                      const int64_t mailId) const override final;
 };
 
 }  // namespace TmwAthena

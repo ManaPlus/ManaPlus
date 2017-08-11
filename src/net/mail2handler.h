@@ -56,6 +56,9 @@ class Mail2Handler notfinal
 
         virtual void nextPage(const int openType,
                               const int64_t mailId) const = 0;
+
+        virtual void readMail(const int openType,
+                              const int64_t mailId) const = 0;
 };
 
 }  // namespace Net

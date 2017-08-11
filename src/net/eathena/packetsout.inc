@@ -323,6 +323,7 @@ packet(CMSG_MAIL2_ADD_ITEM_TO_MAIL,       0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,       0x0000,   0, nullptr);
 packet(CMSG_MAIL2_SEND_MAIL,              0x0000,   0, nullptr);
 packet(CMSG_MAIL2_NEXT_PAGE,              0x0000,   0, nullptr);
+packet(CMSG_MAIL2_READ_MAIL,              0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1179,6 +1180,11 @@ if (packetVersion >= 20131223)
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x023b,  26, clif->pFriendsListAdd);
     packet(CMSG_HOMUNCULUS_MENU,          0x0361,   5, clif->pHomMenu);
     packet(CMSG_STORAGE_PASSWORD,         0x08a4,  36, clif->pStoragePassword);
+}
+
+if (packetVersion >= 20131223)
+{
+    packet(CMSG_MAIL2_READ_MAIL,          0x09ea,  11, clif->pRodexReadMail);
 }
 
 // 20131230
