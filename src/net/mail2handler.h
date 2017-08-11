@@ -21,6 +21,8 @@
 #ifndef NET_MAIL2HANDLER_H
 #define NET_MAIL2HANDLER_H
 
+#include "enums/net/mailopentype.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -54,25 +56,25 @@ class Mail2Handler notfinal
                               const std::string &body,
                               const int64_t &money) const = 0;
 
-        virtual void nextPage(const int openType,
+        virtual void nextPage(const MailOpenTypeT openType,
                               const int64_t mailId) const = 0;
 
-        virtual void readMail(const int openType,
+        virtual void readMail(const MailOpenTypeT openType,
                               const int64_t mailId) const = 0;
 
-        virtual void deleteMail(const int openType,
+        virtual void deleteMail(const MailOpenTypeT openType,
                                 const int64_t mailId) const = 0;
 
-        virtual void requestMoney(const int openType,
+        virtual void requestMoney(const MailOpenTypeT openType,
                                   const int64_t mailId) const = 0;
 
-        virtual void requestItems(const int openType,
+        virtual void requestItems(const MailOpenTypeT openType,
                                   const int64_t mailId) const = 0;
 
-        virtual void refreshMailList(const int openType,
+        virtual void refreshMailList(const MailOpenTypeT openType,
                                      const int64_t mailId) const = 0;
 
-        virtual void openMailBox(const int openType) const = 0;
+        virtual void openMailBox(const MailOpenTypeT openType) const = 0;
 
         virtual void closeMailBox() const = 0;
 

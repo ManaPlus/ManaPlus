@@ -48,25 +48,25 @@ class Mail2Handler final : public Net::Mail2Handler
                       const std::string &body,
                       const int64_t &money) const override final;
 
-        void nextPage(const int openType,
+        void nextPage(const MailOpenTypeT openType,
                       const int64_t mailId) const override final;
 
-        void readMail(const int openType,
+        void readMail(const MailOpenTypeT openType,
                       const int64_t mailId) const override final;
 
-        void deleteMail(const int openType,
+        void deleteMail(const MailOpenTypeT openType,
                         const int64_t mailId) const override final;
 
-        void requestMoney(const int openType,
+        void requestMoney(const MailOpenTypeT openType,
                           const int64_t mailId) const override final;
 
-        void requestItems(const int openType,
+        void requestItems(const MailOpenTypeT openType,
                           const int64_t mailId) const override final;
 
-        void refreshMailList(const int openType,
+        void refreshMailList(const MailOpenTypeT openType,
                              const int64_t mailId) const override final;
 
-        void openMailBox(const int openType) const override final;
+        void openMailBox(const MailOpenTypeT openType) const override final;
 
         void closeMailBox() const override final;
 

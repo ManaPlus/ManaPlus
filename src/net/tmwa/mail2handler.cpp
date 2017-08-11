@@ -56,37 +56,37 @@ void Mail2Handler::sendMail(const std::string &to A_UNUSED,
 {
 }
 
-void Mail2Handler::nextPage(const int openType A_UNUSED,
+void Mail2Handler::nextPage(const MailOpenTypeT openType A_UNUSED,
                             const int64_t mailId A_UNUSED) const
 {
 }
 
-void Mail2Handler::readMail(const int openType A_UNUSED,
+void Mail2Handler::readMail(const MailOpenTypeT openType A_UNUSED,
                             const int64_t mailId A_UNUSED) const
 {
 }
 
-void Mail2Handler::deleteMail(const int openType A_UNUSED,
+void Mail2Handler::deleteMail(const MailOpenTypeT openType A_UNUSED,
                               const int64_t mailId A_UNUSED) const
 {
 }
 
-void Mail2Handler::requestMoney(const int openType A_UNUSED,
+void Mail2Handler::requestMoney(const MailOpenTypeT openType A_UNUSED,
                                 const int64_t mailId A_UNUSED) const
 {
 }
 
-void Mail2Handler::requestItems(const int openType A_UNUSED,
+void Mail2Handler::requestItems(const MailOpenTypeT openType A_UNUSED,
                                 const int64_t mailId A_UNUSED) const
 {
 }
 
-void Mail2Handler::refreshMailList(const int openType A_UNUSED,
+void Mail2Handler::refreshMailList(const MailOpenTypeT openType A_UNUSED,
                                    const int64_t mailId A_UNUSED) const
 {
 }
 
-void Mail2Handler::openMailBox(const int openType A_UNUSED) const
+void Mail2Handler::openMailBox(const MailOpenTypeT openType A_UNUSED) const
 {
 }
 

@@ -552,6 +552,7 @@ SET(SRCS
     enums/net/battlegroundtype.h
     enums/net/deleteitemreason.h
     enums/net/downloadstatus.h
+    enums/net/mailopentype.h
     enums/net/npcaction.h
     enums/net/packettype.h
     net/gamehandler.h
