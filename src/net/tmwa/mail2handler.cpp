@@ -86,4 +86,8 @@ void Mail2Handler::refreshMailList(const int openType A_UNUSED,
 {
 }
 
+void Mail2Handler::openMailBox(const int openType A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

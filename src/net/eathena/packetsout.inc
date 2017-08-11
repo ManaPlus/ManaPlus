@@ -328,6 +328,7 @@ packet(CMSG_MAIL2_DELETE_MAIL,            0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REQUEST_MONEY,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REQUEST_ITEMS,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REFRESH_MAIL_LIST,      0x0000,   0, nullptr);
+packet(CMSG_MAIL2_OPEN_MAILBOX,           0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1298,6 +1299,12 @@ if (packetVersion == 20140205)
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
     packet(CMSG_STORAGE_PASSWORD,         0x0938,  36, clif->pStoragePassword);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
+}
+
+// 20140212
+if (packetVersion >= 20140212)
+{
+    packet(CMSG_MAIL2_OPEN_MAILBOX,       0x09e8,  11, clif->pRodexOpenMailbox);
 }
 
 // 20140305

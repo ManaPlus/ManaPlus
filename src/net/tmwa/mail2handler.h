@@ -65,6 +65,8 @@ class Mail2Handler final : public Net::Mail2Handler
 
         void refreshMailList(const int openType,
                              const int64_t mailId) const override final;
+
+        void openMailBox(const int openType) const override final;
 };
 
 }  // namespace TmwAthena

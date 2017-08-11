@@ -71,6 +71,8 @@ class Mail2Handler notfinal
 
         virtual void refreshMailList(const int openType,
                                      const int64_t mailId) const = 0;
+
+        virtual void openMailBox(const int openType) const = 0;
 };
 
 }  // namespace Net
