@@ -126,4 +126,17 @@ void Mail2Handler::sendMail(const std::string &to,
     outMsg.writeString(body, bodySz, "body");
 }
 
+void Mail2Handler::nextPage(const int openType,
+                            const int64_t mailId) const
+{
+    if (packetVersion < 20131218 ||
+        serverVersion < 19)
+    {
+        return;
+    }
+    createOutPacket(CMSG_MAIL2_NEXT_PAGE);
+    outMsg.writeInt8(openType, "open type");
+    outMsg.writeInt64(mailId, "mail id");
+}
+
 }  // namespace EAthena

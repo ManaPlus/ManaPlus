@@ -322,6 +322,7 @@ packet(CMSG_MAIL2_OPEN_WRITE_MAIL,        0x0000,   0, nullptr);
 packet(CMSG_MAIL2_ADD_ITEM_TO_MAIL,       0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,       0x0000,   0, nullptr);
 packet(CMSG_MAIL2_SEND_MAIL,              0x0000,   0, nullptr);
+packet(CMSG_MAIL2_NEXT_PAGE,              0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1163,6 +1164,10 @@ if (packetVersion >= 20131218)
     packet(CMSG_PARTY_INVITE2,            0x0802,  26, clif->pPartyInvite2);
     packet(CMSG_STORAGE_PASSWORD,         0x085c,  36, clif->pStoragePassword);
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x0281,  -1, clif->pItemListWindowSelected);
+}
+if (packetVersion >= 20131218)
+{
+    packet(CMSG_MAIL2_NEXT_PAGE,          0x09ee,  11, clif->pRodexNextMaillist);
 }
 
 // 20131223

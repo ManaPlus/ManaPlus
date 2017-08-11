@@ -56,4 +56,9 @@ void Mail2Handler::sendMail(const std::string &to A_UNUSED,
 {
 }
 
+void Mail2Handler::nextPage(const int openType A_UNUSED,
+                            const int64_t mailId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
