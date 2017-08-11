@@ -59,6 +59,9 @@ class Mail2Handler final : public Net::Mail2Handler
 
         void requestMoney(const int openType,
                           const int64_t mailId) const override final;
+
+        void requestItems(const int openType,
+                          const int64_t mailId) const override final;
 };
 
 }  // namespace TmwAthena

@@ -65,6 +65,9 @@ class Mail2Handler notfinal
 
         virtual void requestMoney(const int openType,
                                   const int64_t mailId) const = 0;
+
+        virtual void requestItems(const int openType,
+                                  const int64_t mailId) const = 0;
 };
 
 }  // namespace Net
