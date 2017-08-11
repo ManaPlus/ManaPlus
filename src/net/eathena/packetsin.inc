@@ -777,6 +777,7 @@ if (packetVersion >= 20130731)
 
 // 20131218
 packet(SMSG_RODEX_MAIL_LIST_PAGE,          0x09f0,  -1, &Mail2Recv::processMailListPage,                20131218);
+packet(SMSG_RODEX_MAIL_DELETE,             0x09f6,  11, &Mail2Recv::processMailDelete,                  20131218);
 
 // 20131223
 if (packetVersion >= 20131223)
