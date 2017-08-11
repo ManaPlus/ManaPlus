@@ -45,6 +45,9 @@ class Mail2Handler notfinal
 
         virtual void addItem(const Item *const item,
                              const int amount) const = 0;
+
+        virtual void removeItem(const Item *const item,
+                                const int amount) const = 0;
 };
 
 }  // namespace Net

@@ -39,6 +39,9 @@ class Mail2Handler final : public Net::Mail2Handler
 
         void addItem(const Item *const item,
                      const int amount) const override final;
+
+        void removeItem(const Item *const item,
+                        const int amount) const override final;
 };
 
 }  // namespace TmwAthena

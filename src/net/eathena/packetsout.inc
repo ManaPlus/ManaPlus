@@ -319,6 +319,7 @@ packet(CMSG_BOOKING_DELETE_REQ,           0x0000,   0, nullptr);
 packet(CMSG_BOOKING_UPDATE_REQ,           0x0000,   0, nullptr);
 packet(CMSG_MAIL2_OPEN_WRITE_MAIL,        0x0000,   0, nullptr);
 packet(CMSG_MAIL2_ADD_ITEM_TO_MAIL,       0x0000,   0, nullptr);
+packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,       0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1378,6 +1379,7 @@ if (packetVersion == 20140416)
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
     packet(CMSG_MAIL2_OPEN_WRITE_MAIL,    0x0a08,  26, clif->pRodexOpenWriteMail);
     packet(CMSG_MAIL2_ADD_ITEM_TO_MAIL,   0x0a04,   6, clif->pRodexAddItem);
+    packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,   0x0a06,   6, clif->pRodexRemoveItem);
 }
 
 // 20140605

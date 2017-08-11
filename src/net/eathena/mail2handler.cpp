@@ -61,4 +61,16 @@ void Mail2Handler::addItem(const Item *const item,
     outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
+void Mail2Handler::removeItem(const Item *const item,
+                              const int amount) const
+{
+    if (item == nullptr)
+        return;
+
+    createOutPacket(CMSG_MAIL2_REMOVE_ITEM_MAIL);
+    outMsg.writeInt16(CAST_S16(
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
+}
+
 }  // namespace EAthena

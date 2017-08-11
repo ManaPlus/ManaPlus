@@ -44,4 +44,9 @@ void Mail2Handler::addItem(const Item *const item A_UNUSED,
 {
 }
 
+void Mail2Handler::removeItem(const Item *const item A_UNUSED,
+                              const int amount A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
