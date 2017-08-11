@@ -330,6 +330,7 @@ packet(CMSG_MAIL2_REQUEST_ITEMS,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REFRESH_MAIL_LIST,      0x0000,   0, nullptr);
 packet(CMSG_MAIL2_OPEN_MAILBOX,           0x0000,   0, nullptr);
 packet(CMSG_MAIL2_CLOSE_MAILBOX,          0x0000,   0, nullptr);
+packet(CMSG_MAIL2_CANCEL_WRITE_MAIL,      0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1353,6 +1354,7 @@ if (packetVersion == 20140326)
 {
     packet(CMSG_MAIL2_REQUEST_MONEY,      0x09f1,  11, clif->pRodexRequestZeny);
     packet(CMSG_MAIL2_REQUEST_ITEMS,      0x09f3,  11, clif->pRodexRequestItems);
+    packet(CMSG_MAIL2_CANCEL_WRITE_MAIL,  0x0a03,   2, clif->pRodexCancelWriteMail);
 }
 
 // 20140402

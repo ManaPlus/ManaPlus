@@ -226,4 +226,14 @@ void Mail2Handler::closeMailBox() const
     createOutPacket(CMSG_MAIL2_CLOSE_MAILBOX);
 }
 
+void Mail2Handler::cancelWriteMail() const
+{
+    if (packetVersion < 20140326 ||
+        serverVersion < 19)
+    {
+        return;
+    }
+    createOutPacket(CMSG_MAIL2_CANCEL_WRITE_MAIL);
+}
+
 }  // namespace EAthena

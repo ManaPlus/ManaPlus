@@ -94,4 +94,8 @@ void Mail2Handler::closeMailBox() const
 {
 }
 
+void Mail2Handler::cancelWriteMail() const
+{
+}
+
 }  // namespace TmwAthena

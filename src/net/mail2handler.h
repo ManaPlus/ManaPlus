@@ -75,6 +75,8 @@ class Mail2Handler notfinal
         virtual void openMailBox(const int openType) const = 0;
 
         virtual void closeMailBox() const = 0;
+
+        virtual void cancelWriteMail() const = 0;
 };
 
 }  // namespace Net
