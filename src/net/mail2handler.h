@@ -38,6 +38,8 @@ class Mail2Handler notfinal
 
         virtual ~Mail2Handler()
         { }
+
+        virtual void openWriteMail(const std::string &receiver) const = 0;
 };
 
 }  // namespace Net

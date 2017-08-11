@@ -20,6 +20,10 @@
 
 #include "net/eathena/mail2handler.h"
 
+#include "net/eathena/messageout.h"
+#include "net/eathena/updateprotocol.h"
+#include "net/eathena/protocolout.h"
+
 #include "debug.h"
 
 namespace EAthena
@@ -33,6 +37,12 @@ Mail2Handler::Mail2Handler()
 Mail2Handler::~Mail2Handler()
 {
     mail2Handler = nullptr;
+}
+
+void Mail2Handler::openWriteMail(const std::string &receiver) const
+{
+    createOutPacket(CMSG_MAIL2_OPEN_WRITE_MAIL);
+    outMsg.writeString(receiver, 24, "receiver name");
 }
 
 }  // namespace EAthena

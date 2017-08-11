@@ -34,6 +34,8 @@ class Mail2Handler final : public Net::Mail2Handler
         A_DELETE_COPY(Mail2Handler)
 
         ~Mail2Handler();
+
+        void openWriteMail(const std::string &receiver) const override final;
 };
 
 }  // namespace TmwAthena

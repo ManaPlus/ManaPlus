@@ -35,4 +35,8 @@ Mail2Handler::~Mail2Handler()
     mail2Handler = nullptr;
 }
 
+void Mail2Handler::openWriteMail(const std::string &receiver A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
