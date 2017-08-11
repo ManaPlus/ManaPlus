@@ -39,4 +39,9 @@ void Mail2Handler::openWriteMail(const std::string &receiver A_UNUSED) const
 {
 }
 
+void Mail2Handler::addItem(const Item *const item A_UNUSED,
+                           const int amount A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

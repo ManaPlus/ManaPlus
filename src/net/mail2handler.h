@@ -25,6 +25,8 @@
 
 #include "localconsts.h"
 
+class Item;
+
 namespace Net
 {
 
@@ -40,6 +42,9 @@ class Mail2Handler notfinal
         { }
 
         virtual void openWriteMail(const std::string &receiver) const = 0;
+
+        virtual void addItem(const Item *const item,
+                             const int amount) const = 0;
 };
 
 }  // namespace Net

@@ -36,6 +36,9 @@ class Mail2Handler final : public Net::Mail2Handler
         ~Mail2Handler();
 
         void openWriteMail(const std::string &receiver) const override final;
+
+        void addItem(const Item *const item,
+                     const int amount) const override final;
 };
 
 }  // namespace TmwAthena

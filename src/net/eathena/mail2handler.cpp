@@ -20,9 +20,13 @@
 
 #include "net/eathena/mail2handler.h"
 
+#include "const/net/inventory.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/updateprotocol.h"
 #include "net/eathena/protocolout.h"
+
+#include "resources/item/item.h"
 
 #include "debug.h"
 
@@ -43,6 +47,18 @@ void Mail2Handler::openWriteMail(const std::string &receiver) const
 {
     createOutPacket(CMSG_MAIL2_OPEN_WRITE_MAIL);
     outMsg.writeString(receiver, 24, "receiver name");
+}
+
+void Mail2Handler::addItem(const Item *const item,
+                           const int amount) const
+{
+    if (item == nullptr)
+        return;
+
+    createOutPacket(CMSG_MAIL2_ADD_ITEM_TO_MAIL);
+    outMsg.writeInt16(CAST_S16(
+        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
 }  // namespace EAthena
