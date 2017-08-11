@@ -49,4 +49,11 @@ void Mail2Handler::removeItem(const Item *const item A_UNUSED,
 {
 }
 
+void Mail2Handler::sendMail(const std::string &to A_UNUSED,
+                            const std::string &title A_UNUSED,
+                            const std::string &body A_UNUSED,
+                            const int64_t &money A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -22,6 +22,8 @@
 
 #include "const/net/inventory.h"
 
+#include "being/localplayer.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/updateprotocol.h"
 #include "net/eathena/protocolout.h"
@@ -89,6 +91,39 @@ void Mail2Handler::removeItem(const Item *const item,
     outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET), "index");
     outMsg.writeInt16(CAST_S16(amount), "amount");
+}
+
+void Mail2Handler::sendMail(const std::string &to,
+                            const std::string &title,
+                            const std::string &body,
+                            const int64_t &money) const
+{
+    if (packetVersion < 20131230 ||
+        serverVersion < 19)
+    {
+        return;
+    }
+    if (localPlayer == nullptr)
+        return;
+
+    const std::string from = localPlayer->getName();
+    const int titleSz = title.size();
+    const int bodySz = body.size();
+    int16_t sz = 2 + 2 + 24 + 24 + 8 + 2 + 2 + titleSz + bodySz;
+    if (packetVersion >= 20160600)
+        sz += 4;
+
+    createOutPacket(CMSG_MAIL2_SEND_MAIL);
+    outMsg.writeInt16(sz, "len");
+    outMsg.writeString(to, 24, "to");
+    outMsg.writeString(from, 24, "from");
+    outMsg.writeInt64(money, "money");
+    outMsg.writeInt16(CAST_S16(title.size()), "title len");
+    outMsg.writeInt16(CAST_S16(body.size()), "body len");
+    if (packetVersion >= 20160600)
+        outMsg.writeInt32(0, "to char id");
+    outMsg.writeString(title, titleSz, "title");
+    outMsg.writeString(body, bodySz, "body");
 }
 
 }  // namespace EAthena

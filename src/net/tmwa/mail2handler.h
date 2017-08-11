@@ -42,6 +42,11 @@ class Mail2Handler final : public Net::Mail2Handler
 
         void removeItem(const Item *const item,
                         const int amount) const override final;
+
+        void sendMail(const std::string &to,
+                      const std::string &title,
+                      const std::string &body,
+                      const int64_t &money) const override final;
 };
 
 }  // namespace TmwAthena

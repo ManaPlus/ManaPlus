@@ -321,6 +321,7 @@ packet(CMSG_CHECK_NAME,                   0x0000,   0, nullptr);
 packet(CMSG_MAIL2_OPEN_WRITE_MAIL,        0x0000,   0, nullptr);
 packet(CMSG_MAIL2_ADD_ITEM_TO_MAIL,       0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,       0x0000,   0, nullptr);
+packet(CMSG_MAIL2_SEND_MAIL,              0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1204,6 +1205,10 @@ if (packetVersion >= 20131230)
     packet(CMSG_SOLVE_CHAR_NAME,          0x0898,   6, clif->pSolveCharName);
     packet(CMSG_STORAGE_PASSWORD,         0x091d,  36, clif->pStoragePassword);
     packet(CMSG_ITEM_LIST_WINDOW_SELECT,  0x022d,  -1, clif->pItemListWindowSelected);
+}
+if (packetVersion >= 20131230)
+{
+    packet(CMSG_MAIL2_SEND_MAIL,          0x09ec,  -1, clif->pRodexSendMail);
 }
 
 // 20140115
@@ -2645,6 +2650,11 @@ if (packetVersion == 20160330)
     packet(CMSG_PLAYER_INVENTORY_DROP,    0x0939,   6, clif->pDropItem);
     packet(CMSG_FRIENDS_ADD_PLAYER,       0x093b,  26, clif->pFriendsListAdd);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
+}
+
+if (packetVersion >= 20160330)
+{
+    packet(CMSG_MAIL2_SEND_MAIL,          0x0a6e,  -1, clif->pRodexSendMail);
 }
 
 // 20160420

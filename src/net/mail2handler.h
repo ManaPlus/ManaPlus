@@ -48,6 +48,11 @@ class Mail2Handler notfinal
 
         virtual void removeItem(const Item *const item,
                                 const int amount) const = 0;
+
+        virtual void sendMail(const std::string &to,
+                              const std::string &title,
+                              const std::string &body,
+                              const int64_t &money) const = 0;
 };
 
 }  // namespace Net
