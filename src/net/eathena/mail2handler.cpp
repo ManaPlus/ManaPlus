@@ -165,4 +165,17 @@ void Mail2Handler::deleteMail(const int openType,
     outMsg.writeInt64(mailId, "mail id");
 }
 
+void Mail2Handler::requestMoney(const int openType,
+                                const int64_t mailId) const
+{
+    if (packetVersion < 20140326 ||
+        serverVersion < 19)
+    {
+        return;
+    }
+    createOutPacket(CMSG_MAIL2_REQUEST_MONEY);
+    outMsg.writeInt64(mailId, "mail id");
+    outMsg.writeInt8(openType, "open type");
+}
+
 }  // namespace EAthena

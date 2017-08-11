@@ -325,6 +325,7 @@ packet(CMSG_MAIL2_SEND_MAIL,              0x0000,   0, nullptr);
 packet(CMSG_MAIL2_NEXT_PAGE,              0x0000,   0, nullptr);
 packet(CMSG_MAIL2_READ_MAIL,              0x0000,   0, nullptr);
 packet(CMSG_MAIL2_DELETE_MAIL,            0x0000,   0, nullptr);
+packet(CMSG_MAIL2_REQUEST_MONEY,          0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1328,6 +1329,12 @@ if (packetVersion == 20140305)
     packet(CMSG_HOMUNCULUS_MENU,          0x0934,   5, clif->pHomMenu);
     packet(CMSG_STORAGE_PASSWORD,         0x095e,  36, clif->pStoragePassword);
     packet(CMSG_NAME_REQUEST,             0x096a,   6, clif->pGetCharNameRequest);
+}
+
+// 20140326
+if (packetVersion == 20140326)
+{
+    packet(CMSG_MAIL2_REQUEST_MONEY,      0x09f1,  11, clif->pRodexRequestZeny);
 }
 
 // 20140402

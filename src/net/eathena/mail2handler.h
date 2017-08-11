@@ -56,6 +56,9 @@ class Mail2Handler final : public Net::Mail2Handler
 
         void deleteMail(const int openType,
                         const int64_t mailId) const override final;
+
+        void requestMoney(const int openType,
+                          const int64_t mailId) const override final;
 };
 
 }  // namespace EAthena
