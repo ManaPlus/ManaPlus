@@ -86,6 +86,23 @@ void MessageOut::writeInt32(const int32_t value, const char *const str)
     PacketCounters::incOutBytes(4);
 }
 
+void MessageOut::writeInt64(const int64_t value, const char *const str)
+{
+    DEBUGLOG2("writeInt64: " + toStringPrint(CAST_U32(value)),
+        mPos, str);
+    expand(8);
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    int32_t swap = SDL_Swap64(value);
+    memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int64_t));
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int64_t));
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    mPos += 8;
+    PacketCounters::incOutBytes(8);
+}
+
 void MessageOut::writeBeingId(const BeingId value, const char *const str)
 {
     writeInt32(toInt(value, int32_t), str);

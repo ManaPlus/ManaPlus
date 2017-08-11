@@ -55,6 +55,9 @@ class MessageOut final : public Net::MessageOut
         void writeInt32(const int32_t value,
                         const char *const str) override final;
 
+        void writeInt64(const int64_t value,
+                        const char *const str);
+
         void writeBeingId(const BeingId value,
                           const char *const str) override final;
 
