@@ -88,6 +88,7 @@
 
 extern int packetVersion;
 extern int serverVersion;
+extern int evolPacketOffset;
 
 namespace EAthena
 {

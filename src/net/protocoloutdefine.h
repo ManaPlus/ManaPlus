@@ -22,6 +22,7 @@
 #define NET_PROTOCOLOUTDEFINE_H
 
 #define packet(name, id, sz, comment) int name = id
+#define packet2(name, id, sz, comment) int name = id + evolPacketOffset
 #define PROTOCOLOUT_VOID
 
 #endif  // NET_PROTOCOLOUTDEFINE_H

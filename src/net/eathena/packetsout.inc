@@ -68,8 +68,8 @@ packet(CMSG_CLIENT_QUIT,                  0x018A,   4, clif->pQuitGame);
 packet(CMSG_CHAT_MESSAGE,                 0x008c,  -1, clif->pGlobalMessage);
 packet(CMSG_CHAT_WHISPER,                 0x0096,  -1, clif->pWisMessage);
 packet(CMSG_CHAT_ROOM_JOIN,               0x00d9,  14, clif->pChatAddMember);
-packet(CMSG_CHAT_JOIN_CHANNEL,            0x0b07,   0, nullptr);
-packet(CMSG_CHAT_PART_CHANNEL,            0x0b09,   0, nullptr);
+packet2(CMSG_CHAT_JOIN_CHANNEL,           0x0b07,   0, nullptr);
+packet2(CMSG_CHAT_PART_CHANNEL,           0x0b09,   0, nullptr);
 packet(CMSG_BATTLE_CHAT_MESSAGE,          0x02db,  -1, clif->pBattleChat);
 
 packet(CMSG_CREAYE_CHAT_ROOM,             0x00d5,  -1, clif->pCreateChatRoom);
@@ -200,19 +200,19 @@ packet(CMSG_PET_SEND_MESSAGE,             0x01a9,   6, clif->pSendEmotion);
 packet(CMSG_PET_SET_NAME,                 0x01a5,  26, clif->pChangePetName);
 packet(CMSG_PET_SELECT_EGG,               0x01a7,   4, clif->pSelectEgg);
 packet(CMSG_PET_MENU_ACTION,              0x01a1,   3, clif->pPetMenu);
-packet(CMSG_PET_TALK,                     0x0b0c,   0, nullptr);
-packet(CMSG_PET_EMOTE,                    0x0b0d,   0, nullptr);
-packet(CMSG_PET_MOVE_TO,                  0x0b11,   0, nullptr);
-packet(CMSG_PET_DIRECTION,                0x0b12,   0, nullptr);
+packet2(CMSG_PET_TALK,                    0x0b0c,   0, nullptr);
+packet2(CMSG_PET_EMOTE,                   0x0b0d,   0, nullptr);
+packet2(CMSG_PET_MOVE_TO,                 0x0b11,   0, nullptr);
+packet2(CMSG_PET_DIRECTION,               0x0b12,   0, nullptr);
 
 packet(CMSG_MERCENARY_ACTION,             0x029f,   3, clif->pmercenary_action);
 packet(CMSG_HOMUNCULUS_SET_NAME,          0x0231,  26, clif->pChangeHomunculusName);
 packet(CMSG_HOMMERC_MOVE_TO_MASTER,       0x0234,   6, clif->pHomMoveToMaster);
 packet(CMSG_HOMMERC_MOVE_TO,              0x0232,   9, clif->pHomMoveTo);
 packet(CMSG_HOMMERC_ATTACK,               0x0233,  11, clif->pHomAttack);
-packet(CMSG_HOMMERC_TALK,                 0x0b13,   0, nullptr);
-packet(CMSG_HOMMERC_EMOTE,                0x0b14,   0, nullptr);
-packet(CMSG_HOMMERC_DIRECTION,            0x0b15,   0, nullptr);
+packet2(CMSG_HOMMERC_TALK,                0x0b13,   0, nullptr);
+packet2(CMSG_HOMMERC_EMOTE,               0x0b14,   0, nullptr);
+packet2(CMSG_HOMMERC_DIRECTION,           0x0b15,   0, nullptr);
 
 packet(CMSG_DORI_DORI,                    0x01e7,   2, clif->pNoviceDoriDori);
 packet(CMSG_EXPLOSION_SPIRITS,            0x01ed,   2, clif->pNoviceExplosionSpirits);
@@ -255,11 +255,11 @@ packet(CMSG_VENDING_CREATE_SHOP,          0x01b2,  -1, clif->pOpenVending);
 packet(CMSG_MERGE_ITEM_ACK,               0x096e,  -1, clif->ackmergeitems);
 packet(CMSG_MERGE_ITEM_CANCEL,            0x0974,   2, clif->cancelmergeitem);
 
-packet(CMSG_SET_STATUS,                   0x0b0e,   0, nullptr);
+packet2(CMSG_SET_STATUS,                  0x0b0e,   0, nullptr);
 
-packet(CMSG_ONLINE_LIST,                  0x0b0f,   0, nullptr);
+packet2(CMSG_ONLINE_LIST,                 0x0b0f,   0, nullptr);
 
-packet(CMSG_PLAYER_INVENTORY_USE2,        0x0b26,   6, nullptr);
+packet2(CMSG_PLAYER_INVENTORY_USE2,       0x0b26,   6, nullptr);
 
 #ifndef PACKETS_UPDATE
 // 0

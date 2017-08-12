@@ -36,6 +36,8 @@
 
 #include "debug.h"
 
+int evolPacketOffset = 0;
+
 namespace Net
 {
     class AuctionHandler;

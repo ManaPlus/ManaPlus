@@ -845,36 +845,36 @@ packet(SMSG_MAIL2_ADD_ITEM_RESULT,         0x0a05,  53, &Mail2Recv::processAddIt
 // evol packets
 if (serverVersion > 0)
 {
-    packet(SMSG_NPC_COMMAND,               0x0b00,  16, &Ea::NpcRecv::processNpcCommand,                0);
-    packet(SMSG_BEING_NAME_RESPONSE2,      0x0b01,  -1, &BeingRecv::processNameResponse2,               0);
-    packet(SMSG_MAP_MASK,                  0x0b02,  10, &Ea::PlayerRecv::processMapMask,                0);
-    packet(SMSG_MOB_INFO,                  0x0b03,  -1, &BeingRecv::processMobInfo,                     0);
-    packet(SMSG_BEING_MOVE3,               0x0b04,  -1, &Ea::BeingRecv::processBeingMove3,              0);
-    packet(SMSG_MAP_MUSIC,                 0x0b05,  -1, &Ea::PlayerRecv::processMapMusic,               0);
-    packet(SMSG_NPC_CHANGETITLE,           0x0b06,  -1, &Ea::NpcRecv::processChangeTitle,               0);
-    packet(SMSG_CHAT_JOIN_CHANNEL,         0x0b08,  27, &ChatRecv::processJoinChannel,                  0);
-    packet(SMSG_BEING_ATTRS,               0x0b0a,  -1, &BeingRecv::processBeingAttrs,                  0);
-    packet(SMSG_NPC_AREA,                  0x0b0b,  -1, &NpcRecv::processArea,                          0);
-    packet(SMSG_ONLINE_LIST,               0x0b10,  -1, &PlayerRecv::processOnlineList,                 0);
-    packet(SMSG_PLAYER_CLIENT_COMMAND,     0x0b16,  -1, &Ea::PlayerRecv::processPlayerClientCommand,    0);
-    packet(SMSG_BEING_CHANGE_LOOKS_CARDS,  0x0b17,  19, &BeingRecv::processBeingChangeLookCards,        0);
-    packet(SMSG_ITEM_VISIBLE2,             0x0b18,  28, &ItemRecv::processItemVisible2,                 0);
-    packet(SMSG_ITEM_DROPPED2,             0x0b19,  28, &ItemRecv::processItemDropped2,                 0);
-    packet(SMSG_BATTLE_EMBLEM2,            0x0b1a,  34, &BattleGroundRecv::processBattleEmblem2,        0);
-    packet(SMSG_MAP_SET_TILES_TYPE,        0x0b1b,  34, &Ea::MapRecv::processSetTilesType,              0);
-    packet(SMSG_NPC_SKIN,                  0x0b1c,  -1, &NpcRecv::processNpcSkin,                       0);
-    packet(SMSG_PLAYER_KILLED_BY,          0x0b1d,   6, &PlayerRecv::processKilledBy,                   0);
-    packet(SMSG_SKILL_CASTING2,            0x0b1e,  -1, &BeingRecv::processSkillCasting2,               0);
-    packet(SMSG_PLAYER_ADD_SKILL2,         0x0b1f,  -1, &SkillRecv::processSkillAdd2,                   0);
-    packet(SMSG_PLAYER_UPDATE_SKILL2,      0x0b20,  -1, &SkillRecv::processSkillUpdate2,                0);
-    packet(SMSG_WALK_ERROR,                0x0b21,  10, &PlayerRecv::processWalkError,                  0);
-    packet(SMSG_HOMUNCULUS_EXP,            0x0b22,  10, &HomunculusRecv::processHomunculusExp,          0);
-    packet(SMSG_QUEST_LIST2,               0x0b23,  -1, &QuestRecv::processAddQuests2,                  0);
-    packet(SMSG_QUEST_ADD2,                0x0b24,  23, &QuestRecv::processAddQuest2,                   0);
-    packet(SMSG_PLAYER_ATTRS,              0x0b25,  -1, &PlayerRecv::processPlayerAttrs,                0);
+    packet2(SMSG_NPC_COMMAND,              0x0b00,  16, &Ea::NpcRecv::processNpcCommand,                0);
+    packet2(SMSG_BEING_NAME_RESPONSE2,     0x0b01,  -1, &BeingRecv::processNameResponse2,               0);
+    packet2(SMSG_MAP_MASK,                 0x0b02,  10, &Ea::PlayerRecv::processMapMask,                0);
+    packet2(SMSG_MOB_INFO,                 0x0b03,  -1, &BeingRecv::processMobInfo,                     0);
+    packet2(SMSG_BEING_MOVE3,              0x0b04,  -1, &Ea::BeingRecv::processBeingMove3,              0);
+    packet2(SMSG_MAP_MUSIC,                0x0b05,  -1, &Ea::PlayerRecv::processMapMusic,               0);
+    packet2(SMSG_NPC_CHANGETITLE,          0x0b06,  -1, &Ea::NpcRecv::processChangeTitle,               0);
+    packet2(SMSG_CHAT_JOIN_CHANNEL,        0x0b08,  27, &ChatRecv::processJoinChannel,                  0);
+    packet2(SMSG_BEING_ATTRS,              0x0b0a,  -1, &BeingRecv::processBeingAttrs,                  0);
+    packet2(SMSG_NPC_AREA,                 0x0b0b,  -1, &NpcRecv::processArea,                          0);
+    packet2(SMSG_ONLINE_LIST,              0x0b10,  -1, &PlayerRecv::processOnlineList,                 0);
+    packet2(SMSG_PLAYER_CLIENT_COMMAND,    0x0b16,  -1, &Ea::PlayerRecv::processPlayerClientCommand,    0);
+    packet2(SMSG_BEING_CHANGE_LOOKS_CARDS, 0x0b17,  19, &BeingRecv::processBeingChangeLookCards,        0);
+    packet2(SMSG_ITEM_VISIBLE2,            0x0b18,  28, &ItemRecv::processItemVisible2,                 0);
+    packet2(SMSG_ITEM_DROPPED2,            0x0b19,  28, &ItemRecv::processItemDropped2,                 0);
+    packet2(SMSG_BATTLE_EMBLEM2,           0x0b1a,  34, &BattleGroundRecv::processBattleEmblem2,        0);
+    packet2(SMSG_MAP_SET_TILES_TYPE,       0x0b1b,  34, &Ea::MapRecv::processSetTilesType,              0);
+    packet2(SMSG_NPC_SKIN,                 0x0b1c,  -1, &NpcRecv::processNpcSkin,                       0);
+    packet2(SMSG_PLAYER_KILLED_BY,         0x0b1d,   6, &PlayerRecv::processKilledBy,                   0);
+    packet2(SMSG_SKILL_CASTING2,           0x0b1e,  -1, &BeingRecv::processSkillCasting2,               0);
+    packet2(SMSG_PLAYER_ADD_SKILL2,        0x0b1f,  -1, &SkillRecv::processSkillAdd2,                   0);
+    packet2(SMSG_PLAYER_UPDATE_SKILL2,     0x0b20,  -1, &SkillRecv::processSkillUpdate2,                0);
+    packet2(SMSG_WALK_ERROR,               0x0b21,  10, &PlayerRecv::processWalkError,                  0);
+    packet2(SMSG_HOMUNCULUS_EXP,           0x0b22,  10, &HomunculusRecv::processHomunculusExp,          0);
+    packet2(SMSG_QUEST_LIST2,              0x0b23,  -1, &QuestRecv::processAddQuests2,                  0);
+    packet2(SMSG_QUEST_ADD2,               0x0b24,  23, &QuestRecv::processAddQuest2,                   0);
+    packet2(SMSG_PLAYER_ATTRS,             0x0b25,  -1, &PlayerRecv::processPlayerAttrs,                0);
 
     // char server
-    packet(SMSG_CHAR_PASSWORD_RESPONSE,    0x0062,   3, &LoginRecv::processCharPasswordResponse,        0);
+    packet2(SMSG_CHAR_PASSWORD_RESPONSE,   0x0062,   3, &LoginRecv::processCharPasswordResponse,        0);
 }
 
 // 20150226

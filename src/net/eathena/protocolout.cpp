@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+extern int evolPacketOffset;
+
 namespace EAthena
 {
 #include "net/protocoloutdefine.h"
