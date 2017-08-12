@@ -123,7 +123,7 @@ class ItemContainer final : public Widget,
         void setName(const std::string &str)
         { mName = str; }
 
-        void updateMatrix();
+        int updateMatrix();
 
         bool getClickCount() const noexcept2 A_WARN_UNUSED
         { return mClicks != 0; }
@@ -202,6 +202,7 @@ class ItemContainer final : public Widget,
         SelectionListenerList mSelectionListeners;
         int mGridColumns;
         int mGridRows;
+        int mDrawRows;
         int mSelectedIndex;
         int mLastUsedSlot;
         int mTag;

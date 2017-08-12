@@ -242,6 +242,7 @@ ItemContainer::ItemContainer(const Widget2 *const widget,
     mSelectionListeners(),
     mGridColumns(1),
     mGridRows(1),
+    mDrawRows(1),
     mSelectedIndex(-1),
     mLastUsedSlot(-1),
     mTag(0),
@@ -1080,14 +1081,26 @@ void ItemContainer::adjustHeight()
         mGridRows = maxRows;
     }
 
+    const int num = updateMatrix();
+    if (mShowEmptyRows == ShowEmptyRows_false)
+    {
+        mDrawRows = num / mGridColumns;
+        if (mDrawRows == 0 || num % mGridColumns > 0)
+            ++mDrawRows;
+
+        maxRows = mDrawRows;
+    }
+    else
+    {
+        mDrawRows = mGridRows;
+    }
     setHeight(maxRows * mBoxHeight);
-    updateMatrix();
 }
 
-void ItemContainer::updateMatrix()
+int ItemContainer::updateMatrix()
 {
     if (mInventory == nullptr)
-        return;
+        return 0;
 
     mRedraw = true;
     delete []mShowMatrix;
@@ -1175,8 +1188,10 @@ void ItemContainer::updateMatrix()
     for (int idx = j * mGridColumns + i; idx < maxSize; idx ++)
         mShowMatrix[idx] = -1;
 
-    for (size_t idx = 0, sz = sortedItems.size(); idx < sz; idx ++)
+    const int num = CAST_S32(sortedItems.size());
+    for (size_t idx = 0, sz = num; idx < sz; idx ++)
         delete sortedItems[idx];
+    return num;
 }
 
 int ItemContainer::getSlotIndex(int x, int y) const
@@ -1219,7 +1234,7 @@ int ItemContainer::getSlotByXY(int x, int y) const
 void ItemContainer::setFilter(const int tag)
 {
     mTag = tag;
-    updateMatrix();
+    adjustHeight();
 }
 
 void ItemContainer::setSortType(const int sortType)
