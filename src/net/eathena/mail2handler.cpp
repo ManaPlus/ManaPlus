@@ -25,7 +25,6 @@
 #include "being/localplayer.h"
 
 #include "net/eathena/messageout.h"
-#include "net/eathena/updateprotocol.h"
 #include "net/eathena/protocolout.h"
 
 #include "resources/item/item.h"

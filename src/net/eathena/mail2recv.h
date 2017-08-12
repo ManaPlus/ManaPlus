@@ -41,7 +41,7 @@ namespace EAthena
         void processMailDelete(Net::MessageIn &msg);
         void processRequestMoney(Net::MessageIn &msg);
         void processRequestItems(Net::MessageIn &msg);
-    }  // namespace MailRecv
+    }  // namespace Mail2Recv
 }  // namespace EAthena
 
 #endif  // NET_EATHENA_MAIL2RECV_H
