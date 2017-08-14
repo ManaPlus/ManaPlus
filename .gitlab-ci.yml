@@ -3563,7 +3563,7 @@ gcc-7_curl_curl-7_54_1:
   tags:
     - docker
 
-gcc-7_curl_curl-7_55_0:
+gcc-7_curl_curl-7_55_1:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
@@ -3573,7 +3573,7 @@ gcc-7_curl_curl-7_55_0:
   <<: *job-push
   variables:
     LIBNAME: curl
-    LIBVERSION: curl-7_55_0
+    LIBVERSION: curl-7_55_1
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libpng-dev zlib1g-dev 
