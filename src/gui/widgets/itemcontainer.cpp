@@ -354,7 +354,7 @@ void ItemContainer::draw(Graphics *const graphics)
         graphics->drawTileCollection(mVertexes);
     }
 
-    for (int j = 0; j < mGridRows; j++)
+    for (int j = 0; j < mDrawRows; j++)
     {
         const int intY0 = j * mBoxHeight;
         int itemIndex = j * mGridColumns - 1;
@@ -395,7 +395,7 @@ void ItemContainer::draw(Graphics *const graphics)
         }
     }
 
-    for (int j = 0; j < mGridRows; j++)
+    for (int j = 0; j < mDrawRows; j++)
     {
         const int intY0 = j * mBoxHeight;
         int itemIndex = j * mGridColumns - 1;
@@ -476,7 +476,7 @@ void ItemContainer::safeDraw(Graphics *const graphics)
         }
     }
 
-    for (int j = 0; j < mGridRows; j++)
+    for (int j = 0; j < mDrawRows; j++)
     {
         const int intY0 = j * mBoxHeight;
         int itemIndex = j * mGridColumns - 1;
@@ -517,7 +517,7 @@ void ItemContainer::safeDraw(Graphics *const graphics)
         }
     }
 
-    for (int j = 0; j < mGridRows; j++)
+    for (int j = 0; j < mDrawRows; j++)
     {
         const int intY0 = j * mBoxHeight;
         int itemIndex = j * mGridColumns - 1;
