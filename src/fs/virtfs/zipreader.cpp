@@ -36,10 +36,6 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_endian.h>
 PRAGMA48(GCC diagnostic pop)
 
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-#include <byteswap.h>
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
 #include "debug.h"
 
 #ifndef SDL_BIG_ENDIAN
@@ -63,8 +59,8 @@ extern const char *dirSeparator;
     }
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-#define swapVal16(val) val = bswap_16(val);
-#define swapVal32(val) val = bswap_32(val);
+#define swapVal16(val) val = __builtin_bswap16(val);
+#define swapVal32(val) val = __builtin_bswap32(val);
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 #define swapVal16(val)
 #define swapVal32(val)
