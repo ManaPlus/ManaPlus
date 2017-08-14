@@ -88,7 +88,7 @@ void ConfigManager::initServerConfig(const std::string &serverName)
             configPath.c_str());
     }
 
-    const bool val = client->isTmw();
+    const bool val = Client::isTmw();
     setDefaultOption("enableManaMarketBot", val);
     setDefaultOption("enableRemoteCommands", !val);
 }

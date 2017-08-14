@@ -464,7 +464,7 @@ void Dirs::initUpdatesDir()
 
     // Parse out any "http://" or "https://", and set the updates directory
     const size_t pos = settings.updateHost.find("://");
-    if (pos != settings.updateHost.npos)
+    if (pos != std::string::npos)
     {
         if (pos + 3 < settings.updateHost.length()
             && !settings.updateHost.empty())

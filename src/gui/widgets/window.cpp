@@ -958,8 +958,8 @@ void Window::mouseMoved(MouseEvent &event)
     updateResizeHandler(event);
     if ((popupManager != nullptr) && !event.isConsumed())
     {
-        popupManager->hideBeingPopup();
-        popupManager->hideTextPopup();
+        PopupManager::hideBeingPopup();
+        PopupManager::hideTextPopup();
     }
 }
 

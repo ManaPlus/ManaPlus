@@ -1838,8 +1838,8 @@ void LocalPlayer::setHome()
         if (mapItem != nullptr)
         {
             const int idx = socialWindow->getPortalIndex(mX, mY);
-            mapItem->setName(keyboard.getKeyShortString(
-                outfitWindow->keyName(idx)));
+            mapItem->setName(KeyboardConfig::getKeyShortString(
+                OutfitWindow::keyName(idx)));
         }
         saveHomes();
     }
@@ -1879,8 +1879,8 @@ void LocalPlayer::setHome()
             if (mapItem != nullptr)
             {
                 const int idx = socialWindow->getPortalIndex(mX, mY);
-                mapItem->setName(keyboard.getKeyShortString(
-                    outfitWindow->keyName(idx)));
+                mapItem->setName(KeyboardConfig::getKeyShortString(
+                    OutfitWindow::keyName(idx)));
             }
         }
         else
@@ -2134,8 +2134,7 @@ void LocalPlayer::updateCoords()
     {
         if (socialWindow != nullptr)
             socialWindow->updatePortals();
-        if (popupManager != nullptr)
-            popupManager->hideBeingPopup();
+        PopupManager::hideBeingPopup();
         updateMusic();
     }
 

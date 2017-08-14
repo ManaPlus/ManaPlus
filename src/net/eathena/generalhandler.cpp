@@ -173,12 +173,12 @@ void GeneralHandler::reload() const
         static_cast<CharServerHandler*>(mCharServerHandler);
     charHandler->setCharCreateDialog(nullptr);
     charHandler->setCharSelectDialog(nullptr);
-    static_cast<PartyHandler*>(mPartyHandler)->reload();
+    PartyHandler::reload();
 }
 
 void GeneralHandler::reloadPartially() const
 {
-    static_cast<PartyHandler*>(mPartyHandler)->reload();
+    PartyHandler::reload();
 }
 
 void GeneralHandler::unload() const

@@ -74,7 +74,7 @@ void GuildManager::init()
     int val = serverConfig.getValue("enableGuildBot", -1);
     if (val == -1)
     {
-        if (client->isTmw())
+        if (Client::isTmw())
             val = 1;
         else
             val = 0;

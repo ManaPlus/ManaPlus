@@ -224,8 +224,8 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
 
     msg.skip(20, "unused 0");
 
-    delete_all(charServerHandler->mCharacters);
-    charServerHandler->mCharacters.clear();
+    delete_all(Net::CharServerHandler::mCharacters);
+    Net::CharServerHandler::mCharacters.clear();
 
     // Derive number of characters from message length
     const int count = (msg.getLength() - 24 - offset)
@@ -235,7 +235,7 @@ void CharServerRecv::processCharLogin(Net::MessageIn &msg)
     {
         Net::Character *const character = new Net::Character;
         readPlayerData(msg, character);
-        charServerHandler->mCharacters.push_back(character);
+        Net::CharServerHandler::mCharacters.push_back(character);
         if (character->dummy != nullptr)
         {
             logger->log("CharServer: Player: %s (%d)",
@@ -264,8 +264,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerRecv::processCharMapInfo")
     PlayerInfo::setCharId(msg.readInt32("char id"));
-    const GameHandler *const gh = static_cast<GameHandler*>(gameHandler);
-    gh->setMap(msg.readString(16, "map name"));
+    GameHandler::setMap(msg.readString(16, "map name"));
     if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
     {
         msg.readInt32("map ip address");
@@ -283,15 +282,15 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
     }
 
     // Prevent the selected local player from being deleted
-    localPlayer = charServerHandler->mSelectedCharacter->dummy;
-    PlayerInfo::setBackend(charServerHandler->mSelectedCharacter->data);
+    localPlayer = Net::CharServerHandler::mSelectedCharacter->dummy;
+    PlayerInfo::setBackend(Net::CharServerHandler::mSelectedCharacter->data);
     PlayerInfo::setStatBase(Attributes::PLAYER_WALK_SPEED,
         playerHandler->getDefaultWalkSpeed());
 
-    charServerHandler->mSelectedCharacter->dummy = nullptr;
+    Net::CharServerHandler::mSelectedCharacter->dummy = nullptr;
 
     charServerHandler->clear();
-    charServerHandler->updateCharSelectDialog();
+    Net::CharServerHandler::updateCharSelectDialog();
 
     if (network != nullptr)
         network->disconnect();
@@ -304,13 +303,12 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
     Network *const network = Network::mInstance;
     ServerInfo &server = mapServer;
     BLOCK_START("CharServerRecv::processChangeMapServer")
-    const GameHandler *const gh = static_cast<GameHandler*>(gameHandler);
-    if ((gh == nullptr) || (network == nullptr))
+    if (network == nullptr)
     {
         BLOCK_END("CharServerRecv::processChangeMapServer")
         return;
     }
-    gh->setMap(msg.readString(16, "map name"));
+    GameHandler::setMap(msg.readString(16, "map name"));
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     if (config.getBoolValue("usePersistentIP") || settings.persistentIp)
@@ -372,16 +370,13 @@ void CharServerRecv::processCharCreate(Net::MessageIn &msg)
     BLOCK_START("CharServerRecv::processCharCreate")
     Net::Character *const character = new Net::Character;
     readPlayerData(msg, character);
-    charServerHandler->mCharacters.push_back(character);
+    Net::CharServerHandler::mCharacters.push_back(character);
 
-    charServerHandler->updateCharSelectDialog();
+    Net::CharServerHandler::updateCharSelectDialog();
 
     // Close the character create dialog
-    if (charServerHandler->mCharCreateDialog != nullptr)
-    {
-        charServerHandler->mCharCreateDialog->scheduleDelete();
-        charServerHandler->mCharCreateDialog = nullptr;
-    }
+    Net::CharServerHandler::mCharCreateDialog->scheduleDelete();
+    Net::CharServerHandler::mCharCreateDialog = nullptr;
     BLOCK_END("CharServerRecv::processCharCreate")
 }
 
@@ -414,7 +409,7 @@ void CharServerRecv::processCharRename(Net::MessageIn &msg)
     const int flag = msg.readInt16("flag");
     if (flag == 0)
     {
-        charServerHandler->mCharSelectDialog->setName(
+        Net::CharServerHandler::mCharSelectDialog->setName(
             mRenameId,
             mNewName);
         CREATEWIDGET(OkDialog,
@@ -478,7 +473,7 @@ void CharServerRecv::processCharChangeSlot(Net::MessageIn &msg)
 void CharServerRecv::processCharDeleteFailed(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerRecv::processCharDeleteFailed")
-    charServerHandler->unlockCharSelectDialog();
+    Net::CharServerHandler::unlockCharSelectDialog();
     msg.readUInt8("error");
     CREATEWIDGET(OkDialog,
         // TRANSLATORS: error header
@@ -530,8 +525,8 @@ void CharServerRecv::processCharCharacters(Net::MessageIn &msg)
 {
     msg.skip(2, "packet len");
 
-    delete_all(charServerHandler->mCharacters);
-    charServerHandler->mCharacters.clear();
+    delete_all(Net::CharServerHandler::mCharacters);
+    Net::CharServerHandler::mCharacters.clear();
 
     // Derive number of characters from message length
     const int count = (msg.getLength() - 4)
@@ -541,7 +536,7 @@ void CharServerRecv::processCharCharacters(Net::MessageIn &msg)
     {
         Net::Character *const character = new Net::Character;
         readPlayerData(msg, character);
-        charServerHandler->mCharacters.push_back(character);
+        Net::CharServerHandler::mCharacters.push_back(character);
         if (character->dummy != nullptr)
         {
             logger->log("CharServer: Player: %s (%d)",

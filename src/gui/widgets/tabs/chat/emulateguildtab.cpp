@@ -56,16 +56,14 @@ EmulateGuildTab::~EmulateGuildTab()
 bool EmulateGuildTab::handleCommand(const std::string &restrict type,
                                     const std::string &restrict args)
 {
-    if (guildManager == nullptr)
-        return false;
     if (type == "invite")
-        guildManager->invite(args);
+        GuildManager::invite(args);
     else if (type == "leave")
-        guildManager->leave();
+        GuildManager::leave();
     else if (type == "kick")
-        guildManager->kick(args);
+        GuildManager::kick(args);
     else if (type == "notice")
-        guildManager->notice(args);
+        GuildManager::notice(args);
     else
         return false;
 

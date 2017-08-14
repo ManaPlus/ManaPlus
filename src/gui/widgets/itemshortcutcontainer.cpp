@@ -63,10 +63,7 @@ ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
     mUnEquipedColor(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED)),
     mUnEquipedColor2(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE))
 {
-    if (itemShortcut[mNumber] != nullptr)
-        mMaxItems = itemShortcut[mNumber]->getItemCount();
-    else
-        mMaxItems = 0;
+    mMaxItems = ItemShortcut::getItemCount();
 }
 
 ItemShortcutContainer::~ItemShortcutContainer()

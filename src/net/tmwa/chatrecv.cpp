@@ -237,7 +237,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                         if (showMsg && (chatWindow != nullptr))
                             chatWindow->addWhisper(nick, chatMsg);
                         if (chatMsg.find("B1") == 0 || chatMsg.find("S1") == 0)
-                            shopWindow->showList(nick, chatMsg);
+                            ShopWindow::showList(nick, chatMsg);
                     }
                     else if (chatWindow != nullptr)
                     {

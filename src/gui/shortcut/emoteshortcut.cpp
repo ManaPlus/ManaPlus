@@ -77,13 +77,10 @@ void EmoteShortcut::save() const
 
 void EmoteShortcut::useEmotePlayer(const size_t index) const
 {
-    if (localPlayer == nullptr)
-        return;
-
     if (index <= CAST_SIZE(SHORTCUT_EMOTES))
     {
         if (mEmotes[index - 1] > 0)
-            localPlayer->emote(mEmotes[index - 1]);
+            LocalPlayer::emote(mEmotes[index - 1]);
     }
 }
 
@@ -101,7 +98,7 @@ void EmoteShortcut::useEmote(const size_t index) const
             {
                 case EmoteType::Player:
                 default:
-                    localPlayer->emote(emote);
+                    LocalPlayer::emote(emote);
                     break;
                 case EmoteType::Pet:
                     petHandler->emote(emote);

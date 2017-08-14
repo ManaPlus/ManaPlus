@@ -164,8 +164,7 @@ void Setup_Joystick::setTempEnabled(const bool sel)
 
 void Setup_Joystick::cancel()
 {
-    if (joystick != nullptr)
-        joystick->setEnabled(mOriginalJoystickEnabled);
+    Joystick::setEnabled(mOriginalJoystickEnabled);
 
     if (mOriginalJoystickEnabled != mJoystickEnabled->isSelected())
         setTempEnabled(mOriginalJoystickEnabled);
@@ -178,7 +177,7 @@ void Setup_Joystick::apply()
     if (joystick == nullptr)
         return;
 
-    config.setValue("joystickEnabled", joystick->isEnabled());
+    config.setValue("joystickEnabled", Joystick::isEnabled());
 
     config.setValue("useInactiveJoystick", mUseInactiveCheckBox->isSelected());
     joystick->setUseInactive(mUseInactiveCheckBox->isSelected());

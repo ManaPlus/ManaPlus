@@ -109,7 +109,7 @@ int main(int argc, char **argv)
         printf("Error loading image\n");
         return 1;
     }
-    SDL_Surface *const surface = imageHelper->convertTo32Bit(
+    SDL_Surface *const surface = ImageHelper::convertTo32Bit(
         image->getSDLSurface());
     ImageWriter::writePNG(surface, dst);
     SDL_FreeSurface(surface);

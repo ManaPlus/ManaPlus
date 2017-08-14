@@ -340,8 +340,7 @@ static void destroyGuiWindows()
         whoIsOnline->setAllowUpdate(false);
 
 #ifdef TMWA_SUPPORT
-    if (guildManager != nullptr)
-        guildManager->clear();
+    GuildManager::clear();
 #endif  // TMWA_SUPPORT
 
     delete2(windowMenu);
@@ -1060,11 +1059,8 @@ void Game::changeMap(const std::string &mapPath)
     resetAdjustLevel();
     ResourceManager::cleanProtected();
 
-    if (popupManager != nullptr)
-    {
-        popupManager->clearPopup();
-        popupManager->closePopupMenu();
-    }
+    PopupManager::clearPopup();
+    PopupManager::closePopupMenu();
 
     // Clean up floor items, beings and particles
     if (actorManager != nullptr)
@@ -1162,7 +1158,7 @@ void Game::updateHistory(const SDL_Event &event)
     {
         bool old = false;
 
-        const InputActionT key = keyboard.getKeyIndex(event);
+        const InputActionT key = KeyboardConfig::getKeyIndex(event);
         const time_t time = cur_time;
         int idx = -1;
         for (int f = 0; f < MAX_LASTKEYS; f ++)

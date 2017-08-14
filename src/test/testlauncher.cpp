@@ -373,7 +373,7 @@ int TestLauncher::testTextures()
         mainGraphics->drawImage(subImage, 0, 0);
         delete subImage;
         SDL_Surface *const screen1 = screenshortHelper->getScreenshot();
-        SDL_Surface *const screen2 = imageHelper->convertTo32Bit(screen1);
+        SDL_Surface *const screen2 = ImageHelper::convertTo32Bit(screen1);
         SDL_FreeSurface(screen1);
         if (screen2 == nullptr)
             break;

@@ -757,7 +757,7 @@ void CrazyMoves::crazyMoveAe() const
             emoteId = CAST_U8(emo - 'A' + 37);
     }
     if (mMoveProgram[settings.crazyMoveState - 1] == 'e')
-        localPlayer->emote(emoteId);
+        LocalPlayer::emote(emoteId);
     else if (PacketLimiter::limitPackets(PacketType::PACKET_CHAT))
         petHandler->emote(emoteId);
 

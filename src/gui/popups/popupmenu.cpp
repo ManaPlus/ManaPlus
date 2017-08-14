@@ -2418,7 +2418,7 @@ void PopupMenu::showSkillTypePopup(const SkillInfo *const info)
 
 void PopupMenu::showPopup(int x, int y)
 {
-    popupManager->hideItemPopup();
+    PopupManager::hideItemPopup();
     const int pad2 = 2 * mPadding;
     mBrowserBox->setPosition(mPadding, mPadding);
     mScrollArea->setPosition(mPadding, mPadding);

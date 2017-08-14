@@ -415,7 +415,7 @@ impHandler(guild)
             if (guild->getServerGuild())
                 guildHandler->invite(args);
             else if (guildManager != nullptr)
-                guildManager->invite(args);
+                GuildManager::invite(args);
 #else  // TMWA_SUPPORT
 
             guildHandler->invite(args);
@@ -530,7 +530,7 @@ impHandler(kickGuild)
 #ifdef TMWA_SUPPORT
                 else if (guildManager != nullptr)
                 {
-                    guildManager->kick(event.args);
+                    GuildManager::kick(event.args);
                 }
 #endif  // TMWA_SUPPORT
             }

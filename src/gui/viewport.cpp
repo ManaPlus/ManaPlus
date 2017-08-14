@@ -578,10 +578,10 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 
     // If a popup is active, just remove it
-    if (popupManager->isPopupMenuVisible())
+    if (PopupManager::isPopupMenuVisible())
     {
         mPlayerFollowMouse = false;
-        popupManager->hidePopupMenu();
+        PopupManager::hidePopupMenu();
         return;
     }
 
@@ -940,13 +940,13 @@ void Viewport::mouseMoved(MouseEvent &event)
         || type == ActorType::Mercenary
         || type == ActorType::Pet))
     {
-        popupManager->hideTextPopup();
+        PopupManager::hideTextPopup();
         if (mShowBeingPopup && (beingPopup != nullptr))
             beingPopup->show(mMouseX, mMouseY, mHoverBeing);
     }
     else
     {
-        popupManager->hideBeingPopup();
+        PopupManager::hideBeingPopup();
     }
 
     mHoverItem = actorManager->findItem(x / mMap->getTileWidth(),
@@ -968,7 +968,7 @@ void Viewport::mouseMoved(MouseEvent &event)
             {
                 if (!mHoverSign->getComment().empty())
                 {
-                    popupManager->hideBeingPopup();
+                    PopupManager::hideBeingPopup();
                     if (textPopup != nullptr)
                     {
                         textPopup->show(mMouseX, mMouseY,
@@ -977,16 +977,19 @@ void Viewport::mouseMoved(MouseEvent &event)
                 }
                 else
                 {
-                    if (popupManager->isTextPopupVisible())
-                        popupManager->hideTextPopup();
+                    if (PopupManager::isTextPopupVisible())
+                        PopupManager::hideTextPopup();
                 }
                 gui->setCursorType(Cursor::CURSOR_UP);
                 return;
             }
         }
     }
-    if (!event.isConsumed() && popupManager->isTextPopupVisible())
-        popupManager->hideTextPopup();
+    if (!event.isConsumed() &&
+        PopupManager::isTextPopupVisible())
+    {
+        PopupManager::hideTextPopup();
+    }
 
     if (mHoverBeing != nullptr)
     {

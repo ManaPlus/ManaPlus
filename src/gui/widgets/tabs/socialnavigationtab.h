@@ -136,8 +136,8 @@ class SocialNavigationTab final : public SocialTab
                         ->findPortalByTile(x, y);
                     if (being != nullptr)
                     {
-                        being->setName(keyboard.getKeyShortString(
-                            outfitWindow->keyName(idx)));
+                        being->setName(KeyboardConfig::getKeyShortString(
+                            OutfitWindow::keyName(idx)));
                     }
 
                     if (specialLayer != nullptr)
@@ -146,8 +146,8 @@ class SocialNavigationTab final : public SocialTab
                             ava->getX(), ava->getY());
                         if (portal != nullptr)
                         {
-                            portal->setName(keyboard.getKeyShortString(
-                                outfitWindow->keyName(idx)));
+                            portal->setName(KeyboardConfig::getKeyShortString(
+                                OutfitWindow::keyName(idx)));
                         }
                     }
                 }

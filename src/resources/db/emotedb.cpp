@@ -99,7 +99,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName,
 
         const int id = XML::getProperty(emoteNode, "id", -1);
         // skip hight images
-        if (id > 19 || (client->isTmw() && id > 13))
+        if (id > 19 || (Client::isTmw() && id > 13))
             continue;
 
         if (id == -1)

@@ -72,14 +72,14 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Sfx volume"), "", "sfxVolume",
-        this, "sfxVolumeEvent", 0, soundManager.getMaxVolume(), 1,
+        this, "sfxVolumeEvent", 0, SoundManager::getMaxVolume(), 1,
         150,
         OnTheFly_true,
         MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Music volume"), "", "musicVolume",
-        this, "musicVolumeEvent", 0, soundManager.getMaxVolume(), 1,
+        this, "musicVolumeEvent", 0, SoundManager::getMaxVolume(), 1,
         150,
         OnTheFly_true,
         MainConfig_true);

@@ -83,7 +83,7 @@ PoDict *TranslationManager::loadLang(const LangVect &lang,
             continue;
 
 //        logger->log("check file: " + subName + *it);
-        if (parser.checkLang(subName + *it))
+        if (PoParser::checkLang(subName + *it))
         {
             name = *it;
             break;

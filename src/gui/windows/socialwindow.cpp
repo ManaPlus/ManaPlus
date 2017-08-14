@@ -312,7 +312,7 @@ void SocialWindow::action(const ActionEvent &event)
             if (guildManager == nullptr || !GuildManager::getEnableGuildBot())
                 guildHandler->inviteResponse(mGuildInvited, true);
             else
-                guildManager->inviteResponse(true);
+                GuildManager::inviteResponse(true);
 #else  // TMWA_SUPPORT
 
             guildHandler->inviteResponse(mGuildInvited, true);
@@ -332,7 +332,7 @@ void SocialWindow::action(const ActionEvent &event)
             if (guildManager == nullptr || !GuildManager::getEnableGuildBot())
                 guildHandler->inviteResponse(mGuildInvited, false);
             else
-                guildManager->inviteResponse(false);
+                GuildManager::inviteResponse(false);
 #else  // TMWA_SUPPORT
 
             guildHandler->inviteResponse(mGuildInvited, false);

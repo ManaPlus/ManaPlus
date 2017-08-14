@@ -250,8 +250,8 @@ void Popup::mouseMoved(MouseEvent &event A_UNUSED)
 {
     if (popupManager != nullptr)
     {
-        popupManager->hideBeingPopup();
-        popupManager->hideTextPopup();
+        PopupManager::hideBeingPopup();
+        PopupManager::hideTextPopup();
     }
     mRedraw = true;
 }

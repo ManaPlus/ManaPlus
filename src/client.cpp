@@ -616,8 +616,7 @@ void Client::gameClear()
 
     delete2(assertListener);
 
-    if (ipc != nullptr)
-        ipc->stop();
+    IPC::stop();
     eventsManager.shutdown();
     WindowManager::deleteWindows();
     if (windowContainer != nullptr)
@@ -667,7 +666,7 @@ void Client::gameClear()
 
     touchManager.clear();
 
-    graphicsManager.deleteRenderers();
+    GraphicsManager::deleteRenderers();
 
     if (logger != nullptr)
         logger->log1("Quitting4");

@@ -742,14 +742,14 @@ void Being::takeDamage(Being *restrict const attacker,
         {
             if (attacker->mType == ActorType::Player || (amount != 0))
             {
-                chatWindow->battleChatLog(strprintf("%s : Hit you  -%d",
+                ChatWindow::battleChatLog(strprintf("%s : Hit you  -%d",
                     attacker->getName().c_str(), amount),
                     ChatMsgType::BY_OTHER);
             }
         }
         else if (attacker == localPlayer && (amount != 0))
         {
-            chatWindow->battleChatLog(strprintf("%s : You hit %s -%d",
+            ChatWindow::battleChatLog(strprintf("%s : You hit %s -%d",
                 attacker->mName.c_str(),
                 mName.c_str(),
                 amount),

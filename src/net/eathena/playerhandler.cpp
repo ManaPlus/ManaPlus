@@ -205,10 +205,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
         outMsg.writeBeingId(id, "object id");
     }
 
-    EAthena::InventoryHandler *const handler =
-        static_cast<EAthena::InventoryHandler*>(inventoryHandler);
-    if (handler != nullptr)
-        handler->pushPickup(floorItem->getId());
+    Ea::InventoryHandler::pushPickup(floorItem->getId());
 }
 
 void PlayerHandler::setDirection(const unsigned char direction) const

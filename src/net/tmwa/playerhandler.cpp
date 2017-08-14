@@ -107,10 +107,7 @@ void PlayerHandler::pickUp(const FloorItem *const floorItem) const
 
     createOutPacket(CMSG_ITEM_PICKUP);
     outMsg.writeBeingId(floorItem->getId(), "object id");
-    TmwAthena::InventoryHandler *const handler =
-        static_cast<TmwAthena::InventoryHandler*>(inventoryHandler);
-    if (handler != nullptr)
-        handler->pushPickup(floorItem->getId());
+    Ea::InventoryHandler::pushPickup(floorItem->getId());
 }
 
 void PlayerHandler::setDirection(const unsigned char direction) const

@@ -398,7 +398,7 @@ std::string InputManager::getKeyStringLong(const InputActionT index) const
         {
             if (key.value >= 0)
             {
-                str = keyboard.getKeyName(key.value);
+                str = KeyboardConfig::getKeyName(key.value);
             }
             else if (key.value < -1)
             {
@@ -440,8 +440,8 @@ void InputManager::updateKeyString(const InputFunction &ki,
         {
             if (key.value >= 0)
             {
-                str = keyboard.getKeyShortString(
-                    keyboard.getKeyName(key.value));
+                str = KeyboardConfig::getKeyShortString(
+                    KeyboardConfig::getKeyName(key.value));
             }
             else if (key.value < -1)
             {

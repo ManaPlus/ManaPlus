@@ -153,10 +153,10 @@ void Viewport::mousePressed(MouseEvent &event)
     }
 
     // If a popup is active, just remove it
-    if (popupManager->isPopupMenuVisible())
+    if (PopupManager::isPopupMenuVisible())
     {
         mPlayerFollowMouse = false;
-        popupManager->hidePopupMenu();
+        PopupManager::hidePopupMenu();
         return;
     }
 

@@ -420,9 +420,9 @@ impHandler0(quit)
 {
     if (Game::instance() == nullptr)
         return false;
-    if ((popupManager != nullptr) && popupManager->isPopupMenuVisible())
+    if (PopupManager::isPopupMenuVisible())
     {
-        popupManager->closePopupMenu();
+        PopupManager::closePopupMenu();
         return true;
     }
     else if (quitDialog == nullptr)

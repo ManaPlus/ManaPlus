@@ -406,12 +406,8 @@ impHandler(commandOutfit)
 
 impHandler(commandEmote)
 {
-    if (localPlayer != nullptr)
-    {
-        localPlayer->emote(CAST_U8(atoi(event.args.c_str())));
-        return true;
-    }
-    return false;
+    LocalPlayer::emote(CAST_U8(atoi(event.args.c_str())));
+    return true;
 }
 
 impHandler(awayMessage)
@@ -428,7 +424,7 @@ impHandler(pseudoAway)
 {
     if (localPlayer != nullptr)
     {
-        localPlayer->setPseudoAway(event.args);
+        LocalPlayer::setPseudoAway(event.args);
         localPlayer->updateStatus();
         return true;
     }
@@ -1141,9 +1137,6 @@ impHandler(selectSkillLevel)
 
 impHandler(skill)
 {
-    if (skillDialog == nullptr)
-        return false;
-
     StringVect vect;
     splitToStringVector(vect, event.args, ' ');
     const int sz = CAST_S32(vect.size());
@@ -1161,7 +1154,7 @@ impHandler(skill)
     // +++ add here also cast type and offsets
     if (text.empty())
     {
-        skillDialog->useSkill(skillId,
+        SkillDialog::useSkill(skillId,
             AutoTarget_true,
             level,
             false,
@@ -1172,7 +1165,7 @@ impHandler(skill)
     }
     else
     {
-        skillDialog->useSkill(skillId,
+        SkillDialog::useSkill(skillId,
             AutoTarget_true,
             level,
             true,

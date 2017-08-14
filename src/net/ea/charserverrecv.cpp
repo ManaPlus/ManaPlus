@@ -111,20 +111,20 @@ void CharServerRecv::processCharCreateFailed(Net::MessageIn &msg)
         ShowCenter_true,
         nullptr,
         260);
-    if (charServerHandler->mCharCreateDialog != nullptr)
-        charServerHandler->mCharCreateDialog->unlock();
+    if (Net::CharServerHandler::mCharCreateDialog != nullptr)
+        Net::CharServerHandler::mCharCreateDialog->unlock();
     BLOCK_END("CharServerRecv::processCharCreateFailed")
 }
 
 void CharServerRecv::processCharDelete(Net::MessageIn &msg A_UNUSED)
 {
     BLOCK_START("CharServerRecv::processCharDelete")
-    delete charServerHandler->mSelectedCharacter;
-    charServerHandler->mCharacters.remove(
-        charServerHandler->mSelectedCharacter);
-    charServerHandler->mSelectedCharacter = nullptr;
-    charServerHandler->updateCharSelectDialog();
-    charServerHandler->unlockCharSelectDialog();
+    delete Net::CharServerHandler::mSelectedCharacter;
+    Net::CharServerHandler::mCharacters.remove(
+        Net::CharServerHandler::mSelectedCharacter);
+    Net::CharServerHandler::mSelectedCharacter = nullptr;
+    Net::CharServerHandler::updateCharSelectDialog();
+    Net::CharServerHandler::unlockCharSelectDialog();
     CREATEWIDGET(OkDialog,
         // TRANSLATORS: info message header
         _("Info"),

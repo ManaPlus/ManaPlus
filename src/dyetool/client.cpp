@@ -432,7 +432,7 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting3");
 
-    graphicsManager.deleteRenderers();
+    GraphicsManager::deleteRenderers();
 
     if (logger != nullptr)
         logger->log1("Quitting4");

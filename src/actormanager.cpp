@@ -1071,7 +1071,7 @@ Being *ActorManager::findNearestPvpPlayer() const
         if (!((mapPvpMode != 0) || (teamId != 0)))
             continue;
 
-        if (!localPlayer->checAttackPermissions(being))
+        if (!LocalPlayer::checAttackPermissions(being))
             continue;
 
         const int dx = being->getTileX() - localPlayer->getTileX();

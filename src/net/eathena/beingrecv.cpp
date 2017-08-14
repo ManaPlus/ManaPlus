@@ -470,8 +470,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         const int num = socialWindow->getPortalIndex(x, y);
         if (num >= 0)
         {
-            dstBeing->setName(keyboard.getKeyShortString(
-                outfitWindow->keyName(num)));
+            dstBeing->setName(KeyboardConfig::getKeyShortString(
+                OutfitWindow::keyName(num)));
         }
         else
         {
@@ -927,8 +927,8 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         const int num = socialWindow->getPortalIndex(x, y);
         if (num >= 0)
         {
-            dstBeing->setName(keyboard.getKeyShortString(
-                outfitWindow->keyName(num)));
+            dstBeing->setName(KeyboardConfig::getKeyShortString(
+                OutfitWindow::keyName(num)));
         }
         else
         {

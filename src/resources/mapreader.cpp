@@ -814,10 +814,10 @@ bool MapReader::readCsvLayer(XmlNodeConstPtrConst childNode,
 
     if (hasAnimations)
     {
-        while (oldPos != csv.npos)
+        while (oldPos != std::string::npos)
         {
             const size_t pos = csv.find_first_of(',', oldPos);
-            if (pos == csv.npos)
+            if (pos == std::string::npos)
                 return false;
 
             const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());
@@ -844,10 +844,10 @@ bool MapReader::readCsvLayer(XmlNodeConstPtrConst childNode,
     }
     else
     {
-        while (oldPos != csv.npos)
+        while (oldPos != std::string::npos)
         {
             const size_t pos = csv.find_first_of(',', oldPos);
-            if (pos == csv.npos)
+            if (pos == std::string::npos)
                 return false;
 
             const int gid = atoi(csv.substr(oldPos, pos - oldPos).c_str());

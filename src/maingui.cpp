@@ -132,7 +132,7 @@ int mainGui(int argc, char *argv[])
     else
     {
         client->testsInit();
-        ret = client->testsExec();
+        ret = Client::testsExec();
     }
     delete2(client);
     VirtFs::deinit();

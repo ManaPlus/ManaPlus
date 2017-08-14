@@ -54,9 +54,7 @@ struct PlayerPostDeathListener final : public ActionListener
         deathNotice = nullptr;
 
         DialogsManager::closeDialogs();
-
-        if (popupManager != nullptr)
-            popupManager->closePopupMenu();
+        PopupManager::closePopupMenu();
 
         NpcDialog::clearDialogs();
         if (localPlayer != nullptr)

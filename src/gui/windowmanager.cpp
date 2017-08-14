@@ -322,7 +322,7 @@ void WindowManager::resizeVideo(int actualWidth,
 #ifndef DYECMD
         Game *const game = Game::instance();
         if (game != nullptr)
-            game->videoResized(width, height);
+            Game::videoResized(width, height);
 #endif  // DYECMD
 
         if (gui != nullptr)
