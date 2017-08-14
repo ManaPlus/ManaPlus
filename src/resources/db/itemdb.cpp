@@ -530,7 +530,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             effect.append(" / ");
         effect.append(temp);
 
-        if (inheritItemInfo)
+        if (inheritItemInfo != nullptr)
         {
             if (view == 0)
                 view = inheritItemInfo->getView();

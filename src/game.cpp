@@ -200,7 +200,7 @@ static void createGuiWindows()
     // Create dialogs
     CREATEWIDGETV0(emoteWindow, EmoteWindow);
     delete2(debugChatTab)
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->scheduleDelete();
         chatWindow = nullptr;
@@ -227,7 +227,7 @@ static void createGuiWindows()
     CREATEWIDGETV0(shopWindow, ShopWindow);
     CREATEWIDGETV0(skillDialog, SkillDialog);
     CREATEWIDGETV0(minimap, Minimap);
-    if (debugWindow)
+    if (debugWindow != nullptr)
     {
         debugWindow->scheduleDelete();
         debugWindow = nullptr;

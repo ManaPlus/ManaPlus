@@ -76,7 +76,7 @@ void PopupManager::hidePopupMenu()
 void PopupManager::hideItemPopup()
 {
 #ifndef DYECMD
-    if (itemPopup)
+    if (itemPopup != nullptr)
         itemPopup->hide();
 #endif  // DYECMD
 }

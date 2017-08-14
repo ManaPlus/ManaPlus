@@ -799,7 +799,7 @@ std::string toString(uint32_t num)
     size_t idx = 28;
     do
         buf[idx--] = CAST_8((num % 10) + '0');
-    while (num /= 10);
+    while ((num /= 10) != 0);
     return buf + idx + 1;
 }
 
@@ -810,7 +810,7 @@ std::string toString(uint64_t num)
     size_t idx = 98;
     do
         buf[idx--] = CAST_8((num % 10) + '0');
-    while (num /= 10);
+    while ((num /= 10) != 0);
     return buf + idx + 1;
 }
 
@@ -821,7 +821,7 @@ std::string toString(uint16_t num)
     size_t idx = 8;
     do
         buf[idx--] = CAST_8((num % 10) + '0');
-    while (num /= 10);
+    while ((num /= 10) != 0);
     return buf + idx + 1;
 }
 
@@ -832,7 +832,7 @@ std::string toString(unsigned char num)
     size_t idx = 3;
     do
         buf[idx--] = CAST_8((num % 10) + '0');
-    while (num /= 10);
+    while ((num /= 10) != 0);
     return buf + idx + 1;
 }
 
@@ -850,7 +850,7 @@ std::string toString(int32_t num)
     }
     do
         buf[idx--] = CAST_8((num % 10) + '0');
-    while (num /= 10);
+    while ((num /= 10) != 0);
     if (useSign)
         buf[idx--] = '-';
     return buf + idx + 1;

@@ -670,7 +670,7 @@ void ChatWindow::chatInput(const std::string &message) const
     if (tab != nullptr)
         tab->chatInput(msg);
     Game *const game = Game::instance();
-    if (game)
+    if (game != nullptr)
         game->setValidSpeed();
 }
 

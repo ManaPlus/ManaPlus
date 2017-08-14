@@ -133,7 +133,7 @@ void WindowManager::createWindows()
     CREATEWIDGETV0(spellPopup, SpellPopup);
     CREATEWIDGETV0(skillPopup, SkillPopup);
     delete2(debugChatTab);
-    if (chatWindow)
+    if (chatWindow != nullptr)
     {
         chatWindow->scheduleDelete();
         chatWindow = nullptr;
@@ -145,7 +145,7 @@ void WindowManager::createWindows()
         "#Debug", ChatTabType::DEBUG);
     debugChatTab->setAllowHighlight(false);
     chatWindow->setVisible(Visible_false);
-    if (debugWindow)
+    if (debugWindow != nullptr)
     {
         debugWindow->scheduleDelete();
         debugWindow = nullptr;
