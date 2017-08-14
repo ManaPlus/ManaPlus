@@ -178,6 +178,7 @@ export CXXFLAGS="${CXXFLAGS} -Wmissing-noreturn"
 export CXXFLAGS="${CXXFLAGS} -Wmultichar"
 # ignoring
 #export CXXFLAGS="${CXXFLAGS} -Wmultiple-inheritance"
+export CXXFLAGS="${CXXFLAGS} -Wmultistatement-macros"
 # ignoring
 #export CXXFLAGS="${CXXFLAGS} -Wnamespaces"
 export CXXFLAGS="${CXXFLAGS} -Wnarrowing"
