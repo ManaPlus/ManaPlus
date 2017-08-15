@@ -604,6 +604,37 @@ gcc-5_sanitize_no_opengltests_i386:
   tags:
     - docker
 
+gcc-4.9_sanitize_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_sanitize_tests.sh
+  - ldd ./src/manaplustests | grep "libasan"
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
+
+gcc-4.9_sanitize_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_sanitize_tests.sh
+  - ldd ./src/manaplustests | grep "libasan"
+  image: vicamo/debian:jessie-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind
+  tags:
+    - docker
 
 gcc-5_sanitize:
   stage: build
