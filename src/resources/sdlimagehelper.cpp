@@ -72,22 +72,36 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     rgba.BytesPerPixel = 4;
     rgba.colorkey = 0;
     rgba.alpha = 255;
+    rgba.Rloss = 0;
+    rgba.Gloss = 0;
+    rgba.Bloss = 0;
+    rgba.Aloss = 0;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     rgba.Rmask = 0x000000FF;
+    rgba.Rshift = 24;
     rgba.Gmask = 0x0000FF00;
+    rgba.Gshift = 16;
     rgba.Bmask = 0x00FF0000;
+    rgba.Bshift = 8;
     rgba.Amask = 0xFF000000;
+    rgba.Ashift = 0;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     rgba.Rmask = 0xFF000000;
+    rgba.Rshift = 0;
     rgba.Gmask = 0x00FF0000;
+    rgba.Gshift = 8;
     rgba.Bmask = 0x0000FF00;
+    rgba.Bshift = 16;
     rgba.Amask = 0x000000FF;
+    rgba.Ashift = 24;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
+    // +++ here is bug on ppc64le
     SDL_Surface *const surf = MSDL_ConvertSurface(
         tmpImage, &rgba, SDL_SWSURFACE);
+
     MSDL_FreeSurface(tmpImage);
     if (surf == nullptr)
         return nullptr;
