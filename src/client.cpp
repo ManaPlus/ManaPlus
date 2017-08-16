@@ -180,6 +180,7 @@ LoginData loginData;
 Client *client = nullptr;
 
 extern FPSmanager fpsManager;
+extern int evolPacketOffset;
 
 volatile bool runCounters;
 bool isSafeMode = false;
@@ -1961,6 +1962,7 @@ void Client::unloadData()
     serverVersion = 0;
     packetVersion = 0;
     tmwServerVersion = 0;
+    evolPacketOffset = 0;
 }
 
 void Client::runValidate()

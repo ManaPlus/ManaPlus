@@ -45,6 +45,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int evolPacketOffset;
 
 namespace EAthena
 {
@@ -153,7 +154,7 @@ void LoginRecv::processUpdateHost2(Net::MessageIn &msg)
 
 void LoginRecv::processServerVersion(Net::MessageIn &msg)
 {
-    msg.readInt16("len");
+    const int len = msg.readInt16("len");
     msg.readInt32("unused");
     serverVersion = msg.readInt32("server version");
     if (serverVersion > 0)
@@ -166,6 +167,10 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
             packetVersion = 20141022;
             logger->log("autofix Hercules packet version to: %d",
                 packetVersion);
+        }
+        if (serverVersion >= 16 && len >= 18)
+        {
+            evolPacketOffset = msg.readInt16("evol packet offset");
         }
     }
     else
