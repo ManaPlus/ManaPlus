@@ -183,8 +183,12 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
     {
         const SDL_PixelFormat * const format = image->format;
         logger->log("Bytes per pixel: %d", format->BytesPerPixel);
-#ifndef USE_SDL2
+#ifdef USE_SDL2
+        logger->log("Format: %u", format->format);
+#else  // USE_SDL2
+
         logger->log("Alpha: %d", format->alpha);
+        logger->log("Color key: %u", format->colorkey);
 #endif  // USE_SDL2
 
         logger->log("Loss: %02x, %02x, %02x, %02x",
@@ -200,6 +204,11 @@ void ImageHelper::dumpSurfaceFormat(const SDL_Surface *const image)
         logger->log("Mask: %08x, %08x, %08x, %08x", format->Rmask,
             format->Gmask, format->Bmask, format->Amask);
     }
+    logger->log("Flags: %u", image->flags);
+    logger->log("Pitch: %d", CAST_S32(image->pitch));
+#ifndef USE_SDL2
+    logger->log("Offset: %d", image->offset);
+#endif  // USE_SDL2
 }
 
 SDL_Surface *ImageHelper::loadPng(SDL_RWops *const rw)
