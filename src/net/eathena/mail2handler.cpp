@@ -111,7 +111,7 @@ void Mail2Handler::sendMail(const std::string &to,
     const int titleSz = CAST_S32(title.size());
     const int bodySz = CAST_S32(body.size());
     int32_t sz = 2 + 2 + 24 + 24 + 8 + 2 + 2 + titleSz + bodySz;
-    if (sz > INT16_MAX - 4)
+    if (sz > 32767 - 4)
     {
         reportAlways("Mail message too big");
         return;
