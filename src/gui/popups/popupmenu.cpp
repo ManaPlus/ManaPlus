@@ -78,6 +78,7 @@
 #include "resources/chatobject.h"
 #include "resources/groupinfo.h"
 #include "resources/iteminfo.h"
+#include "resources/itemmenuitem.h"
 
 #include "resources/db/groupdb.h"
 #include "resources/db/npcdb.h"

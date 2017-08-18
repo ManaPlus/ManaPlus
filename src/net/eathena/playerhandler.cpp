@@ -35,9 +35,10 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/statuswindow.h"
 
+#include "net/ea/inventoryhandler.h"
+
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
-#include "net/eathena/inventoryhandler.h"
 #include "net/eathena/sp.h"
 
 #include "resources/db/unitsdb.h"

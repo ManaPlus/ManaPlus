@@ -28,6 +28,8 @@
 
 #include "enums/resources/spritedirection.h"
 
+#include "resources/itemmenuitem.h"
+
 #include "resources/db/colordb.h"
 #include "resources/db/itemdb.h"
 

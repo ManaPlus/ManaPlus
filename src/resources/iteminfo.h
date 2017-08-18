@@ -28,10 +28,9 @@
 #include "enums/resources/item/itemdbtype.h"
 
 #include "enums/simpletypes/beingtypeid.h"
+#include "enums/simpletypes/itemcolor.h"
 
 #include "resources/cursors.h"
-#include "resources/itemcolordata.h"
-#include "resources/itemmenuitem.h"
 #include "resources/missileinfo.h"
 #include "resources/soundinfo.h"
 
@@ -39,6 +38,10 @@
 
 #include "utils/cast.h"
 #include "utils/intmap.h"
+
+class ItemColorData;
+
+struct ItemMenuItem;
 
 // sprite, <itemfrom, itemto>
 typedef std::map<int, IntMap> SpriteToItemMap;

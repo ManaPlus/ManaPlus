@@ -31,6 +31,7 @@
 #include "fs/virtfs/tools.h"
 
 #include "resources/iteminfo.h"
+#include "resources/itemmenuitem.h"
 #include "resources/itemtypemapdata.h"
 
 #include "resources/db/itemfielddb.h"

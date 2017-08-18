@@ -36,7 +36,6 @@
 
 #include "resources/beinginfo.h"
 #include "resources/beingslot.h"
-#include "resources/missileinfo.h"
 
 #include "being/actorsprite.h"
 
@@ -67,6 +66,7 @@ class Text;
 
 struct ChatObject;
 struct HorseInfo;
+struct MissileInfo;
 struct SkillInfo;
 struct ParticleInfo;
 

@@ -35,6 +35,7 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/itemshortcut.h"
 #include "const/spells.h"
 
 #include "const/gui/chat.h"
@@ -56,7 +57,6 @@
 
 #include "gui/shortcut/dropshortcut.h"
 #include "gui/shortcut/emoteshortcut.h"
-#include "gui/shortcut/itemshortcut.h"
 
 #include "gui/popups/popupmenu.h"
 
