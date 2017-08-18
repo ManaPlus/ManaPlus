@@ -26,12 +26,18 @@
 #ifdef ADVGCC
 
 #define enumStart(name) enum class name
+#define enumStartT(name, type) enum class name : type
 #define enumEnd(name) ; \
     typedef name name##T
 
 #else  // ADVGCC
 
 #define enumStart(name) \
+    namespace name \
+    { \
+        enum T
+
+#define enumStartT(name, type) \
     namespace name \
     { \
         enum T

@@ -23,7 +23,7 @@
 
 #include "enums/simpletypes/enumdefines.h"
 
-enumStart(MailOpenType)
+enumStartT(MailOpenType, int8_t)
 {
     Mail    = 0,
     Account = 1,
