@@ -596,7 +596,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         itemInfo->setEffect(effect);
 
         MissileInfo &missile = itemInfo->getMissile();
-        missile.particle = missileParticle;
+        missile.particle = STD_MOVE(missileParticle);
         missile.z = missileZ;
         missile.lifeTime = missileLifeTime;
         missile.speed = missileSpeed;
