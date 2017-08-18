@@ -1658,7 +1658,7 @@ impHandler(useItemInv)
     {
         Item *const item = getItemByInvIndex(param1,
             InventoryType::Inventory);
-        PlayerInfo::useEquipItem(item, param2, Sfx_true);
+        PlayerInfo::useEquipItem(item, CAST_S16(param2), Sfx_true);
     }
     else
     {

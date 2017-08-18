@@ -27,6 +27,8 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
+#include "utils/checkutils.h"
+
 #include "resources/item/item.h"
 
 #include "debug.h"
@@ -106,14 +108,19 @@ void Mail2Handler::sendMail(const std::string &to,
         return;
 
     const std::string from = localPlayer->getName();
-    const int titleSz = title.size();
-    const int bodySz = body.size();
-    int16_t sz = 2 + 2 + 24 + 24 + 8 + 2 + 2 + titleSz + bodySz;
+    const int titleSz = CAST_S32(title.size());
+    const int bodySz = CAST_S32(body.size());
+    int32_t sz = 2 + 2 + 24 + 24 + 8 + 2 + 2 + titleSz + bodySz;
+    if (sz > INT16_MAX - 4)
+    {
+        reportAlways("Mail message too big");
+        return;
+    }
     if (packetVersion >= 20160600)
         sz += 4;
 
     createOutPacket(CMSG_MAIL2_SEND_MAIL);
-    outMsg.writeInt16(sz, "len");
+    outMsg.writeInt16(CAST_S16(sz), "len");
     outMsg.writeString(to, 24, "to");
     outMsg.writeString(from, 24, "from");
     outMsg.writeInt64(money, "money");
