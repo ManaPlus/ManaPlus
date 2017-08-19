@@ -57,9 +57,10 @@ void ShortcutBase::load()
 
     for (size_t i = 0; i < mMaxSize; i++)
     {
-        const int itemId = cfg->getValue(mItemName + toString(i), -1);
+        const std::string num = toString(CAST_S32(i));
+        const int itemId = cfg->getValue(mItemName + num, -1);
         const ItemColor itemColor = fromInt(
-            cfg->getValue(mColorName + toString(i), -1),
+            cfg->getValue(mColorName + num, -1),
             ItemColor);
 
         if (itemId != -1)
@@ -77,15 +78,16 @@ void ShortcutBase::save() const
         const int itemId = mItems[i] != 0 ? mItems[i] : -1;
         const int itemColor = (mItemColors[i] != ItemColor_zero)
             ? toInt(mItemColors[i], int) : 1;
+        const std::string num = toString(CAST_S32(i));
         if (itemId != -1)
         {
-            serverConfig.setValue(mItemName + toString(i), itemId);
-            serverConfig.setValue(mColorName + toString(i), itemColor);
+            serverConfig.setValue(mItemName + num, itemId);
+            serverConfig.setValue(mColorName + num, itemColor);
         }
         else
         {
-            serverConfig.deleteKey(mItemName + toString(i));
-            serverConfig.deleteKey(mColorName + toString(i));
+            serverConfig.deleteKey(mItemName + num);
+            serverConfig.deleteKey(mColorName + num);
         }
     }
 }
