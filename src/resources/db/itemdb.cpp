@@ -396,14 +396,14 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         int attackRange = XML::getProperty(node, "attack-range", 0);
         std::string missileParticle = XML::getProperty(
             node, "missile-particle", "");
-        float missileZ = static_cast<float>(XML::getFloatProperty(
-            node, "missile-z", 32.0f));
+        float missileZ = XML::getFloatProperty(
+            node, "missile-z", 32.0f);
         int missileLifeTime = XML::getProperty(
             node, "missile-lifetime", 500);
-        float missileSpeed = static_cast<float>(XML::getFloatProperty(
-            node, "missile-speed", 7.0f));
-        float missileDieDistance = static_cast<float>(XML::getFloatProperty(
-            node, "missile-diedistance", 8.0f));
+        float missileSpeed = XML::getFloatProperty(
+            node, "missile-speed", 7.0f);
+        float missileDieDistance = XML::getFloatProperty(
+            node, "missile-diedistance", 8.0f);
         int hitEffectId = XML::getProperty(node, "hit-effect-id",
             paths.getIntValue("hitEffectId"));
         int criticalEffectId = XML::getProperty(

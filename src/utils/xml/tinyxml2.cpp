@@ -198,9 +198,24 @@ namespace XML
         return ret;
     }
 
-    double getFloatProperty(XmlNodeConstPtr node,
-                            const char *const name,
-                            double def)
+    float getFloatProperty(XmlNodeConstPtr node,
+                           const char *const name,
+                           float def)
+    {
+        float &ret = def;
+
+        if (!node)
+            return ret;
+        const char *attr = node->Attribute(name);
+        if (attr != nullptr)
+            ret = atof(attr);
+
+        return ret;
+    }
+
+    double getDoubleProperty(XmlNodeConstPtr node,
+                             const char *const name,
+                             double def)
     {
         double &ret = def;
 

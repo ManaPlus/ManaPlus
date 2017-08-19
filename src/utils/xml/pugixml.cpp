@@ -212,9 +212,24 @@ namespace XML
         return ret;
     }
 
-    double getFloatProperty(XmlNodeConstPtr node,
-                            const char *const name,
-                            double def)
+    float getFloatProperty(XmlNodeConstPtr node,
+                           const char *const name,
+                           float def)
+    {
+        float &ret = def;
+
+        if (!node)
+            return ret;
+        const pugi::xml_attribute &attr = node.attribute(name);
+        if (!attr.empty())
+            ret = atof(attr.value());
+
+        return ret;
+    }
+
+    double getDoubleProperty(XmlNodeConstPtr node,
+                             const char *const name,
+                             double def)
     {
         double &ret = def;
 

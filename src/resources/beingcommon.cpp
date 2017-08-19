@@ -231,14 +231,14 @@ bool BeingCommon::readObjectNodes(XmlNodePtrConst &spriteNode,
         const std::string missileParticle = XML::getProperty(spriteNode,
             "missile-particle", "");
 
-        const float missileZ = static_cast<float>(XML::getFloatProperty(
-            spriteNode, "missile-z", 32.0f));
+        const float missileZ = XML::getFloatProperty(
+            spriteNode, "missile-z", 32.0f);
         const int missileLifeTime = XML::getProperty(
             spriteNode, "missile-lifetime", 500);
-        const float missileSpeed = static_cast<float>(XML::getFloatProperty(
-            spriteNode, "missile-speed", 7.0f));
-        const float missileDieDistance = static_cast<float>(
-            XML::getFloatProperty(spriteNode, "missile-diedistance", 8.0f));
+        const float missileSpeed = XML::getFloatProperty(
+            spriteNode, "missile-speed", 7.0f);
+        const float missileDieDistance = XML::getFloatProperty(
+            spriteNode, "missile-diedistance", 8.0f);
 
         currentInfo->addAttack(attackId,
             spriteAction,

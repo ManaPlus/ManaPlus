@@ -98,7 +98,14 @@ namespace XML
     /**
      * Gets an floating point property from an XmlNodePtr.
      */
-    double getFloatProperty(XmlNodeConstPtr node,
+    float getFloatProperty(XmlNodeConstPtr node,
+                           const char *const name,
+                           float def) A_WARN_UNUSED;
+
+    /**
+     * Gets an double point property from an XmlNodePtr.
+     */
+    double getDoubleProperty(XmlNodeConstPtr node,
                             const char *const name,
                             double def) A_WARN_UNUSED;
 

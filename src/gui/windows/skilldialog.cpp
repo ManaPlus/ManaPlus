@@ -564,26 +564,26 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
     MissileInfo &missile = data->missile;
     missile.particle = XML::getProperty(
         node, "missile-particle", "");
-    missile.z = static_cast<float>(XML::getFloatProperty(
-        node, "missile-z", 32.0f));
+    missile.z = XML::getFloatProperty(
+        node, "missile-z", 32.0f);
     missile.lifeTime = XML::getProperty(
         node, "missile-lifetime", 500);
-    missile.speed = static_cast<float>(XML::getFloatProperty(
-        node, "missile-speed", 7.0f));
-    missile.dieDistance = static_cast<float>(
-        XML::getFloatProperty(node, "missile-diedistance", 8.0f));
+    missile.speed = XML::getFloatProperty(
+        node, "missile-speed", 7.0f);
+    missile.dieDistance = XML::getFloatProperty(
+        node, "missile-diedistance", 8.0f);
 
     MissileInfo &castingMissile = data->castingMissile;
     castingMissile.particle = XML::getProperty(
         node, "castingMissile-particle", "");
-    castingMissile.z = static_cast<float>(XML::getFloatProperty(
-        node, "castingMissile-z", 32.0f));
+    castingMissile.z = XML::getFloatProperty(
+        node, "castingMissile-z", 32.0f);
     castingMissile.lifeTime = XML::getProperty(
         node, "castingMissile-lifetime", 500);
-    castingMissile.speed = static_cast<float>(XML::getFloatProperty(
-        node, "castingMissile-speed", 7.0f));
-    castingMissile.dieDistance = static_cast<float>(
-        XML::getFloatProperty(node, "castingMissile-diedistance", 8.0f));
+    castingMissile.speed = XML::getFloatProperty(
+        node, "castingMissile-speed", 7.0f);
+    castingMissile.dieDistance = XML::getFloatProperty(
+        node, "castingMissile-diedistance", 8.0f);
 
     data->castingAnimation = XML::getProperty(
         node,

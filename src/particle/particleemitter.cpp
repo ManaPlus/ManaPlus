@@ -473,15 +473,15 @@ ParticleEmitter::readParticleEmitterProp(XmlNodePtrConst propertyNode, T def)
 {
     ParticleEmitterProp<T> retval;
 
-    def = static_cast<T>(XML::getFloatProperty(propertyNode, "value",
+    def = static_cast<T>(XML::getDoubleProperty(propertyNode, "value",
         static_cast<double>(def)));
-    retval.set(static_cast<T>(XML::getFloatProperty(propertyNode, "min",
-        static_cast<double>(def))), static_cast<T>(XML::getFloatProperty(
+    retval.set(static_cast<T>(XML::getDoubleProperty(propertyNode, "min",
+        static_cast<double>(def))), static_cast<T>(XML::getDoubleProperty(
         propertyNode, "max", static_cast<double>(def))));
 
     const std::string change = XML::getProperty(
         propertyNode, "change-func", "none");
-    T amplitude = static_cast<T>(XML::getFloatProperty(propertyNode,
+    T amplitude = static_cast<T>(XML::getDoubleProperty(propertyNode,
         "change-amplitude", 0.0));
 
     const int period = XML::getProperty(propertyNode, "change-period", 0);

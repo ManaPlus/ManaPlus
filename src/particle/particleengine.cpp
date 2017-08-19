@@ -197,12 +197,12 @@ Particle *ParticleEngine::addEffect(const std::string &restrict
         }
 
         // Read and set the basic properties of the particle
-        const float offsetX = static_cast<float>(XML::getFloatProperty(
-            effectChildNode, "position-x", 0));
-        const float offsetY = static_cast<float>(XML::getFloatProperty(
-            effectChildNode, "position-y", 0));
-        const float offsetZ = static_cast<float>(XML::getFloatProperty(
-            effectChildNode, "position-z", 0));
+        const float offsetX = XML::getFloatProperty(
+            effectChildNode, "position-x", 0);
+        const float offsetY = XML::getFloatProperty(
+            effectChildNode, "position-y", 0);
+        const float offsetZ = XML::getFloatProperty(
+            effectChildNode, "position-z", 0);
         const Vector position(static_cast<float>(pixelX) + offsetX,
             static_cast<float>(pixelY) + offsetY,
             offsetZ);
