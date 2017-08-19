@@ -1,3 +1,16 @@
+2017-08-19 New release 1.7.8.19
+fix: drawing language badge.
+fix: hide item popup in context menu.
+fix: item containers scrolling if some items hidden by filter.
+fix: compilation on systems with missing bswap_16/32.
+add: debug window before connecting to server.
+add: attributes to missile particles.
+add: context menu way to add skill into shortcuts bar.
+add: custom context menu for items. Separate for inventory, storage, cart.
+add: more than one use action for items.
+add: packets for new mail system, but without gui.
+add: id offset for server plugin custom packets.
+
 2017-08-05 New release 1.7.8.5
 fix: quests window redraw speed and render too long lines.
 fix: mouse cursor update each 10 seconds.
