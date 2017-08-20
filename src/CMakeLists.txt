@@ -882,6 +882,8 @@ SET(SRCS
     utils/dtor.h
     utils/dumplibs.cpp
     utils/dumplibs.h
+    utils/dumpsizes.cpp
+    utils/dumpsizes.h
     utils/env.cpp
     utils/env.h
     utils/foreach.h
