@@ -934,9 +934,8 @@ InventoryWindow *InventoryWindow::getFirstVisible()
         if (((*it) != nullptr) && (*it)->isWindowVisible())
             list.insert(*it);
     }
-    InventoryWindow *const window = dynamic_cast<InventoryWindow*>(
+    return dynamic_cast<InventoryWindow*>(
         windowContainer->findFirstWidget(list));
-    return window;
 }
 
 void InventoryWindow::nextTab()

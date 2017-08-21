@@ -76,8 +76,7 @@ namespace FsDir
                 filename.c_str());
             return nullptr;
         }
-        File *restrict const file = new File(&funcs, fd);
-        return file;
+        return new File(&funcs, fd);
     }
 
     File *openRead(FsEntry *restrict const entry,
@@ -409,11 +408,10 @@ namespace FsDir
             return 0;
         }
 #ifdef USE_FILE_FOPEN
-        const int64_t pos = ftell(fd);
+        return ftell(fd);
 #else  // USE_FILE_FOPEN
-        const int64_t pos = lseek(fd, 0, SEEK_CUR);
+        return lseek(fd, 0, SEEK_CUR);
 #endif  // USE_FILE_FOPEN
-        return pos;
     }
 
     int seek(File *restrict const file,

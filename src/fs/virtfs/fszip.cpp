@@ -557,10 +557,9 @@ namespace FsZip
                     ZipReader::readFile(header);
                 if (buf == nullptr)
                     return nullptr;
-                File *restrict const file = new File(&funcs,
+                return new File(&funcs,
                     buf,
                     header->uncompressSize);
-                return file;
             }
         }
         return nullptr;

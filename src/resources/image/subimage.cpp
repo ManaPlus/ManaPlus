@@ -227,8 +227,7 @@ void SubImage::decRef()
 
 int SubImage::calcMemoryLocal() const
 {
-    int sz = static_cast<int>(sizeof(SubImage) +
+    return static_cast<int>(sizeof(SubImage) +
         sizeof(std::map<float, SDL_Surface*>)) +
         Resource::calcMemoryLocal();
-    return sz;
 }

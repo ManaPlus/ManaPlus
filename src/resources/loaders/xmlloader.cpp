@@ -44,10 +44,9 @@ namespace
                 return nullptr;
             const ResourceLoader *const
                 rl = static_cast<const ResourceLoader *>(v);
-            Resource *const res = new XML::Document(rl->path,
+            return new XML::Document(rl->path,
                 rl->useResman,
                 rl->skipError);
-            return res;
         }
     };
 

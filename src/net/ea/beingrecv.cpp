@@ -513,9 +513,8 @@ Being *BeingRecv::createBeing(const BeingId id,
     else if (job == 45)
         type = ActorType::Portal;
 
-    Being *const being = actorManager->createBeing(
+    return actorManager->createBeing(
         id, type, fromInt(job, BeingTypeId));
-    return being;
 }
 
 }  // namespace Ea
