@@ -112,8 +112,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
         doc->decRef();
         if (animationFile != errorFile)
             return load(errorFile, 0, prot);
-        else
-            return nullptr;
+        return nullptr;
     }
 
     SpriteDef *const def = new SpriteDef;

@@ -70,18 +70,16 @@ void StatusEffect::deliverMessage() const
 
 Particle *StatusEffect::getStartParticle() const
 {
-    if ((particleEngine == nullptr) || mStartParticleEffect.empty())
+    if (particleEngine == nullptr || mStartParticleEffect.empty())
         return nullptr;
-    else
-        return particleEngine->addEffect(mStartParticleEffect, 0, 0);
+    return particleEngine->addEffect(mStartParticleEffect, 0, 0);
 }
 
 Particle *StatusEffect::getParticle() const
 {
-    if ((particleEngine == nullptr) || mParticleEffect.empty())
+    if (particleEngine == nullptr || mParticleEffect.empty())
         return nullptr;
-    else
-        return particleEngine->addEffect(mParticleEffect, 0, 0);
+    return particleEngine->addEffect(mParticleEffect, 0, 0);
 }
 
 AnimatedSprite *StatusEffect::getIcon() const
@@ -90,17 +88,13 @@ AnimatedSprite *StatusEffect::getIcon() const
     {
         return nullptr;
     }
-    else
-    {
-        return AnimatedSprite::load(pathJoin(paths.getStringValue("sprites"),
-            mIcon));
-    }
+    return AnimatedSprite::load(pathJoin(paths.getStringValue("sprites"),
+        mIcon));
 }
 
 std::string StatusEffect::getAction() const
 {
     if (mAction.empty())
         return SpriteAction::INVALID;
-    else
-        return mAction;
+    return mAction;
 }

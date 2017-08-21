@@ -71,10 +71,7 @@ Image* ImageSet::get(const size_type i) const
             CAST_S32(i));
         return nullptr;
     }
-    else
-    {
-        return mImages[i];
-    }
+    return mImages[i];
 }
 
 int ImageSet::calcMemoryLocal() const

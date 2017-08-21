@@ -227,10 +227,7 @@ impHandler(chatErase)
         }
         return true;
     }
-    else
-    {
-        playerRelations.setRelation(args, Relation::ERASED);
-    }
+    playerRelations.setRelation(args, Relation::ERASED);
 
     reportRelation(event,
         Relation::ERASED,

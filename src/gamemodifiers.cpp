@@ -292,10 +292,7 @@ std::string GameModifiers::getQuickDropCounterString()
         return strprintf("(%c) drop counter %u", CAST_S8(
             'a' + cnt - 10), cnt);
     }
-    else
-    {
-        return strprintf("(%u) drop counter %u", cnt, cnt);
-    }
+    return strprintf("(%u) drop counter %u", cnt, cnt);
 }
 
 void GameModifiers::setQuickDropCounter(const int n)

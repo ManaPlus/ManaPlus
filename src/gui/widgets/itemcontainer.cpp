@@ -596,8 +596,7 @@ Item *ItemContainer::getSelectedItem() const
 {
     if (mInventory != nullptr)
         return mInventory->getItem(mSelectedIndex);
-    else
-        return nullptr;
+    return nullptr;
 }
 
 void ItemContainer::distributeValueChangedEvent()

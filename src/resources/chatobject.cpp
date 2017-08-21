@@ -57,8 +57,7 @@ ChatObject *ChatObject::findByName(const std::string &name)
         chatNameMap.find(name);
     if (it == chatNameMap.end())
         return nullptr;
-    else
-        return (*it).second;
+    return (*it).second;
 }
 
 ChatObject *ChatObject::findById(const int id)
@@ -66,6 +65,5 @@ ChatObject *ChatObject::findById(const int id)
     const std::map<int, ChatObject*>::iterator it = chatIdMap.find(id);
     if (it == chatIdMap.end())
         return nullptr;
-    else
-        return (*it).second;
+    return (*it).second;
 }

@@ -172,11 +172,6 @@ void PartyHandler::setShareItems(const PartyShareT share) const
             "share exp");
         outMsg.writeInt16(CAST_S16(share), "share items");
     }
-    else
-    {
-//        outMsg.writeInt32(CAST_S16(Ea::PartyRecv::mShareExp),
-//            "share exp");
-    }
 }
 
 void PartyHandler::changeLeader(const std::string &name) const

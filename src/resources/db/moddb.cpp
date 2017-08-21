@@ -109,8 +109,7 @@ ModInfo *ModDB::get(const std::string &name)
     const ModInfoIterator i = mModInfos.find(name);
     if (i == mModInfos.end())
         return nullptr;
-    else
-        return i->second;
+    return i->second;
 }
 
 const ModInfos &ModDB::getAll()

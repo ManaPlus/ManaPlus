@@ -608,13 +608,10 @@ Widget *GuiTable::getWidgetAt(int x, int y)
     if (row > -1 && column > -1)
     {
         Widget *const w = mModel->getElementAt(row, column);
-        if ((w != nullptr) && w->isFocusable())
+        if (w != nullptr && w->isFocusable())
             return w;
-        else
-            return nullptr;  // Grab the event locally
     }
-    else
-        return nullptr;
+    return nullptr;
 }
 
 int GuiTable::getRowForY(const int y) const
@@ -627,8 +624,7 @@ int GuiTable::getRowForY(const int y) const
 
     if (row < 0 || row >= mModel->getRows())
         return -1;
-    else
-        return row;
+    return row;
 }
 
 int GuiTable::getColumnForX(const int x) const
@@ -646,8 +642,7 @@ int GuiTable::getColumnForX(const int x) const
 
     if (column < 0 || column >= colnum)
         return -1;
-    else
-        return column;
+    return column;
 }
 
 void GuiTable::setFocusHandler(FocusHandler *const focusHandler)

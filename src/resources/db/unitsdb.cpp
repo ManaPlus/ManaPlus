@@ -254,74 +254,70 @@ static std::string formatUnit(const int value,
         ul = ud.levels[0];
         return strprintf("0%s", ul.symbol.c_str());
     }
-    else
-    {
-        double amount = ud.conversion * value;
-        const unsigned int sz = CAST_U32(ud.levels.size());
 
-        // If only the first level is needed, act like mix if false
-        if (ud.mix && !ud.levels.empty() && ud.levels[1].count < amount)
+    double amount = ud.conversion * value;
+    const unsigned int sz = CAST_U32(ud.levels.size());
+
+    // If only the first level is needed, act like mix if false
+    if (ud.mix && !ud.levels.empty() && ud.levels[1].count < amount)
+    {
+        std::string output;
+        UnitLevel pl = ud.levels[0];
+        ul = ud.levels[1];
+        int levelAmount = CAST_S32(amount);
+        int nextAmount = 0;
+
+        if (ul.count != 0)
+            levelAmount /= ul.count;
+
+        amount -= static_cast<double>(levelAmount * ul.count);
+
+        if (amount > 0)
         {
-            std::string output;
-            UnitLevel pl = ud.levels[0];
-            ul = ud.levels[1];
-            int levelAmount = CAST_S32(amount);
-            int nextAmount = 0;
+            output = splitNumber(strprintf("%.*f", pl.round,
+                amount), pl.separator).append(pl.symbol);
+        }
+
+        for (unsigned int i = 2; i < sz; i++)
+        {
+            pl = ul;
+            ul = ud.levels[i];
 
             if (ul.count != 0)
-                levelAmount /= ul.count;
-
-            amount -= static_cast<double>(levelAmount * ul.count);
-
-            if (amount > 0)
             {
-                output = splitNumber(strprintf("%.*f", pl.round,
-                    amount), pl.separator).append(pl.symbol);
+                nextAmount = levelAmount / ul.count;
+                levelAmount %= ul.count;
             }
 
-            for (unsigned int i = 2; i < sz; i++)
+            if (levelAmount > 0)
             {
-                pl = ul;
-                ul = ud.levels[i];
-
-                if (ul.count != 0)
-                {
-                    nextAmount = levelAmount / ul.count;
-                    levelAmount %= ul.count;
-                }
-
-                if (levelAmount > 0)
-                {
-                    output = splitNumber(strprintf("%d", levelAmount),
-                        pl.separator).append(pl.symbol).append(output);
-                }
-
-                if (nextAmount == 0)
-                    break;
-                levelAmount = nextAmount;
+                output = splitNumber(strprintf("%d", levelAmount),
+                    pl.separator).append(pl.symbol).append(output);
             }
 
-            return output;
+            if (nextAmount == 0)
+                break;
+            levelAmount = nextAmount;
         }
-        else
-        {
-            ul.round = 0;
-            for (unsigned int i = 0; i < sz; i++)
-            {
-                ul = ud.levels[i];
-                if (amount < ul.count && ul.count > 0)
-                {
-                    ul = ud.levels[i - 1];
-                    break;
-                }
-                if (ul.count != 0)
-                    amount /= ul.count;
-            }
 
-            return splitNumber(strprintf("%.*f", ul.round, amount),
-                ul.separator).append(ul.symbol);
-        }
+        return output;
     }
+
+    ul.round = 0;
+    for (unsigned int i = 0; i < sz; i++)
+    {
+        ul = ud.levels[i];
+        if (amount < ul.count && ul.count > 0)
+        {
+            ul = ud.levels[i - 1];
+            break;
+        }
+        if (ul.count != 0)
+            amount /= ul.count;
+    }
+
+    return splitNumber(strprintf("%.*f", ul.round, amount),
+        ul.separator).append(ul.symbol);
 }
 
 std::string UnitsDb::formatCurrency(const int value)

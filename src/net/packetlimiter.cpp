@@ -275,11 +275,8 @@ bool PacketLimiter::checkPackets(const PacketTypeT type)
         {
             return false;
         }
-        else
-        {
-//            instance()->mPacketLimits[type].cnt ++;
-            return true;
-        }
+//        instance()->mPacketLimits[type].cnt ++;
+        return true;
     }
 //    instance()->mPacketLimits[type].lastTime = time;
 //    instance()->mPacketLimits[type].cnt = 1;
@@ -317,11 +314,8 @@ bool PacketLimiter::limitPackets(const PacketTypeT type)
         {
             return false;
         }
-        else
-        {
-            pack.cnt ++;
-            return true;
-        }
+        pack.cnt ++;
+        return true;
     }
     pack.lastTime = time;
     pack.cnt = 1;

@@ -441,71 +441,69 @@ bool Viewport::leftMouseAction()
             mHoverBeing->talkTo();
             return true;
         }
-        else
+
+        const ActorTypeT type = mHoverBeing->getType();
+        switch (type)
         {
-            const ActorTypeT type = mHoverBeing->getType();
-            switch (type)
-            {
-                case ActorType::Player:
-                    validateSpeed();
-                    if (actorManager != nullptr)
-                    {
+            case ActorType::Player:
+                validateSpeed();
+                if (actorManager != nullptr)
+                {
 #ifdef TMWA_SUPPORT
-                        if (localPlayer != mHoverBeing || mSelfMouseHeal)
-                            actorManager->heal(mHoverBeing);
+                    if (localPlayer != mHoverBeing || mSelfMouseHeal)
+                        actorManager->heal(mHoverBeing);
 #endif  // TMWA_SUPPORT
 
-                        if (localPlayer == mHoverBeing &&
-                            mHoverItem != nullptr)
-                        {
-                            localPlayer->pickUp(mHoverItem);
-                        }
-                        return true;
-                    }
-                    break;
-                case ActorType::Monster:
-                case ActorType::Npc:
-                case ActorType::SkillUnit:
-                    if (!stopAttack)
+                    if (localPlayer == mHoverBeing &&
+                        mHoverItem != nullptr)
                     {
-                        if ((localPlayer->withinAttackRange(mHoverBeing) ||
-                            inputManager.isActionActive(InputAction::ATTACK)))
+                        localPlayer->pickUp(mHoverItem);
+                    }
+                    return true;
+                }
+                break;
+            case ActorType::Monster:
+            case ActorType::Npc:
+            case ActorType::SkillUnit:
+                if (!stopAttack)
+                {
+                    if ((localPlayer->withinAttackRange(mHoverBeing) ||
+                        inputManager.isActionActive(InputAction::ATTACK)))
+                    {
+                        validateSpeed();
+                        if (!mStatsReUpdated && localPlayer != mHoverBeing)
                         {
-                            validateSpeed();
-                            if (!mStatsReUpdated && localPlayer != mHoverBeing)
-                            {
-                                localPlayer->attack(mHoverBeing,
-                                    !inputManager.isActionActive(
-                                    InputAction::STOP_ATTACK));
-                                return true;
-                            }
-                        }
-                        else if (!inputManager.isActionActive(
-                                 InputAction::ATTACK))
-                        {
-                            validateSpeed();
-                            if (!mStatsReUpdated && localPlayer != mHoverBeing)
-                            {
-                                localPlayer->setGotoTarget(mHoverBeing);
-                                return true;
-                            }
+                            localPlayer->attack(mHoverBeing,
+                                !inputManager.isActionActive(
+                                InputAction::STOP_ATTACK));
+                            return true;
                         }
                     }
-                    break;
-                case ActorType::FloorItem:
-                case ActorType::Portal:
-                case ActorType::Pet:
-                case ActorType::Mercenary:
-                case ActorType::Homunculus:
-                case ActorType::Elemental:
-                    break;
-                case ActorType::Unknown:
-                case ActorType::Avatar:
-                default:
-                    reportAlways("Left click on unknown actor type: %d",
-                        CAST_S32(type));
-                    break;
-            }
+                    else if (!inputManager.isActionActive(
+                             InputAction::ATTACK))
+                    {
+                        validateSpeed();
+                        if (!mStatsReUpdated && localPlayer != mHoverBeing)
+                        {
+                            localPlayer->setGotoTarget(mHoverBeing);
+                            return true;
+                        }
+                    }
+                }
+                break;
+            case ActorType::FloorItem:
+            case ActorType::Portal:
+            case ActorType::Pet:
+            case ActorType::Mercenary:
+            case ActorType::Homunculus:
+            case ActorType::Elemental:
+                break;
+            case ActorType::Unknown:
+            case ActorType::Avatar:
+            default:
+                reportAlways("Left click on unknown actor type: %d",
+                    CAST_S32(type));
+                break;
         }
     }
     // Picks up a item if we clicked on one

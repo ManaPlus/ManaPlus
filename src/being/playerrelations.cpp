@@ -282,34 +282,32 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
     {
         return mDefaultPermissions & flags;
     }
-    else
+
+    const PlayerRelation *const r = (*it).second;
+    unsigned int permissions = PlayerRelation::RELATION_PERMISSIONS[
+        CAST_S32(r->mRelation)];
+
+    switch (r->mRelation)
     {
-        const PlayerRelation *const r = (*it).second;
-        unsigned int permissions = PlayerRelation::RELATION_PERMISSIONS[
-            CAST_S32(r->mRelation)];
+        case Relation::NEUTRAL:
+            permissions = mDefaultPermissions;
+            break;
 
-        switch (r->mRelation)
-        {
-            case Relation::NEUTRAL:
-                permissions = mDefaultPermissions;
-                break;
+        case Relation::FRIEND:
+            permissions |= mDefaultPermissions;  // widen
+            break;
 
-            case Relation::FRIEND:
-                permissions |= mDefaultPermissions;  // widen
-                break;
-
-            case Relation::DISREGARDED:
-            case Relation::IGNORED:
-            case Relation::ERASED:
-            case Relation::BLACKLISTED:
-            case Relation::ENEMY2:
-            default:
-                permissions &= mDefaultPermissions;  // narrow
-                break;
-        }
-
-        return permissions & flags;
+        case Relation::DISREGARDED:
+        case Relation::IGNORED:
+        case Relation::ERASED:
+        case Relation::BLACKLISTED:
+        case Relation::ENEMY2:
+        default:
+            permissions &= mDefaultPermissions;  // narrow
+            break;
     }
+
+    return permissions & flags;
 }
 
 bool PlayerRelationsManager::hasPermission(const Being *const being,
@@ -455,10 +453,7 @@ void PlayerRelationsManager::ignoreTrade(const std::string &name) const
     {
         return;
     }
-    else
-    {
-        playerRelations.setRelation(name, Relation::BLACKLISTED);
-    }
+    playerRelations.setRelation(name, Relation::BLACKLISTED);
 }
 
 bool PlayerRelationsManager::checkBadRelation(const std::string &name) const

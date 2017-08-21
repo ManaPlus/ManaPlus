@@ -160,35 +160,33 @@ bool PoParser::readMsgId()
         mReadingId = false;
         return false;
     }
-    else
+
+    // check line start from msgid "
+    if (strStartWith(mLine, msgId1))
     {
-        // check line start from msgid "
-        if (strStartWith(mLine, msgId1))
-        {
-            if (!mSkipId)
-            {   // translation not fuzzed and can be processed
-                mReadingId = true;
-                const size_t msgId1Size = msgId1.size();
-                // reading text from: msgid "text"
-                mMsgId.append(mLine.substr(msgId1Size,
-                    mLine.size() - 1 - msgId1Size));
-            }
-            else
-            {   // skipped fuzzed translation. reset skip flag
-                mSkipId = false;
-            }
-            mLine.clear();
-            return true;
+        if (!mSkipId)
+        {   // translation not fuzzed and can be processed
+            mReadingId = true;
+            const size_t msgId1Size = msgId1.size();
+            // reading text from: msgid "text"
+            mMsgId.append(mLine.substr(msgId1Size,
+                mLine.size() - 1 - msgId1Size));
         }
-        else if (mLine == "#, fuzzy")
-        {   // check for fuzzy translation
-            mSkipId = true;
-            mLine.clear();
-            return true;
+        else
+        {   // skipped fuzzed translation. reset skip flag
+            mSkipId = false;
         }
-        // stop reading if we don't read msgid before
-        return mMsgId.empty();
+        mLine.clear();
+        return true;
     }
+    else if (mLine == "#, fuzzy")
+    {   // check for fuzzy translation
+        mSkipId = true;
+        mLine.clear();
+        return true;
+    }
+    // stop reading if we don't read msgid before
+    return mMsgId.empty();
 }
 
 bool PoParser::readMsgStr()

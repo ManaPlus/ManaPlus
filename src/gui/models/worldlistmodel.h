@@ -59,10 +59,7 @@ class WorldListModel final : public ListModel
                 return std::string(si->name).append(" (").append(
                     toString(si->online_users)).append(")");
             }
-            else
-            {
-                return "???";
-            }
+            return "???";
         }
     private:
         Worlds mWorlds;

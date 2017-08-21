@@ -529,10 +529,8 @@ void TextBox::setCaretPosition(unsigned int position)
             mCaretColumn = position;
             return;  // we are done
         }
-        else
-        {
-            position--;
-        }
+
+        position--;
     }
 
     // position beyond end of text

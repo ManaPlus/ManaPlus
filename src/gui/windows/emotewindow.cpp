@@ -233,8 +233,7 @@ std::string EmoteWindow::getSelectedFont() const
 
     if (index == 0)
         return "##b";
-    else
-        return "##B";
+    return "##B";
 }
 
 void EmoteWindow::clearFont()

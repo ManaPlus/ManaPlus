@@ -181,10 +181,8 @@ void IPC::start()
             logger->log("  -> Port %d selected", f);
             return;
         }
-        else
-        {
-            port ++;
-        }
+
+        port ++;
     }
     delete2(ipc);
 }

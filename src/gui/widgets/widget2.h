@@ -57,8 +57,7 @@ class Widget2 notfinal
             const ThemeColorIdT colorId = theme->getIdByChar(c, valid);
             if (valid)
                 return theme->getColor(colorId + mPaletteOffset, 255U);
-            else
-                return Palette::BLACK;
+            return Palette::BLACK;
         }
 
         virtual void setWidget2(const Widget2 *const widget)

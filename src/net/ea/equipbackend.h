@@ -53,8 +53,7 @@ class EquipBackend final : public Equipment::Backend
             const Inventory *const inv = PlayerInfo::getInventory();
             if (inv != nullptr)
                 return inv->getItem(invyIndex);
-            else
-                return nullptr;
+            return nullptr;
         }
 
         void clear() override final

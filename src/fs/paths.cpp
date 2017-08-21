@@ -146,8 +146,7 @@ std::string removeLast(const std::string &str)
     }
     if (pos2 != std::string::npos)
         return str.substr(0, pos2);
-    else
-        return str;
+    return str;
 }
 
 #ifdef WIN32
@@ -173,10 +172,7 @@ std::string getSelfName()
         buf[sz] = 0;
         return buf;
     }
-    else
-    {
-        return "";
-    }
+    return "";
 }
 
 #else  // WIN32

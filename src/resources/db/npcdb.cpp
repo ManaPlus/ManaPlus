@@ -191,10 +191,7 @@ BeingInfo *NPCDB::get(const BeingTypeId id)
             toInt(id, int));
         return BeingInfo::unknown;
     }
-    else
-    {
-        return i->second;
-    }
+    return i->second;
 }
 
 BeingTypeId NPCDB::getAvatarFor(const BeingTypeId id)

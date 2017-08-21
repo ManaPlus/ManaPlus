@@ -979,17 +979,15 @@ int LocalPlayer::getAttackRange() const
     {
         return mAttackRange;
     }
-    else
+
+    const Item *const weapon = PlayerInfo::getEquipment(
+        EquipSlot::FIGHT1_SLOT);
+    if (weapon != nullptr)
     {
-        const Item *const weapon = PlayerInfo::getEquipment(
-            EquipSlot::FIGHT1_SLOT);
-        if (weapon != nullptr)
-        {
-            const ItemInfo &info = weapon->getInfo();
-            return info.getAttackRange();
-        }
-        return 48;  // unarmed range
+        const ItemInfo &info = weapon->getInfo();
+        return info.getAttackRange();
     }
+    return 48;  // unarmed range
 }
 
 bool LocalPlayer::withinAttackRange(const Being *const target,
@@ -1521,11 +1519,8 @@ bool LocalPlayer::isReachable(Being *const being,
         being->setReachable(Reachable::REACH_YES);
         return true;
     }
-    else
-    {
-        being->setReachable(Reachable::REACH_NO);
-        return false;
-    }
+    being->setReachable(Reachable::REACH_NO);
+    return false;
 }
 
 bool LocalPlayer::isReachable(const int x, const int y,
@@ -2170,25 +2165,22 @@ void LocalPlayer::updateCoords()
             navigateClean();
             return;
         }
-        else
+        for (Path::const_iterator i = mNavigatePath.begin(),
+             i_fend = mNavigatePath.end();
+             i != i_fend;
+             ++i)
         {
-            for (Path::const_iterator i = mNavigatePath.begin(),
-                 i_fend = mNavigatePath.end();
-                 i != i_fend;
-                 ++i)
+            if ((*i).x == mX && (*i).y == mY)
             {
-                if ((*i).x == mX && (*i).y == mY)
-                {
-                    mNavigatePath.pop_front();
-                    fixPos();
-                    break;
-                }
+                mNavigatePath.pop_front();
+                fixPos();
+                break;
             }
-            if (mDrawPath && mShowNavigePath)
-            {
-                tmpLayer->clean();
-                tmpLayer->addRoad(mNavigatePath);
-            }
+        }
+        if (mDrawPath && mShowNavigePath)
+        {
+            tmpLayer->clean();
+            tmpLayer->addRoad(mNavigatePath);
         }
     }
     mOldX = mPixelX;
@@ -2241,14 +2233,12 @@ int LocalPlayer::getPathLength(const Being *const being) const
             0);
         return CAST_S32(debugPath.size());
     }
-    else
-    {
-        const int dx = CAST_S32(abs(being->mX - mX));
-        const int dy = CAST_S32(abs(being->mY - mY));
-        if (dx > dy)
-            return dx;
-        return dy;
-    }
+
+    const int dx = CAST_S32(abs(being->mX - mX));
+    const int dy = CAST_S32(abs(being->mY - mY));
+    if (dx > dy)
+        return dx;
+    return dy;
 }
 
 int LocalPlayer::getAttackRange2() const

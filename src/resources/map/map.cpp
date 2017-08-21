@@ -689,8 +689,7 @@ const Tileset *Map::getTilesetWithGid(const int gid) const restrict2
 {
     if (gid >= 0 && gid < mIndexedTilesetsSize)
         return mIndexedTilesets[gid];
-    else
-        return nullptr;
+    return nullptr;
 }
 
 void Map::addBlockMask(const int x, const int y,

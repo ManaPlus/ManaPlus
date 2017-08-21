@@ -141,8 +141,7 @@ Image *SimpleAnimation::getCurrentImage() const
 {
     if (mCurrentFrame != nullptr)
         return mCurrentFrame->image;
-    else
-        return nullptr;
+    return nullptr;
 }
 
 void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,

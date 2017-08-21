@@ -92,8 +92,7 @@ int getAttribute(const AttributesT id)
     const AtrIntMap::const_iterator it = mData.mAttributes.find(id);
     if (it != mData.mAttributes.end())
         return it->second;
-    else
-        return 0;
+    return 0;
 }
 
 void setAttribute(const AttributesT id,
@@ -111,8 +110,7 @@ int getSkillLevel(const int id)
     const IntMap::const_iterator it = mData.mSkills.find(id);
     if (it != mData.mSkills.end())
         return it->second;
-    else
-        return 0;
+    return 0;
 }
 
 void setSkillLevel(const int id, const int value)
@@ -127,8 +125,7 @@ int getStatBase(const AttributesT id)
     const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
         return it->second.base;
-    else
-        return 0;
+    return 0;
 }
 
 void setStatBase(const AttributesT id, const int value, const Notify notify)
@@ -144,8 +141,7 @@ int getStatMod(const AttributesT id)
     const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
         return it->second.mod;
-    else
-        return 0;
+    return 0;
 }
 
 void setStatMod(const AttributesT id, const int value, const Notify notify)
@@ -161,8 +157,7 @@ int getStatEffective(const AttributesT id)
     const StatMap::const_iterator it = mData.mStats.find(id);
     if (it != mData.mStats.end())
         return it->second.base + it->second.mod;
-    else
-        return 0;
+    return 0;
 }
 
 const std::pair<int, int> getStatExperience(const AttributesT id)
@@ -233,8 +228,7 @@ const Item *getEquipment(const unsigned int slot)
 {
     if (mEquipment != nullptr)
         return mEquipment->getEquipment(slot);
-    else
-        return nullptr;
+    return nullptr;
 }
 
 void setEquipmentBackend(Equipment::Backend *const backend)

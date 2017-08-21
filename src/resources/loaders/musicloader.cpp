@@ -66,11 +66,9 @@ namespace
                 return new SDLMusic(music, rw, rl->path);
             }
 #endif  // USE_SDL2
-            else
-            {
-                logger->log("Error, failed to load music: %s", Mix_GetError());
-                return nullptr;
-            }
+
+            logger->log("Error, failed to load music: %s", Mix_GetError());
+            return nullptr;
         }
     };
 }  // namespace

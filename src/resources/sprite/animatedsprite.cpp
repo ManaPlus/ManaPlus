@@ -383,24 +383,21 @@ unsigned int AnimatedSprite::getFrameCount() const restrict2
 {
     if (mAnimation != nullptr)
         return CAST_U32(mAnimation->getLength());
-    else
-        return 0;
+    return 0;
 }
 
 int AnimatedSprite::getWidth() const restrict2
 {
     if ((mFrame != nullptr) && (mFrame->image != nullptr))
         return mFrame->image->mBounds.w;
-    else
-        return 0;
+    return 0;
 }
 
 int AnimatedSprite::getHeight() const restrict2
 {
     if ((mFrame != nullptr) && (mFrame->image != nullptr))
         return mFrame->image->mBounds.h;
-    else
-        return 0;
+    return 0;
 }
 
 std::string AnimatedSprite::getIdPath() const restrict2

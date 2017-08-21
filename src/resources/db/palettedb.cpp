@@ -111,6 +111,5 @@ const DyeColor *PaletteDB::getColor(const std::string &name)
         mColors.find(name);
     if (it != mColors.end())
         return &(*it).second;
-    else
-        return nullptr;
+    return nullptr;
 }

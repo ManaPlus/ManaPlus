@@ -880,8 +880,7 @@ bool Button::isPressed() const
 {
     if (mMousePressed)
         return mHasMouse;
-    else
-        return mKeyPressed;
+    return mKeyPressed;
 }
 
 void Button::focusLost(const Event& event A_UNUSED)

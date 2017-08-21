@@ -195,8 +195,7 @@ bool PopupMenu::isAllowOtherCommand(const ServerCommandTypeT command)
         mGroup->mCommands[CAST_SIZE(command)];
     if (mName == localPlayer->getName())
         return (enabled & ServerCommandEnable::Self) != 0;
-    else
-        return (enabled & ServerCommandEnable::Other) != 0;
+    return (enabled & ServerCommandEnable::Other) != 0;
 }
 
 void PopupMenu::showPopup(const int x, const int y, const Being *const being)

@@ -293,10 +293,7 @@ HorseInfo *HorseDB::get(const int id, const bool allowNull)
             id);
         return &mUnknown;
     }
-    else
-    {
-        return i->second;
-    }
+    return i->second;
 }
 
 int HorseDB::size()

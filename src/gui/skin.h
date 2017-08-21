@@ -106,8 +106,7 @@ class Skin final
         {
             if (mOptions->find(name) != mOptions->end())
                 return (*mOptions)[name];
-            else
-                return 0;
+            return 0;
         }
 
         int getOption(const std::string &name,
@@ -115,8 +114,7 @@ class Skin final
         {
             if (mOptions->find(name) != mOptions->end())
                 return (*mOptions)[name];
-            else
-                return def;
+            return def;
         }
 
         int instances;

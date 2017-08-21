@@ -215,8 +215,7 @@ Image *SubImage::getSubImage(const int x, const int y,
 {
     if (mParent != nullptr)
         return mParent->getSubImage(mBounds.x + x, mBounds.y + y, w, h);
-    else
-        return nullptr;
+    return nullptr;
 }
 
 #ifdef USE_OPENGL

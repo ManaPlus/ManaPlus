@@ -174,12 +174,9 @@ void TradeWindow::setMoney(const int amount)
             close();
             return;
         }
-        else
-        {
-            mMoneyLabel->setForegroundColorAll(
-                getThemeColor(ThemeColorId::WARNING),
-                getThemeColor(ThemeColorId::WARNING_OUTLINE));
-        }
+        mMoneyLabel->setForegroundColorAll(
+            getThemeColor(ThemeColorId::WARNING),
+            getThemeColor(ThemeColorId::WARNING_OUTLINE));
     }
     else
     {

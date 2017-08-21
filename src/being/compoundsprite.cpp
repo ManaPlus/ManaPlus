@@ -244,8 +244,7 @@ int CompoundSprite::getNumberOfLayers() const
 {
     if ((mImage != nullptr) || (mAlphaImage != nullptr))
         return 1;
-    else
-        return CAST_S32(mSprites.size());
+    return CAST_S32(mSprites.size());
 }
 
 unsigned int CompoundSprite::getCurrentFrame() const

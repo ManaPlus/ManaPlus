@@ -369,8 +369,7 @@ std::string Guild::getPos(const int id) const
     const PositionsMap::const_iterator it = mPositions.find(id);
     if (it == mPositions.end())
         return "";
-    else
-        return it->second;
+    return it->second;
 }
 
 void Guild::sort()

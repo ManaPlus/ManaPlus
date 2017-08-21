@@ -297,8 +297,7 @@ bool ConfigurationObject::getValueBool(const std::string &key,
     const Options::const_iterator iter = mOptions.find(key);
     if (iter != mOptions.end())
         return atoi(iter->second.c_str()) != 0 ? true : false;
-    else
-        return deflt;
+    return deflt;
 }
 
 unsigned ConfigurationObject::getValue(const std::string &key,
@@ -887,10 +886,7 @@ void Configuration::write()
         BLOCK_END("Configuration::write")
         return;
     }
-    else
-    {
-        fclose(testFile);
-    }
+    fclose(testFile);
 
     XmlTextWriterPtr writer = XmlNewTextWriterFilename(
         mConfigPath.c_str(), 0);

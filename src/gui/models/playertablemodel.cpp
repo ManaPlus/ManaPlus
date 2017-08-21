@@ -68,8 +68,7 @@ int PlayerTableModel::getRows() const
 {
     if (mPlayers != nullptr)
         return CAST_S32(mPlayers->size());
-    else
-        return 0;
+    return 0;
 }
 
 int PlayerTableModel::getColumns() const
@@ -86,8 +85,7 @@ int PlayerTableModel::getColumnWidth(const int index) const
 {
     if (index == NAME_COLUMN)
         return NAME_COLUMN_WIDTH;
-    else
-        return RELATION_CHOICE_COLUMN_WIDTH;
+    return RELATION_CHOICE_COLUMN_WIDTH;
 }
 
 void PlayerTableModel::playerRelationsUpdated()

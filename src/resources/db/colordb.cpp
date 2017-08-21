@@ -206,10 +206,7 @@ std::string &ColorDB::getHairColorName(const ItemColor id)
             toInt(id, int));
         return mFail;
     }
-    else
-    {
-        return i->second.name;
-    }
+    return i->second.name;
 }
 
 int ColorDB::getHairSize()

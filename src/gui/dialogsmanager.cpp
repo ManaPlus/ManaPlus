@@ -122,18 +122,15 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
             260);
         return dialog;
     }
-    else
-    {
-        ConfirmDialog *const dialog = CREATEWIDGETR(ConfirmDialog,
-            header,
-            strprintf("%s %s", message.c_str(),
-            // TRANSLATORS: error message question
-            _("Do you want to open support page?")),
-            SOUND_ERROR,
-            false,
-            modal);
-        return dialog;
-    }
+    ConfirmDialog *const dialog = CREATEWIDGETR(ConfirmDialog,
+        header,
+        strprintf("%s %s", message.c_str(),
+        // TRANSLATORS: error message question
+        _("Do you want to open support page?")),
+        SOUND_ERROR,
+        false,
+        modal);
+    return dialog;
 }
 
 void DialogsManager::playerDeath()

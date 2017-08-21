@@ -347,8 +347,7 @@ int Font::getWidth(const std::string &text) const
         const Image *const image = chunk->img;
         if (image != nullptr)
             return image->getWidth();
-        else
-            return 0;
+        return 0;
     }
 
     // if string was not drawed

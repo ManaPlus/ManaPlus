@@ -1492,13 +1492,10 @@ std::string Being::getStandAction() const restrict2
             else
                 return SpriteAction::DEAD;
         }
-        else
-        {
-            if ((mask & BlockMask::AIR) != 0)
-                return SpriteAction::STANDSKY;
-            else if ((mask & BlockMask::WATER) != 0)
-                return SpriteAction::STANDWATER;
-        }
+        if ((mask & BlockMask::AIR) != 0)
+            return SpriteAction::STANDSKY;
+        else if ((mask & BlockMask::WATER) != 0)
+            return SpriteAction::STANDWATER;
     }
     return SpriteAction::STAND;
 }
@@ -2170,10 +2167,7 @@ void Being::moveBotTo(int dstX,
             mercenaryHandler->move(dstX, dstY);
         return;
     }
-    else
-    {
-        updateBotDirection(dstX, dstY);
-    }
+    updateBotDirection(dstX, dstY);
 }
 
 void Being::updateBotDirection(const int dstX,

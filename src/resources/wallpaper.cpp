@@ -69,8 +69,7 @@ static void initDefaultWallpaperPaths()
 
     if (!wallpaperFile.empty() && !VirtFs::isDirectory(wallpaperFile))
         return;
-    else
-        wallpaperFile = paths.getValue("wallpaperFile", "");
+    wallpaperFile = paths.getValue("wallpaperFile", "");
 
     if (wallpaperFile.empty() || VirtFs::isDirectory(wallpaperFile))
         wallpaperFile = "login_wallpaper.png";

@@ -97,11 +97,8 @@ int get_elapsed_time(const int startTime)
     {
         return (time - startTime) * MILLISECONDS_IN_A_TICK;
     }
-    else
-    {
-        return (time + (MAX_TICK_VALUE - startTime))
-            * MILLISECONDS_IN_A_TICK;
-    }
+    return (time + (MAX_TICK_VALUE - startTime))
+        * MILLISECONDS_IN_A_TICK;
 }
 
 int get_elapsed_time1(const int startTime)
@@ -109,8 +106,7 @@ int get_elapsed_time1(const int startTime)
     const int time = tick_time;
     if (startTime <= time)
         return time - startTime;
-    else
-        return time + (MAX_TICK_VALUE - startTime);
+    return time + (MAX_TICK_VALUE - startTime);
 }
 
 void startTimers()

@@ -148,11 +148,9 @@ std::string FloorItem::getName() const
     {
         return info.getName();
     }
-    else
 #endif  // TMWA_SUPPORT
-    {
-        return info.getName(mColor);
-    }
+
+    return info.getName(mColor);
 }
 
 void FloorItem::draw(Graphics *const graphics,

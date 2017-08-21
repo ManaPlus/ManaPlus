@@ -388,8 +388,7 @@ bool Gui::handleInput()
 {
     if (mInput != nullptr)
         return handleKeyInput();
-    else
-        return false;
+    return false;
 }
 
 bool Gui::handleKeyInput()

@@ -60,12 +60,9 @@ namespace
             {
                 return new SoundEffect(tmpSoundEffect, rl->path);
             }
-            else
-            {
-                reportAlways("Error, failed to load sound effect: %s",
-                    Mix_GetError());
-                return nullptr;
-            }
+            reportAlways("Error, failed to load sound effect: %s",
+                Mix_GetError());
+            return nullptr;
         }
     };
 }  // namespace

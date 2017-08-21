@@ -265,10 +265,7 @@ const EmoteInfo *EmoteDB::get(const int id, const bool allowNull)
             id);
         return &mUnknown;
     }
-    else
-    {
-        return i->second;
-    }
+    return i->second;
 }
 
 const EmoteInfo *EmoteDB::get2(int id, const bool allowNull)
@@ -287,10 +284,7 @@ const EmoteInfo *EmoteDB::get2(int id, const bool allowNull)
             id);
         return &mUnknown;
     }
-    else
-    {
-        return i->second;
-    }
+    return i->second;
 }
 
 const EmoteSprite *EmoteDB::getSprite(const int id, const bool allowNull)

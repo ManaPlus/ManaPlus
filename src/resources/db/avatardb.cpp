@@ -142,6 +142,5 @@ BeingInfo *AvatarDB::get(const BeingTypeId id)
     const BeingInfoIterator i = mAvatarInfos.find(id);
     if (i == mAvatarInfos.end())
         return BeingInfo::unknown;
-    else
-        return i->second;
+    return i->second;
 }

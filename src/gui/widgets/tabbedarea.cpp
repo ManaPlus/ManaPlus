@@ -223,8 +223,7 @@ Widget *TabbedArea::getCurrentWidget() const
 
     if (tab != nullptr)
         return getWidget(tab->getCaption());
-    else
-        return nullptr;
+    return nullptr;
 }
 
 void TabbedArea::addTab(Tab *const tab,
@@ -779,9 +778,8 @@ void TabbedArea::keyPressed(KeyEvent& event)
 
         if (index < 0)
             return;
-        else
-            setSelectedTab(mTabs[index].first);
 
+        setSelectedTab(mTabs[index].first);
         event.consume();
     }
     else if (actionId == InputAction::GUI_RIGHT)
@@ -791,9 +789,8 @@ void TabbedArea::keyPressed(KeyEvent& event)
 
         if (index >= CAST_S32(mTabs.size()))
             return;
-        else
-            setSelectedTab(mTabs[index].first);
 
+        setSelectedTab(mTabs[index].first);
         event.consume();
     }
 }

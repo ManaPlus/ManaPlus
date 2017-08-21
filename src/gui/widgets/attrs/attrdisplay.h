@@ -56,8 +56,7 @@ class AttrDisplay notfinal : public Container
         {
             if (mValue == nullptr)
                 return "-";
-            else
-                return mValue->getCaption();
+            return mValue->getCaption();
         }
 
         const std::string &getShortName() const

@@ -144,11 +144,8 @@ std::string Item::getName() const
     {
         return info.getName();
     }
-    else
 #endif  // TWMA_SUPPORT
-    {
-        return info.getName(mColor);
-    }
+    return info.getName(mColor);
 }
 
 void Item::setCard(const int index, const int id)

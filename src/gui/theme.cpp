@@ -71,10 +71,7 @@ static void initDefaultThemePath()
     {
         return;
     }
-    else
-    {
-        defaultThemePath = "themes/";
-    }
+    defaultThemePath = "themes/";
 }
 
 Theme::Theme() :

@@ -104,8 +104,7 @@ Configuration *SetupItem::getConfig() const
 {
     if (mMainConfig == MainConfig_true)
         return &config;
-    else
-        return &serverConfig;
+    return &serverConfig;
 }
 
 void SetupItem::load()

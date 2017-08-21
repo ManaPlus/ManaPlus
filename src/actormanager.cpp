@@ -541,40 +541,37 @@ Being *ActorManager::findBeingByPixel(const int x, const int y,
             return nullptr;
         return tempBeing;
     }
-    else
+    for_actorsm
     {
-        for_actorsm
-        {
 // disabled for performance
 //            if (reportTrue(*it == nullptr))
 //                continue;
 
-            if ((*it)->getType() == ActorType::Portal ||
-                (*it)->getType() == ActorType::FloorItem)
-            {
-                continue;
-            }
-
-            Being *const being = static_cast<Being*>(*it);
-
-            if (being->getInfo() != nullptr &&
-                !(being->getInfo()->isTargetSelection() || modActive))
-            {
-                continue;
-            }
-
-            const int px = being->getPixelX();
-            const int py = being->getPixelY();
-            if ((px - mapTileSize / 2 <= x) &&
-                (px + mapTileSize / 2 >  x) &&
-                (py - mapTileSize     <= y) &&
-                (py                   >  y))
-            {
-                return being;
-            }
+        if ((*it)->getType() == ActorType::Portal ||
+            (*it)->getType() == ActorType::FloorItem)
+        {
+            continue;
         }
-        return nullptr;
+
+        Being *const being = static_cast<Being*>(*it);
+
+        if (being->getInfo() != nullptr &&
+            !(being->getInfo()->isTargetSelection() || modActive))
+        {
+            continue;
+        }
+
+        const int px = being->getPixelX();
+        const int py = being->getPixelY();
+        if ((px - mapTileSize / 2 <= x) &&
+            (px + mapTileSize / 2 >  x) &&
+            (py - mapTileSize     <= y) &&
+            (py                   >  y))
+        {
+            return being;
+        }
     }
+    return nullptr;
 }
 
 void ActorManager::findBeingsByPixel(STD_VECTOR<ActorSprite*> &beings,
@@ -922,17 +919,14 @@ Being *ActorManager::findNearestByName(const std::string &name,
             {
                 return being;
             }
-            else
-            {
-                const int d = (being->getTileX() - x) * (being->getTileX() - x)
-                    + (being->getTileY() - y) * (being->getTileY() - y);
+            const int d = (being->getTileX() - x) * (being->getTileX() - x)
+                + (being->getTileY() - y) * (being->getTileY() - y);
 
-                if (validateBeing(nullptr, being, type, nullptr, 50)
-                    && (d < dist || closestBeing == nullptr))
-                {
-                    dist = d;
-                    closestBeing = being;
-                }
+            if (validateBeing(nullptr, being, type, nullptr, 50)
+                && (d < dist || closestBeing == nullptr))
+            {
+                dist = d;
+                closestBeing = being;
             }
         }
     }
@@ -1277,115 +1271,113 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
         // we find next being after target
         return *i;
     }
-    else
-    {
-        int dist = 0;
-        int index = defaultPriorityIndex;
-        Being *closestBeing = nullptr;
 
-        FOR_EACH (ActorSprites::iterator, i, mActors)
-        {
+    int dist = 0;
+    int index = defaultPriorityIndex;
+    Being *closestBeing = nullptr;
+
+    FOR_EACH (ActorSprites::iterator, i, mActors)
+    {
 //  disabled for performance
 //            if (reportTrue(*i == nullptr))
 //                continue;
 
-            if ((*i)->getType() == ActorType::FloorItem ||
-                (*i)->getType() == ActorType::Portal)
+        if ((*i)->getType() == ActorType::FloorItem ||
+            (*i)->getType() == ActorType::Portal)
+        {
+            continue;
+        }
+        Being *const being = static_cast<Being*>(*i);
+
+        if (filtered)
+        {
+            if (ignoreAttackMobs.find(being->getName())
+                != ignoreAttackMobs.end())
             {
                 continue;
             }
-            Being *const being = static_cast<Being*>(*i);
-
-            if (filtered)
-            {
-                if (ignoreAttackMobs.find(being->getName())
-                    != ignoreAttackMobs.end())
-                {
-                    continue;
-                }
-                if (ignoreDefault && attackMobs.find(being->getName())
-                    == attackMobs.end() && priorityMobs.find(being->getName())
-                    == priorityMobs.end())
-                {
-                    continue;
-                }
-            }
-
-            if ((being->getInfo() != nullptr)
-                && !(being->getInfo()->isTargetSelection() || modActive))
+            if (ignoreDefault && attackMobs.find(being->getName())
+                == attackMobs.end() && priorityMobs.find(being->getName())
+                == priorityMobs.end())
             {
                 continue;
             }
+        }
 
-            const bool valid = validateBeing(aroundBeing, being,
+        if ((being->getInfo() != nullptr)
+            && !(being->getInfo()->isTargetSelection() || modActive))
+        {
+            continue;
+        }
+
+        const bool valid = validateBeing(aroundBeing, being,
                                              type, excluded, 50);
-            int d = being->getDistance();
-            if (being->getType() != ActorType::Monster
-                || !mTargetOnlyReachable)
-            {   // if distance not calculated, use old distance
-                d = (being->getTileX() - x) * (being->getTileX() - x)
-                    + (being->getTileY() - y) * (being->getTileY() - y);
-            }
+        int d = being->getDistance();
+        if (being->getType() != ActorType::Monster
+            || !mTargetOnlyReachable)
+        {   // if distance not calculated, use old distance
+            d = (being->getTileX() - x) * (being->getTileX() - x)
+                + (being->getTileY() - y) * (being->getTileY() - y);
+        }
 
-            if (!valid)
-                continue;
+        if (!valid)
+            continue;
 
-            if (specialDistance && being->getDistance() <= 2
-                && being->getType() == type)
-            {
-                continue;
-            }
+        if (specialDistance && being->getDistance() <= 2
+            && being->getType() == type)
+        {
+            continue;
+        }
 
 //            logger->log("being name:" + being->getName());
 //            logger->log("index:" + toString(index));
 //            logger->log("d:" + toString(d));
 
-            if (!filtered && (d <= dist || (closestBeing == nullptr)))
+        if (!filtered && (d <= dist || (closestBeing == nullptr)))
+        {
+            dist = d;
+            closestBeing = being;
+        }
+        else if (filtered)
+        {
+            int w2 = defaultPriorityIndex;
+            if (closestBeing != nullptr)
             {
-                dist = d;
-                closestBeing = being;
-            }
-            else if (filtered)
-            {
-                int w2 = defaultPriorityIndex;
-                if (closestBeing != nullptr)
-                {
-                    const StringIntMapCIter it2 =  priorityMobsMap.find(
-                        being->getName());
-                    if (it2 != priorityMobsMap.end())
-                        w2 = (*it2).second;
+                const StringIntMapCIter it2 =  priorityMobsMap.find(
+                    being->getName());
+                if (it2 != priorityMobsMap.end())
+                    w2 = (*it2).second;
 
-                    if (w2 < index)
-                    {
-                        dist = d;
-                        closestBeing = being;
-                        index = w2;
-                        continue;
-                    }
-                    if (w2 == index && d <= dist)
-                    {
-                        dist = d;
-                        closestBeing = being;
-                        index = w2;
-                        continue;
-                    }
-                }
-
-                if (closestBeing == nullptr)
+                if (w2 < index)
                 {
                     dist = d;
                     closestBeing = being;
-                    const StringIntMapCIter it1 = priorityMobsMap.find(
-                        being->getName());
-                    if (it1 != priorityMobsMap.end())
-                        index = (*it1).second;
-                    else
-                        index = defaultPriorityIndex;
+                    index = w2;
+                    continue;
+                }
+                if (w2 == index && d <= dist)
+                {
+                    dist = d;
+                    closestBeing = being;
+                    index = w2;
+                    continue;
                 }
             }
+
+            if (closestBeing == nullptr)
+            {
+                dist = d;
+                closestBeing = being;
+                const StringIntMapCIter it1 = priorityMobsMap.find(
+                    being->getName());
+                if (it1 != priorityMobsMap.end())
+                    index = (*it1).second;
+                else
+                    index = defaultPriorityIndex;
+            }
         }
-        return (maxDist >= dist) ? closestBeing : nullptr;
     }
+    return (maxDist >= dist) ? closestBeing : nullptr;
 }
 
 bool ActorManager::validateBeing(const Being *const aroundBeing,

@@ -878,10 +878,8 @@ void ChatWindow::keyPressed(KeyEvent &event)
                 mChatInput->setCaretPosition(0);
                 return;
             }
-            else
-            {
-                mChatHistoryIndex --;
-            }
+
+            mChatHistoryIndex --;
 
             unsigned int f = 0;
             const std::list<std::string> &rows = tab->getRows();
@@ -1313,10 +1311,7 @@ ChatTab *ChatWindow::addChatTab(const std::string &name,
             chatHandler->joinChannel(name);
         return tab;
     }
-    else
-    {
-        return addWhisperTab(name, name, switchTo);
-    }
+    return addWhisperTab(name, name, switchTo);
 }
 
 void ChatWindow::postConnection()

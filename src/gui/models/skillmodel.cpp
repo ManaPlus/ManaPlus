@@ -47,8 +47,7 @@ std::string SkillModel::getElementAt(int i)
     const SkillInfo *const info = getSkillAt(i);
     if (info != nullptr)
         return info->data->name;
-    else
-        return std::string();
+    return std::string();
 }
 
 void SkillModel::updateVisibilities()

@@ -163,8 +163,5 @@ BeingInfo *PETDB::get(const BeingTypeId id)
             toInt(id, int));
         return BeingInfo::unknown;
     }
-    else
-    {
-        return i->second;
-    }
+    return i->second;
 }

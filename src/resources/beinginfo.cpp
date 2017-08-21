@@ -170,10 +170,9 @@ const SoundInfo &BeingInfo::getSound(const ItemSoundEvent::Type event) const
         return emptySound;
 
     const SoundInfoVect *const vect = i->second;
-    if ((vect == nullptr) || vect->empty())
+    if (vect == nullptr || vect->empty())
         return emptySound;
-    else
-        return vect->at(CAST_SIZE(rand()) % vect->size());
+    return vect->at(CAST_SIZE(rand()) % vect->size());
 }
 
 const Attack *BeingInfo::getAttack(const int id) const

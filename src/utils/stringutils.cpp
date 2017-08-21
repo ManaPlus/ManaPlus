@@ -560,10 +560,7 @@ std::string combineDye2(std::string file,
         }
         return file.append("|").append(str);
     }
-    else
-    {
-        return file;
-    }
+    return file;
 }
 
 std::string combineDye3(std::string file,
@@ -588,13 +585,9 @@ std::string combineDye3(std::string file,
         }
         return file.append("|").append(str);
     }
-    else
-    {
-        if (dye.empty() || file.empty())
-            return file;
-        else
-            return file.append("|").append(dye);
-    }
+    if (dye.empty() || file.empty())
+        return file;
+    return file.append("|").append(dye);
 }
 
 std::string packList(const std::list<std::string> &list)
@@ -959,8 +952,7 @@ std::string timeToStr(const uint32_t time)
     tm *const timeInfo = localtime(&tempTime);
     if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo) != 0u)
         return std::string(buf);
-    else
-        return "unknown";
+    return "unknown";
 }
 
 std::string timeDiffToString(int timeDiff)
@@ -1060,30 +1052,26 @@ std::string pathJoin(std::string str1,
     {
         if (str2[0] == sep)
             return str2;
-        else
-            return sepStr.append(str2);
+        return sepStr.append(str2);
     }
     const size_t sz1 = str1.size();
     if (str2.empty())
     {
         if (str1[sz1 - 1] == sep)
             return str1;
-        else
-            return str1.append(sepStr);
+        return str1.append(sepStr);
     }
     if (str1[sz1 - 1] == sep)
     {
         if (str2[0] == sep)
             return str1.append(str2.substr(1));
-        else
-            return str1.append(str2);
+        return str1.append(str2);
     }
     else
     {
         if (str2[0] == sep)
             return str1.append(str2);
-        else
-            return str1.append(sepStr).append(str2);
+        return str1.append(sepStr).append(str2);
     }
 }
 
@@ -1132,15 +1120,13 @@ std::string pathJoin(std::string str1,
     {
         if (str3[0] == sep)
             return str1.append(str3.substr(1));
-        else
-            return str1.append(str3);
+        return str1.append(str3);
     }
     else
     {
         if (str3[0] == sep)
             return str1.append(str3);
-        else
-            return str1.append(sepStr).append(str3);
+        return str1.append(sepStr).append(str3);
     }
 }
 
@@ -1154,30 +1140,26 @@ std::string urlJoin(std::string str1,
     {
         if (str2[0] == sep)
             return str2;
-        else
-            return sepStr.append(str2);
+        return sepStr.append(str2);
     }
     const size_t sz1 = str1.size();
     if (str2.empty())
     {
         if (str1[sz1 - 1] == sep)
             return str1;
-        else
-            return str1.append(sepStr);
+        return str1.append(sepStr);
     }
     if (str1[sz1 - 1] == sep)
     {
         if (str2[0] == sep)
             return str1.append(str2.substr(1));
-        else
-            return str1.append(str2);
+        return str1.append(str2);
     }
     else
     {
         if (str2[0] == sep)
             return str1.append(str2);
-        else
-            return str1.append(sepStr).append(str2);
+        return str1.append(sepStr).append(str2);
     }
 }
 

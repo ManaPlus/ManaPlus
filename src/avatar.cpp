@@ -54,17 +54,13 @@ std::string Avatar::getComplexName() const
     {
         return mName;
     }
-    else
-    {
-        return std::string(mName).append("(").append(
-            mOriginalName).append(")");
-    }
+    return std::string(mName).append("(").append(
+        mOriginalName).append(")");
 }
 
 std::string Avatar::getAdditionString() const
 {
     if (!getIp().empty())
         return " - " + getIp();
-    else
-        return "";
+    return "";
 }

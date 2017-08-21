@@ -428,45 +428,42 @@ bool GuildManager::process(std::string msg)
         guild->removeMember(msg);
         return true;
     }
-    else if (msg == "You have been removed from the Guild"
-             || msg == "You have left the Guild")
+    else if (msg == "You have been removed from the Guild" ||
+             msg == "You have left the Guild")
     {
         return afterRemove();
     }
-    else
+    Guild *const guild = createGuild();
+    if (guild == nullptr)
+        return false;
+    if (mTab == nullptr)
     {
-        Guild *const guild = createGuild();
-        if (guild == nullptr)
-            return false;
-        if (mTab == nullptr)
+        createTab(guild);
+    }
+    if (mTab != nullptr)
+    {
+        const size_t pos = msg.find(": ", 0);
+        if (pos != std::string::npos)
         {
-            createTab(guild);
-        }
-        if (mTab != nullptr)
-        {
-            const size_t pos = msg.find(": ", 0);
-            if (pos != std::string::npos)
-            {
-                const std::string sender_name = msg.substr(0, pos);
-                if (guild->getMember(sender_name) == nullptr)
-                {
-                    mTab->chatLog(msg, ChatMsgType::BY_SERVER);
-                    return true;
-                }
-
-                msg.erase(0, pos + 2);
-                if (msg.size() > 3 && msg[0] == '#' && msg[1] == '#')
-                    msg.erase(0, 3);
-
-                trim(msg);
-                mTab->chatLog(sender_name, msg);
-            }
-            else
+            const std::string sender_name = msg.substr(0, pos);
+            if (guild->getMember(sender_name) == nullptr)
             {
                 mTab->chatLog(msg, ChatMsgType::BY_SERVER);
+                return true;
             }
-            return true;
+
+            msg.erase(0, pos + 2);
+            if (msg.size() > 3 && msg[0] == '#' && msg[1] == '#')
+                msg.erase(0, 3);
+
+            trim(msg);
+            mTab->chatLog(sender_name, msg);
         }
+        else
+        {
+            mTab->chatLog(msg, ChatMsgType::BY_SERVER);
+        }
+        return true;
     }
     return false;
 }

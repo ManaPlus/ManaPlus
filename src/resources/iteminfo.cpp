@@ -104,20 +104,17 @@ const std::string &ItemInfo::getSprite(const GenderT gender,
         // Forward the request to the item defining how to view this item
         return ItemDB::get(mView).getSprite(gender, race);
     }
-    else
-    {
-        static const std::string empty;
-        std::map<int, std::string>::const_iterator i =
-            mAnimationFiles.find(CAST_S32(gender) +
-            toInt(race, int) * 4);
+    static const std::string empty;
+    std::map<int, std::string>::const_iterator i =
+        mAnimationFiles.find(CAST_S32(gender) +
+        toInt(race, int) * 4);
 
-        if (i != mAnimationFiles.end())
-            return i->second;
-        i = mAnimationFiles.find(CAST_S32(gender));
-        if (i != mAnimationFiles.end())
-            return i->second;
-        return empty;
-    }
+    if (i != mAnimationFiles.end())
+        return i->second;
+    i = mAnimationFiles.find(CAST_S32(gender));
+    if (i != mAnimationFiles.end())
+        return i->second;
+    return empty;
 }
 
 void ItemInfo::setAttackAction(const std::string &attackAction)

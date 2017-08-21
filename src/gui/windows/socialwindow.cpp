@@ -542,10 +542,7 @@ int SocialWindow::getPortalIndex(const int x, const int y)
         return static_cast<SocialNavigationTab*>(
             mNavigation)->getPortalIndex(x, y);
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 }
 
 void SocialWindow::addPortal(const int x, const int y)

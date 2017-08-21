@@ -776,11 +776,8 @@ const std::string WhoIsOnline::prepareNick(const std::string &restrict nick,
         return strprintf("@@%s|##%s%s (%d)@@", text.c_str(),
             color.c_str(), text.c_str(), level);
     }
-    else
-    {
-        return strprintf("@@%s|##%s%s@@", text.c_str(),
-            color.c_str(), text.c_str());
-    }
+    return strprintf("@@%s|##%s%s@@", text.c_str(),
+        color.c_str(), text.c_str());
 }
 
 void WhoIsOnline::optionChanged(const std::string &name)
