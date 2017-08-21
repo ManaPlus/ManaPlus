@@ -575,8 +575,7 @@ void ActorSprite::cleanupTargetCursors()
 {
     for_each_cursors()
     {
-        if (targetCursor[type][size] != nullptr)
-            delete2(targetCursor[type][size])
+        delete2(targetCursor[type][size])
     }
     end_foreach
 }
