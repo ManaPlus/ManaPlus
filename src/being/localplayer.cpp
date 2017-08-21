@@ -393,7 +393,7 @@ void LocalPlayer::slowLogic()
 }
 
 void LocalPlayer::setAction(const BeingActionT &action,
-                            const int attackType)
+                            const int attackId)
 {
     if (action == BeingAction::DEAD)
     {
@@ -408,7 +408,8 @@ void LocalPlayer::setAction(const BeingActionT &action,
         setTarget(nullptr);
     }
 
-    Being::setAction(action, attackType);
+    Being::setAction(action,
+        attackId);
 #ifdef USE_MUMBLE
     if (mumbleManager)
         mumbleManager->setAction(CAST_S32(action));
@@ -480,7 +481,7 @@ void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
     if (mPath.empty())
     {
         if (mNavigatePath.empty() || mAction != BeingAction::MOVE)
-            setAction(BeingAction::STAND);
+            setAction(BeingAction::STAND, 0);
         else
             mNextStep = true;
     }
@@ -720,7 +721,7 @@ void LocalPlayer::stopWalking(const bool sendToServer)
                 mPixelY,
                 -1);
         }
-        setAction(BeingAction::STAND);
+        setAction(BeingAction::STAND, 0);
     }
 
     // No path set anymore, so we reset the path by mouse flag
@@ -824,7 +825,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     if (target->getType() != ActorType::Player
         || checAttackPermissions(target))
     {
-        setAction(BeingAction::ATTACK);
+        setAction(BeingAction::ATTACK, 0);
 
         if (!PacketLimiter::limitPackets(PacketType::PACKET_ATTACK))
             return;
@@ -857,7 +858,7 @@ void LocalPlayer::stopAttack(const bool keepAttack)
 void LocalPlayer::untarget()
 {
     if (mAction == BeingAction::ATTACK)
-        setAction(BeingAction::STAND);
+        setAction(BeingAction::STAND, 0);
 
     if (mTarget != nullptr)
         setTarget(nullptr);
@@ -2361,7 +2362,7 @@ void LocalPlayer::imitateAction(const Being *const being,
 
     if (!mPlayerImitated.empty() && being->mName == mPlayerImitated)
     {
-        setAction(action);
+        setAction(action, 0);
         playerHandler->changeAction(action);
     }
 }

@@ -72,7 +72,7 @@ class LocalPlayer final : public Being,
         void slowLogic();
 
         void setAction(const BeingActionT &action,
-                       const int attackType = 0) override final;
+                       const int attackId) override final;
 
         /**
          * Compute the next pathnode location when walking using keyboard.
