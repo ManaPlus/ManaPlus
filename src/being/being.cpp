@@ -457,14 +457,22 @@ void Being::setSubtype(const BeingTypeId subtype,
             mInfo = NPCDB::get(mSubType);
             if (mInfo != nullptr)
             {
-                setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_false,
+                    0,
+                    std::string());
                 mYDiff = mInfo->getSortOffsetY();
             }
             break;
         case ActorType::Avatar:
             mInfo = AvatarDB::get(mSubType);
             if (mInfo != nullptr)
-                setupSpriteDisplay(mInfo->getDisplay(), ForceDisplay_false);
+            {
+                setupSpriteDisplay(mInfo->getDisplay(),
+                    ForceDisplay_false,
+                    0,
+                    std::string());
+            }
             break;
         case ActorType::Player:
         {

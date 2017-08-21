@@ -227,10 +227,9 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
                                         const IsStart start);
 
         void setupSpriteDisplay(const SpriteDisplay &display,
-                                const ForceDisplay forceDisplay
-                                = ForceDisplay_true,
-                                const int imageType = 0,
-                                const std::string &color = "");
+                                const ForceDisplay forceDisplay,
+                                const int imageType,
+                                const std::string &color);
 
         /** Load the target cursors into memory */
         static void initTargetCursor();
