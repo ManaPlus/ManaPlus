@@ -23,6 +23,8 @@
 #ifndef PARTICLE_PARTICLEENGINE_H
 #define PARTICLE_PARTICLEENGINE_H
 
+#include "enums/particle/particlephysics.h"
+
 #include <list>
 #include <string>
 
@@ -45,7 +47,7 @@ class ParticleEngine final
 {
     public:
         static const float PARTICLE_SKY;  // Maximum Z position of particles
-        static int fastPhysics;           // Mode of squareroot calculation
+        static ParticlePhysicsT fastPhysics;  // Mode of squareroot calculation
         static int particleCount;         // Current number of particles
         static int maxCount;              // Maximum number of particles
         static int emitterSkip;           // Duration of pause between two

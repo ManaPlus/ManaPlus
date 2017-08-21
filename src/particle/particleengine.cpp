@@ -44,7 +44,7 @@ class Image;
 
 int ParticleEngine::particleCount = 0;
 int ParticleEngine::maxCount = 0;
-int ParticleEngine::fastPhysics = 0;
+ParticlePhysicsT ParticleEngine::fastPhysics = ParticlePhysics::Best;
 int ParticleEngine::emitterSkip = 1;
 bool ParticleEngine::enabled = true;
 const float ParticleEngine::PARTICLE_SKY = 800.0F;
@@ -67,7 +67,9 @@ ParticleEngine::~ParticleEngine()
 void ParticleEngine::setupEngine() restrict2
 {
     ParticleEngine::maxCount = config.getIntValue("particleMaxCount");
-    ParticleEngine::fastPhysics = config.getIntValue("particleFastPhysics");
+    ParticleEngine::fastPhysics = fromInt(config.getIntValue(
+        "particleFastPhysics"),
+        ParticlePhysics);
     ParticleEngine::emitterSkip =
         config.getIntValue("particleEmitterSkip") + 1;
     if (ParticleEngine::emitterSkip == 0)

@@ -762,6 +762,7 @@ BASE_SRC += events/actionevent.h \
 	      render/rendererslistsdl2.h \
 	      enums/particle/alivestatus.h \
 	      enums/particle/particlechangefunc.h \
+	      enums/particle/particlephysics.h \
 	      enums/particle/particletype.h \
 	      enums/render/blitmode.h \
 	      enums/render/rendertype.h \

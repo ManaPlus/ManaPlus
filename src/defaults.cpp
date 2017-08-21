@@ -36,6 +36,8 @@
 
 #include "enums/input/inputaction.h"
 
+#include "enums/particle/particlephysics.h"
+
 #include "render/graphics.h"
 
 #include "const/net/net.h"
@@ -120,7 +122,7 @@ DefaultsData* getConfigDefaults()
     AddDEF("afkMessage", "I am away from keyboard.");
     AddDEF("afkFormat", 0);
     AddDEF("particleMaxCount", 3000);
-    AddDEF("particleFastPhysics", 1);
+    AddDEF("particleFastPhysics", CAST_S32(ParticlePhysics::Normal));
     AddDEF("particleEmitterSkip", 1);
     AddDEF("particleeffects", true);
     AddDEF("mapparticleeffects", true);

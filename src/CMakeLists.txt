@@ -1249,6 +1249,7 @@ SET(SRCS
     render/rendererslistsdl2.h
     enums/particle/alivestatus.h
     enums/particle/particlechangefunc.h
+    enums/particle/particlephysics.h
     enums/particle/particletype.h
     enums/render/rendertype.h
     particle/particle.cpp

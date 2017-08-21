@@ -140,11 +140,11 @@ void Particle::updateSelf() restrict2
 
         switch (ParticleEngine::fastPhysics)
         {
-            case 1:
+            case ParticlePhysics::Normal:
                 invHypotenuse = fastInvSqrt(
                     dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
                 break;
-            case 2:
+            case ParticlePhysics::Fast:
                 if (dist.x == 0.0f)
                 {
                     invHypotenuse = 0;
@@ -155,6 +155,7 @@ void Particle::updateSelf() restrict2
                                 + static_cast<float>(fabs(dist.y))
                                 + static_cast<float>(fabs(dist.z)));
                 break;
+            case ParticlePhysics::Best:
             default:
                 invHypotenuse = 1.0F / static_cast<float>(sqrt(
                     dist.x * dist.x + dist.y * dist.y + dist.z * dist.z));
