@@ -593,7 +593,7 @@ void SocialWindow::updateParty()
         if (it != mParties.end())
         {
             SocialTab *const tab = (*it).second;
-            tab->buildCounter();
+            tab->buildCounter(0, 0);
         }
     }
 }

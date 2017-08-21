@@ -66,8 +66,8 @@ class SocialTab notfinal : public Tab
         {
         }
 
-        virtual void buildCounter(const int online A_UNUSED = 0,
-                                  const int total A_UNUSED = 0)
+        virtual void buildCounter(const int online A_UNUSED,
+                                  const int total A_UNUSED)
         {
         }
 
