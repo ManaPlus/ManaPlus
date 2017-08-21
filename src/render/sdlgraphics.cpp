@@ -1054,7 +1054,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                     const unsigned pb = (pixel & bMask) * mColor.a;
                     const unsigned pg = (pixel & gMask) * mColor.a;
                     const unsigned pr = (pixel & rMask) * mColor.a;
-                    const unsigned a0 = (255 - mColor.a);
+                    const unsigned a0 = 255 - mColor.a;
 
                     const unsigned int a1 = a0 * bShift;
                     const unsigned int a2 = a0 * gShift;

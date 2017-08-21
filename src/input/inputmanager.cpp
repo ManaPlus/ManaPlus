@@ -816,8 +816,8 @@ bool InputManager::checkKey(const InputActionData *restrict const key) const
     if ((key == nullptr) || (key->condition & mMask) != key->condition)
         return false;
 
-    return (key->modKeyIndex == InputAction::NO_VALUE
-        || isActionActive0(key->modKeyIndex));
+    return key->modKeyIndex == InputAction::NO_VALUE
+        || isActionActive0(key->modKeyIndex);
 }
 
 bool InputManager::invokeKey(const InputActionData *restrict const key,

@@ -467,8 +467,8 @@ bool Viewport::leftMouseAction()
             case ActorType::SkillUnit:
                 if (!stopAttack)
                 {
-                    if ((localPlayer->withinAttackRange(mHoverBeing) ||
-                        inputManager.isActionActive(InputAction::ATTACK)))
+                    if (localPlayer->withinAttackRange(mHoverBeing) ||
+                        inputManager.isActionActive(InputAction::ATTACK))
                     {
                         validateSpeed();
                         if (!mStatsReUpdated && localPlayer != mHoverBeing)

@@ -101,7 +101,7 @@ namespace
                     return item1->getInvIndex() <
                         item2->getInvIndex();
                 }
-                return (name1 < name2);
+                return name1 < name2;
             }
     } itemAlphaInvSorter;
 
@@ -151,7 +151,7 @@ namespace
                         return pair1->mItem->getInvIndex() <
                             pair2->mItem->getInvIndex();
                     }
-                    return (name1 < name2);
+                    return name1 < name2;
                 }
                 return w1 < w2;
             }
@@ -181,7 +181,7 @@ namespace
                         return pair1->mItem->getInvIndex() <
                             pair2->mItem->getInvIndex();
                     }
-                    return (name1 < name2);
+                    return name1 < name2;
                 }
                 return c1 < c2;
             }
@@ -211,7 +211,7 @@ namespace
                         return pair1->mItem->getInvIndex() <
                             pair2->mItem->getInvIndex();
                     }
-                    return (name1 < name2);
+                    return name1 < name2;
                 }
                 return t1 < t2;
             }

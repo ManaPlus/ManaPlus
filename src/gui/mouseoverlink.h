@@ -39,10 +39,10 @@ struct MouseOverLink final
 
     bool operator() (const BrowserLink &link) const
     {
-        return (mX >= link.x1 &&
+        return mX >= link.x1 &&
             mX < link.x2 &&
             mY >= link.y1 &&
-            mY < link.y2);
+            mY < link.y2;
     }
     const int mX;
     const int mY;

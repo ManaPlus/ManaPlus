@@ -80,7 +80,8 @@ static bool wallpaperCompare(const WallpaperData &a, const WallpaperData &b)
     const int aa = a.width * a.height;
     const int ab = b.width * b.height;
 
-    return (aa > ab || (aa == ab && a.width > b.width));
+    return aa > ab ||
+        (aa == ab && a.width > b.width);
 }
 
 void Wallpaper::loadWallpapers()

@@ -349,7 +349,7 @@ bool Joystick::validate() const
     if (mCalibrating || !mEnabled || !mCalibrated)
         return false;
 
-    return (mUseInactive || settings.inputFocused);
+    return mUseInactive || settings.inputFocused;
 }
 
 void Joystick::handleRepeat(const int time)

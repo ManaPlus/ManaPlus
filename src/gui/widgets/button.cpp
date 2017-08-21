@@ -873,7 +873,7 @@ void Button::keyReleased(KeyEvent& event)
 
 bool Button::isPressed2() const
 {
-    return (mPressed || isPressed());
+    return mPressed || isPressed();
 }
 
 bool Button::isPressed() const

@@ -430,7 +430,7 @@ static int _SDL_gfxBlitRGBACall(const SDL_Surface *const src,
         return 1;
     }
 
-    return (0);
+    return 0;
 }
 
 int SDLgfxBlitRGBA(SDL_Surface *const src,

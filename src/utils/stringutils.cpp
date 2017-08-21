@@ -157,7 +157,10 @@ int compareStrI(const std::string &a, const std::string &b)
 
 bool isWordSeparator(const signed char chr)
 {
-    return (chr == ' ' || chr == ',' || chr == '.' || chr == '"');
+    return chr == ' ' ||
+        chr == ',' ||
+        chr == '.' ||
+        chr == '"';
 }
 
 const std::string findSameSubstring(const std::string &restrict str1,

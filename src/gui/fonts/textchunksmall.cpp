@@ -50,8 +50,9 @@ TextChunkSmall &TextChunkSmall::operator=(const TextChunkSmall &chunk)
 
 bool TextChunkSmall::operator==(const TextChunkSmall &chunk) const
 {
-    return (chunk.text == text && chunk.color == color
-            && chunk.color2 == color2);
+    return chunk.text == text &&
+        chunk.color == color &&
+        chunk.color2 == color2;
 }
 
 bool TextChunkSmall::operator<(const TextChunkSmall &chunk) const

@@ -104,7 +104,7 @@ void SpecialLayer::addRoad(const Path &road)
 {
     FOR_EACH (Path::const_iterator, i, road)
     {
-        const Position &pos = (*i);
+        const Position &pos = *i;
         MapItem *const item = getTile(pos.x, pos.y);
         if (item == nullptr)
             setTile(pos.x, pos.y, new MapItem(MapItemType::ROAD));

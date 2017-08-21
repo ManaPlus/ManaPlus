@@ -237,8 +237,8 @@ bool AnimatedSprite::updateCurrentAnimation(const unsigned int time) restrict2
             mFrameIndex = 0;
 
         mFrame = &mAnimation->mFrames[mFrameIndex];
-        if ((mFrame->type == FrameType::LABEL &&
-            !mFrame->nextAction.empty()))
+        if (mFrame->type == FrameType::LABEL &&
+            !mFrame->nextAction.empty())
         {
             fail = false;
         }

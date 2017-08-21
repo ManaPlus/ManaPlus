@@ -184,7 +184,7 @@ bool Widget::isFocused() const
     if (mFocusHandler == nullptr)
         return false;
 
-    return (mFocusHandler->isFocused(this));
+    return mFocusHandler->isFocused(this);
 }
 
 void Widget::setFocusable(const bool focusable)

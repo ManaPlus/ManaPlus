@@ -549,5 +549,5 @@ bool TradeWindow::checkItem(const Item *const item) const
 
 bool TradeWindow::isInpupFocused() const
 {
-    return ((mMoneyField != nullptr) && mMoneyField->isFocused());
+    return mMoneyField != nullptr && mMoneyField->isFocused();
 }

@@ -89,8 +89,8 @@ TextChunk::~TextChunk()
 
 bool TextChunk::operator==(const TextChunk &restrict chunk) const
 {
-    return (chunk.text == text && chunk.color == color
-            && chunk.color2 == color2);
+    return chunk.text == text && chunk.color == color
+            && chunk.color2 == color2;
 }
 
 void TextChunk::generate(TTF_Font *restrict const font,

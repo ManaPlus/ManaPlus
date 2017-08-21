@@ -95,11 +95,11 @@ class FindBeingFunctor final
             const Vector &pos = b->getPixelPositionF();
             // +++ probably here need use int positions and not float?
             // but for now correct int positions only in Being
-            return (CAST_U32(pos.x) / mapTileSize == x &&
+            return CAST_U32(pos.x) / mapTileSize == x &&
                 (CAST_U32(pos.y) / mapTileSize == y
                 || CAST_U32(pos.y) / mapTileSize == other_y) &&
                 b->isAlive() && (type == ActorType::Unknown
-                || b->getType() == type));
+                || b->getType() == type);
         }
 
         uint16_t x, y;
@@ -189,7 +189,7 @@ class SortBeingFunctor final
                     return w1 < w2;
             }
 
-            return (being1->getName() < being2->getName());
+            return being1->getName() < being2->getName();
         }
         StringIntMap *attackBeings;
         StringIntMap *priorityBeings;

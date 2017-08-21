@@ -558,7 +558,7 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
     const bool mod = (isStorageActive() &&
         inputManager.isActionActive(InputAction::STOP_ATTACK));
 
-    const bool mod2 = ((tradeWindow != nullptr) &&
+    const bool mod2 = (tradeWindow != nullptr &&
         tradeWindow->isWindowVisible() &&
         inputManager.isActionActive(InputAction::STOP_ATTACK));
 

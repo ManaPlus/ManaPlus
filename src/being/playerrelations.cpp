@@ -613,7 +613,7 @@ bool PlayerRelationsManager::isGoodName(Being *const being) const
     if (being == nullptr)
         return false;
     if (being->getGoodStatus() != -1)
-        return (being->getGoodStatus() == 1);
+        return being->getGoodStatus() == 1;
 
     const std::string &name = being->getName();
     const size_t size = name.size();

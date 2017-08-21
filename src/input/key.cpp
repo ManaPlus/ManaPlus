@@ -88,10 +88,11 @@ bool Key::isNumber() const
 
 bool Key::isLetter() const
 {
-    return (((mValue >= 65 && mValue <= 90)
-            || (mValue >= 97 && mValue <= 122)
-            || (mValue >= 192 && mValue <= 255))
-            && (mValue != 215) && (mValue != 247));
+    return ((mValue >= 65 && mValue <= 90) ||
+            (mValue >= 97 && mValue <= 122) ||
+            (mValue >= 192 && mValue <= 255)) &&
+            mValue != 215 &&
+            mValue != 247;
 }
 
 int Key::getValue() const
@@ -106,5 +107,5 @@ bool Key::operator==(const Key& key) const
 
 bool Key::operator!=(const Key& key) const
 {
-    return (mValue != key.mValue);
+    return mValue != key.mValue;
 }

@@ -181,14 +181,16 @@ class ServerInfo final
 
         bool operator==(const ServerInfo &other) const
         {
-            return (name == other.name && hostname == other.hostname &&
-                    port == other.port);
+            return name == other.name &&
+                hostname == other.hostname &&
+                port == other.port;
         }
 
         bool operator!=(const ServerInfo &other) const
         {
-            return (name != other.name || hostname != other.hostname ||
-                    port != other.port);
+            return name != other.name ||
+                hostname != other.hostname ||
+                port != other.port;
         }
 
         static ServerTypeT parseType(const std::string &serverType)
