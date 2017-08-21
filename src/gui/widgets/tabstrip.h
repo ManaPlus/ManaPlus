@@ -38,7 +38,7 @@ class TabStrip final : public WidgetGroup
         A_DELETE_COPY(TabStrip)
 
         Widget *createWidget(const std::string &name,
-                             const bool pressed = false)
+                             const bool pressed)
                              const override final A_WARN_UNUSED;
 
         void action(const ActionEvent &event) override final;
