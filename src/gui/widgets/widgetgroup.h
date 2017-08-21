@@ -49,7 +49,7 @@ class WidgetGroup notfinal : public Container,
         void widgetResized(const Event &event) override final A_CONST;
 
         virtual Widget *createWidget(const std::string &name,
-                                     const bool pressed = false)
+                                     const bool pressed)
                                      const A_WARN_UNUSED = 0;
 
     protected:
