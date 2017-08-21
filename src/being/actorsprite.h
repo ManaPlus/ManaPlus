@@ -36,6 +36,8 @@
 #include "enums/simpletypes/forcedisplay.h"
 #include "enums/simpletypes/isstart.h"
 
+#include "enums/resources/displaytype.h"
+
 #include "enums/resources/map/blocktype.h"
 
 #include "particle/particlelist.h"
@@ -228,7 +230,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         void setupSpriteDisplay(const SpriteDisplay &display,
                                 const ForceDisplay forceDisplay,
-                                const int imageType,
+                                const DisplayTypeT displayType,
                                 const std::string &color);
 
         /** Load the target cursors into memory */

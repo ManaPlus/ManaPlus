@@ -120,7 +120,7 @@ void FloorItem::postInit(Map *const map, int subX, int subY)
     mCursor = info.getPickupCursor();
     setupSpriteDisplay(info.getDisplay(),
         ForceDisplay_true,
-        1,
+        DisplayType::Floor,
         info.getDyeIconColorsString(mColor));
 }
 

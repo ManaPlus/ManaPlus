@@ -429,7 +429,7 @@ void ActorSprite::handleStatusEffect(const StatusEffect *const effect,
 
 void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
                                      const ForceDisplay forceDisplay,
-                                     const int imageType,
+                                     const DisplayTypeT displayType,
                                      const std::string &color)
 {
     clear();
@@ -457,14 +457,14 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         else
         {
             std::string imagePath;
-            switch (imageType)
+            switch (displayType)
             {
-                case 0:
+                case DisplayType::Item:
                 default:
                     imagePath = pathJoin(paths.getStringValue("itemIcons"),
                         display.image);
                     break;
-                case 1:
+                case DisplayType::Floor:
                     imagePath = pathJoin(paths.getStringValue("itemIcons"),
                         display.floor);
                     break;

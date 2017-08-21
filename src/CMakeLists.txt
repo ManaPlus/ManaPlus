@@ -697,6 +697,7 @@ SET(SRCS
     resources/iteminfo.cpp
     resources/itemmenuitem.h
     enums/resources/cursor.h
+    enums/resources/displaytype.h
     enums/resources/frametype.h
     enums/resources/imageposition.h
     enums/resources/imagetype.h

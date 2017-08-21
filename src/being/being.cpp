@@ -388,7 +388,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_true,
-                    0,
+                    DisplayType::Item,
                     mInfo->getColor(fromInt(mLook, ItemColor)));
                 mYDiff = mInfo->getSortOffsetY();
             }
@@ -400,7 +400,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_true,
-                    0,
+                    DisplayType::Item,
                     mInfo->getColor(fromInt(mLook, ItemColor)));
                 mYDiff = mInfo->getSortOffsetY();
             }
@@ -412,7 +412,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_true,
-                    0,
+                    DisplayType::Item,
                     mInfo->getColor(fromInt(mLook, ItemColor)));
                 mYDiff = mInfo->getSortOffsetY();
             }
@@ -424,7 +424,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_true,
-                    0,
+                    DisplayType::Item,
                     mInfo->getColor(fromInt(mLook, ItemColor)));
                 mYDiff = mInfo->getSortOffsetY();
             }
@@ -436,7 +436,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_false,
-                    0,
+                    DisplayType::Item,
                     mInfo->getColor(fromInt(mLook, ItemColor)));
                 mYDiff = mInfo->getSortOffsetY();
             }
@@ -448,7 +448,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                 setName(mInfo->getName());
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_false,
-                    0,
+                    DisplayType::Item,
                     mInfo->getColor(fromInt(mLook, ItemColor)));
                 mYDiff = mInfo->getSortOffsetY();
             }
@@ -459,7 +459,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             {
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_false,
-                    0,
+                    DisplayType::Item,
                     std::string());
                 mYDiff = mInfo->getSortOffsetY();
             }
@@ -470,7 +470,7 @@ void Being::setSubtype(const BeingTypeId subtype,
             {
                 setupSpriteDisplay(mInfo->getDisplay(),
                     ForceDisplay_false,
-                    0,
+                    DisplayType::Item,
                     std::string());
             }
             break;
