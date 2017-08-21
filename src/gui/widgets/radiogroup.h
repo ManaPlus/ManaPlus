@@ -34,7 +34,7 @@ class RadioGroup final : public WidgetGroup
         A_DELETE_COPY(RadioGroup)
 
         Widget *createWidget(const std::string &name,
-                             const bool pressed = false)
+                             const bool pressed)
                              const override final A_WARN_UNUSED;
 };
 
