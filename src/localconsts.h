@@ -300,6 +300,12 @@
 
 #endif  // ENABLE_CHECKS
 
+#if __cpp_if_constexpr >= 201606
+#define ifconstexpr if constexpr
+#else  // __cpp_if_constexpr >= 201606
+#define ifconstexpr if
+#endif  // __cpp_if_constexpr >= 201606
+
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)
 PRAGMA45(GCC diagnostic ignored "-Wswitch-default")

@@ -266,7 +266,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
         }
         else
         {
-            if (SDL_ALPHA_OPAQUE != 255)
+            ifconstexpr (SDL_ALPHA_OPAQUE != 255)
             {
                 hasAlpha = true;
                 memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
@@ -275,7 +275,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
     }
     else
     {
-        if (SDL_ALPHA_OPAQUE != 255)
+        ifconstexpr (SDL_ALPHA_OPAQUE != 255)
         {
             hasAlpha = true;
             memset(alphaChannel, SDL_ALPHA_OPAQUE, sz);
