@@ -305,6 +305,7 @@ unsigned int PlayerRelationsManager::checkPermissionSilently(
             case Relation::ENEMY2:
             default:
                 permissions &= mDefaultPermissions;  // narrow
+                break;
         }
 
         return permissions & flags;

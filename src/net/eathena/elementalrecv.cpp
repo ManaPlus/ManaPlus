@@ -52,6 +52,7 @@ void ElementalRecv::processElementalUpdateStatus(Net::MessageIn &msg)
         default:
             reportAlways("Unknown elemental stat %d",
                 sp);
+            break;
     }
 }
 

@@ -627,6 +627,7 @@ void ChatRecv::processChatRoomJoinFailed(Net::MessageIn &msg)
             break;
         default:
             UNIMPLEMENTEDPACKETFIELD(result);
+            break;
     }
 }
 

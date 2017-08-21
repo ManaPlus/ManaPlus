@@ -71,6 +71,7 @@ void MercenaryRecv::processMercenaryUpdate(Net::MessageIn &msg)
         default:
             reportAlways("Unknown mercenary stat %d",
                 sp);
+            break;
     }
 }
 
