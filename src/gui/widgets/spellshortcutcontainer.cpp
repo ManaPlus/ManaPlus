@@ -229,9 +229,6 @@ void SpellShortcutContainer::mousePressed(MouseEvent &event)
             mSpellClicked = true;
         event.consume();
     }
-    else if (eventButton == MouseButton::RIGHT)
-    {
-    }
     else if (eventButton == MouseButton::MIDDLE)
     {
         if ((spellShortcut == nullptr) || (spellManager == nullptr))

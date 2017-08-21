@@ -177,9 +177,9 @@ namespace FsDir
         const int64_t rc = cnt / size;
 #endif  // USE_FILE_FOPEN
 
+#ifndef USE_FILE_FOPEN
         if (rc != static_cast<int64_t>(maxnum))
         {
-#ifndef USE_FILE_FOPEN
             const int64_t pos = lseek(fd, 0, SEEK_CUR);
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
@@ -187,8 +187,8 @@ namespace FsDir
                 reportAlways("FsDir::fileLength error.");
                 return CAST_S32(rc);
             }
-#endif  // USE_FILE_FOPEN
         }
+#endif  // USE_FILE_FOPEN
         return CAST_S32(rc);
     }
 
@@ -213,9 +213,9 @@ namespace FsDir
         const int64_t rc = cnt / size;
 #endif  // USE_FILE_FOPEN
 
+#ifndef USE_FILE_FOPEN
         if (rc != static_cast<int64_t>(maxnum))
         {
-#ifndef USE_FILE_FOPEN
             const int64_t pos = lseek(fd, 0, SEEK_CUR);
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
@@ -223,8 +223,9 @@ namespace FsDir
                 reportAlways("FsDir::fileLength error.");
                 return CAST_S32(rc);
             }
-#endif  // USE_FILE_FOPEN
         }
+#endif  // USE_FILE_FOPEN
+
         return CAST_S32(rc);
     }
 

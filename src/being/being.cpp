@@ -3242,10 +3242,7 @@ void Being::setSpriteColor(const unsigned int slot,
     const int id = beingSlot.spriteId;
 
     // id = 0 means unequip
-    if (id == 0)
-    {
-    }
-    else
+    if (id != 0)
     {
         const ItemInfo &info = ItemDB::get(id);
         const std::string &restrict filename = info.getSprite(

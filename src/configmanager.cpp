@@ -386,12 +386,13 @@ void ConfigManager::checkConfigVersion()
         config.setValue("customcursor", false);
 #endif  // ANDROID
     }
+#ifdef ANDROID
     if (version < 4)
     {
-#ifdef ANDROID
         config.setValue("showDidYouKnow", false);
-#endif  // ANDROID
     }
+#endif  // ANDROID
+
     if (version < 5)
     {
         if (config.getIntValue("speech") == BeingSpeech::TEXT_OVERHEAD)
