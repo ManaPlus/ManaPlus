@@ -709,6 +709,8 @@ DefaultsData* getPathsDefaults()
     AddDEF("gmDefaultLevel", 60);
 #endif  // TMWA_SUPPORT
 
+    AddDEF("enableNewMailSystem", true);
+
     return configData;
 }
 

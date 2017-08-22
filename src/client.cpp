@@ -1737,6 +1737,7 @@ void Client::initPaths()
     settings.playerBadgeAtRightOffset = paths.getIntValue(
         "playerBadgeAtRightOffset");
     settings.unknownSkillsAutoTab = paths.getBoolValue("unknownSkillsAutoTab");
+    settings.enableNewMailSystem = paths.getBoolValue("enableNewMailSystem");
 }
 
 void Client::initTradeFilter()

@@ -92,7 +92,8 @@ class Settings final
             legacyEffects(true),
             enableRemoteCommands(true),
             uselonglivesprites(false),
-            unknownSkillsAutoTab(true)
+            unknownSkillsAutoTab(true),
+            enableNewMailSystem(true)
         { }
 
         A_DELETE_COPY(Settings)
@@ -157,6 +158,7 @@ class Settings final
         bool enableRemoteCommands;
         bool uselonglivesprites;
         bool unknownSkillsAutoTab;
+        bool enableNewMailSystem;
 };
 
 extern Settings settings;
