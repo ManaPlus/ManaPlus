@@ -56,6 +56,11 @@ class Mail2Handler notfinal
                               const std::string &body,
                               const int64_t &money) const = 0;
 
+        virtual bool queueSendMail(const std::string &to,
+                                   const std::string &title,
+                                   const std::string &body,
+                                   const int64_t &money) const = 0;
+
         virtual void nextPage(const MailOpenTypeT openType,
                               const int64_t mailId) const = 0;
 

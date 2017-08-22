@@ -24,10 +24,12 @@
 
 #include "being/localplayer.h"
 
+#include "net/eathena/mail2recv.h"
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
 #include "utils/checkutils.h"
+#include "utils/dtor.h"
 
 #include "resources/item/item.h"
 
@@ -47,6 +49,12 @@ Mail2Handler::Mail2Handler()
 Mail2Handler::~Mail2Handler()
 {
     mail2Handler = nullptr;
+    while (!Mail2Recv::mMailQueue.empty())
+    {
+        MailQueue *const mail = Mail2Recv::mMailQueue.front();
+        delete mail;
+        Mail2Recv::mMailQueue.pop();
+    }
 }
 
 void Mail2Handler::openWriteMail(const std::string &receiver) const
@@ -130,6 +138,23 @@ void Mail2Handler::sendMail(const std::string &to,
         outMsg.writeInt32(0, "to char id");
     outMsg.writeString(title, titleSz, "title");
     outMsg.writeString(body, bodySz, "body");
+}
+
+bool Mail2Handler::queueSendMail(const std::string &to,
+                                 const std::string &title,
+                                 const std::string &body,
+                                 const int64_t &money) const
+{
+    if (!Mail2Recv::mMailQueue.empty())
+        return false;
+    MailQueue *const mail = new MailQueue;
+    mail->to = to;
+    mail->title = title;
+    mail->body = body;
+    mail->money = money;
+    mail->sendMail = true;
+    Mail2Recv::mMailQueue.push(mail);
+    return true;
 }
 
 void Mail2Handler::nextPage(const MailOpenTypeT openType,

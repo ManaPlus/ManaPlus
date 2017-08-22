@@ -1465,6 +1465,7 @@ SRC = ${BASE_SRC} \
 	      enums/resources/item/itemtype.h \
 	      resources/itemtypemap.h \
 	      resources/itemtypemapdata.h \
+	      resources/mailqueue.h \
 	      resources/mapinfo.h \
 	      enums/resources/map/mapitemtype.h \
 	      enums/resources/map/maplayerposition.h \

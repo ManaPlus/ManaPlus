@@ -22,14 +22,27 @@
 
 #include "logger.h"
 
-#include "net/messagein.h"
+#include "notifymanager.h"
 
 #include "const/resources/item/cards.h"
+
+#include "enums/resources/notifytypes.h"
+
+#include "net/messagein.h"
+
+#include "net/eathena/mail2handler.h"
+
+#include "utils/checkutils.h"
 
 #include "debug.h"
 
 namespace EAthena
 {
+
+namespace Mail2Recv
+{
+    std::queue<MailQueue*> mMailQueue;
+}  // namespace Mail2Recv
 
 void Mail2Recv::processMailIcon(Net::MessageIn &msg)
 {
@@ -82,12 +95,39 @@ void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)
 
 void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readInt32("char id");
+    const int charId = msg.readInt32("char id");
     msg.readInt16("class");
     msg.readInt16("level");
     if (msg.getVersion() >= 20160316)
         msg.readString(24, "name");
+    // +++ in future if name received, need use it in map
+    if (mMailQueue.empty())
+    {
+        reportAlways("Mail2Recv::processCheckNameResult no names in queue."
+            "Char id: %d", charId);
+        return;
+    }
+    MailQueue *const mail = mMailQueue.front();
+    mMailQueue.pop();
+    if (charId == 0)
+    {
+        NotifyManager::notify(NotifyTypes::MAIL_NAME_VALIDATION_ERROR,
+            mail->to);
+        delete mail;
+        return;
+    }
+    if (mail->sendMail)
+    {
+        mail2Handler->sendMail(mail->to,
+            mail->title,
+            mail->body,
+            mail->money);
+    }
+    else
+    {
+        reportAlways("Not implemented yet.");
+    }
+    delete mail;
 }
 
 void Mail2Recv::processSendResult(Net::MessageIn &msg)

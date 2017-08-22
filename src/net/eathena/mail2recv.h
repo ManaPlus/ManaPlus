@@ -21,6 +21,10 @@
 #ifndef NET_EATHENA_MAIL2RECV_H
 #define NET_EATHENA_MAIL2RECV_H
 
+#include "resources/mailqueue.h"
+
+#include <queue>
+
 namespace Net
 {
     class MessageIn;
@@ -30,6 +34,8 @@ namespace EAthena
 {
     namespace Mail2Recv
     {
+        extern std::queue<MailQueue*> mMailQueue;
+
         void processMailIcon(Net::MessageIn &msg);
         void processOpenNewMailWindow(Net::MessageIn &msg);
         void processAddItemResult(Net::MessageIn &msg);

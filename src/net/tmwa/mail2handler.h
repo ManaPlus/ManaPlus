@@ -48,6 +48,11 @@ class Mail2Handler final : public Net::Mail2Handler
                       const std::string &body,
                       const int64_t &money) const override final;
 
+        bool queueSendMail(const std::string &to,
+                           const std::string &title,
+                           const std::string &body,
+                           const int64_t &money) const override final;
+
         void nextPage(const MailOpenTypeT openType,
                       const int64_t mailId) const override final;
 

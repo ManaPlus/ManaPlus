@@ -849,6 +849,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Unable to buy. Wrong items selected."),
             NotifyFlags::EMPTY},
+        {"mail name validation error",
+            // TRANSLATORS: notification message
+            N_("Mail destination name %s is wrong."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

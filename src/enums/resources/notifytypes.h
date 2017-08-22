@@ -233,6 +233,7 @@ namespace NotifyTypes
         BUY_FAILED_NPC_NOT_FOUND,
         BUY_FAILED_SYSTEM_ERROR,
         BUY_FAILED_WRONG_ITEM,
+        MAIL_NAME_VALIDATION_ERROR,
 
         TYPE_END
     };

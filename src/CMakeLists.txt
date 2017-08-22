@@ -707,6 +707,7 @@ SET(SRCS
     enums/resources/item/itemtype.h
     resources/itemtypemap.h
     resources/itemtypemapdata.h
+    resources/mailqueue.h
     resources/db/mapdb.cpp
     resources/db/mapdb.h
     resources/db/mercenarydb.cpp

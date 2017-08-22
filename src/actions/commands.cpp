@@ -63,6 +63,7 @@
 #include "net/guildhandler.h"
 #include "net/familyhandler.h"
 #include "net/homunculushandler.h"
+#include "net/mail2handler.h"
 #include "net/mailhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
@@ -555,22 +556,41 @@ impHandler(imitation)
 impHandler(sendMail)
 {
     const ServerTypeT type = Net::getNetworkType();
+#ifdef TMWA_SUPPORT
     if (type == ServerType::EATHENA || type == ServerType::EVOL2)
+#endif  // TMWA_SUPPORT
     {
         std::string name;
         std::string text;
 
         if (parse2Str(event.args, name, text))
         {
-            // TRANSLATORS: quick mail message caption
-            mailHandler->send(name, _("Quick message"), text);
+            if (settings.enableNewMailSystem)
+            {
+                if (mail2Handler->queueSendMail(name,
+                    // TRANSLATORS: quick mail message caption
+                    _("Quick message"),
+                    text,
+                    0))
+                {
+                    mail2Handler->requestCheckName(name);
+                }
+            }
+            else
+            {
+                // TRANSLATORS: quick mail message caption
+                mailHandler->send(name, _("Quick message"), text);
+            }
         }
     }
+#ifdef TMWA_SUPPORT
     else if (serverConfig.getBoolValue("enableManaMarketBot"))
     {
         chatHandler->privateMessage("ManaMarket", "!mail " + event.args);
         return true;
     }
+#endif  // TMWA_SUPPORT
+
     return false;
 }
 
