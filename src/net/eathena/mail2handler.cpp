@@ -242,4 +242,15 @@ void Mail2Handler::cancelWriteMail() const
     createOutPacket(CMSG_MAIL2_CANCEL_WRITE_MAIL);
 }
 
+void Mail2Handler::requestCheckName(const std::string &name) const
+{
+    if (packetVersion < 20140423 ||
+        serverVersion < 19)
+    {
+        return;
+    }
+    createOutPacket(CMSG_MAIL2_CHECK_NAME);
+    outMsg.writeString(name, 24, "name");
+}
+
 }  // namespace EAthena

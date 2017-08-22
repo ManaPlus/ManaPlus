@@ -71,8 +71,4 @@ void BeingHandler::requestNameByCharId(const int id A_UNUSED) const
 {
 }
 
-void BeingHandler::requestCheckName(const std::string &name A_UNUSED) const
-{
-}
-
 }  // namespace TmwAthena

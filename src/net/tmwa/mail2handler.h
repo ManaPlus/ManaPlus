@@ -71,6 +71,8 @@ class Mail2Handler final : public Net::Mail2Handler
         void closeMailBox() const override final;
 
         void cancelWriteMail() const override final;
+
+        void requestCheckName(const std::string &name) const override final;
 };
 
 }  // namespace TmwAthena

@@ -106,15 +106,4 @@ void BeingHandler::requestNameByCharId(const int id) const
     outMsg.writeInt32(id, "character id");
 }
 
-void BeingHandler::requestCheckName(const std::string &name) const
-{
-    if (packetVersion < 20140423 ||
-        serverVersion < 19)
-    {
-        return;
-    }
-    createOutPacket(CMSG_CHECK_NAME);
-    outMsg.writeString(name, 24, "name");
-}
-
 }  // namespace EAthena

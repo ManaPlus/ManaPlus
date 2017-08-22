@@ -317,7 +317,7 @@ packet(CMSG_BOOKING_REGISTER_REQ,         0x0000,   0, nullptr);
 packet(CMSG_BOOKING_SEARCH_REQ,           0x0000,   0, nullptr);
 packet(CMSG_BOOKING_DELETE_REQ,           0x0000,   0, nullptr);
 packet(CMSG_BOOKING_UPDATE_REQ,           0x0000,   0, nullptr);
-packet(CMSG_CHECK_NAME,                   0x0000,   0, nullptr);
+packet(CMSG_MAIL2_CHECK_NAME,             0x0000,   0, nullptr);
 packet(CMSG_MAIL2_OPEN_WRITE_MAIL,        0x0000,   0, nullptr);
 packet(CMSG_MAIL2_ADD_ITEM_TO_MAIL,       0x0000,   0, nullptr);
 packet(CMSG_MAIL2_REMOVE_ITEM_MAIL,       0x0000,   0, nullptr);
@@ -1434,7 +1434,7 @@ if (packetVersion >= 20140416)
 // 20140423
 if (packetVersion >= 20140423)
 {
-    packet(CMSG_CHECK_NAME,               0x0a13,  26, clif->pRodexCheckName);
+    packet(CMSG_MAIL2_CHECK_NAME,         0x0a13,  26, clif->pRodexCheckName);
 }
 
 // 20140605

@@ -49,8 +49,6 @@ class BeingHandler notfinal
         virtual void requestRanks(const RankT rank) const = 0;
 
         virtual void viewPlayerEquipment(const Being *const being) const = 0;
-
-        virtual void requestCheckName(const std::string &name) const = 0;
 };
 
 }  // namespace Net

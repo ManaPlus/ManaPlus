@@ -98,4 +98,8 @@ void Mail2Handler::cancelWriteMail() const
 {
 }
 
+void Mail2Handler::requestCheckName(const std::string &name A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -48,8 +48,6 @@ class BeingHandler final : public Ea::BeingHandler
                                  A_CONST;
 
         void requestNameByCharId(const int id) const override final A_CONST;
-
-        void requestCheckName(const std::string &name) const override final;
 };
 
 }  // namespace TmwAthena
