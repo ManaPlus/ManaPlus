@@ -300,11 +300,11 @@
 
 #endif  // ENABLE_CHECKS
 
-#if __cpp_if_constexpr >= 201606
+#if defined(__cpp_if_constexpr) && __cpp_if_constexpr >= 201606
 #define ifconstexpr if constexpr
-#else  // __cpp_if_constexpr >= 201606
+#else  // defined(__cpp_if_constexpr) && __cpp_if_constexpr >= 201606
 #define ifconstexpr if
-#endif  // __cpp_if_constexpr >= 201606
+#endif  // defined(__cpp_if_constexpr) && __cpp_if_constexpr >= 201606
 
 #ifdef USE_SDL2
 PRAGMA45(GCC diagnostic push)

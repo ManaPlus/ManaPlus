@@ -69,7 +69,7 @@ void ParticleEngine::setupEngine() restrict2
     ParticleEngine::maxCount = config.getIntValue("particleMaxCount");
     ParticleEngine::fastPhysics = fromInt(config.getIntValue(
         "particleFastPhysics"),
-        ParticlePhysics);
+        ParticlePhysicsT);
     ParticleEngine::emitterSkip =
         config.getIntValue("particleEmitterSkip") + 1;
     if (ParticleEngine::emitterSkip == 0)
