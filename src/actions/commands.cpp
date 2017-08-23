@@ -1638,7 +1638,19 @@ impHandler(mailTo)
 {
     if (mailWindow == nullptr)
         return false;
-    mailWindow->createMail(event.args);
+    const std::string args = event.args;
+    if (settings.enableNewMailSystem)
+    {
+        mail2Handler->queueCheckName(MailQueueType::EditMail,
+            args,
+            std::string(),
+            std::string(),
+            0);
+    }
+    else
+    {
+        mailWindow->createMail(args);
+    }
     return true;
 }
 

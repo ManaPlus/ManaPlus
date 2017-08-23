@@ -28,6 +28,8 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "gui/windows/mailwindow.h"
+
 #include "net/messagein.h"
 
 #include "net/eathena/mail2handler.h"
@@ -124,8 +126,10 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
                 mail->body,
                 mail->money);
             break;
-        case MailQueueType::Unknown:
         case MailQueueType::EditMail:
+            mailWindow->createMail(mail->to);
+            break;
+        case MailQueueType::Unknown:
         case MailQueueType::ValidateTO:
         default:
             reportAlways("Not implemented yet.");
