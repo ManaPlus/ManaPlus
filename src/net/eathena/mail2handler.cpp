@@ -116,8 +116,8 @@ void Mail2Handler::sendMail(const std::string &to,
         return;
 
     const std::string from = localPlayer->getName();
-    const int titleSz = CAST_S32(title.size());
-    const int bodySz = CAST_S32(body.size());
+    const int titleSz = CAST_S32(title.size()) + 1;
+    const int bodySz = CAST_S32(body.size()) + 1;
     int32_t sz = 2 + 2 + 24 + 24 + 8 + 2 + 2 + titleSz + bodySz;
     if (sz > 32767 - 4)
     {
@@ -132,8 +132,8 @@ void Mail2Handler::sendMail(const std::string &to,
     outMsg.writeString(to, 24, "to");
     outMsg.writeString(from, 24, "from");
     outMsg.writeInt64(money, "money");
-    outMsg.writeInt16(CAST_S16(title.size()), "title len");
-    outMsg.writeInt16(CAST_S16(body.size()), "body len");
+    outMsg.writeInt16(CAST_S16(titleSz), "title len");
+    outMsg.writeInt16(CAST_S16(bodySz), "body len");
     if (packetVersion >= 20160600)
         outMsg.writeInt32(0, "to char id");
     outMsg.writeString(title, titleSz, "title");
