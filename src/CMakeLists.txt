@@ -701,6 +701,7 @@ SET(SRCS
     enums/resources/frametype.h
     enums/resources/imageposition.h
     enums/resources/imagetype.h
+    enums/resources/mailqueuetype.h
     enums/resources/map/maplayertype.h
     enums/resources/item/itemdbtype.h
     enums/resources/item/itemsoundevent.h

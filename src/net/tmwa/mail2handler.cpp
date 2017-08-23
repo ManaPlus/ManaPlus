@@ -56,12 +56,12 @@ void Mail2Handler::sendMail(const std::string &to A_UNUSED,
 {
 }
 
-bool Mail2Handler::queueSendMail(const std::string &to A_UNUSED,
-                                 const std::string &title A_UNUSED,
-                                 const std::string &body A_UNUSED,
-                                 const int64_t &money A_UNUSED) const
+void Mail2Handler::queueCheckName(const MailQueueTypeT type A_UNUSED,
+                                  const std::string &to A_UNUSED,
+                                  const std::string &title A_UNUSED,
+                                  const std::string &body A_UNUSED,
+                                  const int64_t &money A_UNUSED) const
 {
-    return false;
 }
 
 void Mail2Handler::nextPage(const MailOpenTypeT openType A_UNUSED,

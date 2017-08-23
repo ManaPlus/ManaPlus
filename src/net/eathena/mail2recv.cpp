@@ -116,16 +116,20 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
         delete mail;
         return;
     }
-    if (mail->sendMail)
+    switch (mail->type)
     {
-        mail2Handler->sendMail(mail->to,
-            mail->title,
-            mail->body,
-            mail->money);
-    }
-    else
-    {
-        reportAlways("Not implemented yet.");
+        case MailQueueType::SendMail:
+            mail2Handler->sendMail(mail->to,
+                mail->title,
+                mail->body,
+                mail->money);
+            break;
+        case MailQueueType::Unknown:
+        case MailQueueType::EditMail:
+        case MailQueueType::ValidateTO:
+        default:
+            reportAlways("Not implemented yet.");
+            break;
     }
     delete mail;
 }

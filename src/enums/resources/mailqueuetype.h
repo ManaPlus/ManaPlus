@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2011-2017  The ManaPlus Developers
+ *  Copyright (C) 2012-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,32 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_MAILQUEUE_H
-#define RESOURCES_MAILQUEUE_H
+#ifndef ENUMS_RESOURCES_MAILQUEUETYPE_H
+#define ENUMS_RESOURCES_MAILQUEUETYPE_H
 
-#include "enums/resources/mailqueuetype.h"
+#include "enums/simpletypes/enumdefines.h"
 
-#include "localconsts.h"
-
-#include <string>
-
-struct MailQueue final
+enumStart(MailQueueType)
 {
-    MailQueue() :
-        to(),
-        title(),
-        body(),
-        money(0),
-        type(MailQueueType::Unknown)
-    { }
+    Unknown    = 0,
+    SendMail   = 1,
+    EditMail   = 2,
+    ValidateTO = 3
+}
+enumEnd(MailQueueType);
 
-    A_DELETE_COPY(MailQueue)
-
-    std::string to;
-    std::string title;
-    std::string body;
-    int money;
-    MailQueueTypeT type;
-};
-
-#endif  // RESOURCES_MAILQUEUE_H
+#endif  // ENUMS_RESOURCES_MAILQUEUETYPE_H

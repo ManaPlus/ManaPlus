@@ -140,21 +140,20 @@ void Mail2Handler::sendMail(const std::string &to,
     outMsg.writeString(body, bodySz, "body");
 }
 
-bool Mail2Handler::queueSendMail(const std::string &to,
-                                 const std::string &title,
-                                 const std::string &body,
-                                 const int64_t &money) const
+void Mail2Handler::queueCheckName(const MailQueueTypeT type,
+                                  const std::string &to,
+                                  const std::string &title,
+                                  const std::string &body,
+                                  const int64_t &money) const
 {
-    if (!Mail2Recv::mMailQueue.empty())
-        return false;
     MailQueue *const mail = new MailQueue;
     mail->to = to;
     mail->title = title;
     mail->body = body;
     mail->money = money;
-    mail->sendMail = true;
+    mail->type = type;
     Mail2Recv::mMailQueue.push(mail);
-    return true;
+    requestCheckName(to);
 }
 
 void Mail2Handler::nextPage(const MailOpenTypeT openType,

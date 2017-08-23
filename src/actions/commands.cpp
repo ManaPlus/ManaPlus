@@ -567,14 +567,12 @@ impHandler(sendMail)
         {
             if (settings.enableNewMailSystem)
             {
-                if (mail2Handler->queueSendMail(name,
+                mail2Handler->queueCheckName(MailQueueType::SendMail,
+                    name,
                     // TRANSLATORS: quick mail message caption
                     _("Quick message"),
                     text,
-                    0))
-                {
-                    mail2Handler->requestCheckName(name);
-                }
+                    0);
             }
             else
             {
