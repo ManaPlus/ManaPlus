@@ -22,6 +22,8 @@
 
 #include "gui/windows/itemamountwindow.h"
 
+#include "settings.h"
+
 #include "being/playerinfo.h"
 
 #include "input/keyboardconfig.h"
@@ -47,6 +49,7 @@
 #include "gui/widgets/slider.h"
 
 #include "net/inventoryhandler.h"
+#include "net/mail2handler.h"
 #include "net/npchandler.h"
 
 #include "resources/item/item.h"
@@ -104,8 +107,14 @@ void ItemAmountWindow::finish(Item *const item,
                 item->getInvIndex(), amount, InventoryType::Inventory);
             break;
         case ItemAmountWindowUsage::MailAdd:
-            if (mailEditWindow != nullptr)
+            if (settings.enableNewMailSystem)
+            {
+                mail2Handler->addItem(item, amount);
+            }
+            else if (mailEditWindow != nullptr)
+            {
                 mailEditWindow->addItem(item, amount);
+            }
             break;
         case ItemAmountWindowUsage::CraftAdd:
         {

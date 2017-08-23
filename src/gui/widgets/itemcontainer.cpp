@@ -23,6 +23,7 @@
 #include "gui/widgets/itemcontainer.h"
 
 #include "dragdrop.h"
+#include "settings.h"
 
 #include "being/playerinfo.h"
 
@@ -41,12 +42,14 @@
 #include "gui/windows/shopwindow.h"
 #include "gui/windows/shortcutwindow.h"
 #include "gui/windows/itemamountwindow.h"
+#include "gui/windows/maileditwindow.h"
 #include "gui/windows/npcdialog.h"
 
 #include "input/inputmanager.h"
 
 #include "net/inventoryhandler.h"
 #include "net/net.h"
+#include "net/mail2handler.h"
 #include "net/npchandler.h"
 #include "net/tradehandler.h"
 
@@ -845,14 +848,49 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             checkProtection = true;
             inventory = PlayerInfo::getInventory();
         }
-        else if (src == DragDropSource::Inventory
-                 && (dst == DragDropSource::Npc
-                 || dst == DragDropSource::Mail))
+        else if (src == DragDropSource::Inventory &&
+                 dst == DragDropSource::Npc)
         {
             inventory = PlayerInfo::getInventory();
             if (inventory != nullptr)
             {
                 Item *const item = inventory->getItem(dragDrop.getTag());
+                if (mInventory->addVirtualItem(
+                    item,
+                    getSlotByXY(event.getX(), event.getY()),
+                    1))
+                {
+                    inventory->virtualRemove(item, 1);
+                }
+            }
+            return;
+        }
+        else if (src == DragDropSource::Inventory &&
+                 dst == DragDropSource::Mail)
+        {
+            inventory = PlayerInfo::getInventory();
+            if (inventory == nullptr)
+                return;
+            Item *const item = inventory->getItem(dragDrop.getTag());
+            if (item == nullptr)
+                return;
+            if (settings.enableNewMailSystem)
+            {
+                if (item->getQuantity() > 1
+                    && !inputManager.isActionActive(InputAction::STOP_ATTACK))
+                {
+                    ItemAmountWindow::showWindow(
+                        ItemAmountWindowUsage::MailAdd,
+                        mailEditWindow,
+                        item);
+                }
+                else
+                {
+                    mail2Handler->addItem(item, 1);
+                }
+            }
+            else
+            {
                 if (mInventory->addVirtualItem(
                     item,
                     getSlotByXY(event.getX(), event.getY()),

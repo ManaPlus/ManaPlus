@@ -82,6 +82,7 @@ size_t InventoryHandler::getSize(const InventoryTypeT type) const
     switch (type)
     {
         case InventoryType::Inventory:
+        case InventoryType::Mail:
             return 100;
         case InventoryType::Storage:
             return 0;  // Comes from server after items
@@ -90,7 +91,6 @@ size_t InventoryHandler::getSize(const InventoryTypeT type) const
         case InventoryType::Npc:
         case InventoryType::Cart:
         case InventoryType::Vending:
-        case InventoryType::Mail:
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
         default:

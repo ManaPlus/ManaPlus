@@ -20,6 +20,8 @@
 
 #include "gui/windows/maileditwindow.h"
 
+#include "settings.h"
+
 #include "being/playerinfo.h"
 
 #include "gui/windows/inventorywindow.h"
@@ -67,11 +69,13 @@ MailEditWindow::MailEditWindow() :
     mSubjectField(new TextField(this)),
     mMoneyField(new IntTextField(this, 0, 0, 10000000)),
     mMessageField(new TextField(this)),
-    mInventory(new Inventory(InventoryType::Mail, 1)),
+    mInventory(new Inventory(InventoryType::Mail,
+        settings.enableNewMailSystem ? -1 : 1)),
     mItemContainer(new ItemContainer(this, mInventory)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
         fromBool(getOptionBool("showitemsbackground"), Opaque),
-        "mailedit_listbackground.xml"))
+        "mailedit_listbackground.xml")),
+    mUseMail2(settings.enableNewMailSystem)
 {
     setWindowName("MailEdit");
     setCloseButton(true);

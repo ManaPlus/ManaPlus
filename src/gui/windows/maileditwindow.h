@@ -72,6 +72,7 @@ class MailEditWindow final : public Window,
         Inventory *mInventory;
         ItemContainer *mItemContainer;
         ScrollArea *mItemScrollArea;
+        bool mUseMail2;
 };
 
 extern MailEditWindow *mailEditWindow;
