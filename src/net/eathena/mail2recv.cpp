@@ -119,45 +119,27 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
 
     if (res != 0)
     {
-        Inventory *const inv = PlayerInfo::getInventory();
-        std::string itemName;
-        const Item *const item = inv->getItem(index);
-        if (item == nullptr)
-        {
-            const ItemInfo &info = ItemDB::get(itemId);
-            itemName = info.getName();
-        }
-        else
-        {
-            itemName = item->getName();
-        }
-
         switch (res)
         {
             case 1:
                 NotifyManager::notify(
-                    NotifyTypes::MAIL_ATTACH_ITEM_WEIGHT_ERROR,
-                    itemName);
+                    NotifyTypes::MAIL_ATTACH_ITEM_WEIGHT_ERROR);
                 break;
             case 2:
                 NotifyManager::notify(
-                    NotifyTypes::MAIL_ATTACH_ITEM_FATAL_ERROR,
-                    itemName);
+                    NotifyTypes::MAIL_ATTACH_ITEM_FATAL_ERROR);
                 break;
             case 3:
                 NotifyManager::notify(
-                    NotifyTypes::MAIL_ATTACH_ITEM_NO_SPACE,
-                    itemName);
+                    NotifyTypes::MAIL_ATTACH_ITEM_NO_SPACE);
                 break;
             case 4:
                 NotifyManager::notify(
-                    NotifyTypes::MAIL_ATTACH_ITEM_NOT_TRADEABLE,
-                    itemName);
+                    NotifyTypes::MAIL_ATTACH_ITEM_NOT_TRADEABLE);
                 break;
             default:
                 NotifyManager::notify(
-                    NotifyTypes::MAIL_ATTACH_ITEM_UNKNOWN_ERROR,
-                    itemName);
+                    NotifyTypes::MAIL_ATTACH_ITEM_UNKNOWN_ERROR);
                 UNIMPLEMENTEDPACKETFIELD(res);
                 break;
         }

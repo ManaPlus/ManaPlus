@@ -855,24 +855,24 @@ namespace NotifyManager
             NotifyFlags::STRING},
         {"mail attach item weight error",
             // TRANSLATORS: notification message
-            N_("Item %s attach failed. Weight too big."),
-            NotifyFlags::STRING},
+            N_("Item attach failed. Weight too big."),
+            NotifyFlags::EMPTY},
         {"mail attach item fatal error",
             // TRANSLATORS: notification message
-            N_("Item %s attach failed. Fatal error."),
-            NotifyFlags::STRING},
+            N_("Item attach failed. Fatal error."),
+            NotifyFlags::EMPTY},
         {"mail attach item no space",
             // TRANSLATORS: notification message
-            N_("Item %s attach failed. No more space."),
-            NotifyFlags::STRING},
+            N_("Item attach failed. No more space."),
+            NotifyFlags::EMPTY},
         {"mail attach item non tradeable",
             // TRANSLATORS: notification message
-            N_("Item %s attach failed. Item on tradeable."),
-            NotifyFlags::STRING},
+            N_("Item attach failed. Item on tradeable."),
+            NotifyFlags::EMPTY},
         {"mail attach item unknown error",
             // TRANSLATORS: notification message
-            N_("Item %s attach failed. Unknown error."),
-            NotifyFlags::STRING},
+            N_("Item attach failed. Unknown error."),
+            NotifyFlags::EMPTY},
         {"mail remove item error",
             // TRANSLATORS: notification message
             N_("Item %s remove failed."),
