@@ -58,6 +58,8 @@ class MailEditWindow final : public Window,
 
         Inventory *getInventory() const A_WARN_UNUSED;
 
+        void updateItems();
+
     private:
         void sendMail();
 

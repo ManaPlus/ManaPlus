@@ -235,3 +235,8 @@ void MailEditWindow::sendMail()
             mMessageField->getText());
     }
 }
+
+void MailEditWindow::updateItems()
+{
+    mItemContainer->updateMatrix();
+}
