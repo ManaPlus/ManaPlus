@@ -220,6 +220,20 @@ void Inventory::setOptions(const int index,
         item1->setOptions(options);
 }
 
+void Inventory::setTag(const int index,
+                       const int tag)
+{
+    if (index < 0 || index >= CAST_S32(mSize))
+    {
+        reportAlways("Warning: invalid inventory index: %d",
+            index);
+        return;
+    }
+    Item *const item1 = mItems[index];
+    if (item1 != nullptr)
+        item1->setTag(tag);
+}
+
 void Inventory::clear()
 {
     for (unsigned i = 0; i < mSize; i++)

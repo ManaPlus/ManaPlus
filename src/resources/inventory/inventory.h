@@ -126,6 +126,9 @@ class Inventory notfinal
         void setOptions(const int index,
                         const ItemOptionsList *const options);
 
+        void setTag(const int index,
+                    const int tag);
+
         void moveItem(const int index1,
                       const int index2);
 
