@@ -28,6 +28,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "being/playerinfo.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/maileditwindow.h"
@@ -47,6 +49,7 @@
 #include "resources/item/itemoptionslist.h"
 
 #include "utils/checkutils.h"
+#include "utils/gettext.h"
 
 #include "debug.h"
 
@@ -116,8 +119,9 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
 
     if (res != 0)
     {
+        Inventory *const inv = PlayerInfo::getInventory();
         std::string itemName;
-        const Item *const item = inventory->getItem(index);
+        const Item *const item = inv->getItem(index);
         if (item == nullptr)
         {
             const ItemInfo &info = ItemDB::get(itemId);
@@ -177,16 +181,67 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
     }
     inventory->setCards(slot, cards, 4);
     inventory->setOptions(slot, options);
+    inventory->setTag(slot, index);
     delete options;
 }
 
 void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readUInt8("result");
-    msg.readInt16("index");
-    msg.readInt16("count");
+    const int result = msg.readUInt8("result");
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt16("count");
     msg.readInt16("weight");
+
+    if (result == 0)
+    {
+        Inventory *const inv = PlayerInfo::getInventory();
+        if (inv == nullptr)
+        {
+            reportAlways("Player inventory not exists");
+            return;
+        }
+        std::string itemName;
+        const Item *const item = inv->getItem(index);
+        if (item != nullptr)
+        {
+            itemName = item->getName();
+        }
+        else
+        {
+            // TRANSLATORS: unknown item name
+            itemName = _("Unknown item");
+        }
+
+        NotifyManager::notify(
+            NotifyTypes::MAIL_REMOVE_ITEM_ERROR,
+            itemName);
+        return;
+    }
+    if (mailEditWindow == nullptr)
+    {
+        reportAlways("Mail edit window not created");
+        return;
+    }
+    Inventory *const inventory = mailEditWindow->getInventory();
+    if (inventory == nullptr)
+    {
+        reportAlways("Mail edit window inventory not exists");
+        return;
+    }
+    const int index2 = inventory->findIndexByTag(index);
+    if (index2 == -1)
+    {
+        reportAlways("Item not exists in mail edit window.");
+        return;
+    }
+    Item *const item = inventory->getItem(index2);
+    if (item == nullptr)
+    {
+        reportAlways("Item not exists.");
+        return;
+    }
+
+    item->increaseQuantity(-amount);
 }
 
 void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)

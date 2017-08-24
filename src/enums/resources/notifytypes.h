@@ -239,6 +239,7 @@ namespace NotifyTypes
         MAIL_ATTACH_ITEM_NO_SPACE,
         MAIL_ATTACH_ITEM_NOT_TRADEABLE,
         MAIL_ATTACH_ITEM_UNKNOWN_ERROR,
+        MAIL_REMOVE_ITEM_ERROR,
 
         TYPE_END
     };

@@ -873,6 +873,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Item %s attach failed. Unknown error."),
             NotifyFlags::STRING},
+        {"mail remove item error",
+            // TRANSLATORS: notification message
+            N_("Item %s remove failed."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

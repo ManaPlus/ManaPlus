@@ -1019,12 +1019,28 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         }
         else if (src == DragDropSource::Mail)
         {
-            inventory = PlayerInfo::getInventory();
-            if (inventory != nullptr)
+            if (settings.enableNewMailSystem)
             {
+                if (mailEditWindow == nullptr)
+                    return;
+                inventory = mailEditWindow->getInventory();
+                if (inventory == nullptr)
+                    return;
                 const Item *const item = inventory->getItem(dragDrop.getTag());
-                if (item != nullptr)
-                    mInventory->removeItemAt(dragDrop.getTag());
+                if (item == nullptr)
+                    return;
+                mail2Handler->removeItem(item->getTag(),
+                    item->getQuantity());
+            }
+            else
+            {
+                inventory = PlayerInfo::getInventory();
+                if (inventory == nullptr)
+                    return;
+                const Item *const item = inventory->getItem(dragDrop.getTag());
+                if (item == nullptr)
+                    return;
+                mInventory->removeItemAt(dragDrop.getTag());
             }
             return;
         }

@@ -85,11 +85,9 @@ void Mail2Handler::addItem(const Item *const item,
     outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
-void Mail2Handler::removeItem(const Item *const item,
+void Mail2Handler::removeItem(const int index,
                               const int amount) const
 {
-    if (item == nullptr)
-        return;
     if (packetVersion < 20140416 ||
         (serverVersion < 19 && serverVersion != 0))
     {
@@ -97,8 +95,7 @@ void Mail2Handler::removeItem(const Item *const item,
     }
 
     createOutPacket(CMSG_MAIL2_REMOVE_ITEM_MAIL);
-    outMsg.writeInt16(CAST_S16(
-        item->getInvIndex() + INVENTORY_OFFSET), "index");
+    outMsg.writeInt16(CAST_S16(index + INVENTORY_OFFSET), "index");
     outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 
