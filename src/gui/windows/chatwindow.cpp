@@ -2166,3 +2166,9 @@ void ChatWindow::joinRoom(const bool isJoin)
         tab->setCaption(name);
     }
 }
+
+void ChatWindow::scheduleDelete()
+{
+    DebugMessageListener::removeListener(this);
+    Window::scheduleDelete();
+}

@@ -308,6 +308,8 @@ class ChatWindow final : public Window,
 
         void debugMessage(const std::string &msg) override final;
 
+        void scheduleDelete() override final;
+
 #ifdef USE_PROFILER
         void logicChildren();
 #endif  // USE_PROFILER
