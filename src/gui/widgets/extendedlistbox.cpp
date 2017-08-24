@@ -240,7 +240,7 @@ int ExtendedListBox::getSelectionByMouse(const int y) const
     for (size_t f = 0; f < itemsSz; f ++)
     {
         const ExtendedListBoxItem &item = mListItems[f];
-        const int y2 = item.y;
+        const int y2 = item.y + mPadding;
         if (y2 <= y && y2 + height > y)
             return item.row;
     }
@@ -249,7 +249,7 @@ int ExtendedListBox::getSelectionByMouse(const int y) const
     for (size_t f = 0; f < selSz; f ++)
     {
         const ExtendedListBoxItem &item = mSelectedItems[f];
-        const int y2 = item.y;
+        const int y2 = item.y + mPadding;
         if (y2 <= y && y2 + height > y)
             return item.row;
     }
