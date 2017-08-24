@@ -36,10 +36,13 @@
 
 #include "resources/item/item.h"
 
+#include "net/mail2handler.h"
 #include "net/mailhandler.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+
+#include <climits>
 
 #include "debug.h"
 
@@ -67,7 +70,8 @@ MailEditWindow::MailEditWindow() :
     mMessageLabel(new Label(this, _("Message:"))),
     mToField(new TextField(this)),
     mSubjectField(new TextField(this)),
-    mMoneyField(new IntTextField(this, 0, 0, 10000000)),
+    mMoneyField(new IntTextField(this, 0, 0,
+        settings.enableNewMailSystem ? INT_MAX : 10000000)),
     mMessageField(new TextField(this)),
     mInventory(new Inventory(InventoryType::Mail,
         settings.enableNewMailSystem ? -1 : 1)),
@@ -135,34 +139,7 @@ void MailEditWindow::action(const ActionEvent &event)
     }
     else if (eventId == "send")
     {
-        const int money = mMoneyField->getValue();
-        if (money != 0)
-            mailHandler->setAttachMoney(money);
-        const Item *const tempItem = mInventory->getItem(0);
-        if (tempItem != nullptr)
-        {
-            const Inventory *const inv = PlayerInfo::getInventory();
-            if (inv != nullptr)
-            {
-                const Item *const item = inv->findItem(
-                    tempItem->getId(), ItemColor_one);
-                if (item != nullptr)
-                {
-                    mailHandler->setAttach(item->getInvIndex(),
-                        tempItem->getQuantity());
-                }
-            }
-        }
-
-        std::string subject = mSubjectField->getText();
-        if (subject.empty())
-        {
-            // TRANSLATORS: empty mail message subject
-            subject.append(_("empty subject"));
-        }
-        mailHandler->send(mToField->getText(),
-            subject,
-            mMessageField->getText());
+        sendMail();
     }
     else if (eventId == "add")
     {
@@ -216,4 +193,46 @@ void MailEditWindow::close()
 Inventory *MailEditWindow::getInventory() const
 {
     return mInventory;
+}
+
+void MailEditWindow::sendMail()
+{
+    const int money = mMoneyField->getValue();
+    std::string subject = mSubjectField->getText();
+    if (subject.empty())
+    {
+        // TRANSLATORS: empty mail message subject
+        subject.append(_("empty subject"));
+    }
+    if (mUseMail2)
+    {
+        mail2Handler->sendMail(mToField->getText(),
+            subject,
+            mMessageField->getText(),
+            money);
+    }
+    else
+    {
+        if (money != 0)
+            mailHandler->setAttachMoney(money);
+        const Item *const tempItem = mInventory->getItem(0);
+        if (tempItem != nullptr)
+        {
+            const Inventory *const inv = PlayerInfo::getInventory();
+            if (inv != nullptr)
+            {
+                const Item *const item = inv->findItem(
+                    tempItem->getId(), ItemColor_one);
+                if (item != nullptr)
+                {
+                    mailHandler->setAttach(item->getInvIndex(),
+                        tempItem->getQuantity());
+                }
+            }
+        }
+
+        mailHandler->send(mToField->getText(),
+            subject,
+            mMessageField->getText());
+    }
 }

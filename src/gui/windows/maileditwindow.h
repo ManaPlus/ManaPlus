@@ -59,6 +59,8 @@ class MailEditWindow final : public Window,
         Inventory *getInventory() const A_WARN_UNUSED;
 
     private:
+        void sendMail();
+
         Button *mSendButton;
         Button *mCloseButton;
         Button *mAddButton;
