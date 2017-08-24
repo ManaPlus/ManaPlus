@@ -1173,7 +1173,8 @@ int ItemContainer::updateMatrix()
 
         if (item == nullptr ||
             item->getId() == 0 ||
-            !item->isHaveTag(mTag))
+            !item->isHaveTag(mTag) ||
+            item->getQuantity() == 0)
         {
             if (mShowEmptyRows == ShowEmptyRows_true)
                 sortedItems.push_back(new ItemIdPair(idx, nullptr));
