@@ -56,6 +56,8 @@ class MailEditWindow final : public Window,
 
         void close() override final;
 
+        Inventory *getInventory() const A_WARN_UNUSED;
+
     private:
         Button *mSendButton;
         Button *mCloseButton;

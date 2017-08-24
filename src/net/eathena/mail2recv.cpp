@@ -20,19 +20,31 @@
 
 #include "net/eathena/mail2recv.h"
 
+#include "itemcolormanager.h"
 #include "logger.h"
-
 #include "notifymanager.h"
+
+#include "const/net/inventory.h"
 
 #include "const/resources/item/cards.h"
 
 #include "enums/resources/notifytypes.h"
 
+#include "gui/windows/maileditwindow.h"
 #include "gui/windows/mailwindow.h"
 
 #include "net/messagein.h"
 
 #include "net/eathena/mail2handler.h"
+
+#include "resources/iteminfo.h"
+
+#include "resources/db/itemdb.h"
+
+#include "resources/inventory/inventory.h"
+
+#include "resources/item/item.h"
+#include "resources/item/itemoptionslist.h"
 
 #include "utils/checkutils.h"
 
@@ -61,22 +73,25 @@ void Mail2Recv::processOpenNewMailWindow(Net::MessageIn &msg)
 
 void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readUInt8("result");
-    msg.readInt16("index");
-    msg.readInt16("count");
-    msg.readInt16("itid");
-    msg.readUInt8("type");
-    msg.readUInt8("identify");
-    msg.readUInt8("damaged");
-    msg.readUInt8("refine");
+    const int res = msg.readUInt8("result");
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    const int amount = msg.readInt16("amount");
+    const int itemId = msg.readInt16("item id");
+    const ItemTypeT itemType = static_cast<ItemTypeT>(
+        msg.readUInt8("item type"));
+    const uint8_t identify = msg.readUInt8("identify");
+    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
+    const uint8_t refine = msg.readUInt8("refine");
+    int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        msg.readUInt16("card");
+        cards[f] = msg.readUInt16("card");
+    ItemOptionsList *options = new ItemOptionsList(5);
     for (int f = 0; f < 5; f ++)
     {
-        msg.readInt16("option index");
-        msg.readInt16("option value");
+        const uint16_t idx = msg.readInt16("option index");
+        const uint16_t val = msg.readInt16("option value");
         msg.readUInt8("option param");
+        options->add(idx, val);
     }
     msg.readInt16("weight");
     msg.readUInt8("unknown 1");
@@ -84,6 +99,85 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
     msg.readUInt8("unknown 3");
     msg.readUInt8("unknown 4");
     msg.readUInt8("unknown 5");
+
+    if (mailEditWindow == nullptr)
+    {
+        reportAlways("Mail edit window not created");
+        delete options;
+        return;
+    }
+    Inventory *const inventory = mailEditWindow->getInventory();
+    if (inventory == nullptr)
+    {
+        reportAlways("Mail edit window inventory not exists");
+        delete options;
+        return;
+    }
+
+    if (res != 0)
+    {
+        std::string itemName;
+        const Item *const item = inventory->getItem(index);
+        if (item == nullptr)
+        {
+            const ItemInfo &info = ItemDB::get(itemId);
+            itemName = info.getName();
+        }
+        else
+        {
+            itemName = item->getName();
+        }
+
+        switch (res)
+        {
+            case 1:
+                NotifyManager::notify(
+                    NotifyTypes::MAIL_ATTACH_ITEM_WEIGHT_ERROR,
+                    itemName);
+                break;
+            case 2:
+                NotifyManager::notify(
+                    NotifyTypes::MAIL_ATTACH_ITEM_FATAL_ERROR,
+                    itemName);
+                break;
+            case 3:
+                NotifyManager::notify(
+                    NotifyTypes::MAIL_ATTACH_ITEM_NO_SPACE,
+                    itemName);
+                break;
+            case 4:
+                NotifyManager::notify(
+                    NotifyTypes::MAIL_ATTACH_ITEM_NOT_TRADEABLE,
+                    itemName);
+                break;
+            default:
+                NotifyManager::notify(
+                    NotifyTypes::MAIL_ATTACH_ITEM_UNKNOWN_ERROR,
+                    itemName);
+                UNIMPLEMENTEDPACKETFIELD(res);
+                break;
+        }
+        delete options;
+        return;
+    }
+    const int slot = inventory->addItem(itemId,
+        itemType,
+        amount,
+        refine,
+        ItemColorManager::getColorFromCards(&cards[0]),
+        fromBool(identify, Identified),
+        damaged,
+        Favorite_false,
+        Equipm_false,
+        Equipped_false);
+    if (slot == -1)
+    {
+        delete options;
+        return;
+    }
+    inventory->setCards(slot, cards, 4);
+    inventory->setOptions(slot, options);
+    delete options;
 }
 
 void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)

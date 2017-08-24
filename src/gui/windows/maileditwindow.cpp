@@ -212,3 +212,8 @@ void MailEditWindow::close()
 {
     scheduleDelete();
 }
+
+Inventory *MailEditWindow::getInventory() const
+{
+    return mInventory;
+}

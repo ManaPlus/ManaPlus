@@ -853,6 +853,26 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Mail destination name %s is wrong."),
             NotifyFlags::STRING},
+        {"mail attach item weight error",
+            // TRANSLATORS: notification message
+            N_("Item %s attach failed. Weight too big."),
+            NotifyFlags::STRING},
+        {"mail attach item fatal error",
+            // TRANSLATORS: notification message
+            N_("Item %s attach failed. Fatal error."),
+            NotifyFlags::STRING},
+        {"mail attach item no space",
+            // TRANSLATORS: notification message
+            N_("Item %s attach failed. No more space."),
+            NotifyFlags::STRING},
+        {"mail attach item non tradeable",
+            // TRANSLATORS: notification message
+            N_("Item %s attach failed. Item on tradeable."),
+            NotifyFlags::STRING},
+        {"mail attach item unknown error",
+            // TRANSLATORS: notification message
+            N_("Item %s attach failed. Unknown error."),
+            NotifyFlags::STRING},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
