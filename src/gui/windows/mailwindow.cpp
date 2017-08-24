@@ -20,8 +20,11 @@
 
 #include "gui/windows/mailwindow.h"
 
+#include "settings.h"
+
 #include "enums/gui/layouttype.h"
 
+#include "net/mail2handler.h"
 #include "net/mailhandler.h"
 
 #include "gui/models/extendednamesmodel.h"
@@ -70,7 +73,8 @@ MailWindow::MailWindow() :
     // TRANSLATORS: mail window button
     mReturnButton(new Button(this, _("Return"), "return", this)),
     // TRANSLATORS: mail window button
-    mOpenButton(new Button(this, _("Open"), "open", this))
+    mOpenButton(new Button(this, _("Open"), "open", this)),
+    mUseMail2(settings.enableNewMailSystem)
 {
     setWindowName("Mail");
     setCloseButton(true);
@@ -119,7 +123,7 @@ void MailWindow::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "refresh")
     {
-        mailHandler->refresh();
+        refreshMails();
     }
     else if (eventId == "new")
     {
@@ -284,7 +288,15 @@ void MailWindow::mouseClicked(MouseEvent &event)
 
 void MailWindow::postConnection()
 {
-    mailHandler->refresh();
+    refreshMails();
+}
+
+void MailWindow::refreshMails()
+{
+    if (mUseMail2)
+        mail2Handler->refreshMailList(MailOpenType::Mail, 0);
+    else
+        mailHandler->refresh();
 }
 
 void MailWindow::createMail(const std::string &to)

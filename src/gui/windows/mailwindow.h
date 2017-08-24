@@ -68,6 +68,8 @@ class MailWindow final : public Window,
         void createMail(const std::string &to);
 
     private:
+        void refreshMails();
+
         STD_VECTOR<MailMessage*> mMessages;
         std::map<int, MailMessage*> mMessagesMap;
         ExtendedNamesModel *mMailModel;
@@ -78,6 +80,7 @@ class MailWindow final : public Window,
         Button *mDeleteButton;
         Button *mReturnButton;
         Button *mOpenButton;
+        bool mUseMail2;
 };
 
 extern MailWindow *mailWindow;
