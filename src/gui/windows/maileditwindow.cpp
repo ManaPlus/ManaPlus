@@ -100,10 +100,9 @@ MailEditWindow::MailEditWindow() :
     mToField->setWidth(100);
     mSubjectField->setWidth(100);
     mMessageField->setWidth(100);
-    mItemScrollArea->setHeight(70);
+    mItemScrollArea->setHeight(100);
 
     mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    mItemScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     placer(0, 0, mToLabel);
     placer(1, 0, mToField, 3);
