@@ -877,6 +877,22 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Item %s remove failed."),
             NotifyFlags::STRING},
+        {"mail send fatal error",
+            // TRANSLATORS: notification message
+            N_("Mail send failed. Fatal error."),
+            NotifyFlags::EMPTY},
+        {"mail send count error",
+            // TRANSLATORS: notification message
+            N_("Mail send failed. Too mail mails sent."),
+            NotifyFlags::EMPTY},
+        {"mail send item error",
+            // TRANSLATORS: notification message
+            N_("Mail send failed. Wrong attach found."),
+            NotifyFlags::EMPTY},
+        {"mail send receiver error",
+            // TRANSLATORS: notification message
+            N_("Mail send failed. Receiver name wrong or not checked."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

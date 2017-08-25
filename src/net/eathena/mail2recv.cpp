@@ -295,8 +295,30 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
 
 void Mail2Recv::processSendResult(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readUInt8("result");
+    const int res = msg.readUInt8("result");
+    switch (res)
+    {
+        case 0:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_OK);
+            if (mailEditWindow != nullptr)
+                mailEditWindow->close();
+            break;
+        case 1:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_FATAL_ERROR);
+            break;
+        case 2:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_COUNT_ERROR);
+            break;
+        case 3:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_ITEM_ERROR);
+            break;
+        case 4:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_RECEIVER_ERROR);
+            break;
+        default:
+            NotifyManager::notify(NotifyTypes::MAIL_SEND_ERROR);
+            break;
+    }
 }
 
 void Mail2Recv::processMailListPage(Net::MessageIn &msg)

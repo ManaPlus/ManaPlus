@@ -191,6 +191,7 @@ void MailEditWindow::close()
 {
     if (mUseMail2)
         mail2Handler->cancelWriteMail();
+    mailEditWindow = nullptr;
     scheduleDelete();
 }
 
