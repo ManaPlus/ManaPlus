@@ -23,6 +23,8 @@
 
 #include "const/resources/item/cards.h"
 
+#include "enums/net/mailmessagetype.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -41,9 +43,9 @@ struct MailMessage final
         itemAmount(0),
         itemId(0),
         itemType(0),
+        type(MailMessageType::Text),
         itemAttribute(0U),
         itemRefine(0U),
-        type(0U),
         read(false),
         itemIdentify(false)
     {
@@ -65,9 +67,9 @@ struct MailMessage final
     int itemAmount;
     int itemId;
     int itemType;
+    MailMessageType::Type type;
     uint8_t itemAttribute;
     uint8_t itemRefine;
-    uint8_t type;
     bool read;
     bool itemIdentify;
 };

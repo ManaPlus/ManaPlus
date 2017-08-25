@@ -169,7 +169,7 @@ void MailWindow::clear()
     mListBox->setSelected(-1);
 }
 
-std::string MailWindow::getMailHeader(MailMessage *const message)
+std::string MailWindow::getMailHeader(MailMessage *const message) const
 {
     if (mUseMail2)
     {
@@ -178,6 +178,16 @@ std::string MailWindow::getMailHeader(MailMessage *const message)
             header.append(" ");
         else
             header.append("U");
+        const MailMessageType::Type type = message->type;
+        if ((type & MailMessageType::Money) != 0)
+            header.append("M");
+        else
+            header.append(" ");
+        if ((type & MailMessageType::Item) != 0)
+            header.append("I");
+        else
+            header.append(" ");
+        header.append(" ").append(message->title);
         return STD_MOVE(header);
     }
     else

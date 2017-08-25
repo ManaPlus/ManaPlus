@@ -297,7 +297,8 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
         MailMessage *const mail = new MailMessage;
         mail->id = msg.readInt64("mail id");
         mail->read = msg.readUInt8("is read") != 0U ? true : false;
-        mail->type = msg.readUInt8("type");
+        mail->type = static_cast<MailMessageType::Type>(
+            msg.readUInt8("type"));
         mail->sender = msg.readString(24, "sender name");
         mail->time = msg.readInt32("reg time");
         mail->strTime = timeToStr(mail->time);
