@@ -27,7 +27,10 @@
 
 class Button;
 class Icon;
+class Inventory;
+class ItemContainer;
 class Label;
+class ScrollArea;
 
 struct MailMessage;
 
@@ -35,13 +38,18 @@ class MailViewWindow final : public Window,
                              public ActionListener
 {
     public:
-        explicit MailViewWindow(const MailMessage *const message) A_NONNULL(2);
+        MailViewWindow(const MailMessage *const message,
+                       const int itemsCount) A_NONNULL(2);
 
         A_DELETE_COPY(MailViewWindow)
 
         ~MailViewWindow();
 
         void action(const ActionEvent &event) override final;
+
+        Inventory *getInventory() const A_WARN_UNUSED;
+
+        void updateItems();
 
     private:
         const MailMessage *mMessage;
@@ -55,8 +63,10 @@ class MailViewWindow final : public Window,
         Label *mFromLabel;
         Label *mSubjectLabel;
         Label *mMessageLabel;
-        Label *mItemLabel;
-        Icon *mIcon;
+        Inventory *mInventory;
+        ItemContainer *mItemContainer;
+        ScrollArea *mItemScrollArea;
+        bool mUseMail2;
 };
 
 extern MailViewWindow *mailViewWindow;

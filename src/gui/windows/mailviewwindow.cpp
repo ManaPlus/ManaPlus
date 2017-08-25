@@ -21,6 +21,7 @@
 #include "gui/windows/mailviewwindow.h"
 
 #include "configuration.h"
+#include "settings.h"
 
 #include "net/mailhandler.h"
 
@@ -32,8 +33,9 @@
 #include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/createwidget.h"
-#include "gui/widgets/icon.h"
+#include "gui/widgets/itemcontainer.h"
 #include "gui/widgets/label.h"
+#include "gui/widgets/scrollarea.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -41,6 +43,8 @@
 #include "resources/iteminfo.h"
 
 #include "resources/image/image.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "resources/loaders/imageloader.h"
 
@@ -50,7 +54,8 @@
 
 MailViewWindow *mailViewWindow = nullptr;
 
-MailViewWindow::MailViewWindow(const MailMessage *const message) :
+MailViewWindow::MailViewWindow(const MailMessage *const message,
+                               const int itemsCount) :
     // TRANSLATORS: mail view window name
     Window(_("View mail"), Modal_false, nullptr, "mailview.xml"),
     ActionListener(),
@@ -76,9 +81,12 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     // TRANSLATORS: mail view window label
     mMessageLabel(new Label(this, strprintf("%s %s", _("Message:"),
         message->text.c_str()))),
-    // TRANSLATORS: mail view window label
-    mItemLabel(nullptr),
-    mIcon(nullptr)
+    mInventory(new Inventory(InventoryType::Mail, itemsCount)),
+    mItemContainer(new ItemContainer(this, mInventory)),
+    mItemScrollArea(new ScrollArea(this, mItemContainer,
+        fromBool(getOptionBool("showitemsbackground"), Opaque),
+        "mailedit_listbackground.xml")),
+    mUseMail2(settings.enableNewMailSystem)
 {
     setWindowName("MailView");
     setCloseButton(true);
@@ -91,6 +99,10 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
     setMinWidth(200);
     setMinHeight(100);
     center();
+    mItemScrollArea->setHeight(100);
+    mItemScrollArea->setWidth(100);
+
+    mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     ContainerPlacer placer;
     placer = getPlacer(0, 0);
@@ -107,35 +119,14 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
         placer(0, n++, mMoneyLabel);
     }
     placer(0, n++, mMessageLabel);
-    if (message->itemId != 0)
-    {
-        const ItemInfo &item = ItemDB::get(message->itemId);
-        // +++ need use message->cards and ItemColorManager for colors
-        Image *const image = Loader::getImage(combineDye2(
-            pathJoin(paths.getStringValue("itemIcons"),
-            item.getDisplay().image),
-            item.getDyeIconColorsString(ItemColor_one)));
+    placer(0, n++, mItemScrollArea);
 
-        mIcon = new Icon(this, image);
-        if (message->itemAmount != 1)
-        {
-            mItemLabel = new Label(this, std::string(
-                // TRANSLATORS: mail view item label
-                _("Item:")).append(
-                " (").append(
-                toString(message->itemAmount)).append(
-                ") "));
-        }
-        else
-        {
-            mItemLabel = new Label(this,
-                // TRANSLATORS: mail view item label
-                std::string(_("Item:")).append(" "));
-        }
-        placer(0, n, mItemLabel);
-        placer(1, n++, mIcon);
-    }
-    if ((message->money != 0) || (message->itemId != 0))
+    logger->log("sizes: %d, %d",
+        mItemContainer->getWidth(),
+        mItemContainer->getHeight());
+
+    if (message->money != 0 ||
+        message->itemId != 0)
     {
         mGetAttachButton = new Button(this,
             // TRANSLATORS: mail view attach button
@@ -158,13 +149,11 @@ MailViewWindow::MailViewWindow(const MailMessage *const message) :
 
 MailViewWindow::~MailViewWindow()
 {
-    if (mIcon != nullptr)
-    {
-        Image *const image = mIcon->getImage();
-        if (image != nullptr)
-            image->decRef();
-    }
-    delete2(mMessage);
+    if (mUseMail2)
+        mMessage = nullptr;
+    else
+        delete2(mMessage);
+    delete2(mInventory);
     mailViewWindow = nullptr;
 }
 
@@ -202,4 +191,14 @@ void MailViewWindow::action(const ActionEvent &event)
         mailEditWindow->setMessage(">" + mMessage->text);
         scheduleDelete();
     }
+}
+
+Inventory *MailViewWindow::getInventory() const
+{
+    return mInventory;
+}
+
+void MailViewWindow::updateItems()
+{
+    mItemContainer->updateMatrix();
 }

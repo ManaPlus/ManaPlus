@@ -140,7 +140,10 @@ void MailWindow::action(const ActionEvent &event)
         if (sel < 0)
             return;
         const MailMessage *const mail = mMessages[sel];
-        mailHandler->readMessage(mail->id);
+        if (mUseMail2)
+            mail2Handler->readMail(mOpenType, mail->id);
+        else
+            mailHandler->readMessage(mail->id);
     }
     else if (eventId == "delete")
     {
@@ -234,7 +237,8 @@ void MailWindow::removeMail(const int64_t id)
     }
 }
 
-void MailWindow::showMessage(MailMessage *const mail)
+void MailWindow::showMessage(MailMessage *const mail,
+                             const int itemsCount)
 {
     if (mail == nullptr)
         return;
@@ -247,7 +251,8 @@ void MailWindow::showMessage(MailMessage *const mail)
         mail->strTime = mail2->strTime;
     }
     delete mailViewWindow;
-    CREATEWIDGETV(mailViewWindow, MailViewWindow, mail);
+    CREATEWIDGETV(mailViewWindow, MailViewWindow, mail,
+        itemsCount);
 }
 
 void MailWindow::viewNext(const int64_t id)
@@ -336,4 +341,12 @@ void MailWindow::createMail(const std::string &to)
 
     CREATEWIDGETV0(mailEditWindow, MailEditWindow);
     mailEditWindow->setTo(to);
+}
+
+MailMessage *MailWindow::findMail(const int64_t id)
+{
+    std::map<int64_t, MailMessage*>::iterator it = mMessagesMap.find(id);
+    if (it != mMessagesMap.end())
+        return (*it).second;
+    return nullptr;
 }

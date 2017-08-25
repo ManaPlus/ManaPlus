@@ -55,7 +55,8 @@ class MailWindow final : public Window,
 
         void clear() override final;
 
-        void showMessage(MailMessage *const mail);
+        void showMessage(MailMessage *const mail,
+                         const int itemsCount);
 
         void removeMail(const int64_t id);
 
@@ -69,8 +70,13 @@ class MailWindow final : public Window,
 
         void createMail(const std::string &to);
 
+        MailMessage *findMail(const int64_t id) A_WARN_UNUSED;
+
         void setOpenType(const MailOpenTypeT &type)
         { mOpenType = type; }
+
+        MailOpenTypeT getOpenType() const A_WARN_UNUSED
+        { return mOpenType; }
 
     private:
         void refreshMails();

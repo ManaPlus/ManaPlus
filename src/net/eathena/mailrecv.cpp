@@ -110,7 +110,7 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     mail->text = msg.readString(sz, "message");
     msg.readUInt8("zero");
     mail->strTime = timeToStr(mail->time);
-    mailWindow->showMessage(mail);
+    mailWindow->showMessage(mail, mail->itemId != 0 ? 1 : 0);
 }
 
 void MailRecv::processGetAttachment(Net::MessageIn &msg)

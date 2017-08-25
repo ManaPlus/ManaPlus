@@ -35,6 +35,7 @@
 #include "gui/mailmessage.h"
 
 #include "gui/windows/maileditwindow.h"
+#include "gui/windows/mailviewwindow.h"
 #include "gui/windows/mailwindow.h"
 
 #include "net/messagein.h"
@@ -310,32 +311,94 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
 
 void Mail2Recv::processReadMail(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     msg.readInt16("len");
-    msg.readUInt8("open type");
-    msg.readInt64("mail id");
+    const MailOpenTypeT openType = static_cast<MailOpenTypeT>(
+        msg.readUInt8("open type"));
+    const int64_t mailId = msg.readInt64("mail id");
     const int textLen = msg.readInt16("text len");
-    msg.readInt64("money");
+    const int64_t money = msg.readInt64("money");
     const int itemsCount = msg.readUInt8("item count");
-    msg.readString(textLen, "text message");
+    const std::string text = msg.readString(textLen, "text message");
+    MailMessage *mail = nullptr;
+
+    if (mailWindow != nullptr &&
+        openType == mailWindow->getOpenType())
+    {
+        mail = mailWindow->findMail(mailId);
+    }
+
+    if (mail == nullptr)
+    {
+        reportAlways("Mail message not found");
+        for (int f = 0; f < itemsCount; f ++)
+        {
+            msg.readInt16("amount");
+            msg.readInt16("item id");
+            msg.readUInt8("identify");
+            msg.readUInt8("damaged");
+            msg.readUInt8("refine");
+            for (int d = 0; d < maxCards; d ++)
+                msg.readUInt16("card");
+            msg.readInt32("unknown");
+            msg.readUInt8("type");
+            msg.readInt32("unknown");
+            for (int d = 0; d < 5; d ++)
+            {
+                msg.readInt16("option index");
+                msg.readInt16("option value");
+                msg.readUInt8("option param");
+            }
+        }
+        return;
+    }
+
+    mail->money = money;
+    mail->text = text;
+    mailWindow->showMessage(mail, itemsCount);
+
+    Inventory *const inventory = mailViewWindow->getInventory();
+
     for (int f = 0; f < itemsCount; f ++)
     {
-        msg.readInt16("amount");
-        msg.readInt16("item id");
-        msg.readUInt8("identify");
-        msg.readUInt8("damaged");
-        msg.readUInt8("refine");
+        const int amount = msg.readInt16("amount");
+        const int itemId = msg.readInt16("item id");
+        const uint8_t identify = msg.readUInt8("identify");
+        const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
+        const uint8_t refine = msg.readUInt8("refine");
+        int cards[maxCards];
         for (int d = 0; d < maxCards; d ++)
-            msg.readUInt16("card");
+            cards[d] = msg.readUInt16("card");
         msg.readInt32("unknown");
-        msg.readUInt8("type");
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         msg.readInt32("unknown");
+        ItemOptionsList *options = new ItemOptionsList(5);
         for (int d = 0; d < 5; d ++)
         {
-            msg.readInt16("option index");
-            msg.readInt16("option value");
+            const uint16_t idx = msg.readInt16("option index");
+            const uint16_t val = msg.readInt16("option value");
             msg.readUInt8("option param");
+            options->add(idx, val);
         }
+
+        const int slot = inventory->addItem(itemId,
+            itemType,
+            amount,
+            refine,
+            ItemColorManager::getColorFromCards(&cards[0]),
+            fromBool(identify, Identified),
+            damaged,
+            Favorite_false,
+            Equipm_false,
+            Equipped_false);
+        if (slot == -1)
+        {
+            delete options;
+            continue;
+        }
+        inventory->setCards(slot, cards, 4);
+        inventory->setOptions(slot, options);
+        delete options;
     }
 }
 
