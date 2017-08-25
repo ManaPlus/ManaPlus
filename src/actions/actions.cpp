@@ -266,7 +266,7 @@ static Item *getItemByInvIndex(const int index,
         case InventoryType::Npc:
         case InventoryType::Cart:
         case InventoryType::Vending:
-        case InventoryType::Mail:
+        case InventoryType::MailEdit:
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
         default:

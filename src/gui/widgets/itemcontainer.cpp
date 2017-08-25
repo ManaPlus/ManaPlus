@@ -661,7 +661,7 @@ void ItemContainer::mousePressed(MouseEvent &event)
             case InventoryType::Cart:
                 src = DragDropSource::Cart;
                 break;
-            case InventoryType::Mail:
+            case InventoryType::MailEdit:
                 src = DragDropSource::Mail;
                 break;
             case InventoryType::Craft:
@@ -768,7 +768,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             case InventoryType::Npc:
                 dst = DragDropSource::Npc;
                 break;
-            case InventoryType::Mail:
+            case InventoryType::MailEdit:
                 dst = DragDropSource::Mail;
                 break;
             case InventoryType::Cart:

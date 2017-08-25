@@ -33,7 +33,7 @@ enumStart(InventoryType)
     Npc,
     Cart,
     Vending,
-    Mail,
+    MailEdit,
     Craft,
     TypeEnd
 }

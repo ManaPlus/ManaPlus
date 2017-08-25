@@ -81,7 +81,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
     // TRANSLATORS: mail view window label
     mMessageLabel(new Label(this, strprintf("%s %s", _("Message:"),
         message->text.c_str()))),
-    mInventory(new Inventory(InventoryType::Mail, itemsCount)),
+    mInventory(new Inventory(InventoryType::MailEdit, itemsCount)),
     mItemContainer(new ItemContainer(this, mInventory)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
         fromBool(getOptionBool("showitemsbackground"), Opaque),
