@@ -52,6 +52,7 @@ MailEditWindow::MailEditWindow() :
     // TRANSLATORS: mail edit window name
     Window(_("Edit mail"), Modal_false, nullptr, "mailedit.xml"),
     ActionListener(),
+    FocusListener(),
     // TRANSLATORS: mail edit window button
     mSendButton(new Button(this, _("Send"), "send", this)),
     // TRANSLATORS: mail edit window button
@@ -101,8 +102,8 @@ MailEditWindow::MailEditWindow() :
     mSubjectField->setWidth(100);
     mMessageField->setWidth(100);
     mItemScrollArea->setHeight(100);
-
     mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
+    mToField->addFocusListener(this);
 
     placer(0, 0, mToLabel);
     placer(1, 0, mToField, 3);
@@ -120,6 +121,7 @@ MailEditWindow::MailEditWindow() :
     placer(3, 6, mCloseButton);
 
     loadWindowState();
+    mSendButton->setEnabled(false);
     enableVisibleSound(true);
 }
 
@@ -177,6 +179,7 @@ void MailEditWindow::setSubject(const std::string &str)
 void MailEditWindow::setTo(const std::string &str)
 {
     mToField->setText(str);
+    mSendButton->setEnabled(true);
 }
 
 void MailEditWindow::setMessage(const std::string &str)
@@ -239,4 +242,33 @@ void MailEditWindow::sendMail()
 void MailEditWindow::updateItems()
 {
     mItemContainer->updateMatrix();
+}
+
+void MailEditWindow::focusLost(const Event &event)
+{
+    if (!mUseMail2)
+        return;
+
+    if (event.getSource() == mToField)
+    {
+        const std::string to = mToField->getText();
+        if (to != mail2Handler->getCheckedName())
+        {
+            mail2Handler->queueCheckName(MailQueueType::ValidateTo,
+                to,
+                std::string(),
+                std::string(),
+                0);
+            mSendButton->setEnabled(false);
+        }
+        else
+        {
+            mSendButton->setEnabled(true);
+        }
+    }
+}
+
+void MailEditWindow::validatedTo()
+{
+    mSendButton->setEnabled(true);
 }

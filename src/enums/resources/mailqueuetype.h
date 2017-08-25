@@ -28,7 +28,7 @@ enumStart(MailQueueType)
     Unknown    = 0,
     SendMail   = 1,
     EditMail   = 2,
-    ValidateTO = 3
+    ValidateTo = 3
 }
 enumEnd(MailQueueType);
 

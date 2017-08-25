@@ -35,6 +35,7 @@ namespace EAthena
     namespace Mail2Recv
     {
         extern std::queue<MailQueue*> mMailQueue;
+        extern std::string mCheckedName;
 
         void processMailIcon(Net::MessageIn &msg);
         void processOpenNewMailWindow(Net::MessageIn &msg);

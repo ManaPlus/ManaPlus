@@ -49,6 +49,7 @@ Mail2Handler::Mail2Handler()
 Mail2Handler::~Mail2Handler()
 {
     mail2Handler = nullptr;
+    Mail2Recv::mCheckedName.clear();
     while (!Mail2Recv::mMailQueue.empty())
     {
         MailQueue *const mail = Mail2Recv::mMailQueue.front();
@@ -135,6 +136,7 @@ void Mail2Handler::sendMail(const std::string &to,
         outMsg.writeInt32(0, "to char id");
     outMsg.writeString(title, titleSz, "title");
     outMsg.writeString(body, bodySz, "body");
+    Mail2Recv::mCheckedName.clear();
 }
 
 void Mail2Handler::queueCheckName(const MailQueueTypeT type,
@@ -272,6 +274,11 @@ void Mail2Handler::requestCheckName(const std::string &name) const
     }
     createOutPacket(CMSG_MAIL2_CHECK_NAME);
     outMsg.writeString(name, 24, "name");
+}
+
+std::string Mail2Handler::getCheckedName() const
+{
+    return Mail2Recv::mCheckedName;
 }
 
 }  // namespace EAthena

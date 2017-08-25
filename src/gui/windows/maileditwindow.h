@@ -24,6 +24,7 @@
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"
+#include "listeners/focuslistener.h"
 
 class Button;
 class IntTextField;
@@ -35,7 +36,8 @@ class ScrollArea;
 class TextField;
 
 class MailEditWindow final : public Window,
-                             public ActionListener
+                             public ActionListener,
+                             public FocusListener
 {
     public:
         MailEditWindow();
@@ -59,6 +61,10 @@ class MailEditWindow final : public Window,
         Inventory *getInventory() const A_WARN_UNUSED;
 
         void updateItems();
+
+        void focusLost(const Event &event) override final;
+
+        void validatedTo();
 
     private:
         void sendMail();

@@ -63,6 +63,7 @@ namespace EAthena
 namespace Mail2Recv
 {
     std::queue<MailQueue*> mMailQueue;
+    std::string mCheckedName;
 }  // namespace Mail2Recv
 
 void Mail2Recv::processMailIcon(Net::MessageIn &msg)
@@ -255,6 +256,7 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
         delete mail;
         return;
     }
+    mCheckedName = mail->to;
     switch (mail->type)
     {
         case MailQueueType::SendMail:
@@ -264,10 +266,26 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
                 mail->money);
             break;
         case MailQueueType::EditMail:
-            mailWindow->createMail(mail->to);
+            if (mailWindow == nullptr)
+            {
+                reportAlways("Mail window not created");
+            }
+            else
+            {
+                mailWindow->createMail(mail->to);
+            }
+            break;
+        case MailQueueType::ValidateTo:
+            if (mailEditWindow == nullptr)
+            {
+                reportAlways("Mail edit window not created");
+            }
+            else
+            {
+                mailEditWindow->validatedTo();
+            }
             break;
         case MailQueueType::Unknown:
-        case MailQueueType::ValidateTO:
         default:
             reportAlways("Not implemented yet.");
             break;

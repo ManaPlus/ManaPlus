@@ -110,4 +110,9 @@ void Mail2Handler::requestCheckName(const std::string &name A_UNUSED) const
 {
 }
 
+std::string Mail2Handler::getCheckedName() const
+{
+    return std::string();
+}
+
 }  // namespace TmwAthena

@@ -89,6 +89,8 @@ class Mail2Handler notfinal
         virtual void cancelWriteMail() const = 0;
 
         virtual void requestCheckName(const std::string &name) const = 0;
+
+        virtual std::string getCheckedName() const = 0;
 };
 
 }  // namespace Net
