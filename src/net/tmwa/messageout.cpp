@@ -45,6 +45,11 @@ MessageOut::MessageOut(const int16_t id) :
     mData = mNetwork->mOutBuffer + CAST_SIZE(mNetwork->mOutSize);
 }
 
+MessageOut::~MessageOut()
+{
+    DEBUGLOG2("writeEnd: ", mPos, "position after end of packet");
+}
+
 void MessageOut::expand(const size_t bytes) const
 {
     mNetwork->mOutSize += CAST_U32(bytes);
