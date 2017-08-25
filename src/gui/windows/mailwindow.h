@@ -23,6 +23,8 @@
 
 #include "gui/widgets/window.h"
 
+#include "enums/net/mailopentype.h"
+
 #include "listeners/actionlistener.h"
 
 class Button;
@@ -67,8 +69,13 @@ class MailWindow final : public Window,
 
         void createMail(const std::string &to);
 
+        void setOpenType(const MailOpenTypeT &type)
+        { mOpenType = type; }
+
     private:
         void refreshMails();
+
+        std::string getMailHeader(MailMessage *const message) A_NONNULL(2);
 
         STD_VECTOR<MailMessage*> mMessages;
         std::map<int, MailMessage*> mMessagesMap;
@@ -80,6 +87,7 @@ class MailWindow final : public Window,
         Button *mDeleteButton;
         Button *mReturnButton;
         Button *mOpenButton;
+        MailOpenTypeT mOpenType;
         bool mUseMail2;
 };
 

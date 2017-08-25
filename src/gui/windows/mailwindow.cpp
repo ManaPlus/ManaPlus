@@ -46,6 +46,7 @@
 #include "utils/dtor.h"
 #include "utils/foreach.h"
 #include "utils/gettext.h"
+#include "utils/stdmove.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
@@ -60,7 +61,7 @@ MailWindow::MailWindow() :
     mMessagesMap(),
     mMailModel(new ExtendedNamesModel),
     mListBox(CREATEWIDGETR(ExtendedListBox,
-        this, mMailModel, "extendedlistbox.xml")),
+        this, mMailModel, "extendedlistbox.xml", 0)),
     mListScrollArea(new ScrollArea(this, mListBox,
         fromBool(getOptionBool("showlistbackground"), Opaque),
         "mail_listbackground.xml")),
@@ -74,6 +75,7 @@ MailWindow::MailWindow() :
     mReturnButton(new Button(this, _("Return"), "return", this)),
     // TRANSLATORS: mail window button
     mOpenButton(new Button(this, _("Open"), "open", this)),
+    mOpenType(MailOpenType::Mail),
     mUseMail2(settings.enableNewMailSystem)
 {
     setWindowName("Mail");
@@ -167,14 +169,31 @@ void MailWindow::clear()
     mListBox->setSelected(-1);
 }
 
+std::string MailWindow::getMailHeader(MailMessage *const message)
+{
+    if (mUseMail2)
+    {
+        std::string header;
+        if (message->read)
+            header.append(" ");
+        else
+            header.append("U");
+        return STD_MOVE(header);
+    }
+    else
+    {
+        return strprintf("%s %s",
+            message->read ? " " : "U",
+            message->title.c_str());
+    }
+}
+
 void MailWindow::addMail(MailMessage *const message)
 {
     if (message == nullptr)
         return;
     mMessages.push_back(message);
-    mMailModel->add(strprintf("%s %s",
-        message->unread ? " " : "U",
-        message->title.c_str()));
+    mMailModel->add(getMailHeader(message));
     mMessagesMap[message->id] = message;
 }
 
@@ -201,11 +220,7 @@ void MailWindow::removeMail(const int id)
     {
         MailMessage *message = *it;
         if (message != nullptr)
-        {
-            mMailModel->add(strprintf("%s %s",
-                message->unread ? " " : "U",
-                message->title.c_str()));
-        }
+            mMailModel->add(getMailHeader(message));
     }
 }
 
@@ -294,9 +309,14 @@ void MailWindow::postConnection()
 void MailWindow::refreshMails()
 {
     if (mUseMail2)
+    {
+        clear();
         mail2Handler->refreshMailList(MailOpenType::Mail, 0);
+    }
     else
+    {
         mailHandler->refresh();
+    }
 }
 
 void MailWindow::createMail(const std::string &to)

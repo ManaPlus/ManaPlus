@@ -79,7 +79,7 @@ void MailRecv::processMailList(Net::MessageIn &msg)
         MailMessage *const mail = new MailMessage;
         mail->id = msg.readInt32("message id");
         mail->title = msg.readString(40, "title");
-        mail->unread = msg.readUInt8("unread flag") != 0u ? true : false;
+        mail->read = msg.readUInt8("unread flag") != 0u ? true : false;
         mail->sender = msg.readString(24, "sender name");
         mail->time = msg.readInt32("time stamp");
         mail->strTime = timeToStr(mail->time);

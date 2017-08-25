@@ -36,13 +36,15 @@ struct MailMessage final
         text(),
         id(0),
         time(0),
+        expireTime(0),
         money(0),
         itemAmount(0),
         itemId(0),
         itemType(0),
         itemAttribute(0U),
         itemRefine(0U),
-        unread(false),
+        type(0U),
+        read(false),
         itemIdentify(false)
     {
         for (int f = 0; f < 4; f ++)
@@ -58,13 +60,15 @@ struct MailMessage final
     uint16_t card[maxMailCards];
     int id;
     int time;
+    int expireTime;
     int money;
     int itemAmount;
     int itemId;
     int itemType;
     uint8_t itemAttribute;
     uint8_t itemRefine;
-    bool unread;
+    uint8_t type;
+    bool read;
     bool itemIdentify;
 };
 #endif  // GUI_MAILMESSAGE_H

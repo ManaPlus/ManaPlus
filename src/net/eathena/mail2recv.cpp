@@ -32,6 +32,8 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "gui/mailmessage.h"
+
 #include "gui/windows/maileditwindow.h"
 #include "gui/windows/mailwindow.h"
 
@@ -50,6 +52,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "debug.h"
 
@@ -279,20 +282,28 @@ void Mail2Recv::processSendResult(Net::MessageIn &msg)
 
 void Mail2Recv::processMailListPage(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
+    if (mailWindow == nullptr)
+    {
+        reportAlways("mail window not created");
+        return;
+    }
     msg.readInt16("len");
-    msg.readUInt8("open type");
+    mailWindow->setOpenType(fromInt(msg.readUInt8("open type"),
+        MailOpenTypeT));
     const int cnt = msg.readUInt8("cnt");
     msg.readUInt8("isEnd");
     for (int f = 0; f < cnt; f ++)
     {
-        msg.readInt64("mail id");
-        msg.readUInt8("is read");
-        msg.readUInt8("type");
-        msg.readString(24, "sender name");
-        msg.readInt32("reg time");
-        msg.readInt32("expire time");
-        msg.readString(-1, "title");
+        MailMessage *const mail = new MailMessage;
+        mail->id = msg.readInt64("mail id");
+        mail->read = msg.readUInt8("is read") != 0U ? true : false;
+        mail->type = msg.readUInt8("type");
+        mail->sender = msg.readString(24, "sender name");
+        mail->time = msg.readInt32("reg time");
+        mail->strTime = timeToStr(mail->time);
+        mail->expireTime = msg.readInt32("expire time");
+        mail->title = msg.readString(-1, "title");
+        mailWindow->addMail(mail);
     }
 }
 
