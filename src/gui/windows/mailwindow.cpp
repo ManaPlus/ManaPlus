@@ -151,7 +151,10 @@ void MailWindow::action(const ActionEvent &event)
         if (sel < 0)
             return;
         const MailMessage *const mail = mMessages[sel];
-        mailHandler->deleteMessage(mail->id);
+        if (mUseMail2)
+            mail2Handler->deleteMail(mOpenType, mail->id);
+        else
+            mailHandler->deleteMessage(mail->id);
     }
     else if (eventId == "return")
     {

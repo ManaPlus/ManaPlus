@@ -444,9 +444,14 @@ void Mail2Recv::processReadMail(Net::MessageIn &msg)
 
 void Mail2Recv::processMailDelete(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     msg.readUInt8("open type");
-    msg.readInt64("mail id");
+    const int64_t mailId = msg.readInt64("mail id");
+    if (mailWindow == nullptr)
+    {
+        reportAlways("Mail window not created.");
+        return;
+    }
+    mailWindow->removeMail(mailId);
 }
 
 void Mail2Recv::processRequestMoney(Net::MessageIn &msg)
