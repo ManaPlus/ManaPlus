@@ -136,7 +136,7 @@ void MailEditWindow::action(const ActionEvent &event)
     const std::string &eventId = event.getId();
     if (eventId == "close")
     {
-        scheduleDelete();
+        close();
     }
     else if (eventId == "send")
     {
@@ -189,6 +189,8 @@ void MailEditWindow::setMessage(const std::string &str)
 
 void MailEditWindow::close()
 {
+    if (mUseMail2)
+        mail2Handler->cancelWriteMail();
     scheduleDelete();
 }
 
