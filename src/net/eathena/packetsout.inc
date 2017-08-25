@@ -1350,7 +1350,7 @@ if (packetVersion == 20140305)
 }
 
 // 20140326
-if (packetVersion == 20140326)
+if (packetVersion >= 20140326)
 {
     packet(CMSG_MAIL2_REQUEST_MONEY,      0x09f1,  11, clif->pRodexRequestZeny);
     packet(CMSG_MAIL2_REQUEST_ITEMS,      0x09f3,  11, clif->pRodexRequestItems);
