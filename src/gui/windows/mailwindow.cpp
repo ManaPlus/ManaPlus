@@ -72,11 +72,14 @@ MailWindow::MailWindow() :
     // TRANSLATORS: mail window button
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     // TRANSLATORS: mail window button
-    mReturnButton(new Button(this, _("Return"), "return", this)),
+    mReturnButton(new Button(this,
+        settings.enableNewMailSystem ? _("Get old") : _("Return"),
+        "return", this)),
     // TRANSLATORS: mail window button
     mOpenButton(new Button(this, _("Open"), "open", this)),
     mOpenType(MailOpenType::Mail),
-    mUseMail2(settings.enableNewMailSystem)
+    mUseMail2(settings.enableNewMailSystem),
+    mLastPage(false)
 {
     setWindowName("Mail");
     setCloseButton(true);
@@ -158,11 +161,22 @@ void MailWindow::action(const ActionEvent &event)
     }
     else if (eventId == "return")
     {
-        const int sel = mListBox->getSelected();
-        if (sel < 0)
-            return;
-        const MailMessage *const mail = mMessages[sel];
-        mailHandler->returnMessage(mail->id);
+        if (mUseMail2)
+        {
+            const size_t idx = mMessages.size();
+            if (idx == 0)
+                mail2Handler->refreshMailList(MailOpenType::Mail, 0);
+            else
+                mail2Handler->nextPage(mOpenType, mMessages[idx - 1]->id);
+        }
+        else
+        {
+            const int sel = mListBox->getSelected();
+            if (sel < 0)
+                return;
+            const MailMessage *const mail = mMessages[sel];
+            mailHandler->returnMessage(mail->id);
+        }
     }
 }
 
@@ -330,6 +344,8 @@ void MailWindow::refreshMails()
     {
         clear();
         mail2Handler->refreshMailList(MailOpenType::Mail, 0);
+        mLastPage = false;
+        mReturnButton->setEnabled(true);
     }
     else
     {
@@ -352,4 +368,10 @@ MailMessage *MailWindow::findMail(const int64_t id)
     if (it != mMessagesMap.end())
         return (*it).second;
     return nullptr;
+}
+
+void MailWindow::setLastPage()
+{
+    mLastPage = true;
+    mReturnButton->setEnabled(false);
 }

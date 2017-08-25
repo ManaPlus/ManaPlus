@@ -332,7 +332,7 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
     mailWindow->setOpenType(fromInt(msg.readUInt8("open type"),
         MailOpenTypeT));
     const int cnt = msg.readUInt8("cnt");
-    msg.readUInt8("isEnd");
+    const bool isEnd = msg.readUInt8("isEnd") != 0;
     for (int f = 0; f < cnt; f ++)
     {
         MailMessage *const mail = new MailMessage;
@@ -347,6 +347,8 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
         mail->title = msg.readString(-1, "title");
         mailWindow->addMail(mail);
     }
+    if (isEnd)
+        mailWindow->setLastPage();
 }
 
 void Mail2Recv::processReadMail(Net::MessageIn &msg)

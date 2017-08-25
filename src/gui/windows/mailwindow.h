@@ -78,6 +78,8 @@ class MailWindow final : public Window,
         MailOpenTypeT getOpenType() const A_WARN_UNUSED
         { return mOpenType; }
 
+        void setLastPage();
+
     private:
         void refreshMails();
 
@@ -96,6 +98,7 @@ class MailWindow final : public Window,
         Button *mOpenButton;
         MailOpenTypeT mOpenType;
         bool mUseMail2;
+        bool mLastPage;
 };
 
 extern MailWindow *mailWindow;
