@@ -57,11 +57,11 @@ class MailWindow final : public Window,
 
         void showMessage(MailMessage *const mail);
 
-        void removeMail(const int id);
+        void removeMail(const int64_t id);
 
-        void viewNext(const int id);
+        void viewNext(const int64_t id);
 
-        void viewPrev(const int id);
+        void viewPrev(const int64_t id);
 
         void mouseClicked(MouseEvent &event) override final;
 
@@ -79,7 +79,7 @@ class MailWindow final : public Window,
                                   A_WARN_UNUSED A_NONNULL(2);
 
         STD_VECTOR<MailMessage*> mMessages;
-        std::map<int, MailMessage*> mMessagesMap;
+        std::map<int64_t, MailMessage*> mMessagesMap;
         ExtendedNamesModel *mMailModel;
         ExtendedListBox *mListBox;
         ScrollArea *mListScrollArea;

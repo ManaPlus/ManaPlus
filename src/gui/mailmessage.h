@@ -60,7 +60,7 @@ struct MailMessage final
     std::string strTime;
     std::string text;
     uint16_t card[maxMailCards];
-    int id;
+    int64_t id;
     int time;
     int expireTime;
     int money;

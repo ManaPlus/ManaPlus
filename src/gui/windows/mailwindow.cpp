@@ -207,9 +207,9 @@ void MailWindow::addMail(MailMessage *const message)
     mMessagesMap[message->id] = message;
 }
 
-void MailWindow::removeMail(const int id)
+void MailWindow::removeMail(const int64_t id)
 {
-    std::map<int, MailMessage*>::iterator it1 = mMessagesMap.find(id);
+    std::map<int64_t, MailMessage*>::iterator it1 = mMessagesMap.find(id);
     if (it1 != mMessagesMap.end())
         mMessagesMap.erase(it1);
 
@@ -238,7 +238,7 @@ void MailWindow::showMessage(MailMessage *const mail)
 {
     if (mail == nullptr)
         return;
-    const std::map<int, MailMessage*>::const_iterator
+    const std::map<int64_t, MailMessage*>::const_iterator
         it = mMessagesMap.find(mail->id);
     if (it != mMessagesMap.end())
     {
@@ -250,7 +250,7 @@ void MailWindow::showMessage(MailMessage *const mail)
     CREATEWIDGETV(mailViewWindow, MailViewWindow, mail);
 }
 
-void MailWindow::viewNext(const int id)
+void MailWindow::viewNext(const int64_t id)
 {
     FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
@@ -274,7 +274,7 @@ void MailWindow::viewNext(const int id)
     }
 }
 
-void MailWindow::viewPrev(const int id)
+void MailWindow::viewPrev(const int64_t id)
 {
     FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
