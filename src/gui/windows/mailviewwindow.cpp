@@ -251,3 +251,28 @@ void MailViewWindow::removeItems(const int64_t mailId)
     if (mailWindow)
         mailWindow->refreshMailNames();
 }
+
+void MailViewWindow::removeMoney(const int64_t mailId)
+{
+    if (mailId != mMessage->id)
+        return;
+    mMessage->type = static_cast<MailMessageType::Type>(
+        CAST_S32(mMessage->type) | CAST_S32(MailMessageType::Money));
+    mMessage->type = static_cast<MailMessageType::Type>(
+        CAST_S32(mMessage->type) ^ CAST_S32(MailMessageType::Money));
+
+    mMessage->money = 0;
+
+    if (mMoneyLabel == nullptr)
+        return;
+
+    if (mGetMoneyButton)
+        mGetMoneyButton->setVisible(Visible_false);
+
+    mMoneyLabel->setCaption(strprintf("%s %d",
+        // TRANSLATORS: mail view window label
+        _("Money:"),
+        0));
+    if (mailWindow)
+        mailWindow->refreshMailNames();
+}

@@ -459,10 +459,31 @@ void Mail2Recv::processMailDelete(Net::MessageIn &msg)
 
 void Mail2Recv::processRequestMoney(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readInt64("mail id");
+    const int64_t mailId = msg.readInt64("mail id");
     msg.readUInt8("open type");
-    msg.readUInt8("result");
+    const int res = msg.readUInt8("result");
+    switch (res)
+    {
+        case 0:
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_MONEY_OK);
+            if (mailViewWindow)
+                mailViewWindow->removeMoney(mailId);
+            break;
+        case 1:
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_MONEY_ERROR);
+            break;
+        case 2:
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_MONEY_LIMIT_ERROR);
+            break;
+        default:
+            UNIMPLEMENTEDPACKETFIELD(res);
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_MONEY_ERROR);
+            break;
+    }
 }
 
 void Mail2Recv::processRequestItems(Net::MessageIn &msg)

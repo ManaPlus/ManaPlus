@@ -245,6 +245,9 @@ namespace NotifyTypes
         MAIL_SEND_ITEM_ERROR,
         MAIL_SEND_RECEIVER_ERROR,
         MAIL_GET_ATTACH_FULL_ERROR,
+        MAIL_GET_MONEY_OK,
+        MAIL_GET_MONEY_ERROR,
+        MAIL_GET_MONEY_LIMIT_ERROR,
 
         TYPE_END
     };

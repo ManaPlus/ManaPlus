@@ -53,6 +53,8 @@ class MailViewWindow final : public Window,
 
         void removeItems(const int64_t mailId);
 
+        void removeMoney(const int64_t mailId);
+
     private:
         void updateAttachButton();
 

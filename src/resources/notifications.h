@@ -897,6 +897,18 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Error on getting attach. No space or weight too high."),
             NotifyFlags::EMPTY},
+        {"mail get money ok",
+            // TRANSLATORS: notification message
+            N_("You got money from mail."),
+            NotifyFlags::EMPTY},
+        {"mail get money error",
+            // TRANSLATORS: notification message
+            N_("Error on getting money attach."),
+            NotifyFlags::EMPTY},
+        {"mail get money limit error",
+            // TRANSLATORS: notification message
+            N_("Error on getting money attach. Too many money."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H
