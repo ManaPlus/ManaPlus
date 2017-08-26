@@ -1027,6 +1027,8 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         }
         else if (src == DragDropSource::MailEdit)
         {
+            if (event.getType() == MouseEventType::RELEASED2)
+                return;
             if (settings.enableNewMailSystem)
             {
                 if (mailEditWindow == nullptr)
