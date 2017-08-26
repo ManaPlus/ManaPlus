@@ -507,7 +507,8 @@ TEST_CASE("Windows tests", "windowmanager")
     {
         MailMessage *message = new MailMessage;
         CREATEWIDGETV(mailViewWindow, MailViewWindow,
-            message);
+            message,
+            1);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(mailViewWindow);
