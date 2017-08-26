@@ -221,7 +221,6 @@ Inventory *MailViewWindow::getInventory() const
 void MailViewWindow::updateAttachButton()
 {
     if ((mMessage->money != 0 && !mUseMail2) ||
-        mMessage->itemId != 0 ||
         mInventory->getLastUsedSlot() != -1)
     {
         mGetAttachButton->setVisible(Visible_true);

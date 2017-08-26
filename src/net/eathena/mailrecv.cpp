@@ -20,6 +20,7 @@
 
 #include "net/eathena/mailrecv.h"
 
+#include "itemcolormanager.h"
 #include "notifymanager.h"
 
 #include "enums/resources/notifytypes.h"
@@ -32,8 +33,11 @@
 #include "net/mailhandler.h"
 #include "net/messagein.h"
 
+#include "utils/checkutils.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+
+#include "resources/inventory/inventory.h"
 
 #include "debug.h"
 
@@ -97,24 +101,56 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     mail->sender = msg.readString(24, "sender name");
     msg.readInt32("unused");
     mail->money = msg.readInt32("money");
-    mail->itemAmount = msg.readInt32("item amount");
-    mail->itemId = msg.readInt16("item id");
-    mail->itemType = msg.readInt16("item type");
-    mail->itemIdentify = (msg.readUInt8("identify") != 0u);
-    mail->itemAttribute = msg.readUInt8("attribute");
-    mail->itemRefine = msg.readUInt8("refine");
-    for (int f = 0; f < maxCards; f ++)
-        mail->card[f] = msg.readUInt16("card");
+
+    const int amount = msg.readInt32("item amount");
+    const int itemId = msg.readInt16("item id");
+    const ItemTypeT itemType = static_cast<ItemTypeT>(
+        msg.readInt16("item type"));
+    const uint8_t identify = msg.readUInt8("identify");
+    const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
+    const uint8_t refine = msg.readUInt8("refine");
+    int cards[maxCards];
+    for (int d = 0; d < maxCards; d ++)
+        cards[d] = msg.readUInt16("card");
     const int msgLen = msg.readUInt8("msg len");
     if (msgLen != sz)
         logger->log("error: wrong message size");
     mail->text = msg.readString(sz, "message");
     msg.readUInt8("zero");
     mail->strTime = timeToStr(mail->time);
-    mailWindow->showMessage(mail, mail->itemId != 0 ? 1 : 0);
-    // +++ here need add item into item container
-    if (mailViewWindow)
-        mailViewWindow->updateItems();
+    if (!mailWindow)
+    {
+        reportAlways("Mail window not created");
+        return;
+    }
+    mailWindow->showMessage(mail, itemId != 0 ? 1 : 0);
+    if (!mailViewWindow)
+    {
+        reportAlways("Mail view window not created");
+        return;
+    }
+
+    Inventory *const inventory = mailViewWindow->getInventory();
+    if (!inventory)
+    {
+        reportAlways("Mail view window missing inventory");
+        return;
+    }
+
+    const int slot = inventory->addItem(itemId,
+        itemType,
+        amount,
+        refine,
+        ItemColorManager::getColorFromCards(&cards[0]),
+        fromBool(identify, Identified),
+        damaged,
+        Favorite_false,
+        Equipm_false,
+        Equipped_false);
+    if (slot != -1)
+        inventory->setCards(slot, cards, 4);
+
+    mailViewWindow->updateItems();
 }
 
 void MailRecv::processGetAttachment(Net::MessageIn &msg)
