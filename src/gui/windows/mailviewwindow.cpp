@@ -23,6 +23,7 @@
 #include "configuration.h"
 #include "settings.h"
 
+#include "net/mail2handler.h"
 #include "net/mailhandler.h"
 
 #include "gui/mailmessage.h"
@@ -54,7 +55,7 @@
 
 MailViewWindow *mailViewWindow = nullptr;
 
-MailViewWindow::MailViewWindow(const MailMessage *const message,
+MailViewWindow::MailViewWindow(MailMessage *const message,
                                const int itemsCount) :
     // TRANSLATORS: mail view window name
     Window(_("View mail"), Modal_false, nullptr, "mailview.xml"),
@@ -128,7 +129,7 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
         mGetMoneyButton = new Button(this,
             // TRANSLATORS: mail view attached money button
             _("Get money"),
-            "attach", this);
+            "money", this);
         placer(0, n++, mGetMoneyButton);
     }
     placer(0, n++, mGetAttachButton);
@@ -170,8 +171,23 @@ void MailViewWindow::action(const ActionEvent &event)
     }
     else if (eventId == "attach")
     {
-        if (mGetAttachButton != nullptr)
+        if (mUseMail2)
+        {
+            mail2Handler->requestItems(mailWindow->getOpenType(),
+                mMessage->id);
+        }
+        else
+        {
             mailHandler->getAttach(mMessage->id);
+        }
+    }
+    else if (eventId == "money")
+    {
+        if (mUseMail2)
+        {
+            mail2Handler->requestMoney(mailWindow->getOpenType(),
+                mMessage->id);
+        }
     }
     else if (eventId == "next")
     {
@@ -220,4 +236,18 @@ void MailViewWindow::updateItems()
 {
     mItemContainer->updateMatrix();
     updateAttachButton();
+}
+
+void MailViewWindow::removeItems(const int64_t mailId)
+{
+    if (mailId != mMessage->id)
+        return;
+    mInventory->clear();
+    mMessage->type = static_cast<MailMessageType::Type>(
+        CAST_S32(mMessage->type) | CAST_S32(MailMessageType::Item));
+    mMessage->type = static_cast<MailMessageType::Type>(
+        CAST_S32(mMessage->type) ^ CAST_S32(MailMessageType::Item));
+    updateAttachButton();
+    if (mailWindow)
+        mailWindow->refreshMailNames();
 }

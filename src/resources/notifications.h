@@ -893,6 +893,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Mail send failed. Receiver name wrong or not checked."),
             NotifyFlags::EMPTY},
+        {"mail get attach full error",
+            // TRANSLATORS: notification message
+            N_("Error on getting attach. No space or weight too high."),
+            NotifyFlags::EMPTY},
     };
 }  // namespace NotifyManager
 #endif  // RESOURCES_NOTIFICATIONS_H

@@ -80,6 +80,8 @@ class MailWindow final : public Window,
 
         void setLastPage();
 
+        void refreshMailNames();
+
     private:
         void refreshMails();
 

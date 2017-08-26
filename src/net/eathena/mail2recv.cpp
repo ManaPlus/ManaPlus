@@ -467,10 +467,31 @@ void Mail2Recv::processRequestMoney(Net::MessageIn &msg)
 
 void Mail2Recv::processRequestItems(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readInt64("mail id");
+    const int64_t mailId = msg.readInt64("mail id");
     msg.readUInt8("open type");
-    msg.readUInt8("result");
+    const int res = msg.readUInt8("result");
+    switch (res)
+    {
+        case 0:
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_ATTACH_OK);
+            if (mailViewWindow)
+                mailViewWindow->removeItems(mailId);
+            break;
+        case 1:
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_ATTACH_ERROR);
+            break;
+        case 2:
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_ATTACH_FULL_ERROR);
+            break;
+        default:
+            UNIMPLEMENTEDPACKETFIELD(res);
+            NotifyManager::notify(
+                NotifyTypes::MAIL_GET_ATTACH_ERROR);
+            break;
+    }
 }
 
 }  // namespace EAthena

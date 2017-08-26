@@ -244,6 +244,7 @@ namespace NotifyTypes
         MAIL_SEND_COUNT_ERROR,
         MAIL_SEND_ITEM_ERROR,
         MAIL_SEND_RECEIVER_ERROR,
+        MAIL_GET_ATTACH_FULL_ERROR,
 
         TYPE_END
     };

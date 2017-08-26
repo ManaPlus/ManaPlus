@@ -38,7 +38,7 @@ class MailViewWindow final : public Window,
                              public ActionListener
 {
     public:
-        MailViewWindow(const MailMessage *const message,
+        MailViewWindow(MailMessage *const message,
                        const int itemsCount) A_NONNULL(2);
 
         A_DELETE_COPY(MailViewWindow)
@@ -51,10 +51,12 @@ class MailViewWindow final : public Window,
 
         void updateItems();
 
+        void removeItems(const int64_t mailId);
+
     private:
         void updateAttachButton();
 
-        const MailMessage *mMessage;
+        MailMessage *mMessage;
         Button *mGetAttachButton;
         Button *mGetMoneyButton;
         Button *mCloseButton;

@@ -375,3 +375,14 @@ void MailWindow::setLastPage()
     mLastPage = true;
     mReturnButton->setEnabled(false);
 }
+
+void MailWindow::refreshMailNames()
+{
+    mMailModel->clear();
+    FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
+    {
+        MailMessage *message = *it;
+        if (message != nullptr)
+            mMailModel->add(getMailHeader(message));
+    }
+}
