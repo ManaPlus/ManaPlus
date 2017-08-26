@@ -68,8 +68,8 @@ namespace Mail2Recv
 
 void Mail2Recv::processMailIcon(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readUInt8("show icon");
+    // ignored, because if has new mail, server send chat message already.
+    msg.readUInt8("has new mail");
 }
 
 void Mail2Recv::processOpenNewMailWindow(Net::MessageIn &msg)
