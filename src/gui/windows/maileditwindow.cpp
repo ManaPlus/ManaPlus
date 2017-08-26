@@ -121,7 +121,8 @@ MailEditWindow::MailEditWindow() :
     placer(3, 6, mCloseButton);
 
     loadWindowState();
-    mSendButton->setEnabled(false);
+    if (mUseMail2)
+        mSendButton->setEnabled(false);
     enableVisibleSound(true);
 }
 
