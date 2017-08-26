@@ -89,7 +89,7 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
     mItemContainer(new ItemContainer(this, mInventory)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
         fromBool(getOptionBool("showitemsbackground"), Opaque),
-        "mailedit_listbackground.xml")),
+        "mailview_listbackground.xml")),
     mUseMail2(settings.enableNewMailSystem)
 {
     setWindowName("MailView");
