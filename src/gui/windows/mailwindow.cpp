@@ -277,7 +277,8 @@ void MailWindow::viewNext(const int64_t id)
     FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
-        if ((message != nullptr) && message->id == id)
+        if (message != nullptr &&
+            message->id == id)
         {
             ++ it;
             if (it == mMessages.end())
@@ -290,7 +291,10 @@ void MailWindow::viewNext(const int64_t id)
                 mListBox->setSelected(mListBox->getSelected() + 1);
             }
             message = *it;
-            mailHandler->readMessage(message->id);
+            if (mUseMail2)
+                mail2Handler->readMail(mOpenType, message->id);
+            else
+                mailHandler->readMessage(message->id);
             return;
         }
     }
@@ -301,7 +305,8 @@ void MailWindow::viewPrev(const int64_t id)
     FOR_EACH (STD_VECTOR<MailMessage*>::iterator, it, mMessages)
     {
         MailMessage *message = *it;
-        if ((message != nullptr) && message->id == id)
+        if (message != nullptr &&
+            message->id == id)
         {
             if (it == mMessages.begin())
             {
@@ -314,7 +319,10 @@ void MailWindow::viewPrev(const int64_t id)
             }
             -- it;
             message = *it;
-            mailHandler->readMessage(message->id);
+            if (mUseMail2)
+                mail2Handler->readMail(mOpenType, message->id);
+            else
+                mailHandler->readMessage(message->id);
             return;
         }
     }
