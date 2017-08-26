@@ -156,6 +156,7 @@ src/net/eathena/guildrecv.cpp
 src/net/eathena/inventoryrecv.cpp
 src/net/eathena/itemflags.h
 src/net/eathena/loginrecv.cpp
+src/net/eathena/mail2recv.cpp
 src/net/eathena/mailrecv.cpp
 src/net/eathena/maptypeproperty2.h
 src/net/eathena/playerrecv.cpp
@@ -192,6 +193,7 @@ src/resources/skill/skillinfo.cpp
 src/resources/skill/skilltypelist.h
 src/unittests/catch.hpp
 src/unittests/doctest.h
+src/unittests/endian.cc
 src/unittests/gui/windowmanager_unittest.cc
 src/utils/booleanoptions.h
 src/utils/gettext.h
