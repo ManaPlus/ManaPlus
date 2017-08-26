@@ -21,8 +21,6 @@
 #ifndef GUI_MAILMESSAGE_H
 #define GUI_MAILMESSAGE_H
 
-#include "const/resources/item/cards.h"
-
 #include "enums/net/mailmessagetype.h"
 
 #include <string>
@@ -40,17 +38,9 @@ struct MailMessage final
         time(0),
         expireTime(0),
         money(0),
-        itemAmount(0),
-        itemId(0),
-        itemType(0),
         type(MailMessageType::Text),
-        itemAttribute(0U),
-        itemRefine(0U),
-        read(false),
-        itemIdentify(false)
+        read(false)
     {
-        for (int f = 0; f < 4; f ++)
-            card[f] = 0;
     }
 
     A_DELETE_COPY(MailMessage)
@@ -59,18 +49,11 @@ struct MailMessage final
     std::string sender;
     std::string strTime;
     std::string text;
-    uint16_t card[maxMailCards];
     int64_t id;
     int time;
     int expireTime;
     int money;
-    int itemAmount;
-    int itemId;
-    int itemType;
     MailMessageType::Type type;
-    uint8_t itemAttribute;
-    uint8_t itemRefine;
     bool read;
-    bool itemIdentify;
 };
 #endif  // GUI_MAILMESSAGE_H

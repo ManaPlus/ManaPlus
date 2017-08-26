@@ -23,6 +23,8 @@
 #include "itemcolormanager.h"
 #include "notifymanager.h"
 
+#include "const/resources/item/cards.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/mailmessage.h"
