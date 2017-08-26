@@ -60,8 +60,11 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
     Window(_("View mail"), Modal_false, nullptr, "mailview.xml"),
     ActionListener(),
     mMessage(message),
-    // TRANSLATORS: mail view attach button
-    mGetAttachButton(new Button(this, _("Get attach"), "attach", this)),
+    mGetAttachButton(new Button(this,
+        // TRANSLATORS: mail view attach / items button
+        settings.enableNewMailSystem ? _("Get items") : _("Get attach"),
+        "attach", this)),
+    mGetMoneyButton(nullptr),
     // TRANSLATORS: mail view window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mPrevButton(new Button(this, "<", "prev", this)),
@@ -95,12 +98,11 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
     setStickyButtonLock(true);
     setVisible(Visible_true);
 
-    setDefaultSize(380, 230, ImagePosition::CENTER);
+    setDefaultSize(380, 370, ImagePosition::CENTER);
     setMinWidth(200);
     setMinHeight(100);
     center();
     mItemScrollArea->setHeight(100);
-    mItemScrollArea->setWidth(100);
 
     mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
@@ -121,6 +123,14 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
     placer(0, n++, mMessageLabel);
     placer(0, n++, mItemScrollArea);
 
+    if (mUseMail2 && message->money != 0)
+    {
+        mGetMoneyButton = new Button(this,
+            // TRANSLATORS: mail view attached money button
+            _("Get money"),
+            "attach", this);
+        placer(0, n++, mGetMoneyButton);
+    }
     placer(0, n++, mGetAttachButton);
     updateAttachButton();
 
@@ -139,9 +149,14 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
 MailViewWindow::~MailViewWindow()
 {
     if (mUseMail2)
+    {
         mMessage = nullptr;
+    }
     else
+    {
         delete2(mMessage);
+        delete2(mGetMoneyButton);
+    }
     delete2(mInventory);
     mailViewWindow = nullptr;
 }
@@ -189,7 +204,7 @@ Inventory *MailViewWindow::getInventory() const
 
 void MailViewWindow::updateAttachButton()
 {
-    if (mMessage->money != 0 ||
+    if ((mMessage->money != 0 && !mUseMail2) ||
         mMessage->itemId != 0 ||
         mInventory->getLastUsedSlot() != -1)
     {
