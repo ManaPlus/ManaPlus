@@ -52,6 +52,8 @@ class MailViewWindow final : public Window,
         void updateItems();
 
     private:
+        void updateAttachButton();
+
         const MailMessage *mMessage;
         Button *mGetAttachButton;
         Button *mCloseButton;

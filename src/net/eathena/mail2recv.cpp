@@ -442,6 +442,7 @@ void Mail2Recv::processReadMail(Net::MessageIn &msg)
         inventory->setOptions(slot, options);
         delete options;
     }
+    mailViewWindow->updateItems();
 }
 
 void Mail2Recv::processMailDelete(Net::MessageIn &msg)

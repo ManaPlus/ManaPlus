@@ -60,8 +60,8 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
     Window(_("View mail"), Modal_false, nullptr, "mailview.xml"),
     ActionListener(),
     mMessage(message),
-    // TRANSLATORS: mail view window button
-    mGetAttachButton(nullptr),
+    // TRANSLATORS: mail view attach button
+    mGetAttachButton(new Button(this, _("Get attach"), "attach", this)),
     // TRANSLATORS: mail view window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
     mPrevButton(new Button(this, "<", "prev", this)),
@@ -121,20 +121,9 @@ MailViewWindow::MailViewWindow(const MailMessage *const message,
     placer(0, n++, mMessageLabel);
     placer(0, n++, mItemScrollArea);
 
-    logger->log("sizes: %d, %d",
-        mItemContainer->getWidth(),
-        mItemContainer->getHeight());
+    placer(0, n++, mGetAttachButton);
+    updateAttachButton();
 
-    if (message->money != 0 ||
-        message->itemId != 0)
-    {
-        mGetAttachButton = new Button(this,
-            // TRANSLATORS: mail view attach button
-            _("Get attach"),
-             "attach",
-            this);
-        placer(0, n++, mGetAttachButton);
-    }
     ContainerPlacer placer2;
     placer2 = getPlacer(0, n);
 
@@ -198,7 +187,22 @@ Inventory *MailViewWindow::getInventory() const
     return mInventory;
 }
 
+void MailViewWindow::updateAttachButton()
+{
+    if (mMessage->money != 0 ||
+        mMessage->itemId != 0 ||
+        mInventory->getLastUsedSlot() != -1)
+    {
+        mGetAttachButton->setVisible(Visible_true);
+    }
+    else
+    {
+        mGetAttachButton->setVisible(Visible_false);
+    }
+}
+
 void MailViewWindow::updateItems()
 {
     mItemContainer->updateMatrix();
+    updateAttachButton();
 }

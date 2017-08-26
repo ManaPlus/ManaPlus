@@ -26,6 +26,7 @@
 
 #include "gui/mailmessage.h"
 
+#include "gui/windows/mailviewwindow.h"
 #include "gui/windows/mailwindow.h"
 
 #include "net/mailhandler.h"
@@ -111,6 +112,9 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     msg.readUInt8("zero");
     mail->strTime = timeToStr(mail->time);
     mailWindow->showMessage(mail, mail->itemId != 0 ? 1 : 0);
+    // +++ here need add item into item container
+    if (mailViewWindow)
+        mailViewWindow->updateItems();
 }
 
 void MailRecv::processGetAttachment(Net::MessageIn &msg)
