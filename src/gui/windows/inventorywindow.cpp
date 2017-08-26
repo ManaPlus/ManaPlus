@@ -128,6 +128,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             case InventoryType::Npc:
             case InventoryType::Vending:
             case InventoryType::MailEdit:
+            case InventoryType::MailView:
             case InventoryType::Craft:
             case InventoryType::TypeEnd:
             default:
@@ -320,6 +321,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         case InventoryType::Npc:
         case InventoryType::Vending:
         case InventoryType::MailEdit:
+        case InventoryType::MailView:
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
             break;
@@ -383,6 +385,7 @@ void InventoryWindow::storeSortOrder() const
             case InventoryType::Npc:
             case InventoryType::Vending:
             case InventoryType::MailEdit:
+            case InventoryType::MailView:
             case InventoryType::Craft:
             case InventoryType::TypeEnd:
             default:
@@ -832,6 +835,7 @@ void InventoryWindow::close()
         case InventoryType::Npc:
         case InventoryType::Vending:
         case InventoryType::MailEdit:
+        case InventoryType::MailView:
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
             break;

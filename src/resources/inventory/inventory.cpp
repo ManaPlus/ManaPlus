@@ -375,6 +375,7 @@ std::string Inventory::getName() const
             return N_("Cart");
         }
         case InventoryType::MailEdit:
+        case InventoryType::MailView:
         {
             // TRANSLATORS: inventory type name
             return N_("Mail");

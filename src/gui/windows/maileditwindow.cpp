@@ -74,7 +74,7 @@ MailEditWindow::MailEditWindow() :
     mMoneyField(new IntTextField(this, 0, 0,
         settings.enableNewMailSystem ? INT_MAX : 10000000)),
     mMessageField(new TextField(this)),
-    mInventory(new Inventory(InventoryType::Mail,
+    mInventory(new Inventory(InventoryType::MailEdit,
         settings.enableNewMailSystem ? -1 : 1)),
     mItemContainer(new ItemContainer(this, mInventory)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,

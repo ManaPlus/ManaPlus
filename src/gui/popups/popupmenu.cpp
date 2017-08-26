@@ -1702,6 +1702,7 @@ void PopupMenu::showPopup(Window *const parent,
         case InventoryType::Npc:
         case InventoryType::Vending:
         case InventoryType::MailEdit:
+        case InventoryType::MailView:
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
         default:
@@ -2815,6 +2816,7 @@ void PopupMenu::addItemMenu(const Item *const item,
         case InventoryType::Npc:
         case InventoryType::Vending:
         case InventoryType::MailEdit:
+        case InventoryType::MailView:
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
         default:

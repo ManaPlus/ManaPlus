@@ -662,7 +662,10 @@ void ItemContainer::mousePressed(MouseEvent &event)
                 src = DragDropSource::Cart;
                 break;
             case InventoryType::MailEdit:
-                src = DragDropSource::Mail;
+                src = DragDropSource::MailEdit;
+                break;
+            case InventoryType::MailView:
+                src = DragDropSource::MailView;
                 break;
             case InventoryType::Craft:
                 src = DragDropSource::Craft;
@@ -672,6 +675,8 @@ void ItemContainer::mousePressed(MouseEvent &event)
             case InventoryType::TypeEnd:
                 break;
         }
+        if (src == DragDropSource::MailView)
+            return;
         if (mSelectedIndex == index && mClicks != 2)
         {
             dragDrop.dragItem(item, src, index);
@@ -769,7 +774,10 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 dst = DragDropSource::Npc;
                 break;
             case InventoryType::MailEdit:
-                dst = DragDropSource::Mail;
+                dst = DragDropSource::MailEdit;
+                break;
+            case InventoryType::MailView:
+                dst = DragDropSource::MailView;
                 break;
             case InventoryType::Cart:
                 dst = DragDropSource::Cart;
@@ -866,7 +874,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
             return;
         }
         else if (src == DragDropSource::Inventory &&
-                 dst == DragDropSource::Mail)
+                 dst == DragDropSource::MailEdit)
         {
             inventory = PlayerInfo::getInventory();
             if (inventory == nullptr)
@@ -1017,7 +1025,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                 return;
             }
         }
-        else if (src == DragDropSource::Mail)
+        else if (src == DragDropSource::MailEdit)
         {
             if (settings.enableNewMailSystem)
             {

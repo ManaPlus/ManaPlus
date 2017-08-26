@@ -38,7 +38,8 @@ enumStart(DragDropSource)
     Npc,
     Equipment,
     Cart,
-    Mail,
+    MailEdit,
+    MailView,
     Craft,
     ShopBuy,
     ShopSell

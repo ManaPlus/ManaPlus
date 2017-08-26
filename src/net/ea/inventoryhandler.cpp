@@ -93,6 +93,7 @@ size_t InventoryHandler::getSize(const InventoryTypeT type) const
         case InventoryType::Vending:
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
+        case InventoryType::MailView:
         default:
             return 0;
     }

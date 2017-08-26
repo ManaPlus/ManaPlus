@@ -34,6 +34,7 @@ enumStart(InventoryType)
     Cart,
     Vending,
     MailEdit,
+    MailView,
     Craft,
     TypeEnd
 }
