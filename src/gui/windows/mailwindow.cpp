@@ -71,8 +71,8 @@ MailWindow::MailWindow() :
     mNewButton(new Button(this, _("New"), "new", this)),
     // TRANSLATORS: mail window button
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
-    // TRANSLATORS: mail window button
     mReturnButton(new Button(this,
+        // TRANSLATORS: mail window button
         settings.enableNewMailSystem ? _("Get old") : _("Return"),
         "return", this)),
     // TRANSLATORS: mail window button
