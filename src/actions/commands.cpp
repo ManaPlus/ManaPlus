@@ -555,8 +555,8 @@ impHandler(imitation)
 
 impHandler(sendMail)
 {
-    const ServerTypeT type = Net::getNetworkType();
 #ifdef TMWA_SUPPORT
+    const ServerTypeT type = Net::getNetworkType();
     if (type == ServerType::EATHENA || type == ServerType::EVOL2)
 #endif  // TMWA_SUPPORT
     {
