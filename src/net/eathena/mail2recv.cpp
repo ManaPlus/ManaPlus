@@ -21,12 +21,9 @@
 #include "net/eathena/mail2recv.h"
 
 #include "itemcolormanager.h"
-#include "logger.h"
 #include "notifymanager.h"
 
 #include "const/net/inventory.h"
-
-#include "const/resources/item/cards.h"
 
 #include "being/playerinfo.h"
 
@@ -41,10 +38,6 @@
 #include "net/messagein.h"
 
 #include "net/eathena/mail2handler.h"
-
-#include "resources/iteminfo.h"
-
-#include "resources/db/itemdb.h"
 
 #include "resources/inventory/inventory.h"
 

@@ -29,7 +29,6 @@
 #include "net/eathena/protocolout.h"
 
 #include "utils/checkutils.h"
-#include "utils/dtor.h"
 
 #include "resources/item/item.h"
 

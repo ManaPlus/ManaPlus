@@ -41,15 +41,7 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 
-#include "resources/iteminfo.h"
-
-#include "resources/image/image.h"
-
 #include "resources/inventory/inventory.h"
-
-#include "resources/loaders/imageloader.h"
-
-#include "resources/db/itemdb.h"
 
 #include "debug.h"
 
