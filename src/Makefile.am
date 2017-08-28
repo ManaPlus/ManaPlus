@@ -2059,6 +2059,7 @@ manaplustests_SOURCES = \
 	      unittests/render/mockgraphics.h \
 	      unittests/endian.cc \
 	      unittests/enums/enums_unittest.cc \
+	      unittests/sdl.cc \
 	      unittests/utils/dumplibs_unittest.cc \
 	      unittests/utils/checkutils_unittest.cc
 

@@ -20,7 +20,9 @@
 
 #include "unittests/unittests.h"
 
+#include "configuration.h"
 #include "client.h"
+#include "dirs.h"
 #include "logger.h"
 #include "graphicsmanager.h"
 
@@ -32,6 +34,8 @@
 #include "fs/virtfs/rwops.h"
 
 #include "gui/gui.h"
+#include "gui/userpalette.h"
+#include "gui/theme.h"
 
 #include "input/inputactionmap.h"
 
@@ -141,6 +145,14 @@ TEST_CASE("integrity tests", "integrity")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
+
+    userPalette = new UserPalette;
+    config.setValue("fontSize", 16);
+    theme = new Theme;
+    Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
 
     ActorSprite::load();
     const char *const name1 = "dir/hide.png";
@@ -347,11 +359,12 @@ TEST_CASE("integrity tests", "integrity")
 
     ResourceManager::cleanOrphans(true);
 
-    delete client;
-    client = nullptr;
+    delete2(userPalette);
+    delete2(client);
 
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
+
     delete2(logger);
 //    VirtFs::deinit();
 }
