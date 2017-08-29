@@ -2058,10 +2058,10 @@ manaplustests_SOURCES = \
 	      unittests/render/mockgraphics.cc \
 	      unittests/render/mockgraphics.h \
 	      unittests/endian.cc \
-	      unittests/enums/enums_unittest.cc \
+	      unittests/enums/enums.cc \
 	      unittests/sdl.cc \
-	      unittests/utils/dumplibs_unittest.cc \
-	      unittests/utils/checkutils_unittest.cc
+	      unittests/utils/dumplibs.cc \
+	      unittests/utils/checkutils.cc
 
 if ENABLE_UNITTESTS_CATCH
 manaplustests_SOURCES += \
@@ -2085,28 +2085,28 @@ manaplustests_SOURCES += \
 	      unittests/fs/virtfs/virtfs1_mountdir.cc \
 	      unittests/fs/virtfs/virtfs1_mountzip.cc \
 	      unittests/fs/virtfs/virtfs1_unmount.cc \
-	      unittests/fs/virtfs/virtfs2_unittest.cc \
-	      unittests/fs/virtfs/zip_unittest.cc \
-	      unittests/fs/virtfs/virtfs_unittest.cc \
-	      unittests/utils/xml_unittest.cc \
-	      unittests/configuration_unittest.cc \
-	      unittests/utils/timer_unittest.cc \
-	      unittests/utils/xmlutils_unittest.cc \
-	      unittests/utils/mathutils_unittest.cc \
-	      unittests/fs/files_unittest.cc \
-	      unittests/utils/stringutils_unittest.cc \
-	      unittests/utils/parameters_unittest.cc \
-	      unittests/resources/mstack_unittest.cc \
-	      unittests/utils/translation/poparser_unittest.cc \
-	      unittests/utils/langs_unittest.cc \
-	      unittests/resources/sprite/animatedsprite_unittest.cc \
-	      unittests/gui/fonts/textchunklist_unittest.cc \
-	      unittests/gui/widgets/browserbox_unittest.cc \
-	      unittests/resources/dye/dye_unittest.cc \
-	      unittests/resources/dye/dyepalette_unittest.cc \
-	      unittests/integrity_unittest.cc \
-	      unittests/utils/chatutils_unittest.cc \
-	      unittests/resources/map/speciallayer_unittest.cc \
+	      unittests/fs/virtfs/virtfs2.cc \
+	      unittests/fs/virtfs/zip.cc \
+	      unittests/fs/virtfs/virtfs.cc \
+	      unittests/utils/xml.cc \
+	      unittests/configuration.cc \
+	      unittests/utils/timer.cc \
+	      unittests/utils/xmlutils.cc \
+	      unittests/utils/mathutils.cc \
+	      unittests/fs/files.cc \
+	      unittests/utils/stringutils.cc \
+	      unittests/utils/parameters.cc \
+	      unittests/resources/mstack.cc \
+	      unittests/utils/translation/poparser.cc \
+	      unittests/utils/langs.cc \
+	      unittests/resources/sprite/animatedsprite.cc \
+	      unittests/gui/fonts/textchunklist.cc \
+	      unittests/gui/widgets/browserbox.cc \
+	      unittests/resources/dye/dye.cc \
+	      unittests/resources/dye/dyepalette.cc \
+	      unittests/integrity.cc \
+	      unittests/utils/chatutils.cc \
+	      unittests/resources/map/speciallayer.cc \
 	      unittests/resources/map/maplayer/draw.cc \
 	      unittests/resources/map/maplayer/drawfringenormal.cc \
 	      unittests/resources/map/maplayer/drawfringesimple.cc \
@@ -2116,9 +2116,9 @@ manaplustests_SOURCES += \
 	      unittests/resources/map/maplayer/gettiledrawwidth.cc \
 	      unittests/resources/map/maplayer/updatecache.cc \
 	      unittests/resources/map/maplayer/updateconditiontiles.cc \
-	      unittests/resources/resourcemanager/resourcemanager_unittest.cc \
-	      unittests/resources/sdlimagehelper_unittest.cc \
-	      unittests/gui/windowmanager_unittest.cc
+	      unittests/resources/resourcemanager/resourcemanager.cc \
+	      unittests/resources/sdlimagehelper.cc \
+	      unittests/gui/windowmanager.cc
 
 manaplustests_SOURCES += ${SRC}
 
