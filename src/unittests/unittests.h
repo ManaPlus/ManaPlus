@@ -45,7 +45,7 @@ PRAGMA5(GCC diagnostic ignored "-Wsuggest-override")
 PRAGMA5(GCC diagnostic pop)
 
 #undef TEST_CASE
-#define TEST_CASE(name, tags) DOCTEST_TEST_CASE(tags " " name)
+#define TEST_CASE(name, tags) DOCTEST_TEST_CASE(name " " tags)
 #define SECTION(name) DOCTEST_SUBCASE(name)
 #endif  // UNITTESTS_DOCTEST
 
