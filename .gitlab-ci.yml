@@ -3681,7 +3681,28 @@ gcc-7_curl_curl-7_55_1:
   tags:
     - docker
 
-gcc-7_curl_master_no_oldies:
+gcc-7_curl_curl-7_55_1_no_oldies:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/jobs/gcc7.sh
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: curl
+    LIBVERSION: curl-7_55_1
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libpng-dev zlib1g-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              wget unzip gdb valgrind netcat-openbsd procps
+    POST_CXXFLAGS: "-DCURL_NO_OLDIES"
+  tags:
+    - docker
+
+# disabled due compilation bug in curl master branch.
+.gcc-7_curl_master_no_oldies:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
