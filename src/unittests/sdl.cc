@@ -52,7 +52,6 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 PRAGMA48(GCC diagnostic pop)
 
 #ifndef UNITTESTS_CATCH
-//#include <algorithm>
 #endif  // UNITTESTS_CATCH
 
 #include "debug.h"
@@ -128,10 +127,12 @@ TEST_CASE("sdl tests", "sdl")
             ptr[f] = 300 * f;
         }
 #ifdef USE_SDL2
-        SDL_Surface *surface2 = SurfaceImageHelper::SDLDuplicateSurface(surface);
+        SDL_Surface *surface2 = SurfaceImageHelper::SDLDuplicateSurface(
+            surface);
 #else  // USE_SDL2
 
-        SDL_Surface *surface2 = SDLImageHelper::SDLDuplicateSurface(surface);
+        SDL_Surface *surface2 = SDLImageHelper::SDLDuplicateSurface(
+            surface);
 #endif  // USE_SDL2
 
         uint32_t *ptr2 = reinterpret_cast<uint32_t*>(surface2->pixels);
@@ -167,10 +168,12 @@ TEST_CASE("sdl tests", "sdl")
             ptr[f] = 300 * f;
         }
 #ifdef USE_SDL2
-        SDL_Surface *surface2 = SurfaceImageHelper::SDLDuplicateSurface(surface);
+        SDL_Surface *surface2 = SurfaceImageHelper::SDLDuplicateSurface(
+            surface);
 #else  // USE_SDL2
 
-        SDL_Surface *surface2 = SDLImageHelper::SDLDuplicateSurface(surface);
+        SDL_Surface *surface2 = SDLImageHelper::SDLDuplicateSurface(
+            surface);
 #endif  // USE_SDL2
 
         uint32_t *ptr2 = reinterpret_cast<uint32_t*>(surface2->pixels);
