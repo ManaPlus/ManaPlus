@@ -29,11 +29,15 @@ PRAGMA48(GCC diagnostic pop)
 #include "unittests/unittests.h"
 
 #include "client.h"
+#include "dirs.h"
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
 
 #include "fs/virtfs/fs.h"
+
+#include "gui/userpalette.h"
+#include "gui/theme.h"
 
 #include "utils/delete2.h"
 #include "utils/env.h"
@@ -83,6 +87,13 @@ TEST_CASE("sdlimagehelper combineSurface", "")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
+
+    userPalette = new UserPalette;
+    theme = new Theme;
+    Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
 
     ActorSprite::load();
 
@@ -531,6 +542,8 @@ TEST_CASE("sdlimagehelper combineSurface", "")
         MSDL_FreeSurface(surface2);
     }
 
+    delete2(userPalette);
+    delete2(theme);
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");

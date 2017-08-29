@@ -21,6 +21,8 @@
 #include "unittests/unittests.h"
 
 #include "client.h"
+#include "configuration.h"
+#include "dirs.h"
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
@@ -28,6 +30,8 @@
 #include "fs/virtfs/fs.h"
 
 #include "gui/gui.h"
+#include "gui/userpalette.h"
+#include "gui/theme.h"
 
 #include "utils/delete2.h"
 #include "utils/env.h"
@@ -71,6 +75,13 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
+    userPalette = new UserPalette;
+    theme = new Theme;
+    Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
     ActorSprite::load();
 
     STD_VECTOR<int> arr;
@@ -89,6 +100,9 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
     REQUIRE(0 == arr[2]);
     REQUIRE(1 == arr[3]);
     REQUIRE(1 == arr[4]);
+
+    delete2(userPalette);
+    delete2(theme);
     delete2(client);
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
@@ -118,6 +132,13 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
+    userPalette = new UserPalette;
+    theme = new Theme;
+    Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
     ActorSprite::load();
 
     std::map<std::string, std::string> arr;
@@ -135,6 +156,9 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
     REQUIRE(arr["Kitty"] == "0");
     REQUIRE(arr["xD"] == "1");
     REQUIRE(arr["Metal"] == "26");
+
+    delete2(userPalette);
+    delete2(theme);
     delete2(client);
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
@@ -166,6 +190,13 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
+    userPalette = new UserPalette;
+    theme = new Theme;
+    Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
     ActorSprite::load();
 
     std::map<int32_t, int32_t> arr;
@@ -183,6 +214,9 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
     REQUIRE(arr[1] == 2);
     REQUIRE(arr[10] == 20);
     REQUIRE(arr[3] == 0);
+
+    delete2(userPalette);
+    delete2(theme);
     delete2(client);
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data/test");

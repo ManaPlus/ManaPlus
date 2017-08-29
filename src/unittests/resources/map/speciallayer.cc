@@ -21,11 +21,15 @@
 #include "unittests/unittests.h"
 
 #include "client.h"
+#include "dirs.h"
 #include "logger.h"
 
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
+
+#include "gui/userpalette.h"
+#include "gui/theme.h"
 
 #include "enums/resources/map/mapitemtype.h"
 
@@ -71,6 +75,13 @@ TEST_CASE("SpecialLayer updateCache", "")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
+
+    userPalette = new UserPalette;
+    theme = new Theme;
+    Theme::selectSkin();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
 
     ActorSprite::load();
 
@@ -275,6 +286,8 @@ TEST_CASE("SpecialLayer updateCache", "")
 
     delete layer;
     ResourceManager::cleanOrphans();
+    delete2(userPalette);
+    delete2(theme);
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");

@@ -404,6 +404,7 @@ TEST_CASE("sdl tests", "sdl")
 
     ResourceManager::cleanOrphans(true);
     delete2(userPalette);
+    delete2(theme);
     delete2(client);
 
     VirtFs::unmountDirSilent("data");

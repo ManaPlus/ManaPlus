@@ -30,6 +30,8 @@
 #include "fs/virtfs/fs.h"
 
 #include "gui/gui.h"
+#include "gui/userpalette.h"
+#include "gui/theme.h"
 
 #include "resources/sdlimagehelper.h"
 
@@ -118,10 +120,14 @@ TEST_CASE("resourcemanager", "resourcemanager")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
-    ActorSprite::load();
+    userPalette = new UserPalette;
+    theme = new Theme;
+    Theme::selectSkin();
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
+
+    ActorSprite::load();
 
 //    ConfigManager::initConfiguration();
 //    getConfigDefaults2(config.getDefaultValues());
@@ -684,6 +690,8 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
     }
 
+    delete2(userPalette);
+    delete2(theme);
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
