@@ -23,7 +23,6 @@
 #include "configuration.h"
 #include "client.h"
 #include "dirs.h"
-#include "logger.h"
 #include "graphicsmanager.h"
 
 #include "being/actorsprite.h"
