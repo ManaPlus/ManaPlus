@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-08-27 01:44+0300\n"
-"PO-Revision-Date: 2017-08-22 06:00+0000\n"
+"POT-Creation-Date: 2017-08-30 01:33+0300\n"
+"PO-Revision-Date: 2017-08-27 01:27+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Esperanto (http://www.transifex.com/akaras/manaplus/language/"
 "eo/)\n"
@@ -620,7 +620,7 @@ msgstr "Helpo"
 #: src/gui/popups/popupmenu.cpp:1184 src/gui/windows/didyouknowwindow.cpp:84
 #: src/gui/windows/inventorywindow.cpp:274
 #: src/gui/windows/inventorywindow.cpp:297
-#: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:70
+#: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:62
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:133
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:111
 msgid "Close"
@@ -632,7 +632,7 @@ msgid "Connecting to server"
 msgstr "Konektanta al servilo"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1154 src/unittests/gui/windowmanager_unittest.cc:806
+#: src/client.cpp:1154 src/unittests/gui/windowmanager.cc:806
 msgid "Logging in"
 msgstr "Ensalutanta"
 
@@ -7280,14 +7280,14 @@ msgstr "Al:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:65 src/gui/windows/mailviewwindow.cpp:83
+#: src/gui/windows/maileditwindow.cpp:65 src/gui/windows/mailviewwindow.cpp:75
 msgid "Subject:"
 msgstr "Temo:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:67 src/gui/windows/mailviewwindow.cpp:120
-#: src/gui/windows/mailviewwindow.cpp:273
+#: src/gui/windows/maileditwindow.cpp:67 src/gui/windows/mailviewwindow.cpp:112
+#: src/gui/windows/mailviewwindow.cpp:265
 msgid "Money:"
 msgstr "Mono:"
 
@@ -7298,7 +7298,7 @@ msgstr "Objekto:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:71 src/gui/windows/mailviewwindow.cpp:86
+#: src/gui/windows/maileditwindow.cpp:71 src/gui/windows/mailviewwindow.cpp:78
 msgid "Message:"
 msgstr "Mesaĝo:"
 
@@ -7308,40 +7308,38 @@ msgid "empty subject"
 msgstr "malplena temo"
 
 #. TRANSLATORS: mail view window name
-#: src/gui/windows/mailviewwindow.cpp:61
+#: src/gui/windows/mailviewwindow.cpp:53
 msgid "View mail"
 msgstr "Montri poŝton"
 
 #. TRANSLATORS: mail view attach / items button
-#: src/gui/windows/mailviewwindow.cpp:66
-#, fuzzy
+#: src/gui/windows/mailviewwindow.cpp:58
 msgid "Get items"
-msgstr "Krei objektojn"
+msgstr ""
 
-#: src/gui/windows/mailviewwindow.cpp:66
+#: src/gui/windows/mailviewwindow.cpp:58
 msgid "Get attach"
 msgstr "Akiri aldonaĵon"
 
 #. TRANSLATORS: mail view window button
-#: src/gui/windows/mailviewwindow.cpp:74
+#: src/gui/windows/mailviewwindow.cpp:66
 msgid "Reply"
 msgstr "Respondi"
 
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/mailviewwindow.cpp:76
+#: src/gui/windows/mailviewwindow.cpp:68
 msgid "Time:"
 msgstr "Tempo:"
 
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/mailviewwindow.cpp:80
+#: src/gui/windows/mailviewwindow.cpp:72
 msgid "From:"
 msgstr "De:"
 
 #. TRANSLATORS: mail view attached money button
-#: src/gui/windows/mailviewwindow.cpp:131
-#, fuzzy
+#: src/gui/windows/mailviewwindow.cpp:123
 msgid "Get money"
-msgstr "Celi monstron"
+msgstr ""
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:69
@@ -7353,6 +7351,7 @@ msgstr "Aktualigi"
 msgid "New"
 msgstr "Nova"
 
+#. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:76
 msgid "Get old"
 msgstr ""
@@ -9784,7 +9783,7 @@ msgstr "Restas %s luotempo por objekto %s."
 #. TRANSLATORS: unknown item name
 #. TRANSLATORS: item name
 #: src/net/eathena/inventoryrecv.cpp:1228
-#: src/net/eathena/inventoryrecv.cpp:1361 src/net/eathena/mail2recv.cpp:200
+#: src/net/eathena/inventoryrecv.cpp:1361 src/net/eathena/mail2recv.cpp:193
 #: src/resources/db/itemdb.cpp:199
 msgid "Unknown item"
 msgstr "Nekonata objekto"
@@ -11119,45 +11118,39 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:858
-#, fuzzy
 msgid "Item attach failed. Weight too big."
-msgstr "Malsukcesis kunsendi objekton."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:862
-#, fuzzy
 msgid "Item attach failed. Fatal error."
-msgstr "Malsukcesis kunsendi objekton."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:866
-#, fuzzy
 msgid "Item attach failed. No more space."
-msgstr "Malsukcesis kunsendi objekton."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:870
-#, fuzzy
 msgid "Item attach failed. Item on tradeable."
-msgstr "Malsukcesis kunsendi objekton."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:874
-#, fuzzy
 msgid "Item attach failed. Unknown error."
-msgstr "Malsukcesis kunsendi objekton."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:878
-#, fuzzy, c-format
+#, c-format
 msgid "Item %s remove failed."
-msgstr "Malsukcesis serĉi objekton."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:882
-#, fuzzy
 msgid "Mail send failed. Fatal error."
-msgstr "Malsukcesis sendi mesaĝon."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:886
@@ -11166,9 +11159,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:890
-#, fuzzy
 msgid "Mail send failed. Wrong attach found."
-msgstr "Malsukcesis aliĝi al babilĉambro. Malĝusta raso."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:894
@@ -11177,9 +11169,8 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:898
-#, fuzzy
 msgid "Error on getting attach. No space or weight too high."
-msgstr "Eraro ricevante kunsednaĝon."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:902
@@ -11188,15 +11179,13 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:906
-#, fuzzy
 msgid "Error on getting money attach."
-msgstr "Eraro ricevante kunsednaĝon."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:910
-#, fuzzy
 msgid "Error on getting money attach. Too many money."
-msgstr "Eraro ricevante kunsednaĝon."
+msgstr ""
 
 #. TRANSLATORS: skill level
 #: src/resources/skill/skillinfo.cpp:113

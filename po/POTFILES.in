@@ -194,7 +194,7 @@ src/resources/skill/skilltypelist.h
 src/unittests/catch.hpp
 src/unittests/doctest.h
 src/unittests/endian.cc
-src/unittests/gui/windowmanager_unittest.cc
+src/unittests/gui/windowmanager.cc
 src/utils/booleanoptions.h
 src/utils/gettext.h
 src/utils/stringutils.cpp

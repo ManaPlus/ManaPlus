@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-08-27 01:44+0300\n"
-"PO-Revision-Date: 2017-08-20 01:25+0000\n"
+"POT-Creation-Date: 2017-08-30 01:33+0300\n"
+"PO-Revision-Date: 2017-08-27 01:27+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Indonesian (http://www.transifex.com/akaras/manaplus/language/"
 "id/)\n"
@@ -621,7 +621,7 @@ msgstr "Bantuan"
 #: src/gui/popups/popupmenu.cpp:1184 src/gui/windows/didyouknowwindow.cpp:84
 #: src/gui/windows/inventorywindow.cpp:274
 #: src/gui/windows/inventorywindow.cpp:297
-#: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:70
+#: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:62
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:133
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:111
 msgid "Close"
@@ -633,7 +633,7 @@ msgid "Connecting to server"
 msgstr "Terhubung ke server"
 
 #. TRANSLATORS: connection dialog header
-#: src/client.cpp:1154 src/unittests/gui/windowmanager_unittest.cc:806
+#: src/client.cpp:1154 src/unittests/gui/windowmanager.cc:806
 msgid "Logging in"
 msgstr "Masuk"
 
@@ -7148,14 +7148,14 @@ msgstr "Kepada:"
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:65 src/gui/windows/mailviewwindow.cpp:83
+#: src/gui/windows/maileditwindow.cpp:65 src/gui/windows/mailviewwindow.cpp:75
 msgid "Subject:"
 msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:67 src/gui/windows/mailviewwindow.cpp:120
-#: src/gui/windows/mailviewwindow.cpp:273
+#: src/gui/windows/maileditwindow.cpp:67 src/gui/windows/mailviewwindow.cpp:112
+#: src/gui/windows/mailviewwindow.cpp:265
 msgid "Money:"
 msgstr ""
 
@@ -7166,7 +7166,7 @@ msgstr ""
 
 #. TRANSLATORS: mail edit window label
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/maileditwindow.cpp:71 src/gui/windows/mailviewwindow.cpp:86
+#: src/gui/windows/maileditwindow.cpp:71 src/gui/windows/mailviewwindow.cpp:78
 msgid "Message:"
 msgstr ""
 
@@ -7176,37 +7176,36 @@ msgid "empty subject"
 msgstr ""
 
 #. TRANSLATORS: mail view window name
-#: src/gui/windows/mailviewwindow.cpp:61
+#: src/gui/windows/mailviewwindow.cpp:53
 msgid "View mail"
 msgstr ""
 
 #. TRANSLATORS: mail view attach / items button
-#: src/gui/windows/mailviewwindow.cpp:66
-#, fuzzy
+#: src/gui/windows/mailviewwindow.cpp:58
 msgid "Get items"
-msgstr "Proteksi item"
+msgstr ""
 
-#: src/gui/windows/mailviewwindow.cpp:66
+#: src/gui/windows/mailviewwindow.cpp:58
 msgid "Get attach"
 msgstr ""
 
 #. TRANSLATORS: mail view window button
-#: src/gui/windows/mailviewwindow.cpp:74
+#: src/gui/windows/mailviewwindow.cpp:66
 msgid "Reply"
 msgstr ""
 
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/mailviewwindow.cpp:76
+#: src/gui/windows/mailviewwindow.cpp:68
 msgid "Time:"
 msgstr ""
 
 #. TRANSLATORS: mail view window label
-#: src/gui/windows/mailviewwindow.cpp:80
+#: src/gui/windows/mailviewwindow.cpp:72
 msgid "From:"
 msgstr ""
 
 #. TRANSLATORS: mail view attached money button
-#: src/gui/windows/mailviewwindow.cpp:131
+#: src/gui/windows/mailviewwindow.cpp:123
 msgid "Get money"
 msgstr ""
 
@@ -7220,6 +7219,7 @@ msgstr ""
 msgid "New"
 msgstr ""
 
+#. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:76
 msgid "Get old"
 msgstr ""
@@ -9643,7 +9643,7 @@ msgstr ""
 #. TRANSLATORS: unknown item name
 #. TRANSLATORS: item name
 #: src/net/eathena/inventoryrecv.cpp:1228
-#: src/net/eathena/inventoryrecv.cpp:1361 src/net/eathena/mail2recv.cpp:200
+#: src/net/eathena/inventoryrecv.cpp:1361 src/net/eathena/mail2recv.cpp:193
 #: src/resources/db/itemdb.cpp:199
 msgid "Unknown item"
 msgstr ""
@@ -11001,9 +11001,9 @@ msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:878
-#, fuzzy, c-format
+#, c-format
 msgid "Item %s remove failed."
-msgstr "Berbagi item diaktifkan."
+msgstr ""
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:882
