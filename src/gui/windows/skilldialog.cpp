@@ -201,6 +201,8 @@ void SkillDialog::action(const ActionEvent &event)
         if (tab != nullptr)
         {
             const SkillInfo *const info = tab->getSelectedInfo();
+            if (info == nullptr)
+                return;
             useSkill(info,
                 fromBool(config.getBoolValue("skillAutotarget"), AutoTarget),
                 info->customSelectedLevel,
