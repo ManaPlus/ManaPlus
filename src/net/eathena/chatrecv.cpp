@@ -295,9 +295,16 @@ void ChatRecv::processGmChat2(Net::MessageIn &msg)
     msg.readInt16("font size");
     msg.readInt16("font align");
     msg.readInt16("font y");
-    const std::string chatMsg = msg.readRawString(chatMsgLength, "message");
     if (chatWindow != nullptr)
+    {
+        const std::string chatMsg = msg.readRawString(chatMsgLength,
+            "message");
         chatWindow->addGlobalMessage(chatMsg);
+    }
+    else
+    {
+        msg.readRawString(chatMsgLength, "message");
+    }
 }
 
 void ChatRecv::processWhisper(Net::MessageIn &msg)

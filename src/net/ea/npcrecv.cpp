@@ -236,9 +236,11 @@ void NpcRecv::processChangeTitle(Net::MessageIn &msg)
     msg.readInt16("len");
     npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
-    const std::string str = msg.readString(-1, "title");
     if (mDialog != nullptr)
+    {
+        const std::string str = msg.readString(-1, "title");
         mDialog->setCaption(str);
+    }
 }
 
 }  // namespace Ea

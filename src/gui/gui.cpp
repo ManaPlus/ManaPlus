@@ -1257,7 +1257,7 @@ Widget* Gui::getWidgetAt(const int x, const int y) const
         parent->getAbsolutePosition(parentX, parentY);
         child = parent->getWidgetAt(x - parentX, y - parentY);
         parent = swap;
-        if ((parent != nullptr) && parent->isSelectable())
+        if (parent->isSelectable())
             selectable = parent;
     }
 

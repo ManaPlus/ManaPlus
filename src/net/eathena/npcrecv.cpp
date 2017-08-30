@@ -45,6 +45,12 @@ namespace NpcRecv
 void NpcRecv::processNpcCutin(Net::MessageIn &msg)
 {
     Ea::NpcRecv::mRequestLang = false;
+    if (cutInWindow == nullptr)
+    {
+        msg.readString(64, "image name");
+        msg.readUInt8("type");
+        return;
+    }
     const std::string image = msg.readString(64, "image name");
     const CutInT cutin = static_cast<CutInT>(msg.readUInt8("type"));
     if (cutInWindow != nullptr)
@@ -112,9 +118,15 @@ void NpcRecv::processNpcSkin(Net::MessageIn &msg)
 {
     const int len = msg.readInt16("len");
     npcHandler->getNpc(msg, NpcAction::Other);
-    const std::string skin = msg.readString(len - 8, "skin");
     if (Ea::NpcRecv::mDialog != nullptr)
+    {
+        const std::string skin = msg.readString(len - 8, "skin");
         Ea::NpcRecv::mDialog->setSkin(skin);
+    }
+    else
+    {
+        msg.readString(len - 8, "skin");
+    }
 }
 
 }  // namespace EAthena

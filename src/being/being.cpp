@@ -676,9 +676,6 @@ void Being::takeDamage(Being *restrict const attacker,
     BLOCK_START("Being::takeDamage1")
 
     Font *font = nullptr;
-    const std::string damage = amount != 0 ? toString(amount) :
-        // TRANSLATORS: dodge or miss message in attacks
-        type == AttackType::FLEE ? _("dodge") : _("miss");
     const Color *color;
 
     if (gui != nullptr)
@@ -766,6 +763,9 @@ void Being::takeDamage(Being *restrict const attacker,
     }
     if (font != nullptr && particleEngine != nullptr)
     {
+        const std::string damage = amount != 0 ? toString(amount) :
+            // TRANSLATORS: dodge or miss message in attacks
+            type == AttackType::FLEE ? _("dodge") : _("miss");
         // Show damage number
         particleEngine->addTextSplashEffect(damage,
             mPixelX,

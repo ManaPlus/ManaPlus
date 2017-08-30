@@ -71,11 +71,11 @@ void WhisperTab::handleCommandStr(const std::string &msg)
 
     const size_t pos = msg.find(' ');
     const std::string type(msg, 0, pos);
-    const std::string args(msg, pos == std::string::npos
-        ? msg.size() : pos + 1);
 
     if (type == "me")
     {
+        const std::string args(msg, pos == std::string::npos
+            ? msg.size() : pos + 1);
         std::string str = textToMe(args);
         chatHandler->privateMessage(mNick, str);
         if (localPlayer != nullptr)

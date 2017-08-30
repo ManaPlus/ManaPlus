@@ -176,9 +176,15 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         Ea::taParty->clearMembers();
 
     const int length = msg.readInt16("len");
-    const std::string name = msg.readString(24, "party name");
     if (Ea::taParty != nullptr)
+    {
+        const std::string name = msg.readString(24, "party name");
         Ea::taParty->setName(name);
+    }
+    else
+    {
+        msg.readString(24, "party name");
+    }
 
     int partySize = 0;
     int offset = 0;
@@ -370,6 +376,12 @@ void PartyRecv::processPartyLeader(Net::MessageIn &msg)
 
 void PartyRecv::processPartyInvited(Net::MessageIn &msg)
 {
+    if (socialWindow == nullptr)
+    {
+        msg.readInt32("party id");
+        msg.readString(24, "party name");
+        return;
+    }
     const int id = msg.readInt32("party id");
     const std::string partyName = msg.readString(24, "party name");
 

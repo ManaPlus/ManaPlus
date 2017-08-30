@@ -1398,11 +1398,16 @@ void BeingRecv::processIpResponse(Net::MessageIn &msg)
 
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
-    const std::string ip = ipToString(msg.readInt32("ip address"));
     if (dstBeing != nullptr)
+    {
+        const std::string ip = ipToString(msg.readInt32("ip address"));
         dstBeing->setIp(ip);
+    }
     else
+    {
+        ipToString(msg.readInt32("ip address"));
         DEBUGLOGSTR("invisible player?");
+    }
 
     BLOCK_END("BeingRecv::processIpResponse")
 }

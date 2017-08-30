@@ -75,10 +75,15 @@ void VendingRecv::processOpenReq(Net::MessageIn &msg)
 void VendingRecv::processShowBoard(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("owner id");
-    const std::string shopName = msg.readString(80, "shop name");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing != nullptr)
-        dstBeing->setSellBoard(shopName);
+    {
+        dstBeing->setSellBoard(msg.readString(80, "shop name"));
+    }
+    else
+    {
+        msg.readString(80, "shop name");
+    }
 }
 
 void VendingRecv::processHideBoard(Net::MessageIn &msg)

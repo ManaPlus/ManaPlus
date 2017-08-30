@@ -702,13 +702,15 @@ void ChatWindow::doPresent() const
         }
     }
 
-    const std::string log = strprintf(
-        // TRANSLATORS: chat message
-        _("Present: %s; %d players are present."),
-        response.c_str(), playercount);
-
-    if (getFocused() != nullptr)
-        getFocused()->chatLog(log, ChatMsgType::BY_SERVER);
+    ChatTab *const tab = getFocused();
+    if (tab != nullptr)
+    {
+        const std::string log = strprintf(
+            // TRANSLATORS: chat message
+            _("Present: %s; %d players are present."),
+            response.c_str(), playercount);
+        tab->chatLog(log, ChatMsgType::BY_SERVER);
+    }
 }
 
 void ChatWindow::scroll(const int amount) const

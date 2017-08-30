@@ -123,6 +123,7 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     if (!mailWindow)
     {
         reportAlways("Mail window not created");
+        delete mail;
         return;
     }
     mailWindow->showMessage(mail, itemId != 0 ? 1 : 0);

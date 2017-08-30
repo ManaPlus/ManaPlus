@@ -224,7 +224,6 @@ void PartyRecv::processPartyInviteResponse(Net::MessageIn &msg)
 void PartyRecv::processPartyInvited(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("account id");
-    const std::string partyName = msg.readString(24, "party name");
     std::string nick;
 
     if (actorManager != nullptr)
@@ -238,7 +237,14 @@ void PartyRecv::processPartyInvited(Net::MessageIn &msg)
     }
 
     if (socialWindow != nullptr)
+    {
+        const std::string partyName = msg.readString(24, "party name");
         socialWindow->showPartyInvite(partyName, nick, 0);
+    }
+    else
+    {
+        msg.readString(24, "party name");
+    }
 }
 
 void PartyRecv::processPartyMove(Net::MessageIn &msg)

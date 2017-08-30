@@ -841,11 +841,13 @@ void InputManager::executeAction(const InputActionT keyNum) restrict2
     if (keyNum < InputAction::MOVE_UP || keyNum >= InputAction::TOTAL)
         return;
 
-    InputEvent evt(keyNum, mMask);
     ActionFuncPtr func = *(inputActionData[CAST_SIZE(
         keyNum)].action);
     if (func != nullptr)
+    {
+        InputEvent evt(keyNum, mMask);
         func(evt);
+    }
 }
 
 bool InputManager::executeChatCommand(const std::string &restrict cmd,

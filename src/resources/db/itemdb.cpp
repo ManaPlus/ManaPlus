@@ -991,16 +991,19 @@ static void loadSpriteRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 
 static void loadSoundRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
 {
-    if ((node == nullptr) || !XmlHaveChildContent(node))
+    if (node == nullptr ||
+        !XmlHaveChildContent(node))
+    {
         return;
+    }
     const std::string event = XML::getProperty(node, "event", "");
-    const std::string filename = XmlChildContent(node);
     const int delay = XML::getProperty(node, "delay", 0);
 
     const std::map<std::string, ItemSoundEvent::Type>::const_iterator
         it = mSoundNames.find(event);
     if (it != mSoundNames.end())
     {
+        const std::string filename = XmlChildContent(node);
         itemInfo->addSound((*it).second, filename, delay);
     }
     else

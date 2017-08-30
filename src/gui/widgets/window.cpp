@@ -642,8 +642,6 @@ void Window::setResizable(const bool r)
 
 void Window::widgetResized(const Event &event A_UNUSED)
 {
-    const Rect area = getChildrenArea();
-
     if (mGrip != nullptr)
     {
         mGripRect.x = mDimension.width - mGrip->getWidth() - mGripPadding;
@@ -652,6 +650,7 @@ void Window::widgetResized(const Event &event A_UNUSED)
 
     if (mLayout != nullptr)
     {
+        const Rect area = getChildrenArea();
         int w = area.width;
         int h = area.height;
         mLayout->reflow(w, h);

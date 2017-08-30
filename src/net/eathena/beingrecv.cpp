@@ -2079,9 +2079,12 @@ void BeingRecv::processSkillCancel(Net::MessageIn &msg)
 void BeingRecv::processSolveCharName(Net::MessageIn &msg)
 {
     const int id = msg.readInt32("char id");
-    const std::string name = msg.readString(24, "name");
-    if (actorManager != nullptr)
-        actorManager->addChar(id, name);
+    if (actorManager == nullptr)
+    {
+        msg.readString(24, "name");
+        return;
+    }
+    actorManager->addChar(id, msg.readString(24, "name"));
 }
 
 void BeingRecv::processGraffiti(Net::MessageIn &msg)

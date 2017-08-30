@@ -377,22 +377,33 @@ void GuildRecv::processGuildSkillInfo(Net::MessageIn &msg)
 
 void GuildRecv::processGuildNotice(Net::MessageIn &msg)
 {
-    const std::string msg1 = msg.readString(60, "msg1");
-    const std::string msg2 = msg.readString(120, "msg2");
     if (guildTab != nullptr)
     {
+        const std::string msg1 = msg.readString(60, "msg1");
+        const std::string msg2 = msg.readString(120, "msg2");
         guildTab->chatLog(msg1, ChatMsgType::BY_SERVER);
         guildTab->chatLog(msg2, ChatMsgType::BY_SERVER);
+    }
+    else
+    {
+        msg.readString(60, "msg1");
+        msg.readString(120, "msg2");
     }
 }
 
 void GuildRecv::processGuildInvite(Net::MessageIn &msg)
 {
     const int guildId = msg.readInt32("guild id");
-    const std::string guildName = msg.readString(24, "guild name");
 
     if (socialWindow != nullptr)
+    {
+        const std::string guildName = msg.readString(24, "guild name");
         socialWindow->showGuildInvite(guildName, guildId, "");
+    }
+    else
+    {
+        msg.readString(24, "guild name");
+    }
 }
 
 void GuildRecv::processGuildInviteAck(Net::MessageIn &msg)

@@ -669,13 +669,16 @@ impHandler(guildNotice)
         return true;
     }
 
-    const std::string str1 = args.substr(0, 60);
     std::string str2;
     if (args.size() > 60)
         str2 = args.substr(60);
     const Guild *const guild = localPlayer->getGuild();
     if (guild != nullptr)
-        guildHandler->changeNotice(guild->getId(), str1, str2);
+    {
+        guildHandler->changeNotice(guild->getId(),
+            args.substr(0, 60),
+            str2);
+    }
     return true;
 }
 

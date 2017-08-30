@@ -474,13 +474,13 @@ SkillInfo *SkillDialog::loadSkill(XmlNodeConstPtr node,
         id += SKILL_VAR_MIN_ID;
     }
 
-    std::string name = XML::langProperty(node, "name",
-        // TRANSLATORS: skills dialog. skill id
-        strprintf(_("Skill %d"), id));
-
     SkillInfo *skill = getSkill(id);
     if (skill == nullptr)
     {
+        std::string name = XML::langProperty(node, "name",
+            // TRANSLATORS: skills dialog. skill id
+            strprintf(_("Skill %d"), id));
+
         skill = new SkillInfo;
         skill->id = CAST_U32(id);
         skill->modifiable = Modifiable_false;

@@ -953,7 +953,7 @@ Rect ScrollArea::getVerticalBarDimension() const
     if (!mVBarVisible)
         return Rect(0, 0, 0, 0);
 
-    const int height = (mVBarVisible && mShowButtons) ? mScrollbarWidth : 0;
+    const int height = mShowButtons ? mScrollbarWidth : 0;
     if (mHBarVisible)
     {
         return Rect(mDimension.width - mScrollbarWidth,
@@ -1122,10 +1122,10 @@ Rect ScrollArea::getDownButtonDimension() const
     if (!mVBarVisible || !mShowButtons)
         return Rect(0, 0, 0, 0);
 
-    if (mVBarVisible && mHBarVisible)
+    if (mHBarVisible)
     {
         return Rect(mDimension.width - mScrollbarWidth,
-            mDimension.height - mScrollbarWidth*2,
+            mDimension.height - mScrollbarWidth * 2,
             mScrollbarWidth,
             mScrollbarWidth);
     }
@@ -1150,7 +1150,7 @@ Rect ScrollArea::getRightButtonDimension() const
     if (!mHBarVisible || !mShowButtons)
         return Rect(0, 0, 0, 0);
 
-    if (mVBarVisible && mHBarVisible)
+    if (mVBarVisible)
     {
         return Rect(mDimension.width - mScrollbarWidth*2,
             mDimension.height - mScrollbarWidth,

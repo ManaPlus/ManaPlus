@@ -129,12 +129,15 @@ void ChatRecv::processGmChat(Net::MessageIn &msg)
         return;
     }
 
-    std::string chatMsg = msg.readRawString(chatMsgLength, "message");
-
-    if (localChatTab != nullptr)
+    if (localChatTab != nullptr &&
+        chatWindow != nullptr)
     {
-        if (chatWindow != nullptr)
-            chatWindow->addGlobalMessage(chatMsg);
+        std::string chatMsg = msg.readRawString(chatMsgLength, "message");
+        chatWindow->addGlobalMessage(chatMsg);
+    }
+    else
+    {
+        msg.readRawString(chatMsgLength, "message");
     }
     BLOCK_END("ChatRecv::processChat")
 }
