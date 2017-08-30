@@ -55,15 +55,6 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
-TEST_CASE("sdl leak test1", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
-}
-
 TEST_CASE("sdl tests", "sdl")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
@@ -411,13 +402,4 @@ TEST_CASE("sdl tests", "sdl")
     VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
-}
-
-TEST_CASE("sdl leak test2", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
 }

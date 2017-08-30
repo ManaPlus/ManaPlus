@@ -139,15 +139,6 @@
 
 extern QuitDialog *quitDialog;
 
-TEST_CASE("windows leak test1", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
-}
-
 TEST_CASE("Windows tests", "windowmanager")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
@@ -986,13 +977,4 @@ TEST_CASE("WindowManager", "create windows")
     delete2(logger);
 
 //    VirtFs::deinit();
-}
-
-TEST_CASE("windows leak test2", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
 }

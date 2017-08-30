@@ -89,15 +89,6 @@ namespace
 
 }  // namespace
 
-TEST_CASE("resourcemanager leak test1", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
-}
-
 TEST_CASE("resourcemanager", "resourcemanager")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
@@ -696,13 +687,4 @@ TEST_CASE("resourcemanager", "resourcemanager")
     VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
-}
-
-TEST_CASE("resourcemanager leak test2", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
 }

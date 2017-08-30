@@ -47,15 +47,6 @@
 
 #include "debug.h"
 
-TEST_CASE("SpecialLayer leak test1", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
-}
-
 TEST_CASE("SpecialLayer updateCache", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
@@ -290,14 +281,5 @@ TEST_CASE("SpecialLayer updateCache", "")
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-}
-
-TEST_CASE("SpecialLayer leak test2", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
     delete2(logger);
 }

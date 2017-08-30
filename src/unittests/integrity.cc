@@ -107,15 +107,6 @@ static bool compareBuffers(const unsigned char *const buf2)
     return isCorrect;
 }
 
-TEST_CASE("integrity leak test1", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
-}
-
 TEST_CASE("integrity tests", "integrity")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
@@ -366,13 +357,4 @@ TEST_CASE("integrity tests", "integrity")
 
     delete2(logger);
 //    VirtFs::deinit();
-}
-
-TEST_CASE("integrity leak test2", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
 }

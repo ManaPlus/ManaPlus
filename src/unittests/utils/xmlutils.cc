@@ -44,15 +44,6 @@
 
 #include "debug.h"
 
-TEST_CASE("xmlutils leak test1", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
-}
-
 TEST_CASE("xmlutils readXmlIntVector 1", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
@@ -224,13 +215,4 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
     VirtFs::unmountDirSilent("../data");
     delete2(logger);
 //    VirtFs::deinit();
-}
-
-TEST_CASE("xmlutils leak test2", "")
-{
-    logger = new Logger();
-    REQUIRE(gui == nullptr);
-    ResourceManager::cleanOrphans(true);
-    ResourceManager::deleteInstance();
-    delete2(logger);
 }
