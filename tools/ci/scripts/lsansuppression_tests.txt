@@ -1,5 +1,6 @@
 leak:libcurl
 leak:testFailAlways1
 leak:testFailAlways2
-leak:checkutils_unittest.cc
+leak:checkutils.cc
+leak:throw.cc
 leak:SDL_CreateThreadWithStackSize
