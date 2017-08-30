@@ -187,7 +187,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
                 fromBool(flags.bits.isFavorite, Favorite),
                 Equipm_true,
                 Equipped_false);
-            inventory->setCards(index, cards, 4);
+            inventory->setCards(index, cards, maxCards);
             inventory->setOptions(index, options);
         }
         delete options;
@@ -354,7 +354,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 favorite,
                 fromBool(equipType, Equipm),
                 Equipped_false);
-            inventory->setCards(index, cards, 4);
+            inventory->setCards(index, cards, maxCards);
             inventory->setOptions(index, options);
         }
         ArrowsListener::distributeEvent();
@@ -437,7 +437,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
                 fromBool(flags.bits.isFavorite, Favorite),
                 Equipm_false,
                 Equipped_false);
-            inventory->setCards(index, cards, 4);
+            inventory->setCards(index, cards, maxCards);
         }
     }
     BLOCK_END("InventoryRecv::processPlayerInventory")
@@ -791,7 +791,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
                 Favorite_false,
                 Equipm_false,
                 Equipped_false);
-            Ea::InventoryRecv::mStorage->setCards(index, cards, 4);
+            Ea::InventoryRecv::mStorage->setCards(index, cards, maxCards);
             Ea::InventoryRecv::mStorage->setOptions(index, options);
         }
     }
@@ -1000,7 +1000,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
             Favorite_false,
             Equipm_false,
             Equipped_false);
-        inventory->setCards(index, cards, 4);
+        inventory->setCards(index, cards, maxCards);
         inventory->setOptions(index, options);
     }
     else

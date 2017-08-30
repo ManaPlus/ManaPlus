@@ -150,7 +150,7 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
         Equipm_false,
         Equipped_false);
     if (slot != -1)
-        inventory->setCards(slot, cards, 4);
+        inventory->setCards(slot, cards, maxCards);
 
     mailViewWindow->updateItems();
 }

@@ -123,7 +123,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
                 Favorite_false,
                 Equipm_true,
                 Equipped_false);
-            inventory->setCards(index, cards, 4);
+            inventory->setCards(index, cards, maxCards);
         }
 
         if (equipType != 0)
@@ -259,7 +259,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
                 Favorite_false,
                 fromBool(equipType, Equipm),
                 Equipped_false);
-            inventory->setCards(index, cards, 4);
+            inventory->setCards(index, cards, maxCards);
         }
         ArrowsListener::distributeEvent();
     }
@@ -322,7 +322,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
                 Favorite_false,
                 fromBool(isEquipment, Equipm),
                 Equipped_false);
-            inventory->setCards(index, cards, 4);
+            inventory->setCards(index, cards, maxCards);
         }
     }
     BLOCK_END("InventoryRecv::processPlayerInventory")
@@ -495,7 +495,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
                 Favorite_false,
                 Equipm_false,
                 Equipped_false);
-            Ea::InventoryRecv::mStorage->setCards(index, cards, 4);
+            Ea::InventoryRecv::mStorage->setCards(index, cards, maxCards);
         }
     }
     BLOCK_END("InventoryRecv::processPlayerStorageAdd")

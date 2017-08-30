@@ -159,7 +159,7 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
         delete options;
         return;
     }
-    inventory->setCards(slot, cards, 4);
+    inventory->setCards(slot, cards, maxCards);
     inventory->setOptions(slot, options);
     inventory->setTag(slot, index);
     mailEditWindow->updateItems();
@@ -431,7 +431,7 @@ void Mail2Recv::processReadMail(Net::MessageIn &msg)
             delete options;
             continue;
         }
-        inventory->setCards(slot, cards, 4);
+        inventory->setCards(slot, cards, maxCards);
         inventory->setOptions(slot, options);
         delete options;
     }
