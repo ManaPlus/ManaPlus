@@ -265,6 +265,7 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(dialog);
         delete2(being);
+        delete2(map);
     }
     SECTION("BuyingStoreSellDialog")
     {
@@ -512,6 +513,7 @@ TEST_CASE("Windows tests", "windowmanager")
         gui->draw();
         mainGraphics->updateScreen();
         delete2(mailViewWindow);
+        delete(message);
     }
     SECTION("MailWindow")
     {

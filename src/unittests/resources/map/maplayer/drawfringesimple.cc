@@ -33,6 +33,8 @@
 #include "utils/delete2.h"
 #include "utils/env.h"
 
+#include "resources/resourcemanager/resourcemanager.h"
+
 #include "resources/sdlimagehelper.h"
 
 #include "resources/image/image.h"
@@ -489,6 +491,8 @@ TEST_CASE("MapLayer drawFringe simple", "")
     delete mock;
     delete2(theme);
     GraphicsManager::deleteRenderers();
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
     delete2(logger);

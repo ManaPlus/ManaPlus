@@ -178,11 +178,6 @@ TEST_CASE("Zip readCompressedFile", "")
     if (Files::existsLocal(name) == false)
         prefix = "../";
 
-    SECTION("empty")
-    {
-        REQUIRE_THROWS(VirtFs::ZipReader::readCompressedFile(nullptr));
-    }
-
     SECTION("test2.zip")
     {
         name = prefix + "data/test/test2.zip";
@@ -212,11 +207,6 @@ TEST_CASE("Zip readFile", "")
     std::string prefix;
     if (Files::existsLocal(name) == false)
         prefix = "../";
-
-    SECTION("empty")
-    {
-        REQUIRE_THROWS(VirtFs::ZipReader::readFile(nullptr));
-    }
 
     SECTION("test.zip")
     {

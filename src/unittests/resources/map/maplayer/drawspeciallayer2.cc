@@ -31,6 +31,8 @@
 #include "utils/delete2.h"
 #include "utils/env.h"
 
+#include "resources/resourcemanager/resourcemanager.h"
+
 #include "resources/sdlimagehelper.h"
 
 #include "resources/map/map.h"
@@ -385,6 +387,8 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
     delete map;
     delete mock;
     GraphicsManager::deleteRenderers();
+    ResourceManager::cleanOrphans(true);
+    ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
     delete2(logger);

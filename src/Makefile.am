@@ -2088,6 +2088,7 @@ manaplustests_SOURCES += \
 	      unittests/fs/virtfs/virtfs2.cc \
 	      unittests/fs/virtfs/zip.cc \
 	      unittests/fs/virtfs/virtfs.cc \
+	      unittests/fs/virtfs/throw.cc \
 	      unittests/utils/xml.cc \
 	      unittests/configuration.cc \
 	      unittests/utils/timer.cc \

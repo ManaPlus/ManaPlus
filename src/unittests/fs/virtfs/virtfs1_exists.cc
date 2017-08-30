@@ -85,8 +85,6 @@ TEST_CASE("VirtFs1 exists1", "")
     REQUIRE(VirtFs::exists("units.xml") == false);
     REQUIRE(VirtFs::exists("units.xml/") == false);
 
-    REQUIRE_THROWS(VirtFs::exists("test/../units.xml"));
-
     VirtFs::deinit();
     delete2(logger);
 }
@@ -155,8 +153,6 @@ TEST_CASE("VirtFs1 exists2", "")
     REQUIRE(VirtFs::exists("units.xml"));
     REQUIRE(VirtFs::exists("file1.txt") == false);
     REQUIRE(VirtFs::exists("file2.txt") == false);
-
-    REQUIRE_THROWS(VirtFs::exists("test/../units.xml"));
 
     VirtFs::deinit();
     delete2(logger);
