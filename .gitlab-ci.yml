@@ -1630,7 +1630,7 @@ gcc-7_tests_tcmalloc_sdl2_i386:
     - docker
 
 gcc-7_separate_doctest:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
@@ -1644,7 +1644,7 @@ gcc-7_separate_doctest:
 
 # disabled due kernel issue in shared runners.
 .gcc-7_separate_doctest_sanitize:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
@@ -1669,7 +1669,7 @@ gcc-7_separate_doctest:
 
 # disabled due kernel issue in shared runners.
 .gcc-7_separate_doctest_sanitize_sdl2:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
   - ./tools/ci/scripts/separateunittests.sh
@@ -1693,7 +1693,7 @@ gcc-7_separate_doctest:
     - docker
 
 gcc-7_separate_doctest_sanitize_i386:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
@@ -1718,7 +1718,7 @@ gcc-7_separate_doctest_sanitize_i386:
     - docker
 
 gcc-7_separate_doctest_sanitize_sdl2_i386:
-  stage: prebuild
+  stage: build
   script:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
   - ./tools/ci/scripts/separateunittests.sh
