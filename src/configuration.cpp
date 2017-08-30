@@ -363,7 +363,7 @@ Configuration::Configuration() :
     ConfigurationObject(),
     mListenerMap(),
     mConfigPath(),
-    mDefaultsData(nullptr),
+    mDefaultsData(),
     mDirectory(),
     mFilename(),
     mUseResManager(UseVirtFs_false),
@@ -377,17 +377,13 @@ Configuration::Configuration() :
 
 void Configuration::cleanDefaults()
 {
-    if (mDefaultsData != nullptr)
+    for (DefaultsData::const_iterator iter = mDefaultsData.begin();
+         iter != mDefaultsData.end();
+         ++iter)
     {
-        for (DefaultsData::const_iterator iter = mDefaultsData->begin();
-             iter != mDefaultsData->end();
-             ++iter)
-        {
-            delete (iter->second);
-        }
-        mDefaultsData->clear();
-        delete2(mDefaultsData);
+        delete iter->second;
     }
+    mDefaultsData.clear();
 }
 
 Configuration::~Configuration()
@@ -405,12 +401,6 @@ void Configuration::unload()
     ConfigurationObject::clear();
 }
 
-void Configuration::setDefaultValues(DefaultsData *const defaultsData)
-{
-    cleanDefaults();
-    mDefaultsData = defaultsData;
-}
-
 int Configuration::getIntValue(const std::string &key) const
 {
     GETLOG();
@@ -418,46 +408,43 @@ int Configuration::getIntValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData != nullptr)
-        {
-            const DefaultsData::const_iterator itdef
-                = mDefaultsData->find(key);
+        const DefaultsData::const_iterator itdef
+            = mDefaultsData.find(key);
 
-            if (itdef != mDefaultsData->end() && (itdef->second != nullptr))
+        if (itdef != mDefaultsData.end() && (itdef->second != nullptr))
+        {
+            const VariableData *const data = itdef->second;
+            const VariableData::DataType type = static_cast<
+                VariableData::DataType>(data->getType());
+            if (type == VariableData::DATA_INT)
             {
-                const VariableData *const data = itdef->second;
-                const VariableData::DataType type = static_cast<
-                    VariableData::DataType>(data->getType());
-                if (type == VariableData::DATA_INT)
-                {
-                    defaultValue = (static_cast<const IntData*>(
-                        data))->getData();
-                }
-                else if (type == VariableData::DATA_STRING)
-                {
-                    defaultValue = atoi((static_cast<const StringData*>(
-                        data))->getData().c_str());
-                }
-                else if (type == VariableData::DATA_BOOL)
-                {
-                    if ((static_cast<const BoolData*>(data))->getData())
-                        defaultValue = 1;
-                    else
-                        defaultValue = 0;
-                }
-                else if (type == VariableData::DATA_FLOAT)
-                {
-                    defaultValue = CAST_S32(
-                        (static_cast<const FloatData*>(data))->getData());
-                }
+                defaultValue = (static_cast<const IntData*>(
+                    data))->getData();
             }
-            else
+            else if (type == VariableData::DATA_STRING)
             {
-                logger->assertLog(
-                    "%s: No integer value in registry for key %s",
-                    mConfigPath.c_str(),
-                    key.c_str());
+                defaultValue = atoi((static_cast<const StringData*>(
+                    data))->getData().c_str());
             }
+            else if (type == VariableData::DATA_BOOL)
+            {
+                if ((static_cast<const BoolData*>(data))->getData())
+                    defaultValue = 1;
+                else
+                    defaultValue = 0;
+            }
+            else if (type == VariableData::DATA_FLOAT)
+            {
+                defaultValue = CAST_S32(
+                    (static_cast<const FloatData*>(data))->getData());
+            }
+        }
+        else
+        {
+            logger->assertLog(
+                "%s: No integer value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
         }
     }
     else
@@ -471,22 +458,19 @@ int Configuration::resetIntValue(const std::string &key)
 {
     GETLOG();
     int defaultValue = 0;
-    if (mDefaultsData != nullptr)
+    const DefaultsData::const_iterator itdef = mDefaultsData.find(key);
+    const VariableData *const data = itdef->second;
+    if (itdef != mDefaultsData.end() && data != nullptr
+        && data->getType() == VariableData::DATA_INT)
     {
-        const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
-        const VariableData *const data = itdef->second;
-        if (itdef != mDefaultsData->end() && (data != nullptr)
-            && data->getType() == VariableData::DATA_INT)
-        {
-            defaultValue = (static_cast<const IntData*>(
-                data))->getData();
-        }
-        else
-        {
-            logger->assertLog("%s: No integer value in registry for key %s",
-                mConfigPath.c_str(),
-                key.c_str());
-        }
+        defaultValue = (static_cast<const IntData*>(
+            data))->getData();
+    }
+    else
+    {
+        logger->assertLog("%s: No integer value in registry for key %s",
+            mConfigPath.c_str(),
+            key.c_str());
     }
     setValue(key, defaultValue);
     return defaultValue;
@@ -499,46 +483,43 @@ std::string Configuration::getStringValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData != nullptr)
-        {
-            const DefaultsData::const_iterator
-                itdef = mDefaultsData->find(key);
+        const DefaultsData::const_iterator
+            itdef = mDefaultsData.find(key);
 
-            if (itdef != mDefaultsData->end() &&
-                (itdef->second != nullptr))
+        if (itdef != mDefaultsData.end() &&
+            (itdef->second != nullptr))
+        {
+            const VariableData *const data = itdef->second;
+            const VariableData::DataType type = static_cast<
+                VariableData::DataType>(data->getType());
+            if (type == VariableData::DATA_STRING)
             {
-                const VariableData *const data = itdef->second;
-                const VariableData::DataType type = static_cast<
-                    VariableData::DataType>(data->getType());
-                if (type == VariableData::DATA_STRING)
-                {
-                    defaultValue = (static_cast<const StringData*>(
-                        data))->getData();
-                }
-                else if (type == VariableData::DATA_BOOL)
-                {
-                    if ((static_cast<const BoolData*>(data))->getData())
-                        defaultValue = "1";
-                    else
-                        defaultValue = "0";
-                }
-                else if (type == VariableData::DATA_INT)
-                {
-                    defaultValue = toString((static_cast<const IntData*>(
-                        data))->getData());
-                }
-                else if (type == VariableData::DATA_FLOAT)
-                {
-                    defaultValue = toString((static_cast<const FloatData*>(
-                        data))->getData());
-                }
+                defaultValue = (static_cast<const StringData*>(
+                    data))->getData();
             }
-            else
+            else if (type == VariableData::DATA_BOOL)
             {
-                logger->assertLog("%s: No string value in registry for key %s",
-                    mConfigPath.c_str(),
-                    key.c_str());
+                if ((static_cast<const BoolData*>(data))->getData())
+                    defaultValue = "1";
+                else
+                    defaultValue = "0";
             }
+            else if (type == VariableData::DATA_INT)
+            {
+                defaultValue = toString((static_cast<const IntData*>(
+                    data))->getData());
+            }
+            else if (type == VariableData::DATA_FLOAT)
+            {
+                defaultValue = toString((static_cast<const FloatData*>(
+                    data))->getData());
+            }
+        }
+        else
+        {
+            logger->assertLog("%s: No string value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
         }
     }
     else
@@ -556,48 +537,45 @@ float Configuration::getFloatValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData != nullptr)
-        {
-            const DefaultsData::const_iterator itdef
-                = mDefaultsData->find(key);
+        const DefaultsData::const_iterator itdef
+            = mDefaultsData.find(key);
 
-            if (itdef != mDefaultsData->end() &&
-                (itdef->second != nullptr))
+        if (itdef != mDefaultsData.end() &&
+            (itdef->second != nullptr))
+        {
+            const VariableData *const data = itdef->second;
+            const VariableData::DataType type = static_cast<
+                VariableData::DataType>(data->getType());
+            if (type == VariableData::DATA_FLOAT)
             {
-                const VariableData *const data = itdef->second;
-                const VariableData::DataType type = static_cast<
-                    VariableData::DataType>(data->getType());
-                if (type == VariableData::DATA_FLOAT)
-                {
-                    defaultValue = static_cast<float>(
-                        (static_cast<const FloatData*>(data))->getData());
-                }
-                else if (type == VariableData::DATA_STRING)
-                {
-                    defaultValue = static_cast<float>(atof((
-                        static_cast<const StringData*>(
-                        data))->getData().c_str()));
-                }
-                else if (type == VariableData::DATA_BOOL)
-                {
-                    if ((static_cast<const BoolData*>(data))->getData())
-                        defaultValue = 1;
-                    else
-                        defaultValue = 0;
-                }
-                else if (type == VariableData::DATA_INT)
-                {
-                    defaultValue = static_cast<float>((
-                        static_cast<const IntData*>(
-                        data))->getData());
-                }
+                defaultValue = static_cast<float>(
+                    (static_cast<const FloatData*>(data))->getData());
             }
-            else
+            else if (type == VariableData::DATA_STRING)
             {
-                logger->assertLog("%s: No float value in registry for key %s",
-                    mConfigPath.c_str(),
-                    key.c_str());
+                defaultValue = static_cast<float>(atof((
+                    static_cast<const StringData*>(
+                    data))->getData().c_str()));
             }
+            else if (type == VariableData::DATA_BOOL)
+            {
+                if ((static_cast<const BoolData*>(data))->getData())
+                    defaultValue = 1;
+                else
+                    defaultValue = 0;
+            }
+            else if (type == VariableData::DATA_INT)
+            {
+                defaultValue = static_cast<float>((
+                    static_cast<const IntData*>(
+                    data))->getData());
+            }
+        }
+        else
+        {
+            logger->assertLog("%s: No float value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
         }
     }
     else
@@ -614,61 +592,58 @@ bool Configuration::getBoolValue(const std::string &key) const
     const Options::const_iterator iter = mOptions.find(key);
     if (iter == mOptions.end())
     {
-        if (mDefaultsData != nullptr)
-        {
-            const DefaultsData::const_iterator itdef
-                = mDefaultsData->find(key);
+        const DefaultsData::const_iterator itdef
+            = mDefaultsData.find(key);
 
-            if (itdef != mDefaultsData->end() &&
-                (itdef->second != nullptr))
+        if (itdef != mDefaultsData.end() &&
+            (itdef->second != nullptr))
+        {
+            const VariableData *const data = itdef->second;
+            const VariableData::DataType type = static_cast<
+                VariableData::DataType>(data->getType());
+            if (type == VariableData::DATA_BOOL)
             {
-                const VariableData *const data = itdef->second;
-                const VariableData::DataType type = static_cast<
-                    VariableData::DataType>(data->getType());
-                if (type == VariableData::DATA_BOOL)
+                defaultValue = (static_cast<const BoolData*>(
+                    data))->getData();
+            }
+            else if (type == VariableData::DATA_INT)
+            {
+                if ((static_cast<const IntData*>(data))->getData() != 0)
+                    defaultValue = true;
+                else
+                    defaultValue = false;
+            }
+            else if (type == VariableData::DATA_STRING)
+            {
+                if ((static_cast<const StringData*>(
+                    data))->getData() != "0")
                 {
-                    defaultValue = (static_cast<const BoolData*>(
-                        data))->getData();
+                    defaultValue = true;
                 }
-                else if (type == VariableData::DATA_INT)
+                else
                 {
-                    if ((static_cast<const IntData*>(data))->getData() != 0)
-                        defaultValue = true;
-                    else
-                        defaultValue = false;
-                }
-                else if (type == VariableData::DATA_STRING)
-                {
-                    if ((static_cast<const StringData*>(
-                        data))->getData() != "0")
-                    {
-                        defaultValue = true;
-                    }
-                    else
-                    {
-                        defaultValue = false;
-                    }
-                }
-                if (type == VariableData::DATA_FLOAT)
-                {
-                    if (CAST_S32((static_cast<const FloatData*>(
-                        data))->getData()) != 0)
-                    {
-                        defaultValue = true;
-                    }
-                    else
-                    {
-                        defaultValue = false;
-                    }
+                    defaultValue = false;
                 }
             }
-            else
+            if (type == VariableData::DATA_FLOAT)
             {
-                logger->assertLog(
-                    "%s: No boolean value in registry for key %s",
-                    mConfigPath.c_str(),
-                    key.c_str());
+                if (CAST_S32((static_cast<const FloatData*>(
+                    data))->getData()) != 0)
+                {
+                    defaultValue = true;
+                }
+                else
+                {
+                    defaultValue = false;
+                }
             }
+        }
+        else
+        {
+            logger->assertLog(
+                "%s: No boolean value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
         }
     }
     else
@@ -683,23 +658,20 @@ bool Configuration::resetBoolValue(const std::string &key)
 {
     GETLOG();
     bool defaultValue = false;
-    if (mDefaultsData != nullptr)
-    {
-        const DefaultsData::const_iterator itdef = mDefaultsData->find(key);
-        const VariableData *const data = itdef->second;
+    const DefaultsData::const_iterator itdef = mDefaultsData.find(key);
+    const VariableData *const data = itdef->second;
 
-        if (itdef != mDefaultsData->end() &&
-            (data != nullptr) &&
-            data->getType() == VariableData::DATA_BOOL)
-        {
-            defaultValue = (static_cast<const BoolData*>(data))->getData();
-        }
-        else
-        {
-            logger->assertLog("%s: No boolean value in registry for key %s",
-                mConfigPath.c_str(),
-                key.c_str());
-        }
+    if (itdef != mDefaultsData.end() &&
+        (data != nullptr) &&
+        data->getType() == VariableData::DATA_BOOL)
+    {
+        defaultValue = (static_cast<const BoolData*>(data))->getData();
+    }
+    else
+    {
+        logger->assertLog("%s: No boolean value in registry for key %s",
+            mConfigPath.c_str(),
+            key.c_str());
     }
 
     setValue(key, defaultValue);

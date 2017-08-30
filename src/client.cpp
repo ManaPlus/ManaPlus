@@ -279,7 +279,7 @@ void Client::gameInit()
     // Load branding information
     if (!settings.options.brandingPath.empty())
         branding.init(settings.options.brandingPath);
-    branding.setDefaultValues(getBrandingDefaults());
+    setBrandingDefaults(branding);
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
@@ -308,7 +308,7 @@ void Client::gameInit()
     ConfigManager::initConfiguration();
     settings.init();
     Net::loadIgnorePackets();
-    paths.setDefaultValues(getPathsDefaults());
+    setPathsDefaults(paths);
     initFeatures();
     initPaths();
     logger->log("init 4");
@@ -595,7 +595,7 @@ void Client::initGraphics()
     graphicsManager.initGraphics();
 
     imageHelper->postInit();
-    getConfigDefaults2(config.getDefaultValues());
+    setConfigDefaults2(config);
     WindowManager::applyGrabMode();
     WindowManager::applyGamma();
 
@@ -1720,7 +1720,7 @@ void Client::initFeatures()
     features.init(paths.getStringValue("featuresFile"),
         UseVirtFs_true,
         SkipError_true);
-    features.setDefaultValues(getFeaturesDefaults());
+    setFeaturesDefaults(features);
     settings.fixDeadAnimation = features.getBoolValue("fixDeadAnimation");
 }
 
@@ -1896,7 +1896,7 @@ void Client::loadData()
 
     logger->log("Init paths");
     paths.init("paths.xml", UseVirtFs_true);
-    paths.setDefaultValues(getPathsDefaults());
+    setPathsDefaults(paths);
     initPaths();
     if (SpriteReference::Empty == nullptr)
     {

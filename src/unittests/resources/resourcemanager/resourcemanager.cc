@@ -130,7 +130,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
     ActorSprite::load();
 
 //    ConfigManager::initConfiguration();
-//    getConfigDefaults2(config.getDefaultValues());
+//    setConfigDefaults2(config);
 
     while (ResourceManager::cleanOrphans(true))
         continue;

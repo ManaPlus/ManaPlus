@@ -1498,7 +1498,7 @@ TEST_CASE("stringuntils replaceItemLinks", "")
 
     ItemDB::NamedItemInfos &namedInfos = ItemDB::getNamedItemInfosTest();
     ItemDB::ItemInfos &infos = ItemDB::getItemInfosTest();
-    paths.setDefaultValues(getPathsDefaults());
+    setPathsDefaults(paths);
     ItemInfo *info = new ItemInfo;
     info->setId(123456);
     info->setName("test name 1");

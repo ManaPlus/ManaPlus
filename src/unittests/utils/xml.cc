@@ -81,8 +81,8 @@ TEST_CASE("xml doc", "")
     Dirs::initHomeDir();
 
     ConfigManager::initConfiguration();
-    getConfigDefaults2(config.getDefaultValues());
-    branding.setDefaultValues(getBrandingDefaults());
+    setConfigDefaults2(config);
+    setBrandingDefaults(branding);
 
     theme = new Theme;
     Theme::selectSkin();

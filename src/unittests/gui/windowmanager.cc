@@ -162,7 +162,7 @@ TEST_CASE("Windows tests", "windowmanager")
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);
     VirtFs::mountDirSilent("../data/test", Append_false);
-    paths.setDefaultValues(getPathsDefaults());
+    setPathsDefaults(paths);
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
@@ -188,8 +188,8 @@ TEST_CASE("Windows tests", "windowmanager")
     ::remove(cfgName.c_str());
 
     ConfigManager::initConfiguration();
-    getConfigDefaults2(config.getDefaultValues());
-    branding.setDefaultValues(getBrandingDefaults());
+    setConfigDefaults2(config);
+    setBrandingDefaults(branding);
     ConfigManager::initServerConfig("nonexistserver");
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
@@ -845,7 +845,7 @@ TEST_CASE("WindowManager", "create windows")
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);
     VirtFs::mountDirSilent("../data/test", Append_false);
-    paths.setDefaultValues(getPathsDefaults());
+    setPathsDefaults(paths);
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
@@ -870,8 +870,8 @@ TEST_CASE("WindowManager", "create windows")
     ::remove(cfgName.c_str());
 
     ConfigManager::initConfiguration();
-    getConfigDefaults2(config.getDefaultValues());
-    branding.setDefaultValues(getBrandingDefaults());
+    setConfigDefaults2(config);
+    setBrandingDefaults(branding);
     ConfigManager::initServerConfig("nonexistserver");
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),

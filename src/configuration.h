@@ -255,14 +255,7 @@ class Configuration final : public ConfigurationObject
 
         void unload();
 
-        /**
-         * Set the default values for each keys.
-         *
-         * @param defaultsData data used as defaults.
-         */
-        void setDefaultValues(DefaultsData *const defaultsData);
-
-        DefaultsData *getDefaultValues()
+        DefaultsData &getDefaultValues()
         { return mDefaultsData; }
 
         /**
@@ -365,12 +358,12 @@ class Configuration final : public ConfigurationObject
 
         void writeUpdated();
 
-    private:
         /**
          * Clean up the default values member.
          */
         void cleanDefaults();
 
+    private:
         typedef std::list<ConfigListener*> Listeners;
         typedef Listeners::iterator ListenerIterator;
         typedef std::map<std::string, Listeners> ListenerMap;
@@ -380,7 +373,7 @@ class Configuration final : public ConfigurationObject
         // Location of config file
         std::string mConfigPath;
         /// Defaults of value for a given key
-        DefaultsData *mDefaultsData;
+        DefaultsData mDefaultsData;
         std::string mDirectory;
         std::string mFilename;
         UseVirtFs mUseResManager;

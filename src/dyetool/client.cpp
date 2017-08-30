@@ -163,7 +163,7 @@ void Client::gameInit()
     // Load branding information
     if (!settings.options.brandingPath.empty())
         branding.init(settings.options.brandingPath);
-    branding.setDefaultValues(getBrandingDefaults());
+    setBrandingDefaults(branding);
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
@@ -187,7 +187,7 @@ void Client::gameInit()
     if (settings.options.test.empty())
         ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
-    paths.setDefaultValues(getPathsDefaults());
+    setPathsDefaults(paths);
     initPaths();
     logger->log("init 4");
     logger->setDebugLog(config.getBoolValue("debugLog"));
@@ -400,7 +400,7 @@ void Client::initGraphics()
     graphicsManager.initGraphics();
 
     imageHelper->postInit();
-    getConfigDefaults2(config.getDefaultValues());
+    setConfigDefaults2(config);
     WindowManager::applyGrabMode();
     WindowManager::applyGamma();
 
@@ -676,7 +676,7 @@ int Client::gameExec()
 
                     logger->log("Init paths");
                     paths.init("paths.xml", UseVirtFs_true);
-                    paths.setDefaultValues(getPathsDefaults());
+                    setPathsDefaults(paths);
                     initPaths();
                     TranslationManager::loadCurrentLang();
                     TranslationManager::loadDictionaryLang();

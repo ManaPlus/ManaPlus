@@ -21,6 +21,7 @@
 
 #include "defaults.h"
 
+#include "configuration.h"
 #include "graphicsmanager.h"
 #include "variabledata.h"
 
@@ -82,12 +83,13 @@ VariableData* createData(const bool defData)
 }
 
 #define AddDEF(key, value)  \
-    configData->insert(std::pair<std::string, VariableData*> \
+    configData.insert(std::pair<std::string, VariableData*> \
     (key, createData(value)));
 
-DefaultsData* getConfigDefaults()
+void setConfigDefaults(Configuration &cfg)
 {
-    DefaultsData *const configData = new DefaultsData;
+    cfg.cleanDefaults();
+    DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("OverlayDetail", 2);
     AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
@@ -410,13 +412,11 @@ DefaultsData* getConfigDefaults()
     AddDEF("openglContext", false);
     AddDEF("allowMoveByMouse", true);
     AddDEF("enableDSA", true);
-    return configData;
 }
 
-void getConfigDefaults2(DefaultsData *const configData)
+void setConfigDefaults2(Configuration &cfg)
 {
-    if (configData == nullptr)
-        return;
+    DefaultsData &configData = cfg.getDefaultValues();
     const int density = graphicsManager.getDensity();
     int size = 12;
     int buttonSize = 1;
@@ -459,9 +459,10 @@ void getConfigDefaults2(DefaultsData *const configData)
     }
 }
 
-DefaultsData* getBrandingDefaults()
+void setBrandingDefaults(Configuration &cfg)
 {
-    DefaultsData *const configData = new DefaultsData;
+    cfg.cleanDefaults();
+    DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("wallpapersPath", "");
     AddDEF("wallpapersFile", "");
     AddDEF("appName", "ManaPlus");
@@ -514,12 +515,12 @@ DefaultsData* getBrandingDefaults()
     AddDEF("updateMirror5", "");
     AddDEF("updateMirror6", "");
     AddDEF("updateMirror7", "");
-    return configData;
 }
 
-DefaultsData* getPathsDefaults()
+void setPathsDefaults(Configuration &cfg)
 {
-    DefaultsData *const configData = new DefaultsData;
+    cfg.cleanDefaults();
+    DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("itemIcons", "graphics/items/");
     AddDEF("unknownItemFile", "unknown-item.png");
     AddDEF("sprites", "graphics/sprites/");
@@ -710,19 +711,17 @@ DefaultsData* getPathsDefaults()
 #endif  // TMWA_SUPPORT
 
     AddDEF("enableNewMailSystem", true);
-
-    return configData;
 }
 
-DefaultsData* getFeaturesDefaults()
+void setFeaturesDefaults(Configuration &cfg)
 {
-    DefaultsData *const configData = new DefaultsData;
+    cfg.cleanDefaults();
+    DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("languageTab", false);
     AddDEF("allowFollow", true);
     AddDEF("fixDeadAnimation", true);
     AddDEF("forceAccountGender", -1);
     AddDEF("forceCharGender", -1);
-    return configData;
 }
 
 #undef AddDEF

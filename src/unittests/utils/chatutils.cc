@@ -92,8 +92,8 @@ TEST_CASE("chatutils replaceVars", "")
     Dirs::initHomeDir();
 
     ConfigManager::initConfiguration();
-    getConfigDefaults2(config.getDefaultValues());
-    branding.setDefaultValues(getBrandingDefaults());
+    setConfigDefaults2(config);
+    setBrandingDefaults(branding);
 
     gui = new Gui();
     gui->postInit(mainGraphics);

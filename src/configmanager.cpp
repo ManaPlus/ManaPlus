@@ -79,7 +79,7 @@ void ConfigManager::initServerConfig(const std::string &serverName)
     {
         fclose(configFile);
         serverConfig.init(configPath);
-        serverConfig.setDefaultValues(getConfigDefaults());
+        setConfigDefaults(serverConfig);
         logger->log("serverConfigPath: " + configPath);
     }
     else
@@ -165,7 +165,7 @@ void ConfigManager::initConfiguration()
         fclose(configFile);
         config.init(configPath);
         logger->log1("init 3");
-        config.setDefaultValues(getConfigDefaults());
+        setConfigDefaults(config);
         logger->log("configuration file: " + configPath);
     }
 }

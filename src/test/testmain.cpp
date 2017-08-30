@@ -53,7 +53,7 @@ void TestMain::initConfig()
 {
     mConfig.init(settings.configDir + "/test.xml");
     mConfig.clear();
-//    mConfig.setDefaultValues(getConfigDefaults());
+//    setConfigDefaults(mConfig);
 
     mConfig.setValue("hwaccel", false);
     mConfig.setValue("screen", false);

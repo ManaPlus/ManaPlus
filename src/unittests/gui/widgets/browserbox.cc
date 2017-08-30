@@ -83,8 +83,8 @@ TEST_CASE("BrowserBox tests", "browserbox")
     Dirs::initHomeDir();
 
     ConfigManager::initConfiguration();
-    getConfigDefaults2(config.getDefaultValues());
-    branding.setDefaultValues(getBrandingDefaults());
+    setConfigDefaults2(config);
+    setBrandingDefaults(branding);
 
     ActorSprite::load();
     gui = new Gui();

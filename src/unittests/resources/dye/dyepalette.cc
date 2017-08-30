@@ -95,13 +95,13 @@ TEST_CASE("DyePalette tests", "")
     Dirs::initHomeDir();
 
     ConfigManager::initConfiguration();
-    getConfigDefaults2(config.getDefaultValues());
-    branding.setDefaultValues(getBrandingDefaults());
+    setConfigDefaults2(config);
+    setBrandingDefaults(branding);
 
     ActorSprite::load();
     gui = new Gui();
     gui->postInit(mainGraphics);
-    paths.setDefaultValues(getPathsDefaults());
+    setPathsDefaults(paths);
     PaletteDB::load();
 
     SECTION("simple test 1")

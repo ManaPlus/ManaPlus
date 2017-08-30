@@ -278,7 +278,7 @@ void Dirs::initRootDir()
         if (settings.options.brandingPath.empty())
         {
             branding.init(portableName);
-            branding.setDefaultValues(getBrandingDefaults());
+            setBrandingDefaults(branding);
         }
 
         logger->log("Portable file: %s", portableName.c_str());
