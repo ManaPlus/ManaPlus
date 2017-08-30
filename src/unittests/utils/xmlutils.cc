@@ -21,7 +21,6 @@
 #include "unittests/unittests.h"
 
 #include "client.h"
-#include "configuration.h"
 #include "dirs.h"
 #include "graphicsmanager.h"
 

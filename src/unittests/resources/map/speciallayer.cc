@@ -22,7 +22,6 @@
 
 #include "client.h"
 #include "dirs.h"
-#include "logger.h"
 
 #include "graphicsmanager.h"
 
