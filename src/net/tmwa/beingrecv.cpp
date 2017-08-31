@@ -1405,7 +1405,7 @@ void BeingRecv::processIpResponse(Net::MessageIn &msg)
     }
     else
     {
-        ipToString(msg.readInt32("ip address"));
+        msg.readInt32("ip address");
         DEBUGLOGSTR("invisible player?");
     }
 
