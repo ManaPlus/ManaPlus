@@ -88,6 +88,8 @@ VariableData* createData(const bool defData)
 
 void setConfigDefaults(Configuration &cfg)
 {
+    logger->log("Set config default values to configuration %s",
+        cfg.getFileName().c_str());
     cfg.cleanDefaults();
     DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("OverlayDetail", 2);
@@ -416,6 +418,8 @@ void setConfigDefaults(Configuration &cfg)
 
 void setConfigDefaults2(Configuration &cfg)
 {
+    logger->log("Add config default values to configuration %s",
+        cfg.getFileName().c_str());
     DefaultsData &configData = cfg.getDefaultValues();
     const int density = graphicsManager.getDensity();
     int size = 12;
@@ -461,6 +465,8 @@ void setConfigDefaults2(Configuration &cfg)
 
 void setBrandingDefaults(Configuration &cfg)
 {
+    logger->log("Set branding default values to configuration %s",
+        cfg.getFileName().c_str());
     cfg.cleanDefaults();
     DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("wallpapersPath", "");
@@ -519,6 +525,8 @@ void setBrandingDefaults(Configuration &cfg)
 
 void setPathsDefaults(Configuration &cfg)
 {
+    logger->log("Set path default values to configuration %s",
+        cfg.getFileName().c_str());
     cfg.cleanDefaults();
     DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("itemIcons", "graphics/items/");
@@ -715,6 +723,8 @@ void setPathsDefaults(Configuration &cfg)
 
 void setFeaturesDefaults(Configuration &cfg)
 {
+    logger->log("Set features default values to configuration %s",
+        cfg.getFileName().c_str());
     cfg.cleanDefaults();
     DefaultsData &configData = cfg.getDefaultValues();
     AddDEF("languageTab", false);
