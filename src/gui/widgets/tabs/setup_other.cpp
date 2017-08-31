@@ -462,6 +462,7 @@ void Setup_Other::externalUpdated()
 {
     reread("showJob");
     reread("enableGuildBot");
+    reread("enableManaMarketBot");
     reread("enableBuggyServers");
     reread("afkMessage");
 }
