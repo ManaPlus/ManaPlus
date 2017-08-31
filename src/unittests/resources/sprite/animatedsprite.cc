@@ -41,8 +41,6 @@
 
 #include "resources/animation/animation.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "resources/sprite/animatedsprite.h"
 
 #include "utils/env.h"

@@ -43,8 +43,6 @@
 
 #include "resources/sdlimagehelper.h"
 
-#include "resources/resourcemanager/resourcemanager.h"
-
 #include "debug.h"
 
 TEST_CASE("PoParser tests", "PoParser")

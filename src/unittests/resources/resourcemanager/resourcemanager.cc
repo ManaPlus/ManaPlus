@@ -28,7 +28,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "gui/gui.h"
 #include "gui/userpalette.h"
 #include "gui/theme.h"
 

@@ -34,8 +34,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "gui/gui.h"
-
 #include "utils/delete2.h"
 #include "utils/env.h"
 
