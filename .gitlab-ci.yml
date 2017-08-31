@@ -24,6 +24,7 @@ variables:
   PMUPDATE: "apt-get update"
   PMINSTALL: "apt-get install -y -qq"
   DOCKERRETRY: "./tools/ci/scripts/dockerretry.sh"
+  GIT_DEPTH: "1"
 
 .job-push: &job-push
   artifacts:
@@ -45,6 +46,7 @@ variables:
 
 .job-deheader_shared: &job-deheader_shared
   variables:
+    GIT_DEPTH: "1"
     INCLUDES: "-I/usr/include/SDL -I/usr/include/libxml2"
     LOGFILE: logs/deheader.log
     CXX: g++-5
@@ -55,6 +57,7 @@ variables:
 
 .job-deheader_sdl2_shared: &job-deheader_sdl2_shared
   variables:
+    GIT_DEPTH: "1"
     INCLUDES: "-I/usr/include/SDL2 -I/usr/include/libxml2"
     LOGFILE: logs/deheader.log
     CXX: g++-5
@@ -73,6 +76,7 @@ gcc-5_c++11_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -89,6 +93,7 @@ gcc-6-i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -105,6 +110,7 @@ gcc-7-i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -120,6 +126,7 @@ clang-3.9:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -133,6 +140,7 @@ gcc-6:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -146,6 +154,7 @@ gcc-7:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -159,6 +168,7 @@ gcc-6_default:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc6.log
     CC: gcc-6
     CXX: g++-6
@@ -176,6 +186,7 @@ gcc-7_default:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc6.log
     CC: gcc-7
     CXX: g++-7
@@ -194,6 +205,7 @@ gcc-4.4:
   image: debian:wheezy
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.4 g++-4.4 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -210,6 +222,7 @@ mxe_gcc6_shared_32:
   <<: *job-push
   image: registry.gitlab.com/manaplus/mxe:gcc6_shared_32
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: bash
     CROSS: i686-w64-mingw32.shared
   tags:
@@ -223,6 +236,7 @@ mxe_gcc6_shared_64:
   <<: *job-push
   image: registry.gitlab.com/manaplus/mxe:gcc6_shared_64
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: bash
     CROSS: x86_64-w64-mingw32.shared
   tags:
@@ -242,6 +256,7 @@ mxe_gcc6_shared_32_testsbin:
   dependencies: []
   image: registry.gitlab.com/manaplus/mxe:gcc6_shared_32
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: bash
     CROSS: i686-w64-mingw32.shared
   except:
@@ -263,6 +278,7 @@ mxe_gcc6_shared_64_testsbin:
   dependencies: []
   image: registry.gitlab.com/manaplus/mxe:gcc6_shared_64
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: bash
     CROSS: x86_64-w64-mingw32.shared
   except:
@@ -277,6 +293,7 @@ gcc-5_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -290,6 +307,7 @@ gcc-7_game_only:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -302,6 +320,7 @@ gcc-7_dyecmd_only:
   - ./tools/ci/jobs/gcc7.sh --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -313,6 +332,7 @@ gcc-7_unittestsbin:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin --without-manaplusgame --without-dyecmd
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -324,6 +344,7 @@ mplint_po:
   - ./tools/ci/jobs/mplint.sh po
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc g++ git 
               make autoconf automake autopoint gettext
 
@@ -333,6 +354,7 @@ mplint_src:
   - ./tools/ci/jobs/mplint.sh src
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc g++ git 
               make autoconf automake autopoint gettext
 
@@ -342,6 +364,7 @@ mplint_data:
   - ./tools/ci/jobs/mplint.sh data
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc g++ git 
               make autoconf automake autopoint gettext
 
@@ -351,6 +374,7 @@ cpplint:
   - ./tools/ci/jobs/cpplint.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: python wget
 
 gcc-5_h_all:
@@ -359,6 +383,7 @@ gcc-5_h_all:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -371,6 +396,7 @@ gcc-5_h_all_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -384,6 +410,7 @@ pngcheck:
   - ./tools/ci/jobs/pngcheck.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: pngcheck
 
 icccheck:
@@ -392,6 +419,7 @@ icccheck:
   - ./tools/ci/jobs/imagemagiccheck.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: imagemagick
 
 nsiqcppstyle:
@@ -400,6 +428,7 @@ nsiqcppstyle:
   - ./tools/ci/jobs/nsiqcppstyle.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: "git python grep"
 
 # tests
@@ -412,6 +441,7 @@ nsiqcppstyle:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -429,6 +459,7 @@ gcc-7_sanitize_doctest_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -447,6 +478,7 @@ gcc-7_sanitize_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -470,6 +502,7 @@ gcc-7_sanitize_i386:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_asan
     PACKAGES: gcc-7 g++-7 
@@ -496,6 +529,7 @@ gcc-7_sanitize_i386:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default_asan
     PACKAGES: gcc-7 g++-7 
@@ -517,6 +551,7 @@ gcc-5_sanitize_tests:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -533,6 +568,7 @@ gcc-5_sanitize_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -549,6 +585,7 @@ gcc-5_sanitize_tests_i386:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -565,6 +602,7 @@ gcc-6_sanitize_doctest_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -580,6 +618,7 @@ gcc-5_sanitize_no_opengl_tests:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -596,6 +635,7 @@ gcc-5_sanitize_no_opengltests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -612,6 +652,7 @@ gcc-4.9_sanitize_tests:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -628,6 +669,7 @@ gcc-4.9_sanitize_tests_i386:
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -643,6 +685,7 @@ gcc-5_sanitize:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -659,6 +702,7 @@ gcc-5_sanitize_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -675,6 +719,7 @@ gcc-5_sanitize_i386:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -691,6 +736,7 @@ gcc-6_sanitize_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -707,6 +753,7 @@ gcc-6_sanitize_i386:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -724,6 +771,7 @@ gcc-6_sanitize_i386:
   <<: *job-push
   image: fedora:rawhide
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
     PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
     FLAGS: "gccfedora.sh"
@@ -738,6 +786,7 @@ gcc-6_sanitize_i386:
   <<: *job-push
   image: fedora:rawhide
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
     PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
     FLAGS: "gccfedora.sh"
@@ -757,6 +806,7 @@ gcc-6_sanitize_i386:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-7 g++-7 
@@ -779,6 +829,7 @@ gcc-6_sanitize_i386:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default
     PACKAGES: gcc-7 g++-7 
@@ -804,6 +855,7 @@ gcc-6_sanitize_i386:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-7 g++-7 
@@ -828,6 +880,7 @@ gcc-6_sanitize_i386:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default_old
     PACKAGES: gcc-7 g++-7 
@@ -850,6 +903,7 @@ gcc-4.9_sanitize:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -864,6 +918,7 @@ gcc-4.9_sanitize_i386:
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -878,6 +933,7 @@ gcc-4.9_sdl2_sanitize:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -890,6 +946,7 @@ gcc-6_tests_simd:
   - ./tools/ci/jobs/gcc6_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -904,6 +961,7 @@ gcc-7_tests_simd:
   - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -918,6 +976,7 @@ gcc-7_tests_O0:
   - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     POST_CXXFLAGS: "-O0"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
@@ -933,6 +992,7 @@ gcc-7_tests_O1:
   - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     POST_CXXFLAGS: "-O1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
@@ -948,6 +1008,7 @@ gcc-6_tests_lto:
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
@@ -964,6 +1025,7 @@ gcc-6_tests_lto_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
@@ -979,6 +1041,7 @@ gcc-7_tests_lto:
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
@@ -995,6 +1058,7 @@ gcc-7_tests_lto_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
@@ -1010,6 +1074,7 @@ gcc-5_tests:
   - ./tools/ci/jobs/gcc5_tests.sh --without-dyecmd
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1025,6 +1090,7 @@ gcc-5_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1039,6 +1105,7 @@ gcc-7_tests_gcov:
   - ./tools/ci/jobs/gcc7_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1055,6 +1122,7 @@ gcc-7_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1069,6 +1137,7 @@ gcc-6_tests:
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1084,6 +1153,7 @@ gcc-6_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1098,6 +1168,7 @@ gcc-6_tests_glibcdebug:
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1112,6 +1183,7 @@ gcc-7_tests_glibcdebug:
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1126,6 +1198,7 @@ gcc-7_tests_mse:
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1140,6 +1213,7 @@ gcc-7_pugixml_tests:
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
@@ -1155,6 +1229,7 @@ gcc-7_pugixml_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
@@ -1170,6 +1245,7 @@ gcc-6_tests_glibcdebug_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1185,6 +1261,7 @@ gcc-7_tests_glibcdebug_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1200,6 +1277,7 @@ gcc-7_tests_mse_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1214,6 +1292,7 @@ gcc-7_sdl2_tests_gcov:
   - ./tools/ci/jobs/gcc7_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1229,6 +1308,7 @@ gcc-6_sdl2_tests:
   - ./tools/ci/jobs/gcc6_sdl2_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1245,6 +1325,7 @@ gcc-6_sdl2_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1260,6 +1341,7 @@ gcc-7_sdl2_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1274,6 +1356,7 @@ gcc-5_sdl2_tests_glibcdebug:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-manaplusgame --enable-glibcdebug
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1288,6 +1371,7 @@ gcc-5_sdl2_tests_mse:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-manaplusgame --enable-stldebug
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1303,6 +1387,7 @@ gcc-5_sdl2_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1317,6 +1402,7 @@ gcc-5_sdl2_no_opengl_tests:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1332,6 +1418,7 @@ gcc-5_sdl2_no_opengl_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1348,6 +1435,7 @@ gcc-7_zlib_v1.2.3.9_tests:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: v1.2.3.9
     PACKAGES: gcc-7 g++-7 
@@ -1367,6 +1455,7 @@ gcc-7_zlib_master_tests:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: master
     PACKAGES: gcc-7 g++-7 
@@ -1386,6 +1475,7 @@ gcc-6_tests_valgrind:
   - grep "invalid" logs/valg.log && exit 1 || true
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1404,6 +1494,7 @@ gcc-6_tests_valgrind_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1421,6 +1512,7 @@ gcc-7_tests_valgrind:
   - grep "invalid" logs/valg.log && exit 1 || true
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1439,6 +1531,7 @@ gcc-7_tests_valgrind_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1453,6 +1546,7 @@ clang-5.0_tests:
   - ./tools/ci/jobs/clang50_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-5.0 libc++-dev libc++abi-dev libclang-5.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1468,6 +1562,7 @@ clang-5.0_tests_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-5.0 libc++-dev libc++abi-dev libclang-5.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1482,6 +1577,7 @@ clang-5.0_tests_sdl2:
   - ./tools/ci/jobs/clang50_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-5.0 libc++-dev libc++abi-dev libclang-5.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1497,6 +1593,7 @@ clang-5.0_tests_sdl2_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-5.0 libc++-dev libc++abi-dev libclang-5.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1512,6 +1609,7 @@ gcc-7_tests_jmalloc:
   - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1529,6 +1627,7 @@ gcc-7_tests_jmalloc_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1545,6 +1644,7 @@ gcc-7_tests_jmalloc_sdl2:
   - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1562,6 +1662,7 @@ gcc-7_tests_jmalloc_sdl2_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1577,6 +1678,7 @@ gcc-7_tests_tcmalloc:
   - ./tools/ci/jobs/gcc7_tests.sh --enable-tcmalloc --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1592,6 +1694,7 @@ gcc-7_tests_tcmalloc_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1606,6 +1709,7 @@ gcc-7_tests_tcmalloc_sdl2:
   - ./tools/ci/jobs/gcc7_tests.sh --enable-tcmalloc --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1621,6 +1725,7 @@ gcc-7_tests_tcmalloc_sdl2_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1636,6 +1741,7 @@ gcc-7_separate_doctest:
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1651,6 +1757,7 @@ gcc-7_separate_doctest:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
     POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
                     -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
@@ -1676,6 +1783,7 @@ gcc-7_separate_doctest:
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
     POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
                     -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
@@ -1701,6 +1809,7 @@ gcc-7_separate_doctest_sanitize_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
     POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
                     -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
@@ -1726,6 +1835,7 @@ gcc-7_separate_doctest_sanitize_sdl2_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
     POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
                     -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
@@ -1749,6 +1859,7 @@ gcc-7_lto:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1764,6 +1875,7 @@ gcc-7_lto_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1780,6 +1892,7 @@ gcc-6_lto:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1794,6 +1907,7 @@ gcc-6_lto_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1809,6 +1923,7 @@ gcc-7_glibcdebug:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1823,6 +1938,7 @@ gcc-7_glibcdebug_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1836,6 +1952,7 @@ gcc-7_glibcdebug_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1850,6 +1967,7 @@ gcc-7_glibcdebug_sdl2_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1863,6 +1981,7 @@ gcc-7_mse:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1877,6 +1996,7 @@ gcc-7_mse_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1890,6 +2010,7 @@ gcc-7_mse_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1904,6 +2025,7 @@ gcc-7_mse_sdl2_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1916,6 +2038,7 @@ gcc-5_tarball_tests:
   - ./tools/ci/jobs/gcc6_tarball_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -1929,6 +2052,7 @@ gentoo_gcc-4.9_tests:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc49_sdl1
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
     NEWCC: gcc-4.9.4
@@ -1943,6 +2067,7 @@ gentoo_gcc-4.9_tests_sdl2:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc49_sdl2
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
     NEWCC: gcc-4.9.4
@@ -1960,6 +2085,7 @@ gcc-gentoo_sdl1:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc_sdl1
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc.log
     CC: gcc
     CXX: g++
@@ -1977,6 +2103,7 @@ gcc-gentoo_sdl2:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc_sdl2
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc.log
     CC: gcc
     CXX: g++
@@ -1994,6 +2121,7 @@ gcc-3_sdl1:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl1
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
   tags:
@@ -2007,6 +2135,7 @@ gcc-3_sdl2:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl2
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
   tags:
@@ -2020,6 +2149,7 @@ gcc-4.1_sdl1:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl1
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
     NEWCC: gcc-4.1.2
@@ -2035,6 +2165,7 @@ gcc-4.1_sdl2:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl2
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
     NEWCC: gcc-4.1.2
@@ -2050,6 +2181,7 @@ gcc-4.3_sdl1:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl1
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
     NEWCC: gcc-4.3.6
@@ -2065,6 +2197,7 @@ gcc-4.3_sdl2:
   image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl2
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "echo"
     PMINSTALL: "echo"
     NEWCC: gcc-4.3.6
@@ -2080,6 +2213,7 @@ gcc-4.4_i386:
   image: vicamo/debian:wheezy-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.4 g++-4.4 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2096,6 +2230,7 @@ gcc-4.5:
   image: ubuntu:12.04
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.5 g++-4.5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2112,6 +2247,7 @@ gcc-4.6:
   image: debian:wheezy
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.6 g++-4.6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2128,6 +2264,7 @@ gcc-4.6_i386:
   image: vicamo/debian:wheezy-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.6 g++-4.6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2144,6 +2281,7 @@ gcc-4.7:
   image: debian:wheezy
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.7 g++-4.7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2160,6 +2298,7 @@ gcc-4.7_i386:
   image: vicamo/debian:wheezy-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.7 g++-4.7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2176,6 +2315,7 @@ gcc-4.7_c++11:
   image: debian:wheezy
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.7 g++-4.7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2192,6 +2332,7 @@ gcc-4.8:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.8 g++-4.8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2206,6 +2347,7 @@ gcc-4.8_i386:
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.8 g++-4.8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2222,6 +2364,7 @@ clang-3.0:
   image: debian:wheezy
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2238,6 +2381,7 @@ clang-3.0_i386:
   image: vicamo/debian:wheezy-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2254,6 +2398,7 @@ clang-3.3:
   image: ubuntu:12.04
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.3 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2270,6 +2415,7 @@ clang-3.3_i386:
   image: vicamo/ubuntu:precise-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.3 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2286,6 +2432,7 @@ clang-3.4:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.4 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2300,6 +2447,7 @@ clang-3.4_i386:
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.4 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2316,6 +2464,7 @@ clang-3.5:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.5 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2330,6 +2479,7 @@ clang-3.5_i386:
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.5 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2346,6 +2496,7 @@ clang-3.6:
   image: ubuntu:14.04
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.6 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2362,6 +2513,7 @@ clang-3.6_i386:
   image: vicamo/ubuntu:trusty-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.6 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2378,6 +2530,7 @@ clang-3.7:
   image: ubuntu:16.04
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.7 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2394,6 +2547,7 @@ clang-3.7_i386:
   image: vicamo/ubuntu:xenial-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.7 libc++-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2410,6 +2564,7 @@ clang-3.8:
   image: ubuntu:16.04
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.8 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2426,6 +2581,7 @@ clang-3.8_i386:
   image: vicamo/ubuntu:xenial-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.8 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2441,6 +2597,7 @@ clang-3.8_i386:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2455,6 +2612,7 @@ clang-3.8_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2470,6 +2628,7 @@ gcc-7_all_and_unittestsbin:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2484,6 +2643,7 @@ gcc-4.8_c++11:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.8 g++-4.8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2498,6 +2658,7 @@ gcc-4.9:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2512,6 +2673,7 @@ gcc-4.9_i386:
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2528,6 +2690,7 @@ gcc-4.9_c++11:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2542,6 +2705,7 @@ cmake_gcc-4.9:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make cmake gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2557,6 +2721,7 @@ clang-4.0:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-4.0 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2572,6 +2737,7 @@ clang-5.0:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-5.0 libc++-dev libc++abi-dev libclang-5.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2588,6 +2754,7 @@ clang-5.0_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-5.0 libc++-dev libc++abi-dev libclang-5.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2603,6 +2770,7 @@ gcc-5:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2616,6 +2784,7 @@ gcc-5_c++11:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2629,6 +2798,7 @@ gcc-5_sdl2_c++11:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2643,6 +2813,7 @@ gcc-5_sdl2_c++11_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2658,6 +2829,7 @@ gcc-snapshot:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-snapshot 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2672,6 +2844,7 @@ gcc-snapshot_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-snapshot 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2687,6 +2860,7 @@ gcc-snapshot_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-snapshot 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2701,6 +2875,7 @@ gcc-snapshot_sdl2_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-snapshot 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2715,6 +2890,7 @@ gcc7_memdebug_sdl1:
   - ./tools/ci/jobs/gcc7.sh --enable-memdebug --enable-werror
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2726,6 +2902,7 @@ gcc7_memdebug_sdl2:
   - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-memdebug --enable-werror
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2738,6 +2915,7 @@ gcc7_googleprofiler_sdl1:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2751,6 +2929,7 @@ gcc7_googleprofiler_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2764,6 +2943,7 @@ gcc7_checks_sdl1:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2777,6 +2957,7 @@ gcc7_checks_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2790,6 +2971,7 @@ gcc7_without_mumble_sdl1:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2803,6 +2985,7 @@ gcc7_without_mumble_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2816,6 +2999,7 @@ gcc_with_customnls:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2829,6 +3013,7 @@ gcc_with_customnls_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2842,6 +3027,7 @@ gcc_with_customnls_nonls:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2855,6 +3041,7 @@ gcc_with_customnls_nonls_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2869,6 +3056,7 @@ gcc49_cilkplus:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2882,6 +3070,7 @@ gcc-5_cilkplus:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2895,6 +3084,7 @@ gcc-6_cilkplus:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2908,6 +3098,7 @@ gcc-7_cilkplus:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2921,6 +3112,7 @@ gcc-7_pugixml:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
@@ -2935,6 +3127,7 @@ gcc-7_pugixml_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
@@ -2948,6 +3141,7 @@ gcc-7_pugixml_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
@@ -2961,6 +3155,7 @@ gcc-7_pugixml_sdl2_i386:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
@@ -2974,6 +3169,7 @@ gcc_portable:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -2987,6 +3183,7 @@ clang-3.9_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3000,6 +3197,7 @@ gcc-7_no_asserts:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3014,6 +3212,7 @@ gcc-4.8_sdl2:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.8 g++-4.8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3028,6 +3227,7 @@ gcc-4.9_sdl2:
   image: debian:jessie
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-4.9 g++-4.9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3042,6 +3242,7 @@ gcc-6_default_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc6.log
     CC: gcc-6
     CXX: g++-6
@@ -3062,6 +3263,7 @@ gcc-7_default_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc7.log
     CC: gcc-7
     CXX: g++-7
@@ -3081,6 +3283,7 @@ gcc-5_default:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc5.log
     CC: gcc-5
     CXX: g++-5
@@ -3099,6 +3302,7 @@ gcc-5_default_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     LOGFILE: gcc5.log
     CC: gcc-5
     CXX: g++-5
@@ -3117,6 +3321,7 @@ gcc-5_h_eathena_tmwa:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -I/usr/include/SDL
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3128,6 +3333,7 @@ gcc-5_h_pugi_all:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -I/usr/include/SDL
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libpugixml-dev libcurl4-gnutls-dev libpng-dev 
@@ -3139,6 +3345,7 @@ gcc-5_h_tinyxml2_all:
   - ./tools/ci/jobs/gcc5_h_pugi.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_TINYXML2 -I/usr/include/SDL
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3150,6 +3357,7 @@ gcc-5_h_sdl2:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3161,6 +3369,7 @@ gcc-5_h_sdl2_without_opengl:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3172,6 +3381,7 @@ gcc-5_h_all_tests:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -I/usr/include/SDL
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3184,6 +3394,7 @@ gcc-5_h_all_tests_i386:
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3197,6 +3408,7 @@ gcc-5_tarball:
   - ./tools/ci/jobs/gcc5_tarball.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -3209,6 +3421,7 @@ fedora_gcc-snapshot_tests:
   <<: *job-push
   image: fedora:rawhide
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
     PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf valgrind"
     FLAGS: "gccfedora.sh"
@@ -3222,6 +3435,7 @@ fedora_gcc-snapshot_sdl2_tests:
   <<: *job-push
   image: fedora:rawhide
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
     PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf valgrind"
     FLAGS: "gccfedora.sh"
@@ -3236,6 +3450,7 @@ fedora_gcc-snapshot:
   <<: *job-push
   image: fedora:rawhide
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
     PMINSTALL: "dnf --nogpgcheck install -y nc bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf"
     FLAGS: "gccfedora.sh"
@@ -3250,6 +3465,7 @@ fedora_gcc-snapshot_sdl2:
   <<: *job-push
   image: fedora:rawhide
   variables:
+    GIT_DEPTH: "1"
     PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
     PMINSTALL: "dnf --nogpgcheck install -y nc bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf"
     FLAGS: "gccfedora.sh"
@@ -3267,6 +3483,7 @@ gcc-7_zlib_v1.2.3.9:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: v1.2.3.9
     PACKAGES: gcc-7 g++-7 
@@ -3287,6 +3504,7 @@ gcc-7_zlib_v1.2.6.1:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: v1.2.6.1
     PACKAGES: gcc-7 g++-7 
@@ -3307,6 +3525,7 @@ gcc-7_zlib_v1.2.9:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: v1.2.9
     PACKAGES: gcc-7 g++-7 
@@ -3326,6 +3545,7 @@ gcc-7_zlib_v1.2.10:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: v1.2.10
     PACKAGES: gcc-7 g++-7 
@@ -3345,6 +3565,7 @@ gcc-7_zlib_v1.2.11:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: v1.2.11
     PACKAGES: gcc-7 g++-7 
@@ -3364,6 +3585,7 @@ gcc-7_zlib_master:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: master
     PACKAGES: gcc-7 g++-7 
@@ -3383,6 +3605,7 @@ gcc-7_zlib_develop:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib
     LIBVERSION: develop
     PACKAGES: gcc-7 g++-7 
@@ -3403,6 +3626,7 @@ gcc-7_zlib_develop:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: zlib_ng
     LIBVERSION: develop
     PACKAGES: gcc-7 g++-7 
@@ -3422,6 +3646,7 @@ gcc-7_libpng_master:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libpng
     LIBVERSION: master
     PACKAGES: gcc-7 g++-7 
@@ -3441,6 +3666,7 @@ gcc-7_libpng_libpng17:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libpng
     LIBVERSION: libpng17
     PACKAGES: gcc-7 g++-7 
@@ -3460,6 +3686,7 @@ gcc-7_libpng_libpng16:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libpng
     LIBVERSION: libpng16
     PACKAGES: gcc-7 g++-7 
@@ -3479,6 +3706,7 @@ gcc-7_libpng_libpng15:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libpng
     LIBVERSION: libpng15
     PACKAGES: gcc-7 g++-7 
@@ -3498,6 +3726,7 @@ gcc-7_libpng_libpng14:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libpng
     LIBVERSION: libpng14
     PACKAGES: gcc-7 g++-7 
@@ -3517,6 +3746,7 @@ gcc-7_libpng_libpng12:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libpng
     LIBVERSION: libpng12
     PACKAGES: gcc-7 g++-7 
@@ -3536,6 +3766,7 @@ gcc-7_libpng_libpng10:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libpng
     LIBVERSION: libpng10
     PACKAGES: gcc-7 g++-7 
@@ -3555,6 +3786,7 @@ gcc-7_tinyxml2_master:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: tinyxml2
     LIBVERSION: master
     PACKAGES: gcc-7 g++-7 
@@ -3574,6 +3806,7 @@ gcc-7_tinyxml2_5.0.1:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: tinyxml2
     LIBVERSION: 5.0.1
     PACKAGES: gcc-7 g++-7 
@@ -3593,6 +3826,7 @@ gcc-7_tinyxml2_4.0.1:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: tinyxml2
     LIBVERSION: 4.0.1
     PACKAGES: gcc-7 g++-7 
@@ -3612,6 +3846,7 @@ gcc-7_tinyxml2_3.0.0:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: tinyxml2
     LIBVERSION: 3.0.0
     PACKAGES: gcc-7 g++-7 
@@ -3631,6 +3866,7 @@ gcc-7_tinyxml2_2.2.0:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: tinyxml2
     LIBVERSION: 2.2.0
     PACKAGES: gcc-7 g++-7 
@@ -3650,6 +3886,7 @@ gcc-7_libxml2_v2.9.4:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libxml2
     LIBVERSION: v2.9.4
     PACKAGES: gcc-7 g++-7 
@@ -3670,6 +3907,7 @@ gcc-7_libxml2_v2.9.4:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: libxml2
     LIBVERSION: v2.8.0
     PACKAGES: gcc-7 g++-7 
@@ -3689,6 +3927,7 @@ gcc-7_curl_curl-7_9_8:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: curl
     LIBVERSION: curl-7_9_8
     PACKAGES: gcc-7 g++-7 
@@ -3708,6 +3947,7 @@ gcc-7_curl_curl-7_40_0:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: curl
     LIBVERSION: curl-7_40_0
     PACKAGES: gcc-7 g++-7 
@@ -3727,6 +3967,7 @@ gcc-7_curl_curl-7_52_1:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: curl
     LIBVERSION: curl-7_52_1
     PACKAGES: gcc-7 g++-7 
@@ -3746,6 +3987,7 @@ gcc-7_curl_curl-7_53_1:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: curl
     LIBVERSION: curl-7_53_1
     PACKAGES: gcc-7 g++-7 
@@ -3765,6 +4007,7 @@ gcc-7_curl_curl-7_54_1:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: curl
     LIBVERSION: curl-7_54_1
     PACKAGES: gcc-7 g++-7 
@@ -3784,6 +4027,7 @@ gcc-7_curl_curl-7_55_1:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: curl
     LIBVERSION: curl-7_55_1
     PACKAGES: gcc-7 g++-7 
@@ -3803,6 +4047,7 @@ gcc-7_curl_master_no_oldies:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: curl
     LIBVERSION: master
     PACKAGES: gcc-7 g++-7 
@@ -3825,6 +4070,7 @@ gcc-7_SDL_SDL-1.2:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-7 g++-7 
@@ -3845,6 +4091,7 @@ gcc-7_SDL_default:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default
     PACKAGES: gcc-7 g++-7 
@@ -3866,6 +4113,7 @@ gcc-7_SDL_SDL-1.2_test:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-7 g++-7 
@@ -3886,6 +4134,7 @@ gcc-7_SDL_default_test:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default
     PACKAGES: gcc-7 g++-7 
@@ -3908,6 +4157,7 @@ gcc-7_SDL_SDL-1.2_old:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-7 g++-7 
@@ -3930,6 +4180,7 @@ gcc-7_SDL_default_old:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default_old
     PACKAGES: gcc-7 g++-7 
@@ -3953,6 +4204,7 @@ gcc-7_SDL_SDL-1.2_old_test:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-7 g++-7 
@@ -3975,6 +4227,7 @@ gcc-7_SDL_default_old_test:
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default_old
     PACKAGES: gcc-7 g++-7 
@@ -4001,6 +4254,7 @@ gcc-7_SDL_default_old_test:
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2
     PACKAGES: gcc-7 g++-7 
@@ -4023,6 +4277,7 @@ gcc-7_SDL_default_old_test:
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default
     PACKAGES: gcc-7 g++-7 
@@ -4048,6 +4303,7 @@ gcc-7_SDL_default_old_test:
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: SDL-1.2_old
     PACKAGES: gcc-7 g++-7 
@@ -4072,6 +4328,7 @@ gcc-7_SDL_default_old_test:
   - ldd ./src/manaplus | grep "libasan"
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     LIBNAME: SDL
     LIBVERSION: default_old
     PACKAGES: gcc-7 g++-7 
@@ -4092,6 +4349,7 @@ clang-tidy:
   - ./tools/ci/jobs/clang_tidy.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang clang-tidy 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -4107,6 +4365,7 @@ clang-tidy_sdl2:
   - ./tools/ci/jobs/clang_tidy.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: clang clang-tidy 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
@@ -4124,6 +4383,7 @@ gcc-7_openglerrors_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -4137,6 +4397,7 @@ gcc-7_openglerrors:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -6262,6 +6523,7 @@ doxygen:
     when: always
   dependencies: []
   variables:
+    GIT_DEPTH: "1"
     PACKAGES: doxygen graphviz 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -6350,6 +6612,7 @@ ok_job:
   dependencies: []
   when: on_success
   variables:
+    GIT_DEPTH: "1"
     UPDATEREPOS: ""
     PMUPDATE: "echo"
     PMINSTALL: "echo"
@@ -6362,6 +6625,7 @@ fail_job:
   dependencies: []
   when: on_failure
   variables:
+    GIT_DEPTH: "1"
     UPDATEREPOS: ""
     PMUPDATE: "echo"
     PMINSTALL: "echo"
