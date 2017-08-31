@@ -306,12 +306,14 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable guild bot support and disable native "
         "guild support"), "", "enableGuildBot", this,
         "enableGuildBotEvent",
+        "0",
         MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable manamarket bot support"),
         "", "enableManaMarketBot", this,
         "enableManaMarketBotEvent",
+        "0",
         MainConfig_false);
 
 

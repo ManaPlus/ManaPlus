@@ -181,6 +181,7 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable remote commands"),
         "", "enableRemoteCommands", this, "enableRemoteCommandsEvent",
+        "1",
         MainConfig_false);
 
     // TRANSLATORS: settings option

@@ -166,6 +166,7 @@ void ConfigManager::initConfiguration()
         config.init(configPath);
         logger->log1("init 3");
         setConfigDefaults(config);
+        setConfigDefaults(serverConfig);
         logger->log("configuration file: " + configPath);
     }
 }
