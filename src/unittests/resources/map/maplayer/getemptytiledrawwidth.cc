@@ -20,6 +20,12 @@
 
 #include "unittests/unittests.h"
 
+#include "configmanager.h"
+#include "dirs.h"
+#include "logger.h"
+
+#include "utils/delete2.h"
+
 #include "resources/image/image.h"
 
 #include "resources/map/maplayer.h"
@@ -28,6 +34,13 @@
 
 TEST_CASE("MapLayer getEmptyTileDrawWidth", "")
 {
+    logger = new Logger;
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    ConfigManager::initConfiguration();
+
     Image *const img1 = new Image(32, 32);
     Image *const img2 = new Image(32, 32);
     Image *const img3 = new Image(32, 32);
@@ -151,4 +164,5 @@ TEST_CASE("MapLayer getEmptyTileDrawWidth", "")
     delete img1;
     delete img2;
     delete img3;
+    delete2(logger);
 }

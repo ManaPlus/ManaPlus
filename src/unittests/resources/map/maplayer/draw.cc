@@ -20,7 +20,12 @@
 
 #include "unittests/unittests.h"
 
+#include "configmanager.h"
+#include "dirs.h"
+
 #include "unittests/render/mockgraphics.h"
+
+#include "utils/delete2.h"
 
 #include "resources/image/image.h"
 
@@ -31,6 +36,13 @@
 
 TEST_CASE("MapLayer draw", "")
 {
+    logger = new Logger;
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    ConfigManager::initConfiguration();
+
     Image *const img1 = new Image(32, 32);
     Image *const img2 = new Image(32, 32);
     Image *const img3 = new Image(32, 32);
