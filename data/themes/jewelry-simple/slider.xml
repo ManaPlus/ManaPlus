@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="137" ypos="132">
+        <part type="hstart" xpos="16" ypos="0" width="4" height="7" />
+        <part type="hmiddle" xpos="20" ypos="0" width="7" height="7" />
+        <part type="hend" xpos="27" ypos="0" width="4" height="7" />
+        <part type="hgrip" xpos="0" ypos="0" width="13" height="13" />
+
+        <part type="vstart" xpos="0" ypos="6" width="6" height="4" />
+        <part type="vmiddle" xpos="0" ypos="10" width="6" height="8" />
+        <part type="vend" xpos="0" ypos="18" width="6" height="9" />
+        <part type="vgrip" xpos="6" ypos="7" width="9" height="10" />
+    </widget>
+</skinset>

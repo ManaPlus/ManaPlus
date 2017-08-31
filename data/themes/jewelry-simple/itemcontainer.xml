@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window">
+        <option name="boxWidth" value="38" />
+        <option name="boxHeight" value="56" />
+        <option name="equippedTextPadding" value="38" />
+        <option name="paddingItemX" value="3" />
+        <option name="paddingItemY" value="1" />
+    </widget>
+</skinset>

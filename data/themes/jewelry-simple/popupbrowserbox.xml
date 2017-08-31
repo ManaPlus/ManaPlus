@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window">
+        <option name="padding" value="4" />
+        <option name="newLinePadding" value="15" />
+        <option name="itemPadding" value="1" />
+        <option name="highlightBackground" value="1" />
+        <option name="highlightUnderline" value="0" />
+    </widget>
+</skinset>

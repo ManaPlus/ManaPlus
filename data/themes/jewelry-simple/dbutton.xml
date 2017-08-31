@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="371" ypos="33">
+        <option name="clickborder" value="0" />
+        <option name="padding" value="20" />
+        <option name="x" value="0" />
+        <option name="y" value="20" />
+
+        <!-- Top Row -->
+        <part type="top-left-corner" xpos="0" ypos="0" width="19" height="19" />
+        <part type="top-edge" xpos="20" ypos="0" width="10" height="19" />
+        <part type="top-right-corner" xpos="31" ypos="0" width="19" height="19" />
+
+        <!-- Middle Row -->
+        <part type="left-edge" xpos="0" ypos="20" width="19" height="10" />
+        <part type="bg-quad" xpos="20" ypos="20" width="10" height="10" />
+        <part type="right-edge" xpos="31" ypos="20" width="19" height="10" />
+
+        <!-- Bottom Row -->
+        <part type="bottom-left-corner" xpos="0" ypos="31" width="19" height="19" />
+        <part type="bottom-edge" xpos="20" ypos="31" width="10" height="19" />
+        <part type="bottom-right-corner" xpos="31" ypos="31" width="19" height="19" />
+    </widget>
+</skinset>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skinset name="Default" image="window.png">
+    <widget type="Window" xpos="176" ypos="75">
+        <part type="standart" xpos="0" ypos="0" width="38" height="38" />
+        <part type="highlighted" xpos="39" ypos="0" width="38" height="38" />
+    </widget>
+</skinset>
