@@ -100,7 +100,7 @@ namespace XML
         if (useResman == UseVirtFs_true)
         {
             data = const_cast<char*>(VirtFs::loadFile(
-                filename.c_str(),
+                filename,
                 size));
         }
         else

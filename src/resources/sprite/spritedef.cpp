@@ -142,8 +142,12 @@ void SpriteDef::fixDeadAction()
         const ActionMap::iterator i = d->find(SpriteAction::DEAD);
         const ActionMap::iterator i2 = d->find(SpriteAction::STAND);
         // search dead action and check what it not same with stand action
-        if (i != d->end() && (i->second != nullptr) && i->second != i2->second)
+        if (i != d->end() &&
+            i->second != nullptr &&
+            (i2 == d->end() || i->second != i2->second))
+        {
             (i->second)->setLastFrameDelay(0);
+        }
     }
 }
 
@@ -300,9 +304,13 @@ void SpriteDef::loadAction(XmlNodeConstPtr node,
 
     // dirty hack to fix bad resources in tmw server
     if (actionName == "attack_stab")
+    {
+        reportAlways("Found legacy attribute attack_stab in animation");
         addAction(hp, "attack", action);
+    }
 
-    // When first action set it as default direction
+    // When first action, set it as default direction.
+    // i here always correct, because hp was added above.
     const Actions::const_iterator i = mActions.find(hp);
     if ((*i).second->size() == 1)
         addAction(hp, SpriteAction::DEFAULT, action);

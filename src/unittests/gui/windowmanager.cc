@@ -506,7 +506,7 @@ TEST_CASE("Windows tests", "windowmanager")
         gui->draw();
         mainGraphics->updateScreen();
         delete2(mailViewWindow);
-        delete(message);
+        delete message;
     }
     SECTION("MailWindow")
     {

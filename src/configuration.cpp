@@ -458,18 +458,27 @@ int Configuration::resetIntValue(const std::string &key)
     GETLOG();
     int defaultValue = 0;
     const DefaultsData::const_iterator itdef = mDefaultsData.find(key);
-    const VariableData *const data = itdef->second;
-    if (itdef != mDefaultsData.end() && data != nullptr
-        && data->getType() == VariableData::DATA_INT)
-    {
-        defaultValue = (static_cast<const IntData*>(
-            data))->getData();
-    }
-    else
+    if (itdef == mDefaultsData.end())
     {
         reportAlways("%s: No integer value in registry for key %s",
             mConfigPath.c_str(),
             key.c_str());
+    }
+    else
+    {
+        const VariableData *const data = itdef->second;
+        if (data != nullptr &&
+            data->getType() == VariableData::DATA_INT)
+        {
+            defaultValue = (static_cast<const IntData*>(
+                data))->getData();
+        }
+        else
+        {
+            reportAlways("%s: No integer value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
+        }
     }
     setValue(key, defaultValue);
     return defaultValue;
@@ -658,19 +667,27 @@ bool Configuration::resetBoolValue(const std::string &key)
     GETLOG();
     bool defaultValue = false;
     const DefaultsData::const_iterator itdef = mDefaultsData.find(key);
-    const VariableData *const data = itdef->second;
 
-    if (itdef != mDefaultsData.end() &&
-        (data != nullptr) &&
-        data->getType() == VariableData::DATA_BOOL)
-    {
-        defaultValue = (static_cast<const BoolData*>(data))->getData();
-    }
-    else
+    if (itdef == mDefaultsData.end())
     {
         reportAlways("%s: No boolean value in registry for key %s",
             mConfigPath.c_str(),
             key.c_str());
+    }
+    else
+    {
+        const VariableData *const data = itdef->second;
+        if (data != nullptr &&
+            data->getType() == VariableData::DATA_BOOL)
+        {
+            defaultValue = (static_cast<const BoolData*>(data))->getData();
+        }
+        else
+        {
+            reportAlways("%s: No boolean value in registry for key %s",
+                mConfigPath.c_str(),
+                key.c_str());
+        }
     }
 
     setValue(key, defaultValue);

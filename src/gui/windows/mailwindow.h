@@ -85,7 +85,7 @@ class MailWindow final : public Window,
     private:
         void refreshMails();
 
-        std::string getMailHeader(MailMessage *const message) const
+        std::string getMailHeader(const MailMessage *const message) const
                                   A_WARN_UNUSED A_NONNULL(2);
 
         STD_VECTOR<MailMessage*> mMessages;

@@ -189,7 +189,7 @@ void MailWindow::clear()
     mListBox->setSelected(-1);
 }
 
-std::string MailWindow::getMailHeader(MailMessage *const message) const
+std::string MailWindow::getMailHeader(const MailMessage *const message) const
 {
     if (mUseMail2)
     {
