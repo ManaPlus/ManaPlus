@@ -43,6 +43,10 @@
 
 #include "resources/inventory/inventory.h"
 
+#ifndef PRId64
+#include <inttypes.h>
+#endif  // PRId64
+
 #include "debug.h"
 
 MailViewWindow *mailViewWindow = nullptr;
