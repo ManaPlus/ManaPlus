@@ -44,15 +44,6 @@
 #include "utils/stringutils.h"
 
 #include "resources/inventory/inventory.h"
-
-#ifndef PRId64
-#include <inttypes.h>
-#endif  // PRId64
-
-#ifndef PRId64
-#error int types not loaded
-#endif  // PRId64
-
 #include "debug.h"
 
 MailViewWindow *mailViewWindow = nullptr;
@@ -119,8 +110,9 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
     if (message->money != 0)
     {
         // TRANSLATORS: mail view window label
-        mMoneyLabel = new Label(this, strprintf("%s %" PRId64, _("Money:"),
-            message->money));
+        mMoneyLabel = new Label(this, strprintf("%s %u",
+            _("Money:"),
+            CAST_U32(message->money)));
         placer(0, n++, mMoneyLabel);
     }
     placer(0, n++, mMessageLabel);
