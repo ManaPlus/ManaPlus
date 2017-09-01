@@ -340,13 +340,16 @@ class Configuration final : public ConfigurationObject
          * The default value returned in based on fallbacks registry.
          * @see defaults.h
          */
-        int getIntValue(const std::string &key) const A_WARN_UNUSED;
+        int getIntValue(const std::string &key) const A_WARN_UNUSED_NON_TESTS;
 
-        float getFloatValue(const std::string &key) const A_WARN_UNUSED;
+        float getFloatValue(const std::string &key) const
+                            A_WARN_UNUSED_NON_TESTS;
 
-        std::string getStringValue(const std::string &key) const A_WARN_UNUSED;
+        std::string getStringValue(const std::string &key) const
+                                   A_WARN_UNUSED_NON_TESTS;
 
-        bool getBoolValue(const std::string &key) const A_WARN_UNUSED;
+        bool getBoolValue(const std::string &key) const
+                          A_WARN_UNUSED_NON_TESTS;
 
         std::string getDirectory() const noexcept2 A_WARN_UNUSED
         { return mDirectory; }

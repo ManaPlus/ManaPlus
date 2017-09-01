@@ -94,6 +94,11 @@
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))
+#ifdef UNITTESTS
+#define A_WARN_UNUSED_NON_TESTS
+#else  // UNITTESTS
+#define A_WARN_UNUSED_NON_TESTS __attribute__ ((warn_unused_result))
+#endif  // UNITTESTS
 #define DEPRECATED __attribute__ ((deprecated))
 #ifdef DYECMD
 #define A_DYECMD_UNUSED __attribute__ ((unused))
@@ -165,6 +170,7 @@
 #else  // __GNUC__
 #define A_UNUSED
 #define A_WARN_UNUSED
+#define A_WARN_UNUSED_NON_TESTS
 #define gnu_printf printf
 #define DEPRECATED
 #define restrict
