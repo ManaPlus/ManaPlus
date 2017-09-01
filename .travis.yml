@@ -18,7 +18,7 @@ script:
   - docker ps -a
 
 after_script:
-    cat build/config.log || true
+    cat config.log || true
 
 env:
     global:
