@@ -52,7 +52,7 @@ struct MailMessage final
     int64_t id;
     int time;
     int expireTime;
-    int money;
+    int64_t money;
     MailMessageType::Type type;
     bool read;
 };

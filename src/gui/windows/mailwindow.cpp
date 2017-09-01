@@ -146,7 +146,7 @@ void MailWindow::action(const ActionEvent &event)
         if (mUseMail2)
             mail2Handler->readMail(mOpenType, mail->id);
         else
-            mailHandler->readMessage(mail->id);
+            mailHandler->readMessage(CAST_S32(mail->id));
     }
     else if (eventId == "delete")
     {
@@ -157,7 +157,7 @@ void MailWindow::action(const ActionEvent &event)
         if (mUseMail2)
             mail2Handler->deleteMail(mOpenType, mail->id);
         else
-            mailHandler->deleteMessage(mail->id);
+            mailHandler->deleteMessage(CAST_S32(mail->id));
     }
     else if (eventId == "return")
     {
@@ -175,7 +175,7 @@ void MailWindow::action(const ActionEvent &event)
             if (sel < 0)
                 return;
             const MailMessage *const mail = mMessages[sel];
-            mailHandler->returnMessage(mail->id);
+            mailHandler->returnMessage(CAST_S32(mail->id));
         }
     }
 }
@@ -210,12 +210,9 @@ std::string MailWindow::getMailHeader(MailMessage *const message) const
         header.append(" ").append(message->title);
         return STD_MOVE(header);
     }
-    else
-    {
-        return strprintf("%s %s",
-            message->read ? " " : "U",
-            message->title.c_str());
-    }
+    return strprintf("%s %s",
+        message->read ? " " : "U",
+        message->title.c_str());
 }
 
 void MailWindow::addMail(MailMessage *const message)
@@ -294,7 +291,7 @@ void MailWindow::viewNext(const int64_t id)
             if (mUseMail2)
                 mail2Handler->readMail(mOpenType, message->id);
             else
-                mailHandler->readMessage(message->id);
+                mailHandler->readMessage(CAST_S32(message->id));
             return;
         }
     }
@@ -322,7 +319,7 @@ void MailWindow::viewPrev(const int64_t id)
             if (mUseMail2)
                 mail2Handler->readMail(mOpenType, message->id);
             else
-                mailHandler->readMessage(message->id);
+                mailHandler->readMessage(CAST_S32(message->id));
             return;
         }
     }

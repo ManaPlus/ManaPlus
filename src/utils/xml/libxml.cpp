@@ -214,7 +214,7 @@ namespace XML
         xmlChar *const prop = XmlGetProp(node, name);
         if (prop != nullptr)
         {
-            ret = atof(reinterpret_cast<char*>(prop));
+            ret = static_cast<float>(atof(reinterpret_cast<char*>(prop)));
             xmlFree(prop);
         }
 

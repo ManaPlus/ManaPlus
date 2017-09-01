@@ -35,9 +35,10 @@
 #include "gui/windows/mailviewwindow.h"
 #include "gui/windows/mailwindow.h"
 
+#include "net/mail2handler.h"
 #include "net/messagein.h"
 
-#include "net/eathena/mail2handler.h"
+#include "resources/mailqueue.h"
 
 #include "resources/inventory/inventory.h"
 
@@ -175,7 +176,7 @@ void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)
 
     if (result == 0)
     {
-        Inventory *const inv = PlayerInfo::getInventory();
+        const Inventory *const inv = PlayerInfo::getInventory();
         if (inv == nullptr)
         {
             reportAlways("Player inventory not exists");
@@ -460,7 +461,7 @@ void Mail2Recv::processRequestMoney(Net::MessageIn &msg)
         case 0:
             NotifyManager::notify(
                 NotifyTypes::MAIL_GET_MONEY_OK);
-            if (mailViewWindow)
+            if (mailViewWindow != nullptr)
                 mailViewWindow->removeMoney(mailId);
             break;
         case 1:
@@ -489,7 +490,7 @@ void Mail2Recv::processRequestItems(Net::MessageIn &msg)
         case 0:
             NotifyManager::notify(
                 NotifyTypes::MAIL_GET_ATTACH_OK);
-            if (mailViewWindow)
+            if (mailViewWindow != nullptr)
                 mailViewWindow->removeItems(mailId);
             break;
         case 1:

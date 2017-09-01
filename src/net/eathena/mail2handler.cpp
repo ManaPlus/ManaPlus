@@ -30,6 +30,8 @@
 
 #include "utils/checkutils.h"
 
+#include "resources/mailqueue.h"
+
 #include "resources/item/item.h"
 
 #include "debug.h"

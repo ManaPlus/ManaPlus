@@ -20,7 +20,6 @@
 
 #include "gui/windows/mailviewwindow.h"
 
-#include "configuration.h"
 #include "settings.h"
 
 #include "net/mail2handler.h"
@@ -40,6 +39,7 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#include "utils/stringutils.h"
 
 #include "resources/inventory/inventory.h"
 
@@ -109,7 +109,7 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
     if (message->money != 0)
     {
         // TRANSLATORS: mail view window label
-        mMoneyLabel = new Label(this, strprintf("%s %d", _("Money:"),
+        mMoneyLabel = new Label(this, strprintf("%s %" PRId64, _("Money:"),
             message->money));
         placer(0, n++, mMoneyLabel);
     }
@@ -170,7 +170,7 @@ void MailViewWindow::action(const ActionEvent &event)
         }
         else
         {
-            mailHandler->getAttach(mMessage->id);
+            mailHandler->getAttach(CAST_S32(mMessage->id));
         }
     }
     else if (eventId == "money")
@@ -239,7 +239,7 @@ void MailViewWindow::removeItems(const int64_t mailId)
     mMessage->type = static_cast<MailMessageType::Type>(
         CAST_S32(mMessage->type) ^ CAST_S32(MailMessageType::Item));
     updateAttachButton();
-    if (mailWindow)
+    if (mailWindow != nullptr)
         mailWindow->refreshMailNames();
 }
 
@@ -257,13 +257,13 @@ void MailViewWindow::removeMoney(const int64_t mailId)
     if (mMoneyLabel == nullptr)
         return;
 
-    if (mGetMoneyButton)
+    if (mGetMoneyButton != nullptr)
         mGetMoneyButton->setVisible(Visible_false);
 
     mMoneyLabel->setCaption(strprintf("%s %d",
         // TRANSLATORS: mail view window label
         _("Money:"),
         0));
-    if (mailWindow)
+    if (mailWindow != nullptr)
         mailWindow->refreshMailNames();
 }

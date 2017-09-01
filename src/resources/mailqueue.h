@@ -42,7 +42,7 @@ struct MailQueue final
     std::string to;
     std::string title;
     std::string body;
-    int money;
+    int64_t money;
     MailQueueTypeT type;
 };
 

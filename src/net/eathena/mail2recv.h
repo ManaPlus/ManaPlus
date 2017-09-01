@@ -21,9 +21,10 @@
 #ifndef NET_EATHENA_MAIL2RECV_H
 #define NET_EATHENA_MAIL2RECV_H
 
-#include "resources/mailqueue.h"
-
+#include <string>
 #include <queue>
+
+struct MailQueue;
 
 namespace Net
 {

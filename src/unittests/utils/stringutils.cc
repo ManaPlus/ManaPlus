@@ -1216,8 +1216,6 @@ TEST_CASE("stringuntils decodeLinkText", "")
 
 TEST_CASE("stringuntils isDigit", "")
 {
-    std::string str;
-
     REQUIRE_FALSE(isDigit(""));
     REQUIRE(isDigit("1"));
     REQUIRE(isDigit("123"));
@@ -1229,8 +1227,6 @@ TEST_CASE("stringuntils isDigit", "")
 
 TEST_CASE("stringuntils findAny", "")
 {
-    std::string str;
-
     REQUIRE(findAny("test line", ",", 0) == std::string::npos);
     REQUIRE(findAny("test line", " ", 0) == 4U);
     REQUIRE(findAny("test, line", ", ", 0) == 4U);

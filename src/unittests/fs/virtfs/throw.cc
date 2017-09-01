@@ -107,11 +107,6 @@ TEST_CASE("throw VirtFs1 exists2", "")
 TEST_CASE("throw Zip readCompressedFile", "")
 {
     logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix;
-    if (Files::existsLocal(name) == false)
-        prefix = "../";
-
     SECTION("empty")
     {
         REQUIRE_THROWS(VirtFs::ZipReader::readCompressedFile(nullptr));
@@ -123,10 +118,6 @@ TEST_CASE("throw Zip readCompressedFile", "")
 TEST_CASE("throw Zip readFile", "")
 {
     logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix;
-    if (Files::existsLocal(name) == false)
-        prefix = "../";
 
     SECTION("empty")
     {
@@ -140,11 +131,7 @@ TEST_CASE("throw VirtFs1 unmount", "")
 {
     VirtFs::init(".");
     logger = new Logger();
-    std::string name("data/test/test.zip");
-    std::string prefix;
     const std::string sep = dirSeparator;
-    if (Files::existsLocal(name) == false)
-        prefix = "../";
 
     SECTION("simple 1")
     {

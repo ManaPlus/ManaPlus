@@ -26,7 +26,6 @@
 #include "listeners/actionlistener.h"
 
 class Button;
-class Icon;
 class Inventory;
 class ItemContainer;
 class Label;
