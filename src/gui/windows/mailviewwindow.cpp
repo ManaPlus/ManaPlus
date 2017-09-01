@@ -18,8 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define __STDC_FORMAT_MACROS
-
 #include "gui/windows/mailviewwindow.h"
 
 #include "settings.h"
