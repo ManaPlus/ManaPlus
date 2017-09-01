@@ -18,6 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define __STDC_FORMAT_MACROS
+
 #include "gui/windows/mailviewwindow.h"
 
 #include "settings.h"
@@ -45,6 +47,10 @@
 
 #ifndef PRId64
 #include <inttypes.h>
+#endif  // PRId64
+
+#ifndef PRId64
+#error int types not loaded
 #endif  // PRId64
 
 #include "debug.h"
