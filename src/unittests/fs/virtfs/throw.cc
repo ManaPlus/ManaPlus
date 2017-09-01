@@ -248,10 +248,10 @@ TEST_CASE("throw configuration tests", "configuration")
     SECTION("configuration undefined")
     {
         const char *const key = "nonsetvalue";
-        REQUIRE_THROWS(config.getIntValue(key) == 0);
-        REQUIRE_THROWS(config.getFloatValue(key) >= 0.0f);
-        REQUIRE_THROWS(config.getStringValue(key).empty());
-        REQUIRE_THROWS(config.getBoolValue(key) == false);
+        REQUIRE_THROWS(config.getIntValue(key));
+        REQUIRE_THROWS(config.getFloatValue(key));
+        REQUIRE_THROWS(config.getStringValue(key));
+        REQUIRE_THROWS(config.getBoolValue(key));
     }
 
     delete2(logger);
