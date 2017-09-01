@@ -107,8 +107,8 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
     placer(0, n++, mSubjectLabel);
     if (message->money != 0)
     {
-        // TRANSLATORS: mail view window label
         mMoneyLabel = new Label(this, strprintf("%s %u",
+            // TRANSLATORS: mail view window label
             _("Money:"),
             CAST_U32(message->money)));
         placer(0, n++, mMoneyLabel);
