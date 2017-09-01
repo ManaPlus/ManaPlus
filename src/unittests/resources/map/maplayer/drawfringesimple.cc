@@ -20,6 +20,9 @@
 
 #include "unittests/unittests.h"
 
+#include "configmanager.h"
+#include "configuration.h"
+#include "dirs.h"
 #include "graphicsmanager.h"
 
 #include "being/localplayer.h"
@@ -61,6 +64,12 @@ TEST_CASE("MapLayer drawFringe simple", "")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
 
     theme = new Theme;
     Theme::selectSkin();

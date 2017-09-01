@@ -66,11 +66,6 @@ TEST_CASE("configuration tests", "configuration")
         REQUIRE(config.getValueBool(key, true) == true);
         REQUIRE(config.getValue(key, -12345) == -12345);
         REQUIRE(config.getValue(key, 12.345) > 12.3);
-
-        REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.0f);
-        REQUIRE(config.getStringValue(key).empty());
-        REQUIRE(config.getBoolValue(key) == false);
     }
 
     SECTION("configuration getint default")

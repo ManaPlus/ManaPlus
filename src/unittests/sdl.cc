@@ -20,6 +20,7 @@
 
 #include "unittests/unittests.h"
 
+#include "configmanager.h"
 #include "configuration.h"
 #include "client.h"
 #include "dirs.h"
@@ -31,7 +32,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "gui/gui.h"
 #include "gui/userpalette.h"
 #include "gui/theme.h"
 
@@ -86,11 +86,15 @@ TEST_CASE("sdl tests", "sdl")
 
     userPalette = new UserPalette;
     config.setValue("fontSize", 16);
-    theme = new Theme;
-    Theme::selectSkin();
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
+    theme = new Theme;
+    Theme::selectSkin();
 
     ActorSprite::load();
 

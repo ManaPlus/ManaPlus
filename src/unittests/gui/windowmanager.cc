@@ -168,8 +168,6 @@ TEST_CASE("Windows tests", "windowmanager")
 
     userPalette = new UserPalette;
     config.setValue("fontSize", 16);
-    theme = new Theme;
-    Theme::selectSkin();
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
@@ -181,7 +179,11 @@ TEST_CASE("Windows tests", "windowmanager")
     ConfigManager::initConfiguration();
     setConfigDefaults2(config);
     setBrandingDefaults(branding);
+    setFeaturesDefaults(features);
     ConfigManager::initServerConfig("nonexistserver");
+
+    theme = new Theme;
+    Theme::selectSkin();
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
         BeingTypeId_zero);
@@ -334,7 +336,7 @@ TEST_CASE("Windows tests", "windowmanager")
     {
         ConfirmDialog *dialog;
         CREATEWIDGETV(dialog, ConfirmDialog,
-            "", "", "", false, Modal_false, nullptr);
+            "", "", SOUND_REQUEST, false, Modal_false, nullptr);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(dialog);
@@ -850,8 +852,6 @@ TEST_CASE("WindowManager", "create windows")
 #endif  // USE_SDL2
 
     config.setValue("fontSize", 16);
-    theme = new Theme;
-    Theme::selectSkin();
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
@@ -864,6 +864,9 @@ TEST_CASE("WindowManager", "create windows")
     setConfigDefaults2(config);
     setBrandingDefaults(branding);
     ConfigManager::initServerConfig("nonexistserver");
+
+    theme = new Theme;
+    Theme::selectSkin();
 
     localPlayer = new LocalPlayer(static_cast<BeingId>(1),
         BeingTypeId_zero);

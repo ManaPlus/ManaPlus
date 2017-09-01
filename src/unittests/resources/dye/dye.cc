@@ -21,6 +21,8 @@
 #include "unittests/unittests.h"
 
 #include "client.h"
+#include "configmanager.h"
+#include "configuration.h"
 #include "dirs.h"
 #include "graphicsmanager.h"
 
@@ -28,7 +30,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "gui/gui.h"
 #include "gui/userpalette.h"
 #include "gui/theme.h"
 
@@ -1977,11 +1978,15 @@ TEST_CASE("Dye real dye", "")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-    theme = new Theme;
-    Theme::selectSkin();
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
+    theme = new Theme;
+    Theme::selectSkin();
 
     ActorSprite::load();
 

@@ -25,8 +25,6 @@
 
 #include "unittests/render/mockgraphics.h"
 
-#include "utils/delete2.h"
-
 #include "resources/image/image.h"
 
 #include "resources/map/map.h"

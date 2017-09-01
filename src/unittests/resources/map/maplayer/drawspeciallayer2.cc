@@ -20,6 +20,9 @@
 
 #include "unittests/unittests.h"
 
+#include "configmanager.h"
+#include "configuration.h"
+#include "dirs.h"
 #include "graphicsmanager.h"
 
 #include "enums/resources/map/mapitemtype.h"
@@ -58,6 +61,12 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
 
     Map *map = nullptr;
     MapLayer *layer = nullptr;

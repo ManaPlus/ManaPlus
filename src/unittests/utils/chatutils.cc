@@ -63,8 +63,6 @@ TEST_CASE("chatutils replaceVars", "")
     logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
-    theme = new Theme;
-    Theme::selectSkin();
     imageHelper = new SDLImageHelper();
     mainGraphics = new SDLGraphics;
 
@@ -83,6 +81,9 @@ TEST_CASE("chatutils replaceVars", "")
     ConfigManager::initConfiguration();
     setConfigDefaults2(config);
     setBrandingDefaults(branding);
+
+    theme = new Theme;
+    Theme::selectSkin();
 
     gui = new Gui();
     gui->postInit(mainGraphics);

@@ -20,6 +20,7 @@
 
 #include "unittests/unittests.h"
 
+#include "configmanager.h"
 #include "configuration.h"
 #include "client.h"
 #include "dirs.h"
@@ -32,7 +33,6 @@
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/rwops.h"
 
-#include "gui/gui.h"
 #include "gui/userpalette.h"
 #include "gui/theme.h"
 
@@ -137,12 +137,16 @@ TEST_CASE("integrity tests", "integrity")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-    config.setValue("fontSize", 16);
-    theme = new Theme;
-    Theme::selectSkin();
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
+    config.setValue("fontSize", 16);
+    theme = new Theme;
+    Theme::selectSkin();
 
     ActorSprite::load();
     const char *const name1 = "dir/hide.png";

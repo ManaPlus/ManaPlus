@@ -78,15 +78,15 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
-    theme = new Theme;
-    Theme::selectSkin();
-
     Dirs::initRootDir();
     Dirs::initHomeDir();
 
     ConfigManager::initConfiguration();
     setConfigDefaults2(config);
     setBrandingDefaults(branding);
+
+    theme = new Theme;
+    Theme::selectSkin();
 
     ActorSprite::load();
     gui = new Gui();

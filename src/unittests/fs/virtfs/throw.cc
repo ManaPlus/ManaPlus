@@ -20,6 +20,10 @@
 
 #include "unittests/unittests.h"
 
+#include "configmanager.h"
+#include "configuration.h"
+#include "dirs.h"
+
 #include "fs/files.h"
 
 #include "fs/virtfs/fs.h"
@@ -229,5 +233,26 @@ TEST_CASE("throw VirtFs1 unmount", "")
     }
 
     VirtFs::deinit();
+    delete2(logger);
+}
+
+TEST_CASE("throw configuration tests", "configuration")
+{
+    logger = new Logger();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    ConfigManager::initConfiguration();
+
+    SECTION("configuration undefined")
+    {
+        const char *const key = "nonsetvalue";
+        REQUIRE_THROWS(config.getIntValue(key) == 0);
+        REQUIRE_THROWS(config.getFloatValue(key) >= 0.0f);
+        REQUIRE_THROWS(config.getStringValue(key).empty());
+        REQUIRE_THROWS(config.getBoolValue(key) == false);
+    }
+
     delete2(logger);
 }
