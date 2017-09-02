@@ -563,12 +563,14 @@ bool Theme::tryThemePath(const std::string &themeName)
 void Theme::fillSkinsList(StringVect &list)
 {
     VirtFs::getDirs(branding.getStringValue("guiThemePath"), list);
+    std::sort(list.begin(), list.end());
 }
 
 void Theme::fillFontsList(StringVect &list)
 {
     VirtFs::permitLinks(true);
     VirtFs::getFiles(branding.getStringValue("fontsPath"), list);
+    std::sort(list.begin(), list.end());
     VirtFs::permitLinks(false);
 }
 
@@ -589,6 +591,7 @@ void Theme::fillSoundsList(StringVect &list)
     }
 
     VirtFs::freeList(skins);
+    std::sort(list.begin(), list.end());
 }
 
 void Theme::selectSkin()
