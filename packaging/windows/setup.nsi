@@ -277,6 +277,7 @@ Section "Core files (required)" SecCore
   File "${DLLDIR}\libvorbis-0.dll"
   File "${DLLDIR}\libvorbisfile-3.dll"
   File "${DLLDIR}\libxml2-2.dll"
+  File "${DLLDIR}\libwinpthread-1.dll"
   File "${DLLDIR}\zlib1.dll"
   File "${SRCDIR}\AUTHORS"
   File "${SRCDIR}\COPYING"
