@@ -794,12 +794,12 @@ void ScrollArea::mousePressed(MouseEvent& event)
         if (y < getVerticalMarkerDimension().y)
         {
             setVerticalScrollAmount(mVScroll
-                - CAST_S32(getChildrenArea().height * 0.95));
+                - CAST_S32(getChildrenArea().height * 0.1));
         }
         else
         {
             setVerticalScrollAmount(mVScroll
-                + CAST_S32(getChildrenArea().height * 0.95));
+                + CAST_S32(getChildrenArea().height * 0.1));
         }
         event.consume();
     }
@@ -815,17 +815,18 @@ void ScrollArea::mousePressed(MouseEvent& event)
         if (x < getHorizontalMarkerDimension().x)
         {
             setHorizontalScrollAmount(mHScroll
-                - CAST_S32(getChildrenArea().width * 0.95));
+                - CAST_S32(getChildrenArea().width * 0.1));
         }
         else
         {
             setHorizontalScrollAmount(mHScroll
-                + CAST_S32(getChildrenArea().width * 0.95));
+                + CAST_S32(getChildrenArea().width * 0.1));
         }
         event.consume();
     }
 
-    if (event.getButton() == MouseButton::LEFT)
+    if (event.getButton() == MouseButton::LEFT &&
+        !event.isConsumed())
     {
         mClickX = event.getX();
         mClickY = event.getY();
