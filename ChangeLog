@@ -1,3 +1,12 @@
+2017-09-02 New release 1.7.9.2
+fix: duplicates for some assert messages.
+fix: mouse selection in some lists.
+fix: leaks and relations in unit tests.
+fix: some asserts on first run.
+add: support for new mail system.
+add: extend packets logging.
+add: unit tests for detect broken sdl features.
+
 2017-08-19 New release 1.7.8.19
 fix: drawing language badge.
 fix: hide item popup in context menu.
