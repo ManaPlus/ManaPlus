@@ -24,8 +24,6 @@
 #include "configuration.h"
 #include "dirs.h"
 
-#include "fs/files.h"
-
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/zipreader.h"
 
