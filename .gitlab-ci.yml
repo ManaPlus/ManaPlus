@@ -6284,6 +6284,7 @@ gitstats:
     when: always
   dependencies: []
   variables:
+    GIT_DEPTH: "100000"
     PACKAGES: python zlib1g git-core gnuplot
   tags:
     - docker
