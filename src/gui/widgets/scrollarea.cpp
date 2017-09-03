@@ -255,8 +255,8 @@ void ScrollArea::logic()
 
     checkPolicies();
 
-    setVerticalScrollAmount(getVerticalScrollAmount());
-    setHorizontalScrollAmount(getHorizontalScrollAmount());
+    setVerticalScrollAmount(mVScroll);
+    setHorizontalScrollAmount(mHScroll);
 
     Widget *const content = getContent();
     if (content != nullptr)
@@ -1339,7 +1339,7 @@ void ScrollArea::mouseWheelMovedUp(MouseEvent& event)
     if (event.isConsumed())
         return;
 
-    setVerticalScrollAmount(getVerticalScrollAmount()
+    setVerticalScrollAmount(mVScroll
         - getChildrenArea().height / 8);
 
     event.consume();
@@ -1350,7 +1350,7 @@ void ScrollArea::mouseWheelMovedDown(MouseEvent& event)
     if (event.isConsumed())
         return;
 
-    setVerticalScrollAmount(getVerticalScrollAmount()
+    setVerticalScrollAmount(mVScroll
         + getChildrenArea().height / 8);
 
     event.consume();
