@@ -125,6 +125,7 @@ export CXXFLAGS="${CXXFLAGS} -Wfree-nonheap-object"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wfunction-elimination"
 export CXXFLAGS="${CXXFLAGS} -Whsa"
+export CXXFLAGS="${CXXFLAGS} -Wif-not-aligned"
 export CXXFLAGS="${CXXFLAGS} -Wignored-attributes"
 export CXXFLAGS="${CXXFLAGS} -Wignored-qualifiers"
 # not for C++
@@ -207,6 +208,7 @@ export CXXFLAGS="${CXXFLAGS} -Woverloaded-virtual"
 #export CXXFLAGS="${CXXFLAGS} -Woverride-init-side-effects"
 export CXXFLAGS="${CXXFLAGS} -Wpacked"
 export CXXFLAGS="${CXXFLAGS} -Wpacked-bitfield-compat"
+export CXXFLAGS="${CXXFLAGS} -Wpacked-not-aligned"
 # +++ may be need fix in future?
 #export CXXFLAGS="${CXXFLAGS} -Wpadded"
 export CXXFLAGS="${CXXFLAGS} -Wparentheses"
