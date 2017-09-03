@@ -144,7 +144,7 @@ Move Being::mMoveNames = Move_false;
 bool Being::mUseDiagonal = true;
 BadgeDrawType::Type Being::mShowBadges = BadgeDrawType::Top;
 int Being::mAwayEffect = -1;
-VisibleNamePos::Type Being::mVisibleNamePos = VisibleNamePos::Buttom;
+VisibleNamePos::Type Being::mVisibleNamePos = VisibleNamePos::Bottom;
 
 std::list<BeingCacheEntry*> beingInfoCache;
 typedef std::map<int, Guild*>::const_iterator GuildsMapCIter;
@@ -2286,7 +2286,7 @@ void Being::updateBadgesPosition()
             else if (mShowBadges == BadgeDrawType::Bottom)
             {
                 mBadgesX = px + 8 - mBadgesCount * 8;
-                if (mVisibleNamePos == VisibleNamePos::Buttom)
+                if (mVisibleNamePos == VisibleNamePos::Bottom)
                 {
                     mBadgesY = mDispName->getY();
                 }
@@ -2315,7 +2315,7 @@ void Being::updateBadgesPosition()
             {
                 mBadgesX = px + 8 - mBadgesCount * 8;
                 const int height = settings.playerNameOffset;
-                if (mVisibleNamePos == VisibleNamePos::Buttom)
+                if (mVisibleNamePos == VisibleNamePos::Bottom)
                     mBadgesY = py + height;
                 else
                     mBadgesY = py + height + 16;

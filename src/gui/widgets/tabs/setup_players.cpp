@@ -70,7 +70,7 @@ static const char *const topDownList[] =
     // TRANSLATORS: show on top or down
     N_("top"),
     // TRANSLATORS: show on top or down
-    N_("buttom")
+    N_("bottom")
 };
 
 Setup_Players::Setup_Players(const Widget2 *const widget) :

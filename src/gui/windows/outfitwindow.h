@@ -106,7 +106,7 @@ class OutfitWindow final : public Window,
 
         Button *mPreviousButton A_NONNULLPOINTER;
         Button *mNextButton A_NONNULLPOINTER;
-        Button *mEquipButtom A_NONNULLPOINTER;
+        Button *mEquipBottom A_NONNULLPOINTER;
         Label *mCurrentLabel A_NONNULLPOINTER;
         CheckBox *mUnequipCheck A_NONNULLPOINTER;
         CheckBox *mAwayOutfitCheck A_NONNULLPOINTER;

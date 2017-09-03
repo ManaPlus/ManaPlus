@@ -26,7 +26,7 @@ namespace VisibleNamePos
     enum Type
     {
         Top    = 0,
-        Buttom = 1
+        Bottom = 1
     };
 }  // namespace VisibleNamePos
 

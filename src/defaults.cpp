@@ -96,7 +96,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("speechBubbleAlpha", 1.0F);
     AddDEF("MostUsedServerName0", "server.themanaworld.org");
     AddDEF("visiblenames", VisibleName::Show);
-    AddDEF("visiblenamespos", VisibleNamePos::Buttom);
+    AddDEF("visiblenamespos", VisibleNamePos::Bottom);
     AddDEF("speech", CAST_S32(BeingSpeech::NO_NAME_IN_BUBBLE));
     AddDEF("showgender", true);
     AddDEF("showlevel", false);

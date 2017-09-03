@@ -65,7 +65,7 @@ OutfitWindow::OutfitWindow() :
     // TRANSLATORS: outfits window button
     mNextButton(new Button(this, _(">"), "next", this)),
     // TRANSLATORS: outfits window button
-    mEquipButtom(new Button(this, _("Equip"), "equip", this)),
+    mEquipBottom(new Button(this, _("Equip"), "equip", this)),
     // TRANSLATORS: outfits window label
     mCurrentLabel(new Label(this, strprintf(_("Outfit: %d"), 1))),
     // TRANSLATORS: outfits window checkbox
@@ -112,7 +112,7 @@ OutfitWindow::OutfitWindow() :
     mAwayOutfitCheck->setActionEventId("away");
     mAwayOutfitCheck->addActionListener(this);
 
-    place(1, 3, mEquipButtom, 2);
+    place(1, 3, mEquipBottom, 2);
     place(0, 4, mKeyLabel, 4);
     place(0, 5, mPreviousButton, 1);
     place(1, 5, mCurrentLabel, 2);
