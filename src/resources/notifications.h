@@ -883,7 +883,7 @@ namespace NotifyManager
             NotifyFlags::EMPTY},
         {"mail send count error",
             // TRANSLATORS: notification message
-            N_("Mail send failed. Too mail mails sent."),
+            N_("Mail send failed. Too many mails sent."),
             NotifyFlags::EMPTY},
         {"mail send item error",
             // TRANSLATORS: notification message
