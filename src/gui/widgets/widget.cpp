@@ -122,6 +122,7 @@ Widget::~Widget()
         (*iter)->death(event);
     }
 
+    // +++ call to virtual member
     setFocusHandler(nullptr);
 
     mAllWidgets.remove(this);
