@@ -406,6 +406,9 @@ void Mail2Recv::processReadMail(Net::MessageIn &msg)
 
     for (int f = 0; f < itemsCount; f ++)
     {
+        // server may send wrong items count, if items was removed from mail
+        if (msg.getUnreadLength() == 0)
+            break;
         const int amount = msg.readInt16("amount");
         const int itemId = msg.readInt16("item id");
         const uint8_t identify = msg.readUInt8("identify");
