@@ -429,8 +429,11 @@ void ChatTab::clearText()
 
 void ChatTab::handleInput(const std::string &msg)
 {
-    chatHandler->talk(ChatWindow::doReplace(msg),
-        mChannelName);
+    if (chatHandler)
+    {
+        chatHandler->talk(ChatWindow::doReplace(msg),
+            mChannelName);
+    }
 }
 
 void ChatTab::handleCommandStr(const std::string &msg)
