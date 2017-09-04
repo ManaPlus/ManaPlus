@@ -279,13 +279,20 @@ void ChatWindow::adjustTabSize()
     const int ah = area.height;
     const int frame = mChatInput->getFrameSize();
     const int inputHeight = mChatInput->getHeight();
+    const bool showEmotes = config.getBoolValue("showEmotesButton");
+    int maxHeight = inputHeight;
+    if (showEmotes)
+    {
+        const int buttonHeight = mChatButton->getHeight();
+        if (buttonHeight > maxHeight)
+            maxHeight = buttonHeight;
+    }
     const int frame2 = 2 * frame;
     const int awFrame2 = aw - frame2;
-    const bool showEmotes = config.getBoolValue("showEmotesButton");
-    int y = ah - inputHeight - frame;
+    int y = ah - maxHeight - frame;
     mChatInput->setPosition(frame, y);
     mChatTabs->setWidth(awFrame2);
-    const int height = ah - frame2 - (inputHeight + frame2);
+    const int height = ah - frame2 - (maxHeight + frame2);
     if (mChatInput->mVisible == Visible_true ||
         !config.getBoolValue("hideChatInput"))
     {
@@ -293,13 +300,13 @@ void ChatWindow::adjustTabSize()
     }
     else
     {
-        mChatTabs->setHeight(height + inputHeight);
+        mChatTabs->setHeight(height + maxHeight);
     }
     updateTabsMargin();
 
     if (showEmotes)
     {
-        const int chatButtonSize = 20;
+        const int chatButtonSize = mChatButton->getWidth();
         int w = awFrame2 - chatButtonSize;
         const int x = aw - frame - chatButtonSize;
         w -= mEmoteButtonSpacing;
