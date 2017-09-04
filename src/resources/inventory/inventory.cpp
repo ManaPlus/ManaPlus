@@ -420,6 +420,21 @@ int Inventory::findIndexByTag(const int tag) const
     return -1;
 }
 
+Item *Inventory::findItemByTag(const int tag) const
+{
+    for (unsigned i = 0; i < mSize; i++)
+    {
+        Item *const item = mItems[i];
+        if (item != nullptr &&
+            item->mTag == tag)
+        {
+            return item;
+        }
+    }
+
+    return nullptr;
+}
+
 bool Inventory::addVirtualItem(const Item *const item,
                                int index,
                                const int amount)

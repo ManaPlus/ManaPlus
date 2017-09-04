@@ -189,6 +189,8 @@ class Inventory notfinal
 
         int findIndexByTag(const int tag) const;
 
+        Item *findItemByTag(const int tag) const;
+
         virtual bool addVirtualItem(const Item *const item,
                                     int index,
                                     const int amount);

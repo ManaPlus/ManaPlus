@@ -145,24 +145,34 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
         delete options;
         return;
     }
-    const int slot = inventory->addItem(itemId,
-        itemType,
-        amount,
-        refine,
-        ItemColorManager::getColorFromCards(&cards[0]),
-        fromBool(identify, Identified),
-        damaged,
-        Favorite_false,
-        Equipm_false,
-        Equipped_false);
-    if (slot == -1)
+
+    Item *const item = inventory->findItemByTag(index);
+    if (item == nullptr)
     {
-        delete options;
-        return;
+        const int slot = inventory->addItem(itemId,
+            itemType,
+            amount,
+            refine,
+            ItemColorManager::getColorFromCards(&cards[0]),
+            fromBool(identify, Identified),
+            damaged,
+            Favorite_false,
+            Equipm_false,
+            Equipped_false);
+        if (slot == -1)
+        {
+            delete options;
+            return;
+        }
+        inventory->setCards(slot, cards, maxCards);
+        inventory->setOptions(slot, options);
+        inventory->setTag(slot, index);
     }
-    inventory->setCards(slot, cards, maxCards);
-    inventory->setOptions(slot, options);
-    inventory->setTag(slot, index);
+    else
+    {
+        item->increaseQuantity(amount);
+    }
+
     mailEditWindow->updateItems();
     delete options;
 }
