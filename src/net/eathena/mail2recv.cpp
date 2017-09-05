@@ -48,6 +48,7 @@
 #include "utils/checkutils.h"
 #include "utils/gettext.h"
 #include "utils/stringutils.h"
+#include "utils/timer.h"
 
 #include "debug.h"
 
@@ -345,7 +346,7 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
         mail->type = static_cast<MailMessageType::Type>(
             msg.readUInt8("type"));
         mail->sender = msg.readString(24, "sender name");
-        mail->time = msg.readInt32("reg time");
+        mail->time = cur_time - msg.readInt32("reg time");
         mail->strTime = timeToStr(mail->time);
         mail->expireTime = msg.readInt32("expire time");
         mail->title = msg.readString(-1, "title");
