@@ -83,9 +83,11 @@ void CastingEffect::draw(Graphics *const graphics,
         mRectSize));
     if (mSprite != nullptr)
     {
-        mSprite->draw(graphics,
-            mAnimationX + offsetX,
-            mAnimationY + offsetY);
+        mSprite->drawRescaled(graphics,
+            mRectX + offsetX,
+            mRectY + offsetY,
+            mRectSize,
+            mRectSize);
     }
 }
 
