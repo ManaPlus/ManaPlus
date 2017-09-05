@@ -74,6 +74,12 @@ class AnimatedSprite final : public Sprite
                   const int posX,
                   const int posY) const restrict2 override final A_NONNULL(2);
 
+        void drawRescaled(Graphics *restrict const graphics,
+                          const int posX,
+                          const int posY,
+                          const int dx,
+                          const int dy) const restrict2 A_NONNULL(2);
+
         void drawRaw(Graphics *restrict const graphics,
                      const int posX,
                      const int posY) const restrict2 A_NONNULL(2);
