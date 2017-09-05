@@ -471,7 +471,7 @@ void Button::draw(Graphics *const graphics)
         mode = BUTTON_DISABLED;
     else if (isPressed2())
         mode = BUTTON_PRESSED;
-    else if (mHasMouse || isFocused())
+    else if (mHasMouse)
         mode = BUTTON_HIGHLIGHTED;
     else
         mode = BUTTON_STANDARD;
