@@ -55,6 +55,8 @@ SkillPopup::SkillPopup() :
 {
     mSkillName->setFont(boldFont);
     mSkillName->setPosition(0, 0);
+    mSkillName->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE));
 
     const int fontHeight = getFont()->getHeight();
 
