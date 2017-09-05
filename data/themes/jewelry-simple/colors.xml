@@ -552,8 +552,7 @@
         <color id="BUBBLE_NAME" color="#cccccc" />
         <color id="BUBBLE_TEXT" color="#ffffff" />
         <color id="LOGGER" color="#919191" />
-        <color id="HYPERLINK" color="#bcdff4" />
-        <color id="HYPERLINK_OUTLINE" color="#052f47" />
+        <color id="HYPERLINK" color="#ff3020" />
         <color id="UNKNOWN_ITEM" color="#ffffff" />
         <color id="CHARM" color="#ffffff" />
         <color id="GENERIC" color="#dbdbdb" />
@@ -586,15 +585,13 @@
         <color id="AMMO_OUTLINE" color="#382a01" />
         <color id="SERVER_VERSION_NOT_SUPPORTED" color="#DC0000" />
         <color id="WARNING" color="#FF0000" />
-        <color id="CHAT" color="#ffffff" />
-        <color id="GM" color="#ff45fd" />
-        <color id="GM_OUTLINE" color="#44033a" />
-        <color id="GLOBAL" color="#ff45fd" />
-        <color id="GLOBAL_OUTLINE" color="#44033a" />
+        <color id="CHAT" color="#000000" />
+        <color id="GM" color="#ff2000" />
+        <color id="GLOBAL" color="#ff2010" />
         <color id="PLAYER" color="#003000" />
         <color id="PLAYER_ADVANCED" color="#005000" />
         <color id="IS" color="#705000" />
-        <color id="SERVER" color="#409000" />
+        <color id="SERVER" color="#208000" />
         <color id="BROWSERBOX" color="#000000" />
         <color id="BLACK" color="#000000" />
         <color id="RED" color="#ff0000" />
@@ -607,7 +604,7 @@
         <color id="GRAY" color="#858585" />
         <color id="BROWN" color="#8e4c17" />
         <color id="OLDCHAT" color="#8e4c17" />
-        <color id="AWAYCHAT" color="#8e4c17" />
+        <color id="AWAYCHAT" color="#200000" />
         <color id="STATUSBAR_ON" color="#646464" />
         <color id="STATUSBAR_OFF" color="#ffff00" />
         <color id="TABLE_BACKGROUND" color="#bfbfbf" />
