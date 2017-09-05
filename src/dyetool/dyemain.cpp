@@ -107,11 +107,13 @@ int main(int argc, char **argv)
     if (image == nullptr)
     {
         printf("Error loading image\n");
+        VirtFs::deinit();
         return 1;
     }
     SDL_Surface *const surface = ImageHelper::convertTo32Bit(
         image->getSDLSurface());
     ImageWriter::writePNG(surface, dst);
     SDL_FreeSurface(surface);
+    VirtFs::deinit();
     return 0;
 }
