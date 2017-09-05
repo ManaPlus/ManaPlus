@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/viewport.h"
+#include "progs/manaplus/gui/viewport.h"
 
 #include "actormanager.h"
 #include "configuration.h"

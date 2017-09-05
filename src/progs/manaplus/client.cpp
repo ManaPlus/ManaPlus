@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "client.h"
+#include "progs/manaplus/client.h"
 
 #include "chatlogger.h"
 #include "configmanager.h"

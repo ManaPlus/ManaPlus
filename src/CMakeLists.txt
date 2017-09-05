@@ -530,7 +530,8 @@ SET(SRCS
     gui/windows/updaterwindow.h
     gui/userpalette.cpp
     gui/userpalette.h
-    gui/viewport.cpp
+    progs/manaplus/gui/viewport.cpp
+    progs/manaplus/gui/viewport.h
     gui/viewport.h
     gui/windowmanager.cpp
     gui/windowmanager.h
@@ -980,23 +981,23 @@ SET(SRCS
     test/testmain.h
     actions/actiondef.h
     actions/actionfuncptr.h
-    actions/actions.cpp
+    progs/manaplus/actions/actions.cpp
     actions/actions.h
-    actions/chat.cpp
+    progs/manaplus/actions/chat.cpp
     actions/chat.h
-    actions/commands.cpp
+    progs/manaplus/actions/commands.cpp
     actions/commands.h
-    actions/move.cpp
+    progs/manaplus/actions/move.cpp
     actions/move.h
-    actions/pets.cpp
+    progs/manaplus/actions/pets.cpp
     actions/pets.h
-    actions/statusbar.cpp
+    progs/manaplus/actions/statusbar.cpp
     actions/statusbar.h
-    actions/tabs.cpp
+    progs/manaplus/actions/tabs.cpp
     actions/tabs.h
-    actions/target.cpp
+    progs/manaplus/actions/target.cpp
     actions/target.h
-    actions/windows.cpp
+    progs/manaplus/actions/windows.cpp
     actions/windows.h
     being/actor.cpp
     being/actor.h
@@ -1046,7 +1047,8 @@ SET(SRCS
     spellmanager.h
     chatlogger.cpp
     chatlogger.h
-    client.cpp
+    progs/manaplus/client.cpp
+    progs/manaplus/client.h
     client.h
     commandline.cpp
     commandline.h

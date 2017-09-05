@@ -182,7 +182,8 @@ manaplus_CXXFLAGS += -DUSE_SDL2
 endif
 endif
 
-BASE_SRC += events/actionevent.h \
+BASE_SRC += client.h \
+	      events/actionevent.h \
 	      listeners/actionlistener.h \
 	      listeners/attributelistener.cpp \
 	      listeners/attributelistener.h \
@@ -251,6 +252,7 @@ BASE_SRC += events/actionevent.h \
 	      listeners/widgetlistener.h \
 	      listeners/wrongdatanoticelistener.cpp \
 	      listeners/wrongdatanoticelistener.h \
+	      gui/viewport.h \
 	      gui/widgets/basiccontainer2.h \
 	      gui/widgets/basiccontainer.cpp \
 	      gui/colorpair.h \
@@ -660,6 +662,15 @@ BASE_SRC += events/actionevent.h \
 	      test/testmain.h \
 	      actions/actiondef.h \
 	      actions/actionfuncptr.h \
+	      actions/actions.h \
+	      actions/chat.h \
+	      actions/commands.h \
+	      actions/move.h \
+	      actions/pets.h \
+	      actions/statusbar.h \
+	      actions/tabs.h \
+	      actions/target.h \
+	      actions/windows.h \
 	      listeners/baselistener.hpp \
 	      commandline.cpp \
 	      commandline.h \
@@ -944,26 +955,6 @@ SRC = ${BASE_SRC} \
 	      resources/sprite/animatedsprite.h \
 	      resources/sprite/animationdelayload.cpp \
 	      resources/sprite/animationdelayload.h \
-	      actions/actions.cpp \
-	      actions/actions.h \
-	      actions/chat.cpp \
-	      actions/chat.h \
-	      actions/commands.cpp \
-	      actions/commands.h \
-	      actions/move.cpp \
-	      actions/move.h \
-	      actions/pets.cpp \
-	      actions/pets.h \
-	      actions/statusbar.cpp \
-	      actions/statusbar.h \
-	      actions/tabs.cpp \
-	      actions/tabs.h \
-	      actions/target.cpp \
-	      actions/target.h \
-	      actions/windows.cpp \
-	      actions/windows.h \
-	      client.cpp \
-	      client.h \
 	      resources/dbmanager.cpp \
 	      resources/dbmanager.h \
 	      resources/sprite/imagesprite.cpp \
@@ -1083,8 +1074,6 @@ SRC = ${BASE_SRC} \
 	      listeners/awaylistener.h \
 	      listeners/charrenamelistener.cpp \
 	      listeners/charrenamelistener.h \
-	      gui/viewport.cpp \
-	      gui/viewport.h \
 	      gui/popups/itempopup.cpp \
 	      gui/popups/itempopup.h \
 	      gui/popups/spellpopup.cpp \
@@ -1643,7 +1632,20 @@ SRC = ${BASE_SRC} \
 	      net/ea/tradehandler.cpp \
 	      net/ea/tradehandler.h \
 	      net/ea/traderecv.cpp \
-	      net/ea/traderecv.h
+	      net/ea/traderecv.h \
+	      progs/manaplus/actions/actions.cpp \
+	      progs/manaplus/actions/chat.cpp \
+	      progs/manaplus/actions/commands.cpp \
+	      progs/manaplus/actions/move.cpp \
+	      progs/manaplus/actions/pets.cpp \
+	      progs/manaplus/actions/statusbar.cpp \
+	      progs/manaplus/actions/tabs.cpp \
+	      progs/manaplus/actions/target.cpp \
+	      progs/manaplus/actions/windows.cpp \
+	      progs/manaplus/client.cpp \
+	      progs/manaplus/client.h \
+	      progs/manaplus/gui/viewport.cpp \
+	      progs/manaplus/gui/viewport.h
 
 if ENABLE_TMWA
 manaplus_CXXFLAGS += -DTMWA_SUPPORT
