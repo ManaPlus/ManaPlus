@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "dyetool/gui/viewport.h"
+#include "progs/dyecmd/gui/viewport.h"
 
 #include "configuration.h"
 #include "sdlshared.h"

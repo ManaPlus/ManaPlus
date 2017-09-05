@@ -1710,7 +1710,7 @@ SET(DYE_CMD_SRCS
     gui/color.h
     events/event.h
     gui/rect.h
-    dyetool/dyemain.cpp
+    progs/dyecmd/dyemain.cpp
     resources/sprite/animatedsprite.cpp
     resources/sprite/animatedsprite.h
     resources/sprite/animationdelayload.cpp

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DYETOOL_GUI_VIEWPORT_H
-#define DYETOOL_GUI_VIEWPORT_H
+#ifndef PROGS_DYECMD_GUI_VIEWPORT_H
+#define PROGS_DYECMD_GUI_VIEWPORT_H
 
 #include "position.h"
 
@@ -210,4 +210,4 @@ class Viewport final : public WindowContainer,
 
 extern Viewport *viewport;           /**< The viewport. */
 
-#endif  // DYETOOL_GUI_VIEWPORT_H
+#endif  // PROGS_DYECMD_GUI_VIEWPORT_H

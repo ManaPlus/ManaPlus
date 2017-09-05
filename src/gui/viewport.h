@@ -24,7 +24,7 @@
 #define GUI_VIEWPORT_H
 
 #ifdef DYECMD
-#include "dyetool/gui/viewport.h"
+#include "progs/dyecmd/gui/viewport.h"
 
 #else
 

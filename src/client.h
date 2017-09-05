@@ -24,7 +24,7 @@
 #define CLIENT_H
 
 #ifdef DYECMD
-#include "dyetool/client.h"
+#include "progs/dyecmd/client.h"
 
 #else  // DYECMD
 

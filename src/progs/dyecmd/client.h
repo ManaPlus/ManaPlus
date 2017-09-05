@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DYETOOL_CLIENT_H
-#define DYETOOL_CLIENT_H
+#ifndef PROGS_DYECMD_CLIENT_H
+#define PROGS_DYECMD_CLIENT_H
 
 #include "enums/state.h"
 
@@ -116,4 +116,4 @@ extern Client *client;
 extern unsigned int mLastHost;
 extern unsigned long mSearchHash;
 
-#endif  // DYETOOL_CLIENT_H
+#endif  // PROGS_DYECMD_CLIENT_H

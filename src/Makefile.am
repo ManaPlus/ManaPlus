@@ -155,7 +155,7 @@ manaplus_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
 endif
 
 dyecmd_CXXFLAGS += -DDYECMD
-dyecmd_SOURCES += dyetool/dyemain.cpp
+dyecmd_SOURCES += progs/dyecmd/dyemain.cpp
 
 if USE_MUMBLE
 manaplus_CXXFLAGS += -DUSE_MUMBLE
@@ -1996,19 +1996,19 @@ SRC += \
 	      mumblemanager.cpp \
 	      mumblemanager.h
 
-dyecmd_SOURCES += dyetool/gui/viewport.cpp \
-	      dyetool/gui/viewport.h \
-	      dyetool/client.cpp \
-	      dyetool/client.h \
-	      dyetool/actions/actions.cpp \
-	      dyetool/actions/chat.cpp \
-	      dyetool/actions/commands.cpp \
-	      dyetool/actions/move.cpp \
-	      dyetool/actions/pets.cpp \
-	      dyetool/actions/statusbar.cpp \
-	      dyetool/actions/tabs.cpp \
-	      dyetool/actions/target.cpp \
-	      dyetool/actions/windows.cpp
+dyecmd_SOURCES += progs/dyecmd/gui/viewport.cpp \
+	      progs/dyecmd/gui/viewport.h \
+	      progs/dyecmd/client.cpp \
+	      progs/dyecmd/client.h \
+	      progs/dyecmd/actions/actions.cpp \
+	      progs/dyecmd/actions/chat.cpp \
+	      progs/dyecmd/actions/commands.cpp \
+	      progs/dyecmd/actions/move.cpp \
+	      progs/dyecmd/actions/pets.cpp \
+	      progs/dyecmd/actions/statusbar.cpp \
+	      progs/dyecmd/actions/tabs.cpp \
+	      progs/dyecmd/actions/target.cpp \
+	      progs/dyecmd/actions/windows.cpp
 
 if ENABLE_MANAPLUSGAME
 manaplus_SOURCES += ${SRC}
