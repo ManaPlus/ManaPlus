@@ -35,7 +35,8 @@ cd build/tmp
 --enable-tcmalloc=no \
 --enable-googleprofiler=no \
 --enable-checks=yes \
---with-sdl2
+--with-sdl2 \
+--enable-werror
 
 cd po
 make -j8 update-gmo 2>../../make1.log

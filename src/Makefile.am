@@ -172,9 +172,9 @@ if USE_SDL2
 if USE_INTERNALSDLGFX
 dyecmd_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
 manaplus_CXXFLAGS += -I$(srcdir)/sdl2gfx -DUSE_SDL2
-BASE_SRC += sdl2gfx/SDL2_framerate.c \
+BASE_SRC += sdl2gfx/SDL2_framerate.cpp \
 	      sdl2gfx/SDL2_framerate.h \
-	      sdl2gfx/SDL2_rotozoom.c \
+	      sdl2gfx/SDL2_rotozoom.cpp \
 	      sdl2gfx/SDL2_rotozoom.h
 else
 dyecmd_CXXFLAGS += -DUSE_SDL2

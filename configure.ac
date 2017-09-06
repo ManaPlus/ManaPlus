@@ -232,6 +232,9 @@ esac
 AM_CONDITIONAL(MINGW, test x$mingw = xtrue)
 
 
+# Option to enable internal sdl-gfx for SDL2 (for now it enabled by default)
+AC_ARG_WITH(internalsdlgfx,[  --without-internalsdlgfx        don't use internal sdlgfx (for SDL2 only) ] )
+
 AC_DEFUN([AC_CHECK_SDL],
 [
 # Enable sdl2
@@ -242,8 +245,10 @@ if test "x$with_sdl2" == "xyes"; then
         LIBS="$LIBS `$SDL_CONFIG --libs`"
         CPPFLAGS="$CPPFLAGS `$SDL_CONFIG --cflags`"
     fi
-    LIBS="$LIBS `$PKG_CONFIG --libs SDL2_gfx`"
-    CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags SDL2_gfx`"
+    if test "x$with_internalsdlgfx" == "xno"; then
+        LIBS="$LIBS `$PKG_CONFIG --libs SDL2_gfx`"
+        CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags SDL2_gfx`"
+    fi
     LIBS="$LIBS `$PKG_CONFIG --libs SDL2_image`"
     CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags SDL2_image`"
     LIBS="$LIBS `$PKG_CONFIG --libs SDL2_mixer`"
@@ -316,7 +321,6 @@ fi
 AM_CONDITIONAL(USE_SDL2, test x$with_sdl2 = xyes)
 
 # Option to enable internal sdl-gfx for SDL2 (for now it enabled by default)
-AC_ARG_WITH(internalsdlgfx,[  --without-internalsdlgfx        don't use internal sdlgfx (for SDL2 only) ] )
 if test "x$with_internalsdlgfx" == "xno"; then
     with_internalsdlgfx=no
 
