@@ -125,6 +125,7 @@
 #include "fs/paths.h"
 #endif  // ANDROID
 #include "utils/sdlcheckutils.h"
+#include "utils/sdlhelper.h"
 #include "utils/timer.h"
 
 #include "utils/translation/translationmanager.h"
@@ -262,6 +263,7 @@ void Client::testsInit()
     {
         initRand();
         logger = new Logger;
+        SDL::initLogger();
         Dirs::initLocalDataDir();
         Dirs::initTempDir();
         Dirs::initConfigDir();
@@ -272,6 +274,7 @@ void Client::testsInit()
 void Client::gameInit()
 {
     logger = new Logger;
+    SDL::initLogger();
 
     initRand();
 

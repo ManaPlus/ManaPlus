@@ -64,6 +64,7 @@ PRAGMA48(GCC diagnostic pop)
 #endif  // UNITTESTS_DOCTEST
 #else  // UNITTESTS
 #include "utils/xml.h"
+#include "utils/sdlhelper.h"
 #endif  // UNITTESTS
 
 #define SDL_IMAGE_COMPILEDVERSION \
@@ -150,6 +151,7 @@ int mainGui(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+    SDL::initLogger();
     VirtFs::init(argv[0]);
     Cpu::detect();
     DyePalette::initFunctions();

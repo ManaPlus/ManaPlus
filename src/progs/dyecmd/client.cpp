@@ -67,8 +67,8 @@
 #ifdef ANDROID
 #include "fs/paths.h"
 #endif  // ANDROID
-
 #include "utils/sdlcheckutils.h"
+#include "utils/sdlhelper.h"
 #include "utils/timer.h"
 
 #include "utils/translation/translationmanager.h"
@@ -157,6 +157,7 @@ void Client::testsClear()
 void Client::gameInit()
 {
     logger = new Logger;
+    SDL::initLogger();
 
     initRand();
 

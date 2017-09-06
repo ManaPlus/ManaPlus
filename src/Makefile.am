@@ -632,6 +632,8 @@ BASE_SRC += client.h \
 	      utils/process.h \
 	      utils/sdl2helper.cpp \
 	      utils/sdl2helper.h \
+	      utils/sdl2logger.cpp \
+	      utils/sdl2logger.h \
 	      utils/sdlcheckutils.cpp \
 	      utils/sdlcheckutils.h \
 	      utils/sdlhelper.cpp \

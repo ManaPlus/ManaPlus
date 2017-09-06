@@ -182,4 +182,8 @@ void SDL::makeCurrentContext(void *const context A_UNUSED)
 }
 #endif  // defined(USE_X11) && defined(USE_OPENGL)
 
+void SDL::initLogger()
+{
+}
+
 #endif  // USE_SDL2

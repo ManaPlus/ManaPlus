@@ -61,6 +61,8 @@ namespace SDL
                           const int profile);
 
     void makeCurrentContext(void *const context);
+
+    void initLogger();
 }  // namespace SDL
 
 #endif  // USE_SDL2

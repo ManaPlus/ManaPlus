@@ -25,6 +25,7 @@
 #include "logger.h"
 
 #include "utils/foreach.h"
+#include "utils/sdl2logger.h"
 #include "utils/stringutils.h"
 
 PRAGMA48(GCC diagnostic push)
@@ -180,6 +181,11 @@ void *SDL::createGLContext(SDL_Window *const window,
 
 void SDL::makeCurrentContext(void *const context A_UNUSED)
 {
+}
+
+void SDL::initLogger()
+{
+    SDL2Logger::init();
 }
 
 #endif  // USE_SDL2

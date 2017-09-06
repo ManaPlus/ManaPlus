@@ -37,6 +37,7 @@
 #include "resources/loaders/imageloader.h"
 
 #include "utils/gettext.h"
+#include "utils/sdlhelper.h"
 
 #include <iostream>
 
@@ -75,6 +76,7 @@ int main(int argc, char **argv)
 
     logger = new Logger;
     logger->setLogToStandardOut(false);
+    SDL::initLogger();
 
     VirtFs::init(argv[0]);
     SDL_Init(SDL_INIT_VIDEO);
