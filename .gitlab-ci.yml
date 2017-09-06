@@ -4319,7 +4319,7 @@ deheader_actions_cpp:
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/manaplus/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
@@ -4389,7 +4389,7 @@ deheader_dyecmd_cpp:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
@@ -4399,7 +4399,7 @@ deheader_dyecmd_h:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
@@ -4831,7 +4831,7 @@ deheader_sdl2_actions_cpp:
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/manaplus/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
@@ -4881,7 +4881,7 @@ deheader_sdl2_dyecmd_cpp:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
@@ -4891,7 +4891,7 @@ deheader_sdl2_dyecmd_h:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
@@ -5323,7 +5323,7 @@ deheader_actions_withoutopengl_cpp:
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/manaplus/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
@@ -5373,7 +5373,7 @@ deheader_dyecmd_withoutopengl_cpp:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
@@ -5383,7 +5383,7 @@ deheader_dyecmd_withoutopengl_h:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
@@ -5815,7 +5815,7 @@ deheader_sdl2_actions_withoutopengl_cpp:
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/manaplus/actions -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
@@ -5865,7 +5865,7 @@ deheader_sdl2_dyecmd_withoutopengl_cpp:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.cpp" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
@@ -5875,7 +5875,7 @@ deheader_sdl2_dyecmd_withoutopengl_h:
   script:
   - export FLAGS="-DDYECMD -DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src/dyetool -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src/progs/dyecmd -type f -name "*.h" -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
