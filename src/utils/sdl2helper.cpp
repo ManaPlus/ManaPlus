@@ -37,13 +37,12 @@ PRAGMA48(GCC diagnostic pop)
 bool SDL::getAllVideoModes(StringVect &modeList)
 {
     std::set<std::string> modes;
-
-    for (int display = 0; display < 100; display ++)
+    const int numDisplays = SDL_GetNumVideoDisplays();
+    for (int display = 0; display < numDisplays; display ++)
     {
         const int numModes = SDL_GetNumDisplayModes(display);
         if (numModes > 0)
         {
-            logger->log("Modes for display %d", display);
             for (int f = 0; f < numModes; f ++)
             {
                 SDL_DisplayMode mode;
