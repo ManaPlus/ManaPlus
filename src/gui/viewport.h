@@ -23,8 +23,10 @@
 
 #ifdef DYECMD
 #include "progs/dyecmd/gui/viewport.h"
+PROGS_DYECMD_GUI_VIEWPORT_H
 #else
 #include "progs/manaplus/gui/viewport.h"
+PROGS_MANAPLUS_GUI_VIEWPORT_H
 #endif  // DYECMD
 
 #endif  // GUI_VIEWPORT_H

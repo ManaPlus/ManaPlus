@@ -23,7 +23,9 @@
 
 #ifdef DYECMD
 #include "progs/dyecmd/client.h"
+PROGS_DYECMD_CLIENT_H
 #else  // DYECMD
 #include "progs/manaplus/client.h"
+PROGS_MANAPLUS_CLIENT_H
 #endif  // DYECMD
 #endif  // CLIENT_H
