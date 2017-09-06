@@ -169,7 +169,7 @@ imagesdiff run4.png center_click.png
 
 send_command "/guikey -989 keyGUIHome"
 send_command "/screenshot run5.png"
-imagesdiff run4.png run5.png
+imagessame run4.png run5.png
 
 # open add server dialog
 send_command "/guikey -990 keyGUIInsert"
