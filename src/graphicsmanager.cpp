@@ -537,8 +537,8 @@ void GraphicsManager::initGraphics()
         config.getBoolValue("enableGuiOpacity"));
 #endif  // USE_OPENGL
     createRenderers();
-    detectPixelSize();
     setVideoMode();
+    detectPixelSize();
 #ifdef USE_OPENGL
     if (config.getBoolValue("checkOpenGLVersion") == true)
     {
@@ -583,8 +583,8 @@ void GraphicsManager::initGraphics()
             settings.options.renderer = CAST_S32(openGLMode);
             config.setValue("opengl", settings.options.renderer);
             createRenderers();
-            detectPixelSize();
             setVideoMode();
+            detectPixelSize();
         }
     }
 #if !defined(ANDROID) && !defined(__APPLE__)
