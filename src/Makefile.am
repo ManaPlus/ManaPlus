@@ -1562,6 +1562,8 @@ SRC = ${BASE_SRC} \
 	      net/updatetypeoperators.cpp \
 	      net/updatetypeoperators.h \
 	      net/uploadcharinfo.h \
+	      net/useragent.cpp \
+	      net/useragent.h \
 	      net/worldinfo.h \
 	      net/packetcounters.cpp \
 	      net/packetcounters.h \

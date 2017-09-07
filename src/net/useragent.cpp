@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014-2017  The ManaPlus Developers
+ *  Copyright (C) 2011-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,22 +18,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settings.h"
+#include "net/useragent.h"
 
 #include "configuration.h"
+#include "settings.h"
+#include "main.h"
 
-#ifndef DYECMD
-#include "net/useragent.h"
-#endif  // DYECMD
+#include "render/graphics.h"
 
 #include "debug.h"
 
-Settings settings;
-
-void Settings::init()
+void UserAgent::update()
 {
-    uselonglivesprites = config.getBoolValue("uselonglivesprites");
-#ifndef DYECMD
-    UserAgent::update();
-#endif  // DYECMD
+    std::string renderName;
+    if (mainGraphics != nullptr)
+        renderName = mainGraphics->getName();
+    else
+        renderName = "unknown";
+
+    settings.userAgent = strprintf(PACKAGE_EXTENDED_VERSION,
+        branding.getStringValue("appName").c_str(),
+        renderName.c_str());
 }

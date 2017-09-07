@@ -595,6 +595,8 @@ SET(SRCS
     net/updatetypeoperators.h
     enums/net/updatetype.h
     net/uploadcharinfo.h
+    net/useragent.cpp
+    net/useragent.h
     net/worldinfo.h
     net/packetcounters.cpp
     net/packetcounters.h

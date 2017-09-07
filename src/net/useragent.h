@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2014-2017  The ManaPlus Developers
+ *  Copyright (C) 2011-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,22 +18,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settings.h"
+#ifndef NET_USERAGENT_H
+#define NET_USERAGENT_H
 
-#include "configuration.h"
+#include "localconsts.h"
 
-#ifndef DYECMD
-#include "net/useragent.h"
-#endif  // DYECMD
-
-#include "debug.h"
-
-Settings settings;
-
-void Settings::init()
+namespace UserAgent
 {
-    uselonglivesprites = config.getBoolValue("uselonglivesprites");
-#ifndef DYECMD
-    UserAgent::update();
-#endif  // DYECMD
-}
+    void update();
+}  // namespace UserAgent
+
+#endif  // NET_USERAGENT_H

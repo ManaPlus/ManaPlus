@@ -93,6 +93,7 @@
 #include "net/loginhandler.h"
 #include "net/net.h"
 #include "net/updatetypeoperators.h"
+#include "net/useragent.h"
 #include "net/packetlimiter.h"
 #include "net/partyhandler.h"
 
@@ -406,6 +407,7 @@ void Client::gameInit()
 #endif  // defined(USE_OPENGL)
 
     initGraphics();
+    UserAgent::update();
 
     touchManager.init();
 
