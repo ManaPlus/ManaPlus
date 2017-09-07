@@ -53,6 +53,7 @@ PRAGMA48(GCC diagnostic pop)
 
 #ifdef UNITTESTS
 #include "utils/cpu.h"
+#include "utils/sdlhelper.h"
 #include "resources/dye/dyepalette.h"
 #ifdef UNITTESTS_CATCH
 #define CATCH_CONFIG_RUNNER
@@ -64,7 +65,6 @@ PRAGMA48(GCC diagnostic pop)
 #endif  // UNITTESTS_DOCTEST
 #else  // UNITTESTS
 #include "utils/xml.h"
-#include "utils/sdlhelper.h"
 #endif  // UNITTESTS
 
 #define SDL_IMAGE_COMPILEDVERSION \
