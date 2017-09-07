@@ -69,6 +69,8 @@ namespace SDL
     void makeCurrentContext(void *const context);
 
     void initLogger();
+
+    void WaitThread(SDL_Thread *const thread);
 }  // namespace SDL
 
 #endif  // USE_SDL2

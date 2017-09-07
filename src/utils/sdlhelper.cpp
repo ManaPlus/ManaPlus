@@ -186,4 +186,10 @@ void SDL::initLogger()
 {
 }
 
+void SDL::WaitThread(SDL_Thread *const thread)
+{
+    if (thread != nullptr && SDL_GetThreadID(thread) != 0u)
+        SDL_WaitThread(thread, nullptr);
+}
+
 #endif  // USE_SDL2

@@ -57,9 +57,7 @@ IPC::~IPC()
     }
     SDL_DestroyMutex(mMutex);
     mMutex = nullptr;
-    int status;
-    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
-        SDL_WaitThread(mThread, &status);
+    SDL::WaitThread(mThread);
     mThread = nullptr;
 }
 

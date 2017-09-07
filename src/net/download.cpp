@@ -110,9 +110,7 @@ Download::~Download()
         mHeaders = nullptr;
     }
 
-    int status;
-    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
-        SDL_WaitThread(mThread, &status);
+    SDL::WaitThread(mThread);
     mThread = nullptr;
     free(mError);
 }
@@ -208,9 +206,7 @@ void Download::cancel()
     logger->log("Canceling download: %s", mUrl.c_str());
 
     mOptions.cancel = 1u;
-    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
-        SDL_WaitThread(mThread, nullptr);
-
+    SDL::WaitThread(mThread);
     mThread = nullptr;
 }
 

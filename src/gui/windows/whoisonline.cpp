@@ -175,9 +175,8 @@ WhoIsOnline::~WhoIsOnline()
     config.removeListeners(this);
     CHECKLISTENERS
 
-    if ((mThread != nullptr) && (SDL_GetThreadID(mThread) != 0u))
-        SDL_WaitThread(mThread, nullptr);
-
+    SDL::WaitThread(mThread);
+    mThread = nullptr;
     free(mMemoryBuffer);
     mMemoryBuffer = nullptr;
 
@@ -628,9 +627,8 @@ void WhoIsOnline::download()
     else if (mWebList)
     {
         mDownloadComplete = true;
-        if (mThread != nullptr && SDL_GetThreadID(mThread) != 0U)
-            SDL_WaitThread(mThread, nullptr);
-
+        SDL::WaitThread(mThread);
+        mThread = nullptr;
         mDownloadComplete = false;
         mThread = SDL::createThread(&WhoIsOnline::downloadThread,
             "whoisonline", this);
@@ -729,11 +727,8 @@ void WhoIsOnline::action(const ActionEvent &event)
                     mUpdateButton->setEnabled(false);
                 // TRANSLATORS: who is online window name
                 setCaption(_("Who Is Online - Update"));
-                if (mThread != nullptr && SDL_GetThreadID(mThread) != 0U)
-                {
-                    SDL_WaitThread(mThread, nullptr);
-                    mThread = nullptr;
-                }
+                SDL::WaitThread(mThread);
+                mThread = nullptr;
                 mDownloadComplete = true;
             }
         }

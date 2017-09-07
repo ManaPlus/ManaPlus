@@ -140,11 +140,8 @@ void Network::disconnect()
     BLOCK_START("Network::disconnect")
     mState = IDLE;
 
-    if ((mWorkerThread != nullptr) && (SDL_GetThreadID(mWorkerThread) != 0u))
-    {
-        SDL_WaitThread(mWorkerThread, nullptr);
-        mWorkerThread = nullptr;
-    }
+    SDL::WaitThread(mWorkerThread);
+    mWorkerThread = nullptr;
 
     if (mSocket != nullptr)
     {
