@@ -115,7 +115,7 @@ static void logCallback(void *userData A_UNUSED,
         msg);
 }
 
-static SDL_AssertState assertCallback(const SDL_AssertData *data A_UNUSED,
+static SDL_AssertState assertCallback(const SDL_AssertData *data,
                                       void *userdata A_UNUSED)
 {
     reportAlways(
