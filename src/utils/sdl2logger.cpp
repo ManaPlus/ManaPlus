@@ -37,6 +37,12 @@ PRAGMA48(GCC diagnostic pop)
         message.append(msg); \
         break
 
+// before 2.0.4 this names not exists
+#if !SDL_VERSION_ATLEAST(2, 0, 4)
+#define SDL_AssertState SDL_assert_state
+#define SDL_AssertData SDL_assert_data
+#endif  // !SDL_VERSION_ATLEAST(2, 0, 4)
+
 static void logCallback(void *userData A_UNUSED,
                         int category,
                         SDL_LogPriority priority,
