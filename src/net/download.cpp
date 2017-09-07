@@ -279,8 +279,6 @@ int Download::downloadThread(void *ptr)
 
             if ((d->mOptions.cancel != 0u) || isTerminate == true)
             {
-                // need terminate thread?
-                //d->mThread = nullptr;
                 return 0;
             }
             d->mCurl = curl_easy_init();
@@ -477,8 +475,6 @@ int Download::downloadThread(void *ptr)
 
             if ((d->mOptions.cancel != 0u) || isTerminate == true)
             {
-                // need ternibate thread?
-                //d->mThread = nullptr;
                 return 0;
             }
             attempts++;
@@ -487,8 +483,6 @@ int Download::downloadThread(void *ptr)
         if ((complete && attempts < 3) || (d->mOptions.cancel != 0u))
             break;
     }
-
-    //d->mThread = nullptr;
 
     if ((d->mOptions.cancel != 0u) || isTerminate == true)
     {
