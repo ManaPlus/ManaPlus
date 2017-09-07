@@ -4,3 +4,5 @@ leak:testFailAlways2
 leak:checkutils.cc
 leak:throw.cc
 leak:SDL_CreateThreadWithStackSize
+leak:vbo_exec_array.c
+leak:teximage.c

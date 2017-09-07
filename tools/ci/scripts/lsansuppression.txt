@@ -1,3 +1,5 @@
 leak:XGetVisualInfo
 leak:__strdup
 leak:Curl_open
+leak:vbo_exec_array.c
+leak:teximage.c
