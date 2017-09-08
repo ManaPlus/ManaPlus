@@ -72,6 +72,7 @@ Joystick::~Joystick()
 void Joystick::init()
 {
     SDL_InitSubSystem(SDL_INIT_JOYSTICK);
+    // +++ possible to use SDL_EventState with different joystick features.
     SDL_JoystickEventState(SDL_ENABLE);
     joystickCount = SDL_NumJoysticks();
     logger->log("%i joysticks/gamepads found", joystickCount);
