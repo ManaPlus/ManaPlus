@@ -648,6 +648,8 @@ BASE_SRC += client.h \
 	      utils/timer.cpp \
 	      utils/timer.h \
 	      utils/vector.h \
+	      utils/x11logger.cpp \
+	      utils/x11logger.h \
 	      fs/virtfs/file.cpp \
 	      fs/virtfs/file.h \
 	      utils/mutex.h \

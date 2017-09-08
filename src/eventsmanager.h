@@ -41,6 +41,8 @@ class EventsManager final : public ConfigListener
 
         void init();
 
+        void enableEvents();
+
         void shutdown();
 
         bool handleEvents() const;

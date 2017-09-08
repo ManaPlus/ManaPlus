@@ -243,14 +243,7 @@ void Client::gameInit()
 #endif  // USE_SDL2
 
     WindowManager::applyKeyRepeat();
-
-    // disable unused SDL events
-#ifndef USE_SDL2
-    SDL_EventState(SDL_VIDEOEXPOSE, SDL_IGNORE);
-#endif  // USE_SDL2
-
-    SDL_EventState(SDL_SYSWMEVENT, SDL_IGNORE);
-    SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
+    eventsManager.enableEvents();
 
 #ifdef WIN32
     Dirs::extractDataDir();

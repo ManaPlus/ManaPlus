@@ -962,6 +962,8 @@ SET(SRCS
     utils/timer.cpp
     utils/timer.h
     utils/vector.h
+    utils/x11logger.cpp
+    utils/x11logger.h
     fs/virtfs/file.cpp
     fs/virtfs/file.h
     utils/mutex.h
@@ -1885,6 +1887,8 @@ SET(DYE_CMD_SRCS
     utils/timer.cpp
     utils/timer.h
     utils/vector.h
+    utils/x11logger.cpp
+    utils/x11logger.h
     fs/virtfs/virtfile.cpp
     fs/virtfs/virtfile.h
     utils/xml.cpp

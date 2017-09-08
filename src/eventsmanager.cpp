@@ -38,6 +38,8 @@
 #include "input/inputmanager.h"
 
 #ifdef USE_SDL2
+#include "utils/x11logger.h"
+
 #include "render/graphics.h"
 #else  // USE_SDL2
 #include "logger.h"
@@ -65,6 +67,17 @@ void EventsManager::init()
 {
     mLogInput = config.getBoolValue("logInput");
     config.addListener("logInput", this);
+}
+
+void EventsManager::enableEvents()
+{
+    // disable unused SDL events
+#ifndef USE_SDL2
+    SDL_EventState(SDL_VIDEOEXPOSE, SDL_IGNORE);
+#endif  // USE_SDL2
+
+    SDL_EventState(SDL_SYSWMEVENT, mLogInput ? SDL_ENABLE : SDL_IGNORE);
+    SDL_EventState(SDL_USEREVENT, SDL_IGNORE);
 }
 
 void EventsManager::shutdown()
@@ -435,8 +448,23 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->log("event: SDL_QUIT");
             break;
         case SDL_SYSWMEVENT:
-            logger->log("event: SDL_SYSWMEVENT");
+        {
+#ifdef USE_SDL2
+            bool res = false;
+#ifdef USE_X11
+            res = X11Logger::logEvent(event);
+#endif  // USE_X11
+
+            if (res == false)
+                logger->assertLog("event: SDL_SYSWMEVENT: not supported:");
             break;
+#else  // USE_SDL2
+
+            logger->log("event: SDL_SYSWMEVENT");
+#endif  // USE_SDL2
+
+            break;
+        }
         case SDL_USEREVENT:
             logger->log("event: SDL_USEREVENT");
             break;
