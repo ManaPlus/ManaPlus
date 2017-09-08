@@ -311,8 +311,15 @@ void EventsManager::logEvent(const SDL_Event &event)
                 winEventLog(SDL_WINDOWEVENT_FOCUS_LOST,
                     "SDL_WINDOWEVENT_FOCUS_LOST");
                 winEventLog(SDL_WINDOWEVENT_CLOSE, "SDL_WINDOWEVENT_CLOSE");
+#if SDL_VERSION_ATLEAST(2, 0, 5)
+                winEventLog(SDL_WINDOWEVENT_TAKE_FOCUS,
+                    "SDL_WINDOWEVENT_TAKE_FOCUS");
+                winEventLog(SDL_WINDOWEVENT_HIT_TEST,
+                    "SDL_WINDOWEVENT_HIT_TEST");
+#endif  // SDL_VERSION_ATLEAST(2, 0, 5)
                 default:
-                    str = "unknown";
+                    str = strprintf("unknown: %d",
+                        event.window.event);
                     break;
             }
             logger->log("event: SDL_WINDOWEVENT: %s: %d,%d",
@@ -346,6 +353,25 @@ void EventsManager::logEvent(const SDL_Event &event)
         case SDL_APP_DIDENTERBACKGROUND:
             logger->log("SDL_APP_DIDENTERBACKGROUND");
             break;
+        case SDL_MOUSEWHEEL:
+            logger->log("event: SDL_MOUSEWHEEL: %u,%u, %d,%d, %u",
+                event.wheel.windowID,
+                event.wheel.which,
+                event.wheel.x,
+                event.wheel.y,
+                event.wheel.direction);
+            break;
+#if SDL_VERSION_ATLEAST(2, 0, 4)
+        case SDL_AUDIODEVICEADDED:
+            logger->log("event: SDL_AUDIODEVICEADDED: %u,%u",
+                event.adevice.which,
+                event.adevice.iscapture);
+            break;
+        case SDL_KEYMAPCHANGED:
+            logger->log("event: SDL_KEYMAPCHANGED");
+            break;
+#endif  // SDL_VERSION_ATLEAST(2, 0, 4)
+
 #else  // USE_SDL2
 
         case SDL_MOUSEMOTION:
@@ -423,7 +449,7 @@ void EventsManager::logEvent(const SDL_Event &event)
 #endif  // ANDROID
 
         default:
-            logger->log("event: other: %u", event.type);
+            logger->assertLog("event: other: %u", event.type);
             break;
     };
 }
