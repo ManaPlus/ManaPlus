@@ -473,7 +473,7 @@ void WindowManager::setIcon()
 bool WindowManager::isKeyboardVisible()
 {
 #ifdef USE_SDL2
-    return SDL_IsTextInputActive();
+    return SDL_GetEventState(SDL_TEXTINPUT) == SDL_ENABLE;
 #else  // USE_SDL2
 
     return mKeyboardHeight > 1;

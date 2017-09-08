@@ -970,7 +970,7 @@ impHandler0(showKeyboard)
 {
 #ifdef ANDROID
 #ifdef USE_SDL2
-    if (SDL_IsTextInputActive())
+    if (SDL_GetEventState(SDL_TEXTINPUT) == SDL_ENABLE)
         SDL_StopTextInput();
     else
         SDL_StartTextInput();
