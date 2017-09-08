@@ -30,6 +30,7 @@
 
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
+#include <SDL_events.h>
 #include <SDL_syswm.h>
 PRAGMA48(GCC diagnostic pop)
 
@@ -192,6 +193,16 @@ void SDL::WaitThread(SDL_Thread *const thread)
 {
     if (thread != nullptr)
         SDL_WaitThread(thread, nullptr);
+}
+
+bool SDL::PollEvent(SDL_Event *event)
+{
+    SDL_PumpEvents();
+    return SDL_PeepEvents(event,
+        1,
+        SDL_GETEVENT,
+        SDL_FIRSTEVENT,
+        SDL_LASTEVENT) > 0;
 }
 
 #endif  // USE_SDL2

@@ -35,6 +35,8 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_thread.h>
 PRAGMA48(GCC diagnostic pop)
 
+union SDL_Event;
+
 struct SDL_Surface;
 struct SDL_SysWMinfo;
 
@@ -71,6 +73,8 @@ namespace SDL
     void initLogger();
 
     void WaitThread(SDL_Thread *const thread);
+
+    bool PollEvent(SDL_Event *event);
 }  // namespace SDL
 
 #endif  // USE_SDL2

@@ -44,6 +44,7 @@
 #endif  // USE_SDL2
 
 #include "utils/process.h"
+#include "utils/sdlhelper.h"
 
 #include "debug.h"
 
@@ -137,7 +138,7 @@ bool EventsManager::handleEvents() const
     {
         SDL_Event event;
         // Handle SDL events
-        while (SDL_WaitEventTimeout(&event, 0))
+        while (SDL::PollEvent(&event))
         {
             if (!handleCommonEvents(event))
             {
@@ -187,7 +188,7 @@ void EventsManager::handleGameEvents() const
 
     // Events
     SDL_Event event;
-    while (SDL_WaitEventTimeout(&event, 0))
+    while (SDL::PollEvent(&event))
     {
         if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
             game->updateHistory(event);
