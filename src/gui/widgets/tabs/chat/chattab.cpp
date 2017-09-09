@@ -312,7 +312,8 @@ void ChatTab::chatLog(std::string line,
             return;
 
         const bool notFocused = WindowManager::getIsMinimized() ||
-            (!settings.mouseFocused && !settings.inputFocused);
+            (!settings.mouseFocused &&
+            settings.inputFocused == KeyboardFocus::Unfocused);
 
         if (this != tabArea->getSelectedTab() || notFocused)
         {

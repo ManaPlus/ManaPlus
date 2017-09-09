@@ -513,10 +513,16 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             settings.mouseFocused = false;
             break;
         case SDL_WINDOWEVENT_FOCUS_GAINED:
-            settings.inputFocused = true;
+            settings.inputFocused = KeyboardFocus::Focused;
             break;
+#if SDL_VERSION_ATLEAST(2, 0, 5)
+        case SDL_WINDOWEVENT_TAKE_FOCUS:
+            settings.inputFocused = KeyboardFocus::Focused2;
+            break;
+#endif  // SDL_VERSION_ATLEAST(2, 0, 5)
+
         case SDL_WINDOWEVENT_FOCUS_LOST:
-            settings.inputFocused = false;
+            settings.inputFocused = KeyboardFocus::Unfocused;
             break;
         case SDL_WINDOWEVENT_MINIMIZED:
             WindowManager::setIsMinimized(true);
@@ -624,7 +630,10 @@ void EventsManager::handleActive(const SDL_Event &event)
 #endif  // DYECMD
 
     if ((event.active.state & SDL_APPINPUTFOCUS) != 0)
-        settings.inputFocused = (event.active.gain != 0u);
+    {
+        settings.inputFocused = (event.active.gain != 0u) ?
+            KeyboardFocus::Focused : KeyboardFocus::Unfocused;
+    }
     if ((event.active.state & SDL_APPMOUSEFOCUS) != 0)
         settings.mouseFocused = (event.active.gain != 0u);
 #ifndef DYECMD

@@ -129,6 +129,10 @@ class KeyboardConfig final
 
         void resetRepeat(const int key);
 
+#ifdef USE_SDL2
+        bool ignoreKey(const SDL_Event &restrict event) A_WARN_UNUSED;
+#endif  // USE_SDL2
+
     private:
         bool mEnabled;                   /**< Flag to respond to key input */
 
@@ -143,6 +147,8 @@ class KeyboardConfig final
         KeyToIdMap mKeyToId;
 
         KeyTimeMap mKeyTimeMap;
+
+        bool mBlockAltTab;
 };
 
 extern KeyboardConfig keyboard;

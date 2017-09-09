@@ -25,6 +25,8 @@
 
 #include "enums/emotetype.h"
 
+#include "enums/input/keyboardfocus.h"
+
 #include "enums/resources/map/maptype.h"
 
 #include "utils/vector.h"
@@ -82,7 +84,7 @@ class Settings final
             emoteType(EmoteType::Player),
             persistentIp(true),
             limitFps(false),
-            inputFocused(true),
+            inputFocused(KeyboardFocus::Focused),
             mouseFocused(true),
             disableGameModifiers(false),
             awayMode(false),
@@ -147,7 +149,7 @@ class Settings final
         EmoteTypeT emoteType;
         bool persistentIp;
         bool limitFps;
-        bool inputFocused;
+        KeyboardFocusT inputFocused;
         bool mouseFocused;
         bool disableGameModifiers;
         bool awayMode;

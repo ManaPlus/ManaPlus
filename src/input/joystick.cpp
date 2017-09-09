@@ -180,7 +180,8 @@ void Joystick::logic()
 
     mDirection = 0;
 
-    if (mUseInactive || settings.inputFocused)
+    if (mUseInactive ||
+        settings.inputFocused != KeyboardFocus::Unfocused)
     {
         // X-Axis
         int position = SDL_JoystickGetAxis(mJoystick, 0);
@@ -350,7 +351,8 @@ bool Joystick::validate() const
     if (mCalibrating || !mEnabled || !mCalibrated)
         return false;
 
-    return mUseInactive || settings.inputFocused;
+    return mUseInactive ||
+        settings.inputFocused != KeyboardFocus::Unfocused;
 }
 
 void Joystick::handleRepeat(const int time)

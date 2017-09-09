@@ -332,6 +332,13 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     new SetupItemIntTextField(_("Custom repeat interval"), "",
         "repeateInterval2", this, "repeateInterval2Event", 0, 10000);
 
+#ifdef USE_SDL2
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable alt-tab workaround"), "",
+        "blockAltTab", this, "blockAltTabEvent");
+#endif  // USE_SDL2
+
+
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Windows"), "", this);
 

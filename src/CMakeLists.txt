@@ -1164,6 +1164,7 @@ SET(SRCS
     input/inputmanager.cpp
     input/inputmanager.h
     enums/input/inputtype.h
+    enums/input/keyboardfocus.h
     enums/input/keyvalue.h
     events/inputevent.h
     input/joystick.cpp

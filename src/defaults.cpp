@@ -414,6 +414,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("openglContext", false);
     AddDEF("allowMoveByMouse", true);
     AddDEF("enableDSA", true);
+    AddDEF("blockAltTab", true);
 }
 
 void setConfigDefaults2(Configuration &cfg)

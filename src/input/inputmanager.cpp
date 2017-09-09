@@ -594,6 +594,14 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
     {
         case SDL_KEYDOWN:
         {
+#ifdef USE_SDL2
+            if (keyboard.ignoreKey(event))
+            {
+                BLOCK_END("InputManager::handleEvent")
+                return true;
+            }
+#endif  // USE_SDL2
+
             keyboard.refreshActiveKeys();
             updateConditionMask();
             if (handleAssignKey(event, InputType::KEYBOARD))
@@ -620,6 +628,14 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
         }
         case SDL_KEYUP:
         {
+#ifdef USE_SDL2
+            if (keyboard.ignoreKey(event))
+            {
+                BLOCK_END("InputManager::handleEvent")
+                return true;
+            }
+#endif  // USE_SDL2
+
             keyboard.refreshActiveKeys();
             updateConditionMask();
             keyboard.handleDeActicateKey(event);

@@ -1002,10 +1002,15 @@ void Game::updateFrameRate(int fpsLimit)
     {
         if (settings.awayMode)
         {
-            if (settings.inputFocused || settings.mouseFocused)
+            if (settings.inputFocused != KeyboardFocus::Unfocused ||
+                settings.mouseFocused)
+            {
                 fpsLimit = config.getIntValue("fpslimit");
+            }
             else
+            {
                 fpsLimit = config.getIntValue("altfpslimit");
+            }
         }
         else
         {

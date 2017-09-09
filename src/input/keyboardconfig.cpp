@@ -23,6 +23,9 @@
 #include "input/keyboardconfig.h"
 
 #include "configuration.h"
+#ifdef USE_SDL2
+#include "settings.h"
+#endif  // USE_SDL2
 
 #include "input/inputmanager.h"
 
@@ -42,7 +45,8 @@ KeyboardConfig::KeyboardConfig() :
     mRepeatTime(0),
     mKeyToAction(),
     mKeyToId(),
-    mKeyTimeMap()
+    mKeyTimeMap(),
+    mBlockAltTab(true)
 {
 }
 
@@ -52,6 +56,7 @@ void KeyboardConfig::init()
     delete [] mActiveKeys2;
     mActiveKeys2 = new uint8_t[500];
     mRepeatTime = config.getIntValue("repeateInterval2") / 10;
+    mBlockAltTab = config.getBoolValue("blockAltTab");
 }
 
 void KeyboardConfig::deinit()
@@ -270,3 +275,33 @@ void KeyboardConfig::resetRepeat(const int key)
     if (it != mKeyTimeMap.end())
         (*it).second = tick_time;
 }
+
+#ifdef USE_SDL2
+
+bool KeyboardConfig::ignoreKey(const SDL_Event &restrict event)
+{
+    if (!mBlockAltTab ||
+        mActiveKeys == nullptr)
+    {
+        return false;
+    }
+    const int key = event.key.keysym.scancode;
+    if (key == SDL_SCANCODE_TAB)
+    {
+#if SDL_VERSION_ATLEAST(2, 0, 5)
+        // SDL_WINDOWEVENT_TAKE_FOCUS not triggered after focus restored
+        if (settings.inputFocused != KeyboardFocus::Focused2)
+            return true;
+#endif // SDL_VERSION_ATLEAST(2, 0, 5)
+
+        if (mActiveKeys[SDL_SCANCODE_LALT] != 0)
+            return true;
+    }
+    else if (key == SDL_SCANCODE_LALT)
+    {
+        if (mActiveKeys[SDL_SCANCODE_TAB] != 0)
+            return true;
+    }
+    return false;
+}
+#endif  // USE_SDL2
