@@ -367,12 +367,21 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->log("SDL_APP_DIDENTERBACKGROUND");
             break;
         case SDL_MOUSEWHEEL:
+#if SDL_VERSION_ATLEAST(2, 0, 4)
             logger->log("event: SDL_MOUSEWHEEL: %u,%u, %d,%d, %u",
                 event.wheel.windowID,
                 event.wheel.which,
                 event.wheel.x,
                 event.wheel.y,
                 event.wheel.direction);
+#else  // SDL_VERSION_ATLEAST(2, 0, 4)
+
+            logger->log("event: SDL_MOUSEWHEEL: %u,%u, %d,%d",
+                event.wheel.windowID,
+                event.wheel.which,
+                event.wheel.x,
+                event.wheel.y);
+#endif  // SDL_VERSION_ATLEAST(2, 0, 4)
             break;
 #if SDL_VERSION_ATLEAST(2, 0, 4)
         case SDL_AUDIODEVICEADDED:
