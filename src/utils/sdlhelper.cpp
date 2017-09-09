@@ -35,7 +35,6 @@ PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_events.h>
 #include <SDL_syswm.h>
-#include <SDL_video.h>
 PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
