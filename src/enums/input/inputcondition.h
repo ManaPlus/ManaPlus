@@ -47,6 +47,8 @@ namespace InputCondition
         NOVENDING  = 65536,                  // vending disabled
         NOROOM     = 131072,                 // not joined room
         NOBLOCK    = 262144,                 // no blocked move (trick dead)
+        KEY_DOWN   = 524288,                 // key press allowed
+        KEY_UP     = 1048576,                // key release allowed
         SHORTCUT   = 2 + 4 + 16 + 512 + 2048,  // flags for shortcut keys
         SHORTCUT0  = 2 + 4 + 16 + 512,       // flags for shortcut keys
         GAME       = 2 + 4 + 8 + 16 + 64 + 2048,  // main game key

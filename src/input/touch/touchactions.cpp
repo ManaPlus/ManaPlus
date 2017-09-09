@@ -98,7 +98,7 @@ static void moveChar(int x, int y)
         touchManager.setActionActive(InputAction::MOVE_DOWN, false);
         touchManager.setActionActive(InputAction::MOVE_UP, false);
     }
-    inputManager.updateConditionMask();
+    inputManager.updateConditionMask(true);
 }
 
 impHandler(padClick)

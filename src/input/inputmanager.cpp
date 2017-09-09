@@ -603,7 +603,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
 #endif  // USE_SDL2
 
             keyboard.refreshActiveKeys();
-            updateConditionMask();
+            updateConditionMask(true);
             if (handleAssignKey(event, InputType::KEYBOARD))
             {
                 BLOCK_END("InputManager::handleEvent")
@@ -637,13 +637,13 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
 #endif  // USE_SDL2
 
             keyboard.refreshActiveKeys();
-            updateConditionMask();
+            updateConditionMask(false);
             keyboard.handleDeActicateKey(event);
             break;
         }
         case SDL_JOYBUTTONDOWN:
         {
-            updateConditionMask();
+            updateConditionMask(true);
 //            joystick.handleActicateButton(event);
             if (handleAssignKey(event, InputType::JOYSTICK))
             {
@@ -654,7 +654,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
         }
         case SDL_JOYBUTTONUP:
         {
-            updateConditionMask();
+            updateConditionMask(false);
 //            joystick.handleDeActicateButton(event);
             break;
         }
@@ -693,6 +693,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
     switch (event.type)
     {
         case SDL_KEYDOWN:
+        case SDL_KEYUP:
             if (triggerAction(keyboard.getActionVector(event)))
             {
                 BLOCK_END("InputManager::handleEvent")
@@ -735,7 +736,7 @@ void InputManager::handleRepeat()
         joystick->handleRepeat(time);
 }
 
-void InputManager::updateConditionMask() restrict2
+void InputManager::updateConditionMask(const bool pressed) restrict2
 {
     mMask = 1;
     if (keyboard.isEnabled())
@@ -823,6 +824,10 @@ void InputManager::updateConditionMask() restrict2
     {
         mMask |= InputCondition::NOTARGET;
     }
+    if (pressed == true)
+        mMask |= InputCondition::KEY_DOWN;
+    else
+        mMask |= InputCondition::KEY_UP;
 }
 
 bool InputManager::checkKey(const InputActionData *restrict const key) const

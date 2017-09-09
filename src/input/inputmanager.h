@@ -138,7 +138,7 @@ class InputManager final
 
         static void update();
 
-        void updateConditionMask() restrict2;
+        void updateConditionMask(const bool pressed) restrict2;
 
         InputActionT getActionByKey(const SDL_Event &restrict event)
                                     const restrict2 A_WARN_UNUSED;
