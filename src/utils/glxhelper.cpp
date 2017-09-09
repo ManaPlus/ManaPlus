@@ -25,10 +25,11 @@
 #include "logger.h"
 
 #include "render/opengl/mglcheck.h"
-#include "render/opengl/mgldefines.h"
-RENDER_OPENGL_MGLDEFINES_H
 
 #include "render/openglx/mglx.h"
+
+#include "render/opengl/mgldefines.h"
+RENDER_OPENGL_MGLDEFINES_H
 
 #include "debug.h"
 
