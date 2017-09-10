@@ -375,11 +375,12 @@ void Client::gameInit()
     eventsManager.enableEvents();
 
 #ifdef WIN32
-    Dirs::extractDataDir();
     Dirs::mountDataDir();
 #endif  // WIN32
-
+#ifndef USE_SDL2
     WindowManager::setIcon();
+#endif  // USE_SDL2
+
     ConfigManager::checkConfigVersion();
     logVars();
     Cpu::detect();
@@ -411,14 +412,14 @@ void Client::gameInit()
 
     Dirs::updateDataPath();
 
-    // Add the main data directories to our PhysicsFS search path
+    // Add the main data directories to our VirtFs search path
     if (!settings.options.dataPath.empty())
     {
         VirtFs::mountDir(settings.options.dataPath,
             Append_false);
     }
 
-    // Add the local data directory to PhysicsFS search path
+    // Add the local data directory to VirtFs search path
     VirtFs::mountDir(settings.localDataDir,
         Append_false);
     TranslationManager::loadCurrentLang();
@@ -427,6 +428,9 @@ void Client::gameInit()
     TranslationManager::loadGettextLang();
 #endif  // ENABLE_CUSTOMNLS
 
+#ifdef USE_SDL2
+    WindowManager::setIcon();
+#endif  // USE_SDL2
     WindowManager::initTitle();
 
     mainGraphics->postInit();

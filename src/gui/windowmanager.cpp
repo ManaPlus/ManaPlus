@@ -219,9 +219,6 @@ void WindowManager::initTitle()
 
     SDL::SetWindowTitle(mainGraphics->getWindow(),
         settings.windowCaption.c_str());
-#ifndef WIN32
-    setIcon();
-#endif  // WIN32
 }
 
 void WindowManager::updateTitle()
@@ -412,6 +409,7 @@ void WindowManager::newChatMessage()
 
 void WindowManager::setIcon()
 {
+#ifndef ANDROID
     std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
 #ifdef WIN32
     iconFile.append(".ico");
@@ -468,6 +466,7 @@ void WindowManager::setIcon()
         SDL::SetWindowIcon(mainGraphics->getWindow(), mIcon);
     }
 #endif  // WIN32
+#endif  // ANDROID
 }
 
 bool WindowManager::isKeyboardVisible()
