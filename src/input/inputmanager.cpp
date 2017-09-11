@@ -694,6 +694,12 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
     {
         case SDL_KEYDOWN:
         case SDL_KEYUP:
+            if (isActionActive(InputAction::IGNORE_INPUT_1) ||
+                isActionActive(InputAction::IGNORE_INPUT_2))
+            {
+                BLOCK_END("InputManager::handleEvent")
+                return true;
+            }
             if (triggerAction(keyboard.getActionVector(event)))
             {
                 BLOCK_END("InputManager::handleEvent")
