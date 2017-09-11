@@ -49,8 +49,8 @@ src/gui/widgets/tabs/setup_chat.cpp
 src/gui/widgets/tabs/setup_colors.cpp
 src/gui/widgets/tabs/setup_input.cpp
 src/gui/widgets/tabs/setup_joystick.cpp
+src/gui/widgets/tabs/setup_misc.cpp
 src/gui/widgets/tabs/setup_mods.cpp
-src/gui/widgets/tabs/setup_other.cpp
 src/gui/widgets/tabs/setup_perfomance.cpp
 src/gui/widgets/tabs/setup_players.cpp
 src/gui/widgets/tabs/setup_quick.cpp

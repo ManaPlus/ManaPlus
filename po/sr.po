@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-09-06 02:46+0300\n"
-"PO-Revision-Date: 2017-08-27 01:27+0000\n"
+"POT-Creation-Date: 2017-09-12 02:27+0300\n"
+"PO-Revision-Date: 2017-09-06 02:07+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Serbian (http://www.transifex.com/akaras/manaplus/language/"
 "sr/)\n"
@@ -41,12 +41,12 @@ msgid "miss"
 msgstr "promašaj"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2522 src/gui/windows/whoisonline.cpp:892
+#: src/being/being.cpp:2522 src/gui/windows/whoisonline.cpp:887
 msgid "A"
 msgstr ""
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2527 src/gui/windows/whoisonline.cpp:897
+#: src/being/being.cpp:2527 src/gui/windows/whoisonline.cpp:892
 msgid "I"
 msgstr ""
 
@@ -809,7 +809,7 @@ msgstr "Nedostupan"
 #: src/net/eathena/charserverrecv.cpp:456
 #: src/net/eathena/charserverrecv.cpp:484 src/net/tmwa/charserverrecv.cpp:298
 #: src/progs/manaplus/actions/actions.cpp:175
-#: src/progs/manaplus/client.cpp:1466 src/progs/manaplus/client.cpp:1501
+#: src/progs/manaplus/client.cpp:1469 src/progs/manaplus/client.cpp:1504
 msgid "OK"
 msgstr "U redu"
 
@@ -846,8 +846,8 @@ msgstr ""
 #: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:61
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:133
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:111
-#: src/progs/dyecmd/client.cpp:545 src/progs/manaplus/client.cpp:901
-#: src/progs/manaplus/client.cpp:1380 src/progs/manaplus/client.cpp:1399
+#: src/progs/dyecmd/client.cpp:544 src/progs/manaplus/client.cpp:904
+#: src/progs/manaplus/client.cpp:1383 src/progs/manaplus/client.cpp:1402
 msgid "Close"
 msgstr "Zatvori"
 
@@ -883,11 +883,13 @@ msgstr ""
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
 #. TRANSLATORS: screen density type
+#. TRANSLATORS: sdl2 log level
 #. TRANSLATORS: vsync type
 #. TRANSLATORS: equipment window tab
 #. TRANSLATORS: default hosts group name
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:32
-#: src/gui/widgets/tabs/setup_other.cpp:79
+#: src/gui/widgets/tabs/setup_misc.cpp:79
+#: src/gui/widgets/tabs/setup_misc.cpp:100
 #: src/gui/widgets/tabs/setup_visual.cpp:81
 #: src/gui/windows/equipmentwindow.cpp:666 src/gui/windows/serverdialog.cpp:675
 msgid "default"
@@ -1913,7 +1915,7 @@ msgstr ""
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for player
 #. TRANSLATORS: settings group
-#: src/gui/popups/popupmenu.cpp:1215 src/gui/widgets/tabs/setup_other.cpp:226
+#: src/gui/popups/popupmenu.cpp:1215 src/gui/widgets/tabs/setup_misc.cpp:251
 msgid "Player"
 msgstr ""
 
@@ -2826,7 +2828,7 @@ msgstr ""
 #. TRANSLATORS: settings group
 #. TRANSLATORS: long button name for windows list menu.
 #. TRANSLATORS: input action label
-#: src/gui/setupinputpages.cpp:52 src/gui/widgets/tabs/setup_other.cpp:336
+#: src/gui/setupinputpages.cpp:52 src/gui/widgets/tabs/setup_misc.cpp:368
 #: src/gui/windowmenu.cpp:193 src/input/pages/windows.cpp:34
 msgid "Windows"
 msgstr "Prozori"
@@ -2862,7 +2864,7 @@ msgstr "Ćaskanje"
 #: src/gui/setupinputpages.cpp:62 src/gui/userpalette.cpp:442
 #: src/gui/widgets/tabs/setup_audio.cpp:155
 #: src/gui/widgets/tabs/setup_chat.cpp:293
-#: src/gui/widgets/tabs/setup_other.cpp:358
+#: src/gui/widgets/tabs/setup_misc.cpp:430
 #: src/gui/widgets/tabs/setup_visual.cpp:207 src/input/pages/chat.cpp:145
 #: src/input/pages/gui.cpp:85 src/input/pages/other.cpp:106
 msgid "Other"
@@ -2925,7 +2927,7 @@ msgstr ""
 
 #. TRANSLATORS: palette color
 #. TRANSLATORS: settings option
-#: src/gui/userpalette.cpp:195 src/gui/widgets/tabs/setup_other.cpp:108
+#: src/gui/userpalette.cpp:195 src/gui/widgets/tabs/setup_misc.cpp:133
 msgid "Monsters"
 msgstr ""
 
@@ -3304,13 +3306,13 @@ msgid "%s whispers: %s"
 msgstr "%s šapuće: %s"
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chat/chattab.cpp:553
+#: src/gui/widgets/tabs/chat/chattab.cpp:554
 #, c-format
 msgid "%s is now Online."
 msgstr ""
 
 #. TRANSLATORS: chat message
-#: src/gui/widgets/tabs/chat/chattab.cpp:559
+#: src/gui/widgets/tabs/chat/chattab.cpp:560
 #, c-format
 msgid "%s is now Offline."
 msgstr ""
@@ -4344,6 +4346,516 @@ msgstr ""
 msgid "Rotate the stick and don't press buttons"
 msgstr ""
 
+#. TRANSLATORS: show buttons at top right corner type
+#: src/gui/widgets/tabs/setup_misc.cpp:50
+msgid "Always show"
+msgstr ""
+
+#. TRANSLATORS: show buttons at top right corner type
+#: src/gui/widgets/tabs/setup_misc.cpp:52
+msgid "Auto hide in small resolution"
+msgstr ""
+
+#. TRANSLATORS: show buttons at top right corner type
+#: src/gui/widgets/tabs/setup_misc.cpp:54
+msgid "Always auto hide"
+msgstr ""
+
+#. TRANSLATORS: Proxy type selection
+#: src/gui/widgets/tabs/setup_misc.cpp:62
+msgid "System proxy"
+msgstr ""
+
+#. TRANSLATORS: Proxy type selection
+#: src/gui/widgets/tabs/setup_misc.cpp:64
+msgid "Direct connection"
+msgstr ""
+
+#. TRANSLATORS: Proxy type selection
+#: src/gui/widgets/tabs/setup_misc.cpp:71
+msgid "SOCKS5 hostname"
+msgstr ""
+
+#. TRANSLATORS: screen density type
+#. TRANSLATORS: ambient effect type
+#. TRANSLATORS: particle details
+#: src/gui/widgets/tabs/setup_misc.cpp:81
+#: src/gui/widgets/tabs/setup_visual.cpp:59
+#: src/gui/widgets/tabs/setup_visual.cpp:171
+msgid "low"
+msgstr "niska"
+
+#. TRANSLATORS: screen density type
+#. TRANSLATORS: particle details
+#: src/gui/widgets/tabs/setup_misc.cpp:83
+#: src/gui/widgets/tabs/setup_visual.cpp:173
+msgid "medium"
+msgstr "srednja"
+
+#. TRANSLATORS: screen density type
+#: src/gui/widgets/tabs/setup_misc.cpp:85
+msgid "tv"
+msgstr ""
+
+#. TRANSLATORS: screen density type
+#. TRANSLATORS: ambient effect type
+#. TRANSLATORS: particle details
+#: src/gui/widgets/tabs/setup_misc.cpp:87
+#: src/gui/widgets/tabs/setup_visual.cpp:61
+#: src/gui/widgets/tabs/setup_visual.cpp:175
+msgid "high"
+msgstr "visoka"
+
+#. TRANSLATORS: screen density type
+#: src/gui/widgets/tabs/setup_misc.cpp:89
+msgid "xhigh"
+msgstr ""
+
+#. TRANSLATORS: screen density type
+#: src/gui/widgets/tabs/setup_misc.cpp:91
+msgid "xxhigh"
+msgstr ""
+
+#. TRANSLATORS: sdl2 log level
+#: src/gui/widgets/tabs/setup_misc.cpp:102
+msgid "verbose"
+msgstr ""
+
+#. TRANSLATORS: sdl2 log level
+#: src/gui/widgets/tabs/setup_misc.cpp:104
+#, fuzzy
+msgid "debug"
+msgstr "Debug"
+
+#. TRANSLATORS: sdl2 log level
+#: src/gui/widgets/tabs/setup_misc.cpp:106
+msgid "info"
+msgstr ""
+
+#. TRANSLATORS: sdl2 log level
+#: src/gui/widgets/tabs/setup_misc.cpp:108
+msgid "warn"
+msgstr ""
+
+#. TRANSLATORS: sdl2 log level
+#: src/gui/widgets/tabs/setup_misc.cpp:110
+#, fuzzy
+msgid "error"
+msgstr "Greška"
+
+#. TRANSLATORS: sdl2 log level
+#: src/gui/widgets/tabs/setup_misc.cpp:112
+msgid "critical"
+msgstr ""
+
+#. TRANSLATORS: misc tab in settings
+#: src/gui/widgets/tabs/setup_misc.cpp:126
+msgid "Misc"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:136
+msgid "Show damage inflicted to monsters"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:140
+msgid "Auto target only reachable monsters"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:144
+msgid "Select auto target for attack skills"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:148
+msgid "Highlight monster attack range"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:153
+msgid "Show monster hp bar"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:157
+msgid "Cycle monster targets"
+msgstr ""
+
+#. TRANSLATORS: settings group
+#. TRANSLATORS: long button name for map window.
+#. TRANSLATORS: debug window tab
+#. TRANSLATORS: mini map window name
+#: src/gui/widgets/tabs/setup_misc.cpp:162 src/gui/windowmenu.cpp:117
+#: src/gui/windows/debugwindow.cpp:64 src/gui/windows/minimap.cpp:66
+#: src/gui/windows/minimap.cpp:129
+msgid "Map"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:165
+msgid "Show warps particles"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:169
+msgid "Highlight map portals"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:173
+msgid "Highlight floor items"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:177
+msgid "Highlight player attack range"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:181
+msgid "Show extended minimaps"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:185
+msgid "Draw path"
+msgstr "Prikaži putanju"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:189
+msgid "Draw hotkeys on map"
+msgstr "Prikaži prečice tastera na mapi"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:193
+msgid "Enable lazy scrolling"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:197
+msgid "Scroll laziness"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:201
+msgid "Scroll radius"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:205
+msgid "Auto resize minimaps"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:209
+msgid "Play map animations"
+msgstr ""
+
+#. TRANSLATORS: settings group
+#: src/gui/widgets/tabs/setup_misc.cpp:214
+msgid "Moving"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:217
+msgid "Auto fix position"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:221
+msgid "Show server side position"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:225
+msgid "Attack while moving"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:229
+msgid "Attack next target"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:233
+msgid "Sync player move"
+msgstr "Sinhronizovano kretanje igrača"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:237
+msgid "Sync player move distance"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:242
+msgid "Crazy move A program"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:246
+msgid "Mouse relative moves (good for touch interfaces)"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:254
+msgid "Show own hp bar"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:258
+msgid "Enable quick stats"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:262
+msgid "Cycle player targets"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:266
+msgid "Show job exp messages"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:270
+msgid "Show players popups"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:274
+msgid "Afk message"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:279
+msgid "Show job"
+msgstr "Prikaži posao"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:284
+msgid "Enable attack filter"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:288
+msgid "Enable pickup filter"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:292
+msgid "Enable advert protocol"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:296
+msgid "Enabled pets support"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:300
+msgid "Enable weight notifications"
+msgstr ""
+
+#. TRANSLATORS: settings group
+#. TRANSLATORS: long button name for shop window.
+#. TRANSLATORS: shop window name
+#. TRANSLATORS: shop button tooltip
+#: src/gui/widgets/tabs/setup_misc.cpp:304 src/gui/windowmenu.cpp:153
+#: src/gui/windows/buyselldialog.cpp:43 src/gui/windows/buyselldialog.cpp:54
+#: src/gui/windows/inventorywindow.cpp:242
+msgid "Shop"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:307
+msgid "Accept sell/buy requests"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:311
+msgid "Enable shop mode"
+msgstr ""
+
+#. TRANSLATORS: settings group
+#. TRANSLATORS: npc dialog name
+#: src/gui/widgets/tabs/setup_misc.cpp:316 src/gui/windows/npcdialog.cpp:99
+msgid "NPC"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:319
+msgid "Cycle npc targets"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:323
+msgid "Log NPC dialogue"
+msgstr "Spašavanje NPC razgovora"
+
+#. TRANSLATORS: settings group
+#: src/gui/widgets/tabs/setup_misc.cpp:328
+msgid "Bots support"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:331
+msgid "Enable guild bot support and disable native guild support"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:338
+msgid "Enable manamarket bot support"
+msgstr ""
+
+#. TRANSLATORS: settings group
+#: src/gui/widgets/tabs/setup_misc.cpp:346
+msgid "Keyboard"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:349
+msgid "Repeat delay"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:353
+msgid "Repeat interval"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:357
+msgid "Custom repeat interval"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:362
+msgid "Enable alt-tab workaround"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:372
+msgid "Shortcut buttons"
+msgstr ""
+
+#. TRANSLATORS: settings group
+#: src/gui/widgets/tabs/setup_misc.cpp:377
+msgid "Proxy server"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:381
+msgid "Proxy type"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:385
+msgid "Proxy address:port"
+msgstr ""
+
+#. TRANSLATORS: settings group
+#: src/gui/widgets/tabs/setup_misc.cpp:390
+#, fuzzy
+msgid "Logging"
+msgstr "Prijavljivanje"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:393
+msgid "Enable OpenGL version check (do not disable)"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:398
+msgid "Enable debug log"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:402
+msgid "Ignore logging packets"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:406
+msgid "Log unimplemented packets"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:410
+msgid "Enable OpenGL log"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:414
+msgid "Enable input log"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:420
+msgid "SDL logging level"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#. TRANSLATORS: input action name
+#: src/gui/widgets/tabs/setup_misc.cpp:425 src/input/pages/other.cpp:408
+msgid "Upload log file"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:433
+msgid "Enable server side attack"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:437
+msgid "Hide support page link on error"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:441
+msgid "Enable double clicks"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:445
+msgid "Enable bot checker"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:449
+msgid "Enable buggy servers protection (do not disable)"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:455
+msgid "Low traffic mode"
+msgstr "Režim niskog protoka"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:460
+msgid "Use FBO for screenshots (only for opengl)"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:466
+msgid "Screenshot directory"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:473
+msgid "Network delay between sub servers"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:477
+msgid "Show background"
+msgstr "Prikaži pozadinu"
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:482
+msgid "Screen density override"
+msgstr ""
+
 #. TRANSLATORS: mods tab in settings
 #: src/gui/widgets/tabs/setup_mods.cpp:43
 msgid "Mods"
@@ -4352,468 +4864,6 @@ msgstr ""
 #. TRANSLATORS: settings label
 #: src/gui/widgets/tabs/setup_mods.cpp:78
 msgid "No mods present"
-msgstr ""
-
-#. TRANSLATORS: show buttons at top right corner type
-#: src/gui/widgets/tabs/setup_other.cpp:50
-msgid "Always show"
-msgstr ""
-
-#. TRANSLATORS: show buttons at top right corner type
-#: src/gui/widgets/tabs/setup_other.cpp:52
-msgid "Auto hide in small resolution"
-msgstr ""
-
-#. TRANSLATORS: show buttons at top right corner type
-#: src/gui/widgets/tabs/setup_other.cpp:54
-msgid "Always auto hide"
-msgstr ""
-
-#. TRANSLATORS: Proxy type selection
-#: src/gui/widgets/tabs/setup_other.cpp:62
-msgid "System proxy"
-msgstr ""
-
-#. TRANSLATORS: Proxy type selection
-#: src/gui/widgets/tabs/setup_other.cpp:64
-msgid "Direct connection"
-msgstr ""
-
-#. TRANSLATORS: Proxy type selection
-#: src/gui/widgets/tabs/setup_other.cpp:71
-msgid "SOCKS5 hostname"
-msgstr ""
-
-#. TRANSLATORS: screen density type
-#. TRANSLATORS: ambient effect type
-#. TRANSLATORS: particle details
-#: src/gui/widgets/tabs/setup_other.cpp:81
-#: src/gui/widgets/tabs/setup_visual.cpp:59
-#: src/gui/widgets/tabs/setup_visual.cpp:171
-msgid "low"
-msgstr "niska"
-
-#. TRANSLATORS: screen density type
-#. TRANSLATORS: particle details
-#: src/gui/widgets/tabs/setup_other.cpp:83
-#: src/gui/widgets/tabs/setup_visual.cpp:173
-msgid "medium"
-msgstr "srednja"
-
-#. TRANSLATORS: screen density type
-#: src/gui/widgets/tabs/setup_other.cpp:85
-msgid "tv"
-msgstr ""
-
-#. TRANSLATORS: screen density type
-#. TRANSLATORS: ambient effect type
-#. TRANSLATORS: particle details
-#: src/gui/widgets/tabs/setup_other.cpp:87
-#: src/gui/widgets/tabs/setup_visual.cpp:61
-#: src/gui/widgets/tabs/setup_visual.cpp:175
-msgid "high"
-msgstr "visoka"
-
-#. TRANSLATORS: screen density type
-#: src/gui/widgets/tabs/setup_other.cpp:89
-msgid "xhigh"
-msgstr ""
-
-#. TRANSLATORS: screen density type
-#: src/gui/widgets/tabs/setup_other.cpp:91
-msgid "xxhigh"
-msgstr ""
-
-#. TRANSLATORS: misc tab in settings
-#: src/gui/widgets/tabs/setup_other.cpp:101
-msgid "Misc"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:111
-msgid "Show damage inflicted to monsters"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:115
-msgid "Auto target only reachable monsters"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:119
-msgid "Select auto target for attack skills"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:123
-msgid "Highlight monster attack range"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:128
-msgid "Show monster hp bar"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:132
-msgid "Cycle monster targets"
-msgstr ""
-
-#. TRANSLATORS: settings group
-#. TRANSLATORS: long button name for map window.
-#. TRANSLATORS: debug window tab
-#. TRANSLATORS: mini map window name
-#: src/gui/widgets/tabs/setup_other.cpp:137 src/gui/windowmenu.cpp:117
-#: src/gui/windows/debugwindow.cpp:64 src/gui/windows/minimap.cpp:66
-#: src/gui/windows/minimap.cpp:129
-msgid "Map"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:140
-msgid "Show warps particles"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:144
-msgid "Highlight map portals"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:148
-msgid "Highlight floor items"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:152
-msgid "Highlight player attack range"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:156
-msgid "Show extended minimaps"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:160
-msgid "Draw path"
-msgstr "Prikaži putanju"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:164
-msgid "Draw hotkeys on map"
-msgstr "Prikaži prečice tastera na mapi"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:168
-msgid "Enable lazy scrolling"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:172
-msgid "Scroll laziness"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:176
-msgid "Scroll radius"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:180
-msgid "Auto resize minimaps"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:184
-msgid "Play map animations"
-msgstr ""
-
-#. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:189
-msgid "Moving"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:192
-msgid "Auto fix position"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:196
-msgid "Show server side position"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:200
-msgid "Attack while moving"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:204
-msgid "Attack next target"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:208
-msgid "Sync player move"
-msgstr "Sinhronizovano kretanje igrača"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:212
-msgid "Sync player move distance"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:217
-msgid "Crazy move A program"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:221
-msgid "Mouse relative moves (good for touch interfaces)"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:229
-msgid "Show own hp bar"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:233
-msgid "Enable quick stats"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:237
-msgid "Cycle player targets"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:241
-msgid "Show job exp messages"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:245
-msgid "Show players popups"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:249
-msgid "Afk message"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:254
-msgid "Show job"
-msgstr "Prikaži posao"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:259
-msgid "Enable attack filter"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:263
-msgid "Enable pickup filter"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:267
-msgid "Enable advert protocol"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:271
-msgid "Enabled pets support"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:275
-msgid "Enable weight notifications"
-msgstr ""
-
-#. TRANSLATORS: settings group
-#. TRANSLATORS: long button name for shop window.
-#. TRANSLATORS: shop window name
-#. TRANSLATORS: shop button tooltip
-#: src/gui/widgets/tabs/setup_other.cpp:279 src/gui/windowmenu.cpp:153
-#: src/gui/windows/buyselldialog.cpp:43 src/gui/windows/buyselldialog.cpp:54
-#: src/gui/windows/inventorywindow.cpp:242
-msgid "Shop"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:282
-msgid "Accept sell/buy requests"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:286
-msgid "Enable shop mode"
-msgstr ""
-
-#. TRANSLATORS: settings group
-#. TRANSLATORS: npc dialog name
-#: src/gui/widgets/tabs/setup_other.cpp:291 src/gui/windows/npcdialog.cpp:99
-msgid "NPC"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:294
-msgid "Cycle npc targets"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:298
-msgid "Log NPC dialogue"
-msgstr "Spašavanje NPC razgovora"
-
-#. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:303
-msgid "Bots support"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:306
-msgid "Enable guild bot support and disable native guild support"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:313
-msgid "Enable manamarket bot support"
-msgstr ""
-
-#. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:321
-msgid "Keyboard"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:324
-msgid "Repeat delay"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:328
-msgid "Repeat interval"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:332
-msgid "Custom repeat interval"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:340
-msgid "Shortcut buttons"
-msgstr ""
-
-#. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_other.cpp:345
-msgid "Proxy server"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:349
-msgid "Proxy type"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:353
-msgid "Proxy address:port"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:361
-msgid "Enable server side attack"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:365
-msgid "Hide support page link on error"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:369
-msgid "Enable double clicks"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:373
-msgid "Enable bot checker"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:377
-msgid "Enable buggy servers protection (do not disable)"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:383
-msgid "Enable OpenGL version check (do not disable)"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:388
-msgid "Enable debug log"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:392
-msgid "Ignore logging packets"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:396
-msgid "Log unimplemented packets"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:400
-msgid "Enable OpenGL log"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:404
-msgid "Enable input log"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#. TRANSLATORS: input action name
-#: src/gui/widgets/tabs/setup_other.cpp:408 src/input/pages/other.cpp:408
-msgid "Upload log file"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:412
-msgid "Low traffic mode"
-msgstr "Režim niskog protoka"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:417
-msgid "Use FBO for screenshots (only for opengl)"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:423
-msgid "Screenshot directory"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:430
-msgid "Network delay between sub servers"
-msgstr ""
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:434
-msgid "Show background"
-msgstr "Prikaži pozadinu"
-
-#. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_other.cpp:439
-msgid "Screen density override"
 msgstr ""
 
 #. TRANSLATORS: texture compression type
@@ -4825,8 +4875,8 @@ msgstr "Ne"
 
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: perfoamance tab quick button
-#: src/gui/widgets/tabs/setup_perfomance.cpp:54 src/progs/dyecmd/client.cpp:529
-#: src/progs/manaplus/client.cpp:885
+#: src/gui/widgets/tabs/setup_perfomance.cpp:54 src/progs/dyecmd/client.cpp:528
+#: src/progs/manaplus/client.cpp:888
 msgid "Performance"
 msgstr ""
 
@@ -5237,8 +5287,8 @@ msgstr ""
 
 #. TRANSLATORS: theme settings tab name
 #. TRANSLATORS: theme tab quick button
-#: src/gui/widgets/tabs/setup_theme.cpp:121 src/progs/dyecmd/client.cpp:535
-#: src/progs/manaplus/client.cpp:891
+#: src/gui/widgets/tabs/setup_theme.cpp:121 src/progs/dyecmd/client.cpp:534
+#: src/progs/manaplus/client.cpp:894
 msgid "Theme"
 msgstr "Stil"
 
@@ -5391,8 +5441,8 @@ msgstr ""
 
 #. TRANSLATORS: video settings tab name
 #. TRANSLATORS: video tab quick button
-#: src/gui/widgets/tabs/setup_video.cpp:109 src/progs/dyecmd/client.cpp:532
-#: src/progs/manaplus/client.cpp:888
+#: src/gui/widgets/tabs/setup_video.cpp:109 src/progs/dyecmd/client.cpp:531
+#: src/progs/manaplus/client.cpp:891
 msgid "Video"
 msgstr "Video"
 
@@ -5792,7 +5842,7 @@ msgstr ""
 #. TRANSLATORS: help window name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/windowmenu.cpp:76 src/gui/windows/helpwindow.cpp:57
-#: src/progs/dyecmd/client.cpp:541 src/progs/manaplus/client.cpp:897
+#: src/progs/dyecmd/client.cpp:540 src/progs/manaplus/client.cpp:900
 msgid "Help"
 msgstr "Pomoć"
 
@@ -5987,7 +6037,7 @@ msgstr ""
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: setup tab quick button
 #: src/gui/windowmenu.cpp:198 src/gui/windows/setupwindow.cpp:67
-#: src/progs/dyecmd/client.cpp:526 src/progs/manaplus/client.cpp:882
+#: src/progs/dyecmd/client.cpp:525 src/progs/manaplus/client.cpp:885
 msgid "Setup"
 msgstr "Podešavanje"
 
@@ -6096,8 +6146,8 @@ msgstr ""
 #: src/net/eathena/charserverrecv.cpp:394
 #: src/net/eathena/charserverrecv.cpp:398
 #: src/net/eathena/charserverrecv.cpp:480 src/net/tmwa/charserverrecv.cpp:294
-#: src/progs/manaplus/client.cpp:1377 src/progs/manaplus/client.cpp:1396
-#: src/progs/manaplus/client.cpp:1601
+#: src/progs/manaplus/client.cpp:1380 src/progs/manaplus/client.cpp:1399
+#: src/progs/manaplus/client.cpp:1604
 msgid "Error"
 msgstr "Greška"
 
@@ -7564,7 +7614,7 @@ msgid "Completed"
 msgstr ""
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:97 src/gui/windows/whoisonline.cpp:668
+#: src/gui/windows/whoisonline.cpp:97 src/gui/windows/whoisonline.cpp:666
 msgid "Who Is Online - Updating"
 msgstr "Ko je dostupan - Ažuriranje"
 
@@ -7574,17 +7624,17 @@ msgid "Update"
 msgstr "Ažuriraj"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:241
+#: src/gui/windows/whoisonline.cpp:240
 msgid "Who Is Online - "
 msgstr "Ko je dostupan - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:684
+#: src/gui/windows/whoisonline.cpp:682
 msgid "Who Is Online - error"
 msgstr "Ko je dostupan - greška"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:731
+#: src/gui/windows/whoisonline.cpp:729
 msgid "Who Is Online - Update"
 msgstr "Ko je dostupan - Ažuriraj"
 
@@ -7607,7 +7657,7 @@ msgstr ""
 #. TRANSLATORS: short key name. must be very short.
 #. TRANSLATORS: long key name, should be short
 #: src/input/inputmanager.cpp:406 src/input/inputmanager.cpp:449
-#: src/input/keyboardconfig.cpp:90
+#: src/input/keyboardconfig.cpp:95
 #, c-format
 msgid "key_%d"
 msgstr ""
@@ -7632,7 +7682,7 @@ msgstr ""
 #. TRANSLATORS: unknown short key type. must be short
 #. TRANSLATORS: Unknown key short string.
 #. TRANSLATORS: This string must be maximum 5 chars
-#: src/input/inputmanager.cpp:469 src/input/keyboardconfig.cpp:134
+#: src/input/inputmanager.cpp:469 src/input/keyboardconfig.cpp:139
 msgid "u key"
 msgstr ""
 
@@ -8968,12 +9018,12 @@ msgid "Empty address given to Network::connect()!"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/ea/network.cpp:219
+#: src/net/ea/network.cpp:216
 msgid "Unable to resolve host \""
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/ea/network.cpp:300
+#: src/net/ea/network.cpp:297
 msgid "Connection to server terminated. "
 msgstr ""
 
@@ -9514,22 +9564,22 @@ msgid "Poison had no effect..."
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
-#: src/progs/dyecmd/client.cpp:538 src/progs/manaplus/client.cpp:894
+#: src/progs/dyecmd/client.cpp:537 src/progs/manaplus/client.cpp:897
 msgid "About"
 msgstr "O programu"
 
 #. TRANSLATORS: command line help
-#: src/progs/dyecmd/dyemain.cpp:57
+#: src/progs/dyecmd/dyemain.cpp:58
 msgid "dyecmd srcfile dyestring dstfile"
 msgstr ""
 
 #. TRANSLATORS: command line help
-#: src/progs/dyecmd/dyemain.cpp:59
+#: src/progs/dyecmd/dyemain.cpp:60
 msgid "or"
 msgstr ""
 
 #. TRANSLATORS: command line help
-#: src/progs/dyecmd/dyemain.cpp:61
+#: src/progs/dyecmd/dyemain.cpp:62
 msgid "dyecmd srcdyestring dstfile"
 msgstr ""
 
@@ -9851,57 +9901,57 @@ msgid "Accepting incoming trade requests"
 msgstr ""
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1096
+#: src/progs/manaplus/client.cpp:1099
 msgid "Connecting to server"
 msgstr "Povezivanje sa serverom"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1154 src/unittests/gui/windowmanager.cc:801
+#: src/progs/manaplus/client.cpp:1157 src/unittests/gui/windowmanager.cc:801
 msgid "Logging in"
 msgstr "Prijavljivanje"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1204
+#: src/progs/manaplus/client.cpp:1207
 msgid "Entering game world"
 msgstr "Ulaz u svet"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1265
+#: src/progs/manaplus/client.cpp:1268
 msgid "Requesting characters"
 msgstr "Tražim karaktere"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1308
+#: src/progs/manaplus/client.cpp:1311
 msgid "Connecting to the game server"
 msgstr "Poverzujem se sa serverom za igru"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1320
+#: src/progs/manaplus/client.cpp:1323
 msgid "Changing game servers"
 msgstr "Menjam server igre"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1415
+#: src/progs/manaplus/client.cpp:1418
 msgid "Requesting registration details"
 msgstr "Zahtevam detalje registracije"
 
 #. TRANSLATORS: password change message header
-#: src/progs/manaplus/client.cpp:1462
+#: src/progs/manaplus/client.cpp:1465
 msgid "Password Change"
 msgstr "Promena lozinke"
 
 #. TRANSLATORS: password change message text
-#: src/progs/manaplus/client.cpp:1464
+#: src/progs/manaplus/client.cpp:1467
 msgid "Password changed successfully!"
 msgstr "Lozinka je uspešno promenjena!"
 
 #. TRANSLATORS: email change message header
-#: src/progs/manaplus/client.cpp:1497
+#: src/progs/manaplus/client.cpp:1500
 msgid "Email Change"
 msgstr "Izmena e-mail adrese"
 
 #. TRANSLATORS: email change message text
-#: src/progs/manaplus/client.cpp:1499
+#: src/progs/manaplus/client.cpp:1502
 msgid "Email changed successfully!"
 msgstr "E-mail adresa je uspešno promenjena!"
 
