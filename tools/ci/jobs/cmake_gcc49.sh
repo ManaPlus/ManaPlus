@@ -16,6 +16,8 @@ source ./tools/ci/scripts/init.sh
 
 export CXXFLAGS="$CXXFLAGS -fno-omit-frame-pointer -ggdb3 $POST_CXXFLAGS"
 
+cp CMakeLists.txt.legacy CMakeLists.txt
+
 do_init
 run_cmake
 run_make
