@@ -287,11 +287,15 @@ void EventsManager::logEvent(const SDL_Event &event)
             break;
         }
         case SDL_KEYDOWN:
-            logger->log("event: SDL_KEYDOWN: %d,%d", event.key.state,
+            logger->log("event: SDL_KEYDOWN: %s(%d),%d",
+                SDL_GetScancodeName(event.key.keysym.scancode),
+                event.key.state,
                 event.key.keysym.scancode);
             break;
         case SDL_KEYUP:
-            logger->log("event: SDL_KEYUP: %d,%d", event.key.state,
+            logger->log("event: SDL_KEYUP: %s(%d),%d",
+                SDL_GetScancodeName(event.key.keysym.scancode),
+                event.key.state,
                 event.key.keysym.scancode);
             break;
         case SDL_WINDOWEVENT:
