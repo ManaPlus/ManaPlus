@@ -292,7 +292,7 @@ bool KeyboardConfig::ignoreKey(const SDL_Event &restrict event)
         // SDL_WINDOWEVENT_TAKE_FOCUS not triggered after focus restored
         if (settings.inputFocused != KeyboardFocus::Focused2)
             return true;
-#endif // SDL_VERSION_ATLEAST(2, 0, 5)
+#endif  // SDL_VERSION_ATLEAST(2, 0, 5)
 
         if (mActiveKeys[SDL_SCANCODE_LALT] != 0)
             return true;
