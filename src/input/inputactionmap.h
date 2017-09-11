@@ -2414,7 +2414,7 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyIgnoreInput1",
 #ifdef USE_SDL2
-        emptyKey,
+        addKey(SDLK_LGUI),
 #else  // USE_SDL2
         addKey(SDLK_LSUPER),
 #endif  // USE_SDL2
@@ -2428,7 +2428,7 @@ static const InputActionData inputActionData
         Protected_true},
     {"keyIgnoreInput2",
 #ifdef USE_SDL2
-        emptyKey,
+        addKey(SDLK_RGUI),
 #else  // USE_SDL2
         addKey(SDLK_RSUPER),
 #endif  // USE_SDL2
