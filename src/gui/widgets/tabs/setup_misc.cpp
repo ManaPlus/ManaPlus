@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gui/widgets/tabs/setup_other.h"
+#include "gui/widgets/tabs/setup_misc.h"
 
 #include "configuration.h"
 
@@ -91,7 +91,7 @@ static const char *const densityList[] =
     N_("xxhigh")
 };
 
-Setup_Other::Setup_Other(const Widget2 *const widget) :
+Setup_Misc::Setup_Misc(const Widget2 *const widget) :
     SetupTabScroll(widget),
     mProxyTypeList(new NamesModel),
     mShortcutsList(new NamesModel),
@@ -449,14 +449,14 @@ Setup_Other::Setup_Other(const Widget2 *const widget) :
     setDimension(Rect(0, 0, 550, 350));
 }
 
-Setup_Other::~Setup_Other()
+Setup_Misc::~Setup_Misc()
 {
     delete2(mProxyTypeList);
     delete2(mShortcutsList);
     delete2(mDensityList);
 }
 
-void Setup_Other::apply()
+void Setup_Misc::apply()
 {
     SetupTabScroll::apply();
 
@@ -465,7 +465,7 @@ void Setup_Other::apply()
     Net::loadIgnorePackets();
 }
 
-void Setup_Other::externalUpdated()
+void Setup_Misc::externalUpdated()
 {
     reread("showJob");
     reread("enableGuildBot");

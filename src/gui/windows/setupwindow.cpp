@@ -36,8 +36,8 @@
 #include "gui/widgets/tabs/setup_colors.h"
 #include "gui/widgets/tabs/setup_input.h"
 #include "gui/widgets/tabs/setup_joystick.h"
+#include "gui/widgets/tabs/setup_misc.h"
 #include "gui/widgets/tabs/setup_mods.h"
-#include "gui/widgets/tabs/setup_other.h"
 #include "gui/widgets/tabs/setup_perfomance.h"
 #include "gui/widgets/tabs/setup_players.h"
 #include "gui/widgets/tabs/setup_quick.h"
@@ -142,7 +142,7 @@ void SetupWindow::postInit()
     mTabs.push_back(new Setup_Players(this));
     mTabs.push_back(new Setup_Relations(this));
     mTabs.push_back(new Setup_Theme(this));
-    mTabs.push_back(new Setup_Other(this));
+    mTabs.push_back(new Setup_Misc(this));
 
     FOR_EACH (std::list<SetupTab*>::const_iterator, i, mTabs)
     {

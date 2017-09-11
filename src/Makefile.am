@@ -1154,10 +1154,10 @@ SRC = ${BASE_SRC} \
 	      gui/widgets/tabs/setup_colors.h \
 	      gui/widgets/tabs/setup_joystick.cpp \
 	      gui/widgets/tabs/setup_joystick.h \
+	      gui/widgets/tabs/setup_misc.cpp \
+	      gui/widgets/tabs/setup_misc.h \
 	      gui/widgets/tabs/setup_mods.cpp \
 	      gui/widgets/tabs/setup_mods.h \
-	      gui/widgets/tabs/setup_other.cpp \
-	      gui/widgets/tabs/setup_other.h \
 	      gui/widgets/tabs/setup_theme.cpp \
 	      gui/widgets/tabs/setup_theme.h \
 	      gui/widgets/tabs/setup_touch.cpp \

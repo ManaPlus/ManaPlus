@@ -20,21 +20,21 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_SETUP_OTHER_H
-#define GUI_WIDGETS_TABS_SETUP_OTHER_H
+#ifndef GUI_WIDGETS_TABS_SETUP_MISC_H
+#define GUI_WIDGETS_TABS_SETUP_MISC_H
 
 #include "gui/widgets/tabs/setuptabscroll.h"
 
 class NamesModel;
 
-class Setup_Other final : public SetupTabScroll
+class Setup_Misc final : public SetupTabScroll
 {
     public:
-        explicit Setup_Other(const Widget2 *const widget);
+        explicit Setup_Misc(const Widget2 *const widget);
 
-        A_DELETE_COPY(Setup_Other)
+        A_DELETE_COPY(Setup_Misc)
 
-        ~Setup_Other();
+        ~Setup_Misc();
 
         void apply() override final;
 
@@ -46,4 +46,4 @@ class Setup_Other final : public SetupTabScroll
         NamesModel *mDensityList;
 };
 
-#endif  // GUI_WIDGETS_TABS_SETUP_OTHER_H
+#endif  // GUI_WIDGETS_TABS_SETUP_MISC_H
