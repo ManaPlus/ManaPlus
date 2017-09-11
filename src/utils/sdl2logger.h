@@ -28,6 +28,8 @@
 namespace SDL2Logger
 {
     void init();
+
+    void setLogLevel(const int level);
 }  // namespace SDL2Logger
 
 #endif  // USE_SDL2

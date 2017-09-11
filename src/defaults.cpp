@@ -310,6 +310,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("repeateDelay", 500);
     AddDEF("repeateInterval", 30);
     AddDEF("repeateInterval2", 500);
+    AddDEF("sdlLogLevel", 0);
 #else  // USE_SDL2
 
     AddDEF("repeateDelay", SDL_DEFAULT_REPEAT_DELAY);

@@ -310,6 +310,7 @@ void Client::gameInit()
     if (settings.options.test.empty())
         ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
+    SDL::setLogLevel(config.getIntValue("sdlLogLevel"));
     settings.init();
     Net::loadIgnorePackets();
     setPathsDefaults(paths);

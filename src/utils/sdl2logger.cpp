@@ -134,8 +134,23 @@ static SDL_AssertState assertCallback(const SDL_AssertData *data,
 
 void SDL2Logger::init()
 {
+#ifdef UNITTESTS
+    SDL_LogSetAllPriority(SDL_LOG_PRIORITY_WARN);
+#else  // UNITTESTS
+
+    SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
+#endif  // UNITTESTS
+
     SDL_LogSetOutputFunction(&logCallback, nullptr);
     SDL_SetAssertionHandler(&assertCallback, nullptr);
+}
+
+void SDL2Logger::setLogLevel(const int level)
+{
+    if (level > 0)
+        SDL_LogSetAllPriority(static_cast<SDL_LogPriority>(level));
+    else
+        SDL_LogResetPriorities();
 }
 
 #endif  // USE_SDL2

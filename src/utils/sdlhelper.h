@@ -72,6 +72,8 @@ namespace SDL
 
     void initLogger();
 
+    void setLogLevel(const int level);
+
     void WaitThread(SDL_Thread *const thread);
 
     bool PollEvent(SDL_Event *event);

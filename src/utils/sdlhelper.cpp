@@ -186,6 +186,10 @@ void SDL::initLogger()
 {
 }
 
+void SDL::setLogLevel(const int level A_UNUSED)
+{
+}
+
 void SDL::WaitThread(SDL_Thread *const thread)
 {
     if (thread != nullptr && SDL_GetThreadID(thread) != 0u)

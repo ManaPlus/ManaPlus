@@ -43,6 +43,9 @@ class Setup_Misc final : public SetupTabScroll
     protected:
         NamesModel *mProxyTypeList;
         NamesModel *mShortcutsList;
+#ifdef USE_SDL2
+        NamesModel *mSdlLogList;
+#endif  // USE_SDL2
         NamesModel *mDensityList;
 };
 

@@ -189,6 +189,11 @@ void SDL::initLogger()
     SDL2Logger::init();
 }
 
+void SDL::setLogLevel(const int level)
+{
+    SDL2Logger::setLogLevel(level);
+}
+
 void SDL::WaitThread(SDL_Thread *const thread)
 {
     if (thread != nullptr)

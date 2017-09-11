@@ -91,10 +91,35 @@ static const char *const densityList[] =
     N_("xxhigh")
 };
 
+#ifdef USE_SDL2
+static const int sdlLogListSize = 7;
+
+static const char *const sdlLogList[] =
+{
+    // TRANSLATORS: sdl2 log level
+    N_("default"),
+    // TRANSLATORS: sdl2 log level
+    N_("verbose"),
+    // TRANSLATORS: sdl2 log level
+    N_("debug"),
+    // TRANSLATORS: sdl2 log level
+    N_("info"),
+    // TRANSLATORS: sdl2 log level
+    N_("warn"),
+    // TRANSLATORS: sdl2 log level
+    N_("error"),
+    // TRANSLATORS: sdl2 log level
+    N_("critical")
+};
+#endif  // USE_SDL2
+
 Setup_Misc::Setup_Misc(const Widget2 *const widget) :
     SetupTabScroll(widget),
     mProxyTypeList(new NamesModel),
     mShortcutsList(new NamesModel),
+#ifdef USE_SDL2
+    mSdlLogList(new NamesModel),
+#endif  // USE_SDL2
     mDensityList(new NamesModel)
 {
     // TRANSLATORS: misc tab in settings
@@ -362,29 +387,7 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Other"), "", this);
-
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable server side attack"), "",
-        "serverAttack", this, "serverAttackEvent");
-
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Hide support page link on error"), "",
-        "hidesupport", this, "hidesupportEvent");
-
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable double clicks"), "",
-        "doubleClick", this, "doubleClickEvent");
-
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable bot checker"), "",
-        "enableBotCheker", this, "enableBotChekerEvent");
-
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable buggy servers protection "
-        "(do not disable)"), "", "enableBuggyServers", this,
-        "enableBuggyServersEvent",
-        MainConfig_false);
+    new SetupItemLabel(_("Logging"), "", this);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable OpenGL version check "
@@ -411,9 +414,42 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
     new SetupItemCheckBox(_("Enable input log"), "",
         "logInput", this, "logInputEvent");
 
+#ifdef USE_SDL2
+    mSdlLogList->fillFromArray(&sdlLogList[0], sdlLogListSize);
+    // TRANSLATORS: settings option
+    new SetupItemDropDown(_("SDL logging level"), "",
+        "sdlLogLevel", this, "sdlLogLevelEvent", mSdlLogList, 100);
+#endif  // USE_SDL2
+
     // TRANSLATORS: settings option
     new SetupButtonItem(_("Upload log file"), "", "upload",
         this, "uploadLog", &uploadListener);
+
+
+    // TRANSLATORS: settings group
+    new SetupItemLabel(_("Other"), "", this);
+
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable server side attack"), "",
+        "serverAttack", this, "serverAttackEvent");
+
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Hide support page link on error"), "",
+        "hidesupport", this, "hidesupportEvent");
+
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable double clicks"), "",
+        "doubleClick", this, "doubleClickEvent");
+
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable bot checker"), "",
+        "enableBotCheker", this, "enableBotChekerEvent");
+
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Enable buggy servers protection "
+        "(do not disable)"), "", "enableBuggyServers", this,
+        "enableBuggyServersEvent",
+        MainConfig_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Low traffic mode"), "", "lowTraffic",
@@ -454,6 +490,9 @@ Setup_Misc::~Setup_Misc()
     delete2(mProxyTypeList);
     delete2(mShortcutsList);
     delete2(mDensityList);
+#ifdef USE_SDL2
+    delete2(mSdlLogList);
+#endif  // USE_SDL2
 }
 
 void Setup_Misc::apply()

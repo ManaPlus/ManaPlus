@@ -188,6 +188,7 @@ void Client::gameInit()
     if (settings.options.test.empty())
         ConfigManager::backupConfig("config.xml");
     ConfigManager::initConfiguration();
+    SDL::setLogLevel(config.getIntValue("sdlLogLevel"));
     setPathsDefaults(paths);
     initPaths();
     logger->log("init 4");
