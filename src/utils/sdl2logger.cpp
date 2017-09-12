@@ -135,7 +135,12 @@ static SDL_AssertState assertCallback(const SDL_AssertData *data,
 void SDL2Logger::init()
 {
 #ifdef UNITTESTS
+#if SDL_VERSION_ATLEAST(2, 0, 4)
     SDL_LogSetAllPriority(SDL_LOG_PRIORITY_WARN);
+#else  // SDL_VERSION_ATLEAST(2, 0, 4)
+    // versions below 2.0.4 report OpenGL error even if OpenGL was not used
+    SDL_LogSetAllPriority(SDL_LOG_PRIORITY_CRITICAL);
+#endif  // SDL_VERSION_ATLEAST(2, 0, 4)
 #else  // UNITTESTS
 
     SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
