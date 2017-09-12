@@ -263,9 +263,10 @@ bool MockGraphics::setVideoMode(const int w, const int h,
                                const bool fs,
                                const bool hwaccel,
                                const bool resize,
-                               const bool noFrame) restrict2
+                               const bool noFrame,
+                               const bool allowHighDPI) restrict2
 {
-    setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame);
+    setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame, allowHighDPI);
 
     if ((mWindow = graphicsManager.createWindow(w, h, bpp,
         getSoftwareFlags())) == nullptr)

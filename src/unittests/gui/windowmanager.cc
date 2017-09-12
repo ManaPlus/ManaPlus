@@ -200,7 +200,14 @@ TEST_CASE("Windows tests", "windowmanager")
 
     TranslationManager::init();
 
-    mainGraphics->setVideoMode(640, 480, 1, 8, false, false, false, false);
+    mainGraphics->setVideoMode(640, 480,
+        1,
+        8,
+        false,
+        false,
+        false,
+        false,
+        false);
 
     SECTION("bankWindow")
     {
@@ -879,7 +886,14 @@ TEST_CASE("WindowManager", "create windows")
 
     TranslationManager::init();
 
-    mainGraphics->setVideoMode(640, 480, 1, 8, false, false, false, false);
+    mainGraphics->setVideoMode(640, 480,
+        1,
+        8,
+        false,
+        false,
+        false,
+        false,
+        false);
 
     SECTION("create windows")
     {
