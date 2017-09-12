@@ -38,8 +38,6 @@
 #include "input/inputmanager.h"
 
 #ifdef USE_SDL2
-#include "utils/x11logger.h"
-
 #include "render/graphics.h"
 #else  // USE_SDL2
 #include "logger.h"
@@ -47,6 +45,9 @@
 
 #include "utils/process.h"
 #include "utils/sdlhelper.h"
+#ifdef USE_X11
+#include "utils/x11logger.h"
+#endif  // USE_X11
 
 #include "debug.h"
 
@@ -232,21 +233,24 @@ void EventsManager::logEvent(const SDL_Event &event)
         break
 
         case SDL_MOUSEMOTION:
-            logger->log("event: SDL_MOUSEMOTION: %u,%d,%d",
+            logger->log("event: SDL_MOUSEMOTION: %u, %d,%d, %d,%d",
                 event.motion.state,
-                CAST_S32(event.motion.x),
-                CAST_S32(event.motion.y));
+                event.motion.x,
+                event.motion.y,
+                event.motion.xrel,
+                event.motion.yrel);
             break;
         case SDL_FINGERDOWN:
         {
             const SDL_TouchFingerEvent &touch = event.tfinger;
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
-            logger->log("event: SDL_FINGERDOWN: %u,%u (%f,%f) (%f,%f)",
+            logger->log("event: SDL_FINGERDOWN: %u,%u (%f,%f) (%f,%f) %f",
                 CAST_U32(touch.touchId),
                 CAST_U32(touch.fingerId),
                 touch.x * w, touch.y * w,
-                touch.dx * w, touch.dy * h);
+                touch.dx * w, touch.dy * h,
+                touch.pressure);
             break;
         }
         case SDL_FINGERUP:
@@ -254,11 +258,12 @@ void EventsManager::logEvent(const SDL_Event &event)
             const SDL_TouchFingerEvent &touch = event.tfinger;
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
-            logger->log("event: SDL_FINGERUP: %u,%u (%f,%f) (%f,%f)",
+            logger->log("event: SDL_FINGERUP: %u,%u (%f,%f) (%f,%f) %f",
                 CAST_U32(touch.touchId),
                 CAST_U32(touch.fingerId),
                 touch.x * w, touch.y * w,
-                touch.dx * w, touch.dy * h);
+                touch.dx * w, touch.dy * h,
+                touch.pressure);
             break;
         }
         case SDL_FINGERMOTION:
@@ -266,11 +271,12 @@ void EventsManager::logEvent(const SDL_Event &event)
             const SDL_TouchFingerEvent &touch = event.tfinger;
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
-            logger->log("event: SDL_FINGERMOTION: %u,%u (%f,%f) (%f,%f)",
+            logger->log("event: SDL_FINGERMOTION: %u,%u (%f,%f) (%f,%f) %f",
                 CAST_U32(touch.touchId),
                 CAST_U32(touch.fingerId),
                 touch.x * w, touch.y * h,
-                touch.dx * w, touch.dy * h);
+                touch.dx * w, touch.dy * h,
+                touch.pressure);
             break;
         }
         case SDL_MULTIGESTURE:
@@ -278,24 +284,25 @@ void EventsManager::logEvent(const SDL_Event &event)
             const SDL_MultiGestureEvent &gesture = event.mgesture;
             const int w = mainGraphics->mWidth;
             const int h = mainGraphics->mHeight;
-            logger->log("event: SDL_MULTIGESTURE: %u %f,%f (%f,%f) %d,%d",
+            logger->log("event: SDL_MULTIGESTURE: %u %f,%f (%f,%f) %d",
                 CAST_U32(gesture.touchId),
                 gesture.dTheta, gesture.dDist,
                 gesture.x * w, gesture.y * h,
-                CAST_S32(gesture.numFingers),
-                CAST_S32(gesture.padding));
+                CAST_S32(gesture.numFingers));
             break;
         }
         case SDL_KEYDOWN:
-            logger->log("event: SDL_KEYDOWN: %s(%d),%d",
+            logger->log("event: SDL_KEYDOWN: %s(%d) %d,%d",
                 SDL_GetScancodeName(event.key.keysym.scancode),
                 event.key.state,
+                event.key.repeat,
                 event.key.keysym.scancode);
             break;
         case SDL_KEYUP:
-            logger->log("event: SDL_KEYUP: %s(%d),%d",
+            logger->log("event: SDL_KEYUP: %s(%d) %d,%d",
                 SDL_GetScancodeName(event.key.keysym.scancode),
                 event.key.state,
+                event.key.repeat,
                 event.key.keysym.scancode);
             break;
         case SDL_WINDOWEVENT:
@@ -397,6 +404,22 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->log("event: SDL_KEYMAPCHANGED");
             break;
 #endif  // SDL_VERSION_ATLEAST(2, 0, 4)
+        case SDL_MOUSEBUTTONDOWN:
+            logger->log("event: SDL_MOUSEBUTTONDOWN: %u,%u,%u, %d,%d",
+                event.button.which,
+                CAST_U32(event.button.button),
+                CAST_U32(event.button.state),
+                event.button.x,
+                event.button.y);
+            break;
+        case SDL_MOUSEBUTTONUP:
+            logger->log("event: SDL_MOUSEBUTTONUP: %u,%u,%u, %d,%d",
+                event.button.which,
+                CAST_U32(event.button.button),
+                CAST_U32(event.button.state),
+                event.button.x,
+                event.button.y);
+            break;
 
 #else  // USE_SDL2
 
@@ -422,18 +445,22 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->log("event: SDL_ACTIVEEVENT: %d %d",
                 event.active.state, event.active.gain);
             break;
-#endif  // USE_SDL2
-
         case SDL_MOUSEBUTTONDOWN:
-            logger->log("event: SDL_MOUSEBUTTONDOWN: %d,%d,%d,%d",
-                event.button.button, event.button.state,
-            event.button.x, event.button.y);
+            logger->log("event: SDL_MOUSEBUTTONDOWN: %d,%d, %d,%d",
+                event.button.button,
+                event.button.state,
+                event.button.x,
+                event.button.y);
             break;
         case SDL_MOUSEBUTTONUP:
             logger->log("event: SDL_MOUSEBUTTONUP: %d,%d,%d,%d",
-                event.button.button, event.button.state,
-            event.button.x, event.button.y);
+                event.button.button,
+                event.button.state,
+                event.button.x,
+                event.button.y);
             break;
+#endif  // USE_SDL2
+
         case SDL_JOYAXISMOTION:
             logger->log("event: SDL_JOYAXISMOTION: %d,%d,%d",
                 event.jaxis.which, event.jaxis.axis, event.jaxis.value);
@@ -462,7 +489,6 @@ void EventsManager::logEvent(const SDL_Event &event)
             break;
         case SDL_SYSWMEVENT:
         {
-#ifdef USE_SDL2
             bool res = false;
 #ifdef USE_X11
             res = X11Logger::logEvent(event);
@@ -470,15 +496,11 @@ void EventsManager::logEvent(const SDL_Event &event)
 
             if (res == false)
                 logger->assertLog("event: SDL_SYSWMEVENT: not supported:");
-#else  // USE_SDL2
-
-            logger->log("event: SDL_SYSWMEVENT");
-#endif  // USE_SDL2
-
             break;
         }
         case SDL_USEREVENT:
-            logger->log("event: SDL_USEREVENT");
+            logger->log("event: SDL_USEREVENT: %d",
+                event.user.code);
             break;
 #ifdef ANDROID
 #ifndef USE_SDL2

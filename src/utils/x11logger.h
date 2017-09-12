@@ -21,7 +21,6 @@
 #ifndef UTILS_X11LOGGER_H
 #define UTILS_X11LOGGER_H
 
-#ifdef USE_SDL2
 #ifdef USE_X11
 
 #include "localconsts.h"
@@ -34,5 +33,4 @@ namespace X11Logger
 }  // namespace X11Logger
 
 #endif  // USE_X11
-#endif  // USE_SDL2
 #endif  // UTILS_X11LOGGER_H

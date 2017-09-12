@@ -18,7 +18,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef USE_SDL2
 #ifdef USE_X11
 
 #include "utils/x11logger.h"
@@ -46,7 +45,13 @@ bool X11Logger::logEvent(const SDL_Event &event)
         return false;
     std::string typeStr;
 
+#ifdef USE_SDL2
     const int type = event.syswm.msg->msg.x11.event.type;
+#else // USE_SDL2
+
+    const int type = event.syswm.msg->event.xevent.type;
+#endif  // USE_SDL2
+
     switch (type)
     {
         logType(2, "KeyPress");
@@ -94,4 +99,3 @@ bool X11Logger::logEvent(const SDL_Event &event)
 }
 
 #endif  // USE_X11
-#endif  // USE_SDL2
