@@ -355,6 +355,7 @@ void Client::gameInit()
     Dirs::initScreenshotDir();
 
     updateEnv();
+    SDL::allowScreenSaver(config.getBoolValue("allowscreensaver"));
     dumpLibs();
     dumpSizes();
 

@@ -35,11 +35,6 @@ void updateEnv()
         setEnv("SDL_VIDEO_CENTERED", "0");
 #endif  // defined(WIN32) || defined(__APPLE__)
 
-    if (config.getBoolValue("allowscreensaver"))
-        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
-    else
-        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
-
 #ifndef WIN32
     const int vsync = settings.options.test.empty()
         ? config.getIntValue("vsync") : 1;

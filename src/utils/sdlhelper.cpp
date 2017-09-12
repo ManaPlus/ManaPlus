@@ -25,6 +25,7 @@
 #include "logger.h"
 
 #include "utils/cast.h"
+#include "utils/env.h"
 #include "utils/stringutils.h"
 
 #if defined(USE_X11) && defined(USE_OPENGL)
@@ -203,6 +204,14 @@ bool SDL::PollEvent(SDL_Event *event)
         1,
         SDL_GETEVENT,
         SDL_ALLEVENTS) > 0;
+}
+
+void SDL::allowScreenSaver(const bool allow)
+{
+    if (allow)
+        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "1");
+    else
+        setEnv("SDL_VIDEO_ALLOW_SCREENSAVER", "0");
 }
 
 #endif  // USE_SDL2

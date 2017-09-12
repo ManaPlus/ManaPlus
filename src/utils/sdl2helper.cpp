@@ -31,6 +31,7 @@
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_events.h>
+#include <SDL_hints.h>
 #include <SDL_syswm.h>
 PRAGMA48(GCC diagnostic pop)
 
@@ -208,6 +209,20 @@ bool SDL::PollEvent(SDL_Event *event)
         SDL_GETEVENT,
         SDL_FIRSTEVENT,
         SDL_LASTEVENT) > 0;
+}
+
+void SDL::allowScreenSaver(const bool allow)
+{
+    if (allow)
+    {
+        SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "1");
+        SDL_EnableScreenSaver();
+    }
+    else
+    {
+        SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "0");
+        SDL_DisableScreenSaver();
+    }
 }
 
 #endif  // USE_SDL2

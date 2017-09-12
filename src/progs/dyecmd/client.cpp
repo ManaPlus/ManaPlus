@@ -269,6 +269,7 @@ void Client::gameInit()
 #endif  // defined(USE_OPENGL)
 
     updateEnv();
+    SDL::allowScreenSaver(config.getBoolValue("allowscreensaver"));
     initGraphics();
 
 #ifndef WIN32

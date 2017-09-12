@@ -71,6 +71,8 @@ namespace SDL
     void WaitThread(SDL_Thread *const thread);
 
     bool PollEvent(SDL_Event *event);
+
+    void allowScreenSaver(const bool allow);
 }  // namespace SDL
 
 #endif  // USE_SDL2
