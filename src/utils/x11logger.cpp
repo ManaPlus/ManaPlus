@@ -47,7 +47,7 @@ bool X11Logger::logEvent(const SDL_Event &event)
 
 #ifdef USE_SDL2
     const int type = event.syswm.msg->msg.x11.event.type;
-#else // USE_SDL2
+#else  // USE_SDL2
 
     const int type = event.syswm.msg->event.xevent.type;
 #endif  // USE_SDL2
