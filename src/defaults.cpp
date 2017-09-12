@@ -416,6 +416,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("enableDSA", true);
     AddDEF("blockAltTab", true);
     AddDEF("sdlLogLevel", 0);
+    AddDEF("allowHighDPI", false);
 }
 
 void setConfigDefaults2(Configuration &cfg)

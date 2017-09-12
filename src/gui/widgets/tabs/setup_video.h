@@ -76,6 +76,10 @@ class Setup_Video final : public SetupTab,
         bool mCustomCursorEnabled;
         bool mEnableResize;
         bool mNoFrame;
+#ifdef USE_SDL2
+        bool mAllowHighDPI;
+        CheckBox *mAllowHighDPICheckBox;
+#endif  // USE_SDL2
         CheckBox *mCustomCursorCheckBox;
         CheckBox *mEnableResizeCheckBox;
         CheckBox *mNoFrameCheckBox;

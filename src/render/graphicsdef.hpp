@@ -111,7 +111,8 @@ public:
                       const bool fs,
                       const bool hwaccel,
                       const bool resize,
-                      const bool noFrame) restrict2 override final;
+                      const bool noFrame,
+                      const bool allowHighDPI) restrict2 override final;
 
     void drawImage(const Image *restrict const image,
                    int dstX, int dstY) restrict2 override final;

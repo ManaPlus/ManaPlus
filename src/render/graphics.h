@@ -161,7 +161,8 @@ class Graphics notfinal
                                   const bool fs,
                                   const bool hwaccel,
                                   const bool resize,
-                                  const bool noFrame) restrict2 = 0;
+                                  const bool noFrame,
+                                  const bool allowHighDPI) restrict2 = 0;
 
         /**
          * Set fullscreen mode.
@@ -496,7 +497,8 @@ class Graphics notfinal
                           const bool fs,
                           const bool hwaccel,
                           const bool resize,
-                          const bool noFrame) restrict2;
+                          const bool noFrame,
+                          const bool allowHighDPI) restrict2;
 
         int getOpenGLFlags() const restrict2 A_WARN_UNUSED;
 
@@ -542,6 +544,7 @@ class Graphics notfinal
         RenderType mOpenGL;
         bool mEnableResize;
         bool mNoFrame;
+        bool mAllowHighDPI;
         std::string mName;
         int mStartFreeMem;
         bool mSync;

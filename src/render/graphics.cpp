@@ -137,6 +137,7 @@ Graphics::Graphics() :
     mOpenGL(RENDER_SOFTWARE),
     mEnableResize(false),
     mNoFrame(false),
+    mAllowHighDPI(false),
     mName("Unknown"),
     mStartFreeMem(0),
     mSync(false),
@@ -183,7 +184,8 @@ void Graphics::setMainFlags(const int w, const int h,
                             const bool fs,
                             const bool hwaccel,
                             const bool resize,
-                            const bool noFrame) restrict2
+                            const bool noFrame,
+                            const bool allowHighDPI) restrict2
 {
     logger->log("graphics backend: %s", getName().c_str());
     logger->log("Setting video mode %dx%d %s",
@@ -194,6 +196,7 @@ void Graphics::setMainFlags(const int w, const int h,
     mHWAccel = hwaccel;
     mEnableResize = resize;
     mNoFrame = noFrame;
+    mAllowHighDPI = allowHighDPI;
     mActualWidth = w;
     mActualHeight = h;
     setScale(scale);
@@ -243,6 +246,8 @@ int Graphics::getOpenGLFlags() const restrict2
     int displayFlags = SDL_WINDOW_OPENGL;
     if (mFullscreen)
         displayFlags |= SDL_WINDOW_FULLSCREEN;
+    if (mAllowHighDPI)
+        displayFlags |= SDL_WINDOW_ALLOW_HIGHDPI;
 #else  // USE_SDL2
 
     int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
@@ -382,6 +387,8 @@ int Graphics::getSoftwareFlags() const restrict2
 {
 #ifdef USE_SDL2
     int displayFlags = SDL_WINDOW_SHOWN;
+    if (mAllowHighDPI)
+        displayFlags |= SDL_WINDOW_ALLOW_HIGHDPI;
 #else  // USE_SDL2
 
     int displayFlags = SDL_ANYFORMAT;
@@ -525,8 +532,15 @@ bool Graphics::setFullscreen(const bool fs) restrict2
     if (mFullscreen == fs)
         return true;
 
-    return setVideoMode(mActualWidth, mActualHeight, mScale, mBpp, fs,
-        mHWAccel, mEnableResize, mNoFrame);
+    return setVideoMode(mActualWidth,
+        mActualHeight,
+        mScale,
+        mBpp,
+        fs,
+        mHWAccel,
+        mEnableResize,
+        mNoFrame,
+        mAllowHighDPI);
 }
 
 bool Graphics::resizeScreen(const int width,
@@ -580,15 +594,27 @@ bool Graphics::resizeScreen(const int width,
     else
 #endif  // __native_client__
     {
-        success = setVideoMode(width, height, mScale, mBpp,
-            mFullscreen, mHWAccel, mEnableResize, mNoFrame);
+        success = setVideoMode(width, height,
+            mScale,
+            mBpp,
+            mFullscreen,
+            mHWAccel,
+            mEnableResize,
+            mNoFrame,
+            mAllowHighDPI);
 
         // If it didn't work, try to restore the previous size. If that didn't
         // work either, bail out (but then we're in deep trouble).
         if (!success)
         {
-            if (!setVideoMode(prevWidth, prevHeight, mScale, mBpp,
-                mFullscreen, mHWAccel, mEnableResize, mNoFrame))
+            if (!setVideoMode(prevWidth, prevHeight,
+                mScale,
+                mBpp,
+                mFullscreen,
+                mHWAccel,
+                mEnableResize,
+                mNoFrame,
+                mAllowHighDPI))
             {
                 return false;
             }

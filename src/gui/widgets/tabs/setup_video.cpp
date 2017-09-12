@@ -90,6 +90,11 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mCustomCursorEnabled(config.getBoolValue("customcursor")),
     mEnableResize(config.getBoolValue("enableresize")),
     mNoFrame(config.getBoolValue("noframe")),
+#ifdef USE_SDL2
+    mAllowHighDPI(config.getBoolValue("allowHighDPI")),
+    // TRANSLATORS: video settings checkbox
+    mAllowHighDPICheckBox(new CheckBox(this, _("High DPI"), mAllowHighDPI)),
+#endif  // USE_SDL2
     mCustomCursorCheckBox(new CheckBox(this,
 #ifdef ANDROID
         // TRANSLATORS: video settings checkbox
@@ -145,6 +150,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mOpenGLDropDown->setActionEventId("opengl");
     mEnableResizeCheckBox->setActionEventId("enableresize");
     mNoFrameCheckBox->setActionEventId("noframe");
+#ifdef USE_SDL2
+    mAllowHighDPICheckBox->setActionEventId("allowHighDPI");
+    mAllowHighDPICheckBox->addActionListener(this);
+#endif  // USE_SDL2
 
     mModeList->addActionListener(this);
     mCustomCursorCheckBox->addActionListener(this);
@@ -168,6 +177,9 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 
     place(1, 2, mEnableResizeCheckBox, 2);
     place(1, 3, mNoFrameCheckBox, 2);
+#ifdef USE_SDL2
+    place(1, 4, mAllowHighDPICheckBox, 2);
+#endif  // USE_SDL2
 
     place(0, 6, mFpsSlider);
     place(1, 6, mFpsCheckBox).setPadding(3);
@@ -312,6 +324,9 @@ void Setup_Video::apply()
     mOpenGLEnabled = intToRenderType(config.getIntValue("opengl"));
     mEnableResize = config.getBoolValue("enableresize");
     mNoFrame = config.getBoolValue("noframe");
+#ifdef USE_SDL2
+    mAllowHighDPI = config.getBoolValue("allowHighDPI");
+#endif  // USE_SDL2
 }
 
 void Setup_Video::cancel()
@@ -331,6 +346,9 @@ void Setup_Video::cancel()
     mAltFpsLabel->setCaption(_("Alt FPS limit: ") + toString(mAltFps));
     mEnableResizeCheckBox->setSelected(mEnableResize);
     mNoFrameCheckBox->setSelected(mNoFrame);
+#ifdef USE_SDL2
+    mAllowHighDPICheckBox->setSelected(mAllowHighDPI);
+#endif  // USE_SDL2
 
     config.setValue("screen", mFullScreenEnabled);
 
@@ -344,7 +362,9 @@ void Setup_Video::cancel()
     config.setValue("customcursor", mCustomCursorEnabled);
     config.setValue("opengl", CAST_S32(mOpenGLEnabled));
     config.setValue("enableresize", mEnableResize);
-    config.setValue("noframe", mNoFrame);
+#ifdef USE_SDL2
+    config.setValue("allowHighDPI", mAllowHighDPI);
+#endif  // USE_SDL2
 }
 
 void Setup_Video::action(const ActionEvent &event)
@@ -485,6 +505,12 @@ void Setup_Video::action(const ActionEvent &event)
     {
         config.setValue("noframe", mNoFrameCheckBox->isSelected());
     }
+#ifdef USE_SDL2
+    else if (id == "allowHighDPI")
+    {
+        config.setValue("allowHighDPI", mAllowHighDPICheckBox->isSelected());
+    }
+#endif  // USE_SDL2
 #if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__APPLE__)
     else if (id == "detect")
     {

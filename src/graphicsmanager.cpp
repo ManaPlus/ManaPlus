@@ -454,6 +454,7 @@ void GraphicsManager::setVideoMode()
     const bool hwaccel = config.getBoolValue("hwaccel");
     const bool enableResize = config.getBoolValue("enableresize");
     const bool noFrame = config.getBoolValue("noframe");
+    const bool allowHighDPI = config.getBoolValue("allowHighDPI");
 
 #ifdef ANDROID
 //    int width = config.getValue("screenwidth", 0);
@@ -488,7 +489,7 @@ void GraphicsManager::setVideoMode()
 
     // Try to set the desired video mode
     if (!mainGraphics->setVideoMode(width, height, scale, bpp,
-        fullscreen, hwaccel, enableResize, noFrame))
+        fullscreen, hwaccel, enableResize, noFrame, allowHighDPI))
     {
         logger->log(strprintf("Couldn't set %dx%dx%d video mode: %s",
             width, height, bpp, SDL_GetError()));
@@ -505,8 +506,14 @@ void GraphicsManager::setVideoMode()
             config.setValueInt("screenwidth", oldWidth);
             config.setValueInt("screenheight", oldHeight);
             config.setValue("screen", oldFullscreen == 1);
-            if (!mainGraphics->setVideoMode(oldWidth, oldHeight, scale, bpp,
-                oldFullscreen != 0, hwaccel, enableResize, noFrame))
+            if (!mainGraphics->setVideoMode(oldWidth, oldHeight,
+                scale,
+                bpp,
+                oldFullscreen != 0,
+                hwaccel,
+                enableResize,
+                noFrame,
+                allowHighDPI))
             {
                 logger->safeError(strprintf("Couldn't restore %dx%dx%d "
                     "video mode: %s", oldWidth, oldHeight, bpp,

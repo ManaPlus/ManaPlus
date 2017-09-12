@@ -168,7 +168,9 @@ class ImegeGraphics final : public Graphics
                           const int bpp A_UNUSED,
                           const bool fs A_UNUSED, const bool hwaccel A_UNUSED,
                           const bool resize A_UNUSED,
-                          const bool noFrame A_UNUSED) restrict2 override final
+                          const bool noFrame A_UNUSED,
+                          const bool allowHighDPI A_UNUSED)
+                          restrict2 override final
         { return false; }
 
         void drawImage(const Image *const image,
