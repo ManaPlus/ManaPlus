@@ -592,10 +592,16 @@ void Client::initSoundManager()
 
 void Client::initGraphics()
 {
+#ifndef USE_SDL2
     WindowManager::applyVSync();
+#endif  // USE_SDL2
+
     runCounters = config.getBoolValue("packetcounters");
 
     graphicsManager.initGraphics();
+#ifdef USE_SDL2
+    WindowManager::applyVSync();
+#endif  // USE_SDL2
 
     imageHelper->postInit();
     setConfigDefaults2(config);
