@@ -26,7 +26,6 @@
 #include "fs/virtfs/fs.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 
 #ifndef UNITTESTS_CATCH
 #include <algorithm>
@@ -37,7 +36,6 @@
 TEST_CASE("VirtFs1 unmount", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     const std::string sep = dirSeparator;
@@ -376,5 +374,4 @@ TEST_CASE("VirtFs1 unmount", "")
     }
 
     VirtFs::deinit();
-    delete2(logger);
 }

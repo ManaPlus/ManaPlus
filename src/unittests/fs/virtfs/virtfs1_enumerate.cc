@@ -26,7 +26,6 @@
 #include "fs/virtfs/list.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 #include "utils/foreach.h"
 
 #ifndef UNITTESTS_CATCH
@@ -75,7 +74,6 @@ static bool inList(const VirtFs::List *const list,
 TEST_CASE("VirtFs1 enumerateFiles1", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
 
     VirtFs::mountDirSilent("data",
         Append_false);
@@ -114,13 +112,11 @@ TEST_CASE("VirtFs1 enumerateFiles1", "")
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFs1 enumerateFiles2", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
 
     VirtFs::mountDirSilent("data/test/dir1",
         Append_false);
@@ -135,13 +131,11 @@ TEST_CASE("VirtFs1 enumerateFiles2", "")
     REQUIRE_FALSE(inList(list, "file2.txt"));
     VirtFs::freeList(list);
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFs1 enumerateFiles3", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
 
     VirtFs::mountDirSilent("data/test/dir1",
         Append_false);
@@ -159,13 +153,11 @@ TEST_CASE("VirtFs1 enumerateFiles3", "")
     REQUIRE(inList(list, "file2.txt"));
     VirtFs::freeList(list);
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles4", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data\\test/");
     if (Files::existsLocal(name) == false)
@@ -184,13 +176,11 @@ TEST_CASE("VirtFsZip enumerateFiles4", "")
 
     VirtFs::unmountZip(prefix + "test.zip");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles5", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data//test/");
     if (Files::existsLocal(name) == false)
@@ -220,13 +210,11 @@ TEST_CASE("VirtFsZip enumerateFiles5", "")
     VirtFs::unmountZip(prefix + "test.zip");
     VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles6", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data\\test/");
     if (Files::existsLocal(name) == false)
@@ -244,13 +232,11 @@ TEST_CASE("VirtFsZip enumerateFiles6", "")
 
     VirtFs::unmountZip(prefix + "test.zip");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles7", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data\\test/");
     if (Files::existsLocal(name) == false)
@@ -271,13 +257,11 @@ TEST_CASE("VirtFsZip enumerateFiles7", "")
 
     VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles8", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
@@ -303,13 +287,11 @@ TEST_CASE("VirtFsZip enumerateFiles8", "")
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
     VirtFs::unmountDir(prefix + "data/test");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles9", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
@@ -333,13 +315,11 @@ TEST_CASE("VirtFsZip enumerateFiles9", "")
     VirtFs::unmountZip(prefix + "data/test/test2.zip");
     VirtFs::unmountDir(prefix + "data/test");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles10", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data\\test/");
     if (Files::existsLocal(name) == false)
@@ -360,13 +340,11 @@ TEST_CASE("VirtFsZip enumerateFiles10", "")
     VirtFs::unmountZip2(prefix + "test.zip",
         "dir");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFsZip enumerateFiles11", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
     std::string name("data/test/test.zip");
     std::string prefix("data\\test/");
     if (Files::existsLocal(name) == false)
@@ -387,13 +365,11 @@ TEST_CASE("VirtFsZip enumerateFiles11", "")
     VirtFs::unmountZip2(prefix + "test2.zip",
         "dir");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFs1 enumerateFiles12", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
 
     VirtFs::mountDirSilent2("data/test",
         "dir2",
@@ -410,13 +386,11 @@ TEST_CASE("VirtFs1 enumerateFiles12", "")
     VirtFs::freeList(list);
 
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFs1 enumerateFiles13", "")
 {
     VirtFs::init(".");
-    logger = new Logger;
 
     VirtFs::mountDirSilent2("data",
         "test",
@@ -433,5 +407,4 @@ TEST_CASE("VirtFs1 enumerateFiles13", "")
     VirtFs::freeList(list);
 
     VirtFs::deinit();
-    delete2(logger);
 }

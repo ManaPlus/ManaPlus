@@ -75,7 +75,6 @@ TEST_CASE("sdlimagehelper combineSurface", "")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -553,7 +552,6 @@ TEST_CASE("sdlimagehelper combineSurface", "")
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
 }
 
 #endif  // SDL_BYTEORDER == SDL_LIL_ENDIAN

@@ -22,9 +22,6 @@
 
 #include "configmanager.h"
 #include "dirs.h"
-#include "logger.h"
-
-#include "utils/delete2.h"
 
 #include "resources/image/image.h"
 
@@ -34,8 +31,6 @@
 
 TEST_CASE("MapLayer updateCache", "")
 {
-    logger = new Logger;
-
     Dirs::initRootDir();
     Dirs::initHomeDir();
 
@@ -401,5 +396,4 @@ TEST_CASE("MapLayer updateCache", "")
     delete img1;
     delete img2;
     delete img3;
-    delete2(logger);
 }

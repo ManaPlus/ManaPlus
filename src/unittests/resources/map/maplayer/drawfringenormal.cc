@@ -54,7 +54,6 @@ TEST_CASE("MapLayer drawFringe normal", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
 
-    logger = new Logger;
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -526,5 +525,4 @@ TEST_CASE("MapLayer drawFringe normal", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
 }

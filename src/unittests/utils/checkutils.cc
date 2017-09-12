@@ -21,7 +21,6 @@
 #include "unittests/unittests.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -83,8 +82,6 @@ static bool testFailAlways2()
 
 TEST_CASE("CheckUtils", "")
 {
-    logger = new Logger;
-
     SECTION("reportFalse")
     {
         REQUIRE(reportFalseReal(false) == false);
@@ -174,6 +171,4 @@ PRAGMA4(GCC diagnostic pop)
         testReturnNullptrV(reinterpret_cast<void*>(1));
         REQUIRE(flag == true);
     }
-
-    delete2(logger);
 }

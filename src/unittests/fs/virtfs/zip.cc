@@ -29,15 +29,12 @@
 #include "fs/virtfs/zipreader.h"
 #include "fs/virtfs/ziplocalheader.h"
 
-#include "utils/delete2.h"
-
 #include "debug.h"
 
 extern const char *dirSeparator;
 
 TEST_CASE("Zip readArchiveInfo", "")
 {
-    logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     const std::string sep = dirSeparator;
@@ -166,13 +163,10 @@ TEST_CASE("Zip readArchiveInfo", "")
 
         delete entry;
     }
-
-    delete2(logger);
 }
 
 TEST_CASE("Zip readCompressedFile", "")
 {
-    logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
@@ -196,13 +190,10 @@ TEST_CASE("Zip readCompressedFile", "")
         delete [] buf;
         delete entry;
     }
-
-    delete2(logger);
 }
 
 TEST_CASE("Zip readFile", "")
 {
-    logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
@@ -289,6 +280,4 @@ TEST_CASE("Zip readFile", "")
         }
         delete entry;
     }
-
-    delete2(logger);
 }

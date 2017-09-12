@@ -51,7 +51,6 @@ TEST_CASE("SpecialLayer updateCache", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
 
-    logger = new Logger;
     client = new Client;
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
@@ -285,5 +284,4 @@ TEST_CASE("SpecialLayer updateCache", "")
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
 }

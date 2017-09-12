@@ -24,7 +24,6 @@
 #include "fs/virtfs/fs.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 
 #ifndef UNITTESTS_CATCH
 #include <algorithm>
@@ -35,7 +34,6 @@
 TEST_CASE("VirtFs1 mountDir", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const std::string sep = dirSeparator;
     SECTION("simple 1")
     {
@@ -470,5 +468,4 @@ TEST_CASE("VirtFs1 mountDir", "")
     }
 
     VirtFs::deinit();
-    delete2(logger);
 }

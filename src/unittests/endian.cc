@@ -22,8 +22,6 @@
 
 #include "logger.h"
 
-#include "utils/delete2.h"
-
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_endian.h>
@@ -51,7 +49,6 @@ TEST_CASE("endian test", "")
     data.byteData[1] = 0x20;
     data.byteData[2] = 0x30;
     data.byteData[3] = 0x40;
-    logger = new Logger();
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
     REQUIRE(data.dwordData == 0x10203040);
     logger->log("big endian detected");
@@ -60,6 +57,4 @@ TEST_CASE("endian test", "")
     REQUIRE(data.dwordData == 0x40302010);
     logger->log("little endian detected");
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-    delete2(logger);
 }

@@ -52,6 +52,8 @@ PRAGMA48(GCC diagnostic pop)
 #endif  // SDL_VERSIONNUM
 
 #ifdef UNITTESTS
+#include "logger.h"
+
 #include "utils/cpu.h"
 #include "utils/sdlhelper.h"
 #include "resources/dye/dyepalette.h"
@@ -151,6 +153,7 @@ int mainGui(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+    logger = new Logger;
     SDL::initLogger();
     VirtFs::init(argv[0]);
     Cpu::detect();

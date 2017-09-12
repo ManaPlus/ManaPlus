@@ -60,7 +60,6 @@ TEST_CASE("chatutils replaceVars", "")
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     imageHelper = new SDLImageHelper();
@@ -255,8 +254,6 @@ TEST_CASE("chatutils replaceVars", "")
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("chatutils textToMe", "")

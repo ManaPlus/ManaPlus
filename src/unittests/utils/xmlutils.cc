@@ -51,7 +51,6 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
 
     client = new Client;
     XML::initXML();
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -102,8 +101,6 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("xmlutils readXmlStringMap 1", "")
@@ -112,7 +109,6 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
 
     client = new Client;
     XML::initXML();
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -162,8 +158,6 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("xmlutils readXmlIntMap 1", "")
@@ -172,7 +166,6 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
 
     client = new Client;
     XML::initXML();
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);
@@ -226,6 +219,4 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
     VirtFs::unmountDirSilent("../data/test");
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }

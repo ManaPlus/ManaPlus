@@ -25,7 +25,6 @@
 #include "fs/virtfs/fs.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 
 #ifndef UNITTESTS_CATCH
 #include <algorithm>
@@ -36,7 +35,6 @@
 TEST_CASE("VirtFs1 getRealDir1", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const std::string sep = dirSeparator;
     REQUIRE(VirtFs::getRealDir(".").empty());
     REQUIRE(VirtFs::getRealDir("..").empty());
@@ -112,13 +110,11 @@ TEST_CASE("VirtFs1 getRealDir1", "")
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFs1 getRealDir2", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const std::string sep = dirSeparator;
     std::string name("data/test/test.zip");
     std::string prefix("data" + sep + "test" + sep);
@@ -155,13 +151,11 @@ TEST_CASE("VirtFs1 getRealDir2", "")
 
     VirtFs::unmountZip(prefix + "test2.zip");
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFs1 getRealDir3", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const std::string sep = dirSeparator;
     REQUIRE(VirtFs::getRealDir(".").empty());
     REQUIRE(VirtFs::getRealDir("..").empty());
@@ -205,5 +199,4 @@ TEST_CASE("VirtFs1 getRealDir3", "")
     REQUIRE(VirtFs::getRealDir("zzz").empty());
 
     VirtFs::deinit();
-    delete2(logger);
 }

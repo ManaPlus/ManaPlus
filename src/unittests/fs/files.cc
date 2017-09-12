@@ -20,14 +20,12 @@
 
 #include "unittests/unittests.h"
 
-#include "logger.h"
 
 #include "fs/files.h"
 
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/tools.h"
 
-#include "utils/delete2.h"
 #include "utils/stringutils.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
@@ -36,7 +34,6 @@
 
 TEST_CASE("Files renameFile", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -68,13 +65,10 @@ TEST_CASE("Files renameFile", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("Files existsLocal", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     REQUIRE(Files::existsLocal(VirtFs::getPath("help/about.txt")) == true);
@@ -83,13 +77,10 @@ TEST_CASE("Files existsLocal", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("Files loadTextFileString", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     REQUIRE(VirtFs::loadTextFileString("test/simplefile.txt") ==
@@ -97,13 +88,10 @@ TEST_CASE("Files loadTextFileString", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("Files loadTextFile", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -115,13 +103,10 @@ TEST_CASE("Files loadTextFile", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("Files saveTextFile", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -140,13 +125,10 @@ TEST_CASE("Files saveTextFile", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("Files copyFile1", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -172,13 +154,10 @@ TEST_CASE("Files copyFile1", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("Files loadTextFileLocal", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -196,13 +175,10 @@ TEST_CASE("Files loadTextFileLocal", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("Files getFilesInDir", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -228,6 +204,4 @@ TEST_CASE("Files getFilesInDir", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }

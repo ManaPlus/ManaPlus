@@ -64,7 +64,6 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     mainGraphics = new SDLGraphics;
@@ -195,6 +194,4 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }

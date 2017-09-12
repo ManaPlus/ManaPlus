@@ -60,7 +60,6 @@ TEST_CASE("DyePalette tests", "")
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);
@@ -397,6 +396,4 @@ TEST_CASE("DyePalette tests", "")
     VirtFs::unmountDirSilent("../data");
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");
-    delete2(logger);
-//    VirtFs::deinit();
 }

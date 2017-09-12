@@ -22,11 +22,8 @@
 
 #include "configmanager.h"
 #include "dirs.h"
-#include "logger.h"
 
 #include "enums/resources/map/blockmask.h"
-
-#include "utils/delete2.h"
 
 #include "resources/image/image.h"
 
@@ -37,8 +34,6 @@
 
 TEST_CASE("MapLayer updateConditionTiles", "")
 {
-    logger = new Logger;
-
     Dirs::initRootDir();
     Dirs::initHomeDir();
 
@@ -233,5 +228,4 @@ TEST_CASE("MapLayer updateConditionTiles", "")
 
     delete map;
     delete img1;
-    delete2(logger);
 }

@@ -20,9 +20,6 @@
 
 #include "unittests/unittests.h"
 
-#include "logger.h"
-
-#include "utils/delete2.h"
 #include "utils/stringutils.h"
 
 PRAGMA48(GCC diagnostic push)
@@ -42,8 +39,6 @@ PRAGMA48(GCC diagnostic pop)
 
 TEST_CASE("dumplibs tests", "")
 {
-    logger = new Logger();
-
     SECTION("zlib")
     {
         const std::string build = ZLIB_VERSION;
@@ -140,6 +135,4 @@ TEST_CASE("dumplibs tests", "")
 
         REQUIRE(build == link);
     }
-
-    delete2(logger);
 }

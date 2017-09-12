@@ -50,7 +50,6 @@ TEST_CASE("BrowserBox tests", "browserbox")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -186,6 +185,4 @@ TEST_CASE("BrowserBox tests", "browserbox")
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }

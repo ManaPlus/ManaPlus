@@ -28,7 +28,6 @@
 #include "fs/virtfs/zipreader.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 
 #ifndef UNITTESTS_CATCH
 #include <algorithm>
@@ -39,7 +38,6 @@
 TEST_CASE("throw VirtFs1 exists1", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const bool dir1 = VirtFs::mountDirSilent("data/",
         Append_false);
     VirtFs::mountDirSilent("..\\data",
@@ -64,13 +62,11 @@ TEST_CASE("throw VirtFs1 exists1", "")
     REQUIRE_THROWS(VirtFs::exists("test/../units.xml"));
 
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("throw VirtFs1 exists2", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const bool dir1 = VirtFs::mountDirSilent2("data/",
         "test",
         Append_false);
@@ -99,36 +95,27 @@ TEST_CASE("throw VirtFs1 exists2", "")
     REQUIRE_THROWS(VirtFs::exists("test/../units.xml"));
 
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("throw Zip readCompressedFile", "")
 {
-    logger = new Logger();
     SECTION("empty")
     {
         REQUIRE_THROWS(VirtFs::ZipReader::readCompressedFile(nullptr));
     }
-
-    delete2(logger);
 }
 
 TEST_CASE("throw Zip readFile", "")
 {
-    logger = new Logger();
-
     SECTION("empty")
     {
         REQUIRE_THROWS(VirtFs::ZipReader::readFile(nullptr));
     }
-
-    delete2(logger);
 }
 
 TEST_CASE("throw VirtFs1 unmount", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const std::string sep = dirSeparator;
 
     SECTION("simple 1")
@@ -218,13 +205,10 @@ TEST_CASE("throw VirtFs1 unmount", "")
     }
 
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("throw configuration tests", "configuration")
 {
-    logger = new Logger();
-
     Dirs::initRootDir();
     Dirs::initHomeDir();
 
@@ -238,6 +222,4 @@ TEST_CASE("throw configuration tests", "configuration")
         REQUIRE_THROWS(config.getStringValue(key));
         REQUIRE_THROWS(config.getBoolValue(key));
     }
-
-    delete2(logger);
 }

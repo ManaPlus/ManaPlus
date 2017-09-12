@@ -146,7 +146,6 @@ TEST_CASE("Windows tests", "windowmanager")
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
-    logger = new Logger();
     ResourceManager::deleteInstance();
     ResourceManager::cleanOrphans(true);
     VirtFs::mountDirSilent("data", Append_false);
@@ -819,9 +818,6 @@ TEST_CASE("Windows tests", "windowmanager")
     VirtFs::unmountDirSilent("../data");
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");
-    delete2(logger);
-
-//    VirtFs::deinit();
 }
 
 TEST_CASE("WindowManager", "create windows")
@@ -831,7 +827,6 @@ TEST_CASE("WindowManager", "create windows")
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
-    logger = new Logger();
     ResourceManager::deleteInstance();
     ResourceManager::cleanOrphans(true);
     VirtFs::mountDirSilent("data", Append_false);
@@ -977,7 +972,4 @@ TEST_CASE("WindowManager", "create windows")
     VirtFs::unmountDirSilent("../data");
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");
-    delete2(logger);
-
-//    VirtFs::deinit();
 }

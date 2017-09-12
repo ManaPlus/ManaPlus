@@ -23,11 +23,8 @@
 #include "configuration.h"
 #include "configmanager.h"
 #include "dirs.h"
-#include "logger.h"
 
 #include "listeners/configlistener.h"
-
-#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -48,8 +45,6 @@ namespace
 
 TEST_CASE("configuration tests", "configuration")
 {
-    logger = new Logger();
-
     Dirs::initRootDir();
     Dirs::initHomeDir();
 
@@ -295,6 +290,4 @@ TEST_CASE("configuration tests", "configuration")
         REQUIRE(config.getStringValue(key) == "0");
         REQUIRE(config.getBoolValue(key) == false);
     }
-
-    delete2(logger);
 }

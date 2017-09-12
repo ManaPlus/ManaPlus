@@ -31,7 +31,6 @@
 
 #include "unittests/render/mockgraphics.h"
 
-#include "utils/delete2.h"
 #include "utils/env.h"
 
 #include "resources/resourcemanager/resourcemanager.h"
@@ -48,7 +47,6 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
 
-    logger = new Logger;
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -394,5 +392,4 @@ TEST_CASE("MapLayer drawSpecialLayer (specialLayer)", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
 }

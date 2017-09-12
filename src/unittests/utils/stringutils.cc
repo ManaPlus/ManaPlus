@@ -21,13 +21,11 @@
 #include "unittests/unittests.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "const/utils/utf8.h"
 
 #include "fs/virtfs/fs.h"
 
-#include "utils/delete2.h"
 #include "utils/dtor.h"
 
 #include "resources/iteminfo.h"
@@ -1486,7 +1484,6 @@ TEST_CASE("stringuntils timeDiffToString", "")
 
 TEST_CASE("stringuntils replaceItemLinks", "")
 {
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
     VirtFs::mountDirSilent("data/test", Append_false);
@@ -1715,6 +1712,4 @@ TEST_CASE("stringuntils replaceItemLinks", "")
     VirtFs::unmountDirSilent("../data");
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");
-    delete2(logger);
-//    VirtFs::deinit();
 }

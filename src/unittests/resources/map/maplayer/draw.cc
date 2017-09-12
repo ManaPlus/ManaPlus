@@ -34,8 +34,6 @@
 
 TEST_CASE("MapLayer draw", "")
 {
-    logger = new Logger;
-
     Dirs::initRootDir();
     Dirs::initHomeDir();
 

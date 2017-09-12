@@ -50,7 +50,6 @@ TEST_CASE("PoParser tests", "PoParser")
     setEnv("SDL_VIDEODRIVER", "dummy");
 
     client = new Client;
-    logger = new Logger();
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
@@ -133,6 +132,4 @@ TEST_CASE("PoParser tests", "PoParser")
     delete2(client);
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-    delete2(logger);
-//    VirtFs::deinit();
 }

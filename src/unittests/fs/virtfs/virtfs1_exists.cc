@@ -23,7 +23,6 @@
 #include "fs/virtfs/fs.h"
 
 #include "utils/checkutils.h"
-#include "utils/delete2.h"
 
 #ifndef UNITTESTS_CATCH
 #include <algorithm>
@@ -34,7 +33,6 @@
 TEST_CASE("VirtFs1 exists1", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const bool dir1 = VirtFs::mountDirSilent("data/",
         Append_false);
     VirtFs::mountDirSilent("..\\data",
@@ -86,13 +84,11 @@ TEST_CASE("VirtFs1 exists1", "")
     REQUIRE(VirtFs::exists("units.xml/") == false);
 
     VirtFs::deinit();
-    delete2(logger);
 }
 
 TEST_CASE("VirtFs1 exists2", "")
 {
     VirtFs::init(".");
-    logger = new Logger();
     const bool dir1 = VirtFs::mountDirSilent2("data/",
         "test",
         Append_false);
@@ -155,5 +151,4 @@ TEST_CASE("VirtFs1 exists2", "")
     REQUIRE(VirtFs::exists("file2.txt") == false);
 
     VirtFs::deinit();
-    delete2(logger);
 }

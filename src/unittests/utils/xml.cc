@@ -49,19 +49,16 @@
 
 TEST_CASE("xml test1", "")
 {
-    logger = new Logger();
     REQUIRE(client == nullptr);
     REQUIRE(gui == nullptr);
     ResourceManager::cleanOrphans(true);
     ResourceManager::deleteInstance();
-    delete2(logger);
 }
 
 TEST_CASE("xml doc", "")
 {
     setEnv("SDL_VIDEODRIVER", "dummy");
 
-    logger = new Logger();
     client = new Client;
     XML::initXML();
     VirtFs::mountDirSilent("data", Append_false);
@@ -385,16 +382,11 @@ TEST_CASE("xml doc", "")
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-
-    delete2(logger);
-//    VirtFs::deinit();
 }
 
 TEST_CASE("xml test2", "")
 {
-    logger = new Logger();
     REQUIRE(gui == nullptr);
     ResourceManager::cleanOrphans(true);
     ResourceManager::deleteInstance();
-    delete2(logger);
 }

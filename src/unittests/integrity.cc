@@ -114,7 +114,6 @@ TEST_CASE("integrity tests", "integrity")
     client = new Client;
     XML::initXML();
     SDL_Init(SDL_INIT_VIDEO);
-    logger = new Logger();
     std::string name("data/test/test.zip");
     std::string prefix;
     if (Files::existsLocal(name) == false)
@@ -358,7 +357,4 @@ TEST_CASE("integrity tests", "integrity")
 
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
-
-    delete2(logger);
-//    VirtFs::deinit();
 }
