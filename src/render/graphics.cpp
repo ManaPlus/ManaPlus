@@ -465,6 +465,13 @@ void Graphics::dumpRendererInfo(const char *restrict const str,
         logger->log(" vsync");
     if (info.flags & SDL_RENDERER_TARGETTEXTURE)
         logger->log(" texture target");
+    logger->log("max texture size: %d,%d",
+        info.max_texture_width,
+        info.max_texture_height);
+    const size_t sz = CAST_SIZE(info.num_texture_formats);
+    logger->log("texture formats:");
+    for (size_t f = 0; f < sz; f ++)
+        logger->log(" %u", info.texture_formats[f]);
 }
 #endif  // USE_SDL2
 
