@@ -246,8 +246,10 @@ int Graphics::getOpenGLFlags() const restrict2
     int displayFlags = SDL_WINDOW_OPENGL;
     if (mFullscreen)
         displayFlags |= SDL_WINDOW_FULLSCREEN;
+#if SDL_VERSION_ATLEAST(2, 0, 1)
     if (mAllowHighDPI)
         displayFlags |= SDL_WINDOW_ALLOW_HIGHDPI;
+#endif  // SDL_VERSION_ATLEAST(2, 0, 1)
 #else  // USE_SDL2
 
     int displayFlags = SDL_ANYFORMAT | SDL_OPENGL;
@@ -387,8 +389,10 @@ int Graphics::getSoftwareFlags() const restrict2
 {
 #ifdef USE_SDL2
     int displayFlags = SDL_WINDOW_SHOWN;
+#if SDL_VERSION_ATLEAST(2, 0, 1)
     if (mAllowHighDPI)
         displayFlags |= SDL_WINDOW_ALLOW_HIGHDPI;
+#endif  // SDL_VERSION_ATLEAST(2, 0, 1)
 #else  // USE_SDL2
 
     int displayFlags = SDL_ANYFORMAT;
