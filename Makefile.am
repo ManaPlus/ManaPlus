@@ -13,7 +13,7 @@ appdata_DATA = manaplus.appdata.xml
 # Extra files to include
 EXTRA_DIST = $(desktop_DATA) \
 	     $(appdata_DATA) \
-	     CMakeLists.txt \
+	     CMakeLists.txt.legacy \
 	     po/CMakeLists.txt \
 	     po/*.po \
 	     CMake/Modules/FindLibIntl.cmake \
