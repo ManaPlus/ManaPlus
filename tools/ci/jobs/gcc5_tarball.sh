@@ -50,6 +50,7 @@ export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -ffast-math \
 do_init
 run_configure --enable-werror
 run_tarball test
+cp CMakeLists.txt.legacy CMakeLists.txt
 run_configure --enable-werror
 run_make
 

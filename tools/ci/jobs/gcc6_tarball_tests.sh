@@ -26,6 +26,7 @@ export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"
 do_init
 run_configure --enable-unittests=yes $*
 run_tarball test
+cp CMakeLists.txt.legacy CMakeLists.txt
 run_configure --enable-unittests=yes $*
 export SDL_VIDEODRIVER=dummy
 run_make_check
