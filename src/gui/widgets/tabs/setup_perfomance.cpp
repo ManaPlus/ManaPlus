@@ -53,8 +53,10 @@ static const char *const texturesList[] =
 
 Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mTexturesList(new NamesModel),
-    mSdlDriversList(new NamesModel)
+#ifdef USE_SDL2
+    mSdlDriversList(new NamesModel),
+#endif  // USE_SDL2
+    mTexturesList(new NamesModel)
 {
     // TRANSLATORS: settings tab name
     setName(_("Performance"));
