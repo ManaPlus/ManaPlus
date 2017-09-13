@@ -620,7 +620,7 @@ SDL_Window *GraphicsManager::createWindow(const int w, const int h,
 SDL_Renderer *GraphicsManager::createRenderer(SDL_Window *const window,
                                               const int flags)
 {
-    // +++ need use different drivers and different flags
+    SDL::setRendererHint(config.getStringValue("sdlDriver"));
     SDL_Renderer *const renderer = SDL_CreateRenderer(window, -1, flags);
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     return renderer;

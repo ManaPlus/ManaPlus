@@ -73,6 +73,11 @@ namespace SDL
     bool PollEvent(SDL_Event *event);
 
     void allowScreenSaver(const bool allow);
+
+    void getRenderers(StringVect &list,
+                      const std::string &currentRenderer);
+
+    void setRendererHint(const std::string &driver);
 }  // namespace SDL
 
 #endif  // USE_SDL2

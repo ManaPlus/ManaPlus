@@ -55,6 +55,8 @@ class NamesModel notfinal : public ListModel
         void fillFromArray(const char *const *const arr,
                            const std::size_t size);
 
+        void fillFromVector(const StringVect &vect);
+
     protected:
         StringVect mNames;
 };

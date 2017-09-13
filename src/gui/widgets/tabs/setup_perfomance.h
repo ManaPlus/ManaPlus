@@ -38,6 +38,9 @@ class Setup_Perfomance final : public SetupTabScroll
 
     private:
         NamesModel *mTexturesList;
+#ifdef USE_SDL2
+        NamesModel *mSdlDriversList;
+#endif  // USE_SDL2
 };
 
 #endif  // GUI_WIDGETS_TABS_SETUP_PERFOMANCE_H

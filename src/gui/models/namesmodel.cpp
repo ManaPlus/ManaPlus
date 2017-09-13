@@ -21,6 +21,7 @@
 #include "gui/models/namesmodel.h"
 
 #include "utils/cast.h"
+#include "utils/foreach.h"
 #include "utils/gettext.h"
 
 #include "debug.h"
@@ -54,4 +55,14 @@ void NamesModel::fillFromArray(const char *const *const arr,
         return;
     for (size_t f = 0; f < sz; f ++)
         mNames.push_back(gettext(arr[f]));
+}
+
+void NamesModel::fillFromVector(const StringVect &vect)
+{
+    FOR_EACH(StringVectCIter, it, vect)
+    {
+        const std::string str = *it;
+        if (!str.empty())
+            mNames.push_back(str);
+    }
 }

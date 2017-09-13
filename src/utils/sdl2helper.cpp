@@ -28,10 +28,13 @@
 #include "utils/sdl2logger.h"
 #include "utils/stringutils.h"
 
+#include <algorithm>
+
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_events.h>
 #include <SDL_hints.h>
+#include <SDL_render.h>
 #include <SDL_syswm.h>
 PRAGMA48(GCC diagnostic pop)
 
@@ -222,6 +225,42 @@ void SDL::allowScreenSaver(const bool allow)
     {
         SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "0");
         SDL_DisableScreenSaver();
+    }
+}
+
+void SDL::getRenderers(StringVect &list,
+                       const std::string &currentRenderer)
+{
+    SDL_RendererInfo info;
+    const int num = SDL_GetNumRenderDrivers();
+    for (int f = 0; f < num; f ++)
+    {
+        if (!SDL_GetRenderDriverInfo(f, &info))
+            list.push_back(info.name);
+    }
+    if (!currentRenderer.empty())
+    {
+        bool found(false);
+        FOR_EACH (StringVectCIter, it, list)
+        {
+            if (*it == currentRenderer)
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+            list.push_back(currentRenderer);
+    }
+    std::sort(list.begin(), list.end());
+}
+
+void SDL::setRendererHint(const std::string &driver)
+{
+    if (!driver.empty())
+    {
+        SDL_SetHint(SDL_HINT_RENDER_DRIVER,
+            driver.c_str());
     }
 }
 

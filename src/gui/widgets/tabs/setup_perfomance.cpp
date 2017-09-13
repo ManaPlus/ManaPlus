@@ -22,6 +22,8 @@
 
 #include "gui/widgets/tabs/setup_perfomance.h"
 
+#include "configuration.h"
+
 #include "gui/models/namesmodel.h"
 
 #include "gui/widgets/containerplacer.h"
@@ -31,6 +33,9 @@
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
+#ifdef USE_SDL2
+#include "utils/sdlhelper.h"
+#endif  // USE_SDL2
 
 #include "debug.h"
 
@@ -48,7 +53,8 @@ static const char *const texturesList[] =
 
 Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     SetupTabScroll(widget),
-    mTexturesList(new NamesModel)
+    mTexturesList(new NamesModel),
+    mSdlDriversList(new NamesModel)
 {
     // TRANSLATORS: settings tab name
     setName(_("Performance"));
@@ -57,6 +63,15 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
     place(0, 0, mScroll, 10, 10);
+
+#ifdef USE_SDL2
+    StringVect sdlDriversList;
+    SDL::getRenderers(sdlDriversList,
+        config.getStringValue("sdlDriver"));
+    sdlDriversList.insert(sdlDriversList.begin(),
+        // TRANSLATORS: sdl driver name
+        N_("default"));
+#endif  // USE_SDL2
 
     // TRANSLATORS: settings option
     new SetupItemLabel(_("Better performance (enable for better performance)"),
@@ -138,6 +153,14 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
     new SetupItemLabel(_("Different options (enable or disable can "
         "improve performance)"), "", this);
 
+#ifdef USE_SDL2
+    mSdlDriversList->fillFromVector(sdlDriversList);
+    new SetupItemDropDownStr(
+        // TRANSLATORS: settings option
+        _("Try first sdl driver (only for SDL2 default mode)"),
+        "", "sdlDriver", this, "sdlDriverEvent", mSdlDriversList, 100);
+#endif  // USE_SDL2
+
     mTexturesList->fillFromArray(&texturesList[0], texturesListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Enable texture compression (OpenGL)"), "",
@@ -179,4 +202,7 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 Setup_Perfomance::~Setup_Perfomance()
 {
     delete2(mTexturesList);
+#ifdef USE_SDL2
+    delete2(mSdlDriversList);
+#endif  // USE_SDL2
 }

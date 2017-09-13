@@ -340,6 +340,50 @@ class SetupItemDropDown final : public SetupItem
 
         void toWidget() override final;
 
+        int selectionByValue();
+
+    protected:
+        HorizontContainer *mHorizont;
+        Label *mLabel;
+        ListModel *mModel;
+        DropDown *mDropDown;
+        int mWidth;
+};
+
+class SetupItemDropDownStr final : public SetupItem
+{
+    public:
+        SetupItemDropDownStr(const std::string &restrict text,
+                             const std::string &restrict description,
+                             const std::string &restrict keyName,
+                             SetupTabScroll *restrict const parent,
+                             const std::string &restrict eventName,
+                             ListModel *restrict const model,
+                             const int width,
+                             const MainConfig mainConfig = MainConfig_true);
+
+        SetupItemDropDownStr(const std::string &restrict text,
+                             const std::string &restrict description,
+                             const std::string &restrict keyName,
+                             SetupTabScroll *restrict const parent,
+                             const std::string &restrict eventName,
+                             ListModel *restrict const model,
+                             const int width,
+                             const std::string &restrict def,
+                             const MainConfig mainConfig = MainConfig_true);
+
+        A_DELETE_COPY(SetupItemDropDownStr)
+
+        ~SetupItemDropDownStr();
+
+        void createControls();
+
+        void fromWidget() override final;
+
+        void toWidget() override final;
+
+        int selectionByValue();
+
     protected:
         HorizontContainer *mHorizont;
         Label *mLabel;

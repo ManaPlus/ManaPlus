@@ -417,6 +417,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("blockAltTab", true);
     AddDEF("sdlLogLevel", 0);
     AddDEF("allowHighDPI", false);
+    AddDEF("sdlDriver", "");
 }
 
 void setConfigDefaults2(Configuration &cfg)

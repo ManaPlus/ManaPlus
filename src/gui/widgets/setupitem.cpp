@@ -27,6 +27,8 @@
 
 #include "gui/fonts/font.h"
 
+#include "gui/models/listmodel.h"
+
 #include "gui/windows/editdialog.h"
 
 #include "gui/widgets/button.h"
@@ -692,7 +694,7 @@ void SetupItemDropDown::createControls()
     mDropDown->setActionEventId(mEventName);
     mDropDown->addActionListener(mParent);
     mDropDown->setWidth(mWidth);
-    mDropDown->setSelected(atoi(mValue.c_str()));
+    mDropDown->setSelected(selectionByValue());
 
     mWidget = mDropDown;
     if (!mText.empty())
@@ -704,6 +706,11 @@ void SetupItemDropDown::createControls()
     mParent->addControl(this);
     mParent->addActionListener(this);
     mWidget->addActionListener(this);
+}
+
+int SetupItemDropDown::selectionByValue()
+{
+    return atoi(mValue.c_str());
 }
 
 void SetupItemDropDown::fromWidget()
@@ -719,7 +726,121 @@ void SetupItemDropDown::toWidget()
     if (mDropDown == nullptr)
         return;
 
-    mDropDown->setSelected(atoi(mValue.c_str()));
+    mDropDown->setSelected(selectionByValue());
+}
+
+
+SetupItemDropDownStr::SetupItemDropDownStr(const std::string &restrict text,
+                                           const std::string &restrict
+                                           description,
+                                           const std::string &restrict keyName,
+                                           SetupTabScroll *restrict const
+                                           parent,
+                                           const std::string &restrict
+                                           eventName,
+                                           ListModel *restrict const model,
+                                           const int width,
+                                           const MainConfig mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mModel(model),
+    mDropDown(nullptr),
+    mWidth(width)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemDropDownStr::SetupItemDropDownStr(const std::string &restrict text,
+                                           const std::string &restrict
+                                           description,
+                                           const std::string &restrict keyName,
+                                           SetupTabScroll *restrict const
+                                           parent,
+                                           const std::string &restrict
+                                           eventName,
+                                           ListModel *restrict const model,
+                                           const int width,
+                                           const std::string &restrict def,
+                                           const MainConfig mainConfig) :
+    SetupItem(text, description, keyName, parent, eventName, def, mainConfig),
+    mHorizont(nullptr),
+    mLabel(nullptr),
+    mModel(model),
+    mDropDown(nullptr),
+    mWidth(width)
+{
+    mValueType = VSTR;
+    createControls();
+}
+
+SetupItemDropDownStr::~SetupItemDropDownStr()
+{
+    mHorizont = nullptr;
+    mWidget = nullptr;
+    mModel = nullptr;
+    mDropDown = nullptr;
+    mLabel = nullptr;
+}
+
+void SetupItemDropDownStr::createControls()
+{
+    load();
+    mHorizont = new HorizontContainer(this, 32, 2);
+
+    mLabel = new Label(this, mText);
+    mLabel->setToolTip(mDescription);
+    mDropDown = new DropDown(this, mModel);
+    mDropDown->setActionEventId(mEventName);
+    mDropDown->addActionListener(mParent);
+    mDropDown->setWidth(mWidth);
+    mDropDown->setSelected(selectionByValue());
+
+    mWidget = mDropDown;
+    if (!mText.empty())
+        fixFirstItemSize(mLabel);
+    mHorizont->add(mLabel);
+    mHorizont->add(mDropDown);
+
+    mParent->getContainer()->add2(mHorizont, true, 4);
+    mParent->addControl(this);
+    mParent->addActionListener(this);
+    mWidget->addActionListener(this);
+}
+
+int SetupItemDropDownStr::selectionByValue()
+{
+    const int sz = mModel->getNumberOfElements();
+    for (int f = 0; f < sz; f ++)
+    {
+        if (mModel->getElementAt(f) == mValue)
+        {
+            return f;
+        }
+    }
+    return 0;
+}
+
+void SetupItemDropDownStr::fromWidget()
+{
+    if (mDropDown == nullptr)
+        return;
+
+    const int sel = mDropDown->getSelected();
+    // use first element in model as empty string
+    if (sel == 0 || sel >= mModel->getNumberOfElements())
+        mValue = "";
+    else
+        mValue = mModel->getElementAt(sel);
+}
+
+void SetupItemDropDownStr::toWidget()
+{
+    if (mDropDown == nullptr)
+        return;
+
+    mDropDown->setSelected(selectionByValue());
 }
 
 
