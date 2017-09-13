@@ -374,6 +374,7 @@ void Client::gameInit()
 #endif  // USE_SDL2
 
     WindowManager::applyKeyRepeat();
+    eventsManager.init();
     eventsManager.enableEvents();
 
 #ifdef WIN32
@@ -454,7 +455,6 @@ void Client::gameInit()
     popupManager = new PopupManager;
 
     initSoundManager();
-    eventsManager.init();
 
     // Initialize keyboard
     keyboard.init();
