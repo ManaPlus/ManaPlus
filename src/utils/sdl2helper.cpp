@@ -218,12 +218,16 @@ void SDL::allowScreenSaver(const bool allow)
 {
     if (allow)
     {
+#if SDL_VERSION_ATLEAST(2, 0, 2)
         SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "1");
+#endif  // SDL_VERSION_ATLEAST(2, 0, 2)
         SDL_EnableScreenSaver();
     }
     else
     {
+#if SDL_VERSION_ATLEAST(2, 0, 2)
         SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "0");
+#endif  // SDL_VERSION_ATLEAST(2, 0, 2)
         SDL_DisableScreenSaver();
     }
 }
