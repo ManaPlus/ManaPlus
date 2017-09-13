@@ -3925,6 +3925,26 @@ gcc-7_SDL_201:
   tags:
     - docker
 
+gcc-7_SDL_202:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7.sh --with-sdl2
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplus
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: 202
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev
+              wget unzip gdb valgrind netcat-openbsd procps
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
+  tags:
+    - docker
+
 gcc-7_SDL_203:
   stage: build
   script:
@@ -4017,6 +4037,26 @@ gcc-7_SDL_201_test:
   variables:
     LIBNAME: SDL
     LIBVERSION: 201
+    PACKAGES: gcc-7 g++-7 
+              make autoconf automake autopoint gettext pkg-config 
+              libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
+              valgrind 
+              wget unzip
+    runenvz: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runzlib_master.sh
+    runenvx: /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runlibxml2_master.sh
+  tags:
+    - docker
+
+gcc-7_SDL_202_test:
+  stage: build
+  script:
+  - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-manaplusgame --without-dyecmd
+  - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
+  <<: *job-push
+  variables:
+    LIBNAME: SDL
+    LIBVERSION: 202
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext pkg-config 
               libx11-dev libxext-dev libxt-dev libxv-dev x11proto-core-dev libgl1-mesa-dev libasound2-dev libicu-dev 
