@@ -1963,6 +1963,12 @@ TEST_CASE("Dye real dye", "")
     VirtFs::mountDirSilent("data/test", Append_false);
     VirtFs::mountDirSilent("../data/test", Append_false);
 
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
 
@@ -1977,12 +1983,6 @@ TEST_CASE("Dye real dye", "")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     theme = new Theme;
     Theme::selectSkin();

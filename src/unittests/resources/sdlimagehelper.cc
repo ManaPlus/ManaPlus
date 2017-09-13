@@ -80,6 +80,13 @@ TEST_CASE("sdlimagehelper combineSurface", "")
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -90,12 +97,6 @@ TEST_CASE("sdlimagehelper combineSurface", "")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     theme = new Theme;
     Theme::selectSkin();

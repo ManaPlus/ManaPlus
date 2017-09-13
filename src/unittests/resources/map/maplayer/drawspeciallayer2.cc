@@ -51,6 +51,13 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
     VirtFs::mountDirSilent("../data", Append_false);
 
     imageHelper = new SDLImageHelper;
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -59,12 +66,6 @@ TEST_CASE("MapLayer drawSpecialLayer (tempLayer)", "")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     Map *map = nullptr;
     MapLayer *layer = nullptr;

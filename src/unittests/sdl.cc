@@ -69,6 +69,12 @@ TEST_CASE("sdl tests", "sdl")
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
 
@@ -84,12 +90,6 @@ TEST_CASE("sdl tests", "sdl")
 
     userPalette = new UserPalette;
     config.setValue("fontSize", 16);
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     theme = new Theme;
     Theme::selectSkin();

@@ -56,6 +56,12 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
+
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -68,11 +74,6 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
     userPalette = new UserPalette;
 
     Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
-
     theme = new Theme;
     Theme::selectSkin();
 
@@ -114,6 +115,13 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -124,12 +132,6 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     theme = new Theme;
     Theme::selectSkin();
@@ -173,6 +175,13 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
 
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -183,12 +192,6 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     theme = new Theme;
     Theme::selectSkin();

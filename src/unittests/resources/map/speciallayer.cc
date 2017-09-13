@@ -56,6 +56,13 @@ TEST_CASE("SpecialLayer updateCache", "")
     VirtFs::mountDirSilent("../data", Append_false);
 
     imageHelper = new SDLImageHelper;
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -66,12 +73,6 @@ TEST_CASE("SpecialLayer updateCache", "")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     theme = new Theme;
     Theme::selectSkin();

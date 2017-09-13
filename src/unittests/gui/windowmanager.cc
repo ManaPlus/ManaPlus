@@ -156,17 +156,6 @@ TEST_CASE("Windows tests", "windowmanager")
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
-#ifdef USE_SDL2
-    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        graphicsManager.createWindow(640, 480, 0,
-        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
-#else  // USE_SDL2
-
-    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-#endif  // USE_SDL2
-
-    userPalette = new UserPalette;
-    config.setValue("fontSize", 16);
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
@@ -180,6 +169,18 @@ TEST_CASE("Windows tests", "windowmanager")
     setBrandingDefaults(branding);
     setFeaturesDefaults(features);
     ConfigManager::initServerConfig("nonexistserver");
+
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    userPalette = new UserPalette;
+    config.setValue("fontSize", 16);
 
     theme = new Theme;
     Theme::selectSkin();
@@ -844,16 +845,6 @@ TEST_CASE("WindowManager", "create windows")
     branding.setValue("onlineServerFile", "test/serverlistplus.xml");
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper;
-#ifdef USE_SDL2
-    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        graphicsManager.createWindow(640, 480, 0,
-        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
-#else  // USE_SDL2
-
-    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-#endif  // USE_SDL2
-
-    config.setValue("fontSize", 16);
 
     Dirs::initRootDir();
     Dirs::initHomeDir();
@@ -866,6 +857,17 @@ TEST_CASE("WindowManager", "create windows")
     setConfigDefaults2(config);
     setBrandingDefaults(branding);
     ConfigManager::initServerConfig("nonexistserver");
+
+#ifdef USE_SDL2
+    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
+        graphicsManager.createWindow(640, 480, 0,
+        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
+#else  // USE_SDL2
+
+    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+#endif  // USE_SDL2
+
+    config.setValue("fontSize", 16);
 
     theme = new Theme;
     Theme::selectSkin();

@@ -65,6 +65,14 @@ TEST_CASE("xml doc", "")
     VirtFs::mountDirSilent("../data", Append_false);
     mainGraphics = new SDLGraphics;
     imageHelper = new SDLImageHelper();
+
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    ConfigManager::initConfiguration();
+    setConfigDefaults2(config);
+    setBrandingDefaults(branding);
+
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
         graphicsManager.createWindow(640, 480, 0,
@@ -73,13 +81,6 @@ TEST_CASE("xml doc", "")
 
     graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    ConfigManager::initConfiguration();
-    setConfigDefaults2(config);
-    setBrandingDefaults(branding);
 
     theme = new Theme;
     Theme::selectSkin();

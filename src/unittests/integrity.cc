@@ -122,6 +122,12 @@ TEST_CASE("integrity tests", "integrity")
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
+    Dirs::initRootDir();
+    Dirs::initHomeDir();
+
+    setBrandingDefaults(branding);
+    ConfigManager::initConfiguration();
+
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;
 
@@ -136,12 +142,6 @@ TEST_CASE("integrity tests", "integrity")
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
-
-    Dirs::initRootDir();
-    Dirs::initHomeDir();
-
-    setBrandingDefaults(branding);
-    ConfigManager::initConfiguration();
 
     config.setValue("fontSize", 16);
     theme = new Theme;
