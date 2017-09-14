@@ -426,7 +426,14 @@ void EventsManager::logEvent(const SDL_Event &event)
                 event.button.x,
                 event.button.y);
             break;
-
+        case SDL_JOYDEVICEADDED:
+            logger->log("event: SDL_JOYDEVICEADDED: %d",
+                event.jdevice.which);
+            break;
+        case SDL_JOYDEVICEREMOVED:
+            logger->log("event: SDL_JOYDEVICEREMOVED: %d",
+                event.jdevice.which);
+            break;
 #else  // USE_SDL2
 
         case SDL_MOUSEMOTION:
