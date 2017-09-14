@@ -566,11 +566,9 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
         case SDL_WINDOWEVENT_MINIMIZED:
             WindowManager::setIsMinimized(true);
 #ifndef DYECMD
-            if (inGame && localPlayer)
-            {
-                fpsLimit = config.getIntValue("altfpslimit");
+            fpsLimit = config.getIntValue("altfpslimit");
+            if (localPlayer)
                 localPlayer->setHalfAway(true);
-            }
 #endif  // DYECMD
 
             setPriority(false);
@@ -579,14 +577,9 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
         case SDL_WINDOWEVENT_MAXIMIZED:
             WindowManager::setIsMinimized(false);
 #ifndef DYECMD
-            if (inGame)
-            {
-                if (localPlayer)
-                {
-                    fpsLimit = config.getIntValue("fpslimit");
-                    localPlayer->setHalfAway(false);
-                }
-            }
+            fpsLimit = config.getIntValue("fpslimit");
+            if (localPlayer)
+                localPlayer->setHalfAway(false);
 #endif  // DYECMD
 
             setPriority(true);
@@ -627,7 +620,7 @@ void EventsManager::handleActive(const SDL_Event &event)
         {   // window restore
             WindowManager::setIsMinimized(false);
 #ifndef DYECMD
-            if (inGame && (localPlayer != nullptr))
+            if (localPlayer != nullptr)
             {
                 if (!settings.awayMode)
                     fpsLimit = config.getIntValue("fpslimit");
@@ -644,7 +637,7 @@ void EventsManager::handleActive(const SDL_Event &event)
 #else  // ANDROID
             WindowManager::setIsMinimized(true);
 #ifndef DYECMD
-            if (inGame && (localPlayer != nullptr) && !settings.awayMode)
+            if (localPlayer != nullptr && !settings.awayMode)
             {
                 fpsLimit = config.getIntValue("altfpslimit");
                 localPlayer->setHalfAway(true);
