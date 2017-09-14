@@ -559,13 +559,10 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
         case SDL_WINDOWEVENT_MINIMIZED:
             WindowManager::setIsMinimized(true);
 #ifndef DYECMD
-            if (inGame)
+            if (inGame && localPlayer)
             {
-                if (localPlayer && !settings.awayMode)
-                {
-                    fpsLimit = config.getIntValue("altfpslimit");
-                    localPlayer->setHalfAway(true);
-                }
+                fpsLimit = config.getIntValue("altfpslimit");
+                localPlayer->setHalfAway(true);
             }
 #endif  // DYECMD
 
@@ -579,8 +576,7 @@ void EventsManager::handleSDL2WindowEvent(const SDL_Event &event)
             {
                 if (localPlayer)
                 {
-                    if (!settings.awayMode)
-                        fpsLimit = config.getIntValue("fpslimit");
+                    fpsLimit = config.getIntValue("fpslimit");
                     localPlayer->setHalfAway(false);
                 }
             }
