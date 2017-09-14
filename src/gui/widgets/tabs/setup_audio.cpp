@@ -107,6 +107,10 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
         MainConfig_true,
         DoNotAlign_false);
 
+    // TRANSLATORS: settings option
+    new SetupItemIntTextField(_("Parallel number of sounds"), "",
+        "parallelAudioChannels", this, "parallelAudioChannelsEvent", 1, 1000);
+
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Sound effects"), "", this);

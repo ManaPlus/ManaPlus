@@ -142,6 +142,8 @@ class SoundManager final : public ConfigListener
 
         void shutdown();
 
+        void setChannels(const int channels) const;
+
     private:
         /** Logs various info about sound device. */
         static void info();

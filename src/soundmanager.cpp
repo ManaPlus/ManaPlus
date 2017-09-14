@@ -117,6 +117,8 @@ void SoundManager::optionChanged(const std::string &value)
         mFadeoutMusic = (config.getIntValue("fadeoutmusic") != 0);
     else if (value == "uselonglivesounds")
         mCacheSounds = (config.getIntValue("uselonglivesounds") != 0);
+    else if (value == "parallelAudioChannels")
+        setChannels(config.getIntValue("parallelAudioChannels"));
 }
 
 void SoundManager::init()
@@ -142,6 +144,7 @@ void SoundManager::init()
     config.addListener("musicVolume", this);
     config.addListener("fadeoutmusic", this);
     config.addListener("uselonglivesounds", this);
+    config.addListener("parallelAudioChannels", this);
 
     if (SDL_InitSubSystem(SDL_INIT_AUDIO) == -1)
     {
@@ -176,7 +179,7 @@ void SoundManager::init()
         logger->log("Fallback to stereo audio");
     }
 
-    Mix_AllocateChannels(16);
+    Mix_AllocateChannels(config.getIntValue("parallelAudioChannels"));
     Mix_VolumeMusic(mMusicVolume);
     Mix_Volume(-1, mSfxVolume);
 
@@ -569,4 +572,10 @@ void SoundManager::volumeRestore() const
         Mix_VolumeMusic(mMusicVolume);
         Mix_Volume(-1, mSfxVolume);
     }
+}
+
+void SoundManager::setChannels(const int channels) const
+{
+    if (mInstalled)
+        Mix_AllocateChannels(channels);
 }

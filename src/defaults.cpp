@@ -418,6 +418,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("sdlLogLevel", 0);
     AddDEF("allowHighDPI", false);
     AddDEF("sdlDriver", "");
+    AddDEF("parallelAudioChannels", 16);
 }
 
 void setConfigDefaults2(Configuration &cfg)
