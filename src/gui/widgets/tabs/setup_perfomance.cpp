@@ -22,8 +22,6 @@
 
 #include "gui/widgets/tabs/setup_perfomance.h"
 
-#include "configuration.h"
-
 #include "gui/models/namesmodel.h"
 
 #include "gui/widgets/containerplacer.h"
@@ -34,6 +32,7 @@
 #include "utils/delete2.h"
 #include "utils/gettext.h"
 #ifdef USE_SDL2
+#include "configuration.h"
 #include "utils/sdlhelper.h"
 #endif  // USE_SDL2
 
