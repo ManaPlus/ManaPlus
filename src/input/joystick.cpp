@@ -110,6 +110,60 @@ bool Joystick::open()
 
     mButtonsNumber = SDL_JoystickNumButtons(mJoystick);
     logger->log("Joystick: %i ", mNumber);
+#ifdef USE_SDL2
+    logger->log("Name: %s", SDL_JoystickName(mJoystick));
+    SDL_JoystickGUID guid = SDL_JoystickGetGUID(mJoystick);
+    std::string guidStr;
+    for (int f = 0; f < 16; f ++)
+        guidStr.append(strprintf("%02x", CAST_U32(guid.data[f])));
+    logger->log("Guid: %s", guidStr.c_str());
+    logger->log("Device id: %u:%u.%u",
+        CAST_U32(SDL_JoystickGetVendor(mJoystick)),
+        CAST_U32(SDL_JoystickGetProduct(mJoystick)),
+        CAST_U32(SDL_JoystickGetProductVersion(mJoystick)));
+    SDL_JoystickType type = SDL_JoystickGetType(mJoystick);
+    std::string typeStr;
+    switch (type)
+    {
+        default:
+        case SDL_JOYSTICK_TYPE_UNKNOWN:
+            typeStr = "unknown";
+            break;
+        case SDL_JOYSTICK_TYPE_GAMECONTROLLER:
+            typeStr = "game controller";
+            break;
+        case SDL_JOYSTICK_TYPE_WHEEL:
+            typeStr = "wheel";
+            break;
+        case SDL_JOYSTICK_TYPE_ARCADE_STICK:
+            typeStr = "arcade stick";
+            break;
+        case SDL_JOYSTICK_TYPE_FLIGHT_STICK:
+            typeStr = "flight stick";
+            break;
+        case SDL_JOYSTICK_TYPE_DANCE_PAD:
+            typeStr = "dance pad";
+            break;
+        case SDL_JOYSTICK_TYPE_GUITAR:
+            typeStr = "guitar";
+            break;
+        case SDL_JOYSTICK_TYPE_DRUM_KIT:
+            typeStr = "drum kit";
+            break;
+        case SDL_JOYSTICK_TYPE_ARCADE_PAD:
+            typeStr = "arcade pad";
+            break;
+        case SDL_JOYSTICK_TYPE_THROTTLE:
+            typeStr = "throttle";
+            break;
+    }
+    logger->log("Type: " + typeStr);
+    // probably need aslo dump SDL_JoystickCurrentPowerLevel
+#else  // USE_SDL2
+
+    logger->log("Name: %s", SDL_JoystickName(mNumber));
+#endif  // USE_SDL2
+
     logger->log("Axes: %i ", SDL_JoystickNumAxes(mJoystick));
     logger->log("Balls: %i", SDL_JoystickNumBalls(mJoystick));
     logger->log("Hats: %i", SDL_JoystickNumHats(mJoystick));
