@@ -111,8 +111,35 @@ void Cpu::detect()
         logger->log("cpu features was not detected");
 #else  // OTHER
 
+#ifdef USE_SDL2
+    if (SDL_HasMMX())
+        mCpuFlags |= FEATURE_MMX;
+    if (SDL_HasSSE())
+        mCpuFlags |= FEATURE_SSE;
+    if (SDL_HasSSE2())
+        mCpuFlags |= FEATURE_SSE2;
+    if (SDL_HasSSE3())
+        mCpuFlags |= FEATURE_SSSE3;
+    if (SDL_HasSSE41())
+        mCpuFlags |= FEATURE_SSE4;
+    if (SDL_HasSSE42())
+        mCpuFlags |= FEATURE_SSE42;
+
+#if SDL_VERSION_ATLEAST(2, 0, 2)
+    if (SDL_HasAVX())
+        mCpuFlags |= FEATURE_AVX;
+#endif  // SDL_VERSION_ATLEAST(2, 0, 2)
+#if SDL_VERSION_ATLEAST(2, 0, 4)
+    if (SDL_HasAVX2())
+        mCpuFlags |= FEATURE_AVX2;
+#endif  // SDL_VERSION_ATLEAST(2, 0, 4)
+
+    printFlags();
+#else  // USE_SDL2
+
     if (logger)
         logger->log("cpu features not supported");
+#endif  // USE_SDL2
 #endif  // (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__)
         // && (GCC_VERSION >= 40800) && !defined(ANDROID)
 
