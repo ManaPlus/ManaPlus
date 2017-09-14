@@ -31,6 +31,10 @@
 #endif  // (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__)
         // && (GCC_VERSION >= 40800) && !defined(ANDROID)
 
+#ifdef USE_SDL2
+#include <SDL_cpuinfo.h>
+#endif  // USE_SDL2
+
 #include "debug.h"
 
 namespace
@@ -111,6 +115,10 @@ void Cpu::detect()
         logger->log("cpu features not supported");
 #endif  // (defined(__amd64__) || defined(__i386__)) && defined(__GNUC__)
         // && (GCC_VERSION >= 40800) && !defined(ANDROID)
+
+#if SDL_VERSION_ATLEAST(2, 0, 1)
+    logger->log("System ram size: %d", SDL_GetSystemRAM());
+#endif  // SDL_VERSION_ATLEAST(2, 0, 1)
 }
 
 void Cpu::printFlags()
