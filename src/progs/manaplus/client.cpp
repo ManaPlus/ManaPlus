@@ -691,8 +691,7 @@ void Client::gameClear()
 
     BeingInfo::clear();
 
-    // Shutdown sound
-    soundManager.close();
+    soundManager.shutdown();
 
     if (logger != nullptr)
         logger->log1("Quitting6");
@@ -700,6 +699,9 @@ void Client::gameClear()
     ActorSprite::unload();
 
     ResourceManager::deleteInstance();
+
+    // Shutdown sound
+    soundManager.close();
 
     if (logger != nullptr)
         logger->log1("Quitting8");
@@ -716,7 +718,6 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting10");
 
-    soundManager.shutdown();
     touchManager.shutdown();
 
 #ifdef DEBUG_CONFIG

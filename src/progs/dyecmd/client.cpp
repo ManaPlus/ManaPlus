@@ -449,14 +449,15 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting5");
 
-    // Shutdown sound
-    soundManager.close();
+    soundManager.shutdown();
 
     if (logger != nullptr)
         logger->log1("Quitting6");
 
     touchManager.clear();
     ResourceManager::deleteInstance();
+
+    soundManager.close();
 
     if (logger != nullptr)
         logger->log1("Quitting8");
@@ -473,7 +474,6 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting10");
 
-    soundManager.shutdown();
     touchManager.shutdown();
 
 #ifdef DEBUG_CONFIG
