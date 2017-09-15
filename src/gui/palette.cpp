@@ -194,7 +194,6 @@ void Palette::advanceGradient()
             }
         }
 
-        if (advance != 0)
-            mRainbowTime = tick_time;
+        mRainbowTime = tick_time;
     }
 }

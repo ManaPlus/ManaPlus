@@ -830,7 +830,7 @@ void SetupItemDropDownStr::fromWidget()
     const int sel = mDropDown->getSelected();
     // use first element in model as empty string
     if (sel == 0 || sel >= mModel->getNumberOfElements())
-        mValue = "";
+        mValue.clear();
     else
         mValue = mModel->getElementAt(sel);
 }

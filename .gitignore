@@ -50,6 +50,7 @@ CPackConfig.cmake
 CPackSourceConfig.cmake
 cmake_install.cmake
 install_manifest.txt
+CMakeLists.txt
 
 # files created during build
 *.o

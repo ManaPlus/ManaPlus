@@ -22,8 +22,6 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
-#include "configuration.h"
-
 #ifdef USE_OPENGL
 #include "resources/image/image.h"
 #endif  // USE_OPENGL
@@ -37,6 +35,7 @@
 #include "utils/cast.h"
 #include "utils/checkutils.h"
 #include "utils/foreach.h"
+#include "utils/stringutils.h"
 
 #if !defined(DEBUG_DUMP_LEAKS) && !defined(UNITTESTS)
 #include "resources/resourcetypes.h"

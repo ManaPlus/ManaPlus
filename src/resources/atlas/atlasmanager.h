@@ -23,13 +23,13 @@
 
 #ifdef USE_OPENGL
 
-#include "resources/image/image.h"
-
 #include "utils/stringvector.h"
 
-class AtlasResource;
+#include "localconsts.h"
 
-struct AtlasItem;
+class AtlasResource;
+class Image;
+
 struct TextureAtlas;
 
 class AtlasManager final

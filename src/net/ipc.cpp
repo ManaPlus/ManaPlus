@@ -165,8 +165,9 @@ void IPC::start()
         return;
 
     unsigned short port(44007);
-    if (getenv("IPC_PORT") != nullptr)
-        port = static_cast<unsigned short>(atoi(getenv("IPC_PORT")));
+    const char *const portStr = getenv("IPC_PORT");
+    if (portStr != nullptr)
+        port = static_cast<unsigned short>(atoi(portStr));
 
     logger->log("Starting IPC...");
     ipc = new IPC;

@@ -163,7 +163,7 @@ class WhoIsOnline final : public Window,
         int mDownloadedBytes;
 
         /** Status of the current download. */
-        DownloadStatus mDownloadStatus;
+        WhoIsOnline::DownloadStatus mDownloadStatus;
 
         /** Flag that show if current download is complete. */
         bool mDownloadComplete;

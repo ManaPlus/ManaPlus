@@ -295,7 +295,6 @@ static const InputActionData inputActionData
         InputCondition::KEY_DOWN |
             InputCondition::GAME |
             InputCondition::NOTARGET |
-            InputCondition::KEY_DOWN |
             InputCondition::NOBLOCK,
         "sit",
         UseArgs_false,

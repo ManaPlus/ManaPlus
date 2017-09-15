@@ -510,9 +510,11 @@ void EventsManager::logEvent(const SDL_Event &event)
             break;
         case SDL_SYSWMEVENT:
         {
-            bool res = false;
 #ifdef USE_X11
-            res = X11Logger::logEvent(event);
+            const bool res = X11Logger::logEvent(event);
+#else  // USE_X11
+
+            const bool res = false;
 #endif  // USE_X11
 
             if (res == false)
@@ -532,7 +534,8 @@ void EventsManager::logEvent(const SDL_Event &event)
 #endif  // ANDROID
 
         default:
-            logger->assertLog("event: other: %u", event.type);
+            logger->assertLog("event: other: %u",
+                CAST_U32(event.type));
             break;
     };
 }
