@@ -42,6 +42,10 @@
 
 #include <sstream>
 
+#ifdef USE_SDL2
+#include <SDL_messagebox.h>
+#endif  // USE_SDl2
+
 #ifdef ENABLEDEBUGLOG
 #if defined(__ANDROID__)
 #include <android/log.h>
@@ -369,6 +373,12 @@ void Logger::flush()
 void Logger::safeError(const std::string &error_text)
 {
     log("Error: %s", error_text.c_str());
+#ifdef USE_SDL2
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+        "Error",
+        error_text.c_str(),
+        nullptr);
+#else  // USE_SDL2
 #ifdef WIN32
     MessageBox(nullptr, error_text.c_str(), "Error", MB_ICONERROR | MB_OK);
 #elif defined __APPLE__
@@ -391,6 +401,7 @@ void Logger::safeError(const std::string &error_text)
 
     std::cerr << "Error: " << error_text << std::endl;
 #endif  // WIN32
+#endif  // USE_SDL2
 
     exit(1);
 }
@@ -399,6 +410,12 @@ void Logger::safeError(const std::string &error_text)
 void Logger::error(const std::string &error_text)
 {
     log("Error: %s", error_text.c_str());
+#ifdef USE_SDL2
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+        "Error",
+        error_text.c_str(),
+        nullptr);
+#else  // USE_SDL2
 #ifdef WIN32
     MessageBox(nullptr, error_text.c_str(), "Error", MB_ICONERROR | MB_OK);
 #elif defined __APPLE__
@@ -421,6 +438,7 @@ void Logger::error(const std::string &error_text)
 
     std::cerr << "Error: " << error_text << std::endl;
 #endif  // WIN32
+#endif  // USE_SDL2
 
     exit(1);
 }
