@@ -693,7 +693,6 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
     switch (event.type)
     {
         case SDL_KEYDOWN:
-        case SDL_KEYUP:
             if (isActionActive(InputAction::IGNORE_INPUT_1) ||
                 isActionActive(InputAction::IGNORE_INPUT_2))
             {
@@ -706,6 +705,15 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
                 return true;
             }
             break;
+
+// disabled temporary
+//        case SDL_KEYUP:
+//            if (triggerAction(keyboard.getActionVector(event)))
+//            {
+//                BLOCK_END("InputManager::handleEvent")
+//                return true;
+//            }
+//            break;
 
         case SDL_JOYBUTTONDOWN:
             if ((joystick != nullptr) && joystick->validate())
@@ -742,7 +750,7 @@ void InputManager::handleRepeat()
         joystick->handleRepeat(time);
 }
 
-void InputManager::updateConditionMask(const bool pressed) restrict2
+void InputManager::updateConditionMask(const bool pressed A_UNUSED) restrict2
 {
     mMask = 1;
     if (keyboard.isEnabled())
@@ -830,10 +838,12 @@ void InputManager::updateConditionMask(const bool pressed) restrict2
     {
         mMask |= InputCondition::NOTARGET;
     }
-    if (pressed == true)
-        mMask |= InputCondition::KEY_DOWN;
-    else
-        mMask |= InputCondition::KEY_UP;
+    // enable it temporary
+    mMask |= InputCondition::KEY_DOWN;
+//    if (pressed == true)
+//        mMask |= InputCondition::KEY_DOWN;
+//    else
+//        mMask |= InputCondition::KEY_UP;
 }
 
 bool InputManager::checkKey(const InputActionData *restrict const key) const
