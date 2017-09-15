@@ -117,10 +117,12 @@ bool Joystick::open()
     for (int f = 0; f < 16; f ++)
         guidStr.append(strprintf("%02x", CAST_U32(guid.data[f])));
     logger->log("Guid: %s", guidStr.c_str());
+#if SDL_VERSION_ATLEAST(2, 0, 6)
     logger->log("Device id: %u:%u.%u",
         CAST_U32(SDL_JoystickGetVendor(mJoystick)),
         CAST_U32(SDL_JoystickGetProduct(mJoystick)),
         CAST_U32(SDL_JoystickGetProductVersion(mJoystick)));
+
     SDL_JoystickType type = SDL_JoystickGetType(mJoystick);
     std::string typeStr;
     switch (type)
@@ -158,6 +160,7 @@ bool Joystick::open()
             break;
     }
     logger->log("Type: " + typeStr);
+#endif  // SDL_VERSION_ATLEAST(2, 0, 6)
     // probably need aslo dump SDL_JoystickCurrentPowerLevel
 #else  // USE_SDL2
 
