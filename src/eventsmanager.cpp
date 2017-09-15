@@ -441,12 +441,20 @@ void EventsManager::logEvent(const SDL_Event &event)
                 event.motion.state, event.motion.x, event.motion.y);
             break;
         case SDL_KEYDOWN:
-            logger->log("event: SDL_KEYDOWN: %d,%d,%d", event.key.state,
-                event.key.keysym.scancode, event.key.keysym.unicode);
+            logger->log("event: SDL_KEYDOWN: %s(%d),%d,%d,%d",
+                SDL_GetKeyName(event.key.keysym.sym),
+                event.key.keysym.sym,
+                event.key.keysym.scancode,
+                event.key.state,
+                event.key.keysym.unicode);
             break;
         case SDL_KEYUP:
-            logger->log("event: SDL_KEYUP: %d,%d,%d", event.key.state,
-                event.key.keysym.scancode, event.key.keysym.unicode);
+            logger->log("event: SDL_KEYUP: %s(%d),%d,%d,%d",
+                SDL_GetKeyName(event.key.keysym.sym),
+                event.key.keysym.sym,
+                event.key.keysym.scancode,
+                event.key.state,
+                event.key.keysym.unicode);
             break;
         case SDL_VIDEORESIZE:
             logger->log("event: SDL_VIDEORESIZE");
