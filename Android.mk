@@ -47,6 +47,10 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
     $(wildcard $(LOCAL_PATH)/src/const/resources/item/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/const/gui/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/const/net/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/progs/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/progs/manaplus/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/progs/manaplus/gui/*.cpp) \
+    $(wildcard $(LOCAL_PATH)/src/progs/manaplus/actions/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/image/*.cpp) \
     $(wildcard $(LOCAL_PATH)/src/resources/animation/*.cpp) \
