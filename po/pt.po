@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-09-12 02:27+0300\n"
-"PO-Revision-Date: 2017-09-06 02:07+0000\n"
+"POT-Creation-Date: 2017-09-16 17:07+0300\n"
+"PO-Revision-Date: 2017-09-12 02:41+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (http://www.transifex.com/akaras/manaplus/language/"
 "pt/)\n"
@@ -798,10 +798,10 @@ msgstr "Indisponivel"
 #: src/gui/dialogsmanager.cpp:203 src/gui/widgets/tabs/setup_input.cpp:165
 #: src/gui/widgets/tabs/setup_theme.cpp:314
 #: src/gui/widgets/tabs/setup_theme.cpp:350
-#: src/gui/widgets/tabs/setup_video.cpp:258
-#: src/gui/widgets/tabs/setup_video.cpp:287
-#: src/gui/widgets/tabs/setup_video.cpp:406
-#: src/gui/widgets/tabs/setup_video.cpp:422
+#: src/gui/widgets/tabs/setup_video.cpp:270
+#: src/gui/widgets/tabs/setup_video.cpp:299
+#: src/gui/widgets/tabs/setup_video.cpp:426
+#: src/gui/widgets/tabs/setup_video.cpp:442
 #: src/gui/windows/changeemaildialog.cpp:169
 #: src/gui/windows/changepassworddialog.cpp:159
 #: src/gui/windows/charcreatedialog.cpp:475
@@ -816,7 +816,7 @@ msgstr "Indisponivel"
 #: src/net/eathena/charserverrecv.cpp:456
 #: src/net/eathena/charserverrecv.cpp:484 src/net/tmwa/charserverrecv.cpp:298
 #: src/progs/manaplus/actions/actions.cpp:175
-#: src/progs/manaplus/client.cpp:1469 src/progs/manaplus/client.cpp:1504
+#: src/progs/manaplus/client.cpp:1477 src/progs/manaplus/client.cpp:1512
 msgid "OK"
 msgstr "OK"
 
@@ -853,8 +853,8 @@ msgstr "(F) Modo de jogo câmera livre"
 #: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:61
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:133
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:111
-#: src/progs/dyecmd/client.cpp:544 src/progs/manaplus/client.cpp:904
-#: src/progs/manaplus/client.cpp:1383 src/progs/manaplus/client.cpp:1402
+#: src/progs/dyecmd/client.cpp:552 src/progs/manaplus/client.cpp:912
+#: src/progs/manaplus/client.cpp:1391 src/progs/manaplus/client.cpp:1410
 msgid "Close"
 msgstr "Fechar"
 
@@ -895,12 +895,14 @@ msgstr ""
 #. TRANSLATORS: inventory sort mode
 #. TRANSLATORS: screen density type
 #. TRANSLATORS: sdl2 log level
+#. TRANSLATORS: sdl driver name
 #. TRANSLATORS: vsync type
 #. TRANSLATORS: equipment window tab
 #. TRANSLATORS: default hosts group name
 #: src/gui/models/colorlistmodel.h:33 src/gui/models/sortlistmodelinv.h:32
 #: src/gui/widgets/tabs/setup_misc.cpp:79
 #: src/gui/widgets/tabs/setup_misc.cpp:100
+#: src/gui/widgets/tabs/setup_perfomance.cpp:74
 #: src/gui/widgets/tabs/setup_visual.cpp:81
 #: src/gui/windows/equipmentwindow.cpp:666 src/gui/windows/serverdialog.cpp:675
 msgid "default"
@@ -2873,7 +2875,7 @@ msgstr "Chat"
 #. TRANSLATORS: input action group
 #. TRANSLATORS: input action name
 #: src/gui/setupinputpages.cpp:62 src/gui/userpalette.cpp:442
-#: src/gui/widgets/tabs/setup_audio.cpp:155
+#: src/gui/widgets/tabs/setup_audio.cpp:159
 #: src/gui/widgets/tabs/setup_chat.cpp:293
 #: src/gui/widgets/tabs/setup_misc.cpp:430
 #: src/gui/widgets/tabs/setup_visual.cpp:207 src/input/pages/chat.cpp:145
@@ -3283,7 +3285,7 @@ msgstr "Preço: %s / Total: %s"
 
 #. TRANSLATORS: setup item button
 #. TRANSLATORS: servers dialog button
-#: src/gui/widgets/setupitem.cpp:374 src/gui/widgets/setupitem.cpp:512
+#: src/gui/widgets/setupitem.cpp:376 src/gui/widgets/setupitem.cpp:514
 #: src/gui/windows/serverdialog.cpp:114
 msgid "Edit"
 msgstr "Editar"
@@ -3693,68 +3695,73 @@ msgstr "surround+center+lfe"
 msgid "Audio channels"
 msgstr "Canais de áudio"
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_audio.cpp:111
+msgid "Parallel number of sounds"
+msgstr ""
+
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_audio.cpp:112
+#: src/gui/widgets/tabs/setup_audio.cpp:116
 msgid "Sound effects"
 msgstr "Efeitos de som"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:115
+#: src/gui/widgets/tabs/setup_audio.cpp:119
 msgid "Information dialog sound"
 msgstr "Som do diálogo de informação"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:119
+#: src/gui/widgets/tabs/setup_audio.cpp:123
 msgid "Request dialog sound"
 msgstr "Som de pedidos"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:123
+#: src/gui/widgets/tabs/setup_audio.cpp:127
 msgid "Whisper message sound"
 msgstr "Som de mensagens de susurros"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:127
+#: src/gui/widgets/tabs/setup_audio.cpp:131
 msgid "Guild / Party message sound"
 msgstr "Som de mensagem de Guilda / Grupo"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:131
+#: src/gui/widgets/tabs/setup_audio.cpp:135
 msgid "Highlight message sound"
 msgstr "Destacar som de mensagens"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:135
+#: src/gui/widgets/tabs/setup_audio.cpp:139
 msgid "Global message sound"
 msgstr "Som de mensagens globais"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:139
+#: src/gui/widgets/tabs/setup_audio.cpp:143
 msgid "Error message sound"
 msgstr "Som de mensagens de erro"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:143
+#: src/gui/widgets/tabs/setup_audio.cpp:147
 msgid "Trade request sound"
 msgstr "Som de pedidos de troca"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:147
+#: src/gui/widgets/tabs/setup_audio.cpp:151
 msgid "Show window sound"
 msgstr "Mostrar som de janela"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:151
+#: src/gui/widgets/tabs/setup_audio.cpp:155
 msgid "Hide window sound"
 msgstr "Ocultar som de janela"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:159
+#: src/gui/widgets/tabs/setup_audio.cpp:163
 msgid "Enable mumble voice chat"
 msgstr "Habilitar o chat de voz mumble \"requer aplicativo mumble\""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_audio.cpp:164
+#: src/gui/widgets/tabs/setup_audio.cpp:168
 msgid "Download music"
 msgstr "Baixar músicas"
 
@@ -4434,9 +4441,8 @@ msgstr ""
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:104
-#, fuzzy
 msgid "debug"
-msgstr "Depurador"
+msgstr ""
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:106
@@ -4450,15 +4456,13 @@ msgstr ""
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:110
-#, fuzzy
 msgid "error"
-msgstr "Erro"
+msgstr ""
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:112
-#, fuzzy
 msgid "critical"
-msgstr "Golpe crítico"
+msgstr ""
 
 #. TRANSLATORS: misc tab in settings
 #: src/gui/widgets/tabs/setup_misc.cpp:126
@@ -4768,9 +4772,8 @@ msgstr "Proxy endereço:porta"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_misc.cpp:390
-#, fuzzy
 msgid "Logging"
-msgstr "Efetuando login"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:393
@@ -4880,145 +4883,150 @@ msgstr ""
 
 #. TRANSLATORS: texture compression type
 #. TRANSLATORS: confirm dialog button
-#: src/gui/widgets/tabs/setup_perfomance.cpp:42
+#: src/gui/widgets/tabs/setup_perfomance.cpp:46
 #: src/gui/windows/confirmdialog.cpp:59
 msgid "No"
 msgstr "Não"
 
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: perfoamance tab quick button
-#: src/gui/widgets/tabs/setup_perfomance.cpp:54 src/progs/dyecmd/client.cpp:528
-#: src/progs/manaplus/client.cpp:888
+#: src/gui/widgets/tabs/setup_perfomance.cpp:61 src/progs/dyecmd/client.cpp:536
+#: src/progs/manaplus/client.cpp:896
 msgid "Performance"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:62
+#: src/gui/widgets/tabs/setup_perfomance.cpp:78
 msgid "Better performance (enable for better performance)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:66
+#: src/gui/widgets/tabs/setup_perfomance.cpp:82
 msgid "Auto adjust performance"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:70
+#: src/gui/widgets/tabs/setup_perfomance.cpp:86
 msgid "Hw acceleration"
 msgstr "Aceleração por HW"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:74
+#: src/gui/widgets/tabs/setup_perfomance.cpp:90
 msgid "Enable opacity cache (Software, can use much memory)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:79
+#: src/gui/widgets/tabs/setup_perfomance.cpp:95
 msgid "Enable map reduce (Software)"
 msgstr "Habilitar redução de mapa (Software)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:84
+#: src/gui/widgets/tabs/setup_perfomance.cpp:100
 msgid "Enable compound sprite delay (Software)"
 msgstr "Habilitar atraso de sprite composto (Software)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:88
+#: src/gui/widgets/tabs/setup_perfomance.cpp:104
 msgid "Enable delayed images load (OpenGL)"
 msgstr "Ativar atraso em carregamento de imagens (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:92
+#: src/gui/widgets/tabs/setup_perfomance.cpp:108
 msgid "Enable texture sampler (OpenGL)"
 msgstr "Ativar amostrador de textura (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:96
+#: src/gui/widgets/tabs/setup_perfomance.cpp:112
 msgid "Enable OpenGL context creation"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:100
+#: src/gui/widgets/tabs/setup_perfomance.cpp:116
 msgid "Enable OpenGL direct state access"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:105
+#: src/gui/widgets/tabs/setup_perfomance.cpp:121
 msgid "Better quality (disable for better performance)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:109
+#: src/gui/widgets/tabs/setup_perfomance.cpp:125
 msgid "Enable alpha channel fix (Software, can be very slow)"
 msgstr "Habilitar correção de canal alpha (Software, pode ficar muito lento)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:114
+#: src/gui/widgets/tabs/setup_perfomance.cpp:130
 msgid "Show beings transparency"
 msgstr "Mostrar transparencia"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:118
+#: src/gui/widgets/tabs/setup_perfomance.cpp:134
 msgid "Enable reorder sprites (need for mods support)."
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:123
+#: src/gui/widgets/tabs/setup_perfomance.cpp:140
 msgid "Small memory (enable for lower memory usage)"
 msgstr "Menos memória (Habilite para menos uso de memória)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:128
+#: src/gui/widgets/tabs/setup_perfomance.cpp:144
 msgid "Disable advanced beings caching (Software)"
 msgstr "Desabilitar cache avançado (Software)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:132
+#: src/gui/widgets/tabs/setup_perfomance.cpp:148
 msgid "Disable beings caching (Software)"
 msgstr "Desabilitar cache (Software)"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:137
+#: src/gui/widgets/tabs/setup_perfomance.cpp:154
 msgid "Different options (enable or disable can improve performance)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:142
+#: src/gui/widgets/tabs/setup_perfomance.cpp:161
+msgid "Try first sdl driver (only for SDL2 default mode)"
+msgstr ""
+
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_perfomance.cpp:167
 msgid "Enable texture compression (OpenGL)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:146
+#: src/gui/widgets/tabs/setup_perfomance.cpp:171
 msgid "Enable rectangular texture extension (OpenGL)"
 msgstr "Habilitar a extensão textura retangular (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:150
+#: src/gui/widgets/tabs/setup_perfomance.cpp:175
 msgid "Use new texture internal format (OpenGL)"
 msgstr "Utilizar nova textura de formato interno (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:154
+#: src/gui/widgets/tabs/setup_perfomance.cpp:179
 msgid "Enable texture atlases (OpenGL)"
 msgstr "Ativar atlas de textura (OpenGL)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:158
+#: src/gui/widgets/tabs/setup_perfomance.cpp:183
 msgid "Cache all sprites per map (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:163
+#: src/gui/widgets/tabs/setup_perfomance.cpp:188
 msgid "Cache all sounds (can use additional memory)"
 msgstr ""
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_perfomance.cpp:168
+#: src/gui/widgets/tabs/setup_perfomance.cpp:193
 msgid "Critical options (DO NOT change if you don't know what you're doing)"
 msgstr ""
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_perfomance.cpp:172
+#: src/gui/widgets/tabs/setup_perfomance.cpp:197
 msgid "Disable logging in game (do not enable)"
 msgstr ""
 
@@ -5299,8 +5307,8 @@ msgstr "i"
 
 #. TRANSLATORS: theme settings tab name
 #. TRANSLATORS: theme tab quick button
-#: src/gui/widgets/tabs/setup_theme.cpp:121 src/progs/dyecmd/client.cpp:534
-#: src/progs/manaplus/client.cpp:894
+#: src/gui/widgets/tabs/setup_theme.cpp:121 src/progs/dyecmd/client.cpp:542
+#: src/progs/manaplus/client.cpp:902
 msgid "Theme"
 msgstr "Tema"
 
@@ -5327,8 +5335,8 @@ msgstr "Tema alterado"
 #. TRANSLATORS: ok dialog message
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_theme.cpp:348
-#: src/gui/widgets/tabs/setup_video.cpp:401
-#: src/gui/widgets/tabs/setup_video.cpp:419
+#: src/gui/widgets/tabs/setup_video.cpp:421
+#: src/gui/widgets/tabs/setup_video.cpp:439
 msgid "Restart your client for the change to take effect."
 msgstr "Reincie o cliente para que as mudanças surtam efeito."
 
@@ -5420,9 +5428,9 @@ msgstr "Limite de FPS:"
 
 #. TRANSLATORS: video settings label
 #: src/gui/widgets/tabs/setup_video.cpp:83
-#: src/gui/widgets/tabs/setup_video.cpp:124
-#: src/gui/widgets/tabs/setup_video.cpp:331
-#: src/gui/widgets/tabs/setup_video.cpp:476
+#: src/gui/widgets/tabs/setup_video.cpp:129
+#: src/gui/widgets/tabs/setup_video.cpp:346
+#: src/gui/widgets/tabs/setup_video.cpp:496
 msgid "Alt FPS limit: "
 msgstr "Limite de FPS alternativo: "
 
@@ -5433,51 +5441,56 @@ msgstr "Detectar melhor modo"
 
 #. TRANSLATORS: video settings checkbox
 #: src/gui/widgets/tabs/setup_video.cpp:96
+msgid "High DPI"
+msgstr ""
+
+#. TRANSLATORS: video settings checkbox
+#: src/gui/widgets/tabs/setup_video.cpp:101
 msgid "Show cursor"
 msgstr "Mostrar cursor"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:99
+#: src/gui/widgets/tabs/setup_video.cpp:104
 msgid "Custom cursor"
 msgstr "Cursor customizado"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:103
+#: src/gui/widgets/tabs/setup_video.cpp:108
 msgid "Enable resize"
 msgstr "Habilitar redirecionamento de janela"
 
 #. TRANSLATORS: video settings checkbox
-#: src/gui/widgets/tabs/setup_video.cpp:106
+#: src/gui/widgets/tabs/setup_video.cpp:111
 msgid "No frame"
 msgstr "Sem moldura de janela"
 
 #. TRANSLATORS: video settings tab name
 #. TRANSLATORS: video tab quick button
-#: src/gui/widgets/tabs/setup_video.cpp:109 src/progs/dyecmd/client.cpp:531
-#: src/progs/manaplus/client.cpp:891
+#: src/gui/widgets/tabs/setup_video.cpp:114 src/progs/dyecmd/client.cpp:539
+#: src/progs/manaplus/client.cpp:899
 msgid "Video"
 msgstr "Vídeo"
 
 #. TRANSLATORS: video settings label
 #. TRANSLATORS: video settings label value
 #. TRANSLATORS: video settings label
-#: src/gui/widgets/tabs/setup_video.cpp:121
 #: src/gui/widgets/tabs/setup_video.cpp:126
-#: src/gui/widgets/tabs/setup_video.cpp:329
-#: src/gui/widgets/tabs/setup_video.cpp:460
-#: src/gui/widgets/tabs/setup_video.cpp:473
+#: src/gui/widgets/tabs/setup_video.cpp:131
+#: src/gui/widgets/tabs/setup_video.cpp:344
+#: src/gui/widgets/tabs/setup_video.cpp:480
+#: src/gui/widgets/tabs/setup_video.cpp:493
 msgid "None"
 msgstr "Nenhum"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:234
+#: src/gui/widgets/tabs/setup_video.cpp:246
 msgid ""
 "Failed to switch to windowed mode and restoration of old mode also failed!"
 msgstr ""
 "Falha ao mudar para o modo janela e falha na restauração do modo anterior!"
 
 #. TRANSLATORS: video error message
-#: src/gui/widgets/tabs/setup_video.cpp:241
+#: src/gui/widgets/tabs/setup_video.cpp:253
 msgid ""
 "Failed to switch to fullscreen mode and restoration of old mode also failed!"
 msgstr ""
@@ -5485,43 +5498,43 @@ msgstr ""
 "anterior!"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:254
+#: src/gui/widgets/tabs/setup_video.cpp:266
 msgid "Switching to Full Screen"
 msgstr "Mudando para tela cheia"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:256
+#: src/gui/widgets/tabs/setup_video.cpp:268
 msgid "Restart needed for changes to take effect."
 msgstr "É preciso reiniciar para as mudanças terem efeito."
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:283
+#: src/gui/widgets/tabs/setup_video.cpp:295
 msgid "Changing to OpenGL"
 msgstr "Mudando para OpenGL"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:285
+#: src/gui/widgets/tabs/setup_video.cpp:297
 msgid "Applying change to OpenGL requires restart."
 msgstr "Mudanças no OpenGL requerem o reinício do jogo."
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:370
+#: src/gui/widgets/tabs/setup_video.cpp:390
 msgid "Custom resolution (example: 1024x768)"
 msgstr "Resolução customizada (exemplo 1024x768)"
 
 #. TRANSLATORS: resolution question dialog
-#: src/gui/widgets/tabs/setup_video.cpp:372
+#: src/gui/widgets/tabs/setup_video.cpp:392
 msgid "Enter new resolution:                "
 msgstr "Escolha a nova resolução                "
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:399
-#: src/gui/widgets/tabs/setup_video.cpp:417
+#: src/gui/widgets/tabs/setup_video.cpp:419
+#: src/gui/widgets/tabs/setup_video.cpp:437
 msgid "Screen Resolution Changed"
 msgstr "Resolução de tela alterada"
 
 #. TRANSLATORS: video settings warning
-#: src/gui/widgets/tabs/setup_video.cpp:403
+#: src/gui/widgets/tabs/setup_video.cpp:423
 msgid "Some windows may be moved to fit the lowered resolution."
 msgstr ""
 "Algumas janelas podem ser movidas para se adequar à resolução mais baixa."
@@ -5858,7 +5871,7 @@ msgstr "AJD"
 #. TRANSLATORS: help window name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/windowmenu.cpp:76 src/gui/windows/helpwindow.cpp:57
-#: src/progs/dyecmd/client.cpp:540 src/progs/manaplus/client.cpp:900
+#: src/progs/dyecmd/client.cpp:548 src/progs/manaplus/client.cpp:908
 msgid "Help"
 msgstr "Ajuda"
 
@@ -6053,7 +6066,7 @@ msgstr "CON"
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: setup tab quick button
 #: src/gui/windowmenu.cpp:198 src/gui/windows/setupwindow.cpp:67
-#: src/progs/dyecmd/client.cpp:525 src/progs/manaplus/client.cpp:885
+#: src/progs/dyecmd/client.cpp:533 src/progs/manaplus/client.cpp:893
 msgid "Setup"
 msgstr "Configurar"
 
@@ -6162,8 +6175,8 @@ msgstr "Os emails informados não são iguais."
 #: src/net/eathena/charserverrecv.cpp:394
 #: src/net/eathena/charserverrecv.cpp:398
 #: src/net/eathena/charserverrecv.cpp:480 src/net/tmwa/charserverrecv.cpp:294
-#: src/progs/manaplus/client.cpp:1380 src/progs/manaplus/client.cpp:1399
-#: src/progs/manaplus/client.cpp:1604
+#: src/progs/manaplus/client.cpp:1388 src/progs/manaplus/client.cpp:1407
+#: src/progs/manaplus/client.cpp:1612
 msgid "Error"
 msgstr "Erro"
 
@@ -9588,7 +9601,7 @@ msgid "Poison had no effect..."
 msgstr "Veneno não surtiu efeito..."
 
 #. TRANSLATORS: theme tab quick button
-#: src/progs/dyecmd/client.cpp:537 src/progs/manaplus/client.cpp:897
+#: src/progs/dyecmd/client.cpp:545 src/progs/manaplus/client.cpp:905
 msgid "About"
 msgstr ""
 
@@ -9925,57 +9938,57 @@ msgid "Accepting incoming trade requests"
 msgstr "Aceitando propostas de negócios"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1099
+#: src/progs/manaplus/client.cpp:1107
 msgid "Connecting to server"
 msgstr "Conectando ao servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1157 src/unittests/gui/windowmanager.cc:801
+#: src/progs/manaplus/client.cpp:1165 src/unittests/gui/windowmanager.cc:808
 msgid "Logging in"
 msgstr "Efetuando login"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1207
+#: src/progs/manaplus/client.cpp:1215
 msgid "Entering game world"
 msgstr "Entrando no domínio do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1268
+#: src/progs/manaplus/client.cpp:1276
 msgid "Requesting characters"
 msgstr "Requisitando personagens"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1311
+#: src/progs/manaplus/client.cpp:1319
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1323
+#: src/progs/manaplus/client.cpp:1331
 msgid "Changing game servers"
 msgstr "Mudando servidores do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1418
+#: src/progs/manaplus/client.cpp:1426
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
 #. TRANSLATORS: password change message header
-#: src/progs/manaplus/client.cpp:1465
+#: src/progs/manaplus/client.cpp:1473
 msgid "Password Change"
 msgstr "Mudar senha"
 
 #. TRANSLATORS: password change message text
-#: src/progs/manaplus/client.cpp:1467
+#: src/progs/manaplus/client.cpp:1475
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
 #. TRANSLATORS: email change message header
-#: src/progs/manaplus/client.cpp:1500
+#: src/progs/manaplus/client.cpp:1508
 msgid "Email Change"
 msgstr "Mudar email"
 
 #. TRANSLATORS: email change message text
-#: src/progs/manaplus/client.cpp:1502
+#: src/progs/manaplus/client.cpp:1510
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
