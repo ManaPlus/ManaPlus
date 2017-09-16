@@ -691,7 +691,8 @@ void Client::gameClear()
 
     BeingInfo::clear();
 
-    soundManager.shutdown();
+    // Shutdown sound
+    soundManager.close();
 
     if (logger != nullptr)
         logger->log1("Quitting6");
@@ -700,8 +701,7 @@ void Client::gameClear()
 
     ResourceManager::deleteInstance();
 
-    // Shutdown sound
-    soundManager.close();
+    soundManager.shutdown();
 
     if (logger != nullptr)
         logger->log1("Quitting8");

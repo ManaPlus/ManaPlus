@@ -449,7 +449,7 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting5");
 
-    soundManager.shutdown();
+    soundManager.close();
 
     if (logger != nullptr)
         logger->log1("Quitting6");
@@ -457,7 +457,7 @@ void Client::gameClear()
     touchManager.clear();
     ResourceManager::deleteInstance();
 
-    soundManager.close();
+    soundManager.shutdown();
 
     if (logger != nullptr)
         logger->log1("Quitting8");
