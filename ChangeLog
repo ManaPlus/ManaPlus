@@ -1,3 +1,24 @@
+2017-09-16 New release 1.7.9.16
+fix: sorting fonts and themes lists.
+fix: scrolling big windows.
+fix: crash with simple text in chat window before connecting to server.
+fix: adding stackable items to mail window.
+fix: button in higlighted state in who is online window.
+fix: memory leak in downloads.
+fix: add workaround for fix alt-tab issue in SDL2.
+fix: ignoring keys in SDL 2.
+fix: prevent to run cmake by default. because cmake is legacy build system.
+fix: alternative fps mode in SDL 2 and before connecting to server.
+fix: audio termination on exit.
+add: jewelry-simple theme with non transparent chat window.
+add: rescale skill casting animation to whole skill area.
+add: current renderer into user agent string in web requests.
+add: extend input SDL events logging.
+add: option with SDL logging level (SDL 2).
+add: option for allow high dpi mode (SDL 2).
+add: allow use different existing renderer in SDL2 normal mode.
+add: option for max parallel sounds.
+
 2017-09-02 New release 1.7.9.2
 fix: duplicates for some assert messages.
 fix: mouse selection in some lists.
