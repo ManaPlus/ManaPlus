@@ -385,6 +385,10 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
     new SetupItemTextField(_("Proxy address:port"), "",
         "downloadProxy", this, "downloadProxyEvent");
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Tunnel through HTTP proxy"), "",
+        "downloadProxyTunnel", this, "downloadProxyTunnelEvent");
+
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Logging"), "", this);

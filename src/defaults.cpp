@@ -296,6 +296,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("autohideChat", false);
     AddDEF("downloadProxy", "");
     AddDEF("downloadProxyType", 0);
+    AddDEF("downloadProxyTunnel", false);
     AddDEF("blur", false);
 #if defined(WIN32) || defined(__APPLE__)
     AddDEF("centerwindow", true);

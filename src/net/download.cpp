@@ -511,6 +511,7 @@ void Download::addProxy(CURL *const curl)
         curl_easy_setopt(curl, CURLOPT_PROXY,
             config.getStringValue("downloadProxy").c_str());
     }
+
     switch (mode)
     {
         case 1:  // direct connection
@@ -518,11 +519,19 @@ void Download::addProxy(CURL *const curl)
             curl_easy_setopt(curl, CURLOPT_PROXY, "");
             break;
         case 2:  // HTTP
+#if LIBCURL_VERSION_NUM >= 0x070300
+            curl_easy_setopt(curl, CURLOPT_HTTPPROXYTUNNEL,
+                config.getIntValue("downloadProxyTunnel"));
+#endif  // LIBCURL_VERSION_NUM >= 0x070300
             break;
         case 3:  // HTTP 1.0
 #if LIBCURL_VERSION_NUM >= 0x071304
             curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP_1_0);
 #endif  // LIBCURL_VERSION_NUM >= 0x071304
+#if LIBCURL_VERSION_NUM >= 0x070300
+            curl_easy_setopt(curl, CURLOPT_HTTPPROXYTUNNEL,
+                config.getIntValue("downloadProxyTunnel"));
+#endif  // LIBCURL_VERSION_NUM >= 0x070300
             break;
         case 4:  // SOCKS4
 #if LIBCURL_VERSION_NUM >= 0x070a00
