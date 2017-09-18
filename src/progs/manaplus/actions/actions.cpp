@@ -1478,7 +1478,7 @@ impHandler(dumpMods)
 #if defined USE_OPENGL && defined DEBUG_SDLFONT
 impHandler0(testSdlFont)
 {
-    Font *font = new Font("fonts/dejavusans.ttf", 18);
+    Font *font = new Font("fonts/dejavusans.ttf", 18, TTF_STYLE_NORMAL);
     timespec time1;
     timespec time2;
     NullOpenGLGraphics *nullGraphics = new NullOpenGLGraphics;

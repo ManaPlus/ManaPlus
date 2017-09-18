@@ -90,7 +90,7 @@ class Font final
     public:
         Font(std::string filename,
              int size,
-             const int style = 0);
+             const int style);
 
         A_DELETE_COPY(Font)
 
@@ -98,7 +98,7 @@ class Font final
 
         void loadFont(std::string filename,
                       const int size,
-                      const int style = 0) restrict2;
+                      const int style) restrict2;
 
         int getWidth(const std::string &text) const restrict2 A_WARN_UNUSED;
 

@@ -193,7 +193,7 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 
-    mGuiFont = new Font(fontFile, fontSize);
+    mGuiFont = new Font(fontFile, fontSize, TTF_STYLE_NORMAL);
 
     // Set particle font
     fontFile = config.getValue("particleFont", "");
@@ -219,21 +219,21 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("boldFont");
 
-    boldFont = new Font(fontFile, fontSize);
+    boldFont = new Font(fontFile, fontSize, TTF_STYLE_NORMAL);
 
     // Set help font
     fontFile = config.getValue("helpFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("helpFont");
 
-    mHelpFont = new Font(fontFile, fontSize);
+    mHelpFont = new Font(fontFile, fontSize, TTF_STYLE_NORMAL);
 
     // Set secure font
     fontFile = config.getValue("secureFont", "");
     if (fontFile.empty())
         fontFile = branding.getStringValue("secureFont");
 
-    mSecureFont = new Font(fontFile, fontSize);
+    mSecureFont = new Font(fontFile, fontSize, TTF_STYLE_NORMAL);
 
     // Set npc font
     const int npcFontSize = config.getIntValue("npcfontSize");
@@ -253,7 +253,7 @@ void Gui::postInit(Graphics *const graphics)
     if (fontFile.empty())
         fontFile = branding.getStringValue("npcFont");
 
-    mNpcFont = new Font(fontFile, npcFontSize);
+    mNpcFont = new Font(fontFile, npcFontSize, TTF_STYLE_NORMAL);
 
     Widget::setGlobalFont(mGuiFont);
 
@@ -816,7 +816,7 @@ void Gui::updateFonts()
     if (fontFile.empty())
         fontFile = branding.getStringValue("font");
 
-    mGuiFont->loadFont(fontFile, fontSize);
+    mGuiFont->loadFont(fontFile, fontSize, TTF_STYLE_NORMAL);
 
     fontFile = config.getValue("particleFont", "");
     if (fontFile.empty())
@@ -828,7 +828,7 @@ void Gui::updateFonts()
     if (fontFile.empty())
         fontFile = branding.getStringValue("boldFont");
 
-    boldFont->loadFont(fontFile, fontSize);
+    boldFont->loadFont(fontFile, fontSize, TTF_STYLE_NORMAL);
 
     const int npcFontSize = config.getIntValue("npcfontSize");
 
@@ -836,7 +836,7 @@ void Gui::updateFonts()
     if (fontFile.empty())
         fontFile = branding.getStringValue("npcFont");
 
-    mNpcFont->loadFont(fontFile, npcFontSize);
+    mNpcFont->loadFont(fontFile, npcFontSize, TTF_STYLE_NORMAL);
 }
 
 void Gui::distributeMouseEvent(Widget *const source,
