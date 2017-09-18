@@ -79,8 +79,10 @@ TEST_CASE("BrowserBox tests", "browserbox")
     gui = new Gui();
     gui->postInit(mainGraphics);
 
-    Widget::setGlobalFont(new Font("/usr/share/fonts/truetype/"
-        "ttf-dejavu/DejaVuSans-Oblique.ttf", 18));
+    Widget::setGlobalFont(new Font(
+        "/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans-Oblique.ttf",
+        18,
+        TTF_STYLE_NORMAL));
     BrowserBox *const box = new BrowserBox(nullptr,
         Opaque_true,
         "");
