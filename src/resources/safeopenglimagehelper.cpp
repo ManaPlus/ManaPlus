@@ -71,7 +71,7 @@ Image *SafeOpenGLImageHelper::load(SDL_RWops *const rw,
     SDL_Surface *const tmpImage = loadPng(rw);
     if (tmpImage == nullptr)
     {
-        logger->log("Error, image load failed: %s", IMG_GetError());
+        logger->log("Error, image load failed: %s", SDL_GetError());
         return nullptr;
     }
 

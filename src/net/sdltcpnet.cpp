@@ -97,7 +97,7 @@ int TcpNet::send(const TcpNet::Socket sock, const void *const data,
 
 const char *TcpNet::getError()
 {
-    return SDLNet_GetError();
+    return SDL_GetError();
 }
 
 int TcpNet::resolveHost(IPaddress *const address, const char *const host,

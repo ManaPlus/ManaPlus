@@ -61,7 +61,7 @@ namespace
                 return new SoundEffect(tmpSoundEffect, rl->path);
             }
             reportAlways("Error, failed to load sound effect: %s",
-                Mix_GetError());
+                SDL_GetError());
             return nullptr;
         }
     };

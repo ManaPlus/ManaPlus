@@ -74,7 +74,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     SDL_Surface *const tmpImage = loadPng(rw);
     if (tmpImage == nullptr)
     {
-        reportAlways("Error, image load failed: %s", IMG_GetError());
+        reportAlways("Error, image load failed: %s", SDL_GetError());
         return nullptr;
     }
 

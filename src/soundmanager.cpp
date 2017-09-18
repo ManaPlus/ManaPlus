@@ -173,7 +173,7 @@ void SoundManager::init()
     if (res < 0)
     {
         logger->log("SoundManager::init Could not initialize audio: %s",
-                    Mix_GetError());
+                    SDL_GetError());
         if (Mix_OpenAudio(22010, MIX_DEFAULT_FORMAT, 2, audioBuffer) < 0)
             return;
         logger->log("Fallback to stereo audio");
@@ -228,7 +228,7 @@ void SoundManager::testAudio()
     if (SDL_OpenAudio(&desired, &actual) < 0)
     {
         logger->log("SoundManager::testAudio error: %s",
-            Mix_GetError());
+            SDL_GetError());
         return;
     }
     if (desired.freq != actual.freq)

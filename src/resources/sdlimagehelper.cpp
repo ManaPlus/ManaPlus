@@ -62,7 +62,7 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     if (tmpImage == nullptr)
     {
         reportAlways("Error, image load failed: %s",
-            IMG_GetError());
+            SDL_GetError());
         return nullptr;
     }
 

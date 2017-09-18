@@ -116,7 +116,7 @@ Font::Font(std::string filename,
         if (TTF_Init() == -1)
         {
             logger->error("Unable to initialize SDL_ttf: " +
-                std::string(TTF_GetError()));
+                std::string(SDL_GetError()));
         }
     }
 
@@ -154,7 +154,7 @@ Font::Font(std::string filename,
                 filename.c_str());
 #endif  // UNITTESTS
             logger->error("Font::Font: " +
-                std::string(TTF_GetError()));
+                std::string(SDL_GetError()));
         }
         else
         {
@@ -222,7 +222,7 @@ void Font::loadFont(std::string filename,
     if (fontCounter == 0 && TTF_Init() == -1)
     {
         logger->log("Unable to initialize SDL_ttf: " +
-                    std::string(TTF_GetError()));
+                    std::string(SDL_GetError()));
         return;
     }
 
@@ -232,7 +232,7 @@ void Font::loadFont(std::string filename,
     if (font == nullptr)
     {
         logger->log("Font::Font: " +
-                    std::string(TTF_GetError()));
+                    std::string(SDL_GetError()));
         return;
     }
 

@@ -67,7 +67,7 @@ namespace
             }
 #endif  // USE_SDL2
 
-            logger->log("Error, failed to load music: %s", Mix_GetError());
+            logger->log("Error, failed to load music: %s", SDL_GetError());
             return nullptr;
         }
     };
