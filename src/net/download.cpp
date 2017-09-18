@@ -584,6 +584,10 @@ void Download::secureCurl(CURL *const curl A_UNUSED)
     curl_easy_setopt(curl, CURLOPT_MAXFILESIZE, 536870912);
 #endif  // LIBCURL_VERSION_NUM >= 0x070a08
 
+#if LIBCURL_VERSION_NUM >= 0x073100
+    curl_easy_setopt(curl, CURLOPT_TCP_FASTOPEN, 1L);
+#endif  // LIBCURL_VERSION_NUM >= 0x073100
+
     curl_easy_setopt(curl, CURLOPT_LOW_SPEED_LIMIT, 1L);
     curl_easy_setopt(curl, CURLOPT_LOW_SPEED_TIME, 60L);
 }
