@@ -32,11 +32,6 @@
 #include "utils/checkutils.h"
 #include "utils/sdlcheckutils.h"
 
-PRAGMA48(GCC diagnostic push)
-PRAGMA48(GCC diagnostic ignored "-Wshadow")
-#include <SDL_image.h>
-PRAGMA48(GCC diagnostic pop)
-
 #include "localconsts.h"
 
 #if SDL_BYTEORDER == SDL_LIL_ENDIAN
