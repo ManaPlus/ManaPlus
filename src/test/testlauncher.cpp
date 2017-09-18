@@ -33,13 +33,13 @@
 
 #include "gui/fonts/font.h"
 
+#include "utils/pnglib.h"
 #include "utils/stringutils.h"
 
 #include "render/graphics.h"
 
 #include "render/vertexes/imagecollection.h"
 
-#include "resources/imagewriter.h"
 #include "resources/openglimagehelper.h"
 #include "resources/screenshothelper.h"
 #include "resources/surfaceimagehelper.h"
@@ -476,9 +476,9 @@ int TestLauncher::testDye()
             {
                 SurfaceImageHelper::combineSurface(image->mSDLSurface, nullptr,
                     surface, nullptr);
-                ImageWriter::writePNG(image->mSDLSurface,
+                PngLib::writePNG(image->mSDLSurface,
                     settings.tempDir + "/testimage1.png");
-                ImageWriter::writePNG(surface,
+                PngLib::writePNG(surface,
                     settings.tempDir + "/testimage2.png");
             }
 
@@ -494,9 +494,9 @@ int TestLauncher::testDye()
                 {
                     SurfaceImageHelper::combineSurface(image->mSDLSurface,
                         nullptr, surface, nullptr);
-                    ImageWriter::writePNG(image->mSDLSurface,
+                    PngLib::writePNG(image->mSDLSurface,
                         settings.tempDir + "/testimage3.png");
-                    ImageWriter::writePNG(surface,
+                    PngLib::writePNG(surface,
                         settings.tempDir + "/testimage4.png");
                 }
             }

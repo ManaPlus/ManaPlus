@@ -26,8 +26,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "resources/imagewriter.h"
-
 #include "resources/image/image.h"
 
 #ifdef USE_SDL2
@@ -37,6 +35,7 @@
 #include "resources/loaders/imageloader.h"
 
 #include "utils/gettext.h"
+#include "utils/pnglib.h"
 #include "utils/sdlhelper.h"
 
 #include <iostream>
@@ -114,7 +113,7 @@ int main(int argc, char **argv)
     }
     SDL_Surface *const surface = ImageHelper::convertTo32Bit(
         image->getSDLSurface());
-    ImageWriter::writePNG(surface, dst);
+    PngLib::writePNG(surface, dst);
     SDL_FreeSurface(surface);
     VirtFs::deinit();
     return 0;

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_IMAGEWRITER_H
-#define RESOURCES_IMAGEWRITER_H
+#ifndef UTILS_PNGLIB_H
+#define UTILS_PNGLIB_H
 
 #include <string>
 
@@ -29,16 +29,10 @@
 
 struct SDL_Surface;
 
-class ImageWriter final
+namespace PngLib
 {
-    public:
-        ImageWriter()
-        { }
+    bool writePNG(SDL_Surface *const surface,
+                  const std::string &filename);
+} // namespace PngLib
 
-        A_DELETE_COPY(ImageWriter)
-
-        static bool writePNG(SDL_Surface *const surface,
-                             const std::string &filename);
-};
-
-#endif  // RESOURCES_IMAGEWRITER_H
+#endif  // UTILS_PNGLIB_H

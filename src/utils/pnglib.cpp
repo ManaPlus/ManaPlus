@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/imagewriter.h"
+#include "utils/pnglib.h"
 
 #include "utils/cast.h"
 #include "utils/checkutils.h"
@@ -33,8 +33,8 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
-bool ImageWriter::writePNG(SDL_Surface *const surface,
-                           const std::string &filename)
+bool PngLib::writePNG(SDL_Surface *const surface,
+                      const std::string &filename)
 {
     if (surface == nullptr)
         return false;
@@ -89,14 +89,6 @@ bool ImageWriter::writePNG(SDL_Surface *const surface,
 
     png_bytep *const row_pointers
         = new png_bytep[CAST_SIZE(surface->h)];
-/*
-    if (!row_pointers)
-    {
-        logger->log1("Had trouble converting surface to row pointers");
-        fclose(fp);
-        return false;
-    }
-*/
 
     for (int i = 0; i < surface->h; i++)
     {

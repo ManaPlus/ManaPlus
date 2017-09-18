@@ -685,8 +685,6 @@ SET(SRCS
     resources/imagerect.h
     resources/imageset.h
     resources/imageset.cpp
-    resources/imagewriter.cpp
-    resources/imagewriter.h
     resources/itemcolordata.h
     resources/db/itemdb.cpp
     resources/db/itemdb.h
@@ -916,6 +914,8 @@ SET(SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
+    utils/pnglib.cpp
+    utils/pnglib.h
     fs/virtfs/fsfuncs.h
     fs/virtfs/rwops.cpp
     fs/virtfs/rwops.h
@@ -1778,8 +1778,6 @@ SET(DYE_CMD_SRCS
     resources/imagerect.h
     resources/imageset.cpp
     resources/imageset.h
-    resources/imagewriter.cpp
-    resources/imagewriter.h
     resources/itemcolordata.h
     resources/resource.cpp
     resources/resource.h
@@ -1846,6 +1844,8 @@ SET(DYE_CMD_SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
+    utils/pnglib.cpp
+    utils/pnglib.h
     fs/virtfs/fsfuncs.h
     fs/virtfs/rwops.cpp
     fs/virtfs/rwops.h

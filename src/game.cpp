@@ -110,7 +110,6 @@
 #include "particle/particleengine.h"
 
 #include "resources/delayedmanager.h"
-#include "resources/imagewriter.h"
 #include "resources/mapreader.h"
 #include "resources/screenshothelper.h"
 
@@ -125,6 +124,7 @@
 #include "utils/delete2.h"
 #include "utils/foreach.h"
 #include "utils/gettext.h"
+#include "utils/pnglib.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
 
@@ -606,7 +606,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
     }
 
     const std::string fileNameStr = filename.str();
-    const bool success = ImageWriter::writePNG(screenshot, fileNameStr);
+    const bool success = PngLib::writePNG(screenshot, fileNameStr);
 #ifdef __native_client__
     std::string nacScreenshotlDir = fileNameStr;
     cutFirst(nacScreenshotlDir, "/persistent");

@@ -464,8 +464,6 @@ BASE_SRC += client.h \
 	      resources/imagehelper.h \
 	      resources/imageset.cpp \
 	      resources/imageset.h \
-	      resources/imagewriter.cpp \
-	      resources/imagewriter.h \
 	      resources/itemcolordata.h \
 	      resources/mstack.h \
 	      resources/notificationinfo.h \
@@ -621,6 +619,8 @@ BASE_SRC += client.h \
 	      fs/paths.h \
 	      utils/perfomance.cpp \
 	      utils/perfomance.h \
+	      utils/pnglib.cpp \
+	      utils/pnglib.h \
 	      fs/virtfs/fsfuncs.h \
 	      fs/virtfs/rwops.cpp \
 	      fs/virtfs/rwops.h \
