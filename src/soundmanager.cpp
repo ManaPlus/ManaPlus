@@ -40,6 +40,8 @@
 #include "resources/loaders/musicloader.h"
 #include "resources/loaders/soundloader.h"
 
+#include "resources/resourcemanager/resourcemanager.h"
+
 #include "utils/checkutils.h"
 
 PRAGMA48(GCC diagnostic push)
@@ -530,7 +532,14 @@ void SoundManager::close()
     if (!mInstalled)
         return;
 
-    haltMusic();
+    if (mMusic != nullptr)
+    {
+        Mix_HaltMusic();
+        ResourceManager::decRefDelete(mMusic);
+        mMusic = nullptr;
+        mCurrentMusicFile.clear();
+    }
+
     logger->log1("SoundManager::close() Shutting down sound...");
     Mix_CloseAudio();
 
