@@ -130,7 +130,6 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("particleEmitterSkip", 1);
     AddDEF("particleeffects", true);
     AddDEF("mapparticleeffects", true);
-    AddDEF("logToStandardOut", false);
     AddDEF("opengl", 0);
 #ifdef ANDROID
     AddDEF("screenwidth", 0);

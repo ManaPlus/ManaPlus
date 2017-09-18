@@ -74,7 +74,6 @@ int main(int argc, char **argv)
     }
 
     logger = new Logger;
-    logger->setLogToStandardOut(false);
     SDL::initLogger();
 
     VirtFs::init(argv[0]);

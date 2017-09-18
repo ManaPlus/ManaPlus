@@ -346,8 +346,6 @@ void Client::gameInit()
         chatLogger->setBaseLogDir(settings.options.chatLogDir);
     }
 
-    logger->setLogToStandardOut(config.getBoolValue("logToStandardOut"));
-
     // Log the client version
     logger->log1(FULL_VERSION);
     logger->log("Start configPath: " + config.getConfigPath());

@@ -126,6 +126,11 @@ void Logger::setLogFile(const std::string &logFilename)
     {
         std::cout << "Warning: error while opening " << logFilename <<
             " for writing.\n";
+        mLogToStandardOut = true;
+    }
+    else
+    {
+        mLogToStandardOut = false;
     }
 }
 
