@@ -220,6 +220,7 @@ void GameHandler::ping(const int tick) const
 
 void GameHandler::disconnect2() const
 {
+    createOutPacket(CMSG_CLIENT_QUIT);
 }
 
 }  // namespace EAthena
