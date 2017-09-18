@@ -562,7 +562,7 @@ void Download::addProxy(CURL *const curl)
     }
 }
 
-#if LIBCURL_VERSION_NUM >= 0x070f01
+#if LIBCURL_VERSION_NUM >= 0x070a08
 void Download::secureCurl(CURL *const curl)
 #else  // LIBCURL_VERSION_NUM >= 0x070f01
 void Download::secureCurl(CURL *const curl A_UNUSED)
@@ -580,6 +580,9 @@ void Download::secureCurl(CURL *const curl A_UNUSED)
 #if LIBCURL_VERSION_NUM >= 0x070f01
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 3);
 #endif  // LIBCURL_VERSION_NUM >= 0x070f01
+#if LIBCURL_VERSION_NUM >= 0x070a08
+    curl_easy_setopt(curl, CURLOPT_MAXFILESIZE, 536870912);
+#endif  // LIBCURL_VERSION_NUM >= 0x070a08
 }
 
 #if LIBCURL_VERSION_NUM >= 0x071507
