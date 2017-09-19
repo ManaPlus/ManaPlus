@@ -33,6 +33,6 @@ namespace PngLib
 {
     bool writePNG(SDL_Surface *const surface,
                   const std::string &filename);
-} // namespace PngLib
+}  // namespace PngLib
 
 #endif  // UTILS_PNGLIB_H
