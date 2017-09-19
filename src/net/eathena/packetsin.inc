@@ -815,9 +815,6 @@ if (packetVersion >= 20140613)
     packet(SMSG_BATTLE_UPDATE_HP,          0x0a0e,  14, &BattleGroundRecv::processBattleUpdateHp,       20140613);
 }
 
-// 20140716
-packet(SMSG_MAIL2_ICON,                    0x09e7,   3, &Mail2Recv::processMailIcon,                    20140716);
-
 // 20141016
 packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
 packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20141016);
@@ -837,6 +834,9 @@ if (packetVersion >= 20141022)
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
     packet(SMSG_VENDING_OPEN_STATUS,       0x0a28,   3, &VendingRecv::processOpenStatus,                20141022);
 }
+
+// 20141112
+packet(SMSG_MAIL2_ICON,                    0x09e7,   3, &Mail2Recv::processMailIcon,                    20141112);
 
 // 20141119
 packet(SMSG_MAIL2_ADD_ITEM_RESULT,         0x0a05,  53, &Mail2Recv::processAddItemResult,               20141119);
