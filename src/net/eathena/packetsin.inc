@@ -912,7 +912,7 @@ if (packetVersion >= 20150805)
 // 20160330
 if (packetVersion >= 20160330)
 {
-    packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  13, &GameRecv::processMapLogin,                     20080102);
+    packet(SMSG_MAP_LOGIN_SUCCESS,         0x02eb,  13, &GameRecv::processMapLogin,                     20160330);
 }
 
 // 20160622
