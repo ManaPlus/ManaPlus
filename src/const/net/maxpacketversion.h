@@ -27,6 +27,6 @@
 #include <stdint.h>
 #endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 
-static const uint32_t maxPacketVersion = 20151001;
+static const uint32_t maxPacketVersion = 20170517;
 
 #endif  // CONST_NET_MAXPACKETVERSION_H
