@@ -86,10 +86,16 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     tempPlayer->setGender(token.sex);
 
     PlayerInfoBackend &data = character->data;
-    data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt32("exp");
+    if (packetVersion >= 20170830)
+        data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt64("exp");
+    else
+        data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt32("exp");
     data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
     Stat &jobStat = data.mStats[Attributes::PLAYER_JOB];
-    jobStat.exp = msg.readInt32("job");
+    if (packetVersion >= 20170830)
+        jobStat.exp = msg.readInt64("job exp");
+    else
+        jobStat.exp = msg.readInt32("job exp");
 
     const int temp = msg.readInt32("job level");
     jobStat.base = temp;
