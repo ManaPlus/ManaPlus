@@ -1246,8 +1246,8 @@ void LocalPlayer::statChanged(const AttributesT id,
 }
 
 void LocalPlayer::attributeChanged(const AttributesT id,
-                                   const int oldVal,
-                                   const int newVal)
+                                   const int64_t oldVal,
+                                   const int64_t newVal)
 {
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
@@ -1260,7 +1260,7 @@ void LocalPlayer::attributeChanged(const AttributesT id,
             if (oldVal > newVal)
                 break;
 
-            const int change = newVal - oldVal;
+            const int change = CAST_S32(newVal - oldVal);
             addXpMessage(change);
             break;
         }

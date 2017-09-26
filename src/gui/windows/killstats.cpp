@@ -111,8 +111,8 @@ KillStats::KillStats() :
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
-    const int xp(PlayerInfo::getAttribute(Attributes::PLAYER_EXP));
-    int xpNextLevel(PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED));
+    const int64_t xp(PlayerInfo::getAttribute64(Attributes::PLAYER_EXP));
+    int64_t xpNextLevel(PlayerInfo::getAttribute64(Attributes::PLAYER_EXP_NEEDED));
 
     if (xpNextLevel == 0)
         xpNextLevel = 1;
@@ -122,13 +122,20 @@ KillStats::KillStats() :
         localPlayer->getLevel(), static_cast<double>(xp)
         / static_cast<double>(xpNextLevel) * 100.0));
 
+    const std::string strXp = toString(CAST_U64(xp));
+    const std::string strXpNextLevel = toString(CAST_U64(xpNextLevel));
+    const std::string strXpLeft = toString(CAST_U64(xpNextLevel - xp));
+    const std::string strXpPercent = toString(CAST_U64(xpNextLevel / 100));
     // TRANSLATORS: kill stats window label
-    mLine2 = new Label(this, strprintf(_("Exp: %d/%d Left: %d"),
-        xp, xpNextLevel, xpNextLevel - xp));
+    mLine2 = new Label(this, strprintf(_("Exp: %s/%s Left: %s"),
+        strXp.c_str(),
+        strXpNextLevel.c_str(),
+        strXpLeft.c_str()));
 
     // TRANSLATORS: kill stats window label
-    mLine3 = new Label(this, strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
-        xpNextLevel / 100, "?"));
+    mLine3 = new Label(this, strprintf(_("1%% = %s exp, avg mob for 1%%: %s"),
+        strXpPercent.c_str(),
+        "?"));
 
     place(0, 0, mLine1, 6).setPadding(0);
     place(0, 1, mLine2, 6).setPadding(0);
@@ -160,8 +167,10 @@ void KillStats::action(const ActionEvent &event)
     {
         mKillCounter = 0;
         mExpCounter = 0;
-        mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
-            PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED) / 100,
+        const std::string strXpPercent = toString(CAST_U64(
+            PlayerInfo::getAttribute64(Attributes::PLAYER_EXP_NEEDED) / 100));
+        mLine3->setCaption(strprintf("1%% = %s exp, avg mob for 1%%: %s",
+            strXpPercent.c_str(),
             "?"));
         // TRANSLATORS: kill stats window label
         mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"), "?", "?"));
@@ -199,9 +208,9 @@ void KillStats::resetTimes()
     m15minSpeed = 0;
 }
 
-void KillStats::gainXp(int xp)
+void KillStats::gainXp(int64_t xp)
 {
-    const int expNeed = PlayerInfo::getAttribute(
+    const int64_t expNeed = PlayerInfo::getAttribute64(
         Attributes::PLAYER_EXP_NEEDED);
     if (xp == expNeed)
         xp = 0;
@@ -218,7 +227,7 @@ void KillStats::gainXp(int xp)
 
     const float AvgExp = static_cast<float>(mExpCounter)
         / static_cast<float>(mKillCounter);
-    int xpNextLevel(expNeed);
+    int64_t xpNextLevel(expNeed);
 
     if (mKillTimer == 0)
         mKillTimer = cur_time;
@@ -231,21 +240,28 @@ void KillStats::gainXp(int xp)
     if (timeDiff <= 0.001)
         timeDiff = 1;
 
-    const int exp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+    const int64_t exp = PlayerInfo::getAttribute64(Attributes::PLAYER_EXP);
     // TRANSLATORS: kill stats window label
     mLine1->setCaption(strprintf(_("Level: %d at %f%%"),
         localPlayer->getLevel(), static_cast<double>(exp)
         / static_cast<double>(xpNextLevel) * 100.0));
 
+    const std::string strXp = toString(CAST_U64(exp));
+    const std::string strXpNextLevel = toString(CAST_U64(xpNextLevel));
+    const std::string strXpLeft = toString(CAST_U64(xpNextLevel - exp));
+    const std::string strXpPercent = toString(CAST_U64(xpNextLevel / 100));
     // TRANSLATORS: kill stats window label
-    mLine2->setCaption(strprintf(_("Exp: %d/%d Left: %d"), exp,
-        xpNextLevel, xpNextLevel - exp));
+    mLine2->setCaption(strprintf(_("Exp: %s/%s Left: %s"),
+        strXp.c_str(),
+        strXpNextLevel.c_str(),
+        strXpLeft.c_str()));
 
     if (AvgExp >= -0.001F && AvgExp <= 0.001F)
     {
         // TRANSLATORS: kill stats window label
-        mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
-            xpNextLevel / 100, "?"));
+        mLine3->setCaption(strprintf(_("1%% = %s exp, avg mob for 1%%: %s"),
+            strXpPercent.c_str(),
+            "?"));
 
         // TRANSLATORS: kill stats window label
         mLine5->setCaption(strprintf(_("Avg Exp: %s"),
@@ -258,8 +274,8 @@ void KillStats::gainXp(int xp)
     else
     {
         // TRANSLATORS: kill stats window label
-        mLine3->setCaption(strprintf(_("1%% = %d exp, avg mob for 1%%: %s"),
-            xpNextLevel / 100, toString((static_cast<float>(
+        mLine3->setCaption(strprintf(_("1%% = %s exp, avg mob for 1%%: %s"),
+            strXpPercent.c_str(), toString((static_cast<float>(
             xpNextLevel) / 100) / AvgExp).c_str()));
 
         // TRANSLATORS: kill stats window label
@@ -279,8 +295,10 @@ void KillStats::gainXp(int xp)
         toString(mKillTCounter / timeDiff).c_str(),
         toString(mExpTCounter / timeDiff).c_str()));
 
-    // TRANSLATORS: kill stats window label
-    mLastKillExpLabel->setCaption(strprintf("%s %d", _("Last kill exp:"), xp));
+    mLastKillExpLabel->setCaption(strprintf("%s %s",
+        // TRANSLATORS: kill stats window label
+        _("Last kill exp:"),
+        strXp.c_str()));
 
     recalcStats();
     update();
@@ -294,7 +312,7 @@ void KillStats::recalcStats()
     // Need Update Exp Counter
     if (curTime - m1minExpTime > 60)
     {
-        const int newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+        const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
         if (m1minExpTime != 0)
             m1minSpeed = newExp - m1minExpNum;
         else
@@ -315,7 +333,7 @@ void KillStats::recalcStats()
 
     if (curTime - m5minExpTime > 60*5)
     {
-        const int newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+        const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
         if (m5minExpTime != 0)
             m5minSpeed = newExp - m5minExpNum;
         else
@@ -326,7 +344,7 @@ void KillStats::recalcStats()
 
     if (curTime - m15minExpTime > 60*15)
     {
-        const int newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+        const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
         if (m15minExpTime != 0)
             m15minSpeed = newExp - m15minExpNum;
         else
@@ -342,7 +360,9 @@ void KillStats::update()
     BLOCK_START("KillStats::update")
 
     mExpSpeed1Label->setCaption(strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 1), 1, toString(m1minSpeed).c_str()));
+        "Exp speed per %d min: %s", 1),
+        1,
+        toString(m1minSpeed).c_str()));
 
     if (m1minSpeed != 0)
     {
@@ -362,7 +382,9 @@ void KillStats::update()
     mExpTime1Label->adjustSize();
 
     mExpSpeed5Label->setCaption(strprintf(ngettext("Exp speed per %d min: %s",
-        "Exp speed per %d min: %s", 5), 5, toString(m5minSpeed / 5).c_str()));
+        "Exp speed per %d min: %s", 5),
+        5,
+        toString(m5minSpeed / 5).c_str()));
     mExpSpeed5Label->adjustSize();
 
     if (m5minSpeed != 0)
@@ -406,8 +428,8 @@ void KillStats::update()
 }
 
 void KillStats::attributeChanged(const AttributesT id,
-                                 const int oldVal,
-                                 const int newVal)
+                                 const int64_t oldVal,
+                                 const int64_t newVal)
 {
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
@@ -418,12 +440,16 @@ void KillStats::attributeChanged(const AttributesT id,
             gainXp(newVal - oldVal);
             break;
         case Attributes::PLAYER_LEVEL:
+        {
+            const std::string strXpPercent = toString(CAST_U64(
+                PlayerInfo::getAttribute(
+                Attributes::PLAYER_EXP_NEEDED) / 100));
             mKillCounter = 0;
             mKillTCounter = 0;
             mExpCounter = 0;
             mExpTCounter = 0;
-            mLine3->setCaption(strprintf("1%% = %d exp, avg mob for 1%%: %s",
-                PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED) / 100,
+            mLine3->setCaption(strprintf("1%% = %s exp, avg mob for 1%%: %s",
+                strXpPercent.c_str(),
                 "?"));
             mLine4->setCaption(strprintf(
                 // TRANSLATORS: kill stats window label
@@ -440,6 +466,7 @@ void KillStats::attributeChanged(const AttributesT id,
             resetTimes();
             update();
             break;
+        }
         default:
             break;
     }

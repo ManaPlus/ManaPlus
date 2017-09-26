@@ -72,7 +72,7 @@ std::set<int> mProtectedItems;
 // --- Triggers ---------------------------------------------------------------
 
 void triggerAttr(const AttributesT id,
-                 const int old)
+                 const int64_t old)
 {
     AttributeListener::distributeEvent(id, old,
         mData.mAttributes.find(id)->second);
@@ -87,7 +87,7 @@ void triggerStat(const AttributesT id,
 
 // --- Attributes -------------------------------------------------------------
 
-int getAttribute(const AttributesT id)
+int64_t getAttribute64(const AttributesT id)
 {
     const AtrIntMap::const_iterator it = mData.mAttributes.find(id);
     if (it != mData.mAttributes.end())
@@ -95,11 +95,19 @@ int getAttribute(const AttributesT id)
     return 0;
 }
 
+int32_t getAttribute(const AttributesT id)
+{
+    const AtrIntMap::const_iterator it = mData.mAttributes.find(id);
+    if (it != mData.mAttributes.end())
+        return CAST_S32(it->second);
+    return 0;
+}
+
 void setAttribute(const AttributesT id,
-                  const int value,
+                  const int64_t value,
                   const Notify notify)
 {
-    const int old = mData.mAttributes[id];
+    const int64_t old = mData.mAttributes[id];
     mData.mAttributes[id] = value;
     if (notify == Notify_true)
         triggerAttr(id, old);

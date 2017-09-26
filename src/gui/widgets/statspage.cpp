@@ -70,8 +70,8 @@ void StatsPage::widgetResized(const Event &event A_UNUSED)
 }
 
 void StatsPage::attributeChanged(const AttributesT id,
-                                 const int oldVal A_UNUSED,
-                                 const int newVal A_UNUSED)
+                                 const int64_t oldVal A_UNUSED,
+                                 const int64_t newVal A_UNUSED)
 {
     const Attrs::const_iterator it = mAttrs.find(id);
     if (it != mAttrs.end() && (it->second != nullptr))

@@ -268,8 +268,8 @@ void MiniStatusWindow::statChanged(const AttributesT id A_UNUSED,
 }
 
 void MiniStatusWindow::attributeChanged(const AttributesT id,
-                                        const int oldVal A_UNUSED,
-                                        const int newVal A_UNUSED)
+                                        const int64_t oldVal A_UNUSED,
+                                        const int64_t newVal A_UNUSED)
 {
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
@@ -366,20 +366,28 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
                 PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL));
         }
 
-        const int exp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
-        const int expNeed = PlayerInfo::getAttribute(
+        const int64_t exp = PlayerInfo::getAttribute64(Attributes::PLAYER_EXP);
+        const int64_t expNeed = PlayerInfo::getAttribute64(
             Attributes::PLAYER_EXP_NEEDED);
+        const std::string str = toString(CAST_U64(exp)) +
+            "/" +
+            toString(CAST_U64(expNeed));
         if (exp > expNeed)
         {
-            textPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
-                exp, expNeed));
+            textPopup->show(x + rect.x,
+                y + rect.y,
+                level,
+                str);
         }
         else
         {
-            textPopup->show(x + rect.x, y + rect.y, level, strprintf("%d/%d",
-                exp, expNeed),
+            const std::string str2 = toString(CAST_U64(expNeed - exp));
+            textPopup->show(x + rect.x,
+                y + rect.y,
+                level,
+                str,
                 // TRANSLATORS: status bar label
-                strprintf("%s: %d", _("Need"), expNeed - exp));
+                strprintf("%s: %s", _("Need"), str2.c_str()));
         }
         mStatusPopup->hide();
     }

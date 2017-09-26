@@ -125,11 +125,13 @@ StatusWindow::StatusWindow() :
         getThemeColor(ThemeColorId::HP_BAR_OUTLINE));
     mHpBar->setSelectable(false);
 
-    max = PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED);
+    const int64_t maxExp = PlayerInfo::getAttribute64(
+        Attributes::PLAYER_EXP_NEEDED);
     mXpBar = new ProgressBar(this,
-        max != 0 ?
-        static_cast<float>(PlayerInfo::getAttribute(Attributes::PLAYER_EXP)) /
-        static_cast<float>(max) : static_cast<float>(0),
+        maxExp != 0 ?
+        static_cast<float>(PlayerInfo::getAttribute64(
+        Attributes::PLAYER_EXP)) /
+        static_cast<float>(maxExp) : static_cast<float>(0),
         80,
         0,
         ProgressColorId::PROG_EXP,
@@ -340,8 +342,8 @@ void StatusWindow::statChanged(const AttributesT id,
 }
 
 void StatusWindow::attributeChanged(const AttributesT id,
-                                    const int oldVal A_UNUSED,
-                                    const int newVal)
+                                    const int64_t oldVal A_UNUSED,
+                                    const int64_t newVal)
 {
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
@@ -371,7 +373,8 @@ void StatusWindow::attributeChanged(const AttributesT id,
 
         case Attributes::PLAYER_LEVEL:
             // TRANSLATORS: status window label
-            mLvlLabel->setCaption(strprintf(_("Level: %d"), newVal));
+            mLvlLabel->setCaption(strprintf(_("Level: %d"),
+                CAST_S32(newVal)));
             mLvlLabel->adjustSize();
             break;
 
@@ -439,8 +442,8 @@ void StatusWindow::updateMPBar(ProgressBar *const bar,
 }
 
 void StatusWindow::updateProgressBar(ProgressBar *const bar,
-                                     const int value,
-                                     const int max,
+                                     const int64_t value,
+                                     const int64_t max,
                                      const bool percent)
 {
     if (bar == nullptr)
@@ -451,7 +454,7 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar,
         // TRANSLATORS: status bar label
         bar->setText(_("Max"));
         bar->setProgress(1);
-        bar->setText(toString(value));
+        bar->setText(toString(CAST_U64(value)));
     }
     else
     {
@@ -464,7 +467,10 @@ void StatusWindow::updateProgressBar(ProgressBar *const bar,
         }
         else
         {
-            bar->setText(toString(value).append("/").append(toString(max)));
+            bar->setText(toString(
+                CAST_U64(value)).append(
+                "/").append(toString(
+                CAST_U64(max))));
         }
         bar->setProgress(progress);
     }

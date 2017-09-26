@@ -1023,8 +1023,8 @@ void ChatWindow::statChanged(const AttributesT id,
 }
 
 void ChatWindow::attributeChanged(const AttributesT id,
-                                  const int oldVal,
-                                  const int newVal)
+                                  const int64_t oldVal,
+                                  const int64_t newVal)
 {
     if (!mShowBattleEvents)
         return;
@@ -1036,17 +1036,19 @@ void ChatWindow::attributeChanged(const AttributesT id,
         {
             if (oldVal > newVal)
                 break;
-            const int change = newVal - oldVal;
+            const int64_t change = newVal - oldVal;
             if (change != 0)
             {
                 battleChatLog(std::string("+").append(toString(
-                    change)).append(" xp"),
+                    CAST_U64(change))).append(" xp"),
                     ChatMsgType::BY_SERVER);
             }
             break;
         }
         case Attributes::PLAYER_LEVEL:
-            battleChatLog(std::string("Level: ").append(toString(newVal)),
+            battleChatLog(std::string(
+                "Level: ").append(toString(CAST_S32(
+                newVal))),
                 ChatMsgType::BY_SERVER);
             break;
         default:

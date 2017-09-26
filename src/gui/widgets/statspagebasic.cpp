@@ -89,8 +89,8 @@ void StatsPageBasic::statChanged(const AttributesT id,
 }
 
 void StatsPageBasic::attributeChanged(const AttributesT id,
-                                      const int oldVal A_UNUSED,
-                                      const int newVal)
+                                      const int64_t oldVal A_UNUSED,
+                                      const int64_t newVal)
 {
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
@@ -99,7 +99,7 @@ void StatsPageBasic::attributeChanged(const AttributesT id,
         case Attributes::PLAYER_CHAR_POINTS:
             mCharacterPointsLabel->setCaption(strprintf(
                 // TRANSLATORS: status window label
-                _("Character points: %d"), newVal));
+                _("Character points: %d"), CAST_S32(newVal)));
 
             mCharacterPointsLabel->adjustSize();
             // Update all attributes

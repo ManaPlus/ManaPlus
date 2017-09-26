@@ -45,8 +45,8 @@ class StatsPageBasic final : public Container,
         void widgetResized(const Event &event) override final;
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,

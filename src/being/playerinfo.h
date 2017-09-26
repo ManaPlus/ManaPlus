@@ -52,7 +52,7 @@ struct Stat final
     int expNeed;
 };
 
-typedef std::map<AttributesT, int> AtrIntMap;
+typedef std::map<AttributesT, int64_t> AtrIntMap;
 typedef std::map<AttributesT, Stat> StatMap;
 
 /**
@@ -94,12 +94,15 @@ namespace PlayerInfo
     /**
      * Returns the value of the given attribute.
      */
-    int getAttribute(const AttributesT id) A_WARN_UNUSED;
+    int64_t getAttribute64(const AttributesT id) A_WARN_UNUSED;
+
+    int32_t getAttribute(const AttributesT id) A_WARN_UNUSED;
 
     /**
      * Changes the value of the given attribute.
      */
-    void setAttribute(const AttributesT id, const int value,
+    void setAttribute(const AttributesT id,
+                      const int64_t value,
                       const Notify notify = Notify_true);
 
     int getSkillLevel(const int id) A_WARN_UNUSED;
@@ -225,7 +228,7 @@ namespace PlayerInfo
     void stateChange(const StateT state);
 
     void triggerAttr(const AttributesT id,
-                     const int old);
+                     const int64_t old);
 
     void triggerStat(const AttributesT id,
                      const int old1,

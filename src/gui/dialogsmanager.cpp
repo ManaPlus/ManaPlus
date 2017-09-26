@@ -156,8 +156,8 @@ void DialogsManager::playerDeath()
 
 #ifndef DYECMD
 void DialogsManager::attributeChanged(const AttributesT id,
-                                      const int oldVal,
-                                      const int newVal)
+                                      const int64_t oldVal,
+                                      const int64_t newVal)
 {
     if (id == Attributes::TOTAL_WEIGHT)
     {
@@ -215,8 +215,8 @@ void DialogsManager::attributeChanged(const AttributesT id,
 #else  // DYECMD
 
 void DialogsManager::attributeChanged(const AttributesT id A_UNUSED,
-                                      const int oldVal A_UNUSED,
-                                      const int newVal A_UNUSED)
+                                      const int64_t oldVal A_UNUSED,
+                                      const int64_t newVal A_UNUSED)
 {
 }
 #endif  // DYECMD

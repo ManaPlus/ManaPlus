@@ -399,8 +399,8 @@ class LocalPlayer final : public Being,
         { return mTarget != nullptr ? mTarget->mY : mLastAttackY; }
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,

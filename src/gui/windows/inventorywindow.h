@@ -154,8 +154,8 @@ class InventoryWindow final : public Window,
         void unsetInventory();
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 
         void combineItems(const int index1,
                           const int index2);

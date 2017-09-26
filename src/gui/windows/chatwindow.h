@@ -295,8 +295,8 @@ class ChatWindow final : public Window,
         void selectTabByType(const ChatTabTypeT &type);
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,

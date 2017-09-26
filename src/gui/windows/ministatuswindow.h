@@ -91,8 +91,8 @@ class MiniStatusWindow final : public Window,
         Rect getChildrenArea() override final A_WARN_UNUSED;
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,

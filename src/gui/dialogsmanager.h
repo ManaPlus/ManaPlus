@@ -56,8 +56,8 @@ class DialogsManager final : public AttributeListener,
         void playerDeath() override final;
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 };
 
 extern DialogsManager *dialogsManager;

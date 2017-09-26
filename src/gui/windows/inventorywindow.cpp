@@ -1007,8 +1007,8 @@ void InventoryWindow::unsetInventory()
 }
 
 void InventoryWindow::attributeChanged(const AttributesT id,
-                                       const int oldVal A_UNUSED,
-                                       const int newVal A_UNUSED)
+                                       const int64_t oldVal A_UNUSED,
+                                       const int64_t newVal A_UNUSED)
 {
     if (id == Attributes::TOTAL_WEIGHT
         || id == Attributes::MAX_WEIGHT

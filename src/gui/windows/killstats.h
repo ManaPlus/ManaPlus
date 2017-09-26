@@ -54,7 +54,7 @@ class KillStats final : public Window,
          */
         void action(const ActionEvent &event) override final;
 
-        void gainXp(int Xp);
+        void gainXp(int64_t Xp);
 
         /**
          * Recalc stats if needed
@@ -69,8 +69,8 @@ class KillStats final : public Window,
         void resetTimes();
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 
     private:
         time_t mKillTimer;  /**< Timer for kill stats. */
@@ -99,15 +99,15 @@ class KillStats final : public Window,
         int mExpTCounter;    /**< Timer Exp counter. */
 
         time_t m1minExpTime;
-        int m1minExpNum;
+        int64_t m1minExpNum;
         int m1minSpeed;
 
         time_t m5minExpTime;
-        int m5minExpNum;
+        int64_t m5minExpNum;
         int m5minSpeed;
 
         time_t m15minExpTime;
-        int m15minExpNum;
+        int64_t m15minExpNum;
         int m15minSpeed;
 };
 

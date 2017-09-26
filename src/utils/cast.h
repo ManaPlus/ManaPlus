@@ -28,6 +28,8 @@
 #define CAST_U16 static_cast<uint16_t>
 #define CAST_S32 static_cast<int32_t>
 #define CAST_U32 static_cast<uint32_t>
+#define CAST_S64 static_cast<int64_t>
+#define CAST_U64 static_cast<uint64_t>
 #define CAST_SIZE static_cast<size_t>
 
 #endif  // UTILS_CAST_H

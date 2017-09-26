@@ -27,8 +27,8 @@
 defineListener(AttributeListener)
 
 void AttributeListener::distributeEvent(const AttributesT id,
-                                        const int oldVal,
-                                        const int newVal)
+                                        const int64_t oldVal,
+                                        const int64_t newVal)
 {
     FOR_EACH (STD_VECTOR<AttributeListener*>::iterator,
               it, mListeners)

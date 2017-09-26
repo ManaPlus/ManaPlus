@@ -48,6 +48,7 @@
 #include "net/net.h"
 #include "net/serverfeatures.h"
 
+#include "utils/cast.h"
 #include "utils/foreach.h"
 
 #include "resources/db/unitsdb.h"
@@ -241,10 +242,12 @@ void CharSelectDialog::action(const ActionEvent &event)
             if (data == nullptr)
                 return;
 
+            const std::string strExp = toString(CAST_U64(
+                character->data.mAttributes[Attributes::PLAYER_EXP]));
             const std::string msg = strprintf(
                 // TRANSLATORS: char select dialog. player info message.
                 _("Hp: %u/%u\nMp: %u/%u\nLevel: %u\n"
-                "Experience: %u\nMoney: %s"),
+                "Experience: %s\nMoney: %s"),
                 CAST_U32(
                 character->data.mAttributes[Attributes::PLAYER_HP]),
                 CAST_U32(
@@ -255,8 +258,7 @@ void CharSelectDialog::action(const ActionEvent &event)
                 character->data.mAttributes[Attributes::PLAYER_MAX_MP]),
                 CAST_U32(
                 character->data.mAttributes[Attributes::PLAYER_LEVEL]),
-                CAST_U32(
-                character->data.mAttributes[Attributes::PLAYER_EXP]),
+                strExp.c_str(),
                 UnitsDb::formatCurrency(
                 character->data.mAttributes[Attributes::MONEY]).c_str());
             CREATEWIDGET(OkDialog, data->getName(), msg,

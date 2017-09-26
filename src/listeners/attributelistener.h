@@ -33,12 +33,12 @@ class AttributeListener notfinal
         A_DELETE_COPY(AttributeListener)
 
         virtual void attributeChanged(const AttributesT id,
-                                      const int oldVal,
-                                      const int newVal) = 0;
+                                      const int64_t oldVal,
+                                      const int64_t newVal) = 0;
 
         static void distributeEvent(const AttributesT id,
-                                    const int oldVal,
-                                    const int newVal);
+                                    const int64_t oldVal,
+                                    const int64_t newVal);
 
     defineListenerHeader(AttributeListener)
 };

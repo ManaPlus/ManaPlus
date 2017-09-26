@@ -73,8 +73,8 @@ class StatusWindow final : public Window,
         void updateStatusBar(ProgressBar *const bar,
                              const bool percent = true) const;
         static void updateProgressBar(ProgressBar *const bar,
-                                      const int value,
-                                      const int max,
+                                      const int64_t value,
+                                      const int64_t max,
                                       const bool percent);
         static void updateProgressBar(ProgressBar *const bar,
                                       const AttributesT id,
@@ -83,8 +83,8 @@ class StatusWindow final : public Window,
         void action(const ActionEvent &event) override;
 
         void attributeChanged(const AttributesT id,
-                              const int oldVal,
-                              const int newVal) override final;
+                              const int64_t oldVal,
+                              const int64_t newVal) override final;
 
         void statChanged(const AttributesT id,
                          const int oldVal1,
