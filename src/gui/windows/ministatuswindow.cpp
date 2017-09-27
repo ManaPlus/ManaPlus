@@ -356,14 +356,14 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d (GM %d)"),
-                PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL),
+                PlayerInfo::getAttribute(Attributes::PLAYER_BASE_LEVEL),
                 localPlayer->getGroupId());
         }
         else
         {
             // TRANSLATORS: status bar label
             level = strprintf(_("Level: %d"),
-                PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL));
+                PlayerInfo::getAttribute(Attributes::PLAYER_BASE_LEVEL));
         }
 
         const int64_t exp = PlayerInfo::getAttribute64(Attributes::PLAYER_EXP);

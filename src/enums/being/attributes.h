@@ -27,7 +27,7 @@
 enumStart(Attributes)
 {
     // player attributes
-    PLAYER_LEVEL        = 0,
+    PLAYER_BASE_LEVEL   = 0,
     PLAYER_HP,
     PLAYER_MAX_HP,
     PLAYER_MP,

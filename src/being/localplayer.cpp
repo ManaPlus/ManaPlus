@@ -1264,7 +1264,7 @@ void LocalPlayer::attributeChanged(const AttributesT id,
             addXpMessage(change);
             break;
         }
-        case Attributes::PLAYER_LEVEL:
+        case Attributes::PLAYER_BASE_LEVEL:
             mLevel = newVal;
             break;
         case Attributes::PLAYER_HP:
@@ -2630,7 +2630,7 @@ void LocalPlayer::respawn()
 
 int LocalPlayer::getLevel() const
 {
-    return PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL);
+    return PlayerInfo::getAttribute(Attributes::PLAYER_BASE_LEVEL);
 }
 
 void LocalPlayer::updateNavigateList()

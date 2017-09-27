@@ -1045,7 +1045,7 @@ void ChatWindow::attributeChanged(const AttributesT id,
             }
             break;
         }
-        case Attributes::PLAYER_LEVEL:
+        case Attributes::PLAYER_BASE_LEVEL:
             battleChatLog(std::string(
                 "Level: ").append(toString(CAST_S32(
                 newVal))),

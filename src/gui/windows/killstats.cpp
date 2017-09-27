@@ -439,7 +439,7 @@ void KillStats::attributeChanged(const AttributesT id,
         case Attributes::PLAYER_EXP_NEEDED:
             gainXp(newVal - oldVal);
             break;
-        case Attributes::PLAYER_LEVEL:
+        case Attributes::PLAYER_BASE_LEVEL:
         {
             const std::string strXpPercent = toString(CAST_U64(
                 PlayerInfo::getAttribute(

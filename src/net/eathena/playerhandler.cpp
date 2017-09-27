@@ -581,7 +581,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS, base);
             break;
         case Sp::BASELEVEL:
-            PlayerInfo::setAttribute(Attributes::PLAYER_LEVEL, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_BASE_LEVEL, base);
             if (localPlayer != nullptr)
             {
                 localPlayer->setLevel(base);

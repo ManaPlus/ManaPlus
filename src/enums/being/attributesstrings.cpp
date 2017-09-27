@@ -31,7 +31,7 @@ namespace AttributesEnum
 {
     stringEnumStart(AttributesT)
         // player attributes
-        strEnumDef(Attributes, PLAYER_LEVEL)
+        strEnumDef2(Attributes, PLAYER_BASE_LEVEL, "PLAYER_LEVEL")
         strEnumDef(Attributes, PLAYER_HP)
         strEnumDef(Attributes, PLAYER_MAX_HP)
         strEnumDef(Attributes, PLAYER_MP)

@@ -271,7 +271,7 @@ void StatusWindow::updateLevelLabel()
     {
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d (%s %d)"),
-            PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL),
+            PlayerInfo::getAttribute(Attributes::PLAYER_BASE_LEVEL),
             name.c_str(),
             groupId));
     }
@@ -279,7 +279,7 @@ void StatusWindow::updateLevelLabel()
     {
         // TRANSLATORS: status window label
         mLvlLabel->setCaption(strprintf(_("Level: %d"),
-            PlayerInfo::getAttribute(Attributes::PLAYER_LEVEL)));
+            PlayerInfo::getAttribute(Attributes::PLAYER_BASE_LEVEL)));
     }
     mLvlLabel->adjustSize();
 }
@@ -371,7 +371,7 @@ void StatusWindow::attributeChanged(const AttributesT id,
             mMoneyLabel->adjustSize();
             break;
 
-        case Attributes::PLAYER_LEVEL:
+        case Attributes::PLAYER_BASE_LEVEL:
             // TRANSLATORS: status window label
             mLvlLabel->setCaption(strprintf(_("Level: %d"),
                 CAST_S32(newVal)));

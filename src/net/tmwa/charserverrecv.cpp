@@ -106,7 +106,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         weapon);
     tempPlayer->setWeaponId(weapon);
 
-    data.mAttributes[Attributes::PLAYER_LEVEL] = msg.readInt16("level");
+    data.mAttributes[Attributes::PLAYER_BASE_LEVEL] = msg.readInt16("level");
 
     msg.readInt16("skill point");
     const int bottomClothes = msg.readInt16("bottom clothes");
