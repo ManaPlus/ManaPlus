@@ -412,7 +412,7 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
         const int64_t expNeed =  PlayerInfo::getAttribute64(
             Attributes::PLAYER_JOB_EXP_NEEDED);
         const int32_t jobLevel = PlayerInfo::getAttribute(
-            Attributes::PLAYER_JOB);
+            Attributes::PLAYER_JOB_LEVEL);
         const std::string expStr = toString(CAST_U64(exp));
         const std::string expNeedStr = toString(CAST_U64(expNeed));
         const std::string jobLevelStr = toString(CAST_U64(jobLevel));

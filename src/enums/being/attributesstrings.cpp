@@ -41,7 +41,7 @@ namespace AttributesEnum
         strEnumDef(Attributes, MONEY)
         strEnumDef(Attributes, TOTAL_WEIGHT)
         strEnumDef(Attributes, MAX_WEIGHT)
-        strEnumDef(Attributes, PLAYER_JOB)
+        strEnumDef2(Attributes, PLAYER_JOB_LEVEL, "PLAYER_JOB")
         strEnumDef(Attributes, PLAYER_JOB_EXP)
         strEnumDef(Attributes, PLAYER_JOB_EXP_NEEDED)
         strEnumDef(Attributes, PLAYER_STR)

@@ -405,7 +405,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::updateAttrs();
             break;
         case Sp::JOBLEVEL:
-            PlayerInfo::setAttribute(Attributes::PLAYER_JOB, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL, base);
             break;
         case Sp::GM_LEVEL:
             localPlayer->setGroupId(base);

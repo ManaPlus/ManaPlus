@@ -37,7 +37,7 @@ enumStart(Attributes)
     MONEY,
     TOTAL_WEIGHT,
     MAX_WEIGHT,
-    PLAYER_JOB          = 10,
+    PLAYER_JOB_LEVEL    = 10,
     PLAYER_STR          = 13,
     PLAYER_AGI          = 14,
     PLAYER_VIT          = 15,

@@ -41,7 +41,8 @@
         mStringsArray[#name] = prefix::name; \
 
 #define strEnumDef2(prefix, name, str) \
-        mStringsArray[str] = prefix::name; \
+        mStringsArray[#name] = prefix::name; \
+        mStringsArray[str] = prefix::name;
 
 #define stringEnumEnd \
     }

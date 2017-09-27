@@ -75,7 +75,8 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt32("base exp");
     data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
     data.mAttributes[Attributes::PLAYER_JOB_EXP] = msg.readInt32("job exp");
-    data.mAttributes[Attributes::PLAYER_JOB] = msg.readInt32("job level");
+    data.mAttributes[Attributes::PLAYER_JOB_LEVEL] =
+        msg.readInt32("job level");
 
     const int shoes = msg.readInt16("shoes");
     const int gloves = msg.readInt16("gloves");

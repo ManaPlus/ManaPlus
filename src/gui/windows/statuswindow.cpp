@@ -322,14 +322,16 @@ void StatusWindow::attributeChanged(const AttributesT id,
             mLvlLabel->adjustSize();
             break;
 
-        case Attributes::PLAYER_JOB:
+        // +++ probable need use only some attributes here
+        case Attributes::PLAYER_JOB_LEVEL:
         case Attributes::PLAYER_JOB_EXP:
         case Attributes::PLAYER_JOB_EXP_NEEDED:
             if (blocked)
                 return;
             if (mJobLvlLabel != nullptr)
             {
-                int lvl = PlayerInfo::getAttribute(Attributes::PLAYER_JOB);
+                int lvl = PlayerInfo::getAttribute(
+                    Attributes::PLAYER_JOB_LEVEL);
                 const int64_t exp = PlayerInfo::getAttribute(
                     Attributes::PLAYER_JOB_EXP);
                 const int64_t expNeed = PlayerInfo::getAttribute(
@@ -347,7 +349,8 @@ void StatusWindow::attributeChanged(const AttributesT id,
                     {
                         lvl = (expNeed - 20000) / 150;
                         blocked = true;
-                        PlayerInfo::setAttribute(Attributes::PLAYER_JOB, lvl);
+                        PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL,
+                            lvl);
                         blocked = false;
                     }
                 }
@@ -361,7 +364,8 @@ void StatusWindow::attributeChanged(const AttributesT id,
                     blocked = true;
                     PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP_NEEDED,
                         20000 + lvl * 150);
-                    PlayerInfo::setAttribute(Attributes::PLAYER_JOB, lvl);
+                    PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL,
+                        lvl);
                     blocked = false;
                 }
 
