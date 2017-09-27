@@ -112,7 +112,8 @@ KillStats::KillStats() :
         setupWindow->registerWindowForReset(this);
 
     const int64_t xp(PlayerInfo::getAttribute64(Attributes::PLAYER_EXP));
-    int64_t xpNextLevel(PlayerInfo::getAttribute64(Attributes::PLAYER_EXP_NEEDED));
+    int64_t xpNextLevel(PlayerInfo::getAttribute64(
+        Attributes::PLAYER_EXP_NEEDED));
 
     if (xpNextLevel == 0)
         xpNextLevel = 1;
