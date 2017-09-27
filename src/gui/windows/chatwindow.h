@@ -35,7 +35,6 @@
 #include "listeners/attributelistener.h"
 #include "listeners/debugmessagelistener.h"
 #include "listeners/keylistener.h"
-#include "listeners/statlistener.h"
 
 class Button;
 class ChannelTab;
@@ -57,7 +56,6 @@ class ChatWindow final : public Window,
                          public KeyListener,
                          public ConfigListener,
                          public AttributeListener,
-                         public StatListener,
                          public DebugMessageListener
 {
     public:
@@ -297,10 +295,6 @@ class ChatWindow final : public Window,
         void attributeChanged(const AttributesT id,
                               const int64_t oldVal,
                               const int64_t newVal) override final;
-
-        void statChanged(const AttributesT id,
-                         const int oldVal1,
-                         const int oldVal2) override final;
 
         void postConnection();
 

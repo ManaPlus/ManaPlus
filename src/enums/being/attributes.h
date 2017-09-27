@@ -62,6 +62,8 @@ enumStart(Attributes)
     PLAYER_ATK,
     CART_TOTAL_WEIGHT = 1000,
     CART_MAX_WEIGHT,
+    PLAYER_JOB_EXP,
+    PLAYER_JOB_EXP_NEEDED,
 
     // homunculus attributes
     HOMUN_LEVEL,

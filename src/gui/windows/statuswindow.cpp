@@ -68,7 +68,6 @@ StatusWindow::StatusWindow() :
         "?", Modal_false, nullptr, "status.xml"),
     ActionListener(),
     AttributeListener(),
-    StatListener(),
     mPages(),
     mTabs(CREATEWIDGETR(TabbedArea, this)),
     // TRANSLATORS: status window label
@@ -284,67 +283,12 @@ void StatusWindow::updateLevelLabel()
     mLvlLabel->adjustSize();
 }
 
-void StatusWindow::statChanged(const AttributesT id,
-                               const int oldVal1,
-                               const int oldVal2 A_UNUSED)
-{
-    static bool blocked = false;
-    if (blocked)
-        return;
-
-    if (id == Attributes::PLAYER_JOB)
-    {
-        if (mJobLvlLabel != nullptr)
-        {
-            int lvl = PlayerInfo::getStatBase(id);
-            const int oldExp = oldVal1;
-            const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-
-            if (lvl == 0)
-            {
-                // possible server broken and don't send job level,
-                // then we fixing it :)
-                if (exp.second < 20000)
-                {
-                    lvl = 0;
-                }
-                else
-                {
-                    lvl = (exp.second - 20000) / 150;
-                    blocked = true;
-                    PlayerInfo::setStatBase(id, lvl);
-                    blocked = false;
-                }
-            }
-
-            if (exp.first < oldExp && exp.second >= 20000)
-            {   // possible job level up. but server broken and don't send
-                // new job exp limit, we fixing it
-                lvl ++;
-                blocked = true;
-                PlayerInfo::setStatExperience(
-                    id, exp.first, 20000 + lvl * 150);
-                PlayerInfo::setStatBase(id, lvl);
-                blocked = false;
-            }
-
-            // TRANSLATORS: status window label
-            mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
-            mJobLvlLabel->adjustSize();
-
-            updateJobBar(mJobBar, false);
-        }
-    }
-    else
-    {
-        updateMPBar(mMpBar, true);
-    }
-}
-
 void StatusWindow::attributeChanged(const AttributesT id,
-                                    const int64_t oldVal A_UNUSED,
+                                    const int64_t oldVal,
                                     const int64_t newVal)
 {
+    static bool blocked = false;
+
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (id)
@@ -376,6 +320,57 @@ void StatusWindow::attributeChanged(const AttributesT id,
             mLvlLabel->setCaption(strprintf(_("Level: %d"),
                 CAST_S32(newVal)));
             mLvlLabel->adjustSize();
+            break;
+
+        case Attributes::PLAYER_JOB:
+        case Attributes::PLAYER_JOB_EXP:
+        case Attributes::PLAYER_JOB_EXP_NEEDED:
+            if (blocked)
+                return;
+            if (mJobLvlLabel != nullptr)
+            {
+                int lvl = PlayerInfo::getAttribute(Attributes::PLAYER_JOB);
+                const int64_t exp = PlayerInfo::getAttribute(
+                    Attributes::PLAYER_JOB_EXP);
+                const int64_t expNeed = PlayerInfo::getAttribute(
+                    Attributes::PLAYER_JOB_EXP_NEEDED);
+
+                if (lvl == 0)
+                {
+                    // possible server broken and don't send job level,
+                    // then we fixing it.
+                    if (expNeed < 20000)
+                    {
+                        lvl = 0;
+                    }
+                    else
+                    {
+                        lvl = (expNeed - 20000) / 150;
+                        blocked = true;
+                        PlayerInfo::setAttribute(Attributes::PLAYER_JOB, lvl);
+                        blocked = false;
+                    }
+                }
+
+                if (id == Attributes::PLAYER_JOB_EXP &&
+                    exp < oldVal &&
+                    expNeed >= 20000)
+                {   // possible job level up. but server broken and don't send
+                    // new job exp limit, we fixing it
+                    lvl ++;
+                    blocked = true;
+                    PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP_NEEDED,
+                        20000 + lvl * 150);
+                    PlayerInfo::setAttribute(Attributes::PLAYER_JOB, lvl);
+                    blocked = false;
+                }
+
+                // TRANSLATORS: status window label
+                mJobLvlLabel->setCaption(strprintf(_("Job: %d"), lvl));
+                mJobLvlLabel->adjustSize();
+
+                updateJobBar(mJobBar, false);
+            }
             break;
 
         default:
@@ -481,8 +476,10 @@ void StatusWindow::updateXPBar(ProgressBar *const bar, const bool percent)
     if (bar == nullptr)
         return;
 
-    updateProgressBar(bar, PlayerInfo::getAttribute(Attributes::PLAYER_EXP),
-        PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED), percent);
+    updateProgressBar(bar,
+        PlayerInfo::getAttribute(Attributes::PLAYER_EXP),
+        PlayerInfo::getAttribute(Attributes::PLAYER_EXP_NEEDED),
+        percent);
 }
 
 void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
@@ -490,9 +487,10 @@ void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
     if (bar == nullptr)
         return;
 
-    const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
-        Attributes::PLAYER_JOB);
-    updateProgressBar(bar, exp.first, exp.second, percent);
+    updateProgressBar(bar,
+        PlayerInfo::getAttribute(Attributes::PLAYER_JOB_EXP),
+        PlayerInfo::getAttribute(Attributes::PLAYER_JOB_EXP_NEEDED),
+        percent);
 }
 
 void StatusWindow::updateProgressBar(ProgressBar *const bar,

@@ -27,7 +27,6 @@
 
 #include "listeners/actionlistener.h"
 #include "listeners/attributelistener.h"
-#include "listeners/statlistener.h"
 
 class Button;
 class Label;
@@ -43,8 +42,7 @@ class TabbedArea;
  */
 class StatusWindow final : public Window,
                            public ActionListener,
-                           public AttributeListener,
-                           public StatListener
+                           public AttributeListener
 {
     public:
         /**
@@ -85,10 +83,6 @@ class StatusWindow final : public Window,
         void attributeChanged(const AttributesT id,
                               const int64_t oldVal,
                               const int64_t newVal) override final;
-
-        void statChanged(const AttributesT id,
-                         const int oldVal1,
-                         const int oldVal2) override final;
 
         void updateLevelLabel();
 

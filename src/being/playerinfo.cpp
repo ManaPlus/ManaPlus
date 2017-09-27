@@ -33,6 +33,8 @@
 #include "gui/windows/inventorywindow.h"
 #include "gui/windows/npcdialog.h"
 
+#include "listeners/statlistener.h"
+
 #include "net/homunculushandler.h"
 #include "net/inventoryhandler.h"
 #include "net/mercenaryhandler.h"

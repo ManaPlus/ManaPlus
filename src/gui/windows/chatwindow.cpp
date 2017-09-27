@@ -999,29 +999,6 @@ bool ChatWindow::addCurrentToHistory()
     return true;
 }
 
-void ChatWindow::statChanged(const AttributesT id,
-                             const int oldVal1,
-                             const int oldVal2)
-{
-    if (!mShowBattleEvents || !config.getBoolValue("showJobExp"))
-        return;
-
-    if (id != Attributes::PLAYER_JOB)
-        return;
-
-    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-    if (oldVal1 > exp.first || (oldVal2 == 0))
-        return;
-
-    const int change = exp.first - oldVal1;
-    if (change != 0)
-    {
-        battleChatLog(std::string("+").append(toString(
-            change)).append(" job"),
-            ChatMsgType::BY_SERVER);
-    }
-}
-
 void ChatWindow::attributeChanged(const AttributesT id,
                                   const int64_t oldVal,
                                   const int64_t newVal)
@@ -1051,6 +1028,25 @@ void ChatWindow::attributeChanged(const AttributesT id,
                 newVal))),
                 ChatMsgType::BY_SERVER);
             break;
+        case Attributes::PLAYER_JOB_EXP:
+        {
+            if (!config.getBoolValue("showJobExp"))
+                return;
+            if (oldVal > newVal ||
+                PlayerInfo::getAttribute(
+                Attributes::PLAYER_JOB_EXP_NEEDED) == 0)
+            {
+                return;
+            }
+            const int64_t change = newVal - oldVal;
+            if (change != 0)
+            {
+                battleChatLog(std::string("+").append(toString(CAST_U64(
+                    change))).append(" job"),
+                    ChatMsgType::BY_SERVER);
+            }
+            break;
+        }
         default:
             break;
     };

@@ -42,6 +42,8 @@ namespace AttributesEnum
         strEnumDef(Attributes, TOTAL_WEIGHT)
         strEnumDef(Attributes, MAX_WEIGHT)
         strEnumDef(Attributes, PLAYER_JOB)
+        strEnumDef(Attributes, PLAYER_JOB_EXP)
+        strEnumDef(Attributes, PLAYER_JOB_EXP_NEEDED)
         strEnumDef(Attributes, PLAYER_STR)
         strEnumDef(Attributes, PLAYER_AGI)
         strEnumDef(Attributes, PLAYER_VIT)

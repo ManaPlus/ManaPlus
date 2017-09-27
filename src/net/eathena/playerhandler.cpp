@@ -532,8 +532,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::setAttribute(Attributes::PLAYER_EXP, base);
             break;
         case Sp::JOBEXP:
-            PlayerInfo::setStatExperience(Attributes::PLAYER_JOB, base,
-                PlayerInfo::getStatExperience(Attributes::PLAYER_JOB).second);
+            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP, base);
             break;
         case Sp::KARMA:
             PlayerInfo::setStatBase(Attributes::PLAYER_KARMA, base);
@@ -632,11 +631,8 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
         case Sp::NEXTBASEEXP:
             PlayerInfo::setAttribute(Attributes::PLAYER_EXP_NEEDED, base);
             break;
-        // ++ here used in wrong way. Need like Sp::NEXTBASEEXP?
         case Sp::NEXTJOBEXP:
-            PlayerInfo::setStatExperience(Attributes::PLAYER_JOB,
-                PlayerInfo::getStatExperience(Attributes::PLAYER_JOB).first,
-                base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP_NEEDED, base);
             break;
         case Sp::WEIGHT:
             PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT, base);
@@ -708,7 +704,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::updateAttrs();
             break;
         case Sp::JOBLEVEL:
-            PlayerInfo::setStatBase(Attributes::PLAYER_JOB, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_JOB, base);
             break;
 
         default:

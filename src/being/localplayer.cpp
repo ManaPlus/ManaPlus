@@ -116,7 +116,6 @@ LocalPlayer::LocalPlayer(const BeingId id,
     ActorSpriteListener(),
     AttributeListener(),
     PlayerDeathListener(),
-    StatListener(),
     mMoveState(0),
     mLastTargetX(0),
     mLastTargetY(0),
@@ -1226,25 +1225,6 @@ void LocalPlayer::addSpMessage(const int change)
     }
 }
 
-void LocalPlayer::statChanged(const AttributesT id,
-                              const int oldVal1,
-                              const int oldVal2)
-{
-    if (!mShowJobExp ||
-        id != Attributes::PLAYER_JOB ||
-        Net::getNetworkType() != ServerType::TMWATHENA)
-    {
-        return;
-    }
-
-    const std::pair<int, int> exp = PlayerInfo::getStatExperience(id);
-    if (oldVal1 > exp.first || (oldVal2 == 0))
-        return;
-
-    const int change = exp.first - oldVal1;
-    addJobMessage(change);
-}
-
 void LocalPlayer::attributeChanged(const AttributesT id,
                                    const int64_t oldVal,
                                    const int64_t newVal)
@@ -1271,6 +1251,23 @@ void LocalPlayer::attributeChanged(const AttributesT id,
             if (oldVal != 0 && newVal == 0)
                 PlayerDeathListener::distributeEvent();
             break;
+        case Attributes::PLAYER_JOB_EXP:
+        {
+            if (!mShowJobExp ||
+                Net::getNetworkType() != ServerType::TMWATHENA)
+            {
+                return;
+            }
+            if (oldVal > newVal ||
+                PlayerInfo::getAttribute(
+                Attributes::PLAYER_JOB_EXP_NEEDED) == 0)
+            {
+                return;
+            }
+            const int64_t change = newVal - oldVal;
+            addJobMessage(change);
+            break;
+        }
         default:
             break;
     }

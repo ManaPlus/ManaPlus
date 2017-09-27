@@ -49,7 +49,7 @@ namespace Sp
         ZENY         = 20,
         SEX          = 21,
         NEXTBASEEXP  = 22,
-        JOB_MOD      = 23,
+        JOB_MOD      = 23,  // SP_NEXTJOBEXP
         WEIGHT       = 24,
         MAXWEIGHT    = 25,
         USTR         = 32,

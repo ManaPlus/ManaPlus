@@ -72,14 +72,10 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         msg.readBeingId("account id"), BeingTypeId_zero);
 
     PlayerInfoBackend &data = character->data;
-    data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt32("exp");
+    data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt32("base exp");
     data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
-    Stat &jobStat = data.mStats[Attributes::PLAYER_JOB];
-    jobStat.exp = msg.readInt32("job");
-
-    const int temp = msg.readInt32("job level");
-    jobStat.base = temp;
-    jobStat.mod = temp;
+    data.mAttributes[Attributes::PLAYER_JOB_EXP] = msg.readInt32("job exp");
+    data.mAttributes[Attributes::PLAYER_JOB] = msg.readInt32("job level");
 
     const int shoes = msg.readInt16("shoes");
     const int gloves = msg.readInt16("gloves");

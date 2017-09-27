@@ -91,15 +91,17 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
     else
         data.mAttributes[Attributes::PLAYER_EXP] = msg.readInt32("exp");
     data.mAttributes[Attributes::MONEY] = msg.readInt32("money");
-    Stat &jobStat = data.mStats[Attributes::PLAYER_JOB];
     if (packetVersion >= 20170830)
-        jobStat.exp = msg.readInt64("job exp");
+    {
+        data.mAttributes[Attributes::PLAYER_JOB_EXP] =
+            msg.readInt64("job exp");
+    }
     else
-        jobStat.exp = msg.readInt32("job exp");
-
-    const int temp = msg.readInt32("job level");
-    jobStat.base = temp;
-    jobStat.mod = temp;
+    {
+        data.mAttributes[Attributes::PLAYER_JOB_EXP] =
+            msg.readInt32("job exp");
+    }
+    data.mAttributes[Attributes::PLAYER_JOB] =msg.readInt32("job level");
 
     msg.readInt16("shoes?");
     const int gloves = msg.readInt16("gloves");

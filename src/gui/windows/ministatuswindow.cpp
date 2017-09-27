@@ -407,24 +407,36 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
     }
     else if (event.getSource() == mJobBar)
     {
-        const std::pair<int, int> exp =  PlayerInfo::getStatExperience(
+        const int64_t exp =  PlayerInfo::getAttribute64(
+            Attributes::PLAYER_JOB_EXP);
+        const int64_t expNeed =  PlayerInfo::getAttribute64(
+            Attributes::PLAYER_JOB_EXP_NEEDED);
+        const int32_t jobLevel = PlayerInfo::getAttribute(
             Attributes::PLAYER_JOB);
+        const std::string expStr = toString(CAST_U64(exp));
+        const std::string expNeedStr = toString(CAST_U64(expNeed));
+        const std::string jobLevelStr = toString(CAST_U64(jobLevel));
+        const std::string expLeftStr = toString(CAST_U64(expNeed - exp));
 
         // TRANSLATORS: job bar label
         const std::string level = strprintf(_("Job level: %d"),
-            PlayerInfo::getStatBase(Attributes::PLAYER_JOB));
+            jobLevel);
 
-        if (exp.first > exp.second)
+        if (exp > expNeed)
         {
-            textPopup->show(x + rect.x, y + rect.y, level,
-                strprintf("%d/%d", exp.first, exp.second));
+            textPopup->show(x + rect.x,
+                y + rect.y,
+                level,
+                strprintf("%s/%s", expStr.c_str(), expNeedStr.c_str()));
         }
         else
         {
-            textPopup->show(x + rect.x, y + rect.y, level,
-                strprintf("%d/%d", exp.first, exp.second),
+            textPopup->show(x + rect.x,
+                y + rect.y,
+                level,
+                strprintf("%s/%s", expStr.c_str(), expNeedStr.c_str()),
                 // TRANSLATORS: status bar label
-                strprintf("%s: %d", _("Need"), exp.second - exp.first));
+                strprintf("%s: %s", _("Need"), expLeftStr.c_str()));
         }
         mStatusPopup->hide();
     }

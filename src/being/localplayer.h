@@ -34,7 +34,6 @@
 #include "listeners/actorspritelistener.h"
 #include "listeners/attributelistener.h"
 #include "listeners/playerdeathlistener.h"
-#include "listeners/statlistener.h"
 
 #include "localconsts.h"
 
@@ -50,8 +49,7 @@ class OkDialog;
 class LocalPlayer final : public Being,
                           public ActorSpriteListener,
                           public AttributeListener,
-                          public PlayerDeathListener,
-                          public StatListener
+                          public PlayerDeathListener
 {
     public:
         /**
@@ -401,10 +399,6 @@ class LocalPlayer final : public Being,
         void attributeChanged(const AttributesT id,
                               const int64_t oldVal,
                               const int64_t newVal) override final;
-
-        void statChanged(const AttributesT id,
-                         const int oldVal1,
-                         const int oldVal2) override final;
 
         void updateMusic() const;
 
