@@ -168,7 +168,7 @@ void DialogsManager::attributeChanged(const AttributesT id,
                 percent = 50;
             const int max = PlayerInfo::getAttribute(
                 Attributes::MAX_WEIGHT) * percent / 100;
-            const int total = oldVal;
+            const int total = CAST_S32(oldVal);
             if (newVal >= max && total < max)
             {
                 weightNoticeTime = cur_time + 5;

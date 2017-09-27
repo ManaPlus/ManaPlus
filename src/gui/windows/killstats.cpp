@@ -288,7 +288,8 @@ void KillStats::gainXp(int64_t xp)
     }
     // TRANSLATORS: kill stats window label
     mLine4->setCaption(strprintf(_("Kills: %s, total exp: %s"),
-        toString(mKillCounter).c_str(), toString(mExpCounter).c_str()));
+        toString(mKillCounter).c_str(),
+        toString(CAST_U64(mExpCounter)).c_str()));
 
     // TRANSLATORS: kill stats window label
     mLine7->setCaption(strprintf(_("Kills/Min: %s, Exp/Min: %s"),
@@ -314,7 +315,7 @@ void KillStats::recalcStats()
     {
         const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
         if (m1minExpTime != 0)
-            m1minSpeed = newExp - m1minExpNum;
+            m1minSpeed = CAST_S32(newExp - m1minExpNum);
         else
             m1minSpeed = 0;
         m1minExpTime = curTime;
@@ -326,7 +327,7 @@ void KillStats::recalcStats()
         const int newExp = PlayerInfo::getAttribute(
             Attributes::PLAYER_EXP_NEEDED);
         if (m1minExpTime != 0)
-            m1minSpeed = newExp - m1minExpNum;
+            m1minSpeed = CAST_S32(newExp - m1minExpNum);
         mStatsReUpdated = true;
         m1minExpNum = newExp;
     }
@@ -335,7 +336,7 @@ void KillStats::recalcStats()
     {
         const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
         if (m5minExpTime != 0)
-            m5minSpeed = newExp - m5minExpNum;
+            m5minSpeed = CAST_S32(newExp - m5minExpNum);
         else
             m5minSpeed = 0;
         m5minExpTime = curTime;
@@ -346,7 +347,7 @@ void KillStats::recalcStats()
     {
         const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
         if (m15minExpTime != 0)
-            m15minSpeed = newExp - m15minExpNum;
+            m15minSpeed = CAST_S32(newExp - m15minExpNum);
         else
             m15minSpeed = 0;
         m15minExpTime = curTime;

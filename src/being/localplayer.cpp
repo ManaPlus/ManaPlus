@@ -1245,7 +1245,7 @@ void LocalPlayer::attributeChanged(const AttributesT id,
             break;
         }
         case Attributes::PLAYER_BASE_LEVEL:
-            mLevel = newVal;
+            mLevel = CAST_S32(newVal);
             break;
         case Attributes::PLAYER_HP:
             if (oldVal != 0 && newVal == 0)
@@ -1264,7 +1264,7 @@ void LocalPlayer::attributeChanged(const AttributesT id,
             {
                 return;
             }
-            const int64_t change = newVal - oldVal;
+            const int32_t change = CAST_S32(newVal - oldVal);
             addJobMessage(change);
             break;
         }

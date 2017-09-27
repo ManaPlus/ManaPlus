@@ -325,12 +325,27 @@ std::string UnitsDb::formatCurrency(const int value)
     return formatUnit(value, defaultCurrency);
 }
 
+std::string UnitsDb::formatCurrency64(const int64_t value)
+{
+    return formatUnit(CAST_S32(value),
+        defaultCurrency);
+}
+
 std::string UnitsDb::formatCurrency(std::string name,
                                     const int value)
 {
     if (mCurrencies.find(name) == mCurrencies.end())
         name = DEFAULT_CURRENCY;
     return formatUnit(value, mCurrencies[name]);
+}
+
+std::string UnitsDb::formatCurrency64(std::string name,
+                                      const int64_t value)
+{
+    if (mCurrencies.find(name) == mCurrencies.end())
+        name = DEFAULT_CURRENCY;
+    return formatUnit(CAST_S32(value),
+        mCurrencies[name]);
 }
 
 std::string UnitsDb::formatWeight(const int value)

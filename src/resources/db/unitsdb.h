@@ -46,11 +46,16 @@ namespace UnitsDb
     */
     std::string formatCurrency(const int value) A_WARN_UNUSED;
 
+    std::string formatCurrency64(const int64_t value) A_WARN_UNUSED;
+
     /**
     * Formats the given number in the correct currency format.
     */
     std::string formatCurrency(std::string name,
-                                   const int value) A_WARN_UNUSED;
+                               const int value) A_WARN_UNUSED;
+
+    std::string formatCurrency64(std::string name,
+                                 const int64_t value) A_WARN_UNUSED;
 
     /**
     * Formats the given number in the correct weight/mass format.

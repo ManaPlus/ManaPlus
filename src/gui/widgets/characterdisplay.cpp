@@ -143,7 +143,7 @@ void CharacterDisplay::mouseMoved(MouseEvent &event A_UNUSED)
             CAST_U32(
             mCharacter->data.mAttributes[Attributes::PLAYER_BASE_LEVEL])),
             // TRANSLATORS: character money
-            strprintf(_("Money: %s"), UnitsDb::formatCurrency(
+            strprintf(_("Money: %s"), UnitsDb::formatCurrency64(
             mCharacter->data.mAttributes[Attributes::MONEY]).c_str()));
     }
     else

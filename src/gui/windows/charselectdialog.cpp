@@ -259,8 +259,8 @@ void CharSelectDialog::action(const ActionEvent &event)
                 CAST_U32(
                 character->data.mAttributes[Attributes::PLAYER_BASE_LEVEL]),
                 strExp.c_str(),
-                UnitsDb::formatCurrency(
-                character->data.mAttributes[Attributes::MONEY]).c_str());
+                UnitsDb::formatCurrency(CAST_S32(
+                character->data.mAttributes[Attributes::MONEY])).c_str());
             CREATEWIDGET(OkDialog, data->getName(), msg,
                 // TRANSLATORS: ok dialog button
                 _("OK"),

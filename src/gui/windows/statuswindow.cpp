@@ -311,7 +311,7 @@ void StatusWindow::attributeChanged(const AttributesT id,
         case Attributes::MONEY:
             // TRANSLATORS: status window label
             mMoneyLabel->setCaption(strprintf(_("Money: %s"),
-                UnitsDb::formatCurrency(newVal).c_str()));
+                UnitsDb::formatCurrency64(newVal).c_str()));
             mMoneyLabel->adjustSize();
             break;
 
@@ -347,7 +347,7 @@ void StatusWindow::attributeChanged(const AttributesT id,
                     }
                     else
                     {
-                        lvl = (expNeed - 20000) / 150;
+                        lvl = CAST_S32((expNeed - 20000) / 150);
                         blocked = true;
                         PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL,
                             lvl);

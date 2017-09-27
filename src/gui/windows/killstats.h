@@ -94,7 +94,7 @@ class KillStats final : public Window,
         Label *mLastKillExpLabel A_NONNULLPOINTER;
 
         int mKillCounter;   /**< Session Kill counter. */
-        int mExpCounter;    /**< Session Exp counter. */
+        int64_t mExpCounter;  /**< Session Exp counter. */
         int mKillTCounter;   /**< Timer Kill counter. */
         int mExpTCounter;    /**< Timer Exp counter. */
 
