@@ -48,7 +48,6 @@
 #include "net/net.h"
 #include "net/serverfeatures.h"
 
-#include "utils/cast.h"
 #include "utils/foreach.h"
 
 #include "resources/db/unitsdb.h"
