@@ -295,7 +295,7 @@ void KillStats::gainXp(int64_t xp)
     // TRANSLATORS: kill stats window label
     mLine7->setCaption(strprintf(_("Kills/Min: %s, Exp/Min: %s"),
         toString(mKillTCounter / timeDiff).c_str(),
-        toString(mExpTCounter / timeDiff).c_str()));
+        toString(CAST_U64(mExpTCounter / timeDiff)).c_str()));
 
     mLastKillExpLabel->setCaption(strprintf("%s %s",
         // TRANSLATORS: kill stats window label
@@ -314,7 +314,8 @@ void KillStats::recalcStats()
     // Need Update Exp Counter
     if (curTime - m1minExpTime > 60)
     {
-        const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+        const int64_t newExp = PlayerInfo::getAttribute(
+            Attributes::PLAYER_EXP);
         if (m1minExpTime != 0)
             m1minSpeed = CAST_S32(newExp - m1minExpNum);
         else
@@ -335,7 +336,8 @@ void KillStats::recalcStats()
 
     if (curTime - m5minExpTime > 60*5)
     {
-        const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+        const int64_t newExp = PlayerInfo::getAttribute(
+            Attributes::PLAYER_EXP);
         if (m5minExpTime != 0)
             m5minSpeed = CAST_S32(newExp - m5minExpNum);
         else
@@ -346,7 +348,8 @@ void KillStats::recalcStats()
 
     if (curTime - m15minExpTime > 60*15)
     {
-        const int64_t newExp = PlayerInfo::getAttribute(Attributes::PLAYER_EXP);
+        const int64_t newExp = PlayerInfo::getAttribute(
+            Attributes::PLAYER_EXP);
         if (m15minExpTime != 0)
             m15minSpeed = CAST_S32(newExp - m15minExpNum);
         else

@@ -22,7 +22,7 @@
 #define NET_PROTOCOLOUTUPDATE_H
 
 #define packet(name, id, sz, comment) name = id
-#define packet2(name, id, sz, comment) name = id + evolPacketOffset
+#define packet2(name, id, sz, comment) name = (id) + evolPacketOffset
 #define PROTOCOLOUTUPDATE_VOID
 
 #endif  // NET_PROTOCOLOUTUPDATE_H

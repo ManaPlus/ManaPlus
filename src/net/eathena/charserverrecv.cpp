@@ -101,7 +101,8 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
         data.mAttributes[Attributes::PLAYER_JOB_EXP] =
             msg.readInt32("job exp");
     }
-    data.mAttributes[Attributes::PLAYER_JOB_LEVEL] =msg.readInt32("job level");
+    data.mAttributes[Attributes::PLAYER_JOB_LEVEL] =
+        msg.readInt32("job level");
 
     msg.readInt16("shoes?");
     const int gloves = msg.readInt16("gloves");

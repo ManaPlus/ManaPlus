@@ -415,7 +415,6 @@ void MiniStatusWindow::mouseMoved(MouseEvent &event)
             Attributes::PLAYER_JOB_LEVEL);
         const std::string expStr = toString(CAST_U64(exp));
         const std::string expNeedStr = toString(CAST_U64(expNeed));
-        const std::string jobLevelStr = toString(CAST_U64(jobLevel));
         const std::string expLeftStr = toString(CAST_U64(expNeed - exp));
 
         // TRANSLATORS: job bar label

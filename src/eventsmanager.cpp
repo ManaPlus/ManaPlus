@@ -512,13 +512,14 @@ void EventsManager::logEvent(const SDL_Event &event)
         {
 #ifdef USE_X11
             const bool res = X11Logger::logEvent(event);
+            if (res == false)
+                logger->assertLog("event: SDL_SYSWMEVENT: not supported:");
 #else  // USE_X11
 
             const bool res = false;
+            logger->assertLog("event: SDL_SYSWMEVENT: not supported:");
 #endif  // USE_X11
 
-            if (res == false)
-                logger->assertLog("event: SDL_SYSWMEVENT: not supported:");
             break;
         }
         case SDL_USEREVENT:

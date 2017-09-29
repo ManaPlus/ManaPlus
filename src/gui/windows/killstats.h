@@ -96,7 +96,7 @@ class KillStats final : public Window,
         int mKillCounter;   /**< Session Kill counter. */
         int64_t mExpCounter;  /**< Session Exp counter. */
         int mKillTCounter;   /**< Timer Kill counter. */
-        int mExpTCounter;    /**< Timer Exp counter. */
+        int64_t mExpTCounter;    /**< Timer Exp counter. */
 
         time_t m1minExpTime;
         int64_t m1minExpNum;

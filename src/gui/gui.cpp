@@ -1467,7 +1467,8 @@ void Gui::handleModalFocusReleased()
     Widget* widget = getMouseEventSource(mLastMouseX, mLastMouseY);
     Widget* parent = widget;
 
-    while (parent != nullptr)
+    while (parent != nullptr &&
+           widget != nullptr)
     {
         parent = widget->getParent();
 
