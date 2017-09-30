@@ -1,3 +1,12 @@
+2017-09-30 New release 1.7.9.30
+fix: disconnect chat command.
+fix: max packet version in server editor.
+add: http tunneling in downloads.
+add: limit each download file to 500MB.
+add: limit minimal allowed download speed to 1 byte per 1 minute.
+add: new packet versions from hercules.
+add: allow use some atributes as int64.
+
 2017-09-16 New release 1.7.9.16
 fix: sorting fonts and themes lists.
 fix: scrolling big windows.
