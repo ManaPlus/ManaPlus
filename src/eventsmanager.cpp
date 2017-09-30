@@ -516,7 +516,6 @@ void EventsManager::logEvent(const SDL_Event &event)
                 logger->assertLog("event: SDL_SYSWMEVENT: not supported:");
 #else  // USE_X11
 
-            const bool res = false;
             logger->assertLog("event: SDL_SYSWMEVENT: not supported:");
 #endif  // USE_X11
 
