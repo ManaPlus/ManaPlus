@@ -7,13 +7,13 @@
 # freya <freya.df@gmail.com>, 2012
 # freya <freya.df@gmail.com>, 2012
 # Xtreem <guilhermegg11@hotmail.com>, 2014
-# sem nome <cpntb1@ymail.com>, 2014
+# Jesusaves <cpntb1@ymail.com>, 2014
 # Luciano Zago <lcnzg7@gmail.com>, 2013
 # Xtreem <guilhermegg11@hotmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2016-07-10 21:59+0000\n"
+"PO-Revision-Date: 2017-09-23 18:10+0000\n"
 "Last-Translator: Diogo RBG <diogorbg@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/akaras/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
