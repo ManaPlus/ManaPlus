@@ -27,7 +27,6 @@
 #include "settings.h"
 
 #include "being/localplayer.h"
-#include "being/playerinfo.h"
 #include "being/playerrelations.h"
 
 #include "gui/sdlinput.h"
@@ -35,7 +34,6 @@
 
 #include "gui/widgets/tabs/chat/chattab.h"
 
-#include "gui/windows/chatwindow.h"
 #include "gui/windows/equipmentwindow.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/questswindow.h"
@@ -51,7 +49,6 @@
 
 #include "net/beinghandler.h"
 #include "net/charserverhandler.h"
-#include "net/net.h"
 #include "net/packetlimiter.h"
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
@@ -62,6 +59,14 @@
 #include "resources/map/map.h"
 
 #include "resources/db/itemdb.h"
+
+#ifdef TMWA_SUPPORT
+#include "being/playerinfo.h"
+
+#include "gui/windows/chatwindow.h"
+
+#include "net/net.h"
+#endif  // TMWA_SUPPORT
 
 #include <algorithm>
 

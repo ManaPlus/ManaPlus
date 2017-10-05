@@ -31,10 +31,11 @@
 
 #include "net/chathandler.h"
 #include "net/guildhandler.h"
-#include "net/net.h"
 #include "net/partyhandler.h"
 
 #ifdef TMWA_SUPPORT
+#include "net/net.h"
+
 #include "net/tmwa/guildmanager.h"
 #endif  // TMWA_SUPPORT
 

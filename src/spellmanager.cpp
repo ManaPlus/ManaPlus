@@ -26,7 +26,9 @@
 #include "textcommand.h"
 
 #include "being/localplayer.h"
+#ifdef TMWA_SUPPORT
 #include "being/playerinfo.h"
+#endif  // TMWA_SUPPORT
 
 #include "const/spells.h"
 

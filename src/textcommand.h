@@ -24,8 +24,10 @@
 #define TEXTCOMMAND_H
 
 #include "enums/commandtarget.h"
+#ifdef TMWA_SUPPORT
 #include "enums/magicschool.h"
 #include "enums/textcommandtype.h"
+#endif
 
 #include <string>
 

@@ -91,7 +91,6 @@
 #include "net/mercenaryhandler.h"
 #include "net/net.h"
 #include "net/npchandler.h"
-#include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 #include "net/uploadcharinfo.h"
 #include "net/tradehandler.h"
@@ -106,9 +105,14 @@
 #include "utils/delete2.h"
 #include "utils/foreach.h"
 #include "utils/gettext.h"
-#include "utils/mathutils.h"
 #include "utils/parameters.h"
 #include "utils/timer.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/playerhandler.h"
+
+#include "utils/mathutils.h"
+#endif  // TMWA_SUPPORT
 
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")

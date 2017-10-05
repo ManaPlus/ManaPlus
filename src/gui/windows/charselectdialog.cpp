@@ -45,7 +45,9 @@
 #include "net/character.h"
 #include "net/charserverhandler.h"
 #include "net/logindata.h"
+#ifdef TMWA_SUPPORT
 #include "net/net.h"
+#endif  // TMWA_SUPPORT
 #include "net/serverfeatures.h"
 
 #include "utils/foreach.h"

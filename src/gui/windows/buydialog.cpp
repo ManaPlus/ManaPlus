@@ -30,7 +30,9 @@
 #include "enums/gui/layouttype.h"
 
 #include "gui/windows/setupwindow.h"
+#ifdef TMWA_SUPPORT
 #include "gui/windows/tradewindow.h"
+#endif  // TMWA_SUPPORT
 
 #include "gui/models/shopitems.h"
 #include "gui/models/sortlistmodelbuy.h"

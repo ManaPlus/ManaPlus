@@ -35,7 +35,9 @@
 #include "gui/widgets/textbox.h"
 
 #include "net/beinghandler.h"
+#ifdef TMWA_SUPPORT
 #include "net/net.h"
+#endif  // TMWA_SUPPORT
 
 #include "utils/foreach.h"
 #include "utils/gettext.h"

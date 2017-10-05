@@ -37,7 +37,9 @@
 
 #include "resources/map/map.h"
 
+#ifdef TMWA_SUPPORT
 #include "net/net.h"
+#endif  // TMWA_SUPPORT
 #include "net/serverfeatures.h"
 
 #include "debug.h"

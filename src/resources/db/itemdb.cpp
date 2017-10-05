@@ -40,7 +40,9 @@
 
 #include "resources/sprite/spritereference.h"
 
+#ifdef TMWA_SUPPORT
 #include "net/net.h"
+#endif  // TMWA_SUPPORT
 
 #include "utils/checkutils.h"
 #include "utils/delete2.h"

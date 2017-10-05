@@ -30,10 +30,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#ifndef TMWA_SUPPORT
-#include "utils/cast.h"
-#endif  // TMWA_SUPPORT
-
 #include "resources/sdlmusic.h"
 #include "resources/soundeffect.h"
 
@@ -42,6 +38,9 @@
 
 #include "resources/resourcemanager/resourcemanager.h"
 
+#ifdef DYECMD
+#include "utils/cast.h"
+#endif
 #include "utils/checkutils.h"
 
 PRAGMA48(GCC diagnostic push)

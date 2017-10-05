@@ -26,7 +26,9 @@
 
 #include "utils/stringutils.h"
 
+#ifdef TMWA_SUPPORT
 #include "net/net.h"
+#endif  // TMWA_SUPPORT
 
 #include "resources/db/unitsdb.h"
 

@@ -28,7 +28,6 @@
 #include "input/keyboardconfig.h"
 
 #include "gui/models/iconsmodel.h"
-#include "gui/models/magicschoolmodel.h"
 #include "gui/models/targettypemodel.h"
 
 #include "gui/widgets/button.h"
@@ -37,7 +36,12 @@
 #include "gui/widgets/inttextfield.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layoutcell.h"
+
+#ifdef TMWA_SUPPORT
+#include "gui/models/magicschoolmodel.h"
+
 #include "gui/widgets/radiobutton.h"
+#endif  // TMWA_SUPPORT
 
 #include "utils/delete2.h"
 

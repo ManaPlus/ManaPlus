@@ -59,9 +59,9 @@
 #include "utils/gettext.h"
 #include "utils/sdlhelper.h"
 
+#ifdef TMWA_SUPPORT
 #include "net/net.h"
-
-#ifndef TMWA_SUPPORT
+#else  // TMWA_SUPPORT
 #include <curl/curl.h>
 #endif  // TMWA_SUPPORT
 
