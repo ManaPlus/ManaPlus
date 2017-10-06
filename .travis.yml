@@ -13,7 +13,7 @@ before_script:
   - ./tools/ci/scripts/retry.sh sudo apt-get install docker
 
 script:
-  - travis_wait 50 sleep infinity &
+  - travis_wait 150 sleep infinity &
   - ./tools/ci/scripts/docker_run.sh
   - docker ps -a
 
