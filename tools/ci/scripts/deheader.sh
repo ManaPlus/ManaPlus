@@ -6,6 +6,19 @@ export name=${name#./src/}
 export name=${name##*./}.h
 export dir=$(pwd)
 
+if [[ $var =~ .*(/sdl2gfx/|src/debug/).* ]]
+then
+   exit 0
+fi
+
+if [ "$skipPath" != "" ];
+then
+    if [[ $var =~ .*($skipPath).* ]]
+    then
+        exit 0
+    fi
+fi
+
 echo $1 >>${LOGFILE}
 echo $1
 
@@ -24,4 +37,5 @@ grep -v "deheader: ./src/net/sdltcpnet.cpp has more than one inclusion of <netin
 grep -v "deheader: remove <netinet/tcp.h> from ./src/net/sdltcpnet.cpp" | \
 grep -v "deheader: remove <climits> from ./src/resources/db/unitsdb.cpp" | \
 grep -v "portability requires" | \
+grep -v "SDL2_rotozoom.cpp" | \
 tee -a ${LOGFILE}
