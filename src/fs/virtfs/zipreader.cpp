@@ -30,10 +30,7 @@
 #include "utils/delete2.h"
 #include "utils/stringutils.h"
 
-PRAGMA4(GCC diagnostic push)
-PRAGMA4(GCC diagnostic ignored "-Wundef")
 #include <zlib.h>
-PRAGMA4(GCC diagnostic pop)
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_endian.h>

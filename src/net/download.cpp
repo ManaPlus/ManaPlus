@@ -30,10 +30,7 @@
 #include "utils/cast.h"
 #include "utils/sdlhelper.h"
 
-PRAGMA4(GCC diagnostic push)
-PRAGMA4(GCC diagnostic ignored "-Wundef")
 #include <zlib.h>
-PRAGMA4(GCC diagnostic pop)
 
 #include <sstream>
 

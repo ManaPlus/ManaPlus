@@ -36,10 +36,7 @@ PRAGMACLANG6GCC(GCC diagnostic pop)
 #include <SDL_ttf.h>
 PRAGMA48(GCC diagnostic pop)
 
-PRAGMA4(GCC diagnostic push)
-PRAGMA4(GCC diagnostic ignored "-Wundef")
 #include <zlib.h>
-PRAGMA4(GCC diagnostic pop)
 
 #include <curl/curl.h>
 
