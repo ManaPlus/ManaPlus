@@ -64,7 +64,10 @@
 
 #include "utils/translation/podict.h"
 
+PRAGMA4(GCC diagnostic push)
+PRAGMA4(GCC diagnostic ignored "-Wundef")
 #include <zlib.h>
+PRAGMA4(GCC diagnostic pop)
 
 #include "debug.h"
 
