@@ -231,6 +231,12 @@ std::string getPicturesDir()
 
 std::string getHomePath()
 {
+#if defined(UNITTESTS) && defined(UNITESTSDIR)
+    std::string dir = UNITESTSDIR;
+    if (findLast(dir, std::string(dirSeparator)) == false)
+        dir += dirSeparator;
+    return dir;
+#else  // defined(UNITTESTS) && defined(UNITESTSDIR)
 #ifdef WIN32
     return getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
 #else
@@ -252,6 +258,7 @@ std::string getHomePath()
         dir += dirSeparator;
     return dir;
 #endif  // WIN32
+#endif  // defined(UNITTESTS) && defined(UNITESTSDIR)
 }
 
 #ifdef ANDROID
