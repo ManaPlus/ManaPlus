@@ -668,13 +668,14 @@ AM_CONDITIONAL(ENABLE_UNITTESTSBIN_CATCH, test x$unittestsbin_catch = xtrue)
 AM_CONDITIONAL(ENABLE_UNITTESTSBIN_DOCTEST, test x$unittestsbin_doctest = xtrue)
 
 # Override home directory for unit tests
-AC_ARG_WITH(unittestsdir,[  --with-unittestsdir        override home directory for unit tests ] )
-if test "x$with_unittestsdir" == "xno"; then
-    with_unittestsdir=no
-else
-    with_unittestsdir=yes
-    CPPFLAGS="$CPPFLAGS -DUNITESTSDIR=$withval"
-fi
+AC_ARG_WITH(unittestsdir,
+[  --with-unittestsdir        override home directory for unit tests ],
+[
+    if test "x$withval" != "xno"; then
+        with_unittestsdir=$withval
+        CXXFLAGS="$CXXFLAGS -DUNITESTSDIR=\\\"$withval\\\""
+    fi
+])
 
 # Enable tcmalloc
 AC_ARG_ENABLE(tcmalloc,
