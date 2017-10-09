@@ -278,6 +278,8 @@ gcc-5_sdl2:
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
+  - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -1115,23 +1117,10 @@ gcc-6_tests_glibcdebug:
   tags:
     - docker
 
-gcc-7_tests_glibcdebug:
+gcc-7_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_mse:
-  stage: build
-  script:
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
   <<: *job-push
   variables:
@@ -1277,23 +1266,10 @@ gcc-7_sdl2_tests_i386:
   tags:
     - docker
 
-gcc-5_sdl2_tests_glibcdebug:
+gcc-5_sdl2_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-manaplusgame --enable-glibcdebug
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              valgrind
-  tags:
-    - docker
-
-gcc-5_sdl2_tests_mse:
-  stage: build
-  script:
   - ./tools/ci/jobs/gcc5_sdl2_tests.sh --without-manaplusgame --enable-stldebug
   <<: *job-push
   variables:
@@ -2113,6 +2089,8 @@ gcc-4.7:
   script:
   - ./tools/ci/jobs/gcc47.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/jobs/gcc47_c++11.sh
+  - ./tools/ci/scripts/runtests.sh
   image: debian:wheezy
   <<: *job-push
   variables:
@@ -2140,26 +2118,12 @@ gcc-4.7_i386:
   tags:
     - docker
 
-gcc-4.7_c++11:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc47_c++11.sh
-  - ./tools/ci/scripts/runtests.sh
-  image: debian:wheezy
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-4.7 g++-4.7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-  tags:
-    - docker
-
 gcc-4.8:
   stage: build
   script:
   - ./tools/ci/jobs/gcc48.sh
+  - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/jobs/gcc48_c++11.sh
   - ./tools/ci/scripts/runtests.sh
   image: debian:jessie
   <<: *job-push
@@ -2448,24 +2412,12 @@ gcc-7_all_and_unittestsbin:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
-gcc-4.8_c++11:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc48_c++11.sh
-  - ./tools/ci/scripts/runtests.sh
-  image: debian:jessie
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-4.8 g++-4.8 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-
 gcc-4.9:
   stage: build
   script:
   - ./tools/ci/jobs/gcc49.sh
+  - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/jobs/gcc49_c++11.sh
   - ./tools/ci/scripts/runtests.sh
   image: debian:jessie
   <<: *job-push
@@ -2491,20 +2443,6 @@ gcc-4.9_i386:
               gdb valgrind netcat-openbsd procps
   tags:
     - docker
-
-gcc-4.9_c++11:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc49_c++11.sh
-  - ./tools/ci/scripts/runtests.sh
-  image: debian:jessie
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-4.9 g++-4.9 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
 
 cmake_gcc-4.9:
   stage: build
@@ -2619,17 +2557,6 @@ gcc-5:
   script:
   - ./tools/ci/jobs/gcc5.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-
-gcc-5_c++11:
-  stage: build
-  script:
   - ./tools/ci/jobs/gcc5_c++11.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -2638,19 +2565,6 @@ gcc-5_c++11:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-
-gcc-5_sdl2_c++11:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
-  - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-5 g++-5 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               gdb valgrind netcat-openbsd procps
 
 gcc-5_sdl2_c++11_i386:
