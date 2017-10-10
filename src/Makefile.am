@@ -2091,8 +2091,10 @@ manaplustests_SOURCES += \
 	      unittests/fs/virtfs/virtfs1_enumerate.cc \
 	      unittests/fs/virtfs/virtfs1_exists.cc \
 	      unittests/fs/virtfs/virtfs1_getrealdir.cc \
-	      unittests/fs/virtfs/virtfs1_mountdir.cc \
-	      unittests/fs/virtfs/virtfs1_mountzip.cc \
+	      unittests/fs/virtfs/virtfs1_mountdir1.cc \
+	      unittests/fs/virtfs/virtfs1_mountdir2.cc \
+	      unittests/fs/virtfs/virtfs1_mountzip1.cc \
+	      unittests/fs/virtfs/virtfs1_mountzip2.cc \
 	      unittests/fs/virtfs/virtfs1_unmount.cc \
 	      unittests/fs/virtfs/virtfs2.cc \
 	      unittests/fs/virtfs/zip.cc \
