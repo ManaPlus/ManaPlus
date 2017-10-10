@@ -3478,7 +3478,7 @@ gitstats:
   only:
     - master
 
-mxe_gcc6_shared_32_tests:
+.mxe_gcc6_shared_32_tests:
   stage: build
   script:
   - tools\ci\jobs\windowstest.cmd files32
@@ -3496,7 +3496,7 @@ mxe_gcc6_shared_32_tests:
   tags:
     - windows
 
-mxe_gcc6_shared_64_tests:
+.mxe_gcc6_shared_64_tests:
   stage: build
   script:
   - tools\ci\jobs\windowstest.cmd files64
