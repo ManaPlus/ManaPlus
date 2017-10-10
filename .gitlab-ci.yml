@@ -3405,7 +3405,7 @@ gcc-5_h_pugi_all:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -I/usr/include/SDL
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -DENABLE_PUGIXML -I/usr/include/SDL
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_PUGIXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_PUGIXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -DUNITTESTS -DUNITTESTS_CATCH -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -I/usr/include/SDL
