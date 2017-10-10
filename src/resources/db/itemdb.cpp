@@ -801,6 +801,16 @@ bool ItemDB::exists(const int id)
     return i != mItemInfos.end();
 }
 
+bool ItemDB::exists(const std::string &name)
+{
+    if (!mLoaded)
+        return false;
+
+    const NamedItemInfos::const_iterator i = mNamedItemInfos.find(
+        normalize(name));
+    return i != mNamedItemInfos.end();
+}
+
 const ItemInfo &ItemDB::get(const int id)
 {
     if (!mLoaded)

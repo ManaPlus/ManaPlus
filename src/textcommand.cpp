@@ -125,10 +125,14 @@ void TextCommand::loadImage()
         mImage = nullptr;
     }
 
-    if (getIcon().empty())
+    if (mIcon.empty() ||
+        !ItemDB::exists(mIcon))
+    {
         return;
+    }
 
-    const SpriteDisplay display = ItemDB::get(getIcon()).getDisplay();
+    const ItemInfo &info = ItemDB::get(mIcon);
+    const SpriteDisplay display = info.getDisplay();
     mImage = Loader::getImage(pathJoin(paths.getStringValue("itemIcons"),
         display.image));
 

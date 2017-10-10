@@ -49,6 +49,7 @@ namespace ItemDB
     const StringVect &getTags();
 
     bool exists(const int id) A_WARN_UNUSED;
+    bool exists(const std::string &name) A_WARN_UNUSED;
 
     const ItemInfo &get(const int id) A_WARN_UNUSED;
     const ItemInfo &get(const std::string &name) A_WARN_UNUSED;

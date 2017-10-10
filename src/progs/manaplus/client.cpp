@@ -1922,13 +1922,14 @@ void Client::loadData()
     TranslationManager::loadDictionaryLang();
     PlayerInfo::stateChange(mState);
 
+    AttributesEnum::init();
+    DbManager::loadDb();
+
     delete spellManager;
     spellManager = new SpellManager;
     delete spellShortcut;
     spellShortcut = new SpellShortcut;
 
-    AttributesEnum::init();
-    DbManager::loadDb();
     EquipmentWindow::prepareSlotNames();
 
     ActorSprite::load();
