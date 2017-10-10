@@ -2,8 +2,6 @@ stages:
   - prebuild
   - build
   - stats
-  - ok
-  - fail
 
 # with :; prevent from run it on windows
 before_script:
@@ -3532,27 +3530,3 @@ pages:
     expire_in: 3 week
   only:
     - master
-
-ok_job:
-  stage: ok
-  script:
-  - pwd
-  - echo $CI_BUILD_REF_NAME
-  dependencies: []
-  when: on_success
-  variables:
-    UPDATEREPOS: ""
-    PMUPDATE: "echo"
-    PMINSTALL: "echo"
-
-fail_job:
-  stage: fail
-  script:
-  - pwd
-  - echo $CI_BUILD_REF_NAME
-  dependencies: []
-  when: on_failure
-  variables:
-    UPDATEREPOS: ""
-    PMUPDATE: "echo"
-    PMINSTALL: "echo"
