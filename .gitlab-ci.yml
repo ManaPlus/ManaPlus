@@ -432,6 +432,14 @@ nsiqcppstyle:
   tags:
     - docker
 
+triggers:
+  stage: build
+  script:
+  - ./tools/ci/scripts/triggers.sh
+  <<: *job-push
+  variables:
+    PACKAGES: curl
+
 gcc-7_sanitize_doctest_tests_i386:
   stage: build
   script:
