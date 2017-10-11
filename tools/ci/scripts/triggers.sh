@@ -7,3 +7,4 @@ function run {
 
 run "ci_deheader"
 run "ci_gcc4x"
+run "ci_gcc49"
