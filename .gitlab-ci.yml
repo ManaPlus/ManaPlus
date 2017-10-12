@@ -298,23 +298,6 @@ gcc-5_h_all_i386:
 
 # tests
 
-# disabled due gitlab bug
-.gcc-7_sanitize_doctest_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-    JOBS: 1
-  tags:
-    - docker
-
 triggers:
   stage: build
   script:
@@ -322,23 +305,6 @@ triggers:
   <<: *job-push
   variables:
     PACKAGES: curl
-
-gcc-7_sanitize_doctest_tests_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-    JOBS: 1
-  tags:
-    - docker
 
 # too slow for one thread, with two threads rundom out of memory issue
 gcc-7_sanitize_i386:
@@ -525,81 +491,6 @@ gcc-7_sanitize_i386:
   tags:
     - docker
 
-gcc-7_tests_simd:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_O0:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
-  <<: *job-push
-  variables:
-    POST_CXXFLAGS: "-O0"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_O1:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
-  <<: *job-push
-  variables:
-    POST_CXXFLAGS: "-O1"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_lto:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
-  <<: *job-push
-  variables:
-    POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_lto_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
-  <<: *job-push
-  image: vicamo/debian:sid-i386
-  variables:
-    POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
 gcc-7_tests_gcov:
   stage: build
   script:
@@ -611,36 +502,6 @@ gcc-7_tests_gcov:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               gcovr 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               valgrind
   tags:
     - docker
@@ -657,169 +518,6 @@ gcc-7_sdl2_tests_gcov:
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
               gcovr
               valgrind
-  tags:
-    - docker
-
-gcc-7_sdl2_tests_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_valgrind:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
-  - echo test valgrind
-  - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
-  - grep "invalid" logs/valg.log && exit 1 || true
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_tests_valgrind_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
-  - echo test valgrind
-  - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
-  - grep "invalid" logs/valg.log && exit 1 || true
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_separate_doctest:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
-  - ./tools/ci/scripts/separateunittests.sh
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              python
-
-# disabled due kernel issue in shared runners.
-.gcc-7_separate_doctest_sanitize:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
-  - ./tools/ci/scripts/separateunittests.sh
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  variables:
-    LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
-                    -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
-                    -fsanitize=vla-bound -fsanitize=null -fsanitize=return
-                    -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
-                    -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
-                    -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              python
-  tags:
-    - docker
-
-# disabled due kernel issue in shared runners.
-.gcc-7_separate_doctest_sanitize_sdl2:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
-  - ./tools/ci/scripts/separateunittests.sh
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  variables:
-    LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
-                    -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
-                    -fsanitize=vla-bound -fsanitize=null -fsanitize=return
-                    -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
-                    -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
-                    -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              python
-  tags:
-    - docker
-
-gcc-7_separate_doctest_sanitize_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
-  - ./tools/ci/scripts/separateunittests.sh
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  image: vicamo/debian:sid-i386
-  variables:
-    LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
-                    -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
-                    -fsanitize=vla-bound -fsanitize=null -fsanitize=return
-                    -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
-                    -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
-                    -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              python
-  tags:
-    - docker
-
-gcc-7_separate_doctest_sanitize_sdl2_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
-  - ./tools/ci/scripts/separateunittests.sh
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  image: vicamo/debian:sid-i386
-  variables:
-    LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
-                    -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
-                    -fsanitize=vla-bound -fsanitize=null -fsanitize=return
-                    -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
-                    -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
-                    -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              python
   tags:
     - docker
 
@@ -915,19 +613,6 @@ gcc-3_sdl2:
     PMINSTALL: "echo"
   tags:
     - docker
-
-gcc-7_all_and_unittestsbin:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin
-  - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libxml2-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
 
 gcc7_without_mumble_sdl1:
   stage: build
