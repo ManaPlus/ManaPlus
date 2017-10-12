@@ -507,36 +507,6 @@ gcc-7_sanitize_i386:
   tags:
     - docker
 
-
-.fedora_gcc-snapshot_sanitize_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot_sanitize_tests.sh --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
-    PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
-    FLAGS: "gccfedora.sh"
-  tags:
-  - docker
-
-.fedora_gcc-snapshot_sanitize_sdl2_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot_sanitize_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
-  <<: *job-push
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
-    PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf valgrind libasan liblsan libubsan"
-    FLAGS: "gccfedora.sh"
-  tags:
-  - docker
-
-
 # disabled due gitlab bug
 .gcc-7_SDL_SDL-1.2_sanitize_test:
   stage: build
@@ -1392,60 +1362,6 @@ gcc-7_default_i386:
               gdb valgrind netcat-openbsd procps
   tags:
     - docker
-
-fedora_gcc-snapshot_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot_tests.sh --without-dyecmd --without-manaplusgame
-  <<: *job-push
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
-    PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf valgrind"
-    FLAGS: "gccfedora.sh"
-  tags:
-  - docker
-
-fedora_gcc-snapshot_sdl2_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
-  <<: *job-push
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
-    PMINSTALL: "dnf --nogpgcheck install -y bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf valgrind"
-    FLAGS: "gccfedora.sh"
-  tags:
-  - docker
-
-fedora_gcc-snapshot:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot.sh
-  - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
-    PMINSTALL: "dnf --nogpgcheck install -y nc bash tar findutils gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL-devel SDL_net-devel SDL_image-devel SDL_ttf-devel SDL_mixer-devel SDL_gfx-devel zlib-devel gettext-devel automake autoconf"
-    FLAGS: "gccfedora.sh"
-  tags:
-  - docker
-
-fedora_gcc-snapshot_sdl2:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gccsnapshot.sh --with-sdl2
-  - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  image: fedora:rawhide
-  variables:
-    PMUPDATE: "dnf --nogpgcheck install --refresh -y @development-tools"
-    PMINSTALL: "dnf --nogpgcheck install -y nc bash tar findutils mesa-libGL-devel gcc gcc-c++ make libpng-devel libcurl-devel openssl-devel libxml2-devel gcc SDL2-devel SDL2_net-devel SDL2_image-devel SDL2_ttf-devel SDL2_mixer-devel SDL2_gfx-devel zlib-devel gettext-devel automake autoconf"
-    FLAGS: "gccfedora.sh"
-  tags:
-  - docker
 
 # error compilation. cant find SDL.
 .gcc-7_zlib_ng_develop:
