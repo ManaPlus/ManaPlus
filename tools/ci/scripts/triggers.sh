@@ -30,3 +30,5 @@ sleep 15s
 run "ci_gcc5"
 sleep 15s
 run "ci_clang4_5"
+sleep 15s
+run "ci_xmllibs"
