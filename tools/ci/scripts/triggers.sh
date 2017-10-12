@@ -22,3 +22,5 @@ sleep 15s
 run "ci_gcc6_tests"
 sleep 15s
 run "ci_gcc6"
+sleep 15s
+run "ci_malloc"
