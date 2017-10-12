@@ -283,27 +283,11 @@ gcc-7_unittestsbin:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
-mplint_po:
-  stage: prebuild
-  script:
-  - ./tools/ci/jobs/mplint.sh po
-  <<: *job-push
-  variables:
-    PACKAGES: gcc g++ git 
-              make autoconf automake autopoint gettext
-
-mplint_src:
+mplint:
   stage: prebuild
   script:
   - ./tools/ci/jobs/mplint.sh src
-  <<: *job-push
-  variables:
-    PACKAGES: gcc g++ git 
-              make autoconf automake autopoint gettext
-
-mplint_data:
-  stage: prebuild
-  script:
+  - ./tools/ci/jobs/mplint.sh po
   - ./tools/ci/jobs/mplint.sh data
   <<: *job-push
   variables:
