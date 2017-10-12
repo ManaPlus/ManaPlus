@@ -36,3 +36,5 @@ sleep 15s
 run "ci_fedora"
 sleep 15s
 run "ci_gcc-snapshot"
+sleep 15s
+run "ci_mxe"
