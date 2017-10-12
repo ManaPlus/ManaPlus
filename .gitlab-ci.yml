@@ -294,13 +294,16 @@ mplint:
     PACKAGES: gcc g++ git 
               make autoconf automake autopoint gettext
 
-cpplint:
+linters:
   stage: prebuild
   script:
+  - ./tools/ci/jobs/pngcheck.sh
+  - ./tools/ci/jobs/imagemagiccheck.sh
   - ./tools/ci/jobs/cpplint.sh
+  - ./tools/ci/jobs/nsiqcppstyle.sh
   <<: *job-push
   variables:
-    PACKAGES: python wget
+    PACKAGES: python wget pngcheck imagemagick git grep
 
 gcc-5_h_all:
   stage: prebuild
@@ -334,30 +337,6 @@ gcc-5_h_all_i386:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
   tags:
     - docker
-
-pngcheck:
-  stage: prebuild
-  script:
-  - ./tools/ci/jobs/pngcheck.sh
-  <<: *job-push
-  variables:
-    PACKAGES: pngcheck
-
-icccheck:
-  stage: prebuild
-  script:
-  - ./tools/ci/jobs/imagemagiccheck.sh
-  <<: *job-push
-  variables:
-    PACKAGES: imagemagick
-
-nsiqcppstyle:
-  stage: prebuild
-  script:
-  - ./tools/ci/jobs/nsiqcppstyle.sh
-  <<: *job-push
-  variables:
-    PACKAGES: "git python grep"
 
 # tests
 
