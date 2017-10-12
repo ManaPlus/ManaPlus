@@ -34,3 +34,5 @@ sleep 15s
 run "ci_xmllibs"
 sleep 15s
 run "ci_fedora"
+sleep 15s
+run "ci_gcc-snapshot"
