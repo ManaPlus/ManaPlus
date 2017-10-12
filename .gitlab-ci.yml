@@ -588,32 +588,6 @@ gcc-gentoo_sdl2:
   tags:
     - docker
 
-gcc-3_sdl1:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc3.sh
-  - ./tools/ci/scripts/runtests.sh
-  image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl1
-  <<: *job-push
-  variables:
-    PMUPDATE: "echo"
-    PMINSTALL: "echo"
-  tags:
-    - docker
-
-gcc-3_sdl2:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc3.sh --with-sdl2
-  - ./tools/ci/scripts/runtests.sh
-  image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl2
-  <<: *job-push
-  variables:
-    PMUPDATE: "echo"
-    PMINSTALL: "echo"
-  tags:
-    - docker
-
 gcc7_without_mumble_sdl1:
   stage: build
   script:
