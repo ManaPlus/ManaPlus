@@ -44,3 +44,5 @@ sleep 15s
 run "ci_glibcdebug"
 sleep 15s
 run "ci_checks"
+sleep 15s
+run "ci_gcc7_tests"
