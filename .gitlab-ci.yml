@@ -754,35 +754,6 @@ gcc-7_tests:
   tags:
     - docker
 
-gcc-7_pugixml_tests:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
-gcc-7_pugixml_tests_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              valgrind
-  tags:
-    - docker
-
 gcc-7_tests_glibcdebug_i386:
   stage: build
   script:
@@ -1374,59 +1345,6 @@ gcc-7_cilkplus:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-
-gcc-7_pugixml:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7.sh --enable-libxml=pugixml
-  - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-
-gcc-7_pugixml_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7.sh --enable-libxml=pugixml
-  - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
-              gdb valgrind netcat-openbsd procps
-
-gcc-7_pugixml_sdl2:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-libxml=pugixml
-  - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              gdb valgrind netcat-openbsd procps
-
-gcc-7_pugixml_sdl2_i386:
-  stage: build
-  script:
-  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-libxml=pugixml
-  - ./tools/ci/scripts/runtests.sh
-  <<: *job-push
-  variables:
-    PACKAGES: gcc-7 g++-7 
-              make autoconf automake autopoint gettext 
-              libpugixml-dev libcurl4-gnutls-dev libpng-dev 
-              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               gdb valgrind netcat-openbsd procps
 
 gcc_portable:
