@@ -32,3 +32,5 @@ sleep 15s
 run "ci_clang4_5"
 sleep 15s
 run "ci_xmllibs"
+sleep 15s
+run "ci_fedora"
