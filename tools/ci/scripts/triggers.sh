@@ -40,3 +40,5 @@ sleep 15s
 run "ci_mxe"
 sleep 15s
 run "ci_mse"
+sleep 15s
+run "ci_glibcdebug"
