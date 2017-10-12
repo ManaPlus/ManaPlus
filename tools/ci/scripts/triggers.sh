@@ -24,3 +24,5 @@ sleep 15s
 run "ci_gcc6"
 sleep 15s
 run "ci_malloc"
+sleep 15s
+run "ci_clang6"
