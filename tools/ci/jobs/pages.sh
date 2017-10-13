@@ -11,8 +11,8 @@ mkdir -p ../public/stats
 mkdir -p ../public/gcov
 mkdir -p ../public/version
 
-cp ../logs/gcc-?.* ../public/gcov || exit 1
-cp ../logs/gcc-?_SDL2.* ../public/gcov || exit 1
+cp ./logs/gcc-?.* ../public/gcov || exit 1
+cp ./logs/gcc-?_SDL2.* ../public/gcov || exit 1
 echo "Url: $CI_PROJECT_URL" >../public/version/commit.txt
 echo "Ref name: $CI_BUILD_REF_NAME" >>../public/version/commit.txt
 echo "Ref: $CI_BUILD_REF" >>../public/version/commit.txt
@@ -22,5 +22,5 @@ cd pagesindexgen
 check_error $?
 
 cd ..
-cp -r ../doxygen/html/* ../public/docs || exit 1
-cp -r ../stats/* ../public/stats || exit 1
+cp -r ./doxygen/html/* ../public/docs || exit 1
+cp -r ./stats/* ../public/stats || exit 1
