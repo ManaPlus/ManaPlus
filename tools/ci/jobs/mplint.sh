@@ -18,6 +18,7 @@ export CXXFLAGS="-std=gnu++11"
 
 do_init
 
+rm -rf mplint || true
 gitclone https://gitlab.com/manaplus mplint.git
 cd mplint
 run_configure_simple
