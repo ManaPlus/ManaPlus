@@ -45,7 +45,7 @@ static const unsigned int ROW_HEIGHT = 12;
 static const unsigned int NAME_COLUMN_WIDTH = 230;
 static const unsigned int RELATION_CHOICE_COLUMN_WIDTH = 80;
 
-#define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + column)
+#define WIDGET_AT(row, column) (((row) * COLUMNS_NR) + (column))
 
 PlayerTableModel::PlayerTableModel(const Widget2 *const widget) :
     Widget2(widget),

@@ -99,7 +99,7 @@ const char *ipToString(const uint32_t address)
 std::string strprintf(const char *const format, ...)
 {
     char buf[257];
-    va_list(args);
+    va_list args;
     va_start(args, format);
     size_t nb = vsnprintf(buf, 256, format, args);
     buf[256] = 0;
