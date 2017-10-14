@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-09-30 15:41+0300\n"
-"PO-Revision-Date: 2017-09-19 17:10+0000\n"
+"POT-Creation-Date: 2017-10-14 17:17+0300\n"
+"PO-Revision-Date: 2017-09-30 13:55+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/akaras/manaplus/language/"
 "uk/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1585
+#: src/actormanager.cpp:1590
 msgid "Visible on map"
 msgstr "Видимий на мапі"
 
@@ -801,8 +801,8 @@ msgstr "Відсутній"
 #: src/gui/windows/changeemaildialog.cpp:169
 #: src/gui/windows/changepassworddialog.cpp:159
 #: src/gui/windows/charcreatedialog.cpp:475
-#: src/gui/windows/charselectdialog.cpp:265
-#: src/gui/windows/charselectdialog.cpp:308 src/gui/windows/editdialog.cpp:51
+#: src/gui/windows/charselectdialog.cpp:267
+#: src/gui/windows/charselectdialog.cpp:310 src/gui/windows/editdialog.cpp:51
 #: src/gui/windows/editserverdialog.cpp:59
 #: src/gui/windows/editserverdialog.cpp:209
 #: src/gui/windows/itemamountwindow.cpp:200 src/gui/windows/quitdialog.cpp:67
@@ -811,7 +811,7 @@ msgstr "Відсутній"
 #: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:430
 #: src/net/eathena/charserverrecv.cpp:465
 #: src/net/eathena/charserverrecv.cpp:493 src/net/tmwa/charserverrecv.cpp:295
-#: src/progs/manaplus/actions/actions.cpp:175
+#: src/progs/manaplus/actions/actions.cpp:179
 #: src/progs/manaplus/client.cpp:1475 src/progs/manaplus/client.cpp:1510
 msgid "OK"
 msgstr "ОК"
@@ -1408,24 +1408,24 @@ msgid "Particles: %u"
 msgstr ""
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:269
+#: src/gui/popups/itempopup.cpp:271
 #, c-format
 msgid "Weight: %s"
 msgstr "Вага: %s"
 
 #. TRANSLATORS: named item description
-#: src/gui/popups/itempopup.cpp:342
+#: src/gui/popups/itempopup.cpp:344
 #, c-format
 msgid "Item named: %s"
 msgstr ""
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:369
+#: src/gui/popups/itempopup.cpp:371
 msgid "Cards: "
 msgstr ""
 
 #. TRANSLATORS: popup label
-#: src/gui/popups/itempopup.cpp:406
+#: src/gui/popups/itempopup.cpp:408
 msgid "Options: "
 msgstr ""
 
@@ -1540,9 +1540,9 @@ msgstr "Діалог"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:340 src/gui/popups/popupmenu.cpp:2586
-#: src/gui/windows/buydialog.cpp:211 src/gui/windows/buydialog.cpp:234
-#: src/gui/windows/buydialog.cpp:258 src/gui/windows/buydialog.cpp:336
-#: src/gui/windows/buydialog.cpp:340 src/gui/windows/buyselldialog.cpp:74
+#: src/gui/windows/buydialog.cpp:213 src/gui/windows/buydialog.cpp:236
+#: src/gui/windows/buydialog.cpp:260 src/gui/windows/buydialog.cpp:338
+#: src/gui/windows/buydialog.cpp:342 src/gui/windows/buyselldialog.cpp:74
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:250
 #: src/resources/db/npcdb.cpp:167
 msgid "Buy"
@@ -1630,7 +1630,7 @@ msgstr "Нагодувати"
 #. TRANSLATORS: character rename button
 #. TRANSLATORS: shop window button
 #: src/gui/popups/popupmenu.cpp:425 src/gui/popups/popupmenu.cpp:451
-#: src/gui/popups/popupmenu.cpp:776 src/gui/windows/charselectdialog.cpp:111
+#: src/gui/popups/popupmenu.cpp:776 src/gui/windows/charselectdialog.cpp:113
 #: src/gui/windows/shopwindow.cpp:194
 msgid "Rename"
 msgstr "Перейменувати"
@@ -1655,7 +1655,7 @@ msgstr "Скинути дропи"
 #. TRANSLATORS: inventory button
 #. TRANSLATORS: popup menu item
 #: src/gui/popups/popupmenu.cpp:446 src/gui/windows/equipmentwindow.cpp:74
-#: src/gui/windows/inventorywindow.cpp:209 src/resources/db/itemdb.cpp:727
+#: src/gui/windows/inventorywindow.cpp:209 src/resources/db/itemdb.cpp:729
 #: src/resources/itemtypemapdata.h:45 src/resources/itemtypemapdata.h:49
 #: src/resources/itemtypemapdata.h:53 src/resources/itemtypemapdata.h:57
 #: src/resources/itemtypemapdata.h:61 src/resources/itemtypemapdata.h:65
@@ -1724,7 +1724,7 @@ msgstr "Додати ім'я до чату"
 #: src/gui/windows/editserverdialog.cpp:61
 #: src/gui/windows/itemamountwindow.cpp:202 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:64 src/gui/windows/setupwindow.cpp:106
-#: src/gui/windows/textcommandeditor.cpp:98 src/gui/windows/textdialog.cpp:60
+#: src/gui/windows/textcommandeditor.cpp:102 src/gui/windows/textdialog.cpp:60
 #: src/gui/windows/updaterwindow.cpp:193 src/input/pages/gui.cpp:103
 msgid "Cancel"
 msgstr "Скасувати"
@@ -2088,7 +2088,7 @@ msgstr "Вилучити всю кількість"
 #: src/gui/windows/inventorywindow.cpp:797 src/gui/windows/skilldialog.cpp:93
 #: src/gui/windows/skilldialog.cpp:193 src/gui/windows/skilldialog.cpp:493
 #: src/gui/windows/skilldialog.cpp:760 src/gui/windows/skilldialog.cpp:875
-#: src/resources/db/itemdb.cpp:735 src/resources/db/itemdb.cpp:740
+#: src/resources/db/itemdb.cpp:737 src/resources/db/itemdb.cpp:742
 #: src/resources/itemtypemapdata.h:37 src/resources/itemtypemapdata.h:41
 msgid "Use"
 msgstr "Використати"
@@ -2674,7 +2674,7 @@ msgstr ""
 #. TRANSLATORS: info header
 #. TRANSLATORS: info message
 #: src/gui/popups/popupmenu.cpp:3296 src/gui/popups/popupmenu.cpp:3325
-#: src/gui/popups/popupmenu.cpp:3344 src/gui/windows/charselectdialog.cpp:78
+#: src/gui/popups/popupmenu.cpp:3344 src/gui/windows/charselectdialog.cpp:80
 #: src/gui/windows/serverdialog.cpp:120 src/net/ea/charserverrecv.cpp:130
 #: src/net/eathena/charserverrecv.cpp:426
 #: src/net/eathena/charserverrecv.cpp:462
@@ -3182,7 +3182,7 @@ msgstr "Точка шляху"
 #. TRANSLATORS: status bar label
 #: src/gui/widgets/attrs/changedisplay.cpp:48
 #: src/gui/widgets/attrs/changedisplay.cpp:70
-#: src/gui/widgets/selldialog.cpp:141 src/gui/windows/buydialog.cpp:350
+#: src/gui/widgets/selldialog.cpp:141 src/gui/windows/buydialog.cpp:352
 #: src/gui/windows/statuswindow.cpp:454 src/gui/windows/statuswindow.cpp:516
 msgid "Max"
 msgstr "Все"
@@ -3194,7 +3194,7 @@ msgstr "Все"
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
 #: src/gui/widgets/attrs/changedisplay.cpp:50
-#: src/gui/widgets/selldialog.cpp:137 src/gui/windows/buydialog.cpp:330
+#: src/gui/widgets/selldialog.cpp:137 src/gui/windows/buydialog.cpp:332
 #: src/gui/windows/itemamountwindow.cpp:198
 #: src/gui/windows/itemamountwindow.cpp:234 src/gui/windows/npcdialog.cpp:126
 msgid "+"
@@ -3237,7 +3237,7 @@ msgstr "Відвідати посилання"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: shop window label
 #. TRANSLATORS: trade window button
-#: src/gui/widgets/selldialog.cpp:115 src/gui/windows/buydialog.cpp:336
+#: src/gui/widgets/selldialog.cpp:115 src/gui/windows/buydialog.cpp:338
 #: src/gui/windows/maileditwindow.cpp:61 src/gui/windows/npcdialog.cpp:135
 #: src/gui/windows/serverdialog.cpp:112 src/gui/windows/shopwindow.cpp:124
 #: src/gui/windows/tradewindow.cpp:87
@@ -3251,7 +3251,7 @@ msgstr "Додати"
 #. TRANSLATORS: servers dialog button
 #. TRANSLATORS: sell dialog button
 #. TRANSLATORS: input action name
-#: src/gui/widgets/selldialog.cpp:119 src/gui/windows/buydialog.cpp:348
+#: src/gui/widgets/selldialog.cpp:119 src/gui/windows/buydialog.cpp:350
 #: src/gui/windows/quitdialog.cpp:51 src/gui/windows/quitdialog.cpp:56
 #: src/gui/windows/quitdialog.cpp:58 src/gui/windows/serverdialog.cpp:108
 #: src/gui/windows/textselectdialog.cpp:94 src/input/pages/basic.cpp:226
@@ -3263,7 +3263,7 @@ msgstr "Вийти"
 #. You may change this symbol if your language uses another.
 #. TRANSLATORS: item amount window button
 #. TRANSLATORS: npc dialog button
-#: src/gui/widgets/selldialog.cpp:139 src/gui/windows/buydialog.cpp:333
+#: src/gui/widgets/selldialog.cpp:139 src/gui/windows/buydialog.cpp:335
 #: src/gui/windows/itemamountwindow.cpp:196
 #: src/gui/windows/itemamountwindow.cpp:231 src/gui/windows/npcdialog.cpp:128
 msgid "-"
@@ -3272,7 +3272,7 @@ msgstr "-"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:148 src/gui/widgets/selldialog.cpp:370
-#: src/gui/windows/buydialog.cpp:316 src/gui/windows/buydialog.cpp:750
+#: src/gui/windows/buydialog.cpp:318 src/gui/windows/buydialog.cpp:752
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Ціна: %s / Загалом: %s"
@@ -5227,9 +5227,9 @@ msgstr "Дозволити шепіт (приватне спілкування)"
 #. TRANSLATORS: command editor button
 #. TRANSLATORS: input action name
 #: src/gui/widgets/tabs/setup_relations.cpp:78
-#: src/gui/windows/charselectdialog.cpp:80 src/gui/windows/mailwindow.cpp:73
+#: src/gui/windows/charselectdialog.cpp:82 src/gui/windows/mailwindow.cpp:73
 #: src/gui/windows/serverdialog.cpp:116 src/gui/windows/shopwindow.cpp:126
-#: src/gui/windows/textcommandeditor.cpp:102 src/input/pages/gui.cpp:109
+#: src/gui/windows/textcommandeditor.cpp:106 src/input/pages/gui.cpp:109
 msgid "Delete"
 msgstr "Видалити"
 
@@ -6095,25 +6095,25 @@ msgid "Deposit"
 msgstr "Покласти"
 
 #. TRANSLATORS: buy dialog name
-#: src/gui/windows/buydialog.cpp:189
+#: src/gui/windows/buydialog.cpp:191
 msgid "Create items"
 msgstr "Створення предметів"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:325
+#: src/gui/windows/buydialog.cpp:327
 msgid "Amount:"
 msgstr "Кількість:"
 
 #. TRANSLATORS: buy dialog button
 #. TRANSLATORS: char create dialog button
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/buydialog.cpp:336 src/gui/windows/charcreatedialog.cpp:112
-#: src/gui/windows/charselectdialog.cpp:618
+#: src/gui/windows/buydialog.cpp:338 src/gui/windows/charcreatedialog.cpp:112
+#: src/gui/windows/charselectdialog.cpp:620
 msgid "Create"
 msgstr "Створити"
 
 #. TRANSLATORS: buy dialog label
-#: src/gui/windows/buydialog.cpp:387
+#: src/gui/windows/buydialog.cpp:389
 msgid "Filter:"
 msgstr ""
 
@@ -6169,7 +6169,7 @@ msgstr "Адреси скриньок не спідпадають."
 #: src/gui/windows/changeemaildialog.cpp:166
 #: src/gui/windows/changepassworddialog.cpp:156
 #: src/gui/windows/charcreatedialog.cpp:471
-#: src/gui/windows/charselectdialog.cpp:304
+#: src/gui/windows/charselectdialog.cpp:306
 #: src/gui/windows/editserverdialog.cpp:204
 #: src/gui/windows/registerdialog.cpp:245 src/net/ea/charserverrecv.cpp:105
 #: src/net/eathena/charserverrecv.cpp:403
@@ -6346,48 +6346,48 @@ msgid "Are you sure you want to delete this character?"
 msgstr "Ви дійсно бажаєте знищити персонажа?"
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:62
+#: src/gui/windows/charselectdialog.cpp:64
 #, c-format
 msgid "Account %s (last login time %s)"
 msgstr "Акаунт %s (останній логін %s)"
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:71
+#: src/gui/windows/charselectdialog.cpp:73
 msgid "Switch"
 msgstr "Назад до логіну"
 
 #. TRANSLATORS: char select dialog. button.
-#: src/gui/windows/charselectdialog.cpp:73
+#: src/gui/windows/charselectdialog.cpp:75
 msgid "Password"
 msgstr "Пароль"
 
 #. TRANSLATORS: char select dialog. button.
 #. TRANSLATORS: updater window button
-#: src/gui/windows/charselectdialog.cpp:76
-#: src/gui/windows/charselectdialog.cpp:608
+#: src/gui/windows/charselectdialog.cpp:78
+#: src/gui/windows/charselectdialog.cpp:610
 #: src/gui/windows/updaterwindow.cpp:195
 msgid "Play"
 msgstr "Увійти"
 
 #. TRANSLATORS: char select dialog name
-#: src/gui/windows/charselectdialog.cpp:147
+#: src/gui/windows/charselectdialog.cpp:149
 #, c-format
 msgid "Account %s"
 msgstr "Акаунт %s"
 
 #. TRANSLATORS: pin code dialog header.
-#: src/gui/windows/charselectdialog.cpp:176
+#: src/gui/windows/charselectdialog.cpp:178
 msgid "Please set new pincode"
 msgstr "Будь ласка, встановіть новий пін код"
 
 #. TRANSLATORS: character rename dialog header.
-#: src/gui/windows/charselectdialog.cpp:226
+#: src/gui/windows/charselectdialog.cpp:228
 msgid "Please enter new name"
 msgstr "Будь ласка, вкажіть нове ім'я"
 
 #. TRANSLATORS: char select dialog. player info message.
-#: src/gui/windows/charselectdialog.cpp:248
-#, fuzzy, c-format
+#: src/gui/windows/charselectdialog.cpp:250
+#, c-format
 msgid ""
 "Hp: %u/%u\n"
 "Mp: %u/%u\n"
@@ -6395,34 +6395,29 @@ msgid ""
 "Experience: %s\n"
 "Money: %s"
 msgstr ""
-"Hp: %u/%u\n"
-"Mp: %u/%u\n"
-"Рівень: %u\n"
-"Досвід: %u\n"
-"Кошти: %s"
 
 #. TRANSLATORS: error message
-#: src/gui/windows/charselectdialog.cpp:306
+#: src/gui/windows/charselectdialog.cpp:308
 msgid "Incorrect password"
 msgstr "Неправильний пароль!"
 
 #. TRANSLATORS: char deletion question.
-#: src/gui/windows/charselectdialog.cpp:457
+#: src/gui/windows/charselectdialog.cpp:459
 msgid "Enter your email for deleting character"
 msgstr ""
 
 #. TRANSLATORS: email label.
-#: src/gui/windows/charselectdialog.cpp:459
+#: src/gui/windows/charselectdialog.cpp:461
 msgid "Enter email:"
 msgstr ""
 
 #. TRANSLATORS: char deletion question.
-#: src/gui/windows/charselectdialog.cpp:466
+#: src/gui/windows/charselectdialog.cpp:468
 msgid "Enter password for deleting character"
 msgstr "Вкажіть пароль для видалення персонажу"
 
 #. TRANSLATORS: email label.
-#: src/gui/windows/charselectdialog.cpp:468
+#: src/gui/windows/charselectdialog.cpp:470
 msgid "Enter password:"
 msgstr "Пароль:"
 
@@ -6600,7 +6595,7 @@ msgstr "Вставити"
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: inventory button
 #: src/gui/windows/inventorywindow.cpp:205 src/gui/windows/outfitwindow.cpp:68
-#: src/resources/db/itemdb.cpp:722 src/resources/itemtypemapdata.h:45
+#: src/resources/db/itemdb.cpp:724 src/resources/itemtypemapdata.h:45
 #: src/resources/itemtypemapdata.h:49 src/resources/itemtypemapdata.h:53
 #: src/resources/itemtypemapdata.h:57 src/resources/itemtypemapdata.h:61
 #: src/resources/itemtypemapdata.h:65 src/resources/itemtypemapdata.h:69
@@ -6774,16 +6769,16 @@ msgstr "Рівень: %d на %f%%"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:131 src/gui/windows/killstats.cpp:255
-#, fuzzy, c-format
+#, c-format
 msgid "Exp: %s/%s Left: %s"
-msgstr "Досвід: %d/%d, залишилось: %d"
+msgstr ""
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:137 src/gui/windows/killstats.cpp:263
 #: src/gui/windows/killstats.cpp:278
-#, fuzzy, c-format
+#, c-format
 msgid "1%% = %s exp, avg mob for 1%%: %s"
-msgstr "1%% = %d досвіду, середніх мобів для 1%%: %s"
+msgstr ""
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:375 src/gui/windows/killstats.cpp:385
@@ -7492,67 +7487,67 @@ msgid "Level: %d (%s %d)"
 msgstr ""
 
 #. TRANSLATORS: command editor name
-#: src/gui/windows/textcommandeditor.cpp:52
+#: src/gui/windows/textcommandeditor.cpp:56
 msgid "Command Editor"
 msgstr "Редактор команд"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:61
+#: src/gui/windows/textcommandeditor.cpp:65
 msgid "magic"
 msgstr "магія"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:63
+#: src/gui/windows/textcommandeditor.cpp:67
 msgid "other"
 msgstr "інше"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:66
+#: src/gui/windows/textcommandeditor.cpp:70
 msgid "Symbol:"
 msgstr "Символ:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:69
+#: src/gui/windows/textcommandeditor.cpp:73
 msgid "Command:"
 msgstr "Команда:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:72
+#: src/gui/windows/textcommandeditor.cpp:76
 msgid "Comment:"
 msgstr "Примітка:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:76
+#: src/gui/windows/textcommandeditor.cpp:80
 msgid "Target Type:"
 msgstr "Тип цілі:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:80
+#: src/gui/windows/textcommandeditor.cpp:84
 msgid "Icon:"
 msgstr "Значок:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:84
+#: src/gui/windows/textcommandeditor.cpp:88
 msgid "Mana:"
 msgstr "Мана:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:87
+#: src/gui/windows/textcommandeditor.cpp:91
 msgid "Magic level:"
 msgstr "Рівень мани:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:91
+#: src/gui/windows/textcommandeditor.cpp:95
 msgid "Magic School:"
 msgstr "Школа магії:"
 
 #. TRANSLATORS: command editor label
-#: src/gui/windows/textcommandeditor.cpp:94
+#: src/gui/windows/textcommandeditor.cpp:98
 msgid "School level:"
 msgstr "Рівень школи:"
 
 #. TRANSLATORS: command editor button
-#: src/gui/windows/textcommandeditor.cpp:100
+#: src/gui/windows/textcommandeditor.cpp:104
 msgid "Save"
 msgstr "Зберегти"
 
@@ -9359,7 +9354,7 @@ msgstr ""
 #. TRANSLATORS: item name
 #: src/net/eathena/inventoryrecv.cpp:1228
 #: src/net/eathena/inventoryrecv.cpp:1361 src/net/eathena/mail2recv.cpp:205
-#: src/resources/db/itemdb.cpp:199
+#: src/resources/db/itemdb.cpp:201
 msgid "Unknown item"
 msgstr "Невідомий предмет"
 
@@ -9620,70 +9615,70 @@ msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd файл_рядків_кольору файл_призначення"
 
 #. TRANSLATORS: file uploaded message
-#: src/progs/manaplus/actions/actions.cpp:172
+#: src/progs/manaplus/actions/actions.cpp:176
 msgid "File uploaded"
 msgstr "Файл завантажено"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/progs/manaplus/actions/actions.cpp:1075
-#: src/progs/manaplus/actions/actions.cpp:1088
+#: src/progs/manaplus/actions/actions.cpp:1079
+#: src/progs/manaplus/actions/actions.cpp:1092
 msgid "Cache cleaned"
 msgstr "Кеш прибрано"
 
 #. TRANSLATORS: uptime command
-#: src/progs/manaplus/actions/actions.cpp:1260
-#: src/progs/manaplus/actions/actions.cpp:1266
+#: src/progs/manaplus/actions/actions.cpp:1264
+#: src/progs/manaplus/actions/actions.cpp:1270
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Час безперервної роботи клієнта: %s"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1323
-#: src/progs/manaplus/actions/actions.cpp:1332
+#: src/progs/manaplus/actions/actions.cpp:1327
+#: src/progs/manaplus/actions/actions.cpp:1336
 msgid "Resource images:"
 msgstr "Зображень:"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1326
-#: src/progs/manaplus/actions/actions.cpp:1336
+#: src/progs/manaplus/actions/actions.cpp:1330
+#: src/progs/manaplus/actions/actions.cpp:1340
 msgid "Resource orphaned images:"
 msgstr "Вилучених зображень:"
 
 #. TRANSLATORS: dump environment command
-#: src/progs/manaplus/actions/actions.cpp:1433
+#: src/progs/manaplus/actions/actions.cpp:1437
 msgid "Environment variables dumped"
 msgstr "Змінні середовища збережені"
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1568
+#: src/progs/manaplus/actions/actions.cpp:1572
 msgid "Uploaded config into:"
 msgstr "Завантажений конфіг:"
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1578
+#: src/progs/manaplus/actions/actions.cpp:1582
 msgid "Uploaded server config into:"
 msgstr "Завантажена конфігурація сервера:"
 
 #. TRANSLATORS: upload log chat message
-#: src/progs/manaplus/actions/actions.cpp:1588
+#: src/progs/manaplus/actions/actions.cpp:1592
 msgid "Uploaded log into:"
 msgstr "Завантажений лог:"
 
 #. TRANSLATORS: last seen disabled warning
-#: src/progs/manaplus/actions/actions.cpp:1843
+#: src/progs/manaplus/actions/actions.cpp:1847
 msgid ""
 "Last seen disabled. Enable in players / collect players id and seen log."
 msgstr ""
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1862
-#: src/progs/manaplus/actions/actions.cpp:1876
+#: src/progs/manaplus/actions/actions.cpp:1866
+#: src/progs/manaplus/actions/actions.cpp:1880
 msgid "You not saw this nick."
 msgstr ""
 
 #. TRANSLATORS: last seen message
-#: src/progs/manaplus/actions/actions.cpp:1868
+#: src/progs/manaplus/actions/actions.cpp:1872
 #, c-format
 msgid "Last seen for %s: %s"
 msgstr ""
@@ -10041,8 +10036,8 @@ msgstr "Новітній OpenGL"
 #. TRANSLATORS: unknown info name
 #. TRANSLATORS: being info default name
 #: src/resources/beinginfo.cpp:63 src/resources/db/avatardb.cpp:95
-#: src/resources/db/homunculusdb.cpp:99 src/resources/db/itemdb.cpp:442
-#: src/resources/db/itemdb.cpp:446 src/resources/db/mercenarydb.cpp:101
+#: src/resources/db/homunculusdb.cpp:99 src/resources/db/itemdb.cpp:444
+#: src/resources/db/itemdb.cpp:448 src/resources/db/mercenarydb.cpp:101
 #: src/resources/db/moddb.cpp:80 src/resources/db/monsterdb.cpp:103
 #: src/resources/modinfo.cpp:29
 msgid "unnamed"
