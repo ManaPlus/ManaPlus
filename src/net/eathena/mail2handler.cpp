@@ -230,8 +230,19 @@ void Mail2Handler::refreshMailList(const MailOpenTypeT openType,
         return;
     }
     createOutPacket(CMSG_MAIL2_REFRESH_MAIL_LIST);
-    outMsg.writeInt8(toInt(openType, int8_t), "open type");
-    outMsg.writeInt64(mailId, "mail id");
+    if (packetVersion >= 20170419)
+    {
+        outMsg.writeInt64(mailId, "mail id");
+        outMsg.writeInt32(0, "unknown 1");
+        outMsg.writeInt32(0, "unknown 2");
+        outMsg.writeInt32(0, "unknown 3");
+        outMsg.writeInt32(0, "unknown 4");
+    }
+    else
+    {
+        outMsg.writeInt8(toInt(openType, int8_t), "open type");
+        outMsg.writeInt64(mailId, "mail id");
+    }
 }
 
 void Mail2Handler::openMailBox(const MailOpenTypeT openType) const
@@ -242,8 +253,19 @@ void Mail2Handler::openMailBox(const MailOpenTypeT openType) const
         return;
     }
     createOutPacket(CMSG_MAIL2_OPEN_MAILBOX);
-    outMsg.writeInt8(toInt(openType, int8_t), "open type");
-    outMsg.writeInt64(0, "mail id");
+    if (packetVersion >= 20170419)
+    {
+        outMsg.writeInt64(0, "mail id");
+        outMsg.writeInt32(0, "unknown 1");
+        outMsg.writeInt32(0, "unknown 2");
+        outMsg.writeInt32(0, "unknown 3");
+        outMsg.writeInt32(0, "unknown 4");
+    }
+    else
+    {
+        outMsg.writeInt8(toInt(openType, int8_t), "open type");
+        outMsg.writeInt64(0, "mail id");
+    }
 }
 
 void Mail2Handler::closeMailBox() const

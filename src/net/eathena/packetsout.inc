@@ -7361,6 +7361,13 @@ if (packetVersion == 20170419)
     packet(CMSG_BUYINGSTORE_OPEN,         0x0965,   6, clif->pReqClickBuyingStore);
 }
 
+// 20170419
+if (packetVersion >= 20170419)
+{
+    packet(CMSG_MAIL2_OPEN_MAILBOX,       0x0ac0,  26, clif->pRodexOpenMailbox);
+    packet(CMSG_MAIL2_REFRESH_MAIL_LIST,  0x0ac1,  26, clif->pRodexRefreshMaillist);
+}
+
 // 20170426
 if (packetVersion == 20170426)
 {
