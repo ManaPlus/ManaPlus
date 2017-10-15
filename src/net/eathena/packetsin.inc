@@ -958,6 +958,12 @@ if (packetVersion >= 20170329)
     packet(SMSG_CHAR_MAP_INFO,             0x0ac5, 156, &CharServerRecv::processCharMapInfo,            20170329);
 }
 
+// 20170419
+if (packetVersion >= 20170419)
+{
+    packet(SMSG_MAIL2_MAIL_LIST_PAGE,      0x0ac2,  -1, &Mail2Recv::processMailListPage,                20170419);
+}
+
 // 20170502
 if (packetVersion >= 20170502)
 {

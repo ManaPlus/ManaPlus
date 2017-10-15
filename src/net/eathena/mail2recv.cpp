@@ -52,6 +52,8 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+
 namespace EAthena
 {
 
@@ -334,24 +336,51 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
         return;
     }
     msg.readInt16("len");
-    mailWindow->setOpenType(fromInt(msg.readUInt8("open type"),
-        MailOpenTypeT));
-    const int cnt = msg.readUInt8("cnt");
-    const bool isEnd = msg.readUInt8("isEnd") != 0;
-    for (int f = 0; f < cnt; f ++)
+    bool isEnd = true;
+    if (packetVersion < 20170419)
     {
-        MailMessage *const mail = new MailMessage;
-        mail->id = msg.readInt64("mail id");
-        mail->read = msg.readUInt8("is read") != 0U ? true : false;
-        mail->type = static_cast<MailMessageType::Type>(
-            msg.readUInt8("type"));
-        mail->sender = msg.readString(24, "sender name");
-        mail->time = CAST_S32(cur_time - msg.readInt32("reg time"));
-        mail->strTime = timeToStr(mail->time);
-        mail->expireTime = msg.readInt32("expire time");
-        mail->title = msg.readString(-1, "title");
-        mailWindow->addMail(mail);
+        mailWindow->setOpenType(fromInt(msg.readUInt8("open type"),
+            MailOpenTypeT));
+        const int cnt = msg.readUInt8("cnt");
+        isEnd = msg.readUInt8("isEnd") != 0;
+        for (int f = 0; f < cnt; f ++)
+        {
+            MailMessage *const mail = new MailMessage;
+            mail->id = msg.readInt64("mail id");
+            mail->read = msg.readUInt8("is read") != 0U ? true : false;
+            mail->type = static_cast<MailMessageType::Type>(
+                msg.readUInt8("type"));
+            mail->sender = msg.readString(24, "sender name");
+            if (packetVersion < 20170419)
+            {
+                mail->time = CAST_S32(cur_time - msg.readInt32("reg time"));
+                mail->strTime = timeToStr(mail->time);
+            }
+            mail->expireTime = msg.readInt32("expire time");
+            mail->title = msg.readString(-1, "title");
+            mailWindow->addMail(mail);
+        }
     }
+    else
+    {
+        isEnd = msg.readUInt8("isEnd") != 0;
+        while (msg.getUnreadLength() > 0)
+        {
+            MailMessage *const mail = new MailMessage;
+            // +++ need save open type into MailMessage
+            msg.readUInt8("open type");
+            mail->id = msg.readInt64("mail id");
+            mail->read = msg.readUInt8("is read") != 0U ? true : false;
+            mail->type = static_cast<MailMessageType::Type>(
+                msg.readUInt8("type"));
+            mail->sender = msg.readString(24, "sender name");
+            mail->strTime = "-";
+            mail->expireTime = msg.readInt32("expire time");
+            mail->title = msg.readString(-1, "title");
+            mailWindow->addMail(mail);
+        }
+    }
+
     if (isEnd)
         mailWindow->setLastPage();
 }
