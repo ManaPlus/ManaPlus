@@ -517,7 +517,7 @@ void PlayerHandler::setViewEquipment(const bool allow) const
 
 void PlayerHandler::setStat(Net::MessageIn &msg,
                             const int type,
-                            const int base,
+                            const int64_t base,
                             const int mod,
                             const Notify notify) const
 {

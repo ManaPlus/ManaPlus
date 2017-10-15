@@ -108,7 +108,7 @@ class PlayerHandler notfinal
 
         virtual void setStat(Net::MessageIn &msg,
                              const int type,
-                             const int base,
+                             const int64_t base,
                              const int mod,
                              const Notify notify) const = 0;
 };

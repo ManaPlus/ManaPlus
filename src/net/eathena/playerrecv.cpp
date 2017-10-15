@@ -31,6 +31,8 @@
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "const/net/nostat.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/onlineplayer.h"
@@ -42,6 +44,7 @@
 
 #include "net/eathena/sp.h"
 #include "net/messagein.h"
+#include "net/playerhandler.h"
 
 #include "utils/gettext.h"
 
@@ -493,6 +496,15 @@ void PlayerRecv::processPlayerAttrs(Net::MessageIn &msg)
         localPlayer->setGM(true);
     else
         localPlayer->setGM(false);
+}
+
+void PlayerRecv::processPlayerStatUpdate7(Net::MessageIn &msg)
+{
+    BLOCK_START("PlayerRecv::processPlayerStatUpdate7")
+    const int type = msg.readInt16("type");
+    const int64_t value = msg.readInt64("value");
+    playerHandler->setStat(msg, type, value, NoStat, Notify_true);
+    BLOCK_END("PlayerRecv::processPlayerStatUpdate7")
 }
 
 }  // namespace EAthena

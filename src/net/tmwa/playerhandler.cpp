@@ -218,7 +218,7 @@ void PlayerHandler::setViewEquipment(const bool allow A_UNUSED) const
 
 void PlayerHandler::setStat(Net::MessageIn &msg,
                             const int type,
-                            const int base,
+                            const int64_t base,
                             const int mod,
                             const Notify notify) const
 {

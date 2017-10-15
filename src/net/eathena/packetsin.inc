@@ -966,6 +966,9 @@ if (packetVersion >= 20170502)
     packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20170502);
 }
 
+// 20170830
+packet(SMSG_PLAYER_STAT_UPDATE_7,          0x0acb,  12, &PlayerRecv::processPlayerStatUpdate7,          20170830);
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

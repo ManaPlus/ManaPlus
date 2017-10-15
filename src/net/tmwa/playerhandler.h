@@ -82,7 +82,7 @@ class PlayerHandler final : public Ea::PlayerHandler
 
         void setStat(Net::MessageIn &msg,
                      const int type,
-                     const int base,
+                     const int64_t base,
                      const int mod,
                      const Notify notify) const override final;
 };

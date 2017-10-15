@@ -54,6 +54,7 @@ namespace EAthena
         void processDressRoomOpen(Net::MessageIn &msg);
         void processKilledBy(Net::MessageIn &msg);
         void processPlayerAttrs(Net::MessageIn &msg);
+        void processPlayerStatUpdate7(Net::MessageIn &msg);
     }  // namespace PlayerRecv
 }  // namespace EAthena
 
