@@ -372,11 +372,11 @@ class LocalPlayer final : public Being,
 
         void stopAdvert();
 
-        void addXpMessage(const int change);
+        void addXpMessage(const int64_t change);
 
         void addHomunXpMessage(const int change);
 
-        void addJobMessage(const int change);
+        void addJobMessage(const int64_t change);
 
         void addHpMessage(const int change);
 

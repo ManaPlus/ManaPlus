@@ -36,6 +36,7 @@ namespace EAthena
         void processPlayerShowEquip(Net::MessageIn &msg);
         void processPlayerStatUpdate5(Net::MessageIn &msg);
         void processPlayerGetExp(Net::MessageIn &msg);
+        void processPlayerGetExp2(Net::MessageIn &msg);
         void processPvpInfo(Net::MessageIn &msg);
         void processPlayerHeal(Net::MessageIn &msg);
         void processPlayerSkillMessage(Net::MessageIn &msg);

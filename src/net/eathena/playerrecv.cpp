@@ -212,6 +212,26 @@ void PlayerRecv::processPlayerGetExp(Net::MessageIn &msg)
     // need show particle depend on isQuest flag, for now ignored
 }
 
+void PlayerRecv::processPlayerGetExp2(Net::MessageIn &msg)
+{
+    if (localPlayer == nullptr)
+        return;
+    const BeingId id = msg.readBeingId("player id");
+    const int64_t exp = msg.readInt64("exp amount");
+    const int stat = msg.readInt16("exp type");
+    const bool fromQuest = msg.readInt16("is from quest") != 0;
+    if (!fromQuest && id == localPlayer->getId())
+    {
+        if (stat == 1)
+            localPlayer->addXpMessage(exp);
+        else if (stat == 2)
+            localPlayer->addJobMessage(exp);
+        else
+            UNIMPLEMENTEDPACKETFIELD(stat);
+    }
+    // need show particle depend on isQuest flag, for now ignored
+}
+
 void PlayerRecv::processWalkResponse(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerRecv::processWalkResponse")

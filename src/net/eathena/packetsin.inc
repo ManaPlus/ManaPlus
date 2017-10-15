@@ -968,6 +968,7 @@ if (packetVersion >= 20170502)
 
 // 20170830
 packet(SMSG_PLAYER_STAT_UPDATE_7,          0x0acb,  12, &PlayerRecv::processPlayerStatUpdate7,          20170830);
+packet(SMSG_PLAYER_GET_EXP2,               0x0acc,  18, &PlayerRecv::processPlayerGetExp2,              20170830);
 
 // 0
 // evol always packets

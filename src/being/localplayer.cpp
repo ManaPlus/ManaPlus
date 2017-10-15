@@ -1154,10 +1154,11 @@ void LocalPlayer::optionChanged(const std::string &value)
     }
 }
 
-void LocalPlayer::addJobMessage(const int change)
+void LocalPlayer::addJobMessage(const int64_t change)
 {
     if (change != 0 && mMessages.size() < 20)
     {
+        const std::string xpStr = toString(CAST_U64(change));
         if (!mMessages.empty())
         {
             MessagePair pair = mMessages.back();
@@ -1167,30 +1168,38 @@ void LocalPlayer::addJobMessage(const int change)
                 pair.first.size() - strlen(_("xp")) - 1)
             {
                 mMessages.pop_back();
-                // TRANSLATORS: this is job experience
-                pair.first.append(strprintf(", %d %s", change, _("job")));
+                pair.first.append(strprintf(", %s %s",
+                    xpStr.c_str(),
+                    // TRANSLATORS: this is job experience
+                    _("job")));
                 mMessages.push_back(pair);
             }
             else
             {
-                // TRANSLATORS: this is job experience
-                addMessageToQueue(strprintf("%d %s", change, _("job")));
+                addMessageToQueue(strprintf("%s %s",
+                    xpStr.c_str(),
+                    // TRANSLATORS: this is job experience
+                    _("job")));
             }
         }
         else
         {
-            // TRANSLATORS: this is job experience
-            addMessageToQueue(strprintf("%d %s", change, _("job")));
+            addMessageToQueue(strprintf("%s %s",
+                xpStr.c_str(),
+                // TRANSLATORS: this is job experience
+                _("job")));
         }
     }
 }
 
-void LocalPlayer::addXpMessage(const int change)
+void LocalPlayer::addXpMessage(const int64_t change)
 {
     if (change != 0 && mMessages.size() < 20)
     {
-        // TRANSLATORS: get xp message
-        addMessageToQueue(strprintf("%d %s", change, _("xp")));
+        addMessageToQueue(strprintf("%s %s",
+            toString(CAST_U64(change)).c_str(),
+            // TRANSLATORS: get xp message
+            _("xp")));
     }
 }
 
