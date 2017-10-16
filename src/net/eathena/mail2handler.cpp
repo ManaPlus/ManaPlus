@@ -291,7 +291,7 @@ void Mail2Handler::cancelWriteMail() const
 void Mail2Handler::requestCheckName(const std::string &name) const
 {
     if (packetVersion < 20140423 ||
-        serverVersion < 19)
+        (serverVersion < 19 && serverVersion != 0))
     {
         return;
     }
