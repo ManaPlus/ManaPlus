@@ -219,7 +219,7 @@ void CharServerRecv::readPlayerData(Net::MessageIn &msg,
 
 void CharServerRecv::processCharLogin(Net::MessageIn &msg)
 {
-    msg.skip(2, "packet len");
+    msg.readInt16("packet len");
     int slots = 9;
     int offset = 0;
     if (packetVersion >= 20100413)
@@ -532,7 +532,7 @@ void CharServerRecv::processCharDelete2CancelAck(Net::MessageIn &msg)
 
 void CharServerRecv::processCharCharacters(Net::MessageIn &msg)
 {
-    msg.skip(2, "packet len");
+    msg.readInt16("packet len");
 
     delete_all(Net::CharServerHandler::mCharacters);
     Net::CharServerHandler::mCharacters.clear();
