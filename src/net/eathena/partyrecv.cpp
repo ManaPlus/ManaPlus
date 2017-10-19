@@ -256,7 +256,7 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         }
     }
 
-    if (msg.getVersion() >= 20170502)
+    if (msg.getVersion() >= 20170502 && msg.getUnreadLength() >= 6)
     {
         msg.readInt8("pickup item share (&1)");
         msg.readInt8("get item share (&2)");
