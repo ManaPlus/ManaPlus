@@ -414,7 +414,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("openglContext", false);
     AddDEF("allowMoveByMouse", true);
     AddDEF("enableDSA", true);
-    AddDEF("blockAltTab", true);
+    AddDEF("blockAltTab", false);
     AddDEF("sdlLogLevel", 0);
     AddDEF("allowHighDPI", false);
     AddDEF("sdlDriver", "");
