@@ -508,16 +508,6 @@ void GuildRecv::processGuildMessage(Net::MessageIn &msg)
     }
 }
 
-void GuildRecv::processGuildSkillUp(Net::MessageIn &msg)
-{
-    UNIMPLEMENTEDPACKET;
-    msg.readInt16("skill id");
-    msg.readInt16("level");
-    msg.readInt16("sp");
-    msg.readInt16("range");
-    msg.readUInt8("unused?");
-}
-
 void GuildRecv::processGuildReqAlliance(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;

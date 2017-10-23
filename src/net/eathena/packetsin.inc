@@ -170,7 +170,6 @@ packet(SMSG_GUILD_POS_NAME_LIST,           0x0166,  -1, &GuildRecv::processGuild
 packet(SMSG_GUILD_REQ_ALLIANCE,            0x0171,  30, &GuildRecv::processGuildReqAlliance,        0);
 packet(SMSG_GUILD_REQ_ALLIANCE_ACK,        0x0173,   3, &GuildRecv::processGuildReqAllianceAck,     0);
 packet(SMSG_GUILD_SKILL_INFO,              0x0162,  -1, &GuildRecv::processGuildSkillInfo,          0);
-packet(SMSG_GUILD_SKILL_UP,                0x010e,  11, &GuildRecv::processGuildSkillUp,            0);
 packet(SMSG_GUILD_UPDATE_COORDS,           0x01eb,  10, &GuildRecv::processGuildUpdateCoords,           0);
 packet(SMSG_IGNORE_ALL_RESPONSE,           0x00d2,   4, &Ea::ChatRecv::processIgnoreAllResponse,        0);
 packet(SMSG_IGNORE_NICK_ACK,               0x00d1,   4, &ChatRecv::processIgnoreNickAck,                0);

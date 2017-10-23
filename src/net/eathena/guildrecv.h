@@ -54,7 +54,6 @@ namespace EAthena
         void processGuildInviteAck(Net::MessageIn &msg);
         void processGuildLeave(Net::MessageIn &msg);
         void processGuildMessage(Net::MessageIn &msg);
-        void processGuildSkillUp(Net::MessageIn &msg);
         void processGuildReqAlliance(Net::MessageIn &msg);
         void processGuildReqAllianceAck(Net::MessageIn &msg);
         void processGuildDelAlliance(Net::MessageIn &msg);
