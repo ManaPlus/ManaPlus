@@ -43,7 +43,6 @@
 #include "gui/widgets/tabs/chat/chattab.h"
 
 #include "net/eathena/sp.h"
-#include "net/messagein.h"
 #include "net/playerhandler.h"
 
 #include "utils/gettext.h"
