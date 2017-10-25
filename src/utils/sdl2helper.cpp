@@ -219,14 +219,18 @@ void SDL::allowScreenSaver(const bool allow)
     if (allow)
     {
 #if SDL_VERSION_ATLEAST(2, 0, 2)
-        SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "1");
+        SDL_SetHintWithPriority(SDL_HINT_VIDEO_ALLOW_SCREENSAVER,
+            "1",
+            SDL_HINT_NORMAL);
 #endif  // SDL_VERSION_ATLEAST(2, 0, 2)
         SDL_EnableScreenSaver();
     }
     else
     {
 #if SDL_VERSION_ATLEAST(2, 0, 2)
-        SDL_SetHint(SDL_HINT_VIDEO_ALLOW_SCREENSAVER, "0");
+        SDL_SetHintWithPriority(SDL_HINT_VIDEO_ALLOW_SCREENSAVER,
+            "0",
+            SDL_HINT_NORMAL);
 #endif  // SDL_VERSION_ATLEAST(2, 0, 2)
         SDL_DisableScreenSaver();
     }
@@ -263,8 +267,9 @@ void SDL::setRendererHint(const std::string &driver)
 {
     if (!driver.empty())
     {
-        SDL_SetHint(SDL_HINT_RENDER_DRIVER,
-            driver.c_str());
+        SDL_SetHintWithPriority(SDL_HINT_RENDER_DRIVER,
+            driver.c_str(),
+            SDL_HINT_NORMAL);
     }
 }
 

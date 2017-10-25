@@ -83,8 +83,8 @@ std::string KeyboardConfig::getKeyName(const int key)
     if (key > -1)
     {
 #ifdef USE_SDL2
-        return SDL_GetKeyName(SDL_GetKeyFromScancode(
-            static_cast<SDL_Scancode>(key)));
+        return SDL_GetScancodeName(
+            static_cast<SDL_Scancode>(key));
 #else  // USE_SDL2
 
         return SDL_GetKeyName(static_cast<SDLKey>(key));
