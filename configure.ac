@@ -665,25 +665,43 @@ AC_ARG_ENABLE(unittestsbin,
     unittestsbin_enabled=true
     unittestsbin_catch=true
     unittestsbin_doctest=false
+    unittestsbin_embed=true
  ;;
   catch)
     unittestsbin_enabled=true
     unittestsbin_catch=true
     unittestsbin_doctest=false
+    unittestsbin_embed=true
  ;;
   doctest)
     unittestsbin_enabled=true
     unittestsbin_catch=false
     unittestsbin_doctest=true
+    unittestsbin_embed=true
+ ;;
+  systemcatch)
+    unittestsbin_enabled=true
+    unittestsbin_catch=true
+    unittestsbin_doctest=false
+    unittestsbin_embed=false
+ ;;
+  systemdoctest)
+    unittestsbin_enabled=true
+    unittestsbin_catch=false
+    unittestsbin_doctest=true
+    unittestsbin_embed=false
  ;;
   no)
-    unittestsbin_enabled=false ;;
+    unittestsbin_enabled=false
+    unittestsbin_embed=true
+ ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-unittestsbin) ;;
 esac],[unittestsbin_enabled=false])
 
 AM_CONDITIONAL(ENABLE_UNITTESTSBIN, test x$unittestsbin_enabled = xtrue)
 AM_CONDITIONAL(ENABLE_UNITTESTSBIN_CATCH, test x$unittestsbin_catch = xtrue)
 AM_CONDITIONAL(ENABLE_UNITTESTSBIN_DOCTEST, test x$unittestsbin_doctest = xtrue)
+AM_CONDITIONAL(ENABLE_UNITTESTSBIN_EMBED, test x$unittestsbin_embed = xtrue)
 
 # Override home directory for unit tests
 AC_ARG_WITH(unittestsdir,
