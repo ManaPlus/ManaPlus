@@ -136,11 +136,11 @@
 // define DEBUG_ALPHA_CACHE 1
 // define DEBUG_OPENGL_LEAKS 1
 
-#ifdef USE_SDL2
-#define SDL_NAME "SDL2"
-#else  // USE_SDL2
-#define SDL_NAME "SDL1.2"
-#endif  // USE_SDL2
+#define VER_INTTOSTR1(ver) #ver
+#define VER_INTTOSTR(ver) VER_INTTOSTR1(ver)
+#define SDL_NAME "SDL " VER_INTTOSTR(SDL_MAJOR_VERSION) "." \
+    VER_INTTOSTR(SDL_MINOR_VERSION) "." VER_INTTOSTR(SDL_PATCHLEVEL)
+
 #if defined(ENABLE_PUGIXML)
 #define XML_NAME "pugixml"
 #elif defined(ENABLE_LIBXML)
