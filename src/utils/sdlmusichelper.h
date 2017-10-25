@@ -1,8 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2004-2009  The Mana World Development Team
- *  Copyright (C) 2009-2010  The Mana Developers
- *  Copyright (C) 2011-2017  The ManaPlus Developers
+ *  Copyright (C) 2013-2017  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -20,26 +18,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/soundeffect.h"
+#ifndef UTILS_SDLMUSICHELPER_H
+#define UTILS_SDLMUSICHELPER_H
 
-#include "debug.h"
+#ifdef USE_SDL2
+#include "utils/sdl2musichelper.h"
+UTILS_SDL2MUSICHELPER_H
 
-SoundEffect::~SoundEffect()
+#else
+
+#include "localconsts.h"
+
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
+#include <SDL_mixer.h>
+PRAGMA48(GCC diagnostic pop)
+
+namespace SDL
 {
-    Mix_FreeChunk(mChunk);
-}
+    int MixOpenAudio(const int frequency,
+                     const uint16_t format,
+                     const int nchannels,
+                     const int chunksize);
 
-bool SoundEffect::play(const int loops, const int volume,
-                       const int channel) const
-{
-    Mix_VolumeChunk(mChunk, volume);
+    Mix_Music *LoadMUSOgg_RW(SDL_RWops *const rw);
+}  // namespace SDL
 
-    return Mix_PlayChannelTimed(channel, mChunk, loops, -1) != -1;
-}
-
-int SoundEffect::calcMemoryLocal() const
-{
-    return static_cast<int>(sizeof(SoundEffect) +
-        sizeof(SDL_AudioSpec)) +
-        Resource::calcMemoryLocal();
-}
+#endif  // USE_SDL2
+#endif  // UTILS_SDLMUSICHELPER_H

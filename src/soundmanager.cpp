@@ -42,6 +42,7 @@
 #include "utils/cast.h"
 #endif
 #include "utils/checkutils.h"
+#include "utils/sdlmusichelper.h"
 
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
@@ -168,14 +169,14 @@ void SoundManager::init()
             break;
     }
 
-    const int res = Mix_OpenAudio(config.getIntValue("audioFrequency"),
+    const int res = SDL::MixOpenAudio(config.getIntValue("audioFrequency"),
         MIX_DEFAULT_FORMAT, channels, audioBuffer);
 
     if (res < 0)
     {
         logger->log("SoundManager::init Could not initialize audio: %s",
                     SDL_GetError());
-        if (Mix_OpenAudio(22010, MIX_DEFAULT_FORMAT, 2, audioBuffer) < 0)
+        if (SDL::MixOpenAudio(22010, MIX_DEFAULT_FORMAT, 2, audioBuffer) < 0)
             return;
         logger->log("Fallback to stereo audio");
     }

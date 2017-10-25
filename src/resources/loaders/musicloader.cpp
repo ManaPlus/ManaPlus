@@ -29,6 +29,7 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/checkutils.h"
+#include "utils/sdlmusichelper.h"
 
 #include "debug.h"
 
@@ -53,19 +54,15 @@ namespace
                     rl->path.c_str());
                 return nullptr;
             }
-#ifdef USE_SDL2
-            if (Mix_Music *const music = Mix_LoadMUSType_RW(rw, MUS_OGG, 1))
+            if (Mix_Music *const music = SDL::LoadMUSOgg_RW(rw))
             {
+#ifdef USE_SDL2
                 return new SDLMusic(music, nullptr, rl->path);
-            }
 #else  // USE_SDL2
 
-            // Mix_LoadMUSType_RW was added without version changed in SDL1.2 :(
-            if (Mix_Music *const music = Mix_LoadMUS_RW(rw))
-            {
                 return new SDLMusic(music, rw, rl->path);
-            }
 #endif  // USE_SDL2
+            }
 
             logger->log("Error, failed to load music: %s", SDL_GetError());
             return nullptr;
