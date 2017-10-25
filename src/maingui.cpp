@@ -59,11 +59,19 @@ PRAGMA48(GCC diagnostic pop)
 #include "resources/dye/dyepalette.h"
 #ifdef UNITTESTS_CATCH
 #define CATCH_CONFIG_RUNNER
+#ifdef UNITTESTS_EMBED
 #include "unittests/catch.hpp"
+#else  // UNITTESTS_EMBED
+#include <catch.hpp>
+#endif  // UNITTESTS_EMBED
 #endif  // UNITTESTS_CATCH
 #ifdef UNITTESTS_DOCTEST
 #define DOCTEST_CONFIG_IMPLEMENT
+#ifdef UNITTESTS_EMBED
 #include "unittests/doctest.h"
+#else  // UNITTESTS_EMBED
+#include <doctest/doctest.h>
+#endif  // UNITTESTS_EMBED
 #endif  // UNITTESTS_DOCTEST
 #else  // UNITTESTS
 #include "utils/xml.h"

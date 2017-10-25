@@ -619,18 +619,35 @@ AC_ARG_ENABLE(unittests,
        unittests_enabled=true
        unittests_catch=true
        unittests_doctest=false
+       unittests_embed=true
  ;;
   catch)
        unittests_enabled=true
        unittests_catch=true
        unittests_doctest=false
+       unittests_embed=true
  ;;
   doctest)
        unittests_enabled=true
        unittests_catch=false
        unittests_doctest=true
+       unittests_embed=true
  ;;
-  no)  unittests_enabled=false
+  systemcatch)
+       unittests_enabled=true
+       unittests_catch=true
+       unittests_doctest=false
+       unittests_embed=false
+ ;;
+  systemdoctest)
+       unittests_enabled=true
+       unittests_catch=false
+       unittests_doctest=true
+       unittests_embed=false
+ ;;
+  no)
+       unittests_enabled=false
+       unittests_embed=true
  ;;
   *) AC_MSG_ERROR(bad value ${enableval} for --enable-unittests) ;;
 esac],[unittests_enabled=false])
@@ -638,6 +655,7 @@ esac],[unittests_enabled=false])
 AM_CONDITIONAL(ENABLE_UNITTESTS, test x$unittests_enabled = xtrue)
 AM_CONDITIONAL(ENABLE_UNITTESTS_CATCH, test x$unittests_catch = xtrue)
 AM_CONDITIONAL(ENABLE_UNITTESTS_DOCTEST, test x$unittests_doctest = xtrue)
+AM_CONDITIONAL(ENABLE_UNITTESTS_EMBED, test x$unittests_embed = xtrue)
 
 # Enable unit tests binaries only
 AC_ARG_ENABLE(unittestsbin,

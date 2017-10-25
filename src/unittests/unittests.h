@@ -24,7 +24,11 @@
 #include "localconsts.h"
 
 #ifdef UNITTESTS_CATCH
+#ifdef UNITTESTS_EMBED
 #include "unittests/catch.hpp"
+#else  // UNITTESTS_EMBED
+#include <catch.hpp>
+#endif  // UNITTESTS_EMBED
 #endif  // UNITTESTS_CATCH
 
 #ifdef UNITTESTS_DOCTEST
@@ -41,7 +45,11 @@
 
 PRAGMA5(GCC diagnostic push)
 PRAGMA5(GCC diagnostic ignored "-Wsuggest-override")
+#ifdef UNITTESTS_EMBED
 #include "unittests/doctest.h"
+#else  // UNITTESTS_EMBED
+#include <doctest/doctest.h>
+#endif  // UNITTESTS_EMBED
 PRAGMA5(GCC diagnostic pop)
 
 #undef TEST_CASE

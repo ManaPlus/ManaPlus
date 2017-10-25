@@ -37,6 +37,9 @@ endif
 if ENABLE_UNITTESTSBIN_DOCTEST
 manaplustests_CXXFLAGS += -DUNITTESTS_DOCTEST
 endif
+if ENABLE_UNITTESTS_EMBED
+manaplustests_CXXFLAGS += -DUNITTESTS_EMBED
+endif
 
 dyecmd_CXXFLAGS = -DPKG_DATADIR=\""$(pkgdatadir)/"\"      \
 		-DLOCALEDIR=\""$(localedir)"\"           \
