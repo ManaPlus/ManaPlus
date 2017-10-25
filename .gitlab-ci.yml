@@ -267,7 +267,7 @@ gcc-5_h_all:
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -I/usr/include/SDL
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -I/usr/include/SDL
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   <<: *job-push
@@ -282,7 +282,7 @@ gcc-5_h_all_i386:
   script:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -I/usr/include/SDL
-  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -I/usr/include/SDL
+  - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   image: vicamo/debian:sid-i386
