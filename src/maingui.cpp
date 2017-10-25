@@ -122,7 +122,7 @@ int mainGui(int argc, char *argv[])
     VirtFs::init(argv[0]);
     XML::initXML();
 #if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
-    IMG_Init(IMG_INIT_PNG);
+    IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG);
 #endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
 #if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)
     Mix_Init(MIX_INIT_OGG);
