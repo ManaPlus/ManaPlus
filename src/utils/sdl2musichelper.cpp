@@ -24,6 +24,11 @@
 
 #include "debug.h"
 
+#ifndef SDL_MIXER_VERSION_ATLEAST
+#define SDL_MIXER_VERSION_ATLEAST(X, Y, Z) \
+    (SDL_MIXER_COMPILEDVERSION >= SDL_VERSIONNUM(X, Y, Z))
+#endif  // SDL_MIXER_VERSION_ATLEAST
+
 int SDL::MixOpenAudio(const int frequency,
                       const uint16_t format,
                       const int nchannels,
