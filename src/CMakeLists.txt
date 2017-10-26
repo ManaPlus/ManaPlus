@@ -950,10 +950,14 @@ SET(SRCS
     utils/sdl2helper.h
     utils/sdl2logger.cpp
     utils/sdl2logger.h
+    utils/sdl2musichelper.cpp
+    utils/sdl2musichelper.h
     utils/sdlcheckutils.cpp
     utils/sdlcheckutils.h
     utils/sdlhelper.cpp
     utils/sdlhelper.h
+    utils/sdlmusichelper.cpp
+    utils/sdlmusichelper.h
     utils/sdlmemoryobject.h
     utils/stringmap.h
     utils/stringutils.cpp
