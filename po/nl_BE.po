@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-10-14 17:17+0300\n"
+"POT-Creation-Date: 2017-10-27 20:04+0300\n"
 "PO-Revision-Date: 2017-09-30 13:55+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/akaras/manaplus/"
@@ -53,7 +53,7 @@ msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:403 src/net/eathena/playerrecv.cpp:475
+#: src/being/localplayer.cpp:403 src/net/eathena/playerrecv.cpp:497
 #, c-format
 msgid "You were killed by %s."
 msgstr "U bent gedood door %s."
@@ -114,58 +114,58 @@ msgstr[1] "U raapte op %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1165 src/being/localplayer.cpp:1167
-#: src/being/localplayer.cpp:1193 src/being/localplayer.cpp:1206
+#: src/being/localplayer.cpp:1166 src/being/localplayer.cpp:1168
+#: src/being/localplayer.cpp:1202 src/being/localplayer.cpp:1215
 msgid "xp"
 msgstr "ep"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1171 src/being/localplayer.cpp:1177
-#: src/being/localplayer.cpp:1183
+#: src/being/localplayer.cpp:1174 src/being/localplayer.cpp:1182
+#: src/being/localplayer.cpp:1190
 msgid "job"
 msgstr "job"
 
 #. TRANSLATORS: get homunculus xp message
-#: src/being/localplayer.cpp:1203
+#: src/being/localplayer.cpp:1212
 msgid "Homun"
 msgstr ""
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1215
+#: src/being/localplayer.cpp:1224
 msgid "hp"
 msgstr ""
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1224
+#: src/being/localplayer.cpp:1233
 msgid "mana"
 msgstr ""
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2301
+#: src/being/localplayer.cpp:2310
 #, c-format
 msgid "Follow: %s"
 msgstr "Volg %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2307 src/being/localplayer.cpp:2332
+#: src/being/localplayer.cpp:2316 src/being/localplayer.cpp:2341
 msgid "Follow canceled"
 msgstr "Volgen onderbroken"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2317
+#: src/being/localplayer.cpp:2326
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imiteer %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2323 src/being/localplayer.cpp:2337
+#: src/being/localplayer.cpp:2332 src/being/localplayer.cpp:2346
 msgid "Imitation canceled"
 msgstr "Imitatie onderbroken"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2695
+#: src/being/localplayer.cpp:2704
 #, c-format
 msgid "You see %s"
 msgstr "You see %s"
@@ -9351,7 +9351,7 @@ msgstr ""
 #. TRANSLATORS: unknown item name
 #. TRANSLATORS: item name
 #: src/net/eathena/inventoryrecv.cpp:1228
-#: src/net/eathena/inventoryrecv.cpp:1361 src/net/eathena/mail2recv.cpp:205
+#: src/net/eathena/inventoryrecv.cpp:1361 src/net/eathena/mail2recv.cpp:207
 #: src/resources/db/itemdb.cpp:201
 msgid "Unknown item"
 msgstr "Onbekend voorwerp"
@@ -9378,7 +9378,7 @@ msgid "You have new mail from %s with subject %s"
 msgstr ""
 
 #. TRANSLATORS: player killed message
-#: src/net/eathena/playerrecv.cpp:464
+#: src/net/eathena/playerrecv.cpp:486
 msgid "You were killed by unknown source."
 msgstr ""
 
