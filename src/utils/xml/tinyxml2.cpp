@@ -44,10 +44,17 @@ namespace XML
 {
     static void showErrorStatus(tinyxml2::XMLDocument &doc)
     {
+#ifdef USE_TINYXML_OLD
         logger->log("xml error: %s, in lines: %s\n%s",
             doc.ErrorName(),
             doc.GetErrorStr1(),
             doc.GetErrorStr2());
+#else  // USE_TINYXML_OLD
+
+        logger->log("xml error: %s, in lines: %s",
+            doc.ErrorName(),
+            doc.ErrorStr());
+#endif  // USE_TINYXML_OLD
     }
 
     Document::Document(const std::string &filename,

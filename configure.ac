@@ -444,14 +444,71 @@ if test "$xmllib" == "pugixml"; then
     AC_MSG_ERROR([ *** pugixml library found but cannot find headers (http://pugixml.org/)]))
 fi
 
+# hack for support unversioned api change in tinyxml2 (master branch)
+tinyxml2_old=yes
 if test "$xmllib" == "tinyxml2"; then
     if test "$skip_check_lib" == "no"; then
         AC_CHECK_LIB([tinyxml2], [main], ,
         AC_MSG_ERROR([ *** Unable to find tinyxml2 library (http://grinninglizard.com/tinyxml2/)]))
+        AC_MSG_CHECKING([whether tinyxml supports old error api])
+        AC_COMPILE_IFELSE(
+            [AC_LANG_SOURCE([
+                #ifndef GCC_VERSION
+                #define GCC_VERSION (__GNUC__ * 10000 \
+                    + __GNUC_MINOR__ * 100 \
+                    + __GNUC_PATCHLEVEL__)
+                #endif  // GCC_VERSION
+                #ifdef __clang__
+                #ifndef CLANG_VERSION
+                #define CLANG_VERSION (__clang_major__ * 10000 \
+                    + __clang_minor__ * 100 \
+                    + __clang_patchlevel__)
+                #endif  // CLANG_VERSION
+                #endif  // __clang__
+                #if GCC_VERSION >= 49000
+                #define PRAGMA49(str) _Pragma(#str)
+                #else  // GCC_VERSION > 49000
+                #define PRAGMA49(str)
+                #endif  // GCC_VERSION > 49000
+                #if GCC_VERSION >= 40600
+                #define PRAGMACLANG6GCC(str) _Pragma(#str)
+                #elif defined(__clang__) && CLANG_VERSION >= 30800
+                #define PRAGMACLANG6GCC(str) _Pragma(#str)
+                #else  // __clang__
+                #define PRAGMACLANG6GCC(str)
+                #endif  // __clang__
+
+                PRAGMA49(GCC diagnostic push)
+                PRAGMA49(GCC diagnostic ignored "-Wzero-as-null-pointer-constant")
+                PRAGMA49(GCC diagnostic ignored "-Wsuggest-override")
+                PRAGMACLANG6GCC(GCC diagnostic push)
+                PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
+                #include <tinyxml2.h>
+                PRAGMACLANG6GCC(GCC diagnostic pop)
+                PRAGMA49(GCC diagnostic pop)
+
+                int main(int, char **)
+                {
+                    tinyxml2::XMLDocument doc;
+                    const char *str = doc.ErrorStr();
+                    return !str;
+                }
+            ])],
+            [
+                AC_MSG_RESULT([no])
+                tinyxml2_old=no
+            ],
+            [
+                AC_MSG_RESULT([yes])
+                tinyxml2_old=yes
+            ]
+        )
     fi
     AC_CHECK_HEADERS([tinyxml2.h], ,
     AC_MSG_ERROR([ *** tinyxml2 library found but cannot find headers (http://grinninglizard.com/tinyxml2/)]))
 fi
+
+AM_CONDITIONAL(USE_TINYXML_OLD, test x$tinyxml2_old = xyes)
 
 if test "$skip_check_lib" == "no"; then
     AC_CHECK_LIB(png, png_write_info, ,
