@@ -73,6 +73,83 @@ extern OkDialog *deathNotice;
 namespace EAthena
 {
 
+static void setBasicFields(Being *restrict const dstBeing,
+                           const uint8_t gender,
+                           const int hairStyle,
+                           const ItemColor hairColor,
+                           const uint32_t weapon,
+                           const uint16_t headBottom,
+                           const uint16_t headMid,
+                           const uint16_t headTop,
+                           const uint16_t shoes,
+                           const uint16_t gloves,
+                           const bool notMove) A_NONNULL(1);
+static void setBasicFields(Being *restrict const dstBeing,
+                           const uint8_t gender,
+                           const int hairStyle,
+                           const ItemColor hairColor,
+                           const uint32_t weapon,
+                           const uint16_t headBottom,
+                           const uint16_t headMid,
+                           const uint16_t headTop,
+                           const uint16_t shoes,
+                           const uint16_t gloves,
+                           const bool updateSlots)
+{
+    const ActorTypeT actorType = dstBeing->getType();
+    switch (actorType)
+    {
+        case ActorType::Player:
+            dstBeing->setGender(Being::intToGender(gender));
+            dstBeing->setHairColor(hairColor);
+            // Set these after the gender, as the sprites may be gender-specific
+            if (hairStyle == 0)
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                    0,
+                    std::string());
+            }
+            else
+            {
+                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
+                    hairStyle * -1,
+                    ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
+            }
+            if (updateSlots)
+            {
+                dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+                dstBeing->updateSprite(SPRITE_HAIR, shoes);
+                dstBeing->updateSprite(SPRITE_SHOES, gloves);
+                dstBeing->updateSprite(SPRITE_BODY, weapon);
+                dstBeing->setWeaponId(weapon);
+            }
+            break;
+        case ActorType::Npc:
+            if (serverFeatures->haveNpcGender())
+            {
+                dstBeing->setGender(Being::intToGender(gender));
+            }
+            break;
+        default:
+        case ActorType::Monster:
+        case ActorType::Portal:
+        case ActorType::Pet:
+        case ActorType::Mercenary:
+        case ActorType::Homunculus:
+        case ActorType::SkillUnit:
+        case ActorType::Elemental:
+            break;
+        case ActorType::FloorItem:
+        case ActorType::Avatar:
+        case ActorType::Unknown:
+            reportAlways("Wrong being type detected: %d",
+                CAST_S32(actorType));
+            break;
+    }
+}
+
 void BeingRecv::processBeingChangeLook2(Net::MessageIn &msg)
 {
     if (actorManager == nullptr)
@@ -407,55 +484,17 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
-    const ActorTypeT actorType = dstBeing->getType();
-    switch (actorType)
-    {
-        case ActorType::Player:
-            dstBeing->setGender(Being::intToGender(gender));
-            dstBeing->setHairColor(hairColor);
-            // Set these after the gender, as the sprites may be gender-specific
-            if (hairStyle == 0)
-            {
-                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                    0,
-                    std::string());
-            }
-            else
-            {
-                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                    hairStyle * -1,
-                    ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-            }
-            dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-            dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-            dstBeing->updateSprite(SPRITE_HAIR, shoes);
-            dstBeing->updateSprite(SPRITE_SHOES, gloves);
-            dstBeing->updateSprite(SPRITE_BODY, weapon);
-            dstBeing->setWeaponId(weapon);
-            break;
-        case ActorType::Npc:
-            if (serverFeatures->haveNpcGender())
-            {
-                dstBeing->setGender(Being::intToGender(gender));
-            }
-            break;
-        default:
-        case ActorType::Monster:
-        case ActorType::Portal:
-        case ActorType::Pet:
-        case ActorType::Mercenary:
-        case ActorType::Homunculus:
-        case ActorType::SkillUnit:
-        case ActorType::Elemental:
-            break;
-        case ActorType::FloorItem:
-        case ActorType::Avatar:
-        case ActorType::Unknown:
-            reportAlways("Wrong being type detected: %d",
-                CAST_S32(actorType));
-            break;
-    }
+    setBasicFields(dstBeing,
+        gender,
+        hairStyle,
+        hairColor,
+        weapon,
+        headBottom,
+        headMid,
+        headTop,
+        shoes,
+        gloves,
+        true);
 
     uint8_t dir;
     uint16_t x, y;
@@ -635,56 +674,17 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
-    const ActorTypeT actorType = dstBeing->getType();
-    switch (actorType)
-    {
-        case ActorType::Player:
-            dstBeing->setGender(Being::intToGender(gender));
-            dstBeing->setHairColor(hairColor);
-            // Set these after the gender, as the sprites may be gender-specific
-            if (hairStyle == 0)
-            {
-                dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
-            }
-            else
-            {
-                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                    hairStyle * -1,
-                    ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-            }
-            if (!serverFeatures->haveMove3())
-            {
-                dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-                dstBeing->updateSprite(SPRITE_HAIR, shoes);
-                dstBeing->updateSprite(SPRITE_SHOES, gloves);
-                dstBeing->updateSprite(SPRITE_BODY, weapon);
-                dstBeing->setWeaponId(weapon);
-            }
-            break;
-        case ActorType::Npc:
-            if (serverFeatures->haveNpcGender())
-            {
-                dstBeing->setGender(Being::intToGender(gender));
-            }
-            break;
-        default:
-        case ActorType::Monster:
-        case ActorType::Portal:
-        case ActorType::Pet:
-        case ActorType::Mercenary:
-        case ActorType::Homunculus:
-        case ActorType::SkillUnit:
-        case ActorType::Elemental:
-            break;
-        case ActorType::FloorItem:
-        case ActorType::Avatar:
-        case ActorType::Unknown:
-            reportAlways("Wrong being type detected: %d",
-                CAST_S32(actorType));
-            break;
-    }
+    setBasicFields(dstBeing,
+        gender,
+        hairStyle,
+        hairColor,
+        weapon,
+        headBottom,
+        headMid,
+        headTop,
+        shoes,
+        gloves,
+        !serverFeatures->haveMove3());
 
     uint16_t srcX, srcY, dstX, dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
@@ -867,53 +867,17 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     dstBeing->setKarma(msg.readUInt8("karma"));
     const uint8_t gender = CAST_U8(msg.readUInt8("gender") & 3);
 
-    const ActorTypeT actorType = dstBeing->getType();
-    switch (actorType)
-    {
-        case ActorType::Player:
-            dstBeing->setGender(Being::intToGender(gender));
-            dstBeing->setHairColor(hairColor);
-            // Set these after the gender, as the sprites may be gender-specific
-            if (hairStyle == 0)
-            {
-                dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
-            }
-            else
-            {
-                dstBeing->updateSprite(SPRITE_HAIR_COLOR,
-                    hairStyle * -1,
-                    ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
-            }
-            dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-            dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-            dstBeing->updateSprite(SPRITE_HAIR, shoes);
-            dstBeing->updateSprite(SPRITE_SHOES, gloves);
-            dstBeing->updateSprite(SPRITE_BODY, weapon);
-            dstBeing->setWeaponId(weapon);
-            break;
-        case ActorType::Npc:
-            if (serverFeatures->haveNpcGender())
-            {
-                dstBeing->setGender(Being::intToGender(gender));
-            }
-            break;
-        default:
-        case ActorType::Monster:
-        case ActorType::Portal:
-        case ActorType::Pet:
-        case ActorType::Mercenary:
-        case ActorType::Homunculus:
-        case ActorType::SkillUnit:
-        case ActorType::Elemental:
-            break;
-        case ActorType::FloorItem:
-        case ActorType::Avatar:
-        case ActorType::Unknown:
-            reportAlways("Wrong being type detected: %d",
-                CAST_S32(actorType));
-            break;
-    }
+    setBasicFields(dstBeing,
+        gender,
+        hairStyle,
+        hairColor,
+        weapon,
+        headBottom,
+        headMid,
+        headTop,
+        shoes,
+        gloves,
+        true);
 
     uint8_t dir;
     uint16_t x, y;
