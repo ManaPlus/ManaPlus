@@ -2875,7 +2875,6 @@ void Being::setSpriteColor(const unsigned int slot,
 
         CompoundSprite::setSprite(slot, equipmentSprite);
         mSpriteDraw[slot] = id;
-
         addItemParticles(id, info.getDisplay());
 
         setAction(mAction, 0);
@@ -3224,6 +3223,15 @@ void Being::setHairTempSprite(const unsigned int slot,
 void Being::setHairColorSpriteID(const unsigned int slot,
                                  const int id) restrict2
 {
+    if (charServerHandler == nullptr || slot >= charServerHandler->maxSprite())
+        return;
+
+    if (slot >= CAST_U32(mSprites.size()))
+        ensureSize(slot + 1);
+
+    if (slot >= CAST_U32(mSlots.size()))
+        mSlots.resize(slot + 1, BeingSlot());
+
     BeingSlot &beingSlot = mSlots[slot];
     setSpriteColor(slot,
         id,
@@ -3688,6 +3696,18 @@ void Being::drawOther(Graphics *restrict const graphics,
     drawOtherSpriteAt(graphics, px, py);
 }
 
+void Being::drawNpc(Graphics *restrict const graphics,
+                    const int offsetX,
+                    const int offsetY) const restrict2
+{
+    // getActorX() + offsetX;
+    const int px = mPixelX - mapTileSize / 2 + offsetX;
+    // getActorY() + offsetY;
+    const int py = mPixelY - mapTileSize + offsetY;
+    drawBeingCursor(graphics, px, py);
+    drawNpcSpriteAt(graphics, px, py);
+}
+
 void Being::drawMonster(Graphics *restrict const graphics,
                         const int offsetX,
                         const int offsetY) const restrict2
@@ -3783,10 +3803,14 @@ void Being::draw(Graphics *restrict const graphics,
                 offsetX,
                 offsetY);
             break;
+        case ActorType::Npc:
+            drawNpc(graphics,
+                offsetX,
+                offsetY);
+            break;
         case ActorType::Pet:
         case ActorType::SkillUnit:
         case ActorType::Unknown:
-        case ActorType::Npc:
         case ActorType::FloorItem:
         case ActorType::Avatar:
         default:
@@ -3900,6 +3924,13 @@ void Being::drawOtherSpriteAt(Graphics *restrict const graphics,
                               const int y) const restrict2
 {
     CompoundSprite::drawSimple(graphics, x, y);
+}
+
+void Being::drawNpcSpriteAt(Graphics *restrict const graphics,
+                            const int x,
+                            const int y) const restrict2
+{
+    drawCompound(graphics, x, y);
 }
 
 void Being::drawMonsterSpriteAt(Graphics *restrict const graphics,
