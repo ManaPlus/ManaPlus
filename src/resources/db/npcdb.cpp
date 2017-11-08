@@ -118,6 +118,9 @@ void NPCDB::loadXmlFile(const std::string &fileName,
         currentInfo->setAllowDelete(XML::getBoolProperty(npcNode,
             "allowDelete", true));
 
+        currentInfo->setAllowEquipment(XML::getBoolProperty(npcNode,
+            "allowEquipment", false));
+
         const std::string currency = XML::getProperty(npcNode,
             "currency", "default");
         if (UnitsDb::existsCurrency(currency) == false)

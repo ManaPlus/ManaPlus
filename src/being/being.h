@@ -1097,6 +1097,9 @@ class Being notfinal : public ActorSprite,
         void fixDirectionOffsets(int &offsetX,
                                  int &offsetY) const;
 
+        bool getAllowNpcEquipment() const noexcept2 A_WARN_UNUSED
+        { return mAllowNpcEquipment; }
+
         static Being *createBeing(const BeingId id,
                                   const ActorTypeT type,
                                   const BeingTypeId subtype,
@@ -1377,6 +1380,7 @@ class Being notfinal : public ActorSprite,
         bool mInactive;
         bool mNeedPosUpdate;
         bool mBotAi;
+        bool mAllowNpcEquipment;
 };
 
 extern std::list<BeingCacheEntry*> beingInfoCache;

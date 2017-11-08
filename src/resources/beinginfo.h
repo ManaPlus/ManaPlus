@@ -320,6 +320,12 @@ class BeingInfo final
         int getAllowDelete() const noexcept2 A_WARN_UNUSED
         { return static_cast<int>(mAllowDelete); }
 
+        void setAllowEquipment(const bool b)
+        { mAllowEquipment = b; }
+
+        bool getAllowEquipment() const noexcept2 A_WARN_UNUSED
+        { return mAllowEquipment; }
+
         void setQuickActionEffectId(const int n)
         { mQuickActionEffectId = n; }
 
@@ -396,6 +402,7 @@ class BeingInfo final
         bool mStaticMaxHP;
         bool mTargetSelection;
         bool mAllowDelete;
+        bool mAllowEquipment;
 };
 
 typedef std::map<BeingTypeId, BeingInfo*> BeingInfos;

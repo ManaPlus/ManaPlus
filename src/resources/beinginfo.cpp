@@ -106,7 +106,8 @@ BeingInfo::BeingInfo() :
     mQuickActionEffectId(-1),
     mStaticMaxHP(false),
     mTargetSelection(true),
-    mAllowDelete(true)
+    mAllowDelete(true),
+    mAllowEquipment(false)
 {
     SpriteDisplay display;
     display.sprites.push_back(SpriteReference::Empty);

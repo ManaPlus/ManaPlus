@@ -272,7 +272,8 @@ Being::Being(const BeingId id,
     mAway(false),
     mInactive(false),
     mNeedPosUpdate(true),
-    mBotAi(true)
+    mBotAi(true),
+    mAllowNpcEquipment(false)
 {
     for (int f = 0; f < 20; f ++)
     {
@@ -462,6 +463,7 @@ void Being::setSubtype(const BeingTypeId subtype,
                     DisplayType::Item,
                     std::string());
                 mYDiff = mInfo->getSortOffsetY();
+                mAllowNpcEquipment = mInfo->getAllowEquipment();
             }
             break;
         case ActorType::Avatar:

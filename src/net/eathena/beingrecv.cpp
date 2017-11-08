@@ -131,17 +131,20 @@ static void setBasicFields(Being *restrict const dstBeing,
             {
                 dstBeing->setGender(Being::intToGender(gender));
             }
-            dstBeing->setHairColor(hairColor);
-            dstBeing->setHairStyle(SPRITE_HAIR_COLOR, -hairStyle);
-            // for npc not checking updateSlots flag,
-            // probably because npc missing visible packet if moving
-            dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-            dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-            dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-            dstBeing->updateSprite(SPRITE_HAIR, shoes);
-            dstBeing->updateSprite(SPRITE_SHOES, gloves);
-            dstBeing->updateSprite(SPRITE_BODY, weapon);
-            dstBeing->setWeaponId(weapon);
+            if (dstBeing->getAllowNpcEquipment())
+            {
+                dstBeing->setHairColor(hairColor);
+                dstBeing->setHairStyle(SPRITE_HAIR_COLOR, -hairStyle);
+                // for npc not checking updateSlots flag,
+                // probably because npc missing visible packet if moving
+                dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
+                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
+                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+                dstBeing->updateSprite(SPRITE_HAIR, shoes);
+                dstBeing->updateSprite(SPRITE_SHOES, gloves);
+                dstBeing->updateSprite(SPRITE_BODY, weapon);
+                dstBeing->setWeaponId(weapon);
+            }
             break;
         default:
         case ActorType::Monster:
