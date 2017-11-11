@@ -1,3 +1,8 @@
+2017-11-11 New release 1.7.11.11
+fix: compilation with unreleased tinyxml2.
+add: packets for new hercules packet versions.
+add: draw basic npc equipment.
+
 2017-10-28 New release 1.7.10.28
 fix: disable alt-tab workaround in SDL2 by default.
 add: new packets.
