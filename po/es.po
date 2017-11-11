@@ -5,7 +5,7 @@
 # Translators:
 # 0x0Eddine <salahbubuli44@gmail.com>, 2012,2014-2015
 # Albert, 2016
-# Albert, 2016
+# Albert, 2016-2017
 # Albert, 2016
 # Andrei Karas <akaras@inbox.ru>, 2011
 # Jumpy <antoinebcn@hotmail.com>, 2011
@@ -29,9 +29,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-10-27 20:04+0300\n"
-"PO-Revision-Date: 2017-10-08 20:05+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2017-11-11 16:44+0300\n"
+"PO-Revision-Date: 2017-11-03 12:38+0000\n"
+"Last-Translator: Albert\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/"
 "es/)\n"
 "Language: es\n"
@@ -46,26 +46,26 @@ msgid "Visible on map"
 msgstr "Visibles en el mapa"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:485
+#: src/being/being.cpp:487
 msgid "Human"
 msgstr "Humano"
 
 #. TRANSLATORS: dodge or miss message in attacks
-#: src/being/being.cpp:768
+#: src/being/being.cpp:770
 msgid "dodge"
 msgstr "evade"
 
-#: src/being/being.cpp:768
+#: src/being/being.cpp:770
 msgid "miss"
 msgstr "falla"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2522 src/gui/windows/whoisonline.cpp:887
+#: src/being/being.cpp:2524 src/gui/windows/whoisonline.cpp:887
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2527 src/gui/windows/whoisonline.cpp:892
+#: src/being/being.cpp:2529 src/gui/windows/whoisonline.cpp:892
 msgid "I"
 msgstr "I"
 
@@ -1544,7 +1544,7 @@ msgstr "Mover"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:328 src/input/pages/basic.cpp:88
-#: src/resources/db/npcdb.cpp:165
+#: src/resources/db/npcdb.cpp:168
 msgid "Talk"
 msgstr "Hablar"
 
@@ -1563,7 +1563,7 @@ msgstr "Hablar"
 #: src/gui/windows/buydialog.cpp:260 src/gui/windows/buydialog.cpp:338
 #: src/gui/windows/buydialog.cpp:342 src/gui/windows/buyselldialog.cpp:74
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:250
-#: src/resources/db/npcdb.cpp:167
+#: src/resources/db/npcdb.cpp:170
 msgid "Buy"
 msgstr "Comprar"
 
@@ -1581,7 +1581,7 @@ msgstr "Comprar"
 #: src/gui/widgets/selldialog.cpp:58 src/gui/widgets/selldialog.cpp:115
 #: src/gui/widgets/selldialog.cpp:153 src/gui/windows/buyselldialog.cpp:76
 #: src/gui/windows/shopwindow.cpp:170 src/input/pages/basic.cpp:256
-#: src/resources/db/npcdb.cpp:169
+#: src/resources/db/npcdb.cpp:172
 msgid "Sell"
 msgstr "Vender"
 
@@ -3711,7 +3711,7 @@ msgstr "Canales de Audio"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:111
 msgid "Parallel number of sounds"
-msgstr ""
+msgstr "Número paralelo de sonidos"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_audio.cpp:116
@@ -4586,32 +4586,32 @@ msgstr "xxhigh"
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:102
 msgid "verbose"
-msgstr ""
+msgstr "verboso"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:104
 msgid "debug"
-msgstr ""
+msgstr "Depurar"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:106
 msgid "info"
-msgstr ""
+msgstr "información"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:108
 msgid "warn"
-msgstr ""
+msgstr "advertir"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:110
 msgid "error"
-msgstr ""
+msgstr "error"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:112
 msgid "critical"
-msgstr ""
+msgstr "crítico"
 
 #. TRANSLATORS: misc tab in settings
 #: src/gui/widgets/tabs/setup_misc.cpp:126
@@ -4900,7 +4900,7 @@ msgstr "Intervalo de repetición personalizado"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:362
 msgid "Enable alt-tab workaround"
-msgstr ""
+msgstr "Habilitar el método alternativo de alt-tab"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:372
@@ -4925,12 +4925,12 @@ msgstr "Dirección de proxy:puerto"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:389
 msgid "Tunnel through HTTP proxy"
-msgstr ""
+msgstr "Túnel a través del proxy HTTP"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_misc.cpp:394
 msgid "Logging"
-msgstr ""
+msgstr "Iniciando sesión"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:397
@@ -4965,7 +4965,7 @@ msgstr "Habilitar registro de entrada"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:424
 msgid "SDL logging level"
-msgstr ""
+msgstr "Nivel de registro SDL"
 
 #. TRANSLATORS: settings option
 #. TRANSLATORS: input action name
@@ -5147,6 +5147,7 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_perfomance.cpp:161
 msgid "Try first sdl driver (only for SDL2 default mode)"
 msgstr ""
+"Pruebe el primer controlador SDL (solo para el modo predeterminado SDL2)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:167
@@ -5603,7 +5604,7 @@ msgstr "Detectar el mejor modo"
 #. TRANSLATORS: video settings checkbox
 #: src/gui/widgets/tabs/setup_video.cpp:96
 msgid "High DPI"
-msgstr ""
+msgstr "Alto DPI"
 
 #. TRANSLATORS: video settings checkbox
 #: src/gui/widgets/tabs/setup_video.cpp:101
@@ -6561,6 +6562,11 @@ msgid ""
 "Experience: %s\n"
 "Money: %s"
 msgstr ""
+"HP: %u/%u\n"
+"PM: %u/%u\n"
+"Nivel: %u\n"
+"Experiencia: %s\n"
+"Dinero: %s"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/charselectdialog.cpp:308
@@ -6936,14 +6942,14 @@ msgstr "Nivel: %d de %f%%"
 #: src/gui/windows/killstats.cpp:131 src/gui/windows/killstats.cpp:255
 #, c-format
 msgid "Exp: %s/%s Left: %s"
-msgstr ""
+msgstr "Exp: %s/%s Faltan: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:137 src/gui/windows/killstats.cpp:263
 #: src/gui/windows/killstats.cpp:278
 #, c-format
 msgid "1%% = %s exp, avg mob for 1%%: %s"
-msgstr ""
+msgstr "1%% = %s exp, avg mob para 1%%: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:375 src/gui/windows/killstats.cpp:385
@@ -7095,7 +7101,7 @@ msgstr "Nuevo"
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:76
 msgid "Get old"
-msgstr ""
+msgstr "Envejecer"
 
 #: src/gui/windows/mailwindow.cpp:76
 msgid "Return"
@@ -11265,58 +11271,59 @@ msgstr "Incapaz de comprar: Los artículos seleccionados no son correctos."
 #: src/resources/notifications.h:854
 #, c-format
 msgid "Mail destination name %s is wrong."
-msgstr ""
+msgstr "El nombre de destino del correo %s no es correcto."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:858
 msgid "Item attach failed. Weight too big."
-msgstr ""
+msgstr "Artículo adjunto fallido. Es demasiado grande."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:862
 msgid "Item attach failed. Fatal error."
-msgstr ""
+msgstr "Artículo adjunto fallido. Error fatal."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:866
 msgid "Item attach failed. No more space."
-msgstr ""
+msgstr "Artículo adjunto fallido. No hay más espacio."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:870
 msgid "Item attach failed. Item on tradeable."
-msgstr ""
+msgstr "Artículo adjunto fallido. Artículo en comerciable."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:874
 msgid "Item attach failed. Unknown error."
-msgstr ""
+msgstr "Artículo adjunto fallido. Error desconocido."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:878
 #, c-format
 msgid "Item %s remove failed."
-msgstr ""
+msgstr "Falló la eliminación del artículo %s."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:882
 msgid "Mail send failed. Fatal error."
-msgstr ""
+msgstr "Falló el envío del correo. Error fatal."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:886
 msgid "Mail send failed. Too many mails sent."
-msgstr ""
+msgstr "Falló el envío del correo. Demasiados correos enviados."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:890
 msgid "Mail send failed. Wrong attach found."
-msgstr ""
+msgstr "Falló el envío del correo. Se encontró un adjunto incorrecto."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:894
 msgid "Mail send failed. Receiver name wrong or not checked."
 msgstr ""
+"Falló el envío del correo. Nombre del receptor incorrecto o no verificado."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:898

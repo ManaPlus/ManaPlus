@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2017-10-27 20:04+0300\n"
+"POT-Creation-Date: 2017-11-11 16:44+0300\n"
 "PO-Revision-Date: 2017-09-30 13:55+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Polish (http://www.transifex.com/akaras/manaplus/language/"
@@ -33,26 +33,26 @@ msgid "Visible on map"
 msgstr "Widoczne na mapie"
 
 #. TRANSLATORS: default race name
-#: src/being/being.cpp:485
+#: src/being/being.cpp:487
 msgid "Human"
 msgstr "Człowiek"
 
 #. TRANSLATORS: dodge or miss message in attacks
-#: src/being/being.cpp:768
+#: src/being/being.cpp:770
 msgid "dodge"
 msgstr "Unik!"
 
-#: src/being/being.cpp:768
+#: src/being/being.cpp:770
 msgid "miss"
 msgstr "Pudło!"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2522 src/gui/windows/whoisonline.cpp:887
+#: src/being/being.cpp:2524 src/gui/windows/whoisonline.cpp:887
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2527 src/gui/windows/whoisonline.cpp:892
+#: src/being/being.cpp:2529 src/gui/windows/whoisonline.cpp:892
 msgid "I"
 msgstr "I"
 
@@ -1530,7 +1530,7 @@ msgstr "Podejdź"
 #. TRANSLATORS: input action name
 #. TRANSLATORS: npc context menu item
 #: src/gui/popups/popupmenu.cpp:328 src/input/pages/basic.cpp:88
-#: src/resources/db/npcdb.cpp:165
+#: src/resources/db/npcdb.cpp:168
 msgid "Talk"
 msgstr "Rozmowa"
 
@@ -1549,7 +1549,7 @@ msgstr "Rozmowa"
 #: src/gui/windows/buydialog.cpp:260 src/gui/windows/buydialog.cpp:338
 #: src/gui/windows/buydialog.cpp:342 src/gui/windows/buyselldialog.cpp:74
 #: src/gui/windows/shopwindow.cpp:168 src/input/pages/basic.cpp:250
-#: src/resources/db/npcdb.cpp:167
+#: src/resources/db/npcdb.cpp:170
 msgid "Buy"
 msgstr "Kup"
 
@@ -1567,7 +1567,7 @@ msgstr "Kup"
 #: src/gui/widgets/selldialog.cpp:58 src/gui/widgets/selldialog.cpp:115
 #: src/gui/widgets/selldialog.cpp:153 src/gui/windows/buyselldialog.cpp:76
 #: src/gui/windows/shopwindow.cpp:170 src/input/pages/basic.cpp:256
-#: src/resources/db/npcdb.cpp:169
+#: src/resources/db/npcdb.cpp:172
 msgid "Sell"
 msgstr "Sprzedaj"
 
