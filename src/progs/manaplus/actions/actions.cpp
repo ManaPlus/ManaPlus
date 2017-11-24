@@ -1076,7 +1076,7 @@ impHandler0(cleanGraphics)
     if (debugChatTab != nullptr)
     {
         // TRANSLATORS: clear graphics command message
-        debugChatTab->chatLog(_("Cache cleaned"),
+        debugChatTab->chatLog(_("Cache cleared"),
             ChatMsgType::BY_SERVER);
     }
     return true;
@@ -1089,7 +1089,7 @@ impHandler0(cleanFonts)
     if (debugChatTab != nullptr)
     {
         // TRANSLATORS: clear fonts cache message
-        debugChatTab->chatLog(_("Cache cleaned"),
+        debugChatTab->chatLog(_("Cache cleared"),
             ChatMsgType::BY_SERVER);
     }
     return true;
@@ -1327,7 +1327,7 @@ impHandler(dump)
         showRes(_("Resource images:"), res);
         res = ResourceManager::getOrphanedResources();
         // TRANSLATORS: dump command
-        showRes(_("Resource orphaned images:"), res);
+        showRes(_("Orphaned resource images:"), res);
     }
     else
     {
@@ -1337,7 +1337,7 @@ impHandler(dump)
             ChatMsgType::BY_SERVER);
         res = ResourceManager::getOrphanedResources();
         // TRANSLATORS: dump command
-        debugChatTab->chatLog(_("Resource orphaned images:")
+        debugChatTab->chatLog(_("Orphaned resource images:")
             + toString(res->size()),
             ChatMsgType::BY_SERVER);
     }
@@ -1569,7 +1569,7 @@ impHandler(createItem)
 impHandler(uploadConfig)
 {
     // TRANSLATORS: upload config chat message
-    uploadFile(_("Uploaded config into:"),
+    uploadFile(_("Config uploaded to:"),
         config.getFileName(),
         "?xml",
         event.tab);
@@ -1579,7 +1579,7 @@ impHandler(uploadConfig)
 impHandler(uploadServerConfig)
 {
     // TRANSLATORS: upload config chat message
-    uploadFile(_("Uploaded server config into:"),
+    uploadFile(_("Server config Uploaded to:"),
         serverConfig.getFileName(),
         "?xml",
         event.tab);
@@ -1589,7 +1589,7 @@ impHandler(uploadServerConfig)
 impHandler(uploadLog)
 {
     // TRANSLATORS: upload log chat message
-    uploadFile(_("Uploaded log into:"),
+    uploadFile(_("Log uploaded to:"),
         settings.logFileName,
         "?txt",
         event.tab);
@@ -1845,7 +1845,7 @@ impHandler(seen)
     {
         // TRANSLATORS: last seen disabled warning
         tab->chatLog(_("Last seen disabled. "
-            "Enable in players / collect players id and seen log."),
+            "Enable in players / collect players ID and seen log."),
             ChatMsgType::BY_SERVER);
         return true;
     }
@@ -1863,7 +1863,7 @@ impHandler(seen)
         if (lines.size() < 3)
         {
             // TRANSLATORS: last seen error
-            tab->chatLog(_("You not saw this nick."),
+            tab->chatLog(_("You have never seen this nick."),
                 ChatMsgType::BY_SERVER);
             return true;
         }
@@ -1877,7 +1877,7 @@ impHandler(seen)
     else
     {
         // TRANSLATORS: last seen error
-        tab->chatLog(_("You not saw this nick."),
+        tab->chatLog(_("You have not seen this nick before."),
             ChatMsgType::BY_SERVER);
     }
 
