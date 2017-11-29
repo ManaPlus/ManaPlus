@@ -112,7 +112,7 @@ void HelpWindow::handleLink(const std::string &link,
     if (!strStartWith(link, "http://") && !strStartWith(link, "https://"))
     {
         // need use separate variable
-        const std::string helpFile = link;
+        const std::string helpFile = link;  // NOLINT
         loadHelp(helpFile);
     }
     else
