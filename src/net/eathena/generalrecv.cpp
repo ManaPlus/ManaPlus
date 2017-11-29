@@ -160,6 +160,14 @@ void GeneralRecv::processConnectionProblem(Net::MessageIn &msg)
             // TRANSLATORS: error message
             errorMessage = _("Not allowed race.");
             break;
+        case 113:
+            // TRANSLATORS: error message
+            errorMessage = _("Access restricted in hours 00:00 to 06:00.");
+            break;
+        case 115:
+            // TRANSLATORS: error message
+            errorMessage = _("You was banned.");
+            break;
         default:
             // TRANSLATORS: error message
             errorMessage = _("Unknown connection error.");
