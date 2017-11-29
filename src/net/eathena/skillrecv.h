@@ -50,6 +50,7 @@ namespace EAthena
         void processSkillAutoSpells(Net::MessageIn &msg);
         void processSkillDevotionEffect(Net::MessageIn &msg);
         void processSkillItemListWindow(Net::MessageIn &msg);
+        void processSkillScale(Net::MessageIn &msg);
     }  // namespace SkillRecv
 }  // namespace EAthena
 

@@ -526,4 +526,14 @@ void SkillRecv::processSkillItemListWindow(Net::MessageIn &msg)
     msg.readInt32("unused");
 }
 
+void SkillRecv::processSkillScale(Net::MessageIn &msg)
+{
+    msg.readBeingId("being id");
+    msg.readInt16("skill id");
+    msg.readInt16("skill level");
+    msg.readInt16("x");
+    msg.readInt16("y");
+    msg.readInt32("cast time");
+}
+
 }  // namespace EAthena

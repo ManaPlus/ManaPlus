@@ -908,6 +908,12 @@ if (packetVersion >= 20150805)
     packet(SMSG_SELECT_CART,               0x097f,  -1, &InventoryRecv::processSelectCart,              20150805);
 }
 
+// 20151223
+if (packetVersion >= 20151223)
+{
+    packet(SMSG_SKILL_SCALE,               0x0a41,  18, &SkillRecv::processSkillScale,                  20151223);
+}
+
 // 20160330
 if (packetVersion >= 20160330)
 {
