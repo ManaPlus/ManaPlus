@@ -1449,10 +1449,7 @@ void Map::clearIndexedTilesets() restrict2
 
 void Map::reduce() restrict2
 {
-#ifdef USE_SDL2
-    return;
-#else  // USE_SDL2
-
+#ifndef USE_SDL2
     if ((mFringeLayer == nullptr) ||
         mOpenGL != RENDER_SOFTWARE ||
         !config.getBoolValue("enableMapReduce"))
