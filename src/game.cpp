@@ -296,7 +296,12 @@ static void createGuiWindows()
     {
         const StringVect &messages = assertListener->getMessages();
         FOR_EACH (StringVectCIter, it, messages)
-            debugChatTab->chatLog(*it, ChatMsgType::BY_SERVER);
+        {
+            debugChatTab->chatLog(*it,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
+        }
         delete2(assertListener);
     }
     if (config.getBoolValue("enableTradeTab"))
@@ -621,7 +626,10 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
             // TRANSLATORS: save file message
             std::string str = strprintf(_("Screenshot saved as %s"),
                 fileNameStr.c_str());
-            localChatTab->chatLog(str, ChatMsgType::BY_SERVER);
+            localChatTab->chatLog(str,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     else
@@ -630,7 +638,9 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
         {
             // TRANSLATORS: save file message
             localChatTab->chatLog(_("Saving screenshot failed!"),
-                                  ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         logger->log1("Error: could not save screenshot.");
     }
@@ -807,8 +817,12 @@ void Game::adjustPerfomance()
                         config.setSilent("beingopacity", true);
                         if (localChatTab != nullptr)
                         {
-                            localChatTab->chatLog("Auto disable Show "
-                                "beings transparency", ChatMsgType::BY_SERVER);
+                            localChatTab->chatLog(
+                                // TRANSLATORS: auto adjust settings message
+                                _("Auto disable Show beings transparency"),
+                                ChatMsgType::BY_SERVER,
+                                IgnoreRecord_false,
+                                TryRemoveColors_true);
                         }
                     }
                     else
@@ -824,8 +838,12 @@ void Game::adjustPerfomance()
                         ParticleEngine::emitterSkip = 4;
                         if (localChatTab != nullptr)
                         {
-                            localChatTab->chatLog("Auto lower Particle "
-                                "effects", ChatMsgType::BY_SERVER);
+                            localChatTab->chatLog(
+                                // TRANSLATORS: auto adjust settings message
+                                _("Auto lower Particle effects"),
+                                ChatMsgType::BY_SERVER,
+                                IgnoreRecord_false,
+                                TryRemoveColors_true);
                         }
                     }
                     else
@@ -841,8 +859,12 @@ void Game::adjustPerfomance()
                         config.setSilent("alphaCache", false);
                         if (localChatTab != nullptr)
                         {
-                            localChatTab->chatLog("Auto enable opacity cache",
-                                ChatMsgType::BY_SERVER);
+                            localChatTab->chatLog(
+                                // TRANSLATORS: auto adjust settings message
+                                _("Auto enable opacity cache"),
+                                ChatMsgType::BY_SERVER,
+                                IgnoreRecord_false,
+                                TryRemoveColors_true);
                         }
                     }
                     break;

@@ -1023,12 +1023,16 @@ impHandler0(ipcToggle)
         if (ipc == nullptr)
         {
             debugChatTab->chatLog("IPC service stopped.",
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         else
         {
             debugChatTab->chatLog("Unable to stop IPC service.",
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     else
@@ -1038,12 +1042,16 @@ impHandler0(ipcToggle)
         {
             debugChatTab->chatLog(
                 strprintf("IPC service available on port %d", ipc->getPort()),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         else
         {
             debugChatTab->chatLog("Unable to start IPC service",
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     return true;
@@ -1058,7 +1066,10 @@ impHandler(where)
     where << Game::instance()->getCurrentMapName() << ", coordinates: "
         << ((localPlayer->getPixelX() - mapTileSize / 2) / mapTileSize)
         << ", " << ((localPlayer->getPixelY() - mapTileSize) / mapTileSize);
-    tab->chatLog(where.str(), ChatMsgType::BY_SERVER);
+    tab->chatLog(where.str(),
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     return true;
 }
 
@@ -1077,7 +1088,9 @@ impHandler0(cleanGraphics)
     {
         // TRANSLATORS: clear graphics command message
         debugChatTab->chatLog(_("Cache cleared"),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     return true;
 }
@@ -1090,7 +1103,9 @@ impHandler0(cleanFonts)
     {
         // TRANSLATORS: clear fonts cache message
         debugChatTab->chatLog(_("Cache cleared"),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     return true;
 }
@@ -1151,7 +1166,10 @@ impHandler0(cacheInfo)
 
     unsigned int all = 0;
     // TRANSLATORS: chat fonts message
-    debugChatTab->chatLog(_("font cache size"), ChatMsgType::BY_SERVER);
+    debugChatTab->chatLog(_("font cache size"),
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     std::string str;
     for (int f = 0; f < 256; f ++)
     {
@@ -1162,20 +1180,32 @@ impHandler0(cacheInfo)
             str.append(strprintf("%d: %u, ", f, sz));
         }
     }
-    debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
+    debugChatTab->chatLog(str,
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     // TRANSLATORS: chat fonts message
     debugChatTab->chatLog(strprintf("%s %d", _("Cache size:"), all),
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
 #ifdef DEBUG_FONT_COUNTERS
-    debugChatTab->chatLog("", ChatMsgType::BY_SERVER);
+    debugChatTab->chatLog("",
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     debugChatTab->chatLog(strprintf("%s %d",
         // TRANSLATORS: chat fonts message
         _("Created:"), font->getCreateCounter()),
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     debugChatTab->chatLog(strprintf("%s %d",
         // TRANSLATORS: chat fonts message
         _("Deleted:"), font->getDeleteCounter()),
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
 #endif
 */
     return true;
@@ -1240,16 +1270,24 @@ impHandler0(dirs)
 
     debugChatTab->chatLog("config directory: "
         + settings.configDir,
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     debugChatTab->chatLog("logs directory: "
         + settings.localDataDir,
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     debugChatTab->chatLog("screenshots directory: "
         + settings.screenshotDir,
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     debugChatTab->chatLog("temp directory: "
         + settings.tempDir,
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     return true;
 }
 
@@ -1262,14 +1300,18 @@ impHandler0(uptime)
     {
         // TRANSLATORS: uptime command
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"), "unknown"),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     else
     {
         // TRANSLATORS: uptime command
         debugChatTab->chatLog(strprintf(_("Client uptime: %s"),
             timeDiffToString(CAST_S32(cur_time - start_time)).c_str()),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     return true;
 }
@@ -1282,7 +1324,12 @@ static void showRes(std::string str, ResourceManager::Resources *res)
 
     str.append(toString(res->size()));
     if (debugChatTab)
-        debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
+    {
+        debugChatTab->chatLog(str,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
+    }
     logger->log(str);
     ResourceManager::ResourceIterator iter = res->begin();
     const ResourceManager::ResourceIterator iter_end = res->end();
@@ -1334,12 +1381,16 @@ impHandler(dump)
         ResourceManager::Resources *res = ResourceManager::getResources();
         // TRANSLATORS: dump command
         debugChatTab->chatLog(_("Resource images:") + toString(res->size()),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         res = ResourceManager::getOrphanedResources();
         // TRANSLATORS: dump command
         debugChatTab->chatLog(_("Orphaned resource images:")
             + toString(res->size()),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     return true;
 }
@@ -1435,7 +1486,9 @@ impHandler0(dumpEnvironment)
     {
         // TRANSLATORS: dump environment command
         debugChatTab->chatLog(_("Environment variables dumped"),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     return true;
 }
@@ -1522,7 +1575,9 @@ impHandler0(testSdlFont)
     if (debugChatTab)
     {
         debugChatTab->chatLog("sdlfont time: " + toString(diff),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     return true;
 }
@@ -1846,7 +1901,9 @@ impHandler(seen)
         // TRANSLATORS: last seen disabled warning
         tab->chatLog(_("Last seen disabled. "
             "Enable in players / collect players ID and seen log."),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         return true;
     }
 
@@ -1864,7 +1921,9 @@ impHandler(seen)
         {
             // TRANSLATORS: last seen error
             tab->chatLog(_("You have never seen this nick."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             return true;
         }
         const std::string message = strprintf(
@@ -1872,13 +1931,18 @@ impHandler(seen)
             _("Last seen for %s: %s"),
             name.c_str(),
             lines[2].c_str());
-        tab->chatLog(message, ChatMsgType::BY_SERVER);
+        tab->chatLog(message,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     else
     {
         // TRANSLATORS: last seen error
         tab->chatLog(_("You have not seen this nick before."),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
 
     return true;

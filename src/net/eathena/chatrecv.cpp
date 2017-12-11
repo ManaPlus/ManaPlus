@@ -498,7 +498,10 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
     }
     else if (localChatTab != nullptr)
     {
-        localChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
+        localChatTab->chatLog(chatMsg,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     BLOCK_END("ChatRecv::processWhisper")
 }
@@ -745,7 +748,10 @@ void ChatRecv::processChatTalkieBox(Net::MessageIn &msg)
 {
     msg.readBeingId("being id");
     const std::string message = msg.readString(80, "message");
-    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
+    localChatTab->chatLog(message,
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
 }
 
 void ChatRecv::processBattleChatMessage(Net::MessageIn &msg)
@@ -762,7 +768,10 @@ void ChatRecv::processScriptMessage(Net::MessageIn &msg)
     const int sz = msg.readInt16("len") - 8;
     msg.readBeingId("being id");
     const std::string message = msg.readString(sz, "message");
-    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
+    localChatTab->chatLog(message,
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
 }
 
 }  // namespace EAthena

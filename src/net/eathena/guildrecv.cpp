@@ -127,34 +127,54 @@ void GuildRecv::processGuildBasicInfo(Net::MessageIn &msg)
         showBasicInfo = false;
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild name: %s"),
-            name.c_str()), ChatMsgType::BY_SERVER);
+            name.c_str()),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         if (!master.empty())
         {
             // TRANSLATORS: guild info message
             guildTab->chatLog(strprintf(_("Guild master: %s"),
-                master.c_str()), ChatMsgType::BY_SERVER);
+                master.c_str()),
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild level: %d"), level),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Online members: %d"),
-            members), ChatMsgType::BY_SERVER);
+        guildTab->chatLog(strprintf(_("Online members: %d"), members),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Max members: %d"),
-            maxMembers), ChatMsgType::BY_SERVER);
+        guildTab->chatLog(strprintf(_("Max members: %d"), maxMembers),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Average level: %d"),
-            avgLevel), ChatMsgType::BY_SERVER);
+        guildTab->chatLog(strprintf(_("Average level: %d"), avgLevel),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         // TRANSLATORS: guild info message
         guildTab->chatLog(strprintf(_("Guild exp: %d"), exp),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Guild next exp: %d"),
-            nextExp), ChatMsgType::BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild next exp: %d"), nextExp),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         // TRANSLATORS: guild info message
-        guildTab->chatLog(strprintf(_("Guild castle: %s"),
-            castle.c_str()), ChatMsgType::BY_SERVER);
+        guildTab->chatLog(strprintf(_("Guild castle: %s"), castle.c_str()),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
 
     Guild *const g = Guild::getGuild(CAST_S16(guildId));
@@ -381,8 +401,14 @@ void GuildRecv::processGuildNotice(Net::MessageIn &msg)
     {
         const std::string msg1 = msg.readString(60, "msg1");
         const std::string msg2 = msg.readString(120, "msg2");
-        guildTab->chatLog(msg1, ChatMsgType::BY_SERVER);
-        guildTab->chatLog(msg2, ChatMsgType::BY_SERVER);
+        guildTab->chatLog(msg1,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
+        guildTab->chatLog(msg2,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     else
     {
@@ -498,7 +524,10 @@ void GuildRecv::processGuildMessage(Net::MessageIn &msg)
         }
         else
         {
-            guildTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
+            guildTab->chatLog(chatMsg,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     else

@@ -751,7 +751,9 @@ void Being::takeDamage(Being *restrict const attacker,
             {
                 ChatWindow::battleChatLog(strprintf("%s : Hit you  -%d",
                     attacker->getName().c_str(), amount),
-                    ChatMsgType::BY_OTHER);
+                    ChatMsgType::BY_OTHER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
         }
         else if (attacker == localPlayer && (amount != 0))
@@ -760,7 +762,9 @@ void Being::takeDamage(Being *restrict const attacker,
                 attacker->mName.c_str(),
                 mName.c_str(),
                 amount),
-                ChatMsgType::BY_PLAYER);
+                ChatMsgType::BY_PLAYER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     if (font != nullptr && particleEngine != nullptr)

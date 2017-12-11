@@ -552,12 +552,16 @@ void ChatTab::showOnline(const std::string &nick,
     {
         // TRANSLATORS: chat message
         chatLog(strprintf(_("%s is now Online."), nick.c_str()),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     else
     {
         // TRANSLATORS: chat message
         chatLog(strprintf(_("%s is now Offline."), nick.c_str()),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
 }

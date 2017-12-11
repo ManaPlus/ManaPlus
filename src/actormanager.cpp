@@ -1596,8 +1596,13 @@ void ActorManager::printBeingsToChat(const std::string &header) const
         return;
 
     debugChatTab->chatLog("---------------------------------------",
-        ChatMsgType::BY_SERVER);
-    debugChatTab->chatLog(header, ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
+    debugChatTab->chatLog(header,
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     for_actors
     {
 // disabled for performance
@@ -1611,7 +1616,10 @@ void ActorManager::printBeingsToChat(const std::string &header) const
 
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
-            toInt(being->getSubType(), int)), ChatMsgType::BY_SERVER);
+            toInt(being->getSubType(), int)),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         if (mActorsIdMap.find(being->getId()) == mActorsIdMap.end())
         {
             debugChatTab->chatLog("missing in id map: %s",
@@ -1619,7 +1627,9 @@ void ActorManager::printBeingsToChat(const std::string &header) const
         }
     }
     debugChatTab->chatLog("---------------------------------------",
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
     FOR_EACH (ActorSpritesMapConstIterator, itr, mActorsIdMap)
     {
         const ActorSprite *const actor = (*itr).second;
@@ -1654,8 +1664,13 @@ void ActorManager::printBeingsToChat(const STD_VECTOR<Being*> &beings,
         return;
 
     debugChatTab->chatLog("---------------------------------------",
-        ChatMsgType::BY_SERVER);
-    debugChatTab->chatLog(header, ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
+    debugChatTab->chatLog(header,
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
 
     FOR_EACH (STD_VECTOR<Being*>::const_iterator, i, beings)
     {
@@ -1666,10 +1681,15 @@ void ActorManager::printBeingsToChat(const STD_VECTOR<Being*> &beings,
 
         debugChatTab->chatLog(strprintf("%s (%d,%d) %d",
             being->getName().c_str(), being->getTileX(), being->getTileY(),
-            toInt(being->getSubType(), int)), ChatMsgType::BY_SERVER);
+            toInt(being->getSubType(), int)),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     debugChatTab->chatLog("---------------------------------------",
-        ChatMsgType::BY_SERVER);
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
 }
 
 void ActorManager::getPlayerNames(StringVect &names,

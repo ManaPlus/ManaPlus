@@ -40,7 +40,12 @@ class ScrollArea;
 
 #define debugMsg(str) \
     if (debugChatTab) \
-        debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
+    { \
+        debugChatTab->chatLog(str, \
+            ChatMsgType::BY_SERVER, \
+            IgnoreRecord_false, \
+            TryRemoveColors_true); \
+    }
 
 #define setTabColors(name) \
     setTabColor(&getThemeColor(name), \
@@ -79,9 +84,8 @@ class ChatTab notfinal : public Tab
          */
         void chatLog(std::string line,
                      ChatMsgTypeT own,
-                     const IgnoreRecord ignoreRecord = IgnoreRecord_false,
-                     const TryRemoveColors tryRemoveColors
-                     = TryRemoveColors_true);
+                     const IgnoreRecord ignoreRecord,
+                     const TryRemoveColors tryRemoveColors);
 
         /**
          * Adds the text to the message list

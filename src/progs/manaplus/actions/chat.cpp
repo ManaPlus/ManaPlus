@@ -272,7 +272,9 @@ impHandler(msg)
             event.tab->chatLog(
                 // TRANSLATORS: whisper send
                 _("Cannot send empty whisper or channel message!"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     return true;
@@ -325,7 +327,10 @@ impHandler(query)
         // TRANSLATORS: new whisper or channel query
         event.tab->chatLog(strprintf(_("Cannot create a whisper tab "
             "\"%s\"! It probably already exists."),
-            args.c_str()), ChatMsgType::BY_SERVER);
+            args.c_str()),
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     return true;
 }
@@ -394,7 +399,9 @@ impHandler(party)
         {
             // TRANSLATORS: party invite message
             event.tab->chatLog(_("Please specify a name."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     return true;
@@ -428,13 +435,17 @@ impHandler(guild)
         {
             // TRANSLATORS: guild invite message
             event.tab->chatLog(_("Please specify a name."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         else if (localChatTab != nullptr)
         {
             // TRANSLATORS: guild invite message
             localChatTab->chatLog(_("Please specify a name."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     return true;
@@ -455,7 +466,9 @@ impHandler(toggle)
             event.tab->chatLog(chatWindow->getReturnTogglesChat() ?
                 // TRANSLATORS: message from toggle chat command
                 _("Return toggles chat.") : _("Message closes chat."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         return true;
     }
@@ -467,7 +480,9 @@ impHandler(toggle)
             {
                 // TRANSLATORS: message from toggle chat command
                 event.tab->chatLog(_("Return now toggles chat."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             if (chatWindow != nullptr)
                 chatWindow->setReturnTogglesChat(true);
@@ -477,7 +492,9 @@ impHandler(toggle)
             {
                 // TRANSLATORS: message from toggle chat command
                 event.tab->chatLog(_("Message now closes chat."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             if (chatWindow != nullptr)
                 chatWindow->setReturnTogglesChat(false);
@@ -486,7 +503,9 @@ impHandler(toggle)
             if (event.tab != nullptr)
             {
                 event.tab->chatLog(strprintf(BOOLEAN_OPTIONS, "toggle"),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             return true;
         default:
@@ -507,7 +526,9 @@ impHandler(kickParty)
         {
             // TRANSLATORS: party kick message
             event.tab->chatLog(_("Please specify a name."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     return true;
@@ -542,7 +563,9 @@ impHandler(kickGuild)
         {
             // TRANSLATORS: party kick message
             event.tab->chatLog(_("Please specify a name."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     return true;
@@ -717,7 +740,9 @@ impHandler(translate)
             // TRANSLATORS: translation error message
             strprintf(_("No translation found for string: %s"),
             srcStr.c_str()),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
         return true;
     }
 

@@ -63,9 +63,19 @@ namespace NotifyManager
         if (str.empty())
             return;
         if (tab != nullptr)
-            tab->chatLog(str, ChatMsgType::BY_SERVER);
+        {
+            tab->chatLog(str,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
+        }
         else if (debugChatTab != nullptr)
-            debugChatTab->chatLog(str, ChatMsgType::BY_SERVER);
+        {
+            debugChatTab->chatLog(str,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
+        }
     }
 
     void notify(const unsigned int message)
@@ -86,7 +96,9 @@ namespace NotifyManager
         {
             case NotifyFlags::EMPTY:
                 localChatTab->chatLog(gettext(info.text),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 break;
 
             case NotifyFlags::GUILD:
@@ -133,8 +145,11 @@ namespace NotifyManager
         if (info.flags == NotifyFlags::INT &&
             *info.text != 0)
         {
-            localChatTab->chatLog(strprintf(gettext(info.text),
-                num), ChatMsgType::BY_SERVER);
+            localChatTab->chatLog(
+                strprintf(gettext(info.text), num),
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         soundManager.playSfx(SoundDB::getSound(message));
     }
@@ -156,8 +171,11 @@ namespace NotifyManager
         {
             case NotifyFlags::STRING:
             {
-                localChatTab->chatLog(strprintf(gettext(info.text),
-                    str.c_str()), ChatMsgType::BY_SERVER);
+                localChatTab->chatLog(
+                    strprintf(gettext(info.text), str.c_str()),
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 break;
             }
             case NotifyFlags::GUILD_STRING:

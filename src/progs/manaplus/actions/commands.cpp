@@ -106,7 +106,9 @@ static std::string getNick(const InputEvent &event)
         {
             // TRANSLATORS: change relation
             event.tab->chatLog(_("Please specify a name."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             return std::string();
         }
         args = whisper->getNick();
@@ -124,12 +126,18 @@ static void reportRelation(const InputEvent &event,
         if (playerRelations.getRelation(event.args) == rel)
         {
             // TRANSLATORS: unignore command
-            event.tab->chatLog(str1, ChatMsgType::BY_SERVER);
+            event.tab->chatLog(str1,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         else
         {
             // TRANSLATORS: unignore command
-            event.tab->chatLog(str2, ChatMsgType::BY_SERVER);
+            event.tab->chatLog(str2,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
 }
@@ -148,7 +156,10 @@ static void changeRelation(const InputEvent &event,
         {
             // TRANSLATORS: change relation
             event.tab->chatLog(strprintf(_("Player already %s!"),
-                relationText.c_str()), ChatMsgType::BY_SERVER);
+                relationText.c_str()),
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             return;
         }
     }
@@ -198,7 +209,9 @@ impHandler(chatUnignore)
         {
             // TRANSLATORS: unignore command
             event.tab->chatLog(_("Player wasn't ignored!"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         return true;
     }
@@ -224,7 +237,9 @@ impHandler(chatErase)
         {
             // TRANSLATORS: erase command
             event.tab->chatLog(_("Player already erased!"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         return true;
     }
@@ -1779,22 +1794,30 @@ impHandler(partyItemShare)
             case PartyShare::YES:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Item sharing enabled."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::NO:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Item sharing disabled."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::NOT_POSSIBLE:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Item sharing not possible."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::UNKNOWN:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Item sharing unknown."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             default:
                 break;
@@ -1815,7 +1838,9 @@ impHandler(partyItemShare)
             break;
         case -1:
             tab->chatLog(strprintf(BOOLEAN_OPTIONS, "item"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             break;
         default:
             break;
@@ -1845,22 +1870,30 @@ impHandler(partyExpShare)
             case PartyShare::YES:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Experience sharing enabled."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::NO:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Experience sharing disabled."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::NOT_POSSIBLE:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Experience sharing not possible."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::UNKNOWN:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Experience sharing unknown."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             default:
                 break;
@@ -1881,7 +1914,9 @@ impHandler(partyExpShare)
             break;
         case -1:
             tab->chatLog(strprintf(BOOLEAN_OPTIONS, "exp"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             break;
         default:
             break;
@@ -1911,22 +1946,30 @@ impHandler(partyAutoItemShare)
             case PartyShare::YES:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Auto item sharing enabled."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::NO:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Auto item sharing disabled."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::NOT_POSSIBLE:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Auto item sharing not possible."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             case PartyShare::UNKNOWN:
                 // TRANSLATORS: chat message
                 tab->chatLog(_("Auto item sharing unknown."),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
                 return true;
             default:
                 break;
@@ -1947,7 +1990,9 @@ impHandler(partyAutoItemShare)
             break;
         case -1:
             tab->chatLog(strprintf(BOOLEAN_OPTIONS, "item"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             break;
         default:
             break;

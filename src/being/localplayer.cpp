@@ -924,8 +924,14 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
                 msg = N_("Unknown problem picking up item.");
                 break;
         }
-        if ((localChatTab != nullptr) && config.getBoolValue("showpickupchat"))
-            localChatTab->chatLog(gettext(msg), ChatMsgType::BY_SERVER);
+        if (localChatTab != nullptr &&
+            config.getBoolValue("showpickupchat"))
+        {
+            localChatTab->chatLog(gettext(msg),
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
+        }
 
         if ((mMap != nullptr) && config.getBoolValue("showpickupparticle"))
         {
@@ -954,7 +960,9 @@ void LocalPlayer::pickedUp(const ItemInfo &itemInfo,
             localChatTab->chatLog(strprintf(ngettext("You picked up %d "
                 "[@@%d|%s@@].", "You picked up %d [@@%d|%s@@].", amount),
                 amount, itemInfo.getId(), str.c_str()),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
 
         if ((mMap != nullptr) && config.getBoolValue("showpickupparticle"))
@@ -2038,7 +2046,8 @@ void LocalPlayer::afkRespond(ChatTab *const tab, const std::string &nick)
                     localChatTab->chatLog(std::string(mName).append(
                         " : ").append(msg),
                         ChatMsgType::ACT_WHISPER,
-                        IgnoreRecord_false);
+                        IgnoreRecord_false,
+                        TryRemoveColors_true);
                 }
             }
             else

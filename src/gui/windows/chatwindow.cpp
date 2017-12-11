@@ -716,7 +716,10 @@ void ChatWindow::doPresent() const
             // TRANSLATORS: chat message
             _("Present: %s; %d players are present."),
             response.c_str(), playercount);
-        tab->chatLog(log, ChatMsgType::BY_SERVER);
+        tab->chatLog(log,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
 }
 
@@ -1018,7 +1021,9 @@ void ChatWindow::attributeChanged(const AttributesT id,
             {
                 battleChatLog(std::string("+").append(toString(
                     CAST_U64(change))).append(" xp"),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             break;
         }
@@ -1026,7 +1031,9 @@ void ChatWindow::attributeChanged(const AttributesT id,
             battleChatLog(std::string(
                 "Level: ").append(toString(CAST_S32(
                 newVal))),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             break;
         case Attributes::PLAYER_JOB_EXP:
         {
@@ -1043,7 +1050,9 @@ void ChatWindow::attributeChanged(const AttributesT id,
             {
                 battleChatLog(std::string("+").append(toString(CAST_U64(
                     change))).append(" job"),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             break;
         }
@@ -1126,7 +1135,10 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
         }
         else if (own == ChatMsgType::BY_SERVER)
         {
-            tab->chatLog(mes, ChatMsgType::BY_SERVER);
+            tab->chatLog(mes,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         else
         {
@@ -1149,7 +1161,10 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
                 {
                     if (config.getBoolValue("removeColors"))
                         msg = removeColors(msg);
-                    tab->chatLog(msg, ChatMsgType::BY_SERVER);
+                    tab->chatLog(msg,
+                        ChatMsgType::BY_SERVER,
+                        IgnoreRecord_false,
+                        TryRemoveColors_true);
                 }
             }
             else
@@ -1168,14 +1183,17 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
             // TRANSLATORS: chat message
             localChatTab->chatLog(strprintf(_("Whispering to %s: %s"),
                 nick.c_str(), mes.c_str()),
-                ChatMsgType::BY_PLAYER);
+                ChatMsgType::BY_PLAYER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         else
         {
             localChatTab->chatLog(std::string(nick).append(
                 " : ").append(mes),
                 ChatMsgType::ACT_WHISPER,
-                IgnoreRecord_false);
+                IgnoreRecord_false,
+                TryRemoveColors_true);
             if (localPlayer != nullptr)
                 localPlayer->afkRespond(nullptr, nick);
         }
@@ -1694,7 +1712,10 @@ bool ChatWindow::resortChatLog(std::string line,
         {
             if (langChatTab->getChannelName() == channel)
             {
-                langChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
+                langChatTab->chatLog(line,
+                    own,
+                    ignoreRecord,
+                    tryRemoveColors);
             }
             else if (mShowAllLang)
             {
@@ -2118,11 +2139,17 @@ void ChatWindow::addGlobalMessage(const std::string &line)
     if (debugChatTab != nullptr &&
         findI(line, mGlobalsFilter) != std::string::npos)
     {
-        debugChatTab->chatLog(line, ChatMsgType::BY_OTHER);
+        debugChatTab->chatLog(line,
+            ChatMsgType::BY_OTHER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
     else
     {
-        localChatTab->chatLog(line, ChatMsgType::BY_GM);
+        localChatTab->chatLog(line,
+            ChatMsgType::BY_GM,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
 }
 
@@ -2134,7 +2161,12 @@ bool ChatWindow::isTabPresent(const ChatTab *const tab) const
 void ChatWindow::debugMessage(const std::string &msg)
 {
     if (debugChatTab != nullptr)
-        debugChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
+    {
+        debugChatTab->chatLog(msg,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
+    }
 }
 
 void ChatWindow::showGMTab()

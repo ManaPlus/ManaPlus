@@ -87,7 +87,9 @@ class SocialPartyTab final : public SocialTab,
                         // TRANSLATORS: chat message
                         _("Invited user %s to party."),
                         name.c_str()),
-                        ChatMsgType::BY_SERVER);
+                        ChatMsgType::BY_SERVER,
+                        IgnoreRecord_false,
+                        TryRemoveColors_true);
                 }
                 mInviteDialog = nullptr;
             }
@@ -104,7 +106,9 @@ class SocialPartyTab final : public SocialTab,
                         // TRANSLATORS: tab in social window
                         _("Party %s quit requested."),
                         mParty->getName().c_str()),
-                        ChatMsgType::BY_SERVER);
+                        ChatMsgType::BY_SERVER,
+                        IgnoreRecord_false,
+                        TryRemoveColors_true);
                 }
                 mConfirmDialog = nullptr;
             }

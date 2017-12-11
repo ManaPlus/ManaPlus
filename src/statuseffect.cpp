@@ -64,8 +64,14 @@ void StatusEffect::playSFX() const
 
 void StatusEffect::deliverMessage() const
 {
-    if (!mMessage.empty() && (localChatTab != nullptr))
-        localChatTab->chatLog(mMessage, ChatMsgType::BY_SERVER);
+    if (!mMessage.empty() &&
+        localChatTab != nullptr)
+    {
+        localChatTab->chatLog(mMessage,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
+    }
 }
 
 Particle *StatusEffect::getStartParticle() const

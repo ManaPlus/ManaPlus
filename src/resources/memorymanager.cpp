@@ -93,7 +93,9 @@ void MemoryManager::printAllMemory(ChatTab *const tab A_DYECMD_UNUSED)
     {
         // TRANSLATORS: memory usage chat message
         tab->chatLog(strprintf(_("Calculated memory usage: %d"), sz),
-            ChatMsgType::BY_SERVER);
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
     }
 #endif  // DYECMD
 }

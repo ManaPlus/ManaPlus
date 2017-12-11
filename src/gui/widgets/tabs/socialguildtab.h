@@ -86,7 +86,9 @@ class SocialGuildTab final : public SocialTab,
                         _("Invited user %s to guild %s."),
                         name.c_str(),
                         mGuild->getName().c_str()),
-                        ChatMsgType::BY_SERVER);
+                        ChatMsgType::BY_SERVER,
+                        IgnoreRecord_false,
+                        TryRemoveColors_true);
                 }
                 mInviteDialog = nullptr;
             }
@@ -103,7 +105,9 @@ class SocialGuildTab final : public SocialTab,
                         // TRANSLATORS: chat message
                         _("Guild %s quit requested."),
                         mGuild->getName().c_str()),
-                        ChatMsgType::BY_SERVER);
+                        ChatMsgType::BY_SERVER,
+                        IgnoreRecord_false,
+                        TryRemoveColors_true);
                 }
                 mConfirmDialog = nullptr;
             }

@@ -272,7 +272,10 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
             const size_t pos = chatMsg.find(": ", 0);
             if (pos == std::string::npos)
             {
-                gmChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
+                gmChatTab->chatLog(chatMsg,
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             else
             {
@@ -282,7 +285,10 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
         }
         else
         {
-            localChatTab->chatLog(chatMsg, ChatMsgType::BY_SERVER);
+            localChatTab->chatLog(chatMsg,
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
     }
     BLOCK_END("ChatRecv::processWhisper")
@@ -371,7 +377,10 @@ void ChatRecv::processScriptMessage(Net::MessageIn &msg)
     const int sz = msg.readInt16("len") - 5;
     msg.readUInt8("message type");
     const std::string message = msg.readString(sz, "message");
-    localChatTab->chatLog(message, ChatMsgType::BY_SERVER);
+    localChatTab->chatLog(message,
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
 }
 
 }  // namespace TmwAthena

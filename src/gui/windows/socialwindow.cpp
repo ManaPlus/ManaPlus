@@ -276,7 +276,9 @@ void SocialWindow::action(const ActionEvent &event)
                     // TRANSLATORS: chat message
                     strprintf(_("Accepted party invite from %s."),
                     mPartyInviter.c_str()),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             partyHandler->inviteResponse(mPartyId, true);
         }
@@ -288,7 +290,9 @@ void SocialWindow::action(const ActionEvent &event)
                     // TRANSLATORS: chat message
                     strprintf(_("Rejected party invite from %s."),
                     mPartyInviter.c_str()),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
             partyHandler->inviteResponse(mPartyId, false);
         }
@@ -306,7 +310,9 @@ void SocialWindow::action(const ActionEvent &event)
                     // TRANSLATORS: chat message
                     strprintf(_("Accepted guild invite from %s."),
                     mPartyInviter.c_str()),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
 #ifdef TMWA_SUPPORT
             if (guildManager == nullptr || !GuildManager::getEnableGuildBot())
@@ -326,7 +332,9 @@ void SocialWindow::action(const ActionEvent &event)
                     // TRANSLATORS: chat message
                     strprintf(_("Rejected guild invite from %s."),
                     mPartyInviter.c_str()),
-                    ChatMsgType::BY_SERVER);
+                    ChatMsgType::BY_SERVER,
+                    IgnoreRecord_false,
+                    TryRemoveColors_true);
             }
 #ifdef TMWA_SUPPORT
             if (guildManager == nullptr || !GuildManager::getEnableGuildBot())
@@ -384,7 +392,9 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
             // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received guild request, but one already "
                 "exists."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         return;
     }
@@ -395,7 +405,12 @@ void SocialWindow::showGuildInvite(const std::string &restrict guildName,
         inviterName.c_str(), guildName.c_str());
 
     if (localChatTab != nullptr)
-        localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
+    {
+        localChatTab->chatLog(msg,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
+    }
 
     CREATEWIDGETV(mGuildAcceptDialog, ConfirmDialog,
         // TRANSLATORS: guild invite message
@@ -421,7 +436,9 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
             // TRANSLATORS: chat message
             localChatTab->chatLog(_("Received party request, but one already "
                 "exists."),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         return;
     }
@@ -458,7 +475,12 @@ void SocialWindow::showPartyInvite(const std::string &restrict partyName,
     }
 
     if (localChatTab != nullptr)
-        localChatTab->chatLog(msg, ChatMsgType::BY_SERVER);
+    {
+        localChatTab->chatLog(msg,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
+    }
 
     // show invite
     CREATEWIDGETV(mPartyAcceptDialog, ConfirmDialog,

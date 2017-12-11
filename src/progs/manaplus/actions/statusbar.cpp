@@ -178,7 +178,9 @@ impHandler0(changeTrade)
         {
             // TRANSLATORS: disable trades message
             localChatTab->chatLog(_("Ignoring incoming trade requests"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         deflt &= ~PlayerRelation::TRADE;
     }
@@ -188,7 +190,9 @@ impHandler0(changeTrade)
         {
             // TRANSLATORS: enable trades message
             localChatTab->chatLog(_("Accepting incoming trade requests"),
-                ChatMsgType::BY_SERVER);
+                ChatMsgType::BY_SERVER,
+                IgnoreRecord_false,
+                TryRemoveColors_true);
         }
         deflt |= PlayerRelation::TRADE;
     }
