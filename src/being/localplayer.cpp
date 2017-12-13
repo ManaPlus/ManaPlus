@@ -2126,9 +2126,9 @@ void LocalPlayer::updateMusic() const
         if (str != soundManager.getCurrentMusicFile())
         {
             if (str.empty())
-                soundManager.fadeOutMusic();
+                soundManager.fadeOutMusic(1000);
             else
-                soundManager.fadeOutAndPlayMusic(str);
+                soundManager.fadeOutAndPlayMusic(str, 1000);
         }
     }
 }

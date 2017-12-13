@@ -1946,8 +1946,9 @@ void Being::logic() restrict2
         const int time2 = tick_time;
         if (time2 > mNextSound.time)
         {
-            soundManager.playSfx(sound->sound, mNextSound.x, mNextSound.y);
-
+            soundManager.playSfx(sound->sound,
+                mNextSound.x,
+                mNextSound.y);
             mNextSound.sound = nullptr;
             mNextSound.time = time2 + sound->delay;
         }

@@ -88,7 +88,7 @@ namespace NotifyManager
         const NotificationInfo &info = notifications[message];
         if (*info.text == 0)
         {
-            soundManager.playSfx(SoundDB::getSound(message));
+            soundManager.playSfx(SoundDB::getSound(message), 0, 0);
             return;
         }
 
@@ -131,7 +131,7 @@ namespace NotifyManager
             default:
                 break;
         }
-        soundManager.playSfx(SoundDB::getSound(message));
+        soundManager.playSfx(SoundDB::getSound(message), 0, 0);
     }
 
     void notify(const unsigned int message, const int num)
@@ -151,7 +151,7 @@ namespace NotifyManager
                 IgnoreRecord_false,
                 TryRemoveColors_true);
         }
-        soundManager.playSfx(SoundDB::getSound(message));
+        soundManager.playSfx(SoundDB::getSound(message), 0, 0);
     }
 
     void notify(const unsigned int message, const std::string &str)
@@ -164,7 +164,7 @@ namespace NotifyManager
         const NotificationInfo &info = notifications[message];
         if (*info.text == 0)
         {
-            soundManager.playSfx(SoundDB::getSound(message));
+            soundManager.playSfx(SoundDB::getSound(message), 0, 0);
             return;
         }
         switch (info.flags)
@@ -198,7 +198,7 @@ namespace NotifyManager
             default:
                 break;
         }
-        soundManager.playSfx(SoundDB::getSound(message));
+        soundManager.playSfx(SoundDB::getSound(message), 0, 0);
     }
 
     int getIndexBySound(const std::string &sound)

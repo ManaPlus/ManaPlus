@@ -1150,9 +1150,9 @@ void Game::changeMap(const std::string &mapPath)
     if (newMusic != oldMusic)
     {
         if (newMusic.empty())
-            soundManager.fadeOutMusic();
+            soundManager.fadeOutMusic(1000);
         else
-            soundManager.fadeOutAndPlayMusic(newMusic);
+            soundManager.fadeOutAndPlayMusic(newMusic, 1000);
     }
 
     if (mCurrentMap != nullptr)

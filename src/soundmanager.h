@@ -89,7 +89,7 @@ class SoundManager final : public ConfigListener
          *
          * @param ms   Duration of fade-out effect (ms)
          */
-        void fadeOutMusic(const int ms = 1000);
+        void fadeOutMusic(const int ms);
 
         /**
          * Fades out a background music and play a new one.
@@ -98,7 +98,7 @@ class SoundManager final : public ConfigListener
          * @param ms       Duration of fade-out effect (ms)
          */
         void fadeOutAndPlayMusic(const std::string &fileName,
-                                 const int ms = 1000);
+                                 const int ms);
 
         constexpr static int getMaxVolume() A_WARN_UNUSED
         { return MIX_MAX_VOLUME; }
@@ -112,8 +112,9 @@ class SoundManager final : public ConfigListener
          *
          * @param path The resource path to the sound file.
          */
-        void playSfx(const std::string &path, const int x = 0,
-                     const int y = 0) const;
+        void playSfx(const std::string &path,
+                     const int x,
+                     const int y) const;
 
         /**
          * Plays an item for gui.

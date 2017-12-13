@@ -137,7 +137,7 @@ bool EffectManager::trigger(const int id,
                 being->controlAutoParticle(selfFX);
             }
             if (!effect.sfx.empty())
-                soundManager.playSfx(effect.sfx);
+                soundManager.playSfx(effect.sfx, 0, 0);
             if (!effect.sprite.empty())
                 being->addEffect(effect.sprite);
             return rValue;
@@ -168,7 +168,7 @@ Particle *EffectManager::triggerReturn(const int id,
                 being->controlCustomParticle(rValue);
             }
             if (!effect.sfx.empty())
-                soundManager.playSfx(effect.sfx);
+                soundManager.playSfx(effect.sfx, 0, 0);
             if (!effect.sprite.empty())
                 being->addEffect(effect.sprite);
             return rValue;
@@ -203,7 +203,7 @@ bool EffectManager::trigger(const int id,
                     mTimers.push_back(ParticleTimer(particle, endTime));
             }
             if (!effect.sfx.empty())
-                soundManager.playSfx(effect.sfx);
+                soundManager.playSfx(effect.sfx, 0, 0);
             return rValue;
         }
     }
