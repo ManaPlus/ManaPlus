@@ -648,7 +648,8 @@ void Being::setSpeech(const std::string &restrict text,
             mPixelY - getHeight(),
             Graphics::CENTER,
             &userPalette->getColor(UserColorId::PARTICLE),
-            Speech_true);
+            Speech_true,
+            nullptr);
         mText->adviseXY(mPixelX,
             (mY + 1) * mapTileSize - getHeight() - mText->getHeight() - 9,
             mMoveNames);
@@ -2413,7 +2414,8 @@ void Being::drawSpeech(const int offsetX,
                 mPixelY - getHeight(),
                 Graphics::CENTER,
                 &theme->getColor(ThemeColorId::BUBBLE_TEXT, 255),
-                Speech_true);
+                Speech_true,
+                nullptr);
             mText->adviseXY(mPixelX,
                 (mY + 1) * mapTileSize - getHeight() - mText->getHeight() - 9,
                 mMoveNames);

@@ -47,8 +47,8 @@ class Text notfinal
              const int x, const int y,
              const Graphics::Alignment alignment,
              const Color *const color,
-             const Speech isSpeech = Speech_false,
-             Font *const font = nullptr);
+             const Speech isSpeech,
+             Font *const font);
 
         A_DELETE_COPY(Text)
 
@@ -129,7 +129,8 @@ class FlashText final : public Text
          * Draws the text.
          */
         void draw(Graphics *const graphics,
-                  const int xOff, const int yOff) override final A_NONNULL(2);
+                  const int xOff,
+                  const int yOff) override final A_NONNULL(2);
 
     private:
         int mTime;             /**< Time left for flashing */
