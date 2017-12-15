@@ -199,8 +199,8 @@ class Being notfinal : public ActorSprite,
         void takeDamage(Being *restrict const attacker,
                         const int amount,
                         const AttackTypeT type,
-                        const int attackId = 1,
-                        const int level = 1) restrict2;
+                        const int attackId,
+                        const int level) restrict2;
 
         /**
          * Handles an attack of another being by this being.
