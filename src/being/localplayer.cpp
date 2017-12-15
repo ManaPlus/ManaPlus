@@ -436,7 +436,7 @@ void LocalPlayer::setGroupId(const int id)
         statusWindow->updateLevelLabel();
 }
 
-void LocalPlayer::nextTile(unsigned char dir A_UNUSED = 0)
+void LocalPlayer::nextTile()
 {
     const Party *const party = Party::getParty(1);
     if (party != nullptr)

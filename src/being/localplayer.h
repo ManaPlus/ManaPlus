@@ -85,10 +85,7 @@ class LocalPlayer final : public Being,
          * Also, when specified, it picks up an item at the end of a path
          * or attack target.
          */
-        void nextTile() override final
-        { nextTile(0); }
-
-        void nextTile(unsigned char dir);
+        void nextTile() override final;
 
         bool pickUp(FloorItem *const item);
 
