@@ -564,18 +564,10 @@ void Being::setPath(const Path &restrict path) restrict2
     }
 }
 
-void Being::setSpeech(const std::string &restrict text,
-                      const std::string &restrict channel,
-                      int time) restrict2
+void Being::setSpeech(const std::string &restrict text) restrict2
 {
     if (userPalette == nullptr)
         return;
-
-    if (!channel.empty() &&
-        ((langChatTab == nullptr) || langChatTab->getChannelName() != channel))
-    {
-        return;
-    }
 
     // Remove colors
     mSpeech = removeColors(text);
@@ -591,12 +583,10 @@ void Being::setSpeech(const std::string &restrict text,
     if (mSpeech.empty())
         return;
 
-    if (time == 0)
-    {
-        const size_t sz = mSpeech.size();
-        if (sz < 200)
-            time = CAST_S32(SPEECH_TIME - 300 + (3 * sz));
-    }
+    const size_t sz = mSpeech.size();
+    int time = 0;
+    if (sz < 200)
+        time = CAST_S32(SPEECH_TIME - 300 + (3 * sz));
 
     if (time < CAST_S32(SPEECH_MIN_TIME))
         time = CAST_S32(SPEECH_MIN_TIME);

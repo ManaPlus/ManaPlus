@@ -35,8 +35,7 @@ namespace TmwAthena
     namespace ChatRecv
     {
         void processChat(Net::MessageIn &msg);
-        void processChatContinue(std::string chatMsg,
-                                 const std::string &channel);
+        void processChatContinue(std::string chatMsg);
         void processGmChat(Net::MessageIn &msg);
         void processWhisper(Net::MessageIn &msg);
         void processWhisperResponse(Net::MessageIn &msg);

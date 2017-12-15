@@ -185,9 +185,7 @@ class Being notfinal : public ActorSprite,
          * @param text The text that should appear.
          * @param time The amount of time the text should stay in milliseconds.
          */
-        void setSpeech(const std::string &restrict text,
-                       const std::string &restrict channel = "",
-                       int time = 0) restrict2;
+        void setSpeech(const std::string &restrict text) restrict2;
 
         /**
          * Puts a damage bubble above this being.

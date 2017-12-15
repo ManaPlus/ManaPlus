@@ -262,7 +262,7 @@ void ChatRecv::processChatContinue(std::string chatMsg,
     if (localPlayer != nullptr)
     {
         if (((chatWindow != nullptr) || Ea::ChatRecv::mShowMotd) && allow)
-            localPlayer->setSpeech(chatMsg, GENERAL_CHANNEL);
+            localPlayer->setSpeech(chatMsg);
     }
     BLOCK_END("ChatRecv::processChat")
 }
@@ -563,7 +563,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
         playerRelations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
-        being->setSpeech(chatMsg, GENERAL_CHANNEL);
+        being->setSpeech(chatMsg);
     }
     BLOCK_END("ChatRecv::processBeingChat")
 }

@@ -59,11 +59,10 @@ void ChatRecv::processChat(Net::MessageIn &msg)
         return;
     }
 
-    processChatContinue(msg.readRawString(chatMsgLength, "message"), "");
+    processChatContinue(msg.readRawString(chatMsgLength, "message"));
 }
 
-void ChatRecv::processChatContinue(std::string chatMsg,
-                                   const std::string &channel)
+void ChatRecv::processChatContinue(std::string chatMsg)
 {
     const size_t pos = chatMsg.find(" : ", 0);
 
@@ -72,25 +71,21 @@ void ChatRecv::processChatContinue(std::string chatMsg,
     {
         allow = chatWindow->resortChatLog(chatMsg,
             ChatMsgType::BY_PLAYER,
-            channel,
+            GENERAL_CHANNEL,
             IgnoreRecord_false,
             TryRemoveColors_true);
     }
 
-    if (channel.empty())
+    const std::string senseStr("You sense the following: ");
+    if ((actorManager != nullptr) && (chatMsg.find(senseStr) == 0u))
     {
-        const std::string senseStr("You sense the following: ");
-        if ((actorManager != nullptr) && (chatMsg.find(senseStr) == 0u))
-        {
-            actorManager->parseLevels(
-                chatMsg.substr(senseStr.size()));
-        }
+        actorManager->parseLevels(
+            chatMsg.substr(senseStr.size()));
     }
 
     if (pos == std::string::npos &&
         !Ea::ChatRecv::mShowMotd &&
-        Ea::ChatRecv::mSkipping &&
-        channel.empty())
+        Ea::ChatRecv::mSkipping)
     {
         // skip motd from "new" tmw server
         if (Ea::ChatRecv::mMotdTime == 0)
@@ -113,8 +108,8 @@ void ChatRecv::processChatContinue(std::string chatMsg,
 
     if (localPlayer != nullptr)
     {
-        if (((chatWindow != nullptr) || Ea::ChatRecv::mShowMotd) && allow)
-            localPlayer->setSpeech(chatMsg, channel);
+        if ((chatWindow != nullptr || Ea::ChatRecv::mShowMotd) && allow)
+            localPlayer->setSpeech(chatMsg);
     }
     BLOCK_END("ChatRecv::processChat")
 }
@@ -367,7 +362,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
         playerRelations.hasPermission(sender_name,
         PlayerRelation::SPEECH_FLOAT))
     {
-        being->setSpeech(chatMsg, GENERAL_CHANNEL);
+        being->setSpeech(chatMsg);
     }
     BLOCK_END("ChatRecv::processBeingChat")
 }
