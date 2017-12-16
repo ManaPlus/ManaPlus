@@ -158,26 +158,31 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readInt16("left atk"),
         Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_ATK,
-        msg.readInt16("right atk"));
+        msg.readInt16("right atk"),
+        Notify_true);
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16("right matk");
     PlayerInfo::setStatBase(Attributes::PLAYER_MATK, val, Notify_false);
 
     val = msg.readInt16("left matk");
-    PlayerInfo::setStatMod(Attributes::PLAYER_MATK, val);
+    PlayerInfo::setStatMod(Attributes::PLAYER_MATK,
+        val,
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_DEF,
         msg.readInt16("left def"),
         Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_DEF,
-        msg.readInt16("right def"));
+        msg.readInt16("right def"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_MDEF,
         msg.readInt16("left mdef"),
         Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_MDEF,
-        msg.readInt16("right mdef"));
+        msg.readInt16("right mdef"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_HIT,
         msg.readInt16("hit"),
@@ -187,7 +192,8 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readInt16("flee"),
         Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_FLEE,
-        msg.readInt16("flee2/10"));
+        msg.readInt16("flee2/10"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_CRIT,
         msg.readInt16("crit/10"),

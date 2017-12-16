@@ -175,7 +175,9 @@ void InventoryRecv::processPlayerAttackRange(Net::MessageIn &msg)
     PlayerInfo::setStatBase(Attributes::PLAYER_ATTACK_RANGE,
         range,
         Notify_true);
-    PlayerInfo::setStatMod(Attributes::PLAYER_ATTACK_RANGE, 0);
+    PlayerInfo::setStatMod(Attributes::PLAYER_ATTACK_RANGE,
+        0,
+        Notify_true);
     BLOCK_END("InventoryRecv::processPlayerAttackRange")
 }
 

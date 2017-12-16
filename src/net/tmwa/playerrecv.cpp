@@ -116,24 +116,32 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setStatBase(Attributes::PLAYER_ATK,
         msg.readInt16("atk"),
         Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_ATK, msg.readInt16("atk+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_ATK,
+        msg.readInt16("atk+"),
+        Notify_true);
     PlayerInfo::updateAttrs();
 
     val = msg.readInt16("matk");
     PlayerInfo::setStatBase(Attributes::PLAYER_MATK, val, Notify_false);
 
     val = msg.readInt16("matk+");
-    PlayerInfo::setStatMod(Attributes::PLAYER_MATK, val);
+    PlayerInfo::setStatMod(Attributes::PLAYER_MATK,
+        val,
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_DEF,
         msg.readInt16("def"),
         Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_DEF, msg.readInt16("def+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_DEF,
+        msg.readInt16("def+"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_MDEF,
         msg.readInt16("mdef"),
         Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_MDEF, msg.readInt16("mdef+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_MDEF,
+        msg.readInt16("mdef+"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_HIT,
         msg.readInt16("hit"),
@@ -142,7 +150,9 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setStatBase(Attributes::PLAYER_FLEE,
         msg.readInt16("flee"),
         Notify_false);
-    PlayerInfo::setStatMod(Attributes::PLAYER_FLEE, msg.readInt16("flee+"));
+    PlayerInfo::setStatMod(Attributes::PLAYER_FLEE,
+        msg.readInt16("flee+"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_CRIT,
         msg.readInt16("crit"),

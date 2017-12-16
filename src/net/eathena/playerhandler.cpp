@@ -513,7 +513,7 @@ void PlayerHandler::setViewEquipment(const bool allow) const
 #define setStatComplex(stat) \
     PlayerInfo::setStatBase(stat, base, notify); \
     if (mod != NoStat) \
-        PlayerInfo::setStatMod(stat, mod)
+        PlayerInfo::setStatMod(stat, mod, Notify_true)
 
 void PlayerHandler::setStat(Net::MessageIn &msg,
                             const int type,
@@ -528,7 +528,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::setStatBase(Attributes::PLAYER_WALK_SPEED,
                 base,
                 Notify_true);
-            PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED, 0);
+            PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED,
+                0,
+                Notify_true);
             break;
         case Sp::BASEEXP:
             PlayerInfo::setAttribute(Attributes::PLAYER_EXP,
@@ -544,13 +546,17 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::setStatBase(Attributes::PLAYER_KARMA,
                 base,
                 Notify_true);
-            PlayerInfo::setStatMod(Attributes::PLAYER_KARMA, 0);
+            PlayerInfo::setStatMod(Attributes::PLAYER_KARMA,
+                0,
+                Notify_true);
             break;
         case Sp::MANNER:
             PlayerInfo::setStatBase(Attributes::PLAYER_MANNER,
                 base,
                 Notify_true);
-            PlayerInfo::setStatMod(Attributes::PLAYER_MANNER, 0);
+            PlayerInfo::setStatMod(Attributes::PLAYER_MANNER,
+                0,
+                Notify_true);
             break;
         case Sp::HP:
             PlayerInfo::setAttribute(Attributes::PLAYER_HP,
@@ -700,7 +706,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::updateAttrs();
             break;
         case Sp::ATK2:
-            PlayerInfo::setStatMod(Attributes::PLAYER_ATK, base);
+            PlayerInfo::setStatMod(Attributes::PLAYER_ATK,
+                base,
+                Notify_true);
             PlayerInfo::updateAttrs();
             break;
         case Sp::MATK1:
@@ -719,7 +727,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 Notify_true);
             break;
         case Sp::DEF2:
-            PlayerInfo::setStatMod(Attributes::PLAYER_DEF, base);
+            PlayerInfo::setStatMod(Attributes::PLAYER_DEF,
+                base,
+                Notify_true);
             break;
         case Sp::MDEF1:
             PlayerInfo::setStatBase(Attributes::PLAYER_MDEF,
@@ -742,7 +752,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 Notify_true);
             break;
         case Sp::FLEE2:
-            PlayerInfo::setStatMod(Attributes::PLAYER_FLEE, base);
+            PlayerInfo::setStatMod(Attributes::PLAYER_FLEE,
+                base,
+                Notify_true);
             break;
         case Sp::CRITICAL:
             PlayerInfo::setStatBase(Attributes::PLAYER_CRIT,
@@ -754,7 +766,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::setStatBase(Attributes::PLAYER_ATTACK_DELAY,
                 base,
                 Notify_true);
-            PlayerInfo::setStatMod(Attributes::PLAYER_ATTACK_DELAY, 0);
+            PlayerInfo::setStatMod(Attributes::PLAYER_ATTACK_DELAY,
+                0,
+                Notify_true);
             PlayerInfo::updateAttrs();
             break;
         case Sp::JOBLEVEL:

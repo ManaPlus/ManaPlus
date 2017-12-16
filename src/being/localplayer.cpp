@@ -196,7 +196,9 @@ LocalPlayer::LocalPlayer(const BeingId id,
     PlayerInfo::setStatBase(Attributes::PLAYER_WALK_SPEED,
         getWalkSpeed(),
         Notify_true);
-    PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED, 0);
+    PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED,
+        0,
+        Notify_true);
 
     loadHomes();
 
