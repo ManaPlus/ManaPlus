@@ -117,12 +117,24 @@ static void setBasicFields(Being *restrict const dstBeing,
             }
             if (updateSlots)
             {
-                dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-                dstBeing->updateSprite(SPRITE_HAIR, shoes);
-                dstBeing->updateSprite(SPRITE_SHOES, gloves);
-                dstBeing->updateSprite(SPRITE_BODY, weapon);
+                dstBeing->updateSprite(SPRITE_WEAPON,
+                    headBottom,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM,
+                    headMid,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR,
+                    headTop,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_HAIR,
+                    shoes,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_SHOES,
+                    gloves,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_BODY,
+                    weapon,
+                    std::string());
                 dstBeing->setWeaponId(weapon);
             }
             break;
@@ -137,12 +149,24 @@ static void setBasicFields(Being *restrict const dstBeing,
                 dstBeing->setHairStyle(SPRITE_HAIR_COLOR, -hairStyle);
                 // for npc not checking updateSlots flag,
                 // probably because npc missing visible packet if moving
-                dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-                dstBeing->updateSprite(SPRITE_HAIR, shoes);
-                dstBeing->updateSprite(SPRITE_SHOES, gloves);
-                dstBeing->updateSprite(SPRITE_BODY, weapon);
+                dstBeing->updateSprite(SPRITE_WEAPON,
+                    headBottom,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_HEAD_BOTTOM,
+                    headMid,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_CLOTHES_COLOR,
+                    headTop,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_HAIR,
+                    shoes,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_SHOES,
+                    gloves,
+                    std::string());
+                dstBeing->updateSprite(SPRITE_BODY,
+                    weapon,
+                    std::string());
                 dstBeing->setWeaponId(weapon);
             }
             break;

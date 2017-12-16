@@ -343,12 +343,12 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY,
             weapon,
-            "");
+            std::string());
         dstBeing->setWeaponId(weapon);
-        dstBeing->updateSprite(SPRITE_FLOOR, shield);
-        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield, std::string());
+        dstBeing->updateSprite(SPRITE_WEAPON, headBottom, std::string());
+        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, std::string());
+        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, std::string());
         if (hairStyle == 0)
         {
             dstBeing->updateSprite(SPRITE_HAIR_COLOR,
@@ -487,12 +487,12 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY,
             weapon,
-            "");
+            std::string());
         dstBeing->setWeaponId(weapon);
-        dstBeing->updateSprite(SPRITE_FLOOR, shield);
-        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield, std::string());
+        dstBeing->updateSprite(SPRITE_WEAPON, headBottom, std::string());
+        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, std::string());
+        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, std::string());
         if (hairStyle == 0)
         {
             dstBeing->updateSprite(SPRITE_HAIR_COLOR,
@@ -631,12 +631,12 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         dstBeing->updateSprite(SPRITE_BODY,
             weapon,
-            "");
+            std::string());
         dstBeing->setWeaponId(weapon);
-        dstBeing->updateSprite(SPRITE_FLOOR, shield);
-        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield, std::string());
+        dstBeing->updateSprite(SPRITE_WEAPON, headBottom, std::string());
+        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, std::string());
+        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, std::string());
         if (hairStyle == 0)
         {
             dstBeing->updateSprite(SPRITE_HAIR_COLOR,
@@ -862,7 +862,7 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         if (hairStyle == 0)
         {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0, std::string());
         }
         else
         {
@@ -871,14 +871,14 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
                 ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         }
         dstBeing->setHairColor(hairColor);
-        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-        dstBeing->updateSprite(SPRITE_HAIR, shoes);
-        dstBeing->updateSprite(SPRITE_SHOES, gloves);
-        dstBeing->updateSprite(SPRITE_BODY, weapon);
+        dstBeing->updateSprite(SPRITE_WEAPON, headBottom, std::string());
+        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, std::string());
+        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, std::string());
+        dstBeing->updateSprite(SPRITE_HAIR, shoes, std::string());
+        dstBeing->updateSprite(SPRITE_SHOES, gloves, std::string());
+        dstBeing->updateSprite(SPRITE_BODY, weapon, std::string());
         dstBeing->setWeaponId(weapon);
-        dstBeing->updateSprite(SPRITE_FLOOR, shield);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield, std::string());
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())
@@ -1071,7 +1071,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         // Set these after the gender, as the sprites may be gender-specific
         if (hairStyle == 0)
         {
-            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0);
+            dstBeing->updateSprite(SPRITE_HAIR_COLOR, 0, std::string());
         }
         else
         {
@@ -1080,14 +1080,14 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
                 ItemDB::get(-hairStyle).getDyeColorsString(hairColor));
         }
         dstBeing->setHairColor(hairColor);
-        dstBeing->updateSprite(SPRITE_WEAPON, headBottom);
-        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid);
-        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop);
-        dstBeing->updateSprite(SPRITE_HAIR, shoes);
-        dstBeing->updateSprite(SPRITE_SHOES, gloves);
-        dstBeing->updateSprite(SPRITE_BODY, weapon);
+        dstBeing->updateSprite(SPRITE_WEAPON, headBottom, std::string());
+        dstBeing->updateSprite(SPRITE_HEAD_BOTTOM, headMid, std::string());
+        dstBeing->updateSprite(SPRITE_CLOTHES_COLOR, headTop, std::string());
+        dstBeing->updateSprite(SPRITE_HAIR, shoes, std::string());
+        dstBeing->updateSprite(SPRITE_SHOES, gloves, std::string());
+        dstBeing->updateSprite(SPRITE_BODY, weapon, std::string());
         dstBeing->setWeaponId(weapon);
-        dstBeing->updateSprite(SPRITE_FLOOR, shield);
+        dstBeing->updateSprite(SPRITE_FLOOR, shield, std::string());
     }
     else if (dstBeing->getType() == ActorType::Npc
              && serverFeatures->haveNpcGender())
