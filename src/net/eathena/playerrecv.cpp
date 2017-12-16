@@ -77,7 +77,8 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerRecv::processPlayerStatUpdate5")
     PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS,
-        msg.readInt16("char points"));
+        msg.readInt16("char points"),
+        Notify_true);
 
     unsigned int val = msg.readUInt8("str");
     PlayerInfo::setStatBase(Attributes::PLAYER_STR, val);
@@ -185,7 +186,8 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
         msg.readInt16("crit/10"));
 
     PlayerInfo::setAttribute(Attributes::PLAYER_ATTACK_DELAY,
-        msg.readInt16("attack speed"));
+        msg.readInt16("attack speed"),
+        Notify_true);
     msg.readInt16("plus speed = 0");
 
     BLOCK_END("PlayerRecv::processPlayerStatUpdate5")
@@ -282,7 +284,9 @@ void PlayerRecv::processPlayerHeal(Net::MessageIn &msg)
     {
         const int base = PlayerInfo::getAttribute(Attributes::PLAYER_HP) +
             amount;
-        PlayerInfo::setAttribute(Attributes::PLAYER_HP, base);
+        PlayerInfo::setAttribute(Attributes::PLAYER_HP,
+            base,
+            Notify_true);
         if (localPlayer->isInParty() && (Party::getParty(1) != nullptr))
         {
             PartyMember *const m = Party::getParty(1)

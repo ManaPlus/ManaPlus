@@ -912,9 +912,11 @@ void InventoryRecv::processCartInfo(Net::MessageIn &msg)
     msg.readInt16("cart items used");
     const int size = msg.readInt16("max cart items");
     PlayerInfo::setAttribute(Attributes::CART_TOTAL_WEIGHT,
-        msg.readInt32("cart weight"));
+        msg.readInt32("cart weight"),
+        Notify_true);
     PlayerInfo::setAttribute(Attributes::CART_MAX_WEIGHT,
-        msg.readInt32("max cart weight"));
+        msg.readInt32("max cart weight"),
+        Notify_true);
     if (mCartItems.empty())
         return;
 

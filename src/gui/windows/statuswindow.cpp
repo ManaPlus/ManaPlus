@@ -350,7 +350,8 @@ void StatusWindow::attributeChanged(const AttributesT id,
                         lvl = CAST_S32((expNeed - 20000) / 150);
                         blocked = true;
                         PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL,
-                            lvl);
+                            lvl,
+                            Notify_true);
                         blocked = false;
                     }
                 }
@@ -363,9 +364,11 @@ void StatusWindow::attributeChanged(const AttributesT id,
                     lvl ++;
                     blocked = true;
                     PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP_NEEDED,
-                        20000 + lvl * 150);
+                        20000 + lvl * 150,
+                        Notify_true);
                     PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL,
-                        lvl);
+                        lvl,
+                        Notify_true);
                     blocked = false;
                 }
 

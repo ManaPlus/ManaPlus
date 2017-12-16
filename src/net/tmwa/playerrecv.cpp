@@ -38,7 +38,8 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
 {
     BLOCK_START("PlayerRecv::processPlayerStatUpdate5")
     PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS,
-        msg.readInt16("char points"));
+        msg.readInt16("char points"),
+        Notify_true);
 
     unsigned int val = msg.readUInt8("str");
     PlayerInfo::setStatBase(Attributes::PLAYER_STR, val);

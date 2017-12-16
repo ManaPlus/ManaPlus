@@ -103,7 +103,7 @@ namespace PlayerInfo
      */
     void setAttribute(const AttributesT id,
                       const int64_t value,
-                      const Notify notify = Notify_true);
+                      const Notify notify);
 
     int getSkillLevel(const int id) A_WARN_UNUSED;
 

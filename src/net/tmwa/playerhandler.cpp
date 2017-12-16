@@ -230,21 +230,35 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED, 0);
             break;
         case Sp::BASEEXP:
-            PlayerInfo::setAttribute(Attributes::PLAYER_EXP, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_EXP,
+                base,
+                Notify_true);
             break;
         case Sp::JOBEXP:
-            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP,
+                base,
+                Notify_true);
             break;
         case Sp::KARMA:
-            PlayerInfo::setStatBase(Attributes::PLAYER_KARMA, base);
-            PlayerInfo::setStatMod(Attributes::PLAYER_KARMA, 0);
+            PlayerInfo::setStatBase(Attributes::PLAYER_KARMA,
+                base,
+                Notify_true);
+            PlayerInfo::setStatMod(Attributes::PLAYER_KARMA,
+                0,
+                Notify_true);
             break;
         case Sp::MANNER:
-            PlayerInfo::setStatBase(Attributes::PLAYER_MANNER, base);
-            PlayerInfo::setStatMod(Attributes::PLAYER_MANNER, 0);
+            PlayerInfo::setStatBase(Attributes::PLAYER_MANNER,
+                base,
+                Notify_true);
+            PlayerInfo::setStatMod(Attributes::PLAYER_MANNER,
+                0,
+                Notify_true);
             break;
         case Sp::HP:
-            PlayerInfo::setAttribute(Attributes::PLAYER_HP, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_HP,
+                base,
+                Notify_true);
             if (localPlayer->isInParty() && (Party::getParty(1) != nullptr))
             {
                 PartyMember *const m = Party::getParty(1)
@@ -258,7 +272,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             }
             break;
         case Sp::MAXHP:
-            PlayerInfo::setAttribute(Attributes::PLAYER_MAX_HP, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_MAX_HP,
+                base,
+                Notify_true);
 
             if (localPlayer->isInParty() && (Party::getParty(1) != nullptr))
             {
@@ -272,16 +288,24 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             }
             break;
         case Sp::SP:
-            PlayerInfo::setAttribute(Attributes::PLAYER_MP, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_MP,
+                base,
+                Notify_true);
             break;
         case Sp::MAXSP:
-            PlayerInfo::setAttribute(Attributes::PLAYER_MAX_MP, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_MAX_MP,
+                base,
+                Notify_true);
             break;
         case Sp::STATUSPOINT:
-            PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS,
+                base,
+                Notify_true);
             break;
         case Sp::BASELEVEL:
-            PlayerInfo::setAttribute(Attributes::PLAYER_BASE_LEVEL, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_BASE_LEVEL,
+                base,
+                Notify_true);
             if (localPlayer != nullptr)
             {
                 localPlayer->setLevel(base);
@@ -289,7 +313,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             }
             break;
         case Sp::SKILLPOINT:
-            PlayerInfo::setAttribute(Attributes::PLAYER_SKILL_POINTS, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_SKILL_POINTS,
+                base,
+                Notify_true);
             if (skillDialog != nullptr)
                 skillDialog->update();
             break;
@@ -326,20 +352,30 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                     UnitsDb::formatCurrency(oldMoney - newMoney).c_str());
             }
 
-            PlayerInfo::setAttribute(Attributes::MONEY, newMoney);
+            PlayerInfo::setAttribute(Attributes::MONEY,
+                newMoney,
+                Notify_true);
             break;
         }
         case Sp::NEXTBASEEXP:
-            PlayerInfo::setAttribute(Attributes::PLAYER_EXP_NEEDED, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_EXP_NEEDED,
+                base,
+                Notify_true);
             break;
         case Sp::JOB_MOD:
-            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP_NEEDED, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_EXP_NEEDED,
+                base,
+                Notify_true);
             break;
         case Sp::WEIGHT:
-            PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT, base);
+            PlayerInfo::setAttribute(Attributes::TOTAL_WEIGHT,
+                base,
+                Notify_true);
             break;
         case Sp::MAXWEIGHT:
-            PlayerInfo::setAttribute(Attributes::MAX_WEIGHT, base);
+            PlayerInfo::setAttribute(Attributes::MAX_WEIGHT,
+                base,
+                Notify_true);
             break;
         case Sp::USTR:
             statusWindow->setPointsNeeded(Attributes::PLAYER_STR, base);
@@ -359,7 +395,6 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
         case Sp::ULUK:
             statusWindow->setPointsNeeded(Attributes::PLAYER_LUK, base);
             break;
-
         case Sp::ATK1:
             PlayerInfo::setStatBase(Attributes::PLAYER_ATK, base);
             PlayerInfo::updateAttrs();
@@ -405,7 +440,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             PlayerInfo::updateAttrs();
             break;
         case Sp::JOBLEVEL:
-            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL, base);
+            PlayerInfo::setAttribute(Attributes::PLAYER_JOB_LEVEL,
+                base,
+                Notify_true);
             break;
         case Sp::GM_LEVEL:
             localPlayer->setGroupId(base);

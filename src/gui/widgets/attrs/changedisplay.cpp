@@ -97,7 +97,8 @@ void ChangeDisplay::action(const ActionEvent &event)
         const int newpoints = PlayerInfo::getAttribute(
             Attributes::PLAYER_CHAR_POINTS) - cnt;
         PlayerInfo::setAttribute(Attributes::PLAYER_CHAR_POINTS,
-            newpoints);
+            newpoints,
+            Notify_true);
 
         const int newbase = PlayerInfo::getStatBase(mId) + cnt;
         PlayerInfo::setStatBase(mId, newbase);
