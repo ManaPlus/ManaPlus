@@ -45,7 +45,8 @@ namespace EAthena
 #define setMercStat(sp, stat) \
         case sp: \
             PlayerInfo::setStatBase(stat, \
-                val); \
+                val, \
+                Notify_true); \
             break;
 
 void MercenaryRecv::processMercenaryUpdate(Net::MessageIn &msg)
@@ -81,44 +82,62 @@ void MercenaryRecv::processMercenaryInfo(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
     PlayerInfo::setStatBase(Attributes::MERC_ATK,
-        msg.readInt16("atk"));
+        msg.readInt16("atk"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_MATK,
-        msg.readInt16("matk"));
+        msg.readInt16("matk"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_HIT,
-        msg.readInt16("hit"));
+        msg.readInt16("hit"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_CRIT,
-        msg.readInt16("crit/10"));
+        msg.readInt16("crit/10"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_DEF,
-        msg.readInt16("def"));
+        msg.readInt16("def"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_MDEF,
-        msg.readInt16("mdef"));
+        msg.readInt16("mdef"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_FLEE,
-        msg.readInt16("flee"));
+        msg.readInt16("flee"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_ATTACK_DELAY,
-        msg.readInt16("attack speed"));
+        msg.readInt16("attack speed"),
+        Notify_true);
     const std::string name = msg.readString(24, "name");
     const int level = msg.readInt16("level");
     PlayerInfo::setStatBase(Attributes::MERC_LEVEL,
-        level);
+        level,
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_HP,
-        msg.readInt32("hp"));
+        msg.readInt32("hp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_MAX_HP,
-        msg.readInt32("max hp"));
+        msg.readInt32("max hp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_MP,
-        msg.readInt32("sp"));
+        msg.readInt32("sp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_MAX_MP,
-        msg.readInt32("max sp"));
+        msg.readInt32("max sp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_EXPIRE,
-        msg.readInt32("expire time"));
+        msg.readInt32("expire time"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_FAITH,
-        msg.readInt16("faith"));
+        msg.readInt16("faith"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_CALLS,
-        msg.readInt32("calls"));
+        msg.readInt32("calls"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::MERC_KILLS,
-        msg.readInt32("kills"));
+        msg.readInt32("kills"),
+        Notify_true);
     const int range = msg.readInt16("attack range");
     PlayerInfo::setStatBase(Attributes::MERC_ATTACK_RANGE,
-        range);
+        range,
+        Notify_true);
     PlayerInfo::updateAttrs();
 
     if ((dstBeing != nullptr) && (localPlayer != nullptr))

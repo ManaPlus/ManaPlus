@@ -114,53 +114,73 @@ void HomunculusRecv::processHomunculusInfo(Net::MessageIn &msg)
     const std::string name = msg.readString(24, "name");
     msg.readUInt8("flags");  // 0x01 - renamed, 0x02 - vaporize, 0x04 - alive
     const int level = msg.readInt16("level");
-    PlayerInfo::setStatBase(Attributes::HOMUN_LEVEL, level);
+    PlayerInfo::setStatBase(Attributes::HOMUN_LEVEL,
+        level,
+        Notify_true);
     const int hungry = msg.readInt16("hungry");
     const int intimacy = msg.readInt16("intimacy");
     const int equip = msg.readInt16("equip");
     PlayerInfo::setStatBase(Attributes::HOMUN_ATK,
-        msg.readInt16("atk"));
+        msg.readInt16("atk"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_MATK,
-        msg.readInt16("matk"));
+        msg.readInt16("matk"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_HIT,
-        msg.readInt16("hit"));
+        msg.readInt16("hit"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_CRIT,
-        msg.readInt16("luk/3 or crit/10"));
+        msg.readInt16("luk/3 or crit/10"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_DEF,
-        msg.readInt16("def"));
+        msg.readInt16("def"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_MDEF,
-        msg.readInt16("mdef"));
+        msg.readInt16("mdef"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_FLEE,
-        msg.readInt16("flee"));
+        msg.readInt16("flee"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_ATTACK_DELAY,
-        msg.readInt16("attack speed"));
+        msg.readInt16("attack speed"),
+        Notify_true);
     if (msg.getVersion() >= 20150513)
     {
         PlayerInfo::setStatBase(Attributes::HOMUN_HP,
-            msg.readInt32("hp"));
+            msg.readInt32("hp"),
+            Notify_true);
         PlayerInfo::setStatBase(Attributes::HOMUN_MAX_HP,
-            msg.readInt32("max hp"));
+            msg.readInt32("max hp"),
+            Notify_true);
     }
     else
     {
         PlayerInfo::setStatBase(Attributes::HOMUN_HP,
-            msg.readInt16("hp"));
+            msg.readInt16("hp"),
+            Notify_true);
         PlayerInfo::setStatBase(Attributes::HOMUN_MAX_HP,
-            msg.readInt16("max hp"));
+            msg.readInt16("max hp"),
+            Notify_true);
     }
     PlayerInfo::setStatBase(Attributes::HOMUN_MP,
-        msg.readInt16("sp"));
+        msg.readInt16("sp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_MAX_MP,
-        msg.readInt16("max sp"));
+        msg.readInt16("max sp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_EXP,
-        msg.readInt32("exp"));
+        msg.readInt32("exp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_EXP_NEEDED,
-        msg.readInt32("next exp"));
+        msg.readInt32("next exp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::HOMUN_SKILL_POINTS,
-        msg.readInt16("skill points"));
+        msg.readInt16("skill points"),
+        Notify_true);
     const int range = msg.readInt16("attack range");
     PlayerInfo::setStatBase(Attributes::HOMUN_ATTACK_RANGE,
-        range);
+        range,
+        Notify_true);
 
     PlayerInfo::updateAttrs();
     HomunculusInfo *const info = PlayerInfo::getHomunculus();

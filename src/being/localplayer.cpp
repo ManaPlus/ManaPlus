@@ -194,7 +194,8 @@ LocalPlayer::LocalPlayer(const BeingId id,
         mNameColor = nullptr;
 
     PlayerInfo::setStatBase(Attributes::PLAYER_WALK_SPEED,
-        getWalkSpeed());
+        getWalkSpeed(),
+        Notify_true);
     PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED, 0);
 
     loadHomes();

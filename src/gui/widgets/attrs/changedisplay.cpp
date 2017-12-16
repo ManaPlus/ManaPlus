@@ -101,7 +101,7 @@ void ChangeDisplay::action(const ActionEvent &event)
             Notify_true);
 
         const int newbase = PlayerInfo::getStatBase(mId) + cnt;
-        PlayerInfo::setStatBase(mId, newbase);
+        PlayerInfo::setStatBase(mId, newbase, Notify_true);
 
         if (Net::getNetworkType() != ServerType::TMWATHENA)
         {

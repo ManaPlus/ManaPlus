@@ -42,7 +42,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
         Notify_true);
 
     unsigned int val = msg.readUInt8("str");
-    PlayerInfo::setStatBase(Attributes::PLAYER_STR, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_STR, val, Notify_true);
     if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_STR,
@@ -54,7 +54,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("agi");
-    PlayerInfo::setStatBase(Attributes::PLAYER_AGI, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_AGI, val, Notify_true);
     if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_AGI,
@@ -66,7 +66,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("vit");
-    PlayerInfo::setStatBase(Attributes::PLAYER_VIT, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_VIT, val, Notify_true);
     if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_VIT,
@@ -78,7 +78,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("int");
-    PlayerInfo::setStatBase(Attributes::PLAYER_INT, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_INT, val, Notify_true);
     if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_INT,
@@ -90,7 +90,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("dex");
-    PlayerInfo::setStatBase(Attributes::PLAYER_DEX, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_DEX, val, Notify_true);
     if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_DEX,
@@ -102,7 +102,7 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     val = msg.readUInt8("luk");
-    PlayerInfo::setStatBase(Attributes::PLAYER_LUK, val);
+    PlayerInfo::setStatBase(Attributes::PLAYER_LUK, val, Notify_true);
     if (statusWindow != nullptr)
     {
         statusWindow->setPointsNeeded(Attributes::PLAYER_LUK,
@@ -114,7 +114,8 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     }
 
     PlayerInfo::setStatBase(Attributes::PLAYER_ATK,
-        msg.readInt16("atk"), Notify_false);
+        msg.readInt16("atk"),
+        Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_ATK, msg.readInt16("atk+"));
     PlayerInfo::updateAttrs();
 
@@ -125,23 +126,31 @@ void PlayerRecv::processPlayerStatUpdate5(Net::MessageIn &msg)
     PlayerInfo::setStatMod(Attributes::PLAYER_MATK, val);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_DEF,
-        msg.readInt16("def"), Notify_false);
+        msg.readInt16("def"),
+        Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_DEF, msg.readInt16("def+"));
 
     PlayerInfo::setStatBase(Attributes::PLAYER_MDEF,
-        msg.readInt16("mdef"), Notify_false);
+        msg.readInt16("mdef"),
+        Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_MDEF, msg.readInt16("mdef+"));
 
-    PlayerInfo::setStatBase(Attributes::PLAYER_HIT, msg.readInt16("hit"));
+    PlayerInfo::setStatBase(Attributes::PLAYER_HIT,
+        msg.readInt16("hit"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_FLEE,
-        msg.readInt16("flee"), Notify_false);
+        msg.readInt16("flee"),
+        Notify_false);
     PlayerInfo::setStatMod(Attributes::PLAYER_FLEE, msg.readInt16("flee+"));
 
-    PlayerInfo::setStatBase(Attributes::PLAYER_CRIT, msg.readInt16("crit"));
+    PlayerInfo::setStatBase(Attributes::PLAYER_CRIT,
+        msg.readInt16("crit"),
+        Notify_true);
 
     PlayerInfo::setStatBase(Attributes::PLAYER_MANNER,
-        msg.readInt16("manner"));
+        msg.readInt16("manner"),
+        Notify_true);
     msg.readInt16("unused?");
     BLOCK_END("PlayerRecv::processPlayerStatUpdate5")
 }

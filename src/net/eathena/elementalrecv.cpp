@@ -36,7 +36,8 @@ namespace EAthena
 #define setElementalStat(sp, stat) \
         case sp: \
             PlayerInfo::setStatBase(stat, \
-                val); \
+                val, \
+                Notify_true); \
             break;
 
 void ElementalRecv::processElementalUpdateStatus(Net::MessageIn &msg)
@@ -60,13 +61,17 @@ void ElementalRecv::processElementalInfo(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("elemental id");
     PlayerInfo::setStatBase(Attributes::ELEMENTAL_HP,
-        msg.readInt32("hp"));
+        msg.readInt32("hp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::ELEMENTAL_MAX_HP,
-        msg.readInt32("max hp"));
+        msg.readInt32("max hp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::ELEMENTAL_MP,
-        msg.readInt32("sp"));
+        msg.readInt32("sp"),
+        Notify_true);
     PlayerInfo::setStatBase(Attributes::ELEMENTAL_MAX_MP,
-        msg.readInt32("max sp"));
+        msg.readInt32("max sp"),
+        Notify_true);
     PlayerInfo::setElemental(id);
 }
 

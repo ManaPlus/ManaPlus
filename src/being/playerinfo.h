@@ -121,7 +121,7 @@ namespace PlayerInfo
      */
     void setStatBase(const AttributesT id,
                      const int value,
-                     const Notify notify = Notify_true);
+                     const Notify notify);
 
     /**
      * Returns the modifier for the given stat.
