@@ -514,7 +514,7 @@ class Being notfinal : public ActorSprite,
          */
         inline void setPixelPositionF(const float x,
                                       const float y,
-                                      const float z = 0.0F) restrict2 A_INLINE
+                                      const float z) restrict2 A_INLINE
         { setPixelPositionF(Vector(x, y, z)); }
 
         /**

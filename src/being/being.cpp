@@ -1907,7 +1907,9 @@ void Being::logic() restrict2
 
         // Update pixel coordinates
         setPixelPositionF(static_cast<float>(mX * mapTileSize
-            + mapTileSize / 2 + xOffset), yOffset3);
+            + mapTileSize / 2 + xOffset),
+            yOffset3,
+            0.0F);
     }
 
     if (A_UNLIKELY(mEmotionSprite))
