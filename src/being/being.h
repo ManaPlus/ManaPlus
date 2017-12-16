@@ -362,7 +362,7 @@ class Being notfinal : public ActorSprite,
                                   const int id) restrict2;
 
         void setSpriteColor(const unsigned int slot,
-                            const std::string &restrict color = "") restrict2;
+                            const std::string &restrict color) restrict2;
 
         /**
          * Get the number of layers used to draw the being
