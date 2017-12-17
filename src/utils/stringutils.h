@@ -147,7 +147,7 @@ size_t findAny(const std::string &restrict text,
                const size_t pos) A_WARN_UNUSED;
 
 const std::string encodeStr(unsigned int value,
-                            const unsigned int size = 0) A_WARN_UNUSED;
+                            const unsigned int size) A_WARN_UNUSED;
 
 unsigned int decodeStr(const std::string &str) A_WARN_UNUSED;
 
