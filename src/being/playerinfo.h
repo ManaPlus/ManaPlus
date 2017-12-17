@@ -142,23 +142,10 @@ namespace PlayerInfo
     int getStatEffective(const AttributesT id) A_WARN_UNUSED;
 
     /**
-     * Changes the level of the given stat.
-     */
-    void setStatLevel(AttributesT id, int value, Notify notify = Notify_true);
-
-    /**
      * Returns the experience of the given stat.
      */
     const std::pair<int, int> getStatExperience(const AttributesT id)
                                                 A_WARN_UNUSED;
-
-    /**
-     * Changes the experience of the given stat.
-     */
-    void setStatExperience(const AttributesT id,
-                           const int have,
-                           const int need,
-                           const Notify notify = Notify_true);
 
 // --- Inventory / Equipment --------------------------------------------------
 

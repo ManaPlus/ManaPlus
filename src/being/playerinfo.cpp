@@ -187,21 +187,6 @@ const std::pair<int, int> getStatExperience(const AttributesT id)
     return std::pair<int, int>(a, b);
 }
 
-void setStatExperience(const AttributesT id,
-                       const int have,
-                       const int need,
-                       const Notify notify)
-{
-    Stat &stat = mData.mStats[id];
-
-    const int oldExp = stat.exp;
-    const int oldExpNeed = stat.expNeed;
-    stat.exp = have;
-    stat.expNeed = need;
-    if (notify == Notify_true)
-        triggerStat(id, oldExp, oldExpNeed);
-}
-
 // --- Inventory / Equipment --------------------------------------------------
 
 Inventory *getInventory()
