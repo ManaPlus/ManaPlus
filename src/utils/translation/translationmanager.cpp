@@ -43,8 +43,9 @@ void TranslationManager::init()
 void TranslationManager::loadCurrentLang()
 {
     delete translator;
-    translator = loadLang(getLang(), "", nullptr);
-    translator = loadLang(getLang(), "help/", translator);
+    const StringVect lang = getLang();
+    translator = loadLang(lang, "", nullptr);
+    translator = loadLang(lang, "help/", translator);
 }
 
 void TranslationManager::loadDictionaryLang()
