@@ -452,7 +452,7 @@ TEST_CASE("Windows tests", "windowmanager")
     }
     SECTION("InventoryWindow")
     {
-        Inventory *inventory = new Inventory(InventoryType::Inventory);
+        Inventory *inventory = new Inventory(InventoryType::Inventory, -1);
         InventoryWindow *dialog = CREATEWIDGETR(InventoryWindow,
             inventory);
         gui->draw();

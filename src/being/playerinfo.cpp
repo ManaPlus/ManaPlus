@@ -470,9 +470,9 @@ void stateChange(const StateT state)
     {
         if (mInventory == nullptr)
         {
-            mInventory = new Inventory(InventoryType::Inventory);
+            mInventory = new Inventory(InventoryType::Inventory, -1);
             mEquipment = new Equipment;
-            mCartInventory = new Inventory(InventoryType::Cart);
+            mCartInventory = new Inventory(InventoryType::Cart, -1);
         }
     }
 }
