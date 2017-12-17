@@ -806,7 +806,7 @@ void CrazyMoves::crazyMoveA()
     else if (mMoveProgram[settings.crazyMoveState] == 'p')
     {
         settings.crazyMoveState ++;
-        localPlayer->pickUpItems();
+        localPlayer->pickUpItems(0);
     }
     // emote
     else if (mMoveProgram[settings.crazyMoveState] == 'e'

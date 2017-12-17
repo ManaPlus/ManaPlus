@@ -56,7 +56,7 @@ class LocalPlayer final : public Being,
          * Constructor.
          */
         explicit LocalPlayer(const BeingId id,
-                             const BeingTypeId subType = BeingTypeId_zero);
+                             const BeingTypeId subType);
 
         A_DELETE_COPY(LocalPlayer)
 
@@ -103,15 +103,17 @@ class LocalPlayer final : public Being,
 
         int getAttackRange2() const A_WARN_UNUSED;
 
-        void attack(Being *const target = nullptr, const bool keep = false,
-                    const bool dontChangeEquipment = false);
+        void attack(Being *const target,
+                    const bool keep,
+                    const bool dontChangeEquipment);
 
-        void attack2(Being *const target = nullptr, const bool keep = false,
-                     const bool dontChangeEquipment = false);
+        void attack2(Being *const target,
+                     const bool keep,
+                     const bool dontChangeEquipment);
 
         void setGroupId(const int id) override final;
 
-        void stopAttack(const bool keepAttack = false);
+        void stopAttack(const bool keepAttack);
 
         void untarget();
 
@@ -154,13 +156,13 @@ class LocalPlayer final : public Being,
          * Returns whether the target is in range to attack
          */
         bool withinAttackRange(const Being *const target,
-                               const bool fixDistance = false,
-                               const int addRange = 0) const A_WARN_UNUSED;
+                               const bool fixDistance,
+                               const int addRange) const A_WARN_UNUSED;
 
         /**
          * Stops the player dead in his tracks
          */
-        void stopWalking(const bool sendToServer = true);
+        void stopWalking(const bool sendToServer);
 
         bool toggleSit() const;
 
@@ -205,18 +207,19 @@ class LocalPlayer final : public Being,
 
         void moveByDirection(const unsigned char dir);
 
-        bool pickUpItems(int pickUpType = 0);
+        bool pickUpItems(int pickUpType);
 
         void move(const int dX, const int dY);
 
-        void moveToTarget(int dist = -1);
+        void moveToTarget(int dist);
 
         void moveToHome();
 
         bool isReachable(Being *const being,
-                         const int maxCost = 0) A_WARN_UNUSED;
+                         const int maxCost) A_WARN_UNUSED;
 
-        bool isReachable(const int x, const int y,
+        bool isReachable(const int x,
+                         const int y,
                          const bool allowCollision) const A_WARN_UNUSED;
 
         void setHome();
@@ -253,12 +256,17 @@ class LocalPlayer final : public Being,
                               const unsigned char dir);
 
         void imitateOutfit(const Being *const player,
-                           const int sprite = -1) const;
+                           const int sprite) const;
 
-        void followMoveTo(const Being *const being, const int x, const int y);
+        void followMoveTo(const Being *const being,
+                          const int x,
+                          const int y);
 
-        void followMoveTo(const Being *const being, const int x1, const int y1,
-                          const int x2, const int y2);
+        void followMoveTo(const Being *const being,
+                          const int x1,
+                          const int y1,
+                          const int x2,
+                          const int y2);
 
         bool allowAction() A_WARN_UNUSED;
 
@@ -275,8 +283,7 @@ class LocalPlayer final : public Being,
         void setMap(Map *const map) override final;
 
         void addMessageToQueue(const std::string &message,
-                               const UserColorIdT color
-                               = UserColorId::EXP_INFO);
+                               const UserColorIdT color);
 
         /**
          * Called when a option (set with config.addListener()) is changed
@@ -385,7 +392,7 @@ class LocalPlayer final : public Being,
         void updateStatus() const;
 
         void setTestParticle(const std::string &fileName,
-                             const bool updateHash = true);
+                             const bool updateHash);
 
         int getLastAttackX() const override final
         { return mTarget != nullptr ? mTarget->mX : mLastAttackX; }

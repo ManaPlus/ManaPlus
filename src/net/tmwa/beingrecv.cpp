@@ -363,7 +363,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
         }
         dstBeing->setHairColor(hairColor);
     }
-    localPlayer->imitateOutfit(dstBeing);
+    localPlayer->imitateOutfit(dstBeing, -1);
 
     uint16_t x, y;
     msg.readCoordinates(x, y, dir, "position");
@@ -507,7 +507,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
         }
         dstBeing->setHairColor(hairColor);
     }
-    localPlayer->imitateOutfit(dstBeing);
+    localPlayer->imitateOutfit(dstBeing, -1);
 
     uint16_t x, y;
     msg.readCoordinates(x, y, dir, "position");
@@ -651,7 +651,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
         }
         dstBeing->setHairColor(hairColor);
     }
-    localPlayer->imitateOutfit(dstBeing);
+    localPlayer->imitateOutfit(dstBeing, -1);
 
     uint16_t srcX, srcY, dstX, dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "moving path");
@@ -1298,7 +1298,7 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 
     // If this is player's current target, clear it.
     if (dstBeing == localPlayer->getTarget())
-        localPlayer->stopAttack();
+        localPlayer->stopAttack(false);
     if (dstBeing == localPlayer &&
         deathNotice != nullptr)
     {

@@ -334,7 +334,7 @@ void LocalPlayer::logic()
             }
 
             if (mKeepAttacking && (mTarget != nullptr))
-                attack(mTarget, true);
+                attack(mTarget, true, false);
         }
     }
 
@@ -466,10 +466,12 @@ void LocalPlayer::nextTile()
             pickUp(mPickUpTarget);
     }
 
-    if (mGoingToTarget && (mTarget != nullptr) && withinAttackRange(mTarget))
+    if (mGoingToTarget &&
+        mTarget != nullptr &&
+        withinAttackRange(mTarget, false, 0))
     {
         mAction = BeingAction::STAND;
-        attack(mTarget, true);
+        attack(mTarget, true, false);
         mGoingToTarget = false;
         mPath.clear();
         return;
@@ -780,7 +782,8 @@ bool LocalPlayer::emote(const uint8_t emotion)
     return true;
 }
 
-void LocalPlayer::attack(Being *const target, const bool keep,
+void LocalPlayer::attack(Being *const target,
+                         const bool keep,
                          const bool dontChangeEquipment)
 {
     mKeepAttacking = keep;
@@ -841,7 +844,7 @@ void LocalPlayer::attack(Being *const target, const bool keep,
     }
 
     if (!keep)
-        stopAttack();
+        stopAttack(false);
 }
 
 void LocalPlayer::stopAttack(const bool keepAttack)
@@ -1190,7 +1193,8 @@ void LocalPlayer::addJobMessage(const int64_t change)
                 addMessageToQueue(strprintf("%s %s",
                     xpStr.c_str(),
                     // TRANSLATORS: this is job experience
-                    _("job")));
+                    _("job")),
+                    UserColorId::EXP_INFO);
             }
         }
         else
@@ -1198,7 +1202,8 @@ void LocalPlayer::addJobMessage(const int64_t change)
             addMessageToQueue(strprintf("%s %s",
                 xpStr.c_str(),
                 // TRANSLATORS: this is job experience
-                _("job")));
+                _("job")),
+                UserColorId::EXP_INFO);
         }
     }
 }
@@ -1210,7 +1215,8 @@ void LocalPlayer::addXpMessage(const int64_t change)
         addMessageToQueue(strprintf("%s %s",
             toString(CAST_U64(change)).c_str(),
             // TRANSLATORS: get xp message
-            _("xp")));
+            _("xp")),
+            UserColorId::EXP_INFO);
     }
 }
 
@@ -1223,7 +1229,8 @@ void LocalPlayer::addHomunXpMessage(const int change)
             _("Homun"),
             change,
             // TRANSLATORS: get xp message
-            _("xp")));
+            _("xp")),
+            UserColorId::EXP_INFO);
     }
 }
 
@@ -1232,7 +1239,8 @@ void LocalPlayer::addHpMessage(const int change)
     if (change != 0 && mMessages.size() < 20)
     {
         // TRANSLATORS: get hp message
-        addMessageToQueue(strprintf("%d %s", change, _("hp")));
+        addMessageToQueue(strprintf("%d %s", change, _("hp")),
+            UserColorId::EXP_INFO);
     }
 }
 
@@ -1241,7 +1249,8 @@ void LocalPlayer::addSpMessage(const int change)
     if (change != 0 && mMessages.size() < 20)
     {
         // TRANSLATORS: get hp message
-        addMessageToQueue(strprintf("%d %s", change, _("mana")));
+        addMessageToQueue(strprintf("%d %s", change, _("mana")),
+            UserColorId::EXP_INFO);
     }
 }
 
@@ -2268,7 +2277,8 @@ int LocalPlayer::getAttackRange2() const
     return range;
 }
 
-void LocalPlayer::attack2(Being *const target, const bool keep,
+void LocalPlayer::attack2(Being *const target,
+                          const bool keep,
                           const bool dontChangeEquipment)
 {
     if (!dontChangeEquipment && (target != nullptr))
@@ -2283,12 +2293,12 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
         (withinAttackRange(target, broken, broken ? 1 : 0) &&
         getPathLength(target) <= getAttackRange2()))
     {
-        attack(target, keep);
+        attack(target, keep, false);
         if (settings.attackType == 2)
         {
             if (target == nullptr)
             {
-                if (pickUpItems())
+                if (pickUpItems(0))
                     return;
             }
             else
@@ -2301,14 +2311,14 @@ void LocalPlayer::attack2(Being *const target, const bool keep,
     {
         if (settings.attackType == 2)
         {
-            if (pickUpItems())
+            if (pickUpItems(0))
                 return;
         }
         setTarget(target);
         if (target->getType() != ActorType::Npc)
         {
             mKeepAttacking = true;
-            moveToTarget();
+            moveToTarget(-1);
         }
     }
 }
@@ -2526,7 +2536,7 @@ void LocalPlayer::followMoveTo(const Being *const being,
                         setTarget(b);
                     }
                 }
-                moveToTarget();
+                moveToTarget(-1);
                 setNextDest(x2, y2);
                 break;
             default:

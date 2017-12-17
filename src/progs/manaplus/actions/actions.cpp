@@ -672,7 +672,7 @@ impHandler(pickup)
     const std::string args = event.args;
     if (args.empty())
     {
-        localPlayer->pickUpItems();
+        localPlayer->pickUpItems(0);
     }
     else
     {
@@ -837,7 +837,7 @@ impHandler0(stopAttack)
 {
     if (localPlayer != nullptr)
     {
-        localPlayer->stopAttack();
+        localPlayer->stopAttack(false);
         // not consume if target attack key pressed
         if (inputManager.isActionActive(InputAction::TARGET_ATTACK))
             return false;
@@ -885,7 +885,7 @@ impHandler(attack)
     else
         localPlayer->setTarget(target);
     if (target != nullptr)
-        localPlayer->attack(target, true);
+        localPlayer->attack(target, true, false);
     return true;
 }
 
@@ -925,7 +925,7 @@ impHandler(targetAttack)
                 localPlayer, 90, ActorType::Monster, AllowSort_true);
         }
 
-        localPlayer->attack2(target, newTarget);
+        localPlayer->attack2(target, newTarget, false);
         return true;
     }
     return false;
@@ -940,7 +940,7 @@ impHandler0(attackHuman)
     if (target != nullptr)
     {
         localPlayer->setTarget(target);
-        localPlayer->attack2(target, true);
+        localPlayer->attack2(target, true, false);
     }
     return true;
 }
@@ -956,7 +956,7 @@ impHandler0(stopSit)
 {
     if (localPlayer != nullptr)
     {
-        localPlayer->stopAttack();
+        localPlayer->stopAttack(false);
         // not consume if target attack key pressed
         if (inputManager.isActionActive(InputAction::TARGET_ATTACK))
             return false;

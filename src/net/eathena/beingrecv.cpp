@@ -1598,7 +1598,7 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 
     // If this is player's current target, clear it.
     if (dstBeing == localPlayer->getTarget())
-        localPlayer->stopAttack();
+        localPlayer->stopAttack(false);
     if (dstBeing == localPlayer &&
         deathNotice != nullptr)
     {
@@ -1844,7 +1844,7 @@ void BeingRecv::processBeingSlide(Net::MessageIn &msg)
         return;
     if (localPlayer == dstBeing)
     {
-        localPlayer->stopAttack();
+        localPlayer->stopAttack(false);
         localPlayer->navigateClean();
         if (viewport != nullptr)
             viewport->returnCamera();

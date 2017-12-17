@@ -843,7 +843,7 @@ impHandler(testParticle)
 {
     if (localPlayer != nullptr)
     {
-        localPlayer->setTestParticle(event.args);
+        localPlayer->setTestParticle(event.args, true);
         return true;
     }
     return false;

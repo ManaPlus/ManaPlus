@@ -467,7 +467,8 @@ bool Viewport::leftMouseAction()
             case ActorType::SkillUnit:
                 if (!stopAttack)
                 {
-                    if (localPlayer->withinAttackRange(mHoverBeing) ||
+                    if (localPlayer->withinAttackRange(mHoverBeing,
+                        false, 0) ||
                         inputManager.isActionActive(InputAction::ATTACK))
                     {
                         validateSpeed();
@@ -475,7 +476,8 @@ bool Viewport::leftMouseAction()
                         {
                             localPlayer->attack(mHoverBeing,
                                 !inputManager.isActionActive(
-                                InputAction::STOP_ATTACK));
+                                InputAction::STOP_ATTACK),
+                                false);
                             return true;
                         }
                     }
@@ -531,7 +533,7 @@ bool Viewport::leftMouseAction()
              localPlayer->canMove())
     {
         validateSpeed();
-        localPlayer->stopAttack();
+        localPlayer->stopAttack(false);
         localPlayer->cancelFollow();
         mPlayerFollowMouse = mAllowMoveByMouse;
         if (mPlayerFollowMouse)

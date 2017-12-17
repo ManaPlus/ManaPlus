@@ -73,7 +73,7 @@ void PlayerRecv::processPlayerWarp(Net::MessageIn &msg)
       * to changeMap, as it deletes all beings.
       */
     if (localPlayer != nullptr)
-        localPlayer->stopAttack();
+        localPlayer->stopAttack(false);
 
     Game *const game = Game::instance();
     if (game == nullptr)

@@ -176,7 +176,7 @@ impHandler0(moveToTarget)
         !inputManager.isActionActive(InputAction::TARGET_ATTACK) &&
         !inputManager.isActionActive(InputAction::ATTACK))
     {
-        localPlayer->moveToTarget();
+        localPlayer->moveToTarget(-1);
         return true;
     }
     return false;
