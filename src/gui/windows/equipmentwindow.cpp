@@ -463,7 +463,7 @@ void EquipmentWindow::mousePressed(MouseEvent& event)
                 {
                     event.consume();
                     setSelected(i);
-                    dragDrop.dragItem(item, DragDropSource::Equipment);
+                    dragDrop.dragItem(item, DragDropSource::Equipment, 0);
                     return;
                 }
             }

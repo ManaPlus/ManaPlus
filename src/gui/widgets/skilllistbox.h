@@ -221,7 +221,7 @@ class SkillListBox final : public ListBox
                         const SkillInfo *const skill = getSkillByEvent(event);
                         if (skill == nullptr)
                             return;
-                        dragDrop.dragSkill(skill, DragDropSource::Skills);
+                        dragDrop.dragSkill(skill, DragDropSource::Skills, 0);
                         dragDrop.setItem(skill->id + SKILL_MIN_ID);
                         dragDrop.setItemData(skill->toDataStr());
                     }

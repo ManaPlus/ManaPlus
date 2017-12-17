@@ -466,7 +466,7 @@ void OutfitWindow::mouseDragged(MouseEvent &event)
             {
                 Item *const item = inv->findItem(itemId, itemColor);
                 if (item != nullptr)
-                    dragDrop.dragItem(item, DragDropSource::Outfit);
+                    dragDrop.dragItem(item, DragDropSource::Outfit, 0);
                 else
                     dragDrop.clear();
                 mItems[mCurrentOutfit][index] = -1;

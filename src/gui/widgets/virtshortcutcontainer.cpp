@@ -247,7 +247,7 @@ void VirtShortcutContainer::mouseDragged(MouseEvent &event)
 
             if (item != nullptr)
             {
-                dragDrop.dragItem(item, DragDropSource::Drop);
+                dragDrop.dragItem(item, DragDropSource::Drop, 0);
                 mShortcut->removeItem(index);
             }
             else

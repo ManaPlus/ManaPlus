@@ -85,7 +85,7 @@ class DragDrop final
 
         void dragItem(const Item *const item,
                       const DragDropSourceT source,
-                      const int tag = 0)
+                      const int tag)
         {
             if (mItemImage != nullptr)
                 mItemImage->decRef();
@@ -115,7 +115,7 @@ class DragDrop final
 
         void dragCommand(const TextCommand *const command,
                          const DragDropSourceT source,
-                         const int tag = 0)
+                         const int tag)
         {
             if (mItemImage != nullptr)
                 mItemImage->decRef();
@@ -150,7 +150,7 @@ class DragDrop final
 
         void dragSkill(const SkillInfo *const info,
                        const DragDropSourceT source,
-                       const int tag = 0)
+                       const int tag)
         {
             if (mItemImage != nullptr)
                 mItemImage->decRef();
