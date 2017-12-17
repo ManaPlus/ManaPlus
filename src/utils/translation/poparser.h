@@ -35,8 +35,8 @@ class PoParser final
         A_DELETE_COPY(PoParser)
 
         PoDict *load(const std::string &restrict lang,
-                     const std::string &restrict fileName = "",
-                     PoDict *restrict const dict = nullptr);
+                     const std::string &restrict fileName,
+                     PoDict *restrict const dict);
 
         static bool checkLang(const std::string &lang);
 
