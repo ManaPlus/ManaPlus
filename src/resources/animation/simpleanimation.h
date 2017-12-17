@@ -75,8 +75,7 @@ class SimpleAnimation final
 
     private:
         void initializeAnimation(XmlNodeConstPtr animationNode,
-                                 const std::string&
-                                 dyePalettes = std::string());
+                                 const std::string &dyePalettes);
 
         /** The hosted animation. */
         Animation *mAnimation;
