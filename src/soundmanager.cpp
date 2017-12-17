@@ -366,7 +366,7 @@ void SoundManager::playMusic(const std::string &fileName,
         mMusic = loadMusic(fileName,
             skipError);
         if (mMusic != nullptr)
-            mMusic->play();
+            mMusic->play(-1, 0);
     }
 }
 

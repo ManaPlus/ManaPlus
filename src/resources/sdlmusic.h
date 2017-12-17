@@ -66,8 +66,8 @@ class SDLMusic final : public Resource
          * @return <code>true</code> if the playback started properly
          *         <code>false</code> otherwise.
          */
-        bool play(const int loops = -1,
-                  const int fadeIn = 0) const;
+        bool play(const int loops,
+                  const int fadeIn) const;
 
         int calcMemoryLocal() const override final;
 
