@@ -80,7 +80,9 @@ class Equipment final
         /**
          * Set equipment at the given slot.
          */
-        void setEquipment(int index, int id, int quantity = 0);
+        void setEquipment(int index,
+                          int id,
+                          int quantity);
 
         void setBackend(Backend *const backend)
         { mBackend = backend; }
