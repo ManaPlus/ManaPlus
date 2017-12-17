@@ -5350,7 +5350,7 @@ void Being::setHorse(const int horseId) restrict2
     removeHorse();
     if (mHorseId != 0)
     {
-        mHorseInfo = HorseDB::get(horseId);
+        mHorseInfo = HorseDB::get(horseId, false);
         if (mHorseInfo != nullptr)
         {
             FOR_EACH (SpriteRefs, it, mHorseInfo->downSprites)
