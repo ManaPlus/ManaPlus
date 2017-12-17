@@ -165,7 +165,7 @@ class Viewport final : public WindowContainer,
          */
         void drawPath(Graphics *const graphics,
                       const Path &path,
-                      const Color &color = Color(255, 0, 0))
+                      const Color &color)
                       const A_NONNULL(2);
 
         bool leftMouseAction();

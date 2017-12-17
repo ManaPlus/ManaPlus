@@ -133,7 +133,7 @@ void NpcRecv::processNpcCommand(Net::MessageIn &msg)
 
         case 1:
             if (viewport != nullptr)
-                viewport->moveCameraToActor(npcId);
+                viewport->moveCameraToActor(npcId, 0, 0);
             break;
 
         case 2:

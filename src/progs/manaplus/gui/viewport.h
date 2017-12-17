@@ -151,8 +151,8 @@ class Viewport final : public WindowContainer,
         { mCameraRelativeY = n; updateMidVars(); }
 
         void moveCameraToActor(const BeingId actorId,
-                               const int x = 0,
-                               const int y = 0);
+                               const int x,
+                               const int y);
 
         void moveCameraToPosition(const int x, const int y);
 
@@ -191,7 +191,7 @@ class Viewport final : public WindowContainer,
          */
         void drawPath(Graphics *const graphics,
                       const Path &path,
-                      const Color &color = Color(255, 0, 0))
+                      const Color &color)
                       const A_NONNULL(2);
 
         bool leftMouseAction();
