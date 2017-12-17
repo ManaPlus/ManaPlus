@@ -43,7 +43,7 @@ CastingEffect::CastingEffect(const int skillId,
                              const int range) :
     Actor(),
     mSprite(animation.empty() ? nullptr :
-        AnimatedSprite::load(paths.getStringValue("sprites") + animation)),
+        AnimatedSprite::load(paths.getStringValue("sprites") + animation, 0)),
     mRectX((x - range) * mapTileSize),
     mRectY((y - range) * mapTileSize),
     mRectSize(range * mapTileSize * 2 + mapTileSize),

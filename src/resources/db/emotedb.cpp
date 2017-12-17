@@ -54,7 +54,8 @@ void EmoteDB::load()
     EmoteSprite *const unknownSprite = new EmoteSprite;
     unknownSprite->sprite = AnimatedSprite::load(pathJoin(paths.getStringValue(
         "sprites"), paths.getStringValue(
-        "spriteErrorFile")));
+        "spriteErrorFile")),
+        0);
     unknownSprite->name = "unknown";
     unknownSprite->id = 0;
     mUnknown.sprites.push_back(unknownSprite);

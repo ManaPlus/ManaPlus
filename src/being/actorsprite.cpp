@@ -452,7 +452,8 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
         {
             addSprite(AnimatedSprite::delayedLoad(pathJoin(
                 paths.getStringValue("sprites"),
-                paths.getStringValue("spriteErrorFile"))));
+                paths.getStringValue("spriteErrorFile")),
+                0));
         }
         else
         {
@@ -566,7 +567,8 @@ void ActorSprite::initTargetCursor()
             Theme::resolveThemePath(strprintf(
             targetCursorFile.c_str(),
             cursorType(static_cast<TargetCursorTypeT>(type)),
-            cursorSize(static_cast<TargetCursorSizeT>(size)))));
+            cursorSize(static_cast<TargetCursorSizeT>(size)))),
+            0);
     }
     end_foreach
 }

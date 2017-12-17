@@ -51,12 +51,11 @@ class AnimatedSprite final : public Sprite
          * @param variant  the sprite variant
          */
         static AnimatedSprite *load(const std::string &restrict filename,
-                                    const int variant = 0) A_WARN_UNUSED;
+                                    const int variant) A_WARN_UNUSED;
 
         static AnimatedSprite *delayedLoad(const std::string &restrict
                                            filename,
-                                           const int variant = 0)
-                                           A_WARN_UNUSED;
+                                           const int variant) A_WARN_UNUSED;
 
         static AnimatedSprite *clone(const AnimatedSprite *restrict const
                                      anim);

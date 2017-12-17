@@ -94,8 +94,9 @@ AnimatedSprite *StatusEffect::getIcon() const
     {
         return nullptr;
     }
-    return AnimatedSprite::load(pathJoin(paths.getStringValue("sprites"),
-        mIcon));
+    return AnimatedSprite::load(
+        pathJoin(paths.getStringValue("sprites"), mIcon),
+        0);
 }
 
 std::string StatusEffect::getAction() const

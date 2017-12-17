@@ -1112,7 +1112,8 @@ void Being::showNameBadge(const bool show) restrict2
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Name] = AnimatedSprite::load(
-                paths.getStringValue("badges") + badge);
+                paths.getStringValue("badges") + badge,
+                0);
         }
     }
 }
@@ -1171,7 +1172,8 @@ void Being::showGuildBadge(const bool show) restrict2
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Guild] = AnimatedSprite::load(
-                paths.getStringValue("badges") + badge);
+                paths.getStringValue("badges") + badge,
+                0);
         }
     }
 }
@@ -2758,7 +2760,8 @@ void Being::setSpriteId(const unsigned int slot,
         if (!filename.empty())
         {
             equipmentSprite = AnimatedSprite::delayedLoad(
-                pathJoin(paths.getStringValue("sprites"), filename));
+                pathJoin(paths.getStringValue("sprites"), filename),
+                0);
         }
 
         if (equipmentSprite != nullptr)
@@ -2864,7 +2867,8 @@ void Being::setSpriteColor(const unsigned int slot,
         {
             equipmentSprite = AnimatedSprite::delayedLoad(
                 pathJoin(paths.getStringValue("sprites"),
-                combineDye(filename, color)));
+                combineDye(filename, color)),
+                0);
         }
 
         if (equipmentSprite != nullptr)
@@ -2943,7 +2947,8 @@ void Being::setSpriteColorId(const unsigned int slot,
             color = info.getDyeColorsString(colorId);
             equipmentSprite = AnimatedSprite::delayedLoad(
                 pathJoin(paths.getStringValue("sprites"),
-                combineDye(filename, color)));
+                combineDye(filename, color)),
+                0);
         }
 
         if (equipmentSprite != nullptr)
@@ -3029,7 +3034,8 @@ void Being::setSpriteCards(const unsigned int slot,
 
             equipmentSprite = AnimatedSprite::delayedLoad(
                 pathJoin(paths.getStringValue("sprites"),
-                combineDye(filename, color)));
+                combineDye(filename, color)),
+                0);
         }
 
         if (equipmentSprite != nullptr)
@@ -3121,7 +3127,8 @@ void Being::setTempSprite(const unsigned int slot,
 
             equipmentSprite = AnimatedSprite::delayedLoad(
                 pathJoin(paths.getStringValue("sprites"),
-                combineDye(filename, color)));
+                combineDye(filename, color)),
+                0);
         }
 
         if (equipmentSprite != nullptr)
@@ -3194,7 +3201,8 @@ void Being::setHairTempSprite(const unsigned int slot,
 
             equipmentSprite = AnimatedSprite::delayedLoad(
                 pathJoin(paths.getStringValue("sprites"),
-                combineDye(filename, color)));
+                combineDye(filename, color)),
+                0);
         }
 
         if (equipmentSprite != nullptr)
@@ -3272,7 +3280,8 @@ void Being::setSpriteColor(const unsigned int slot,
         {
             equipmentSprite = AnimatedSprite::delayedLoad(
                 pathJoin(paths.getStringValue("sprites"),
-                combineDye(filename, color)));
+                combineDye(filename, color)),
+                0);
         }
 
         if (equipmentSprite != nullptr)
@@ -3544,7 +3553,8 @@ void Being::setGender(const GenderT gender) restrict2
                 {
                     equipmentSprite = AnimatedSprite::delayedLoad(
                         pathJoin(paths.getStringValue("sprites"),
-                        combineDye(filename, beingSlot.color)));
+                        combineDye(filename, beingSlot.color)),
+                        0);
                 }
 
                 if (equipmentSprite != nullptr)
@@ -3586,7 +3596,8 @@ void Being::showGmBadge(const bool show) restrict2
         if (!gmBadge.empty())
         {
             mBadges[BadgeIndex::Gm] = AnimatedSprite::load(
-                paths.getStringValue("badges") + gmBadge);
+                paths.getStringValue("badges") + gmBadge,
+                0);
         }
     }
     updateBadgesCount();
@@ -4884,7 +4895,8 @@ void Being::addEffect(const std::string &restrict name) restrict2
 {
     delete mAnimationEffect;
     mAnimationEffect = AnimatedSprite::load(
-        paths.getStringValue("sprites") + name);
+        paths.getStringValue("sprites") + name,
+        0);
 }
 
 void Being::playSfx(const SoundInfo &sound,
@@ -5128,7 +5140,7 @@ void Being::showTeamBadge(const bool show) restrict2
             paths.getStringValue(strprintf("team%dbadge",
             mTeamId));
         if (!name.empty())
-            mBadges[BadgeIndex::Team] = AnimatedSprite::load(name);
+            mBadges[BadgeIndex::Team] = AnimatedSprite::load(name, 0);
     }
     updateBadgesCount();
     updateBadgesPosition();
@@ -5157,7 +5169,8 @@ void Being::showPartyBadge(const bool show) restrict2
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Party] = AnimatedSprite::load(
-                paths.getStringValue("badges") + badge);
+                paths.getStringValue("badges") + badge,
+                0);
         }
     }
     updateBadgesCount();
@@ -5185,7 +5198,8 @@ void Being::showShopBadge(const bool show) restrict2
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Shop] = AnimatedSprite::load(
-                paths.getStringValue("badges") + badge);
+                paths.getStringValue("badges") + badge,
+                0);
         }
     }
     updateBadgesCount();
@@ -5203,7 +5217,8 @@ void Being::showInactiveBadge(const bool show) restrict2
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Inactive] = AnimatedSprite::load(
-                paths.getStringValue("badges") + badge);
+                paths.getStringValue("badges") + badge,
+                0);
         }
     }
     updateBadgesCount();
@@ -5221,7 +5236,8 @@ void Being::showAwayBadge(const bool show) restrict2
         if (!badge.empty())
         {
             mBadges[BadgeIndex::Away] = AnimatedSprite::load(
-                paths.getStringValue("badges") + badge);
+                paths.getStringValue("badges") + badge,
+                0);
         }
     }
     updateBadgesCount();
@@ -5480,7 +5496,8 @@ void Being::setLanguageId(const int lang) restrict2 noexcept2
         {
             mBadges[BadgeIndex::Lang] = AnimatedSprite::load(pathJoin(
                 paths.getStringValue("languageIcons"),
-                badge));
+                badge),
+                0);
         }
 
         mLanguageId = lang;

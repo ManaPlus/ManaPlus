@@ -84,9 +84,8 @@ void CutInWindow::show(const std::string &name,
     else
     {
         mImage = AnimatedSprite::load(
-            pathJoin(paths.getStringValue("cutInsDir"),
-            name).append(
-            ".xml"));
+            pathJoin(paths.getStringValue("cutInsDir"), name).append(".xml"),
+            0);
         if (mImage != nullptr)
         {
             mImage->update(1);
