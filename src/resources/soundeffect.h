@@ -65,8 +65,9 @@ class SoundEffect final : public Resource
          * @return <code>true</code> if the playback started properly
          *         <code>false</code> otherwise.
          */
-        bool play(const int loops, const int volume,
-                  const int channel = -1) const;
+        bool play(const int loops,
+                  const int volume,
+                  const int channel) const;
 
         int calcMemoryLocal() const override final;
 

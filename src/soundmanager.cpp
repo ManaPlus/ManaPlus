@@ -485,7 +485,7 @@ void SoundManager::playSfx(const std::string &path,
 
             vol -= dist * 8;
         }
-        sample->play(0, vol);
+        sample->play(0, vol, -1);
         if (!mCacheSounds)
             sample->decRef();
     }
