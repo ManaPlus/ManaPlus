@@ -344,7 +344,7 @@ int TestMain::invokeTest(const std::string &test)
     mConfig.setValue("opengl", CAST_S32(RENDER_SOFTWARE));
 
     mConfig.write();
-    const int ret = execFileWait(fileName, fileName, "-t", test);
+    const int ret = execFileWait(fileName, fileName, "-t", test, 0);
     return ret;
 }
 
