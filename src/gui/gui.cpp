@@ -360,7 +360,7 @@ void Gui::slowLogic()
         if (time > mTime10 || mTime10 - time > 10)
         {
             mTime10 = time + 10;
-            ResourceManager::cleanOrphans();
+            ResourceManager::cleanOrphans(false);
             guiInput->simulateMouseMove();
         }
     }

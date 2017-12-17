@@ -174,7 +174,7 @@ void deleteResourceManager()
             ++iter;
         }
     }
-    clearDeleted();
+    clearDeleted(true);
     clearScheduled();
     mDestruction = false;
 }

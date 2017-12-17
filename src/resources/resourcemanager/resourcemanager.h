@@ -71,7 +71,7 @@ namespace ResourceManager
      */
     void release(Resource *const res);
 
-    void clearDeleted(const bool full = true);
+    void clearDeleted(const bool full);
 
     void decRefDelete(Resource *const res);
 
@@ -99,7 +99,7 @@ namespace ResourceManager
     const std::set<Resource*> &getDeletedResources() A_WARN_UNUSED;
 #endif  // defined(DEBUG_DUMP_LEAKS) || defined(UNITTESTS)
 
-    bool cleanOrphans(const bool always = false);
+    bool cleanOrphans(const bool always);
 
     void cleanProtected();
 

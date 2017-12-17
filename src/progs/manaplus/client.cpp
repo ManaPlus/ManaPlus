@@ -1019,7 +1019,7 @@ int Client::gameExec()
                 delete2(mGame);
                 assertListener = new AssertListener;
                 Game::clearInstance();
-                ResourceManager::cleanOrphans();
+                ResourceManager::cleanOrphans(false);
                 Party::clearParties();
                 Guild::clearGuilds();
                 NpcDialog::clearDialogs();
