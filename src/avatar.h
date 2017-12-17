@@ -39,7 +39,7 @@ enum AvatarType
 class Avatar notfinal
 {
     public:
-        explicit Avatar(const std::string &name = "");
+        explicit Avatar(const std::string &name);
 
         A_DELETE_COPY(Avatar)
 
