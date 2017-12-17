@@ -1614,16 +1614,16 @@ bool LocalPlayer::pickUpItems(int pickUpType)
                 default:
                     x1 = x; x2 = x; y1 = y; y2 = y; break;
             }
-            if (actorManager->pickUpAll(x1, y1, x2, y2))
+            if (actorManager->pickUpAll(x1, y1, x2, y2, false))
                 status = true;
             break;
         case 3:
-            if (actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1, false))
                 status = true;
             break;
 
         case 4:
-            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1, false))
             {
                 if (actorManager->pickUpNearest(x, y, 4))
                     status = true;
@@ -1635,7 +1635,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
             break;
 
         case 5:
-            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1, false))
             {
                 if (actorManager->pickUpNearest(x, y, 8))
                     status = true;
@@ -1647,7 +1647,7 @@ bool LocalPlayer::pickUpItems(int pickUpType)
             break;
 
         case 6:
-            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1))
+            if (!actorManager->pickUpAll(x - 1, y - 1, x + 1, y + 1, false))
             {
                 if (actorManager->pickUpNearest(x, y, 90))
                     status = true;

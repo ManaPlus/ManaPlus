@@ -809,7 +809,8 @@ void WhoIsOnline::setNeutralColor(OnlinePlayer *const player)
             }
         }
 
-        const Being *const being = actorManager->findBeingByName(nick);
+        const Being *const being = actorManager->findBeingByName(nick,
+            ActorType::Player);
         if (being != nullptr)
         {
             const Guild *const guild2 = localPlayer->getGuild();

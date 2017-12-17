@@ -130,14 +130,15 @@ class ActorManager final: public ConfigListener
         /**
          * Returns a being at specific coordinates.
          */
-        Being *findBeing(const int x, const int y, const ActorTypeT
-                         type = ActorType::Unknown) const A_WARN_UNUSED;
+        Being *findBeing(const int x,
+                         const int y,
+                         const ActorTypeT type) const A_WARN_UNUSED;
 
         /**
          * Returns a being at the specific pixel.
          */
         Being *findBeingByPixel(const int x, const int y,
-                                const AllPlayers allPlayers = AllPlayers_false)
+                                const AllPlayers allPlayers)
                                 const A_WARN_UNUSED;
 
         /**
@@ -195,16 +196,14 @@ class ActorManager final: public ConfigListener
          * Finds a being by name and (optionally) by type.
          */
         Being *findBeingByName(const std::string &name,
-                               const ActorTypeT
-                               type = ActorType::Unknown)
+                               const ActorTypeT type)
                                const A_WARN_UNUSED;
 
        /**
         * Finds a nearest being by name and (optionally) by type.
         */
         Being *findNearestByName(const std::string &name,
-                                 const ActorTypeT &type
-                                 = ActorType::Unknown) const A_WARN_UNUSED;
+                                 const ActorTypeT &type) const A_WARN_UNUSED;
 
        /**
         * Finds most damaged player, non-enemy and alive
@@ -293,7 +292,7 @@ class ActorManager final: public ConfigListener
                        const int y1,
                        const int x2,
                        const int y2,
-                       const bool serverBuggy = false) const;
+                       const bool serverBuggy) const;
 
         bool pickUpNearest(const int x, const int y, int maxdist) const;
 
@@ -396,8 +395,8 @@ class ActorManager final: public ConfigListener
         bool validateBeing(const Being *const aroundBeing,
                            Being *const being,
                            const ActorTypeT &type,
-                           const Being *const excluded = nullptr,
-                           const int maxCost = 20) const A_WARN_UNUSED;
+                           const Being *const excluded,
+                           const int maxCost) const A_WARN_UNUSED;
 
         Being *findNearestLivingBeing(const Being *const aroundBeing,
                                       const int maxdist,

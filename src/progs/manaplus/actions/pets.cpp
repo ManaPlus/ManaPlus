@@ -131,7 +131,8 @@ impHandler(catchPet)
         }
         else
         {
-            target = actorManager->findNearestByName(args);
+            target = actorManager->findNearestByName(args,
+                ActorType::Unknown);
         }
     }
 

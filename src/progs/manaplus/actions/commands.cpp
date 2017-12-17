@@ -380,7 +380,8 @@ impHandler(setTarget)
     if ((actorManager == nullptr) || (localPlayer == nullptr))
         return false;
 
-    Being *const target = actorManager->findNearestByName(event.args);
+    Being *const target = actorManager->findNearestByName(event.args,
+        ActorType::Unknown);
     if (target != nullptr)
         localPlayer->setTarget(target);
     return true;
@@ -500,7 +501,8 @@ impHandler(navigateTo)
     if (args.empty())
         return true;
 
-    Being *const being = actorManager->findBeingByName(args);
+    Being *const being = actorManager->findBeingByName(args,
+        ActorType::Unknown);
     if (being != nullptr)
     {
         localPlayer->navigateTo(being->getTileX(), being->getTileY());

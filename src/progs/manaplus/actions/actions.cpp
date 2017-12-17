@@ -867,7 +867,8 @@ impHandler(attack)
     {
         if (args[0] != ':')
         {
-            target = actorManager->findNearestByName(args);
+            target = actorManager->findNearestByName(args,
+                ActorType::Unknown);
         }
         else
         {
@@ -902,7 +903,8 @@ impHandler(targetAttack)
         {
             if (args[0] != ':')
             {
-                target = actorManager->findNearestByName(args);
+                target = actorManager->findNearestByName(args,
+                    ActorType::Unknown);
             }
             else
             {
@@ -1244,7 +1246,8 @@ impHandler(undress)
         }
         else
         {
-            target = actorManager->findNearestByName(args);
+            target = actorManager->findNearestByName(args,
+                ActorType::Unknown);
         }
     }
 
@@ -1824,7 +1827,8 @@ impHandler(kick)
     {
         if (args[0] != ':')
         {
-            target = actorManager->findNearestByName(args);
+            target = actorManager->findNearestByName(args,
+                ActorType::Unknown);
         }
         else
         {
