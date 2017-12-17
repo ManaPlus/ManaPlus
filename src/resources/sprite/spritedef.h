@@ -102,7 +102,7 @@ class SpriteDef final : public Resource
          */
         void loadSprite(XmlNodeConstPtr spriteNode,
                         const int variant,
-                        const std::string &palettes = "");
+                        const std::string &palettes);
 
         /**
          * Loads an imageset element.

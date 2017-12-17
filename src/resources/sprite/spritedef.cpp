@@ -516,7 +516,7 @@ void SpriteDef::includeSprite(XmlNodeConstPtr includeNode, const int variant)
         return;
     }
 
-    loadSprite(rootNode, variant);
+    loadSprite(rootNode, variant, std::string());
     doc->decRef();
 }
 
