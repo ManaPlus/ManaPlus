@@ -37,8 +37,8 @@ class ComplexInventory final : public Inventory
          *
          * @param size the number of items that fit in the inventory
          */
-        explicit ComplexInventory(const InventoryTypeT type,
-                                  const int size = -1);
+        ComplexInventory(const InventoryTypeT type,
+                         const int size);
 
         /**
          * Destructor.
