@@ -35,7 +35,7 @@ class TranslationManager final
 
         static PoDict *loadLang(const LangVect &lang,
                                 const std::string &subName,
-                                PoDict *const dict = nullptr);
+                                PoDict *const dict);
 
         static void init();
 

@@ -43,7 +43,7 @@ void TranslationManager::init()
 void TranslationManager::loadCurrentLang()
 {
     delete translator;
-    translator = loadLang(getLang(), "");
+    translator = loadLang(getLang(), "", nullptr);
     translator = loadLang(getLang(), "help/", translator);
 }
 
@@ -51,7 +51,7 @@ void TranslationManager::loadDictionaryLang()
 {
     delete dictionary;
     delete reverseDictionary;
-    dictionary = loadLang(getServerLang(), "dict/");
+    dictionary = loadLang(getServerLang(), "dict/", nullptr);
     reverseDictionary = reverseLang(dictionary);
 }
 
@@ -59,7 +59,7 @@ void TranslationManager::loadDictionaryLang()
 void TranslationManager::loadGettextLang()
 {
     delete mainTranslator;
-    mainTranslator = loadLang(getLang(), "manaplus/");
+    mainTranslator = loadLang(getLang(), "manaplus/", nullptr);
 }
 #endif  // ENABLE_CUSTOMNLS
 
