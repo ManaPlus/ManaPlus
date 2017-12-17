@@ -217,8 +217,9 @@ class Image notfinal : public Resource
         // -----------------------
 
         /** SDL Constructor */
-        Image(SDL_Surface *restrict const image, const bool hasAlphaChannel,
-              uint8_t *restrict const alphaChannel = nullptr);
+        Image(SDL_Surface *restrict const image,
+              const bool hasAlphaChannel,
+              uint8_t *restrict const alphaChannel);
 
 #ifdef USE_SDL2
         Image(SDL_Texture *restrict const image,
