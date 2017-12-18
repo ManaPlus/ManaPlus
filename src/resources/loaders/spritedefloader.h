@@ -36,7 +36,7 @@ namespace Loader
      * variant.
      */
     SpriteDef *getSprite(const std::string &path,
-                         const int variant = 0) A_WARN_UNUSED;
+                         const int variant) A_WARN_UNUSED;
 
 }  // namespace Loader
 
