@@ -337,7 +337,7 @@ class ItemInfo final
         static void setSpriteOrder(int *const ptr,
                                    const int direction,
                                    const int n,
-                                   const int def = -1) A_NONNULL(1);
+                                   const int def) A_NONNULL(1);
 
         SpriteDisplay mDisplay;     /**< Display info (like icon) */
         MissileInfo mMissile;

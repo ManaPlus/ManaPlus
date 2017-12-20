@@ -368,12 +368,12 @@ void ItemInfo::setSpriteOrder(int *const ptr,
 
 void ItemInfo::setDrawBefore(const int direction, const int n)
 {
-    setSpriteOrder(&mDrawBefore[0], direction, n);
+    setSpriteOrder(&mDrawBefore[0], direction, n, -1);
 }
 
 void ItemInfo::setDrawAfter(const int direction, const int n)
 {
-    setSpriteOrder(&mDrawAfter[0], direction, n);
+    setSpriteOrder(&mDrawAfter[0], direction, n, -1);
 }
 
 void ItemInfo::setDrawPriority(const int direction, const int n)
