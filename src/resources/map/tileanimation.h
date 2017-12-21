@@ -49,7 +49,7 @@ class TileAnimation final
 
         A_DELETE_COPY(TileAnimation)
 
-        bool update(const int ticks = 1);
+        bool update(const int ticks);
 
         void addAffectedTile(MapLayer *const layer, const int index)
         { mAffected.push_back(std::make_pair(layer, index)); }
