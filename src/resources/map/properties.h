@@ -56,7 +56,7 @@ class Properties notfinal
          *         doesn't exist.
          */
         const std::string getProperty(const std::string &name,
-                                      const std::string &def = "")
+                                      const std::string &def)
                                       const A_WARN_UNUSED
         {
             const PropertyMap::const_iterator i = mProperties.find(name);
@@ -72,7 +72,7 @@ class Properties notfinal
          *         doesn't exist.
          */
         float getFloatProperty(const std::string &name,
-                               const float def = 0.0F) const A_WARN_UNUSED
+                               const float def) const A_WARN_UNUSED
         {
             const PropertyMap::const_iterator i = mProperties.find(name);
             float ret = def;
@@ -94,7 +94,7 @@ class Properties notfinal
          *         doesn't exist.
          */
         bool getBoolProperty(const std::string &name,
-                             const bool def = false) const A_WARN_UNUSED
+                             const bool def) const A_WARN_UNUSED
         {
             const PropertyMap::const_iterator i = mProperties.find(name);
             bool ret = def;

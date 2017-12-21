@@ -378,7 +378,8 @@ void QuestsWindow::setMap(const Map *const map)
         if (mMap == nullptr)
             return;
 
-        const std::string name = mMap->getProperty("shortName");
+        const std::string name = mMap->getProperty("shortName",
+            std::string());
         FOR_EACHP (STD_VECTOR<QuestEffect*>::const_iterator, it,  mAllEffects)
         {
             const QuestEffect *const effect = *it;

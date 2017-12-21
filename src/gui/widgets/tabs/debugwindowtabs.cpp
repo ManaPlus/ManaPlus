@@ -199,16 +199,16 @@ void MapDebugTab::logic()
 
         // TRANSLATORS: debug window label
         mMusicFileLabel->setCaption(strprintf("%s %s", _("Music:"),
-            map->getProperty("music").c_str()));
+            map->getProperty("music", std::string()).c_str()));
         // TRANSLATORS: debug window label
         mMinimapLabel->setCaption(strprintf("%s %s", _("Minimap:"),
-            map->getProperty("minimap").c_str()));
+            map->getProperty("minimap", std::string()).c_str()));
         // TRANSLATORS: debug window label
         mMapLabel->setCaption(strprintf("%s %s", _("Map:"),
-            map->getProperty("_realfilename").c_str()));
+            map->getProperty("_realfilename", std::string()).c_str()));
         // TRANSLATORS: debug window label
         mMapNameLabel->setCaption(strprintf("%s %s", _("Map name:"),
-            map->getProperty("name").c_str()));
+            map->getProperty("name", std::string()).c_str()));
 
         if (mUpdateTime != cur_time)
         {

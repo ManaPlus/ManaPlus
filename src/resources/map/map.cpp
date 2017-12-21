@@ -244,23 +244,23 @@ void Map::initializeAmbientLayers() restrict2
         }
 
         Image *restrict const img = Loader::getImage(
-            getProperty(name + "image"));
+            getProperty(name + "image", std::string()));
         if (img != nullptr)
         {
-            int mask = atoi(getProperty(name + "mask").c_str());
+            int mask = atoi(getProperty(name + "mask", std::string()).c_str());
             if (mask == 0)
                 mask = 1;
-            const float parallax = getFloatProperty(name + "parallax");
+            const float parallax = getFloatProperty(name + "parallax", 0.0F);
             mForegrounds.push_back(new AmbientLayer(
                 name,
                 img,
                 getFloatProperty(name + "parallaxX", parallax),
                 getFloatProperty(name + "parallaxY", parallax),
-                getFloatProperty(name + "posX"),
-                getFloatProperty(name + "posY"),
-                getFloatProperty(name + "scrollX"),
-                getFloatProperty(name + "scrollY"),
-                getBoolProperty(name + "keepratio"),
+                getFloatProperty(name + "posX", 0.0F),
+                getFloatProperty(name + "posY", 0.0F),
+                getFloatProperty(name + "scrollX", 0.0F),
+                getFloatProperty(name + "scrollY", 0.0F),
+                getBoolProperty(name + "keepratio", false),
                 mask));
 
             // The AmbientLayer takes control over the image.
@@ -274,25 +274,25 @@ void Map::initializeAmbientLayers() restrict2
     {
         const std::string name("background" + toString(i));
         Image *restrict const img = Loader::getImage(
-            getProperty(name + "image"));
+            getProperty(name + "image", std::string()));
 
         if (img != nullptr)
         {
-            int mask = atoi(getProperty(name + "mask").c_str());
+            int mask = atoi(getProperty(name + "mask", std::string()).c_str());
             if (mask == 0)
                 mask = 1;
 
-            const float parallax = getFloatProperty(name + "parallax");
+            const float parallax = getFloatProperty(name + "parallax", 0.0F);
             mBackgrounds.push_back(new AmbientLayer(
                 name,
                 img,
                 getFloatProperty(name + "parallaxX", parallax),
                 getFloatProperty(name + "parallaxY", parallax),
-                getFloatProperty(name + "posX"),
-                getFloatProperty(name + "posY"),
-                getFloatProperty(name + "scrollX"),
-                getFloatProperty(name + "scrollY"),
-                getBoolProperty(name + "keepratio"),
+                getFloatProperty(name + "posX", 0.0F),
+                getFloatProperty(name + "posY", 0.0F),
+                getFloatProperty(name + "scrollX", 0.0F),
+                getFloatProperty(name + "scrollY", 0.0F),
+                getBoolProperty(name + "keepratio", false),
                 mask));
 
             // The AmbientLayer takes control over the image.
@@ -822,27 +822,27 @@ void Map::removeActor(const Actors::iterator &restrict iterator) restrict2
 
 const std::string Map::getMusicFile() const restrict2
 {
-    return getProperty("music");
+    return getProperty("music", std::string());
 }
 
 const std::string Map::getName() const restrict2
 {
     if (hasProperty("name"))
-        return getProperty("name");
+        return getProperty("name", std::string());
 
-    return getProperty("mapname");
+    return getProperty("mapname", std::string());
 }
 
 const std::string Map::getFilename() const restrict2
 {
-    const std::string fileName = getProperty("_filename");
+    const std::string fileName = getProperty("_filename", std::string());
     const size_t lastSlash = fileName.rfind('/') + 1;
     return fileName.substr(lastSlash, fileName.rfind('.') - lastSlash);
 }
 
 const std::string Map::getGatName() const restrict2
 {
-    const std::string fileName = getProperty("_filename");
+    const std::string fileName = getProperty("_filename", std::string());
     const size_t lastSlash = fileName.rfind('/') + 1;
     return fileName.substr(lastSlash,
         fileName.rfind('.') - lastSlash).append(".gat");
@@ -1258,7 +1258,7 @@ void Map::saveExtraLayer() const restrict2
 std::string Map::getUserMapDirectory() const restrict2
 {
     return pathJoin(settings.serverConfigDir,
-        getProperty("_realfilename"));
+        getProperty("_realfilename", std::string()));
 }
 
 void Map::addRange(const std::string &restrict name,

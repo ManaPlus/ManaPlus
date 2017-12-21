@@ -292,7 +292,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
         map->setProperty("_filename", realFilename);
         map->setProperty("_realfilename", filename);
 
-        if (map->getProperty("music").empty())
+        if (map->getProperty("music", std::string()).empty())
             updateMusic(map);
 
         map->updateConditionLayers();
@@ -410,7 +410,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         {
             readProperties(childNode, map);
             map->setVersion(atoi(map->getProperty(
-                "manaplus version").c_str()));
+                "manaplus version", std::string()).c_str()));
         }
         else if (xmlNameEqual(childNode, "objectgroup"))
         {
@@ -506,7 +506,8 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
 
     map->initializeAmbientLayers();
     map->clearIndexedTilesets();
-    map->setActorsFix(0, atoi(map->getProperty("actorsfix").c_str()));
+    map->setActorsFix(0,
+        atoi(map->getProperty("actorsfix", std::string()).c_str()));
     map->reduce();
     map->setWalkLayer(Loader::getWalkLayer(fileName, map));
     unloadTempLayers();
@@ -1290,7 +1291,7 @@ Map *MapReader::createEmptyMap(const std::string &restrict filename,
 
 void MapReader::updateMusic(Map *const map)
 {
-    std::string name = map->getProperty("shortName");
+    std::string name = map->getProperty("shortName", std::string());
     const size_t p = name.rfind('.');
     if (p != std::string::npos)
         name = name.substr(0, p);
