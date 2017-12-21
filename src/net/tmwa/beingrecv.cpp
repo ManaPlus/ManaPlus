@@ -1371,7 +1371,7 @@ void BeingRecv::processBeingSelfEffect(Net::MessageIn &msg)
     const int effectType = msg.readInt32("effect type");
 
     if (ParticleEngine::enabled)
-        effectManager->trigger(effectType, being);
+        effectManager->trigger(effectType, being, 0);
 
     // +++ need dehard code effectType == 3
     if (effectType == 3 && being->getType() == ActorType::Player

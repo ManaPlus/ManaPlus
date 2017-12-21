@@ -58,7 +58,7 @@ class EffectManager final
          */
         bool trigger(const int id,
                      Being *const being,
-                     const int rotation = 0);
+                     const int rotation);
 
         bool triggerDirection(const int id,
                               Being *const being,
@@ -66,7 +66,7 @@ class EffectManager final
 
         Particle *triggerReturn(const int id,
                                 Being *const being,
-                                const int rotation = 0);
+                                const int rotation);
 
         /**
          * Triggers a effect with the id, at
@@ -75,7 +75,7 @@ class EffectManager final
         bool trigger(const int id,
                      const int x, const int y,
                      const time_t endTime,
-                     const int rotation = 0);
+                     const int rotation);
 
         void triggerDefault(int effectId,
                             Being *const being,

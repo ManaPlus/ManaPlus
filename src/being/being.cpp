@@ -828,7 +828,7 @@ void Being::takeDamage(Being *restrict const attacker,
                 attackId,
                 level);
             if (hitEffectId >= 0)
-                effectManager->trigger(hitEffectId, this);
+                effectManager->trigger(hitEffectId, this, 0);
         }
     }
     else
@@ -851,7 +851,7 @@ void Being::takeDamage(Being *restrict const attacker,
                     level);
             }
             if (hitEffectId >= 0)
-                effectManager->trigger(hitEffectId, this);
+                effectManager->trigger(hitEffectId, this, 0);
         }
     }
     BLOCK_END("Being::takeDamage2")
@@ -4798,7 +4798,7 @@ void Being::setEmote(const uint8_t emotion,
                 const int effectId = info->effectId;
                 if (effectId >= 0)
                 {
-                    effectManager->trigger(effectId, this);
+                    effectManager->trigger(effectId, this, 0);
                 }
             }
         }
@@ -4874,7 +4874,9 @@ void Being::addSpecialEffect(const int effect) restrict2
         (mSpecialParticle == nullptr) &&
         effect != -1)
     {
-        mSpecialParticle = effectManager->triggerReturn(effect, this);
+        mSpecialParticle = effectManager->triggerReturn(effect,
+            this,
+            0);
     }
 }
 
@@ -5441,7 +5443,8 @@ void Being::addSpiritBalls(const unsigned int balls,
     {
         Particle *const particle = effectManager->triggerReturn(
             effectId,
-            this);
+            this,
+            0);
         mSpiritParticles.push_back(particle);
     }
 }

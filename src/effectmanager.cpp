@@ -219,7 +219,7 @@ void EffectManager::triggerDefault(int effectId,
         effectId = defaultEffectId;
     if (effectId == -1)
         return;
-    trigger(effectId, being);
+    trigger(effectId, being, 0);
 }
 
 void EffectManager::triggerDefault(int effectId,
@@ -232,7 +232,7 @@ void EffectManager::triggerDefault(int effectId,
         effectId = defaultEffectId;
     if (effectId == -1)
         return;
-    trigger(effectId, x, y, endTime);
+    trigger(effectId, x, y, endTime, 0);
 }
 
 void EffectManager::logic()
