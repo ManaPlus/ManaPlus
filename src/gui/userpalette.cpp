@@ -142,102 +142,122 @@ UserPalette::UserPalette() :
         0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Being"));
+        _("Being"),
+        GRADIENT_DELAY);
     addColor(UserColorId::FRIEND,
         0xb0ffb0,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Friend names"));
+        _("Friend names"),
+        GRADIENT_DELAY);
     addColor(UserColorId::DISREGARDED,
         0xa00000,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Disregarded names"));
+        _("Disregarded names"),
+        GRADIENT_DELAY);
     addColor(UserColorId::IGNORED,
         0xff0000,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Ignored names"));
+        _("Ignored names"),
+        GRADIENT_DELAY);
     addColor(UserColorId::ERASED,
         0xff0000,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Erased names"));
+        _("Erased names"),
+        GRADIENT_DELAY);
     addColor(UserColorId::ENEMY,
         0xff4040,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Enemy"));
+        _("Enemy"),
+        GRADIENT_DELAY);
     addColor(UserColorId::PC,
         0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Other players names"));
+        _("Other players names"),
+        GRADIENT_DELAY);
     addColor(UserColorId::SELF,
         0xff8040,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Own name"));
+        _("Own name"),
+        GRADIENT_DELAY);
     addColor(UserColorId::GM,
         0x00ff00,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("GM names"));
+        _("GM names"),
+        GRADIENT_DELAY);
     addColor(UserColorId::NPC,
         0xc8c8ff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("NPCs"));
+        _("NPCs"),
+        GRADIENT_DELAY);
     addColor(UserColorId::MONSTER,
         0xff4040,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Monsters"));
+        _("Monsters"),
+        GRADIENT_DELAY);
     addColor(UserColorId::PET,
         0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Pets"));
+        _("Pets"),
+        GRADIENT_DELAY);
     addColor(UserColorId::MERCENARY,
         0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Mercenary"));
+        _("Mercenary"),
+        GRADIENT_DELAY);
     addColor(UserColorId::HOMUNCULUS,
         0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Homunculus"));
+        _("Homunculus"),
+        GRADIENT_DELAY);
     addColor(UserColorId::SKILLUNIT,
         0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Skill unit"));
+        _("Skill unit"),
+        GRADIENT_DELAY);
     addColor(UserColorId::PARTY,
         0xff00d8,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Party members"));
+        _("Party members"),
+        GRADIENT_DELAY);
     addColor(UserColorId::GUILD,
         0xff00d8,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Guild members"));
+        _("Guild members"),
+        GRADIENT_DELAY);
     addColor(UserColorId::TEAM1,
         0x0000ff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        strprintf(_("Team %d"), 1));
+        strprintf(_("Team %d"), 1),
+        GRADIENT_DELAY);
     addColor(UserColorId::TEAM2,
         0x00a020,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        strprintf(_("Team %d"), 2));
+        strprintf(_("Team %d"), 2),
+        GRADIENT_DELAY);
     addColor(UserColorId::TEAM3,
         0xffff20,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        strprintf(_("Team %d"), 3));
+        strprintf(_("Team %d"), 3),
+        GRADIENT_DELAY);
     addLabel(UserColorId::LABEL_PARTICLES,
         // TRANSLATORS: palette label
         _("Particles"));
@@ -245,17 +265,20 @@ UserPalette::UserPalette() :
         0xffffff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Particle effects"));
+        _("Particle effects"),
+        GRADIENT_DELAY);
     addColor(UserColorId::PICKUP_INFO,
         0x28dc28,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Pickup notification"));
+        _("Pickup notification"),
+        GRADIENT_DELAY);
     addColor(UserColorId::EXP_INFO,
         0xffff00,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Exp notification"));
+        _("Exp notification"),
+        GRADIENT_DELAY);
     addLabel(UserColorId::LABEL_HP,
         // TRANSLATORS: palette label
         _("Hp bars"));
@@ -326,41 +349,49 @@ UserPalette::UserPalette() :
         0x0064ff,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Player hits monster"));
+        _("Player hits monster"),
+        GRADIENT_DELAY);
     addColor(UserColorId::HIT_MONSTER_PLAYER,
         0xff3232,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Monster hits player"));
+        _("Monster hits player"),
+        GRADIENT_DELAY);
     addColor(UserColorId::HIT_PLAYER_PLAYER,
         0xff5050,
         GradientType::STATIC,
        // TRANSLATORS: palette color
-       _("Other player hits local player"));
+       _("Other player hits local player"),
+        GRADIENT_DELAY);
     addColor(UserColorId::HIT_CRITICAL,
         0xff0000,
         GradientType::RAINBOW,
         // TRANSLATORS: palette color
-        _("Critical Hit"));
+        _("Critical Hit"),
+        GRADIENT_DELAY);
     addColor(UserColorId::HIT_LOCAL_PLAYER_MONSTER,
         0x00ff00,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Local player hits monster"));
+        _("Local player hits monster"),
+        GRADIENT_DELAY);
     addColor(UserColorId::HIT_LOCAL_PLAYER_CRITICAL,
         0xff0000,
         GradientType::RAINBOW,
         // TRANSLATORS: palette color
-        _("Local player critical hit"));
+        _("Local player critical hit"),
+        GRADIENT_DELAY);
     addColor(UserColorId::HIT_LOCAL_PLAYER_MISS,
         0x00ffa6,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Local player miss"));
+        _("Local player miss"),
+        GRADIENT_DELAY);
     addColor(UserColorId::MISS, 0xffff00,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Misses"));
+        _("Misses"),
+        GRADIENT_DELAY);
     addLabel(UserColorId::LABEL_TILES,
         // TRANSLATORS: palette label
         _("Tiles"));
@@ -368,7 +399,8 @@ UserPalette::UserPalette() :
         0xC80000,
         GradientType::STATIC,
         // TRANSLATORS: palette color
-        _("Portal highlight"));
+        _("Portal highlight"),
+        GRADIENT_DELAY);
     addColor(UserColorId::COLLISION_HIGHLIGHT,
         0x0000C8,
         GradientType::STATIC,

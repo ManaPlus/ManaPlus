@@ -189,7 +189,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mAdvanced = true;
     mTextColor = &theme->getColor(ThemeColorId::PLAYER, 255);
     if (userPalette != nullptr)
-        mNameColor = &userPalette->getColor(UserColorId::SELF);
+        mNameColor = &userPalette->getColor(UserColorId::SELF, 255U);
     else
         mNameColor = nullptr;
 
@@ -296,7 +296,7 @@ void LocalPlayer::logic()
                     info.first,
                     mPixelX,
                     mPixelY - 48,
-                    &userPalette->getColor(info.second),
+                    &userPalette->getColor(info.second, 255U),
                     gui->getInfoParticleFont(),
                     true);
             }

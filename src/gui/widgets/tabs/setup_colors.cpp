@@ -252,7 +252,7 @@ void Setup_Colors::valueChanged(const SelectionEvent &event A_UNUSED)
     mSelected = mColorBox->getSelected();
     const UserColorIdT type = static_cast<UserColorIdT>(
         userPalette->getColorTypeAt(mSelected));
-    const Color *col = &userPalette->getColor(type);
+    const Color *col = &userPalette->getColor(type, 255U);
     const GradientTypeT grad = userPalette->getGradientType(type);
     const int delay = userPalette->getGradientDelay(type);
     const Visible showControls = fromBool(grad != GradientType::LABEL,
@@ -418,7 +418,7 @@ void Setup_Colors::cancel()
     userPalette->rollback();
     const UserColorIdT type = static_cast<UserColorIdT>(
         userPalette->getColorTypeAt(mSelected));
-    const Color *const col = &userPalette->getColor(type);
+    const Color *const col = &userPalette->getColor(type, 255U);
     mGradTypeSlider->setValue(CAST_S32(
         userPalette->getGradientType(type)));
     const int delay = userPalette->getGradientDelay(type);

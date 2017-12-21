@@ -207,7 +207,8 @@ void FloorItem::draw(Graphics *const graphics,
         if (font != nullptr && mAmount > 1)
         {
             const Color &color = userPalette->getColor(
-                UserColorId::FLOOR_ITEM_TEXT);
+                UserColorId::FLOOR_ITEM_TEXT,
+                255U);
             font->drawString(graphics,
                 color, color,
                 toString(mAmount),

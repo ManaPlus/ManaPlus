@@ -386,7 +386,7 @@ void Minimap::draw2(Graphics *const graphics)
         }
 
         if (userPalette != nullptr)
-            graphics->setColor(userPalette->getColor(type));
+            graphics->setColor(userPalette->getColor(type, 255U));
 
         const int offsetHeight = CAST_S32(static_cast<float>(
                 dotSize - 1) * mHeightProportion);
@@ -422,7 +422,7 @@ void Minimap::draw2(Graphics *const graphics)
                         if (userPalette != nullptr)
                         {
                             graphics->setColor(userPalette->getColor(
-                                UserColorId::PARTY));
+                                UserColorId::PARTY, 255U));
                         }
 
                         const int offsetHeight = CAST_S32(
@@ -472,7 +472,7 @@ void Minimap::draw2(Graphics *const graphics)
             y = a.height - h;
     }
 
-    graphics->setColor(userPalette->getColor(UserColorId::PC));
+    graphics->setColor(userPalette->getColor(UserColorId::PC, 255U));
     graphics->drawRectangle(Rect(x, y, w, h));
     graphics->popClipArea();
     BLOCK_END("Minimap::draw")

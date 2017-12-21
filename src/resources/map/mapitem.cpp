@@ -163,7 +163,7 @@ void MapItem::draw(Graphics *const graphics, const int x, const int y,
         && mType != MapItemType::EMPTY)
     {
         Font *const font = gui->getFont();
-        const Color &color = userPalette->getColor(UserColorId::BEING);
+        const Color &color = userPalette->getColor(UserColorId::BEING, 255U);
         font->drawString(graphics,
             color,
             color,

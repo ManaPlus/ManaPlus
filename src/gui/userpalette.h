@@ -157,7 +157,7 @@ class UserPalette final : public Palette, public ListModel
          * @return the requested color
          */
         inline const Color &getColor(UserColorIdT type,
-                                     const unsigned int alpha = 255U)
+                                     const unsigned int alpha)
                                      A_WARN_UNUSED
         {
             if (CAST_SIZE(type) >= mColors.size())
@@ -239,7 +239,7 @@ class UserPalette final : public Palette, public ListModel
                       const unsigned rgb,
                       GradientTypeT grad,
                       const std::string &text,
-                      int delay = GRADIENT_DELAY);
+                      int delay);
 
         void addLabel(const UserColorIdT type,
                       const std::string &text);
