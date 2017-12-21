@@ -56,7 +56,7 @@ struct ImageSetLoader final
             reportAlways("Image loading error: %s", rl->path.c_str());
             return nullptr;
         }
-        ImageSet *const res = new ImageSet(img, rl->w, rl->h);
+        ImageSet *const res = new ImageSet(img, rl->w, rl->h, 0, 0);
         img->decRef();
         return res;
     }

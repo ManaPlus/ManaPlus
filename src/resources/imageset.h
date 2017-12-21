@@ -40,8 +40,11 @@ class ImageSet notfinal : public Resource
         /**
          * Cuts the passed image in a grid of sub images.
          */
-        ImageSet(Image *const img, const int w, const int h,
-                 const int margin = 0, const int spacing = 0);
+        ImageSet(Image *const img,
+                 const int w,
+                 const int h,
+                 const int margin,
+                 const int spacing);
 
         A_DELETE_COPY(ImageSet)
 

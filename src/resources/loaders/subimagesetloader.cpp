@@ -52,7 +52,10 @@ namespace
             if (rl->parent == nullptr)
                 return nullptr;
             ImageSet *const res = new ImageSet(rl->parent,
-                rl->width, rl->height);
+                rl->width,
+                rl->height,
+                0,
+                0);
             return res;
         }
     };
