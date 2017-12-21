@@ -95,7 +95,7 @@ class Map final : public Properties,
         /**
          * Updates animations. Called as needed.
          */
-        void update(const int ticks = 1) restrict2;
+        void update(const int ticks) restrict2;
 
         /**
          * Draws the map to the given graphics output. This method draws all
@@ -199,7 +199,7 @@ class Map final : public Properties,
         Path findPath(const int startX, const int startY,
                       const int destX, const int destY,
                       const unsigned char blockWalkmask,
-                      const int maxCost = 20) restrict2 A_WARN_UNUSED;
+                      const int maxCost) restrict2 A_WARN_UNUSED;
 
         /**
          * Adds a particle effect
@@ -207,8 +207,8 @@ class Map final : public Properties,
         void addParticleEffect(const std::string &restrict effectFile,
                                const int x,
                                const int y,
-                               const int w = 0,
-                               const int h = 0) restrict2;
+                               const int w,
+                               const int h) restrict2;
 
         /**
          * Initializes all added particle effects
@@ -262,7 +262,7 @@ class Map final : public Properties,
         void updatePortalTile(const std::string &restrict name,
                               const int type,
                               const int x, const int y,
-                              const bool addNew = true) restrict2;
+                              const bool addNew) restrict2;
 
         const STD_VECTOR<MapItem*> &getPortals() const restrict2 noexcept2
                                                 A_WARN_UNUSED

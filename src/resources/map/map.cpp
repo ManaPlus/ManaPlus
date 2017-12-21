@@ -1180,18 +1180,26 @@ void Map::addExtraLayer() restrict2
                 }
                 if (type == MapItemType::PORTAL)
                 {
-                    updatePortalTile(comment, type, atoi(x.c_str()),
-                                     atoi(y.c_str()), false);
+                    updatePortalTile(comment,
+                        type,
+                        atoi(x.c_str()),
+                        atoi(y.c_str()),
+                        false);
                 }
                 else if (type == MapItemType::HOME)
                 {
-                    updatePortalTile(comment, type, atoi(x.c_str()),
-                                     atoi(y.c_str()));
+                    updatePortalTile(comment,
+                        type,
+                        atoi(x.c_str()),
+                        atoi(y.c_str()),
+                        true);
                 }
                 else
                 {
-                    addPortalTile(comment, type, atoi(x.c_str()),
-                                  atoi(y.c_str()));
+                    addPortalTile(comment,
+                        type,
+                        atoi(x.c_str()),
+                        atoi(y.c_str()));
                 }
             }
         }

@@ -660,7 +660,7 @@ void Game::logic()
     if (particleEngine != nullptr)
         particleEngine->update();
     if (mCurrentMap != nullptr)
-        mCurrentMap->update();
+        mCurrentMap->update(1);
 
     BLOCK_END("Game::logic")
 }

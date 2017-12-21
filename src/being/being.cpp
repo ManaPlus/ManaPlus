@@ -543,7 +543,12 @@ void Being::setDestination(const int dstX,
     if (mMap == nullptr)
         return;
 
-    setPath(mMap->findPath(mX, mY, dstX, dstY, getBlockWalkMask()));
+    setPath(mMap->findPath(mX,
+        mY,
+        dstX,
+        dstY,
+        getBlockWalkMask(),
+        20));
 }
 
 void Being::clearPath() restrict2

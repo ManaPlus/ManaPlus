@@ -1833,8 +1833,11 @@ void LocalPlayer::setHome()
         if (iter != mHomes.end() && mX == CAST_S32(pos.x)
             && mY == CAST_S32(pos.y))
         {
-            mMap->updatePortalTile("", MapItemType::EMPTY,
-                CAST_S32(pos.x), CAST_S32(pos.y));
+            mMap->updatePortalTile("",
+                MapItemType::EMPTY,
+                CAST_S32(pos.x),
+                CAST_S32(pos.y),
+                true);
 
             mHomes.erase(key);
             socialWindow->removePortal(CAST_S32(pos.x),
@@ -1852,8 +1855,11 @@ void LocalPlayer::setHome()
             pos.x = static_cast<float>(mX);
             pos.y = static_cast<float>(mY);
             mHomes[key] = pos;
-            mMap->updatePortalTile("home", MapItemType::HOME,
-                                   mX, mY);
+            mMap->updatePortalTile("home",
+                MapItemType::HOME,
+                mX,
+                mY,
+                true);
             socialWindow->addPortal(mX, mY);
         }
         MapItem *const mapItem = specialLayer->getTile(mX, mY);
@@ -1892,7 +1898,11 @@ void LocalPlayer::setHome()
         {
             type = MapItemType::EMPTY;
         }
-        mMap->updatePortalTile("", type, mX, mY);
+        mMap->updatePortalTile("",
+            type,
+            mX,
+            mY,
+            true);
 
         if (type != MapItemType::EMPTY)
         {
