@@ -124,7 +124,9 @@ class SocialGuildTab final : public SocialTab,
                 _("Member Invite to Guild"),
                 // TRANSLATORS: guild invite message
                 strprintf(_("Who would you like to invite to guild %s?"),
-                mGuild->getName().c_str()), socialWindow);
+                mGuild->getName().c_str()),
+                socialWindow,
+                false);
             mInviteDialog->setActionEventId("do invite");
             mInviteDialog->addActionListener(this);
         }

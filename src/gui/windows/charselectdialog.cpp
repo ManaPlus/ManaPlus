@@ -459,7 +459,8 @@ void CharSelectDialog::askPasswordForDeletion(const int index)
             _("Enter your email for deleting character"),
             // TRANSLATORS: email label.
             _("Enter email:"),
-            this, false);
+            this,
+            false);
     }
     else
     {
@@ -468,7 +469,8 @@ void CharSelectDialog::askPasswordForDeletion(const int index)
             _("Enter password for deleting character"),
             // TRANSLATORS: email label.
             _("Enter password:"),
-            this, true);
+            this,
+            true);
     }
     mDeleteDialog->setActionEventId("try delete character");
     mDeleteDialog->addActionListener(this);

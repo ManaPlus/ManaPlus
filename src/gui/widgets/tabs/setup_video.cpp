@@ -389,7 +389,9 @@ void Setup_Video::action(const ActionEvent &event)
                     // TRANSLATORS: resolution question dialog
                     _("Custom resolution (example: 1024x768)"),
                     // TRANSLATORS: resolution question dialog
-                    _("Enter new resolution:                "));
+                    _("Enter new resolution:                "),
+                    nullptr,
+                    false);
                 mDialog->setActionEventId("videomode");
                 mDialog->addActionListener(this);
                 return;

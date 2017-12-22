@@ -47,8 +47,8 @@ class TextDialog final : public Window,
          */
         TextDialog(const std::string &restrict title,
                    const std::string &restrict msg,
-                   Window *const parent = nullptr,
-                   const bool isPassword = false);
+                   Window *const parent,
+                   const bool isPassword);
 
         A_DELETE_COPY(TextDialog)
 

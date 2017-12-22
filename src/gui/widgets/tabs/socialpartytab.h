@@ -125,7 +125,9 @@ class SocialPartyTab final : public SocialTab,
                 _("Member Invite to Party"),
                 // TRANSLATORS: party invite message
                 strprintf(_("Who would you like to invite to party %s?"),
-                mParty->getName().c_str()), socialWindow);
+                mParty->getName().c_str()),
+                socialWindow,
+                false);
             mInviteDialog->setActionEventId("do invite");
             mInviteDialog->addActionListener(this);
         }

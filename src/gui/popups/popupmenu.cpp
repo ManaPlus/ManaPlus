@@ -1283,7 +1283,9 @@ void PopupMenu::handleLink(const std::string &link,
             _("Rename map sign          "),
             // TRANSLATORS: label
             // TRANSLATORS: number of chars in string should be near original
-            _("Name:                    "));
+            _("Name:                    "),
+            nullptr,
+            false);
         mRenameListener.setDialog(mDialog);
         mDialog->setText(mMapItem->getComment());
         mDialog->setActionEventId("ok");
@@ -1301,7 +1303,9 @@ void PopupMenu::handleLink(const std::string &link,
             _("Player comment            "),
             // TRANSLATORS: label
             // TRANSLATORS: number of chars in string should be near original
-            _("Comment:                      "));
+            _("Comment:                      "),
+            nullptr,
+            false);
         mPlayerListener.setDialog(dialog);
         mPlayerListener.setNick(mName);
         mPlayerListener.setType(mType);

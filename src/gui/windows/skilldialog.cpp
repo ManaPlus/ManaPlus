@@ -1136,7 +1136,9 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
                     strprintf(_("Add text to skill %s"),
                     data->name.c_str()),
                     // TRANSLATORS: text skill dialog field
-                    _("Text: "));
+                    _("Text: "),
+                    nullptr,
+                    false);
                 dialog->setModal(Modal_true);
                 textSkillListener.setDialog(dialog);
                 dialog->setActionEventId("ok");
@@ -1200,7 +1202,9 @@ void SkillDialog::useSkillPosition(const SkillInfo *const info,
                     strprintf(_("Add text to skill %s"),
                     data->name.c_str()),
                     // TRANSLATORS: text skill dialog field
-                    _("Text: "));
+                    _("Text: "),
+                    nullptr,
+                    false);
                 dialog->setModal(Modal_true);
                 textSkillListener.setDialog(dialog);
                 dialog->setActionEventId("ok");
@@ -1319,7 +1323,9 @@ void SkillDialog::useSkillDefault(const SkillInfo *const info,
                     strprintf(_("Add text to skill %s"),
                     data->name.c_str()),
                     // TRANSLATORS: text skill dialog field
-                    _("Text: "));
+                    _("Text: "),
+                    nullptr,
+                    false);
                 dialog->setModal(Modal_true);
                 textSkillListener.setDialog(dialog);
                 dialog->setActionEventId("ok");
