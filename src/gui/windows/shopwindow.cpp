@@ -372,7 +372,10 @@ void ShopWindow::action(const ActionEvent &event)
             // TRANSLATORS: shop rename dialog title
             _("Please enter new shop name"),
             mSellShopName,
-            "OK");
+            "OK",
+            300,
+            nullptr,
+            Modal_true);
         shopRenameListener.setDialog(dialog);
         dialog->addActionListener(&shopRenameListener);
     }

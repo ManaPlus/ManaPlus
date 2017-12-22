@@ -421,7 +421,10 @@ void SetupItemTextField::action(const ActionEvent &event)
         mEditDialog = CREATEWIDGETR(EditDialog,
             mText,
             mTextField->getText(),
-            mEventName + "_EDIT_OK");
+            mEventName + "_EDIT_OK",
+            300,
+            nullptr,
+            Modal_true);
         mEditDialog->addActionListener(this);
     }
     else if (eventId == mEventName + "_EDIT_OK")
@@ -559,7 +562,10 @@ void SetupItemIntTextField::action(const ActionEvent &event)
         mEditDialog = CREATEWIDGETR(EditDialog,
             mText,
             mTextField->getText(),
-            mEventName + "_EDIT_OK");
+            mEventName + "_EDIT_OK",
+            300,
+            nullptr,
+            Modal_true);
         mEditDialog->addActionListener(this);
     }
     else if (eventId == mEventName + "_EDIT_OK")

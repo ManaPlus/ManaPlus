@@ -42,7 +42,12 @@ void InputActionReplayListener::openDialog(const std::string &caption,
                                            const InputActionT action0)
 {
     CREATEWIDGETV(mDialog, EditDialog,
-        caption, text, "OK");
+        caption,
+        text,
+        "OK",
+        300,
+        nullptr,
+        Modal_true);
     mDialog->addActionListener(this);
     mAction = action0;
 }

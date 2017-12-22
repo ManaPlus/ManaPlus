@@ -177,7 +177,10 @@ void CharSelectDialog::postInit()
             // TRANSLATORS: pin code dialog header.
             _("Please set new pincode"),
             "",
-            "OK");
+            "OK",
+            300,
+            nullptr,
+            Modal_true);
         dialog->addActionListener(&pincodeListener);
     }
 }
@@ -227,7 +230,10 @@ void CharSelectDialog::action(const ActionEvent &event)
                 // TRANSLATORS: character rename dialog header.
                 _("Please enter new name"),
                 player->getName(),
-                "OK");
+                "OK",
+                300,
+                nullptr,
+                Modal_true);
             charRenameListener.setId(player->getId());
             charRenameListener.setDialog(dialog);
             dialog->addActionListener(&charRenameListener);
