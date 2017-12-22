@@ -679,7 +679,7 @@ void GuildRecv::processGuildMemberLogin(Net::MessageIn &msg)
             if (guildTab != nullptr)
                 guildTab->showOnline(m->getName(), fromBool(online, Online));
             if (socialWindow != nullptr)
-                socialWindow->updateGuildCounter();
+                socialWindow->updateGuildCounter(0, 0);
         }
     }
 }

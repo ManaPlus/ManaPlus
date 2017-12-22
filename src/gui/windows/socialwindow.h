@@ -123,7 +123,8 @@ class SocialWindow final : public Window,
         void updateMenu(const SocialTab *const tab,
                         const std::string &menu);
 
-        void updateGuildCounter(const int online = 0, const int total = 0);
+        void updateGuildCounter(const int online,
+                                const int total);
 
         void updatedPlayer(const std::string &name) override final;
 
