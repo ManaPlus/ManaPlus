@@ -58,25 +58,26 @@ class StatusWindow final : public Window,
                              const int needed);
 
         static void updateHPBar(ProgressBar *const bar,
-                                const bool showMax = false);
-        void updateMPBar(ProgressBar *bar, const bool showMax = false) const;
+                                const bool showMax);
+        void updateMPBar(ProgressBar *bar,
+                         const bool showMax) const;
         static void updateJobBar(ProgressBar *const bar,
-                                 const bool percent = true);
+                                 const bool percent);
         static void updateXPBar(ProgressBar *const bar,
-                                const bool percent = true);
+                                const bool percent);
         static void updateWeightBar(ProgressBar *const bar);
         static void updateInvSlotsBar(ProgressBar *const bar);
         static void updateMoneyBar(ProgressBar *const bar);
         static void updateArrowsBar(ProgressBar *const bar);
         void updateStatusBar(ProgressBar *const bar,
-                             const bool percent = true) const;
+                             const bool percent) const;
         static void updateProgressBar(ProgressBar *const bar,
                                       const int64_t value,
                                       const int64_t max,
                                       const bool percent);
         static void updateProgressBar(ProgressBar *const bar,
                                       const AttributesT id,
-                                      const bool percent = true);
+                                      const bool percent);
 
         void action(const ActionEvent &event) override;
 

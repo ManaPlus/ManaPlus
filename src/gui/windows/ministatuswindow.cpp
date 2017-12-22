@@ -120,14 +120,19 @@ MiniStatusWindow::MiniStatusWindow() :
     mIconSpacing(mSkin != nullptr ? mSkin->getOption("iconSpacing", 2) : 2),
     mMaxX(0)
 {
-    StatusWindow::updateHPBar(mHpBar);
+    StatusWindow::updateHPBar(mHpBar,
+        false);
 
     if (statusWindow != nullptr)
-        statusWindow->updateMPBar(mMpBar);
+    {
+        statusWindow->updateMPBar(mMpBar,
+            false);
+    }
 
     const bool job = serverConfig.getValueBool("showJob", true);
 
-    StatusWindow::updateXPBar(mXpBar);
+    StatusWindow::updateXPBar(mXpBar,
+        true);
 
     if (job)
     {
@@ -137,7 +142,8 @@ MiniStatusWindow::MiniStatusWindow() :
             "jobprogressbar.xml", "jobprogressbar_fill.xml",
             // TRANSLATORS: status bar name
             "job bar", _("job bar"));
-        StatusWindow::updateJobBar(mJobBar);
+        StatusWindow::updateJobBar(mJobBar,
+            true);
     }
 
     loadBars();
@@ -263,8 +269,12 @@ void MiniStatusWindow::statChanged(const AttributesT id A_UNUSED,
                                    const int oldVal2 A_UNUSED)
 {
     if (statusWindow != nullptr)
-        statusWindow->updateMPBar(mMpBar);
-    StatusWindow::updateJobBar(mJobBar);
+    {
+        statusWindow->updateMPBar(mMpBar,
+            false);
+    }
+    StatusWindow::updateJobBar(mJobBar,
+        true);
 }
 
 void MiniStatusWindow::attributeChanged(const AttributesT id,
@@ -277,15 +287,18 @@ void MiniStatusWindow::attributeChanged(const AttributesT id,
     {
         case Attributes::PLAYER_HP:
         case Attributes::PLAYER_MAX_HP:
-            StatusWindow::updateHPBar(mHpBar);
+            StatusWindow::updateHPBar(mHpBar,
+                false);
             break;
         case Attributes::PLAYER_MP:
         case Attributes::PLAYER_MAX_MP:
-            statusWindow->updateMPBar(mMpBar);
+            statusWindow->updateMPBar(mMpBar,
+                false);
             break;
         case Attributes::PLAYER_EXP:
         case Attributes::PLAYER_EXP_NEEDED:
-            StatusWindow::updateXPBar(mXpBar);
+            StatusWindow::updateXPBar(mXpBar,
+                true);
             break;
         case Attributes::TOTAL_WEIGHT:
         case Attributes::MAX_WEIGHT:
@@ -303,7 +316,10 @@ void MiniStatusWindow::attributeChanged(const AttributesT id,
 void MiniStatusWindow::updateStatus()
 {
     if (statusWindow != nullptr)
-        statusWindow->updateStatusBar(mStatusBar);
+    {
+        statusWindow->updateStatusBar(mStatusBar,
+            true);
+    }
     if ((mStatusPopup != nullptr) && mStatusPopup->isPopupVisible())
         mStatusPopup->update();
 }

@@ -489,7 +489,8 @@ void StatusWindow::updateXPBar(ProgressBar *const bar, const bool percent)
         percent);
 }
 
-void StatusWindow::updateJobBar(ProgressBar *const bar, const bool percent)
+void StatusWindow::updateJobBar(ProgressBar *const bar,
+                                const bool percent)
 {
     if (bar == nullptr)
         return;
