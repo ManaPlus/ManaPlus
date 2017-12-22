@@ -111,12 +111,12 @@ class ServerDialog final : public Window,
          */
         void downloadServerList();
 
-        void loadServers(const bool addNew = true);
+        void loadServers(const bool addNew);
 
         void loadCustomServers();
 
-        void saveCustomServers(const ServerInfo &currentServer = ServerInfo(),
-                               const int index = -1);
+        void saveCustomServers(const ServerInfo &currentServer,
+                               const int index);
 
         bool needUpdateServers() const;
 

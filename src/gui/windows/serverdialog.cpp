@@ -258,7 +258,8 @@ void ServerDialog::connectToSelectedServer()
     if (chatLogger != nullptr)
         chatLogger->setServerName(mServerInfo->hostname);
 
-    saveCustomServers(*mServerInfo);
+    saveCustomServers(*mServerInfo,
+        -1);
 
     if (!LoginDialog::savedPasswordKey.empty())
     {
@@ -312,7 +313,8 @@ void ServerDialog::action(const ActionEvent &event)
         {
             mServersList->setSelected(0);
             mServers.erase(mServers.begin() + index);
-            saveCustomServers();
+            saveCustomServers(ServerInfo(),
+                -1);
         }
     }
     else if (eventId == "info")
@@ -357,7 +359,8 @@ void ServerDialog::keyPressed(KeyEvent &event)
             {
                 mServersList->setSelected(0);
                 mServers.erase(mServers.begin() + index);
-                saveCustomServers();
+                saveCustomServers(ServerInfo(),
+                    -1);
             }
             return;
         }
@@ -413,7 +416,7 @@ void ServerDialog::logic()
         MutexLocker tempLock(&mMutex);
         if (mDownloadStatus == ServerDialogDownloadStatus::COMPLETE)
         {
-            loadServers();
+            loadServers(true);
             mDownloadStatus = ServerDialogDownloadStatus::OVER;
             mDescription->setCaption(std::string());
             logger->log("Servers list updated");
