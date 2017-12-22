@@ -127,8 +127,9 @@ class ShopWindow final : public Window,
 
         void giveList(const std::string &nick, const int mode);
 
-        void sendMessage(const std::string &nick, std::string data,
-                         const bool random = false);
+        void sendMessage(const std::string &nick,
+                         std::string data,
+                         const bool random);
 
         static void showList(const std::string &nick, std::string data);
 
