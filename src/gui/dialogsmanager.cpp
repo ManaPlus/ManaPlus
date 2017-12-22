@@ -129,7 +129,8 @@ Window *DialogsManager::openErrorDialog(const std::string &header,
         _("Do you want to open support page?")),
         SOUND_ERROR,
         false,
-        modal);
+        modal,
+        nullptr);
     return dialog;
 }
 

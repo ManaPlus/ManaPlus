@@ -136,7 +136,11 @@ class SocialGuildTab final : public SocialTab,
                 _("Leave Guild?"),
                 // TRANSLATORS: guild leave message
                 strprintf(_("Are you sure you want to leave guild %s?"),
-                mGuild->getName().c_str()), SOUND_REQUEST, socialWindow);
+                mGuild->getName().c_str()),
+                SOUND_REQUEST,
+                false,
+                Modal_false,
+                socialWindow);
             mConfirmDialog->addActionListener(this);
         }
 

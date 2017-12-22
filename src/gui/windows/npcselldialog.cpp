@@ -76,7 +76,8 @@ void NpcSellDialog::sellAction(const ActionEvent &event)
                     info.getName().c_str()),
                 SOUND_REQUEST,
                 false,
-                Modal_true);
+                Modal_true,
+                nullptr);
             dialog->addActionListener(this);
             return;
         }

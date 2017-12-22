@@ -75,7 +75,9 @@ void FamilyRecv::processAskForChild(Net::MessageIn &msg)
                 strprintf(_("Do you accept %s and %s as parents?"),
                 name1.c_str(), name2.c_str()),
                 SOUND_REQUEST,
-                false);
+                false,
+                Modal_false,
+                nullptr);
             confirmDlg->addActionListener(&listener);
         }
     }

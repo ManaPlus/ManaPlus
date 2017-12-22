@@ -88,7 +88,8 @@ void ItemLinkHandler::handleCommandLink(const std::string &link,
             strprintf("/%s %s", cmd.c_str(), args.c_str()),
             SOUND_REQUEST,
             false,
-            Modal_true);
+            Modal_true,
+            nullptr);
         confirmDlg->addActionListener(&inputActionRemoteListener);
     }
 }
@@ -119,7 +120,8 @@ void ItemLinkHandler::handleHttpLink(const std::string &link,
             url,
             SOUND_REQUEST,
             false,
-            Modal_true);
+            Modal_true,
+            nullptr);
         confirmDlg->addActionListener(&listener);
     }
     else if (button == MouseButton::RIGHT)

@@ -250,7 +250,8 @@ void LoginDialog::action(const ActionEvent &event)
                 url,
                 SOUND_REQUEST,
                 false,
-                Modal_true);
+                Modal_true,
+                nullptr);
             confirmDlg->addActionListener(&urlListener);
         }
     }

@@ -1026,7 +1026,9 @@ void ShopWindow::processRequest(const std::string &nick,
             _("Request for Trade"),
             msg,
             SOUND_REQUEST,
-            true);
+            true,
+            Modal_false,
+            nullptr);
         confirmDlg->addActionListener(this);
     }
 }

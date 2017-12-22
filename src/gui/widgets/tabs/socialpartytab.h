@@ -137,7 +137,11 @@ class SocialPartyTab final : public SocialTab,
                 _("Leave Party?"),
                 // TRANSLATORS: party leave message
                 strprintf(_("Are you sure you want to leave party %s?"),
-                mParty->getName().c_str()), SOUND_REQUEST, socialWindow);
+                mParty->getName().c_str()),
+                SOUND_REQUEST,
+                false,
+                Modal_false,
+                socialWindow);
             mConfirmDialog->addActionListener(this);
         }
 

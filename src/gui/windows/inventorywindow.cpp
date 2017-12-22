@@ -1047,7 +1047,8 @@ void InventoryWindow::combineItems(const int index1,
         item2->getName().c_str()),
         SOUND_REQUEST,
         false,
-        Modal_true);
+        Modal_true,
+        nullptr);
     insertCardListener.itemIndex = item2->getInvIndex();
     insertCardListener.cardIndex = item1->getInvIndex();
     confirmDlg->addActionListener(&insertCardListener);
