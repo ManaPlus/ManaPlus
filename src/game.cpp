@@ -262,7 +262,8 @@ static void createGuiWindows()
     CREATEWIDGETV(dropShortcutWindow, ShortcutWindow,
         "DropShortcut",
         new VirtShortcutContainer(nullptr, dropShortcut),
-        "drops.xml");
+        "drops.xml",
+        0, 0);
     CREATEWIDGETV(spellShortcutWindow, ShortcutWindow,
         "SpellShortcut",
         "spells.xml",
