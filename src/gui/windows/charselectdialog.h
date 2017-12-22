@@ -84,7 +84,7 @@ class CharSelectDialog final : public Window,
          *               character).
          */
         bool selectByName(const std::string &name,
-                          const SelectAction action = Focus);
+                          const SelectAction action);
 
         void askPasswordForDeletion(const int index);
 
