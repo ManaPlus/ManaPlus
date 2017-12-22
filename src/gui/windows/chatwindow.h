@@ -145,7 +145,8 @@ class ChatWindow final : public Window,
         void setInputText(const std::string &text);
 
         /** Add the given text to the chat input. */
-        void addInputText(const std::string &text, const bool space = true);
+        void addInputText(const std::string &text,
+                          const bool space);
 
         /** Called to add item to chat */
         void addItemText(const std::string &item);
@@ -189,19 +190,19 @@ class ChatWindow final : public Window,
 
         void addWhisper(const std::string &restrict nick,
                         const std::string &restrict mes,
-                        const ChatMsgTypeT own = ChatMsgType::BY_OTHER);
+                        const ChatMsgTypeT own);
 
         WhisperTab *addWhisperTab(const std::string &caption,
                                   const std::string &nick,
-                                  const bool switchTo = false) A_WARN_UNUSED;
+                                  const bool switchTo) A_WARN_UNUSED;
 
         WhisperTab *getWhisperTab(const std::string &nick) const A_WARN_UNUSED;
 
         ChatTab *addChannelTab(const std::string &name,
-                               const bool switchTo = false);
+                               const bool switchTo);
 
         ChatTab *addSpecialChannelTab(const std::string &name,
-                                      const bool switchTo = false);
+                                      const bool switchTo);
 
         ChatTab *addChatTab(const std::string &name,
                             const bool switchTo,
@@ -221,12 +222,9 @@ class ChatWindow final : public Window,
                            const TryRemoveColors tryRemoveColors);
 
         static void battleChatLog(const std::string &line,
-                                  ChatMsgTypeT own
-                                  = ChatMsgType::BY_UNKNOWN,
-                                  const IgnoreRecord ignoreRecord
-                                  = IgnoreRecord_false,
-                                  const TryRemoveColors tryRemoveColors
-                                  = TryRemoveColors_true);
+                                  ChatMsgTypeT own,
+                                  const IgnoreRecord ignoreRecord,
+                                  const TryRemoveColors tryRemoveColors);
 
         void channelChatLog(const std::string &channel,
                             const std::string &line,

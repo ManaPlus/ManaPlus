@@ -650,6 +650,7 @@ void StatusWindow::action(const ActionEvent &event)
 
     if (event.getId() == "copy")
     {
-        chatWindow->addInputText(mBasicStatsPage->getStatsStr());
+        chatWindow->addInputText(mBasicStatsPage->getStatsStr(),
+            true);
     }
 }

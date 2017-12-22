@@ -291,8 +291,9 @@ impHandler(msgText)
     }
     else
     {
-        chatWindow->addInputText(std::string("/w \"").append(
-            event.args).append("\" "));
+        chatWindow->addInputText(
+            std::string("/w \"").append(event.args).append("\" "),
+            true);
     }
     return true;
 }
@@ -574,7 +575,7 @@ impHandler(kickGuild)
 impHandler(addText)
 {
     if (chatWindow != nullptr)
-        chatWindow->addInputText(event.args);
+        chatWindow->addInputText(event.args, true);
     return true;
 }
 

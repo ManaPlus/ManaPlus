@@ -202,8 +202,9 @@ void WhoIsOnline::handleLink(const std::string& link, MouseEvent *event)
             }
             else
             {
-                chatWindow->addInputText(std::string("/w \"").append(
-                    text).append("\" "));
+                chatWindow->addInputText(
+                    std::string("/w \"").append(text).append("\" "),
+                    true);
             }
         }
     }

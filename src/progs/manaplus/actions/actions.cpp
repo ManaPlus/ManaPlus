@@ -1883,7 +1883,8 @@ impHandler(barToChat)
 {
     if (chatWindow != nullptr)
     {
-        chatWindow->addInputText(event.args);
+        chatWindow->addInputText(event.args,
+            true);
         return true;
     }
     return false;

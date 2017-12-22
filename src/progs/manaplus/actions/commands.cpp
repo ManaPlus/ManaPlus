@@ -2009,7 +2009,7 @@ impHandler0(outfitToChat)
 
     const std::string str = outfitWindow->getOutfitString();
     if (!str.empty())
-        chatWindow->addInputText(str);
+        chatWindow->addInputText(str, true);
     return true;
 }
 

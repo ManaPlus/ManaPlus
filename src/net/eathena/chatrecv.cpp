@@ -494,7 +494,11 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
     if (nick != "Server")
     {
         if (playerRelations.hasPermission(nick, PlayerRelation::WHISPER))
-            chatWindow->addWhisper(nick, chatMsg);
+        {
+            chatWindow->addWhisper(nick,
+                chatMsg,
+                ChatMsgType::BY_OTHER);
+        }
     }
     else if (localChatTab != nullptr)
     {

@@ -195,7 +195,11 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                         if (tradeBot)
                         {
                             if (showMsg && (chatWindow != nullptr))
-                                chatWindow->addWhisper(nick, chatMsg);
+                            {
+                                chatWindow->addWhisper(nick,
+                                    chatMsg,
+                                    ChatMsgType::BY_OTHER);
+                            }
                             shopWindow->giveList(nick, ShopWindow::SELL);
                         }
                     }
@@ -203,15 +207,23 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                     {
                         if (tradeBot)
                         {
-                            if (showMsg && (chatWindow != nullptr))
-                                chatWindow->addWhisper(nick, chatMsg);
+                            if (showMsg && chatWindow != nullptr)
+                            {
+                                chatWindow->addWhisper(nick,
+                                    chatMsg,
+                                    ChatMsgType::BY_OTHER);
+                            }
                             shopWindow->giveList(nick, ShopWindow::BUY);
                         }
                     }
                     else if (chatMsg.find("!buyitem ") == 0)
                     {
-                        if (showMsg && (chatWindow != nullptr))
-                            chatWindow->addWhisper(nick, chatMsg);
+                        if (showMsg && chatWindow != nullptr)
+                        {
+                            chatWindow->addWhisper(nick,
+                                chatMsg,
+                                ChatMsgType::BY_OTHER);
+                        }
                         if (tradeBot)
                         {
                             shopWindow->processRequest(nick, chatMsg,
@@ -220,8 +232,12 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                     }
                     else if (chatMsg.find("!sellitem ") == 0)
                     {
-                        if (showMsg && (chatWindow != nullptr))
-                            chatWindow->addWhisper(nick, chatMsg);
+                        if (showMsg && chatWindow != nullptr)
+                        {
+                            chatWindow->addWhisper(nick,
+                                chatMsg,
+                                ChatMsgType::BY_OTHER);
+                        }
                         if (tradeBot)
                         {
                             shopWindow->processRequest(nick, chatMsg,
@@ -232,19 +248,27 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                              && chatMsg.find("\302\202") == 0)
                     {
                         chatMsg = chatMsg.erase(0, 2);
-                        if (showMsg && (chatWindow != nullptr))
-                            chatWindow->addWhisper(nick, chatMsg);
+                        if (showMsg && chatWindow != nullptr)
+                        {
+                            chatWindow->addWhisper(nick,
+                                chatMsg,
+                                ChatMsgType::BY_OTHER);
+                        }
                         if (chatMsg.find("B1") == 0 || chatMsg.find("S1") == 0)
                             ShopWindow::showList(nick, chatMsg);
                     }
                     else if (chatWindow != nullptr)
                     {
-                        chatWindow->addWhisper(nick, chatMsg);
+                        chatWindow->addWhisper(nick,
+                            chatMsg,
+                            ChatMsgType::BY_OTHER);
                     }
                 }
                 else if (chatWindow != nullptr)
                 {
-                    chatWindow->addWhisper(nick, chatMsg);
+                    chatWindow->addWhisper(nick,
+                        chatMsg,
+                        ChatMsgType::BY_OTHER);
                 }
             }
             else
@@ -254,7 +278,9 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                     (chatMsg.find("!selllist") != 0 &&
                     chatMsg.find("!buylist") != 0)))
                 {
-                    chatWindow->addWhisper(nick, chatMsg);
+                    chatWindow->addWhisper(nick,
+                        chatMsg,
+                        ChatMsgType::BY_OTHER);
                 }
             }
         }

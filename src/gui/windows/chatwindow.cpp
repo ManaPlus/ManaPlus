@@ -1062,7 +1062,8 @@ void ChatWindow::attributeChanged(const AttributesT id,
     PRAGMA45(GCC diagnostic pop)
 }
 
-void ChatWindow::addInputText(const std::string &text, const bool space)
+void ChatWindow::addInputText(const std::string &text,
+                              const bool space)
 {
     const int caretPos = mChatInput->getCaretPosition();
     const std::string &inputText = mChatInput->getText();
@@ -1083,7 +1084,8 @@ void ChatWindow::addItemText(const std::string &item)
 {
     std::ostringstream text;
     text << "[" << item << "]";
-    addInputText(text.str());
+    addInputText(text.str(),
+        true);
 }
 
 void ChatWindow::setVisible(Visible visible)
@@ -1122,7 +1124,7 @@ void ChatWindow::addWhisper(const std::string &restrict nick,
     }
     else if (config.getBoolValue("whispertab"))
     {
-        tab = addWhisperTab(nick, nick);
+        tab = addWhisperTab(nick, nick, false);
         if (tab != nullptr)
             saveState();
     }

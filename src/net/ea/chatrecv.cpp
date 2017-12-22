@@ -92,8 +92,8 @@ void ChatRecv::processWhisperResponseContinue(Net::MessageIn &msg,
                 chatWindow->addWhisper(nick,
                     // TRANSLATORS: chat message
                     strprintf(_("Whisper could not be sent, %s is offline."),
-                        nick.c_str()),
-                        ChatMsgType::BY_SERVER);
+                    nick.c_str()),
+                    ChatMsgType::BY_SERVER);
             }
             break;
         case 0x02:
