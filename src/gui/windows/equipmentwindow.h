@@ -55,8 +55,9 @@ class EquipmentWindow final : public Window,
         /**
          * Constructor.
          */
-        EquipmentWindow(Equipment *const equipment, Being *const being,
-                        const bool foring = false);
+        EquipmentWindow(Equipment *const equipment,
+                        Being *const being,
+                        const bool foring);
 
         A_DELETE_COPY(EquipmentWindow)
 

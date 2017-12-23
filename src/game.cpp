@@ -210,9 +210,12 @@ static void createGuiWindows()
     CREATEWIDGETV0(tradeWindow, TradeWindow);
     CREATEWIDGETV(equipmentWindow, EquipmentWindow,
         PlayerInfo::getEquipment(),
-        localPlayer);
+        localPlayer,
+        false);
     CREATEWIDGETV(beingEquipmentWindow, EquipmentWindow,
-        nullptr, nullptr, true);
+        nullptr,
+        nullptr,
+        true);
     beingEquipmentWindow->setVisible(Visible_false);
     CREATEWIDGETV0(statusWindow, StatusWindow);
     CREATEWIDGETV0(miniStatusWindow, MiniStatusWindow);
