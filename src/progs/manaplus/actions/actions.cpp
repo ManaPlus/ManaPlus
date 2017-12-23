@@ -456,7 +456,7 @@ impHandler0(dropItem)
 {
     if (dropShortcut != nullptr)
     {
-        dropShortcut->dropItems();
+        dropShortcut->dropItems(1);
         return true;
     }
     return false;

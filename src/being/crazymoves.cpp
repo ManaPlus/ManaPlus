@@ -701,7 +701,7 @@ void CrazyMoves::crazyMoveAd() const
                 dropShortcut->dropFirst();
                 break;
             case 'a':
-                dropShortcut->dropItems();
+                dropShortcut->dropItems(1);
                 break;
             default:
                 break;

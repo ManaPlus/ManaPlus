@@ -103,7 +103,7 @@ void DropShortcut::dropItems(const int cnt)
         {
             if (!PacketLimiter::limitPackets(PacketType::PACKET_DROP))
                 return;
-            if (dropItem())
+            if (dropItem(1))
                 n++;
         }
         if (n >= cnt)

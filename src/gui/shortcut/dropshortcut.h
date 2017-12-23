@@ -53,13 +53,13 @@ class DropShortcut final : public ShortcutBase
         /**
          * Drop all items in cicle.
          */
-        void dropItems(const int cnt = 1);
+        void dropItems(const int cnt);
 
     private:
         /**
          * Drop item in cicle.
          */
-        bool dropItem(const int cnt = 1);
+        bool dropItem(const int cnt);
 
         int mLastDropIndex;
 };
