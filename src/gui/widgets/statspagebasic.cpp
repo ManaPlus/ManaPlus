@@ -41,7 +41,7 @@ StatsPageBasic::StatsPageBasic(const Widget2 *const widget) :
     AttributeListener(),
     StatListener(),
     mAttrs(),
-    mAttrCont(new VertContainer(this, 32)),
+    mAttrCont(new VertContainer(this, 32, true, 0)),
     mAttrScroll(new ScrollArea(this, mAttrCont, Opaque_false)),
     mCharacterPointsLabel(new Label(this, "C"))
 {
@@ -63,7 +63,7 @@ StatsPageBasic::StatsPageBasic(const Widget2 *const widget) :
             stat.name,
             stat.tag);
         disp->update();
-        mAttrCont->add2(disp, true);
+        mAttrCont->add2(disp, true, -1);
         mAttrs[stat.attr] = disp;
     }
 
@@ -71,7 +71,7 @@ StatsPageBasic::StatsPageBasic(const Widget2 *const widget) :
     mCharacterPointsLabel->setCaption(strprintf(_("Character points: %d"),
         PlayerInfo::getAttribute(Attributes::PLAYER_CHAR_POINTS)));
     mCharacterPointsLabel->adjustSize();
-    mAttrCont->add1(mCharacterPointsLabel);
+    mAttrCont->add1(mCharacterPointsLabel, -1);
 }
 
 void StatsPageBasic::widgetResized(const Event &event A_UNUSED)

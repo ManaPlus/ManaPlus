@@ -245,7 +245,7 @@ void SetupItemCheckBox::createControls()
     mCheckBox = new CheckBox(this, mText, mValue != "0", mParent, mEventName);
     mCheckBox->setToolTip(mDescription);
     mWidget = mCheckBox;
-    mParent->getContainer()->add1(mWidget);
+    mParent->getContainer()->add1(mWidget, -1);
     mParent->addControl(this);
     mParent->addActionListener(this);
     mWidget->addActionListener(this);
@@ -618,7 +618,7 @@ void SetupItemLabel::createControls()
     mLabel->setToolTip(mDescription);
 
     mWidget = mLabel;
-    mParent->getContainer()->add1(mWidget);
+    mParent->getContainer()->add1(mWidget, -1);
     mParent->addControl(this);
     mParent->addActionListener(this);
     mWidget->addActionListener(this);

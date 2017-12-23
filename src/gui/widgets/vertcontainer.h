@@ -39,15 +39,17 @@ class VertContainer final : public Container,
     public:
         VertContainer(const Widget2 *const widget,
                       const int verticalItemSize,
-                      const bool resizable = true,
-                      const int leftSpacing = 0);
+                      const bool resizable,
+                      const int leftSpacing);
 
         A_DELETE_COPY(VertContainer)
 
-        void add2(Widget *const widget, const bool resizable,
-                  const int spacing = -1);
+        void add2(Widget *const widget,
+                  const bool resizable,
+                  const int spacing);
 
-        void add1(Widget *const widget, const int spacing = -1);
+        void add1(Widget *const widget,
+                  const int spacing);
 
         void clear() override final;
 

@@ -38,7 +38,7 @@ StatsPage::StatsPage(const Widget2 *const widget,
     AttributeListener(),
     StatListener(),
     mAttrs(),
-    mAttrCont(new VertContainer(this, 32)),
+    mAttrCont(new VertContainer(this, 32, true, 0)),
     mAttrScroll(new ScrollArea(this, mAttrCont, Opaque_false))
 {
     addWidgetListener(this);
@@ -59,7 +59,7 @@ StatsPage::StatsPage(const Widget2 *const widget,
             stat.name,
             stat.tag);
         disp->update();
-        mAttrCont->add2(disp, true);
+        mAttrCont->add2(disp, true, -1);
         mAttrs[stat.attr] = disp;
     }
 }
