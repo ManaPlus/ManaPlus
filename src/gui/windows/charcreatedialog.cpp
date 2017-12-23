@@ -243,7 +243,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             const int size = config.getIntValue("fontSize");
             mGenderStrip = new TabStrip(this,
                 "gender_" + getWindowName(),
-                size + 16);
+                size + 16,
+                0);
             mGenderStrip->setPressFirst(false);
             mGenderStrip->addActionListener(this);
             mGenderStrip->setActionEventId("gender_");

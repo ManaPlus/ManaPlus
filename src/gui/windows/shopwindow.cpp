@@ -161,7 +161,7 @@ ShopWindow::ShopWindow() :
 
     const int size = config.getIntValue("fontSize")
         + getOption("tabHeightAdjust", 16);
-    mTabs = new TabStrip(this, "shop", size);
+    mTabs = new TabStrip(this, "shop", size, 0);
     mTabs->addActionListener(this);
     mTabs->setActionEventId("tab_");
     // TRANSLATORS: shop window tab name

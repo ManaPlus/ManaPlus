@@ -98,7 +98,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
 {
     const int size = config.getIntValue("fontSize")
         + getOption("tabHeightAdjust", 16);
-    mTabs = new TabStrip(this, "equipment", size);
+    mTabs = new TabStrip(this, "equipment", size, 0);
     mTabs->addActionListener(this);
     mTabs->setActionEventId("tab_");
     mTabs->setSelectable(false);

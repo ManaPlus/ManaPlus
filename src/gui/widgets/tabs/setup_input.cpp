@@ -69,7 +69,7 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     mDefaultButton(new Button(this, _("Default"), "default", this)),
     // TRANSLATORS: button in input settings tab
     mResetKeysButton(new Button(this, _("Reset all keys"), "resetkeys", this)),
-    mTabs(new TabStrip(this, config.getIntValue("fontSize") + 10)),
+    mTabs(new TabStrip(this, config.getIntValue("fontSize") + 10, 0)),
     mScrollArea(new ScrollArea(this, mKeyList,
         Opaque_true, "setup_input_background.xml")),
     mKeySetting(false),

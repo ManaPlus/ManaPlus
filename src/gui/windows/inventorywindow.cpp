@@ -176,7 +176,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     mItems->addSelectionListener(this);
 
     const int size = config.getIntValue("fontSize");
-    mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 16);
+    mFilter = new TabStrip(this, "filter_" + getWindowName(), size + 16, 0);
     mFilter->addActionListener(this);
     mFilter->setActionEventId("tag_");
     mFilter->setSelectable(false);
