@@ -250,7 +250,7 @@ static void createGuiWindows()
     if (config.getBoolValue("showDidYouKnow"))
     {
         didYouKnowWindow->setVisible(Visible_true);
-        didYouKnowWindow->loadData();
+        didYouKnowWindow->loadData(0);
     }
 
     CREATEWIDGETV(emoteShortcutWindow, ShortcutWindow,

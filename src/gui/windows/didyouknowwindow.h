@@ -56,7 +56,7 @@ class DidYouKnowWindow final : public Window,
          */
         void action(const ActionEvent &event) override final;
 
-        void loadData(int num = 0);
+        void loadData(int num);
 
         void setVisible(Visible visible) override final;
 
