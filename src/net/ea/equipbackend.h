@@ -97,7 +97,7 @@ class EquipBackend final : public Equipment::Backend
                 item->setEquipped(Equipped_true);
 
             if (inventoryWindow != nullptr)
-                inventoryWindow->updateButtons();
+                inventoryWindow->updateButtons(nullptr);
         }
 
     private:

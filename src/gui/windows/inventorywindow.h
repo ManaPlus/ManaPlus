@@ -139,7 +139,7 @@ class InventoryWindow final : public Window,
 
         void updateDropButton();
 
-        void updateButtons(const Item *item = nullptr);
+        void updateButtons(const Item *item);
 
         bool isInputFocused() const A_WARN_UNUSED;
 
