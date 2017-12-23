@@ -497,7 +497,7 @@ void TradeWindow::initTrade(const std::string &nick)
                 const Item *const item = inv->findItem(mAutoAddItem->getId(),
                     mAutoAddItem->getColor());
                 if (item != nullptr)
-                    tradeItem(item, mAutoAddAmount);
+                    tradeItem(item, mAutoAddAmount, false);
             }
         }
         if (mAutoMoney != 0)

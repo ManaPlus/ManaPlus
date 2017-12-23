@@ -129,7 +129,7 @@ class TradeWindow final : public Window,
          */
         void tradeItem(const Item *const item,
                        const int quantity,
-                       const bool check = false) const;
+                       const bool check) const;
 
         /**
          * Updates the labels and makes sure only one item is selected in

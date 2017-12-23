@@ -74,7 +74,7 @@ void ItemAmountWindow::finish(Item *const item,
     {
         case ItemAmountWindowUsage::TradeAdd:
             if (tradeWindow != nullptr)
-                tradeWindow->tradeItem(item, amount);
+                tradeWindow->tradeItem(item, amount, false);
             break;
         case ItemAmountWindowUsage::ItemDrop:
             PlayerInfo::dropItem(item, amount, Sfx_true);
