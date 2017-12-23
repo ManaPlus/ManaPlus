@@ -247,34 +247,34 @@ void WhoIsOnline::updateWindow(size_t numOnline)
     bool addedFromSection(false);
     FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mFriends)
     {
-        mBrowserBox->addRow((*it)->getText());
+        mBrowserBox->addRow((*it)->getText(), false);
         addedFromSection = true;
     }
     if (addedFromSection == true)
     {
-        mBrowserBox->addRow("---");
+        mBrowserBox->addRow("---", false);
         addedFromSection = false;
     }
     FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mEnemy)
     {
-        mBrowserBox->addRow((*it)->getText());
+        mBrowserBox->addRow((*it)->getText(), false);
         addedFromSection = true;
     }
     if (addedFromSection == true)
     {
-        mBrowserBox->addRow("---");
+        mBrowserBox->addRow("---", false);
         addedFromSection = false;
     }
     FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mNeutral)
     {
-        mBrowserBox->addRow((*it)->getText());
+        mBrowserBox->addRow((*it)->getText(), false);
         addedFromSection = true;
     }
     if (addedFromSection == true && !mDisregard.empty())
-        mBrowserBox->addRow("---");
+        mBrowserBox->addRow("---", false);
 
     FOR_EACH (STD_VECTOR<OnlinePlayer*>::const_iterator, it, mDisregard)
-        mBrowserBox->addRow((*it)->getText());
+        mBrowserBox->addRow((*it)->getText(), false);
 
     if (mScrollArea->getVerticalMaxScroll() <
         mScrollArea->getVerticalScrollAmount())

@@ -157,7 +157,7 @@ void HelpWindow::loadFile(std::string file)
         translator, lines);
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
-        mBrowserBox->addRow(lines[i]);
+        mBrowserBox->addRow(lines[i], false);
 }
 
 void HelpWindow::loadTags()
@@ -209,7 +209,8 @@ void HelpWindow::search(const std::string &text0)
             {
                 const char *const str = (*it).c_str();
                 mBrowserBox->addRow(strprintf(" -> @@%s|%s@@", str,
-                    translator->getChar(str)));
+                    translator->getChar(str)),
+                    false);
             }
             loadFile("footer");
             mScrollArea->setVerticalScrollAmount(0);

@@ -176,7 +176,7 @@ void DidYouKnowWindow::loadFile(const int num)
         translator, lines);
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
-        mBrowserBox->addRow(lines[i]);
+        mBrowserBox->addRow(lines[i], false);
 }
 
 void DidYouKnowWindow::setVisible(Visible visible)

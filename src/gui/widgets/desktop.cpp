@@ -73,12 +73,14 @@ Desktop::Desktop(const Widget2 *const widget) :
     const std::string appName = branding.getValue("appName", std::string());
     if (appName.empty())
     {
-        mVersionLabel->addRow(FULL_VERSION);
+        mVersionLabel->addRow(FULL_VERSION,
+            false);
     }
     else
     {
         mVersionLabel->addRow(strprintf("%s (%s)", FULL_VERSION,
-            appName.c_str()));
+            appName.c_str()),
+            false);
     }
     mVersionLabel->addRow("copyright",
         "(C) ManaPlus developers, http://manaplus.org");

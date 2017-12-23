@@ -100,20 +100,23 @@ void ServerInfoWindow::showServerInfo()
     if (type == ServerFreeType::Free)
     {
         // TRANSLATORS: server info comment
-        mBrowserBox->addRow(_("##BServer with free license."));
+        mBrowserBox->addRow(_("##BServer with free license."),
+            false);
     }
     else if (type == ServerFreeType::NonFree)
     {
         // TRANSLATORS: server info comment
-        mBrowserBox->addRow(_("##BServer with non free license."));
+        mBrowserBox->addRow(_("##BServer with non free license."),
+            false);
     }
     else if (type == ServerFreeType::Unknown ||
              type == ServerFreeType::NotSet)
     {
         // TRANSLATORS: server info comment
-        mBrowserBox->addRow(_("##BServer unknown license."));
+        mBrowserBox->addRow(_("##BServer unknown license."),
+            false);
     }
-    mBrowserBox->addRow("");
+    mBrowserBox->addRow("", false);
     addServerComment(mServerInfo.serverUrl,
         // TRANSLATORS: server info comment
         _("Server"));
@@ -141,8 +144,8 @@ void ServerInfoWindow::addSourcesList(const STD_VECTOR<ServerUrlInfo> &list,
 {
     if (!list.empty())
     {
-        mBrowserBox->addRow("");
-        mBrowserBox->addRow(comment);
+        mBrowserBox->addRow("", false);
+        mBrowserBox->addRow(comment, false);
         FOR_EACH (STD_VECTOR<ServerUrlInfo>::const_iterator, it, list)
         {
             const ServerUrlInfo &info = *it;
@@ -171,7 +174,8 @@ void ServerInfoWindow::addServerComment(const std::string &url,
                 comment.c_str(),
                 url.c_str());
         }
-        mBrowserBox->addRow(str);
+        mBrowserBox->addRow(str,
+            false);
     }
 }
 

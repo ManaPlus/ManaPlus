@@ -399,24 +399,24 @@ void UpdaterWindow::loadNews()
             if (file.is_open())
                 file << line << std::endl;
             if (cnt < maxNews)
-                mBrowserBox->addRow(line);
+                mBrowserBox->addRow(line, false);
         }
         else
         {
             if (file.is_open())
                 file << line << std::endl;
             if (cnt < maxNews)
-                mBrowserBox->addRow(line);
+                mBrowserBox->addRow(line, false);
         }
     }
 
     file.close();
     if (cnt > maxNews)
     {
-        mBrowserBox->addRow("");
+        mBrowserBox->addRow("", false);
         // TRANSLATORS: updater window checkbox
         mBrowserBox->addRow("news", _("Show all news (can be slow)"));
-        mBrowserBox->addRow("");
+        mBrowserBox->addRow("", false);
     }
     // Free the memory buffer now that we don't need it anymore
     free(mMemoryBuffer);
@@ -856,15 +856,18 @@ void UpdaterWindow::logic()
     switch (mDownloadStatus)
     {
         case UpdateDownloadStatus::UPDATE_ERROR:
-            mBrowserBox->addRow("");
+            mBrowserBox->addRow("", false);
             // TRANSLATORS: update message
-            mBrowserBox->addRow(_("##1  The update process is incomplete."));
+            mBrowserBox->addRow(_("##1  The update process is incomplete."),
+                false);
             // TRANSLATORS: Continues "The update process is incomplete.".
-            mBrowserBox->addRow(_("##1  It is strongly recommended that"));
+            mBrowserBox->addRow(_("##1  It is strongly recommended that"),
+                false);
             // TRANSLATORS: Begins "It is strongly recommended that".
-            mBrowserBox->addRow(_("##1  you try again later."));
+            mBrowserBox->addRow(_("##1  you try again later."),
+                false);
             if (mDownload != nullptr)
-                mBrowserBox->addRow(mDownload->getError());
+                mBrowserBox->addRow(mDownload->getError(), false);
             mBrowserBox->updateHeight();
             mScrollArea->setVerticalScrollAmount(
                     mScrollArea->getVerticalMaxScroll());
@@ -1095,7 +1098,7 @@ void UpdaterWindow::loadFile(std::string file)
     Files::loadTextFileLocal(mUpdatesDir + "/local/help/news.txt", lines);
 
     for (size_t i = 0, sz = lines.size(); i < sz; ++i)
-        mBrowserBox->addRow(lines[i]);
+        mBrowserBox->addRow(lines[i], false);
     mBrowserBox->updateHeight();
 }
 

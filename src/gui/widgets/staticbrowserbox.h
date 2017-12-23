@@ -78,7 +78,7 @@ class StaticBrowserBox final : public Widget,
          * Adds a text row to the browser.
          */
         void addRow(const std::string &row,
-                    const bool atTop = false);
+                    const bool atTop);
 
         /**
          * Adds a menu line to the browser.

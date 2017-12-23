@@ -220,7 +220,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     const std::string &name = mName;
     if (being->getType() != ActorType::SkillUnit)
     {
-        mBrowserBox->addRow(name + being->getGenderSignWithSpace());
+        mBrowserBox->addRow(name + being->getGenderSignWithSpace(),
+            false);
     }
 
     switch (being->getType())
@@ -274,7 +275,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                                 "@@guild-pos|%s >@@",
                                 // TRANSLATORS: popup menu item
                                 // TRANSLATORS: change player position in guild
-                                _("Change pos in guild")));
+                                _("Change pos in guild")),
+                                false);
                         }
                     }
                 }
@@ -290,7 +292,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                             "@@guild-pos|%s >@@",
                             // TRANSLATORS: popup menu item
                             // TRANSLATORS: change player position in guild
-                            _("Change pos in guild")));
+                            _("Change pos in guild")),
+                            false);
                     }
                 }
                 else
@@ -488,7 +491,8 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             mBrowserBox->addRow(strprintf("%s, %d (%s)",
                 name.c_str(),
                 CAST_S32(being->getSubType()),
-                creatorName.c_str()));
+                creatorName.c_str()),
+                false);
             break;
         }
         case ActorType::Avatar:
@@ -568,7 +572,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mY = y;
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Players"));
+    mBrowserBox->addRow(_("Players"), false);
     FOR_EACH (STD_VECTOR<ActorSprite*>::const_iterator, it, beings)
     {
         const Being *const being = dynamic_cast<const Being*>(*it);
@@ -577,7 +581,8 @@ void PopupMenu::showPopup(const int x, const int y,
         {
             mBrowserBox->addRow(strprintf("@@player_%u|%s >@@",
                 CAST_U32(being->getId()), (being->getName()
-                + being->getGenderSignWithSpace()).c_str()));
+                + being->getGenderSignWithSpace()).c_str()),
+                false);
         }
         else if (actor->getType() == ActorType::FloorItem)
         {
@@ -585,7 +590,8 @@ void PopupMenu::showPopup(const int x, const int y,
                 = static_cast<const FloorItem*>(actor);
             mBrowserBox->addRow(strprintf("@@flooritem_%u|%s >@@",
                 CAST_U32(actor->getId()),
-                floorItem->getName().c_str()));
+                floorItem->getName().c_str()),
+                false);
         }
     }
     mBrowserBox->addSeparator("##3---");
@@ -611,7 +617,7 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
 
     const std::string &name = mName;
 
-    mBrowserBox->addRow(name);
+    mBrowserBox->addRow(name, false);
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: send whisper to player
@@ -673,7 +679,8 @@ void PopupMenu::showPlayerPopup(const std::string &nick)
                 mBrowserBox->addRow(strprintf(
                     // TRANSLATORS: popup menu item
                     // TRANSLATORS: change player position in guild
-                    "@@guild-pos|%s >@@", _("Change pos in guild")));
+                    "@@guild-pos|%s >@@", _("Change pos in guild")),
+                    false);
             }
         }
         else
@@ -722,7 +729,7 @@ void PopupMenu::showPopup(const int x, const int y,
     mName = name;
     mExtName = name;
 
-    mBrowserBox->addRow(name);
+    mBrowserBox->addRow(name, false);
 
     if (config.getBoolValue("enablePickupFilter"))
     {
@@ -770,7 +777,7 @@ void PopupMenu::showPopup(const int x, const int y, MapItem *const mapItem)
     mBrowserBox->clearRows();
 
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Map Item"));
+    mBrowserBox->addRow(_("Map Item"), false);
     // TRANSLATORS: popup menu item
     // TRANSLATORS: rename map item
     mBrowserBox->addRow("rename map", _("Rename"));
@@ -807,7 +814,7 @@ void PopupMenu::showMapPopup(const int x, const int y,
     mBrowserBox->clearRows();
 
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Map Item"));
+    mBrowserBox->addRow(_("Map Item"), false);
 
     if (isAllowCommand(ServerCommandType::slide))
     {
@@ -851,7 +858,7 @@ void PopupMenu::showOutfitsWindowPopup(const int x, const int y)
     mBrowserBox->clearRows();
 
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Outfits"));
+    mBrowserBox->addRow(_("Outfits"), false);
     // TRANSLATORS: popup menu item
     // TRANSLATORS: copy selected outfit to chat input
     mBrowserBox->addRow("/outfittochat", _("Add to chat"));
@@ -889,7 +896,7 @@ void PopupMenu::showSpellPopup(const int x, const int y,
     mY = y;
 
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Spells"));
+    mBrowserBox->addRow(_("Spells"), false);
     // TRANSLATORS: popup menu item
     // TRANSLATORS: edit selected spell
     mBrowserBox->addRow("edit spell", _("Edit spell"));
@@ -1043,7 +1050,8 @@ void PopupMenu::showChatPopup(const int x, const int y, ChatTab *const tab)
                             mBrowserBox->addRow(strprintf("@@guild-pos|%s >@@",
                                 // TRANSLATORS: popup menu item
                                 // TRANSLATORS: change player position in guild
-                                 _("Change pos in guild")));
+                                 _("Change pos in guild")),
+                                false);
                         }
                     }
                 }
@@ -1109,7 +1117,7 @@ void PopupMenu::showChangePos(const int x, const int y)
     initPopup();
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Change guild position"));
+    mBrowserBox->addRow(_("Change guild position"), false);
 
     if (localPlayer == nullptr)
         return;
@@ -1123,7 +1131,8 @@ void PopupMenu::showChangePos(const int x, const int y)
         FOR_EACH (PositionsMap::const_iterator, itr, map)
         {
             mBrowserBox->addRow(strprintf("@@guild-pos-%u|%s@@",
-                itr->first, itr->second.c_str()));
+                itr->first, itr->second.c_str()),
+                false);
         }
         // TRANSLATORS: popup menu item
         // TRANSLATORS: close menu
@@ -1160,7 +1169,7 @@ void PopupMenu::showWindowPopup(Window *const window)
     mCallerWindow = window;
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("window"));
+    mBrowserBox->addRow(_("window"), false);
 
     addWindowMenu(window);
 
@@ -1208,7 +1217,7 @@ void PopupMenu::showEmoteType()
 
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Show emotes for:"));
+    mBrowserBox->addRow(_("Show emotes for:"), false);
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: show emotes for player
@@ -1910,14 +1919,16 @@ void PopupMenu::showPopup(const int x, const int y, Button *const button)
             mBrowserBox->addRow(strprintf("@@hide button_%s|%s %s (%s)@@",
                 // TRANSLATORS: popup menu item
                 btn->getActionEventId().c_str(), _("Hide"),
-                btn->getDescription().c_str(), btn->getCaption().c_str()));
+                btn->getDescription().c_str(), btn->getCaption().c_str()),
+                false);
         }
         else
         {
             mBrowserBox->addRow(strprintf("@@show button_%s|%s %s (%s)@@",
                 // TRANSLATORS: popup menu item
                 btn->getActionEventId().c_str(), _("Show"),
-                btn->getDescription().c_str(), btn->getCaption().c_str()));
+                btn->getDescription().c_str(), btn->getCaption().c_str()),
+                false);
         }
     }
     mBrowserBox->addSeparator("##3---");
@@ -1973,14 +1984,16 @@ void PopupMenu::showPopup(const int x, const int y, const ProgressBar *const b)
             mBrowserBox->addRow(strprintf("@@hide bar_%s|%s %s@@",
                 // TRANSLATORS: popup menu item
                 bar->getActionEventId().c_str(), _("Hide"),
-                bar->getId().c_str()));
+                bar->getId().c_str()),
+                false);
         }
         else
         {
             mBrowserBox->addRow(strprintf("@@show bar_%s|%s %s@@",
                 // TRANSLATORS: popup menu item
                 bar->getActionEventId().c_str(), _("Show"),
-                bar->getId().c_str()));
+                bar->getId().c_str()),
+                false);
         }
     }
 
@@ -2020,11 +2033,11 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
     if (name.empty())
     {
         // TRANSLATORS: popup menu header
-        mBrowserBox->addRow(_("(default)"));
+        mBrowserBox->addRow(_("(default)"), false);
     }
     else
     {
-        mBrowserBox->addRow(name);
+        mBrowserBox->addRow(name, false);
     }
     switch (type)
     {
@@ -2103,11 +2116,11 @@ void PopupMenu::showPickupItemPopup(const int x, const int y,
     if (name.empty())
     {
         // TRANSLATORS: popup menu header
-        mBrowserBox->addRow(_("(default)"));
+        mBrowserBox->addRow(_("(default)"), false);
     }
     else
     {
-        mBrowserBox->addRow(name);
+        mBrowserBox->addRow(name, false);
     }
 
     // TRANSLATORS: popup menu item
@@ -2207,7 +2220,7 @@ void PopupMenu::showWindowsPopup()
     mBrowserBox->clearRows();
     const STD_VECTOR<ButtonText*> &names = windowMenu->getButtonTexts();
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Show window"));
+    mBrowserBox->addRow(_("Show window"), false);
 
     FOR_EACH (STD_VECTOR<ButtonText*>::const_iterator, it, names)
     {
@@ -2261,7 +2274,7 @@ void PopupMenu::showSkillPopup(const SkillInfo *const info)
     mBrowserBox->clearRows();
 
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("Skill"));
+    mBrowserBox->addRow(_("Skill"), false);
     mBrowserBox->addRow("/addskillshortcut 'ITEMID'",
         // TRANSLATORS: popup menu item
         // TRANSLATORS: add skill to shortcurs tab
@@ -2309,13 +2322,13 @@ void PopupMenu::showSkillOffsetPopup(const SkillInfo *const info,
     if (isOffsetX)
     {
         // TRANSLATORS: popup menu header
-        mBrowserBox->addRow(_("Skill cast offset by x"));
+        mBrowserBox->addRow(_("Skill cast offset by x"), false);
         letter = 'x';
     }
     else
     {
         // TRANSLATORS: popup menu header
-        mBrowserBox->addRow(_("Skill cast offset by y"));
+        mBrowserBox->addRow(_("Skill cast offset by y"), false);
         letter = 'y';
     }
     for (int f = -9; f <= 9; f ++)
@@ -2357,7 +2370,7 @@ void PopupMenu::showSkillLevelPopup(const SkillInfo *const info)
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu item
     // TRANSLATORS: skill level header
-    mBrowserBox->addRow(_("Select skill level"));
+    mBrowserBox->addRow(_("Select skill level"), false);
     for (int f = 1; f <= mItemIndex; f ++)
     {
         mBrowserBox->addRow(strprintf("/selectskilllevel %d %d", mItemId, f),
@@ -2396,7 +2409,7 @@ void PopupMenu::showSkillTypePopup(const SkillInfo *const info)
 
     // TRANSLATORS: popup menu item
     // TRANSLATORS: skill cast type header
-    mBrowserBox->addRow(_("Select skill cast type"));
+    mBrowserBox->addRow(_("Select skill cast type"), false);
     mBrowserBox->addRow(strprintf("/selectskilltype %d 0", mItemId),
         // TRANSLATORS: popup menu item
         // TRANSLATORS: skill cast type
@@ -2886,7 +2899,8 @@ void PopupMenu::showPlayerMenu()
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(strprintf(_("Show %s"),
-        mName.c_str()));
+        mName.c_str()),
+        false);
     if (isAllowCommand(ServerCommandType::accinfo))
     {
         // TRANSLATORS: popup menu item
@@ -3157,7 +3171,8 @@ void PopupMenu::showMuteCommands()
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
     mBrowserBox->addRow(strprintf(_("Mute %s"),
-        mName.c_str()));
+        mName.c_str()),
+        false);
     if (mBeingId != BeingId_zero &&
         Net::getNetworkType() != ServerType::TMWATHENA &&
         isAllowCommand(ServerCommandType::mute))
@@ -3381,7 +3396,7 @@ void PopupMenu::showGMPopup(const std::string &name)
 {
     mBrowserBox->clearRows();
     // TRANSLATORS: popup menu header
-    mBrowserBox->addRow(_("GM commands"));
+    mBrowserBox->addRow(_("GM commands"), false);
     if (localPlayer->isGM())
     {
         switch (mType)

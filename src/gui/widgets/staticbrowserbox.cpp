@@ -291,7 +291,8 @@ void StaticBrowserBox::addRow(const std::string &cmd,
                               const char *const text)
 {
     addRow(strprintf("@@%s|%s@@", encodeLinkText(cmd).c_str(),
-        encodeLinkText(text).c_str()));
+        encodeLinkText(text).c_str()),
+        false);
 }
 
 void StaticBrowserBox::addImage(const std::string &path)
