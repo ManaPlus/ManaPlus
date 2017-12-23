@@ -58,8 +58,8 @@ class Popup notfinal : public Container,
          *                debugging purposes.
          * @param skin    The location where the Popup's skin XML can be found.
          */
-        explicit Popup(const std::string &name = "",
-                       std::string skin = "");
+        Popup(const std::string &name,
+              std::string skin);
 
         A_DELETE_COPY(Popup)
 
