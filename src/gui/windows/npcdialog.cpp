@@ -111,7 +111,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mItems(),
     mImages(),
     mItemList(CREATEWIDGETR(ExtendedListBox,
-        this, this, "extendedlistbox.xml")),
+        this, this, "extendedlistbox.xml", 13)),
     mListScrollArea(new ScrollArea(this, mItemList,
         fromBool(getOptionBool("showlistbackground"), Opaque),
         "npc_listbackground.xml")),

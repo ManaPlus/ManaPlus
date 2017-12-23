@@ -66,7 +66,7 @@ QuestsWindow::QuestsWindow() :
     ActionListener(),
     mQuestsModel(new QuestsModel),
     mQuestsListBox(CREATEWIDGETR(ExtendedListBox,
-        this, mQuestsModel, "extendedlistbox.xml")),
+        this, mQuestsModel, "extendedlistbox.xml", 13)),
     mQuestScrollArea(new ScrollArea(this, mQuestsListBox,
         fromBool(getOptionBool("showlistbackground"), Opaque),
         "quests_list_background.xml")),
