@@ -254,7 +254,9 @@ void OutfitWindow::action(const ActionEvent &event)
     }
     else if (eventId == "equip")
     {
-        wearOutfit(mCurrentOutfit);
+        wearOutfit(mCurrentOutfit,
+            true,
+            false);
         if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
     }
@@ -266,7 +268,8 @@ void OutfitWindow::action(const ActionEvent &event)
     }
 }
 
-void OutfitWindow::wearOutfit(const int outfit, const bool unwearEmpty,
+void OutfitWindow::wearOutfit(const int outfit,
+                              const bool unwearEmpty,
                               const bool select)
 {
     bool isEmpty = true;
@@ -647,7 +650,9 @@ void OutfitWindow::wearNextOutfit(const bool all)
             }
         }
     }
-    wearOutfit(mCurrentOutfit);
+    wearOutfit(mCurrentOutfit,
+        true,
+        false);
 }
 
 void OutfitWindow::wearPreviousOutfit(const bool all)
@@ -669,7 +674,9 @@ void OutfitWindow::wearPreviousOutfit(const bool all)
             }
         }
     }
-    wearOutfit(mCurrentOutfit);
+    wearOutfit(mCurrentOutfit,
+        true,
+        false);
 }
 
 void OutfitWindow::copyFromEquiped()
@@ -701,12 +708,16 @@ void OutfitWindow::copyFromEquiped(const int dst)
 void OutfitWindow::wearAwayOutfit()
 {
     copyFromEquiped(OUTFITS_COUNT);
-    wearOutfit(mAwayOutfit, false);
+    wearOutfit(mAwayOutfit,
+        false,
+        false);
 }
 
 void OutfitWindow::unwearAwayOutfit()
 {
-    wearOutfit(OUTFITS_COUNT);
+    wearOutfit(OUTFITS_COUNT,
+        true,
+        false);
 }
 
 void OutfitWindow::clearCurrentOutfit()

@@ -104,7 +104,7 @@ impHandler(moveLeft)
     if (outfitWindow != nullptr &&
         inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
-        outfitWindow->wearPreviousOutfit();
+        outfitWindow->wearPreviousOutfit(false);
         if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;
@@ -125,7 +125,7 @@ impHandler(moveRight)
     if (outfitWindow != nullptr &&
         inputManager.isActionActive(InputAction::WEAR_OUTFIT))
     {
-        outfitWindow->wearNextOutfit();
+        outfitWindow->wearNextOutfit(false);
         if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;

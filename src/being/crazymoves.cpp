@@ -725,13 +725,13 @@ void CrazyMoves::crazyMoveAo() const
         if (mMoveProgram[settings.crazyMoveState] == 'n')
         {
             settings.crazyMoveState ++;
-            outfitWindow->wearNextOutfit();
+            outfitWindow->wearNextOutfit(false);
         }
         // wear previous outfit
         else if (mMoveProgram[settings.crazyMoveState] == 'p')
         {
             settings.crazyMoveState ++;
-            outfitWindow->wearPreviousOutfit();
+            outfitWindow->wearPreviousOutfit(false);
         }
     }
 }

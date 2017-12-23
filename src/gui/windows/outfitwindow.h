@@ -66,8 +66,9 @@ class OutfitWindow final : public Window,
 
         void load();
 
-        void wearOutfit(const int outfit, const bool unwearEmpty = true,
-                        const bool select = false);
+        void wearOutfit(const int outfit,
+                        const bool unwearEmpty,
+                        const bool select);
 
         void copyOutfit(const int outfit);
 
@@ -83,9 +84,9 @@ class OutfitWindow final : public Window,
 
         void previous();
 
-        void wearNextOutfit(const bool all = false);
+        void wearNextOutfit(const bool all);
 
-        void wearPreviousOutfit(const bool all = false);
+        void wearPreviousOutfit(const bool all);
 
         void wearAwayOutfit();
 

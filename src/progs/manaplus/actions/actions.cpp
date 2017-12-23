@@ -345,7 +345,9 @@ impHandler(outfit)
         const int num = event.action - InputAction::OUTFIT_1;
         if ((outfitWindow != nullptr) && num >= 0)
         {
-            outfitWindow->wearOutfit(num);
+            outfitWindow->wearOutfit(num,
+                true,
+                false);
             if (Game::instance() != nullptr)
                 Game::instance()->setValidSpeed();
             return true;
