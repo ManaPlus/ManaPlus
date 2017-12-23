@@ -608,12 +608,12 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
             if (Widget::widgetExists(widget))
             {
                 distributeMouseEvent(widget,
-                                     MouseEventType::EXITED,
-                                     mouseInput.getButton(),
-                                     mouseInput.getX(),
-                                     mouseInput.getY(),
-                                     true,
-                                     true);
+                    MouseEventType::EXITED,
+                    mouseInput.getButton(),
+                    mouseInput.getX(),
+                    mouseInput.getY(),
+                    true,
+                    true);
             }
 
             mWidgetWithMouseQueue.pop_front();
@@ -660,12 +660,12 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
                     || !widget->isVisible())
                 {
                     distributeMouseEvent(widget,
-                                         MouseEventType::EXITED,
-                                         button,
-                                         mouseX,
-                                         mouseY,
-                                         true,
-                                         true);
+                        MouseEventType::EXITED,
+                        button,
+                        mouseX,
+                        mouseY,
+                        true,
+                        true);
                     mClickCount = 1;
                     mLastMousePressTimeStamp = 0U;
                     mWidgetWithMouseQueue.erase(iter);
@@ -731,12 +731,12 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
             && Widget::widgetExists(widget))
         {
             distributeMouseEvent(widget,
-                                 MouseEventType::ENTERED,
-                                 button,
-                                 mouseX,
-                                 mouseY,
-                                 true,
-                                 true);
+                MouseEventType::ENTERED,
+                button,
+                mouseX,
+                mouseY,
+                true,
+                true);
             mWidgetWithMouseQueue.push_front(widget);
         }
 
@@ -748,19 +748,23 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
     if (mFocusHandler->getDraggedWidget() != nullptr)
     {
         distributeMouseEvent(mFocusHandler->getDraggedWidget(),
-                             MouseEventType::DRAGGED,
-                             mLastMouseDragButton,
-                             mouseX,
-                             mouseY);
+            MouseEventType::DRAGGED,
+            mLastMouseDragButton,
+            mouseX,
+            mouseY,
+            false,
+            false);
     }
     else
     {
         Widget *const sourceWidget = getMouseEventSource(mouseX, mouseY);
         distributeMouseEvent(sourceWidget,
-                             MouseEventType::MOVED,
-                             button,
-                             mouseX,
-                             mouseY);
+            MouseEventType::MOVED,
+            button,
+            mouseX,
+            mouseY,
+            false,
+            false);
     }
     mMouseInactivityTimer = 0;
 }
@@ -801,7 +805,13 @@ void Gui::handleMousePressed(const MouseInput &mouseInput)
         mClickCount = 1;
     }
 
-    distributeMouseEvent(sourceWidget, MouseEventType::PRESSED, button, x, y);
+    distributeMouseEvent(sourceWidget,
+        MouseEventType::PRESSED,
+        button,
+        x,
+        y,
+        false,
+        false);
     mFocusHandler->setLastWidgetPressed(sourceWidget);
     mFocusHandler->setDraggedWidget(sourceWidget);
     mLastMouseDragButton = button;
@@ -1087,7 +1097,9 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
                 MouseEventType::RELEASED2,
                 mouseInput.getButton(),
                 mouseInput.getX(),
-                mouseInput.getY());
+                mouseInput.getY(),
+                false,
+                false);
         }
     }
 
@@ -1095,19 +1107,23 @@ void Gui::handleMouseReleased(const MouseInput &mouseInput)
         return;
     sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
     distributeMouseEvent(sourceWidget,
-                         MouseEventType::RELEASED,
-                         mouseInput.getButton(),
-                         mouseInput.getX(),
-                         mouseInput.getY());
+        MouseEventType::RELEASED,
+        mouseInput.getButton(),
+        mouseInput.getX(),
+        mouseInput.getY(),
+        false,
+        false);
 
     if (mouseInput.getButton() == mLastMousePressButton
         && mFocusHandler->getLastWidgetPressed() == sourceWidget)
     {
         distributeMouseEvent(sourceWidget,
-                             MouseEventType::CLICKED,
-                             mouseInput.getButton(),
-                             mouseInput.getX(),
-                             mouseInput.getY());
+            MouseEventType::CLICKED,
+            mouseInput.getButton(),
+            mouseInput.getX(),
+            mouseInput.getY(),
+            false,
+            false);
 
         mFocusHandler->setLastWidgetPressed(nullptr);
     }
@@ -1214,10 +1230,12 @@ void Gui::handleMouseWheelMovedDown(const MouseInput& mouseInput)
 
         sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
         distributeMouseEvent(sourceWidget,
-             MouseEventType::WHEEL_MOVED_DOWN,
-             mouseInput.getButton(),
-             mouseInput.getX(),
-             mouseInput.getY());
+            MouseEventType::WHEEL_MOVED_DOWN,
+            mouseInput.getButton(),
+            mouseInput.getX(),
+            mouseInput.getY(),
+            false,
+            false);
     }
 }
 
@@ -1236,10 +1254,12 @@ void Gui::handleMouseWheelMovedUp(const MouseInput& mouseInput)
 
         sourceWidget->getAbsolutePosition(sourceWidgetX, sourceWidgetY);
         distributeMouseEvent(sourceWidget,
-             MouseEventType::WHEEL_MOVED_UP,
-             mouseInput.getButton(),
-             mouseInput.getX(),
-             mouseInput.getY());
+            MouseEventType::WHEEL_MOVED_UP,
+            mouseInput.getButton(),
+            mouseInput.getX(),
+            mouseInput.getY(),
+            false,
+            false);
     }
 }
 
@@ -1443,12 +1463,12 @@ void Gui::handleModalFocusGained()
         if (Widget::widgetExists(widget))
         {
             distributeMouseEvent(widget,
-                                 MouseEventType::EXITED,
-                                 mLastMousePressButton,
-                                 mLastMouseX,
-                                 mLastMouseY,
-                                 true,
-                                 true);
+                MouseEventType::EXITED,
+                mLastMousePressButton,
+                mLastMouseX,
+                mLastMouseY,
+                true,
+                true);
         }
 
         mWidgetWithMouseQueue.pop_front();
@@ -1489,12 +1509,12 @@ void Gui::handleModalFocusReleased()
         if (!widgetIsPresentInQueue && Widget::widgetExists(widget))
         {
             distributeMouseEvent(widget,
-                                 MouseEventType::ENTERED,
-                                 mLastMousePressButton,
-                                 mLastMouseX,
-                                 mLastMouseY,
-                                 false,
-                                 true);
+                MouseEventType::ENTERED,
+                mLastMousePressButton,
+                mLastMouseX,
+                mLastMouseY,
+                false,
+                true);
             mWidgetWithMouseQueue.push_front(widget);
         }
 

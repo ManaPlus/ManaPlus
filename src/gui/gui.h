@@ -323,8 +323,8 @@ class Gui final
                                   const MouseEventTypeT type,
                                   const MouseButtonT button,
                                   const int x, const int y,
-                                  const bool force = false,
-                                  const bool toSourceOnly = false);
+                                  const bool force,
+                                  const bool toSourceOnly);
 
         /**
          *
