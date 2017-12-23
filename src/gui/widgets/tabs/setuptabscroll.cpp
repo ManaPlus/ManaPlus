@@ -31,7 +31,7 @@
 SetupTabScroll::SetupTabScroll(const Widget2 *const widget) :
     SetupTab(widget),
     mContainer(new VertContainer(this, 25, false, 8)),
-    mScroll(new ScrollArea(this, mContainer, Opaque_false)),
+    mScroll(new ScrollArea(this, mContainer, Opaque_false, std::string())),
     mItems(),
     mAllItems(),
     mPreferredFirstItemSize(200)

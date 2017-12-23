@@ -67,7 +67,8 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     mPlayerTableModel(new PlayerTableModel(this)),
     mPlayerTable(new GuiTable(this, mPlayerTableModel)),
     mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel)),
-    mPlayerScrollArea(new ScrollArea(this, mPlayerTable)),
+    mPlayerScrollArea(new ScrollArea(this,
+        mPlayerTable, Opaque_true, std::string())),
     // TRANSLATORS: relation dialog button
     mDefaultTrading(new CheckBox(this, _("Allow trading"),
         (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)),

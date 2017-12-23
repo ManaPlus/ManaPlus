@@ -139,7 +139,8 @@ void SkillDialog::addDefaultTab()
     listbox->addActionListener(this);
     ScrollArea *const scroll = new ScrollArea(this,
         listbox,
-        Opaque_false);
+        Opaque_false,
+        std::string());
     scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
     // TRANSLATORS: unknown skills tab name
@@ -401,7 +402,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                     listbox->addActionListener(this);
                     scroll = new ScrollArea(this,
                         listbox,
-                        Opaque_false);
+                        Opaque_false,
+                        std::string());
                     scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
                     scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
                     tab = new SkillTab(this, setName, listbox);
@@ -416,7 +418,8 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                     listbox->addActionListener(this);
                     scroll = new ScrollArea(this,
                         listbox,
-                        Opaque_false);
+                        Opaque_false,
+                        std::string());
                     scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
                     scroll->setVerticalScrollPolicy(ScrollArea::SHOW_ALWAYS);
                     tab = new SkillTab(this, setName, listbox);

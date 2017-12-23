@@ -136,7 +136,8 @@ PopupMenu::PopupMenu() :
     mPlayerListener.setNick("");
     mPlayerListener.setDialog(nullptr);
     mPlayerListener.setType(ActorType::Unknown);
-    mScrollArea = new ScrollArea(this, mBrowserBox, Opaque_false);
+    mScrollArea = new ScrollArea(this,
+        mBrowserBox, Opaque_false, std::string());
     mScrollArea->setVerticalScrollPolicy(ScrollArea::SHOW_AUTO);
     addMouseListener(this);
 }

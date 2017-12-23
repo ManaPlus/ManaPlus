@@ -39,7 +39,7 @@ StatsPage::StatsPage(const Widget2 *const widget,
     StatListener(),
     mAttrs(),
     mAttrCont(new VertContainer(this, 32, true, 0)),
-    mAttrScroll(new ScrollArea(this, mAttrCont, Opaque_false))
+    mAttrScroll(new ScrollArea(this, mAttrCont, Opaque_false, std::string()))
 {
     addWidgetListener(this);
     setSelectable(false);

@@ -54,7 +54,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
                                int width, int height) :
     Window("Window", Modal_false, nullptr, skinFile),
     mItems(content),
-    mScrollArea(new ScrollArea(this, mItems, Opaque_false)),
+    mScrollArea(new ScrollArea(this, mItems, Opaque_false, std::string())),
     mTabs(nullptr),
     mPages(),
     mButtonIndex(0)
@@ -171,7 +171,10 @@ void ShortcutWindow::addTab(const std::string &name,
 {
     if ((content == nullptr) || (mTabs == nullptr))
         return;
-    ScrollArea *const scroll = new ScrollArea(this, content, Opaque_false);
+    ScrollArea *const scroll = new ScrollArea(this,
+        content,
+        Opaque_false,
+        std::string());
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     content->setWidget2(this);

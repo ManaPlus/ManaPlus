@@ -110,8 +110,8 @@ class ScrollArea final : public BasicContainer,
 
         ScrollArea(Widget2 *const widget2,
                    Widget *const widget,
-                   const Opaque opaque = Opaque_true,
-                   const std::string &skin = "");
+                   const Opaque opaque,
+                   const std::string &skin);
 
         A_DELETE_COPY(ScrollArea)
 

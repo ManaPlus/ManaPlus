@@ -104,7 +104,8 @@ WhoIsOnline::WhoIsOnline() :
     mCurlError(new char[CURL_ERROR_SIZE]),
     mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "onlinebrowserbox.xml")),
-    mScrollArea(new ScrollArea(this, mBrowserBox, Opaque_false)),
+    mScrollArea(new ScrollArea(this,
+        mBrowserBox, Opaque_false, std::string())),
     // TRANSLATORS: who is online. button.
     mUpdateButton(new Button(this, _("Update"), "update", this)),
     mOnlinePlayers(),
