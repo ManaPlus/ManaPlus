@@ -126,7 +126,7 @@ class ShortcutBase notfinal
         void removeItem(const size_t index)
         { mItems[index] = -1; save(); }
 
-        void clear(const bool isSave = true);
+        void clear(const bool isSave);
 
     private:
         int *mItems A_NONNULLPOINTER;

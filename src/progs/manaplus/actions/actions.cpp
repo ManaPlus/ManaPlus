@@ -1863,7 +1863,7 @@ impHandler(kick)
 impHandler0(clearDrop)
 {
     if (dropShortcut != nullptr)
-        dropShortcut->clear();
+        dropShortcut->clear(true);
     return true;
 }
 
