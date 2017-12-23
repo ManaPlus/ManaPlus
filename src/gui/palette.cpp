@@ -32,18 +32,18 @@
 
 #include "debug.h"
 
-const Color Palette::BLACK = Color(0, 0, 0);
+const Color Palette::BLACK = Color(0, 0, 0, 255);
 Palette::Palettes Palette::mInstances;
 
 const Color Palette::RAINBOW_COLORS[7] =
 {
-    Color(255, 0, 0),
-    Color(255, 153, 0),
-    Color(255, 255, 0),
-    Color(0, 153, 0),
-    Color(0, 204, 204),
-    Color(51, 0, 153),
-    Color(153, 0, 153)
+    Color(255, 0, 0, 255),
+    Color(255, 153, 0, 255),
+    Color(255, 255, 0, 255),
+    Color(0, 153, 0, 255),
+    Color(0, 204, 204, 255),
+    Color(51, 0, 153, 255),
+    Color(153, 0, 153, 255)
 };
 
 const int Palette::RAINBOW_COLOR_COUNT = 7;

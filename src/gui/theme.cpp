@@ -172,7 +172,7 @@ Color Theme::getProgressColor(const ProgressColorIdT type,
         }
     }
 
-    return Color(color[0], color[1], color[2]);
+    return Color(color[0], color[1], color[2], 255U);
 }
 
 Skin *Theme::load(const std::string &filename,

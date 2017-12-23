@@ -134,7 +134,7 @@ void Viewport::draw(Graphics *const graphics)
 
     if ((mMap == nullptr) || (localPlayer == nullptr))
     {
-        graphics->setColor(Color(64, 64, 64));
+        graphics->setColor(Color(64, 64, 64, 255));
         graphics->fillRectangle(
                 Rect(0, 0, getWidth(), getHeight()));
         BLOCK_END("Viewport::draw 1")

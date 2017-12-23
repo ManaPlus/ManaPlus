@@ -118,7 +118,7 @@ class Color final
         constexpr Color(const unsigned int ar,
                         const unsigned int ag,
                         const unsigned int ab,
-                        const unsigned int aa = 255) :
+                        const unsigned int aa) :
             r(ar),
             g(ag),
             b(ab),

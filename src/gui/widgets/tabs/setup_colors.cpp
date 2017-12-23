@@ -477,15 +477,16 @@ void Setup_Colors::updateColor() const
     if (grad == GradientType::STATIC)
     {
         userPalette->setColor(type,
-                CAST_S32(mRedSlider->getValue()),
-                CAST_S32(mGreenSlider->getValue()),
-                CAST_S32(mBlueSlider->getValue()));
+            CAST_S32(mRedSlider->getValue()),
+            CAST_S32(mGreenSlider->getValue()),
+            CAST_S32(mBlueSlider->getValue()));
     }
     else if (grad == GradientType::PULSE)
     {
         userPalette->setTestColor(type, Color(
-                CAST_S32(mRedSlider->getValue()),
-                CAST_S32(mGreenSlider->getValue()),
-                CAST_S32(mBlueSlider->getValue())));
+            CAST_S32(mRedSlider->getValue()),
+            CAST_S32(mGreenSlider->getValue()),
+            CAST_S32(mBlueSlider->getValue()),
+            255U));
     }
 }

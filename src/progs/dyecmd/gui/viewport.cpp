@@ -94,7 +94,7 @@ void Viewport::draw(Graphics *const graphics)
     BLOCK_START("Viewport::draw 1")
     static int lastTick = tick_time;
 
-    graphics->setColor(Color(64, 64, 64));
+    graphics->setColor(Color(64, 64, 64, 255));
     graphics->fillRectangle(
         Rect(0, 0, getWidth(), getHeight()));
 
