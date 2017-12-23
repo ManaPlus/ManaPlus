@@ -273,14 +273,18 @@ void ShopListBox::mouseReleased(MouseEvent& event)
             ItemAmountWindow::showWindow(
                 ItemAmountWindowUsage::ShopBuyAdd,
                 nullptr,
-                item);
+                item,
+                0,
+                0);
         }
         else
         {
             ItemAmountWindow::showWindow(
                 ItemAmountWindowUsage::ShopSellAdd,
                 nullptr,
-                item);
+                item,
+                0,
+                0);
         }
     }
 

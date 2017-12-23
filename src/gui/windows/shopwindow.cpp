@@ -399,7 +399,8 @@ void ShopWindow::action(const ActionEvent &event)
                 ItemAmountWindow::showWindow(ItemAmountWindowUsage::ShopBuyAdd,
                     this,
                     item,
-                    sumAmount(item));
+                    sumAmount(item),
+                    0);
             }
             else
             {
@@ -407,7 +408,8 @@ void ShopWindow::action(const ActionEvent &event)
                     ItemAmountWindowUsage::ShopSellAdd,
                     this,
                     item,
-                    sumAmount(item));
+                    sumAmount(item),
+                    0);
             }
         }
     }

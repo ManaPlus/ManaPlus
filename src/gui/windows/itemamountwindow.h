@@ -80,8 +80,8 @@ class ItemAmountWindow final : public Window,
         static void showWindow(const ItemAmountWindowUsageT usage,
                                Window *const parent,
                                Item *const item,
-                               int maxRange = 0,
-                               const int tag = 0);
+                               int maxRange,
+                               const int tag);
 
         ~ItemAmountWindow();
 
@@ -96,7 +96,7 @@ class ItemAmountWindow final : public Window,
         ItemAmountWindow(const ItemAmountWindowUsageT usage,
                          Window *const parent,
                          Item *const item,
-                         const int maxRange = 0);
+                         const int maxRange);
 
         /**< Item amount caption. */
         IntTextField *mItemAmountTextField A_NONNULLPOINTER;

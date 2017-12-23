@@ -890,7 +890,9 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                     ItemAmountWindow::showWindow(
                         ItemAmountWindowUsage::MailAdd,
                         mailEditWindow,
-                        item);
+                        item,
+                        0,
+                        0);
                 }
                 else
                 {

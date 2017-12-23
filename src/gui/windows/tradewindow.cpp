@@ -399,7 +399,10 @@ void TradeWindow::action(const ActionEvent &event)
 
         // Choose amount of items to trade
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::TradeAdd,
-            this, item);
+            this,
+            item,
+            0,
+            0);
 
         setStatus(PREPARING);
     }

@@ -473,7 +473,10 @@ impHandler(dropItemId)
     if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
-            inventoryWindow, item);
+            inventoryWindow,
+            item,
+            0,
+            0);
     }
     return true;
 }
@@ -485,7 +488,10 @@ impHandler(dropItemInv)
     if ((item != nullptr) && !PlayerInfo::isItemProtected(item->getId()))
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::ItemDrop,
-            inventoryWindow, item);
+            inventoryWindow,
+            item,
+            0,
+            0);
     }
     return true;
 }
@@ -1752,7 +1758,10 @@ impHandler(invToStorage)
     else
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreAdd,
-            inventoryWindow, item);
+            inventoryWindow,
+            item,
+            0,
+            0);
     }
     return true;
 }
@@ -1773,7 +1782,10 @@ impHandler(tradeAdd)
     else
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::TradeAdd,
-            tradeWindow, item);
+            tradeWindow,
+            item,
+            0,
+            0);
     }
     return true;
 }
@@ -1795,7 +1807,10 @@ impHandler(storageToInv)
     else
     {
         ItemAmountWindow::showWindow(ItemAmountWindowUsage::StoreRemove,
-            storageWindow, item);
+            storageWindow,
+            item,
+            0,
+            0);
     }
     return true;
 }
