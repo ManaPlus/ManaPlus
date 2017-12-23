@@ -773,7 +773,8 @@ bool NpcDialog::isAnyInputFocused()
     return false;
 }
 
-void NpcDialog::integerRequest(const int defaultValue, const int min,
+void NpcDialog::integerRequest(const int defaultValue,
+                               const int min,
                                const int max)
 {
     mActionState = NpcActionState::INPUT;

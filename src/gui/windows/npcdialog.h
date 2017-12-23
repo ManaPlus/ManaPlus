@@ -98,7 +98,8 @@ class NpcDialog final : public Window,
          *
          * @param string The text to add.
          */
-        void addText(const std::string &string, const bool save = true);
+        void addText(const std::string &string,
+                     const bool save);
 
         /**
          * When called, the widget will show a "Next" button.
@@ -156,7 +157,7 @@ class NpcDialog final : public Window,
         /**
          * Requests a text string from the user.
          */
-        void textRequest(const std::string &defaultText = "");
+        void textRequest(const std::string &defaultText);
 
         bool isInputFocused() const A_WARN_UNUSED;
 
@@ -167,8 +168,9 @@ class NpcDialog final : public Window,
         /**
          * Requests a interger from the user.
          */
-        void integerRequest(const int defaultValue = 0, const int min = 0,
-                            const int max = 2147483647);
+        void integerRequest(const int defaultValue,
+                            const int min,
+                            const int max);
 
         void itemRequest(const int size);
 

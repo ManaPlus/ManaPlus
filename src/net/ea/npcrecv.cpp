@@ -71,7 +71,7 @@ void NpcRecv::processNpcMessage(Net::MessageIn &msg)
     if (message.size() > 3 && message.substr(0, 3) == "###")
         return;
     if (mDialog != nullptr)
-        mDialog->addText(message);
+        mDialog->addText(message, true);
 }
 
 void NpcRecv::processNpcClose(Net::MessageIn &msg)
@@ -98,7 +98,7 @@ void NpcRecv::processNpcIntInput(Net::MessageIn &msg)
     npcHandler->getNpc(msg, NpcAction::Other);
     mRequestLang = false;
     if (mDialog != nullptr)
-        mDialog->integerRequest(0);
+        mDialog->integerRequest(0, 0, 2147483647);
 }
 
 void NpcRecv::processNpcStrInput(Net::MessageIn &msg)
@@ -112,7 +112,7 @@ void NpcRecv::processNpcStrInput(Net::MessageIn &msg)
     }
     else if (mDialog != nullptr)
     {
-        mDialog->textRequest("");
+        mDialog->textRequest(std::string());
     }
 }
 
