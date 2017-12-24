@@ -71,7 +71,7 @@ ItemPopup::ItemPopup() :
     mItemCards(new TextBox(this)),
     mItemOptions(new TextBox(this)),
     mItemType(ItemDbType::UNUSABLE),
-    mIcon(new Icon(this, nullptr)),
+    mIcon(new Icon(this, nullptr, AutoRelease_false)),
     mLastName(),
     mCardsStr(),
     mItemOptionsStr(),

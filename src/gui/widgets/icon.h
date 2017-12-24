@@ -44,14 +44,14 @@ class Icon final : public Widget
          */
         Icon(const Widget2 *const widget,
              const std::string &filename,
-             const AutoRelease autoRelease = AutoRelease_false);
+             const AutoRelease autoRelease);
 
         /**
          * Constructor, uses an existing Image.
          */
         Icon(const Widget2 *const widget,
              Image *const image,
-             const AutoRelease autoRelease = AutoRelease_false);
+             const AutoRelease autoRelease);
 
         A_DELETE_COPY(Icon)
 
