@@ -294,7 +294,8 @@ void NpcDialog::addText(const std::string &text, const bool save)
             mText.clear();
 
         mNewText.append(text);
-        mTextBox->addRow(text);
+        mTextBox->addRow(text,
+            false);
     }
     mScrollArea->setVerticalScrollAmount(mScrollArea->getVerticalMaxScroll());
     mActionState = NpcActionState::WAIT;
@@ -1312,7 +1313,8 @@ void NpcDialog::createSkinControls()
         splitToStringVector(parts, info->text, '\n');
         FOR_EACH (StringVectCIter, it2, parts)
         {
-            box->addRow(*it2);
+            box->addRow(*it2,
+                false);
         }
     }
     FOR_EACH (STD_VECTOR<NpcButtonInfo*>::const_iterator,

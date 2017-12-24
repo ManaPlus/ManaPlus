@@ -330,31 +330,36 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
         {
             case QuestType::TEXT:
             default:
-                mText->addRow(text);
+                mText->addRow(text,
+                    false);
                 break;
             case QuestType::NAME:
-                mText->addRow(std::string("[").append(text).append("]"));
+                mText->addRow(std::string("[").append(text).append("]"),
+                    false);
                 break;
             case QuestType::REWARD:
                 mText->addRow(std::string(
                     // TRANSLATORS: quest reward
                     _("Reward:")).append(
                     " ").append(
-                    text));
+                    text),
+                    false);
                 break;
             case QuestType::GIVER:
                 mText->addRow(std::string(
                     // TRANSLATORS: quest giver name
                     _("Quest Giver:")).append(
                     " ").append(
-                    text));
+                    text),
+                    false);
                 break;
             case QuestType::NPC:
                 mText->addRow(std::string(
                     // TRANSLATORS: quest npc name
                     _("Npc:")).append(
                     " ").append(
-                    text));
+                    text),
+                    false);
                 break;
             case QuestType::COORDINATES:
                 mText->addRow(std::string(
@@ -363,7 +368,8 @@ void QuestsWindow::showQuest(const QuestItem *const quest)
                     _("Coordinates:"),
                     data.data1.c_str(),
                     data.data2.c_str(),
-                    text.c_str())));
+                    text.c_str())),
+                    false);
                 break;
         }
     }

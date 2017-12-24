@@ -503,7 +503,8 @@ void ChatTab::addRow(std::string &line)
             }
         }
     }
-    mTextOutput->addRow(line);
+    mTextOutput->addRow(line,
+        false);
 }
 
 void ChatTab::loadFromLogFile(const std::string &name)
