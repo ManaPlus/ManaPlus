@@ -55,7 +55,7 @@ Desktop::Desktop(const Widget2 *const widget) :
     mVersionLabel(new StaticBrowserBox(this, Opaque_false,
         "browserbox.xml")),
     mSkin(nullptr),
-    mBackgroundGrayColor(getThemeColor(ThemeColorId::BACKGROUND_GRAY)),
+    mBackgroundGrayColor(getThemeColor(ThemeColorId::BACKGROUND_GRAY, 255U)),
     mShowBackground(true)
 {
     mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND, 128);

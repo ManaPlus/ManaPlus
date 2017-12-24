@@ -46,10 +46,11 @@ VirtShortcutContainer::VirtShortcutContainer(Widget2 *const widget,
                                              ShortcutBase *const shortcut) :
     ShortcutContainer(widget),
     mItemClicked(false),
-    mEquipedColor(getThemeColor(ThemeColorId::ITEM_EQUIPPED)),
-    mEquipedColor2(getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE)),
-    mUnEquipedColor(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED)),
-    mUnEquipedColor2(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE)),
+    mEquipedColor(getThemeColor(ThemeColorId::ITEM_EQUIPPED, 255U)),
+    mEquipedColor2(getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE, 255U)),
+    mUnEquipedColor(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED, 255U)),
+    mUnEquipedColor2(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE,
+        255U)),
     mShortcut(shortcut)
 {
     if (mShortcut != nullptr)
@@ -65,10 +66,11 @@ VirtShortcutContainer::~VirtShortcutContainer()
 void VirtShortcutContainer::setWidget2(const Widget2 *const widget)
 {
     Widget2::setWidget2(widget);
-    mEquipedColor = getThemeColor(ThemeColorId::ITEM_EQUIPPED);
-    mEquipedColor2 = getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE);
-    mUnEquipedColor = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED);
-    mUnEquipedColor2 = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE);
+    mEquipedColor = getThemeColor(ThemeColorId::ITEM_EQUIPPED, 255U);
+    mEquipedColor2 = getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE, 255U);
+    mUnEquipedColor = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED, 255U);
+    mUnEquipedColor2 = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE,
+        255U);
 }
 
 void VirtShortcutContainer::draw(Graphics *const graphics)

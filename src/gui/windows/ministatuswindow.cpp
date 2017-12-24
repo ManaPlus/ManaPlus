@@ -196,7 +196,8 @@ ProgressBar *MiniStatusWindow::createBar(const float progress,
         progress, width, height, backColor, skin, skinFill);
     bar->setActionEventId(name);
     bar->setId(description);
-    bar->setColor(getThemeColor(textColor), getThemeColor(textColor + 1));
+    bar->setColor(getThemeColor(textColor, 255U),
+        getThemeColor(textColor + 1, 255U));
     mBars.push_back(bar);
     mBarNames[name] = bar;
     return bar;

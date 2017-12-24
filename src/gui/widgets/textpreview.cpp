@@ -42,9 +42,9 @@ TextPreview::TextPreview(const Widget2 *const widget,
     Widget(widget),
     mFont(gui->getFont()),
     mText(text),
-    mTextColor(&getThemeColor(ThemeColorId::TEXT)),
-    mTextColor2(&getThemeColor(ThemeColorId::TEXT_OUTLINE)),
-    mBGColor(&getThemeColor(ThemeColorId::BACKGROUND)),
+    mTextColor(&getThemeColor(ThemeColorId::TEXT, 255U)),
+    mTextColor2(&getThemeColor(ThemeColorId::TEXT_OUTLINE, 255U)),
+    mBGColor(&getThemeColor(ThemeColorId::BACKGROUND, 255U)),
     mTextBGColor(nullptr),
     mPadding(0),
     mTextAlpha(false),
@@ -120,7 +120,7 @@ void TextPreview::draw(Graphics *const graphics)
 
     if (mOutline && mTextColor != mTextColor2)
     {
-        const Color &color2 = getThemeColor(ThemeColorId::OUTLINE, 255);
+        const Color &color2 = getThemeColor(ThemeColorId::OUTLINE, 255U);
         mFont->drawString(graphics,
             color1,
             color2,

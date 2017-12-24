@@ -175,14 +175,14 @@ void TradeWindow::setMoney(const int amount)
             return;
         }
         mMoneyLabel->setForegroundColorAll(
-            getThemeColor(ThemeColorId::WARNING),
-            getThemeColor(ThemeColorId::WARNING_OUTLINE));
+            getThemeColor(ThemeColorId::WARNING, 255U),
+            getThemeColor(ThemeColorId::WARNING_OUTLINE, 255U));
     }
     else
     {
         mMoneyLabel->setForegroundColorAll(
-            getThemeColor(ThemeColorId::LABEL),
-            getThemeColor(ThemeColorId::LABEL_OUTLINE));
+            getThemeColor(ThemeColorId::LABEL, 255U),
+            getThemeColor(ThemeColorId::LABEL_OUTLINE, 255U));
         mGotMaxMoney = amount;
     }
 
@@ -282,8 +282,8 @@ void TradeWindow::reset()
     mMoneyField->setEnabled(true);
     mMoneyField->setText("");
     mMoneyLabel->setForegroundColorAll(
-        getThemeColor(ThemeColorId::LABEL),
-        getThemeColor(ThemeColorId::LABEL_OUTLINE));
+        getThemeColor(ThemeColorId::LABEL, 255U),
+        getThemeColor(ThemeColorId::LABEL_OUTLINE, 255U));
     mAddButton->setEnabled(true);
     mMoneyChangeButton->setEnabled(true);
     mGotMoney = 0;
@@ -467,8 +467,8 @@ void TradeWindow::clear()
     mGotMoney = 0;
     mGotMaxMoney = 0;
     mMoneyLabel->setForegroundColorAll(
-        getThemeColor(ThemeColorId::LABEL),
-        getThemeColor(ThemeColorId::LABEL_OUTLINE));
+        getThemeColor(ThemeColorId::LABEL, 255U),
+        getThemeColor(ThemeColorId::LABEL_OUTLINE, 255U));
 }
 
 void TradeWindow::addAutoItem(const std::string &nick, Item* const item,

@@ -48,8 +48,9 @@ SpeechBubble::SpeechBubble() :
 
     mCaption->setFont(boldFont);
     mSpeechBox->setOpaque(Opaque_false);
-    mSpeechBox->setForegroundColorAll(getThemeColor(ThemeColorId::BUBBLE_TEXT),
-        getThemeColor(ThemeColorId::BUBBLE_TEXT_OUTLINE));
+    mSpeechBox->setForegroundColorAll(
+        getThemeColor(ThemeColorId::BUBBLE_TEXT, 255U),
+        getThemeColor(ThemeColorId::BUBBLE_TEXT_OUTLINE, 255U));
 }
 
 void SpeechBubble::postInit()
@@ -73,8 +74,9 @@ void SpeechBubble::setText(const std::string &text, const bool showName)
     if (text == mText && (mCaption->getWidth() <= mSpeechBox->getWidth()))
         return;
 
-    mSpeechBox->setForegroundColorAll(getThemeColor(ThemeColorId::BUBBLE_TEXT),
-        getThemeColor(ThemeColorId::BUBBLE_TEXT_OUTLINE));
+    mSpeechBox->setForegroundColorAll(
+        getThemeColor(ThemeColorId::BUBBLE_TEXT, 255U),
+        getThemeColor(ThemeColorId::BUBBLE_TEXT_OUTLINE, 255U));
 
     int width = mCaption->getWidth();
     mSpeechBox->clearRows();

@@ -79,8 +79,9 @@ void BeingPopup::addLabels(const int fontHeight)
     {
         Label *const label = new Label(this, "A");
         label->setPosition(0, fontHeight * (f + 1));
-        label->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-            getThemeColor(ThemeColorId::POPUP_OUTLINE));
+        label->setForegroundColorAll(
+            getThemeColor(ThemeColorId::POPUP, 255U),
+            getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
         mLabels.push_back(label);
     }
 }
@@ -113,14 +114,15 @@ void BeingPopup::show(const int x, const int y, Being *const b)
     }
     if (b->isAdvanced())
     {
-        mBeingName->setForegroundColorAll(getThemeColor(
-            ThemeColorId::PLAYER_ADVANCED), getThemeColor(
-            ThemeColorId::PLAYER_ADVANCED_OUTLINE));
+        mBeingName->setForegroundColorAll(
+            getThemeColor(ThemeColorId::PLAYER_ADVANCED, 255U),
+            getThemeColor(ThemeColorId::PLAYER_ADVANCED_OUTLINE, 255U));
     }
     else
     {
-        mBeingName->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-            getThemeColor(ThemeColorId::POPUP_OUTLINE));
+        mBeingName->setForegroundColorAll(
+            getThemeColor(ThemeColorId::POPUP, 255U),
+            getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
     }
 
     mBeingName->adjustSize();

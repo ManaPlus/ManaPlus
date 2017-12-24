@@ -42,7 +42,7 @@ class Widget2 notfinal
         }
 
         inline const Color &getThemeColor(const ThemeColorIdT type,
-                                          const unsigned int alpha = 255U)
+                                          const unsigned int alpha)
                                           const A_WARN_UNUSED A_INLINE
         {
             return theme->getColor(type + mPaletteOffset, alpha);

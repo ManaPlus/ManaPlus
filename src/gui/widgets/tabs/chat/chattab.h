@@ -48,12 +48,12 @@ class ScrollArea;
     }
 
 #define setTabColors(name) \
-    setTabColor(&getThemeColor(name), \
-        &getThemeColor(name##_OUTLINE)); \
-    setHighlightedTabColor(&getThemeColor(name##_HIGHLIGHTED), \
-        &getThemeColor(name##_HIGHLIGHTED_OUTLINE)); \
-    setSelectedTabColor(&getThemeColor(name##_SELECTED), \
-        &getThemeColor(name##_SELECTED_OUTLINE))
+    setTabColor(&getThemeColor(name, 255U), \
+        &getThemeColor(name##_OUTLINE, 255U)); \
+    setHighlightedTabColor(&getThemeColor(name##_HIGHLIGHTED, 255U), \
+        &getThemeColor(name##_HIGHLIGHTED_OUTLINE, 255U)); \
+    setSelectedTabColor(&getThemeColor(name##_SELECTED, 255U), \
+        &getThemeColor(name##_SELECTED_OUTLINE, 255U))
 
 /**
  * A tab for the chat window. This is special to ease chat handling.

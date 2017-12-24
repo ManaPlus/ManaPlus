@@ -36,11 +36,11 @@ class ServersListBox final : public ListBox
                        ServersListModel *const model) :
             ListBox(widget, model, "serverslistbox.xml"),
             mNotSupportedColor(getThemeColor(
-                ThemeColorId::SERVER_VERSION_NOT_SUPPORTED)),
+                ThemeColorId::SERVER_VERSION_NOT_SUPPORTED, 255U)),
             mNotSupportedColor2(getThemeColor(
-                ThemeColorId::SERVER_VERSION_NOT_SUPPORTED_OUTLINE))
+                ThemeColorId::SERVER_VERSION_NOT_SUPPORTED_OUTLINE, 255U))
         {
-            mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
+            mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT, 255U);
         }
 
         A_DELETE_COPY(ServersListBox)

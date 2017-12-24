@@ -55,30 +55,35 @@ SkillPopup::SkillPopup() :
 {
     mSkillName->setFont(boldFont);
     mSkillName->setPosition(0, 0);
-    mSkillName->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mSkillName->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     const int fontHeight = getFont()->getHeight();
 
     mSkillDesc->setEditable(false);
     mSkillDesc->setPosition(0, fontHeight);
-    mSkillDesc->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mSkillDesc->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     mSkillEffect->setEditable(false);
     mSkillEffect->setPosition(0, 2 * fontHeight);
-    mSkillEffect->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mSkillEffect->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     mSkillLevel->setEditable(false);
     mSkillLevel->setPosition(0, 3 * fontHeight);
-    mSkillLevel->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mSkillLevel->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     mSkillCastType->setEditable(false);
     mSkillCastType->setPosition(0, 4 * fontHeight);
-    mSkillCastType->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mSkillCastType->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 }
 
 void SkillPopup::postInit()

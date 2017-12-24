@@ -73,8 +73,8 @@ AvatarListBox::AvatarListBox(const Widget2 *const widget,
     config.addListener("showgender", this);
     config.addListener("showlevel", this);
 
-    mForegroundColor = getThemeColor(ThemeColorId::TEXT);
-    mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::TEXT, 255U);
+    mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE, 255U);
 }
 
 AvatarListBox::~AvatarListBox()

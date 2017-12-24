@@ -55,8 +55,8 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
     addMouseListener(this);
     addWidgetListener(this);
 
-    mForegroundColor = getThemeColor(ThemeColorId::TEXT);
-    mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::TEXT, 255U);
+    mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE, 255U);
 
     mBackgroundImg = Theme::getImageFromThemeXml(
         "item_shortcut_background.xml", "background.xml");

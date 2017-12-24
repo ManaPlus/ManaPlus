@@ -70,13 +70,14 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
         ? backColor : ProgressColorId::PROG_HP,
         mProgress);
     mBackgroundColorToGo = mBackgroundColor;
-    mForegroundColor2 = getThemeColor(ThemeColorId::PROGRESS_BAR_OUTLINE);
+    mForegroundColor2 = getThemeColor(ThemeColorId::PROGRESS_BAR_OUTLINE,
+        255U);
 
     // The progress value is directly set at load time:
     if (mProgress > 1.0F || mProgress < 0.0F)
         mProgress = 1.0F;
 
-    mForegroundColor = getThemeColor(ThemeColorId::PROGRESS_BAR);
+    mForegroundColor = getThemeColor(ThemeColorId::PROGRESS_BAR, 255U);
     addWidgetListener(this);
     setSize(width, height);
 

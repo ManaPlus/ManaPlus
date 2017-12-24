@@ -54,16 +54,16 @@ class SkillListBox final : public ListBox
                      SkillModel *const model) :
             ListBox(widget, model, "skilllistbox.xml"),
             mModel(model),
-            mTextColor(getThemeColor(ThemeColorId::TEXT)),
-            mTextColor2(getThemeColor(ThemeColorId::TEXT_OUTLINE)),
-            mCooldownColor(getThemeColor(ThemeColorId::SKILL_COOLDOWN)),
+            mTextColor(getThemeColor(ThemeColorId::TEXT, 255U)),
+            mTextColor2(getThemeColor(ThemeColorId::TEXT_OUTLINE, 255U)),
+            mCooldownColor(getThemeColor(ThemeColorId::SKILL_COOLDOWN, 255U)),
             mTextPadding(mSkin != nullptr ?
                 mSkin->getOption("textPadding", 34) : 34),
             mSpacing(mSkin != nullptr ? mSkin->getOption("spacing", 0) : 0),
             mSkillClicked(false)
         {
             mRowHeight = getFont()->getHeight() * 2 + mSpacing + 2 * mPadding;
-            mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT);
+            mHighlightColor = getThemeColor(ThemeColorId::HIGHLIGHT, 255U);
 
             if (mRowHeight < 34)
                 mRowHeight = 34;

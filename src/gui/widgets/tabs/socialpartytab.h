@@ -51,15 +51,16 @@ class SocialPartyTab final : public SocialTab,
             // TRANSLATORS: tab in social window
             setCaption(_("Party"));
 
-            setTabColor(&getThemeColor(ThemeColorId::PARTY_SOCIAL_TAB),
-                &getThemeColor(ThemeColorId::PARTY_SOCIAL_TAB_OUTLINE));
+            setTabColor(&getThemeColor(ThemeColorId::PARTY_SOCIAL_TAB, 255U),
+                &getThemeColor(ThemeColorId::PARTY_SOCIAL_TAB_OUTLINE, 255U));
             setHighlightedTabColor(&getThemeColor(
-                ThemeColorId::PARTY_SOCIAL_TAB_HIGHLIGHTED), &getThemeColor(
-                ThemeColorId::PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE));
-            setSelectedTabColor(&getThemeColor(
-                ThemeColorId::PARTY_SOCIAL_TAB_SELECTED),
+                ThemeColorId::PARTY_SOCIAL_TAB_HIGHLIGHTED, 255U),
                 &getThemeColor(
-                ThemeColorId::PARTY_SOCIAL_TAB_SELECTED_OUTLINE));
+                ThemeColorId::PARTY_SOCIAL_TAB_HIGHLIGHTED_OUTLINE, 255U));
+            setSelectedTabColor(&getThemeColor(
+                ThemeColorId::PARTY_SOCIAL_TAB_SELECTED, 255U),
+                &getThemeColor(
+                ThemeColorId::PARTY_SOCIAL_TAB_SELECTED_OUTLINE, 255U));
 
             createControls(party, showBackground);
             mMenuAction = "party";

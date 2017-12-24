@@ -49,7 +49,7 @@ GuiTable::GuiTable(const Widget2 *const widget,
     mModel(nullptr),
     mTopWidget(nullptr),
     mActionListeners2(),
-    mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
+    mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT, 255U)),
     mSelectedRow(-1),
     mSelectedColumn(-1),
     mLinewiseMode(false),
@@ -58,7 +58,7 @@ GuiTable::GuiTable(const Widget2 *const widget,
     mSelectableGui(true)
 {
     mAllowLogic = false;
-    mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND);
+    mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND, 255U);
 
     setModel(initial_model);
     setFocusable(true);

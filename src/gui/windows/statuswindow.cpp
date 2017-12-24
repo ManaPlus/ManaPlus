@@ -120,8 +120,8 @@ StatusWindow::StatusWindow() :
         0,
         ProgressColorId::PROG_HP,
         "hpprogressbar.xml", "hpprogressbar_fill.xml");
-    mHpBar->setColor(getThemeColor(ThemeColorId::HP_BAR),
-        getThemeColor(ThemeColorId::HP_BAR_OUTLINE));
+    mHpBar->setColor(getThemeColor(ThemeColorId::HP_BAR, 255U),
+        getThemeColor(ThemeColorId::HP_BAR_OUTLINE, 255U));
     mHpBar->setSelectable(false);
 
     const int64_t maxExp = PlayerInfo::getAttribute64(
@@ -135,8 +135,8 @@ StatusWindow::StatusWindow() :
         0,
         ProgressColorId::PROG_EXP,
         "xpprogressbar.xml", "xpprogressbar_fill.xml");
-    mXpBar->setColor(getThemeColor(ThemeColorId::XP_BAR),
-        getThemeColor(ThemeColorId::XP_BAR_OUTLINE));
+    mXpBar->setColor(getThemeColor(ThemeColorId::XP_BAR, 255U),
+        getThemeColor(ThemeColorId::XP_BAR_OUTLINE, 255U));
     mXpBar->setSelectable(false);
 
     const bool job = serverConfig.getValueBool("showJob", true);
@@ -157,13 +157,13 @@ StatusWindow::StatusWindow() :
     mMpBar->setSelectable(false);
     if (useMagic)
     {
-        mMpBar->setColor(getThemeColor(ThemeColorId::MP_BAR),
-            getThemeColor(ThemeColorId::MP_BAR_OUTLINE));
+        mMpBar->setColor(getThemeColor(ThemeColorId::MP_BAR, 255U),
+            getThemeColor(ThemeColorId::MP_BAR_OUTLINE, 255U));
     }
     else
     {
-        mMpBar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR),
-            getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE));
+        mMpBar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR, 255U),
+            getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE, 255U));
     }
 
     place(0, 0, mLvlLabel, 3);
@@ -186,8 +186,8 @@ StatusWindow::StatusWindow() :
         mJobLabel = new Label(this, _("Job:"));
         mJobBar = new ProgressBar(this, 0.0F, 80, 0, ProgressColorId::PROG_JOB,
             "jobprogressbar.xml", "jobprogressbar_fill.xml");
-        mJobBar->setColor(getThemeColor(ThemeColorId::JOB_BAR),
-            getThemeColor(ThemeColorId::JOB_BAR_OUTLINE));
+        mJobBar->setColor(getThemeColor(ThemeColorId::JOB_BAR, 255U),
+            getThemeColor(ThemeColorId::JOB_BAR_OUTLINE, 255U));
         mJobBar->setSelectable(false);
 
         place(3, 0, mJobLvlLabel, 3);
@@ -429,14 +429,14 @@ void StatusWindow::updateMPBar(ProgressBar *const bar,
 
     if (playerHandler->canUseMagic())
     {
-        bar->setColor(getThemeColor(ThemeColorId::MP_BAR),
-            getThemeColor(ThemeColorId::MP_BAR_OUTLINE));
+        bar->setColor(getThemeColor(ThemeColorId::MP_BAR, 255U),
+            getThemeColor(ThemeColorId::MP_BAR_OUTLINE, 255U));
         bar->setProgressPalette(ProgressColorId::PROG_MP);
     }
     else
     {
-        bar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR),
-            getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE));
+        bar->setColor(getThemeColor(ThemeColorId::NO_MP_BAR, 255U),
+            getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE, 255U));
         bar->setProgressPalette(ProgressColorId::PROG_NO_MP);
     }
 
@@ -639,9 +639,15 @@ void StatusWindow::updateStatusBar(ProgressBar *const bar,
 
     bar->setProgress(50);
     if (settings.disableGameModifiers)
-        bar->setBackgroundColor(getThemeColor(ThemeColorId::STATUSBAR_ON));
+    {
+        bar->setBackgroundColor(getThemeColor(ThemeColorId::STATUSBAR_ON,
+            255U));
+    }
     else
-        bar->setBackgroundColor(getThemeColor(ThemeColorId::STATUSBAR_OFF));
+    {
+        bar->setBackgroundColor(getThemeColor(ThemeColorId::STATUSBAR_OFF,
+            255U));
+    }
 }
 
 void StatusWindow::action(const ActionEvent &event)

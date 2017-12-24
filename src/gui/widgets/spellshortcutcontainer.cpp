@@ -59,8 +59,8 @@ SpellShortcutContainer::~SpellShortcutContainer()
 void SpellShortcutContainer::setWidget2(const Widget2 *const widget)
 {
     Widget2::setWidget2(widget);
-    mForegroundColor = getThemeColor(ThemeColorId::TEXT);
-    mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::TEXT, 255U);
+    mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE, 255U);
 }
 
 void SpellShortcutContainer::draw(Graphics *const graphics)

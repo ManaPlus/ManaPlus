@@ -39,8 +39,9 @@
     { \
         Label *const label = mLabels[num]; \
         label->setPosition(0, y); \
-        label->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP), \
-            getThemeColor(ThemeColorId::POPUP_OUTLINE)); \
+        label->setForegroundColorAll( \
+            getThemeColor(ThemeColorId::POPUP, 255U), \
+            getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U)); \
         add(label); \
         y += fontHeight; \
     }

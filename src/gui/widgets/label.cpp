@@ -126,8 +126,8 @@ void Label::init()
 {
     addMouseListener(this);
     mAllowLogic = false;
-    mForegroundColor = getThemeColor(ThemeColorId::LABEL);
-    mForegroundColor2 = getThemeColor(ThemeColorId::LABEL_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::LABEL, 255U);
+    mForegroundColor2 = getThemeColor(ThemeColorId::LABEL_OUTLINE, 255U);
     if (mInstances == 0)
     {
         if (theme != nullptr)

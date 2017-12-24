@@ -24,7 +24,9 @@
 #define GUI_WIDGETS_BROWSERBOX_INC
 
 #define readColor(color) \
-    mColors[0][ColorName::color] = getThemeColor(ThemeColorId::color); \
-    mColors[1][ColorName::color] = getThemeColor(ThemeColorId::color##_OUTLINE)
+    mColors[0][ColorName::color] = getThemeColor(ThemeColorId::color, 255U); \
+    mColors[1][ColorName::color] = getThemeColor( \
+        ThemeColorId::color##_OUTLINE, \
+        255U)
 
 #endif  // GUI_WIDGETS_BROWSERBOX_INC

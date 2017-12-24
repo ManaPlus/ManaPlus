@@ -87,32 +87,37 @@ ItemPopup::ItemPopup() :
     // Item description
     mItemDesc->setEditable(false);
     mItemDesc->setPosition(0, fontHeight);
-    mItemDesc->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mItemDesc->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     // Item effect
     mItemEffect->setEditable(false);
     mItemEffect->setPosition(0, 2 * fontHeight);
-    mItemEffect->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mItemEffect->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     // Item weight
     mItemWeight->setEditable(false);
     mItemWeight->setPosition(0, 3 * fontHeight);
-    mItemWeight->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mItemWeight->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     // Item cards
     mItemCards->setEditable(false);
     mItemCards->setPosition(0, 4 * fontHeight);
-    mItemCards->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mItemCards->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 
     // Item options
     mItemOptions->setEditable(false);
     mItemOptions->setPosition(0, 5 * fontHeight);
-    mItemOptions->setForegroundColorAll(getThemeColor(ThemeColorId::POPUP),
-        getThemeColor(ThemeColorId::POPUP_OUTLINE));
+    mItemOptions->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
 }
 
 void ItemPopup::postInit()
@@ -411,8 +416,9 @@ std::string ItemPopup::getOptionsString(const ItemOptionsList *const options)
 #define caseSetColor(name1, name2) \
     case name1: \
     { \
-        return label->setForegroundColorAll(getThemeColor(name2), \
-        getThemeColor(name2##_OUTLINE)); \
+        return label->setForegroundColorAll( \
+        getThemeColor(name2, 255U), \
+        getThemeColor(name2##_OUTLINE, 255U)); \
     }
 void ItemPopup::setLabelColor(Label *label,
                               const ItemDbTypeT type) const
@@ -440,9 +446,9 @@ void ItemPopup::setLabelColor(Label *label,
         caseSetColor(ItemDbType::CARD, ThemeColorId::CARD)
         default:
         {
-            return label->setForegroundColorAll(getThemeColor(
-                ThemeColorId::UNKNOWN_ITEM), getThemeColor(
-                ThemeColorId::UNKNOWN_ITEM_OUTLINE));
+            return label->setForegroundColorAll(
+                getThemeColor(ThemeColorId::UNKNOWN_ITEM, 255U),
+                getThemeColor(ThemeColorId::UNKNOWN_ITEM_OUTLINE, 255U));
         }
     }
 }

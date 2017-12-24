@@ -233,8 +233,8 @@ Window::Window(const std::string &caption,
     setVisible(Visible_false, false);
 
     addWidgetListener(this);
-    mForegroundColor = getThemeColor(ThemeColorId::WINDOW);
-    mForegroundColor2 = getThemeColor(ThemeColorId::WINDOW_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::WINDOW, 255U);
+    mForegroundColor2 = getThemeColor(ThemeColorId::WINDOW_OUTLINE, 255U);
     setPalette(childPalette);
 }
 

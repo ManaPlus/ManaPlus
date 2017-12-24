@@ -80,8 +80,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mNewLinePadding(15U),
     mItemPadding(0),
     mDataWidth(0),
-    mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT)),
-    mHyperLinkColor(getThemeColor(ThemeColorId::HYPERLINK)),
+    mHighlightColor(getThemeColor(ThemeColorId::HIGHLIGHT, 255U)),
+    mHyperLinkColor(getThemeColor(ThemeColorId::HYPERLINK, 255U)),
     mOpaque(opaque),
     mUseLinksAndUserColors(true),
     mUseEmotes(true),
@@ -97,7 +97,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     addMouseListener(this);
     addWidgetListener(this);
 
-    mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND);
+    mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND, 255U);
 
     if (theme != nullptr)
         mSkin = theme->load(skin, "browserbox.xml");
@@ -131,8 +131,8 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     readColor(GRAY);
     readColor(BROWN);
 
-    mForegroundColor = getThemeColor(ThemeColorId::BROWSERBOX);
-    mForegroundColor2 = getThemeColor(ThemeColorId::BROWSERBOX_OUTLINE);
+    mForegroundColor = getThemeColor(ThemeColorId::BROWSERBOX, 255U);
+    mForegroundColor2 = getThemeColor(ThemeColorId::BROWSERBOX_OUTLINE, 255U);
 }
 
 BrowserBox::~BrowserBox()
