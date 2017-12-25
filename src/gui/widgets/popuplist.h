@@ -41,7 +41,7 @@ class PopupList final : public Popup,
         PopupList(DropDown *const widget,
                   ListModel *const listModel,
                   const bool extended,
-                  const Modal modal = Modal_false);
+                  const Modal modal);
 
         ~PopupList();
 
