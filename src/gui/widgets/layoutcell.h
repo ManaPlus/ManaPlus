@@ -92,8 +92,10 @@ class LayoutCell notfinal
          * @see LayoutArray::place
          */
         LayoutCell &place(Widget *const wg,
-                          const int x, const int y,
-                          const int w = 1, const int h = 1);
+                          const int x,
+                          const int y,
+                          const int w,
+                          const int h);
 
         /**
          * @see LayoutArray::matchColWidth
