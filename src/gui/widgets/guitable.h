@@ -56,7 +56,7 @@ class GuiTable final : public Widget,
     public:
         GuiTable(const Widget2 *const widget,
                  TableModel *const initial_model,
-                 const Opaque opacity = Opaque_true);
+                 const Opaque opacity);
 
         A_DELETE_COPY(GuiTable)
 

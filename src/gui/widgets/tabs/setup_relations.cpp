@@ -65,8 +65,8 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     PlayerRelationsListener(),
     mPlayerTableTitleModel(new StaticTableModel(1, COLUMNS_NR)),
     mPlayerTableModel(new PlayerTableModel(this)),
-    mPlayerTable(new GuiTable(this, mPlayerTableModel)),
-    mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel)),
+    mPlayerTable(new GuiTable(this, mPlayerTableModel, Opaque_true)),
+    mPlayerTitleTable(new GuiTable(this, mPlayerTableTitleModel, Opaque_true)),
     mPlayerScrollArea(new ScrollArea(this,
         mPlayerTable, Opaque_true, std::string())),
     // TRANSLATORS: relation dialog button
