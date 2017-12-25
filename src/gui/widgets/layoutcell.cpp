@@ -104,7 +104,7 @@ void LayoutCell::computeSizes()
 
 LayoutCell &LayoutCell::at(const int x, const int y)
 {
-    return getArray().at(x, y);
+    return getArray().at(x, y, 1, 1);
 }
 
 LayoutCell &LayoutCell::place(Widget *const wg,

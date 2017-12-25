@@ -47,8 +47,10 @@ class LayoutArray final
         /**
          * Returns a reference on the cell at given position.
          */
-        LayoutCell &at(const int x, const int y,
-                       const int w = 1, const int h = 1) A_WARN_UNUSED;
+        LayoutCell &at(const int x,
+                       const int y,
+                       const int w,
+                       const int h) A_WARN_UNUSED;
 
         /**
          * Places a widget in a given cell.
@@ -57,8 +59,11 @@ class LayoutArray final
          * @note When @a w is 1, the width of column @a x is reset to zero if
          *       it was AUTO_DEF. Similarly for @a h.
          */
-        LayoutCell &place(Widget *const widget, const int x, const int y,
-                          const int w = 1, const int h = 1);
+        LayoutCell &place(Widget *const widget,
+                          const int x,
+                          const int y,
+                          const int w,
+                          const int h);
 
         /**
          * Sets the minimum width of a column.
