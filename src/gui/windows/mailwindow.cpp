@@ -98,15 +98,15 @@ MailWindow::MailWindow() :
 
     mListScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
     placer(0, 0, mListScrollArea, 4, 5).setPadding(3);
-    placer(4, 0, mRefreshButton);
-    placer(4, 1, mOpenButton);
-    placer(4, 2, mNewButton);
-    placer(4, 3, mDeleteButton);
-    placer(4, 4, mReturnButton);
+    placer(4, 0, mRefreshButton, 1, 1);
+    placer(4, 1, mOpenButton, 1, 1);
+    placer(4, 2, mNewButton, 1, 1);
+    placer(4, 3, mDeleteButton, 1, 1);
+    placer(4, 4, mReturnButton, 1, 1);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

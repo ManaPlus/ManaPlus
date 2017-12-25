@@ -163,58 +163,58 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 #endif  // TMWA_SUPPORT
     }
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
 #ifdef TMWA_SUPPORT
-    placer(0, 0, mIsMagic, 1);
-    placer(2, 0, mIsOther, 1);
-    placer(0, 1, mSymbolLabel, 2).setPadding(3);
-    placer(2, 1, mSymbolTextField, 3).setPadding(3);
-    placer(0, 2, mCommandLabel, 2).setPadding(3);
-    placer(2, 2, mCommandTextField, 4).setPadding(3);
+    placer(0, 0, mIsMagic, 1, 1);
+    placer(2, 0, mIsOther, 1, 1);
+    placer(0, 1, mSymbolLabel, 2, 1).setPadding(3);
+    placer(2, 1, mSymbolTextField, 3, 1).setPadding(3);
+    placer(0, 2, mCommandLabel, 2, 1).setPadding(3);
+    placer(2, 2, mCommandTextField, 4, 1).setPadding(3);
 
-    placer(0, 3, mCommentLabel, 2).setPadding(3);
-    placer(2, 3, mCommentTextField, 4).setPadding(3);
+    placer(0, 3, mCommentLabel, 2, 1).setPadding(3);
+    placer(2, 3, mCommentTextField, 4, 1).setPadding(3);
 
-    placer(0, 4, mTypeLabel, 2).setPadding(3);
-    placer(2, 4, mTypeDropDown, 3).setPadding(3);
+    placer(0, 4, mTypeLabel, 2, 1).setPadding(3);
+    placer(2, 4, mTypeDropDown, 3, 1).setPadding(3);
 
-    placer(0, 5, mIconLabel, 2).setPadding(3);
-    placer(2, 5, mIconDropDown, 3).setPadding(3);
+    placer(0, 5, mIconLabel, 2, 1).setPadding(3);
+    placer(2, 5, mIconDropDown, 3, 1).setPadding(3);
 
-    placer(0, 6, mManaLabel, 2).setPadding(3);
-    placer(2, 6, mManaField, 3).setPadding(3);
-    placer(0, 7, mMagicLvlLabel, 2).setPadding(3);
-    placer(2, 7, mMagicLvlField, 3).setPadding(3);
+    placer(0, 6, mManaLabel, 2, 1).setPadding(3);
+    placer(2, 6, mManaField, 3, 1).setPadding(3);
+    placer(0, 7, mMagicLvlLabel, 2, 1).setPadding(3);
+    placer(2, 7, mMagicLvlField, 3, 1).setPadding(3);
 
-    placer(0, 8, mSchoolLabel, 2).setPadding(3);
-    placer(2, 8, mSchoolDropDown, 3).setPadding(3);
-    placer(0, 9, mSchoolLvlLabel, 2).setPadding(3);
-    placer(2, 9, mSchoolLvlField, 3).setPadding(3);
+    placer(0, 8, mSchoolLabel, 2, 1).setPadding(3);
+    placer(2, 8, mSchoolDropDown, 3, 1).setPadding(3);
+    placer(0, 9, mSchoolLvlLabel, 2, 1).setPadding(3);
+    placer(2, 9, mSchoolLvlField, 3, 1).setPadding(3);
 
-    placer(0, 10, mSaveButton, 2).setPadding(3);
-    placer(2, 10, mCancelButton, 2).setPadding(3);
-    placer(4, 10, mDeleteButton, 2).setPadding(3);
+    placer(0, 10, mSaveButton, 2, 1).setPadding(3);
+    placer(2, 10, mCancelButton, 2, 1).setPadding(3);
+    placer(4, 10, mDeleteButton, 2, 1).setPadding(3);
 #else  // TMWA_SUPPORT
 
-    placer(0, 0, mSymbolLabel, 2).setPadding(3);
-    placer(2, 0, mSymbolTextField, 3).setPadding(3);
-    placer(0, 1, mCommandLabel, 2).setPadding(3);
-    placer(2, 1, mCommandTextField, 4).setPadding(3);
+    placer(0, 0, mSymbolLabel, 2, 1).setPadding(3);
+    placer(2, 0, mSymbolTextField, 3, 1).setPadding(3);
+    placer(0, 1, mCommandLabel, 2, 1).setPadding(3);
+    placer(2, 1, mCommandTextField, 4, 1).setPadding(3);
 
-    placer(0, 2, mCommentLabel, 2).setPadding(3);
-    placer(2, 2, mCommentTextField, 4).setPadding(3);
+    placer(0, 2, mCommentLabel, 2, 1).setPadding(3);
+    placer(2, 2, mCommentTextField, 4, 1).setPadding(3);
 
-    placer(0, 3, mTypeLabel, 2).setPadding(3);
-    placer(2, 3, mTypeDropDown, 3).setPadding(3);
+    placer(0, 3, mTypeLabel, 2, 1).setPadding(3);
+    placer(2, 3, mTypeDropDown, 3, 1).setPadding(3);
 
-    placer(0, 4, mIconLabel, 2).setPadding(3);
-    placer(2, 4, mIconDropDown, 3).setPadding(3);
+    placer(0, 4, mIconLabel, 2, 1).setPadding(3);
+    placer(2, 4, mIconDropDown, 3, 1).setPadding(3);
 
-    placer(0, 5, mSaveButton, 2).setPadding(3);
-    placer(2, 5, mCancelButton, 2).setPadding(3);
-    placer(4, 5, mDeleteButton, 2).setPadding(3);
+    placer(0, 5, mSaveButton, 2, 1).setPadding(3);
+    placer(2, 5, mCancelButton, 2, 1).setPadding(3);
+    placer(4, 5, mDeleteButton, 2, 1).setPadding(3);
 #endif  // TMWA_SUPPORT
 
     setWidth(w);

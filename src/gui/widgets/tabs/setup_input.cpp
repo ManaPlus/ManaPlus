@@ -118,12 +118,12 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mTabs, 5);
+    place(0, 0, mTabs, 5, 1);
     place(0, 1, mScrollArea, 5, 5).setPadding(2);
-    place(0, 6, mResetKeysButton);
-    place(2, 6, mAssignKeyButton);
-    place(3, 6, mUnassignKeyButton);
-    place(4, 6, mDefaultButton);
+    place(0, 6, mResetKeysButton, 1, 1);
+    place(2, 6, mAssignKeyButton, 1, 1);
+    place(3, 6, mUnassignKeyButton, 1, 1);
+    place(4, 6, mDefaultButton, 1, 1);
 
     int width = 600;
     if (config.getIntValue("screenwidth") >= 730)

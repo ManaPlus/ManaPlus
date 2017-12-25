@@ -60,10 +60,10 @@ BankWindow::BankWindow() :
 
     mBankMoneyLabel->adjustSize();
     ContainerPlacer placer = getPlacer(0, 0);
-    placer(0, 0, mBankMoneyLabel, 7);
-    placer(0, 1, mInputMoneyTextField, 10);
-    placer(0, 2, mDepositButton, 5);
-    placer(5, 2, mWithdrawButton, 5);
+    placer(0, 0, mBankMoneyLabel, 7, 1);
+    placer(0, 1, mInputMoneyTextField, 10, 1);
+    placer(0, 2, mDepositButton, 5, 1);
+    placer(5, 2, mWithdrawButton, 5, 1);
 
     setContentSize(300, 100);
     setDefaultSize(300, 100, ImagePosition::CENTER, 0, 0);

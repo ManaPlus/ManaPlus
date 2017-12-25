@@ -35,6 +35,6 @@ DerDisplay::DerDisplay(const Widget2 *const widget,
 {
     ContainerPlacer place = mLayout->getPlacer(0, 0);
 
-    place(0, 0, mLabel, 3);
-    place(3, 0, mValue, 2);
+    place(0, 0, mLabel, 3, 1);
+    place(3, 0, mValue, 2, 1);
 }

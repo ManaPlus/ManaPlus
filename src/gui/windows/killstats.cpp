@@ -138,24 +138,24 @@ KillStats::KillStats() :
         strXpPercent.c_str(),
         "?"));
 
-    place(0, 0, mLine1, 6).setPadding(0);
-    place(0, 1, mLine2, 6).setPadding(0);
-    place(0, 2, mLine3, 6).setPadding(0);
-    place(0, 3, mLine4, 6).setPadding(0);
-    place(0, 4, mLine5, 6).setPadding(0);
-    place(0, 5, mLine6, 6).setPadding(0);
-    place(0, 6, mLine7, 6).setPadding(0);
+    place(0, 0, mLine1, 6, 1).setPadding(0);
+    place(0, 1, mLine2, 6, 1).setPadding(0);
+    place(0, 2, mLine3, 6, 1).setPadding(0);
+    place(0, 3, mLine4, 6, 1).setPadding(0);
+    place(0, 4, mLine5, 6, 1).setPadding(0);
+    place(0, 5, mLine6, 6, 1).setPadding(0);
+    place(0, 6, mLine7, 6, 1).setPadding(0);
 
-    place(0, 7, mLastKillExpLabel, 6).setPadding(0);
-    place(0, 8, mExpSpeed1Label, 6).setPadding(0);
-    place(0, 9, mExpTime1Label, 6).setPadding(0);
-    place(0, 10, mExpSpeed5Label, 6).setPadding(0);
-    place(0, 11, mExpTime5Label, 6).setPadding(0);
-    place(0, 12, mExpSpeed15Label, 6).setPadding(0);
-    place(0, 13, mExpTime15Label, 6).setPadding(0);
+    place(0, 7, mLastKillExpLabel, 6, 1).setPadding(0);
+    place(0, 8, mExpSpeed1Label, 6, 1).setPadding(0);
+    place(0, 9, mExpTime1Label, 6, 1).setPadding(0);
+    place(0, 10, mExpSpeed5Label, 6, 1).setPadding(0);
+    place(0, 11, mExpTime5Label, 6, 1).setPadding(0);
+    place(0, 12, mExpSpeed15Label, 6, 1).setPadding(0);
+    place(0, 13, mExpTime15Label, 6, 1).setPadding(0);
 
-    place(5, 12, mTimerButton).setPadding(0);
-    place(5, 13, mResetButton).setPadding(0);
+    place(5, 12, mTimerButton, 1, 1).setPadding(0);
+    place(5, 13, mResetButton, 1, 1).setPadding(0);
 
     loadWindowState();
     enableVisibleSound(true);

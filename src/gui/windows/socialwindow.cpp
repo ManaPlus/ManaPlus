@@ -98,8 +98,8 @@ void SocialWindow::postInit()
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
-    place(0, 0, mMenuButton);
-    place(0, 1, mCountLabel);
+    place(0, 0, mMenuButton, 1, 1);
+    place(0, 1, mCountLabel, 1, 1);
     place(0, 2, mTabs, 2, 4);
 
     widgetResized(Event(nullptr));

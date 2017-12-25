@@ -181,10 +181,10 @@ ShopWindow::ShopWindow() :
     mBuyShopItemList->addSelectionListener(this);
     mSellShopItemList->addSelectionListener(this);
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
-    placer(0, 0, mTabs, 8).setPadding(3);
+    placer(0, 0, mTabs, 8, 1).setPadding(3);
 
     if (mHaveVending)
     {
@@ -192,8 +192,8 @@ ShopWindow::ShopWindow() :
         mPublishButton = new Button(this, _("Publish"), "publish", this);
         // TRANSLATORS: shop window button
         mRenameButton = new Button(this, _("Rename"), "rename", this);
-        placer(2, 6, mPublishButton);
-        placer(3, 6, mRenameButton);
+        placer(2, 6, mPublishButton, 1, 1);
+        placer(3, 6, mRenameButton, 1, 1);
     }
     else
     {
@@ -203,14 +203,14 @@ ShopWindow::ShopWindow() :
         mAnnounceLinks = new CheckBox(this, _("Show links in announce"), false,
             this, "link announce");
 
-        placer(2, 6, mAnnounceButton);
-        placer(0, 7, mAnnounceLinks, 7);
+        placer(2, 6, mAnnounceButton, 1, 1);
+        placer(0, 7, mAnnounceLinks, 7, 1);
     }
 
     placer(0, 1, mScrollArea, 8, 5).setPadding(3);
-    placer(0, 6, mAddButton);
-    placer(1, 6, mDeleteButton);
-    placer(7, 6, mCloseButton);
+    placer(0, 6, mAddButton, 1, 1);
+    placer(1, 6, mDeleteButton, 1, 1);
+    placer(7, 6, mCloseButton, 1, 1);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

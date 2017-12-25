@@ -243,21 +243,21 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             // TRANSLATORS: equipment button tooltip
             mEquipmentButton->setDescription(_("Equipment"));
 
-            place(0, 0, mWeightBar, 4);
-            mSlotsBarCell = &place(4, 0, mSlotsBar, 4);
-            mSortDropDownCell = &place(8, 0, mSortDropDown, 3);
+            place(0, 0, mWeightBar, 4, 1);
+            mSlotsBarCell = &place(4, 0, mSlotsBar, 4, 1);
+            mSortDropDownCell = &place(8, 0, mSortDropDown, 3, 1);
 
-            mFilterCell = &place(0, 1, mFilter, 10).setPadding(3);
-            mNameFilterCell = &place(8, 1, mNameFilter, 3);
+            mFilterCell = &place(0, 1, mFilter, 10, 1).setPadding(3);
+            mNameFilterCell = &place(8, 1, mNameFilter, 3, 1);
 
-            place(0, 2, invenScroll, 11).setPadding(3);
-            place(0, 3, mUseButton);
-            place(1, 3, mDropButton);
+            place(0, 2, invenScroll, 11, 1).setPadding(3);
+            place(0, 3, mUseButton, 1, 1);
+            place(1, 3, mDropButton, 1, 1);
             ContainerPlacer placer = getPlacer(10, 3);
-            placer(0, 0, mShopButton);
-            placer(1, 0, mOutfitButton);
-            placer(2, 0, mCartButton);
-            placer(3, 0, mEquipmentButton);
+            placer(0, 0, mShopButton, 1, 1);
+            placer(1, 0, mOutfitButton, 1, 1);
+            placer(2, 0, mCartButton, 1, 1);
+            placer(3, 0, mEquipmentButton, 1, 1);
 
             updateWeight();
             break;
@@ -280,9 +280,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mNameFilterCell = &place(6, 1, mNameFilter, 1);
 
             place(0, 2, invenScroll, 7, 4);
-            place(0, 6, mStoreButton);
-            place(1, 6, mRetrieveButton);
-            place(6, 6, mInvCloseButton);
+            place(0, 6, mStoreButton, 1, 1);
+            place(1, 6, mRetrieveButton, 1, 1);
+            place(6, 6, mInvCloseButton, 1, 1);
             break;
         }
 
@@ -308,11 +308,11 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
             mNameFilterCell = &place(6, 1, mNameFilter, 1);
 
-            place(0, 0, mWeightBar, 3);
+            place(0, 0, mWeightBar, 3, 1);
             place(0, 2, invenScroll, 7, 4);
-            place(0, 6, mStoreButton);
-            place(1, 6, mRetrieveButton);
-            place(6, 6, mInvCloseButton);
+            place(0, 6, mStoreButton, 1, 1);
+            place(1, 6, mRetrieveButton, 1, 1);
+            place(6, 6, mInvCloseButton, 1, 1);
             break;
         }
 

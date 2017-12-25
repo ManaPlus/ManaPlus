@@ -92,24 +92,24 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mServerAddressField->addActionListener(this);
     mPortField->addActionListener(this);
 
-    place(0, 0, nameLabel);
-    place(1, 0, mNameField, 4).setPadding(3);
-    place(0, 1, serverAdressLabel);
-    place(1, 1, mServerAddressField, 4).setPadding(3);
-    place(0, 2, portLabel);
-    place(1, 2, mPortField, 4).setPadding(3);
-    place(0, 3, typeLabel);
-    place(1, 3, mTypeField).setPadding(3);
-    place(0, 4, descriptionLabel);
-    place(1, 4, mDescriptionField, 4).setPadding(3);
-    place(0, 5, onlineListUrlLabel);
-    place(1, 5, mOnlineListUrlField, 4).setPadding(3);
-    place(0, 6, packetVersionLabel);
-    place(1, 6, mPacketVersionField, 4).setPadding(3);
-    place(0, 7, mPersistentIp, 4).setPadding(3);
-    place(0, 8, mConnectButton);
-    place(4, 8, mOkButton);
-    place(3, 8, mCancelButton);
+    place(0, 0, nameLabel, 1, 1);
+    place(1, 0, mNameField, 4, 1).setPadding(3);
+    place(0, 1, serverAdressLabel, 1, 1);
+    place(1, 1, mServerAddressField, 4, 1).setPadding(3);
+    place(0, 2, portLabel, 1, 1);
+    place(1, 2, mPortField, 4, 1).setPadding(3);
+    place(0, 3, typeLabel, 1, 1);
+    place(1, 3, mTypeField, 1, 1).setPadding(3);
+    place(0, 4, descriptionLabel, 1, 1);
+    place(1, 4, mDescriptionField, 4, 1).setPadding(3);
+    place(0, 5, onlineListUrlLabel, 1, 1);
+    place(1, 5, mOnlineListUrlField, 4, 1).setPadding(3);
+    place(0, 6, packetVersionLabel, 1, 1);
+    place(1, 6, mPacketVersionField, 4, 1).setPadding(3);
+    place(0, 7, mPersistentIp, 4, 1).setPadding(3);
+    place(0, 8, mConnectButton, 1, 1);
+    place(4, 8, mOkButton, 1, 1);
+    place(3, 8, mCancelButton, 1, 1);
 
     // Do this manually instead of calling reflowLayout so we can enforce a
     // minimum width.

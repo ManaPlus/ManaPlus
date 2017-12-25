@@ -112,13 +112,13 @@ OutfitWindow::OutfitWindow() :
     mAwayOutfitCheck->setActionEventId("away");
     mAwayOutfitCheck->addActionListener(this);
 
-    place(1, 3, mEquipBottom, 2);
-    place(0, 4, mKeyLabel, 4);
-    place(0, 5, mPreviousButton, 1);
-    place(1, 5, mCurrentLabel, 2);
-    place(3, 5, mNextButton, 1);
-    place(0, 6, mUnequipCheck, 4);
-    place(0, 7, mAwayOutfitCheck, 4);
+    place(1, 3, mEquipBottom, 2, 1);
+    place(0, 4, mKeyLabel, 4, 1);
+    place(0, 5, mPreviousButton, 1, 1);
+    place(1, 5, mCurrentLabel, 2, 1);
+    place(3, 5, mNextButton, 1, 1);
+    place(0, 6, mUnequipCheck, 4, 1);
+    place(0, 7, mAwayOutfitCheck, 4, 1);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

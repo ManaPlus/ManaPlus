@@ -52,10 +52,10 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     // Do the layout
     ContainerPlacer place = mLayout->getPlacer(0, 0);
 
-    place(0, 0, mLabel, 3);
-    place(4, 0, mValue, 2);
-    place(6, 0, mInc);
-    place(7, 0, mPoints);
+    place(0, 0, mLabel, 3, 1);
+    place(4, 0, mValue, 2, 1);
+    place(6, 0, mInc, 1, 1);
+    place(7, 0, mPoints, 1, 1);
 }
 
 std::string ChangeDisplay::update()

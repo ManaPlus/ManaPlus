@@ -92,10 +92,10 @@ DidYouKnowWindow::DidYouKnowWindow() :
     mBrowserBox->setEnableTabs(true);
 
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
-    place(0, 3, mOpenAgainCheckBox, 5);
-    place(1, 4, mButtonPrev, 1);
-    place(2, 4, mButtonNext, 1);
-    place(4, 4, okButton);
+    place(0, 3, mOpenAgainCheckBox, 5, 1);
+    place(1, 4, mButtonPrev, 1, 1);
+    place(2, 4, mButtonNext, 1, 1);
+    place(4, 4, okButton, 1, 1);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

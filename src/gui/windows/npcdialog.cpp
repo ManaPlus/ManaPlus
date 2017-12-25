@@ -874,16 +874,16 @@ void NpcDialog::placeNormalControls()
 {
     if (mShowAvatar)
     {
-        place(0, 0, mPlayerBox);
+        place(0, 0, mPlayerBox, 1, 1);
         place(1, 0, mScrollArea, 5, 3);
-        place(4, 3, mClearButton);
-        place(5, 3, mButton);
+        place(4, 3, mClearButton, 1, 1);
+        place(5, 3, mButton, 1, 1);
     }
     else
     {
         place(0, 0, mScrollArea, 5, 3);
-        place(3, 3, mClearButton);
-        place(4, 3, mButton);
+        place(3, 3, mClearButton, 1, 1);
+        place(4, 3, mButton, 1, 1);
     }
 }
 
@@ -891,20 +891,20 @@ void NpcDialog::placeMenuControls()
 {
     if (mShowAvatar)
     {
-        place(0, 0, mPlayerBox);
+        place(0, 0, mPlayerBox, 1, 1);
         place(1, 0, mScrollArea, 6, 3);
         place(0, 3, mListScrollArea, 7, 3);
-        place(1, 6, mButton2, 2);
-        place(3, 6, mClearButton, 2);
-        place(5, 6, mButton, 2);
+        place(1, 6, mButton2, 2, 1);
+        place(3, 6, mClearButton, 2, 1);
+        place(5, 6, mButton, 2, 1);
     }
     else
     {
         place(0, 0, mScrollArea, 6, 3);
         place(0, 3, mListScrollArea, 6, 3);
-        place(0, 6, mButton2, 2);
-        place(2, 6, mClearButton, 2);
-        place(4, 6, mButton, 2);
+        place(0, 6, mButton2, 2, 1);
+        place(2, 6, mClearButton, 2, 1);
+        place(4, 6, mButton, 2, 1);
     }
 }
 
@@ -915,30 +915,30 @@ void NpcDialog::placeSkinControls()
     {
         if (mShowAvatar)
         {
-            place(0, 0, mPlayerBox);
+            place(0, 0, mPlayerBox, 1, 1);
             place(1, 0, mSkinScrollArea, 7, 3);
-            place(1, 3, mButton2, 2);
+            place(1, 3, mButton2, 2, 1);
         }
         else
         {
             place(0, 0, mSkinScrollArea, 6, 3);
-            place(0, 3, mButton2, 2);
+            place(0, 3, mButton2, 2, 1);
         }
     }
     else
     {
         if (mShowAvatar)
         {
-            place(0, 0, mPlayerBox);
+            place(0, 0, mPlayerBox, 1, 1);
             place(1, 0, mScrollArea, 6, 3);
             place(0, 3, mSkinScrollArea, 7, 3);
-            place(1, 6, mButton2, 2);
+            place(1, 6, mButton2, 2, 1);
         }
         else
         {
             place(0, 0, mScrollArea, 6, 3);
             place(0, 3, mSkinScrollArea, 6, 3);
-            place(0, 6, mButton2, 2);
+            place(0, 6, mButton2, 2, 1);
         }
     }
 }
@@ -947,20 +947,20 @@ void NpcDialog::placeTextInputControls()
 {
     if (mShowAvatar)
     {
-        place(0, 0, mPlayerBox);
+        place(0, 0, mPlayerBox, 1, 1);
         place(1, 0, mScrollArea, 6, 3);
-        place(1, 3, mTextField, 6);
-        place(1, 4, mResetButton, 2);
-        place(3, 4, mClearButton, 2);
-        place(5, 4, mButton, 2);
+        place(1, 3, mTextField, 6, 1);
+        place(1, 4, mResetButton, 2, 1);
+        place(3, 4, mClearButton, 2, 1);
+        place(5, 4, mButton, 2, 1);
     }
     else
     {
         place(0, 0, mScrollArea, 6, 3);
-        place(0, 3, mTextField, 6);
-        place(0, 4, mResetButton, 2);
-        place(2, 4, mClearButton, 2);
-        place(4, 4, mButton, 2);
+        place(0, 3, mTextField, 6, 1);
+        place(0, 4, mResetButton, 2, 1);
+        place(2, 4, mClearButton, 2, 1);
+        place(4, 4, mButton, 2, 1);
     }
 }
 
@@ -968,24 +968,24 @@ void NpcDialog::placeIntInputControls()
 {
     if (mShowAvatar)
     {
-        place(0, 0, mPlayerBox);
+        place(0, 0, mPlayerBox, 1, 1);
         place(1, 0, mScrollArea, 6, 3);
-        place(1, 3, mMinusButton, 1);
-        place(2, 3, mIntField, 4);
-        place(6, 3, mPlusButton, 1);
-        place(1, 4, mResetButton, 2);
-        place(3, 4, mClearButton, 2);
-        place(5, 4, mButton, 2);
+        place(1, 3, mMinusButton, 1, 1);
+        place(2, 3, mIntField, 4, 1);
+        place(6, 3, mPlusButton, 1, 1);
+        place(1, 4, mResetButton, 2, 1);
+        place(3, 4, mClearButton, 2, 1);
+        place(5, 4, mButton, 2, 1);
     }
     else
     {
         place(0, 0, mScrollArea, 6, 3);
-        place(0, 3, mMinusButton, 1);
-        place(1, 3, mIntField, 4);
-        place(5, 3, mPlusButton, 1);
-        place(0, 4, mResetButton, 2);
-        place(2, 4, mClearButton, 2);
-        place(4, 4, mButton, 2);
+        place(0, 3, mMinusButton, 1, 1);
+        place(1, 3, mIntField, 4, 1);
+        place(5, 3, mPlusButton, 1, 1);
+        place(0, 4, mResetButton, 2, 1);
+        place(2, 4, mClearButton, 2, 1);
+        place(4, 4, mButton, 2, 1);
     }
 }
 
@@ -1011,38 +1011,38 @@ void NpcDialog::placeItemInputControls()
     {
         if (mShowAvatar)
         {
-            place(0, 0, mPlayerBox);
+            place(0, 0, mPlayerBox, 1, 1);
             place(1, 0, mItemScrollArea, 7, 3);
-            place(1, 3, mButton3, 2);
-            place(3, 3, mClearButton, 2);
-            place(5, 3, mButton, 2);
+            place(1, 3, mButton3, 2, 1);
+            place(3, 3, mClearButton, 2, 1);
+            place(5, 3, mButton, 2, 1);
         }
         else
         {
             place(0, 0, mItemScrollArea, 6, 3);
-            place(0, 3, mButton3, 2);
-            place(2, 3, mClearButton, 2);
-            place(4, 3, mButton, 2);
+            place(0, 3, mButton3, 2, 1);
+            place(2, 3, mClearButton, 2, 1);
+            place(4, 3, mButton, 2, 1);
         }
     }
     else
     {
         if (mShowAvatar)
         {
-            place(0, 0, mPlayerBox);
+            place(0, 0, mPlayerBox, 1, 1);
             place(1, 0, mScrollArea, 6, 3);
             place(0, 3, mItemScrollArea, 7, 3);
-            place(1, 6, mButton3, 2);
-            place(3, 6, mClearButton, 2);
-            place(5, 6, mButton, 2);
+            place(1, 6, mButton3, 2, 1);
+            place(3, 6, mClearButton, 2, 1);
+            place(5, 6, mButton, 2, 1);
         }
         else
         {
             place(0, 0, mScrollArea, 6, 3);
             place(0, 3, mItemScrollArea, 6, 3);
-            place(0, 6, mButton3, 2);
-            place(2, 6, mClearButton, 2);
-            place(4, 6, mButton, 2);
+            place(0, 6, mButton3, 2, 1);
+            place(2, 6, mClearButton, 2, 1);
+            place(4, 6, mButton, 2, 1);
         }
     }
 }

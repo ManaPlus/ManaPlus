@@ -169,27 +169,27 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
 
     place(0, 0, scrollArea, 1, 5).setPadding(2);
-    place(0, 5, mOpenGLDropDown, 1);
+    place(0, 5, mOpenGLDropDown, 1, 1);
 
-    place(1, 0, mFsCheckBox, 2);
+    place(1, 0, mFsCheckBox, 2, 1);
 
-    place(1, 1, mCustomCursorCheckBox, 3);
+    place(1, 1, mCustomCursorCheckBox, 3, 1);
 
-    place(1, 2, mEnableResizeCheckBox, 2);
-    place(1, 3, mNoFrameCheckBox, 2);
+    place(1, 2, mEnableResizeCheckBox, 2, 1);
+    place(1, 3, mNoFrameCheckBox, 2, 1);
 #ifdef USE_SDL2
-    place(1, 4, mAllowHighDPICheckBox, 2);
+    place(1, 4, mAllowHighDPICheckBox, 2, 1);
 #endif  // USE_SDL2
 
-    place(0, 6, mFpsSlider);
-    place(1, 6, mFpsCheckBox).setPadding(3);
-    place(2, 6, mFpsLabel).setPadding(1);
+    place(0, 6, mFpsSlider, 1, 1);
+    place(1, 6, mFpsCheckBox, 1, 1).setPadding(3);
+    place(2, 6, mFpsLabel, 1, 1).setPadding(1);
 
-    place(0, 7, mAltFpsSlider);
-    place(1, 7, mAltFpsLabel).setPadding(3);
+    place(0, 7, mAltFpsSlider, 1, 1);
+    place(1, 7, mAltFpsLabel, 1, 1).setPadding(3);
 
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
-    place(0, 8, mDetectButton);
+    place(0, 8, mDetectButton, 1, 1);
 #else  // !defined(ANDROID) && !defined(__APPLE__) &&
        // !defined(__native_client__)
     mNoFrameCheckBox->setEnabled(false);

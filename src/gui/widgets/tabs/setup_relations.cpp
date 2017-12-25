@@ -129,13 +129,13 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mPlayerTitleTable, 6);
+    place(0, 0, mPlayerTitleTable, 6, 1);
     place(0, 1, mPlayerScrollArea, 6, 4).setPadding(2);
-    place(0, 5, mDeleteButton);
-    place(3, 5, ignore_action_label, 1);
-    place(4, 5, mIgnoreActionChoicesBox, 2).setPadding(2);
-    place(3, 6, mDefaultTrading, 3);
-    place(3, 7, mDefaultWhisper, 3);
+    place(0, 5, mDeleteButton, 1, 1);
+    place(3, 5, ignore_action_label, 1, 1);
+    place(4, 5, mIgnoreActionChoicesBox, 2, 1).setPadding(2);
+    place(3, 6, mDefaultTrading, 3, 1);
+    place(3, 7, mDefaultWhisper, 3, 1);
 
     playerRelations.addListener(this);
 

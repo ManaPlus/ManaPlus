@@ -113,8 +113,8 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
     }
 
     placer = getPlacer(0, 1);
-    placer(1, 0, mOkButton, 1);
-    placer(2, 0, mCancelButton, 1);
+    placer(1, 0, mOkButton, 1, 1);
+    placer(2, 0, mCancelButton, 1, 1);
     reflowLayout(200, 0);
 }
 
@@ -141,7 +141,7 @@ QuitDialog::~QuitDialog()
 void QuitDialog::placeOption(ContainerPlacer &placer,
                              RadioButton *const option)
 {
-    placer(0, CAST_S32(mOptions.size()), option, 3);
+    placer(0, CAST_S32(mOptions.size()), option, 3, 1);
     mOptions.push_back(option);
 }
 

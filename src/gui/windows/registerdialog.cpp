@@ -75,15 +75,15 @@ RegisterDialog::RegisterDialog(LoginData &data) :
     // TRANSLATORS: register dialog. label.
     Label *const confirmLabel = new Label(this, _("Confirm:"));
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
-    placer(0, 0, userLabel);
-    placer(0, 1, passwordLabel);
-    placer(0, 2, confirmLabel);
+    placer(0, 0, userLabel, 1, 1);
+    placer(0, 1, passwordLabel, 1, 1);
+    placer(0, 2, confirmLabel, 1, 1);
 
-    placer(1, 0, mUserField, 3).setPadding(2);
-    placer(1, 1, mPasswordField, 3).setPadding(2);
-    placer(1, 2, mConfirmField, 3).setPadding(2);
+    placer(1, 0, mUserField, 3, 1).setPadding(2);
+    placer(1, 1, mPasswordField, 3, 1).setPadding(2);
+    placer(1, 2, mConfirmField, 3, 1).setPadding(2);
 
     int row = 3;
 
@@ -93,8 +93,8 @@ RegisterDialog::RegisterDialog(LoginData &data) :
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
         // TRANSLATORS: register dialog. button.
         mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
-        placer(1, row, mMaleButton);
-        placer(2, row, mFemaleButton);
+        placer(1, row, mMaleButton, 1, 1);
+        placer(2, row, mFemaleButton, 1, 1);
 
         row++;
     }
@@ -104,8 +104,8 @@ RegisterDialog::RegisterDialog(LoginData &data) :
         // TRANSLATORS: register dialog. label.
         Label *const emailLabel = new Label(this, _("Email:"));
         mEmailField = new TextField(this);
-        placer(0, row, emailLabel);
-        placer(1, row, mEmailField, 3).setPadding(2);
+        placer(0, row, emailLabel, 1, 1);
+        placer(1, row, mEmailField, 3, 1).setPadding(2);
         mEmailField->addKeyListener(this);
         mEmailField->setActionEventId("register");
         mEmailField->addActionListener(this);
@@ -113,8 +113,8 @@ RegisterDialog::RegisterDialog(LoginData &data) :
     }
 
     placer = getPlacer(0, 2);
-    placer(1, 0, mRegisterButton);
-    placer(2, 0, mCancelButton);
+    placer(1, 0, mRegisterButton, 1, 1);
+    placer(2, 0, mCancelButton, 1, 1);
     reflowLayout(250, 0);
 
     mUserField->addKeyListener(this);

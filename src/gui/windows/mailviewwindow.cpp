@@ -98,23 +98,23 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
 
     mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
     int n = 0;
-    placer(0, n++, mTimeLabel);
-    placer(0, n++, mFromLabel);
-    placer(0, n++, mSubjectLabel);
+    placer(0, n++, mTimeLabel, 1, 1);
+    placer(0, n++, mFromLabel, 1, 1);
+    placer(0, n++, mSubjectLabel, 1, 1);
     if (message->money != 0)
     {
         mMoneyLabel = new Label(this, strprintf("%s %u",
             // TRANSLATORS: mail view window label
             _("Money:"),
             CAST_U32(message->money)));
-        placer(0, n++, mMoneyLabel);
+        placer(0, n++, mMoneyLabel, 1, 1);
     }
-    placer(0, n++, mMessageLabel);
-    placer(0, n++, mItemScrollArea);
+    placer(0, n++, mMessageLabel, 1, 1);
+    placer(0, n++, mItemScrollArea, 1, 1);
 
     if (mUseMail2 && message->money != 0)
     {
@@ -122,18 +122,18 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
             // TRANSLATORS: mail view attached money button
             _("Get money"),
             "money", this);
-        placer(0, n++, mGetMoneyButton);
+        placer(0, n++, mGetMoneyButton, 1, 1);
     }
-    placer(0, n++, mGetAttachButton);
+    placer(0, n++, mGetAttachButton, 1, 1);
     updateAttachButton();
 
-    ContainerPlacer placer2;
+    ContainerPlacer placer2(nullptr, nullptr);
     placer2 = getPlacer(0, n);
 
-    placer2(0, 0, mPrevButton);
-    placer2(1, 0, mNextButton);
-    placer2(3, 0, mReplyButton);
-    placer2(4, 0, mCloseButton);
+    placer2(0, 0, mPrevButton, 1, 1);
+    placer2(1, 0, mNextButton, 1, 1);
+    placer2(3, 0, mReplyButton, 1, 1);
+    placer2(4, 0, mCloseButton, 1, 1);
 
     loadWindowState();
     enableVisibleSound(true);

@@ -184,33 +184,33 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mThemeLabel, 5);
-    place(0, 1, mLangLabel, 5);
-    place(0, 2, mFontSizeLabel, 5);
-    place(0, 3, mNpcFontSizeLabel, 5);
-    place(0, 4, mFontLabel, 5);
-    place(0, 5, mBoldFontLabel, 5);
-    place(0, 6, mParticleFontLabel, 5);
-    place(0, 7, mHelpFontLabel, 5);
-    place(0, 8, mSecureFontLabel, 5);
-    place(0, 9, mNpcFontLabel, 5);
-    place(0, 10, mJapanFontLabel, 5);
-    place(0, 11, mChinaFontLabel, 5);
+    place(0, 0, mThemeLabel, 5, 1);
+    place(0, 1, mLangLabel, 5, 1);
+    place(0, 2, mFontSizeLabel, 5, 1);
+    place(0, 3, mNpcFontSizeLabel, 5, 1);
+    place(0, 4, mFontLabel, 5, 1);
+    place(0, 5, mBoldFontLabel, 5, 1);
+    place(0, 6, mParticleFontLabel, 5, 1);
+    place(0, 7, mHelpFontLabel, 5, 1);
+    place(0, 8, mSecureFontLabel, 5, 1);
+    place(0, 9, mNpcFontLabel, 5, 1);
+    place(0, 10, mJapanFontLabel, 5, 1);
+    place(0, 11, mChinaFontLabel, 5, 1);
 
-    place(6, 0, mThemeDropDown, 10);
-    place(6, 1, mLangDropDown, 10);
-    place(6, 2, mFontSizeDropDown, 10);
-    place(6, 3, mNpcFontSizeDropDown, 10);
-    place(6, 4, mFontDropDown, 10);
-    place(6, 5, mBoldFontDropDown, 10);
-    place(6, 6, mParticleFontDropDown, 10);
-    place(6, 7, mHelpFontDropDown, 10);
-    place(6, 8, mSecureFontDropDown, 10);
-    place(6, 9, mNpcFontDropDown, 10);
-    place(6, 10, mJapanFontDropDown, 10);
-    place(6, 11, mChinaFontDropDown, 10);
+    place(6, 0, mThemeDropDown, 10, 1);
+    place(6, 1, mLangDropDown, 10, 1);
+    place(6, 2, mFontSizeDropDown, 10, 1);
+    place(6, 3, mNpcFontSizeDropDown, 10, 1);
+    place(6, 4, mFontDropDown, 10, 1);
+    place(6, 5, mBoldFontDropDown, 10, 1);
+    place(6, 6, mParticleFontDropDown, 10, 1);
+    place(6, 7, mHelpFontDropDown, 10, 1);
+    place(6, 8, mSecureFontDropDown, 10, 1);
+    place(6, 9, mNpcFontDropDown, 10, 1);
+    place(6, 10, mJapanFontDropDown, 10, 1);
+    place(6, 11, mChinaFontDropDown, 10, 1);
 
-    place(17, 0, mInfoButton, 1);
+    place(17, 0, mInfoButton, 1, 1);
 
     int size = mainGraphics->mWidth - 10;
     const int maxWidth = mFontSize * 30 + 290;

@@ -59,7 +59,7 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     ContainerPlacer placer = h.getPlacer(0, 0);
 
     placer(0, 0, mPlayerBox, 3, 5);
-    placer(0, 5, mName, 3);
+    placer(0, 5, mName, 3, 1);
 
     update();
 

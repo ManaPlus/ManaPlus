@@ -226,14 +226,14 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mBrowserBox->setEnableTabs(true);
     mPlayButton->setEnabled(false);
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
     placer(0, 0, mScrollArea, 5, 3).setPadding(3);
-    placer(0, 3, mLabel, 5);
-    placer(0, 4, mProgressBar, 5);
-    placer(3, 5, mCancelButton);
-    placer(4, 5, mPlayButton);
+    placer(0, 3, mLabel, 5, 1);
+    placer(0, 4, mProgressBar, 5, 1);
+    placer(3, 5, mCancelButton, 1, 1);
+    placer(4, 5, mPlayButton, 1, 1);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

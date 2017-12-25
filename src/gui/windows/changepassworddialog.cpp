@@ -63,16 +63,16 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData &data) :
         // TRANSLATORS: change password dialog label
         strprintf(_("Account: %s"), mLoginData->username.c_str()));
 
-    place(0, 0, accountLabel, 3);
+    place(0, 0, accountLabel, 3, 1);
     // TRANSLATORS: change password dialog label
     place(0, 1, new Label(this, _("Password:")), 3);
-    place(0, 2, mOldPassField, 3).setPadding(1);
+    place(0, 2, mOldPassField, 3, 1).setPadding(1);
     // TRANSLATORS: change password dialog label
-    place(0, 3, new Label(this, _("Type new password twice:")), 3);
-    place(0, 4, mFirstPassField, 3).setPadding(1);
-    place(0, 5, mSecondPassField, 3).setPadding(1);
-    place(1, 6, mCancelButton);
-    place(2, 6, mChangePassButton);
+    place(0, 3, new Label(this, _("Type new password twice:")), 3, 1);
+    place(0, 4, mFirstPassField, 3, 1).setPadding(1);
+    place(0, 5, mSecondPassField, 3, 1).setPadding(1);
+    place(1, 6, mCancelButton, 1, 1);
+    place(2, 6, mChangePassButton, 1, 1);
     reflowLayout(200);
 
     center();

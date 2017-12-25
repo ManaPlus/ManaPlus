@@ -87,12 +87,12 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mJoystickEnabled);
-    place(0, 1, mNamesDropDown);
-    place(0, 2, mUseInactiveCheckBox);
-    place(0, 3, mDetectButton);
-    place(0, 4, mCalibrateLabel);
-    place(0, 5, mCalibrateButton);
+    place(0, 0, mJoystickEnabled, 1, 1);
+    place(0, 1, mNamesDropDown, 1, 1);
+    place(0, 2, mUseInactiveCheckBox, 1, 1);
+    place(0, 3, mDetectButton, 1, 1);
+    place(0, 4, mCalibrateLabel, 1, 1);
+    place(0, 5, mCalibrateButton, 1, 1);
 
     setDimension(Rect(0, 0, 365, 75));
 }

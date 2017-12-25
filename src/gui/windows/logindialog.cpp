@@ -148,26 +148,26 @@ LoginDialog::LoginDialog(LoginData &data,
     mUserField->addActionListener(this);
     mPassField->addActionListener(this);
 
-    place(0, 0, serverLabel1);
-    place(1, 0, serverLabel2, 8);
-    place(0, 1, userLabel);
-    place(1, 1, mUserField, 8);
-    place(0, 2, passLabel);
-    place(1, 2, mPassField, 8);
-    place(0, 6, mUpdateTypeLabel, 1);
-    place(1, 6, mUpdateTypeDropDown, 8);
+    place(0, 0, serverLabel1, 1, 1);
+    place(1, 0, serverLabel2, 8, 1);
+    place(0, 1, userLabel, 1, 1);
+    place(1, 1, mUserField, 8, 1);
+    place(0, 2, passLabel, 1, 1);
+    place(1, 2, mPassField, 8, 1);
+    place(0, 6, mUpdateTypeLabel, 1, 1);
+    place(1, 6, mUpdateTypeDropDown, 8, 1);
     int n = 7;
     if (mUpdateHostDropDown != nullptr)
     {
-        place(0, 7, mUpdateHostDropDown, 9);
+        place(0, 7, mUpdateHostDropDown, 9, 1);
         n += 1;
     }
-    place(0, n, mCustomUpdateHost, 9);
-    place(0, n + 1, mUpdateHostText, 9);
-    place(0, n + 2, mKeepCheck, 9);
-    place(0, n + 3, mRegisterButton).setHAlign(LayoutCell::LEFT);
-    place(2, n + 3, mServerButton);
-    place(3, n + 3, mLoginButton);
+    place(0, n, mCustomUpdateHost, 9, 1);
+    place(0, n + 1, mUpdateHostText, 9, 1);
+    place(0, n + 2, mKeepCheck, 9, 1);
+    place(0, n + 3, mRegisterButton, 1, 1).setHAlign(LayoutCell::LEFT);
+    place(2, n + 3, mServerButton, 1, 1);
+    place(3, n + 3, mLoginButton, 1, 1);
 
     addKeyListener(this);
 }

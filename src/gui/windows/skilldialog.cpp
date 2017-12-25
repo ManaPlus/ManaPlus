@@ -112,9 +112,9 @@ SkillDialog::SkillDialog() :
     mTabs->getWidgetContainer()->setSelectable(false);
 
     place(0, 0, mTabs, 5, 5);
-    place(0, 5, mPointsLabel, 4);
-    place(3, 5, mUseButton);
-    place(4, 5, mIncreaseButton);
+    place(0, 5, mPointsLabel, 4, 1);
+    place(3, 5, mUseButton, 1, 1);
+    place(4, 5, mIncreaseButton, 1, 1);
 }
 
 void SkillDialog::postInit()

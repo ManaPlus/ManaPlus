@@ -166,17 +166,17 @@ StatusWindow::StatusWindow() :
             getThemeColor(ThemeColorId::NO_MP_BAR_OUTLINE, 255U));
     }
 
-    place(0, 0, mLvlLabel, 3);
-    place(0, 1, mHpLabel).setPadding(3);
-    place(1, 1, mHpBar, 4);
-    place(5, 1, mXpLabel).setPadding(3);
-    place(6, 1, mXpBar, 5);
-    place(0, 2, mMpLabel).setPadding(3);
+    place(0, 0, mLvlLabel, 3, 1);
+    place(0, 1, mHpLabel, 1, 1).setPadding(3);
+    place(1, 1, mHpBar, 4, 1);
+    place(5, 1, mXpLabel, 1, 1).setPadding(3);
+    place(6, 1, mXpBar, 5, 1);
+    place(0, 2, mMpLabel, 1, 1).setPadding(3);
     // 5, 2 and 6, 2 Job Progress Bar
     if (job)
-        place(1, 2, mMpBar, 4);
+        place(1, 2, mMpBar, 4, 1);
     else
-        place(1, 2, mMpBar, 10);
+        place(1, 2, mMpBar, 10, 1);
 
     if (job)
     {
@@ -190,24 +190,24 @@ StatusWindow::StatusWindow() :
             getThemeColor(ThemeColorId::JOB_BAR_OUTLINE, 255U));
         mJobBar->setSelectable(false);
 
-        place(3, 0, mJobLvlLabel, 3);
-        place(5, 2, mJobLabel).setPadding(3);
-        place(6, 2, mJobBar, 5);
-        place(6, 0, mMoneyLabel, 3);
+        place(3, 0, mJobLvlLabel, 3, 1);
+        place(5, 2, mJobLabel, 1, 1).setPadding(3);
+        place(6, 2, mJobBar, 5, 1);
+        place(6, 0, mMoneyLabel, 3, 1);
     }
     else
     {
         mJobLvlLabel = nullptr;
         mJobLabel = nullptr;
         mJobBar = nullptr;
-        place(3, 0, mMoneyLabel, 3);
+        place(3, 0, mMoneyLabel, 3, 1);
     }
 
     place(0, 3, mTabs, 11, 3);
 
     getLayout().setRowHeight(3, LayoutType::SET);
 
-    place(0, 5, mCopyButton);
+    place(0, 5, mCopyButton, 1, 1);
 
     loadWindowState();
     enableVisibleSound(true);

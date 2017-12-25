@@ -61,8 +61,8 @@ WorldSelectDialog::WorldSelectDialog(const Worlds &worlds) :
     worldsScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
     place(0, 0, worldsScroll, 3, 5).setPadding(2);
-    place(1, 5, mChangeLoginButton);
-    place(2, 5, mChooseWorld);
+    place(1, 5, mChangeLoginButton, 1, 1);
+    place(2, 5, mChooseWorld, 1, 1);
 
     // Make sure the list has enough height
     getLayout().setRowHeight(0, 60);

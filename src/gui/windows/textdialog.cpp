@@ -59,19 +59,19 @@ TextDialog::TextDialog(const std::string &restrict title,
     // TRANSLATORS: text dialog button
     Button *const cancelButton = new Button(this, _("Cancel"), "CANCEL", this);
 
-    place(0, 0, textLabel, 4);
+    place(0, 0, textLabel, 4, 1);
     if (isPassword)
     {
         mPasswordField = new PasswordField(this);
-        place(0, 1, mPasswordField, 4);
+        place(0, 1, mPasswordField, 4, 1);
     }
     else
     {
         mTextField = new TextField(this);
-        place(0, 1, mTextField, 4);
+        place(0, 1, mTextField, 4, 1);
     }
-    place(2, 2, mOkButton);
-    place(3, 2, cancelButton);
+    place(2, 2, mOkButton, 1, 1);
+    place(3, 2, cancelButton, 1, 1);
 
     int width = getFont()->getWidth(title);
     if (width < textLabel->getWidth())

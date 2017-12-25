@@ -371,36 +371,36 @@ void BuyDialog::init()
 
     ContainerPlacer placer = getPlacer(0, 0);
     placer(0, 0, mScrollArea, 9, 5).setPadding(3);
-    placer(0, 5, mDecreaseButton);
-    placer(1, 5, mSlider, 4);
-    placer(5, 5, mIncreaseButton);
-    placer(6, 5, mQuantityLabel, 2);
-    placer(8, 5, mAddMaxButton);
-    placer(0, 6, mAmountLabel, 2);
-    placer(2, 6, mAmountField, 2);
-    placer(0, 7, mMoneyLabel, 8);
+    placer(0, 5, mDecreaseButton, 1, 1);
+    placer(1, 5, mSlider, 4, 1);
+    placer(5, 5, mIncreaseButton, 1, 1);
+    placer(6, 5, mQuantityLabel, 2, 1);
+    placer(8, 5, mAddMaxButton, 1, 1);
+    placer(0, 6, mAmountLabel, 2, 1);
+    placer(2, 6, mAmountField, 2, 1);
+    placer(0, 7, mMoneyLabel, 8, 1);
     if (mSortDropDown != nullptr)
     {
-        placer(0, 8, mSortDropDown, 2);
+        placer(0, 8, mSortDropDown, 2, 1);
     }
     else
     {
         // TRANSLATORS: buy dialog label
         mFilterLabel = new Label(this, _("Filter:"));
         mFilterLabel->adjustSize();
-        placer(0, 8, mFilterLabel, 2);
+        placer(0, 8, mFilterLabel, 2, 1);
     }
-    placer(2, 8, mFilterTextField, 2);
+    placer(2, 8, mFilterTextField, 2, 1);
     if (mAdvanced)
     {
-        placer(6, 8, mBuyButton);
-        placer(7, 8, mConfirmButton);
+        placer(6, 8, mBuyButton, 1, 1);
+        placer(7, 8, mConfirmButton, 1, 1);
     }
     else
     {
-        placer(7, 8, mBuyButton);
+        placer(7, 8, mBuyButton, 1, 1);
     }
-    placer(8, 8, mQuitButton);
+    placer(8, 8, mQuitButton, 1, 1);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

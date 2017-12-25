@@ -131,16 +131,16 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     mFPSText = _("%d FPS (Software)");
 #endif  // USE_OPENGL
 
-    place(0, 0, mFPSLabel, 2);
-    place(0, 1, mLPSLabel, 2);
-    place(0, 2, mMusicFileLabel, 2);
-    place(0, 3, mMapLabel, 2);
-    place(0, 4, mMapNameLabel, 2);
-    place(0, 5, mMinimapLabel, 2);
-    place(0, 6, mXYLabel, 2);
-    place(0, 7, mTileMouseLabel, 2);
-    place(0, 8, mParticleCountLabel, 2);
-    place(0, 9, mMapActorCountLabel, 2);
+    place(0, 0, mFPSLabel, 2, 1);
+    place(0, 1, mLPSLabel, 2, 1);
+    place(0, 2, mMusicFileLabel, 2, 1);
+    place(0, 3, mMapLabel, 2, 1);
+    place(0, 4, mMapNameLabel, 2, 1);
+    place(0, 5, mMinimapLabel, 2, 1);
+    place(0, 6, mXYLabel, 2, 1);
+    place(0, 7, mTileMouseLabel, 2, 1);
+    place(0, 8, mParticleCountLabel, 2, 1);
+    place(0, 9, mMapActorCountLabel, 2, 1);
 #ifdef USE_OPENGL
 #if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS) \
     || defined(DEBUG_BIND_TEXTURE)
@@ -151,15 +151,15 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     mTexturesLabel = new Label(this, strprintf("%s %s",
         // TRANSLATORS: debug window label
         _("Textures count:"), "?"));
-    place(0, n, mTexturesLabel, 2);
+    place(0, n, mTexturesLabel, 2, 1);
     n ++;
 #endif  // DEBUG_OPENGL_LEAKS
 #ifdef DEBUG_DRAW_CALLS
-    place(0, n, mDrawCallsLabel, 2);
+    place(0, n, mDrawCallsLabel, 2, 1);
     n ++;
 #endif  // DEBUG_DRAW_CALLS
 #ifdef DEBUG_BIND_TEXTURE
-    place(0, n, mBindsLabel, 2);
+    place(0, n, mBindsLabel, 2, 1);
 #endif  // DEBUG_BIND_TEXTURE
 #endif  // USE_OPENGL
 
@@ -308,20 +308,20 @@ TargetDebugTab::TargetDebugTab(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mTargetLabel, 2);
-    place(0, 1, mTargetIdLabel, 2);
-    place(0, 2, mTargetTypeLabel, 2);
-    place(0, 3, mTargetLevelLabel, 2);
-    place(0, 4, mTargetRaceLabel, 2);
-    place(0, 5, mAttackDelayLabel, 2);
-    place(0, 6, mTargetPartyLabel, 2);
-    place(0, 7, mTargetGuildLabel, 2);
-    place(0, 8, mMinHitLabel, 2);
-    place(0, 9, mMaxHitLabel, 2);
-    place(0, 10, mCriticalHitLabel, 2);
-    place(0, 11, mKarmaLabel, 2);
-    place(0, 12, mMannerLabel, 2);
-    place(0, 13, mEffectsLabel, 2);
+    place(0, 0, mTargetLabel, 2, 1);
+    place(0, 1, mTargetIdLabel, 2, 1);
+    place(0, 2, mTargetTypeLabel, 2, 1);
+    place(0, 3, mTargetLevelLabel, 2, 1);
+    place(0, 4, mTargetRaceLabel, 2, 1);
+    place(0, 5, mAttackDelayLabel, 2, 1);
+    place(0, 6, mTargetPartyLabel, 2, 1);
+    place(0, 7, mTargetGuildLabel, 2, 1);
+    place(0, 8, mMinHitLabel, 2, 1);
+    place(0, 9, mMaxHitLabel, 2, 1);
+    place(0, 10, mCriticalHitLabel, 2, 1);
+    place(0, 11, mKarmaLabel, 2, 1);
+    place(0, 12, mMannerLabel, 2, 1);
+    place(0, 13, mEffectsLabel, 2, 1);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -459,9 +459,9 @@ NetDebugTab::NetDebugTab(const Widget2 *const widget) :
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
-    place(0, 0, mPingLabel, 2);
-    place(0, 1, mInPackets1Label, 2);
-    place(0, 2, mOutPackets1Label, 2);
+    place(0, 0, mPingLabel, 2, 1);
+    place(0, 1, mInPackets1Label, 2, 1);
+    place(0, 2, mOutPackets1Label, 2, 1);
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);

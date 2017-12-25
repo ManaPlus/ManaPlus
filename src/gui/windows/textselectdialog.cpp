@@ -101,18 +101,18 @@ void TextSelectDialog::postInit()
     mItemList->setActionEventId("item");
     mItemList->addActionListener(this);
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
     placer(0, 0, mScrollArea, 8, 5).setPadding(3);
     if (mQuitButton != nullptr)
     {
-        placer(6, 5, mSelectButton);
-        placer(7, 5, mQuitButton);
+        placer(6, 5, mSelectButton, 1, 1);
+        placer(7, 5, mQuitButton, 1, 1);
     }
     else
     {
-        placer(7, 5, mSelectButton);
+        placer(7, 5, mSelectButton, 1, 1);
     }
 
     Layout &layout = getLayout();

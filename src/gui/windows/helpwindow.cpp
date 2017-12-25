@@ -88,7 +88,7 @@ HelpWindow::HelpWindow() :
     mBrowserBox->setEnableKeys(true);
     mBrowserBox->setEnableTabs(true);
 
-    place(4, 3, mDYKButton);
+    place(4, 3, mDYKButton, 1, 1);
     place(0, 0, mScrollArea, 5, 3).setPadding(3);
 
     Layout &layout = getLayout();

@@ -128,7 +128,7 @@ void SellDialog::postInit()
     mShopItemList->setActionEventId("sell");
     mShopItemList->addActionListener(this);
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
     if (mIsSell == IsSell_true)
@@ -163,28 +163,28 @@ void SellDialog::postInit()
         mSlider->addActionListener(this);
 
         placer(0, 0, mScrollArea, 8, 5).setPadding(3);
-        placer(0, 5, mDecreaseButton);
-        placer(1, 5, mSlider, 3);
-        placer(4, 5, mIncreaseButton);
-        placer(5, 5, mQuantityLabel, 2);
-        placer(7, 5, mAddMaxButton);
-        placer(0, 6, mMoneyLabel, 8);
+        placer(0, 5, mDecreaseButton, 1, 1);
+        placer(1, 5, mSlider, 3, 1);
+        placer(4, 5, mIncreaseButton, 1, 1);
+        placer(5, 5, mQuantityLabel, 2, 1);
+        placer(7, 5, mAddMaxButton, 1, 1);
+        placer(0, 6, mMoneyLabel, 8, 1);
         if (mAdvanced == Advanced_true)
         {
-            placer(5, 7, mSellButton);
-            placer(6, 7, mConfirmButton);
+            placer(5, 7, mSellButton, 1, 1);
+            placer(6, 7, mConfirmButton, 1, 1);
         }
         else
         {
-            placer(6, 7, mSellButton);
+            placer(6, 7, mSellButton, 1, 1);
         }
-        placer(7, 7, mQuitButton);
+        placer(7, 7, mQuitButton, 1, 1);
     }
     else
     {
         placer(0, 0, mScrollArea, 8, 5).setPadding(3);
-        placer(6, 5, mSellButton);
-        placer(7, 5, mQuitButton);
+        placer(6, 5, mSellButton, 1, 1);
+        placer(7, 5, mQuitButton, 1, 1);
     }
 
     Layout &layout = getLayout();

@@ -35,8 +35,8 @@ class Widget;
 class ContainerPlacer final
 {
     public:
-        explicit ContainerPlacer(BasicContainer2 *const c = nullptr,
-                                 LayoutCell *const lc = nullptr) :
+        ContainerPlacer(BasicContainer2 *const c,
+                        LayoutCell *const lc) :
             mContainer(c),
             mCell(lc)
         {}
@@ -62,8 +62,8 @@ class ContainerPlacer final
         LayoutCell &operator()(const int x,
                                const int y,
                                Widget *const wg,
-                               const int w = 1,
-                               const int h = 1);
+                               const int w,
+                               const int h);
 
     private:
         BasicContainer2 *mContainer;

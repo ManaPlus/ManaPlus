@@ -117,12 +117,12 @@ QuestsWindow::QuestsWindow() :
     else
         mQuestsListBox->setRowHeight(gui->getNpcFont()->getHeight());
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
     placer(0, 0, mQuestScrollArea, 4, 3).setPadding(3);
     placer(4, 0, mTextScrollArea, 4, 3).setPadding(3);
-    placer(7, 3, mCloseButton);
+    placer(7, 3, mCloseButton, 1, 1);
 
     Layout &layout = getLayout();
     layout.setRowHeight(0, LayoutType::SET);

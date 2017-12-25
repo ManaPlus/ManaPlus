@@ -177,22 +177,22 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     ContainerPlacer place = h.getPlacer(0, 0);
 
     place(0, 0, mScroll, 6, 6).setPadding(2);
-    place(0, 6, mPreviewBox, 6).setPadding(2);
-    place(0, 7, mGradTypeLabel, 3);
-    place(3, 7, mGradTypeSlider);
-    place(4, 7, mGradTypeText, 2).setPadding(1);
-    place(0, 8, mRedLabel, 3);
-    place(3, 8, mRedSlider);
-    place(5, 8, mRedText).setPadding(1);
-    place(0, 9, mGreenLabel, 3);
-    place(3, 9, mGreenSlider);
-    place(5, 9, mGreenText).setPadding(1);
-    place(0, 10, mBlueLabel, 3);
-    place(3, 10, mBlueSlider);
-    place(5, 10, mBlueText).setPadding(1);
-    place(0, 11, mGradDelayLabel, 3);
-    place(3, 11, mGradDelaySlider);
-    place(5, 11, mGradDelayText).setPadding(1);
+    place(0, 6, mPreviewBox, 6, 1).setPadding(2);
+    place(0, 7, mGradTypeLabel, 3, 1);
+    place(3, 7, mGradTypeSlider, 1, 1);
+    place(4, 7, mGradTypeText, 2, 1).setPadding(1);
+    place(0, 8, mRedLabel, 3, 1);
+    place(3, 8, mRedSlider, 1, 1);
+    place(5, 8, mRedText, 1, 1).setPadding(1);
+    place(0, 9, mGreenLabel, 3, 1);
+    place(3, 9, mGreenSlider, 1, 1);
+    place(5, 9, mGreenText, 1, 1).setPadding(1);
+    place(0, 10, mBlueLabel, 3, 1);
+    place(3, 10, mBlueSlider, 1, 1);
+    place(5, 10, mBlueText, 1, 1).setPadding(1);
+    place(0, 11, mGradDelayLabel, 3, 1);
+    place(3, 11, mGradDelaySlider, 1, 1);
+    place(5, 11, mGradDelayText, 1, 1).setPadding(1);
 
     mGradTypeText->setCaption("");
 

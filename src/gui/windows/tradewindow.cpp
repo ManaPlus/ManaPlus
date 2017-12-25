@@ -136,16 +136,16 @@ TradeWindow::TradeWindow() :
 
     mMoneyField->setWidth(40);
 
-    place(1, 0, mMoneyLabel);
-    place(0, 1, myScroll).setPadding(3);
-    place(1, 1, partnerScroll).setPadding(3);
+    place(1, 0, mMoneyLabel, 1, 1);
+    place(0, 1, myScroll, 1, 1).setPadding(3);
+    place(1, 1, partnerScroll, 1, 1).setPadding(3);
     ContainerPlacer placer = getPlacer(0, 0);
-    placer(0, 0, moneyLabel2);
-    placer(1, 0, mMoneyField, 2);
-    placer(3, 0, mMoneyChangeButton).setHAlign(LayoutCell::LEFT);
+    placer(0, 0, moneyLabel2, 1, 1);
+    placer(1, 0, mMoneyField, 2, 1);
+    placer(3, 0, mMoneyChangeButton, 1, 1).setHAlign(LayoutCell::LEFT);
     placer = getPlacer(0, 2);
-    placer(0, 0, mAddButton);
-    placer(1, 0, mOkButton);
+    placer(0, 0, mAddButton, 1, 1);
+    placer(1, 0, mOkButton, 1, 1);
     Layout &layout = getLayout();
     layout.extend(0, 2, 2, 1);
     layout.setRowHeight(1, LayoutType::SET);

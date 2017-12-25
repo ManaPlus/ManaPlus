@@ -208,21 +208,21 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     minusAmountButton->setWidth(plusAmountButton->getWidth());
 
     // Set positions
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
     int n = 0;
     if (mUsage == ItemAmountWindowUsage::ShopBuyAdd)
     {
-        placer(0, n, mItemDropDown, 8);
+        placer(0, n, mItemDropDown, 8, 1);
         n++;
     }
-    placer(1, n, minusAmountButton);
-    placer(2, n, mItemAmountTextField, 3);
-    placer(5, n, plusAmountButton);
-    placer(6, n, addAllButton);
+    placer(1, n, minusAmountButton, 1, 1);
+    placer(2, n, mItemAmountTextField, 3, 1);
+    placer(5, n, plusAmountButton, 1, 1);
+    placer(6, n, addAllButton, 1, 1);
 
     placer(0, n, mItemIcon, 1, 3);
-    placer(1, n + 1, mItemAmountSlide, 7);
+    placer(1, n + 1, mItemAmountSlide, 7, 1);
 
     if (mUsage == ItemAmountWindowUsage::ShopBuyAdd ||
         mUsage == ItemAmountWindowUsage::ShopSellAdd)
@@ -236,19 +236,19 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
         minusPriceButton->adjustSize();
         minusPriceButton->setWidth(plusPriceButton->getWidth());
 
-        placer(1, n + 2, minusPriceButton);
-        placer(2, n + 2, mItemPriceTextField, 3);
-        placer(5, n + 2, plusPriceButton);
-        placer(6, n + 2, mGPLabel);
+        placer(1, n + 2, minusPriceButton, 1, 1);
+        placer(2, n + 2, mItemPriceTextField, 3, 1);
+        placer(5, n + 2, plusPriceButton, 1, 1);
+        placer(6, n + 2, mGPLabel, 1, 1);
 
-        placer(1, n + 3, mItemPriceSlide, 7);
-        placer(4, n + 5, cancelButton);
-        placer(5, n + 5, okButton);
+        placer(1, n + 3, mItemPriceSlide, 7, 1);
+        placer(4, n + 5, cancelButton, 1, 1);
+        placer(5, n + 5, okButton, 1, 1);
     }
     else
     {
-        placer(4, n + 2, cancelButton);
-        placer(5, n + 2, okButton);
+        placer(4, n + 2, cancelButton, 1, 1);
+        placer(5, n + 2, okButton, 1, 1);
     }
 
     reflowLayout(225, 0);

@@ -95,7 +95,7 @@ MailEditWindow::MailEditWindow() :
     setMinHeight(200);
     center();
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
     mToField->setWidth(100);
@@ -105,20 +105,20 @@ MailEditWindow::MailEditWindow() :
     mItemScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
     mToField->addFocusListener(this);
 
-    placer(0, 0, mToLabel);
-    placer(1, 0, mToField, 3);
-    placer(0, 1, mSubjectLabel);
-    placer(1, 1, mSubjectField, 3);
-    placer(0, 2, mMoneyLabel);
-    placer(1, 2, mMoneyField, 3);
-    placer(0, 3, mItemLabel);
+    placer(0, 0, mToLabel, 1, 1);
+    placer(1, 0, mToField, 3, 1);
+    placer(0, 1, mSubjectLabel, 1, 1);
+    placer(1, 1, mSubjectField, 3, 1);
+    placer(0, 2, mMoneyLabel, 1, 1);
+    placer(1, 2, mMoneyField, 3, 1);
+    placer(0, 3, mItemLabel, 1, 1);
     placer(1, 3, mItemScrollArea, 2, 2);
-    placer(3, 4, mAddButton, 1);
+    placer(3, 4, mAddButton, 1, 1);
 
-    placer(0, 5, mMessageLabel);
-    placer(1, 5, mMessageField, 3);
-    placer(0, 6, mSendButton);
-    placer(3, 6, mCloseButton);
+    placer(0, 5, mMessageLabel, 1, 1);
+    placer(1, 5, mMessageField, 3, 1);
+    placer(0, 6, mSendButton, 1, 1);
+    placer(3, 6, mCloseButton, 1, 1);
 
     loadWindowState();
     if (mUseMail2)

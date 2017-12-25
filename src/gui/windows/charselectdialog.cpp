@@ -94,15 +94,15 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     setCloseButton(true);
     setFocusable(true);
 
-    ContainerPlacer placer;
+    ContainerPlacer placer(nullptr, nullptr);
     placer = getPlacer(0, 0);
 
-    placer(0, 0, mSwitchLoginButton);
+    placer(0, 0, mSwitchLoginButton, 1, 1);
 
     int n = 1;
-    placer(n, 0, mChangePasswordButton);
+    placer(n, 0, mChangePasswordButton, 1, 1);
     n ++;
-    placer(n, 0, mDeleteButton);
+    placer(n, 0, mDeleteButton, 1, 1);
     n ++;
 #ifdef TMWA_SUPPORT
     if (Net::getNetworkType() != ServerType::TMWATHENA)
@@ -113,10 +113,10 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
             _("Rename"),
             "rename",
             this);
-        placer(n, 0, mRenameButton);
+        placer(n, 0, mRenameButton, 1, 1);
         n ++;
     }
-    placer(n, 0, mInfoButton);
+    placer(n, 0, mInfoButton, 1, 1);
     n ++;
 
     for (int i = 0; i < CAST_S32(mLoginData->characterSlots); i++)
@@ -126,13 +126,13 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
         mCharacterEntries.push_back(character);
     }
 
-    placer(0, 2, mPlayButton);
+    placer(0, 2, mPlayButton, 1, 1);
 
     if (!mSmallScreen)
     {
         mCharacterView = new CharacterViewNormal(
             this, &mCharacterEntries, mPadding);
-        placer(0, 1, mCharacterView, 10);
+        placer(0, 1, mCharacterView, 10, 1);
         int sz = 410 + 2 * mPadding;
         if (config.getIntValue("fontSize") > 18)
             sz = 500 + 2 * mPadding;
@@ -151,7 +151,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
             this, &mCharacterEntries, mPadding);
         mCharacterView->setWidth(mainGraphics->getWidth()
             - 2 * getPadding());
-        placer(0, 1, mCharacterView, 10);
+        placer(0, 1, mCharacterView, 10, 1);
         reflowLayout();
     }
     addKeyListener(this);

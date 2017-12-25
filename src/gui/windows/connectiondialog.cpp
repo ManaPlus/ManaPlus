@@ -51,9 +51,9 @@ ConnectionDialog::ConnectionDialog(const std::string &text,
         // TRANSLATORS: connection dialog button
         this, _("Cancel"), "cancelButton", this);
 
-    place(0, 0, progressIndicator);
-    place(0, 1, label);
-    place(0, 2, cancelButton).setHAlign(LayoutCell::CENTER);
+    place(0, 0, progressIndicator, 1, 1);
+    place(0, 1, label, 1, 1);
+    place(0, 2, cancelButton, 1, 1).setHAlign(LayoutCell::CENTER);
     reflowLayout();
 
     center();
