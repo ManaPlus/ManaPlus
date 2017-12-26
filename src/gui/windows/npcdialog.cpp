@@ -138,7 +138,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mInventory(new Inventory(InventoryType::Npc, 1)),
     mComplexInventory(new ComplexInventory(InventoryType::Craft, 1)),
     mItemContainer(new ItemContainer(this, mInventory,
-        10000, ShowEmptyRows_true)),
+        10000, ShowEmptyRows_true, ForceQuantity_false)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
         fromBool(getOptionBool("showitemsbackground"), Opaque),
         "npc_listbackground.xml")),

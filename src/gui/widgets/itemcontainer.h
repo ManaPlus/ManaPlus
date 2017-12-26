@@ -53,9 +53,9 @@ class ItemContainer final : public Widget,
     public:
         ItemContainer(const Widget2 *const widget,
                       Inventory *const inventory,
-                      const int maxColumns = 100000,
-                      const ShowEmptyRows showEmptyRows = ShowEmptyRows_false,
-                      const ForceQuantity forceQuantity = ForceQuantity_false);
+                      const int maxColumns,
+                      const ShowEmptyRows showEmptyRows,
+                      const ForceQuantity forceQuantity);
 
         A_DELETE_COPY(ItemContainer)
 

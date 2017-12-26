@@ -79,8 +79,10 @@ TradeWindow::TradeWindow() :
     SelectionListener(),
     mMyInventory(new Inventory(InventoryType::Trade, -1)),
     mPartnerInventory(new Inventory(InventoryType::Trade, -1)),
-    mMyItemContainer(new ItemContainer(this, mMyInventory)),
-    mPartnerItemContainer(new ItemContainer(this, mPartnerInventory)),
+    mMyItemContainer(new ItemContainer(this, mMyInventory, 100000,
+        ShowEmptyRows_false, ForceQuantity_false)),
+    mPartnerItemContainer(new ItemContainer(this, mPartnerInventory, 100000,
+        ShowEmptyRows_false, ForceQuantity_false)),
     // TRANSLATORS: trade window money label
     mMoneyLabel(new Label(this, strprintf(_("You get %s"), ""))),
     // TRANSLATORS: trade window button
