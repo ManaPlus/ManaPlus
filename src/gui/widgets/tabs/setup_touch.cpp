@@ -86,7 +86,7 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     // TRANSLATORS: settings option
     new SetupActionDropDown(_("Keyboard icon action"), "",
         "screenActionKeyboard", this, "screenActionKeyboardEvent",
-        mActionsList, 250);
+        mActionsList, 250, MainConfig_true);
 
 
     // TRANSLATORS: settings group
@@ -129,7 +129,7 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
         std::string event = strprintf("screenActionButton%uEvent", f);
         // TRANSLATORS: settings option
         new SetupActionDropDown(strprintf(_("Button %u action"), f + 1), "",
-            key, this, event, mActionsList, 250);
+            key, this, event, mActionsList, 250, MainConfig_true);
     }
 
     setDimension(Rect(0, 0, 550, 350));

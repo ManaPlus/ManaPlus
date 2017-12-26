@@ -35,7 +35,7 @@ class SetupActionDropDown final : public SetupItem
                             const std::string &restrict eventName,
                             TouchActionsModel *restrict const model,
                             const int width,
-                            const MainConfig mainConfig = MainConfig_true);
+                            const MainConfig mainConfig);
 
         SetupActionDropDown(const std::string &restrict text,
                             const std::string &restrict description,
@@ -44,7 +44,7 @@ class SetupActionDropDown final : public SetupItem
                             const std::string &restrict eventName,
                             TouchActionsModel *restrict const model,
                             const int width, const std::string &def,
-                            const MainConfig mainConfig = MainConfig_true);
+                            const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupActionDropDown)
 
