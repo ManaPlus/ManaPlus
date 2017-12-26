@@ -158,7 +158,7 @@ class SetupItemCheckBox final : public SetupItem
                           const std::string &restrict keyName,
                           SetupTabScroll *restrict const parent,
                           const std::string &restrict eventName,
-                          const MainConfig mainConfig = MainConfig_true);
+                          const MainConfig mainConfig);
 
         SetupItemCheckBox(const std::string &restrict text,
                           const std::string &restrict description,
@@ -166,7 +166,7 @@ class SetupItemCheckBox final : public SetupItem
                           SetupTabScroll *restrict const parent,
                           const std::string &restrict eventName,
                           const std::string &restrict def,
-                          const MainConfig mainConfig = MainConfig_true);
+                          const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemCheckBox)
 
@@ -190,8 +190,8 @@ class SetupItemTextField final : public SetupItem
                            const std::string &restrict keyName,
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
-                           const MainConfig mainConfig = MainConfig_true,
-                           const UseBase64 useBase64 = UseBase64_false);
+                           const MainConfig mainConfig,
+                           const UseBase64 useBase64);
 
         SetupItemTextField(const std::string &restrict text,
                            const std::string &restrict description,
@@ -199,8 +199,8 @@ class SetupItemTextField final : public SetupItem
                            SetupTabScroll *restrict const parent,
                            const std::string &restrict eventName,
                            const std::string &restrict def,
-                           const MainConfig mainConfig = MainConfig_true,
-                           const UseBase64 useBase64 = UseBase64_false);
+                           const MainConfig mainConfig,
+                           const UseBase64 useBase64);
 
         A_DELETE_COPY(SetupItemTextField)
 
@@ -246,7 +246,7 @@ class SetupItemIntTextField final : public SetupItem
                               SetupTabScroll *restrict const parent,
                               const std::string &restrict eventName,
                               const int min, const int max,
-                              const MainConfig mainConfig = MainConfig_true);
+                              const MainConfig mainConfig);
 
         SetupItemIntTextField(const std::string &restrict text,
                               const std::string &restrict description,
@@ -255,7 +255,7 @@ class SetupItemIntTextField final : public SetupItem
                               const std::string &restrict eventName,
                               const int min, const int max,
                               const std::string &restrict def,
-                              const MainConfig mainConfig = MainConfig_true);
+                              const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemIntTextField)
 
@@ -287,7 +287,7 @@ class SetupItemLabel final : public SetupItem
         SetupItemLabel(const std::string &restrict text,
                        const std::string &restrict description,
                        SetupTabScroll *restrict const parent,
-                       const Separator separator = Separator_true);
+                       const Separator separator);
 
         A_DELETE_COPY(SetupItemLabel)
 
@@ -318,7 +318,7 @@ class SetupItemDropDown final : public SetupItem
                           const std::string &restrict eventName,
                           ListModel *restrict const model,
                           const int width,
-                          const MainConfig mainConfig = MainConfig_true);
+                          const MainConfig mainConfig);
 
         SetupItemDropDown(const std::string &restrict text,
                           const std::string &restrict description,
@@ -328,7 +328,7 @@ class SetupItemDropDown final : public SetupItem
                           ListModel *restrict const model,
                           const int width,
                           const std::string &restrict def,
-                          const MainConfig mainConfig = MainConfig_true);
+                          const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemDropDown)
 
@@ -360,7 +360,7 @@ class SetupItemDropDownStr final : public SetupItem
                              const std::string &restrict eventName,
                              ListModel *restrict const model,
                              const int width,
-                             const MainConfig mainConfig = MainConfig_true);
+                             const MainConfig mainConfig);
 
         SetupItemDropDownStr(const std::string &restrict text,
                              const std::string &restrict description,
@@ -370,7 +370,7 @@ class SetupItemDropDownStr final : public SetupItem
                              ListModel *restrict const model,
                              const int width,
                              const std::string &restrict def,
-                             const MainConfig mainConfig = MainConfig_true);
+                             const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemDropDownStr)
 
@@ -538,9 +538,9 @@ class SetupItemSliderList notfinal : public SetupItem
                             SetupTabScroll *restrict const parent,
                             const std::string &restrict eventName,
                             ListModel *restrict const model,
-                            const int width = 150,
-                            const OnTheFly onTheFly = OnTheFly_false,
-                            const MainConfig mainConfig = MainConfig_true);
+                            const int width,
+                            const OnTheFly onTheFly,
+                            const MainConfig mainConfig);
 
         SetupItemSliderList(const std::string &restrict text,
                             const std::string &restrict description,
@@ -549,9 +549,9 @@ class SetupItemSliderList notfinal : public SetupItem
                             const std::string &restrict eventName,
                             ListModel *restrict const model,
                             const std::string &restrict def,
-                            const int width = 150,
-                            const OnTheFly onTheFly = OnTheFly_false,
-                            const MainConfig mainConfig = MainConfig_true);
+                            const int width,
+                            const OnTheFly onTheFly,
+                            const MainConfig mainConfig);
 
         HorizontContainer *mHorizont;
         Label *mLabel;
@@ -570,9 +570,9 @@ class SetupItemSound final : public SetupItemSliderList
                        SetupTabScroll *restrict const parent,
                        const std::string &restrict eventName,
                        ListModel *restrict const model,
-                       const int width = 150,
-                       const OnTheFly onTheFly = OnTheFly_false,
-                       const MainConfig mainConfig = MainConfig_true);
+                       const int width,
+                       const OnTheFly onTheFly,
+                       const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemSound)
 
@@ -594,9 +594,9 @@ class SetupItemSliderInt final : public SetupItemSliderList
                            const std::string &restrict eventName,
                            ListModel *restrict const model,
                            const int min,
-                           const int width = 150,
-                           const OnTheFly onTheFly = OnTheFly_false,
-                           const MainConfig mainConfig = MainConfig_true);
+                           const int width,
+                           const OnTheFly onTheFly,
+                           const MainConfig mainConfig);
 
         A_DELETE_COPY(SetupItemSliderInt)
 

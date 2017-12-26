@@ -75,11 +75,13 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
     mFormatList->fillFromArray(&formatList[0], formatListSize);
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Onscreen keyboard"), "", this);
+    new SetupItemLabel(_("Onscreen keyboard"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show onscreen keyboard icon"), "",
-        "showScreenKeyboard", this, "showScreenKeyboardEvent");
+        "showScreenKeyboard", this, "showScreenKeyboardEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupActionDropDown(_("Keyboard icon action"), "",
@@ -88,31 +90,38 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Onscreen joystick"), "", this);
+    new SetupItemLabel(_("Onscreen joystick"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show onscreen joystick"), "",
-        "showScreenJoystick", this, "showScreenJoystickEvent");
+        "showScreenJoystick", this, "showScreenJoystickEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Joystick size"), "", "screenJoystickSize", this,
-        "screenJoystickEvent", mSizeList, 100);
+        "screenJoystickEvent", mSizeList, 100,
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Onscreen buttons"), "", this);
+    new SetupItemLabel(_("Onscreen buttons"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show onscreen buttons"), "",
-        "showScreenButtons", this, "showScreenButtonsEvent");
+        "showScreenButtons", this, "showScreenButtonsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Buttons format"), "", "screenButtonsFormat", this,
-        "screenButtonsFormatEvent", mFormatList, 100);
+        "screenButtonsFormatEvent", mFormatList, 100,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Buttons size"), "", "screenButtonsSize", this,
-        "screenButtonsSizeEvent", mSizeList, 100);
+        "screenButtonsSizeEvent", mSizeList, 100,
+        MainConfig_true);
 
     for (unsigned int f = 0; f < 12; f ++)
     {

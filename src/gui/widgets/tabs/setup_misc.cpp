@@ -130,150 +130,185 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
     place(0, 0, mScroll, 10, 10);
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Monsters"), "", this);
+    new SetupItemLabel(_("Monsters"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show damage inflicted to monsters"), "",
-        "showMonstersTakedDamage", this, "showMonstersTakedDamageEvent");
+        "showMonstersTakedDamage", this, "showMonstersTakedDamageEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto target only reachable monsters"), "",
-        "targetOnlyReachable", this, "targetOnlyReachableEvent");
+        "targetOnlyReachable", this, "targetOnlyReachableEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Select auto target for attack skills"), "",
-        "skillAutotarget", this, "skillAutotargetEvent");
+        "skillAutotarget", this, "skillAutotargetEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Highlight monster attack range"), "",
         "highlightMonsterAttackRange", this,
-        "highlightMonsterAttackRangeEvent");
+        "highlightMonsterAttackRangeEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show monster hp bar"), "",
-        "showMobHP", this, "showMobHPEvent");
+        "showMobHP", this, "showMobHPEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Cycle monster targets"), "",
-        "cycleMonsters", this, "cycleMonstersEvent");
+        "cycleMonsters", this, "cycleMonstersEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Map"), "", this);
+    new SetupItemLabel(_("Map"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show warps particles"), "",
-        "warpParticle", this, "warpParticleEvent");
+        "warpParticle", this, "warpParticleEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Highlight map portals"), "",
-        "highlightMapPortals", this, "highlightMapPortalsEvent");
+        "highlightMapPortals", this, "highlightMapPortalsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Highlight floor items"), "",
-        "floorItemsHighlight", this, "floorItemsHighlightEvent");
+        "floorItemsHighlight", this, "floorItemsHighlightEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Highlight player attack range"), "",
-        "highlightAttackRange", this, "highlightAttackRangeEvent");
+        "highlightAttackRange", this, "highlightAttackRangeEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show extended minimaps"), "",
-        "showExtMinimaps", this, "showExtMinimapsEvent");
+        "showExtMinimaps", this, "showExtMinimapsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Draw path"), "", "drawPath",
-        this, "drawPathEvent");
+        this, "drawPathEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Draw hotkeys on map"), "", "drawHotKeys",
-        this, "drawHotKeysEvent");
+        this, "drawHotKeysEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable lazy scrolling"), "",
-        "enableLazyScrolling", this, "enableLazyScrollingEvent");
+        "enableLazyScrolling", this, "enableLazyScrollingEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Scroll laziness"), "", "ScrollLaziness",
-        this, "ScrollLazinessEvent", 1, 160);
+        this, "ScrollLazinessEvent", 1, 160,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Scroll radius"), "", "ScrollRadius",
-        this, "ScrollRadiusEvent", 0, mapTileSize);
+        this, "ScrollRadiusEvent", 0, mapTileSize,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto resize minimaps"), "", "autoresizeminimaps",
-        this, "autoresizeminimapsEvent");
+        this, "autoresizeminimapsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Play map animations"), "", "playMapAnimations",
-        this, "playMapAnimationsEvent");
+        this, "playMapAnimationsEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Moving"), "", this);
+    new SetupItemLabel(_("Moving"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto fix position"), "",
-        "autofixPos", this, "autofixPosEvent");
+        "autofixPos", this, "autofixPosEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show server side position"), "",
-        "showserverpos", this, "showserverposEvent");
+        "showserverpos", this, "showserverposEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Attack while moving"), "",
-        "attackMoving", this, "attackMovingEvent");
+        "attackMoving", this, "attackMovingEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Attack next target"), "",
-        "attackNext", this, "attackNextEvent");
+        "attackNext", this, "attackNextEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Sync player move"), "", "syncPlayerMove",
-        this, "syncPlayerMoveEvent");
+        this, "syncPlayerMoveEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Sync player move distance"), "",
         "syncPlayerMoveDistance",
-        this, "syncPlayerMoveDistanceEvent", 1, 30);
+        this, "syncPlayerMoveDistanceEvent", 1, 30,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Crazy move A program"), "",
-        "crazyMoveProgram", this, "crazyMoveProgramEvent");
+        "crazyMoveProgram", this, "crazyMoveProgramEvent",
+        MainConfig_true, UseBase64_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Mouse relative moves "
         "(good for touch interfaces)"), "", "mouseDirectionMove",
-        this, "mouseDirectionMoveEvent");
+        this, "mouseDirectionMoveEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Player"), "", this);
+    new SetupItemLabel(_("Player"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show own hp bar"), "",
-        "showOwnHP", this, "showOwnHPEvent");
+        "showOwnHP", this, "showOwnHPEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable quick stats"), "",
-        "quickStats", this, "quickStatsEvent");
+        "quickStats", this, "quickStatsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Cycle player targets"), "",
-        "cyclePlayers", this, "cyclePlayersEvent");
+        "cyclePlayers", this, "cyclePlayersEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show job exp messages"), "",
-        "showJobExp", this, "showJobExpEvent");
+        "showJobExp", this, "showJobExpEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show players popups"), "",
-        "showBeingPopup", this, "showBeingPopupEvent");
+        "showBeingPopup", this, "showBeingPopupEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Afk message"), "",
         "afkMessage", this, "afkMessageEvent",
-        MainConfig_false);
+        MainConfig_false, UseBase64_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show job"), "", "showJob",
@@ -282,50 +317,62 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable attack filter"), "",
-        "enableAttackFilter", this, "enableAttackFilterEvent");
+        "enableAttackFilter", this, "enableAttackFilterEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable pickup filter"), "",
-        "enablePickupFilter", this, "enablePickupFilterEvent");
+        "enablePickupFilter", this, "enablePickupFilterEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable advert protocol"), "",
-        "enableAdvert", this, "enableAdvertEvent");
+        "enableAdvert", this, "enableAdvertEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enabled pets support"),
-        "", "usepets", this, "usepetsEvent");
+        "", "usepets", this, "usepetsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable weight notifications"), "",
-        "weightMsg", this, "weightMsgEvent");
+        "weightMsg", this, "weightMsgEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Shop"), "", this);
+    new SetupItemLabel(_("Shop"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Accept sell/buy requests"), "",
-        "autoShop", this, "autoShopEvent");
+        "autoShop", this, "autoShopEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable shop mode"), "",
-        "tradebot", this, "tradebotEvent");
+        "tradebot", this, "tradebotEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("NPC"), "", this);
+    new SetupItemLabel(_("NPC"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Cycle npc targets"), "",
-        "cycleNPC", this, "cycleNPCEvent");
+        "cycleNPC", this, "cycleNPCEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Log NPC dialogue"), "", "logNpcInGui",
-        this, "logNpcInGuiEvent");
+        this, "logNpcInGuiEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Bots support"), "", this);
+    new SetupItemLabel(_("Bots support"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable guild bot support and disable native "
@@ -343,86 +390,105 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Keyboard"), "", this);
+    new SetupItemLabel(_("Keyboard"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Repeat delay"), "",
-        "repeateDelay", this, "repeateDelayEvent", 0, 10000);
+        "repeateDelay", this, "repeateDelayEvent", 0, 10000,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Repeat interval"), "",
-        "repeateInterval", this, "repeateIntervalEvent", 0, 10000);
+        "repeateInterval", this, "repeateIntervalEvent", 0, 10000,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Custom repeat interval"), "",
-        "repeateInterval2", this, "repeateInterval2Event", 0, 10000);
+        "repeateInterval2", this, "repeateInterval2Event", 0, 10000,
+        MainConfig_true);
 
 #ifdef USE_SDL2
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable alt-tab workaround"), "",
-        "blockAltTab", this, "blockAltTabEvent");
+        "blockAltTab", this, "blockAltTabEvent",
+        MainConfig_true);
 #endif  // USE_SDL2
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Windows"), "", this);
+    new SetupItemLabel(_("Windows"), "", this,
+        Separator_true);
 
     mShortcutsList->fillFromArray(&shortcutsList[0], shortcutsListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Shortcut buttons"), "", "autohideButtons", this,
-        "autohideButtonsEvent", mShortcutsList, 200);
+        "autohideButtonsEvent", mShortcutsList, 200,
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Proxy server"), "", this);
+    new SetupItemLabel(_("Proxy server"), "", this,
+        Separator_true);
 
     mProxyTypeList->fillFromArray(&proxyTypeList[0], proxyTypeListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Proxy type"), "", "downloadProxyType", this,
-        "downloadProxyTypeEvent", mProxyTypeList, 200);
+        "downloadProxyTypeEvent", mProxyTypeList, 200,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Proxy address:port"), "",
-        "downloadProxy", this, "downloadProxyEvent");
+        "downloadProxy", this, "downloadProxyEvent",
+        MainConfig_true, UseBase64_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Tunnel through HTTP proxy"), "",
-        "downloadProxyTunnel", this, "downloadProxyTunnelEvent");
+        "downloadProxyTunnel", this, "downloadProxyTunnelEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Logging"), "", this);
+    new SetupItemLabel(_("Logging"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable OpenGL version check "
         "(do not disable)"), "", "checkOpenGLVersion", this,
-        "checkOpenGLVersionEvent");
+        "checkOpenGLVersionEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable debug log"), "",
-        "debugLog", this, "debugLogEvent");
+        "debugLog", this, "debugLogEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Ignore logging packets"), "",
-        "ignorelogpackets", this, "ignorelogpacketsEvent");
+        "ignorelogpackets", this, "ignorelogpacketsEvent",
+        MainConfig_true, UseBase64_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Log unimplemented packets"), "",
-        "unimplimentedLog", this, "unimplimentedLogEvent");
+        "unimplimentedLog", this, "unimplimentedLogEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable OpenGL log"), "",
-        "debugOpenGL", this, "debugOpenGLEvent");
+        "debugOpenGL", this, "debugOpenGLEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable input log"), "",
-        "logInput", this, "logInputEvent");
+        "logInput", this, "logInputEvent",
+        MainConfig_true);
 
 #ifdef USE_SDL2
     mSdlLogList->fillFromArray(&sdlLogList[0], sdlLogListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("SDL logging level"), "",
-        "sdlLogLevel", this, "sdlLogLevelEvent", mSdlLogList, 100);
+        "sdlLogLevel", this, "sdlLogLevelEvent", mSdlLogList, 100,
+        MainConfig_true);
 #endif  // USE_SDL2
 
     // TRANSLATORS: settings option
@@ -431,23 +497,28 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Other"), "", this);
+    new SetupItemLabel(_("Other"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable server side attack"), "",
-        "serverAttack", this, "serverAttackEvent");
+        "serverAttack", this, "serverAttackEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hide support page link on error"), "",
-        "hidesupport", this, "hidesupportEvent");
+        "hidesupport", this, "hidesupportEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable double clicks"), "",
-        "doubleClick", this, "doubleClickEvent");
+        "doubleClick", this, "doubleClickEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable bot checker"), "",
-        "enableBotCheker", this, "enableBotChekerEvent");
+        "enableBotCheker", this, "enableBotChekerEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable buggy servers protection "
@@ -457,12 +528,14 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Low traffic mode"), "", "lowTraffic",
-        this, "lowTrafficEvent");
+        this, "lowTrafficEvent",
+        MainConfig_true);
 
 #ifndef ANDROID
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use FBO for screenshots (only for opengl)"),
-        "", "usefbo", this, "usefboEvent");
+        "", "usefbo", this, "usefboEvent",
+        MainConfig_true);
 #endif  // ANDROID
 
 #ifndef WIN32
@@ -475,16 +548,19 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Network delay between sub servers"),
-        "", "networksleep", this, "networksleepEvent", 0, 10000);
+        "", "networksleep", this, "networksleepEvent", 0, 10000,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show background"), "", "showBackground",
-        this, "showBackgroundEvent");
+        this, "showBackgroundEvent",
+        MainConfig_true);
 
     mDensityList->fillFromArray(&densityList[0], densityListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Screen density override"), "",
-        "screenDensity", this, "screenDensityEvent", mDensityList, 100);
+        "screenDensity", this, "screenDensityEvent", mDensityList, 100,
+        MainConfig_true);
 
     setDimension(Rect(0, 0, 550, 350));
 }

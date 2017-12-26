@@ -45,14 +45,16 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
     place(0, 0, mScroll, 10, 10);
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Window"), "", this);
+    new SetupItemLabel(_("Window"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto hide chat window"),
         // TRANSLATORS: settings description
         _("Chat window will be automatically hidden when not in use.\n\n"
         "Hit Enter or hover mouse to show chat again."),
-        "autohideChat", this, "autohideChatEvent");
+        "autohideChat", this, "autohideChatEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Protect chat focus"),
@@ -60,18 +62,21 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("Enables aggressive protection of input focus in chat window.\n\n"
         "Note: no other text inputs will be allowed to receive text input "
         "when you typing in chat window."),
-        "protectChatFocus", this, "protectChatFocusEvent");
+        "protectChatFocus", this, "protectChatFocusEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Colors"), "", this);
+    new SetupItemLabel(_("Colors"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Remove colors from received chat messages"),
         // TRANSLATORS: settings description
         _("Enable this setting to strip colors from incoming chat messages. "
         "All messages will use default chat text color if this enabled."),
-        "removeColors", this, "removeColorsEvent");
+        "removeColors", this, "removeColorsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show chat colors list"),
@@ -80,22 +85,26 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "window. Chat window will display color selection drop-down.\n\n"
         "It allows one to select default color of outgoing chat messages "
         "easily, but also occupies some space in chat window."),
-        "showChatColorsList", this, "showChatColorsListEvent");
+        "showChatColorsList", this, "showChatColorsListEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Commands"), "", this);
+    new SetupItemLabel(_("Commands"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow magic and GM commands in all chat tabs"),
         // TRANSLATORS: settings description
         _("Enable this setting to be able to type spells and GM commands in "
         "any tab."),
-        "allowCommandsInChatTabs", this, "allowCommandsInChatTabsEvent");
+        "allowCommandsInChatTabs", this, "allowCommandsInChatTabsEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Limits"), "", this);
+    new SetupItemLabel(_("Limits"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Limit max chars in chat line"),
@@ -104,7 +113,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "of text displayed in chat.\n\n"
         "Note: long lines can make client slower. Lines longer than this "
         "limit will be truncated."),
-        "chatMaxCharLimit", this, "chatMaxCharLimitEvent", 0, 500);
+        "chatMaxCharLimit", this, "chatMaxCharLimitEvent", 0, 500,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Limit max lines in chat"),
@@ -113,31 +123,36 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "keeps specified number of last lines of text. Oldest lines exceeding "
         "this limit are discarded from scrollback buffer.\n\n"
         "Note: keeping too many lines in scroll buffer can slow client down."),
-        "chatMaxLinesLimit", this, "chatMaxLinesLimitEvent", 0, 500);
+        "chatMaxLinesLimit", this, "chatMaxLinesLimitEvent", 0, 500,
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Logs"), "", this);
+    new SetupItemLabel(_("Logs"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable chat Log"),
         // TRANSLATORS: settings description
         _("If you enable this setting, chat logs will be written to disk.\n\n"
         "Note: chat logs can take noticeable amount of disk space over time."),
-        "enableChatLog", this, "enableChatLogEvent");
+        "enableChatLog", this, "enableChatLogEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable debug chat Log"),
         // TRANSLATORS: settings description
         _("If you enable this, debug chat tab also will be logged to disk."),
-        "enableDebugLog", this, "enableDebugLogEvent");
+        "enableDebugLog", this, "enableDebugLogEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show chat history"),
         // TRANSLATORS: settings description
         _("If this setting enabled, client will load old chat tabs content "
          "from logs on startup instead of starting with empty chat tabs."),
-        "showChatHistory", this, "showChatHistoryEvent");
+        "showChatHistory", this, "showChatHistoryEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show party online messages"),
@@ -145,7 +160,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("If this setting is enabled, online status changes of party members"
         " will be shown in party tab of chat.\n\nThis adds some extra noise "
         "to chat, but allows one to see when your buddies are coming online."),
-        "showPartyOnline", this, "showPartyOnlineEvent");
+        "showPartyOnline", this, "showPartyOnlineEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show guild online messages"),
@@ -153,11 +169,13 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("If this setting is enabled, online status changes of guild members"
         " will be shown in guild tab of chat.\n\nThis adds some extra noise "
         "to chat, but allows one to see when your buddies are coming online."),
-        "showGuildOnline", this, "showGuildOnlineEvent");
+        "showGuildOnline", this, "showGuildOnlineEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Messages"), "", this);
+    new SetupItemLabel(_("Messages"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hide shop messages"),
@@ -168,7 +186,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "implemented as usual private messages with special content. If you "
         "disable this setting, you will be able to see these messages and get "
         "idea when other players are looking at your shop."),
-        "hideShopMessages", this, "hideShopMessagesEvent");
+        "hideShopMessages", this, "hideShopMessagesEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show MVP messages"),
@@ -176,11 +195,13 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("Enable this setting to see MVP messages from server.\n\n"
         "Note: MVP messages are not used on TMW/Evol/etc servers, so this "
         "feature usually makes little difference."),
-        "showMVP", this, "showMVPEvent");
+        "showMVP", this, "showMVPEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Tabs"), "", this);
+    new SetupItemLabel(_("Tabs"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Put all whispers in tabs"),
@@ -190,7 +211,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "setting disabled, all whispers will appear in General tab.\n\n"
         "Note: putting all whispers to single General tab is known to be "
         "confusing. Think twice before disabling this feature."),
-        "whispertab", this, "whispertabEvent");
+        "whispertab", this, "whispertabEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Log magic messages in debug tab"),
@@ -198,7 +220,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("If this setting is enabled, spell invocation will be shown in "
         "Debug tab. If disabled, it will be shown in General tab instead.\n\n"
         "Note: it does not affects server replies related to spells."),
-        "showMagicInDebug", this, "showMagicInDebugEvent");
+        "showMagicInDebug", this, "showMagicInDebugEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show server messages in debug tab"),
@@ -208,7 +231,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "General chat instead.\n\nNote: according to 4144, disabling this "
         "could also make you to lose some debug messages from client in "
         "Debug tab since these are fake server messages."),
-        "serverMsgInDebug", this, "serverMsgInDebugEvent");
+        "serverMsgInDebug", this, "serverMsgInDebugEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable trade tab"),
@@ -217,7 +241,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "containing words typical for trades will go to Trade tab. This "
         "will make General tab less noisy. If this setting is disabled, all "
         "trade related players messages will stay in General tab."),
-        "enableTradeTab", this, "enableTradeTabEvent");
+        "enableTradeTab", this, "enableTradeTabEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable gm tab"),
@@ -225,7 +250,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("If enabled, GM tab will appear in chat. It displays text related "
         "GM activity.\n\nNote: this setting only makes difference for "
         "GMs (Game Masters) since this tab only appears for GMs."),
-        "enableGmTab", this, "enableGmTabEvent");
+        "enableGmTab", this, "enableGmTabEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable language tab"),
@@ -252,7 +278,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "tab will contain messages related to battles, like damage and "
         "experience gain, if battle messages are enabled.\n\n"
         "Note: client restart required to take effect."),
-        "enableBattleTab", this, "enableBattleTabEvent");
+        "enableBattleTab", this, "enableBattleTabEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show battle events"),
@@ -260,7 +287,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("If this setting enabled, messages related to battle like damage "
         "or experience gain will be displayed in Debug or Battle tab. If "
         "disabled, no battle messages will be displayed."),
-        "showBattleEvents", this, "showBattleEventsEvent");
+        "showBattleEvents", this, "showBattleEventsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Resize chat tabs if need"),
@@ -272,25 +300,30 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "otherwise usable for text.\n\n"
         "Note: its mostly about jumpy attitude vs "
         "less usable space for text."),
-        "hideChatInput", this, "hideChatInputEvent");
+        "hideChatInput", this, "hideChatInputEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable trade spam filter"),
-        "", "enableTradeFilter", this, "enableTradeFilterEvent");
+        "", "enableTradeFilter", this, "enableTradeFilterEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Time"), "", this);
+    new SetupItemLabel(_("Time"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use local time"),
         // TRANSLATORS: settings description
         _("If this feature enabled, timestamps in chat will use local times. "
         "If disabled, server time will be used (often it is GMT+0)."),
-        "useLocalTime", this, "useLocalTimeEvent");
+        "useLocalTime", this, "useLocalTimeEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Other"), "", this);
+    new SetupItemLabel(_("Other"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Highlight words (separated by comma)"),
@@ -298,7 +331,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         _("Here you can specify some extra words which will also cause "
         "highlighting. Use comma to separate words.\n\nNote: frequent "
         "highlights are annoying - use it with caution."),
-        "highlightWords", this, "highlightWordsEvent");
+        "highlightWords", this, "highlightWordsEvent",
+        MainConfig_true, UseBase64_false);
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Globals ignore names (separated by comma)"),
@@ -307,7 +341,8 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "particular sender (NPC, GM) annoys you too much. Global will be "
         "moved to Debug instead.\n\nNote: careless use of this feature can "
         "make you to miss important announces!"),
-        "globalsFilter", this, "globalsFilterEvent");
+        "globalsFilter", this, "globalsFilterEvent",
+        MainConfig_true, UseBase64_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show emotes button in chat"),
@@ -317,14 +352,16 @@ Setup_Chat::Setup_Chat(const Widget2 *const widget) :
         "allows one to insert smiles and text formatting easily.\n\n"
         "Note: same window can also be invoked by hotkey when typing, usually "
         "F1 by default."),
-        "showEmotesButton", this, "showEmotesButtonEvent");
+        "showEmotesButton", this, "showEmotesButtonEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show motd server message on start"),
         // TRANSLATORS: settings description
         _("If this setting enabled, client will display server MOTD (message"
         " of the day) once you connect to server. Disable it to hide MOTD."),
-        "showmotd", this, "showmotdEvent");
+        "showmotd", this, "showmotdEvent",
+        MainConfig_true);
 
     setDimension(Rect(0, 0, 550, 350));
 }

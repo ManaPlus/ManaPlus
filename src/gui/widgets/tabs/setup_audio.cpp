@@ -53,22 +53,27 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
     place(0, 0, mScroll, 10, 10);
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Basic settings"), "", this);
+    new SetupItemLabel(_("Basic settings"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Enable Audio"), "", "sound", this, "soundEvent");
+    new SetupItemCheckBox(_("Enable Audio"), "", "sound", this, "soundEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable music"), "",
-        "playMusic", this, "playMusicEvent");
+        "playMusic", this, "playMusicEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable game sfx"), "",
-        "playBattleSound", this, "playBattleSoundEvent");
+        "playBattleSound", this, "playBattleSoundEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable gui sfx"), "",
-        "playGuiSound", this, "playGuiSoundEvent");
+        "playGuiSound", this, "playGuiSoundEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Sfx volume"), "", "sfxVolume",
@@ -86,11 +91,13 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable music fade out"), "",
-        "fadeoutmusic", this, "fadeoutmusicEvent");
+        "fadeoutmusic", this, "fadeoutmusicEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Audio frequency"), "",
-        "audioFrequency", this, "audioFrequencyEvent", 14000, 192000);
+        "audioFrequency", this, "audioFrequencyEvent", 14000, 192000,
+        MainConfig_true);
 
     // TRANSLATORS: audio type
     mChannelsList->push_back(_("mono"));
@@ -109,64 +116,79 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemIntTextField(_("Parallel number of sounds"), "",
-        "parallelAudioChannels", this, "parallelAudioChannelsEvent", 1, 1000);
+        "parallelAudioChannels", this, "parallelAudioChannelsEvent", 1, 1000,
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Sound effects"), "", this);
+    new SetupItemLabel(_("Sound effects"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Information dialog sound"), "",
-        "soundinfo", this, "soundinfoEvent", mSoundModel);
+        "soundinfo", this, "soundinfoEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Request dialog sound"), "",
-        "soundrequest", this, "soundrequestEvent", mSoundModel);
+        "soundrequest", this, "soundrequestEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Whisper message sound"), "",
-        "soundwhisper", this, "soundwhisperEvent", mSoundModel);
+        "soundwhisper", this, "soundwhisperEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Guild / Party message sound"), "",
-        "soundguild", this, "soundguildEvent", mSoundModel);
+        "soundguild", this, "soundguildEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Highlight message sound"), "",
-        "soundhighlight", this, "soundhighlightEvent", mSoundModel);
+        "soundhighlight", this, "soundhighlightEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Global message sound"), "",
-        "soundglobal", this, "soundglobalEvent", mSoundModel);
+        "soundglobal", this, "soundglobalEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Error message sound"), "",
-        "sounderror", this, "sounderrorEvent", mSoundModel);
+        "sounderror", this, "sounderrorEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Trade request sound"), "",
-        "soundtrade", this, "soundtradeEvent", mSoundModel);
+        "soundtrade", this, "soundtradeEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Show window sound"), "",
-        "soundshowwindow", this, "soundshowwindowEvent", mSoundModel);
+        "soundshowwindow", this, "soundshowwindowEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSound(_("Hide window sound"), "",
-        "soundhidewindow", this, "soundhidewindowEvent", mSoundModel);
+        "soundhidewindow", this, "soundhidewindowEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Other"), "", this);
+    new SetupItemLabel(_("Other"), "", this,
+        Separator_true);
 
 #ifdef USE_MUMBLE
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable mumble voice chat"), "",
-        "enableMumble", this, "enableMumbleEvent");
+        "enableMumble", this, "enableMumbleEvent",
+        MainConfig_true);
 #endif  // USE_MUMBLE
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Download music"), "",
-        "download-music", this, "download-musicEvent");
+        "download-music", this, "download-musicEvent",
+        MainConfig_true);
 
     setDimension(Rect(0, 0, 550, 350));
 }

@@ -88,95 +88,116 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show gender"), "",
-        "showgender", this, "showgenderEvent");
+        "showgender", this, "showgenderEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show level"), "",
-        "showlevel", this, "showlevelEvent");
+        "showlevel", this, "showlevelEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show own name"), "",
-        "showownname", this, "showownnameEvent");
+        "showownname", this, "showownnameEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable extended mouse targeting"), "",
-        "extMouseTargeting", this, "extMouseTargetingEvent");
+        "extMouseTargeting", this, "extMouseTargetingEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Target dead players"), "",
-        "targetDeadPlayers", this, "targetDeadPlayersEvent");
+        "targetDeadPlayers", this, "targetDeadPlayersEvent",
+        MainConfig_true);
 
     mVisibleNamesList->fillFromArray(&visibleNamesList[0],
         visibleNamesListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Show player names"), "",
         "visiblenames", this, "visiblenamesEvent",
-        mVisibleNamesList, 150);
+        mVisibleNamesList, 150,
+        MainConfig_true);
 
     mVisibleNamesPosList->fillFromArray(&topDownList[0],
         topDownListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Show player names at"), "",
         "visiblenamespos", this, "visiblenamesposEvent",
-        mVisibleNamesPosList, 150);
+        mVisibleNamesPosList, 150,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto move names"), "",
-        "moveNames", this, "moveNamesEvent");
+        "moveNames", this, "moveNamesEvent",
+        MainConfig_true);
 
     mBadgesList->fillFromArray(&badgesList[0], badgesListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Badges"), "",
-        "showBadges", this, "showBadgesEvent", mBadgesList, 150);
+        "showBadges", this, "showBadgesEvent", mBadgesList, 150,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Secure trades"), "",
-        "securetrades", this, "securetradesEvent");
+        "securetrades", this, "securetradesEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemTextField(_("Unsecure chars in names"), "",
-        "unsecureChars", this, "unsecureCharsEvent");
+        "unsecureChars", this, "unsecureCharsEvent",
+        MainConfig_true, UseBase64_false);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show statuses"), "",
-        "showPlayersStatus", this, "showPlayersStatusEvent");
+        "showPlayersStatus", this, "showPlayersStatusEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show ip addresses on screenshots"), "",
-        "showip", this, "showipEvent");
+        "showip", this, "showipEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow self heal with mouse click"), "",
-        "selfMouseHeal", this, "selfMouseHealEvent");
+        "selfMouseHeal", this, "selfMouseHealEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Group friends in who is online window"), "",
-        "groupFriends", this, "groupFriendsEvent");
+        "groupFriends", this, "groupFriendsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hide erased players nicks"), "",
-        "hideErased", this, "hideErasedEvent");
+        "hideErased", this, "hideErasedEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Collect players id and seen log"),
-        "", "enableIdCollecting", this, "enableIdCollectingEvent");
+        "", "enableIdCollecting", this, "enableIdCollectingEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use special diagonal speed in players moving"),
-        "", "useDiagonalSpeed", this, "useDiagonalSpeedEvent");
+        "", "useDiagonalSpeed", this, "useDiagonalSpeedEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Log players actions (for GM)"),
-        "", "logPlayerActions", this, "logPlayerActionsEvent");
+        "", "logPlayerActions", this, "logPlayerActionsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Create screenshots for each complete trades"),
-        "", "tradescreenshot", this, "tradescreenshotEvent");
+        "", "tradescreenshot", this, "tradescreenshotEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Emulate right mouse button by long mouse click"
         " (useful for touch interfaces)"),
-        "", "longmouseclick", this, "longmouseclickEvent");
+        "", "longmouseclick", this, "longmouseclickEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable remote commands"),
@@ -186,7 +207,8 @@ Setup_Players::Setup_Players(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow move character by mouse"),
-        "", "allowMoveByMouse", this, "allowMoveByMouseEvent");
+        "", "allowMoveByMouse", this, "allowMoveByMouseEvent",
+        MainConfig_true);
 
     setDimension(Rect(0, 0, 550, 350));
 }

@@ -89,7 +89,8 @@ void Setup_Mods::loadMods()
         std::string name = info->getName();
         replaceAll(name, "|", "");
         SetupItem *const item = new SetupItemCheckBox(
-            info->getDescription(), "", "", this, name);
+            info->getDescription(), "", "", this, name,
+            MainConfig_true);
         if (modsList.find(name) != modsList.end())
             item->setValue("1");
         else

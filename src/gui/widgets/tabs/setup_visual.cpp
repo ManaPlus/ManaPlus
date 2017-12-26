@@ -104,7 +104,8 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     mPreferredFirstItemSize = 150;
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Scale"), "", this);
+    new SetupItemLabel(_("Scale"), "", this,
+        Separator_true);
 
     for (int f = 1; f <= 7; f ++)
     {
@@ -113,31 +114,38 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
     }
     // TRANSLATORS: settings option
     new SetupItemSliderInt(_("Scale"), "",
-        "scale", this, "scaleEvent", mScaleList, 1);
+        "scale", this, "scaleEvent", mScaleList, 1,
+        150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Notifications"), "", this);
+    new SetupItemLabel(_("Notifications"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show pickup notifications in chat"), "",
-        "showpickupchat", this, "showpickupchatEvent");
+        "showpickupchat", this, "showpickupchatEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show pickup notifications as particle effects"),
-        "", "showpickupparticle", this, "showpickupparticleEvent");
+        "", "showpickupparticle", this, "showpickupparticleEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
-    new SetupItemLabel(_("Effects"), "", this);
+    new SetupItemLabel(_("Effects"), "", this,
+        Separator_true);
 
 #ifndef ANDROID
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Grab mouse and keyboard input"),
-        "", "grabinput", this, "grabinputEvent");
+        "", "grabinput", this, "grabinputEvent",
+        MainConfig_true);
 #endif  // ANDROID
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Blurring textures (OpenGL)"),
-        "", "blur", this, "blurEvent");
+        "", "blur", this, "blurEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Gui opacity"), "", "guialpha",
@@ -147,25 +155,30 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable gui opacity"),
-        "", "enableGuiOpacity", this, "enableGuiOpacityEvent");
+        "", "enableGuiOpacity", this, "enableGuiOpacityEvent",
+        MainConfig_true);
 
     mSpeachList->fillFromArray(&speachList[0], speachListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Overhead text"), "", "speech", this,
-        "speechEvent", mSpeachList, 200);
+        "speechEvent", mSpeachList, 200,
+        MainConfig_true);
 
     mAmbientFxList->fillFromArray(&ambientFxList[0], ambientFxListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Ambient FX"), "", "OverlayDetail", this,
-        "OverlayDetailEvent", mAmbientFxList, 100);
+        "OverlayDetailEvent", mAmbientFxList, 100,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show particle effects"), "",
-        "particleeffects", this, "particleeffectsEvent");
+        "particleeffects", this, "particleeffectsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show particle effects from maps"), "",
-        "mapparticleeffects", this, "mapparticleeffectsEvent");
+        "mapparticleeffects", this, "mapparticleeffectsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: particle details
     mParticleList->push_back(_("low"));
@@ -186,15 +199,18 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
         particleTypeListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Particle physics"), "", "particleFastPhysics",
-        this, "particleFastPhysicsEvent", mParticleTypeList, 200);
+        this, "particleFastPhysicsEvent", mParticleTypeList, 200,
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Gamma"), "", this);
+    new SetupItemLabel(_("Gamma"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable gamma control"),
-        "", "enableGamma", this, "enableGammaEvent");
+        "", "enableGamma", this, "enableGammaEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemSlider(_("Gamma"), "", "gamma",
@@ -204,30 +220,36 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Other"), "", this);
+    new SetupItemLabel(_("Other"), "", this,
+        Separator_true);
 
     mVSyncList->fillFromArray(&vSyncList[0], vSyncListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Vsync"), "", "vsync", this,
-        "vsyncEvent", mVSyncList, 100);
+        "vsyncEvent", mVSyncList, 100,
+        MainConfig_true);
 
 #if defined(WIN32) || defined(__APPLE__)
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Center game window"),
-        "", "centerwindow", this, "centerwindowEvent");
+        "", "centerwindow", this, "centerwindowEvent",
+        MainConfig_true);
 #endif  // defined(WIN32) || defined(__APPLE__)
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Allow screensaver to run"),
-        "", "allowscreensaver", this, "allowscreensaverEvent");
+        "", "allowscreensaver", this, "allowscreensaverEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings group
-    new SetupItemLabel(_("Screenshots"), "", this);
+    new SetupItemLabel(_("Screenshots"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Add water mark into screenshots"),
-        "", "addwatermark", this, "addwatermarkEvent");
+        "", "addwatermark", this, "addwatermarkEvent",
+        MainConfig_true);
 
     setDimension(Rect(0, 0, 550, 350));
 }

@@ -76,126 +76,153 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
     // TRANSLATORS: settings option
     new SetupItemLabel(_("Better performance (enable for better performance)"),
-        "", this);
+        "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Auto adjust performance"), "",
-        "adjustPerfomance", this, "adjustPerfomanceEvent");
+        "adjustPerfomance", this, "adjustPerfomanceEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Hw acceleration"), "",
-        "hwaccel", this, "hwaccelEvent");
+        "hwaccel", this, "hwaccelEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable opacity cache (Software, can "
-        "use much memory)"), "", "alphaCache", this, "alphaCacheEvent");
+        "use much memory)"), "", "alphaCache", this, "alphaCacheEvent",
+        MainConfig_true);
 
 #ifndef USE_SDL2
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable map reduce (Software)"), "",
-        "enableMapReduce", this, "enableMapReduceEvent");
+        "enableMapReduce", this, "enableMapReduceEvent",
+        MainConfig_true);
 #endif  // USE_SDL2
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable compound sprite delay (Software)"), "",
-        "enableCompoundSpriteDelay", this, "enableCompoundSpriteDelayEvent");
+        "enableCompoundSpriteDelay", this, "enableCompoundSpriteDelayEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable delayed images load (OpenGL)"), "",
-        "enableDelayedAnimations", this, "enableDelayedAnimationsEvent");
+        "enableDelayedAnimations", this, "enableDelayedAnimationsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable texture sampler (OpenGL)"), "",
-        "useTextureSampler", this, "useTextureSamplerEvent");
+        "useTextureSampler", this, "useTextureSamplerEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable OpenGL context creation"),
-        "", "openglContext", this, "openglContextEvent");
+        "", "openglContext", this, "openglContextEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable OpenGL direct state access"),
-        "", "enableDSA", this, "enableDSAEvent");
+        "", "enableDSA", this, "enableDSAEvent",
+        MainConfig_true);
 
 
     // TRANSLATORS: settings option
     new SetupItemLabel(_("Better quality (disable for better performance)"),
-        "", this);
+        "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable alpha channel fix (Software, can "
         "be very slow)"), "Can slow down drawing", "enableAlphaFix",
-        this, "enableAlphaFixEvent");
+        this, "enableAlphaFixEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Show beings transparency"), "",
-        "beingopacity", this, "beingopacityEvent");
+        "beingopacity", this, "beingopacityEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable reorder sprites (need for mods support)."),
-        "", "enableReorderSprites", this, "enableReorderSpritesEvent");
+        "", "enableReorderSprites", this, "enableReorderSpritesEvent",
+        MainConfig_true);
 
 
 #ifndef USE_SDL2
     // TRANSLATORS: settings option
     new SetupItemLabel(_("Small memory (enable for lower memory usage)"),
-         "", this);
+         "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable advanced beings caching (Software)"), "",
-        "disableAdvBeingCaching", this, "disableAdvBeingCachingEvent");
+        "disableAdvBeingCaching", this, "disableAdvBeingCachingEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable beings caching (Software)"), "",
-        "disableBeingCaching", this, "disableBeingCachingEvent");
+        "disableBeingCaching", this, "disableBeingCachingEvent",
+        MainConfig_true);
 #endif  // USE_SDL2
 
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Different options (enable or disable can "
-        "improve performance)"), "", this);
+        "improve performance)"), "", this,
+        Separator_true);
 
 #ifdef USE_SDL2
     mSdlDriversList->fillFromVector(sdlDriversList);
     new SetupItemDropDownStr(
         // TRANSLATORS: settings option
         _("Try first sdl driver (only for SDL2 default mode)"),
-        "", "sdlDriver", this, "sdlDriverEvent", mSdlDriversList, 100);
+        "", "sdlDriver", this, "sdlDriverEvent", mSdlDriversList, 100,
+        MainConfig_true);
 #endif  // USE_SDL2
 
     mTexturesList->fillFromArray(&texturesList[0], texturesListSize);
     // TRANSLATORS: settings option
     new SetupItemDropDown(_("Enable texture compression (OpenGL)"), "",
-        "compresstextures", this, "compresstexturesEvent", mTexturesList, 100);
+        "compresstextures", this, "compresstexturesEvent", mTexturesList, 100,
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable rectangular texture extension (OpenGL)"),
-        "", "rectangulartextures", this, "rectangulartexturesEvent");
+        "", "rectangulartextures", this, "rectangulartexturesEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Use new texture internal format (OpenGL)"),
-        "", "newtextures", this, "newtexturesEvent");
+        "", "newtextures", this, "newtexturesEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Enable texture atlases (OpenGL)"), "",
-        "useAtlases", this, "useAtlasesEvent");
+        "useAtlases", this, "useAtlasesEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Cache all sprites per map (can use "
         "additional memory)"), "", "uselonglivesprites", this,
-        "uselonglivespritesEvent");
+        "uselonglivespritesEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Cache all sounds (can use additional memory)"),
         "", "uselonglivesounds", this,
-        "uselonglivesoundsEvent");
+        "uselonglivesoundsEvent",
+        MainConfig_true);
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Critical options (DO NOT change if you don't "
-        "know what you're doing)"), "", this);
+        "know what you're doing)"), "", this,
+        Separator_true);
 
     // TRANSLATORS: settings option
     new SetupItemCheckBox(_("Disable logging in game (do not enable)"),
-        "", "disableLoggingInGame", this, "disableLoggingInGameEvent");
+        "", "disableLoggingInGame", this, "disableLoggingInGameEvent",
+        MainConfig_true);
 
     setDimension(Rect(0, 0, 550, 350));
 }
