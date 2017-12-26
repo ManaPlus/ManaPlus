@@ -47,8 +47,10 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData &data) :
     // TRANSLATORS: change email dialog header
     Window(_("Change Email Address"), Modal_true, nullptr, "changeemail.xml"),
     ActionListener(),
-    mFirstEmailField(new TextField(this)),
-    mSecondEmailField(new TextField(this)),
+    mFirstEmailField(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false)),
+    mSecondEmailField(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false)),
     // TRANSLATORS: button in change email dialog
     mChangeEmailButton(new Button(this, _("Change Email Address"),
         "change_email", this)),

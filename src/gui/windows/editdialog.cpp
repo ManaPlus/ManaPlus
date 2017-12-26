@@ -38,7 +38,8 @@ EditDialog::EditDialog(const std::string &restrict title,
     Window(title, modal, parent, "edit.xml"),
     ActionListener(),
     mEventOk(eventOk),
-    mTextField(new TextField(this))
+    mTextField(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false))
 {
     mDefaultWidth = width;
     mTextField->setText(msg);

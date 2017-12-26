@@ -40,7 +40,8 @@ class ChatInput final : public TextField
 {
     public:
         explicit ChatInput(ChatWindow *const window) :
-            TextField(window, "", LoseFocusOnTab_false),
+            TextField(window, std::string(),
+                LoseFocusOnTab_false, nullptr, std::string(), false),
             mWindow(window),
             mFocusGaining(false)
         {

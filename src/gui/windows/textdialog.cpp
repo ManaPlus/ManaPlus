@@ -67,7 +67,12 @@ TextDialog::TextDialog(const std::string &restrict title,
     }
     else
     {
-        mTextField = new TextField(this);
+        mTextField = new TextField(this,
+            std::string(),
+            LoseFocusOnTab_true,
+            nullptr,
+            std::string(),
+            false);
         place(0, 1, mTextField, 4, 1);
     }
     place(2, 2, mOkButton, 1, 1);

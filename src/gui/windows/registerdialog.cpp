@@ -54,7 +54,8 @@ RegisterDialog::RegisterDialog(LoginData &data) :
     ActionListener(),
     KeyListener(),
     mLoginData(&data),
-    mUserField(new TextField(this, mLoginData->username)),
+    mUserField(new TextField(this, mLoginData->username, LoseFocusOnTab_true,
+        nullptr, std::string(), false)),
     mPasswordField(new PasswordField(this, mLoginData->password)),
     mConfirmField(new PasswordField(this, std::string())),
     mEmailField(nullptr),
@@ -103,7 +104,12 @@ RegisterDialog::RegisterDialog(LoginData &data) :
     {
         // TRANSLATORS: register dialog. label.
         Label *const emailLabel = new Label(this, _("Email:"));
-        mEmailField = new TextField(this);
+        mEmailField = new TextField(this,
+            std::string(),
+            LoseFocusOnTab_true,
+            nullptr,
+            std::string(),
+            false);
         placer(0, row, emailLabel, 1, 1);
         placer(1, row, mEmailField, 3, 1).setPadding(2);
         mEmailField->addKeyListener(this);

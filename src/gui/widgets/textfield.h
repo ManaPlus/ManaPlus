@@ -94,14 +94,12 @@ class TextField notfinal : public Widget,
         /**
          * Constructor, initializes the text field with the given string.
          */
-        explicit TextField(const Widget2 *restrict const widget,
-                           const std::string &restrict text = "",
-                           const LoseFocusOnTab loseFocusOnTab =
-                           LoseFocusOnTab_true,
-                           ActionListener *restrict
-                           const listener = nullptr,
-                           const std::string &restrict eventId = "",
-                           const bool sendAlwaysEvents = false);
+        TextField(const Widget2 *restrict const widget,
+                  const std::string &restrict text,
+                  const LoseFocusOnTab loseFocusOnTab,
+                  ActionListener *restrict const listener,
+                  const std::string &restrict eventId,
+                  const bool sendAlwaysEvents);
 
         A_DELETE_COPY(TextField)
 

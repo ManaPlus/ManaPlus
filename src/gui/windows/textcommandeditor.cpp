@@ -68,13 +68,16 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 #endif  // TMWA_SUPPORT
     // TRANSLATORS: command editor label
     mSymbolLabel(new Label(this, _("Symbol:"))),
-    mSymbolTextField(new TextField(this)),
+    mSymbolTextField(new TextField(this, std::string(),
+        LoseFocusOnTab_true, nullptr, std::string(), false)),
     // TRANSLATORS: command editor label
     mCommandLabel(new Label(this, _("Command:"))),
-    mCommandTextField(new TextField(this)),
+    mCommandTextField(new TextField(this, std::string(),
+        LoseFocusOnTab_true, nullptr, std::string(), false)),
     // TRANSLATORS: command editor label
     mCommentLabel(new Label(this, _("Comment:"))),
-    mCommentTextField(new TextField(this)),
+    mCommentTextField(new TextField(this, std::string(),
+         LoseFocusOnTab_true, nullptr, std::string(), false)),
     mTargetTypeModel(new TargetTypeModel),
     // TRANSLATORS: command editor label
     mTypeLabel(new Label(this, _("Target Type:"))),

@@ -120,7 +120,8 @@ NpcDialog::NpcDialog(const BeingId npcId) :
         fromBool(getOptionBool("showlistbackground"), Opaque),
         "npc_listbackground.xml")),
     mItemLinkHandler(new ItemLinkHandler),
-    mTextField(new TextField(this, "")),
+    mTextField(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false)),
     mIntField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),
     // TRANSLATORS: npc dialog button
     mPlusButton(new Button(this, _("+"), "inc", this)),

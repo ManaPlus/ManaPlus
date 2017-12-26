@@ -90,7 +90,8 @@ TradeWindow::TradeWindow() :
     mOkButton(new Button(this, "", "", this)),  // Will be filled in later
     // TRANSLATORS: trade window money change button
     mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
-    mMoneyField(new TextField(this)),
+    mMoneyField(new TextField(this, std::string(),
+        LoseFocusOnTab_true, nullptr, std::string(), false)),
     mAutoAddItem(nullptr),
     mAutoAddToNick(""),
     mGotMoney(0),

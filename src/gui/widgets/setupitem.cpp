@@ -371,7 +371,8 @@ void SetupItemTextField::createControls()
         mValue,
         LoseFocusOnTab_true,
         mParent,
-        mEventName);
+        mEventName,
+        false);
     // TRANSLATORS: setup item button
     mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
     mWidget = mTextField;

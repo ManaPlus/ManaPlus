@@ -28,10 +28,10 @@
 
 PasswordField::PasswordField(const Widget2 *const widget,
                              const std::string &text) :
-    TextField(widget, text),
+    TextField(widget, text,
+        LoseFocusOnTab_true, nullptr, std::string(), false),
     mPasswordChar(mSkin != nullptr ? CAST_8(
-                  mSkin->getOption("passwordChar", 42))
-                  : CAST_8(42))
+        mSkin->getOption("passwordChar", 42)) : CAST_8(42))
 {
 }
 

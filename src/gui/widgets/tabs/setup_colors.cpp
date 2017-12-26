@@ -68,19 +68,23 @@ Setup_Colors::Setup_Colors(const Widget2 *const widget) :
     // TRANSLATORS: colors tab. label.
     mGradDelayLabel(new Label(this, _("Delay:"))),
     mGradDelaySlider(new Slider(this, 20.0, 100.0, 1.0)),
-    mGradDelayText(new TextField(this)),
+    mGradDelayText(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false)),
     // TRANSLATORS: colors tab. label.
     mRedLabel(new Label(this, _("Red:"))),
     mRedSlider(new Slider(this, 0.0, 255.0, 1.0)),
-    mRedText(new TextField(this)),
+    mRedText(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false)),
     // TRANSLATORS: colors tab. label.
     mGreenLabel(new Label(this, _("Green:"))),
     mGreenSlider(new Slider(this, 0.0, 255.0, 1.0)),
-    mGreenText(new TextField(this)),
+    mGreenText(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false)),
     // TRANSLATORS: colors tab. label.
     mBlueLabel(new Label(this, _("Blue:"))),
     mBlueSlider(new Slider(this, 0.0, 255.0, 1.0)),
-    mBlueText(new TextField(this))
+    mBlueText(new TextField(this, std::string(), LoseFocusOnTab_true,
+        nullptr, std::string(), false))
 {
     // TRANSLATORS: settings colors tab name
     setName(_("Colors"));
