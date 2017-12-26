@@ -70,10 +70,12 @@ OutfitWindow::OutfitWindow() :
     mCurrentLabel(new Label(this, strprintf(_("Outfit: %d"), 1))),
     // TRANSLATORS: outfits window checkbox
     mUnequipCheck(new CheckBox(this, _("Unequip first"),
-        serverConfig.getValueBool("OutfitUnequip0", true))),
+        serverConfig.getValueBool("OutfitUnequip0", true),
+        nullptr, std::string())),
     // TRANSLATORS: outfits window checkbox
     mAwayOutfitCheck(new CheckBox(this, _("Away outfit"),
-        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1) != 0u)),
+        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1) != 0u,
+        nullptr, std::string())),
     // TRANSLATORS: outfits window label
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),
         keyName(0).c_str()))),

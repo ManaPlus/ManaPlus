@@ -50,12 +50,15 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     // TRANSLATORS: joystick settings tab button
     mDetectButton(new Button(this, _("Detect joysticks"), "detect", this)),
     // TRANSLATORS: joystick settings tab checkbox
-    mJoystickEnabled(new CheckBox(this, _("Enable joystick"))),
+    mJoystickEnabled(new CheckBox(this, _("Enable joystick"),
+        false, nullptr, std::string())),
     mNamesModel(new NamesModel),
     mNamesDropDown(new DropDown(this, mNamesModel)),
-    // TRANSLATORS: joystick settings tab checkbox
-    mUseInactiveCheckBox(new CheckBox(this, _("Use joystick if client "
-        "window inactive"), config.getBoolValue("useInactiveJoystick"))),
+    mUseInactiveCheckBox(new CheckBox(this,
+        // TRANSLATORS: joystick settings tab checkbox
+        _("Use joystick if client window inactive"),
+        config.getBoolValue("useInactiveJoystick"),
+        nullptr, std::string())),
     mOriginalJoystickEnabled(config.getBoolValue("joystickEnabled"))
 {
     // TRANSLATORS: joystick settings tab name

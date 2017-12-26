@@ -71,10 +71,12 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
         mPlayerTable, Opaque_true, std::string())),
     // TRANSLATORS: relation dialog button
     mDefaultTrading(new CheckBox(this, _("Allow trading"),
-        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)),
+        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u,
+        nullptr, std::string())),
     // TRANSLATORS: relation dialog button
     mDefaultWhisper(new CheckBox(this, _("Allow whispers"),
-       (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u)),
+        (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u,
+        nullptr, std::string())),
     // TRANSLATORS: relation dialog button
     mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this)),
     mIgnoreActionChoicesModel(new IgnoreChoicesListModel),

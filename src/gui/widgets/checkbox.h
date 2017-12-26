@@ -95,9 +95,9 @@ class CheckBox final : public Widget,
          */
         CheckBox(const Widget2 *const widget,
                  const std::string &restrict caption,
-                 const bool selected = false,
-                 ActionListener *const listener = nullptr,
-                 const std::string &restrict eventId = "");
+                 const bool selected,
+                 ActionListener *const listener,
+                 const std::string &restrict eventId);
 
         A_DELETE_COPY(CheckBox)
 

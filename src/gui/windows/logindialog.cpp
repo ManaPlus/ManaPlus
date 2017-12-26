@@ -74,7 +74,7 @@ LoginDialog::LoginDialog(LoginData &data,
     mPassField(new PasswordField(this, mLoginData->password)),
     // TRANSLATORS: login dialog label
     mKeepCheck(new CheckBox(this, _("Remember username"),
-        mLoginData->remember)),
+        mLoginData->remember, nullptr, std::string())),
     // TRANSLATORS: login dialog label
     mUpdateTypeLabel(new Label(this, _("Update:"))),
     mUpdateTypeModel(new UpdateTypeModel),

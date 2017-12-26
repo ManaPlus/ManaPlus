@@ -72,10 +72,12 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mOpenGLListModel(new OpenGLListModel),
     mModeList(CREATEWIDGETR(ListBox, widget, mModeListModel, "")),
     // TRANSLATORS: video settings checkbox
-    mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled)),
+    mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled,
+        nullptr, std::string())),
     mOpenGLDropDown(new DropDown(widget, mOpenGLListModel)),
     // TRANSLATORS: video settings checkbox
-    mFpsCheckBox(new CheckBox(this, _("FPS limit:"))),
+    mFpsCheckBox(new CheckBox(this, _("FPS limit:"), false,
+        nullptr, std::string())),
     mFpsSlider(new Slider(this, 2.0, 160.0, 1.0)),
     mFpsLabel(new Label(this)),
     mAltFpsSlider(new Slider(this, 2.0, 160.0, 1.0)),
@@ -93,7 +95,8 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 #ifdef USE_SDL2
     mAllowHighDPI(config.getBoolValue("allowHighDPI")),
     // TRANSLATORS: video settings checkbox
-    mAllowHighDPICheckBox(new CheckBox(this, _("High DPI"), mAllowHighDPI)),
+    mAllowHighDPICheckBox(new CheckBox(this, _("High DPI"), mAllowHighDPI,
+        nullptr, std::string())),
 #endif  // USE_SDL2
     mCustomCursorCheckBox(new CheckBox(this,
 #ifdef ANDROID
@@ -103,12 +106,14 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
         // TRANSLATORS: video settings checkbox
         _("Custom cursor"),
 #endif  // ANDROID
-        mCustomCursorEnabled)),
+        mCustomCursorEnabled,
+        nullptr, std::string())),
     // TRANSLATORS: video settings checkbox
     mEnableResizeCheckBox(new CheckBox(this, _("Enable resize"),
-                          mEnableResize)),
+        mEnableResize, nullptr, std::string())),
     // TRANSLATORS: video settings checkbox
-    mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame))
+    mNoFrameCheckBox(new CheckBox(this, _("No frame"), mNoFrame,
+        nullptr, std::string()))
 {
     // TRANSLATORS: video settings tab name
     setName(_("Video"));
