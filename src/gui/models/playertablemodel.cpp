@@ -105,7 +105,12 @@ void PlayerTableModel::playerRelationsUpdated()
         Widget *const widget = new Label(this, name);
         mWidgets.push_back(widget);
 
-        DropDown *const choicebox = new DropDown(this, mListModel);
+        DropDown *const choicebox = new DropDown(this,
+            mListModel,
+            false,
+            Modal_false,
+            nullptr,
+            std::string());
         choicebox->setSelected(CAST_S32(
             playerRelations.getRelation(name)));
         mWidgets.push_back(choicebox);

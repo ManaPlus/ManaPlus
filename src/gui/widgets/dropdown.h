@@ -57,10 +57,10 @@ class DropDown final : public ActionListener,
     public:
         DropDown(const Widget2 *const widget,
                  ListModel *const listModel,
-                 const bool extended = false,
-                 const Modal modal = Modal_false,
-                 ActionListener *const listener = nullptr,
-                 const std::string &eventId = "");
+                 const bool extended,
+                 const Modal modal,
+                 ActionListener *const listener,
+                 const std::string &eventId);
 
         A_DELETE_COPY(DropDown)
 
@@ -110,7 +110,7 @@ class DropDown final : public ActionListener,
 
         void foldUp();
 
-        void hideDrop(bool event = true);
+        void hideDrop(bool event);
 
         int getSelected() const;
 

@@ -78,7 +78,8 @@ LoginDialog::LoginDialog(LoginData &data,
     // TRANSLATORS: login dialog label
     mUpdateTypeLabel(new Label(this, _("Update:"))),
     mUpdateTypeModel(new UpdateTypeModel),
-    mUpdateTypeDropDown(new DropDown(this, mUpdateTypeModel)),
+    mUpdateTypeDropDown(new DropDown(this, mUpdateTypeModel,
+        false, Modal_false, nullptr, std::string())),
     // TRANSLATORS: login dialog button
     mServerButton(new Button(this, _("Change Server"), "server", this)),
     // TRANSLATORS: login dialog button

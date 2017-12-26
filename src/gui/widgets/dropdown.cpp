@@ -393,7 +393,7 @@ void DropDown::mousePressed(MouseEvent& event)
     {
         mPushed = false;
         foldUp();
-        hideDrop();
+        hideDrop(true);
     }
 }
 

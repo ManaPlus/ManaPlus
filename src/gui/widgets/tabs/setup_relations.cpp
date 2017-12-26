@@ -80,7 +80,8 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
     // TRANSLATORS: relation dialog button
     mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this)),
     mIgnoreActionChoicesModel(new IgnoreChoicesListModel),
-    mIgnoreActionChoicesBox(new DropDown(widget, mIgnoreActionChoicesModel))
+    mIgnoreActionChoicesBox(new DropDown(widget, mIgnoreActionChoicesModel,
+        false, Modal_false, nullptr, std::string()))
 {
     // TRANSLATORS: relation dialog name
     setName(_("Relations"));

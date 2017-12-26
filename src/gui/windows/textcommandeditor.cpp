@@ -81,11 +81,13 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     mTargetTypeModel(new TargetTypeModel),
     // TRANSLATORS: command editor label
     mTypeLabel(new Label(this, _("Target Type:"))),
-    mTypeDropDown(new DropDown(this, mTargetTypeModel)),
+    mTypeDropDown(new DropDown(this, mTargetTypeModel,
+        false, Modal_false, nullptr, std::string())),
     mIconsModel(new IconsModel),
     // TRANSLATORS: command editor label
     mIconLabel(new Label(this, _("Icon:"))),
-    mIconDropDown(new DropDown(this, mIconsModel)),
+    mIconDropDown(new DropDown(this, mIconsModel,
+        false, Modal_false, nullptr, std::string())),
 #ifdef TMWA_SUPPORT
     // TRANSLATORS: command editor label
     mManaLabel(new Label(this, _("Mana:"))),
@@ -96,7 +98,8 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     mMagicSchoolModel(new MagicSchoolModel),
     // TRANSLATORS: command editor label
     mSchoolLabel(new Label(this, _("Magic School:"))),
-    mSchoolDropDown(new DropDown(this, mMagicSchoolModel)),
+    mSchoolDropDown(new DropDown(this, mMagicSchoolModel,
+        false, Modal_false, nullptr, std::string())),
     // TRANSLATORS: command editor label
     mSchoolLvlLabel(new Label(this, _("School level:"))),
     mSchoolLvlField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),

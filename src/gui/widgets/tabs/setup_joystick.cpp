@@ -53,7 +53,8 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mJoystickEnabled(new CheckBox(this, _("Enable joystick"),
         false, nullptr, std::string())),
     mNamesModel(new NamesModel),
-    mNamesDropDown(new DropDown(this, mNamesModel)),
+    mNamesDropDown(new DropDown(this, mNamesModel,
+        false, Modal_false, nullptr, std::string())),
     mUseInactiveCheckBox(new CheckBox(this,
         // TRANSLATORS: joystick settings tab checkbox
         _("Use joystick if client window inactive"),

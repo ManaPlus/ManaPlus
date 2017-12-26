@@ -95,7 +95,12 @@ void SetupActionDropDown::createControls()
 
     mLabel = new Label(this, mText);
     mLabel->setToolTip(mDescription);
-    mDropDown = new DropDown(this, mModel);
+    mDropDown = new DropDown(this,
+        mModel,
+        false,
+        Modal_false,
+        nullptr,
+        std::string());
     mDropDown->setActionEventId(mEventName);
     mDropDown->addActionListener(mParent);
     mDropDown->setWidth(mWidth);

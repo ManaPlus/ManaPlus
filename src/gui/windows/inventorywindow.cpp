@@ -1028,7 +1028,7 @@ void InventoryWindow::widgetResized(const Event &event)
 void InventoryWindow::setVisible(Visible visible)
 {
     if (visible == Visible_false)
-        mSortDropDown->hideDrop();
+        mSortDropDown->hideDrop(true);
     Window::setVisible(visible);
 }
 

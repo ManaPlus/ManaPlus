@@ -187,7 +187,12 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     if (mUsage == ItemAmountWindowUsage::ShopBuyAdd)
     {
         mItemsModal = new ItemsModal;
-        mItemDropDown = new DropDown(this, mItemsModal);
+        mItemDropDown = new DropDown(this,
+            mItemsModal,
+            false,
+            Modal_false,
+            nullptr,
+            std::string());
         mItemDropDown->setActionEventId("itemType");
         mItemDropDown->addActionListener(this);
     }

@@ -74,7 +74,8 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     // TRANSLATORS: video settings checkbox
     mFsCheckBox(new CheckBox(this, _("Full screen"), mFullScreenEnabled,
         nullptr, std::string())),
-    mOpenGLDropDown(new DropDown(widget, mOpenGLListModel)),
+    mOpenGLDropDown(new DropDown(widget, mOpenGLListModel,
+        false, Modal_false, nullptr, std::string())),
     // TRANSLATORS: video settings checkbox
     mFpsCheckBox(new CheckBox(this, _("FPS limit:"), false,
         nullptr, std::string())),
