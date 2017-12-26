@@ -98,7 +98,7 @@ class WindowMenu final : public Container,
                               const std::string &description,
                               int &restrict x, int &restrict h,
                               const InputActionT key,
-                              const Visible visible = Visible_true);
+                              const Visible visible);
 
         void updateButtons();
 
