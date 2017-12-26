@@ -46,7 +46,8 @@ BankWindow::BankWindow() :
     mBankMoneyLabel(new Label(this, strprintf(
         // TRANSLATORS: bank window money label
         _("Money in bank: %s"), "            "))),
-    mInputMoneyTextField(new IntTextField(this, 0, 0, 2147483647)),
+    mInputMoneyTextField(new IntTextField(this, 0, 0, 2147483647,
+        Enable_true, 0)),
     // TRANSLATORS: bank window button
     mWithdrawButton(new Button(this, _("Withdraw"), "withdraw", this)),
     // TRANSLATORS: bank window button

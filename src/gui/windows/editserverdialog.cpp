@@ -52,7 +52,8 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mNameField(new TextField(this, std::string())),
     mDescriptionField(new TextField(this, std::string())),
     mOnlineListUrlField(new TextField(this, std::string())),
-    mPacketVersionField(new IntTextField(this, 0, 0, maxPacketVersion)),
+    mPacketVersionField(new IntTextField(this, 0, 0, maxPacketVersion,
+        Enable_true, 0)),
     // TRANSLATORS: edit server dialog button
     mConnectButton(new Button(this, _("Connect"), "connect", this)),
     // TRANSLATORS: edit server dialog button

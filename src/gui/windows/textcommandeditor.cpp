@@ -86,17 +86,17 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
 #ifdef TMWA_SUPPORT
     // TRANSLATORS: command editor label
     mManaLabel(new Label(this, _("Mana:"))),
-    mManaField(new IntTextField(this, 0)),
+    mManaField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),
     // TRANSLATORS: command editor label
     mMagicLvlLabel(new Label(this, _("Magic level:"))),
-    mMagicLvlField(new IntTextField(this, 0)),
+    mMagicLvlField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),
     mMagicSchoolModel(new MagicSchoolModel),
     // TRANSLATORS: command editor label
     mSchoolLabel(new Label(this, _("Magic School:"))),
     mSchoolDropDown(new DropDown(this, mMagicSchoolModel)),
     // TRANSLATORS: command editor label
     mSchoolLvlLabel(new Label(this, _("School level:"))),
-    mSchoolLvlField(new IntTextField(this, 0)),
+    mSchoolLvlField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),
 #endif  // TMWA_SUPPORT
     // TRANSLATORS: command editor button
     mCancelButton(new Button(this, _("Cancel"), "cancel", this)),

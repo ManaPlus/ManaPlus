@@ -317,7 +317,7 @@ void BuyDialog::init()
         // TRANSLATORS: buy dialog label
         _("Price: %s / Total: %s"), "", ""));
 
-    mAmountField = new IntTextField(this, 1, 1, 123);
+    mAmountField = new IntTextField(this, 1, 1, 123, Enable_true, 0);
     mAmountField->setActionEventId("amount");
     mAmountField->addActionListener(this);
     mAmountField->setSendAlwaysEvents(true);

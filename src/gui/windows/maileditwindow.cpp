@@ -72,7 +72,7 @@ MailEditWindow::MailEditWindow() :
     mToField(new TextField(this)),
     mSubjectField(new TextField(this)),
     mMoneyField(new IntTextField(this, 0, 0,
-        settings.enableNewMailSystem ? INT_MAX : 10000000)),
+        settings.enableNewMailSystem ? INT_MAX : 10000000, Enable_true, 0)),
     mMessageField(new TextField(this)),
     mInventory(new Inventory(InventoryType::MailEdit,
         settings.enableNewMailSystem ? -1 : 1)),

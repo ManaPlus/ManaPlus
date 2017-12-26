@@ -135,7 +135,7 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     Window("", Modal_false, parent, "amount.xml"),
     ActionListener(),
     KeyListener(),
-    mItemAmountTextField(new IntTextField(this, 1)),
+    mItemAmountTextField(new IntTextField(this, 1, 0, 0, Enable_true, 0)),
     mItemPriceTextField(nullptr),
     mGPLabel(nullptr),
     mItem(item),
@@ -171,7 +171,7 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     if (mUsage == ItemAmountWindowUsage::ShopBuyAdd ||
         mUsage == ItemAmountWindowUsage::ShopSellAdd)
     {
-        mItemPriceTextField = new IntTextField(this, 1);
+        mItemPriceTextField = new IntTextField(this, 1, 0, 0, Enable_true, 0);
         mItemPriceTextField->setRange(1, 10000000);
         mItemPriceTextField->setWidth(35);
         mItemPriceTextField->addKeyListener(this);

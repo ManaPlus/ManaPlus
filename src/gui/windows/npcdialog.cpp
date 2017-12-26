@@ -121,7 +121,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
         "npc_listbackground.xml")),
     mItemLinkHandler(new ItemLinkHandler),
     mTextField(new TextField(this, "")),
-    mIntField(new IntTextField(this)),
+    mIntField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),
     // TRANSLATORS: npc dialog button
     mPlusButton(new Button(this, _("+"), "inc", this)),
     // TRANSLATORS: npc dialog button

@@ -36,12 +36,12 @@ class IntTextField final : public TextField
         /**
          * Constructor, sets default value.
          */
-        explicit IntTextField(const Widget2 *const widget,
-                              const int def = 0,
-                              const int min = 0,
-                              const int max = 0,
-                              const Enable enabled = Enable_true,
-                              const int width = 0);
+        IntTextField(const Widget2 *const widget,
+                     const int def,
+                     const int min,
+                     const int max,
+                     const Enable enabled,
+                     const int width);
 
         A_DELETE_COPY(IntTextField)
 
