@@ -53,15 +53,15 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
     KeyListener(),
     mOptions(),
     // TRANSLATORS: quit dialog button
-    mLogoutQuit(new RadioButton(this, _("Quit"), "quitdialog")),
+    mLogoutQuit(new RadioButton(this, _("Quit"), "quitdialog", false)),
     // TRANSLATORS: quit dialog button
-    mForceQuit(new RadioButton(this, _("Quit"), "quitdialog")),
+    mForceQuit(new RadioButton(this, _("Quit"), "quitdialog", false)),
     mSwitchAccountServer(new RadioButton(this,
         // TRANSLATORS: quit dialog button
-        _("Switch server"), "quitdialog")),
+        _("Switch server"), "quitdialog", false)),
     mSwitchCharacter(new RadioButton(this,
         // TRANSLATORS: quit dialog button
-        _("Switch character"), "quitdialog")),
+        _("Switch character"), "quitdialog", false)),
     mRate(nullptr),
     // TRANSLATORS: quit dialog button
     mOkButton(new Button(this, _("OK"), "ok", this)),
@@ -101,7 +101,8 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
         && config.getIntValue("gamecount") > 3)
     {
         // TRANSLATORS: rate button
-        mRate = new RadioButton(this, _("Rate in google play"), "quitdialog");
+        mRate = new RadioButton(this, _("Rate in google play"), "quitdialog",
+            false);
         placeOption(placer, mRate);
         mOptions[mOptions.size() - 1]->setSelected(true);
     }

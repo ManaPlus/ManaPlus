@@ -94,7 +94,7 @@ class RadioButton final : public Widget,
         RadioButton(const Widget2 *const widget,
                     const std::string &restrict caption,
                     const std::string &restrict group,
-                    const bool marked = false);
+                    const bool marked);
 
         A_DELETE_COPY(RadioButton)
 
