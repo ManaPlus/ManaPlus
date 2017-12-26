@@ -65,13 +65,17 @@ class LayoutHelper final : public WidgetListener
          * @param w if non-zero, force the container to this width.
          * @param h if non-zero, force the container to this height.
          */
-        void reflowLayout(int w = 0, int h = 0);
+        void reflowLayout(int w,
+                          int h);
 
         /**
          * Adds a widget to the container and sets it at given cell.
          */
-        LayoutCell &place(const int x, const int y, Widget *const wg,
-                          const int w = 1, const int h = 1);
+        LayoutCell &place(const int x,
+                          const int y,
+                          Widget *const wg,
+                          const int w,
+                          const int h);
 
         /**
          * Returns a proxy for adding widgets in an inner table of the layout.
