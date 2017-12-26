@@ -153,7 +153,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
 ShortcutWindow::~ShortcutWindow()
 {
     if (mTabs != nullptr)
-        mTabs->removeAll();
+        mTabs->removeAll(true);
     delete2(mTabs);
     delete2(mItems);
 }

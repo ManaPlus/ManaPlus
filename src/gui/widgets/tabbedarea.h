@@ -153,7 +153,7 @@ class TabbedArea final : public ActionListener,
          */
         void removeTab(Tab *const tab);
 
-        void removeAll(const bool del = true);
+        void removeAll(const bool del);
 
         /**
          * Overload the logic function since it's broken in guichan 0.8.
