@@ -87,7 +87,7 @@ void SellDialog::postInit()
     setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(220);
-    setDefaultSize(260, 230, ImagePosition::CENTER);
+    setDefaultSize(260, 230, ImagePosition::CENTER, 0, 0);
 
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
@@ -106,7 +106,7 @@ void SellDialog::postInit()
         ShopListBoxType::Unknown);
     mShopItemList->setProtectItems(true);
     mScrollArea = new ScrollArea(this, mShopItemList,
-        fromBool(getOptionBool("showbackground"), Opaque),
+        fromBool(getOptionBool("showbackground", false), Opaque),
         "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 

@@ -80,7 +80,7 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
     mItemContainer(new ItemContainer(this, mInventory, 100000,
         ShowEmptyRows_false, ForceQuantity_false)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
-        fromBool(getOptionBool("showitemsbackground"), Opaque),
+        fromBool(getOptionBool("showitemsbackground", false), Opaque),
         "mailview_listbackground.xml")),
     mUseMail2(settings.enableNewMailSystem)
 {
@@ -91,7 +91,7 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
     setStickyButtonLock(true);
     setVisible(Visible_true);
 
-    setDefaultSize(380, 370, ImagePosition::CENTER);
+    setDefaultSize(380, 370, ImagePosition::CENTER, 0, 0);
     setMinWidth(200);
     setMinHeight(100);
     center();

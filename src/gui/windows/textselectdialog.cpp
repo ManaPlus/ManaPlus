@@ -68,7 +68,7 @@ void TextSelectDialog::postInit()
     setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(220);
-    setDefaultSize(260, 230, ImagePosition::CENTER);
+    setDefaultSize(260, 230, ImagePosition::CENTER, 0, 0);
 
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
@@ -80,7 +80,7 @@ void TextSelectDialog::postInit()
         mModel,
         "listbox.xml");
     mScrollArea = new ScrollArea(this, mItemList,
-        fromBool(getOptionBool("showbackground"), Opaque),
+        fromBool(getOptionBool("showbackground", false), Opaque),
         "sell_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 

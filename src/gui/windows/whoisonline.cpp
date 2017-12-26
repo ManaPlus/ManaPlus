@@ -135,7 +135,7 @@ void WhoIsOnline::postInit()
     Window::postInit();
     const int h = 350;
     const int w = 200;
-    setDefaultSize(w, h, ImagePosition::CENTER);
+    setDefaultSize(w, h, ImagePosition::CENTER, 0, 0);
 
     setVisible(Visible_false);
     setCloseButton(true);

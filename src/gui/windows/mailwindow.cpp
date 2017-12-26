@@ -63,7 +63,7 @@ MailWindow::MailWindow() :
     mListBox(CREATEWIDGETR(ExtendedListBox,
         this, mMailModel, "extendedlistbox.xml", 0)),
     mListScrollArea(new ScrollArea(this, mListBox,
-        fromBool(getOptionBool("showlistbackground"), Opaque),
+        fromBool(getOptionBool("showlistbackground", false), Opaque),
         "mail_listbackground.xml")),
     // TRANSLATORS: mail window button
     mRefreshButton(new Button(this, _("Refresh"), "refresh", this)),
@@ -91,7 +91,7 @@ MailWindow::MailWindow() :
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
-    setDefaultSize(310, 180, ImagePosition::CENTER);
+    setDefaultSize(310, 180, ImagePosition::CENTER, 0, 0);
     setMinWidth(310);
     setMinHeight(250);
     center();

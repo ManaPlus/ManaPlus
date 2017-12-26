@@ -55,7 +55,7 @@ WorldSelectDialog::WorldSelectDialog(const Worlds &worlds) :
     mChooseWorld(new Button(this, _("Choose World"), "world", this))
 {
     ScrollArea *const worldsScroll = new ScrollArea(this, mWorldList,
-        fromBool(getOptionBool("showbackground"), Opaque),
+        fromBool(getOptionBool("showbackground", false), Opaque),
          "world_background.xml");
 
     worldsScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);

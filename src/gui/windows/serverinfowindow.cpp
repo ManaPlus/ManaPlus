@@ -54,7 +54,7 @@ ServerInfoWindow::ServerInfoWindow(ServerInfo &serverInfo) :
     setResizable(true);
     setStickyButtonLock(true);
 
-    setDefaultSize(500, 400, ImagePosition::CENTER);
+    setDefaultSize(500, 400, ImagePosition::CENTER, 0, 0);
 
     mBrowserBox->setOpaque(Opaque_false);
     mBrowserBox->setLinkHandler(this);

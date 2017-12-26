@@ -147,7 +147,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mServersList->addMouseListener(this);
 
     ScrollArea *const usedScroll = new ScrollArea(this, mServersList,
-        fromBool(getOptionBool("showbackground"), Opaque),
+        fromBool(getOptionBool("showbackground", false), Opaque),
         "server_background.xml");
     usedScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
@@ -178,7 +178,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 
     setMinWidth(310);
     setMinHeight(220);
-    setDefaultSize(getWidth(), getHeight(), ImagePosition::CENTER);
+    setDefaultSize(getWidth(), getHeight(), ImagePosition::CENTER, 0, 0);
 
     setResizable(true);
     addKeyListener(this);

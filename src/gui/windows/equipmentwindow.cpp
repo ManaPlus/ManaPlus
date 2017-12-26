@@ -84,8 +84,8 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
     mLabelsColor(getThemeColor(ThemeColorId::LABEL, 255U)),
     mLabelsColor2(getThemeColor(ThemeColorId::LABEL_OUTLINE, 255U)),
     mSelected(-1),
-    mItemPadding(getOption("itemPadding")),
-    mBoxSize(getOption("boxSize")),
+    mItemPadding(getOption("itemPadding", 0)),
+    mBoxSize(getOption("boxSize", 0)),
     mButtonPadding(getOption("buttonPadding", 5)),
     mMinX(180),
     mMinY(345),
@@ -830,7 +830,7 @@ void EquipmentWindow::recalcSize()
     mMaxY += mMinY;
     mTabs->setWidth(mMaxX);
     mMaxY += mUnequip->getHeight() - mYPadding;
-    setDefaultSize(mMaxX, mMaxY, ImagePosition::CENTER);
+    setDefaultSize(mMaxX, mMaxY, ImagePosition::CENTER, 0, 0);
 }
 
 int EquipmentWindow::addPage(const std::string &name)

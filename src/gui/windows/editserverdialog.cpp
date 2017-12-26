@@ -44,7 +44,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    const ServerInfo &server,
                                    const int index) :
     // TRANSLATORS: edit server dialog name
-    Window(_("Edit Server"), Modal_true, parent),
+    Window(_("Edit Server"), Modal_true, parent, std::string()),
     ActionListener(),
     KeyListener(),
     mServerAddressField(new TextField(this, std::string(),
@@ -138,7 +138,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
 
     setMinWidth(getWidth());
     setMinHeight(getHeight());
-    setDefaultSize(getWidth(), getHeight(), ImagePosition::CENTER);
+    setDefaultSize(getWidth(), getHeight(), ImagePosition::CENTER, 0, 0);
 
     setResizable(false);
     addKeyListener(this);

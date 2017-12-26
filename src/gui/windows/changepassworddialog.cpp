@@ -65,7 +65,7 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData &data) :
 
     place(0, 0, accountLabel, 3, 1);
     // TRANSLATORS: change password dialog label
-    place(0, 1, new Label(this, _("Password:")), 3);
+    place(0, 1, new Label(this, _("Password:")), 3, 1);
     place(0, 2, mOldPassField, 3, 1).setPadding(1);
     // TRANSLATORS: change password dialog label
     place(0, 3, new Label(this, _("Type new password twice:")), 3, 1);
@@ -73,7 +73,7 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData &data) :
     place(0, 5, mSecondPassField, 3, 1).setPadding(1);
     place(1, 6, mCancelButton, 1, 1);
     place(2, 6, mChangePassButton, 1, 1);
-    reflowLayout(200);
+    reflowLayout(200, 0);
 
     center();
     mOldPassField->requestFocus();

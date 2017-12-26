@@ -111,10 +111,10 @@ class Window notfinal : public BasicContainer2,
          *                a window will never go below its parent window.
          * @param skin    The location where the window's skin XML can be found.
          */
-        explicit Window(const std::string &caption = "Window",
-                        const Modal modal = Modal_false,
-                        Window *const parent = nullptr,
-                        std::string skin = "");
+        Window(const std::string &caption,
+               const Modal modal,
+               Window *const parent,
+               std::string skin);
 
         A_DELETE_COPY(Window)
 
@@ -155,7 +155,8 @@ class Window notfinal : public BasicContainer2,
          * Sets the location relative to the given enumerated position.
          */
         void setLocationRelativeTo(const ImagePosition::Type &position,
-                                   int offsetX = 0, int offsetY = 0);
+                                   int offsetX,
+                                   int offsetY);
 
         /**
          * Sets whether or not the window can be resized.
@@ -392,9 +393,11 @@ class Window notfinal : public BasicContainer2,
          * This version of setDefaultSize sets the window's position based
          * on a relative enumerated position, rather than a coordinate position.
          */
-        void setDefaultSize(const int defaultWidth, const int defaultHeight,
+        void setDefaultSize(const int defaultWidth,
+                            const int defaultHeight,
                             const ImagePosition::Type &position,
-                            const int offsetx = 0, const int offsetY = 0);
+                            const int offsetx,
+                            const int offsetY);
 
         /**
          * Reset the win pos and size to default. Don't forget to set defaults
@@ -428,13 +431,17 @@ class Window notfinal : public BasicContainer2,
          * @param h if non-zero, force the window to this height.
          * @note This function is meant to be called with fixed-size windows.
          */
-        void reflowLayout(int w = 0, int h = 0);
+        void reflowLayout(int w,
+                          int h);
 
         /**
          * Adds a widget to the window and sets it at given cell.
          */
-        LayoutCell &place(const int x, const int y, Widget *const wg,
-                          const int w = 1, const int h = 1);
+        LayoutCell &place(const int x,
+                          const int y,
+                          Widget *const wg,
+                          const int w,
+                          const int h);
 
         /**
          * Returns a proxy for adding widgets in an inner table of the layout.
@@ -583,10 +590,10 @@ class Window notfinal : public BasicContainer2,
         bool canMove() const A_WARN_UNUSED;
 
         int getOption(const std::string &name,
-                      const int def = 0) const A_WARN_UNUSED;
+                      const int def) const A_WARN_UNUSED;
 
         bool getOptionBool(const std::string &name,
-                           const bool def = false) const A_WARN_UNUSED;
+                           const bool def) const A_WARN_UNUSED;
 
         void setTitlePadding(const int p) noexcept2
         { mTitlePadding = p; }

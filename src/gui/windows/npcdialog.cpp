@@ -104,7 +104,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mTextBox(new BrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mTextBox,
-        fromBool(getOptionBool("showtextbackground"), Opaque),
+        fromBool(getOptionBool("showtextbackground", false), Opaque),
         "npc_textbackground.xml")),
     mText(),
     mNewText(),
@@ -113,11 +113,11 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mItemList(CREATEWIDGETR(ExtendedListBox,
         this, this, "extendedlistbox.xml", 13)),
     mListScrollArea(new ScrollArea(this, mItemList,
-        fromBool(getOptionBool("showlistbackground"), Opaque),
+        fromBool(getOptionBool("showlistbackground", false), Opaque),
         "npc_listbackground.xml")),
     mSkinContainer(new Container(this)),
     mSkinScrollArea(new ScrollArea(this, mSkinContainer,
-        fromBool(getOptionBool("showlistbackground"), Opaque),
+        fromBool(getOptionBool("showlistbackground", false), Opaque),
         "npc_listbackground.xml")),
     mItemLinkHandler(new ItemLinkHandler),
     mTextField(new TextField(this, std::string(), LoseFocusOnTab_true,
@@ -141,7 +141,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mItemContainer(new ItemContainer(this, mInventory,
         10000, ShowEmptyRows_true, ForceQuantity_false)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
-        fromBool(getOptionBool("showitemsbackground"), Opaque),
+        fromBool(getOptionBool("showitemsbackground", false), Opaque),
         "npc_listbackground.xml")),
     mInputState(NpcInputState::NONE),
     mActionState(NpcActionState::WAIT),
@@ -166,7 +166,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     setMinWidth(200);
     setMinHeight(150);
 
-    setDefaultSize(300, 578, ImagePosition::LOWER_LEFT);
+    setDefaultSize(300, 578, ImagePosition::LOWER_LEFT, 0, 0);
 
     mPlayerBox->setWidth(70);
     mPlayerBox->setHeight(100);

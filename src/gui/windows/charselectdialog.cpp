@@ -141,7 +141,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
             sz = width;
         if (sz > mainGraphics->getWidth())
             sz = mainGraphics->getWidth();
-        reflowLayout(sz);
+        reflowLayout(sz, 0);
     }
     else
     {
@@ -152,7 +152,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
         mCharacterView->setWidth(mainGraphics->getWidth()
             - 2 * getPadding());
         placer(0, 1, mCharacterView, 10, 1);
-        reflowLayout();
+        reflowLayout(0, 0);
     }
     addKeyListener(this);
     center();

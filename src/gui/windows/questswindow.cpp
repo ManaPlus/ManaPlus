@@ -68,13 +68,13 @@ QuestsWindow::QuestsWindow() :
     mQuestsListBox(CREATEWIDGETR(ExtendedListBox,
         this, mQuestsModel, "extendedlistbox.xml", 13)),
     mQuestScrollArea(new ScrollArea(this, mQuestsListBox,
-        fromBool(getOptionBool("showlistbackground"), Opaque),
+        fromBool(getOptionBool("showlistbackground", false), Opaque),
         "quests_list_background.xml")),
     mItemLinkHandler(new ItemLinkHandler),
     mText(new BrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mTextScrollArea(new ScrollArea(this, mText,
-        fromBool(getOptionBool("showtextbackground"), Opaque),
+        fromBool(getOptionBool("showtextbackground", false), Opaque),
         "quests_text_background.xml")),
     // TRANSLATORS: quests window button
     mCloseButton(new Button(this, _("Close"), "close", this)),
@@ -97,7 +97,7 @@ QuestsWindow::QuestsWindow() :
     setStickyButtonLock(true);
     setSaveVisible(true);
 
-    setDefaultSize(400, 350, ImagePosition::RIGHT);
+    setDefaultSize(400, 350, ImagePosition::RIGHT, 0, 0);
     setMinWidth(310);
     setMinHeight(220);
 

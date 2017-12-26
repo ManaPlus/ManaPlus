@@ -72,7 +72,7 @@ BankWindow::BankWindow() :
     center();
     setDefaultSize();
     loadWindowState();
-    reflowLayout(300);
+    reflowLayout(300, 0);
     enableVisibleSound(true);
 }
 

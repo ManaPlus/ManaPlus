@@ -76,7 +76,7 @@ HelpWindow::HelpWindow() :
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
-    setDefaultSize(500, 400, ImagePosition::CENTER);
+    setDefaultSize(500, 400, ImagePosition::CENTER, 0, 0);
 
     mBrowserBox->setOpaque(Opaque_false);
 

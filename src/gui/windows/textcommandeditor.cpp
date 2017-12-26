@@ -118,7 +118,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     keyboard.setEnabled(false);
 
     setWindowName("TextCommandEditor");
-    setDefaultSize(w, h, ImagePosition::CENTER);
+    setDefaultSize(w, h, ImagePosition::CENTER, 0, 0);
 
 #ifdef TMWA_SUPPORT
     mIsMagic->setActionEventId("magic");
@@ -226,7 +226,7 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     setWidth(w);
     setHeight(h);
 
-    reflowLayout(w);
+    reflowLayout(w, 0);
 
     center();
 }

@@ -167,9 +167,9 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     setStickyButtonLock(true);
 
     if (mainGraphics->mWidth > 600)
-        setDefaultSize(450, 310, ImagePosition::CENTER);
+        setDefaultSize(450, 310, ImagePosition::CENTER, 0, 0);
     else
-        setDefaultSize(387, 307, ImagePosition::CENTER);
+        setDefaultSize(387, 307, ImagePosition::CENTER, 0, 0);
     setMinWidth(310);
     setMinHeight(179);
     addKeyListener(this);
@@ -194,7 +194,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
     }
 
     ScrollArea *const invenScroll = new ScrollArea(this, mItems,
-        fromBool(getOptionBool("showbackground"), Opaque),
+        fromBool(getOptionBool("showbackground", false), Opaque),
         "inventory_background.xml");
     invenScroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 
@@ -274,11 +274,11 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             // TRANSLATORS: storage button
             mInvCloseButton = new Button(this, _("Close"), "close", this);
 
-            mSlotsBarCell = &place(0, 0, mSlotsBar, 6);
-            mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
+            mSlotsBarCell = &place(0, 0, mSlotsBar, 6, 1);
+            mSortDropDownCell = &place(6, 0, mSortDropDown, 1, 1);
 
-            mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
-            mNameFilterCell = &place(6, 1, mNameFilter, 1);
+            mFilterCell = &place(0, 1, mFilter, 7, 1).setPadding(3);
+            mNameFilterCell = &place(6, 1, mNameFilter, 1, 1);
 
             place(0, 2, invenScroll, 7, 4);
             place(0, 6, mStoreButton, 1, 1);
@@ -303,11 +303,11 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
             mWeightBar->setColor(getThemeColor(ThemeColorId::WEIGHT_BAR, 255U),
                 getThemeColor(ThemeColorId::WEIGHT_BAR_OUTLINE, 255U));
 
-            mSlotsBarCell = &place(3, 0, mSlotsBar, 3);
-            mSortDropDownCell = &place(6, 0, mSortDropDown, 1);
+            mSlotsBarCell = &place(3, 0, mSlotsBar, 3, 1);
+            mSortDropDownCell = &place(6, 0, mSortDropDown, 1, 1);
 
-            mFilterCell = &place(0, 1, mFilter, 7).setPadding(3);
-            mNameFilterCell = &place(6, 1, mNameFilter, 1);
+            mFilterCell = &place(0, 1, mFilter, 7, 1).setPadding(3);
+            mNameFilterCell = &place(6, 1, mNameFilter, 1, 1);
 
             place(0, 0, mWeightBar, 3, 1);
             place(0, 2, invenScroll, 7, 4);

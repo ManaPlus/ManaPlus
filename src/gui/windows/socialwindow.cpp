@@ -63,12 +63,12 @@ SocialWindow::SocialWindow() :
     mPickupFilter(nullptr),
     // TRANSLATORS: here P is title for visible players tab in social window
     mPlayers(new SocialPlayersTab(this, _("P"),
-        fromBool(getOptionBool("showtabbackground"), Opaque))),
+        fromBool(getOptionBool("showtabbackground", false), Opaque))),
     mNavigation(new SocialNavigationTab(this,
-        fromBool(getOptionBool("showtabbackground"), Opaque))),
+        fromBool(getOptionBool("showtabbackground", false), Opaque))),
     // TRANSLATORS: here F is title for friends tab in social window
     mFriends(new SocialFriendsTab(this, _("F"),
-        fromBool(getOptionBool("showtabbackground"), Opaque))),
+        fromBool(getOptionBool("showtabbackground", false), Opaque))),
     // TRANSLATORS: social window button
     mMenuButton(new Button(this, _("Menu"), "menu", this)),
     mCountLabel(new Label(this, "1000 / 1000")),
@@ -116,7 +116,7 @@ void SocialWindow::postInit()
     if (config.getBoolValue("enableAttackFilter"))
     {
         mAttackFilter = new SocialAttackTab(this,
-            fromBool(getOptionBool("showtabbackground"), Opaque));
+            fromBool(getOptionBool("showtabbackground", false), Opaque));
         mTabs->addTab(mAttackFilter, mAttackFilter->mScroll);
     }
     else
@@ -127,7 +127,7 @@ void SocialWindow::postInit()
     if (config.getBoolValue("enablePickupFilter"))
     {
         mPickupFilter = new SocialPickupTab(this,
-            fromBool(getOptionBool("showtabbackground"), Opaque));
+            fromBool(getOptionBool("showtabbackground", false), Opaque));
         mTabs->addTab(mPickupFilter, mPickupFilter->mScroll);
     }
     else
@@ -195,13 +195,13 @@ bool SocialWindow::addTab(Guild *const guild)
     if (guild->getServerGuild())
     {
         tab = new SocialGuildTab(this, guild,
-            fromBool(getOptionBool("showtabbackground"), Opaque));
+            fromBool(getOptionBool("showtabbackground", false), Opaque));
     }
 #ifdef TMWA_SUPPORT
     else
     {
         tab = new SocialGuildTab2(this, guild,
-            fromBool(getOptionBool("showtabbackground"), Opaque));
+            fromBool(getOptionBool("showtabbackground", false), Opaque));
     }
 #endif  // TMWA_SUPPORT
 
@@ -237,7 +237,7 @@ bool SocialWindow::addTab(Party *const party)
         return false;
 
     SocialPartyTab *const tab = new SocialPartyTab(this, party,
-        fromBool(getOptionBool("showtabbackground"), Opaque));
+        fromBool(getOptionBool("showtabbackground", false), Opaque));
     mParties[party] = tab;
 
     mTabs->addTab(tab, tab->mScroll);

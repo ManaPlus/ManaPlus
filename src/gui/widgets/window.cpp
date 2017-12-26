@@ -187,35 +187,35 @@ Window::Window(const std::string &caption,
         if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());
-            if (getOptionBool("titlebarBold"))
+            if (getOptionBool("titlebarBold", false))
                 mCaptionFont = boldFont;
             mTitlePadding = mSkin->getTitlePadding();
-            mGripPadding = getOption("resizePadding");
-            mCaptionOffsetX = getOption("captionoffsetx");
+            mGripPadding = getOption("resizePadding", 0);
+            mCaptionOffsetX = getOption("captionoffsetx", 0);
             if (mCaptionOffsetX == 0)
                 mCaptionOffsetX = 7;
-            mCaptionOffsetY = getOption("captionoffsety");
+            mCaptionOffsetY = getOption("captionoffsety", 0);
             if (mCaptionOffsetY == 0)
                 mCaptionOffsetY = 5;
             mCaptionAlign = static_cast<Graphics::Alignment>(
-                getOption("captionalign"));
+                getOption("captionalign", 0));
             if (mCaptionAlign < Graphics::LEFT
                 || mCaptionAlign > Graphics::RIGHT)
             {
                 mCaptionAlign = Graphics::LEFT;
             }
             setTitleBarHeight(CAST_U32(
-                getOption("titlebarHeight")));
+                getOption("titlebarHeight", 0)));
             if (mTitleBarHeight == 0u)
                 mTitleBarHeight = mCaptionFont->getHeight() + mPadding;
 
-            mTitleBarHeight += getOption("titlebarHeightRelative");
-            setPalette(getOption("palette"));
-            childPalette = getOption("childPalette");
+            mTitleBarHeight += getOption("titlebarHeightRelative", 0);
+            setPalette(getOption("palette", 0));
+            childPalette = getOption("childPalette", 0);
             mShowTitle = getOptionBool("showTitle", true);
-            mClosePadding = getOption("closePadding");
-            mStickySpacing = getOption("stickySpacing");
-            mStickyPadding = getOption("stickyPadding");
+            mClosePadding = getOption("closePadding", 0);
+            mStickySpacing = getOption("stickySpacing", 0);
+            mStickyPadding = getOption("stickyPadding", 0);
         }
     }
 

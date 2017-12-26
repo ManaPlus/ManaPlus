@@ -155,7 +155,7 @@ ChatWindow::ChatWindow(const std::string &name) :
         w = mainGraphics->getWidth() - 10;
     if (w < 100)
         w = 100;
-    setDefaultSize(w, 123, ImagePosition::LOWER_LEFT);
+    setDefaultSize(w, 123, ImagePosition::LOWER_LEFT, 0, 0);
 #endif  // ANDROID
 
     setMinWidth(150);

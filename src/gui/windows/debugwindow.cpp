@@ -55,7 +55,7 @@ DebugWindow::DebugWindow(const std::string &name) :
     setSaveVisible(true);
     setStickyButtonLock(true);
 
-    setDefaultSize(400, 300, ImagePosition::CENTER);
+    setDefaultSize(400, 300, ImagePosition::CENTER, 0, 0);
 
     mTabs->setSelectable(false);
     mTabs->getWidgetContainer()->setSelectable(false);

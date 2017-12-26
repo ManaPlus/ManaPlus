@@ -82,7 +82,7 @@ MailEditWindow::MailEditWindow() :
     mItemContainer(new ItemContainer(this, mInventory, 100000,
         ShowEmptyRows_false, ForceQuantity_false)),
     mItemScrollArea(new ScrollArea(this, mItemContainer,
-        fromBool(getOptionBool("showitemsbackground"), Opaque),
+        fromBool(getOptionBool("showitemsbackground", false), Opaque),
         "mailedit_listbackground.xml")),
     mUseMail2(settings.enableNewMailSystem)
 {
@@ -94,7 +94,7 @@ MailEditWindow::MailEditWindow() :
     setStickyButtonLock(true);
     setVisible(Visible_true);
 
-    setDefaultSize(380, 200, ImagePosition::CENTER);
+    setDefaultSize(380, 200, ImagePosition::CENTER, 0, 0);
     setMinWidth(200);
     setMinHeight(200);
     center();

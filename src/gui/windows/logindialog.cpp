@@ -193,7 +193,7 @@ void LoginDialog::postInit()
 
     center();
     loadWindowState();
-    reflowLayout();
+    reflowLayout(0, 0);
 
     if (mUserField->getText().empty())
         mUserField->requestFocus();

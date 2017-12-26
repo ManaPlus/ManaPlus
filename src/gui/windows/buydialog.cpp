@@ -285,7 +285,7 @@ void BuyDialog::init()
     setStickyButtonLock(true);
     setMinWidth(260);
     setMinHeight(220);
-    setDefaultSize(260, 230, ImagePosition::CENTER);
+    setDefaultSize(260, 230, ImagePosition::CENTER, 0, 0);
 
 #ifdef TMWA_SUPPORT
     // reset advance flag for personal shops
@@ -305,7 +305,7 @@ void BuyDialog::init()
     CREATEWIDGETV(mShopItemList, ShopListBox, this,
         mShopItems, mShopItems, ShopListBoxType::Unknown);
     mScrollArea = new ScrollArea(this, mShopItemList,
-        fromBool(getOptionBool("showbackground"), Opaque),
+        fromBool(getOptionBool("showbackground", false), Opaque),
         "buy_background.xml");
     mScrollArea->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
 

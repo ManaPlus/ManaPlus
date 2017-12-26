@@ -118,7 +118,7 @@ ShopWindow::ShopWindow() :
         this, mSellShopItems, mSellShopItems, ShopListBoxType::SellShop)),
     mCurrentShopItemList(nullptr),
     mScrollArea(new ScrollArea(this, mBuyShopItemList,
-        fromBool(getOptionBool("showbuybackground"), Opaque),
+        fromBool(getOptionBool("showbuybackground", false), Opaque),
         "shop_buy_background.xml")),
     // TRANSLATORS: shop window label
     mAddButton(new Button(this, _("Add"), "add", this)),
@@ -152,9 +152,9 @@ ShopWindow::ShopWindow() :
     setMinWidth(300);
     setMinHeight(220);
     if (mainGraphics->mWidth > 600)
-        setDefaultSize(500, 300, ImagePosition::CENTER);
+        setDefaultSize(500, 300, ImagePosition::CENTER, 0, 0);
     else
-        setDefaultSize(380, 300, ImagePosition::CENTER);
+        setDefaultSize(380, 300, ImagePosition::CENTER, 0, 0);
 
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);

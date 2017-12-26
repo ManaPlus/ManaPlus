@@ -81,7 +81,7 @@ TextDialog::TextDialog(const std::string &restrict title,
     int width = getFont()->getWidth(title);
     if (width < textLabel->getWidth())
         width = textLabel->getWidth();
-    reflowLayout(CAST_S32(width + 20));
+    reflowLayout(CAST_S32(width + 20), 0);
 }
 
 void TextDialog::postInit()
