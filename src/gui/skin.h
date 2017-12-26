@@ -94,7 +94,7 @@ class Skin final
         /**
          * Updates the alpha value of the skin
          */
-        void updateAlpha(const float minimumOpacityAllowed = 0.0F);
+        void updateAlpha(const float minimumOpacityAllowed);
 
         int getPadding() const noexcept2 A_WARN_UNUSED
         { return mPadding; }
