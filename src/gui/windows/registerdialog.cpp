@@ -56,7 +56,7 @@ RegisterDialog::RegisterDialog(LoginData &data) :
     mLoginData(&data),
     mUserField(new TextField(this, mLoginData->username)),
     mPasswordField(new PasswordField(this, mLoginData->password)),
-    mConfirmField(new PasswordField(this)),
+    mConfirmField(new PasswordField(this, std::string())),
     mEmailField(nullptr),
     // TRANSLATORS: register dialog. button.
     mRegisterButton(new Button(this, _("Register"), "register", this)),

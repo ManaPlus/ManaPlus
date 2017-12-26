@@ -48,9 +48,9 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData &data) :
     // TRANSLATORS: change password window name
     Window(_("Change Password"), Modal_true, nullptr, "changepassword.xml"),
     ActionListener(),
-    mOldPassField(new PasswordField(this)),
-    mFirstPassField(new PasswordField(this)),
-    mSecondPassField(new PasswordField(this)),
+    mOldPassField(new PasswordField(this, std::string())),
+    mFirstPassField(new PasswordField(this, std::string())),
+    mSecondPassField(new PasswordField(this, std::string())),
     // TRANSLATORS: change password dialog button
     mChangePassButton(new Button(this, _("Change Password"),
         "change_password", this)),

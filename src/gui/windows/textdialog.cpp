@@ -62,7 +62,7 @@ TextDialog::TextDialog(const std::string &restrict title,
     place(0, 0, textLabel, 4, 1);
     if (isPassword)
     {
-        mPasswordField = new PasswordField(this);
+        mPasswordField = new PasswordField(this, std::string());
         place(0, 1, mPasswordField, 4, 1);
     }
     else
