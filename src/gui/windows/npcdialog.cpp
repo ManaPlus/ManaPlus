@@ -147,7 +147,7 @@ NpcDialog::NpcDialog(const BeingId npcId) :
     mActionState(NpcActionState::WAIT),
     mSkinControls(),
     mSkinName(),
-    mPlayerBox(new PlayerBox(nullptr)),
+    mPlayerBox(new PlayerBox(nullptr, std::string(), std::string())),
     mAvatarBeing(nullptr),
     mDialogInfo(nullptr),
     mLastNextTime(0),

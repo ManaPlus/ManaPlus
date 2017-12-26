@@ -47,7 +47,7 @@ CharacterDisplay::CharacterDisplay(const Widget2 *const widget,
     MouseListener(),
     WidgetListener(),
     mCharacter(nullptr),
-    mPlayerBox(new PlayerBox(nullptr)),
+    mPlayerBox(new PlayerBox(nullptr, std::string(), std::string())),
     mName(new Label(this, "wwwwwwwwwwwwwwwwwwwwwwww"))
 {
     mPlayerBox->setActionEventId("select");

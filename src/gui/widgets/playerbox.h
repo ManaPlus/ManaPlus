@@ -49,12 +49,12 @@ class PlayerBox final : public Widget,
          */
         PlayerBox(Widget2 *const widget,
                   Being *const being,
-                  const std::string &skin = "",
-                  const std::string &selectedSkin = "");
+                  const std::string &skin,
+                  const std::string &selectedSkin);
 
-        explicit PlayerBox(Widget2 *const widget,
-                           const std::string &skin = "",
-                           const std::string &selectedSkin = "");
+        PlayerBox(Widget2 *const widget,
+                  const std::string &skin,
+                  const std::string &selectedSkin);
 
         A_DELETE_COPY(PlayerBox)
 
