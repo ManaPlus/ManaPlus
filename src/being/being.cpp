@@ -656,7 +656,9 @@ void Being::setSpeech(const std::string &restrict text) restrict2
             createSpeechBubble();
         if (mSpeechBubble != nullptr)
         {
-            mSpeechBubble->setCaption(isShowName ? mName : "");
+            mSpeechBubble->setCaption(isShowName ? mName : "",
+                &theme->getColor(ThemeColorId::BUBBLE_NAME, 255),
+                &theme->getColor(ThemeColorId::BUBBLE_NAME_OUTLINE, 255));
             mSpeechBubble->setText(mSpeech, isShowName);
         }
     }
