@@ -35,9 +35,8 @@ class AnimationParticle final : public ImageParticle
         explicit AnimationParticle(Animation *restrict const animation)
                                    A_NONNULL(2);
 
-        explicit AnimationParticle(XmlNodePtrConst animationNode,
-                                   const std::string &restrict dyePalettes
-                                   = std::string());
+        AnimationParticle(XmlNodePtrConst animationNode,
+                          const std::string &restrict dyePalettes);
 
         A_DELETE_COPY(AnimationParticle)
 };
