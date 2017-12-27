@@ -317,10 +317,10 @@ void Viewport::drawDebugPath(Graphics *const graphics)
     Gui::getMouseState(mMouseX, mMouseY);
 
     static Path debugPath;
-    static Vector lastMouseDestination = Vector(0.0F, 0.0F);
+    static Vector lastMouseDestination = Vector(0.0F, 0.0F, 0.0F);
     const int mousePosX = mMouseX + mPixelViewX;
     const int mousePosY = mMouseY + mPixelViewY;
-    Vector mouseDestination(mousePosX, mousePosY);
+    Vector mouseDestination(mousePosX, mousePosY, 0.0F);
 
     if (mouseDestination.x != lastMouseDestination.x
         || mouseDestination.y != lastMouseDestination.y)

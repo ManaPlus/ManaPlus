@@ -52,7 +52,7 @@ class Vector final
          */
         Vector(const float x0,
                const float y0,
-               const float z0 = 0.0F) :
+               const float z0) :
             x(x0),
             y(y0),
             z(z0)
