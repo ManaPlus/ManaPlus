@@ -78,7 +78,9 @@ void ConfigManager::initServerConfig(const std::string &serverName)
     if (configFile != nullptr)
     {
         fclose(configFile);
-        serverConfig.init(configPath);
+        serverConfig.init(configPath,
+            UseVirtFs_false,
+            SkipError_false);
         setConfigDefaults(serverConfig);
         logger->log("serverConfigPath: " + configPath);
     }
@@ -163,7 +165,9 @@ void ConfigManager::initConfiguration()
     else
     {
         fclose(configFile);
-        config.init(configPath);
+        config.init(configPath,
+            UseVirtFs_false,
+            SkipError_false);
         logger->log1("init 3");
         setConfigDefaults(config);
         setConfigDefaults(serverConfig);

@@ -282,7 +282,11 @@ void Client::gameInit()
     assertListener = new AssertListener;
     // Load branding information
     if (!settings.options.brandingPath.empty())
-        branding.init(settings.options.brandingPath);
+    {
+        branding.init(settings.options.brandingPath,
+            UseVirtFs_false,
+            SkipError_false);
+    }
     setBrandingDefaults(branding);
 
     Dirs::initRootDir();
@@ -1907,7 +1911,9 @@ void Client::loadData()
     }
 
     logger->log("Init paths");
-    paths.init("paths.xml", UseVirtFs_true);
+    paths.init("paths.xml",
+        UseVirtFs_true,
+        SkipError_false);
     setPathsDefaults(paths);
     initPaths();
     if (SpriteReference::Empty == nullptr)

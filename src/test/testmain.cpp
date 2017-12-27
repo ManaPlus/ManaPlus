@@ -51,7 +51,9 @@ TestMain::~TestMain()
 
 void TestMain::initConfig()
 {
-    mConfig.init(settings.configDir + "/test.xml");
+    mConfig.init(settings.configDir + "/test.xml",
+        UseVirtFs_false,
+        SkipError_false);
     mConfig.clear();
 //    setConfigDefaults(mConfig);
 
@@ -277,7 +279,9 @@ void TestMain::writeConfig(const RenderType openGLMode,
                            const std::string &textureSize,
                            const int detectMode)
 {
-    mConfig.init(settings.configDir + "/config.xml");
+    mConfig.init(settings.configDir + "/config.xml",
+        UseVirtFs_false,
+        SkipError_false);
 
     log->log("set mode to %d", CAST_S32(openGLMode));
 

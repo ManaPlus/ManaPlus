@@ -248,8 +248,8 @@ class Configuration final : public ConfigurationObject
          * @param useResManager Make use of the resource manager.
          */
         void init(const std::string &filename,
-                  const UseVirtFs useResManager = UseVirtFs_false,
-                  const SkipError skipError = SkipError_false);
+                  const UseVirtFs useResManager,
+                  const SkipError skipError);
 
         void reInit();
 

@@ -273,11 +273,15 @@ void Dirs::initRootDir()
     {
         std::string dir;
         Configuration portable;
-        portable.init(portableName);
+        portable.init(portableName,
+            UseVirtFs_false,
+            SkipError_false);
 
         if (settings.options.brandingPath.empty())
         {
-            branding.init(portableName);
+            branding.init(portableName,
+                UseVirtFs_false,
+                SkipError_false);
             setBrandingDefaults(branding);
         }
 
