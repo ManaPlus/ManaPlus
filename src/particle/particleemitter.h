@@ -46,9 +46,8 @@ class ParticleEmitter final
         ParticleEmitter(XmlNodeConstPtrConst emitterNode,
                         Particle *const target,
                         Map *const map,
-                        const int rotation = 0,
-                        const std::string& dyePalettes = std::string())
-                        A_NONNULL(3);
+                        const int rotation,
+                        const std::string& dyePalettes) A_NONNULL(3);
 
         /**
          * Copy Constructor (necessary for reference counting of particle images)
