@@ -1109,10 +1109,12 @@ void Map::initializeParticleEffects() const restrict2
              i != mParticleEffects.end();
              ++i)
         {
+            // +++ add z for map particle effects?
             Particle *const p = particleEngine->addEffect(
                 i->file,
                 i->x,
-                i->y);
+                i->y,
+                0);
             if ((p != nullptr) &&
                 i->w > 0 &&
                 i->h > 0)

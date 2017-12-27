@@ -78,14 +78,14 @@ Particle *StatusEffect::getStartParticle() const
 {
     if (particleEngine == nullptr || mStartParticleEffect.empty())
         return nullptr;
-    return particleEngine->addEffect(mStartParticleEffect, 0, 0);
+    return particleEngine->addEffect(mStartParticleEffect, 0, 0, 0);
 }
 
 Particle *StatusEffect::getParticle() const
 {
     if (particleEngine == nullptr || mParticleEffect.empty())
         return nullptr;
-    return particleEngine->addEffect(mParticleEffect, 0, 0);
+    return particleEngine->addEffect(mParticleEffect, 0, 0, 0);
 }
 
 AnimatedSprite *StatusEffect::getIcon() const

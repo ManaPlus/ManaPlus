@@ -242,7 +242,7 @@ void Particle::updateSelf() restrict2
             > 0x00  && !mDeathEffect.empty())
         {
             Particle *restrict const deathEffect = particleEngine->addEffect(
-                mDeathEffect, 0, 0);
+                mDeathEffect, 0, 0, 0);
             if (deathEffect != nullptr)
                 deathEffect->moveBy(mPos);
         }

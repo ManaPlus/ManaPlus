@@ -92,27 +92,30 @@ class ParticleEngine final
          * particleEffectFile.
          */
         Particle *addEffect(const std::string &restrict particleEffectFile,
-                            const int pixelX, const int pixelY,
-                            const int rotation = 0) restrict2;
+                            const int pixelX,
+                            const int pixelY,
+                            const int rotation) restrict2;
 
         /**
          * Creates a standalone text particle.
          */
         Particle *addTextSplashEffect(const std::string &restrict text,
-                                      const int x, const int y,
+                                      const int x,
+                                      const int y,
                                       const Color *restrict const color,
                                       Font *restrict const font,
-                                      const bool outline = false)
+                                      const bool outline)
                                       restrict2 A_NONNULL(5, 6);
 
         /**
          * Creates a standalone text particle.
          */
         Particle *addTextRiseFadeOutEffect(const std::string &restrict text,
-                                           const int x, const int y,
+                                           const int x,
+                                           const int y,
                                            const Color *restrict const color,
                                            Font *restrict const font,
-                                           const bool outline = false)
+                                           const bool outline)
                                            restrict2 A_NONNULL(5, 6);
 
         void setMap(Map *const map)

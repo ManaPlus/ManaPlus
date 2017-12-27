@@ -489,7 +489,7 @@ void ActorSprite::setupSpriteDisplay(const SpriteDisplay &display,
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
-            Particle *const p = particleEngine->addEffect(*itr, 0, 0);
+            Particle *const p = particleEngine->addEffect(*itr, 0, 0, 0);
             controlAutoParticle(p);
         }
     }

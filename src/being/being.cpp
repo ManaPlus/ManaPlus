@@ -5036,7 +5036,7 @@ void Being::addItemParticles(const int id,
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
-            Particle *const p = particleEngine->addEffect(*itr, 0, 0);
+            Particle *const p = particleEngine->addEffect(*itr, 0, 0, 0);
             controlCustomParticle(p);
             pi->files.push_back(*itr);
             pi->particles.push_back(p);
@@ -5074,7 +5074,7 @@ void Being::addItemParticlesCards(const int id,
     {
         FOR_EACH (StringVectCIter, itr, display.particles)
         {
-            Particle *const p = particleEngine->addEffect(*itr, 0, 0);
+            Particle *const p = particleEngine->addEffect(*itr, 0, 0, 0);
             controlCustomParticle(p);
             pi->files.push_back(*itr);
             pi->particles.push_back(p);
@@ -5088,7 +5088,7 @@ void Being::addItemParticlesCards(const int id,
             const SpriteDisplay &restrict display2 = info.getDisplay();
             FOR_EACH (StringVectCIter, itr, display2.particles)
             {
-                Particle *const p = particleEngine->addEffect(*itr, 0, 0);
+                Particle *const p = particleEngine->addEffect(*itr, 0, 0, 0);
                 controlCustomParticle(p);
                 pi->files.push_back(*itr);
                 pi->particles.push_back(p);
@@ -5147,7 +5147,7 @@ void Being::recreateItemParticles() restrict2
             FOR_EACH (STD_VECTOR<std::string>::const_iterator, str, pi->files)
             {
                 Particle *const p = particleEngine->addEffect(
-                    *str, 0, 0);
+                    *str, 0, 0, 0);
                 controlCustomParticle(p);
                 pi->particles.push_back(p);
             }
