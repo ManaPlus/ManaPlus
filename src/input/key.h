@@ -84,7 +84,7 @@ class Key final
           *
           * @param value The ascii or enum value for the key.
           */
-        explicit Key(const int value = 0);
+        Key(const int value);
 
         A_DEFAULT_COPY(Key)
 
