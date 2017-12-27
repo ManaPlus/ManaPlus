@@ -52,9 +52,9 @@ class TextCommand final
                     const CommandTargetT type,
                     const std::string &icon,
                     const unsigned int basicLvl,
-                    const MagicSchoolT school = MagicSchool::SkillMagic,
-                    const unsigned int schoolLvl = 0U,
-                    const unsigned int mana = 0U);
+                    const MagicSchoolT school,
+                    const unsigned int schoolLvl,
+                    const unsigned int mana);
 #endif  // TMWA_SUPPORT
 
         /**
