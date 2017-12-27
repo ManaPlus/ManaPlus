@@ -91,8 +91,9 @@ class Particle notfinal : public Actor
          * particleEffectFile.
          */
         Particle *addEffect(const std::string &restrict particleEffectFile,
-                            const int pixelX, const int pixelY,
-                            const int rotation = 0) restrict2;
+                            const int pixelX,
+                            const int pixelY,
+                            const int rotation) restrict2;
 
         /**
          * Adds an emitter to the particle.

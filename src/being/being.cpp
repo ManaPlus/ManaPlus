@@ -1369,10 +1369,12 @@ void Being::fireMissile(Being *restrict const victim,
         return;
     }
 
+    // +++ add z particle position?
     Particle *restrict const missileParticle = target->addEffect(
         missile.particle,
         mPixelX,
-        mPixelY);
+        mPixelY,
+        0);
 
     target->moveBy(Vector(0.0F, 0.0F, missile.z));
     target->setLifetime(missile.lifeTime);
