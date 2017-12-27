@@ -37,8 +37,8 @@ class Particle;
 class ParticleList final : public ParticleContainer
 {
     public:
-        explicit ParticleList(ParticleContainer *const parent = nullptr,
-                              const bool delParent = true);
+        ParticleList(ParticleContainer *const parent,
+                     const bool delParent);
 
         A_DELETE_COPY(ParticleList)
 
