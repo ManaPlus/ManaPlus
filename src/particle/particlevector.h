@@ -37,8 +37,8 @@ class Particle;
 class ParticleVector final : public ParticleContainer
 {
     public:
-        explicit ParticleVector(ParticleContainer *const parent = nullptr,
-                                const bool delParent = true);
+        ParticleVector(ParticleContainer *const parent,
+                       const bool delParent);
 
         A_DELETE_COPY(ParticleVector)
 

@@ -72,7 +72,7 @@ ActorSprite::ActorSprite(const BeingId id) :
     CompoundSprite(),
     Actor(),
     mStatusEffects(),
-    mStatusParticleEffects(),
+    mStatusParticleEffects(nullptr, true),
     mChildParticleEffects(&mStatusParticleEffects, false),
     mHorseId(0),
     mId(id),
