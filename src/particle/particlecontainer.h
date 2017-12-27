@@ -40,8 +40,8 @@ class ParticleContainer notfinal
          *
          * delParent means that the destructor should also free the parent.
          */
-        explicit ParticleContainer(ParticleContainer *const parent = nullptr,
-                                   const bool delParent = true);
+        ParticleContainer(ParticleContainer *const parent,
+                          const bool delParent);
 
         A_DELETE_COPY(ParticleContainer)
 
