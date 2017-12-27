@@ -734,7 +734,10 @@ int TestLauncher::testDraw()
     img[0] = Theme::getImageFromTheme("graphics/sprites/arrow_left.png");
     img[1] = Theme::getImageFromTheme("graphics/sprites/arrow_right.png");
     img[2] = Theme::getImageFromTheme("graphics/sprites/arrow_up.png");
-    Skin *skin = theme->load("button.xml", "button.xml");
+    Skin *skin = theme->load("button.xml",
+        "button.xml",
+        true,
+        theme->getThemePath());
     if (skin == nullptr)
         return 0;
 

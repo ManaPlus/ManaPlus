@@ -89,7 +89,10 @@ DropDown::DropDown(const Widget2 *const widget,
         // Load the background skin
         for (int i = 0; i < 2; i ++)
         {
-            Skin *const skin = theme->load(dropdownFiles[i], "dropdown.xml");
+            Skin *const skin = theme->load(dropdownFiles[i],
+                "dropdown.xml",
+                true,
+                theme->getThemePath());
             if (skin != nullptr)
             {
                 if (i == 0)
@@ -119,7 +122,7 @@ DropDown::DropDown(const Widget2 *const widget,
         }
 
         // get the border skin
-        theme->loadRect(skinRect, "dropdown_background.xml", "");
+        theme->loadRect(skinRect, "dropdown_background.xml", "", 0, 8);
     }
 
     instances++;
@@ -179,7 +182,7 @@ DropDown::~DropDown()
         if (theme != nullptr)
         {
             theme->unload(mSkin);
-            Theme::unloadRect(skinRect);
+            Theme::unloadRect(skinRect, 0, 8);
         }
     }
 }

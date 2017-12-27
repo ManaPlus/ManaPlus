@@ -146,8 +146,11 @@ TextField::TextField(const Widget2 *restrict const widget,
     {
         if (theme != nullptr)
         {
-            mSkin = theme->loadSkinRect(skin, "textfield.xml",
-                "textfield_background.xml");
+            mSkin = theme->loadSkinRect(skin,
+                "textfield.xml",
+                "textfield_background.xml",
+                0,
+                8);
         }
     }
 
@@ -181,7 +184,7 @@ TextField::~TextField()
         if (theme != nullptr)
         {
             theme->unload(mSkin);
-            Theme::unloadRect(skin);
+            Theme::unloadRect(skin, 0, 8);
         }
     }
     mTextChunk.deleteImage();

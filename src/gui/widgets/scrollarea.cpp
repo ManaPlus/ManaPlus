@@ -157,11 +157,11 @@ ScrollArea::~ScrollArea()
     instances--;
     if (instances == 0)
     {
-        Theme::unloadRect(background);
-        Theme::unloadRect(vMarker);
-        Theme::unloadRect(vMarkerHi);
-        Theme::unloadRect(vBackground);
-        Theme::unloadRect(hBackground);
+        Theme::unloadRect(background, 0, 8);
+        Theme::unloadRect(vMarker, 0, 8);
+        Theme::unloadRect(vMarkerHi, 0, 8);
+        Theme::unloadRect(vBackground, 0, 8);
+        Theme::unloadRect(hBackground, 0, 8);
         for (int i = 0; i < 2; i ++)
         {
             for (int f = UP; f < BUTTONS_DIR; f ++)
@@ -203,18 +203,43 @@ void ScrollArea::init(std::string skinName)
             skinName = "scroll_background.xml";
         if (theme != nullptr)
         {
-            theme->loadRect(background, skinName, "scroll_background.xml");
-            theme->loadRect(vMarker, "scroll.xml", "");
-            theme->loadRect(vMarkerHi, "scroll_highlighted.xml", "scroll.xml");
-            theme->loadRect(vBackground, "scroll_vbackground.xml", "");
-            theme->loadRect(hBackground, "scroll_hbackground.xml", "");
+            theme->loadRect(background,
+                skinName,
+                "scroll_background.xml",
+                0,
+                8);
+            theme->loadRect(vMarker,
+                "scroll.xml",
+                "",
+                0,
+                8);
+            theme->loadRect(vMarkerHi,
+                "scroll_highlighted.xml",
+                "scroll.xml",
+                0,
+                8);
+            theme->loadRect(vBackground,
+                "scroll_vbackground.xml",
+                "",
+                0,
+                8);
+            theme->loadRect(hBackground,
+                "scroll_hbackground.xml",
+                "",
+                0,
+                8);
         }
 
         for (int i = 0; i < 2; i ++)
         {
             Skin *skin = nullptr;
             if (theme != nullptr)
-                skin = theme->load(buttonFiles[i], "scrollbuttons.xml");
+            {
+                skin = theme->load(buttonFiles[i],
+                    "scrollbuttons.xml",
+                    true,
+                    theme->getThemePath());
+            }
             if (skin != nullptr)
             {
                 const ImageRect &rect = skin->getBorder();

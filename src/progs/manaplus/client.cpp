@@ -531,7 +531,10 @@ void Client::gameInit()
         mumbleManager = new MumbleManager;
 #endif  // USE_MUMBLE
 
-    mSkin = theme->load("windowmenu.xml", "");
+    mSkin = theme->load("windowmenu.xml",
+        "",
+        true,
+        theme->getThemePath());
     if (mSkin != nullptr)
     {
         mButtonPadding = mSkin->getPadding();

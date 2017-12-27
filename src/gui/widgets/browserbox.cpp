@@ -100,7 +100,12 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
     mBackgroundColor = getThemeColor(ThemeColorId::BACKGROUND, 255U);
 
     if (theme != nullptr)
-        mSkin = theme->load(skin, "browserbox.xml");
+    {
+        mSkin = theme->load(skin,
+            "browserbox.xml",
+            true,
+            theme->getThemePath());
+    }
     if (mInstances == 0)
     {
         mEmotes = Loader::getImageSet(

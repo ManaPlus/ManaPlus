@@ -118,7 +118,12 @@ ListBox::ListBox(const Widget2 *const widget,
     mForegroundColor2 = getThemeColor(ThemeColorId::LISTBOX_OUTLINE, 255U);
 
     if (theme != nullptr)
-        mSkin = theme->load(skin, "listbox.xml");
+    {
+        mSkin = theme->load(skin,
+            "listbox.xml",
+            true,
+            theme->getThemePath());
+    }
 
     if (mSkin != nullptr)
     {

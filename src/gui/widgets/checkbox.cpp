@@ -117,7 +117,10 @@ CheckBox::CheckBox(const Widget2 *const widget,
     {
         if (theme != nullptr)
         {
-            mSkin = theme->load("checkbox.xml", "");
+            mSkin = theme->load("checkbox.xml",
+                "",
+                true,
+                theme->getThemePath());
             updateAlpha();
         }
     }

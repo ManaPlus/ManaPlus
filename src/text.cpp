@@ -68,7 +68,11 @@ Text::Text(const std::string &text,
         textManager = new TextManager;
         if (theme != nullptr)
         {
-            theme->loadRect(mBubble, "bubble.xml", "");
+            theme->loadRect(mBubble,
+                "bubble.xml",
+                "",
+                0,
+                8);
         }
         else
         {

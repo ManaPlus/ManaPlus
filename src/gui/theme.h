@@ -101,15 +101,14 @@ class Theme final : public Palette,
          */
         Skin *load(const std::string &filename,
                    const std::string &filename2,
-                   const bool full = true,
-                   const std::string
-                   &restrict defaultPath = getThemePath()) A_WARN_UNUSED;
+                   const bool full,
+                   const std::string &restrict defaultPath) A_WARN_UNUSED;
 
         Skin *loadSkinRect(ImageRect &image,
                            const std::string &name,
                            const std::string &name2,
-                           const int start = 0,
-                           const int end = 8) A_WARN_UNUSED;
+                           const int start,
+                           const int end) A_WARN_UNUSED;
 
         void unload(Skin *const skin);
 
@@ -134,8 +133,7 @@ class Theme final : public Palette,
          * @return the requested color
          */
         inline const Color &getColor(ThemeColorIdT type,
-                                     const unsigned int alpha = 255U)
-                                     A_WARN_UNUSED
+                                     const unsigned int alpha) A_WARN_UNUSED
         {
             if (CAST_SIZE(type) >= mColors.size())
             {
@@ -163,12 +161,12 @@ class Theme final : public Palette,
         void loadRect(ImageRect &image,
                       const std::string &name,
                       const std::string &name2,
-                      const int start = 0,
-                      const int end = 8);
+                      const int start,
+                      const int end);
 
         static void unloadRect(const ImageRect &rect,
-                               const int start = 0,
-                               const int end = 8);
+                               const int start,
+                               const int end);
 
         static Image *getImageFromThemeXml(const std::string &name,
                                            const std::string &name2)
@@ -192,7 +190,7 @@ class Theme final : public Palette,
 
         static bool tryThemePath(const std::string &themePath) A_WARN_UNUSED;
 
-        void loadColors(std::string file = "");
+        void loadColors(std::string file);
 
         /**
          * Tells if the current skins opacity

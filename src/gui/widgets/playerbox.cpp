@@ -79,8 +79,8 @@ PlayerBox::~PlayerBox()
     if (gui != nullptr)
         gui->removeDragged(this);
 
-    Theme::unloadRect(mBackground);
-    Theme::unloadRect(mSelectedBackground);
+    Theme::unloadRect(mBackground, 0, 8);
+    Theme::unloadRect(mSelectedBackground, 0, 8);
     mBeing = nullptr;
 }
 
@@ -95,7 +95,10 @@ void PlayerBox::init(std::string name, std::string selectedName)
         if (name.empty())
             name = "playerbox.xml";
         mSkin = theme->loadSkinRect(mBackground,
-            name, "playerbox_background.xml");
+            name,
+            "playerbox_background.xml",
+            0,
+            8);
         if (mSkin != nullptr)
         {
             mDrawBackground = (mSkin->getOption("drawbackground") != 0);
@@ -106,7 +109,10 @@ void PlayerBox::init(std::string name, std::string selectedName)
         if (selectedName.empty())
             selectedName = "playerboxselected.xml";
         mSelectedSkin = theme->loadSkinRect(mSelectedBackground,
-            selectedName, "playerbox_background.xml");
+            selectedName,
+            "playerbox_background.xml",
+            0,
+            8);
     }
     else
     {

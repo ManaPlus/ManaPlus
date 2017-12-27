@@ -65,7 +65,12 @@ Desktop::Desktop(const Widget2 *const widget) :
     Wallpaper::loadWallpapers();
 
     if (theme != nullptr)
-        mSkin = theme->load("desktop.xml", "");
+    {
+        mSkin = theme->load("desktop.xml",
+            "",
+            true,
+            theme->getThemePath());
+    }
 
     if (mSkin != nullptr)
         mShowBackground = (mSkin->getOption("showBackground") != 0);

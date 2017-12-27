@@ -56,7 +56,12 @@ TextPreview::TextPreview(const Widget2 *const widget,
     if (instances == 0)
     {
         if (theme != nullptr)
-            mSkin = theme->load("textpreview.xml", "");
+        {
+            mSkin = theme->load("textpreview.xml",
+                "",
+                true,
+                theme->getThemePath());
+        }
     }
 
     instances++;

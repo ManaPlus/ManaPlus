@@ -121,7 +121,10 @@ RadioButton::RadioButton(const Widget2 *const widget,
     {
         if (theme != nullptr)
         {
-            mSkin = theme->load("radio.xml", "");
+            mSkin = theme->load("radio.xml",
+                "",
+                true,
+                theme->getThemePath());
             updateAlpha();
         }
     }

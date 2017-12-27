@@ -131,7 +131,12 @@ void Label::init()
     if (mInstances == 0)
     {
         if (theme != nullptr)
-            mSkin = theme->load("label.xml", "");
+        {
+            mSkin = theme->load("label.xml",
+                "",
+                true,
+                theme->getThemePath());
+        }
     }
     mInstances ++;
 

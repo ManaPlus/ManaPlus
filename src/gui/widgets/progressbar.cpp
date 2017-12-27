@@ -83,14 +83,23 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
 
     if (theme != nullptr)
     {
-        mSkin = theme->load(skin, "progressbar.xml");
+        mSkin = theme->load(skin,
+            "progressbar.xml",
+            true,
+            theme->getThemePath());
         if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());
             mFillPadding = mSkin->getOption("fillPadding");
             mFillImage = mSkin->getOption("fillImage") != 0;
             if (mFillImage)
-                theme->loadRect(mFillRect, skinFill, "progressbar_fill.xml");
+            {
+                theme->loadRect(mFillRect,
+                    skinFill,
+                    "progressbar_fill.xml",
+                    0,
+                    8);
+            }
         }
         setHeight(2 * mPadding + getFont()->getHeight() + 2);
     }
@@ -110,7 +119,7 @@ ProgressBar::~ProgressBar()
             theme->unload(mSkin);
         mSkin = nullptr;
     }
-    Theme::unloadRect(mFillRect);
+    Theme::unloadRect(mFillRect, 0, 8);
     delete2(mVertexes);
     mTextChunk.deleteImage();
 }

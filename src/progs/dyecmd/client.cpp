@@ -351,7 +351,10 @@ void Client::gameInit()
 #endif  // USE_SDL2
 #endif  // ANDROID
 
-    mSkin = theme->load("windowmenu.xml", "");
+    mSkin = theme->load("windowmenu.xml",
+        "",
+        true,
+        theme->getThemePath());
     if (mSkin != nullptr)
     {
         mButtonPadding = mSkin->getPadding();

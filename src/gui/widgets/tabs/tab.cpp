@@ -165,7 +165,12 @@ void Tab::init()
         if (theme != nullptr)
         {
             for (int mode = 0; mode < TAB_COUNT; mode ++)
-                tabImg[mode] = theme->load(data[mode], "tab.xml");
+            {
+                tabImg[mode] = theme->load(data[mode],
+                    "tab.xml",
+                    true,
+                    theme->getThemePath());
+            }
         }
         updateAlpha();
     }

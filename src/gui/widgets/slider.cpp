@@ -140,7 +140,7 @@ Slider::~Slider()
     if (mInstances == 0)
     {
         for (int mode = 0; mode < 2; mode ++)
-            Theme::unloadRect(buttons[mode]);
+            Theme::unloadRect(buttons[mode], 0, 8);
     }
 }
 

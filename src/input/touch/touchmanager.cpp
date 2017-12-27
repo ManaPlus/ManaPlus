@@ -143,7 +143,11 @@ void TouchManager::loadTouchItem(TouchItem **restrict item,
     else
         icon = Theme::getImageFromThemeXml(imageName, "");
 
-    Skin *const skin = theme->loadSkinRect(*images, name, "");
+    Skin *const skin = theme->loadSkinRect(*images,
+        name,
+        "",
+        0,
+        8);
     if (skin != nullptr)
     {
         Image *const image = images->grid[0];
@@ -389,7 +393,7 @@ void TouchManager::unload(TouchItem *restrict const item)
     {
         if (item->images != nullptr)
         {
-            Theme::unloadRect(*item->images);
+            Theme::unloadRect(*item->images, 0, 8);
             delete2(item->images);
             if (item->icon != nullptr)
             {
@@ -427,7 +431,10 @@ void TouchManager::loadButtons() restrict2
     const int sz = (mButtonsSize + 1) * 50;
     if (theme == nullptr)
         return;
-    Skin *const skin = theme->load("dbutton.xml", "");
+    Skin *const skin = theme->load("dbutton.xml",
+        "",
+        true,
+        theme->getThemePath());
 
     if (skin != nullptr)
     {

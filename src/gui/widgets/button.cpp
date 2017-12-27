@@ -360,7 +360,10 @@ void Button::init()
         {
             for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             {
-                Skin *const skin = theme->load(data[mode], "button.xml");
+                Skin *const skin = theme->load(data[mode],
+                    "button.xml",
+                    true,
+                    theme->getThemePath());
                 if (skin != nullptr)
                 {
                     button[mode] = skin;

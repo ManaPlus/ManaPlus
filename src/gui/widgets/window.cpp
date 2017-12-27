@@ -183,7 +183,10 @@ Window::Window(const std::string &caption,
     // Loads the skin
     if (theme != nullptr)
     {
-        mSkin = theme->load(skin, "window.xml");
+        mSkin = theme->load(skin,
+            "window.xml",
+            true,
+            theme->getThemePath());
         if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());
