@@ -34,7 +34,7 @@ class TextParticle final : public Particle
         TextParticle(const std::string &text,
                      const Color *restrict const color,
                      Font *restrict const font,
-                     const bool outline = false) A_NONNULL(3, 4);
+                     const bool outline) A_NONNULL(3, 4);
 
         A_DELETE_COPY(TextParticle)
 
