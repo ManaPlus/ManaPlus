@@ -279,7 +279,7 @@ TEST_CASE("SpecialLayer updateCache", "")
     }
 
     delete layer;
-    ResourceManager::cleanOrphans();
+    ResourceManager::cleanOrphans(false);
     delete2(userPalette);
     delete2(theme);
     delete2(client);

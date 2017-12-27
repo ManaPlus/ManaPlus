@@ -473,7 +473,10 @@ TEST_CASE("Windows tests", "windowmanager")
             Equipm_true,
             Equipped_false);
         ItemAmountWindow *dialog = CREATEWIDGETR(ItemAmountWindow,
-            ItemAmountWindowUsage::ItemDrop, nullptr, item);
+            ItemAmountWindowUsage::ItemDrop,
+            nullptr,
+            item,
+            0);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(dialog);
@@ -633,14 +636,21 @@ TEST_CASE("Windows tests", "windowmanager")
             new EmoteShortcutContainer(nullptr);
         CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
             "name",
-            container);
+            container,
+            std::string(),
+            0,
+            0);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(itemShortcutWindow);
     }
     SECTION("ShortcutWindow2")
     {
-        CREATEWIDGETV(itemShortcutWindow, ShortcutWindow, "");
+        CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
+            std::string(),
+            std::string(),
+            0,
+            0);
         gui->draw();
         mainGraphics->updateScreen();
         delete2(itemShortcutWindow);

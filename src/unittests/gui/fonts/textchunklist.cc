@@ -41,7 +41,7 @@ TEST_CASE("TextChunkList add 1", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 3, 4), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 3, 4, 255U), nullptr);
 
     list.insertFirst(chunk);
 
@@ -65,9 +65,9 @@ TEST_CASE("TextChunkList add 2", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(3, 4, 5), nullptr);
+        Color(1, 2, 3, 255U), Color(3, 4, 5, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test",
-        Color(2, 3, 4), Color(4, 5, 6), nullptr);
+        Color(2, 3, 4, 255U), Color(4, 5, 6, 255U), nullptr);
 
     list.insertFirst(chunk2);
     list.insertFirst(chunk1);
@@ -97,7 +97,7 @@ TEST_CASE("TextChunkList addRemoveBack 1", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3), nullptr);
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U), nullptr);
 
     list.insertFirst(chunk);
     list.removeBack();
@@ -114,9 +114,9 @@ TEST_CASE("TextChunkList addRemoveBack 2", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3), nullptr);
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test2",
-        Color(1, 2, 4), Color(1, 2, 5), nullptr);
+        Color(1, 2, 4, 255U), Color(1, 2, 5, 255U), nullptr);
 
     list.insertFirst(chunk2);
     list.insertFirst(chunk1);
@@ -142,9 +142,9 @@ TEST_CASE("TextChunkList addRemoveBack 3", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3), nullptr);
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test2",
-        Color(2, 3, 4), Color(2, 3, 4), nullptr);
+        Color(2, 3, 4, 255U), Color(2, 3, 4, 255U), nullptr);
 
     list.insertFirst(chunk2);
     list.insertFirst(chunk1);
@@ -163,11 +163,11 @@ TEST_CASE("TextChunkList addRemoveBack 4", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3), nullptr);
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test2",
-        Color(2, 3, 4), Color(2, 3, 4), nullptr);
+        Color(2, 3, 4, 255U), Color(2, 3, 4, 255U), nullptr);
     TextChunk *const chunk3 = new TextChunk("test",
-        Color(3, 4, 5), Color(3, 4, 5), nullptr);
+        Color(3, 4, 5, 255U), Color(3, 4, 5, 255U), nullptr);
 
     list.insertFirst(chunk3);
     list.insertFirst(chunk2);
@@ -194,7 +194,7 @@ TEST_CASE("TextChunkList moveToFirst 1", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 3, 4), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 3, 4, 255U), nullptr);
 
     list.insertFirst(chunk);
     list.moveToFirst(chunk);
@@ -212,9 +212,9 @@ TEST_CASE("TextChunkList moveToFirst 2", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3), nullptr);
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test",
-        Color(2, 3, 4), Color(1, 2, 3), nullptr);
+        Color(2, 3, 4, 255U), Color(1, 2, 3, 255U), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -236,11 +236,11 @@ TEST_CASE("TextChunkList moveToFirst 3", "TextChunkList")
     TextChunkList list;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(1, 2, 3), nullptr);
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test",
-        Color(1, 2, 4), Color(1, 2, 3), nullptr);
+        Color(1, 2, 4, 255U), Color(1, 2, 3, 255U), nullptr);
     TextChunk *const chunk3 = new TextChunk("test",
-        Color(1, 2, 5), Color(1, 2, 3), nullptr);
+        Color(1, 2, 5, 255U), Color(1, 2, 3, 255U), nullptr);
 
     list.insertFirst(chunk3);
     list.insertFirst(chunk1);
@@ -316,11 +316,11 @@ TEST_CASE("TextChunkList clear 2", "TextChunkList")
     const int chunksLeft = textChunkCnt;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 0), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 0, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 1), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 1, 255U), nullptr);
     TextChunk *const chunk3 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 2), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 2, 255U), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -341,11 +341,11 @@ TEST_CASE("TextChunkList clear 3", "TextChunkList")
     const int chunksLeft = textChunkCnt;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 0), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 0, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 1), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 1, 255U), nullptr);
     TextChunk *const chunk3 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 2), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 2, 255U), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -372,11 +372,11 @@ TEST_CASE("TextChunkList clear 4", "TextChunkList")
     const int chunksLeft = textChunkCnt;
 
     TextChunk *const chunk1 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 0), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 0, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test",
-        Color(1, 2, 3), Color(2, 0, 1), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 1, 255U), nullptr);
     TextChunk *const chunk3 = new TextChunk("test3",
-        Color(1, 2, 3), Color(2, 0, 2), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 2, 255U), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -423,11 +423,11 @@ TEST_CASE("TextChunkList remove 2", "TextChunkList")
     const int chunksLeft = textChunkCnt;
 
     TextChunk *const chunk1 = new TextChunk("test1",
-        Color(1, 2, 3), Color(2, 0, 0), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 0, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test2",
-        Color(1, 2, 3), Color(2, 0, 1), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 1, 255U), nullptr);
     TextChunk *const chunk3 = new TextChunk("test3",
-        Color(1, 2, 3), Color(2, 0, 2), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 2, 255U), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -451,11 +451,11 @@ TEST_CASE("TextChunkList remove 3", "TextChunkList")
     const int chunksLeft = textChunkCnt;
 
     TextChunk *const chunk1 = new TextChunk("test1",
-        Color(1, 2, 3), Color(2, 0, 0), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 0, 255U), nullptr);
     TextChunk *const chunk2 = new TextChunk("test2",
-        Color(1, 2, 3), Color(2, 0, 1), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 1, 255U), nullptr);
     TextChunk *const chunk3 = new TextChunk("test3",
-        Color(1, 2, 3), Color(2, 0, 2), nullptr);
+        Color(1, 2, 3, 255U), Color(2, 0, 2, 255U), nullptr);
 
     list.insertFirst(chunk1);
     list.insertFirst(chunk2);
@@ -476,11 +476,11 @@ TEST_CASE("TextChunkList remove 3", "TextChunkList")
 TEST_CASE("TextChunkList sort 1", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item2("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item3("test line2",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     REQUIRE(false == (item1 < item2));
     REQUIRE(false == (item2 < item1));
     REQUIRE(item1 < item3);
@@ -490,9 +490,9 @@ TEST_CASE("TextChunkList sort 1", "TextChunkList")
 TEST_CASE("TextChunkList sort 2", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item2("test line1",
-        Color(2, 3, 4), Color(1, 2, 3));
+        Color(2, 3, 4, 255U), Color(1, 2, 3, 255U));
     REQUIRE(item1 < item2);
     REQUIRE(false == (item2 < item1));
 }
@@ -500,9 +500,9 @@ TEST_CASE("TextChunkList sort 2", "TextChunkList")
 TEST_CASE("TextChunkList sort 3", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item2("test line1",
-        Color(1, 3, 4), Color(1, 2, 3));
+        Color(1, 3, 4, 255U), Color(1, 2, 3, 255U));
     REQUIRE(item1 < item2);
     REQUIRE(false == (item2 < item1));
 }
@@ -510,9 +510,9 @@ TEST_CASE("TextChunkList sort 3", "TextChunkList")
 TEST_CASE("TextChunkList sort 4", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item2("test line1",
-        Color(1, 2, 4), Color(1, 2, 3));
+        Color(1, 2, 4, 255U), Color(1, 2, 3, 255U));
     REQUIRE(item1 < item2);
     REQUIRE(false == (item2 < item1));
 }
@@ -520,9 +520,9 @@ TEST_CASE("TextChunkList sort 4", "TextChunkList")
 TEST_CASE("TextChunkList sort 5", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item2("test line1",
-        Color(1, 2, 3), Color(2, 2, 3));
+        Color(1, 2, 3, 255U), Color(2, 2, 3, 255U));
     REQUIRE(item1 < item2);
     REQUIRE(false == (item2 < item1));
 }
@@ -530,9 +530,9 @@ TEST_CASE("TextChunkList sort 5", "TextChunkList")
 TEST_CASE("TextChunkList sort 6", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item2("test line1",
-        Color(1, 2, 3), Color(1, 3, 3));
+        Color(1, 2, 3, 255U), Color(1, 3, 3, 255U));
     REQUIRE(item1 < item2);
     REQUIRE(false == (item2 < item1));
 }
@@ -540,9 +540,9 @@ TEST_CASE("TextChunkList sort 6", "TextChunkList")
 TEST_CASE("TextChunkList sort 7", "TextChunkList")
 {
     TextChunkSmall item1("test line1",
-        Color(1, 2, 3), Color(1, 2, 3));
+        Color(1, 2, 3, 255U), Color(1, 2, 3, 255U));
     TextChunkSmall item2("test line1",
-        Color(1, 2, 3), Color(1, 2, 4));
+        Color(1, 2, 3, 255U), Color(1, 2, 4, 255U));
     REQUIRE(item1 < item2);
     REQUIRE(false == (item2 < item1));
 }

@@ -265,7 +265,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
 
         sleep(33);
-        ResourceManager::cleanOrphans();
+        ResourceManager::cleanOrphans(false);
         REQUIRE(ResourceManager::isInCache("test1") == false);
         REQUIRE(testResouceCounter == 0);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
@@ -647,7 +647,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
         REQUIRE(ResourceManager::getDeletedResources().size() == 1);
 
-        ResourceManager::clearDeleted();
+        ResourceManager::clearDeleted(true);
         REQUIRE(testResouceCounter == 1);
         REQUIRE(res->mRefCount == 1);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
@@ -678,7 +678,7 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::getDeletedResources().size() == 1);
 
         res->decRef();
-        ResourceManager::clearDeleted();
+        ResourceManager::clearDeleted(true);
         REQUIRE(testResouceCounter == 0);
         REQUIRE(ResourceManager::getResources().size() == 0 + resSize);
         REQUIRE(ResourceManager::getOrphanedResources().empty() == true);
