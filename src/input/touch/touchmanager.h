@@ -125,10 +125,10 @@ class TouchManager final : public ConfigListener
                            const int type,
                            const std::string &restrict eventPressed,
                            const std::string &restrict eventReleased,
-                           const TouchFuncPtr fAll = nullptr,
-                           const TouchFuncPtr fPressed = nullptr,
-                           const TouchFuncPtr fReleased = nullptr,
-                           const TouchFuncPtr fOut = nullptr)
+                           const TouchFuncPtr fAll,
+                           const TouchFuncPtr fPressed,
+                           const TouchFuncPtr fReleased,
+                           const TouchFuncPtr fOut)
                            restrict2 A_NONNULL(2);
 
         void clear() restrict2;
