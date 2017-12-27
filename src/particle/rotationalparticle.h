@@ -34,9 +34,8 @@ class RotationalParticle final : public ImageParticle
     public:
         explicit RotationalParticle(Animation *restrict const animation);
 
-        explicit RotationalParticle(XmlNodeConstPtr animationNode,
-                                    const std::string &restrict dyePalettes
-                                    = std::string());
+        RotationalParticle(XmlNodeConstPtr animationNode,
+                           const std::string &restrict dyePalettes);
 
         A_DELETE_COPY(RotationalParticle)
 };
