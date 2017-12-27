@@ -1189,7 +1189,7 @@ void Game::updateHistory(const SDL_Event &event)
     {
         bool old = false;
 
-        const InputActionT key = KeyboardConfig::getKeyIndex(event);
+        const InputActionT key = KeyboardConfig::getKeyIndex(event, 1);
         const time_t time = cur_time;
         int idx = -1;
         for (int f = 0; f < MAX_LASTKEYS; f ++)

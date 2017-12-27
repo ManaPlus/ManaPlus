@@ -62,7 +62,7 @@ class KeyboardConfig final
          * Get the key function index by providing the keys value.
          */
         static InputActionT getKeyIndex(const SDL_Event &event,
-                                        const int grp = 1) A_WARN_UNUSED;
+                                        const int grp) A_WARN_UNUSED;
 
         /**
          * Set the enable flag, which will stop the user from doing actions.
