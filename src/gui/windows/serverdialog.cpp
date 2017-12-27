@@ -469,7 +469,8 @@ void ServerDialog::downloadServerList()
     mDownload = new Net::Download(this, listFile,
         &downloadUpdate, false, false, true);
     mDownload->setFile(pathJoin(mDir,
-        branding.getStringValue("onlineServerFile")));
+        branding.getStringValue("onlineServerFile")),
+        -1);
     if (!listFile2.empty())
         mDownload->addMirror(listFile2);
     mDownload->start();

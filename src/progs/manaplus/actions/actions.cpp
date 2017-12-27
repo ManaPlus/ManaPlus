@@ -204,7 +204,7 @@ static void uploadFile(const std::string &str,
     info->text = str;
     info->addStr = addStr;
     info->tab = tab;
-    upload->setFile(fileName);
+    upload->setFile(fileName, -1);
     upload->start();
 }
 

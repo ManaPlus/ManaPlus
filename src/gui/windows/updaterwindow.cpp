@@ -636,7 +636,8 @@ void UpdaterWindow::download()
         else
         {
             mDownload->setFile(pathJoin(mUpdatesDir,
-                mCurrentFile));
+                mCurrentFile),
+                -1);
         }
     }
 
