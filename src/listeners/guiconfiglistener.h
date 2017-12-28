@@ -40,7 +40,7 @@ class GuiConfigListener final : public ConfigListener
 
         A_DELETE_COPY(GuiConfigListener)
 
-        virtual ~GuiConfigListener() override final
+        ~GuiConfigListener() override final
         {
             CHECKLISTENERS
         }
