@@ -24,6 +24,8 @@
 
 #include "gui/widgets/tabs/socialtab.h"
 
+#include "const/sound.h"
+
 #include "party.h"
 
 #include "being/localplayer.h"

@@ -25,6 +25,8 @@
 #include "itemcolormanager.h"
 #include "settings.h"
 
+#include "const/sound.h"
+
 #include "gui/viewport.h"
 
 #include "gui/popups/itempopup.h"

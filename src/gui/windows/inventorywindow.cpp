@@ -26,6 +26,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/sound.h"
+
 #include "enums/gui/layouttype.h"
 
 #include "input/inputmanager.h"

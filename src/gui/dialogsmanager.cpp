@@ -27,6 +27,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/sound.h"
+
 #include "gui/widgets/createwidget.h"
 
 #include "gui/windows/confirmdialog.h"

@@ -25,6 +25,8 @@
 #include "client.h"
 #include "configuration.h"
 
+#include "const/sound.h"
+
 #include "fs/paths.h"
 
 #include "gui/models/updatelistmodel.h"

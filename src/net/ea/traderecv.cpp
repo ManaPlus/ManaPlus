@@ -27,6 +27,8 @@
 #include "being/playerinfo.h"
 #include "being/playerrelation.h"
 
+#include "const/sound.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/windows/tradewindow.h"

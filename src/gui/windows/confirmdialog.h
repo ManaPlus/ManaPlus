@@ -25,8 +25,6 @@
 
 #include "localconsts.h"
 
-#include "const/sound.h"
-
 #include "gui/widgets/window.h"
 
 #include "listeners/actionlistener.h"

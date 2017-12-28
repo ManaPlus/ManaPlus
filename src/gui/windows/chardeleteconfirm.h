@@ -23,8 +23,11 @@
 #ifndef GUI_WINDOWS_CHARDELETECONFIRM_H
 #define GUI_WINDOWS_CHARDELETECONFIRM_H
 
-#include "gui/windows/charselectdialog.h"
 #include "gui/windows/confirmdialog.h"
+
+#include "const/sound.h"
+
+#include "gui/windows/charselectdialog.h"
 
 #include "utils/gettext.h"
 

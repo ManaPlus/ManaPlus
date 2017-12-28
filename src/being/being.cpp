@@ -111,8 +111,6 @@
 
 #include "gui/widgets/createwidget.h"
 
-#include "gui/widgets/tabs/chat/langtab.h"
-
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 #include "utils/foreach.h"

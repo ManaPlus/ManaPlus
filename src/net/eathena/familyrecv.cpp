@@ -25,6 +25,8 @@
 
 #include "being/localplayer.h"
 
+#include "const/sound.h"
+
 #include "enums/resources/notifytypes.h"
 
 #include "gui/widgets/createwidget.h"

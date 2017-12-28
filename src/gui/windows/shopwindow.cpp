@@ -22,6 +22,8 @@
 
 #include "gui/windows/shopwindow.h"
 
+#include "const/sound.h"
+
 #include "const/resources/currency.h"
 
 #ifdef TMWA_SUPPORT

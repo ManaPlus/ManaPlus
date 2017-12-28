@@ -24,6 +24,8 @@
 
 #include "being/playerinfo.h"
 
+#include "const/sound.h"
+
 #include "gui/windows/confirmdialog.h"
 
 #include "gui/models/shopitems.h"

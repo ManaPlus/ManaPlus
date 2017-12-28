@@ -26,6 +26,8 @@
 
 #include "being/localplayer.h"
 
+#include "const/sound.h"
+
 #include "utils/delete2.h"
 #include "utils/foreach.h"
 #include "utils/gettext.h"
