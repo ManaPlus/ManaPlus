@@ -45,9 +45,13 @@ PRAGMA48(GCC diagnostic pop)
     { \
         case 0: do { \
             pixel_copy_increment; \
+            CLANG_FALLTHROUGH \
         case 3: pixel_copy_increment; \
+            CLANG_FALLTHROUGH \
         case 2: pixel_copy_increment; \
+            CLANG_FALLTHROUGH \
         case 1: pixel_copy_increment; \
+            CLANG_FALLTHROUGH \
         default: ; \
             } while (--n > 0 ); \
     }
