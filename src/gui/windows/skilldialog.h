@@ -60,7 +60,7 @@ class SkillDialog final : public Window,
 
         A_DELETE_COPY(SkillDialog)
 
-        ~SkillDialog();
+        ~SkillDialog() override final;
 
         void postInit() override final;
 

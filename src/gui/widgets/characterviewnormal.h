@@ -34,7 +34,7 @@ class CharacterViewNormal final : public CharacterViewBase
 
         A_DELETE_COPY(CharacterViewNormal)
 
-        ~CharacterViewNormal();
+        ~CharacterViewNormal() override final;
 
         void show(const int i) override final;
 

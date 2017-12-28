@@ -71,7 +71,7 @@ class SkillListBox final : public ListBox
 
         A_DELETE_COPY(SkillListBox)
 
-        ~SkillListBox()
+        ~SkillListBox() override final
         {
             delete2(mModel)
         }

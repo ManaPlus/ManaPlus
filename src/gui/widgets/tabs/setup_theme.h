@@ -40,7 +40,7 @@ class Setup_Theme final : public SetupTab
 
         A_DELETE_COPY(Setup_Theme)
 
-        ~Setup_Theme();
+        ~Setup_Theme() override final;
 
         void apply() override final;
 

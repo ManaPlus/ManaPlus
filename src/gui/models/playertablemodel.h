@@ -39,7 +39,7 @@ class PlayerTableModel final : public Widget2,
 
         A_DELETE_COPY(PlayerTableModel)
 
-        ~PlayerTableModel();
+        ~PlayerTableModel() override final;
 
         int getRows() const override final;
 

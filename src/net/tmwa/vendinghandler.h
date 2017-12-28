@@ -33,7 +33,7 @@ class VendingHandler final : public Net::VendingHandler
 
         A_DELETE_COPY(VendingHandler)
 
-        ~VendingHandler();
+        ~VendingHandler() override final;
 
         void close() const override final A_CONST;
 

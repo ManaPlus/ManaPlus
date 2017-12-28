@@ -36,7 +36,7 @@ class SetupTabScroll notfinal : public SetupTab
 
         A_DELETE_COPY(SetupTabScroll)
 
-        virtual ~SetupTabScroll();
+        ~SetupTabScroll() override;
 
         void addControl(SetupItem *const widget);
 

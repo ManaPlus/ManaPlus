@@ -45,9 +45,6 @@ class TargetTypeModel final : public ListModel
 
         A_DELETE_COPY(TargetTypeModel)
 
-        ~TargetTypeModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return 3;

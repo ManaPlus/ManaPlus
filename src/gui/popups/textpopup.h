@@ -46,7 +46,7 @@ class TextPopup final : public Popup
         /**
          * Destructor. Cleans up the item popup on deletion.
          */
-        ~TextPopup();
+        ~TextPopup() override final;
 
         void postInit() override final;
 

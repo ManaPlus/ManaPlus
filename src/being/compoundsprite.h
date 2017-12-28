@@ -43,7 +43,7 @@ class CompoundSprite notfinal : public Sprite
 
         A_DELETE_COPY(CompoundSprite)
 
-        virtual ~CompoundSprite();
+        ~CompoundSprite() override;
 
         bool reset() override final;
 

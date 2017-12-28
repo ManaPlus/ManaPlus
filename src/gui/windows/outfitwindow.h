@@ -50,7 +50,7 @@ class OutfitWindow final : public Window,
         /**
          * Destructor.
          */
-        ~OutfitWindow();
+        ~OutfitWindow() override final;
 
         void action(const ActionEvent &event) override final;
 

@@ -34,7 +34,7 @@ class ObjectsLayer final : public MemoryCounter
 
         A_DELETE_COPY(ObjectsLayer)
 
-        ~ObjectsLayer();
+        ~ObjectsLayer() override final;
 
         void addObject(const std::string &name, const int type,
                        const unsigned x, const unsigned y,

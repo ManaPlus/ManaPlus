@@ -34,7 +34,7 @@ class ColorPage final : public ListBox
 
         A_DELETE_COPY(ColorPage)
 
-        ~ColorPage();
+        ~ColorPage() override final;
 
         void draw(Graphics *const graphics) override final A_NONNULL(2);
 

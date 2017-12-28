@@ -34,7 +34,7 @@ class Setup_Misc final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Misc)
 
-        ~Setup_Misc();
+        ~Setup_Misc() override final;
 
         void apply() override final;
 

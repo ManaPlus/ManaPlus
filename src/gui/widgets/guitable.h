@@ -60,7 +60,7 @@ class GuiTable final : public Widget,
 
         A_DELETE_COPY(GuiTable)
 
-        ~GuiTable();
+        ~GuiTable() override final;
 
         /**
          * Sets the table model

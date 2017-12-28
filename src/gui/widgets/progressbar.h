@@ -58,7 +58,7 @@ class ProgressBar final : public Widget,
 
         A_DELETE_COPY(ProgressBar)
 
-        ~ProgressBar();
+        ~ProgressBar() override final;
 
         /**
          * Performs progress bar logic (fading colors)

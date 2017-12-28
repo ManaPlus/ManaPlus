@@ -35,7 +35,7 @@ class GameHandler final : public Ea::GameHandler
 
         A_DELETE_COPY(GameHandler)
 
-        ~GameHandler();
+        ~GameHandler() override final;
 
         void connect() const override final;
 

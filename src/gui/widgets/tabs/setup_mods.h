@@ -32,7 +32,7 @@ class Setup_Mods final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Mods)
 
-        ~Setup_Mods();
+        ~Setup_Mods() override final;
 
         void apply() override final;
 

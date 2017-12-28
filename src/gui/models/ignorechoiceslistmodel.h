@@ -42,9 +42,6 @@ class IgnoreChoicesListModel final : public ListModel
 
         A_DELETE_COPY(IgnoreChoicesListModel)
 
-        ~IgnoreChoicesListModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return CAST_S32(playerRelations.

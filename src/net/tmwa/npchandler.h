@@ -35,7 +35,7 @@ class NpcHandler final : public Ea::NpcHandler
 
         A_DELETE_COPY(NpcHandler)
 
-        ~NpcHandler();
+        ~NpcHandler() override final;
 
         void talk(const Being *const being) const override final;
 

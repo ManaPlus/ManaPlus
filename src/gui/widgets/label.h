@@ -103,7 +103,7 @@ class Label final : public Widget,
 
         A_DELETE_COPY(Label)
 
-        ~Label();
+        ~Label() override final;
 
         void init();
 

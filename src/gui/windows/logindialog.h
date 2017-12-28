@@ -59,7 +59,7 @@ class LoginDialog final : public Window,
 
         A_DELETE_COPY(LoginDialog)
 
-        ~LoginDialog();
+        ~LoginDialog() override final;
 
         void postInit() override final;
 

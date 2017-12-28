@@ -69,7 +69,7 @@ class MapLayer final: public MemoryCounter, public ConfigListener
         /**
          * Destructor.
          */
-        ~MapLayer();
+        ~MapLayer() override final;
 
         /**
          * Set tile image, with x and y in layer coordinates.

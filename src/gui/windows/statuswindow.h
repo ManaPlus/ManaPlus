@@ -52,7 +52,7 @@ class StatusWindow final : public Window,
 
         A_DELETE_COPY(StatusWindow)
 
-        ~StatusWindow();
+        ~StatusWindow() override final;
 
         void setPointsNeeded(const AttributesT id,
                              const int needed);

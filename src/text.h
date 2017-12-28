@@ -114,12 +114,6 @@ class FlashText final : public Text
         A_DELETE_COPY(FlashText)
 
         /**
-         * Remove the text from the screen
-         */
-        ~FlashText()
-        { }
-
-        /**
          * Flash the text for so many refreshes.
          */
         void flash(const int time)

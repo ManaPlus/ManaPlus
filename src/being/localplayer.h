@@ -63,7 +63,7 @@ class LocalPlayer final : public Being,
         /**
          * Destructor.
          */
-        ~LocalPlayer();
+        ~LocalPlayer() override final;
 
         void logic() override final;
 

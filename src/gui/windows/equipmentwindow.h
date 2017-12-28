@@ -64,7 +64,7 @@ class EquipmentWindow final : public Window,
         /**
          * Destructor.
          */
-        ~EquipmentWindow();
+        ~EquipmentWindow() override final;
 
         void postInit() override final;
 

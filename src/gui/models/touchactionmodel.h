@@ -34,9 +34,6 @@ class TouchActionsModel final : public NamesModel
 
         A_DELETE_COPY(TouchActionsModel)
 
-        ~TouchActionsModel()
-        { }
-
         InputActionT getActionFromSelection(const int sel) const;
 
         int getSelectionFromAction(const InputActionT action) const;

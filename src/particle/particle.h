@@ -53,7 +53,7 @@ class Particle notfinal : public Actor
         /**
          * Destructor.
          */
-        virtual ~Particle();
+        ~Particle() override;
 
         /**
          * Deletes all child particles and emitters.

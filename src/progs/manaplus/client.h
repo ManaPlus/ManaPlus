@@ -60,7 +60,7 @@ class Client final : public ConfigListener,
 
         A_DELETE_COPY(Client)
 
-        ~Client();
+        ~Client() override final;
 
         void gameInit();
 

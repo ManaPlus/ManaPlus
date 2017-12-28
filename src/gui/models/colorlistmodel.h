@@ -68,9 +68,6 @@ class ColorListModel final : public ListModel
 
         A_DELETE_COPY(ColorListModel)
 
-        ~ColorListModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return 14;

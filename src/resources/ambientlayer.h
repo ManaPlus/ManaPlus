@@ -58,7 +58,7 @@ class AmbientLayer final : public MemoryCounter
 
         A_DELETE_COPY(AmbientLayer)
 
-        ~AmbientLayer();
+        ~AmbientLayer() override final;
 
         void update(const int timePassed,
                     const float dx,

@@ -39,7 +39,7 @@ class SetupButtonItem final : public SetupItem
 
         A_DELETE_COPY(SetupButtonItem)
 
-        ~SetupButtonItem();
+        ~SetupButtonItem() override final;
 
         void createControls();
 

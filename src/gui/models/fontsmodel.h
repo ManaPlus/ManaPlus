@@ -36,9 +36,6 @@ class FontsModel final : public NamesModel
         { Theme::fillFontsList(mNames); }
 
         A_DELETE_COPY(FontsModel)
-
-        ~FontsModel()
-        { }
 };
 
 #endif  // GUI_MODELS_FONTSMODEL_H

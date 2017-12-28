@@ -38,7 +38,7 @@ class Setup_Joystick final : public SetupTab
 
         A_DELETE_COPY(Setup_Joystick)
 
-        ~Setup_Joystick();
+        ~Setup_Joystick() override final;
 
         void apply() override final;
 

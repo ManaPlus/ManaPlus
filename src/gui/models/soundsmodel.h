@@ -41,9 +41,6 @@ class SoundsModel final : public NamesModel
         }
 
         A_DELETE_COPY(SoundsModel)
-
-        ~SoundsModel()
-        { }
 };
 
 #endif  // GUI_MODELS_SOUNDSMODEL_H

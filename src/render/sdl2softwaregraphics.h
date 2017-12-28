@@ -54,7 +54,7 @@ class SDL2SoftwareGraphics final : public Graphics
         /**
          * Destructor.
          */
-        ~SDL2SoftwareGraphics();
+        ~SDL2SoftwareGraphics() override final;
 
         void setRendererFlags(const uint32_t flags)
                               restrict2 noexcept2 override final

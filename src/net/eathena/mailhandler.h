@@ -33,7 +33,7 @@ class MailHandler final : public Net::MailHandler
 
         A_DELETE_COPY(MailHandler)
 
-        ~MailHandler();
+        ~MailHandler() override final;
 
         void refresh() const override final;
 

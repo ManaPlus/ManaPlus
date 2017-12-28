@@ -32,7 +32,7 @@ class ExtendedNamesModel notfinal : public ExtendedListModel
 
         A_DELETE_COPY(ExtendedNamesModel)
 
-        virtual ~ExtendedNamesModel();
+        ~ExtendedNamesModel() override;
 
         int getNumberOfElements() override final A_WARN_UNUSED;
 

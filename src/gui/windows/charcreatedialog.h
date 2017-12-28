@@ -59,7 +59,7 @@ class CharCreateDialog final : public Window,
         /**
          * Destructor.
          */
-        ~CharCreateDialog();
+        ~CharCreateDialog() override final;
 
         void action(const ActionEvent &event) override final;
 

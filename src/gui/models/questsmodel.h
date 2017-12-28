@@ -32,9 +32,6 @@ class QuestsModel final : public ExtendedNamesModel
         }
 
         A_DELETE_COPY(QuestsModel)
-
-        ~QuestsModel()
-        { }
 };
 
 #endif  // GUI_MODELS_QUESTSMODEL_H

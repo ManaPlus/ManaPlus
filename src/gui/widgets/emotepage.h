@@ -39,7 +39,7 @@ class EmotePage final : public Widget,
 
         A_DELETE_COPY(EmotePage)
 
-        ~EmotePage();
+        ~EmotePage() override final;
 
         void draw(Graphics *const graphics) override final A_NONNULL(2);
 

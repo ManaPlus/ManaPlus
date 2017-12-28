@@ -46,7 +46,7 @@ class VirtShortcutContainer final : public ShortcutContainer
         /**
          * Destructor.
          */
-        ~VirtShortcutContainer();
+        ~VirtShortcutContainer() override final;
 
         /**
          * Draws the items.

@@ -106,12 +106,6 @@ class KeyEvent: public InputGuiEvent
         { }
 
         /**
-          * Destructor.
-          */
-        virtual ~KeyEvent()
-        { }
-
-        /**
           * Gets the type of the event.
           *
           * @return The type of the event.

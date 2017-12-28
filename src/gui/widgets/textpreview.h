@@ -40,7 +40,7 @@ class TextPreview final : public Widget
 
         A_DELETE_COPY(TextPreview)
 
-        ~TextPreview();
+        ~TextPreview() override final;
 
         inline void setTextColor(const Color *color)
         { mTextColor = color; adjustSize(); }

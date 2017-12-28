@@ -35,7 +35,7 @@ class Setup_Visual final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Visual)
 
-        ~Setup_Visual();
+        ~Setup_Visual() override final;
 
         void apply() override final;
 

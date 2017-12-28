@@ -91,7 +91,7 @@ class BasicContainer notfinal : public Widget,
         /**
           * Destructor
           */
-        virtual ~BasicContainer();
+        ~BasicContainer() override;
 
         /**
           * Shows a certain part of a widget in the basic container.

@@ -41,7 +41,7 @@ class ServerInfoWindow final : public Window,
 
         void postInit() override final;
 
-        ~ServerInfoWindow();
+        ~ServerInfoWindow() override final;
 
         void handleLink(const std::string &link,
                         MouseEvent *const event A_UNUSED) override final;

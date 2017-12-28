@@ -45,7 +45,7 @@ class DebugWindow final : public Window
 
         A_DELETE_COPY(DebugWindow)
 
-        ~DebugWindow();
+        ~DebugWindow() override final;
 
         void postInit() override final;
 

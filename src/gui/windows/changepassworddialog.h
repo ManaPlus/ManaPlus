@@ -53,7 +53,7 @@ class ChangePasswordDialog final : public Window,
         /**
          * Destructor
          */
-        ~ChangePasswordDialog();
+        ~ChangePasswordDialog() override final;
 
         /**
          * Called when receiving actions from the widgets.

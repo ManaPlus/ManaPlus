@@ -33,7 +33,7 @@ class GmTab final : public ChatTab
 
         A_DELETE_COPY(GmTab)
 
-        ~GmTab();
+        ~GmTab() override final;
 
     protected:
         void getAutoCompleteList(StringVect &names) const

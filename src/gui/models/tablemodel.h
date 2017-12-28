@@ -103,7 +103,7 @@ class StaticTableModel final : public TableModel
 
         A_DELETE_COPY(StaticTableModel)
 
-        ~StaticTableModel();
+        ~StaticTableModel() override final;
 
         /**
          * Inserts a widget into the table model.

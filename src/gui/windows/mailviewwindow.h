@@ -42,7 +42,7 @@ class MailViewWindow final : public Window,
 
         A_DELETE_COPY(MailViewWindow)
 
-        ~MailViewWindow();
+        ~MailViewWindow() override final;
 
         void action(const ActionEvent &event) override final;
 

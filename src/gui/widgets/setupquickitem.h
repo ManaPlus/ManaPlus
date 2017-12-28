@@ -45,7 +45,7 @@ class SetupQuickItem final : public SetupItem,
 
         A_DELETE_COPY(SetupQuickItem)
 
-        ~SetupQuickItem();
+        ~SetupQuickItem() override final;
 
         void createControls();
 

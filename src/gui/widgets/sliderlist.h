@@ -42,7 +42,7 @@ class SliderList final : public Container,
 
         A_DELETE_COPY(SliderList)
 
-        ~SliderList();
+        ~SliderList() override final;
 
         void postInit2(ActionListener *const listener,
                        const std::string &eventId);

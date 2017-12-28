@@ -60,7 +60,7 @@ class AnimatedSprite final : public Sprite
         static AnimatedSprite *clone(const AnimatedSprite *restrict const
                                      anim);
 
-        ~AnimatedSprite();
+        ~AnimatedSprite() override final;
 
         bool reset() restrict2 override final;
 

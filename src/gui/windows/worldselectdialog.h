@@ -58,7 +58,7 @@ class WorldSelectDialog final : public Window,
         /**
          * Destructor.
          */
-        ~WorldSelectDialog();
+        ~WorldSelectDialog() override final;
 
         /**
          * Called when receiving actions from the widgets.

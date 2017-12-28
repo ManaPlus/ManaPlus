@@ -73,7 +73,7 @@ class ShopWindow final : public Window,
         /**
          * Destructor
          */
-        ~ShopWindow();
+        ~ShopWindow() override final;
 
         void postInit() override final;
 

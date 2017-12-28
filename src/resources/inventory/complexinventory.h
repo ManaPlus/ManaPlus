@@ -43,7 +43,7 @@ class ComplexInventory final : public Inventory
         /**
          * Destructor.
          */
-        ~ComplexInventory();
+        ~ComplexInventory() override final;
 
         bool addVirtualItem(const Item *const item,
                             int index,

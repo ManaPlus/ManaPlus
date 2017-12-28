@@ -52,7 +52,7 @@ class SocialPickupTab final : public SocialTab
 
         A_DELETE_COPY(SocialPickupTab)
 
-        ~SocialPickupTab()
+        ~SocialPickupTab() override final
         {
             delete2(mList)
             delete2(mScroll)

@@ -50,7 +50,7 @@ class StatusPopup final : public Popup
         /**
          * Destructor. Cleans up the item popup on deletion.
          */
-        ~StatusPopup();
+        ~StatusPopup() override final;
 
         /**
          * Sets the location to display the item popup.

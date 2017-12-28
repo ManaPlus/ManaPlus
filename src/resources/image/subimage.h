@@ -54,7 +54,7 @@ class SubImage final : public Image
         /**
          * Destructor.
          */
-        ~SubImage();
+        ~SubImage() override final;
 
         /**
          * Creates a new image with the desired clipping rectangle.

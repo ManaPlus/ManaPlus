@@ -42,7 +42,7 @@ class ParticleVector final : public ParticleContainer
 
         A_DELETE_COPY(ParticleVector)
 
-        ~ParticleVector();
+        ~ParticleVector() override final;
 
         /**
          * Sets a particle at a specified index.  Kills the previous particle

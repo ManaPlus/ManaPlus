@@ -39,7 +39,7 @@ class InventoryHandler notfinal : public Net::InventoryHandler
     public:
         A_DELETE_COPY(InventoryHandler)
 
-        virtual ~InventoryHandler();
+        ~InventoryHandler() override;
 
         void clear() const override final;
 

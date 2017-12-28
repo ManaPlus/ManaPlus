@@ -88,12 +88,6 @@ class SelectionEvent final: public Event
         { }
 
         A_DELETE_COPY(SelectionEvent)
-
-        /**
-          * Destructor.
-          */
-        virtual ~SelectionEvent()
-        { }
 };
 
 #endif  // EVENTS_SELECTIONEVENT_H

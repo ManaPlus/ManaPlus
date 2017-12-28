@@ -48,7 +48,7 @@ class UserPalette final : public Palette, public ListModel
         /**
          * Destructor
          */
-        ~UserPalette();
+        ~UserPalette() override final;
 
         /**
          * Gets the committed color associated with the specified type.

@@ -111,12 +111,6 @@ class ActionEvent final : public Event
         A_DELETE_COPY(ActionEvent)
 
         /**
-          * Destructor.
-          */
-        virtual ~ActionEvent()
-        { }
-
-        /**
           * Gets the identifier of the event. An identifier can
           * be used to distinguish from two actions from the same
           * widget or to let many widgets fire the same widgets

@@ -36,9 +36,6 @@ class OpenGLListModel final : public ListModel
 
         A_DELETE_COPY(OpenGLListModel)
 
-        ~OpenGLListModel()
-        { }
-
         int getNumberOfElements() override final
         { return renderModesListSize; }
 

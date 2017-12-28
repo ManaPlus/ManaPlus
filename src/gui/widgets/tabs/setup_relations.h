@@ -44,7 +44,7 @@ class Setup_Relations final : public SetupTab,
 
         A_DELETE_COPY(Setup_Relations)
 
-        ~Setup_Relations();
+        ~Setup_Relations() override final;
 
         void apply() override final;
 

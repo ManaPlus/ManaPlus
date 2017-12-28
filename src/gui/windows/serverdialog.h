@@ -73,7 +73,7 @@ class ServerDialog final : public Window,
         /**
          * Destructor
          */
-        ~ServerDialog();
+        ~ServerDialog() override final;
 
         /**
          * Called when receiving actions from the widgets.

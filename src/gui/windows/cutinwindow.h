@@ -36,7 +36,7 @@ class CutInWindow final : public Window
 
         A_DELETE_COPY(CutInWindow)
 
-        ~CutInWindow();
+        ~CutInWindow() override final;
 
         void draw(Graphics *const graphics) override final A_NONNULL(2);
 

@@ -95,7 +95,7 @@ class TabbedArea final : public ActionListener,
 
         A_DELETE_COPY(TabbedArea)
 
-        ~TabbedArea();
+        ~TabbedArea() override final;
 
         void postInit() override final;
 

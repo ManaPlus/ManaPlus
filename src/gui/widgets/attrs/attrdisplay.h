@@ -45,7 +45,7 @@ class AttrDisplay notfinal : public Container
 
         A_DELETE_COPY(AttrDisplay)
 
-        virtual ~AttrDisplay();
+        ~AttrDisplay() override;
 
         virtual std::string update();
 

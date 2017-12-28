@@ -55,7 +55,7 @@ class WindowMenu final : public Container,
 
         A_DELETE_COPY(WindowMenu)
 
-        ~WindowMenu();
+        ~WindowMenu() override final;
 
         void action(const ActionEvent &event) override final;
 

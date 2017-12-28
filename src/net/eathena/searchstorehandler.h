@@ -32,7 +32,7 @@ class SearchStoreHandler final : public Net::SearchStoreHandler
 
         A_DELETE_COPY(SearchStoreHandler)
 
-        ~SearchStoreHandler();
+        ~SearchStoreHandler() override final;
 
         void search(const StoreSearchTypeT type,
                     const int minPrice,

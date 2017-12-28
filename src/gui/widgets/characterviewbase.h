@@ -33,9 +33,6 @@ class CharacterViewBase notfinal : public Container,
     public:
         A_DELETE_COPY(CharacterViewBase)
 
-        virtual ~CharacterViewBase()
-        { }
-
         virtual void show(const int i) = 0;
 
         virtual void resize() = 0;

@@ -66,7 +66,7 @@ class Popup notfinal : public Container,
         /**
          * Destructor. Deletes all the added widgets.
          */
-        virtual ~Popup();
+        ~Popup() override;
 
         /**
          * Sets the window container to be used by new popups.

@@ -34,7 +34,7 @@ class Setup_Quick final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Quick)
 
-        ~Setup_Quick();
+        ~Setup_Quick() override final;
 
     protected:
         NamesModel *mMoveTypeList;

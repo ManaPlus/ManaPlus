@@ -49,7 +49,7 @@ class SDLGraphics final : public Graphics
         /**
          * Destructor.
          */
-        ~SDLGraphics();
+        ~SDLGraphics() override final;
 
         #include "render/graphicsdef.hpp"
         RENDER_GRAPHICSDEF_HPP

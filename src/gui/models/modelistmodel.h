@@ -37,9 +37,6 @@ class ModeListModel final : public ListModel
 
         A_DELETE_COPY(ModeListModel)
 
-        ~ModeListModel()
-        { }
-
         /**
          * Returns the number of elements in container.
          */

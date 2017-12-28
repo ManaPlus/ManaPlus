@@ -46,7 +46,7 @@ class SetupWindow final : public Window,
 
         A_DELETE_COPY(SetupWindow)
 
-        ~SetupWindow();
+        ~SetupWindow() override final;
 
         void postInit() override final;
 

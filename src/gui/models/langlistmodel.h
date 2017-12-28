@@ -111,7 +111,7 @@ class LangListModel final : public ExtendedListModel
 
         A_DELETE_COPY(LangListModel)
 
-        ~LangListModel()
+        ~LangListModel() override final
         {
             for (int f = 0; f < langs_count; f ++)
             {

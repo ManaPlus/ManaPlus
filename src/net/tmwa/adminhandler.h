@@ -35,7 +35,7 @@ class AdminHandler final : public Ea::AdminHandler
 
         A_DELETE_COPY(AdminHandler)
 
-        ~AdminHandler();
+        ~AdminHandler() override final;
 
         void announce(const std::string &text) const override final;
 

@@ -62,7 +62,7 @@ class ItemContainer final : public Widget,
         /**
          * Destructor.
          */
-        ~ItemContainer();
+        ~ItemContainer() override final;
 
         /**
          * Necessary for checking how full the inventory is.

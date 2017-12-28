@@ -41,7 +41,7 @@ class Container notfinal : public BasicContainer2
 
         A_DELETE_COPY(Container)
 
-        virtual ~Container();
+        ~Container() override;
 
         bool safeRemove(Widget *const widget);
 

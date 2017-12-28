@@ -107,7 +107,7 @@ class Slider final : public Widget,
         /**
          * Destructor.
          */
-        ~Slider();
+        ~Slider() override final;
 
         /**
          * Update the alpha value to the graphic components.

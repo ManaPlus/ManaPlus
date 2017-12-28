@@ -61,7 +61,7 @@ class SetupItem notfinal : public ActionListener,
 
         A_DELETE_COPY(SetupItem)
 
-        virtual ~SetupItem();
+        ~SetupItem() override;
 
         void load();
 
@@ -170,7 +170,7 @@ class SetupItemCheckBox final : public SetupItem
 
         A_DELETE_COPY(SetupItemCheckBox)
 
-        ~SetupItemCheckBox();
+        ~SetupItemCheckBox() override final;
 
         void createControls();
 
@@ -204,7 +204,7 @@ class SetupItemTextField final : public SetupItem
 
         A_DELETE_COPY(SetupItemTextField)
 
-        ~SetupItemTextField();
+        ~SetupItemTextField() override final;
 
         void createControls();
 
@@ -259,7 +259,7 @@ class SetupItemIntTextField final : public SetupItem
 
         A_DELETE_COPY(SetupItemIntTextField)
 
-        ~SetupItemIntTextField();
+        ~SetupItemIntTextField() override final;
 
         void createControls();
 
@@ -291,7 +291,7 @@ class SetupItemLabel final : public SetupItem
 
         A_DELETE_COPY(SetupItemLabel)
 
-        ~SetupItemLabel();
+        ~SetupItemLabel() override final;
 
         void createControls();
 
@@ -332,7 +332,7 @@ class SetupItemDropDown final : public SetupItem
 
         A_DELETE_COPY(SetupItemDropDown)
 
-        ~SetupItemDropDown();
+        ~SetupItemDropDown() override final;
 
         void createControls();
 
@@ -374,7 +374,7 @@ class SetupItemDropDownStr final : public SetupItem
 
         A_DELETE_COPY(SetupItemDropDownStr)
 
-        ~SetupItemDropDownStr();
+        ~SetupItemDropDownStr() override final;
 
         void createControls();
 
@@ -422,7 +422,7 @@ class SetupItemSlider final : public SetupItem
 
         A_DELETE_COPY(SetupItemSlider)
 
-        ~SetupItemSlider();
+        ~SetupItemSlider() override final;
 
         void createControls();
 
@@ -479,7 +479,7 @@ class SetupItemSlider2 final : public SetupItem
 
         A_DELETE_COPY(SetupItemSlider2)
 
-        ~SetupItemSlider2();
+        ~SetupItemSlider2() override final;
 
         void createControls();
 
@@ -517,7 +517,7 @@ class SetupItemSliderList notfinal : public SetupItem
     public:
         A_DELETE_COPY(SetupItemSliderList)
 
-        virtual ~SetupItemSliderList();
+        ~SetupItemSliderList() override;
 
         void createControls();
 

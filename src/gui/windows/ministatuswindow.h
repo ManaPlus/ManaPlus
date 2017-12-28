@@ -54,7 +54,7 @@ class MiniStatusWindow final : public Window,
 
         A_DELETE_COPY(MiniStatusWindow)
 
-        ~MiniStatusWindow();
+        ~MiniStatusWindow() override final;
 
         /**
          * Sets one of the icons.

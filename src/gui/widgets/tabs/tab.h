@@ -90,7 +90,7 @@ class Tab notfinal : public BasicContainer,
 
         A_DELETE_COPY(Tab)
 
-        virtual ~Tab();
+        ~Tab() override;
 
         enum
         {

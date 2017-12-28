@@ -103,7 +103,7 @@ class TouchManager final : public ConfigListener
     public:
         TouchManager();
 
-        ~TouchManager();
+        ~TouchManager() override final;
 
         A_DELETE_COPY(TouchManager)
 

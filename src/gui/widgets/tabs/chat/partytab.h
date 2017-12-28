@@ -36,7 +36,7 @@ class PartyTab notfinal : public ChatTab,
 
         A_DELETE_COPY(PartyTab)
 
-        virtual ~PartyTab();
+        ~PartyTab() override;
 
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;

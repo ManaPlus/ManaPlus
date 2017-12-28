@@ -59,7 +59,7 @@ class ShopItems final : public ListModel
 
         A_DELETE_COPY(ShopItems)
 
-        ~ShopItems();
+        ~ShopItems() override final;
 
         /**
          * Adds an item to the list.

@@ -44,7 +44,7 @@ class BankWindow final : public Window,
 
         A_DELETE_COPY(BankWindow)
 
-        ~BankWindow();
+        ~BankWindow() override final;
 
         void action(const ActionEvent &event) override final;
 

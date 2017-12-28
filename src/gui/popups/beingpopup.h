@@ -43,7 +43,7 @@ class BeingPopup final : public Popup
         /**
          * Destructor. Cleans up the being popup on deletion.
          */
-        ~BeingPopup();
+        ~BeingPopup() override final;
 
         /**
          * Sets the info to be displayed given a particular player.

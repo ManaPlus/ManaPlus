@@ -36,7 +36,7 @@ class ChannelTab final : public ChatTab
 
         A_DELETE_COPY(ChannelTab)
 
-        ~ChannelTab();
+        ~ChannelTab() override final;
 
     protected:
         void handleInput(const std::string &msg) override final;

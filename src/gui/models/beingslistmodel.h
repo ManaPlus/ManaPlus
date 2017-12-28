@@ -39,7 +39,7 @@ class BeingsListModel final : public AvatarListModel
 
         A_DELETE_COPY(BeingsListModel)
 
-        ~BeingsListModel()
+        ~BeingsListModel() override final
         {
             delete_all(mMembers);
             mMembers.clear();

@@ -34,7 +34,7 @@ class NamesModel notfinal : public ListModel
 
         A_DELETE_COPY(NamesModel)
 
-        virtual ~NamesModel();
+        ~NamesModel() override;
 
         int getNumberOfElements() override final A_WARN_UNUSED;
 

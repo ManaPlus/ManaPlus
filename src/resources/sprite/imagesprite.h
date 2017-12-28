@@ -35,7 +35,7 @@ class ImageSprite final : public Sprite
 
         A_DELETE_COPY(ImageSprite)
 
-        ~ImageSprite();
+        ~ImageSprite() override final;
 
         bool reset() override final
         { return false; }

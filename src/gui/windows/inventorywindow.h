@@ -71,7 +71,7 @@ class InventoryWindow final : public Window,
         /**
          * Destructor.
          */
-        ~InventoryWindow();
+        ~InventoryWindow() override final;
 
         void postInit() override final;
 

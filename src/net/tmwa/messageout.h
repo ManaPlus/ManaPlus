@@ -47,7 +47,7 @@ class MessageOut final : public Net::MessageOut
 
         A_DELETE_COPY(MessageOut)
 
-        virtual ~MessageOut();
+        ~MessageOut() override final;
 
         /**< Writes a short. */
         void writeInt16(const int16_t value,

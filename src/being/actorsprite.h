@@ -58,7 +58,7 @@ class ActorSprite notfinal : public CompoundSprite, public Actor
 
         A_DELETE_COPY(ActorSprite)
 
-        virtual ~ActorSprite();
+        ~ActorSprite() override;
 
         BeingId getId() const noexcept2 A_WARN_UNUSED
         { return mId; }

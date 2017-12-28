@@ -60,7 +60,7 @@ class WhisperTab final : public ChatTab
                    const std::string &caption,
                    const std::string &nick);
 
-        ~WhisperTab();
+        ~WhisperTab() override final;
 
         void handleInput(const std::string &msg) override final;
 

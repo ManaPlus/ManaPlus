@@ -84,7 +84,7 @@ class Map final : public Properties,
         /**
          * Destructor.
          */
-        ~Map();
+        ~Map() override final;
 
         /**
          * Initialize ambient layers. Has to be called after all the properties

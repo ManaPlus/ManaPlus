@@ -42,7 +42,7 @@ class Setup_Colors final : public SetupTab,
 
         A_DELETE_COPY(Setup_Colors)
 
-        ~Setup_Colors();
+        ~Setup_Colors() override final;
 
         void apply() override final;
 

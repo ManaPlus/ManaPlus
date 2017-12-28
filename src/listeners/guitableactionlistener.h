@@ -39,7 +39,7 @@ class GuiTableActionListener final : public ActionListener
 
         A_DELETE_COPY(GuiTableActionListener)
 
-        ~GuiTableActionListener();
+        ~GuiTableActionListener() override final;
 
         void action(const ActionEvent& actionEvent) override final;
 

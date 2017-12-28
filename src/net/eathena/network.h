@@ -41,7 +41,7 @@ class Network final : public Ea::Network
 
         A_DELETE_COPY(Network)
 
-        ~Network();
+        ~Network() override final;
 
         void clearHandlers();
 

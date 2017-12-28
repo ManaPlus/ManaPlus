@@ -47,12 +47,6 @@ class FlowContainer final : public Container,
         A_DELETE_COPY(FlowContainer)
 
         /**
-         * Destructor.
-         */
-        ~FlowContainer()
-        { }
-
-        /**
          * Invoked when a widget changes its size. This is used to determine
          * the new height of the container.
          */

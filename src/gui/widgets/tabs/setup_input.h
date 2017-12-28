@@ -49,7 +49,7 @@ class Setup_Input final : public SetupTab
         /**
          * Destructor
          */
-        ~Setup_Input();
+        ~Setup_Input() override final;
 
         void apply() override final;
 

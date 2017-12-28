@@ -64,7 +64,7 @@ class SellDialog notfinal : public Window,
         /**
          * Destructor
          */
-        ~SellDialog();
+        ~SellDialog() override;
 
         /**
          * Resets the dialog, clearing inventory.

@@ -43,7 +43,7 @@ class SurfaceGraphics final : public Graphics
 
         A_DELETE_COPY(SurfaceGraphics)
 
-        ~SurfaceGraphics();
+        ~SurfaceGraphics() override final;
 
         void setTarget(SDL_Surface *restrict const target) restrict2 noexcept2
         { mTarget = target; }

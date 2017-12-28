@@ -101,7 +101,7 @@ class RadioButton final : public Widget,
         /**
          * Destructor.
          */
-        ~RadioButton();
+        ~RadioButton() override final;
 
         /**
          * Draws the radiobutton, not the caption.

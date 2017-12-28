@@ -35,7 +35,7 @@ class TradeTab final : public ChatTab
 
         A_DELETE_COPY(TradeTab)
 
-        ~TradeTab();
+        ~TradeTab() override final;
 
     protected:
         void handleInput(const std::string &msg) override final;

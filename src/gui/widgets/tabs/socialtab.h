@@ -85,7 +85,7 @@ class SocialTab notfinal : public Tab
         {
         }
 
-        virtual ~SocialTab()
+        ~SocialTab() override
         {
             // Cleanup dialogs
             if (mInviteDialog != nullptr)

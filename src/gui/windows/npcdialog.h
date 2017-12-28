@@ -76,7 +76,7 @@ class NpcDialog final : public Window,
 
         A_DELETE_COPY(NpcDialog)
 
-        ~NpcDialog();
+        ~NpcDialog() override final;
 
         void postInit() override final;
 

@@ -37,7 +37,7 @@ class EventsManager final : public ConfigListener
 
         A_DELETE_COPY(EventsManager)
 
-        virtual ~EventsManager();
+        ~EventsManager() override final;
 
         void init();
 

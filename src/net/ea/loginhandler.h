@@ -37,7 +37,7 @@ class LoginHandler notfinal : public Net::LoginHandler
     public:
         A_DELETE_COPY(LoginHandler)
 
-        virtual ~LoginHandler();
+        ~LoginHandler() override;
 
         bool isRegistrationEnabled() const override final A_WARN_UNUSED;
 

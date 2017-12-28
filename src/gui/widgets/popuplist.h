@@ -43,7 +43,7 @@ class PopupList final : public Popup,
                   const bool extended,
                   const Modal modal);
 
-        ~PopupList();
+        ~PopupList() override final;
 
         A_DELETE_COPY(PopupList)
 

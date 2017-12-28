@@ -54,7 +54,7 @@ class QuestsWindow final : public Window,
 
         A_DELETE_COPY(QuestsWindow)
 
-        ~QuestsWindow();
+        ~QuestsWindow() override final;
 
         void action(const ActionEvent &event) override final;
 

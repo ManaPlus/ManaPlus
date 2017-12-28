@@ -44,7 +44,7 @@ class ItemShortcutContainer final : public ShortcutContainer
         /**
          * Destructor.
          */
-        ~ItemShortcutContainer();
+        ~ItemShortcutContainer() override final;
 
         /**
          * Draws the items.

@@ -33,7 +33,7 @@ class MarketHandler final : public Net::MarketHandler
 
         A_DELETE_COPY(MarketHandler)
 
-        ~MarketHandler();
+        ~MarketHandler() override final;
 
         void close() const override final;
 

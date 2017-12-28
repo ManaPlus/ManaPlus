@@ -38,7 +38,7 @@ class AtlasResource final : public Resource
 
         A_DELETE_COPY(AtlasResource)
 
-        ~AtlasResource();
+        ~AtlasResource() override final;
 
         void incRef() override final;
 

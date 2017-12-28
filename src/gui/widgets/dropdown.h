@@ -64,7 +64,7 @@ class DropDown final : public ActionListener,
 
         A_DELETE_COPY(DropDown)
 
-        ~DropDown();
+        ~DropDown() override final;
 
         /**
          * Update the alpha value to the graphic components.

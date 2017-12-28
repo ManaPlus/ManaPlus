@@ -51,7 +51,7 @@ class ImageSet notfinal : public Resource
         /**
          * Destructor.
          */
-        virtual ~ImageSet();
+        ~ImageSet() override;
 
         /**
          * Returns the width of the images in the image set.

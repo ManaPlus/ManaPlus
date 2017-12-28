@@ -52,7 +52,7 @@ class BuySellDialog final : public Window,
 
         A_DELETE_COPY(BuySellDialog)
 
-        ~BuySellDialog();
+        ~BuySellDialog() override final;
 
         void init();
 

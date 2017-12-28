@@ -69,7 +69,7 @@ class ChatWindow final : public Window,
         /**
          * Destructor: used to write back values to the config file
          */
-        ~ChatWindow();
+        ~ChatWindow() override final;
 
         /**
          * Gets the focused tab.

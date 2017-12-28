@@ -36,7 +36,7 @@ class AvatarListBox final : public ListBox,
 
         A_DELETE_COPY(AvatarListBox)
 
-        ~AvatarListBox();
+        ~AvatarListBox() override final;
 
         /**
          * Draws the list box.

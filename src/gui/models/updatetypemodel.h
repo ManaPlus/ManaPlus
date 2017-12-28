@@ -44,9 +44,6 @@ class UpdateTypeModel final : public ListModel
 
         A_DELETE_COPY(UpdateTypeModel)
 
-        ~UpdateTypeModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return 3;

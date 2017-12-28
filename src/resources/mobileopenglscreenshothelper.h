@@ -38,7 +38,7 @@ class MobileOpenGLScreenshotHelper final : public ScreenshotHelper
 
         A_DELETE_COPY(MobileOpenGLScreenshotHelper)
 
-        ~MobileOpenGLScreenshotHelper();
+        ~MobileOpenGLScreenshotHelper() override final;
 
         void prepare() override final;
 

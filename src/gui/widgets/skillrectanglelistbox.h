@@ -121,7 +121,7 @@ class SkillRectangleListBox final : public Widget,
 
         A_DELETE_COPY(SkillRectangleListBox)
 
-        ~SkillRectangleListBox()
+        ~SkillRectangleListBox() override final
         {
             delete2(mModel)
         }

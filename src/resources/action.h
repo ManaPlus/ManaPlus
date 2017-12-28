@@ -43,7 +43,7 @@ class Action final : public MemoryCounter
 
         A_DELETE_COPY(Action)
 
-        ~Action();
+        ~Action() override final;
 
         void setAnimation(const SpriteDirection::Type direction,
                           Animation *const animation) noexcept2;

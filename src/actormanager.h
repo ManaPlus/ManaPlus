@@ -72,7 +72,7 @@ class ActorManager final: public ConfigListener
 
         A_DELETE_COPY(ActorManager)
 
-        ~ActorManager();
+        ~ActorManager() override final;
 
         /**
          * Sets the map on which ActorSprites are created.

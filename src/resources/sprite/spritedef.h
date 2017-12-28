@@ -95,7 +95,7 @@ class SpriteDef final : public Resource
         /**
          * Destructor.
          */
-        ~SpriteDef();
+        ~SpriteDef() override final;
 
         /**
          * Loads a sprite element.

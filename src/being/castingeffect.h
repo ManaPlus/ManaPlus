@@ -41,7 +41,7 @@ class CastingEffect final : public Actor
 
         A_DELETE_COPY(CastingEffect)
 
-        virtual ~CastingEffect();
+        ~CastingEffect() override final;
 
         virtual ActorTypeT getType() const noexcept2 A_WARN_UNUSED
         { return ActorType::Unknown; }

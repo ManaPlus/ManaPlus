@@ -53,7 +53,7 @@ class QuitDialog final : public Window,
         /**
          * Destructor
          */
-        ~QuitDialog();
+        ~QuitDialog() override final;
 
         void postInit() override final;
 

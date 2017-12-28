@@ -63,7 +63,7 @@ class CharSelectDialog final : public Window,
 
         A_DELETE_COPY(CharSelectDialog)
 
-        ~CharSelectDialog();
+        ~CharSelectDialog() override final;
 
         void action(const ActionEvent &event) override final;
 

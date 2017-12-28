@@ -36,7 +36,7 @@ class BeingEquipBackend final : public Equipment::Backend
 
         A_DELETE_COPY(BeingEquipBackend)
 
-        ~BeingEquipBackend();
+        ~BeingEquipBackend() override final;
 
         const Item *getEquipment(const int index) const override final
                                  A_WARN_UNUSED;

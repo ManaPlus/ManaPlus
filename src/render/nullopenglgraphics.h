@@ -59,7 +59,7 @@ class NullOpenGLGraphics final : public Graphics
 
         A_DELETE_COPY(NullOpenGLGraphics)
 
-        ~NullOpenGLGraphics();
+        ~NullOpenGLGraphics() override final;
 
         inline void drawQuadArrayfi(const int size) restrict2 A_INLINE;
 

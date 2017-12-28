@@ -94,7 +94,7 @@ class BuyDialog final : public Window,
         /**
          * Destructor
          */
-        ~BuyDialog();
+        ~BuyDialog() override final;
 
         enum
         {

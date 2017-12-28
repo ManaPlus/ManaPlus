@@ -38,7 +38,7 @@ class CharServerHandler final : public Ea::CharServerHandler
 
         A_DELETE_COPY(CharServerHandler)
 
-        ~CharServerHandler();
+        ~CharServerHandler() override final;
 
         void chooseCharacter(Net::Character *const character) const
                              override final;

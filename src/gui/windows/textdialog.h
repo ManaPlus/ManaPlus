@@ -52,7 +52,7 @@ class TextDialog final : public Window,
 
         A_DELETE_COPY(TextDialog)
 
-        ~TextDialog();
+        ~TextDialog() override final;
 
         void postInit() override final;
 

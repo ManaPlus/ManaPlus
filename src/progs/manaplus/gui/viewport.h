@@ -57,7 +57,7 @@ class Viewport final : public WindowContainer,
         /**
          * Destructor.
          */
-        ~Viewport();
+        ~Viewport() override final;
 
         /**
          * Sets the map displayed by the viewport.

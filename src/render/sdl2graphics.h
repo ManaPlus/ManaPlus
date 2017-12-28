@@ -95,7 +95,7 @@ class SDLGraphics final : public Graphics
         /**
          * Destructor.
          */
-        ~SDLGraphics();
+        ~SDLGraphics() override final;
 
         void setRendererFlags(const uint32_t flags) restrict noexcept2 override
         { mRendererFlags = flags; }

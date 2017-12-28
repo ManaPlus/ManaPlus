@@ -35,7 +35,7 @@ class LoginHandler final : public Ea::LoginHandler
 
         A_DELETE_COPY(LoginHandler)
 
-        ~LoginHandler();
+        ~LoginHandler() override final;
 
         void connect() const override final;
 

@@ -54,9 +54,6 @@ class SortListModelBuy final : public ListModel
 
         A_DELETE_COPY(SortListModelBuy)
 
-        ~SortListModelBuy()
-        { }
-
         int getNumberOfElements() override final
         { return 7; }
 

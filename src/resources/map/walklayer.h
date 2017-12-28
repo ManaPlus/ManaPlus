@@ -32,7 +32,7 @@ class WalkLayer final : public Resource
 
         A_DELETE_COPY(WalkLayer)
 
-        ~WalkLayer();
+        ~WalkLayer() override final;
 
         int *getData()
         { return mTiles; }

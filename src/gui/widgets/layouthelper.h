@@ -48,7 +48,7 @@ class LayoutHelper final : public WidgetListener
         /**
          * Destructor.
          */
-        ~LayoutHelper();
+        ~LayoutHelper() override final;
 
         /**
          * Gets the layout handler.

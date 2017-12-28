@@ -148,7 +148,7 @@ class Button final : public Widget,
         /**
          * Destructor.
          */
-        ~Button();
+        ~Button() override final;
 
         /**
          * Draws the button.

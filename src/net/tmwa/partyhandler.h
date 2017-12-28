@@ -34,7 +34,7 @@ class PartyHandler final : public Ea::PartyHandler
 
         A_DELETE_COPY(PartyHandler)
 
-        ~PartyHandler();
+        ~PartyHandler() override final;
 
         void create(const std::string &name) const override final;
 

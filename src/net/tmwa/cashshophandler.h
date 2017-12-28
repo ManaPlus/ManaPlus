@@ -33,7 +33,7 @@ class CashShopHandler final : public Net::CashShopHandler
 
         A_DELETE_COPY(CashShopHandler)
 
-        ~CashShopHandler();
+        ~CashShopHandler() override final;
 
         void buyItem(const int points,
                      const int itemId,

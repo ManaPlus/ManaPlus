@@ -56,7 +56,7 @@ class ShortcutWindow final : public Window
         /**
          * Destructor.
          */
-        ~ShortcutWindow();
+        ~ShortcutWindow() override final;
 
         void addTab(const std::string &name, ShortcutContainer *const content);
 

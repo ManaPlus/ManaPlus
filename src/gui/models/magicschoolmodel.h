@@ -54,9 +54,6 @@ class MagicSchoolModel final : public ListModel
 
         A_DELETE_COPY(MagicSchoolModel)
 
-        ~MagicSchoolModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return 6;

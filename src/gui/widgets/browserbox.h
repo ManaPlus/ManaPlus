@@ -61,7 +61,7 @@ class BrowserBox final : public Widget,
         /**
          * Destructor.
          */
-        ~BrowserBox();
+        ~BrowserBox() override final;
 
         /**
          * Sets the handler for links.

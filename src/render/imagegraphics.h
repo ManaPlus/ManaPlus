@@ -43,7 +43,7 @@ class ImegeGraphics final : public Graphics
 
         A_DELETE_COPY(ImegeGraphics)
 
-        ~ImegeGraphics();
+        ~ImegeGraphics() override final;
 
         void setTarget(Image *const target) restrict2 noexcept2
         { mTarget = target; }

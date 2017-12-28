@@ -34,7 +34,7 @@ class ShaderProgram final : public Resource
                       Shader *const vertex,
                       Shader *const fragment);
 
-        ~ShaderProgram();
+        ~ShaderProgram() override final;
 
         A_DELETE_COPY(ShaderProgram)
 

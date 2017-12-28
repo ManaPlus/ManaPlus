@@ -32,7 +32,7 @@ class FriendsHandler final : public Net::FriendsHandler
 
         A_DELETE_COPY(FriendsHandler)
 
-        ~FriendsHandler();
+        ~FriendsHandler() override final;
 
         void invite(const std::string &name) const override final A_CONST;
 

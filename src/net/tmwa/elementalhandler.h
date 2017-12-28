@@ -32,7 +32,7 @@ namespace TmwAthena
 
             A_DELETE_COPY(ElementalHandler)
 
-            ~ElementalHandler();
+            ~ElementalHandler() override final;
     };
 }  // namespace TmwAthena
 

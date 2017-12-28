@@ -51,9 +51,6 @@ class SortListModelInv final : public ListModel
 
         A_DELETE_COPY(SortListModelInv)
 
-        ~SortListModelInv()
-        { }
-
         int getNumberOfElements() override final
         { return 6; }
 

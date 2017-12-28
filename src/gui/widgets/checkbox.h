@@ -104,7 +104,7 @@ class CheckBox final : public Widget,
         /**
          * Destructor.
          */
-        ~CheckBox();
+        ~CheckBox() override final;
 
         /**
          * Draws the caption, then calls drawBox to draw the check box.

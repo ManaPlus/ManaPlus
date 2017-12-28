@@ -65,7 +65,7 @@ class TradeWindow final : public Window,
         /**
          * Destructor.
          */
-        ~TradeWindow();
+        ~TradeWindow() override final;
 
         /**
          * Displays expected money in the trade window.

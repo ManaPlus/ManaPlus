@@ -44,7 +44,7 @@ class SpellShortcutContainer final : public ShortcutContainer
         /**
          * Destructor.
          */
-        ~SpellShortcutContainer();
+        ~SpellShortcutContainer() override final;
 
         /**
          * Draws the items.

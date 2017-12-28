@@ -36,7 +36,7 @@ class Sdl2SoftwareScreenshotHelper final : public ScreenshotHelper
 
         A_DELETE_COPY(Sdl2SoftwareScreenshotHelper)
 
-        ~Sdl2SoftwareScreenshotHelper();
+        ~Sdl2SoftwareScreenshotHelper() override final;
 
         void prepare() override final;
 

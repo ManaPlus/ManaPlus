@@ -118,7 +118,7 @@ class ScrollArea final : public BasicContainer,
         /**
          * Destructor. Also deletes the content.
          */
-        ~ScrollArea();
+        ~ScrollArea() override final;
 
         /**
          * Logic function optionally adapts width or height of contents. This

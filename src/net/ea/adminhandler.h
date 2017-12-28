@@ -38,7 +38,7 @@ class AdminHandler notfinal : public Net::AdminHandler
 
         A_DELETE_COPY(AdminHandler)
 
-        virtual ~AdminHandler()
+        ~AdminHandler() override
         { }
 
         void kickName(const std::string &name) const override final;

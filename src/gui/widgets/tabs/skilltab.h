@@ -57,7 +57,7 @@ class SkillTab final : public Tab
 
         A_DELETE_COPY(SkillTab)
 
-        ~SkillTab()
+        ~SkillTab() override final
         {
             delete2(mListBox)
             delete2(mRectangleListBox)

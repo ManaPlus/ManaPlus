@@ -34,7 +34,7 @@ class Setup_Audio final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Audio)
 
-        ~Setup_Audio();
+        ~Setup_Audio() override final;
 
         void apply() override final;
 

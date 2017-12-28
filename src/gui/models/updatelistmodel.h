@@ -51,9 +51,6 @@ class UpdateListModel final : public ListModel
 
         A_DELETE_COPY(UpdateListModel)
 
-        ~UpdateListModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return CAST_S32(mNames.size());

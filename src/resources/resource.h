@@ -57,7 +57,7 @@ class Resource notfinal : public MemoryCounter
         /**
          * Destructor.
          */
-        virtual ~Resource();
+        ~Resource() override;
 
         /**
          * Increments the internal reference count.

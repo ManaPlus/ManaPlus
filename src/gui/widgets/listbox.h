@@ -101,7 +101,7 @@ class ListBox notfinal : public Widget,
 
         A_DELETE_COPY(ListBox)
 
-        virtual ~ListBox();
+        ~ListBox() override;
 
         void postInit() override;
 

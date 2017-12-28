@@ -31,7 +31,7 @@ class LangTab final : public ChatTab
 
         A_DELETE_COPY(LangTab)
 
-        ~LangTab();
+        ~LangTab() override final;
 };
 
 extern LangTab *langChatTab;

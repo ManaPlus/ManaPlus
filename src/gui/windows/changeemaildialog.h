@@ -53,7 +53,7 @@ class ChangeEmailDialog final : public Window,
         /**
          * Destructor.
          */
-        ~ChangeEmailDialog();
+        ~ChangeEmailDialog() override final;
 
         /**
          * Called when receiving actions from the widgets.

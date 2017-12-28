@@ -48,7 +48,7 @@ class SetupActionDropDown final : public SetupItem
 
         A_DELETE_COPY(SetupActionDropDown)
 
-        ~SetupActionDropDown();
+        ~SetupActionDropDown() override final;
 
         void createControls();
 

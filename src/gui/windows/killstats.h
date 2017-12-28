@@ -44,12 +44,6 @@ class KillStats final : public Window,
         A_DELETE_COPY(KillStats)
 
         /**
-         * Destructor.
-         */
-        ~KillStats()
-        { }
-
-        /**
          * Stuff.
          */
         void action(const ActionEvent &event) override final;

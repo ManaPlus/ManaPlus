@@ -58,7 +58,7 @@ class SocialFriendsTab final : public SocialTab
 
         A_DELETE_COPY(SocialFriendsTab)
 
-        ~SocialFriendsTab()
+        ~SocialFriendsTab() override final
         {
             delete2(mList)
             delete2(mScroll)

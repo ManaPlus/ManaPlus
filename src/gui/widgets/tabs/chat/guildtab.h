@@ -36,7 +36,7 @@ class GuildTab notfinal : public ChatTab,
 
         A_DELETE_COPY(GuildTab)
 
-        virtual ~GuildTab();
+        ~GuildTab() override final;
 
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;

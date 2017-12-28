@@ -44,7 +44,7 @@ class MailEditWindow final : public Window,
 
         A_DELETE_COPY(MailEditWindow)
 
-        ~MailEditWindow();
+        ~MailEditWindow() override final;
 
         void action(const ActionEvent &event) override final;
 

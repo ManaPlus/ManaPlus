@@ -39,7 +39,7 @@ class EmoteWindow final : public Window
 
         A_DELETE_COPY(EmoteWindow)
 
-        ~EmoteWindow();
+        ~EmoteWindow() override final;
 
         void postInit() override final;
 

@@ -171,7 +171,7 @@ class Party final : public AvatarListModel
          */
         explicit Party(const int16_t id);
 
-        ~Party();
+        ~Party() override final;
 
         MemberList mMembers;
         std::string mName;

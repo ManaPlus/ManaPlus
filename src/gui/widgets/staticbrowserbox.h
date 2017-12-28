@@ -59,7 +59,7 @@ class StaticBrowserBox final : public Widget,
         /**
          * Destructor.
          */
-        ~StaticBrowserBox();
+        ~StaticBrowserBox() override final;
 
         /**
          * Sets the handler for links.

@@ -67,9 +67,6 @@ class IconsModel final : public ListModel
 
         A_DELETE_COPY(IconsModel)
 
-        ~IconsModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return CAST_S32(mStrings.size());

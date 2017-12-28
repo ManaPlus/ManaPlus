@@ -43,9 +43,6 @@ class WorldListModel final : public ListModel
 
         A_DELETE_COPY(WorldListModel)
 
-        ~WorldListModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return CAST_S32(mWorlds.size());

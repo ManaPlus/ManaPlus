@@ -55,7 +55,7 @@ class TextCommandEditor final : public Window,
         /**
          * Destructor.
          */
-        ~TextCommandEditor();
+        ~TextCommandEditor() override final;
 
         void postInit() override final;
 

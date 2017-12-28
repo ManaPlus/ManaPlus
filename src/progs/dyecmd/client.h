@@ -52,7 +52,7 @@ class Client final : public ActionListener
 
         A_DELETE_COPY(Client)
 
-        ~Client();
+        ~Client() override final;
 
         void gameInit();
 

@@ -39,7 +39,7 @@ class ColorModel final : public ListModel
 
         A_DELETE_COPY(ColorModel)
 
-        virtual ~ColorModel();
+        ~ColorModel() override final;
 
         int getNumberOfElements() override final A_WARN_UNUSED;
 

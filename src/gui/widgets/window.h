@@ -121,7 +121,7 @@ class Window notfinal : public BasicContainer2,
         /**
          * Destructor. Deletes all the added widgets.
          */
-        virtual ~Window();
+        ~Window() override;
 
         /**
          * Sets the window container to be used by new windows.

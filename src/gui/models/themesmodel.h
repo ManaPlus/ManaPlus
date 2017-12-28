@@ -41,9 +41,6 @@ class ThemesModel final : public NamesModel
         }
 
         A_DELETE_COPY(ThemesModel)
-
-        ~ThemesModel()
-        { }
 };
 
 #endif  // GUI_MODELS_THEMESMODEL_H

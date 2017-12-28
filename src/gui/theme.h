@@ -55,7 +55,7 @@ class Theme final : public Palette,
     public:
         Theme();
 
-        ~Theme();
+        ~Theme() override final;
 
         A_DELETE_COPY(Theme)
 

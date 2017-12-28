@@ -56,7 +56,7 @@ class Desktop final : public Container,
 
         A_DELETE_COPY(Desktop)
 
-        ~Desktop();
+        ~Desktop() override final;
 
         /**
          * Has to be called after updates have been loaded.

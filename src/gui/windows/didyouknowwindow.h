@@ -45,7 +45,7 @@ class DidYouKnowWindow final : public Window,
          */
         DidYouKnowWindow();
 
-        ~DidYouKnowWindow();
+        ~DidYouKnowWindow() override final;
 
         A_DELETE_COPY(DidYouKnowWindow)
 

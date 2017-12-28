@@ -39,7 +39,7 @@ class ProgressIndicator final : public Widget
 
         A_DELETE_COPY(ProgressIndicator)
 
-        ~ProgressIndicator();
+        ~ProgressIndicator() override final;
 
         void logic() override final;
 

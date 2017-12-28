@@ -36,7 +36,7 @@ class GuildHandler final : public Net::GuildHandler
 
         A_DELETE_COPY(GuildHandler)
 
-        ~GuildHandler();
+        ~GuildHandler() override final;
 
         void clear() const override final;
 

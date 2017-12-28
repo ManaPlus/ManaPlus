@@ -66,9 +66,6 @@ class ItemsModal final : public ListModel
 
         A_DELETE_COPY(ItemsModal)
 
-        ~ItemsModal()
-        { }
-
         int getNumberOfElements() override final
         {
             return CAST_S32(mStrings.size());

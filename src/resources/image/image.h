@@ -97,7 +97,7 @@ class Image notfinal : public Resource
         /**
          * Destructor.
          */
-        virtual ~Image();
+        ~Image() override;
 
         /**
          * Frees the resources created by SDL.

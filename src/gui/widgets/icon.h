@@ -55,7 +55,7 @@ class Icon final : public Widget
 
         A_DELETE_COPY(Icon)
 
-        ~Icon();
+        ~Icon() override final;
 
         /**
          * Gets the current Image.

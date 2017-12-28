@@ -42,7 +42,7 @@ class ParticleList final : public ParticleContainer
 
         A_DELETE_COPY(ParticleList)
 
-        ~ParticleList();
+        ~ParticleList() override final;
 
         /**
          * Takes control of and adds a particle

@@ -68,7 +68,7 @@ class SafeOpenGLImageHelper final : public ImageHelper
 
         A_DELETE_COPY(SafeOpenGLImageHelper)
 
-        ~SafeOpenGLImageHelper();
+        ~SafeOpenGLImageHelper() override final;
 
         /**
          * Loads an image from an SDL_RWops structure and recolors it.

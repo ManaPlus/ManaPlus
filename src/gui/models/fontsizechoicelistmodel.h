@@ -74,9 +74,6 @@ class FontSizeChoiceListModel final : public ListModel
 
         A_DELETE_COPY(FontSizeChoiceListModel)
 
-        ~FontSizeChoiceListModel()
-        { }
-
         int getNumberOfElements() override final A_WARN_UNUSED
         { return maxFontSizes; }
 

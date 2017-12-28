@@ -37,7 +37,7 @@ class ExtendedListBox final : public ListBox
 
         A_DELETE_COPY(ExtendedListBox)
 
-        ~ExtendedListBox();
+        ~ExtendedListBox() override final;
 
         /**
          * Draws the list box.

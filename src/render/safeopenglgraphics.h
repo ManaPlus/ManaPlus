@@ -54,7 +54,7 @@ class SafeOpenGLGraphics final : public Graphics
 
         A_DELETE_COPY(SafeOpenGLGraphics)
 
-        ~SafeOpenGLGraphics();
+        ~SafeOpenGLGraphics() override final;
 
         void testDraw() restrict2 override final;
 

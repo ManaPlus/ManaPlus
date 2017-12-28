@@ -51,7 +51,7 @@ class SocialWindow final : public Window,
 
         A_DELETE_COPY(SocialWindow)
 
-        ~SocialWindow();
+        ~SocialWindow() override final;
 
         void postInit() override final;
 

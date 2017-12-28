@@ -47,7 +47,7 @@ class SoundManager final : public ConfigListener
 
         A_DELETE_COPY(SoundManager)
 
-        ~SoundManager();
+        ~SoundManager() override final;
 
         void optionChanged(const std::string &value) override final;
 

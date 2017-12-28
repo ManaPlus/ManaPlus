@@ -32,7 +32,7 @@ class ElementalHandler final : public Net::ElementalHandler
 
         A_DELETE_COPY(ElementalHandler)
 
-        ~ElementalHandler();
+        ~ElementalHandler() override final;
 };
 
 }  // namespace EAthena

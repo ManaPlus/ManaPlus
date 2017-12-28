@@ -35,7 +35,7 @@ class CharacterViewSmall final : public CharacterViewBase
                            const int padding);
         A_DELETE_COPY(CharacterViewSmall)
 
-        ~CharacterViewSmall();
+        ~CharacterViewSmall() override final;
 
         void show(const int i) override final;
 

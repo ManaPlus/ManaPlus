@@ -30,7 +30,7 @@ class Shader final : public Resource
     public:
         explicit Shader(const unsigned int id);
 
-        ~Shader();
+        ~Shader() override final;
 
         A_DELETE_COPY(Shader)
 

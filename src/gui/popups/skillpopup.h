@@ -49,7 +49,7 @@ class SkillPopup final : public Popup
         /**
          * Destructor. Cleans up the skill popup on deletion.
          */
-        ~SkillPopup();
+        ~SkillPopup() override final;
 
         void postInit() override final;
 

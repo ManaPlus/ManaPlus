@@ -42,7 +42,7 @@ class SpecialLayer final : public MemoryCounter
 
         A_DELETE_COPY(SpecialLayer)
 
-        ~SpecialLayer();
+        ~SpecialLayer() override final;
 
         void draw(Graphics *const graphics,
                   int startX, int startY,

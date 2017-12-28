@@ -111,7 +111,7 @@ class Widget notfinal : public Widget2
         /**
           * Default destructor.
           */
-        virtual ~Widget();
+        ~Widget() override;
 
         /**
           * Draws the widget. It is called by the parent widget when it is time

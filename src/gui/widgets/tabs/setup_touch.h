@@ -33,7 +33,7 @@ class Setup_Touch final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Touch)
 
-        ~Setup_Touch();
+        ~Setup_Touch() override final;
 
     protected:
         NamesModel *mSizeList;

@@ -45,7 +45,7 @@ class SpellPopup final : public Popup
         /**
          * Destructor. Cleans up the item popup on deletion.
          */
-        ~SpellPopup();
+        ~SpellPopup() override final;
 
         void postInit() override final;
 

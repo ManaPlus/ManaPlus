@@ -56,9 +56,6 @@ class PlayerRelationListModel final : public ListModel
 
         A_DELETE_COPY(PlayerRelationListModel)
 
-        ~PlayerRelationListModel()
-        { }
-
         int getNumberOfElements() override final
         {
             return PlayerRelation::RELATIONS_NR;

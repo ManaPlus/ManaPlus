@@ -103,7 +103,7 @@ class TextField notfinal : public Widget,
 
         A_DELETE_COPY(TextField)
 
-        virtual ~TextField();
+        ~TextField() override;
 
         /**
          * Draws the text field.

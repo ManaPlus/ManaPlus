@@ -94,7 +94,7 @@ class TextBox final : public Widget,
 
         A_DELETE_COPY(TextBox)
 
-        ~TextBox();
+        ~TextBox() override final;
 
         /**
          * Sets the text after wrapping it to the current width of the widget.

@@ -38,7 +38,7 @@ class EmulateGuildTab final : public ChatTab,
 
         A_DELETE_COPY(EmulateGuildTab)
 
-        ~EmulateGuildTab();
+        ~EmulateGuildTab() override final;
 
         bool handleCommand(const std::string &restrict type,
                            const std::string &restrict args) override final;

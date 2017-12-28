@@ -35,7 +35,7 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         A_DELETE_COPY(InventoryHandler)
 
-        ~InventoryHandler();
+        ~InventoryHandler() override final;
 
         void equipItem(const Item *const item) const override final;
 

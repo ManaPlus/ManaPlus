@@ -34,7 +34,7 @@ class Setup_Perfomance final : public SetupTabScroll
 
         A_DELETE_COPY(Setup_Perfomance)
 
-        ~Setup_Perfomance();
+        ~Setup_Perfomance() override final;
 
     private:
 #ifdef USE_SDL2

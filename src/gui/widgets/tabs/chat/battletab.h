@@ -35,7 +35,7 @@ class BattleTab final : public ChatTab
 
         A_DELETE_COPY(BattleTab)
 
-        ~BattleTab();
+        ~BattleTab() override final;
 };
 
 extern BattleTab *battleChatTab;

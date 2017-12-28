@@ -80,7 +80,7 @@ class UpdaterWindow final : public Window,
         /**
          * Destructor
          */
-        ~UpdaterWindow();
+        ~UpdaterWindow() override final;
 
         void postInit() override final;
 

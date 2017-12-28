@@ -54,7 +54,7 @@ class WhoIsOnline final : public Window,
         /**
          * Destructor
          */
-        ~WhoIsOnline();
+        ~WhoIsOnline() override final;
 
         void postInit() override final;
 

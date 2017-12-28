@@ -71,7 +71,7 @@ class GeneralHandler final : public Net::GeneralHandler
 
         A_DELETE_COPY(GeneralHandler)
 
-        ~GeneralHandler();
+        ~GeneralHandler() override final;
 
         void load() const override final;
 

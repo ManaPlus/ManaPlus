@@ -74,7 +74,7 @@ namespace XML
             /**
              * Destructor. Frees the loaded XML file.
              */
-            ~Document();
+            ~Document() override final;
 
             /**
              * Returns the root node of the document (or NULL if there was a

@@ -34,7 +34,7 @@ class SdlScreenshotHelper final : public ScreenshotHelper
 
         A_DELETE_COPY(SdlScreenshotHelper)
 
-        ~SdlScreenshotHelper();
+        ~SdlScreenshotHelper() override final;
 
         void prepare() override final A_CONST;
 

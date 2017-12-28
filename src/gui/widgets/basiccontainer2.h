@@ -90,7 +90,7 @@ class BasicContainer2: public BasicContainer
         /**
           * Destructor.
           */
-        virtual ~BasicContainer2();
+        ~BasicContainer2() override;
 
         /**
           * Sets the container to be opaque or not. If the container

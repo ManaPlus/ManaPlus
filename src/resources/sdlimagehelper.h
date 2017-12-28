@@ -50,9 +50,6 @@ class SDLImageHelper final : public ImageHelper
 
         A_DELETE_COPY(SDLImageHelper)
 
-        ~SDLImageHelper()
-        { }
-
         /**
          * Loads an image from an SDL_RWops structure and recolors it.
          *

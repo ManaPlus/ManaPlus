@@ -83,7 +83,7 @@ class ItemAmountWindow final : public Window,
                                int maxRange,
                                const int tag);
 
-        ~ItemAmountWindow();
+        ~ItemAmountWindow() override final;
 
 #ifndef UNITTESTS
     private:

@@ -61,7 +61,7 @@ class PlayerBox final : public Widget,
         /**
          * Destructor.
          */
-        ~PlayerBox();
+        ~PlayerBox() override final;
 
         void init(std::string name, std::string selectedName);
 

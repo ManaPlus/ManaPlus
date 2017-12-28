@@ -239,7 +239,7 @@ class Configuration final : public ConfigurationObject
 
         A_DELETE_COPY(Configuration)
 
-        ~Configuration();
+        ~Configuration() override final;
 
         /**
          * Reads config file and parse all options into memory.

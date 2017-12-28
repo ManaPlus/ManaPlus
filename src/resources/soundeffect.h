@@ -53,7 +53,7 @@ class SoundEffect final : public Resource
         /**
          * Destructor.
          */
-        ~SoundEffect();
+        ~SoundEffect() override final;
 
         /**
          * Plays the sample.

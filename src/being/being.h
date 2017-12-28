@@ -110,7 +110,7 @@ class Being notfinal : public ActorSprite,
 
         A_DELETE_COPY(Being)
 
-        virtual ~Being();
+        ~Being() override;
 
         ActorTypeT getType() const restrict2 noexcept2 override final
                            A_WARN_UNUSED

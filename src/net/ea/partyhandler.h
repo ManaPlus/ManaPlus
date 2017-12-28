@@ -35,7 +35,7 @@ class PartyHandler notfinal : public Net::PartyHandler
 
         A_DELETE_COPY(PartyHandler)
 
-        virtual ~PartyHandler();
+        ~PartyHandler() override;
 
         void join(const int partyId) const override final A_CONST;
 

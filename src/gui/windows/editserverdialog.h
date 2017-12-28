@@ -53,7 +53,7 @@ class EditServerDialog final : public Window,
 
         A_DELETE_COPY(EditServerDialog)
 
-        ~EditServerDialog();
+        ~EditServerDialog() override final;
 
         void postInit() override final;
 

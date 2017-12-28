@@ -54,7 +54,7 @@ class SDLMusic final : public Resource
         /**
          * Destructor.
          */
-        ~SDLMusic();
+        ~SDLMusic() override final;
 
         /**
          * Plays the music.

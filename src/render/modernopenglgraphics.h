@@ -60,7 +60,7 @@ class ModernOpenGLGraphics final : public Graphics
 
         A_DELETE_COPY(ModernOpenGLGraphics)
 
-        ~ModernOpenGLGraphics();
+        ~ModernOpenGLGraphics() override final;
 
         void postInit() restrict2 override final;
 

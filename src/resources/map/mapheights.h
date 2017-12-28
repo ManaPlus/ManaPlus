@@ -36,7 +36,7 @@ class MapHeights final : public MemoryCounter
 
         A_DELETE_COPY(MapHeights)
 
-        ~MapHeights();
+        ~MapHeights() override final;
 
         void setHeight(const int x, const int y, const uint8_t height);
 

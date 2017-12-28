@@ -59,7 +59,7 @@ class MobileOpenGLGraphics final : public Graphics
 
         A_DELETE_COPY(MobileOpenGLGraphics)
 
-        ~MobileOpenGLGraphics();
+        ~MobileOpenGLGraphics() override final;
 
         void postInit() restrict2 override final;
 

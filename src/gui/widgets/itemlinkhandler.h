@@ -34,7 +34,7 @@ class ItemLinkHandler final : public LinkHandler
 
         A_DELETE_COPY(ItemLinkHandler)
 
-        ~ItemLinkHandler();
+        ~ItemLinkHandler() override final;
 
         void handleLink(const std::string &link,
                         MouseEvent *event) override final;

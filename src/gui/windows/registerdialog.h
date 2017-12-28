@@ -57,7 +57,7 @@ class RegisterDialog final : public Window,
         /**
          * Destructor
          */
-        ~RegisterDialog();
+        ~RegisterDialog() override final;
 
         void postInit() override;
 

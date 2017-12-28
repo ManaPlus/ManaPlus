@@ -52,7 +52,7 @@ class TextSelectDialog notfinal : public Window,
         /**
          * Destructor
          */
-        ~TextSelectDialog();
+        ~TextSelectDialog() override final;
 
         /**
          * Called when receiving actions from the widgets.

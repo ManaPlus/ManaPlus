@@ -44,7 +44,7 @@ class Minimap final : public Window, public ConfigListener
 
         A_DELETE_COPY(Minimap)
 
-        ~Minimap();
+        ~Minimap() override final;
 
         /**
          * Sets the map image that should be displayed.

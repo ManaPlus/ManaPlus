@@ -45,7 +45,7 @@ class Setup_Video final : public SetupTab,
 
         A_DELETE_COPY(Setup_Video)
 
-        ~Setup_Video();
+        ~Setup_Video() override final;
 
         void apply() override final;
 
