@@ -31,6 +31,8 @@
 
 #include "being/localplayer.h"
 
+#include "const/sound.h"
+
 #include "const/resources/currency.h"
 
 #include "fs/virtfs/fs.h"
