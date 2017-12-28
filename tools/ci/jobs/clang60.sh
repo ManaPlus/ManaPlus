@@ -23,7 +23,8 @@ export CXXFLAGS="$CXXFLAGS -Weverything -Wno-documentation -Wno-padded -Wno-sign
 -Wno-disabled-macro-expansion -Wno-format-nonliteral \
 -Wno-reserved-id-macro -Wno-packed -Wno-documentation-unknown-command \
 -Wno-variadic-macros -Wno-double-promotion -Wno-attributes -Wno-shadow-field \
--Wpointer-bool-conversion -fno-omit-frame-pointer -ggdb3 $POST_CXXFLAGS"
+-Wpointer-bool-conversion -fno-omit-frame-pointer -Wno-c++98-compat-pedantic \
+-ggdb3 $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*
