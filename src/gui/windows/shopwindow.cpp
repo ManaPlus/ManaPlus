@@ -22,8 +22,6 @@
 
 #include "gui/windows/shopwindow.h"
 
-#include "const/sound.h"
-
 #include "const/resources/currency.h"
 
 #ifdef TMWA_SUPPORT
@@ -32,6 +30,8 @@
 #include "gui/windows/confirmdialog.h"
 #include "gui/windows/shopselldialog.h"
 #include "gui/windows/tradewindow.h"
+
+#include "const/sound.h"
 
 #include "const/gui/chat.h"
 #endif  // TMWA_SUPPORT
