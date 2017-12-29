@@ -24,6 +24,7 @@ export CXXFLAGS="$CXXFLAGS -Weverything -Wno-documentation -Wno-padded -Wno-sign
 -Wno-reserved-id-macro -Wno-packed -Wno-documentation-unknown-command \
 -Wno-variadic-macros -Wno-double-promotion -Wno-attributes -Wno-shadow-field \
 -Wpointer-bool-conversion -fno-omit-frame-pointer -Wno-c++98-compat-pedantic \
+-Wno-implicit-fallthrough \
 -ggdb3 $POST_CXXFLAGS"
 
 do_init
