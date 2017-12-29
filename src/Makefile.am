@@ -2135,6 +2135,7 @@ manaplustests_SOURCES += \
 	      unittests/resources/sprite/animatedsprite.cc \
 	      unittests/gui/fonts/textchunklist.cc \
 	      unittests/gui/widgets/browserbox.cc \
+	      unittests/gui/widgets/staticbrowserbox.cc \
 	      unittests/resources/dye/dye.cc \
 	      unittests/resources/dye/dyepalette.cc \
 	      unittests/integrity.cc \
