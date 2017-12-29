@@ -75,7 +75,7 @@ class Widget;
   *
   * @author Olof Naessén
   */
-class SelectionEvent final: public Event
+class SelectionEvent final : public Event
 {
     public:
         /**

@@ -76,7 +76,7 @@
   *
   * @see Gui::setTop
   */
-class BasicContainer2: public BasicContainer
+class BasicContainer2 notfinal : public BasicContainer
 {
     public:
         /**

@@ -76,7 +76,7 @@ class Widget;
   *
   * @author Olof Naessén
   */
-class MouseEvent: public InputGuiEvent
+class MouseEvent final : public InputGuiEvent
 {
     public:
         /**

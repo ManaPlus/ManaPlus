@@ -81,7 +81,7 @@ class Widget;
 /**
   * Represents a key event.
   */
-class KeyEvent: public InputGuiEvent
+class KeyEvent final : public InputGuiEvent
 {
     public:
         /**

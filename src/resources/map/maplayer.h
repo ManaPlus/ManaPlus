@@ -45,7 +45,7 @@ struct MetaTile;
  * A map layer. Stores a grid of tiles and their offset, and implements layer
  * rendering.
  */
-class MapLayer final: public MemoryCounter, public ConfigListener
+class MapLayer final : public MemoryCounter, public ConfigListener
 {
     public:
         friend class Map;

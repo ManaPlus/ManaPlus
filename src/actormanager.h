@@ -65,7 +65,7 @@ typedef ActorSpritesMap::const_iterator ActorSpritesMapConstIterator;
 typedef std::map<BeingId, std::set<std::string> > IdNameMapping;
 typedef IdNameMapping::const_iterator IdNameMappingCIter;
 
-class ActorManager final: public ConfigListener
+class ActorManager final : public ConfigListener
 {
     public:
         ActorManager();

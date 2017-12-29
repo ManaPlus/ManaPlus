@@ -71,7 +71,7 @@
   *
   * @author Olof Naessén
   */
-class InputGuiEvent: public Event
+class InputGuiEvent notfinal : public Event
 {
     public:
         /**
