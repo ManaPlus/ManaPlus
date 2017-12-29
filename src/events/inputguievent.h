@@ -84,6 +84,8 @@ class InputGuiEvent notfinal : public Event
             mIsConsumed(false)
         { }
 
+        A_DELETE_COPY(InputGuiEvent)
+
         /**
           * Marks the event as consumed. Input event listeners may discard
           * consumed input or act on consumed input. An example of a widget

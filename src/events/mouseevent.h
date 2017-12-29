@@ -105,6 +105,8 @@ class MouseEvent final : public InputGuiEvent
         {
         }
 
+        A_DELETE_COPY(MouseEvent)
+
         /**
           * Gets the button of the mouse event.
           *

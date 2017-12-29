@@ -105,6 +105,8 @@ class KeyEvent final : public InputGuiEvent
             mActionId(actionId)
         { }
 
+        A_DELETE_COPY(KeyEvent)
+
         /**
           * Gets the type of the event.
           *

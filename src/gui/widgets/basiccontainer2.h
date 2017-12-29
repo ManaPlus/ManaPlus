@@ -92,6 +92,8 @@ class BasicContainer2 notfinal : public BasicContainer
           */
         ~BasicContainer2() override;
 
+        A_DEFAULT_COPY(BasicContainer2)
+
         /**
           * Sets the container to be opaque or not. If the container
           * is opaque its background will be drawn, if it's not opaque
