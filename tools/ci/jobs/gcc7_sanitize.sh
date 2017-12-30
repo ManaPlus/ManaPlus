@@ -23,6 +23,10 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
 -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool \
 -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict \
+-fsanitize=pointer-compare -fsanitize=pointer-subtract -fsanitize=leak \
+-fsanitize=shift-exponent -fsanitize=shift-base -fsanitize=bounds-strict \
+-fsanitize=pointer-overflow -fsanitize=builtin \
+-fsanitize-address-use-after-scope \
 -std=gnu++1z -Wformat=1 \
 -Wno-attributes -fno-omit-frame-pointer"
 
