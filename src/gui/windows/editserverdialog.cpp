@@ -44,7 +44,7 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
                                    const ServerInfo &server,
                                    const int index) :
     // TRANSLATORS: edit server dialog name
-    Window(_("Edit Server"), Modal_true, parent, std::string()),
+    Window(_("Edit Server"), Modal_true, parent, "editserverdialog.xml"),
     ActionListener(),
     KeyListener(),
     mServerAddressField(new TextField(this, std::string(),
