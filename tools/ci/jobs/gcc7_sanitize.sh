@@ -36,6 +36,7 @@ export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*
+export ASAN_OPTIONS=detect_stack_use_after_return=true:strict_init_order=true:detect_invalid_pointer_pairs=1
 run_make
 
 source ./tools/ci/scripts/exit.sh
