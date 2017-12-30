@@ -177,7 +177,11 @@ Window::Window(const std::string &caption,
     setTitleBarHeight(20);
 
     if (skin.empty())
+    {
+        reportAlways("Default skin was used for window: %s",
+            caption.c_str());
         skin = "window.xml";
+    }
 
     int childPalette = 1;
     // Loads the skin

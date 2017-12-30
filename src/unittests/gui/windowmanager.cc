@@ -639,7 +639,7 @@ TEST_CASE("Windows tests", "windowmanager")
         CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
             "name",
             container,
-            std::string(),
+            "emotes.xml",
             0,
             0);
         gui->draw();
@@ -650,7 +650,7 @@ TEST_CASE("Windows tests", "windowmanager")
     {
         CREATEWIDGETV(itemShortcutWindow, ShortcutWindow,
             std::string(),
-            std::string(),
+            "items.xml",
             0,
             0);
         gui->draw();
