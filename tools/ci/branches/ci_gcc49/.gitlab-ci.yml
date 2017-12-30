@@ -1,0 +1,219 @@
+stages:
+  - build
+
+# with :; prevent from run it on windows
+before_script:
+  - ":; uname -a"
+  - ":; cat /etc/os-release"
+  - ":; pwd"
+  - ":; cat /proc/sys/kernel/core_pattern"
+  - ":; mkdir logs || true"
+  - ":; ${UPDATEREPOS}"
+  - ":; ${DOCKERRETRY} ${PMUPDATE} >logs/apt.log"
+  - ":; ${DOCKERRETRY} ${PMINSTALL} ${PACKAGES} >>logs/apt.log"
+  - ":; ./tools/ci/scripts/clonesrc.sh"
+  - ":; cd manaplus"
+
+image: debian:unstable
+variables:
+  GET_SOURCES_ATTEMPTS: "5"
+  ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
+  UPDATEREPOS: "tools/ci/scripts/updaterepos.sh"
+  PMUPDATE: "apt-get update"
+  PMINSTALL: "apt-get install -y -qq"
+  DOCKERRETRY: "./tools/ci/scripts/dockerretry.sh"
+  GIT_DEPTH: "1"
+
+.job-push: &job-push
+  artifacts:
+    paths:
+    - logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+.job-always: &job-always
+  artifacts:
+    paths:
+    - logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+gcc-4.9_sanitize_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_sanitize_tests.sh
+  - ldd ./src/manaplustests | grep "libasan"
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind git
+  tags:
+    - docker
+
+gcc-4.9_sanitize_tests_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_sanitize_tests.sh
+  - ldd ./src/manaplustests | grep "libasan"
+  image: vicamo/debian:jessie-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              valgrind git
+  tags:
+    - docker
+
+gcc-4.9_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_sanitize.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps git
+
+gcc-4.9_sanitize_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_sanitize.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: vicamo/debian:jessie-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps git
+
+gcc-4.9_sdl2_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_sanitize.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
+              gdb valgrind netcat-openbsd procps git
+
+gentoo_gcc-4.9_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_tests.sh --without-dyecmd --without-manaplusgame
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc49_sdl1
+  <<: *job-push
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-4.9.4
+    NEWCXX: g++-4.9.4
+  tags:
+    - docker
+
+gentoo_gcc-4.9_tests_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49_tests.sh --without-dyecmd --without-manaplusgame --with-sdl2
+  image: registry.gitlab.com/manaplus/images:gentoo_gcc49_sdl2
+  <<: *job-push
+  variables:
+    PMUPDATE: "echo"
+    PMINSTALL: "echo"
+    NEWCC: gcc-4.9.4
+    NEWCXX: g++-4.9.4
+  tags:
+    - docker
+
+gcc-4.9:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49.sh
+  - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/jobs/gcc49_c++11.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps git
+
+gcc-4.9_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: vicamo/debian:jessie-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps git
+  tags:
+    - docker
+
+cmake_gcc-4.9:
+  stage: build
+  script:
+  - ./tools/ci/jobs/cmake_gcc49.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make cmake gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps git
+  tags:
+    - docker
+
+gcc49_cilkplus:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49.sh --enable-cilkplus
+  - ./tools/ci/scripts/runtests.sh
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              gdb valgrind netcat-openbsd procps git
+
+gcc-4.9_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc49.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  image: debian:jessie
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-4.9 g++-4.9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              gdb valgrind netcat-openbsd procps git

@@ -1,0 +1,161 @@
+stages:
+  - build
+
+# with :; prevent from run it on windows
+before_script:
+  - ":; uname -a"
+  - ":; cat /etc/os-release"
+  - ":; pwd"
+  - ":; cat /proc/sys/kernel/core_pattern"
+  - ":; mkdir logs || true"
+  - ":; ${UPDATEREPOS}"
+  - ":; ${DOCKERRETRY} ${PMUPDATE} >logs/apt.log"
+  - ":; ${DOCKERRETRY} ${PMINSTALL} ${PACKAGES} >>logs/apt.log"
+  - ":; ./tools/ci/scripts/clonesrc.sh"
+  - ":; cd manaplus"
+
+image: debian:unstable
+variables:
+  GET_SOURCES_ATTEMPTS: "5"
+  ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
+  UPDATEREPOS: "tools/ci/scripts/updaterepos.sh"
+  PMUPDATE: "apt-get update"
+  PMINSTALL: "apt-get install -y -qq"
+  DOCKERRETRY: "./tools/ci/scripts/dockerretry.sh"
+  GIT_DEPTH: "1"
+
+.job-push: &job-push
+  artifacts:
+    paths:
+    - logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+.job-always: &job-always
+  artifacts:
+    paths:
+    - logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+.job-deheader_shared: &job-deheader_shared
+  variables:
+    GIT_DEPTH: "1"
+    INCLUDES: "-I/usr/include/SDL -I/usr/include/libxml2"
+    LOGFILE: logs/deheader.log
+    CXX: g++-5
+    PACKAGES: git python wget 
+              gcc-5 g++-5 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+.job-deheader_sdl2_shared: &job-deheader_sdl2_shared
+  variables:
+    GIT_DEPTH: "1"
+    INCLUDES: "-I/usr/include/SDL2 -I/usr/include/libxml2"
+    LOGFILE: logs/deheader.log
+    CXX: g++-5
+    PACKAGES: git python wget 
+              gcc-5 g++-5 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+
+deheader_libxml_opengl_tmwa:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_shared
+
+deheader_sdl2_libxml_opengl_tmwa:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_sdl2_shared
+
+deheader_libxml_tmwa:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_shared
+
+deheader_sdl2_libxml_tmwa:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_sdl2_shared
+
+deheader_tinyxml_opengl_tmwa:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_TINYXML2 -DUSE_TINYXML_OLD -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  variables:
+    GIT_DEPTH: "1"
+    INCLUDES: "-I/usr/include/SDL -I/usr/include/libxml2"
+    LOGFILE: logs/deheader.log
+    CXX: g++-5
+    PACKAGES: git python wget 
+              gcc-5 g++-5 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+deheader_sdl2_tinyxml_opengl_tmwa:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_TINYXML2 -DUSE_TINYXML_OLD -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  variables:
+    GIT_DEPTH: "1"
+    INCLUDES: "-I/usr/include/SDL2 -I/usr/include/libxml2"
+    LOGFILE: logs/deheader.log
+    CXX: g++-5
+    PACKAGES: git python wget 
+              gcc-5 g++-5 
+              libtinyxml2-dev libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+
+deheader_libxml_opengl:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11"
+  - ./tools/ci/jobs/deheader.sh
+  - export skipPath="src/net/tmwa/"
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_shared
+
+deheader_sdl2_libxml_opengl:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - export skipPath="src/net/tmwa/"
+  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_sdl2_shared
