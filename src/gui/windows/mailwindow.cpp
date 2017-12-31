@@ -208,7 +208,7 @@ std::string MailWindow::getMailHeader(const MailMessage *const message) const
         else
             header.append(" ");
         header.append(" ").append(message->title);
-        return STD_MOVE(header);
+        return header;
     }
     return strprintf("%s %s",
         message->read ? " " : "U",
