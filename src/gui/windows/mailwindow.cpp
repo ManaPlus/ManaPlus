@@ -46,7 +46,6 @@
 #include "utils/dtor.h"
 #include "utils/foreach.h"
 #include "utils/gettext.h"
-#include "utils/stdmove.h"
 #include "utils/stringutils.h"
 
 #include "debug.h"
