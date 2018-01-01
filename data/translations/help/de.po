@@ -3,8 +3,8 @@
 # Bernard <nard@bh28.net>, 2014
 # Fortunato <fortunato108@googlemail.com>, 2013
 # Fortunato <fortunato108@googlemail.com>, 2013
-# jmf <jm.franz@online.de>, 2015
-# jmf <jm.franz@online.de>, 2015
+# jmf <jmf@mesecons.net>, 2015
+# jmf <jmf@mesecons.net>, 2015
 # Jürgen, 2013
 # Jürgen, 2013
 # Slimor <madjuca@gmx.de>, 2013
@@ -18,7 +18,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2017-09-23 18:10+0000\n"
+"PO-Revision-Date: 2017-11-29 10:35+0000\n"
 "Last-Translator: Kristin Joris <kristin.joris@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/de/)\n"
 "MIME-Version: 1.0\n"
