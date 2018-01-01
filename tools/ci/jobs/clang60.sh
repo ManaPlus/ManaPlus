@@ -15,6 +15,7 @@ export LOGFILE=clang60.log
 source ./tools/ci/scripts/init.sh
 
 # need fix -Wshadow-field
+# add -Wno-zero-as-null-pointer-constant due clang bug
 
 export CXXFLAGS="$CXXFLAGS -Weverything -Wno-documentation -Wno-padded -Wno-sign-conversion \
 -Wno-global-constructors -Wno-exit-time-destructors -Wno-weak-vtables \
@@ -24,7 +25,7 @@ export CXXFLAGS="$CXXFLAGS -Weverything -Wno-documentation -Wno-padded -Wno-sign
 -Wno-reserved-id-macro -Wno-packed -Wno-documentation-unknown-command \
 -Wno-variadic-macros -Wno-double-promotion -Wno-attributes -Wno-shadow-field \
 -Wpointer-bool-conversion -fno-omit-frame-pointer -Wno-c++98-compat-pedantic \
--Wno-implicit-fallthrough \
+-Wno-implicit-fallthrough -Wno-zero-as-null-pointer-constant \
 -ggdb3 $POST_CXXFLAGS"
 
 do_init
