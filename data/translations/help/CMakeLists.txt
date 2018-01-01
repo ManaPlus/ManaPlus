@@ -1,4 +1,5 @@
 SET(FILES
+    ca.po
     cs.po
     de.po
     es.po

@@ -1,0 +1,1293 @@
+# en#
+# Translators:
+# Silvia Pérez <silvia.perezni@e-campus.uab.cat>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: ManaPlus\n"
+"PO-Revision-Date: 2017-12-01 21:56+0000\n"
+"Last-Translator: Silvia Pérez <silvia.perezni@e-campus.uab.cat>\n"
+"Language-Team: Catalan (http://www.transifex.com/akaras/manaplus/language/ca/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "/uploadserverconfig - upload server config into pastebin service."
+msgstr "/uploadserverconfig - puja configuració del servidor en el servei pastebin."
+
+msgid "Mercenaries or homunculuses"
+msgstr "Mercenaris o homuncles"
+
+msgid "/atkhuman - select and attack nearest player."
+msgstr "/atkhuman - selecciona i ataca al jugador més proper."
+
+msgid "\"Outfit shortcut 12\""
+msgstr "\"Drecera de vestuari 12\""
+
+msgid "/cacheinfo - show text cache info."
+msgstr "/cacheinfo - mostra missatge amb informació de la memòria cau."
+
+msgid ""
+"You can imitate other players by selecting \"imitation\" in player context menu\n"
+" or type chat command: /imitate playername."
+msgstr "Podeu imitar a altres jugadors si seleccioneu \"imitació\" al menú de context del jugador o escriviu l'ordre de xat: /imitate nom d'usuari."
+
+msgid ""
+" - ##2allow trading##9: Do you wish to allow trade requests from arbitrary\n"
+"   players?"
+msgstr " - ##2allow trading##9: Voleu permetre les sol·licituds d'intercanvi de jugadors desconeguts?"
+
+msgid "\"Emote shortcut 9\""
+msgstr "\"Drecera d'emoticona 9\""
+
+msgid "/addignoreattack NAME - add monster to ignore attack list."
+msgstr "/addignoreattack NOM - afegeix monstre a la llista d'ignorar atacs."
+
+msgid "Back to Index"
+msgstr "Torna a l'índex"
+
+msgid "\"Quests window\""
+msgstr "\"Finestra de missions\""
+
+msgid "/firehomunculus - fire homunculus."
+msgstr "/firehomunculus - acomiada homuncle."
+
+msgid "\"Quick drop window\""
+msgstr "\"Finestra d'abocament\""
+
+msgid "Official site:"
+msgstr "Pàgina web oficial:"
+
+msgid ""
+" You can improve your skills by increasing job level. Each job level\n"
+" gives you 1 point to spend on basic skills."
+msgstr ""
+" Podeu millorar les vostres habilitats si augmenteu el nivell del vostre ofici.\n"
+" Cada nivell aconseguit et donarà 1 punt per utilitzar en habilitats bàsiques."
+
+msgid "\"Emote shortcut 10\""
+msgstr "\"Drecera d'emoticona 10\""
+
+msgid "Content devs"
+msgstr "Desenvolupadors de contingut"
+
+msgid "Guild chat commands"
+msgstr "Ordres del xat del gremi"
+
+msgid "/away, /away MSG - set away mode."
+msgstr "/away, /away MSG - estableix mode absent."
+
+msgid "GM"
+msgstr "MJ"
+
+msgid "/addattack NAME - add monster to attack list."
+msgstr "/addattack NOM - afegeix monstre a la llista d'atacs."
+
+msgid "\"Emote shortcut 2\""
+msgstr "\"Drecera d'emoticona 2\""
+
+msgid "/announce MESSAGE - show global message."
+msgstr "/announce MISSATGE - mostra missatge global."
+
+msgid "/serverunignoreall - unignore all whispers on server side."
+msgstr "/serverunignoreall - activa tots els xiuxiuejos al servidor."
+
+msgid "/createparty NAME - create party with selected name."
+msgstr "/createparty NOM - crea equip amb el nom escollit."
+
+msgid "/heal NICK - heal nick."
+msgstr "/heal USUARI - cura l'usuari."
+
+msgid "\"Select OK\""
+msgstr "\"Selecciona D'ACORD\""
+
+msgid "/dumpe - dump environment variables into chat."
+msgstr "/dumpe - buida variables d'entorn al xat."
+
+msgid ""
+"If client working very slow, you can improve speed\n"
+"by reading this: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
+msgstr "Si el client està funcionant lentament, podeu millorar la velocitat llegint això: @@http://manaplus.org/slowpc|http://manaplus.org/slowpc@@"
+
+msgid "\"Enable/disable trading\""
+msgstr "\"Activa/Desactiva intercanvis\""
+
+msgid "/wait NAME - wait for nick or moster with name."
+msgstr "/wait NOM - espera l'usuari o al monstre amb nom."
+
+msgid "##2Trade:##9 enables the ability to trade with others."
+msgstr "##2Trade:##9 activa l'habilitat d'intercanviar amb altres."
+
+msgid "\"Use magic attack\""
+msgstr "\"Utilitza atac màgic\""
+
+msgid "\"Who is online window\""
+msgstr "\"Finestra Qui està en línia\""
+
+msgid "\"Switch pvp attack\""
+msgstr "\"Canvia a atac jcj\""
+
+msgid "\"Deactivate chat input\""
+msgstr "\"Desactiva entrada de xat\""
+
+msgid "\"Move to navigation point\""
+msgstr "\"Mou al punt de navegació\""
+
+msgid "ManaPlus Contributors"
+msgstr "Col·laboradors de ManaPlus"
+
+msgid ""
+"The Mana World##0 is a serious effort to create an innovative free\n"
+" and open source MMORPG world. The Mana World uses 2D graphics and aims to be\n"
+" as much diverse and interactive as possible. All content is licensed\n"
+" under the GPL, making sure this game can't ever run away from you."
+msgstr "The Mana World##0 és una mostra del nostre gran esforç per crear un innovador client MMORPG gratuït i de codi obert. The Mana World utilitza gràfics 2D i l'objectiu és crear un món interactiu, gran i divers. Està llicenciat sota el GPL, assegurant que aquest joc no pugui escapar-se de les teves mans."
+
+msgid "ABOUT MANAPLUS"
+msgstr "Quant a ManaPlus"
+
+msgid "/pseudoaway, /pseudoaway MSG - set/unset pseudo away mode."
+msgstr "/pseudoaway, /pseudoaway MSG - estableix/no estableixis el mode pseudo absent."
+
+msgid "Other contributors"
+msgstr "Altres col·laboradors"
+
+msgid "\"Item shortcuts Key\""
+msgstr "\"Tecla de dreceres per a objectes\""
+
+msgid ""
+"Communication is often essential to success in this game. You can communicate\n"
+" in several ways:  By chatting and showing emotions (see above), by trading\n"
+" (with the right-click context menu), and by whispering."
+msgstr "La comunicació és molt important en aquest joc. Existeixen diverses formes de comunicació: escrivint al xat, mostrant emocions (veure més amunt), fent intercanvis (al menú de context fent clic al botó dret) i enviant xiuxiuejos."
+
+msgid "\"Item shortcut 3\""
+msgstr "\"Drecera per a objecte 3\""
+
+msgid "\"Change move type\""
+msgstr "\"Canvia tipus de moviment\""
+
+msgid "Tabs"
+msgstr "Pestanyes"
+
+msgid "\"Outfit shortcut 4\""
+msgstr "\"Drecera de vestuari 4\""
+
+msgid "\"Did you know window\""
+msgstr "\"Finestra sabíeu que...?\""
+
+msgid ""
+"/mail NICK MSG - send offline message to NICK. Working only in tmw server."
+msgstr "/mail USUARI MSG - envia missatge fora de línia a USUARI. Només funciona al servidor tmw."
+
+msgid "Download"
+msgstr "Baixada"
+
+msgid "/dropn - drop N items from any slot."
+msgstr "/dropn - llença N objectes de qualsevol ranura."
+
+msgid "/enableaway - enable away messages in current tab."
+msgstr "/enableaway - activa missatges automàtics a la pestanya actual."
+
+msgid "Support"
+msgstr "Suport"
+
+msgid "\"Copy equiped to Outfit\""
+msgstr "\"Copia equipament al vestuari\""
+
+msgid "/outfit next - wear next outfit."
+msgstr "/outfit next - equipa vestuari següent."
+
+msgid "\"Outfit shortcut 3\""
+msgstr "\"Drecera de vestuari 3\""
+
+msgid "\"Quick drop N items\""
+msgstr "\"Llença N objectes\""
+
+msgid ""
+"/msg NICK text, /whisper NICK text, /w NICK text - send whisper message to "
+"nick."
+msgstr "/msg USUARI text, /whisper USUARI text, /w USUARI text - envia xiuxiueig a USUARI."
+
+msgid "/movetotarget - move to target position."
+msgstr "/movetotarget - mou a la posició seleccionada."
+
+msgid "/catchpet - try to catch pet."
+msgstr "/catchpet - intenta atrapar la mascota."
+
+msgid "/outfit prev - wear previous outfit."
+msgstr "/outfit prev - equipa vestuari anterior."
+
+msgid "##2Party level2:##9 enables a char to create a party."
+msgstr "##2Party level2:##9 permet a un personatge crear un equip."
+
+msgid "/target NICK - select nick as target. Can be monster or player nick."
+msgstr "/target USUARI - selecciona usuari com a objectiu. Pot ser un monstre o un usuari."
+
+msgid "##2ManaPlus version: ##6%VER%"
+msgstr "##2ManaPlus versió: ##6%VER%"
+
+msgid "COMMANDS"
+msgstr "ORDRES"
+
+msgid "For other server look servers pages for support."
+msgstr "Per altre servidor, busqueu pàgines de servidor en suport."
+
+msgid "\"Toggle chat\""
+msgstr "\"Canvia de xat\""
+
+msgid "/talkpet TEXT - talk from your pet."
+msgstr "/talkpet TEXT - fa que la mascota parli."
+
+msgid "\"Change attack type\""
+msgstr "\"Canvia tipus d'atac\""
+
+msgid "Manaplus Developers"
+msgstr "Desenvolupadors de Manaplus"
+
+msgid "\"On / off audio\""
+msgstr "\"Àudio activat / desactivat\""
+
+msgid "You can change any key in keyboard settings."
+msgstr "Podeu canviar qualsevol tecla a configuració de teclat."
+
+msgid "\"Previous chat tab line\""
+msgstr "\"Línia de la pestanya de xat anterior\""
+
+msgid "\"Emote shortcut 13\""
+msgstr "\"Drecera d'emoticona 13\""
+
+msgid "/disregard NICK - add nick to disregarded list."
+msgstr "/disregard USUARI - afegeix usuari a la llista d'ignorats."
+
+msgid "/enablehighlight - enable highlight in current tab."
+msgstr "/enablehighlight - Activa ressaltat en la pestanya actual."
+
+msgid "/disableaway - disable away messages in current tab."
+msgstr "/disableaway - desactiva missatges automàtics en la pestanya actual."
+
+msgid "\"Smilie\""
+msgstr "\"Emoticona\""
+
+msgid "Main development"
+msgstr "Desenvolupament principal"
+
+msgid ""
+" Left click to execute default action: walk, pick up an item, attack a monster\n"
+" and talk to NPCs (be sure to click on their feet). Right click to show up a\n"
+" context menu. Holding [Left Shift] prevents from walking when attacking."
+msgstr ""
+" Feu clic esquerra per executar una acció per defecte: camina, recull,\n"
+" ataca a un monstre i parla amb PNJs (cliqueu als peus). Feu clic dret per\n"
+" mostrar el menú de context. Manteniu premuda la tecla [Maj esquerra] per \n"
+" evitar caminar durant atacs."
+
+msgid "Search string not found."
+msgstr "No s'ha trobat la cadena de cerca. "
+
+msgid "\"Emote shortcut 7\""
+msgstr "\"Drecera d'emoticona 7\""
+
+msgid ""
+"You can set any client resolution. In settings in video tab,\n"
+"click on \"custom\" and enter for example: 900x500 and press ok."
+msgstr ""
+"Podeu establir qualsevol resolució de client. En configuració \n"
+"dins la pestanya de vídeo, feu clic a \"personalitza\" \n"
+"i introduïu, per exemple, 900x500 i premeu d'acord."
+
+msgid "/attack - attack target."
+msgstr "/attack - ataca a l'objectiu."
+
+msgid "\"Set home location/set arrow\""
+msgstr "\"Estableix localització de la casa/estableix la fletxa\""
+
+msgid "\"Set direction left\""
+msgstr "\"Estableix direcció a la esquerra\""
+
+msgid "\"Equipment window\""
+msgstr "\"Finestra d'equipament\""
+
+msgid "Chrome store"
+msgstr "Botiga de Chrome"
+
+msgid ""
+" To add an item to the shortcut bar click on the item in the inventory window,\n"
+" then click on the box in the shortcut-window which should be associated with\n"
+" the item. To reorder items within the shortcut-window simply click and drag\n"
+" them between the boxes. To remove items you simply drag them outside of the\n"
+" window and drop them."
+msgstr ""
+" Feu clic en l'objecte en la finestra de l'inventari per a afegir un objecte\n"
+" a la barra de dreceres. Després, feu clic al quadre de la finestra de dreceres\n"
+" on s'ha d'associar l'objecte. Per a reordenar els objectes en la finestra de\n"
+" dreceres simplement feu clic i arrossegueu-los entre els quadres. \n"
+"Per a suprimir els objectes arrossegueu-los fora de la finestra i deixeu-los anar."
+
+msgid "/dumpt - dump tests info into chat."
+msgstr "/dumpt - buida informació del les proves al xat."
+
+msgid "Different patches"
+msgstr "Pedaços diferents"
+
+msgid "Sound effects"
+msgstr "Efectes de so"
+
+msgid "\"Talk\""
+msgstr "\"Diàleg\""
+
+msgid "\"Item shortcut 8\""
+msgstr "\"Drecera per a objecte 8\""
+
+msgid "/all - show visible beings list in debug tab."
+msgstr "/all - mostra llista de éssers visibles en la pestanya de depuració."
+
+msgid ""
+"Most commands working in whispers.\n"
+"For example command /imitation in whisper with nick1,\n"
+" similar to command /imitation nick1."
+msgstr ""
+"La majoria de les ordres funcionen en xiuxiuejos.\n"
+"Per exemple, la ordre /imitation en xiuxiueig amb usuari1,\n"
+" és semblant a la ordre /imitation usuari1."
+
+msgid "\"Ignore input 1\""
+msgstr "\"Ignora entrada 1\""
+
+msgid "\"Item shortcut 6\""
+msgstr "\"Drecera per a objecte 6\""
+
+msgid ""
+" If you're having troubles, please first of all read the FAQ. If you\n"
+" can't find a solution to your problem, feel free to check our\n"
+" Bugs/Support section of the forum:"
+msgstr ""
+" Si esteu experimentant problemes, primer llegiu totes les PMF. Si no\n"
+" podeu trobar una solució al problema, feu una ullada a la nostra\n"
+" secció Erros/Suport al fòrum:"
+
+msgid "/help - show this help."
+msgstr "/help - mostra aquesta ajuda."
+
+msgid "\"Outfit shortcut 7\""
+msgstr "\"Drecera de vestuari 7\""
+
+msgid "/addpriorityattack NAME - add monster to priority attack list."
+msgstr "/addpriorityattack NOM - afegeix monstre a la llista d'atacs prioritaris. "
+
+msgid "For TMW support:"
+msgstr "Per suport de TMW:"
+
+msgid "/priceload - load shop price from disc."
+msgstr "/priceload - carrega preus de la botiga des del disc."
+
+msgid ""
+" - ##2friend##9:  You consider this player a friend.  The player may chat,\n"
+"   message your in private, or trade with you at any point."
+msgstr ""
+" - ##2friend##9:  Considereu a aquest jugador com un amic. És possible que\n"
+"   el jugador parli amb tu al xat, t'enviï missatges per privat o et proposi\n"
+"   un intercanvi en qualsevol moment."
+
+msgid "\"Item shortcut 13\""
+msgstr "\"Drecera per a objecte 13\""
+
+msgid "For other servers may exists other copyrights."
+msgstr "Per altres servidors és possible que existeixin altres drets d'autor."
+
+msgid "\"Change crazy Move mode\""
+msgstr "\"Canvia mode de moviment boig\""
+
+msgid "/sethome - set home position."
+msgstr "/sethome - estableix posició casa."
+
+msgid ""
+" - ##2allow whispers##9: Do you wish to allow arbitrary players to send\n"
+"   private messages to you in-game?"
+msgstr ""
+" - ##2allow whispers##9: Voleu permetre que jugadors arbitraris t'enviïn\n"
+"   missatges privats mentre jugueu?"
+
+msgid "\"Copy outfit\""
+msgstr "\"Copia vestuari\""
+
+msgid "/present - print visible players number to chat."
+msgstr "/present - mostra nombre de jugadors visibles al xat."
+
+msgid "/dumpogl - dump all OpenGL variables into log file."
+msgstr "/dumpogl - buida totes les variables d'OpenGL a un arxius de registre."
+
+msgid "Contributors to client development"
+msgstr "Col·laboradors al desenvolupament del client"
+
+msgid "/gm MESSAGE - send message to all online gms."
+msgstr "/gm MISSATGE - envia missatge a tots els MJs en línia."
+
+msgid ""
+"You can do basic searching in help by using command\n"
+"##2?text"
+msgstr ""
+"Podeu fer una cerca bàsica dins de l'opció ajuda utilitzant l'ordre\n"
+"##2?text"
+
+msgid ""
+"You can buy or sell items from players shops.\n"
+"Right click on player and select \"Buy\" or \"Sell\""
+msgstr ""
+"Podeu comprar o vendre objectes de les botigues del jugadors.\n"
+"Feu clic dret en el jugador i seleccioneu \"Compra\" o \"Ven\""
+
+msgid "/unignore NICK - Remove nick from ignore list."
+msgstr "/unignore USUARI - Suprimeix usuari de la llista d'ignorats."
+
+msgid ""
+"You can restore yellow bar settings,\n"
+"by right click on it and select in context menu \"Reset yellow bar\"."
+msgstr ""
+"Podeu restaurar la configuració de la barra groga,\n"
+"clicant a sobre i seleccionant “Restaura la barra groga” al menú de context."
+
+msgid "\"Emote shortcut 3\""
+msgstr "\"Drecera d'emoticona 3\""
+
+msgid "/dumpg - dump graphics and some other settings to chat."
+msgstr "/dumpg - buida gràfics i altres opcions al xat."
+
+msgid "/trade NICK - start trade with nick."
+msgstr "/trade USUARI - inicia intercanvi amb usuari."
+
+msgid "\"Switch magic attack\""
+msgstr "\"Canvia atac màgic\""
+
+msgid ""
+"You can hide/show bars and buttons by right click and select menu item."
+msgstr "Podeu amagar/mostrar les barres i els botons prement el clic dret i seleccionant el menú d'objectes."
+
+msgid "/petmoveleft - move pet one tile left."
+msgstr "/petmoveleft - mou mascota una rajola cap a la esquerra."
+
+msgid "\"Enable / disable away mode\""
+msgstr "\"Activa / desactiva mode absent\""
+
+msgid "\"Commands window\""
+msgstr "\"Finestra d'ordres\""
+
+msgid "Android porting"
+msgstr "Portabilitat a Android"
+
+msgid ""
+"You can set away mode,\n"
+"by type in chat command /away"
+msgstr "Podeu establir el mode absent escrivint al xat d'ordres /away"
+
+msgid "Magic skills:"
+msgstr "Habilitats màgiques:"
+
+msgid "Server news"
+msgstr "Noticies del servidor"
+
+msgid "/clear - clear current chat tab."
+msgstr "/clear - neteja la pestanya de xat actual."
+
+msgid "\"Social window\""
+msgstr "\"Finestra social\""
+
+msgid "\"Emote shortcut 4\""
+msgstr "\"Drecera d'emoticona 4\""
+
+msgid "\"Close chat tab\""
+msgstr "\"Tanca pestanya de xat\""
+
+msgid "/petdirectright - rorate pet right."
+msgstr "/petdirectright - gira la mascota cap a la dreta."
+
+msgid "\"Target player\""
+msgstr "\"Selecciona jugador\""
+
+msgid "/invite NICK - invite a player to your party."
+msgstr "/invite USUARI - invita a un jugador al teu equip."
+
+msgid ""
+" - ##2disregarded##9:  You wish to disregard this player, meaning that his or\n"
+"   her chat messages are not logged and trade requests and whispers are\n"
+"   ignored."
+msgstr ""
+" - ##2disregarded##9:  Desitgeu desatendre aquest jugador, el qual significa\n"
+"   que els seus missatges del xat no s'enregistraran i que les seves\n"
+"   sol·licituds d'intercanvi i els seus xiuxiuejos seran ignorats."
+
+msgid "\"Debug window\""
+msgstr "\"Finestra de depuració\""
+
+msgid "\"Next chat tab\""
+msgstr "\"Següent pestanya de xat\""
+
+msgid "\"Change move to target type\""
+msgstr "\"Canvia moviment al tipus de l'objectiu\""
+
+msgid "\"Pickup\""
+msgstr "\"Recull\""
+
+msgid "\"Item shortcut 2\""
+msgstr "\"Drecera per a objecte 2\""
+
+msgid "About current server"
+msgstr "Quant a aquest servidor"
+
+msgid "/petaistop - disable pet ai."
+msgstr "/petaistop - desactiva la mascota de la IA."
+
+msgid "\"Quick heal target or self\""
+msgstr "\"Cura a l'objectiu o a un mateix\""
+
+msgid "Search error"
+msgstr "Busca un error"
+
+msgid "/targetpet - target pet."
+msgstr "/targetpet - selecciona mascota."
+
+msgid "\"Outfit shortcut 9\""
+msgstr "\"Drecera de vestuari 9\""
+
+msgid "\"Change attack weapon type\""
+msgstr "\"Canvia tipus d'atac d'arma\""
+
+msgid "\"Move left\""
+msgstr "\"Mou a l'esquerra\""
+
+msgid ""
+"##9 This file lists all contributors up to the current release. Check the wiki\n"
+"##9 for the currently active development team."
+msgstr ""
+"##9 Aquest arxiu enumera tots els contribuents d'aquesta versió. Revisa la wiki\n"
+"##9 per veure l'equip de programació actiu actualment."
+
+msgid "\"Chat window\""
+msgstr "\"Finestra de xat\""
+
+msgid "/closeall - close all whispers."
+msgstr "/closeall - tanca tots els xiuxiuejos."
+
+msgid "\"Previous chat tab\""
+msgstr "\"Pestanya anterior de xat\""
+
+msgid "\"Kills stats window\""
+msgstr "\"Finestra d'estadístiques de morts\""
+
+msgid "Chrome (nacl) porting"
+msgstr "Portabilitat (nacl) a Chrome"
+
+msgid "\"Outfit shortcut 2\""
+msgstr "\"Drecera de vestuari 2\""
+
+msgid "IGNORING COMMUNICATION"
+msgstr "IGNORA LA COMUNICACIÓ"
+
+msgid "Powered By"
+msgstr "Powered By"
+
+msgid "Other"
+msgstr "Altres"
+
+msgid "\"Outfit shortcut 14\""
+msgstr "\"Drecera de vestuari 14\""
+
+msgid "\"Emote shortcut window\""
+msgstr "\"Finestra de dreceres de emoticones\""
+
+msgid "\"Wear outfit\""
+msgstr "\"Equipa vestuari\""
+
+msgid "\"Change map view mode\""
+msgstr "\"Canviar mode de visionat de mapa\""
+
+msgid "Instructions"
+msgstr "Instruccions"
+
+msgid "\"Emote shortcut 12\""
+msgstr "\"Drecera d'emoticona 12\""
+
+msgid "About The Mana World"
+msgstr "Quant a The Mana World"
+
+msgid "/serverignoreall - ignore all whispers on server side."
+msgstr "/serverignoreall - ignora tots els xiuxiuejos al servidor."
+
+msgid "/notice TEXT - set notice guild text."
+msgstr "/notice TEXT - estableix avís de text del gremi."
+
+msgid "\"Sit\""
+msgstr "\"Seu\""
+
+msgid "/navigate x y - move to position x,y in current map in any distance."
+msgstr "/navigate x y - mou-te a la posició x, y al mapa actual en qualsevol distància."
+
+msgid "SKILLS"
+msgstr "HABILITATS"
+
+msgid "Actions"
+msgstr "Accions"
+
+msgid "To type chat message, press ###keyChat;"
+msgstr "Per escriure un missatge de xat, premeu ###keyChat;"
+
+msgid "/item 0 - disable party item sharing options."
+msgstr "/item 0 - desactiva opcions d'intercanvi d'objectes amb l'equip."
+
+msgid "\"Target closest monster\""
+msgstr "\"Selecciona monstre més proper\""
+
+msgid "\"Outfits window\""
+msgstr "\"Finestra de vestuaris\""
+
+msgid "Party chat commands"
+msgstr "Ordres del xat de l'equip"
+
+msgid ""
+"You can walk to warps automatically.\n"
+"Open Social Window (###keyWindowSocial;) and selecy Nav tab,\n"
+"then click on warp what you want."
+msgstr ""
+"Podeu dirigir-vos als portals automàticament.\n"
+"Obriu finestra social (###keyWindowSocial;) i seleccioneu\n"
+"la Pestanya de navegació, després cliqueu al portal que desitgeu."
+
+msgid ""
+"##2ManaPlus##9 is extended client based on old code from ##2Mana##9 client.\n"
+" Added many features, improved perfomance, stability, security and more."
+msgstr ""
+"##2ManaPlus##9 és un client ampliat basat en un codi antic del client ##2Mana##9.\n"
+" S'han afegit moltes característiques, millorat el rendiment, la estabilitat, la seguretat i més."
+
+msgid ""
+"You can disable yellow bar,\n"
+"by pressing ###keyDisableGameModifiers;."
+msgstr "Podeu desactivar la barra groga prement ###keyDisableGameModifiers;."
+
+msgid "\"Screenshot\""
+msgstr "\"Captura de pantalla\""
+
+msgid "\"Change follow mode\""
+msgstr "\"Canvia tipus de seguiment\""
+
+msgid "Mana Contributors"
+msgstr "Col·laboradors del Mana"
+
+msgid "/query NICK, /q NICK - open new whisper tab for nick."
+msgstr "/query USUARI, /q USUARI - obre una nova pestanya de xiuxiueig per l'usuari."
+
+msgid "\"Item shortcut 5\""
+msgstr "\"Drecera per a objecte 5\""
+
+msgid "\"Scroll chat up\""
+msgstr "\"Desplaça xat cap amunt\""
+
+msgid ""
+"##2ManaPlus##9 is a serious effort to create an innovative free and open\n"
+" source MMORPG Client. ManaPlus uses 2D graphics and aims to create a large\n"
+" and diverse interactive world. It is licensed under the GPL, making\n"
+" sure this game can't ever run away from you."
+msgstr ""
+"##2ManaPlus##9 és una mostra del nostre gran esforç per crear un innovador\n"
+" client MMORPG gratuït i de codi obert. ManaPlus utilitza gràfics 2D i\n"
+" l'objectiu és crear un món interactiu, gran i divers. Està llicenciat\n"
+" sota el GPL, assegurant que aquest joc no pugui escapar-se de les teves mans."
+
+msgid "\"Outfit shortcut 6\""
+msgstr "\"Drecera de vestuari 6\""
+
+msgid "Visit IRC channel:"
+msgstr "Visita el canal d'IRC:"
+
+msgid "/petdirectup - rotate pet up."
+msgstr "/petdirectup - gira mascota cap dalt."
+
+msgid "\"Target & attack\""
+msgstr "“Selecciona i ataca\""
+
+msgid "\"Item shortcut 10\""
+msgstr "\"Drecera per a objecte 10\""
+
+msgid "/where - print current player position to chat."
+msgstr "/where - mostra posició actual del jugador al xat."
+
+msgid "/exp - show party experience sharing options."
+msgstr "/exp - mostra distribució d'experiència de l'equip."
+
+msgid "/dumpmods - dump all enabled mod names into chat."
+msgstr "/dumpmods - buida tots els noms modificats actius al xat."
+
+msgid "INDEX"
+msgstr "ÍNDEX"
+
+msgid "\"Outfit shortcut 10\""
+msgstr "\"Drecera de vestuari 10\""
+
+msgid "\"Crazy moves\""
+msgstr "\"Moviments bojos\""
+
+msgid ""
+" - ##2save player list##9: Should your acquaintance list be saved when you\n"
+"   quit the game?  If you enable this option, your list will survive when you\n"
+"   quit and re-start."
+msgstr ""
+" - ##2save player list##9: Hauria de desar-se la llista de coneguts quan\n"
+"   sortiu del joc? Si activeu aquesta opció, la vostra llista sobreviurà\n"
+"   quan sortiu i reinicieu."
+
+msgid "/uptime - show client uptime."
+msgstr "/uptime - mostra temps d'activitat del client."
+
+msgid "/imitation NICK - start imitation mode."
+msgstr "/imitation USUARI - inicia mode d'imitació."
+
+msgid "\"Ignore input 2\""
+msgstr "\"Ignora entrada 2\""
+
+msgid "\"Scroll chat down\""
+msgstr "\"Desplaça xat cap avall\""
+
+msgid "\"Move to target\""
+msgstr "\"Mou a l'objectiu\""
+
+msgid "/ignoreall - add all whispers to ignore list."
+msgstr "/ignoreall - afegeix tots el xiuxiuejos a la llista d'ignorats."
+
+msgid "\"Chat auto complete\""
+msgstr "\"Autocompletar del xat\""
+
+msgid "/ignore NICK - add nick to ignore list."
+msgstr "/ignore USUARI - afegeix nom d'usuari a la llista d'ignorats."
+
+msgid "/targetmercenary - target closest mercenary."
+msgstr "/target mercenary - selecciona al mercenari més proper."
+
+msgid "\"Attack\""
+msgstr "\"Ataca\""
+
+msgid "/magicattack - attack target with magic."
+msgstr "/magicattack - ataca a l'objectiu amb màgia."
+
+msgid "/petdirectdown - rotate pet down."
+msgstr "/petdirectdown - gira mascota cap avall."
+
+msgid "For ManaPlus Online support:"
+msgstr "Per suport en línia de ManaPlus:"
+
+msgid "/petdirectleft - rotate pet left."
+msgstr "/petdirectleft - gira mascota cap a l'esquerra."
+
+msgid "\"Set direction right\""
+msgstr "\"Estableix direcció a la dreta\""
+
+msgid "Other linux:"
+msgstr "Altre Linux:"
+
+msgid "DOWNLOADS"
+msgstr "BAIXADES"
+
+msgid "/item 1 - enable party item sharing options."
+msgstr "/item 1 - activa opcions d'intercanvi d'objectes amb l'equip."
+
+msgid "##9Magic skills can be obtain by doing quests and missions in game."
+msgstr "##9Magic skills es poden obtenir fent missions al joc."
+
+msgid "/erase NICK - add nick to erased list."
+msgstr "/erase USUARI - afegeix nom d'usuari a la llista d'esborrats."
+
+msgid "COMMUNICATION:"
+msgstr "COMUNICACIÓ:"
+
+msgid "Search results"
+msgstr "Resultats de cerca"
+
+msgid "\"Inventory window\""
+msgstr "\"Finestra d'inventari\""
+
+msgid "\"Change pickup type\""
+msgstr "\"Canvia tipus de recollida d'objectes\""
+
+msgid "/item - show party item sharing options."
+msgstr "/item - mostra opcions d'intercanvi d'objectes amb l'equip."
+
+msgid "move key"
+msgstr "tecles de moviment"
+
+msgid "\"Emote shortcut 5\""
+msgstr "\"Drecera d'emoticona 5\""
+
+msgid "/petmoveright - move pet one tile right."
+msgstr "/petmoveright - mou mascota una rajola cap a la dreta."
+
+msgid "/open URL - open url in browser."
+msgstr "/open URL - obre url al navegador."
+
+msgid ""
+" The player list lists all of your acquaintances.  They are categorised as one\n"
+" of the following:"
+msgstr "La llista de jugadors enumera tots els vostres coneguts. Estan classificats com un dels següents:"
+
+msgid "/cleanfonts - remove all cached render strings."
+msgstr "/cleanfonts - suprimeix totes les cadenes renderitzades de la memòria cau."
+
+msgid "/dumpgl - dump OpenGL version into chat."
+msgstr "/dumpgl - buida versió OpenGL al xat."
+
+msgid "MOUSE:"
+msgstr "RATOLÍ:"
+
+msgid "Current server support url:"
+msgstr "Url de suport del servidor actual:"
+
+msgid "Player relations"
+msgstr "Relacions dels jugadors"
+
+msgid ""
+"You can copy value from any bar,\n"
+"by right click on it and select in context menu \"Copy to chat\"."
+msgstr "Podeu copiar els valors des de qualsevol barra, prement el clic dret a sobre i seleccionant al menú de context \"Copia al xat\"."
+
+msgid "\"Item shortcut 14\""
+msgstr "\"Drecera per a objecte 14\""
+
+msgid "/outfit N - wear outfit number N."
+msgstr "/outfit N - equipa vestuari número N."
+
+msgid "/dirs - show client dirs in debug chat tab."
+msgstr "/dirs - mostra al client les dirs a la pestanya de depuració del xat."
+
+msgid "/movetohome - move to home position."
+msgstr "/movetohome - mou a la posició casa."
+
+msgid "\"Switch quick drop counter\""
+msgstr "\"Canvia comptador d'abocament\""
+
+msgid "\"Outfit shortcut 13\""
+msgstr "\"Drecera de vestuari 13\""
+
+msgid "\"Outfit shortcut 8\""
+msgstr "\"Drecera de vestuari 8\""
+
+msgid "\"Change imitation mode\""
+msgstr "\"Canvia a mode d'imitació\""
+
+msgid "##9Other skills can be obtain by doing quests and missions in game."
+msgstr "##9Other skills es poden obtenir fent missions al joc."
+
+msgid "\"Reset video mode to safe value\""
+msgstr "\"Restaura mode vídeo al valor segur\""
+
+msgid "/uploadconfig - upload main config into pastebin service."
+msgstr "/uploadconfig - puja configuració principal al servei pastebin."
+
+msgid "/testparticle FILENAME - set test particle on player."
+msgstr "/testparticle NOM D'ARXIU - estableix\n prova de partícules al jugador."
+
+msgid "\"Bot checker window\""
+msgstr "\"finestra de comprovació de bot\""
+
+msgid ""
+" - ##2neutral##9:  As far as the game is concerned, this is the same as not\n"
+"   having the player listed:  the player may chat with you, but may only trade\n"
+"   or whisper if you have this option allowed for everyone."
+msgstr ""
+" - ##2neutral##9:  Pel que fa al joc, això és el mateix que no tenir \n"
+"   el jugador a la llista: el jugador pot xatejar amb vós, però potser només\n"
+"   pot fer intercanvis o xiuxiuejar si teniu aquesta opció habilitada per a tothom."
+
+msgid "/petaistart - enable pet ai."
+msgstr "/petaistart - activa IA de la mascota."
+
+msgid "/url URL - insert url into chat."
+msgstr "/url URL - insereix url al xat."
+
+msgid "\"Help window\""
+msgstr "\"Finestra d'ajuda\""
+
+msgid "\"Outfit shortcut 1\""
+msgstr "\"Drecera de vestuari 1\""
+
+msgid ""
+" You may find that not all communication is to your liking.  While most people\n"
+" are nice, some may offend you or try to make your life harder-- since this is\n"
+" an open game, there is nothing the developers can do to prevent this."
+msgstr ""
+" Podeu trobar que no totes les comunicacions són del vostre gust. Encara que\n"
+" la majoria de la gent\nés agradable, algunes persones poden ser ofensives\n"
+" o us poden intentar fer la vida difícil --com això és un joc obert,\n"
+" no hi ha res que els programadors puguin fer per evitar-ho."
+
+msgid "About"
+msgstr "Quant a"
+
+msgid "\"Outfit shortcut 15\""
+msgstr "\"Drecera de vestuari 15\""
+
+msgid "\"Move right\""
+msgstr "\"Mou a la dreta\""
+
+msgid "##2Emote:##9 enables the ability to express emotions."
+msgstr "##2Emote:##9 activa l'habilitat d'expressar emocions."
+
+msgid "\"Emote shortcut 8\""
+msgstr "\"Drecera d'emoticona 8\""
+
+msgid "For Evol Online support:"
+msgstr "Per suport en línia de Evol:"
+
+msgid "/follow NICK - start follow mode."
+msgstr "/follow USUARI - inicia mode de seguiment."
+
+msgid "To read about whispering and other chat commands, look here:"
+msgstr "Per llegir sobre els xiuxiuejos i altres ordres de xat, mireu aquí:"
+
+msgid ""
+"You can select other themes.\n"
+"For this you should open settings and select theme tab\n"
+"and change \"gui theme\""
+msgstr ""
+"Podeu seleccionar altres temes.\n"
+"Per fer-ho, hauríeu d'obrir la configuració,\n"
+"seleccionar la pestanya de tema i canviar a \"tema de la IGU\""
+
+msgid "\"Emote shortcut 11\""
+msgstr "\"Drecera d'emoticona 11\""
+
+msgid "/petmoveup - move pet one tile up."
+msgstr "/petmoveup - mou mascota una rajola cap dalt."
+
+msgid "Pets"
+msgstr "Mascotes"
+
+msgid "\"Set direction down\""
+msgstr "\"Estableix la direcció avall\""
+
+msgid "\"Target NPC\""
+msgstr "\"Selecciona PNJ\""
+
+msgid "/info - show guild info. Only for native guilds only."
+msgstr "/info - mostra info del gremi. Només per a gremis nadius."
+
+msgid "/neutral NICK - add nick to neutral relation list."
+msgstr "/neutral USUARI - afegeix usuari a la llista de relació neutral."
+
+msgid "THE PLAYER LIST"
+msgstr "LA LLISTA DE JUGADORS"
+
+msgid "\"Item shortcut window\""
+msgstr "\"Finestra de drecera d'objecte\""
+
+msgid "\"Emote shortcut 1\""
+msgstr "\"Drecera d'emoticona 1\""
+
+msgid ""
+" - ##2ignored##9:  You wish to completely ignore this player.  You will not\n"
+"   even see floating text for him or her anymore, nor emotions."
+msgstr ""
+" - ##2ignored##9:  Desitgeu ignorar aquest jugador.\n"
+"   No podreu veure ni el seu text flotant ni les seves emocions.\n  "
+
+msgid "/me text - send text to chat as /me command in irc."
+msgstr "/me text - envia text al xat com l'ordre /me en irc."
+
+msgid "/help - show small help about chat commands. "
+msgstr "/help - mostra ajuda en petit per les ordres del xat."
+
+msgid "Debug"
+msgstr "Depura"
+
+msgid "/setdrop N - set drop counter to requested value."
+msgstr "/setdrop N - estableix comptador d'abocament al valor sol·licitat."
+
+msgid "\"Shop window\""
+msgstr "\"Finestra de botiga\""
+
+msgid "\"Move down\""
+msgstr "\"Mou avall\""
+
+msgid "\"Setup window\""
+msgstr "\"Finestra de configuració\""
+
+msgid "/removeattack NAME - remove monster from attack list."
+msgstr "/removeattack NOM - suprimeix monstre de la llista d'atacs."
+
+msgid "\"Set direction up\""
+msgstr "\"Estableix direcció cap amunt\""
+
+msgid "or come visit us on our IRC channel:"
+msgstr "o visiteu-nos al nostre canal IRC:"
+
+msgid "\"Toggle camera mode\""
+msgstr "\"Canvia mode de càmera\""
+
+msgid ""
+"You can see other player equiped items,\n"
+"by right click on player and select in context menu \"Show Items\"."
+msgstr ""
+"Podeu veure els objectes equipats d'altres jugadors si feu\n"
+"un clic amb el botó dret al jugador, i seleccioneu al menú de context \"Mostra Objectes\"."
+
+msgid "WINDOWS"
+msgstr "FINESTRES"
+
+msgid "SUPPORT"
+msgstr "SUPORT"
+
+msgid "/pricesave - save shop price to disc."
+msgstr "/pricesave - desa preu de la botiga al disc."
+
+msgid "Look this page for help and downloads:"
+msgstr "Consulteu aquesta pàgina si necessiteu ajuda o baixades:"
+
+msgid "Other skills:"
+msgstr "Altres habilitats:"
+
+msgid ""
+"You can use mumble voice chat for talking with other players.\n"
+"Start mumble before client start and enable mumble in settings."
+msgstr ""
+"Podeu utilitzar la veu de murmuri al xat per parlar amb altres jugadors.\n"
+"Comenceu a murmurar abans que el client s'iniciï i activeu el murmuri a configuració."
+
+msgid "\"Move up\""
+msgstr "\"Mou amunt\""
+
+msgid "Here contributors from parent projects"
+msgstr "Aquí trobareu col·laboradors de projectes de pares"
+
+msgid "\"Item shortcut 4\""
+msgstr "\"Drecera per a objecte 4\""
+
+msgid "/who - print online players number to chat."
+msgstr "/who - mostra número de xat dels jugadors en línia."
+
+msgid "/createitems - open dialog for creating items."
+msgstr "/createitems - obre finestra de diàleg per crear objectes."
+
+msgid "##2Party Level1:##9 enables a char to join a party."
+msgstr "##2Party Level1:##9 permet a un personatge que s'uneixi a un equip."
+
+msgid "\"Outfit shortcut 5\""
+msgstr "\"Drecera de vestuari 5\""
+
+msgid "KEYBOARD:"
+msgstr "TECLAT:"
+
+msgid "Windows"
+msgstr "Finestres"
+
+msgid "/emotepet N - use emotion number N from your pet."
+msgstr "/emotepet N - utilitza número d'emoció N de la mascota."
+
+msgid ""
+"Otherwise see the @@team|Development Team@@ section to have a list of\n"
+" developers and how to contact them."
+msgstr "En cas contrari, teniu la @@team|Development Team@@ secció que us permet tenir una llista dels\n desenvolupadors i de com contactar amb ells."
+
+msgid "\"Item shortcut 11\""
+msgstr "\"Drecera per a objecte 11\""
+
+msgid ""
+"/cleangraphics - remove all cached graphics. Useful for content developers."
+msgstr "/cleangraphics - suprimeix tots els gràfics de la memòria cau. Útil per a desenvolupadors de contingut."
+
+msgid "\"Emulate right click from keyboard\""
+msgstr "\"Emula amb un clic al botó dret des del teclat\""
+
+msgid "MacOSX porting"
+msgstr "Portabilitat MacOSX"
+
+msgid ""
+"About yellow bar you can read here:\n"
+"@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
+msgstr "Podeu informar-vos sobre la barra groga:\n@@http://manaplus.org/yellowbar|http://manaplus.org/yellowbar@@"
+
+msgid "/drop - drop N items from 0 slot."
+msgstr "/drop - llença N objectes des de la ranura 0."
+
+msgid "/kick NICK - kick someone from the party you are in."
+msgstr "/kick USUARI - expulsa a algú del equip al qual pertanyeu."
+
+msgid "\"Outfit shortcut 11\""
+msgstr "\"Drecera de vestuari 11\""
+
+msgid "\"Disable / enable game modifier keys\""
+msgstr "\"Activa / desactiva tecles modificadores de joc\""
+
+msgid "\"Quit\""
+msgstr "\"Surt\""
+
+msgid "/move X Y - move to X,Y position in short distance."
+msgstr "/move X Y - mou a X, posició Y en distància curta."
+
+msgid "Themes:"
+msgstr "Temes:"
+
+msgid "\"Hide windows\""
+msgstr "\"Amaga finestres\""
+
+msgid "Chat commands"
+msgstr "Ordres de xat"
+
+msgid "Trade"
+msgstr "Intercanvi"
+
+msgid "/blacklist NICK - add nick to blacklist relation list."
+msgstr "/blacklist USUARI - afegir usuari a la llista negra."
+
+msgid "Art or images contributors"
+msgstr "Art o imatges col·laboradors"
+
+msgid "/exp 0 - disable party experience sharing options."
+msgstr "/exp 0 - desactiva les opcions de distribució d'experiència de l'equip."
+
+msgid "Basic skills:"
+msgstr "Habilitats bàsiques:"
+
+msgid "/uploadlog - upload log into pastebin service."
+msgstr "/uploadlog - puja registre al servei de pastebin."
+
+msgid "/leave - leave the party you are in."
+msgstr "/leave - deixa l'equip al que pertanyeu."
+
+msgid "/petmovedown - move pet one tile down."
+msgstr "/petmoveup - mou mascota una rajola més baix."
+
+msgid "\"Status window\""
+msgstr "\"Finestra d'estat\""
+
+msgid ""
+"##2               SDL, SDL_image, SDL_mixer (Media framework)\n"
+"##2                     SDL_net (Networking framework)\n"
+"##2                        Guichan (GUI framework)\n"
+"##2                   libxml2 (XML parsing and writing)\n"
+"##2                          PhysFS (Data files)\n"
+"##2                        libcurl (HTTP downloads)\n"
+"##2                            zlib (Archives)"
+msgstr ""
+"##2               SDL, SDL_image, SDL_mixer (Entorn de treball media)\n"
+"##2                     SDL_net (Xarxa d'entorn de treball)\n"
+"##2                        Guichan (Entorn de treball IGU)\n"
+"##2                   libxml2 (Anàlisi i escriptura XML)\n"
+"##2                          PhysFS (Arxius de dades)\n"
+"##2                        libcurl (Baixades HTTP)\n"
+"##2                            zlib (Arxius)"
+
+msgid "/friend NICK, /befriend NICK - add nick to friends list."
+msgstr "/friend USUARI, /befriend USUARI - afegeix usuari a llista d'amics."
+
+msgid "ABOUT THE MANA WORLD"
+msgstr "QUANT A THE MANA WORLD"
+
+msgid "\"Emote shortcut 14\""
+msgstr "\"Drecera d'emoticona 14\""
+
+msgid "Commands"
+msgstr "Ordres"
+
+msgid "\"Stop Attack\""
+msgstr "\"Para atac\""
+
+msgid "Contributors to client/server development"
+msgstr "Col·laboradors al desenvolupament del client/servidor"
+
+msgid "Sources:"
+msgstr "Fonts:"
+
+msgid "/emote N - use emotion number N."
+msgstr "/emote N - utilitza número d'emoció N."
+
+msgid "Translators"
+msgstr "Traductors"
+
+msgid "\"Next chat tab line\""
+msgstr "\"Línia de pestanya de xat següent\""
+
+msgid "\"Move to home location\""
+msgstr "\"Mou a la localització casa\""
+
+msgid "/sethomunname NAME - set homunculus name."
+msgstr "/sethomunname NOM - estableix nom de l'homuncle."
+
+msgid "Website: @@http://manaplus.org/|http://manaplus.org/@@"
+msgstr "Lloc web: @@http://manaplus.org/|http://manaplus.org/@@"
+
+msgid "\"Skill window\""
+msgstr "\"Finestra d'habilitat\""
+
+msgid "\"Emote shortcut 6\""
+msgstr "\"Drecera d'emoticona 6\""
+
+msgid "/disconnect - quick disconnect from server."
+msgstr "/disconnect - desconnecta del servidor ràpidament."
+
+msgid "/enemy NICK - add nick to enemies list."
+msgstr "/enemy USUARI - afegeix usuari a la llista d'enemics."
+
+msgid "\"Item shortcut 1\""
+msgstr "\"Drecera per a objecte 1\""
+
+msgid "\"Use #itenplz spell\""
+msgstr "\"Utilitza el conjur #itenplz\""
+
+msgid "/exp 1 - enable party experience sharing options."
+msgstr "/exp 1 - activa les opcions de distribució d'experiència de l'equip."
+
+msgid "/undress NICK - remove all clothes from nick. Local effect only."
+msgstr "/undress USUARI - suprimeix tota la roba de l'usuari. Efecte només local."
+
+msgid "\"Quick drop N items from 0 slot\""
+msgstr "\"Llença N objectes des de la ranura 0\""
+
+msgid "/mercenaryfire - fire mercenary."
+msgstr "/mercenaryfire - acomiada mercenari."
+
+msgid "/disablehighlight - disable highlight in current tab."
+msgstr "/disablehighlight - Desactiva ressaltat en la pestanya actual."
+
+msgid "\"Item shortcut 15\""
+msgstr "\"Drecera per a objecte 15\""
+
+msgid "Whispers commands"
+msgstr "Ordres de xiuxiuejos"
+
+msgid "/setpetname NAME - set new pet name."
+msgstr "/setpetname NOM - estableix nom nou de mascota."
+
+msgid "Whispers"
+msgstr "Xiuxiuejos"
+
+msgid "emote key"
+msgstr "tecla d'emoticona"
+
+msgid "\"Item shortcut 9\""
+msgstr "\"Drecera per a objecte 9\""
+
+msgid ""
+" There you will find a list of all players you are acquainted with, as well as\n"
+" several configuration options:"
+msgstr "Aquí trobareu una llista de tots els jugadors que coneixeu, així amb altres opcions de configuració:"
+
+msgid "Skills"
+msgstr "Habilitats"
+
+msgid "\"Item shortcut 7\""
+msgstr "\"Drecera per a objecte 7\""
+
+msgid "\"Minimap window\""
+msgstr "\"Finestra de mini-mapa\""
+
+msgid ""
+" However, you can protect yourself from such players by ignoring them.  Right-\n"
+" click on them to bring up the context menu, then select `Ignore' or\n"
+" `Disregard' (see below).  You can fine-tune your player relations in the\n"
+" `Setup' menu, which lists all the players you have added to it.  To open this\n"
+" menu, select `Setup' in the upper right corner of the screen, then `Relations'."
+msgstr "En canvi, podeu protegir-vos d'aquests jugadors si els ignoreu. Amb un botó dret del ratolí veureu el menú de context i podeu seleccionar 'Ignora' o 'Indiferència' (vegeu abaix). Podeu sintonitzar les relacions del jugador al menú de 'Configuració', que llista tots els jugadors que heu afegit. Per obrir aquest menú, seleccioneu 'Configuració' al cantó dret superior de la pantalla i, després, 'Relacions'."
+
+msgid "\"Item shortcut 12\""
+msgstr "\"Drecera per a objecte 12\""
+
+msgid "SHORTCUTS:"
+msgstr "DRECERES"

@@ -1,6 +1,7 @@
 helpdir = $(pkgdatadir)/data/translations/help
 
 help_DATA =				\
+	ca.po				\
 	cs.po				\
 	de.po				\
 	es.po				\
