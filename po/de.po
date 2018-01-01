@@ -358,7 +358,7 @@ msgstr "  -T --Tests          : Treibertest und automatische Konfiguration start
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:118
 msgid "  -V --validate       : Start validating client data"
-msgstr " -V --validate : Beginne mit Validierung der Client Data"
+msgstr "  -V --validate       : Beginne mit Validierung der Client Data"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:123
@@ -7185,12 +7185,12 @@ msgstr "benötigt v%s"
 #. TRANSLATORS: server info comment
 #: src/gui/windows/serverinfowindow.cpp:103
 msgid "##BServer with free license."
-msgstr "##BServer mit freier Lizenz"
+msgstr "##BServer mit freier Lizenz."
 
 #. TRANSLATORS: server info comment
 #: src/gui/windows/serverinfowindow.cpp:108
 msgid "##BServer with non free license."
-msgstr "##BServer mit geschützter Lizenz"
+msgstr "##BServer mit geschützter Lizenz."
 
 #. TRANSLATORS: server info comment
 #: src/gui/windows/serverinfowindow.cpp:114

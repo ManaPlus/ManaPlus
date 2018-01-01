@@ -877,7 +877,7 @@ msgstr "Porteu més de la meitat del vostre pes. No podeu recuperar salut."
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:199
 msgid "You are carrying less than half your weight. You can regain health."
-msgstr "Porteu menys de la meitat del vostre pes. Podeu recuperar salut. "
+msgstr "Porteu menys de la meitat del vostre pes. Podeu recuperar salut."
 
 #. TRANSLATORS: chat color
 #. TRANSLATORS: inventory sort mode
@@ -1417,12 +1417,12 @@ msgstr "Objecte anomenat: %s"
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:371
 msgid "Cards: "
-msgstr "Targetes:"
+msgstr "Targetes: "
 
 #. TRANSLATORS: popup label
 #: src/gui/popups/itempopup.cpp:408
 msgid "Options: "
-msgstr "Opcions:"
+msgstr "Opcions: "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: trade with player
@@ -1957,13 +1957,13 @@ msgstr "Nom:                     "
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1301
 msgid "Player comment            "
-msgstr "Comentari de jugador"
+msgstr "Comentari de jugador      "
 
 #. TRANSLATORS: label
 #. TRANSLATORS: number of chars in string should be near original
 #: src/gui/popups/popupmenu.cpp:1304
 msgid "Comment:                      "
-msgstr "Comentari:"
+msgstr "Comentari:                    "
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: add item to trade
@@ -4278,7 +4278,7 @@ msgstr "desconegut"
 #: src/gui/widgets/tabs/setup_joystick.cpp:47
 #: src/gui/widgets/tabs/setup_joystick.cpp:137
 msgid "Press the button to start calibration"
-msgstr "Premeu el botó per iniciar el calibratge "
+msgstr "Premeu el botó per iniciar el calibratge"
 
 #. TRANSLATORS: joystick settings tab button
 #: src/gui/widgets/tabs/setup_joystick.cpp:49
@@ -5272,7 +5272,7 @@ msgstr "Tema"
 #. TRANSLATORS: theme name
 #: src/gui/widgets/tabs/setup_theme.cpp:243
 msgid "Name: "
-msgstr "Nom:"
+msgstr "Nom: "
 
 #. TRANSLATORS: theme copyright
 #: src/gui/widgets/tabs/setup_theme.cpp:245
@@ -5517,7 +5517,7 @@ msgstr "Bombolles amb noms"
 #: src/gui/widgets/tabs/setup_visual.cpp:57
 #: src/gui/widgets/tabs/setup_visual.cpp:83
 msgid "off"
-msgstr "desactiva "
+msgstr "desactiva"
 
 #. TRANSLATORS: patricle effects type
 #: src/gui/widgets/tabs/setup_visual.cpp:69
@@ -5532,12 +5532,12 @@ msgstr "normal"
 #. TRANSLATORS: patricle effects type
 #: src/gui/widgets/tabs/setup_visual.cpp:73
 msgid "best performance"
-msgstr "millor rendiment "
+msgstr "millor rendiment"
 
 #. TRANSLATORS: vsync type
 #: src/gui/widgets/tabs/setup_visual.cpp:85
 msgid "on"
-msgstr " en"
+msgstr "en"
 
 #. TRANSLATORS: settings tab name
 #: src/gui/widgets/tabs/setup_visual.cpp:98
@@ -6392,7 +6392,7 @@ msgstr "S'està xiuxiuejant a %s: %s"
 #. TRANSLATORS: prefix for moved message to trade tab.
 #: src/gui/windows/chatwindow.cpp:1599
 msgid "Moved: "
-msgstr "Mogut:"
+msgstr "Mogut: "
 
 #. TRANSLATORS: moved message to trade tab warning.
 #: src/gui/windows/chatwindow.cpp:1607
@@ -6402,7 +6402,7 @@ msgstr "El missatge s'ha mogut a la pestanya d'intercanvi"
 #. TRANSLATORS: error message
 #: src/gui/windows/chatwindow.cpp:1632
 msgid "Broken nick detected: "
-msgstr "S'ha detectat un usuari trencat:"
+msgstr "S'ha detectat un usuari trencat: "
 
 #. TRANSLATORS: confirm dialog button
 #: src/gui/windows/confirmdialog.cpp:57
@@ -6742,7 +6742,7 @@ msgstr "1%% = %s exp, mitj. de criatures per 1%%: %s"
 #: src/gui/windows/killstats.cpp:420 src/gui/windows/killstats.cpp:429
 #, c-format
 msgid "  Time for next level: %s"
-msgstr "Temps pel següent nivell: %s"
+msgstr "  Temps pel següent nivell: %s"
 
 #. TRANSLATORS: login dialog name
 #. TRANSLATORS: login dialog button
@@ -7326,7 +7326,7 @@ msgstr "Afegeix text a l'habilitat %s"
 #: src/gui/windows/skilldialog.cpp:1139 src/gui/windows/skilldialog.cpp:1203
 #: src/gui/windows/skilldialog.cpp:1322
 msgid "Text: "
-msgstr "Text:"
+msgstr "Text: "
 
 #. TRANSLATORS: here P is title for visible players tab in social window
 #: src/gui/windows/socialwindow.cpp:65
@@ -8388,7 +8388,7 @@ msgstr "Activa / Desactiva mode absent"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:226
 msgid "Emulate right click from keyboard"
-msgstr "Emula clic dret des del teclat "
+msgstr "Emula clic dret des del teclat"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:232
@@ -8935,7 +8935,7 @@ msgstr "Joc"
 #. TRANSLATORS: error message
 #: src/net/ea/gamerecv.cpp:69
 msgid "Request to quit denied!"
-msgstr "La sol·licitud de desconnexió ha estat denegada."
+msgstr "La sol·licitud de desconnexió ha estat denegada!"
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:76 src/net/eathena/loginrecv.cpp:65
@@ -9355,27 +9355,27 @@ msgstr "Error d'habilitat desconegut: %d."
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:325 src/net/tmwa/skillrecv.cpp:146
 msgid "You have not yet reached a high enough lvl!"
-msgstr "Encara no heu aconseguit el nivell necessari."
+msgstr "Encara no heu aconseguit el nivell necessari!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:329 src/net/tmwa/skillrecv.cpp:150
 msgid "Insufficient HP!"
-msgstr "PV insuficients."
+msgstr "PV insuficients!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:333 src/net/tmwa/skillrecv.cpp:154
 msgid "Insufficient SP!"
-msgstr "PH insuficients."
+msgstr "PH insuficients!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:337 src/net/tmwa/skillrecv.cpp:158
 msgid "You have no memos!"
-msgstr "No teniu cap nota."
+msgstr "No teniu cap nota!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:341 src/net/tmwa/skillrecv.cpp:162
 msgid "You cannot do that right now!"
-msgstr "No podeu fer això."
+msgstr "No podeu fer això!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:345 src/net/tmwa/skillrecv.cpp:166
@@ -9385,22 +9385,22 @@ msgstr "Sembla ser que necessiteu més diners... ;-)"
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:349 src/net/tmwa/skillrecv.cpp:170
 msgid "You cannot use this skill with that kind of weapon!"
-msgstr "No podeu utilitzar aquesta habilitat amb aquest tipus d'arma."
+msgstr "No podeu utilitzar aquesta habilitat amb aquest tipus d'arma!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:354 src/net/tmwa/skillrecv.cpp:175
 msgid "You need another red gem!"
-msgstr "Necessiteu una altra gemma vermella."
+msgstr "Necessiteu una altra gemma vermella!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:358 src/net/tmwa/skillrecv.cpp:179
 msgid "You need another blue gem!"
-msgstr "Necessiteu una altra gemma blava."
+msgstr "Necessiteu una altra gemma blava!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:362 src/net/tmwa/skillrecv.cpp:183
 msgid "You're carrying to much to do this!"
-msgstr "Porteu massa objectes per fer això."
+msgstr "Porteu massa objectes per fer això!"
 
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:366
@@ -9439,7 +9439,7 @@ msgstr "Necessiteu l'objecte %s (x %d)"
 #. TRANSLATORS: error message
 #: src/net/eathena/skillrecv.cpp:415
 msgid "Skill failed!"
-msgstr "L'habilitat ha fallat."
+msgstr "L'habilitat ha fallat!"
 
 #. TRANSLATORS: warp select window name
 #: src/net/eathena/skillrecv.cpp:433
@@ -9503,32 +9503,32 @@ msgstr "Sort:"
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:113
 msgid "Trade failed!"
-msgstr "L'intercanvi ha fallat."
+msgstr "L'intercanvi ha fallat!"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:117
 msgid "Emote failed!"
-msgstr "L'emoticona no s'ha enviat."
+msgstr "L'emoticona no s'ha enviat!"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:121
 msgid "Sit failed!"
-msgstr "No us heu pogut asseure. "
+msgstr "No us heu pogut asseure!"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:125
 msgid "Chat creating failed!"
-msgstr "S'ha produït un error en la creació del xat."
+msgstr "S'ha produït un error en la creació del xat!"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:129
 msgid "Could not join party!"
-msgstr "No heu pogut unir-vos a l'equip."
+msgstr "No heu pogut unir-vos a l'equip!"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:133
 msgid "Cannot shout!"
-msgstr "No podeu cridar."
+msgstr "No podeu cridar!"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:187
@@ -9642,7 +9642,7 @@ msgstr "Vist per última vegada a les %s: %s"
 #. TRANSLATORS: whisper send
 #: src/progs/manaplus/actions/chat.cpp:274
 msgid "Cannot send empty whisper or channel message!"
-msgstr "No podeu enviar ni un xiuxiueig buit ni un missatge de canal."
+msgstr "No podeu enviar ni un xiuxiueig buit ni un missatge de canal!"
 
 #. TRANSLATORS: new whisper or channel query
 #: src/progs/manaplus/actions/chat.cpp:326
@@ -10307,7 +10307,7 @@ msgstr "Heu gastat %s."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:256
 msgid "Cannot raise skill!"
-msgstr "No podeu augmentar l'habilitat."
+msgstr "No podeu augmentar l'habilitat!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:260
@@ -10444,18 +10444,18 @@ msgstr "jcj desconegut"
 #: src/resources/notifications.h:364
 #, c-format
 msgid "Char from account %s is already in your party!"
-msgstr "El personatge amb el compte %s ja està al vostre equip."
+msgstr "El personatge amb el compte %s ja està al vostre equip!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:368
 #, c-format
 msgid "%s blocked invite!"
-msgstr "%s ha bloquejat l'invitació."
+msgstr "%s ha bloquejat l'invitació!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:372
 msgid "Char is not online!"
-msgstr "El personatge està fora de línia."
+msgstr "El personatge està fora de línia!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:376
@@ -10598,7 +10598,7 @@ msgstr "No s'han trobat botigues."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:485
 msgid "There are too many results. Please enter more detailed search term."
-msgstr "Hi ha massa resultats. Introduïu informació més detallada. "
+msgstr "Hi ha massa resultats. Introduïu informació més detallada."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:490
@@ -10861,12 +10861,12 @@ msgstr "Encanta l'armadura amb element sagrat."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:692
 msgid "Def +25%."
-msgstr "Def. +25%"
+msgstr "Def. +25%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:696
 msgid "Atk +100%."
-msgstr "Atac +100%"
+msgstr "Atac +100%."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:700
@@ -11014,7 +11014,7 @@ msgstr "No es pot comprar durant un intercanvi."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:842
 msgid "Unable to buy. Npc not found."
-msgstr "No es pot comprar. No es troba al pnj. "
+msgstr "No es pot comprar. No es troba al pnj."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:846
@@ -11124,7 +11124,7 @@ msgstr "Desconegut:"
 #: src/resources/skill/skillinfo.cpp:151
 #, c-format
 msgid " / Mana: -%d"
-msgstr "/ Mana: -%d"
+msgstr " / Mana: -%d"
 
 #. TRANSLATORS: skill range
 #: src/resources/skill/skillinfo.cpp:159
