@@ -86,7 +86,7 @@ ProgressBar::ProgressBar(const Widget2 *const widget,
         mSkin = theme->load(skin,
             "progressbar.xml",
             true,
-            theme->getThemePath());
+            Theme::getThemePath());
         if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());

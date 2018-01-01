@@ -538,7 +538,7 @@ void Client::gameInit()
     mSkin = theme->load("windowmenu.xml",
         "",
         true,
-        theme->getThemePath());
+        Theme::getThemePath());
     if (mSkin != nullptr)
     {
         mButtonPadding = mSkin->getPadding();

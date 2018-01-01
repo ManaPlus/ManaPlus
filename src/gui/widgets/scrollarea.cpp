@@ -238,7 +238,7 @@ void ScrollArea::init(std::string skinName)
                 skin = theme->load(buttonFiles[i],
                     "scrollbuttons.xml",
                     true,
-                    theme->getThemePath());
+                    Theme::getThemePath());
             }
             if (skin != nullptr)
             {

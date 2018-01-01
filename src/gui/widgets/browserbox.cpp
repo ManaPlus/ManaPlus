@@ -104,7 +104,7 @@ BrowserBox::BrowserBox(const Widget2 *const widget,
         mSkin = theme->load(skin,
             "browserbox.xml",
             true,
-            theme->getThemePath());
+            Theme::getThemePath());
     }
     if (mInstances == 0)
     {

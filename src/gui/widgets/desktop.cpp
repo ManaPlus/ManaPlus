@@ -69,7 +69,7 @@ Desktop::Desktop(const Widget2 *const widget) :
         mSkin = theme->load("desktop.xml",
             "",
             true,
-            theme->getThemePath());
+            Theme::getThemePath());
     }
 
     if (mSkin != nullptr)

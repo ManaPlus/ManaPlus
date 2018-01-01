@@ -65,7 +65,7 @@ Popup::Popup(const std::string &name,
         mSkin = theme->load(skin,
             "popup.xml",
             true,
-            theme->getThemePath());
+            Theme::getThemePath());
         if (mSkin != nullptr)
         {
             setPadding(mSkin->getPadding());

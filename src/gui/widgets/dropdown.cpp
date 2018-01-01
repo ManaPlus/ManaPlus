@@ -92,7 +92,7 @@ DropDown::DropDown(const Widget2 *const widget,
             Skin *const skin = theme->load(dropdownFiles[i],
                 "dropdown.xml",
                 true,
-                theme->getThemePath());
+                Theme::getThemePath());
             if (skin != nullptr)
             {
                 if (i == 0)

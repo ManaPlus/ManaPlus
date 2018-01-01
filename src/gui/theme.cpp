@@ -1098,7 +1098,7 @@ void Theme::loadRect(ImageRect &image,
     Skin *const skin = load(name,
         name2,
         false,
-        theme->getThemePath());
+        Theme::getThemePath());
     if (skin != nullptr)
     {
         loadGrid();
@@ -1115,7 +1115,7 @@ Skin *Theme::loadSkinRect(ImageRect &image,
     Skin *const skin = load(name,
         name2,
         true,
-        theme->getThemePath());
+        Theme::getThemePath());
     if (skin != nullptr)
         loadGrid();
     return skin;
@@ -1141,7 +1141,7 @@ Image *Theme::getImageFromThemeXml(const std::string &name,
     Skin *const skin = theme->load(name,
         name2,
         false,
-        theme->getThemePath());
+        Theme::getThemePath());
     if (skin != nullptr)
     {
         const ImageRect &rect = skin->getBorder();
@@ -1167,7 +1167,7 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
     Skin *const skin = theme->load(name,
         name2,
         false,
-        theme->getThemePath());
+        Theme::getThemePath());
     if (skin != nullptr)
     {
         const ImageRect &rect = skin->getBorder();

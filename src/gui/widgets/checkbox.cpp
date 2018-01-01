@@ -120,7 +120,7 @@ CheckBox::CheckBox(const Widget2 *const widget,
             mSkin = theme->load("checkbox.xml",
                 "",
                 true,
-                theme->getThemePath());
+                Theme::getThemePath());
             updateAlpha();
         }
     }

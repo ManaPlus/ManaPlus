@@ -60,7 +60,7 @@ TextPreview::TextPreview(const Widget2 *const widget,
             mSkin = theme->load("textpreview.xml",
                 "",
                 true,
-                theme->getThemePath());
+                Theme::getThemePath());
         }
     }
 

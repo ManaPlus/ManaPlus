@@ -169,7 +169,7 @@ void Tab::init()
                 tabImg[mode] = theme->load(data[mode],
                     "tab.xml",
                     true,
-                    theme->getThemePath());
+                    Theme::getThemePath());
             }
         }
         updateAlpha();

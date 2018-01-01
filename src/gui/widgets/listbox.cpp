@@ -122,7 +122,7 @@ ListBox::ListBox(const Widget2 *const widget,
         mSkin = theme->load(skin,
             "listbox.xml",
             true,
-            theme->getThemePath());
+            Theme::getThemePath());
     }
 
     if (mSkin != nullptr)

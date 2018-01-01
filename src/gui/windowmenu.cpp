@@ -53,7 +53,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     SelectionListener(),
     MouseListener(),
     mSkin(theme != nullptr ? theme->load("windowmenu.xml", "",
-        true, theme->getThemePath()) : nullptr),
+        true, Theme::getThemePath()) : nullptr),
     mPadding(mSkin != nullptr ? mSkin->getPadding() : 1),
     mSpacing(mSkin != nullptr ? mSkin->getOption("spacing", 3) : 3),
     mButtons(),

@@ -737,7 +737,7 @@ int TestLauncher::testDraw()
     Skin *skin = theme->load("button.xml",
         "button.xml",
         true,
-        theme->getThemePath());
+        Theme::getThemePath());
     if (skin == nullptr)
         return 0;
 

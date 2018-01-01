@@ -363,7 +363,7 @@ void Button::init()
                 Skin *const skin = theme->load(data[mode],
                     "button.xml",
                     true,
-                    theme->getThemePath());
+                    Theme::getThemePath());
                 if (skin != nullptr)
                 {
                     button[mode] = skin;

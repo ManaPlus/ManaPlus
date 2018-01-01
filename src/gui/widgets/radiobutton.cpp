@@ -124,7 +124,7 @@ RadioButton::RadioButton(const Widget2 *const widget,
             mSkin = theme->load("radio.xml",
                 "",
                 true,
-                theme->getThemePath());
+                Theme::getThemePath());
             updateAlpha();
         }
     }

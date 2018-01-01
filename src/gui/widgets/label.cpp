@@ -135,7 +135,7 @@ void Label::init()
             mSkin = theme->load("label.xml",
                 "",
                 true,
-                theme->getThemePath());
+                Theme::getThemePath());
         }
     }
     mInstances ++;

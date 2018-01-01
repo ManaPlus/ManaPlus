@@ -434,7 +434,7 @@ void TouchManager::loadButtons() restrict2
     Skin *const skin = theme->load("dbutton.xml",
         "",
         true,
-        theme->getThemePath());
+        Theme::getThemePath());
 
     if (skin != nullptr)
     {

@@ -77,7 +77,7 @@ class SkillRectangleListBox final : public Widget,
                 mSkin = theme->load("skillrectanglelistbox.xml",
                     "listbox.xml",
                     true,
-                    theme->getThemePath());
+                    Theme::getThemePath());
             }
 
             if (mSkin != nullptr)
