@@ -49,9 +49,6 @@ class SurfaceImageHelper final : public ImageHelper
 
         A_DELETE_COPY(SurfaceImageHelper)
 
-        ~SurfaceImageHelper()
-        { }
-
         /**
          * Loads an image from an SDL surface.
          */
