@@ -45,6 +45,10 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetsType;
+extern bool packets_main;
+extern bool packets_re;
+extern bool packets_zero;
 extern int evolPacketOffset;
 
 namespace EAthena
@@ -171,6 +175,17 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         if (serverVersion >= 16 && len >= 18)
         {
             evolPacketOffset = msg.readInt16("evol packet offset");
+        }
+        if (serverVersion >= 20 && len >= 20)
+        {
+            packetsType = msg.readInt16("server packets type");
+            packets_re = (packetsType & 1) ? true : false;
+            packets_zero = (packetsType & 2) ? true : false;
+            if (packets_re == false &&
+                packets_zero == false)
+            {
+                packets_main = true;
+            }
         }
     }
     else
