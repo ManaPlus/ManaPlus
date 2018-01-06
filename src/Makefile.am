@@ -1973,7 +1973,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/npcrecv.h \
 	      net/eathena/packetsin.inc \
 	      net/eathena/packetsout.inc \
-	      net/eathena/packetsout_shuffle.inc \
+	      net/eathena/packetsout_shuffle_main.inc \
+	      net/eathena/packetsout_shuffle_zero.inc \
 	      net/eathena/partyhandler.cpp \
 	      net/eathena/partyhandler.h \
 	      net/eathena/partyrecv.cpp \

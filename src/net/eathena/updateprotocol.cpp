@@ -30,6 +30,8 @@
 extern int packetVersion;
 extern int serverVersion;
 extern int evolPacketOffset;
+extern bool packets_main;
+extern bool packets_zero;
 
 namespace EAthena
 {
@@ -40,7 +42,8 @@ void updateProtocol()
 #define PACKETS_UPDATE
 #include "net/protocoloutupdate.h"
 #include "net/eathena/packetsout.inc"
-#include "net/eathena/packetsout_shuffle.inc"
+#include "net/eathena/packetsout_shuffle_main.inc"
+#include "net/eathena/packetsout_shuffle_zero.inc"
 #undef packet
     Network *const network = Network::mInstance;
     if (network != nullptr)
@@ -52,7 +55,8 @@ void updateProtocol()
 }
 
 PACKETSOUT_VOID
-PACKETSOUT_SHUFFLE_VOID
+PACKETSOUT_SHUFFLE_MAIN_VOID
+PACKETSOUT_SHUFFLE_ZERO_VOID
 PROTOCOLOUTUPDATE_VOID
 PROTOCOLOUT_VOID
 
