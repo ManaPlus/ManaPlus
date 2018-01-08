@@ -179,8 +179,8 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         if (serverVersion >= 20 && len >= 20)
         {
             packetsType = msg.readInt16("server packets type");
-            packets_re = (packetsType & 1) ? true : false;
-            packets_zero = (packetsType & 2) ? true : false;
+            packets_re = (packetsType & 1) != 0;
+            packets_zero = (packetsType & 2) != 0;
             if (packets_re == false &&
                 packets_zero == false)
             {
