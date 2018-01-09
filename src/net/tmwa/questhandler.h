@@ -36,8 +36,7 @@ class QuestHandler final : public Net::QuestHandler
         ~QuestHandler() override final;
 
         void setQeustActiveState(const int questId,
-                                 const bool active) const override final
-                                 A_CONST;
+                                 const bool active) const override final;
 };
 
 }  // namespace TmwAthena

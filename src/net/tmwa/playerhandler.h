@@ -52,33 +52,33 @@ class PlayerHandler final : public Ea::PlayerHandler
                             const int direction) const override final;
         void changeAction(const BeingActionT &action)
                           const override final;
-        void requestOnlineList() const override final A_CONST;
-        void updateStatus(const uint8_t status) const override final A_CONST;
+        void requestOnlineList() const override final;
+        void updateStatus(const uint8_t status) const override final;
 
         void respawn() const override final;
 
         void setShortcut(const int idx,
                          const uint8_t type,
                          const int id,
-                         const int level) const override final A_CONST;
+                         const int level) const override final;
 
         void shortcutShiftRow(const int row) const override final;
 
-        void removeOption() const override final A_CONST;
+        void removeOption() const override final;
 
-        void changeCart(const int type) const override final A_CONST;
+        void changeCart(const int type) const override final;
 
-        void setMemo() const override final A_CONST;
+        void setMemo() const override final;
 
-        void doriDori() const override final A_CONST;
+        void doriDori() const override final;
 
-        void explosionSpirits() const override final A_CONST;
+        void explosionSpirits() const override final;
 
-        void requestPvpInfo() const override final A_CONST;
+        void requestPvpInfo() const override final;
 
-        void revive() const override final A_CONST;
+        void revive() const override final;
 
-        void setViewEquipment(const bool allow) const override final A_CONST;
+        void setViewEquipment(const bool allow) const override final;
 
         void setStat(Net::MessageIn &msg,
                      const int type,

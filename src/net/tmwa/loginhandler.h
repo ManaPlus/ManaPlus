@@ -52,13 +52,13 @@ class LoginHandler final : public Ea::LoginHandler
 
         ServerInfo *getCharServer() const override final A_CONST A_WARN_UNUSED;
 
-        void sendVersion() const override final A_CONST;
+        void sendVersion() const override final;
 
-        void ping() const override final A_CONST;
+        void ping() const override final;
 
-        void updatePacketVersion() const override final A_CONST;
+        void updatePacketVersion() const override final;
 
-        static void requestUpdateHosts() A_CONST;
+        static void requestUpdateHosts();
 
     private:
         void sendLoginRegister(const std::string &restrict username,

@@ -47,7 +47,7 @@ class AvatarListBox final : public ListBox,
 
         void mousePressed(MouseEvent &event) override final;
 
-        void mouseReleased(MouseEvent &event A_UNUSED) override final A_CONST;
+        void mouseReleased(MouseEvent &event A_UNUSED) override final;
 
         void optionChanged(const std::string &value) override final;
 

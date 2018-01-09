@@ -40,8 +40,8 @@ class CashShopHandler final : public Net::CashShopHandler
                      const int amount) const override final;
 
         void buyItems(const int points,
-                      const STD_VECTOR<ShopItem*> &items) const override final
-                      A_CONST;
+                      const STD_VECTOR<ShopItem*> &items) const
+                      override final;
 
         void close() const override final;
 

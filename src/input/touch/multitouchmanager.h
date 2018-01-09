@@ -50,7 +50,7 @@ class MultiTouchManager final
 
         A_DELETE_COPY(MultiTouchManager)
 
-        void init() A_CONST;
+        void init();
 
 #ifdef USE_SDL2
         void updateFinger(const SDL_Event &event, const bool active);

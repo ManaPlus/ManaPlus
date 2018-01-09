@@ -265,7 +265,7 @@ class Being notfinal : public ActorSprite,
          */
         void setGuildName(const std::string &restrict name) restrict2;
 
-        void setGuildPos(const std::string &restrict pos) restrict2 A_CONST;
+        void setGuildPos(const std::string &restrict pos) restrict2;
 
         /**
          * Adds a guild to the being.

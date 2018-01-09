@@ -46,7 +46,7 @@ class WidgetGroup notfinal : public Container,
 
         void clear() override final;
 
-        void widgetResized(const Event &event) override final A_CONST;
+        void widgetResized(const Event &event) override final;
 
         virtual Widget *createWidget(const std::string &name,
                                      const bool pressed)

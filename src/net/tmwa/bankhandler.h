@@ -35,15 +35,15 @@ class BankHandler final : public Net::BankHandler
 
         ~BankHandler() override final;
 
-        void deposit(const int money) const override final A_CONST;
+        void deposit(const int money) const override final;
 
-        void withdraw(const int money) const override final A_CONST;
+        void withdraw(const int money) const override final;
 
-        void check() const override final A_CONST;
+        void check() const override final;
 
-        void open() const override final A_CONST;
+        void open() const override final;
 
-        void close() const override final A_CONST;
+        void close() const override final;
 };
 
 }  // namespace TmwAthena

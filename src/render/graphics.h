@@ -258,7 +258,7 @@ class Graphics notfinal
 #ifdef USE_SDL2
             const int height) restrict2;
 #else  // USE_SDL2
-            const int height) restrict2 A_CONST;
+            const int height) restrict2;
 #endif  // USE_SDL2
 
         /**
@@ -414,7 +414,7 @@ class Graphics notfinal
         virtual void createGLContext(const bool custom) restrict2;
 #else  // USE_SDL2
 
-        virtual void createGLContext(const bool custom) restrict2 A_CONST;
+        virtual void createGLContext(const bool custom) restrict2;
 #endif  // USE_SDL2
 #endif  // USE_OPENGL
 

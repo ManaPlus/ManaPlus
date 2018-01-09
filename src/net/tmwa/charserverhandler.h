@@ -56,8 +56,7 @@ class CharServerHandler final : public Ea::CharServerHandler
                              const std::string &email) const override final;
 
         void renameCharacter(const BeingId id,
-                             const std::string &newName) const override final
-                             A_CONST;
+                             const std::string &newName) const override final;
 
         void switchCharacter() const override final;
 
@@ -79,9 +78,9 @@ class CharServerHandler final : public Ea::CharServerHandler
                                  override final;
 
         void changeSlot(const int oldSlot,
-                        const int newSlot) const override final A_CONST;
+                        const int newSlot) const override final;
 
-        void ping() const override final A_CONST;
+        void ping() const override final;
 
         unsigned int hatSprite() const override final A_CONST A_WARN_UNUSED;
 };

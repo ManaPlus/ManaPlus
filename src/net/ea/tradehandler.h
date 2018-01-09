@@ -36,7 +36,7 @@ class TradeHandler notfinal : public Net::TradeHandler
         A_DELETE_COPY(TradeHandler)
 
         void removeItem(const int slotNum,
-                        const int amount) const override final A_CONST;
+                        const int amount) const override final;
 };
 
 }  // namespace Ea

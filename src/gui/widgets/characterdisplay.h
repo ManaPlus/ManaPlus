@@ -55,9 +55,9 @@ class CharacterDisplay final : public Container,
         Net::Character *getCharacter() const
         { return mCharacter; }
 
-        void requestFocus() override final A_CONST;
+        void requestFocus() override final;
 
-        void setActive(const bool active) A_CONST;
+        void setActive(const bool active);
 
         bool isSelectFocused() const
         { return false; }

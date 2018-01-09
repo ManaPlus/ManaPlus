@@ -202,7 +202,7 @@ namespace PlayerInfo
     /**
      * Initializes some internals.
      */
-    void init() A_CONST;
+    void init();
 
     void deinit();
 

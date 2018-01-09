@@ -47,7 +47,7 @@ class GameHandler final : public Ea::GameHandler
 
         void ping(const int tick) const override final;
 
-        void disconnect2() const override final A_CONST;
+        void disconnect2() const override final;
 
         void mapLoadedEvent() const override final;
 

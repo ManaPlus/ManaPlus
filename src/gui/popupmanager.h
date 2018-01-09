@@ -31,14 +31,14 @@ class PopupManager final
         /**
          * Constructor.
          */
-        PopupManager() A_CONST;
+        PopupManager();
 
         A_DELETE_COPY(PopupManager)
 
         /**
          * Destructor.
          */
-        ~PopupManager() A_CONST;
+        ~PopupManager();
 
         static bool isBeingPopupVisible() A_WARN_UNUSED;
 

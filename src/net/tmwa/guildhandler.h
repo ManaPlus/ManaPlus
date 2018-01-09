@@ -71,30 +71,28 @@ class GuildHandler final : public Net::GuildHandler
         void checkMaster() const override final;
 
         void requestAlliance(const Being *const being) const override final
-                             A_CONST;
+                            ;
 
         void requestAllianceResponse(const int beingId,
-                                     const bool accept) const override final
-                                     A_CONST;
+                                     const bool accept) const override final;
 
         void endAlliance(const int guildId,
-                         const int flag) const override final A_CONST;
+                         const int flag) const override final;
 
         void changePostionInfo(const int posId,
                                const int mode,
                                const int ranking,
                                const int payRate,
-                               const std::string &name) const override final
-                               A_CONST;
+                               const std::string &name) const override final;
 
         void requestOpposition(const Being *const being) const override final
-                               A_CONST;
+                              ;
 
-        void breakGuild(const std::string &name) const override final A_CONST;
+        void breakGuild(const std::string &name) const override final;
 
-        void changeEmblem(std::string emblem) const override final A_CONST;
+        void changeEmblem(std::string emblem) const override final;
 
-        void requestEmblem(const int guildId) const override final A_CONST;
+        void requestEmblem(const int guildId) const override final;
 };
 
 }  // namespace TmwAthena

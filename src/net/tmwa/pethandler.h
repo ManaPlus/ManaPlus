@@ -40,21 +40,21 @@ class PetHandler final : public Net::PetHandler
 
         void emote(const uint8_t emoteId) override final;
 
-        void catchPet(const Being *const being) const override final A_CONST;
+        void catchPet(const Being *const being) const override final;
 
-        void sendPetMessage(const int data) const override final A_CONST;
+        void sendPetMessage(const int data) const override final;
 
-        void setName(const std::string &name) const override final A_CONST;
+        void setName(const std::string &name) const override final;
 
-        void requestStatus() const override final A_CONST;
+        void requestStatus() const override final;
 
-        void feed() const override final A_CONST;
+        void feed() const override final;
 
-        void dropLoot() const override final A_CONST;
+        void dropLoot() const override final;
 
-        void returnToEgg() const override final A_CONST;
+        void returnToEgg() const override final;
 
-        void unequip() const override final A_CONST;
+        void unequip() const override final;
 
         void setDirection(const unsigned char type) const override final;
 

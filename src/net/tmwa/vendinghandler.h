@@ -35,27 +35,27 @@ class VendingHandler final : public Net::VendingHandler
 
         ~VendingHandler() override final;
 
-        void close() const override final A_CONST;
+        void close() const override final;
 
-        void open(const Being *const being) const override final A_CONST;
+        void open(const Being *const being) const override final;
 
         void buy(const Being *const being,
                  const int index,
-                 const int amount) const override final A_CONST;
+                 const int amount) const override final;
 
         void buyItems(const Being *const being,
                       const STD_VECTOR<ShopItem*> &items) const
-                      override final A_CONST;
+                      override final;
 
         void buy2(const Being *const being,
                   const int vendId,
                   const int index,
-                  const int amount) const override final A_CONST;
+                  const int amount) const override final;
 
         void createShop(const std::string &name,
                         const bool flag,
                         const STD_VECTOR<ShopItem*> &items) const
-                        override final A_CONST;
+                        override final;
 };
 
 }  // namespace TmwAthena

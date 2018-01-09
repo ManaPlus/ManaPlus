@@ -47,10 +47,10 @@ class InventoryHandler notfinal : public Net::InventoryHandler
                       override final A_CONST A_WARN_UNUSED;
 
         void splitItem(const Item *const item,
-                       const int amount) const override final A_CONST;
+                       const int amount) const override final;
 
         void moveItem(const int oldIndex,
-                      const int newIndex) const override final A_CONST;
+                      const int newIndex) const override final;
 
         size_t getSize(const InventoryTypeT type) const override final
                        A_CONST A_WARN_UNUSED;

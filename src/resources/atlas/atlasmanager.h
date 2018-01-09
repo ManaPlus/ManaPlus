@@ -35,7 +35,7 @@ struct TextureAtlas;
 class AtlasManager final
 {
     public:
-        AtlasManager() A_CONST;
+        AtlasManager();
 
         A_DELETE_COPY(AtlasManager)
 

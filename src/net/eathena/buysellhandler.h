@@ -38,18 +38,18 @@ class BuySellHandler final : public Ea::BuySellHandler
         ~BuySellHandler() override final;
 
         void requestSellList(const std::string &nick)
-                             const override final A_CONST;
+                             const override final;
 
         void requestBuyList(const std::string &nick)
-                            const override final A_CONST;
+                            const override final;
 
         void sendBuyRequest(const std::string &nick,
                             const ShopItem *const item,
-                            const int amount) const override final A_CONST;
+                            const int amount) const override final;
 
         void sendSellRequest(const std::string &nick,
                              const ShopItem *const item,
-                             const int amount) const override final A_CONST;
+                             const int amount) const override final;
 
         void close() const override final;
 };

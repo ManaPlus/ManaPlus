@@ -35,22 +35,20 @@ class MercenaryHandler final : public Net::MercenaryHandler
 
         ~MercenaryHandler() override final;
 
-        void fire() const override final A_CONST;
+        void fire() const override final;
 
-        void moveToMaster() const override final A_CONST;
+        void moveToMaster() const override final;
 
-        void move(const int x, const int y) const override final A_CONST;
+        void move(const int x, const int y) const override final;
 
         void attack(const BeingId targetId,
-                    const Keep keep) const override final A_CONST;
+                    const Keep keep) const override final;
 
-        void talk(const std::string &restrict text) const override final
-                  A_CONST;
+        void talk(const std::string &restrict text) const override final;
 
-        void emote(const uint8_t emoteId) const override final A_CONST;
+        void emote(const uint8_t emoteId) const override final;
 
-        void setDirection(const unsigned char type) const override final
-                          A_CONST;
+        void setDirection(const unsigned char type) const override final;
 };
 
 }  // namespace TmwAthena

@@ -71,8 +71,7 @@ class Particle notfinal : public Actor
          */
         void draw(Graphics *restrict const graphics,
                   const int offsetX,
-                  const int offsetY) const restrict2 override
-                  A_CONST A_NONNULL(2);
+                  const int offsetY) const restrict2 override A_NONNULL(2);
 
         /**
          * Necessary for sorting with the other sprites.

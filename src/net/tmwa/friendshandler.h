@@ -34,14 +34,14 @@ class FriendsHandler final : public Net::FriendsHandler
 
         ~FriendsHandler() override final;
 
-        void invite(const std::string &name) const override final A_CONST;
+        void invite(const std::string &name) const override final;
 
         void inviteResponse(const int accountId,
                             const int charId,
-                            const bool accept) const override final A_CONST;
+                            const bool accept) const override final;
 
         void remove(const int accountId,
-                    const int charId) const override final A_CONST;
+                    const int charId) const override final;
 };
 
 }  // namespace TmwAthena

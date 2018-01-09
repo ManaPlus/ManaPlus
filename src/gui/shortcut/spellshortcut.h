@@ -41,7 +41,7 @@ class SpellShortcut final
         /**
          * Destructor.
          */
-        ~SpellShortcut() A_CONST;
+        ~SpellShortcut();
 
         /**
          * Load the configuration information.

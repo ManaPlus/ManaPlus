@@ -35,10 +35,9 @@ class FamilyHandler final : public Net::FamilyHandler
 
         ~FamilyHandler() override final;
 
-        void askForChild(const Being *const being) const override final
-                         A_CONST;
+        void askForChild(const Being *const being) const override final;
 
-        void askForChildReply(const bool accept) const override final A_CONST;
+        void askForChildReply(const bool accept) const override final;
 };
 
 }  // namespace TmwAthena

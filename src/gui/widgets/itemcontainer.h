@@ -77,8 +77,8 @@ class ItemContainer final : public Widget,
         void safeDraw(Graphics *const graphics) override final A_NONNULL(2);
 
         // KeyListener
-        void keyPressed(KeyEvent &event) override final A_CONST;
-        void keyReleased(KeyEvent &event) override final A_CONST;
+        void keyPressed(KeyEvent &event) override final;
+        void keyReleased(KeyEvent &event) override final;
 
         // MouseListener
         void mousePressed(MouseEvent &event) override final;

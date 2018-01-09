@@ -35,7 +35,7 @@ class GameHandler notfinal : public Net::GameHandler
 
         A_DELETE_COPY(GameHandler)
 
-        void who() const override final A_CONST;
+        void who() const override final;
 
         bool removeDeadBeings() const override final A_WARN_UNUSED
         { return true; }

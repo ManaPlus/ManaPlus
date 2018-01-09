@@ -43,11 +43,11 @@ class AdminHandler notfinal : public Net::AdminHandler
 
         void kickName(const std::string &name) const override final;
 
-        void ban(const int playerId) const override final A_CONST;
+        void ban(const int playerId) const override final;
 
         void banName(const std::string &name) const override final;
 
-        void unban(const int playerId) const override final A_CONST;
+        void unban(const int playerId) const override final;
 
         void unbanName(const std::string &name) const override final;
 

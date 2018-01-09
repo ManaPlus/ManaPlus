@@ -38,17 +38,16 @@ class BuyingStoreHandler final : public Net::BuyingStoreHandler
         void create(const std::string &name,
                     const int maxMoney,
                     const bool flag,
-                    const STD_VECTOR<ShopItem*> &items) const override final
-                    A_CONST;
+                    const STD_VECTOR<ShopItem*> &items) const override final;
 
-        void close() const override final A_CONST;
+        void close() const override final;
 
-        void open(const Being *const being) const override final A_CONST;
+        void open(const Being *const being) const override final;
 
         void sell(const Being *const being,
                   const int storeId,
                   const Item *const item,
-                  const int amount) const override final A_CONST;
+                  const int amount) const override final;
 };
 
 }  // namespace TmwAthena

@@ -91,7 +91,7 @@ class SetupItem notfinal : public ActionListener,
 
         virtual void externalUpdated(const std::string &eventName);
 
-        virtual void externalUnloaded(const std::string &eventName) A_CONST;
+        virtual void externalUnloaded(const std::string &eventName);
 
         MainConfig isMainConfig() const noexcept2 A_WARN_UNUSED
         { return mMainConfig; }
@@ -295,13 +295,13 @@ class SetupItemLabel final : public SetupItem
 
         void createControls();
 
-        void fromWidget() override final A_CONST;
+        void fromWidget() override final;
 
-        void toWidget() override final A_CONST;
+        void toWidget() override final;
 
-        void action(const ActionEvent &event) override final A_CONST;
+        void action(const ActionEvent &event) override final;
 
-        void apply(const std::string &eventName) override final A_CONST;
+        void apply(const std::string &eventName) override final;
 
     protected:
         Label *mLabel;

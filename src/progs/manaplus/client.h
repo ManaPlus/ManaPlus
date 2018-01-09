@@ -112,7 +112,7 @@ class Client final : public ConfigListener,
         static void logVars();
 #else  // ANDROID
 
-        static void logVars() A_CONST;
+        static void logVars();
 #endif  // ANDROID
 
         void stateConnectGame1();

@@ -62,14 +62,14 @@ class LoginHandler notfinal : public Net::LoginHandler
 
         const Token &getToken() const A_CONST A_WARN_UNUSED;
 
-        void logout() const override final A_CONST;
+        void logout() const override final;
 
         void changeEmail(const std::string &email) const
-                         override final A_CONST;
+                         override final;
 
         void unregisterAccount(const std::string &username,
                                const std::string &password)
-                               const override final A_CONST;
+                               const override final;
 
         void loginOrRegister(LoginData *const data) const override final;
 

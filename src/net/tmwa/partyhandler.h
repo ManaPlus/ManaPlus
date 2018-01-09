@@ -55,10 +55,9 @@ class PartyHandler final : public Ea::PartyHandler
 
         void setShareItems(const PartyShareT share) const override final;
 
-        void changeLeader(const std::string &name) const override final
-                          A_CONST;
+        void changeLeader(const std::string &name) const override final;
 
-        void allowInvite(const bool allow) const override final A_CONST;
+        void allowInvite(const bool allow) const override final;
 
         void setShareAutoItems(const PartyShareT share) const override final;
 

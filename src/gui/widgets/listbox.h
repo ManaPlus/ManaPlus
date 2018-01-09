@@ -123,9 +123,9 @@ class ListBox notfinal : public Widget,
 
         // Inherited from MouseListener
 
-        void mouseWheelMovedUp(MouseEvent& event) override final A_CONST;
+        void mouseWheelMovedUp(MouseEvent& event) override final;
 
-        void mouseWheelMovedDown(MouseEvent& event) override final A_CONST;
+        void mouseWheelMovedDown(MouseEvent& event) override final;
 
         void mousePressed(MouseEvent &event) override;
 

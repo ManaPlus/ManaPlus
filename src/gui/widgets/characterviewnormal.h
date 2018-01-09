@@ -40,7 +40,7 @@ class CharacterViewNormal final : public CharacterViewBase
 
         void resize() override;
 
-        void action(const ActionEvent &event A_UNUSED) override final A_CONST;
+        void action(const ActionEvent &event A_UNUSED) override final;
 
     private:
         STD_VECTOR<CharacterDisplay*> *mCharacterEntries;

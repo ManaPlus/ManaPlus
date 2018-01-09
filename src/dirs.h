@@ -38,7 +38,7 @@ class Dirs final
         static void extractDataDir();
 #else  // defined(ANDROID) && defined(USE_SDL2)
 
-        static void extractDataDir() A_CONST;
+        static void extractDataDir();
 #endif  // defined(ANDROID) && defined(USE_SDL2)
 
         static void mountDataDir();

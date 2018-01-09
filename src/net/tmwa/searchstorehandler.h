@@ -37,15 +37,15 @@ class SearchStoreHandler final : public Net::SearchStoreHandler
         void search(const StoreSearchTypeT type,
                     const int minPrice,
                     const int maxPrice,
-                    const int itemId) const override final A_CONST;
+                    const int itemId) const override final;
 
-        void nextPage() const override final A_CONST;
+        void nextPage() const override final;
 
-        void close() const override final A_CONST;
+        void close() const override final;
 
         void select(const int accountId,
                     const int storeId,
-                    const int itemId) const override final A_CONST;
+                    const int itemId) const override final;
 };
 
 }  // namespace TmwAthena

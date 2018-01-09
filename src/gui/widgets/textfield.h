@@ -181,10 +181,10 @@ class TextField notfinal : public Widget,
         void focusGained(const Event &event) override final;
 #else  // ANDROID
 
-        void focusGained(const Event &event) override final A_CONST;
+        void focusGained(const Event &event) override final;
 #endif  // ANDROID
 
-        void focusLost(const Event &event) override A_CONST;
+        void focusLost(const Event &event) override;
 
         void moveCaretBack();
 

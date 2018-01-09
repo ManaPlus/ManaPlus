@@ -64,8 +64,7 @@ class CharServerHandler final : public Ea::CharServerHandler
 
         bool isNeedCreatePin() const override final A_WARN_UNUSED;
 
-        void setNewPincode(const std::string &pin) const override final
-                           A_CONST;
+        void setNewPincode(const std::string &pin) const override final;
 
         /**
          * Sets the character create dialog. The handler will clean up this

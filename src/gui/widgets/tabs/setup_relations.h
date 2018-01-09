@@ -48,7 +48,7 @@ class Setup_Relations final : public SetupTab,
 
         void apply() override final;
 
-        void cancel() override final A_CONST;
+        void cancel() override final;
 
         void reset();
 

@@ -34,15 +34,15 @@ class MarketHandler final : public Net::MarketHandler
 
         ~MarketHandler() override final;
 
-        void close() const override final A_CONST;
+        void close() const override final;
 
         void buyItem(const int itemId,
                      const ItemTypeT type,
                      const ItemColor color,
-                     const int amount) const override final A_CONST;
+                     const int amount) const override final;
 
-        void buyItems(const STD_VECTOR<ShopItem*> &items) const override final
-                      A_CONST;
+        void buyItems(const STD_VECTOR<ShopItem*> &items) const
+                      override final;
 };
 
 }  // namespace TmwAthena

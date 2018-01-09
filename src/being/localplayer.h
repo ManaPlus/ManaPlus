@@ -358,7 +358,7 @@ class LocalPlayer final : public Being,
 
         int getPathLength(const Being *const being) const A_WARN_UNUSED;
 
-        void targetMoved() const A_CONST;
+        void targetMoved() const;
 
         void setLastHitFrom(const std::string &n)
         { mLastHitFrom = n; }
