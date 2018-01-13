@@ -75,6 +75,10 @@ namespace
 
 std::string getRealPath(const std::string &str)
 {
+#if defined(__GLIBC__)
+    if (str.find("(unreachable)") != std::string::npos)
+        return "";
+#endif  // defined(__GLIBC__)
 #if defined(__OpenBSD__) || defined(__ANDROID__) || defined(__native_client__)
     char *realPath = reinterpret_cast<char*>(calloc(PATH_MAX, sizeof(char)));
     if (!realPath)
