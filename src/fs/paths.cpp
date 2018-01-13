@@ -106,7 +106,8 @@ bool checkPath(const std::string &path)
     return path.find("../") == std::string::npos
         && path.find("..\\") == std::string::npos
         && path.find("/..") == std::string::npos
-        && path.find("\\..") == std::string::npos;
+        && path.find("\\..") == std::string::npos
+        && path.find("(unreachable)") == std::string::npos;
 }
 
 void prepareFsPath(std::string &path)
