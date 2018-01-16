@@ -997,6 +997,7 @@ if (packets_zero == true)
 if (packetVersion >= 20171207)
 {
     packet(SMSG_PARTY_MEMBER_INFO,         0x0ae4,  89, &PartyRecv::processPartyMemberInfo,             20171207);
+    packet(SMSG_PARTY_INFO,                0x0ae5,  -1, &PartyRecv::processPartyInfo,                   20171207);
 }
 
 // 0

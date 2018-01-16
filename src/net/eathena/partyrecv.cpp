@@ -212,6 +212,8 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
     for (int i = 0; i < count; i++)
     {
         const BeingId id = msg.readBeingId("account id");
+        if (msg.getVersion() >= 20171207)
+            msg.readBeingId("char id");
         std::string nick = msg.readString(24, "nick");
         std::string map = msg.readString(16, "map name");
         const bool leader = msg.readUInt8("leader") == 0U;
