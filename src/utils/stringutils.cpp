@@ -588,7 +588,7 @@ std::string combineDye3(std::string file,
         }
         return file.append("|").append(str);
     }
-    if (dye.empty() || file.empty())
+    if (file.empty())
         return file;
     return file.append("|").append(dye);
 }

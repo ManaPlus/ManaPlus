@@ -70,8 +70,7 @@ class GuildHandler final : public Net::GuildHandler
 
         void checkMaster() const override final;
 
-        void requestAlliance(const Being *const being) const override final
-                            ;
+        void requestAlliance(const Being *const being) const override final;
 
         void requestAllianceResponse(const int beingId,
                                      const bool accept) const override final;
@@ -85,8 +84,7 @@ class GuildHandler final : public Net::GuildHandler
                                const int payRate,
                                const std::string &name) const override final;
 
-        void requestOpposition(const Being *const being) const override final
-                              ;
+        void requestOpposition(const Being *const being) const override final;
 
         void breakGuild(const std::string &name) const override final;
 

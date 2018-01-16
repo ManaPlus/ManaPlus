@@ -189,7 +189,7 @@ PRAGMACLANG6GCC(GCC diagnostic pop)
 
     outLength = bufferSize - strm.avail_out;
     (void) inflateEnd(&strm);
-    return ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR;
+    return Z_OK;
 }
 
 int inflateMemory(unsigned char *restrict const in,

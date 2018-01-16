@@ -73,11 +73,8 @@ static std::string setLangEnv()
         putenv(const_cast<char*>(("LANGUAGE=" + lang).c_str()));
 #else  // WIN32
 
-        if (!lang.empty())
-        {
-            setEnv("LANG", lang.c_str());
-            setEnv("LANGUAGE", lang.c_str());
-        }
+        setEnv("LANG", lang.c_str());
+        setEnv("LANGUAGE", lang.c_str());
 #endif  // WIN32
     }
 

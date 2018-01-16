@@ -164,6 +164,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
 
 CharSelectDialog::~CharSelectDialog()
 {
+    mDeleteDialog = nullptr;
 }
 
 void CharSelectDialog::postInit()

@@ -3062,8 +3062,7 @@ void Being::setSpriteCards(const unsigned int slot,
 
         if (!filename.empty())
         {
-            if (color.empty())
-                color = info.getDyeColorsString(colorId);
+            color = info.getDyeColorsString(colorId);
 
             equipmentSprite = AnimatedSprite::delayedLoad(
                 pathJoin(paths.getStringValue("sprites"),

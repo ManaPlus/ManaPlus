@@ -1741,7 +1741,7 @@ bool ChatWindow::resortChatLog(std::string line,
                 tryRemoveColors);
         }
     }
-    else if ((localChatTab != nullptr) && channel.empty())
+    else if (localChatTab != nullptr)
     {
         localChatTab->chatLog(line, own, ignoreRecord, tryRemoveColors);
     }
