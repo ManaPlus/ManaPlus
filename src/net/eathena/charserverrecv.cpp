@@ -331,6 +331,11 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
         server.hostname = ipToString(msg.readInt32("host"));
     }
     server.port = msg.readInt16("port");
+    if (msg.getVersion() >= 20170315)
+    {
+        for (int f = 0; f < 32; f ++)
+            msg.readInt32("unknown");
+    }
 
     network->disconnect();
     client->setState(State::CHANGE_MAP);

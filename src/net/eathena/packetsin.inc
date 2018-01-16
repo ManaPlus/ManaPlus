@@ -977,6 +977,12 @@ if (packetVersion >= 20170502)
     packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20170502);
 }
 
+// 20170315
+if (packetVersion == 20170315)
+{
+    packet(SMSG_CHANGE_MAP_SERVER,         0x0ac7, 156, &CharServerRecv::processChangeMapServer,        20170315);
+}
+
 // 20170830
 packet(SMSG_PLAYER_STAT_UPDATE_7,          0x0acb,  12, &PlayerRecv::processPlayerStatUpdate7,          20170830);
 packet(SMSG_PLAYER_GET_EXP2,               0x0acc,  18, &PlayerRecv::processPlayerGetExp2,              20170830);
