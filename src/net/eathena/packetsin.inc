@@ -993,6 +993,12 @@ if (packets_zero == true)
     packet(SMSG_ITEM_DROPPED,              0x0add,  22, &ItemRecv::processItemDropped,                  20171018);
 }
 
+// 20171207
+if (packetVersion >= 20171207)
+{
+    packet(SMSG_PARTY_MEMBER_INFO,         0x0ae4,  89, &PartyRecv::processPartyMemberInfo,             20171207);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

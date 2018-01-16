@@ -59,6 +59,8 @@ void PartyRecv::processPartyInvitationStats(Net::MessageIn &msg)
 void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("account id");
+    if (msg.getVersion() >= 20171207)
+        msg.readBeingId("char id");
     const bool leader = msg.readInt32("leader") == 0U;
     int level = 0;
     if (msg.getVersion() >= 20170502)
