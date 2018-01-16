@@ -32,6 +32,8 @@
 
 #include "debug.h"
 
+extern bool packets_zero;
+
 namespace EAthena
 {
 
@@ -49,6 +51,11 @@ void ItemRecv::processItemDropped(Net::MessageIn &msg)
     const int subX = CAST_S32(msg.readInt8("subx"));
     const int subY = CAST_S32(msg.readInt8("suby"));
     const int amount = msg.readInt16("count");
+    if (packets_zero)
+    {
+        msg.readUInt8("show drop effect");
+        msg.readInt16("show effect mode");
+    }
 
     if (actorManager != nullptr)
     {
