@@ -41,6 +41,7 @@ namespace EAthena
         void processArea(Net::MessageIn &msg);
         void processShowDigit(Net::MessageIn &msg);
         void processProgressBarAbort(Net::MessageIn &msg);
+        void processShowProgressBarFree(Net::MessageIn &msg);
         void processNpcSkin(Net::MessageIn &msg);
     }  // namespace NpcRecv
 }  // namespace EAthena

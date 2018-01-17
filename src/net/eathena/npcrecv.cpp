@@ -81,6 +81,15 @@ void NpcRecv::processNpcShowProgressBar(Net::MessageIn &msg)
     msg.readInt32("seconds");
 }
 
+void NpcRecv::processShowProgressBarFree(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    Ea::NpcRecv::mRequestLang = false;
+    msg.readBeingId("account id");
+    msg.readInt32("color");
+    msg.readInt32("time");
+}
+
 void NpcRecv::processNpcCloseTimeout(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;

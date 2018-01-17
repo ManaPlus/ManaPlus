@@ -745,6 +745,9 @@ if (packetVersion >= 20120925)
     packet(SMSG_PLAYER_UNEQUIP,            0x099a,   9, &InventoryRecv::processPlayerUnEquip,           20120925);
 }
 
+// 20130821
+packet(SMSG_SHOW_PROGRESS_BAR_FREE,        0x09d1,  14, &NpcRecv::processShowProgressBarFree,           20130821);
+
 // 20121010
 packet(SMSG_MAP_TYPE_PROPERTY2,            0x099b,   8, &BeingRecv::processMapTypeProperty,             20121010);
 
