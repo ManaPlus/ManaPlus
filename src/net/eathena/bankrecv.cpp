@@ -38,8 +38,10 @@ namespace EAthena
 void BankRecv::processBankStatus(Net::MessageIn &msg)
 {
     const int money = CAST_S32(msg.readInt64("money"));
-    msg.readInt16("reason");
+    const int reason = msg.readInt16("reason");
     BankListener::distributeEvent(money);
+    if (reason != 0)
+        NotifyManager::notify(NotifyTypes::BANK_CHECK_FAILED);
 }
 
 void BankRecv::processBankDeposit(Net::MessageIn &msg)

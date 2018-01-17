@@ -419,6 +419,10 @@ namespace NotifyManager
             // TRANSLATORS: notification message
             N_("Card inserted."),
             NotifyFlags::EMPTY},
+        {"bank check failed",
+            // TRANSLATORS: notification message
+            N_("Bank check failed. Bank probably disabled."),
+            NotifyFlags::EMPTY},
         {"bank deposit failed",
             // TRANSLATORS: notification message
             N_("Deposit failed. You probably don't have this "
