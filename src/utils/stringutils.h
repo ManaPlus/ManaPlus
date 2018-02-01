@@ -136,8 +136,9 @@ int compareStrI(const std::string &a, const std::string &b) A_WARN_UNUSED;
 /**
  * Tells wether the character is a word separator.
  */
-constexpr bool isWordSeparator(const signed char chr) A_CONST A_WARN_UNUSED;
-constexpr bool isWordSeparator(const signed char chr)
+constexpr inline bool isWordSeparator(const signed char chr)
+                                      A_CONST A_WARN_UNUSED;
+constexpr inline bool isWordSeparator(const signed char chr)
 {
     return chr == ' ' ||
         chr == ',' ||
