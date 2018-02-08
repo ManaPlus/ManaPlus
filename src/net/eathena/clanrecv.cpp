@@ -49,4 +49,11 @@ void ClanRecv::processClanInfo(Net::MessageIn &msg)
     }
 }
 
+void ClanRecv::processClanOnlineCount(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readInt16("online members count");
+    msg.readInt16("total members count");
+}
+
 }  // namespace EAthena
