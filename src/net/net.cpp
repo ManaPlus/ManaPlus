@@ -62,6 +62,7 @@ namespace Net
     class BuySellHandler;
     class CharServerHandler;
     class ChatHandler;
+    class ClanHandler;
     class GameHandler;
     class GuildHandler;
     class InventoryHandler;
@@ -78,6 +79,7 @@ namespace Net
 Net::AdminHandler *adminHandler = nullptr;
 Net::CharServerHandler *charServerHandler = nullptr;
 Net::ChatHandler *chatHandler = nullptr;
+Net::ClanHandler *clanHandler = nullptr;
 Net::GeneralHandler *generalHandler = nullptr;
 Net::InventoryHandler *inventoryHandler = nullptr;
 Net::LoginHandler *loginHandler = nullptr;

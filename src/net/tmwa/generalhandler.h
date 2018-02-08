@@ -32,6 +32,7 @@ class BeingHandler;
 class BuySellHandler;
 class CharServerHandler;
 class ChatHandler;
+class ClanHandler;
 class GameHandler;
 class GuildHandler;
 class InventoryHandler;
@@ -96,6 +97,7 @@ class GeneralHandler final : public Net::GeneralHandler
         BuySellHandler *mBuySellHandler;
         CharServerHandler *mCharServerHandler;
         ChatHandler *mChatHandler;
+        ClanHandler *mClanHandler;
         GameHandler *mGameHandler;
         GuildHandler *mGuildHandler;
         InventoryHandler *mInventoryHandler;

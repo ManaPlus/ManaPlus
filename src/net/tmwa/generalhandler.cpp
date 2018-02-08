@@ -34,6 +34,7 @@
 #include "net/tmwa/beinghandler.h"
 #include "net/tmwa/buysellhandler.h"
 #include "net/tmwa/chathandler.h"
+#include "net/tmwa/clanhandler.h"
 #include "net/tmwa/charserverhandler.h"
 #include "net/tmwa/gamehandler.h"
 #include "net/tmwa/guildhandler.h"
@@ -82,6 +83,7 @@ GeneralHandler::GeneralHandler() :
     mBuySellHandler(new BuySellHandler),
     mCharServerHandler(new CharServerHandler),
     mChatHandler(new ChatHandler),
+    mClanHandler(new ClanHandler),
     mGameHandler(new GameHandler),
     mGuildHandler(new GuildHandler),
     mInventoryHandler(new InventoryHandler),
@@ -125,6 +127,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mBuySellHandler);
     delete2(mCharServerHandler);
     delete2(mChatHandler);
+    delete2(mClanHandler);
     delete2(mGameHandler);
     delete2(mGuildHandler);
     delete2(mInventoryHandler);

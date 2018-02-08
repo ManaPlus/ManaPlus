@@ -330,6 +330,7 @@ packet(CMSG_MAIL2_REFRESH_MAIL_LIST,      0x0000,   0, nullptr);
 packet(CMSG_MAIL2_OPEN_MAILBOX,           0x0000,   0, nullptr);
 packet(CMSG_MAIL2_CLOSE_MAILBOX,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_CANCEL_WRITE_MAIL,      0x0000,   0, nullptr);
+packet(CMSG_CLAN_MESSAGE,                 0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -823,6 +824,7 @@ if (packetVersion >= 20120716)
     packet(CMSG_MOVE_FROM_STORAGE,        0x0364,   8, clif->pMoveFromKafra);
     packet(CMSG_SKILL_USE_BEING,          0x083c,  10, clif->pUseSkillToId);
     packet(CMSG_STORAGE_PASSWORD,         0x0819,  36, clif->pStoragePassword);
+    packet(CMSG_CLAN_MESSAGE,             0x098d,  -1, clif->pClanMessage);
 }
 
 // 20120925

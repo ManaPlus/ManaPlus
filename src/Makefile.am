@@ -1700,6 +1700,8 @@ SRC += \
 	      net/tmwa/chathandler.h \
 	      net/tmwa/chatrecv.cpp \
 	      net/tmwa/chatrecv.h \
+	      net/tmwa/clanhandler.cpp \
+	      net/tmwa/clanhandler.h \
 	      net/tmwa/gamehandler.cpp \
 	      net/tmwa/gamehandler.h \
 	      net/tmwa/gamerecv.cpp \
@@ -1896,6 +1898,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/chathandler.h \
 	      net/eathena/chatrecv.cpp \
 	      net/eathena/chatrecv.h \
+	      net/eathena/clanhandler.cpp \
+	      net/eathena/clanhandler.h \
 	      net/eathena/clanrecv.cpp \
 	      net/eathena/clanrecv.h \
 	      net/eathena/elementalhandler.cpp \

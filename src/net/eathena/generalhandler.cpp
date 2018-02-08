@@ -40,6 +40,7 @@
 #include "net/eathena/buysellhandler.h"
 #include "net/eathena/cashshophandler.h"
 #include "net/eathena/chathandler.h"
+#include "net/eathena/clanhandler.h"
 #include "net/eathena/charserverhandler.h"
 #include "net/eathena/elementalhandler.h"
 #include "net/eathena/familyhandler.h"
@@ -82,6 +83,7 @@ GeneralHandler::GeneralHandler() :
     mBuySellHandler(new BuySellHandler),
     mCharServerHandler(new CharServerHandler),
     mChatHandler(new ChatHandler),
+    mClanHandler(new ClanHandler),
     mGameHandler(new GameHandler),
     mGuildHandler(new GuildHandler),
     mInventoryHandler(new InventoryHandler),
@@ -125,6 +127,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mBuySellHandler);
     delete2(mCharServerHandler);
     delete2(mChatHandler);
+    delete2(mClanHandler);
     delete2(mGameHandler);
     delete2(mGuildHandler);
     delete2(mInventoryHandler);
