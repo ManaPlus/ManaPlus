@@ -1896,6 +1896,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/chathandler.h \
 	      net/eathena/chatrecv.cpp \
 	      net/eathena/chatrecv.h \
+	      net/eathena/clanrecv.cpp \
+	      net/eathena/clanrecv.h \
 	      net/eathena/elementalhandler.cpp \
 	      net/eathena/elementalhandler.h \
 	      net/eathena/elementalrecv.cpp \

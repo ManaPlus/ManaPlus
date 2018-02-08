@@ -50,6 +50,7 @@
 #include "net/eathena/cashshoprecv.h"
 #include "net/eathena/charserverrecv.h"
 #include "net/eathena/chatrecv.h"
+#include "net/eathena/clanrecv.h"
 #include "net/eathena/elementalrecv.h"
 #include "net/eathena/familyrecv.h"
 #include "net/eathena/friendsrecv.h"

@@ -730,6 +730,12 @@ if (packetVersion >= 20120604)
     packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST, 0x0985,  -1, &SkillRecv::processSkillCoolDownList,           20120604);
 }
 
+// 20120702
+if (packetVersion >= 20120702)
+{
+    packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20120702);
+}
+
 // 20120925
 if (packetVersion >= 20120925)
 {
