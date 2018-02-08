@@ -32,6 +32,7 @@ namespace EAthena
     {
         void processClanInfo(Net::MessageIn &msg);
         void processClanOnlineCount(Net::MessageIn &msg);
+        void processClanLeave(Net::MessageIn &msg);
     }  // namespace ClanRecv
 }  // namespace EAthena
 
