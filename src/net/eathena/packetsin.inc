@@ -740,6 +740,7 @@ if (packetVersion >= 20120702)
 if (packetVersion >= 20120716)
 {
     packet(SMSG_CLAN_ONLINE_COUNT,         0x0988,   6, &ClanRecv::processClanOnlineCount,              20120716);
+    packet(SMSG_CLAN_CHAT,                 0x098e,  -1, &ClanRecv::processClanChat,                     20120716);
 }
 
 // 20120925

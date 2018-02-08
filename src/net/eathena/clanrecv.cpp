@@ -61,4 +61,15 @@ void ClanRecv::processClanLeave(Net::MessageIn &msg)
     UNIMPLEMENTEDPACKET;
 }
 
+void ClanRecv::processClanChat(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int chatMsgLength = msg.readInt16("len") - 4 - 24;
+    if (chatMsgLength <= 0)
+        return;
+    msg.readInt16("len");
+    msg.readString(24, "player name");
+    msg.readString(chatMsgLength, "message");
+}
+
 }  // namespace EAthena
