@@ -1051,6 +1051,8 @@ SET(SRCS
     being/beingspeech.h
     being/castingeffect.cpp
     being/castingeffect.h
+    being/claninfo.cpp
+    being/claninfo.h
     beingequipbackend.cpp
     beingequipbackend.h
     spellmanager.cpp
