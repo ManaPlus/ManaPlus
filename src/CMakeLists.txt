@@ -139,6 +139,8 @@ SET(SRCS
     gui/widgets/tabs/debugwindowtabs.h
     gui/widgets/tabs/chat/chattab.cpp
     gui/widgets/tabs/chat/chattab.h
+    gui/widgets/tabs/chat/clantab.cpp
+    gui/widgets/tabs/chat/clantab.h
     gui/widgets/chatinput.h
     gui/widgets/checkbox.cpp
     gui/widgets/checkbox.h

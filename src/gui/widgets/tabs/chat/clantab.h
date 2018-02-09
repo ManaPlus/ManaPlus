@@ -18,24 +18,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_CLANRECV_H
-#define NET_EATHENA_CLANRECV_H
+#ifndef GUI_WIDGETS_TABS_CHAT_CLANTAB_H
+#define GUI_WIDGETS_TABS_CHAT_CLANTAB_H
 
-namespace Net
+#include "gui/widgets/tabs/chat/chattab.h"
+
+/**
+ * A tab for a clan chat channel.
+ */
+class ClanTab final : public ChatTab
 {
-    class MessageIn;
-}  // namespace Net
+    public:
+        explicit ClanTab(const Widget2 *const widget);
 
-namespace EAthena
-{
-    namespace ClanRecv
-    {
-        void processClanInfo(Net::MessageIn &msg);
-        void processClanOnlineCount(Net::MessageIn &msg);
-        void processClanLeave(Net::MessageIn &msg);
-        void processClanChat(Net::MessageIn &msg);
-        void createTab();
-    }  // namespace ClanRecv
-}  // namespace EAthena
+        A_DELETE_COPY(ClanTab)
 
-#endif  // NET_EATHENA_CLANRECV_H
+        ~ClanTab() override final;
+
+        void playNewMessageSound() const override final;
+
+    protected:
+        void handleInput(const std::string &msg) override final;
+};
+
+extern ClanTab *clanTab;
+
+#endif  // GUI_WIDGETS_TABS_CHAT_CLANTAB_H

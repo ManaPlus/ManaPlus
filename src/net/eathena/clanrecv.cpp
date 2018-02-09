@@ -20,11 +20,19 @@
 
 #include "net/eathena/clanrecv.h"
 
+#include "configuration.h"
+#include "logger.h"
+
 #include "being/claninfo.h"
+
+#include "gui/widgets/tabs/chat/clantab.h"
+
+#include "gui/windows/chatwindow.h"
 
 #include "net/messagein.h"
 
-#include "logger.h"
+#include "utils/checkutils.h"
+#include "utils/delete2.h"
 
 #include "debug.h"
 
@@ -50,6 +58,7 @@ void ClanRecv::processClanInfo(Net::MessageIn &msg)
         clanInfo.antagonistClans.push_back(
             msg.readString(24, "antagonist clan name"));
     }
+    createTab();
 }
 
 void ClanRecv::processClanOnlineCount(Net::MessageIn &msg)
@@ -58,20 +67,47 @@ void ClanRecv::processClanOnlineCount(Net::MessageIn &msg)
     clanInfo.totalMembers = msg.readInt16("total members count");
 }
 
-void ClanRecv::processClanLeave(Net::MessageIn &msg)
+void ClanRecv::processClanLeave(Net::MessageIn &msg A_UNUSED)
 {
-    UNIMPLEMENTEDPACKET;
+    delete2(clanTab);
 }
 
 void ClanRecv::processClanChat(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     const int chatMsgLength = msg.readInt16("len") - 4 - 24;
     if (chatMsgLength <= 0)
         return;
-    msg.readInt16("len");
-    msg.readString(24, "player name");
-    msg.readString(chatMsgLength, "message");
+    msg.readString(24, "player name (unused)");
+    std::string chatMsg = msg.readString(chatMsgLength, "message");
+    if (clanTab == nullptr)
+    {
+        reportAlways("received clan chat messages without clan.");
+        return;
+    }
+    const size_t pos = chatMsg.find(" : ", 0);
+    if (pos != std::string::npos)
+    {
+        const std::string sender_name = chatMsg.substr(0, pos);
+        chatMsg.erase(0, pos + 3);
+        trim(chatMsg);
+        clanTab->chatLog(sender_name, chatMsg);
+    }
+    else
+    {
+        clanTab->chatLog(chatMsg,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
+    }
+}
+
+void ClanRecv::createTab()
+{
+    if (clanTab != nullptr)
+        return;
+    clanTab = new ClanTab(chatWindow);
+    if (config.getBoolValue("showChatHistory"))
+        clanTab->loadFromLogFile("#Clan");
 }
 
 }  // namespace EAthena

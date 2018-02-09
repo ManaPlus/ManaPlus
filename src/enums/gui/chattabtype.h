@@ -42,7 +42,8 @@ enumStart(ChatTabType)
     BATTLE,
     LANG,
     GM,
-    CHANNEL
+    CHANNEL,
+    CLAN
 }
 enumEnd(ChatTabType);
 

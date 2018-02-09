@@ -34,6 +34,7 @@
 #include "soundmanager.h"
 #include "spellmanager.h"
 
+#include "being/claninfo.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 #include "being/playerrelations.h"
@@ -1985,6 +1986,7 @@ void Client::unloadData()
     ResourceManager::clearCache();
 
     loginData.clearUpdateHost();
+    clanInfo.clear();
     serverVersion = 0;
     packetVersion = 0;
     tmwServerVersion = 0;

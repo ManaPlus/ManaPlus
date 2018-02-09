@@ -30,6 +30,7 @@
 #include "gui/widgets/tabs/chat/whispertab.h"
 
 #include "net/chathandler.h"
+#include "net/clanhandler.h"
 #include "net/guildhandler.h"
 #include "net/partyhandler.h"
 
@@ -59,6 +60,11 @@ void outStringNormal(ChatTab *const tab,
 
     switch (tab->getType())
     {
+        case ChatTabType::CLAN:
+        {
+            clanHandler->chat(str);
+            break;
+        }
         case ChatTabType::PARTY:
         {
             partyHandler->chat(str);

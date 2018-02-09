@@ -28,6 +28,7 @@
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 
+#include "gui/widgets/tabs/chat/clantab.h"
 #include "gui/widgets/tabs/chat/guildtab.h"
 #include "gui/widgets/tabs/chat/partytab.h"
 
@@ -243,6 +244,7 @@ void GeneralHandler::gameEnded() const
 
     delete2(guildTab);
     delete2(partyTab);
+    delete2(clanTab);
 }
 
 }  // namespace EAthena

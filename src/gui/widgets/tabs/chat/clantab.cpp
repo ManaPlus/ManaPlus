@@ -18,24 +18,39 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NET_EATHENA_CLANRECV_H
-#define NET_EATHENA_CLANRECV_H
+#include "gui/widgets/tabs/chat/clantab.h"
 
-namespace Net
+#include "soundmanager.h"
+
+#include "const/sound.h"
+
+#include "gui/windows/chatwindow.h"
+
+#include "net/clanhandler.h"
+
+#include "utils/gettext.h"
+
+#include "debug.h"
+
+ClanTab *clanTab = nullptr;
+
+ClanTab::ClanTab(const Widget2 *const widget) :
+    // TRANSLATORS: clan chat tab name
+    ChatTab(widget, _("Clan"), "", "#Clan", ChatTabType::CLAN)
 {
-    class MessageIn;
-}  // namespace Net
+    setTabColors(ThemeColorId::CLAN_CHAT_TAB);
+}
 
-namespace EAthena
+ClanTab::~ClanTab()
 {
-    namespace ClanRecv
-    {
-        void processClanInfo(Net::MessageIn &msg);
-        void processClanOnlineCount(Net::MessageIn &msg);
-        void processClanLeave(Net::MessageIn &msg);
-        void processClanChat(Net::MessageIn &msg);
-        void createTab();
-    }  // namespace ClanRecv
-}  // namespace EAthena
+}
 
-#endif  // NET_EATHENA_CLANRECV_H
+void ClanTab::handleInput(const std::string &msg)
+{
+    clanHandler->chat(ChatWindow::doReplace(msg));
+}
+
+void ClanTab::playNewMessageSound() const
+{
+    soundManager.playGuiSound(SOUND_GUILD);
+}

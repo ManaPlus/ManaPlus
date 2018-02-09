@@ -133,6 +133,8 @@ impHandler(helpWindowShow)
             return showHelpPage("chatgm", true);
         case ChatTabType::CHANNEL:
             return showHelpPage("chatchannel", true);
+        case ChatTabType::CLAN:
+            return showHelpPage("chatclan", true);
         default:
         case ChatTabType::UNKNOWN:
         case ChatTabType::INPUT:

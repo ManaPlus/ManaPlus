@@ -36,6 +36,7 @@
 
 #include "net/charserverhandler.h"
 #include "net/chathandler.h"
+#include "net/clanhandler.h"
 #include "net/guildhandler.h"
 #include "net/net.h"
 #include "net/partyhandler.h"
@@ -74,6 +75,12 @@ static void outString(ChatTab *const tab,
 
     switch (tab->getType())
     {
+        case ChatTabType::CLAN:
+        {
+            if (clanHandler != nullptr)
+                clanHandler->chat(str);
+            break;
+        }
         case ChatTabType::PARTY:
         {
             if (partyHandler != nullptr)
