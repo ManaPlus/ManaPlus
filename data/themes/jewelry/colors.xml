@@ -198,6 +198,12 @@
         <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f8eacf" />
         <color id="GUILD_SOCIAL_TAB_SELECTED_OUTLINE" color="#63450a" />
+        <color id="CLAN_CHAT_TAB" color="#efd7a7" />
+        <color id="CLAN_CHAT_TAB_OUTLINE" color="#473005" />
+        <color id="CLAN_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="CLAN_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
+        <color id="CLAN_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="CLAN_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
         <color id="GM_CHAT_TAB" color="#efd7a7" />
         <color id="GM_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />

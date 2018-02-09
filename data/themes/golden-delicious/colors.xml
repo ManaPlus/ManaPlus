@@ -21,6 +21,7 @@
         <color id="CHECKBOX" color="#e8d8aa" />
         <color id="DROPDOWN" color="#e8d8aa" />
         <color id="GUILD_CHAT_TAB" color="#ef37e7" />
+        <color id="CLAN_CHAT_TAB" color="#ef37e7" />
         <color id="PARTY_CHAT_TAB" color="#f847f7" />
         <color id="LABEL" color="#e8d8aa" />
         <color id="LISTBOX" color="#e8d8aa" />
@@ -198,6 +199,12 @@
         <color id="GUILD_SOCIAL_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
         <color id="GUILD_SOCIAL_TAB_SELECTED" color="#f8eacf" />
         <color id="GUILD_SOCIAL_TAB_SELECTED_OUTLINE" color="#63450a" />
+        <color id="CLAN_CHAT_TAB" color="#F6DEAD" />
+        <color id="CLAN_CHAT_TAB_OUTLINE" color="#473005" />
+        <color id="CLAN_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
+        <color id="CLAN_CHAT_TAB_HIGHLIGHTED_OUTLINE" color="#63450a" />
+        <color id="CLAN_CHAT_TAB_SELECTED" color="#f8eacf" />
+        <color id="CLAN_CHAT_TAB_SELECTED_OUTLINE" color="#63450a" />
         <color id="GM_CHAT_TAB" color="#F6DEAD" />
         <color id="GM_CHAT_TAB_OUTLINE" color="#473005" />
         <color id="GM_CHAT_TAB_HIGHLIGHTED" color="#f8eacf" />
