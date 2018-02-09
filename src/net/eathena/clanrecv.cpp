@@ -23,7 +23,7 @@
 #include "configuration.h"
 #include "logger.h"
 
-#include "being/claninfo.h"
+#include "being/localclan.h"
 
 #include "gui/widgets/tabs/chat/clantab.h"
 
@@ -42,20 +42,20 @@ namespace EAthena
 void ClanRecv::processClanInfo(Net::MessageIn &msg)
 {
     msg.readInt16("len");
-    clanInfo.id = msg.readInt32("clan id");
-    clanInfo.name = msg.readString(24, "clan name");
-    clanInfo.masterName = msg.readString(24, "master name");
-    clanInfo.mapName = msg.readString(16, "map name");
+    localClan.id = msg.readInt32("clan id");
+    localClan.name = msg.readString(24, "clan name");
+    localClan.masterName = msg.readString(24, "master name");
+    localClan.mapName = msg.readString(16, "map name");
     const int allyCount = msg.readUInt8("ally clans count");
     const int antagonistCount = msg.readUInt8("antagonist clans count");
     for (int f = 0; f < allyCount; f ++)
     {
-        clanInfo.allyClans.push_back(
+        localClan.allyClans.push_back(
             msg.readString(24, "ally clan name"));
     }
     for (int f = 0; f < antagonistCount; f ++)
     {
-        clanInfo.antagonistClans.push_back(
+        localClan.antagonistClans.push_back(
             msg.readString(24, "antagonist clan name"));
     }
     createTab();
@@ -63,8 +63,8 @@ void ClanRecv::processClanInfo(Net::MessageIn &msg)
 
 void ClanRecv::processClanOnlineCount(Net::MessageIn &msg)
 {
-    clanInfo.onlineMembers = msg.readInt16("online members count");
-    clanInfo.totalMembers = msg.readInt16("total members count");
+    localClan.onlineMembers = msg.readInt16("online members count");
+    localClan.totalMembers = msg.readInt16("total members count");
 }
 
 void ClanRecv::processClanLeave(Net::MessageIn &msg A_UNUSED)

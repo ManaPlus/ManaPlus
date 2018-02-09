@@ -1022,8 +1022,8 @@ SRC = ${BASE_SRC} \
 	      being/beingspeech.h \
 	      being/castingeffect.cpp \
 	      being/castingeffect.h \
-	      being/claninfo.cpp \
-	      being/claninfo.h \
+	      being/localclan.cpp \
+	      being/localclan.h \
 	      being/localplayer.cpp \
 	      being/localplayer.h \
 	      being/mercenaryinfo.h \

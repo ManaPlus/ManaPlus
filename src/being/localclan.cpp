@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "being/claninfo.h"
+#include "being/localclan.h"
 
 #include "debug.h"
 
-ClanInfo clanInfo;
+LocalClan localClan;

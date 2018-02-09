@@ -1053,8 +1053,8 @@ SET(SRCS
     being/beingspeech.h
     being/castingeffect.cpp
     being/castingeffect.h
-    being/claninfo.cpp
-    being/claninfo.h
+    being/localclan.cpp
+    being/localclan.h
     beingequipbackend.cpp
     beingequipbackend.h
     spellmanager.cpp

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BEING_CLANINFO_H
-#define BEING_CLANINFO_H
+#ifndef BEING_LOCALCLAN_H
+#define BEING_LOCALCLAN_H
 
 #include "enums/simpletypes/beingid.h"
 
@@ -29,9 +29,9 @@
 
 #include "localconsts.h"
 
-struct ClanInfo final
+struct LocalClan final
 {
-    ClanInfo() :
+    LocalClan() :
         allyClans(),
         antagonistClans(),
         name(),
@@ -43,7 +43,7 @@ struct ClanInfo final
     {
     }
 
-    A_DELETE_COPY(ClanInfo)
+    A_DELETE_COPY(LocalClan)
 
     void clear()
     {
@@ -67,6 +67,6 @@ struct ClanInfo final
     int totalMembers;
 };
 
-extern ClanInfo clanInfo;
+extern LocalClan localClan;
 
-#endif  // BEING_CLANINFO_H
+#endif  // BEING_LOCALCLAN_H
