@@ -101,7 +101,8 @@ Image::Image(SDL_Texture *restrict const image,
     mIsAlphaCalculated(false)
 {
 #ifdef DEBUG_IMAGES
-    logger->log("created image: %p", this);
+    logger->log("created image: %p",
+        static_cast<void*>(this));
 #endif  // DEBUG_IMAGES
 
     mBounds.x = 0;

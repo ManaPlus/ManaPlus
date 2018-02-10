@@ -48,7 +48,9 @@ SubImage::SubImage(Image *const parent,
         mAlphaChannel = mParent->SDLgetAlphaChannel();
         mSource = parent->mIdPath;
 #ifdef DEBUG_IMAGES
-        logger->log("set name2 %p, %s", this, mSource.c_str());
+        logger->log("set name2 %p, %s",
+            static_cast<void*>(this),
+            mSource.c_str());
 #endif  // DEBUG_IMAGES
 #ifdef DEBUG_BIND_TEXTURE
         mIdPath = parent->mIdPath;
