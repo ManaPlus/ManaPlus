@@ -636,8 +636,11 @@ SET(SRCS
     resources/beingslot.h
     resources/chatobject.cpp
     resources/chatobject.h
+    resources/claninfo.h
     resources/db/chardb.cpp
     resources/db/chardb.h
+    resources/db/clandb.cpp
+    resources/db/clandb.h
     resources/db/colordb.cpp
     resources/db/colordb.h
     resources/db/commandsdb.cpp

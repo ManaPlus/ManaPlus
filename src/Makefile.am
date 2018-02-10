@@ -1412,6 +1412,8 @@ SRC = ${BASE_SRC} \
 	      resources/db/badgesdb.h \
 	      resources/db/chardb.cpp \
 	      resources/db/chardb.h \
+	      resources/db/clandb.cpp \
+	      resources/db/clandb.h \
 	      resources/db/colordb.cpp \
 	      resources/db/colordb.h \
 	      resources/db/commandsdb.cpp \
@@ -1503,6 +1505,7 @@ SRC = ${BASE_SRC} \
 	      resources/beingslot.h \
 	      resources/chatobject.cpp \
 	      resources/chatobject.h \
+	      resources/claninfo.h \
 	      resources/delayedmanager.cpp \
 	      resources/delayedmanager.h \
 	      resources/effectdescription.h \

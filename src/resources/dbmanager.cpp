@@ -28,6 +28,7 @@
 #include "resources/db/avatardb.h"
 #include "resources/db/badgesdb.h"
 #include "resources/db/chardb.h"
+#include "resources/db/clandb.h"
 #include "resources/db/colordb.h"
 #include "resources/db/deaddb.h"
 #include "resources/db/elementaldb.h"
@@ -86,6 +87,7 @@ void DbManager::loadDb()
         ElementalDb::load();
         SkillUnitDb::load();
         HorseDB::load();
+        ClanDb::load();
     }
     MonsterDB::load();
     AvatarDB::load();
@@ -120,6 +122,7 @@ void DbManager::unloadDb()
     {
         MercenaryDB::unload();
         HomunculusDB::unload();
+        ClanDb::unload();
         ElementalDb::unload();
         SkillUnitDb::unload();
         HorseDB::unload();

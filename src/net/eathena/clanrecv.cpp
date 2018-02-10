@@ -34,6 +34,10 @@
 #include "utils/checkutils.h"
 #include "utils/delete2.h"
 
+#include "resources/claninfo.h"
+
+#include "resources/db/clandb.h"
+
 #include "debug.h"
 
 namespace EAthena
@@ -57,6 +61,16 @@ void ClanRecv::processClanInfo(Net::MessageIn &msg)
     {
         localClan.antagonistClans.push_back(
             msg.readString(24, "antagonist clan name"));
+    }
+    const ClanInfo *const info = ClanDb::get(localClan.id);
+    if (info == nullptr)
+    {
+        reportAlways("missing clan %d in clandb",
+            localClan.id);
+    }
+    else
+    {
+        localClan.stats = info->stats;
     }
     createTab();
 }

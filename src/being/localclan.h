@@ -37,6 +37,7 @@ struct LocalClan final
         name(),
         masterName(),
         mapName(),
+        stats(),
         id(0),
         onlineMembers(0),
         totalMembers(0)
@@ -52,6 +53,7 @@ struct LocalClan final
         name.clear();
         masterName.clear();
         mapName.clear();
+        stats.clear();
         id = 0;
         onlineMembers = 0;
         totalMembers = 0;
@@ -62,6 +64,7 @@ struct LocalClan final
     std::string name;
     std::string masterName;
     std::string mapName;
+    std::string stats;
     int id;
     int onlineMembers;
     int totalMembers;
