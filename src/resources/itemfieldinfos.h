@@ -18,12 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DB_ITEMFIELDDB_H
-#define RESOURCES_DB_ITEMFIELDDB_H
-
-#include "enums/simpletypes/skiperror.h"
-
-#include "resources/itemfieldinfos.h"
+#ifndef RESOURCES_ITEMFIELDINFOS_H
+#define RESOURCES_ITEMFIELDINFOS_H
 
 #include <map>
 #include <string>
@@ -32,18 +28,6 @@
 
 struct ItemFieldType;
 
-namespace ItemFieldDb
-{
-    void load();
+typedef std::map<std::string, ItemFieldType*> ItemFieldInfos;
 
-    void unload();
-
-    void loadXmlFile(const std::string &fileName,
-                     const SkipError skipError);
-
-    const ItemFieldInfos &getRequiredFields();
-
-    const ItemFieldInfos &getAddFields();
-}  // namespace ItemFieldDb
-
-#endif  // RESOURCES_DB_ITEMFIELDDB_H
+#endif  // RESOURCES_ITEMFIELDINFOS_H

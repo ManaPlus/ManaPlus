@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2016-2018  The ManaPlus Developers
+ *  Copyright (C) 2014-2018  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -18,32 +18,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef RESOURCES_DB_ITEMFIELDDB_H
-#define RESOURCES_DB_ITEMFIELDDB_H
+#ifndef UTILS_ITEMXMLUTILS_H
+#define UTILS_ITEMXMLUTILS_H
 
-#include "enums/simpletypes/skiperror.h"
+#include "utils/xml.h"
 
 #include "resources/itemfieldinfos.h"
 
-#include <map>
 #include <string>
 
-#include "localconsts.h"
+void readItemStatsString(std::string &effect,
+                         XmlNodeConstPtr node,
+                         const ItemFieldInfos &fields);
 
-struct ItemFieldType;
-
-namespace ItemFieldDb
-{
-    void load();
-
-    void unload();
-
-    void loadXmlFile(const std::string &fileName,
-                     const SkipError skipError);
-
-    const ItemFieldInfos &getRequiredFields();
-
-    const ItemFieldInfos &getAddFields();
-}  // namespace ItemFieldDb
-
-#endif  // RESOURCES_DB_ITEMFIELDDB_H
+#endif  // UTILS_ITEMXMLUTILS_H

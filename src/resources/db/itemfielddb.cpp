@@ -33,8 +33,8 @@
 
 namespace
 {
-    ItemFieldDb::FieldInfos mRequiredInfos;
-    ItemFieldDb::FieldInfos mAddInfos;
+    ItemFieldInfos mRequiredInfos;
+    ItemFieldInfos mAddInfos;
     bool mLoaded = false;
 }  // namespace
 
@@ -52,8 +52,8 @@ void ItemFieldDb::load()
 }
 
 static void loadFields(XmlNodeConstPtr groupNode,
-                       ItemFieldDb::FieldInfos &fields1,
-                       ItemFieldDb::FieldInfos &fields2)
+                       ItemFieldInfos &fields1,
+                       ItemFieldInfos &fields2)
 {
     for_each_xml_child_node(node, groupNode)
     {
@@ -142,12 +142,12 @@ void ItemFieldDb::unload()
     mLoaded = false;
 }
 
-const ItemFieldDb::FieldInfos &ItemFieldDb::getRequiredFields()
+const ItemFieldInfos &ItemFieldDb::getRequiredFields()
 {
     return mRequiredInfos;
 }
 
-const ItemFieldDb::FieldInfos &ItemFieldDb::getAddFields()
+const ItemFieldInfos &ItemFieldDb::getAddFields()
 {
     return mAddInfos;
 }

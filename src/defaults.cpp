@@ -681,6 +681,9 @@ void setPathsDefaults(Configuration &cfg)
     AddDEF("groupsFile", "groups.xml");
     AddDEF("groupsPatchFile", "groups_patch.xml");
     AddDEF("groupsPatchDir", "groups.d");
+    AddDEF("clansFile", "clans.xml");
+    AddDEF("clansPatchFile", "clans_patch.xml");
+    AddDEF("clansPatchDir", "clans.d");
     AddDEF("equipmentSlotsFile", "equipmentslots.xml");
     AddDEF("weaponsFile", "weapons.xml");
     AddDEF("poisonEffectName", "poison");

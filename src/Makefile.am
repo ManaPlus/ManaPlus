@@ -479,6 +479,7 @@ BASE_SRC += client.h \
 	      resources/imageset.cpp \
 	      resources/imageset.h \
 	      resources/itemcolordata.h \
+	      resources/itemfieldinfos.h \
 	      resources/mstack.h \
 	      resources/notificationinfo.h \
 	      resources/notifications.h \
@@ -619,6 +620,8 @@ BASE_SRC += client.h \
 	      utils/glxhelper.cpp \
 	      utils/glxhelper.h \
 	      utils/intmap.h \
+	      utils/itemxmlutils.cpp \
+	      utils/itemxmlutils.h \
 	      utils/langs.cpp \
 	      utils/langs.h \
 	      utils/likely.h \

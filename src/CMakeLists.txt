@@ -688,6 +688,7 @@ SET(SRCS
     resources/imageset.h
     resources/imageset.cpp
     resources/itemcolordata.h
+    resources/itemfieldinfos.h
     resources/db/itemdb.cpp
     resources/db/itemdb.h
     resources/basicstat.h
@@ -906,6 +907,8 @@ SET(SRCS
     utils/gmfunctions.cpp
     utils/gmfunctions.h
     utils/intmap.h
+    utils/itemxmlutils.cpp
+    utils/itemxmlutils.h
     utils/langs.cpp
     utils/langs.h
     utils/likely.h

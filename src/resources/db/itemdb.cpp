@@ -48,6 +48,7 @@
 #include "utils/delete2.h"
 #include "utils/dtor.h"
 #include "utils/foreach.h"
+#include "utils/itemxmlutils.h"
 #include "utils/stdmove.h"
 #include "utils/stringmap.h"
 
@@ -128,33 +129,6 @@ static std::string useButton2FromItemType(const ItemDbTypeT &type)
     }
     logger->log("Unknown item type");
     return std::string();
-}
-
-static void readFields(std::string &effect,
-                       XmlNodeConstPtr node,
-                       const ItemFieldDb::FieldInfos &fields)
-{
-    if (translator == nullptr)
-        return;
-
-    FOR_EACH (ItemFieldDb::FieldInfos::const_iterator, it, fields)
-    {
-        const std::string fieldName = (*it).first;
-        const ItemFieldType *const field = (*it).second;
-
-        std::string value = XML::getProperty(node,
-            fieldName.c_str(),
-            "");
-        if (value.empty())
-            continue;
-        if (!effect.empty())
-            effect.append(" / ");
-        if (field->sign && isDigit(value))
-            value = std::string("+").append(value);
-        const std::string format = translator->getStr(field->description);
-        effect.append(strprintf(format.c_str(),
-            value.c_str()));
-    }
 }
 
 static void initStatic()
@@ -311,9 +285,9 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         return;
     }
 
-    const ItemFieldDb::FieldInfos &requiredFields =
+    const ItemFieldInfos &requiredFields =
         ItemFieldDb::getRequiredFields();
-    const ItemFieldDb::FieldInfos &addFields =
+    const ItemFieldInfos &addFields =
         ItemFieldDb::getAddFields();
 
     for_each_xml_child_node(node, rootNode)
@@ -526,8 +500,8 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         }
 
         std::string effect;
-        readFields(effect, node, requiredFields);
-        readFields(effect, node, addFields);
+        readItemStatsString(effect, node, requiredFields);
+        readItemStatsString(effect, node, addFields);
         std::string temp = XML::langProperty(node, "effect", "");
         if (!effect.empty() && !temp.empty())
             effect.append(" / ");

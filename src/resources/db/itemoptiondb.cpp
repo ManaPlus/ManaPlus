@@ -51,14 +51,14 @@ void ItemOptionDb::load()
 
 static void addFieldByName(STD_VECTOR<ItemFieldType*> &options,
                            XmlNodeConstPtr node,
-                           const ItemFieldDb::FieldInfos &fields,
+                           const ItemFieldInfos &fields,
                            const char *const name)
 {
     std::string value = XML::getProperty(node, name, "");
     if (value.empty())
         return;
 
-    FOR_EACH (ItemFieldDb::FieldInfos::const_iterator, it, fields)
+    FOR_EACH (ItemFieldInfos::const_iterator, it, fields)
     {
         const std::string fieldName = (*it).first;
         if (fieldName == value)
@@ -71,7 +71,7 @@ static void addFieldByName(STD_VECTOR<ItemFieldType*> &options,
 
 static void readOptionFields(STD_VECTOR<ItemFieldType*> &options,
                              XmlNodeConstPtr node,
-                             const ItemFieldDb::FieldInfos &fields)
+                             const ItemFieldInfos &fields)
 {
     addFieldByName(options, node, fields, "field");
     for (int f = 0; f < 15; f ++)
@@ -104,9 +104,9 @@ void ItemOptionDb::loadXmlFile(const std::string &fileName,
         return;
     }
 
-    const ItemFieldDb::FieldInfos &requiredFields =
+    const ItemFieldInfos &requiredFields =
         ItemFieldDb::getRequiredFields();
-    const ItemFieldDb::FieldInfos &addFields =
+    const ItemFieldInfos &addFields =
         ItemFieldDb::getAddFields();
 
     for_each_xml_child_node(node, rootNode)
