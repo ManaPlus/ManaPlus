@@ -24,6 +24,7 @@
 
 #include "gui/widgets/window.h"
 
+#include "utils/checkutils.h"
 #include "utils/dtor.h"
 #include "utils/foreach.h"
 
@@ -33,7 +34,8 @@ WindowContainer *windowContainer = nullptr;
 
 WindowContainer::WindowContainer(const Widget2 *const widget) :
     Container(widget),
-    mDeathList()
+    mDeathList(),
+    mDeathSet()
 {
 }
 
@@ -41,12 +43,24 @@ void WindowContainer::slowLogic()
 {
     delete_all(mDeathList);
     mDeathList.clear();
+    mDeathSet.clear();
 }
 
 void WindowContainer::scheduleDelete(Widget *const widget)
 {
-    if (widget != nullptr)
+    if (widget == nullptr)
+        return;
+
+    if (mDeathSet.find(widget) == mDeathSet.end())
+    {
         mDeathList.push_back(widget);
+        mDeathSet.insert(widget);
+    }
+    else
+    {
+        reportAlways("double adding pointer %p for deletion in scheduleDelete",
+            static_cast<void*>(widget));
+    }
 }
 
 void WindowContainer::adjustAfterResize(const int oldScreenWidth,

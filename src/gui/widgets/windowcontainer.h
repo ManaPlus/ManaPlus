@@ -25,6 +25,8 @@
 
 #include "gui/widgets/container.h"
 
+#include <set>
+
 /**
  * A window container. This container adds functionality for more convenient
  * widget (windows in particular) destruction.
@@ -67,6 +69,7 @@ class WindowContainer notfinal : public Container
         typedef STD_VECTOR<Widget*> Widgets;
         typedef Widgets::iterator WidgetIterator;
         Widgets mDeathList;
+        std::set<Widget*> mDeathSet;
 };
 
 extern WindowContainer *windowContainer;
