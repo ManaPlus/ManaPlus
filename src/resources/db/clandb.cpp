@@ -31,7 +31,6 @@
 
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
-#include "utils/gettext.h"
 #include "utils/itemxmlutils.h"
 
 #include "debug.h"
@@ -56,7 +55,7 @@ void ClanDb::load()
 }
 
 void ClanDb::loadXmlFile(const std::string &fileName,
-                               const SkipError skipError)
+                         const SkipError skipError)
 {
     XML::Document doc(fileName, UseVirtFs_true, skipError);
     XmlNodeConstPtr rootNode = doc.rootNode();

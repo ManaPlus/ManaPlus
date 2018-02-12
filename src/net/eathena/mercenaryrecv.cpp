@@ -78,6 +78,8 @@ void MercenaryRecv::processMercenaryUpdate(Net::MessageIn &msg)
 
 void MercenaryRecv::processMercenaryInfo(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     // +++ need create if need mercenary being and update stats
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));

@@ -100,6 +100,8 @@ void NpcRecv::processNpcCloseTimeout(Net::MessageIn &msg)
 
 void NpcRecv::processArea(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const int len = msg.readInt16("len");
     if (len < 12)
         return;

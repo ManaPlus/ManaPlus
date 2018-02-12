@@ -93,6 +93,8 @@ void BuyingStoreRecv::processBuyingStoreOwnItems(Net::MessageIn &msg)
 
 void BuyingStoreRecv::processBuyingStoreShowBoard(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing != nullptr)
@@ -107,6 +109,8 @@ void BuyingStoreRecv::processBuyingStoreShowBoard(Net::MessageIn &msg)
 
 void BuyingStoreRecv::processBuyingStoreHideBoard(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing != nullptr)
@@ -120,6 +124,8 @@ void BuyingStoreRecv::processBuyingStoreHideBoard(Net::MessageIn &msg)
 
 void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const int count = (msg.readInt16("len") - 16) / 9;
     const BeingId id = msg.readBeingId("account id");
     const int storeId = msg.readInt32("store id");

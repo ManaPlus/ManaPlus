@@ -25,7 +25,6 @@
 
 namespace EAthena
 {
-class MessageOut;
 
 class ClanHandler final : public Net::ClanHandler
 {

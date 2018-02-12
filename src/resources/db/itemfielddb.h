@@ -25,12 +25,9 @@
 
 #include "resources/itemfieldinfos.h"
 
-#include <map>
 #include <string>
 
 #include "localconsts.h"
-
-struct ItemFieldType;
 
 namespace ItemFieldDb
 {

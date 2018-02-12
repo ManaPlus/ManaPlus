@@ -381,6 +381,8 @@ void BeingRecv::processPlayerMoveToAttack(Net::MessageIn &msg)
 
 void BeingRecv::processSkillNoDamage(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const int id = msg.readInt16("skill id");
     int heal;
     if (msg.getVersion() >= 20131223)

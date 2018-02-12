@@ -36,8 +36,6 @@
 
 #include "resources/db/itemfielddb.h"
 
-#include "resources/item/itemfieldtype.h"
-
 #include "resources/sprite/spritereference.h"
 
 #ifdef TMWA_SUPPORT
@@ -51,8 +49,6 @@
 #include "utils/itemxmlutils.h"
 #include "utils/stdmove.h"
 #include "utils/stringmap.h"
-
-#include "utils/translation/podict.h"
 
 #include "debug.h"
 

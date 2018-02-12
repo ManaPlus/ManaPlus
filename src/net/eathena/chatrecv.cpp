@@ -365,6 +365,8 @@ void ChatRecv::processChatIgnoreList(Net::MessageIn &msg)
 
 void ChatRecv::processChatDisplay(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const int len = msg.readInt16("len") - 17;
     ChatObject *const obj = new ChatObject;
     obj->ownerId = msg.readBeingId("owner account id");
@@ -415,6 +417,8 @@ void ChatRecv::processChatRoomJoinAck(Net::MessageIn &msg)
 
 void ChatRecv::processChatRoomLeave(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     msg.readInt16("users");
     const std::string name = msg.readString(24, "name");
     const int status = msg.readUInt8("flag");  // 0 - left, 1 - kicked
@@ -608,6 +612,8 @@ void ChatRecv::processChatRoomCreateAck(Net::MessageIn &msg)
 void ChatRecv::processChatRoomDestroy(Net::MessageIn &msg)
 {
     const int chatId = msg.readInt32("chat id");
+    if (actorManager == nullptr)
+        return;
     actorManager->removeRoom(chatId);
 }
 
@@ -672,8 +678,10 @@ void ChatRecv::processChatRoomSettings(Net::MessageIn &msg)
         if (chat->title != title)
         {
             chat->title = title;
-            actorManager->updateRoom(chat);
-            chatWindow->joinRoom(true);
+            if (actorManager != nullptr)
+                actorManager->updateRoom(chat);
+            if (chatWindow != nullptr)
+                chatWindow->joinRoom(true);
         }
     }
 }

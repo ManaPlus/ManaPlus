@@ -176,6 +176,8 @@ void PartyHandler::setShareItems(const PartyShareT share) const
 
 void PartyHandler::changeLeader(const std::string &name) const
 {
+    if (actorManager == nullptr)
+        return;
     const Being *const being = actorManager->findBeingByName(
         name, ActorType::Player);
     if (being == nullptr)

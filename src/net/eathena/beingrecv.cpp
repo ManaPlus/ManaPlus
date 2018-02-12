@@ -1066,7 +1066,8 @@ void BeingRecv::processSkillCastingContinue(Net::MessageIn &msg,
                                             const SkillType2::SkillType2 inf2,
                                             const int castTime)
 {
-    if (effectManager == nullptr)
+    if (effectManager == nullptr ||
+        actorManager == nullptr)
         return;
 
     if (srcId == BeingId_zero)
@@ -1301,6 +1302,8 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
 
 void BeingRecv::processBeingHp(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
     int hp;
@@ -1324,6 +1327,8 @@ void BeingRecv::processBeingHp(Net::MessageIn &msg)
 
 void BeingRecv::processMonsterHp(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("monster id"));
     const int hp = msg.readInt32("hp");
@@ -1696,6 +1701,8 @@ void BeingRecv::processBeingStatUpdate1(Net::MessageIn &msg)
     const int type = msg.readInt16("type");
     const int value = msg.readInt32("value");
 
+    if (actorManager == nullptr)
+        return;
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing == nullptr)
         return;
@@ -1736,6 +1743,8 @@ void BeingRecv::processBeingSelfEffect(Net::MessageIn &msg)
 
 void BeingRecv::processMobInfo(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const int len = msg.readInt16("len");
     if (len < 12)
         return;
@@ -1748,6 +1757,8 @@ void BeingRecv::processMobInfo(Net::MessageIn &msg)
 
 void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const int len = msg.readInt16("len");
     if (len < 14)
         return;
@@ -1803,6 +1814,8 @@ void BeingRecv::processClassChange(Net::MessageIn &msg)
 
 void BeingRecv::processSpiritBalls(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
     const int balls = msg.readInt16("spirits amount");
@@ -1836,6 +1849,8 @@ void BeingRecv::processWddingEffect(Net::MessageIn &msg)
 
 void BeingRecv::processBeingSlide(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
     const int x = msg.readInt16("x");

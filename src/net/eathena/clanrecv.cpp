@@ -21,7 +21,6 @@
 #include "net/eathena/clanrecv.h"
 
 #include "configuration.h"
-#include "logger.h"
 
 #include "being/localclan.h"
 

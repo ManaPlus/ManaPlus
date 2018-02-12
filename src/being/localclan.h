@@ -21,8 +21,6 @@
 #ifndef BEING_LOCALCLAN_H
 #define BEING_LOCALCLAN_H
 
-#include "enums/simpletypes/beingid.h"
-
 #include "utils/vector.h"
 
 #include <string>

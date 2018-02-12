@@ -42,6 +42,8 @@ void BattleGroundRecv::processBattleEmblem(Net::MessageIn &msg)
 
 void BattleGroundRecv::processBattleEmblem2(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const BeingId id = msg.readBeingId("account id");
     msg.readString(24, "name");
     msg.readInt16("bg id");

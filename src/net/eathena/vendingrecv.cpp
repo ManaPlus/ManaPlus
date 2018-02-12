@@ -74,6 +74,8 @@ void VendingRecv::processOpenReq(Net::MessageIn &msg)
 
 void VendingRecv::processShowBoard(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing != nullptr)
@@ -88,6 +90,8 @@ void VendingRecv::processShowBoard(Net::MessageIn &msg)
 
 void VendingRecv::processHideBoard(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const BeingId id = msg.readBeingId("owner id");
     Being *const dstBeing = actorManager->findBeing(id);
     if (dstBeing != nullptr)
@@ -101,6 +105,8 @@ void VendingRecv::processHideBoard(Net::MessageIn &msg)
 
 void VendingRecv::processItemsList(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     int packetLen = 22;
     if (msg.getVersion() >= 20160921)
         packetLen = 53;

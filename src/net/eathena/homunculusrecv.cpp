@@ -77,6 +77,8 @@ void HomunculusRecv::processHomunculusSkills(Net::MessageIn &msg)
 
 void HomunculusRecv::processHomunculusData(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     msg.readUInt8("unused");
     const int cmd = msg.readUInt8("state");
     const BeingId id = msg.readBeingId("homunculus id");
@@ -111,6 +113,8 @@ void HomunculusRecv::processHomunculusData(Net::MessageIn &msg)
 
 void HomunculusRecv::processHomunculusInfo(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const std::string name = msg.readString(24, "name");
     msg.readUInt8("flags");  // 0x01 - renamed, 0x02 - vaporize, 0x04 - alive
     const int level = msg.readInt16("level");

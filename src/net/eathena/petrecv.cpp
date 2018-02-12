@@ -99,6 +99,8 @@ void PetRecv::processEggsList(Net::MessageIn &msg)
 
 void PetRecv::processPetData(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
     const int cmd = msg.readUInt8("type");
     const BeingId id = msg.readBeingId("pet id");
     Being *const dstBeing = actorManager->findBeing(id);
