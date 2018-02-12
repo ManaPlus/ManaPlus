@@ -55,6 +55,7 @@ namespace Actions
     decHandler(quickWindowShow);
     decHandler(mailWindowShow);
     decHandler(serverInfoWindowShow);
+    decHandler(clanWindowShow);
     decHandler(showItems);
 }  // namespace Actions
 

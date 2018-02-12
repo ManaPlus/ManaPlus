@@ -59,6 +59,12 @@ class LayoutCell notfinal
         LayoutCell &setPadding(int p)
         { mHPadding = p; mVPadding = p; return *this; }
 
+        int getVPadding() const
+        { return mVPadding; }
+
+        int getHPadding() const
+        { return mHPadding; }
+
         /**
          * Sets the vertical padding around the cell content.
          */

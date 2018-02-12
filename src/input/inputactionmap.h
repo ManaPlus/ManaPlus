@@ -5954,6 +5954,18 @@ static const InputActionData inputActionData
         "addskillshortcut|skillshortcut",
         UseArgs_true,
         Protected_false},
+    {"keyWindowClan",
+        emptyKey,
+        emptyKey,
+        Input::GRP_DEFAULT | Input::GRP_GUI,
+        &Actions::clanWindowShow,
+        InputAction::NO_VALUE, 50,
+        InputCondition::KEY_DOWN |
+            InputCondition::GAME |
+            InputCondition::NOTARGET,
+        "clanwindow|clan",
+        UseArgs_false,
+        Protected_false},
 };
 
 #undef defaultAction

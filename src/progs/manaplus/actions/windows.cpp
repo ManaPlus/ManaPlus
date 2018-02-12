@@ -30,6 +30,7 @@
 #include "gui/dialogsmanager.h"
 
 #include "gui/windows/bankwindow.h"
+#include "gui/windows/clanwindow.h"
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
 #include "gui/windows/statuswindow.h"
@@ -340,6 +341,12 @@ impHandler0(serverInfoWindowShow)
             client->getCurrentServer());
         serverInfoWindow->requestMoveToTop();
     }
+    return true;
+}
+
+impHandler0(clanWindowShow)
+{
+    showHideWindow(clanWindow);
     return true;
 }
 

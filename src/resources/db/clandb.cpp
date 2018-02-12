@@ -97,7 +97,7 @@ void ClanDb::loadXmlFile(const std::string &fileName,
 
         clanInfo->id = id;
 
-        readItemStatsString(clanInfo->stats,
+        readItemStatsVector(clanInfo->stats,
             clanNode,
             addFields);
 

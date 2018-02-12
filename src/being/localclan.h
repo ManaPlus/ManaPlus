@@ -62,7 +62,7 @@ struct LocalClan final
     std::string name;
     std::string masterName;
     std::string mapName;
-    std::string stats;
+    STD_VECTOR<std::string> stats;
     int id;
     int onlineMembers;
     int totalMembers;

@@ -709,6 +709,7 @@ enumStart(InputAction)
     PET_RETURN_TO_EGG,
     PET_UNEQUIP,
     ADD_SKILL_SHORTCUT,
+    WINDOW_CLAN,
     TOTAL
 }
 enumEnd(InputAction);

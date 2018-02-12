@@ -61,6 +61,7 @@
 #include "gui/popups/popupmenu.h"
 
 #include "gui/windows/bankwindow.h"
+#include "gui/windows/clanwindow.h"
 #include "gui/windows/cutinwindow.h"
 #include "gui/windows/mailwindow.h"
 #include "gui/windows/chatwindow.h"
@@ -283,6 +284,7 @@ static void createGuiWindows()
     CREATEWIDGETV0(killStats, KillStats);
     CREATEWIDGETV0(socialWindow, SocialWindow);
     CREATEWIDGETV0(questsWindow, QuestsWindow);
+    CREATEWIDGETV0(clanWindow, ClanWindow);
 
     // TRANSLATORS: chat tab header
     localChatTab = new ChatTab(chatWindow, _("General"),
@@ -391,6 +393,7 @@ static void destroyGuiWindows()
     delete2(questsWindow);
     delete2(whoIsOnline);
     delete2(killStats);
+    delete2(clanWindow);
 }
 
 Game *Game::mInstance = nullptr;

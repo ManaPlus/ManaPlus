@@ -21,6 +21,8 @@
 #ifndef RESOURCES_CLANINFO_H
 #define RESOURCES_CLANINFO_H
 
+#include "utils/vector.h"
+
 #include <string>
 
 #include "localconsts.h"
@@ -34,7 +36,7 @@ struct ClanInfo final
 
     A_DELETE_COPY(ClanInfo)
 
-    std::string stats;
+    STD_VECTOR<std::string> stats;
     int id;
 };
 

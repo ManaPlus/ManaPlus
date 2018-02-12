@@ -21,6 +21,7 @@
 #ifndef UTILS_ITEMXMLUTILS_H
 #define UTILS_ITEMXMLUTILS_H
 
+#include "utils/vector.h"
 #include "utils/xml.h"
 
 #include "resources/itemfieldinfos.h"
@@ -28,6 +29,10 @@
 #include <string>
 
 void readItemStatsString(std::string &effect,
+                         XmlNodeConstPtr node,
+                         const ItemFieldInfos &fields);
+
+void readItemStatsVector(STD_VECTOR<std::string> &effect,
                          XmlNodeConstPtr node,
                          const ItemFieldInfos &fields);
 

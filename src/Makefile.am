@@ -1128,6 +1128,8 @@ SRC = ${BASE_SRC} \
 	      gui/widgets/attrs/changedisplay.h \
 	      gui/widgets/attrs/derdisplay.cpp \
 	      gui/widgets/attrs/derdisplay.h \
+	      gui/widgets/tabs/clanwindowtabs.cpp \
+	      gui/widgets/tabs/clanwindowtabs.h \
 	      gui/widgets/tabs/debugwindowtabs.cpp \
 	      gui/widgets/tabs/debugwindowtabs.h \
 	      gui/widgets/tabs/chat/chattab.cpp \
@@ -1302,6 +1304,8 @@ SRC = ${BASE_SRC} \
 	      gui/windows/chardeleteconfirm.h \
 	      gui/windows/chatwindow.cpp \
 	      gui/windows/chatwindow.h \
+	      gui/windows/clanwindow.cpp \
+	      gui/windows/clanwindow.h \
 	      gui/windows/connectiondialog.cpp \
 	      gui/windows/connectiondialog.h \
 	      gui/windows/debugwindow.cpp \

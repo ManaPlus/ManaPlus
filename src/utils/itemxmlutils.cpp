@@ -54,3 +54,28 @@ void readItemStatsString(std::string &effect,
             value.c_str()));
     }
 }
+
+void readItemStatsVector(STD_VECTOR<std::string> &effect,
+                         XmlNodeConstPtr node,
+                         const ItemFieldInfos &fields)
+{
+    if (translator == nullptr)
+        return;
+
+    FOR_EACH (ItemFieldInfos::const_iterator, it, fields)
+    {
+        const std::string fieldName = (*it).first;
+        const ItemFieldType *const field = (*it).second;
+
+        std::string value = XML::getProperty(node,
+            fieldName.c_str(),
+            "");
+        if (value.empty())
+            continue;
+        if (field->sign && isDigit(value))
+            value = std::string("+").append(value);
+        const std::string format = translator->getStr(field->description);
+        effect.push_back(strprintf(format.c_str(),
+            value.c_str()));
+    }
+}

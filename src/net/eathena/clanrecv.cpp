@@ -27,6 +27,7 @@
 #include "gui/widgets/tabs/chat/clantab.h"
 
 #include "gui/windows/chatwindow.h"
+#include "gui/windows/clanwindow.h"
 
 #include "net/messagein.h"
 
@@ -72,17 +73,21 @@ void ClanRecv::processClanInfo(Net::MessageIn &msg)
         localClan.stats = info->stats;
     }
     createTab();
+    clanWindow->updateClan();
 }
 
 void ClanRecv::processClanOnlineCount(Net::MessageIn &msg)
 {
     localClan.onlineMembers = msg.readInt16("online members count");
     localClan.totalMembers = msg.readInt16("total members count");
+    clanWindow->updateClanMembers();
 }
 
 void ClanRecv::processClanLeave(Net::MessageIn &msg A_UNUSED)
 {
     delete2(clanTab);
+    localClan.clear();
+    clanWindow->resetClan();
 }
 
 void ClanRecv::processClanChat(Net::MessageIn &msg)

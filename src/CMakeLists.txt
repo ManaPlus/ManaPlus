@@ -135,6 +135,8 @@ SET(SRCS
     gui/widgets/attrs/changedisplay.h
     gui/widgets/attrs/derdisplay.cpp
     gui/widgets/attrs/derdisplay.h
+    gui/widgets/tabs/clanwindowtabs.cpp
+    gui/widgets/tabs/clanwindowtabs.h
     gui/widgets/tabs/debugwindowtabs.cpp
     gui/widgets/tabs/debugwindowtabs.h
     gui/widgets/tabs/chat/chattab.cpp
@@ -355,6 +357,8 @@ SET(SRCS
     gui/windows/chardeleteconfirm.h
     gui/windows/chatwindow.cpp
     gui/windows/chatwindow.h
+    gui/windows/clanwindow.cpp
+    gui/windows/clanwindow.h
     gui/windows/confirmdialog.cpp
     gui/windows/confirmdialog.h
     gui/windows/connectiondialog.cpp

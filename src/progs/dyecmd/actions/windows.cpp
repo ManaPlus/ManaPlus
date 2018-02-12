@@ -55,6 +55,7 @@ impHandlerVoid(updaterWindowShow)
 impHandlerVoid(quickWindowShow)
 impHandlerVoid(mailWindowShow)
 impHandlerVoid(serverInfoWindowShow)
+impHandlerVoid(clanWindowShow)
 impHandlerVoid(showItems)
 
 }  // namespace Actions
