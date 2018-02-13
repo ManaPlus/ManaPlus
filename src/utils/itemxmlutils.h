@@ -26,8 +26,6 @@
 
 #include "resources/itemfieldinfos.h"
 
-#include <string>
-
 void readItemStatsString(std::string &effect,
                          XmlNodeConstPtr node,
                          const ItemFieldInfos &fields);

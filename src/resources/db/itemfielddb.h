@@ -25,8 +25,6 @@
 
 #include "resources/itemfieldinfos.h"
 
-#include <string>
-
 #include "localconsts.h"
 
 namespace ItemFieldDb

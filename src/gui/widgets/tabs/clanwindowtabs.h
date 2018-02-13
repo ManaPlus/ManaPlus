@@ -23,10 +23,6 @@
 
 #include "gui/widgets/container.h"
 
-#include "utils/vector.h"
-
-#include <string>
-
 class Label;
 
 class InfoClanTab final : public Container

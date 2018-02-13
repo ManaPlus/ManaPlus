@@ -21,7 +21,6 @@
 #include "gui/windows/clanwindow.h"
 
 #include "being/localclan.h"
-#include "being/localplayer.h"
 
 #include "gui/windows/setupwindow.h"
 

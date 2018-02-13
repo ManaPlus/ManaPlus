@@ -25,8 +25,6 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
-#include "utils/cast.h"
-
 #include "debug.h"
 
 extern int packetVersion;
