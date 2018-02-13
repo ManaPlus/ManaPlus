@@ -1563,6 +1563,7 @@ SRC = ${BASE_SRC} \
 	      net/characters.h \
 	      net/charserverhandler.cpp \
 	      net/charserverhandler.h \
+	      net/clanhandler.h \
 	      net/chathandler.h \
 	      net/download.cpp \
 	      net/download.h \
