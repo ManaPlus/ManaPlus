@@ -35,6 +35,7 @@ namespace
     BadgesInfos mGuilds;
     BadgesInfos mNames;
     BadgesInfos mParties;
+    BadgesInfos mClans;
     bool mLoaded = false;
 }  // namespace
 
@@ -78,12 +79,14 @@ void BadgesDB::load()
     loadDB("guild", mGuilds);
     loadDB("name", mNames);
     loadDB("party", mParties);
+    loadDB("clan", mClans);
 }
 
 void BadgesDB::unload()
 {
     logger->log1("Unloading Badges database...");
     mParties.clear();
+    mClans.clear();
     mGuilds.clear();
     mNames.clear();
     mLoaded = false;
@@ -109,6 +112,14 @@ const std::string BadgesDB::getGuildBadge(const std::string &name)
 {
     const BadgesInfosIter it = mGuilds.find(name);
     if (it == mGuilds.end())
+        return std::string();
+    return (*it).second;
+}
+
+const std::string BadgesDB::getClanBadge(const std::string &name)
+{
+    const BadgesInfosIter it = mClans.find(name);
+    if (it == mClans.end())
         return std::string();
     return (*it).second;
 }

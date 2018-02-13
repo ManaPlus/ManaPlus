@@ -173,6 +173,7 @@ Being::Being(const BeingId id,
     mRaceName(),
     mPartyName(),
     mGuildName(),
+    mClanName(),
     mSpeech(),
     mDispName(nullptr),
     mNameColor(nullptr),
@@ -1197,6 +1198,33 @@ void Being::setGuildName(const std::string &restrict name) restrict2
     {
         mGuildName = name;
         showGuildBadge(!mGuildName.empty());
+        updateBadgesCount();
+    }
+}
+
+void Being::showClanBadge(const bool show) restrict2
+{
+    delete2(mBadges[BadgeIndex::Clan]);
+    if (show &&
+        !mClanName.empty() &&
+        mShowBadges != BadgeDrawType::Hide)
+    {
+        const std::string badge = BadgesDB::getClanBadge(mClanName);
+        if (!badge.empty())
+        {
+            mBadges[BadgeIndex::Clan] = AnimatedSprite::load(
+                paths.getStringValue("badges") + badge,
+                0);
+        }
+    }
+}
+
+void Being::setClanName(const std::string &restrict name) restrict2
+{
+    if (mClanName != name)
+    {
+        mClanName = name;
+        showClanBadge(!mClanName.empty());
         updateBadgesCount();
     }
 }

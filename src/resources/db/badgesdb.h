@@ -40,6 +40,8 @@ namespace BadgesDB
     const std::string getNameBadge(const std::string &name);
 
     const std::string getPartyBadge(const std::string &name);
+
+    const std::string getClanBadge(const std::string &name);
 }  // namespace BadgesDB
 
 #endif  // RESOURCES_DB_BADGESDB_H

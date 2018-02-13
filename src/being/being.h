@@ -259,6 +259,10 @@ class Being notfinal : public ActorSprite,
                                         A_WARN_UNUSED
         { return mGuildName; }
 
+        const std::string &getClanName() const restrict2 noexcept2
+                                       A_WARN_UNUSED
+        { return mClanName; }
+
         /**
          * Sets the name of the primary guild the being is in. Shown in
          * BeingPopup (eventually).
@@ -266,6 +270,8 @@ class Being notfinal : public ActorSprite,
         void setGuildName(const std::string &restrict name) restrict2;
 
         void setGuildPos(const std::string &restrict pos) restrict2;
+
+        void setClanName(const std::string &restrict name) restrict2;
 
         /**
          * Adds a guild to the being.
@@ -1055,6 +1061,8 @@ class Being notfinal : public ActorSprite,
 
         void showGuildBadge(const bool show) restrict2;
 
+        void showClanBadge(const bool show) restrict2;
+
         void showGmBadge(const bool show) restrict2;
 
         void showPartyBadge(const bool show) restrict2;
@@ -1178,6 +1186,7 @@ class Being notfinal : public ActorSprite,
         std::string mRaceName;
         std::string mPartyName;
         std::string mGuildName;
+        std::string mClanName;
         std::string mSpeech;
 
         /**
