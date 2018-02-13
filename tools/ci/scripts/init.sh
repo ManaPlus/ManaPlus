@@ -206,11 +206,11 @@ function run_make_check {
     echo "make -j${JOBS} V=0 check $*"
     make -j${JOBS} V=0 check $* 2>$ERRFILE
     export ERR=$?
+    cp src/*.log logs || true
+    cp src/manaplustests.trs logs || true
+    cp src/Makefile logs || true
     if [ "${ERR}" != 0 ]; then
         cat $ERRFILE
-        cp src/*.log logs
-        cp src/manaplustests.trs logs
-        cp src/Makefile logs
         cat src/manaplustests.log
         exit ${ERR}
     fi
