@@ -205,6 +205,16 @@ void BeingPopup::show(const int x, const int y, Being *const b)
             num ++;
         }
 
+        if (!(b->getClanName().empty()))
+        {
+            ptr = mLabels[num];
+            // TRANSLATORS: being popup label
+            ptr->setCaption(strprintf(_("Clan: %s"),
+                b->getClanName().c_str()));
+            ptr->adjustSize();
+            num ++;
+        }
+
         if (b->getPvpRank() > 0)
         {
             ptr = mLabels[num];
