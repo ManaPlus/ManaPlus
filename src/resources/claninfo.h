@@ -31,12 +31,14 @@ struct ClanInfo final
 {
     ClanInfo() :
         stats(),
+        name(),
         id(0)
     { }
 
     A_DELETE_COPY(ClanInfo)
 
     STD_VECTOR<std::string> stats;
+    std::string name;
     int id;
 };
 

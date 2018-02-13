@@ -56,7 +56,10 @@
 #include "net/eathena/sp.h"
 #include "net/eathena/sprite.h"
 
+#include "resources/claninfo.h"
 #include "resources/iteminfo.h"
+
+#include "resources/db/clandb.h"
 #include "resources/db/itemdb.h"
 
 #include "resources/map/map.h"
@@ -1771,6 +1774,9 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
     int language = -1;
     if (serverVersion >= 17 && len > 14)
         language = msg.readInt16("language");
+    int clanId = 0;
+    if (len > 16)
+        clanId = msg.readInt32("clan id");
     if (dstBeing != nullptr)
     {
         if (serverVersion <= 17 ||
@@ -1784,6 +1790,18 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
         }
         dstBeing->setHorse(mount);
         dstBeing->setLanguageId(language);
+        if (clanId != 0)
+        {
+            const ClanInfo *const info = ClanDb::get(clanId);
+            if (info == nullptr)
+                dstBeing->setClanName(std::string());
+            else
+                dstBeing->setClanName(info->name);
+        }
+        else
+        {
+            dstBeing->setClanName(std::string());
+        }
         if (dstBeing == localPlayer)
             PlayerInfo::setServerLanguage(language);
     }

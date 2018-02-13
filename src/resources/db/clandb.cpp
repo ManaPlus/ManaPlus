@@ -31,6 +31,7 @@
 
 #include "utils/checkutils.h"
 #include "utils/dtor.h"
+#include "utils/gettext.h"
 #include "utils/itemxmlutils.h"
 
 #include "debug.h"
@@ -96,6 +97,9 @@ void ClanDb::loadXmlFile(const std::string &fileName,
             clanInfo = new ClanInfo;
 
         clanInfo->id = id;
+        clanInfo->name = XML::langProperty(
+            // TRANSLATORS: unknown clan name
+            clanNode, "name", _("unnamed"));
 
         readItemStatsVector(clanInfo->stats,
             clanNode,
