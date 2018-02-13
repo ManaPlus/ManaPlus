@@ -186,6 +186,11 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
         // TRANSLATORS: long button name for mail window.
         _("Mail"), x, h, InputAction::WINDOW_MAIL,
         Visible_true);
+    // TRANSLATORS: short button name for clan window.
+    addButton(N_("CL"),
+        // TRANSLATORS: long button name for clan window.
+        _("Clan"), x, h, InputAction::WINDOW_CLAN,
+        Visible_true);
     // TRANSLATORS: short button name for server info window.
     addButton(N_("SI"),
         // TRANSLATORS: long button name for server info window.
