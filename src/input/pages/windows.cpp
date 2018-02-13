@@ -204,6 +204,12 @@ SetupActionData setupActionDataWindows[] =
         "",
     },
     {
+        // TRANSLATORS: input action name
+        N_("Clan window"),
+        InputAction::WINDOW_CLAN,
+        "",
+    },
+    {
         // TRANSLATORS: input action label
         N_("Tabs"),
         InputAction::NO_VALUE,
