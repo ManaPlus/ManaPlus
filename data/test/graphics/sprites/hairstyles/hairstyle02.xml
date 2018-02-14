@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Reid
+Copyright (C) 2012 Evol Online -->
+<sprite>
+    <imageset name="base"
+              src="graphics/sprites/hairstyles/hairstyle02.png|S"
+              width="40"
+              height="50"/>
+
+    <include file="hairstyles/hairstyle01.xml"/>
+</sprite>

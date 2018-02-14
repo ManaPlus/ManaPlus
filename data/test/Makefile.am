@@ -24,7 +24,11 @@ test_DATA =				\
 	test4.zip \
 	test5.zip \
 	testintmap.xml \
-	units.xml
+	units.xml \
+	graphics/sprites/hairstyles/hairstyle01.png \
+	graphics/sprites/hairstyles/hairstyle01.xml \
+	graphics/sprites/hairstyles/hairstyle02.png \
+	graphics/sprites/hairstyles/hairstyle02.xml
 
 EXTRA_DIST =				\
 	$(test_DATA) \

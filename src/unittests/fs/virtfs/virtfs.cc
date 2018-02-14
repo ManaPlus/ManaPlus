@@ -256,8 +256,8 @@ TEST_CASE("VirtFs enumerateFiles1", "")
 
     VirtFs::List *list = nullptr;
 
-    const int cnt1 = VirtFs::exists("test/test2.txt") ? 28 : 27;
-    const int cnt2 = 28;
+    const int cnt1 = VirtFs::exists("test/test2.txt") ? 29 : 28;
+    const int cnt2 = 29;
 
     VirtFs::permitLinks(false);
     list = VirtFs::enumerateFiles("test");
