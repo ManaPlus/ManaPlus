@@ -52,8 +52,7 @@ ChatHandler::~ChatHandler()
     chatHandler = nullptr;
 }
 
-void ChatHandler::talk(const std::string &restrict text,
-                       const std::string &restrict channel A_UNUSED) const
+void ChatHandler::talk(const std::string &restrict text) const
 {
     if (localPlayer == nullptr)
         return;
@@ -98,7 +97,7 @@ void ChatHandler::channelMessage(const std::string &restrict channel,
                                  const std::string &restrict text) const
 {
     if (channel == TRADE_CHANNEL)
-        talk("\302\202" + text, GENERAL_CHANNEL);
+        talk("\302\202" + text);
     else if (channel == GM_CHANNEL)
         Gm::runCommand("wgm", text);
 }
@@ -230,12 +229,11 @@ void ChatHandler::partChannel(const std::string &channel A_UNUSED) const
 {
 }
 
-void ChatHandler::talkPet(const std::string &restrict text,
-                          const std::string &restrict channel) const
+void ChatHandler::talkPet(const std::string &restrict text) const
 {
     // here need string duplication
     std::string action = strprintf("\302\202\303 %s", text.c_str());
-    talk(action, channel);
+    talk(action);
 }
 
 void ChatHandler::leaveChatRoom() const

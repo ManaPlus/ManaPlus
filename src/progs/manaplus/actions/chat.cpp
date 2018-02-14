@@ -69,7 +69,7 @@ static void outString(ChatTab *const tab,
     if (tab == nullptr)
     {
         if (chatHandler != nullptr)
-            chatHandler->talk(def, GENERAL_CHANNEL);
+            chatHandler->talk(def);
         return;
     }
 
@@ -126,7 +126,7 @@ static void outString(ChatTab *const tab,
         case ChatTabType::BATTLE:
         case ChatTabType::LANG:
             if (chatHandler != nullptr)
-                chatHandler->talk(str, GENERAL_CHANNEL);
+                chatHandler->talk(str);
             break;
     }
 }

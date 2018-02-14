@@ -433,8 +433,7 @@ void ChatTab::handleInput(const std::string &msg)
 {
     if (chatHandler)
     {
-        chatHandler->talk(ChatWindow::doReplace(msg),
-            mChannelName);
+        chatHandler->talk(ChatWindow::doReplace(msg));
     }
 }
 

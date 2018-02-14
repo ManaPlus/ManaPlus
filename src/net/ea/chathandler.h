@@ -41,8 +41,7 @@ class ChatHandler notfinal : public Net::ChatHandler
 
         ~ChatHandler() override;
 
-        void me(const std::string &restrict text,
-                const std::string &restrict channel) const override final;
+        void me(const std::string &restrict text) const override final;
 
         void clear() const override final;
 };

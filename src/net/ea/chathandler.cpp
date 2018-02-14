@@ -52,12 +52,11 @@ void ChatHandler::clear() const
     ChatRecv::mSkipping = true;
 }
 
-void ChatHandler::me(const std::string &restrict text,
-                     const std::string &restrict channel) const
+void ChatHandler::me(const std::string &restrict text) const
 {
     // here need string duplication
     std::string action = strprintf("*%s*", text.c_str());
-    talk(action, channel);
+    talk(action);
 }
 
 }  // namespace Ea

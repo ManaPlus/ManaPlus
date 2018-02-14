@@ -38,8 +38,7 @@ class ChatHandler final : public Ea::ChatHandler
 
         ~ChatHandler() override final;
 
-        void talk(const std::string &restrict text,
-                  const std::string &restrict channel) const override final;
+        void talk(const std::string &restrict text) const override final;
 
         void talkRaw(const std::string &text) const override final;
 
@@ -79,8 +78,7 @@ class ChatHandler final : public Ea::ChatHandler
 
         void partChannel(const std::string &channel) const override final;
 
-        void talkPet(const std::string &restrict text,
-                     const std::string &restrict channel) const override final;
+        void talkPet(const std::string &restrict text) const override final;
 
         void leaveChatRoom() const override final;
 

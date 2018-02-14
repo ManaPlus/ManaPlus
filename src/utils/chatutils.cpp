@@ -54,7 +54,7 @@ void outStringNormal(ChatTab *const tab,
 
     if (tab == nullptr)
     {
-        chatHandler->talk(str, GENERAL_CHANNEL);
+        chatHandler->talk(str);
         return;
     }
 
@@ -112,7 +112,7 @@ void outStringNormal(ChatTab *const tab,
         case ChatTabType::LANG:
         case ChatTabType::GM:
         case ChatTabType::CHANNEL:
-            chatHandler->talk(def, GENERAL_CHANNEL);
+            chatHandler->talk(def);
             break;
     }
 }

@@ -40,8 +40,7 @@ void runCommand(const std::string &command,
     {
         chatHandler->talk(std::string(
             settings.gmCommandSymbol).append(
-            command),
-            GENERAL_CHANNEL);
+            command));
     }
     else
     {
@@ -49,8 +48,7 @@ void runCommand(const std::string &command,
             settings.gmCommandSymbol).append(
             command).append(
             " ").append(
-            params),
-            GENERAL_CHANNEL);
+            params));
     }
 }
 
@@ -58,8 +56,7 @@ void runCommand(const std::string &command)
 {
     chatHandler->talk(std::string(
         settings.gmCommandSymbol).append(
-        command),
-        GENERAL_CHANNEL);
+        command));
 }
 
 void runCharCommand(const std::string &command,
@@ -72,8 +69,7 @@ void runCharCommand(const std::string &command,
         {
             chatHandler->talk(std::string(
                 settings.gmCommandSymbol).append(
-                command),
-                GENERAL_CHANNEL);
+                command));
         }
         else
         {
@@ -81,8 +77,7 @@ void runCharCommand(const std::string &command,
                 settings.gmCommandSymbol).append(
                 command).append(
                 " ").append(
-                params),
-                GENERAL_CHANNEL);
+                params));
         }
     }
     else
@@ -93,8 +88,7 @@ void runCharCommand(const std::string &command,
             " \"").append(
             name).append(
             "\" ").append(
-            params),
-            GENERAL_CHANNEL);
+            params));
     }
 }
 
@@ -105,8 +99,7 @@ void runCharCommand(const std::string &command,
     {
         chatHandler->talk(std::string(
             settings.gmCommandSymbol).append(
-            command),
-            GENERAL_CHANNEL);
+            command));
     }
     else
     {
@@ -114,8 +107,7 @@ void runCharCommand(const std::string &command,
             settings.gmCharCommandSymbol).append(
             command).append(
             " ").append(
-            name),
-            GENERAL_CHANNEL);
+            name));
     }
 }
 

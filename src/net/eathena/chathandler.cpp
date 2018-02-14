@@ -54,8 +54,7 @@ ChatHandler::~ChatHandler()
     chatHandler = nullptr;
 }
 
-void ChatHandler::talk(const std::string &restrict text,
-                       const std::string &restrict channel A_UNUSED) const
+void ChatHandler::talk(const std::string &restrict text) const
 {
     if (localPlayer == nullptr)
         return;
@@ -287,8 +286,7 @@ void ChatHandler::partChannel(const std::string &channel) const
     }
 }
 
-void ChatHandler::talkPet(const std::string &restrict text,
-                          const std::string &restrict channel A_UNUSED) const
+void ChatHandler::talkPet(const std::string &restrict text) const
 {
     if (text.empty())
         return;

@@ -73,7 +73,7 @@ impHandler(talkPet)
     std::string args = event.args;
     if (findCutFirst(args, "/me "))
         args = textToMe(args);
-    chatHandler->talkPet(args, GENERAL_CHANNEL);
+    chatHandler->talkPet(args);
     return true;
 }
 
