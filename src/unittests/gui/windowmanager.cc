@@ -65,8 +65,9 @@
 #include "gui/windows/changeemaildialog.h"
 #include "gui/windows/changepassworddialog.h"
 #include "gui/windows/chatwindow.h"
-#include "gui/windows/connectiondialog.h"
+#include "gui/windows/clanwindow.h"
 #include "gui/windows/confirmdialog.h"
+#include "gui/windows/connectiondialog.h"
 #include "gui/windows/cutinwindow.h"
 #include "gui/windows/debugwindow.h"
 #include "gui/windows/didyouknowwindow.h"
@@ -341,6 +342,13 @@ TEST_CASE("Windows tests", "windowmanager")
         gui->draw();
         mainGraphics->updateScreen();
         delete2(chatWindow);
+    }
+    SECTION("ClanWindow")
+    {
+        CREATEWIDGETV0(clanWindow, ClanWindow);
+        gui->draw();
+        mainGraphics->updateScreen();
+        delete2(clanWindow);
     }
     SECTION("ConfirmDialog")
     {
