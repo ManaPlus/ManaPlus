@@ -149,6 +149,8 @@
 #undef ERROR
 #endif  // WIN32
 
+#include <fstream>
+
 #include "debug.h"
 
 QuitDialog *quitDialog = nullptr;

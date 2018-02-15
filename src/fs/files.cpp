@@ -37,6 +37,7 @@
 #include "utils/stringutils.h"
 
 #include <dirent.h>
+#include <fstream>
 #include <sys/stat.h>
 
 #include "debug.h"

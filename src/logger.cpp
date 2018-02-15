@@ -78,24 +78,17 @@
 #include "debug.h"
 
 #define DATESTREAM \
-    timeStr << "[" \
-        << ((((tv.tv_sec / 60) / 60) % 24 < 10) ? "0" : "") \
-        << CAST_S32(((tv.tv_sec / 60) / 60) % 24) \
-        << ":" \
-        << (((tv.tv_sec / 60) % 60 < 10) ? "0" : "") \
-        << CAST_S32((tv.tv_sec / 60) % 60) \
-        << ":" \
-        << ((tv.tv_sec % 60 < 10) ? "0" : "") \
-        << CAST_S32(tv.tv_sec % 60) \
-        << "." \
-        << (((tv.tv_usec / 10000) % 100) < 10 ? "0" : "") \
-        << CAST_S32((tv.tv_usec / 10000) % 100) \
-        << "] ";
+    std::string timeStr = strprintf( \
+        "[%02d:%02d:%02d.%02d]", \
+        CAST_S32(((tv.tv_sec / 60) / 60) % 24), \
+        CAST_S32((tv.tv_sec / 60) % 60), \
+        CAST_S32(tv.tv_sec % 60), \
+        CAST_S32((tv.tv_usec / 10000) % 100));
 
 Logger *logger = nullptr;          // Log object
 
 Logger::Logger() :
-    mLogFile(),
+    mLogFile(nullptr),
     mDelayedLog(),
     mMutex(SDL_CreateMutex()),
     mThreadLocked(false),
@@ -110,19 +103,26 @@ Logger::Logger() :
 
 Logger::~Logger()
 {
-    if (mLogFile.is_open())
-        mLogFile.close();
+    closeFile();
     SDL_DestroyMutex(mMutex);
+}
+
+void Logger::closeFile()
+{
+    if (mLogFile != nullptr)
+    {
+        fclose(mLogFile);
+        mLogFile = nullptr;
+    }
 }
 
 void Logger::setLogFile(const std::string &logFilename)
 {
-    if (mLogFile.is_open())
-        mLogFile.close();
+    closeFile();
 
-    mLogFile.open(logFilename.c_str(), std::ios_base::trunc);
+    mLogFile = fopen(logFilename.c_str(), "wt");
 
-    if (!mLogFile.is_open())
+    if (mLogFile == nullptr)
     {
         std::cout << "Warning: error while opening " << logFilename <<
             " for writing.\n";
@@ -150,15 +150,24 @@ void Logger::dlog(const std::string &str)
     gettimeofday(&tv, nullptr);
 
     // Print the log entry
-    std::stringstream timeStr;
     DATESTREAM
     DSPECIALLOG(str.c_str())
 
-    if (mLogFile.is_open())
-        mLogFile << timeStr.str() << str << std::endl;
+    if (mLogFile != nullptr)
+    {
+        fprintf(mLogFile,
+            "%s %s\n",
+            timeStr.c_str(),
+            str.c_str());
+    }
 
     if (mLogToStandardOut)
-        std::cout << timeStr.str() << str << std::endl;
+    {
+        fprintf(stdout,
+            "%s %s\n",
+            timeStr.c_str(),
+            str.c_str());
+    }
 }
 
 void Logger::dlog2(const std::string &str,
@@ -173,27 +182,27 @@ void Logger::dlog2(const std::string &str,
     gettimeofday(&tv, nullptr);
 
     // Print the log entry
-    std::stringstream timeStr;
     DATESTREAM
     DSPECIALLOG(str.c_str())
 
-    if (mLogFile.is_open())
+    if (mLogFile != nullptr)
     {
         if (comment != nullptr)
         {
-            mLogFile << timeStr.str();
-            mLogFile.fill('0');
-            mLogFile.width(4);
-            mLogFile << pos << " ";
-            mLogFile << str << ": " << comment << std::endl;
+            fprintf(mLogFile,
+                "%s %04d %s: %s\n",
+                timeStr.c_str(),
+                pos,
+                str.c_str(),
+                comment);
         }
         else
         {
-            mLogFile << timeStr.str();
-            mLogFile.fill('0');
-            mLogFile.width(4);
-            mLogFile << pos << " ";
-            mLogFile << str << std::endl;
+            fprintf(mLogFile,
+                "%s %04d %s\n",
+                timeStr.c_str(),
+                pos,
+                str.c_str());
         }
     }
 
@@ -201,19 +210,20 @@ void Logger::dlog2(const std::string &str,
     {
         if (comment != nullptr)
         {
-            std::cout << timeStr.str();
-            std::cout.fill('0');
-            std::cout.width(4);
-            std::cout << pos << " ";
-            std::cout << str << ": " << comment << std::endl;
+            fprintf(stdout,
+                "%s %04d %s: %s\n",
+                timeStr.c_str(),
+                pos,
+                str.c_str(),
+                comment);
         }
         else
         {
-            std::cout << timeStr.str();
-            std::cout.fill('0');
-            std::cout.width(4);
-            std::cout << pos << " ";
-            std::cout << str << std::endl;
+            fprintf(stdout,
+                "%s %04d %s\n",
+                timeStr.c_str(),
+                pos,
+                str.c_str());
         }
     }
 }
@@ -229,15 +239,24 @@ void Logger::log1(const char *const buf)
     gettimeofday(&tv, nullptr);
 
     // Print the log entry
-    std::stringstream timeStr;
     DATESTREAM
     SPECIALLOG(buf)
 
-    if (mLogFile.is_open())
-        mLogFile << timeStr.str() << buf << std::endl;
+    if (mLogFile != nullptr)
+    {
+        fprintf(mLogFile,
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
+    }
 
     if (mLogToStandardOut)
-        std::cout << timeStr.str() << buf << std::endl;
+    {
+        fprintf(stdout,
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
+    }
 }
 
 void Logger::log(const char *const log_text, ...)
@@ -263,15 +282,24 @@ void Logger::log(const char *const log_text, ...)
     gettimeofday(&tv, nullptr);
 
     // Print the log entry
-    std::stringstream timeStr;
     DATESTREAM
     SPECIALLOG(buf)
 
-    if (mLogFile.is_open())
-        mLogFile << timeStr.str() << buf << std::endl;
+    if (mLogFile != nullptr)
+    {
+        fprintf(mLogFile,
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
+    }
 
     if (mLogToStandardOut)
-        std::cout << timeStr.str() << buf << std::endl;
+    {
+        fprintf(stdout,
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
+    }
 
     // Delete temporary buffer
     delete [] buf;
@@ -300,15 +328,24 @@ void Logger::assertLog(const char *const log_text, ...)
     gettimeofday(&tv, nullptr);
 
     // Print the log entry
-    std::stringstream timeStr;
     DATESTREAM
     SPECIALLOG(buf)
 
-    if (mLogFile.is_open())
-        mLogFile << timeStr.str() << buf << std::endl;
+    if (mLogFile != nullptr)
+    {
+        fprintf(mLogFile,
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
+    }
 
     if (mLogToStandardOut)
-        std::cout << timeStr.str() << buf << std::endl;
+    {
+        fprintf(stdout,
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
+    }
 
     DebugMessageListener::distributeEvent(buf);
 
@@ -341,20 +378,27 @@ void Logger::log_r(const char *const log_text, ...)
     gettimeofday(&tv, nullptr);
 
     // Print the log entry
-    std::stringstream timeStr;
     DATESTREAM
     SPECIALLOG(buf)
 
-    if (mLogFile.is_open())
+    if (mLogFile != nullptr)
     {
-        timeStr << buf;
+        std::string tmpStr = strprintf(
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
         mThreadLocked = true;
-        mDelayedLog.push_back(timeStr.str());
+        mDelayedLog.push_back(tmpStr);
         mThreadLocked = false;
     }
 
     if (mLogToStandardOut)
-        std::cout << timeStr.str() << buf << std::endl;
+    {
+        fprintf(stdout,
+            "%s %s\n",
+            timeStr.c_str(),
+            buf);
+    }
 
     // Delete temporary buffer
     delete [] buf;
@@ -368,7 +412,10 @@ void Logger::flush()
     {
         SDL_mutexP(mMutex);
         FOR_EACH (STD_VECTOR<std::string>::const_iterator, it, mDelayedLog)
-            mLogFile << *it << std::endl;
+        {
+            fputs((*it).c_str(), mLogFile);
+            fputs("\n", mLogFile);
+        }
         mDelayedLog.clear();
         SDL_mutexV(mMutex);
     }

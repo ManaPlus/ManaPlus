@@ -32,6 +32,7 @@
 
 #include <zlib.h>
 
+#include <fstream>
 #include <sstream>
 
 #include "debug.h"

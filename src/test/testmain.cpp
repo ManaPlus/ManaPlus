@@ -31,6 +31,8 @@
 #include "utils/delete2.h"
 #include "utils/process.h"
 
+#include <fstream>
+
 #include "debug.h"
 
 std::string fileName;

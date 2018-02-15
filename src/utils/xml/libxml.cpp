@@ -33,6 +33,8 @@
 
 #include "utils/translation/podict.h"
 
+#include <fstream>
+
 #include "debug.h"
 
 namespace

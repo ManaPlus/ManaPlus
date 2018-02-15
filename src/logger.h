@@ -32,7 +32,8 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_mutex.h>
 PRAGMA48(GCC diagnostic pop)
 
-#include <fstream>
+#include <stdio.h>
+#include <string>
 
 #ifdef ENABLEDEBUGLOG
 #define DEBUGLOG(str) \
@@ -175,6 +176,8 @@ class Logger final
                    const char* const comment);
 #endif  // ENABLEDEBUGLOG
 
+        void closeFile();
+
         void setDebugLog(const bool n)
         { mDebugLog = n; }
 
@@ -211,7 +214,7 @@ class Logger final
                            const uint32_t id3) const;
 
     private:
-        std::ofstream mLogFile;
+        FILE *mLogFile;
         STD_VECTOR<std::string> mDelayedLog;
         SDL_mutex *mMutex;
         volatile bool mThreadLocked;

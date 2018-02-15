@@ -68,11 +68,11 @@
 #include "utils/foreach.h"
 #include "utils/timer.h"
 
-#include <queue>
-
 #include <sys/stat.h>
 
 #include <climits>
+#include <fstream>
+#include <queue>
 
 #include "debug.h"
 
