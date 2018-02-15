@@ -204,6 +204,7 @@ void Logger::dlog2(const std::string &str,
                 pos,
                 str.c_str());
         }
+        fflush(mLogFile);
     }
 
     if (mLogToStandardOut)
@@ -248,6 +249,7 @@ void Logger::log1(const char *const buf)
             "%s %s\n",
             timeStr.c_str(),
             buf);
+        fflush(mLogFile);
     }
 
     if (mLogToStandardOut)
@@ -291,6 +293,7 @@ void Logger::log(const char *const log_text, ...)
             "%s %s\n",
             timeStr.c_str(),
             buf);
+        fflush(mLogFile);
     }
 
     if (mLogToStandardOut)
@@ -337,6 +340,7 @@ void Logger::assertLog(const char *const log_text, ...)
             "%s %s\n",
             timeStr.c_str(),
             buf);
+        fflush(mLogFile);
     }
 
     if (mLogToStandardOut)
@@ -416,6 +420,7 @@ void Logger::flush()
             fputs((*it).c_str(), mLogFile);
             fputs("\n", mLogFile);
         }
+        fflush(mLogFile);
         mDelayedLog.clear();
         SDL_mutexV(mMutex);
     }
