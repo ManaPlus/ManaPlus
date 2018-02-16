@@ -31,6 +31,7 @@
 #include "fs/virtfs/fs.h"
 
 #include <libintl.h>
+#include <locale.h>
 
 #ifdef WIN32
 #include <string>
