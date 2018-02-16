@@ -60,7 +60,7 @@
 #include "gui/windows/buydialog.h"
 #include "gui/windows/buyingstoreselldialog.h"
 #include "gui/windows/buyselldialog.h"
-#include "gui/windows/charcreatedialog.h"
+//#include "gui/windows/charcreatedialog.h"
 #include "gui/windows/charselectdialog.h"
 #include "gui/windows/changeemaildialog.h"
 #include "gui/windows/changepassworddialog.h"
@@ -325,6 +325,7 @@ TEST_CASE("Windows tests", "windowmanager")
     }
     SECTION("CharCreateDialog")
     {
+/*
         LoginData data;
         CharSelectDialog *dialog2;
         CREATEWIDGETV(dialog2, CharSelectDialog, data);
@@ -334,6 +335,7 @@ TEST_CASE("Windows tests", "windowmanager")
         mainGraphics->updateScreen();
         delete2(dialog);
         delete2(dialog2);
+*/
     }
     SECTION("ChatWindow")
     {
