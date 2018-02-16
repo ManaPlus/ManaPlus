@@ -32,7 +32,6 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_mutex.h>
 PRAGMA48(GCC diagnostic pop)
 
-#include <stdio.h>
 #include <string>
 
 #ifdef ENABLEDEBUGLOG
