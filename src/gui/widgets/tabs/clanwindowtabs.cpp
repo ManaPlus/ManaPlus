@@ -159,4 +159,3 @@ void RelationClanTab::updateClan(const STD_VECTOR<std::string> &restrict names)
         mLabels.push_back(label);
     }
 }
-

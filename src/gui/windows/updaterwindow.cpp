@@ -77,7 +77,7 @@ const std::string updateServer5
  * Load the given file into a vector of updateFiles.
  */
 static STD_VECTOR<UpdateFile> loadXMLFile(const std::string &fileName,
-                                           const bool loadMods)
+                                          const bool loadMods)
 {
     STD_VECTOR<UpdateFile> files;
     XML::Document doc(fileName, UseVirtFs_false, SkipError_false);
