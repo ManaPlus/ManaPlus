@@ -24,8 +24,6 @@
 
 #include "being/localplayer.h"
 
-#include "const/gui/chat.h"
-
 #include "net/chathandler.h"
 
 #include "debug.h"

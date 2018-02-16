@@ -30,8 +30,6 @@
 
 #include "enums/being/beingdirection.h"
 
-#include "const/gui/chat.h"
-
 #include "input/inputactionoperators.h"
 
 #include "listeners/inputactionreplaylistener.h"

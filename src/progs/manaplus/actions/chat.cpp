@@ -24,8 +24,6 @@
 
 #include "actions/actiondef.h"
 
-#include "const/gui/chat.h"
-
 #include "being/localplayer.h"
 
 #include "gui/sdlinput.h"
