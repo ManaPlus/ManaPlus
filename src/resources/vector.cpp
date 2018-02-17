@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "vector.h"
+#include "resources/vector.h"
 
 #include "debug.h"
 

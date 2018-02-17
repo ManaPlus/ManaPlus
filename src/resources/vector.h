@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef RESOURCES_VECTOR_H
+#define RESOURCES_VECTOR_H
 
 #ifndef USE_SDL2
 #include <cmath>
@@ -213,4 +213,4 @@ class Vector final
  */
 std::ostream& operator <<(std::ostream &os, const Vector &v);
 
-#endif  // VECTOR_H
+#endif  // RESOURCES_VECTOR_H

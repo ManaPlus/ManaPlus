@@ -1427,8 +1427,8 @@ SET(SRCS
     input/touch/touchmanager.cpp
     input/touch/touchmanager.h
     variabledata.h
-    vector.cpp
-    vector.h
+    resources/vector.cpp
+    resources/vector.h
     resources/map/walklayer.cpp
     resources/map/walklayer.h
     events/actionevent.h

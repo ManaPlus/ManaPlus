@@ -905,8 +905,8 @@ BASE_SRC += client.h \
 	      input/touch/touchmanager.cpp \
 	      input/touch/touchmanager.h \
 	      variabledata.h \
-	      vector.cpp \
-	      vector.h \
+	      resources/vector.cpp \
+	      resources/vector.h \
 	      net/ipc.cpp \
 	      net/ipc.h \
 	      net/sdltcpnet.cpp \

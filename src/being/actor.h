@@ -22,9 +22,9 @@
 #ifndef BEING_ACTOR_H
 #define BEING_ACTOR_H
 
-#include "vector.h"
-
 #include "utils/cast.h"
+
+#include "resources/vector.h"
 
 #include <list>
 
