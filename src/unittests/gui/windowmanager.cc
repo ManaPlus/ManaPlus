@@ -60,7 +60,6 @@
 #include "gui/windows/buydialog.h"
 #include "gui/windows/buyingstoreselldialog.h"
 #include "gui/windows/buyselldialog.h"
-//#include "gui/windows/charcreatedialog.h"
 #include "gui/windows/charselectdialog.h"
 #include "gui/windows/changeemaildialog.h"
 #include "gui/windows/changepassworddialog.h"
