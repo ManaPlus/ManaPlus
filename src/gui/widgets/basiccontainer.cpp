@@ -73,6 +73,7 @@
 
 BasicContainer::~BasicContainer()
 {
+    // +++ virtual method call
     clear();
 }
 
