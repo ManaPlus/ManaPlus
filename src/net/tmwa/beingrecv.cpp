@@ -66,20 +66,20 @@ static void setGm(Being *const dstBeing,
 {
     if (dstBeing != localPlayer)
     {
-        if ((gmstatus & 0x80) != 0)
+        if (gmstatus == 0x80)
         {
             dstBeing->setGroupId(paths.getIntValue("gmDefaultLevel"));
             dstBeing->setGM(true);
         }
         else
         {
-            dstBeing->setGroupId(0);
-            dstBeing->setGM(false);
+            dstBeing->setGroupId(gmstatus);
+            dstBeing->setGM(gmstatus != 0);
         }
     }
     else
     {
-        if ((gmstatus & 0x80) != 0)
+        if (gmstatus != 0)
             dstBeing->setGM(true);
         else
             dstBeing->setGM(false);
