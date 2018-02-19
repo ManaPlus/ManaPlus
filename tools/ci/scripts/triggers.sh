@@ -39,4 +39,6 @@ run "ci_checks"
 run "ci_gcc7_tests"
 sleep 15s
 run "ci_gcc3"
+run "ci_clang7"
+sleep 15s
 run "ci_site"
