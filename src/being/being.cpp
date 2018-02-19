@@ -3669,8 +3669,6 @@ void Being::setGM(const bool gm) restrict2
     if (mIsGM != gm)
     {
         mIsGM = gm;
-
-        showGmBadge(mIsGM);
         updateColors();
     }
 }
@@ -5580,4 +5578,13 @@ Being *Being::createBeing(const BeingId id,
     being->postInit(subType,
         map);
     return being;
+}
+
+void Being::setGroupId(const int id)
+{
+    if (mGroupId != id)
+    {
+        mGroupId = id;
+        showGmBadge(id != 0);
+    }
 }

@@ -1085,8 +1085,7 @@ class Being notfinal : public ActorSprite,
         uint16_t getTeamId() const restrict2 noexcept2 A_WARN_UNUSED
         { return mTeamId; }
 
-        virtual void setGroupId(const int id)
-        { mGroupId = id; }
+        virtual void setGroupId(const int id);
 
         int getGroupId() const noexcept2 A_WARN_UNUSED
         { return mGroupId; }
