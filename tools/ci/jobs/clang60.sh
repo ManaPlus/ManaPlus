@@ -26,7 +26,7 @@ export CXXFLAGS="$CXXFLAGS -Weverything -Wno-documentation -Wno-padded -Wno-sign
 -Wno-variadic-macros -Wno-double-promotion -Wno-attributes -Wno-shadow-field \
 -Wpointer-bool-conversion -fno-omit-frame-pointer -Wno-c++98-compat-pedantic \
 -Wno-implicit-fallthrough -Wno-zero-as-null-pointer-constant \
--ggdb3 $POST_CXXFLAGS"
+-ggdb3 -stdlib=libc++ $POST_CXXFLAGS"
 
 do_init
 run_configure --enable-werror $*
