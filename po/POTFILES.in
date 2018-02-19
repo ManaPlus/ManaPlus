@@ -37,12 +37,14 @@ src/gui/widgets/setupitem.cpp
 src/gui/widgets/statspagebasic.cpp
 src/gui/widgets/tabs/chat/battletab.cpp
 src/gui/widgets/tabs/chat/chattab.cpp
+src/gui/widgets/tabs/chat/clantab.cpp
 src/gui/widgets/tabs/chat/emulateguildtab.cpp
 src/gui/widgets/tabs/chat/gmtab.cpp
 src/gui/widgets/tabs/chat/guildtab.cpp
 src/gui/widgets/tabs/chat/langtab.cpp
 src/gui/widgets/tabs/chat/partytab.cpp
 src/gui/widgets/tabs/chat/tradetab.cpp
+src/gui/widgets/tabs/clanwindowtabs.cpp
 src/gui/widgets/tabs/debugwindowtabs.cpp
 src/gui/widgets/tabs/setup_audio.cpp
 src/gui/widgets/tabs/setup_chat.cpp
@@ -79,6 +81,7 @@ src/gui/windows/charcreatedialog.cpp
 src/gui/windows/chardeleteconfirm.h
 src/gui/windows/charselectdialog.cpp
 src/gui/windows/chatwindow.cpp
+src/gui/windows/clanwindow.cpp
 src/gui/windows/confirmdialog.cpp
 src/gui/windows/connectiondialog.cpp
 src/gui/windows/debugwindow.cpp
@@ -173,6 +176,7 @@ src/render/rendererslistsdl2.h
 src/render/rendererslistsdl.h
 src/resources/beinginfo.cpp
 src/resources/db/avatardb.cpp
+src/resources/db/clandb.cpp
 src/resources/db/homunculusdb.cpp
 src/resources/db/itemdb.cpp
 src/resources/db/mercenarydb.cpp
