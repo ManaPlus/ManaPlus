@@ -427,6 +427,7 @@ BASE_SRC += client.h \
 	      gui/theme.h \
 	      gui/themecolorsidoperators.cpp \
 	      gui/themecolorsidoperators.h \
+	      gui/themecolortype.h \
 	      gui/themeinfo.h \
 	      gui/userpalette.cpp \
 	      gui/userpalette.h \
