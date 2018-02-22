@@ -718,7 +718,8 @@ bool ActorManager::pickUpAll(const int x1, const int y1,
         return false;
 
     bool finded(false);
-    const bool allowAll = mPickupItemsSet.find("") != mPickupItemsSet.end();
+    const bool allowAll = mPickupItemsSet.find(std::string()) !=
+        mPickupItemsSet.end();
     if (!serverBuggy)
     {
         for_actorsm
@@ -818,7 +819,8 @@ bool ActorManager::pickUpNearest(const int x, const int y,
     maxdist = maxdist * maxdist;
     FloorItem *closestItem = nullptr;
     int dist = 0;
-    const bool allowAll = mPickupItemsSet.find("") != mPickupItemsSet.end();
+    const bool allowAll = mPickupItemsSet.find(std::string()) !=
+        mPickupItemsSet.end();
 
     for_actorsm
     {
@@ -1169,12 +1171,12 @@ Being *ActorManager::findNearestLivingBeing(const Being *const aroundBeing,
         beingActorSorter.priorityBeings = &priorityMobsMap;
         beingActorSorter.specialDistance = specialDistance;
         beingActorSorter.attackRange = attackRange;
-        if (ignoreAttackMobs.find("") != ignoreAttackMobs.end())
+        if (ignoreAttackMobs.find(std::string()) != ignoreAttackMobs.end())
             ignoreDefault = true;
-        StringIntMapCIter itr = attackMobsMap.find("");
+        StringIntMapCIter itr = attackMobsMap.find(std::string());
         if (itr != attackMobsMap.end())
             defaultAttackIndex = (*itr).second;
-        itr = priorityMobsMap.find("");
+        itr = priorityMobsMap.find(std::string());
         if (itr != priorityMobsMap.end())
             defaultPriorityIndex = (*itr).second;
     }
@@ -2054,7 +2056,7 @@ void ActorManager::storeAttackList() const
 
 bool ActorManager::checkForPickup(const FloorItem *const item) const
 {
-    if (mPickupItemsSet.find("") != mPickupItemsSet.end())
+    if (mPickupItemsSet.find(std::string()) != mPickupItemsSet.end())
     {
         if (mIgnorePickupItemsSet.find(item->getName())
             == mIgnorePickupItemsSet.end())
@@ -2072,7 +2074,7 @@ bool ActorManager::checkForPickup(const FloorItem *const item) const
 
 bool ActorManager::checkDefaultPickup() const
 {
-    return mPickupItemsSet.find("") != mPickupItemsSet.end();
+    return mPickupItemsSet.find(std::string()) != mPickupItemsSet.end();
 }
 
 void ActorManager::updateEffects(const std::map<BeingTypeId, int> &addEffects,
