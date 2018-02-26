@@ -527,7 +527,7 @@ SET(SRCS
     gui/theme.h
     gui/themecolorsidoperators.cpp
     gui/themecolorsidoperators.h
-    gui/themecolortype.h
+    gui/themecolortype.inc
     gui/themeinfo.h
     gui/touchactiondata.cpp
     gui/touchactiondata.h

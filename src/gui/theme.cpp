@@ -671,7 +671,7 @@ static int readColorType(const std::string &type)
     static const std::string colors[CAST_SIZE(
         ThemeColorId::THEME_COLORS_END)] =
     {
-#include "gui/themecolortype.h"
+#include "gui/themecolortype.inc"
     };
 
     if (type.empty())

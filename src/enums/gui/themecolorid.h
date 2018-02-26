@@ -29,7 +29,7 @@
 
 enumStart(ThemeColorId)
 {
-#include "gui/themecolortype.h"
+#include "gui/themecolortype.inc"
 }
 enumEnd(ThemeColorId);
 
