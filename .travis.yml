@@ -167,11 +167,6 @@ env:
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL2}
                   valgrind"
-      - IMAGE=vicamo/debian:sid-i386
-        COMMAND="./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=yes --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
-        PACKAGES="gcc-6 g++-6 
-                  ${LIBS_PACKAGES} ${SDL2}
-                  valgrind"
 
 notifications:
   email: false
