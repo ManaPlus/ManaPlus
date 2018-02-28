@@ -52,5 +52,5 @@ void ClanTab::handleInput(const std::string &msg)
 
 void ClanTab::playNewMessageSound() const
 {
-    soundManager.playGuiSound(SOUND_GUILD);
+    soundManager.playGuiSound(SOUND_CLAN);
 }

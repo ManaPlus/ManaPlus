@@ -140,8 +140,18 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
         150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option
-    new SetupItemSound(_("Guild / party / clan message sound"), "",
+    new SetupItemSound(_("Guild message sound"), "",
         "soundguild", this, "soundguildEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
+
+    // TRANSLATORS: settings option
+    new SetupItemSound(_("Party message sound"), "",
+        "soundparty", this, "soundpartyEvent", mSoundModel,
+        150, OnTheFly_false, MainConfig_true);
+
+    // TRANSLATORS: settings option
+    new SetupItemSound(_("Clan message sound"), "",
+        "soundclan", this, "soundclanEvent", mSoundModel,
         150, OnTheFly_false, MainConfig_true);
 
     // TRANSLATORS: settings option

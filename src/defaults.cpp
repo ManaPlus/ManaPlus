@@ -289,6 +289,8 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("soundinfo", "notify");
     AddDEF("soundrequest", "attention");
     AddDEF("soundguild", "newmessage");
+    AddDEF("soundparty", "newmessage");
+    AddDEF("soundclan", "newmessage");
     AddDEF("soundshowwindow", "page");
     AddDEF("soundhidewindow", "book");
     AddDEF("autohideButtons", true);

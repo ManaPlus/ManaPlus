@@ -141,7 +141,7 @@ void PartyTab::getAutoCompleteCommands(StringVect &names) const
 
 void PartyTab::playNewMessageSound() const
 {
-    soundManager.playGuiSound(SOUND_GUILD);
+    soundManager.playGuiSound(SOUND_PARTY);
 }
 
 void PartyTab::optionChanged(const std::string &value)

@@ -31,6 +31,8 @@ static const std::string SOUND_WHISPER = "soundwhisper";
 static const std::string SOUND_HIGHLIGHT = "soundhighlight";
 static const std::string SOUND_GLOBAL = "soundglobal";
 static const std::string SOUND_GUILD = "soundguild";
+static const std::string SOUND_PARTY = "soundparty";
+static const std::string SOUND_CLAN = "soundclan";
 static const std::string SOUND_SHOW_WINDOW = "soundshowwindow";
 static const std::string SOUND_HIDE_WINDOW = "soundhidewindow";
 
