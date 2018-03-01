@@ -640,7 +640,7 @@ int GuiTable::getColumnForX(const int x) const
             break;
     }
 
-    if (column < 0 || column >= colnum)
+    if (column >= colnum)
         return -1;
     return column;
 }
