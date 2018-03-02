@@ -24,4 +24,22 @@ Copyright (C) 2018 ManaPlus developers -->
         other="3"
         str="1"
     />
+    <test4
+        hp="10-15"
+        other="3"
+    />
+    <test5
+        hp1="10"
+        weight="2"
+        other="3"
+    />
+    <test6
+        weight="2-3"
+    />
+    <test7
+        weight="2-"
+    />
+    <test8
+        weight="-2"
+    />
 </root>

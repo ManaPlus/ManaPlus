@@ -29,6 +29,52 @@
 
 #include "debug.h"
 
+static bool readField(ItemFieldInfos::const_iterator it,
+                      XmlNodeConstPtr node,
+                      std::string &combined)
+{
+    const std::string fieldName = (*it).first;
+    const ItemFieldType *const field = (*it).second;
+
+    std::string value = XML::getProperty(node,
+        fieldName.c_str(),
+        "");
+    if (value.empty())
+        return false;
+
+    StringVect tokens;
+    splitToStringVector(tokens,
+        value,
+        '-');
+    if (tokens.size() > 1)
+    {
+        std::string value1;
+        std::string value2;
+        if (field->sign)
+        {
+            value1 = std::string("+").append(tokens[0]);
+            value2 = std::string("+").append(tokens[1]);
+        }
+        else
+        {
+            value1 = tokens[0];
+            value2 = tokens[1];
+        }
+        value = strprintf("%s - %s",
+            value1.c_str(),
+            value2.c_str());
+    }
+    else
+    {
+        if (field->sign)
+            value = std::string("+").append(value);
+    }
+    const std::string format = translator->getStr(field->description);
+    combined = strprintf(format.c_str(),
+        value.c_str());
+    return true;
+}
+
 void readItemStatsString(std::string &effect,
                          XmlNodeConstPtr node,
                          const ItemFieldInfos &fields)
@@ -41,21 +87,12 @@ void readItemStatsString(std::string &effect,
 
     FOR_EACH (ItemFieldInfos::const_iterator, it, fields)
     {
-        const std::string fieldName = (*it).first;
-        const ItemFieldType *const field = (*it).second;
-
-        std::string value = XML::getProperty(node,
-            fieldName.c_str(),
-            "");
-        if (value.empty())
+        std::string field;
+        if (!readField(it, node, field))
             continue;
         if (!effect.empty())
             effect.append(" / ");
-        if (field->sign && isDigit(value))
-            value = std::string("+").append(value);
-        const std::string format = translator->getStr(field->description);
-        effect.append(strprintf(format.c_str(),
-            value.c_str()));
+        effect.append(field);
     }
 }
 
@@ -71,18 +108,9 @@ void readItemStatsVector(STD_VECTOR<std::string> &effect,
 
     FOR_EACH (ItemFieldInfos::const_iterator, it, fields)
     {
-        const std::string fieldName = (*it).first;
-        const ItemFieldType *const field = (*it).second;
-
-        std::string value = XML::getProperty(node,
-            fieldName.c_str(),
-            "");
-        if (value.empty())
+        std::string field;
+        if (!readField(it, node, field))
             continue;
-        if (field->sign && isDigit(value))
-            value = std::string("+").append(value);
-        const std::string format = translator->getStr(field->description);
-        effect.push_back(strprintf(format.c_str(),
-            value.c_str()));
+        effect.push_back(field);
     }
 }

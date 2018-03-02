@@ -171,6 +171,41 @@ TEST_CASE("itemxmlutils readItemStatsString 1", "")
         }
     }
 
+    SECTION("test4")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test4");
+        readItemStatsString(effect, node, fields);
+        REQUIRE(effect == "HP +10 - +15");
+    }
+
+    SECTION("test5")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test5");
+        readItemStatsString(effect, node, fields);
+        REQUIRE(effect == "Weight 2");
+    }
+
+    SECTION("test6")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test6");
+        readItemStatsString(effect, node, fields);
+        REQUIRE(effect == "Weight 2 - 3");
+    }
+
+    SECTION("test7")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test7");
+        readItemStatsString(effect, node, fields);
+        REQUIRE(effect == "Weight 2-");
+    }
+
+    SECTION("test8")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test8");
+        readItemStatsString(effect, node, fields);
+        REQUIRE(effect == "Weight -2");
+    }
+
     delete2(userPalette);
     delete2(theme);
     delete2(client);
@@ -327,6 +362,46 @@ TEST_CASE("itemxmlutils readItemStatsVector 1", "")
                 REQUIRE(effect[2] == "Weight 2");
             }
         }
+    }
+
+    SECTION("test4")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test4");
+        readItemStatsVector(effect, node, fields);
+        REQUIRE(effect.size() == 1);
+        REQUIRE(effect[0] == "HP +10 - +15");
+    }
+
+    SECTION("test5")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test5");
+        readItemStatsVector(effect, node, fields);
+        REQUIRE(effect.size() == 1);
+        REQUIRE(effect[0] == "Weight 2");
+    }
+
+    SECTION("test6")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test6");
+        readItemStatsVector(effect, node, fields);
+        REQUIRE(effect.size() == 1);
+        REQUIRE(effect[0] == "Weight 2 - 3");
+    }
+
+    SECTION("test7")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test7");
+        readItemStatsVector(effect, node, fields);
+        REQUIRE(effect.size() == 1);
+        REQUIRE(effect[0] == "Weight 2-");
+    }
+
+    SECTION("test8")
+    {
+        XmlNodePtr node = XML::findFirstChildByName(root, "test8");
+        readItemStatsVector(effect, node, fields);
+        REQUIRE(effect.size() == 1);
+        REQUIRE(effect[0] == "Weight -2");
     }
 
     delete2(userPalette);
