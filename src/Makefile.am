@@ -2176,6 +2176,7 @@ manaplustests_SOURCES += \
 	      unittests/resources/map/maplayer/updateconditiontiles.cc \
 	      unittests/resources/resourcemanager/resourcemanager.cc \
 	      unittests/resources/sdlimagehelper.cc \
+	      unittests/utils/itemxmlutils.cc \
 	      unittests/gui/windowmanager.cc
 
 manaplustests_SOURCES += ${SRC}

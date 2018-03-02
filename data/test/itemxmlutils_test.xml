@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Authors: 4144
+Copyright (C) 2018 ManaPlus developers -->
+
+<root>
+    <empty1
+        test1="1"
+        test2="2"
+        test3="3"
+    />
+    <empty2 />
+    <test1
+        hp="20"
+        other="3"
+    />
+    <test2
+        hp="10"
+        weight="2"
+        other="3"
+    />
+    <test3
+        hp="10"
+        weight="2"
+        other="3"
+        str="1"
+    />
+</root>

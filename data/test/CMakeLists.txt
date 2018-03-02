@@ -7,6 +7,7 @@ SET(FILES
     equipmentwindow.xml
     hide.png
     items.xml
+    itemxmlutils_test.xml
     palette.gpl
     paths.xml
     quests.xml

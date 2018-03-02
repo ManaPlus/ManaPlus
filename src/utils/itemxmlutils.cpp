@@ -20,6 +20,7 @@
 
 #include "utils/itemxmlutils.h"
 
+#include "utils/checkutils.h"
 #include "utils/foreach.h"
 #include "utils/stringutils.h"
 #include "utils/translation/podict.h"
@@ -33,7 +34,10 @@ void readItemStatsString(std::string &effect,
                          const ItemFieldInfos &fields)
 {
     if (translator == nullptr)
+    {
+        reportAlways("called readItemStatsString without translator");
         return;
+    }
 
     FOR_EACH (ItemFieldInfos::const_iterator, it, fields)
     {
@@ -60,7 +64,10 @@ void readItemStatsVector(STD_VECTOR<std::string> &effect,
                          const ItemFieldInfos &fields)
 {
     if (translator == nullptr)
+    {
+        reportAlways("called readItemStatsVector without translator");
         return;
+    }
 
     FOR_EACH (ItemFieldInfos::const_iterator, it, fields)
     {

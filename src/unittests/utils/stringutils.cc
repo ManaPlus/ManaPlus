@@ -28,6 +28,8 @@
 
 #include "utils/dtor.h"
 
+#include "utils/translation/translationmanager.h"
+
 #include "resources/iteminfo.h"
 
 #include "resources/db/itemdb.h"
@@ -1489,6 +1491,7 @@ TEST_CASE("stringuntils replaceItemLinks", "")
     VirtFs::mountDirSilent("data/test", Append_false);
     VirtFs::mountDirSilent("../data/test", Append_false);
 
+    TranslationManager::init();
     ItemDB::NamedItemInfos &namedInfos = ItemDB::getNamedItemInfosTest();
     ItemDB::ItemInfos &infos = ItemDB::getItemInfosTest();
     setPathsDefaults(paths);

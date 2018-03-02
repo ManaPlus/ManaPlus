@@ -605,8 +605,8 @@ TEST_CASE("VirtFs2 permitLinks", "")
     VirtFs::mountDir(prefix + "data",
         Append_false);
 
-    const int cnt1 = VirtFs::exists("test/test2.txt") ? 26 : 25;
-    const int cnt2 = 26;
+    const int cnt1 = VirtFs::exists("test/test2.txt") ? 27 : 26;
+    const int cnt2 = 27;
 
     StringVect list;
     VirtFs::permitLinks(false);

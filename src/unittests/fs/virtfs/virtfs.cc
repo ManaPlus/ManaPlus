@@ -256,8 +256,8 @@ TEST_CASE("VirtFs enumerateFiles1", "")
 
     VirtFs::List *list = nullptr;
 
-    const int cnt1 = VirtFs::exists("test/test2.txt") ? 29 : 28;
-    const int cnt2 = 29;
+    const int cnt1 = VirtFs::exists("test/test2.txt") ? 30 : 29;
+    const int cnt2 = 30;
 
     VirtFs::permitLinks(false);
     list = VirtFs::enumerateFiles("test");
@@ -744,8 +744,8 @@ TEST_CASE("VirtFs permitLinks1", "")
     VirtFs::mountDirSilent("data", Append_false);
     VirtFs::mountDirSilent("../data", Append_false);
 
-    const int cnt1 = VirtFs::exists("test/test2.txt") ? 26 : 25;
-    const int cnt2 = 26;
+    const int cnt1 = VirtFs::exists("test/test2.txt") ? 27 : 26;
+    const int cnt2 = 27;
 
     StringVect list;
     VirtFs::permitLinks(false);
@@ -779,8 +779,8 @@ TEST_CASE("VirtFs permitLinks2", "")
         "test",
         Append_false);
 
-    const int cnt1 = VirtFs::exists("test2.txt") ? 26 : 25;
-    const int cnt2 = 26;
+    const int cnt1 = VirtFs::exists("test2.txt") ? 27 : 26;
+    const int cnt2 = 27;
 
     StringVect list;
     VirtFs::permitLinks(false);
