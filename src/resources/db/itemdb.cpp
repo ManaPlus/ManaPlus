@@ -565,7 +565,6 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         itemInfo->setMaxFloorOffsetY(maxFloorOffsetY);
         itemInfo->setPickupCursor(XML::getProperty(
             node, "pickupCursor", "pickup"));
-        itemInfo->setEffect(effect);
 
         MissileInfo &missile = itemInfo->getMissile();
         missile.particle = STD_MOVE(missileParticle);
@@ -617,7 +616,16 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             {
                 loadMenu(itemChild, itemInfo->getCartMenu());
             }
+            else if (xmlNameEqual(itemChild, "addStats"))
+            {
+                readItemStatsString(effect, itemChild, addFields);
+            }
+            else if (xmlNameEqual(itemChild, "requireStats"))
+            {
+                readItemStatsString(effect, itemChild, requiredFields);
+            }
         }
+        itemInfo->setEffect(effect);
 
 /*
         logger->log("start dump item: %d", id);
