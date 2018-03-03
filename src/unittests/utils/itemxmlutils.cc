@@ -35,6 +35,7 @@
 
 #include "utils/delete2.h"
 #include "utils/env.h"
+#include "utils/foreach.h"
 #include "utils/xml.h"
 #include "utils/itemxmlutils.h"
 
@@ -206,6 +207,10 @@ TEST_CASE("itemxmlutils readItemStatsString 1", "")
         REQUIRE(effect == "Weight -2");
     }
 
+    FOR_EACH(ItemFieldInfos::iterator, it, fields)
+    {
+        delete (*it).second;
+    }
     delete2(userPalette);
     delete2(theme);
     delete2(client);
@@ -404,6 +409,10 @@ TEST_CASE("itemxmlutils readItemStatsVector 1", "")
         REQUIRE(effect[0] == "Weight -2");
     }
 
+    FOR_EACH(ItemFieldInfos::iterator, it, fields)
+    {
+        delete (*it).second;
+    }
     delete2(userPalette);
     delete2(theme);
     delete2(client);
