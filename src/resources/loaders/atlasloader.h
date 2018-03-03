@@ -26,12 +26,12 @@
 
 #include "localconsts.h"
 
-class Resource;
+class AtlasResource;
 
 namespace Loader
 {
-    Resource *getAtlas(const std::string &name,
-                       const StringVect &files) A_WARN_UNUSED;
+    AtlasResource *getAtlas(const std::string &name,
+                            const StringVect &files) A_WARN_UNUSED;
 }  // namespace Loader
 
 #endif  // USE_OPENGL

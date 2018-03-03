@@ -42,6 +42,7 @@
 #include "resources/map/properties.h"
 
 class AmbientLayer;
+class AtlasResource;
 class MapHeights;
 class MapItem;
 class MapLayer;
@@ -283,6 +284,8 @@ class Map final : public Properties,
         int getActorsCount() const restrict2 A_WARN_UNUSED
         { return CAST_S32(mActors.size()); }
 
+        int getAtlasCount() const restrict2 A_WARN_UNUSED;
+
         void setPvpMode(const int mode) restrict2;
 
         int getPvpMode() const restrict2 noexcept2 A_WARN_UNUSED
@@ -327,7 +330,7 @@ class Map final : public Properties,
                                             restrict2 noexcept2 A_WARN_UNUSED
         { return mTileAnimations; }
 
-        void setAtlas(Resource *restrict const atlas) restrict2 noexcept2
+        void setAtlas(AtlasResource *restrict const atlas) restrict2 noexcept2
         { mAtlas = atlas; }
 
         const MetaTile *getMetaTiles() const restrict2 noexcept2
@@ -483,7 +486,7 @@ class Map final : public Properties,
         int mDrawScrollX;
         int mDrawScrollY;
         int mMask;
-        Resource *mAtlas;
+        AtlasResource *mAtlas;
         const MapHeights *mHeights;
         bool mRedrawMap;
         bool mBeingOpacity;

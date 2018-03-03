@@ -42,6 +42,8 @@
 
 #include "resources/ambientlayer.h"
 
+#include "resources/atlas/atlasresource.h"
+
 #include "resources/image/subimage.h"
 
 #include "resources/loaders/imageloader.h"
@@ -1790,4 +1792,11 @@ int Map::calcMemoryChilds(const int level) const
     if (mHeights != nullptr)
         mHeights->calcMemory(level + 1);
     return sz;
+}
+
+int Map::getAtlasCount() const restrict2
+{
+    if (mAtlas == nullptr)
+        return 0;
+    return CAST_S32(mAtlas->atlases.size());
 }

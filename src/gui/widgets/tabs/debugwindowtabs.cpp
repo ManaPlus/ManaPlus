@@ -67,6 +67,9 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     mMapActorCountLabel(new Label(this, strprintf("%s %d",
         // TRANSLATORS: debug window label
         _("Map actors count:"), 88888))),
+    mMapAtlasCountLabel(new Label(this, strprintf("%s %d",
+        // TRANSLATORS: debug window label
+        _("Map atlas count:"), 88888))),
     // TRANSLATORS: debug window label
     mXYLabel(new Label(this, strprintf("%s (?,?)", _("Player Position:")))),
     mTexturesLabel(nullptr),
@@ -141,6 +144,7 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 7, mTileMouseLabel, 2, 1);
     place(0, 8, mParticleCountLabel, 2, 1);
     place(0, 9, mMapActorCountLabel, 2, 1);
+    place(0, 10, mMapAtlasCountLabel, 2, 1);
 #ifdef USE_OPENGL
 #if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS) \
     || defined(DEBUG_BIND_TEXTURE)
@@ -221,6 +225,10 @@ void MapDebugTab::logic()
                 // TRANSLATORS: debug window label
                 strprintf("%s %d", _("Map actors count:"),
                 map->getActorsCount()));
+            mMapAtlasCountLabel->setCaption(
+                // TRANSLATORS: debug window label
+                strprintf("%s %d", _("Map atlas count:"),
+                map->getAtlasCount()));
 #ifdef USE_OPENGL
 #ifdef DEBUG_OPENGL_LEAKS
             mTexturesLabel->setCaption(strprintf("%s %d",
@@ -258,13 +266,16 @@ void MapDebugTab::logic()
         mMapLabel->setCaption(strprintf("%s ?", _("Map:")));
         // TRANSLATORS: debug window label
         mMapNameLabel->setCaption(strprintf("%s ?", _("Map name:")));
-
         mMapActorCountLabel->setCaption(
             // TRANSLATORS: debug window label
             strprintf("%s ?", _("Map actors count:")));
+        mMapAtlasCountLabel->setCaption(
+            // TRANSLATORS: debug window label
+            strprintf("%s ?", _("Map atlas count:")));
     }
 
     mMapActorCountLabel->adjustSize();
+    mMapAtlasCountLabel->adjustSize();
     mParticleCountLabel->adjustSize();
 
     mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));

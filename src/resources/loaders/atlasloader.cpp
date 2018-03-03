@@ -52,11 +52,13 @@ struct AtlasLoader final
     }
 };
 
-Resource *Loader::getAtlas(const std::string &name,
-                           const StringVect &files)
+AtlasResource *Loader::getAtlas(const std::string &name,
+                                const StringVect &files)
 {
     AtlasLoader rl = { name, &files };
-    return ResourceManager::get("atlas_" + name, AtlasLoader::load, &rl);
+    return static_cast<AtlasResource*>(ResourceManager::get(
+        "atlas_" + name,
+        AtlasLoader::load, &rl));
 }
 
 #endif  // USE_OPENGL
