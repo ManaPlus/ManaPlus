@@ -29,7 +29,7 @@
  * Protocol version, reported to the tmwa char and mapserver who can adjust
  * the protocol accordingly.
  */
-#define CLIENT_PROTOCOL_VERSION 7
+#define CLIENT_PROTOCOL_VERSION 8
 
 namespace TmwAthena
 {
