@@ -531,10 +531,6 @@ void PlayerRecv::processPlayerAttrs(Net::MessageIn &msg)
         return;
 
     localPlayer->setGroupId(groupId);
-    if (groupId > 0)
-        localPlayer->setGM(true);
-    else
-        localPlayer->setGM(false);
 }
 
 void PlayerRecv::processPlayerStatUpdate7(Net::MessageIn &msg)

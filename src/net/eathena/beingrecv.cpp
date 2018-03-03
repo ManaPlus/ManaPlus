@@ -1783,10 +1783,6 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
             dstBeing != localPlayer)
         {
             dstBeing->setGroupId(groupId);
-            if (groupId != 0)
-                dstBeing->setGM(true);
-            else
-                dstBeing->setGM(false);
         }
         dstBeing->setHorse(mount);
         dstBeing->setLanguageId(language);

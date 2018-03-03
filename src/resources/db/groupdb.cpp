@@ -314,6 +314,9 @@ void GroupDb::loadXmlFile(const std::string &fileName,
             group->showBadge = XML::getBoolProperty(node,
                 "showBadge",
                 false);
+            group->highlightName = XML::getBoolProperty(node,
+                "highlightName",
+                false);
             loadSubNodes(node, id, group);
             parseInherit(node, id, group);
         }
@@ -362,6 +365,17 @@ bool GroupDb::getShowBadge(const int id)
         return mEmptyGroup.showBadge;
     }
     return (*it).second->showBadge;
+}
+
+bool GroupDb::getHighlightName(const int id)
+{
+    GroupInfos::const_iterator it = mGroups.find(id);
+    if (it == mGroups.end())
+    {
+        reportAlways("Unknown group id requested: %d", id);
+        return mEmptyGroup.highlightName;
+    }
+    return (*it).second->highlightName;
 }
 
 const std::string &GroupDb::getBadge(const int id)

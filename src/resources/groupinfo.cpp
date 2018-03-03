@@ -28,7 +28,8 @@ GroupInfo::GroupInfo() :
     name(),
     longName(),
     badge(),
-    showBadge(false)
+    showBadge(false),
+    highlightName(false)
 {
     for (size_t f = 0; f < CAST_SIZE(ServerCommandType::Max); f ++)
         mCommands[f] = ServerCommandEnable::No;

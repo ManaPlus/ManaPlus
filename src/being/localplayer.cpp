@@ -422,18 +422,13 @@ void LocalPlayer::setGroupId(const int id)
 {
     Being::setGroupId(id);
 
-    if (id > 0)
+    if (mIsGM != 0)
     {
-        setGM(true);
         if (chatWindow != nullptr)
         {
             chatWindow->loadGMCommands();
             chatWindow->showGMTab();
         }
-    }
-    else
-    {
-        setGM(false);
     }
     if (statusWindow != nullptr)
         statusWindow->updateLevelLabel();

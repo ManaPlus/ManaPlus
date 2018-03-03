@@ -41,6 +41,7 @@ namespace GroupDb
     const std::string &getName(const int id) A_WARN_UNUSED;
     const std::string &getLongName(const int id) A_WARN_UNUSED;
     bool getShowBadge(const int id) A_WARN_UNUSED;
+    bool getHighlightName(const int id) A_WARN_UNUSED;
     const std::string &getBadge(const int id) A_WARN_UNUSED;
     const GroupInfo *getGroup(const int id) A_WARN_UNUSED RETURNS_NONNULL;
 

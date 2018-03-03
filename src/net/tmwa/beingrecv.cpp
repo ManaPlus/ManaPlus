@@ -64,25 +64,14 @@ namespace TmwAthena
 static void setGm(Being *const dstBeing,
                   const uint16_t gmstatus)
 {
-    if (dstBeing != localPlayer)
+    if (dstBeing != localPlayer &&
+        gmstatus == 0x80)
     {
-        if (gmstatus == 0x80)
-        {
-            dstBeing->setGroupId(paths.getIntValue("gmDefaultLevel"));
-            dstBeing->setGM(true);
-        }
-        else
-        {
-            dstBeing->setGroupId(gmstatus);
-            dstBeing->setGM(gmstatus != 0);
-        }
+        dstBeing->setGroupId(paths.getIntValue("gmDefaultLevel"));
     }
     else
     {
-        if (gmstatus != 0)
-            dstBeing->setGM(true);
-        else
-            dstBeing->setGM(false);
+        dstBeing->setGroupId(gmstatus);
     }
 }
 

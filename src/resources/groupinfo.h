@@ -45,6 +45,7 @@ struct GroupInfo final
     std::string longName;
     std::string badge;
     bool showBadge;
+    bool highlightName;
 };
 
 #endif  // RESOURCES_GROUPINFO_H
