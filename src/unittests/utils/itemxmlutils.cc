@@ -114,14 +114,14 @@ TEST_CASE("itemxmlutils readItemStatsString 1", "")
     {
         XmlNodePtr node = XML::findFirstChildByName(root, "empty1");
         readItemStatsString(effect, node, fields);
-        REQUIRE(effect == "");
+        REQUIRE(effect.empty());
     }
 
     SECTION("empty2")
     {
         XmlNodePtr node = XML::findFirstChildByName(root, "empty2");
         readItemStatsString(effect, node, fields);
-        REQUIRE(effect == "");
+        REQUIRE(effect.empty());
     }
 
     SECTION("test1")
