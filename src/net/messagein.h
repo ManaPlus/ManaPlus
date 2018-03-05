@@ -78,6 +78,8 @@ class MessageIn notfinal
         /**< Reads a long. */
         int32_t readInt32(const char *const str);
 
+        uint32_t readUInt32(const char *const str);
+
         int64_t readInt64(const char *const str);
 
         BeingId readBeingId(const char *const str);

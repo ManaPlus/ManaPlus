@@ -180,6 +180,27 @@ int32_t MessageIn::readInt32(const char *const str)
         memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int32_t));
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
     }
+    DEBUGLOG2("readInt32:  " + toStringPrint(CAST_S32(value)),
+        mPos, str);
+    mPos += 4;
+    PacketCounters::incInBytes(4);
+    return value;
+}
+
+uint32_t MessageIn::readUInt32(const char *const str)
+{
+    uint32_t value = -1;
+    if (mPos + 4 <= mLength)
+    {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+        uint32_t swap;
+        memcpy(&swap, mData + CAST_SIZE(mPos), sizeof(int32_t));
+        value = SDL_Swap32(swap);
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+        memcpy(&value, mData + CAST_SIZE(mPos), sizeof(int32_t));
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+    }
     DEBUGLOG2("readInt32:  " + toStringPrint(CAST_U32(value)),
         mPos, str);
     mPos += 4;
@@ -189,7 +210,7 @@ int32_t MessageIn::readInt32(const char *const str)
 
 BeingId MessageIn::readBeingId(const char *const str)
 {
-    return fromInt(readInt32(str), BeingId);
+    return fromInt(readUInt32(str), BeingId);
 }
 
 int64_t MessageIn::readInt64(const char *const str)
