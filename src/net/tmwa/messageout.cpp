@@ -71,7 +71,6 @@ void MessageOut::writeInt16(const int16_t value, const char *const str)
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     mPos += 2;
-    PacketCounters::incOutBytes(2);
 }
 
 void MessageOut::writeInt32(const int32_t value, const char *const str)
@@ -88,7 +87,6 @@ void MessageOut::writeInt32(const int32_t value, const char *const str)
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     mPos += 4;
-    PacketCounters::incOutBytes(4);
 }
 
 void MessageOut::writeBeingId(const BeingId value, const char *const str)
@@ -110,7 +108,7 @@ void MessageOut::writeCoordinates(const uint16_t x,
         CAST_U32(direction)), mPos, str);
     unsigned char *const data = reinterpret_cast<unsigned char*>(mData)
         + CAST_SIZE(mPos);
-    mNetwork->mOutSize += 3;
+    expand(3);
     mPos += 3;
 
     uint16_t temp = x;
@@ -126,7 +124,6 @@ void MessageOut::writeCoordinates(const uint16_t x,
     data[2] = LOBYTE(temp);
     direction = toServerDirection(direction);
     data[2] |= direction;
-    PacketCounters::incOutBytes(3);
 }
 
 }  // namespace TmwAthena
