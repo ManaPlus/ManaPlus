@@ -54,44 +54,55 @@ class MessageOut notfinal
                                const char *const str);
 
         /**< Writes a short. */
-        virtual void writeInt16(const int16_t value,
-                                const char *const str) = 0;
+        void writeInt16(const int16_t value,
+                        const char *const str);
 
         /**< Writes a long. */
-        virtual void writeInt32(const int32_t value,
-                                const char *const str) = 0;
+        void writeInt32(const int32_t value,
+                        const char *const str);
 
-        virtual void writeBeingId(const BeingId value,
-                                  const char *const str) = 0;
+        void writeInt64(const int64_t value,
+                        const char *const str);
+
+        void writeBeingId(const BeingId value,
+                          const char *const str);
+
+        void writeCoordinates(const uint16_t x,
+                              const uint16_t y,
+                              unsigned char direction,
+                              const char *const str);
 
         /**
          * Writes a string. If a fixed length is not given (-1), it is stored
          * as a short at the start of the string.
          */
-        virtual void writeString(const std::string &string,
-                                 int length,
-                                 const char *const str);
+        void writeString(const std::string &string,
+                         int length,
+                         const char *const str);
 
         /**
          * Writes a string. If a fixed length is not given (-1), it is stored
          * as a short at the start of the string.
          */
-        virtual void writeStringNoLog(const std::string &string,
-                                      int length,
-                                      const char *const str);
+        void writeStringNoLog(const std::string &string,
+                              int length,
+                              const char *const str);
 
         /**
          * Returns the content of the message.
          */
-        virtual const char *getData() const A_WARN_UNUSED;
+        const char *getData() const A_WARN_UNUSED;
 
         /**
          * Returns the length of the data.
          */
-        virtual unsigned int getDataSize() const A_WARN_UNUSED;
+        unsigned int getDataSize() const A_WARN_UNUSED;
 
         virtual ~MessageOut()
         { }
+
+        void resetPos()
+        { mPos = 0; }
 
         static unsigned char toServerDirection(unsigned char direction)
                                                A_CONST;

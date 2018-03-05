@@ -29,7 +29,16 @@
 
 #include "utils/stringutils.h"
 
+PRAGMA48(GCC diagnostic push)
+PRAGMA48(GCC diagnostic ignored "-Wshadow")
+#include <SDL_endian.h>
+PRAGMA48(GCC diagnostic pop)
+
 #include "debug.h"
+
+#ifndef SDL_BIG_ENDIAN
+#error missing SDL_endian.h
+#endif  // SDL_BYTEORDER
 
 namespace Net
 {
@@ -54,7 +63,92 @@ void MessageOut::writeInt8(const int8_t value, const char *const str)
         CAST_U8(value))),
         mPos, str);
     mPos += 1;
-    PacketCounters::incOutBytes(1);
+}
+
+void MessageOut::writeInt16(const int16_t value, const char *const str)
+{
+    expand(2);
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    int16_t swap = SDL_Swap16(value);
+    memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int16_t));
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int16_t));
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    DEBUGLOG2("writeInt16: " + toStringPrint(CAST_U32(
+        CAST_U16(value))),
+        mPos, str);
+    mPos += 2;
+}
+
+void MessageOut::writeInt32(const int32_t value, const char *const str)
+{
+    DEBUGLOG2("writeInt32: " + toStringPrint(CAST_U32(value)),
+        mPos, str);
+    expand(4);
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    int32_t swap = SDL_Swap32(value);
+    memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int32_t));
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int32_t));
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    mPos += 4;
+}
+
+void MessageOut::writeInt64(const int64_t value, const char *const str)
+{
+    DEBUGLOG2("writeInt64: " + toStringPrint(CAST_U32(value)),
+        mPos, str);
+    expand(8);
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+    int32_t swap = SDL_Swap64(value);
+    memcpy(mData + CAST_SIZE(mPos), &swap, sizeof(int64_t));
+#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    memcpy(mData + CAST_SIZE(mPos), &value, sizeof(int64_t));
+#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
+
+    mPos += 8;
+}
+
+void MessageOut::writeBeingId(const BeingId value, const char *const str)
+{
+    writeInt32(toInt(value, int32_t), str);
+}
+
+#define LOBYTE(w) (CAST_U8(w))
+#define HIBYTE(w) (CAST_U8((CAST_U16(w)) >> 8))
+
+void MessageOut::writeCoordinates(const uint16_t x,
+                                  const uint16_t y,
+                                  unsigned char direction,
+                                  const char *const str)
+{
+    DEBUGLOG2(strprintf("writeCoordinates: %u,%u %u",
+        CAST_U32(x),
+        CAST_U32(y),
+        CAST_U32(direction)), mPos, str);
+    unsigned char *const data = reinterpret_cast<unsigned char*>(mData)
+        + CAST_SIZE(mPos);
+    expand(3);
+    mPos += 3;
+
+    uint16_t temp = x;
+    temp <<= 6;
+    data[0] = 0;
+    data[1] = 1;
+    data[2] = 2;
+    data[0] = HIBYTE(temp);
+    data[1] = CAST_U8(temp);
+    temp = y;
+    temp <<= 4;
+    data[1] |= HIBYTE(temp);
+    data[2] = LOBYTE(temp);
+    direction = toServerDirection(direction);
+    data[2] |= direction;
 }
 
 void MessageOut::writeString(const std::string &string,
@@ -88,7 +182,6 @@ void MessageOut::writeString(const std::string &string,
 
     DEBUGLOG2("writeString: " + string, mPos, str);
     mPos += length;
-    PacketCounters::incOutBytes(length);
 }
 
 void MessageOut::writeStringNoLog(const std::string &string,
@@ -122,7 +215,6 @@ void MessageOut::writeStringNoLog(const std::string &string,
 
     DEBUGLOG2("writeString: ***", mPos, str);
     mPos += length;
-    PacketCounters::incOutBytes(length);
 }
 
 const char *MessageOut::getData() const

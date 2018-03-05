@@ -49,28 +49,6 @@ class MessageOut final : public Net::MessageOut
 
         ~MessageOut() override final;
 
-        /**< Writes a short. */
-        void writeInt16(const int16_t value,
-                        const char *const str) override final;
-
-        /**< Writes a long. */
-        void writeInt32(const int32_t value,
-                        const char *const str) override final;
-
-        void writeBeingId(const BeingId value,
-                          const char *const str) override final;
-
-        /**
-         * Encodes coordinates and direction in 3 bytes.
-         */
-        void writeCoordinates(const uint16_t x,
-                              const uint16_t y,
-                              unsigned char direction,
-                              const char *const str);
-
-        void resetPos()
-        { mPos = 0; }
-
     private:
         void expand(const size_t size) const override final;
 
