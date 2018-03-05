@@ -44,6 +44,8 @@ class MessageIn notfinal
 
         virtual ~MessageIn();
 
+        uint16_t readId() const;
+
         /**
          * Returns the message ID.
          */
@@ -63,47 +65,47 @@ class MessageIn notfinal
         { return mLength > mPos ? mLength - mPos : 0; }
 
         /**< Reads a byte. */
-        virtual unsigned char readUInt8(const char *const str);
+        unsigned char readUInt8(const char *const str);
 
         /**< Reads a byte. */
-        virtual signed char readInt8(const char *const str);
+        signed char readInt8(const char *const str);
 
         /**< Reads a short. */
-        virtual int16_t readInt16(const char *const str) = 0;
+        int16_t readInt16(const char *const str);
 
-        virtual uint16_t readUInt16(const char *const str) = 0;
+        uint16_t readUInt16(const char *const str);
 
         /**< Reads a long. */
-        virtual int32_t readInt32(const char *const str) = 0;
+        int32_t readInt32(const char *const str);
 
-        virtual int64_t readInt64(const char *const str) = 0;
+        int64_t readInt64(const char *const str);
 
-        virtual BeingId readBeingId(const char *const str) = 0;
+        BeingId readBeingId(const char *const str);
 
         /**
          * Reads a special 3 byte block used by eAthena, containing x and y
          * coordinates and direction.
          */
-        virtual void readCoordinates(uint16_t &restrict x,
-                                     uint16_t &restrict y,
-                                     uint8_t &restrict direction,
-                                     const char *const str);
+        void readCoordinates(uint16_t &restrict x,
+                             uint16_t &restrict y,
+                             uint8_t &restrict direction,
+                             const char *const str);
 
         /**
          * Reads a special 5 byte block used by eAthena, containing a source
          * and destination coordinate pair.
          */
-        virtual void readCoordinatePair(uint16_t &restrict srcX,
-                                        uint16_t &restrict srcY,
-                                        uint16_t &restrict dstX,
-                                        uint16_t &restrict dstY,
-                                        const char *const str);
+        void readCoordinatePair(uint16_t &restrict srcX,
+                                uint16_t &restrict srcY,
+                                uint16_t &restrict dstX,
+                                uint16_t &restrict dstY,
+                                const char *const str);
 
         /**
          * Skips a given number of bytes.
          */
-        virtual void skip(const unsigned int length,
-                          const char *const str);
+        void skip(const unsigned int length,
+                  const char *const str);
 
         void skipToEnd(const char *const str);
 
@@ -112,11 +114,11 @@ class MessageIn notfinal
          * that the length of the string is stored in a short at the
          * start of the string.
          */
-        virtual std::string readString(int length,
-                                       const char *const dstr);
+        std::string readString(int length,
+                               const char *const dstr);
 
-        virtual std::string readRawString(int length,
-                                          const char *const dstr);
+        std::string readRawString(int length,
+                                  const char *const dstr);
 
         unsigned char *readBytes(int length,
                                  const char *const dstr);

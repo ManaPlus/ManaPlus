@@ -48,20 +48,6 @@ class MessageIn final : public Net::MessageIn
 
         void postInit(const char *const str,
                       const unsigned int version);
-
-        /**< Reads a short. */
-        int16_t readInt16(const char *const str) override final;
-
-        uint16_t readUInt16(const char *const str) override final;
-
-        /**< Reads a long. */
-        int32_t readInt32(const char *const str) override final;
-
-        int64_t readInt64(const char *const str) override final;
-
-        BeingId readBeingId(const char *const str) override final;
-
-        uint16_t readId() const;
 };
 
 }  // namespace EAthena
