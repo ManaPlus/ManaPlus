@@ -62,9 +62,6 @@ class CharServerHandler final : public Ea::CharServerHandler
 
         void connect() const override final;
 
-        bool isNeedCreatePin() const override final
-        { return false; }
-
         void setNewPincode(const std::string &pin A_UNUSED) const
                            override final
         { }

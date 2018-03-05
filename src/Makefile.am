@@ -1407,6 +1407,8 @@ SRC = ${BASE_SRC} \
 	      particle/particlevector.h \
 	      party.cpp \
 	      party.h \
+	      pincodemanager.cpp \
+	      pincodemanager.h \
 	      utils/chatutils.cpp \
 	      utils/chatutils.h \
 	      utils/gmfunctions.cpp \

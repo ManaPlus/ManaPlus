@@ -1301,6 +1301,8 @@ SET(SRCS
     particle/particlevector.h
     party.cpp
     party.h
+    pincodemanager.cpp
+    pincodemanager.h
     being/playerignorestrategy.h
     being/playerinfo.cpp
     being/playerinfo.h

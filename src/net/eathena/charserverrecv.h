@@ -39,10 +39,7 @@ namespace EAthena
     namespace CharServerRecv
     {
         extern std::string mNewName;
-        extern uint32_t mPinSeed;
-        extern BeingId mPinAccountId;
         extern BeingId mRenameId;
-        extern bool mNeedCreatePin;
 
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character);

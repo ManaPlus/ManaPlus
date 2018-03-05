@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "pincodemanager.h"
 #include "settings.h"
 
 #include "gui/windows/charcreatedialog.h"
@@ -65,10 +66,7 @@ extern ServerInfo mapServer;
 namespace CharServerRecv
 {
     std::string mNewName;
-    uint32_t mPinSeed = 0;
-    BeingId mPinAccountId = BeingId_zero;
     BeingId mRenameId = BeingId_zero;
-    bool mNeedCreatePin = false;
 }  // namespace CharServerRecv
 
 // callers must count each packet size by self
@@ -349,30 +347,33 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
 
 void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
 {
-    mPinSeed = msg.readInt32("pincode seed");
-    mPinAccountId = msg.readBeingId("account id");
+    pincodeManager.setSeed(msg.readInt32("pincode seed"));
+    pincodeManager.setAccountId(msg.readBeingId("account id"));
     const uint16_t state = CAST_U16(msg.readInt16("state"));
     switch (state)
     {
         case 0:  // pin ok
+            pincodeManager.pinOk();
             break;
         case 1:  // ask for pin
+            pincodeManager.askPin();
             break;
         case 2:  // create new pin
         case 4:  // create new pin?
         {
-            mNeedCreatePin = true;
+            pincodeManager.createNewPin();
             break;
         }
         case 3:  // pin must be changed
+            pincodeManager.changePin();
             break;
+        case 8:  // pincode was incorrect
         case 5:  // client show error?
+            pincodeManager.wrongPin();
             break;
         case 6:  // Unable to use your KSSN number
             break;
         case 7:  // char select window shows a button
-            break;
-        case 8:  // pincode was incorrect
             break;
         default:
             UNIMPLEMENTEDPACKET;

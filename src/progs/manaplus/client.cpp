@@ -30,6 +30,7 @@
 #include "graphicsmanager.h"
 #include "main.h"
 #include "party.h"
+#include "pincodemanager.h"
 #include "settings.h"
 #include "soundmanager.h"
 #include "spellmanager.h"
@@ -1118,6 +1119,7 @@ int Client::gameExec()
                         State::SWITCH_SERVER);
                     TranslationManager::loadCurrentLang();
                     TranslationManager::loadDictionaryLang();
+                    pincodeManager.init();
                     BLOCK_END("Client::gameExec State::CONNECT_SERVER")
                     break;
 

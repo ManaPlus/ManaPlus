@@ -50,10 +50,7 @@ CharServerHandler::CharServerHandler() :
     Ea::CharServerHandler()
 {
     CharServerRecv::mNewName.clear();
-    CharServerRecv::mPinSeed = 0;
-    CharServerRecv::mPinAccountId = BeingId_zero;
     CharServerRecv::mRenameId = BeingId_zero;
-    CharServerRecv::mNeedCreatePin = false;
 
     charServerHandler = this;
 }
@@ -238,11 +235,6 @@ void CharServerHandler::ping() const
 unsigned int CharServerHandler::hatSprite() const
 {
     return 7;
-}
-
-bool CharServerHandler::isNeedCreatePin() const
-{
-    return CharServerRecv::mNeedCreatePin;
 }
 
 }  // namespace EAthena

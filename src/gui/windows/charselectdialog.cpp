@@ -172,18 +172,6 @@ void CharSelectDialog::postInit()
     Window::postInit();
     setVisible(Visible_true);
     requestFocus();
-    if (charServerHandler->isNeedCreatePin())
-    {
-        EditDialog *const dialog = CREATEWIDGETR(EditDialog,
-            // TRANSLATORS: pin code dialog header.
-            _("Please set new pincode"),
-            "",
-            "OK",
-            300,
-            nullptr,
-            Modal_true);
-        dialog->addActionListener(&pincodeListener);
-    }
 }
 
 void CharSelectDialog::action(const ActionEvent &event)
