@@ -241,6 +241,8 @@ SET(SRCS
     gui/models/serverslistmodel.h
     gui/widgets/passwordfield.cpp
     gui/widgets/passwordfield.h
+    gui/widgets/pincode.cpp
+    gui/widgets/pincode.h
     gui/widgets/playerbox.cpp
     gui/widgets/playerbox.h
     gui/widgets/popup.cpp
@@ -415,6 +417,8 @@ SET(SRCS
     gui/windows/okdialog.h
     gui/windows/outfitwindow.cpp
     gui/windows/outfitwindow.h
+    gui/windows/pincodedialog.cpp
+    gui/windows/pincodedialog.h
     gui/windows/textcommandeditor.cpp
     gui/windows/textcommandeditor.h
     gui/onlineplayer.h
@@ -1452,6 +1456,7 @@ SET(SRCS
     enums/gui/gradienttype.h
     enums/gui/itemamountwindowusage.h
     enums/gui/orientation.h
+    enums/gui/pincodestate.h
     enums/gui/progresscolorid.h
     enums/gui/serverdialogdonwloadstatus.h
     enums/gui/shoplistboxtype.h
@@ -1540,8 +1545,10 @@ SET(SRCS
     listeners/buyingstoremodelistener.h
     listeners/buyingstoreslotslistener.cpp
     listeners/buyingstoreslotslistener.h
-    listeners/pincodelistener.cpp
-    listeners/pincodelistener.h
+    listeners/newpincodelistener.cpp
+    listeners/newpincodelistener.h
+    listeners/newpincoderetrylistener.cpp
+    listeners/newpincoderetrylistener.h
     listeners/shoprenamelistener.cpp
     listeners/shoprenamelistener.h
     listeners/skillwarplistener.cpp

@@ -23,7 +23,14 @@
 
 #include "enums/simpletypes/beingid.h"
 
+#include "enums/gui/pincodestate.h"
+
+#include <string>
+
 #include "localconsts.h"
+
+class PincodeDialog;
+class Window;
 
 class PincodeManager final
 {
@@ -36,13 +43,9 @@ class PincodeManager final
 
         void init();
 
+        void updateState();
+
         void pinOk();
-
-        void askPin();
-
-        void createNewPin();
-
-        void changePin();
 
         void wrongPin();
 
@@ -52,9 +55,19 @@ class PincodeManager final
         void setAccountId(const BeingId id)
         { mAccountId = id; }
 
+        void setState(const PincodeState state)
+        { mState = state; }
+
+        void clearDialog(const PincodeDialog *const PincodeDialog);
+
+        void setNewPincode(const std::string &pincode);
+
     protected:
+        std::string mNewPincode;
         uint32_t mSeed;
         BeingId mAccountId;
+        Window *mDialog;
+        PincodeState mState;
 };
 
 extern PincodeManager pincodeManager;

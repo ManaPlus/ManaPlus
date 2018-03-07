@@ -64,6 +64,7 @@ SET (FILES
     ok.xml
     onlinebrowserbox.xml
     outfits.xml
+    pin.xml
     playerboxselected.xml
     playerbox.xml
     popupbrowserbox_high.xml

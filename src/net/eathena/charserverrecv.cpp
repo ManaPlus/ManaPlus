@@ -347,7 +347,7 @@ void CharServerRecv::processChangeMapServer(Net::MessageIn &msg)
 
 void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
 {
-    pincodeManager.setSeed(msg.readInt32("pincode seed"));
+    pincodeManager.setSeed(msg.readUInt32("pincode seed"));
     pincodeManager.setAccountId(msg.readBeingId("account id"));
     const uint16_t state = CAST_U16(msg.readInt16("state"));
     switch (state)
@@ -356,16 +356,16 @@ void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
             pincodeManager.pinOk();
             break;
         case 1:  // ask for pin
-            pincodeManager.askPin();
+            pincodeManager.setState(PincodeState::Ask);
             break;
         case 2:  // create new pin
         case 4:  // create new pin?
         {
-            pincodeManager.createNewPin();
+            pincodeManager.setState(PincodeState::Create);
             break;
         }
         case 3:  // pin must be changed
-            pincodeManager.changePin();
+            pincodeManager.setState(PincodeState::Change);
             break;
         case 8:  // pincode was incorrect
         case 5:  // client show error?

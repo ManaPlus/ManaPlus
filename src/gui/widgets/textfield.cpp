@@ -838,3 +838,8 @@ void TextField::setWindow(Widget *const widget)
         Widget2::setWindow(widget);
     }
 }
+
+void TextField::signalEvent()
+{
+    distributeActionEvent();
+}

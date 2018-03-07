@@ -18,23 +18,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "listeners/pincodelistener.h"
+#ifndef LISTENERS_NEWPINCODERETRYLISTENER_H
+#define LISTENERS_NEWPINCODERETRYLISTENER_H
 
-#include "net/charserverhandler.h"
+#include "listeners/actionlistener.h"
 
-#include "gui/windows/editdialog.h"
+#include "localconsts.h"
 
-#include "debug.h"
-
-PincodeListener pincodeListener;
-
-void PincodeListener::action(const ActionEvent &event)
+class NewPincodeRetryListener final : public ActionListener
 {
-    const EditDialog *const dialog = dynamic_cast<EditDialog*>(
-        event.getSource());
-    if (dialog != nullptr)
-    {
-        const std::string pincode = dialog->getMsg();
-        charServerHandler->setNewPincode(pincode);
-    }
-}
+    public:
+        NewPincodeRetryListener() :
+            ActionListener()
+        { }
+
+        A_DELETE_COPY(NewPincodeRetryListener)
+
+        void action(const ActionEvent &event) override final;
+};
+
+extern NewPincodeRetryListener newPincodeRetryListener;
+
+#endif  // LISTENERS_NEWPINCODERETRYLISTENER_H

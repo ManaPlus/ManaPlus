@@ -18,25 +18,31 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LISTENERS_PINCODELISTENER_H
-#define LISTENERS_PINCODELISTENER_H
+#include "listeners/newpincodelistener.h"
 
-#include "listeners/actionlistener.h"
+#include "client.h"
+#include "pincodemanager.h"
 
-#include "localconsts.h"
+#include "gui/windows/pincodedialog.h"
 
-class PincodeListener final : public ActionListener
+#include "debug.h"
+
+NewPincodeListener newPincodeListener;
+
+void NewPincodeListener::action(const ActionEvent &event)
 {
-    public:
-        PincodeListener() :
-            ActionListener()
-        { }
-
-        A_DELETE_COPY(PincodeListener)
-
-        void action(const ActionEvent &event) override final;
-};
-
-extern PincodeListener pincodeListener;
-
-#endif  // LISTENERS_PINCODELISTENER_H
+    if (event.getId() == "ok")
+    {
+        const PincodeDialog *const dialog = dynamic_cast<PincodeDialog*>(
+            event.getSource());
+        if (dialog != nullptr)
+        {
+            const std::string pincode = dialog->getMsg();
+            pincodeManager.setNewPincode(pincode);
+        }
+    }
+    else
+    {
+        client->setState(State::SWITCH_LOGIN);
+    }
+}

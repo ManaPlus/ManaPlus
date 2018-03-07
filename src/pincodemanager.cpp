@@ -20,13 +20,28 @@
 
 #include "pincodemanager.h"
 
+#include "gui/windows/okdialog.h"
+#include "gui/windows/pincodedialog.h"
+
+#include "gui/widgets/createwidget.h"
+
+#include "listeners/newpincodelistener.h"
+#include "listeners/newpincoderetrylistener.h"
+
+#include "net/charserverhandler.h"
+
+#include "utils/gettext.h"
+
 #include "debug.h"
 
 PincodeManager pincodeManager;
 
 PincodeManager::PincodeManager() :
+    mNewPincode(),
     mSeed(0U),
-    mAccountId(BeingId_zero)
+    mAccountId(BeingId_zero),
+    mDialog(nullptr),
+    mState(PincodeState::None)
 {
 }
 
@@ -38,21 +53,84 @@ void PincodeManager::init()
 {
     mSeed = 0;
     mAccountId = BeingId_zero;
+    mState = PincodeState::None;
+}
+
+void PincodeManager::clearDialog(const PincodeDialog *const PincodeDialog)
+{
+    if (mDialog == PincodeDialog)
+        mDialog = nullptr;
+}
+
+void PincodeManager::updateState()
+{
+    switch (mState)
+    {
+        case PincodeState::None:
+        case PincodeState::Ask:
+        case PincodeState::Change:
+        default:
+            break;
+        case PincodeState::Create:
+            CREATEWIDGETV(mDialog, PincodeDialog,
+                // TRANSLATORS: dialog caption
+                _("New pincode"),
+                // TRANSLATORS: dialog label
+                _("Set new pincode"),
+                mSeed,
+                nullptr);
+            mDialog->requestFocus();
+            mDialog->setActionEventId("ok");
+            mDialog->addActionListener(&newPincodeListener);
+            break;
+    }
+}
+
+void PincodeManager::setNewPincode(const std::string &pincode)
+{
+    if (mNewPincode.empty())
+    {   // first pincode
+        mNewPincode = pincode;
+        CREATEWIDGETV(mDialog, PincodeDialog,
+            // TRANSLATORS: dialog caption
+            _("New pincode"),
+            // TRANSLATORS: dialog label
+            _("Confirm new pincode"),
+            mSeed,
+            nullptr);
+        mDialog->requestFocus();
+        mDialog->setActionEventId("ok");
+        mDialog->addActionListener(&newPincodeListener);
+    }
+    else
+    {   // pincode confirmation
+        if (mNewPincode != pincode)
+        {
+            mNewPincode.clear();
+            OkDialog *const dialog = CREATEWIDGETR(OkDialog,
+                // TRANSLATORS: error header
+                _("Pincode"),
+                // TRANSLATORS: error message
+                _("Wrong pincode confirmation!"),
+                // TRANSLATORS: ok dialog button
+                _("OK"),
+                DialogType::ERROR,
+                Modal_true,
+                ShowCenter_true,
+                nullptr,
+                260);
+            dialog->addActionListener(&newPincodeRetryListener);
+        }
+        else
+        {
+            charServerHandler->setNewPincode(mAccountId,
+                mNewPincode);
+            mNewPincode.clear();
+        }
+    }
 }
 
 void PincodeManager::pinOk()
-{
-}
-
-void PincodeManager::askPin()
-{
-}
-
-void PincodeManager::createNewPin()
-{
-}
-
-void PincodeManager::changePin()
 {
 }
 

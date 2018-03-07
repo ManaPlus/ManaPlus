@@ -62,7 +62,8 @@ class CharServerHandler final : public Ea::CharServerHandler
 
         void connect() const override final;
 
-        void setNewPincode(const std::string &pin A_UNUSED) const
+        void setNewPincode(const BeingId accountId A_UNUSED,
+                           const std::string &pin A_UNUSED) const
                            override final
         { }
 

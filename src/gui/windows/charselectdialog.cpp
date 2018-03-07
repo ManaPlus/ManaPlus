@@ -26,7 +26,6 @@
 #include "configuration.h"
 
 #include "listeners/charrenamelistener.h"
-#include "listeners/pincodelistener.h"
 
 #include "gui/windows/charcreatedialog.h"
 #include "gui/windows/chardeleteconfirm.h"

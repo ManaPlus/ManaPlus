@@ -217,6 +217,7 @@ BASE_SRC += client.h \
 	      enums/gui/gradienttype.h \
 	      enums/gui/itemamountwindowusage.h \
 	      enums/gui/orientation.h \
+	      enums/gui/pincodestate.h \
 	      enums/gui/progresscolorid.h \
 	      enums/gui/serverdialogdonwloadstatus.h \
 	      enums/gui/shoplistboxtype.h \
@@ -350,6 +351,8 @@ BASE_SRC += client.h \
 	      gui/models/serverslistmodel.h \
 	      gui/widgets/passwordfield.cpp \
 	      gui/widgets/passwordfield.h \
+	      gui/widgets/pincode.cpp \
+	      gui/widgets/pincode.h \
 	      gui/widgets/popup.cpp \
 	      gui/widgets/popup.h \
 	      gui/widgets/popuplist.cpp \
@@ -1339,6 +1342,8 @@ SRC = ${BASE_SRC} \
 	      gui/windows/npcselldialog.h \
 	      gui/windows/outfitwindow.cpp \
 	      gui/windows/outfitwindow.h \
+	      gui/windows/pincodedialog.cpp \
+	      gui/windows/pincodedialog.h \
 	      gui/windows/textcommandeditor.cpp \
 	      gui/windows/textcommandeditor.h \
 	      gui/setupinputpages.cpp \
@@ -1844,8 +1849,10 @@ SRC += gui/windows/bankwindow.cpp \
 	      listeners/buyingstoremodelistener.h \
 	      listeners/buyingstoreslotslistener.cpp \
 	      listeners/buyingstoreslotslistener.h \
-	      listeners/pincodelistener.cpp \
-	      listeners/pincodelistener.h \
+	      listeners/newpincodelistener.cpp \
+	      listeners/newpincodelistener.h \
+	      listeners/newpincoderetrylistener.cpp \
+	      listeners/newpincoderetrylistener.h \
 	      listeners/requestadoptchildlistener.h \
 	      listeners/shoprenamelistener.cpp \
 	      listeners/shoprenamelistener.h \

@@ -87,7 +87,8 @@ class CharServerHandler notfinal
 
         virtual void clear() const = 0;
 
-        virtual void setNewPincode(const std::string &pin) const = 0;
+        virtual void setNewPincode(const BeingId accountId,
+                                   const std::string &pin) const = 0;
 
         virtual void changeSlot(const int oldSlot,
                                 const int newSlot) const = 0;

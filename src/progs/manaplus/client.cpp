@@ -1304,6 +1304,7 @@ int Client::gameExec()
 
                     CREATEWIDGETV(mCurrentDialog, CharSelectDialog,
                         loginData);
+                    pincodeManager.updateState();
 
                     if (!(static_cast<CharSelectDialog*>(mCurrentDialog))
                         ->selectByName(settings.options.character,

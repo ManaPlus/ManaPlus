@@ -198,13 +198,12 @@ void CharServerHandler::setCharCreateDialog(CharCreateDialog *const window)
     mCharCreateDialog->setDefaultGender(token.sex);
 }
 
-void CharServerHandler::setNewPincode(const std::string &pin A_UNUSED) const
+void CharServerHandler::setNewPincode(const BeingId accountId,
+                                      const std::string &pin) const
 {
-//  here need ecript pin with mPinSeed and pin values.
-
-//    createOutPacket(CMSG_CHAR_CREATE_PIN);
-//    outMsg.writeBeingId(mPinAccountId, "account id");
-//    outMsg.writeString(pin, 4, "encrypted pin");
+    createOutPacket(CMSG_CHAR_CREATE_PIN);
+    outMsg.writeBeingId(accountId, "account id");
+    outMsg.writeString(pin, 4, "encrypted pin");
 }
 
 void CharServerHandler::renameCharacter(const BeingId id,
