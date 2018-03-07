@@ -88,6 +88,8 @@ class Client final : public ConfigListener,
 
         void windowRemoved(const Window *const window);
 
+        void focusWindow();
+
         void slowLogic();
 
         ServerInfo &getCurrentServer()

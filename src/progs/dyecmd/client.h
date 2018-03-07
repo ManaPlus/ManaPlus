@@ -74,6 +74,8 @@ class Client final : public ActionListener
 
         void windowRemoved(const Window *const window);
 
+        void focusWindow();
+
         void slowLogic();
 
         static bool isTmw();

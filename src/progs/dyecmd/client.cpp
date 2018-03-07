@@ -801,6 +801,14 @@ void Client::windowRemoved(const Window *const window)
         mCurrentDialog = nullptr;
 }
 
+void Client::focusWindow()
+{
+    if (mCurrentDialog != nullptr)
+    {
+        mCurrentDialog->requestFocus();
+    }
+}
+
 void Client::logVars()
 {
 #ifdef ANDROID

@@ -20,6 +20,8 @@
 
 #include "pincodemanager.h"
 
+#include "client.h"
+
 #include "gui/windows/okdialog.h"
 #include "gui/windows/pincodedialog.h"
 
@@ -151,6 +153,8 @@ void PincodeManager::sendPincode(const std::string &pincode)
 void PincodeManager::pinOk()
 {
     mState = PincodeState::None;
+    if (client)
+        client->focusWindow();
 }
 
 void PincodeManager::wrongPin()
