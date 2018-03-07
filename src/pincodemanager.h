@@ -66,6 +66,8 @@ class PincodeManager final
 
         void closeDialogs();
 
+        bool isBlocked();
+
     protected:
         std::string mNewPincode;
         uint32_t mSeed;

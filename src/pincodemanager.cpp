@@ -171,3 +171,8 @@ void PincodeManager::closeDialogs()
         mDialog = nullptr;
     }
 }
+
+bool PincodeManager::isBlocked()
+{
+    return mState != PincodeState::None;
+}

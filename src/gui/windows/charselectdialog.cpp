@@ -24,6 +24,7 @@
 
 #include "client.h"
 #include "configuration.h"
+#include "pincodemanager.h"
 
 #include "listeners/charrenamelistener.h"
 
@@ -195,9 +196,12 @@ void CharSelectDialog::action(const ActionEvent &event)
         selected = mCharacterView->getSelected();
 
     const std::string &eventId = event.getId();
+    const bool blocked = pincodeManager.isBlocked();
 
     if (selected >= 0)
     {
+        if (blocked)
+            return;
         if (eventId == "use")
         {
             use(selected);
@@ -273,14 +277,20 @@ void CharSelectDialog::action(const ActionEvent &event)
     }
     else if (eventId == "change_password")
     {
+        if (blocked)
+            return;
         client->setState(State::CHANGEPASSWORD);
     }
     else if (eventId == "change_email")
     {
+        if (blocked)
+            return;
         client->setState(State::CHANGEEMAIL);
     }
     else if (eventId == "try delete character")
     {
+        if (blocked)
+            return;
         if ((mDeleteDialog != nullptr) && mDeleteIndex != -1)
         {
             if (serverFeatures->haveEmailOnDelete())
@@ -331,6 +341,7 @@ void CharSelectDialog::use(const int selected)
 void CharSelectDialog::keyPressed(KeyEvent &event)
 {
     const InputActionT actionId = event.getActionId();
+    const bool blocked = pincodeManager.isBlocked();
     PRAGMA45(GCC diagnostic push)
     PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")
     switch (actionId)
@@ -403,6 +414,8 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
 
         case InputAction::GUI_DELETE:
         {
+            if (blocked)
+                return;
             event.consume();
             const int idx = mCharacterView->getSelected();
             if (idx >= 0 && (mCharacterEntries[idx] != nullptr)
@@ -415,6 +428,8 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
 
         case InputAction::GUI_SELECT:
         {
+            if (blocked)
+                return;
             event.consume();
             use(mCharacterView->getSelected());
             break;
