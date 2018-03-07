@@ -119,6 +119,7 @@ const std::string &PincodeDialog::getMsg() const
 void PincodeDialog::close()
 {
     keyboard.setEnabled(mEnabledKeyboard);
+    pincodeManager.clearDialog(this);
     scheduleDelete();
 }
 

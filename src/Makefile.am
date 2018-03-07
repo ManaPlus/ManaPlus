@@ -1853,6 +1853,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      listeners/newpincodelistener.h \
 	      listeners/newpincoderetrylistener.cpp \
 	      listeners/newpincoderetrylistener.h \
+	      listeners/pincodelistener.cpp \
+	      listeners/pincodelistener.h \
 	      listeners/requestadoptchildlistener.h \
 	      listeners/shoprenamelistener.cpp \
 	      listeners/shoprenamelistener.h \

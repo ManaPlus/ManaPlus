@@ -1080,6 +1080,7 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec STATE_CHOOSE_SERVER")
                     logger->log1("State: CHOOSE SERVER");
                     unloadData();
+                    pincodeManager.closeDialogs();
 
                     // Allow changing this using a server choice dialog
                     // We show the dialog box only if the command-line
@@ -1620,6 +1621,7 @@ int Client::gameExec()
                         serverConfig.write();
                     logger->log1("State: ERROR");
                     logger->log("Error: %s\n", errorMessage.c_str());
+                    pincodeManager.closeDialogs();
                     mCurrentDialog = DialogsManager::openErrorDialog(
                         // TRANSLATORS: error message header
                         _("Error"),

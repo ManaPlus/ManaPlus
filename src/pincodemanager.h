@@ -62,6 +62,10 @@ class PincodeManager final
 
         void setNewPincode(const std::string &pincode);
 
+        void sendPincode(const std::string &pincode);
+
+        void closeDialogs();
+
     protected:
         std::string mNewPincode;
         uint32_t mSeed;

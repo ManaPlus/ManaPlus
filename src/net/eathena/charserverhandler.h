@@ -65,6 +65,9 @@ class CharServerHandler final : public Ea::CharServerHandler
         void setNewPincode(const BeingId accountId,
                            const std::string &pin) const override final;
 
+        void sendCheckPincode(const BeingId accountId,
+                              const std::string &pin) const override final;
+
         /**
          * Sets the character create dialog. The handler will clean up this
          * dialog when a new character is successfully created, and will unlock

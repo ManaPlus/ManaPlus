@@ -206,6 +206,14 @@ void CharServerHandler::setNewPincode(const BeingId accountId,
     outMsg.writeString(pin, 4, "encrypted pin");
 }
 
+void CharServerHandler::sendCheckPincode(const BeingId accountId,
+                                         const std::string &pin) const
+{
+    createOutPacket(CMSG_CHAR_PIN_CHECK);
+    outMsg.writeBeingId(accountId, "account id");
+    outMsg.writeString(pin, 4, "encrypted pin");
+}
+
 void CharServerHandler::renameCharacter(const BeingId id,
                                         const std::string &newName) const
 {

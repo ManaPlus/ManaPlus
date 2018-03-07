@@ -27,6 +27,7 @@
 
 #include "listeners/newpincodelistener.h"
 #include "listeners/newpincoderetrylistener.h"
+#include "listeners/pincodelistener.h"
 
 #include "net/charserverhandler.h"
 
@@ -66,10 +67,17 @@ void PincodeManager::updateState()
 {
     switch (mState)
     {
-        case PincodeState::None:
         case PincodeState::Ask:
-        case PincodeState::Change:
-        default:
+            CREATEWIDGETV(mDialog, PincodeDialog,
+                // TRANSLATORS: dialog caption
+                _("Pincode"),
+                // TRANSLATORS: dialog label
+                _("Enter pincode"),
+                mSeed,
+                nullptr);
+            mDialog->requestFocus();
+            mDialog->setActionEventId("ok");
+            mDialog->addActionListener(&pincodeListener);
             break;
         case PincodeState::Create:
             CREATEWIDGETV(mDialog, PincodeDialog,
@@ -82,6 +90,10 @@ void PincodeManager::updateState()
             mDialog->requestFocus();
             mDialog->setActionEventId("ok");
             mDialog->addActionListener(&newPincodeListener);
+            break;
+        case PincodeState::Change:
+        case PincodeState::None:
+        default:
             break;
     }
 }
@@ -107,7 +119,7 @@ void PincodeManager::setNewPincode(const std::string &pincode)
         if (mNewPincode != pincode)
         {
             mNewPincode.clear();
-            OkDialog *const dialog = CREATEWIDGETR(OkDialog,
+            CREATEWIDGETV(mDialog, OkDialog,
                 // TRANSLATORS: error header
                 _("Pincode"),
                 // TRANSLATORS: error message
@@ -119,7 +131,7 @@ void PincodeManager::setNewPincode(const std::string &pincode)
                 ShowCenter_true,
                 nullptr,
                 260);
-            dialog->addActionListener(&newPincodeRetryListener);
+            mDialog->addActionListener(&newPincodeRetryListener);
         }
         else
         {
@@ -130,10 +142,28 @@ void PincodeManager::setNewPincode(const std::string &pincode)
     }
 }
 
+void PincodeManager::sendPincode(const std::string &pincode)
+{
+    charServerHandler->sendCheckPincode(mAccountId,
+        pincode);
+}
+
 void PincodeManager::pinOk()
 {
+    mState = PincodeState::None;
 }
 
 void PincodeManager::wrongPin()
 {
+    mState = PincodeState::Ask;
+    updateState();
+}
+
+void PincodeManager::closeDialogs()
+{
+    if (mDialog)
+    {
+        mDialog->scheduleDelete();
+        mDialog = nullptr;
+    }
 }
