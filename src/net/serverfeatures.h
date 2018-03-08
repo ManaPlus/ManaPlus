@@ -81,6 +81,8 @@ class ServerFeatures notfinal
         virtual bool haveMoveWhileSit() const = 0;
 
         virtual bool haveKillerId() const = 0;
+
+        virtual bool havePincode() const = 0;
 };
 
 }  // namespace Net

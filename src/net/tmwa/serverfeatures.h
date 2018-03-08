@@ -79,6 +79,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMoveWhileSit() const override final A_CONST;
 
         bool haveKillerId() const override final A_CONST;
+
+        bool havePincode() const override final A_CONST;
 };
 
 }  // namespace TmwAthena

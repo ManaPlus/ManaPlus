@@ -150,4 +150,9 @@ bool ServerFeatures::haveKillerId() const
     return serverVersion >= 14;
 }
 
+bool ServerFeatures::havePincode() const
+{
+    return true;
+}
+
 }  // namespace EAthena

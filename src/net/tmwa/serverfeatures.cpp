@@ -148,4 +148,9 @@ bool ServerFeatures::haveKillerId() const
     return false;
 }
 
+bool ServerFeatures::havePincode() const
+{
+    return false;
+}
+
 }  // namespace TmwAthena

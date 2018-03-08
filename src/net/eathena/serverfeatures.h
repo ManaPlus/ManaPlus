@@ -79,6 +79,8 @@ class ServerFeatures final : public Net::ServerFeatures
         bool haveMoveWhileSit() const override final;
 
         bool haveKillerId() const override final;
+
+        bool havePincode() const override final;
 };
 
 }  // namespace EAthena
