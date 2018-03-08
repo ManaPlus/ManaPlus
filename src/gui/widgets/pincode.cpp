@@ -97,7 +97,7 @@ void Pincode::addButtons()
         mButtons[f] = new Button(this,
             str,
             str,
-            BUTTON_SKIN,
+            BUTTON_PIN_SKIN,
             this);
         mButtons[f]->adjustSize();
         const Rect &rect = mButtons[f]->getDimension();
@@ -126,7 +126,7 @@ void Pincode::addButtons()
         // TRANSLATORS: clear pin code button
         _("Clear"),
         "clear",
-        BUTTON_SKIN,
+        BUTTON_PIN_SKIN,
         this);
     mButtons[10]->adjustSize();
     add(mButtons[10]);

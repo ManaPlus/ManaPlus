@@ -75,6 +75,8 @@ PincodeDialog::PincodeDialog(const std::string &restrict title,
     int width = getFont()->getWidth(title);
     if (width < textLabel->getWidth())
         width = textLabel->getWidth();
+    if (width < mPincode->getWidth())
+        width = mPincode->getWidth();
     reflowLayout(CAST_S32(width + 20), 0);
     updateButtons();
 }

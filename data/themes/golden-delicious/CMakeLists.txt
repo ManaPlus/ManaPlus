@@ -6,6 +6,10 @@ SET (FILES
     button_highlighted.xml
     button_pressed.xml
     button.xml
+    buttonpin_disabled.xml
+    buttonpin_highlighted.xml
+    buttonpin_pressed.xml
+    buttonpin.xml
     buy.xml
     charcreate.xml
     CHANGELOG.txt

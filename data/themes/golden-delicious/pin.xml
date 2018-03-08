@@ -2,6 +2,6 @@
 <skinset name="Default" image="window.png">
     <widget type="Window">
         <option name="padding" value="8" />
-        <option name="spacing" value="8" />
+        <option name="spacing" value="4" />
     </widget>
 </skinset>

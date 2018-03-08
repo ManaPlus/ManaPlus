@@ -86,6 +86,7 @@ class Skin;
 
 const std::string BUTTON_PLAY = "buttonplay.png";
 const std::string BUTTON_SKIN = "button";
+const std::string BUTTON_PIN_SKIN = "buttonpin";
 
 /**
  * Button widget. Same as the Guichan button but with custom look.
