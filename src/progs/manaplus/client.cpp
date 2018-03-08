@@ -1861,6 +1861,19 @@ void Client::focusWindow()
     }
 }
 
+void Client::updatePinState()
+{
+    if (mCurrentDialog == nullptr ||
+        mState != State::CHAR_SELECT)
+    {
+        return;
+    }
+    CharSelectDialog *const dialog =
+        dynamic_cast<CharSelectDialog*>(mCurrentDialog);
+    if (dialog != nullptr)
+        pincodeManager.updateState();
+}
+
 void Client::logVars()
 {
 #ifdef ANDROID

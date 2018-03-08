@@ -90,6 +90,8 @@ class Client final : public ConfigListener,
 
         void focusWindow();
 
+        void updatePinState();
+
         void slowLogic();
 
         ServerInfo &getCurrentServer()

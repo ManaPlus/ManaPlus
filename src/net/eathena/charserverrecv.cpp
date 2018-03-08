@@ -370,7 +370,7 @@ void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
         case 8:  // pincode was incorrect
         case 5:  // client show error?
             pincodeManager.wrongPin();
-            break;
+            return;
         case 6:  // Unable to use your KSSN number
             break;
         case 7:  // char select window shows a button
@@ -379,6 +379,8 @@ void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
             UNIMPLEMENTEDPACKET;
             break;
     }
+    if (client)
+        client->updatePinState();
 }
 
 void CharServerRecv::processCharCreate(Net::MessageIn &msg)

@@ -27,6 +27,7 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "listeners/changepincodelistener.h"
 #include "listeners/newpincodelistener.h"
 #include "listeners/newpincoderetrylistener.h"
 #include "listeners/pincodelistener.h"
@@ -40,6 +41,7 @@
 PincodeManager pincodeManager;
 
 PincodeManager::PincodeManager() :
+    mOldPincode(),
     mNewPincode(),
     mSeed(0U),
     mAccountId(BeingId_zero),
@@ -57,6 +59,7 @@ void PincodeManager::init()
     mSeed = 0;
     mAccountId = BeingId_zero;
     mState = PincodeState::None;
+    mNewPincode.clear();
 }
 
 void PincodeManager::clearDialog(const PincodeDialog *const PincodeDialog)
@@ -82,11 +85,12 @@ void PincodeManager::updateState()
             mDialog->addActionListener(&pincodeListener);
             break;
         case PincodeState::Create:
+            mNewPincode.clear();
             CREATEWIDGETV(mDialog, PincodeDialog,
                 // TRANSLATORS: dialog caption
                 _("New pincode"),
                 // TRANSLATORS: dialog label
-                _("Set new pincode"),
+                _("Enter new pincode"),
                 mSeed,
                 nullptr);
             mDialog->requestFocus();
@@ -94,6 +98,19 @@ void PincodeManager::updateState()
             mDialog->addActionListener(&newPincodeListener);
             break;
         case PincodeState::Change:
+            mOldPincode.clear();
+            mNewPincode.clear();
+            CREATEWIDGETV(mDialog, PincodeDialog,
+                // TRANSLATORS: dialog caption
+                _("Change pincode"),
+                // TRANSLATORS: dialog label
+                _("Enter old pincode"),
+                mSeed,
+                nullptr);
+            mDialog->requestFocus();
+            mDialog->setActionEventId("ok");
+            mDialog->addActionListener(&changePincodeListener);
+            break;
         case PincodeState::None:
         default:
             break;
@@ -139,6 +156,67 @@ void PincodeManager::setNewPincode(const std::string &pincode)
         {
             charServerHandler->setNewPincode(mAccountId,
                 mNewPincode);
+            mNewPincode.clear();
+        }
+    }
+}
+
+void PincodeManager::changePincode(const std::string &pincode)
+{
+    if (mOldPincode.empty())
+    {   // set old pincode
+        mOldPincode = pincode;
+        CREATEWIDGETV(mDialog, PincodeDialog,
+            // TRANSLATORS: dialog caption
+            _("Change pincode"),
+            // TRANSLATORS: dialog label
+            _("Enter new pincode"),
+            mSeed,
+            nullptr);
+        mDialog->requestFocus();
+        mDialog->setActionEventId("ok");
+        mDialog->addActionListener(&changePincodeListener);
+    }
+    else if (mNewPincode.empty())
+    {   // set first new pincode
+        mNewPincode = pincode;
+        CREATEWIDGETV(mDialog, PincodeDialog,
+            // TRANSLATORS: dialog caption
+            _("Change pincode"),
+            // TRANSLATORS: dialog label
+            _("Confirm new pincode"),
+            mSeed,
+            nullptr);
+        mDialog->requestFocus();
+        mDialog->setActionEventId("ok");
+        mDialog->addActionListener(&changePincodeListener);
+    }
+    else
+    {   // new pincode confirmation
+        if (mNewPincode != pincode)
+        {
+            mOldPincode.clear();
+            mNewPincode.clear();
+            CREATEWIDGETV(mDialog, OkDialog,
+                // TRANSLATORS: error header
+                _("Pincode"),
+                // TRANSLATORS: error message
+                _("Wrong pincode confirmation!"),
+                // TRANSLATORS: ok dialog button
+                _("OK"),
+                DialogType::ERROR,
+                Modal_true,
+                ShowCenter_true,
+                nullptr,
+                260);
+            mDialog->addActionListener(&newPincodeRetryListener);
+        }
+        else
+        {
+            charServerHandler->changePincode(mAccountId,
+                mOldPincode,
+                mNewPincode);
+            mOldPincode.clear();
             mNewPincode.clear();
         }
     }

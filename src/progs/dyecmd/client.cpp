@@ -809,6 +809,10 @@ void Client::focusWindow()
     }
 }
 
+void Client::updatePinState()
+{
+}
+
 void Client::logVars()
 {
 #ifdef ANDROID

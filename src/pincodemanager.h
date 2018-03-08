@@ -58,6 +58,8 @@ class PincodeManager final
         void setState(const PincodeState state)
         { mState = state; }
 
+        void changePincode(const std::string &pincode);
+
         void clearDialog(const PincodeDialog *const PincodeDialog);
 
         void setNewPincode(const std::string &pincode);
@@ -69,6 +71,7 @@ class PincodeManager final
         bool isBlocked();
 
     protected:
+        std::string mOldPincode;
         std::string mNewPincode;
         uint32_t mSeed;
         BeingId mAccountId;

@@ -93,6 +93,10 @@ class CharServerHandler notfinal
         virtual void sendCheckPincode(const BeingId accountId,
                                       const std::string &pin) const = 0;
 
+        virtual void changePincode(const BeingId accountId,
+                                   const std::string &oldPin,
+                                   const std::string &newPin) const = 0;
+
         virtual void changeSlot(const int oldSlot,
                                 const int newSlot) const = 0;
 

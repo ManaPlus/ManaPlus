@@ -1545,6 +1545,8 @@ SET(SRCS
     listeners/buyingstoremodelistener.h
     listeners/buyingstoreslotslistener.cpp
     listeners/buyingstoreslotslistener.h
+    listeners/changepincodelistener.cpp
+    listeners/changepincodelistener.h
     listeners/newpincodelistener.cpp
     listeners/newpincodelistener.h
     listeners/newpincoderetrylistener.cpp
