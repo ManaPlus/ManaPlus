@@ -139,17 +139,6 @@ class Button final : public Widget,
                const std::string &restrict skinName,
                ActionListener *const listener);
 
-        /**
-         * Constructor, sets the caption of the button to the given string and
-         * adds the given action listener.
-         */
-        Button(const Widget2 *const widget,
-               const std::string &restrict imageName,
-               const std::string &restrict caption,
-               const std::string &restrict actionEventId,
-               const std::string &restrict skinName,
-               ActionListener *const listener);
-
         A_DELETE_COPY(Button)
 
         /**

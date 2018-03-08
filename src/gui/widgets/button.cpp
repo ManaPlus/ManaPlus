@@ -303,60 +303,6 @@ Button::Button(const Widget2 *const widget,
         addActionListener(listener);
 }
 
-Button::Button(const Widget2 *const widget,
-               const std::string &restrict caption,
-               const std::string &restrict imageName,
-               const std::string &restrict actionEventId,
-               const std::string &restrict skinName,
-               ActionListener *const listener) :
-    Widget(widget),
-    MouseListener(),
-    KeyListener(),
-    FocusListener(),
-    WidgetListener(),
-    mSkin(),
-    mCaption(caption),
-    mDescription(),
-    mSkinName(skinName),
-    mTextChunk(),
-    mVertexes2(new ImageCollection),
-    mEnabledColor(getThemeColor(ThemeColorId::BUTTON, 255U)),
-    mEnabledColor2(getThemeColor(ThemeColorId::BUTTON_OUTLINE, 255U)),
-    mDisabledColor(getThemeColor(ThemeColorId::BUTTON_DISABLED, 255U)),
-    mDisabledColor2(getThemeColor(ThemeColorId::BUTTON_DISABLED_OUTLINE,
-        255U)),
-    mHighlightedColor(getThemeColor(ThemeColorId::BUTTON_HIGHLIGHTED, 255U)),
-    mHighlightedColor2(getThemeColor(
-        ThemeColorId::BUTTON_HIGHLIGHTED_OUTLINE, 255U)),
-    mPressedColor(getThemeColor(ThemeColorId::BUTTON_PRESSED, 255U)),
-    mPressedColor2(getThemeColor(ThemeColorId::BUTTON_PRESSED_OUTLINE, 255U)),
-    mImages(nullptr),
-    mImageSet(nullptr),
-    mAlignment(Graphics::CENTER),
-    mClickCount(0),
-    mSpacing(),
-    mTag(0),
-    mMode(0),
-    mXOffset(0),
-    mYOffset(0),
-    mImageWidth(0),
-    mImageHeight(0),
-    mHasMouse(false),
-    mKeyPressed(false),
-    mMousePressed(false),
-    mStick(false),
-    mPressed(false),
-    mTextChanged(true)
-{
-    init();
-    loadImage(imageName);
-    adjustSize();
-    setActionEventId(actionEventId);
-
-    if (listener != nullptr)
-        addActionListener(listener);
-}
-
 void Button::init()
 {
     mAllowLogic = false;
