@@ -85,18 +85,15 @@
 
 #include "debug.h"
 
-int Button::mInstances = 0;
 float Button::mAlpha = 1.0;
 
 static std::string const data[Button::BUTTON_COUNT] =
 {
-    "button.xml",
-    "button_highlighted.xml",
-    "button_pressed.xml",
-    "button_disabled.xml"
+    ".xml",
+    "_highlighted.xml",
+    "_pressed.xml",
+    "_disabled.xml"
 };
-
-Skin *Button::button[BUTTON_COUNT];
 
 Button::Button(const Widget2 *const widget) :
     Widget(widget),
@@ -104,8 +101,10 @@ Button::Button(const Widget2 *const widget) :
     KeyListener(),
     FocusListener(),
     WidgetListener(),
+    mSkin(),
     mCaption(),
     mDescription(),
+    mSkinName(BUTTON_SKIN),
     mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(ThemeColorId::BUTTON, 255U)),
@@ -149,8 +148,10 @@ Button::Button(const Widget2 *const widget,
     KeyListener(),
     FocusListener(),
     WidgetListener(),
+    mSkin(),
     mCaption(caption),
     mDescription(),
+    mSkinName(BUTTON_SKIN),
     mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(ThemeColorId::BUTTON, 255U)),
@@ -200,8 +201,10 @@ Button::Button(const Widget2 *const widget,
     KeyListener(),
     FocusListener(),
     WidgetListener(),
+    mSkin(),
     mCaption(caption),
     mDescription(),
+    mSkinName(BUTTON_SKIN),
     mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(ThemeColorId::BUTTON, 255U)),
@@ -251,8 +254,10 @@ Button::Button(const Widget2 *const widget,
     KeyListener(),
     FocusListener(),
     WidgetListener(),
+    mSkin(),
     mCaption(),
     mDescription(),
+    mSkinName(BUTTON_SKIN),
     mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(ThemeColorId::BUTTON, 255U)),
@@ -302,8 +307,10 @@ Button::Button(const Widget2 *const widget,
     KeyListener(),
     FocusListener(),
     WidgetListener(),
+    mSkin(),
     mCaption(caption),
     mDescription(),
+    mSkinName(BUTTON_SKIN),
     mTextChunk(),
     mVertexes2(new ImageCollection),
     mEnabledColor(getThemeColor(ThemeColorId::BUTTON, 255U)),
@@ -354,28 +361,23 @@ void Button::init()
     setFocusable(true);
     setFrameSize(0);
 
-    if (mInstances == 0)
+    if (theme != nullptr)
     {
-        if (theme != nullptr)
+        for (int mode = 0; mode < BUTTON_COUNT; mode ++)
         {
-            for (int mode = 0; mode < BUTTON_COUNT; mode ++)
+            Skin *const skin = theme->load(mSkinName + data[mode],
+                "button.xml",
+                true,
+                Theme::getThemePath());
+            if (skin != nullptr)
             {
-                Skin *const skin = theme->load(data[mode],
-                    "button.xml",
-                    true,
-                    Theme::getThemePath());
-                if (skin != nullptr)
-                {
-                    button[mode] = skin;
-                    mSpacing[mode] = skin->getOption("spacing");
-                }
+                mSkin[mode] = skin;
+                mSpacing[mode] = skin->getOption("spacing");
             }
         }
-
-        updateAlpha();
     }
 
-    mInstances++;
+    updateAlpha();
 }
 
 Button::~Button()
@@ -386,12 +388,10 @@ Button::~Button()
     if (gui != nullptr)
         gui->removeDragged(this);
 
-    mInstances--;
-
-    if (mInstances == 0 && (theme != nullptr))
+    if (theme != nullptr)
     {
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
-            theme->unload(button[mode]);
+            theme->unload(mSkin[mode]);
     }
     delete2(mVertexes2);
     if (mImageSet != nullptr)
@@ -457,7 +457,7 @@ void Button::updateAlpha()
         {
             for (int a = 0; a < 9; a ++)
             {
-                Skin *const skin = button[mode];
+                Skin *const skin = mSkin[mode];
                 if (skin != nullptr)
                 {
                     const ImageRect &rect = skin->getBorder();
@@ -484,7 +484,7 @@ void Button::draw(Graphics *const graphics)
     else
         mode = BUTTON_STANDARD;
 
-    const Skin *const skin = button[mode];
+    const Skin *const skin = mSkin[mode];
     if (skin == nullptr)
     {
         BLOCK_END("Button::draw")
@@ -663,7 +663,7 @@ void Button::safeDraw(Graphics *const graphics)
     else
         mode = BUTTON_STANDARD;
 
-    const Skin *const skin = button[mode];
+    const Skin *const skin = mSkin[mode];
     if (skin == nullptr)
     {
         BLOCK_END("Button::safeDraw")
@@ -829,7 +829,7 @@ void Button::widgetHidden(const Event &event A_UNUSED)
 void Button::adjustSize()
 {
     const Font *const font = getFont();
-    const Skin *const skin = button[BUTTON_STANDARD];
+    const Skin *const skin = mSkin[BUTTON_STANDARD];
     if (skin == nullptr)
         return;
     const int padding = skin->getPadding();

@@ -85,6 +85,7 @@ class ImageSet;
 class Skin;
 
 const std::string BUTTON_PLAY = "buttonplay.png";
+const std::string BUTTON_SKIN = "button";
 
 /**
  * Button widget. Same as the Guichan button but with custom look.
@@ -160,7 +161,7 @@ class Button final : public Widget,
         /**
          * Update the alpha value to the button components.
          */
-        static void updateAlpha();
+        void updateAlpha();
 
         void mouseReleased(MouseEvent& event) override final;
 
@@ -281,16 +282,17 @@ class Button final : public Widget,
 
         void init();
 
-        static Skin *button[BUTTON_COUNT];  /**< Button state graphics */
-        static int mInstances;              /**< Number of button instances */
         static float mAlpha;
 
+        Skin *mSkin[BUTTON_COUNT];  /**< Button state graphics */
         /**
          * Holds the caption of the button.
          */
         std::string mCaption;
 
         std::string mDescription;
+
+        std::string mSkinName;
 
         TextChunk mTextChunk;
 

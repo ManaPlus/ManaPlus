@@ -81,7 +81,8 @@ SliderList::~SliderList()
 
 void SliderList::updateAlpha()
 {
-    Button::updateAlpha();
+    mButtons[0]->updateAlpha();
+    mButtons[1]->updateAlpha();
 }
 
 void SliderList::mouseWheelMovedUp(MouseEvent& event)
