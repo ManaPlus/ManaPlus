@@ -282,7 +282,11 @@ void WindowMenu::addButton(const char *const text,
                            const InputActionT key,
                            const Visible visible)
 {
-    Button *const btn = new Button(this, gettext(text), text, this);
+    Button *const btn = new Button(this,
+        gettext(text),
+        text,
+        BUTTON_SKIN,
+        this);
     btn->setPosition(x, mPadding);
     btn->setDescription(description);
     btn->setTag(CAST_S32(key));

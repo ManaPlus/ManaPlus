@@ -110,7 +110,7 @@ ChatWindow::ChatWindow(const std::string &name) :
     mColorListModel(new ColorListModel),
     mColorPicker(new DropDown(this, mColorListModel,
         false, Modal_false, nullptr, std::string())),
-    mChatButton(new Button(this, ":)", "openemote", this)),
+    mChatButton(new Button(this, ":)", "openemote", BUTTON_SKIN, this)),
     mAwayLog(),
     mHighlights(),
     mGlobalsFilter(),

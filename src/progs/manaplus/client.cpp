@@ -901,26 +901,26 @@ void Client::stateGame1()
     int x = top->getWidth() - mButtonPadding;
     ADDBUTTON(mSetupButton, new Button(desktop,
         // TRANSLATORS: setup tab quick button
-        _("Setup"), "Setup", this))
+        _("Setup"), "Setup", BUTTON_SKIN, this))
     ADDBUTTON(mPerfomanceButton, new Button(desktop,
         // TRANSLATORS: perfoamance tab quick button
-        _("Performance"), "Perfomance", this))
+        _("Performance"), "Perfomance", BUTTON_SKIN, this))
     ADDBUTTON(mVideoButton, new Button(desktop,
         // TRANSLATORS: video tab quick button
-        _("Video"), "Video", this))
+        _("Video"), "Video", BUTTON_SKIN, this))
     ADDBUTTON(mThemesButton, new Button(desktop,
         // TRANSLATORS: theme tab quick button
-        _("Theme"), "Themes", this))
+        _("Theme"), "Themes", BUTTON_SKIN, this))
     ADDBUTTON(mAboutButton, new Button(desktop,
         // TRANSLATORS: theme tab quick button
-        _("About"), "about", this))
+        _("About"), "about", BUTTON_SKIN, this))
     ADDBUTTON(mHelpButton, new Button(desktop,
         // TRANSLATORS: theme tab quick button
-        _("Help"), "help", this))
+        _("Help"), "help", BUTTON_SKIN, this))
 #ifdef ANDROID
     ADDBUTTON(mCloseButton, new Button(desktop,
         // TRANSLATORS: close quick button
-        _("Close"), "close", this))
+        _("Close"), "close", BUTTON_SKIN, this))
 #endif  // ANDROID
 
     desktop->setSize(mainGraphics->getWidth(),

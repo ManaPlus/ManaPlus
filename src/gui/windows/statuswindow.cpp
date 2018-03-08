@@ -87,7 +87,7 @@ StatusWindow::StatusWindow() :
     mJobBar(nullptr),
     mBasicStatsPage(new StatsPageBasic(this)),
     // TRANSLATORS: status window button
-    mCopyButton(new Button(this, _("Copy to chat"), "copy", this))
+    mCopyButton(new Button(this, _("Copy to chat"), "copy", BUTTON_SKIN, this))
 {
     setWindowName("Status");
     if (setupWindow != nullptr)

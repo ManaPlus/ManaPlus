@@ -53,13 +53,21 @@ ConfirmDialog::ConfirmDialog(const std::string &restrict title,
 void ConfirmDialog::postInit()
 {
     Window::postInit();
-    // TRANSLATORS: confirm dialog button
-    Button *const yesButton = new Button(this, _("Yes"), "yes", this);
-    // TRANSLATORS: confirm dialog button
-    Button *const noButton = new Button(this, _("No"), "no", this);
+    Button *const yesButton = new Button(this,
+        // TRANSLATORS: confirm dialog button
+        _("Yes"),
+        "yes",
+        BUTTON_SKIN,
+        this);
+    Button *const noButton = new Button(this,
+        // TRANSLATORS: confirm dialog button
+        _("No"),
+        "no",
+        BUTTON_SKIN,
+        this);
     Button *const ignoreButton = mIgnore ? new Button(
         // TRANSLATORS: confirm dialog button
-        this, _("Ignore"), "ignore", this) : nullptr;
+        this, _("Ignore"), "ignore", BUTTON_SKIN, this) : nullptr;
 
     const int numRows = mTextBox->getNumberOfRows();
     int inWidth = yesButton->getWidth() + noButton->getWidth() +

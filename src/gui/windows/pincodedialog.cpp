@@ -46,7 +46,7 @@ PincodeDialog::PincodeDialog(const std::string &restrict title,
     mPasswordField(new PasswordField(this, std::string())),
     mPincode(new Pincode(this, mPasswordField)),
     // TRANSLATORS: text dialog button
-    mOkButton(new Button(this, _("OK"), "OK", this)),
+    mOkButton(new Button(this, _("OK"), "OK", BUTTON_SKIN, this)),
     mEnabledKeyboard(keyboard.isEnabled())
 {
     setStickyButtonLock(true);
@@ -54,8 +54,12 @@ PincodeDialog::PincodeDialog(const std::string &restrict title,
     keyboard.setEnabled(false);
 
     Label *const textLabel = new Label(this, msg);
-    // TRANSLATORS: text dialog button
-    Button *const cancelButton = new Button(this, _("Cancel"), "CANCEL", this);
+    Button *const cancelButton = new Button(this,
+        // TRANSLATORS: text dialog button
+        _("Cancel"),
+        "CANCEL",
+        BUTTON_SKIN,
+        this);
 
     place(0, 0, textLabel, 4, 1);
     place(0, 1, mPincode, 4, 1);

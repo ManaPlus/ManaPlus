@@ -50,14 +50,18 @@ TextDialog::TextDialog(const std::string &restrict title,
     mTextField(nullptr),
     mPasswordField(nullptr),
     // TRANSLATORS: text dialog button
-    mOkButton(new Button(this, _("OK"), "OK", this)),
+    mOkButton(new Button(this, _("OK"), "OK", BUTTON_SKIN, this)),
     mEnabledKeyboard(keyboard.isEnabled())
 {
     keyboard.setEnabled(false);
 
     Label *const textLabel = new Label(this, msg);
-    // TRANSLATORS: text dialog button
-    Button *const cancelButton = new Button(this, _("Cancel"), "CANCEL", this);
+    Button *const cancelButton = new Button(this,
+        // TRANSLATORS: text dialog button
+        _("Cancel"),
+        "CANCEL",
+        BUTTON_SKIN,
+        this);
 
     place(0, 0, textLabel, 4, 1);
     if (isPassword)

@@ -87,11 +87,16 @@ void TextSelectDialog::postInit()
     mSelectButton = new Button(this,
         mSelectButtonName,
         "select",
+        BUTTON_SKIN,
         this);
     if (mAllowQuit == AllowQuit_true)
     {
-        // TRANSLATORS: sell dialog button
-        mQuitButton = new Button(this, _("Quit"), "quit", this);
+        mQuitButton = new Button(this,
+            // TRANSLATORS: sell dialog button
+            _("Quit"),
+            "quit",
+            BUTTON_SKIN,
+            this);
     }
 
     mSelectButton->setEnabled(false);

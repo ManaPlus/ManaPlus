@@ -329,17 +329,24 @@ void BuyDialog::init()
 
     // TRANSLATORS: This is a narrow symbol used to denote 'increasing'.
     // You may change this symbol if your language uses another.
-    mIncreaseButton = new Button(this, _("+"), "inc", this);
+    mIncreaseButton = new Button(this, _("+"), "inc", BUTTON_SKIN, this);
     // TRANSLATORS: This is a narrow symbol used to denote 'decreasing'.
     // You may change this symbol if your language uses another.
-    mDecreaseButton = new Button(this, _("-"), "dec", this);
+    mDecreaseButton = new Button(this, _("-"), "dec", BUTTON_SKIN, this);
     mBuyButton = new Button(this, mNpcId == fromInt(Items, BeingId)
         // TRANSLATORS: buy dialog button
-        ? _("Create") : (mAdvanced ? _("Add") : _("Buy")), "buy", this);
+        ? _("Create") : (mAdvanced ? _("Add") : _("Buy")),
+        "buy",
+        BUTTON_SKIN,
+        this);
     if (mAdvanced)
     {
-        // TRANSLATORS: buy dialog button
-        mConfirmButton = new Button(this, _("Buy"), "confirm", this);
+        mConfirmButton = new Button(this,
+            // TRANSLATORS: buy dialog button
+            _("Buy"),
+            "confirm",
+            BUTTON_SKIN,
+            this);
         mConfirmButton->setEnabled(false);
     }
     else
@@ -347,9 +354,9 @@ void BuyDialog::init()
         mConfirmButton = nullptr;
     }
     // TRANSLATORS: buy dialog button
-    mQuitButton = new Button(this, _("Quit"), "quit", this);
+    mQuitButton = new Button(this, _("Quit"), "quit", BUTTON_SKIN, this);
     // TRANSLATORS: buy dialog button
-    mAddMaxButton = new Button(this, _("Max"), "max", this);
+    mAddMaxButton = new Button(this, _("Max"), "max", BUTTON_SKIN, this);
 
     mDecreaseButton->adjustSize();
     mDecreaseButton->setWidth(mIncreaseButton->getWidth());

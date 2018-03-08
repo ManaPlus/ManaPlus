@@ -46,9 +46,11 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
         // TRANSLATORS: joystick settings tab label
         _("Press the button to start calibration"))),
     // TRANSLATORS: joystick settings tab button
-    mCalibrateButton(new Button(this, _("Calibrate"), "calibrate", this)),
+    mCalibrateButton(new Button(this, _("Calibrate"), "calibrate",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: joystick settings tab button
-    mDetectButton(new Button(this, _("Detect joysticks"), "detect", this)),
+    mDetectButton(new Button(this, _("Detect joysticks"), "detect",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: joystick settings tab checkbox
     mJoystickEnabled(new CheckBox(this, _("Enable joystick"),
         false, nullptr, std::string())),

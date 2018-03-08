@@ -49,9 +49,11 @@ BankWindow::BankWindow() :
     mInputMoneyTextField(new IntTextField(this, 0, 0, 2147483647,
         Enable_true, 0)),
     // TRANSLATORS: bank window button
-    mWithdrawButton(new Button(this, _("Withdraw"), "withdraw", this)),
+    mWithdrawButton(new Button(this, _("Withdraw"), "withdraw",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: bank window button
-    mDepositButton(new Button(this, _("Deposit"), "deposit", this))
+    mDepositButton(new Button(this, _("Deposit"), "deposit",
+        BUTTON_SKIN, this))
 {
     setWindowName("Bank");
     setCloseButton(true);

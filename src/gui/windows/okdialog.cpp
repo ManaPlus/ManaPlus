@@ -50,7 +50,11 @@ OkDialog::OkDialog(const std::string &restrict title,
     mTextBox->setTextWrapped(msg, minWidth);
 
     // TRANSLATORS: ok dialog button
-    Button *const okButton = new Button(this, button, "ok", this);
+    Button *const okButton = new Button(this,
+        button,
+        "ok",
+        BUTTON_SKIN,
+        this);
 
     int width = getFont()->getWidth(title);
     if (width < mTextBox->getMinWidth())

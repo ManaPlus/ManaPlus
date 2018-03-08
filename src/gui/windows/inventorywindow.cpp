@@ -220,17 +220,41 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
                 longestUseString = unequip;
             }
 
-            mUseButton = new Button(this, longestUseString, "use", this);
-            // TRANSLATORS: inventory button
-            mDropButton = new Button(this, _("Drop..."), "drop", this);
-            // TRANSLATORS: inventory outfits button
-            mOutfitButton = new Button(this, _("O"), "outfit", this);
-            // TRANSLATORS: inventory cart button
-            mCartButton = new Button(this, _("C"), "cart", this);
-            // TRANSLATORS: inventory shop button
-            mShopButton = new Button(this, _("S"), "shop", this);
-            // TRANSLATORS: inventory equipment button
-            mEquipmentButton = new Button(this, _("E"), "equipment", this);
+            mUseButton = new Button(this,
+                longestUseString,
+                "use",
+                BUTTON_SKIN,
+                this);
+            mDropButton = new Button(this,
+                // TRANSLATORS: inventory button
+                _("Drop..."),
+                "drop",
+                BUTTON_SKIN,
+                this);
+            mOutfitButton = new Button(this,
+                // TRANSLATORS: inventory outfits button
+                _("O"),
+                "outfit",
+                BUTTON_SKIN,
+                this);
+            mCartButton = new Button(this,
+                // TRANSLATORS: inventory cart button
+                _("C"),
+                "cart",
+                BUTTON_SKIN,
+                this);
+            mShopButton = new Button(this,
+                // TRANSLATORS: inventory shop button
+                _("S"),
+                "shop",
+                BUTTON_SKIN,
+                this);
+            mEquipmentButton = new Button(this,
+                // TRANSLATORS: inventory equipment button
+                _("E"),
+                "equipment",
+                BUTTON_SKIN,
+                this);
             mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
                 ProgressColorId::PROG_WEIGHT,
                 "weightprogressbar.xml", "weightprogressbar_fill.xml");
@@ -268,13 +292,24 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
         case InventoryType::Storage:
         {
-            // TRANSLATORS: storage button
-            mStoreButton = new Button(this, _("Store"), "store", this);
-            // TRANSLATORS: storage button
-            mRetrieveButton = new Button(this, _("Retrieve"),
-                "retrieve", this);
-            // TRANSLATORS: storage button
-            mInvCloseButton = new Button(this, _("Close"), "close", this);
+            mStoreButton = new Button(this,
+                // TRANSLATORS: storage button
+                _("Store"),
+                "store",
+                BUTTON_SKIN,
+                this);
+            mRetrieveButton = new Button(this,
+                // TRANSLATORS: storage button
+                _("Retrieve"),
+                "retrieve",
+                BUTTON_SKIN,
+                this);
+            mInvCloseButton = new Button(this,
+                // TRANSLATORS: storage button
+                _("Close"),
+                "close",
+                BUTTON_SKIN,
+                this);
 
             mSlotsBarCell = &place(0, 0, mSlotsBar, 6, 1);
             mSortDropDownCell = &place(6, 0, mSortDropDown, 1, 1);
@@ -291,13 +326,24 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
 
         case InventoryType::Cart:
         {
-            // TRANSLATORS: storage button
-            mStoreButton = new Button(this, _("Store"), "store", this);
-            // TRANSLATORS: storage button
-            mRetrieveButton = new Button(this, _("Retrieve"),
-                "retrieve", this);
-            // TRANSLATORS: storage button
-            mInvCloseButton = new Button(this, _("Close"), "close", this);
+            mStoreButton = new Button(this,
+                // TRANSLATORS: storage button
+                _("Store"),
+                "store",
+                BUTTON_SKIN,
+                this);
+            mRetrieveButton = new Button(this,
+                // TRANSLATORS: storage button
+                _("Retrieve"),
+                "retrieve",
+                BUTTON_SKIN,
+                this);
+            mInvCloseButton = new Button(this,
+                // TRANSLATORS: storage button
+                _("Close"),
+                "close",
+                BUTTON_SKIN,
+                this);
 
             mWeightBar = new ProgressBar(this, 0.0F, 100, 0,
                 ProgressColorId::PROG_WEIGHT,

@@ -107,7 +107,7 @@ WhoIsOnline::WhoIsOnline() :
     mScrollArea(new ScrollArea(this,
         mBrowserBox, Opaque_false, std::string())),
     // TRANSLATORS: who is online. button.
-    mUpdateButton(new Button(this, _("Update"), "update", this)),
+    mUpdateButton(new Button(this, _("Update"), "update", BUTTON_SKIN, this)),
     mOnlinePlayers(),
     mOnlineNicks(),
     mFriends(),

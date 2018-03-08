@@ -83,11 +83,14 @@ LoginDialog::LoginDialog(LoginData &data,
     mUpdateTypeDropDown(new DropDown(this, mUpdateTypeModel,
         false, Modal_false, nullptr, std::string())),
     // TRANSLATORS: login dialog button
-    mServerButton(new Button(this, _("Change Server"), "server", this)),
+    mServerButton(new Button(this, _("Change Server"), "server",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: login dialog button
-    mLoginButton(new Button(this, _("Login"), "login", this)),
+    mLoginButton(new Button(this, _("Login"), "login",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: login dialog button
-    mRegisterButton(new Button(this, _("Register"), "register", this)),
+    mRegisterButton(new Button(this, _("Register"), "register",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: login dialog checkbox
     mCustomUpdateHost(new CheckBox(this, _("Custom update host"),
         (mLoginData->updateType & UpdateType::Custom) != 0,

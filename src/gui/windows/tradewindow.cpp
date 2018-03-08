@@ -86,10 +86,12 @@ TradeWindow::TradeWindow() :
     // TRANSLATORS: trade window money label
     mMoneyLabel(new Label(this, strprintf(_("You get %s"), ""))),
     // TRANSLATORS: trade window button
-    mAddButton(new Button(this, _("Add"), "add", this)),
-    mOkButton(new Button(this, "", "", this)),  // Will be filled in later
+    mAddButton(new Button(this, _("Add"), "add", BUTTON_SKIN, this)),
+    mOkButton(new Button(this, "", "",
+        BUTTON_SKIN, this)),  // Will be filled in later
     // TRANSLATORS: trade window money change button
-    mMoneyChangeButton(new Button(this, _("Change"), "money", this)),
+    mMoneyChangeButton(new Button(this, _("Change"), "money",
+        BUTTON_SKIN, this)),
     mMoneyField(new TextField(this, std::string(),
         LoseFocusOnTab_true, nullptr, std::string(), false)),
     mAutoAddItem(nullptr),

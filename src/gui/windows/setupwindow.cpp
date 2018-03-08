@@ -116,7 +116,11 @@ void SetupWindow::postInit()
          *curBtn != nullptr;
          ++ curBtn)
     {
-        Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
+        Button *const btn = new Button(this,
+            gettext(*curBtn),
+            *curBtn,
+            BUTTON_SKIN,
+            this);
         mButtons.push_back(btn);
         x -= btn->getWidth() + mButtonPadding;
         btn->setPosition(x, height - btn->getHeight() - mButtonPadding);

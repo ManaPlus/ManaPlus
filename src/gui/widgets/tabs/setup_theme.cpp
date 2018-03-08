@@ -126,7 +126,7 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
     mNpcFontSizeDropDown(new DropDown(this, mNpcFontSizeListModel,
         false, Modal_false, nullptr, std::string())),
     // TRANSLATORS: button name with information about selected theme
-    mInfoButton(new Button(this, _("i"), ACTION_INFO, this)),
+    mInfoButton(new Button(this, _("i"), ACTION_INFO, BUTTON_SKIN, this)),
     mThemeInfo()
 {
     // TRANSLATORS: theme settings tab name

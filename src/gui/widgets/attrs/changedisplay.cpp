@@ -47,7 +47,7 @@ ChangeDisplay::ChangeDisplay(const Widget2 *const widget,
     // TRANSLATORS: status window label
     mPoints(new Label(this, _("Max"))),
     // TRANSLATORS: status window label (plus sign)
-    mInc(new Button(this, _("+"), "inc", this))
+    mInc(new Button(this, _("+"), "inc", BUTTON_SKIN, this))
 {
     // Do the layout
     ContainerPlacer place = mLayout->getPlacer(0, 0);

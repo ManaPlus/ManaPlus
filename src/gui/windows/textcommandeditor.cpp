@@ -105,11 +105,11 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
     mSchoolLvlField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),
 #endif  // TMWA_SUPPORT
     // TRANSLATORS: command editor button
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", BUTTON_SKIN, this)),
     // TRANSLATORS: command editor button
-    mSaveButton(new Button(this, _("Save"), "save", this)),
+    mSaveButton(new Button(this, _("Save"), "save", BUTTON_SKIN, this)),
     // TRANSLATORS: command editor button
-    mDeleteButton(new Button(this, _("Delete"), "delete", this)),
+    mDeleteButton(new Button(this, _("Delete"), "delete", BUTTON_SKIN, this)),
     mEnabledKeyboard(keyboard.isEnabled())
 {
     const int w = 350;

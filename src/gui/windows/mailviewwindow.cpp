@@ -55,14 +55,16 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
     mGetAttachButton(new Button(this,
         // TRANSLATORS: mail view attach / items button
         settings.enableNewMailSystem ? _("Get items") : _("Get attach"),
-        "attach", this)),
+        "attach",
+        BUTTON_SKIN,
+        this)),
     mGetMoneyButton(nullptr),
     // TRANSLATORS: mail view window button
-    mCloseButton(new Button(this, _("Close"), "close", this)),
-    mPrevButton(new Button(this, "<", "prev", this)),
-    mNextButton(new Button(this, ">", "next", this)),
+    mCloseButton(new Button(this, _("Close"), "close", BUTTON_SKIN, this)),
+    mPrevButton(new Button(this, "<", "prev", BUTTON_SKIN, this)),
+    mNextButton(new Button(this, ">", "next", BUTTON_SKIN, this)),
     // TRANSLATORS: mail view window button
-    mReplyButton(new Button(this, _("Reply"), "reply", this)),
+    mReplyButton(new Button(this, _("Reply"), "reply", BUTTON_SKIN, this)),
     // TRANSLATORS: mail view window label
     mTimeLabel(new Label(this, strprintf("%s %s", _("Time:"),
         message->strTime.c_str()))),
@@ -122,7 +124,9 @@ MailViewWindow::MailViewWindow(MailMessage *const message,
         mGetMoneyButton = new Button(this,
             // TRANSLATORS: mail view attached money button
             _("Get money"),
-            "money", this);
+            "money",
+            BUTTON_SKIN,
+            this);
         placer(0, n++, mGetMoneyButton, 1, 1);
     }
     placer(0, n++, mGetAttachButton, 1, 1);

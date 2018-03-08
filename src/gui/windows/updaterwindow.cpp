@@ -191,9 +191,9 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     // TRANSLATORS: updater window label
     mLabel(new Label(this, _("Connecting..."))),
     // TRANSLATORS: updater window button
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", BUTTON_SKIN, this)),
     // TRANSLATORS: updater window button
-    mPlayButton(new Button(this, _("Play"), "play", this)),
+    mPlayButton(new Button(this, _("Play"), "play", BUTTON_SKIN, this)),
     mProgressBar(new ProgressBar(this, 0.0, 310, 0,
         ProgressColorId::PROG_UPDATE,
         "updateprogressbar.xml", "updateprogressbar_fill.xml")),

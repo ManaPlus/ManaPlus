@@ -86,7 +86,8 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
 #if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
     // TRANSLATORS: video settings button
-    mDetectButton(new Button(this, _("Detect best mode"), "detect", this)),
+    mDetectButton(new Button(this, _("Detect best mode"), "detect",
+        BUTTON_SKIN, this)),
 #endif  // !defined(ANDROID) && !defined(__APPLE__) &&
         // !defined(__native_client__)
     mDialog(nullptr),

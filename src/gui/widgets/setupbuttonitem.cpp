@@ -39,7 +39,11 @@ SetupButtonItem::SetupButtonItem(const std::string &restrict text,
     mButton(nullptr)
 {
     mValueType = VSTR;
-    mWidget = new Button(this, text, actionEventId, listener);
+    mWidget = new Button(this,
+        text,
+        actionEventId,
+        BUTTON_SKIN,
+        listener);
     createControls();
 }
 

@@ -73,7 +73,11 @@ void SetupQuickItem::createControls()
 {
     mHorizont = new HorizontContainer(this, 32, 2);
 
-    mWidget = new Button(this, ">", mEventName + "_CHANGE", nullptr);
+    mWidget = new Button(this,
+        ">",
+        mEventName + "_CHANGE",
+        BUTTON_SKIN,
+        nullptr);
     mLabel = new Label(this, std::string());
     mLabel->setToolTip(mDescription);
     mLabel->adjustSize();

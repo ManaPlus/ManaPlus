@@ -54,11 +54,11 @@ MailEditWindow::MailEditWindow() :
     ActionListener(),
     FocusListener(),
     // TRANSLATORS: mail edit window button
-    mSendButton(new Button(this, _("Send"), "send", this)),
+    mSendButton(new Button(this, _("Send"), "send", BUTTON_SKIN, this)),
     // TRANSLATORS: mail edit window button
-    mCloseButton(new Button(this, _("Close"), "close", this)),
+    mCloseButton(new Button(this, _("Close"), "close", BUTTON_SKIN, this)),
     // TRANSLATORS: mail edit window button
-    mAddButton(new Button(this, _("Add"), "add", this)),
+    mAddButton(new Button(this, _("Add"), "add", BUTTON_SKIN, this)),
     // TRANSLATORS: mail edit window label
     mToLabel(new Label(this, _("To:"))),
     // TRANSLATORS: mail edit window label

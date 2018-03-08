@@ -58,8 +58,16 @@ void SliderList::postInit2(ActionListener *const listener,
     mPrevEventId = eventId + "_prev";
     mNextEventId = eventId + "_next";
 
-    mButtons[0] = new Button(this, "<", mPrevEventId, this);
-    mButtons[1] = new Button(this, ">", mNextEventId, this);
+    mButtons[0] = new Button(this,
+        "<",
+        mPrevEventId,
+        BUTTON_SKIN,
+        this);
+    mButtons[1] = new Button(this,
+        ">",
+        mNextEventId,
+        BUTTON_SKIN,
+        this);
 
     add(mButtons[0]);
     add(mLabel);

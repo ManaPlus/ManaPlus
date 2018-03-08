@@ -53,9 +53,9 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData &data) :
     mSecondPassField(new PasswordField(this, std::string())),
     // TRANSLATORS: change password dialog button
     mChangePassButton(new Button(this, _("Change Password"),
-        "change_password", this)),
+        "change_password", BUTTON_SKIN, this)),
     // TRANSLATORS: change password dialog button
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", BUTTON_SKIN, this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(&data)
 {

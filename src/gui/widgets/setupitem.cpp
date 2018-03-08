@@ -373,8 +373,12 @@ void SetupItemTextField::createControls()
         mParent,
         mEventName,
         false);
-    // TRANSLATORS: setup item button
-    mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
+    mButton = new Button(this,
+        // TRANSLATORS: setup item button
+        _("Edit"),
+        mEventName + "_EDIT",
+        BUTTON_SKIN,
+        mParent);
     mWidget = mTextField;
     mTextField->setWidth(200);
     fixFirstItemSize(mLabel);
@@ -514,8 +518,12 @@ void SetupItemIntTextField::createControls()
     mTextField->setActionEventId(mEventName);
     mTextField->addActionListener(mParent);
 
-    // TRANSLATORS: setup item button
-    mButton = new Button(this, _("Edit"), mEventName + "_EDIT", mParent);
+    mButton = new Button(this,
+        // TRANSLATORS: setup item button
+        _("Edit"),
+        mEventName + "_EDIT",
+        BUTTON_SKIN,
+        mParent);
     mWidget = mTextField;
     mTextField->setWidth(50);
     fixFirstItemSize(mLabel);
@@ -1293,8 +1301,12 @@ SetupItemSound::SetupItemSound(const std::string &restrict text,
 
 void SetupItemSound::addMoreControls()
 {
-    mButton = new Button(this, BUTTON_PLAY, 16, 16,
-        mEventName + "_PLAY", this);
+    mButton = new Button(this,
+        BUTTON_PLAY,
+        16, 16,
+        mEventName + "_PLAY",
+        BUTTON_SKIN,
+        this);
     if (mHorizont != nullptr)
         mHorizont->add(mButton);
 }

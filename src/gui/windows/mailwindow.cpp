@@ -65,17 +65,18 @@ MailWindow::MailWindow() :
         fromBool(getOptionBool("showlistbackground", false), Opaque),
         "mail_listbackground.xml")),
     // TRANSLATORS: mail window button
-    mRefreshButton(new Button(this, _("Refresh"), "refresh", this)),
+    mRefreshButton(new Button(this, _("Refresh"), "refresh",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: mail window button
-    mNewButton(new Button(this, _("New"), "new", this)),
+    mNewButton(new Button(this, _("New"), "new", BUTTON_SKIN, this)),
     // TRANSLATORS: mail window button
-    mDeleteButton(new Button(this, _("Delete"), "delete", this)),
+    mDeleteButton(new Button(this, _("Delete"), "delete", BUTTON_SKIN, this)),
     mReturnButton(new Button(this,
         // TRANSLATORS: mail window button
         settings.enableNewMailSystem ? _("Get old") : _("Return"),
-        "return", this)),
+        "return", BUTTON_SKIN, this)),
     // TRANSLATORS: mail window button
-    mOpenButton(new Button(this, _("Open"), "open", this)),
+    mOpenButton(new Button(this, _("Open"), "open", BUTTON_SKIN, this)),
     mOpenType(MailOpenType::Mail),
     mUseMail2(settings.enableNewMailSystem),
     mLastPage(false)

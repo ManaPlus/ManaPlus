@@ -114,9 +114,14 @@ void SellDialog::postInit()
         // TRANSLATORS: sell dialog button
         mAdvanced == Advanced_true ? _("Add") : _("Sell"),
         "presell",
+        BUTTON_SKIN,
         this);
-    // TRANSLATORS: sell dialog button
-    mQuitButton = new Button(this, _("Quit"), "quit", this);
+    mQuitButton = new Button(this,
+        // TRANSLATORS: sell dialog button
+        _("Quit"),
+        "quit",
+        BUTTON_SKIN,
+        this);
 
     initButtons();
 
@@ -133,12 +138,24 @@ void SellDialog::postInit()
 
     if (mIsSell == IsSell_true)
     {
-        // TRANSLATORS: sell dialog button
-        mIncreaseButton = new Button(this, _("+"), "inc", this);
-        // TRANSLATORS: sell dialog button
-        mDecreaseButton = new Button(this, _("-"), "dec", this);
-        // TRANSLATORS: sell dialog button
-        mAddMaxButton = new Button(this, _("Max"), "max", this);
+        mIncreaseButton = new Button(this,
+            // TRANSLATORS: sell dialog button
+            _("+"),
+            "inc",
+            BUTTON_SKIN,
+            this);
+        mDecreaseButton = new Button(this,
+            // TRANSLATORS: sell dialog button
+            _("-"),
+            "dec",
+            BUTTON_SKIN,
+            this);
+        mAddMaxButton = new Button(this,
+            // TRANSLATORS: sell dialog button
+            _("Max"),
+            "max",
+            BUTTON_SKIN,
+            this);
         mSlider = new Slider(this, 1.0, 1.0);
 
         mQuantityLabel = new Label(this, strprintf(
@@ -149,8 +166,12 @@ void SellDialog::postInit()
             "", ""));
         if (mAdvanced == Advanced_true)
         {
-            // TRANSLATORS: sell dialog button
-            mConfirmButton = new Button(this, _("Sell"), "confirm", this);
+            mConfirmButton = new Button(this,
+                // TRANSLATORS: sell dialog button
+                _("Sell"),
+                "confirm",
+                BUTTON_SKIN,
+                this);
             mConfirmButton->setEnabled(false);
         }
 

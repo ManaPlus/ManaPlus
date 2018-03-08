@@ -111,7 +111,7 @@ ShopWindow::ShopWindow() :
     ActionListener(),
     SelectionListener(),
     // TRANSLATORS: shop window button
-    mCloseButton(new Button(this, _("Close"), "close", this)),
+    mCloseButton(new Button(this, _("Close"), "close", BUTTON_SKIN, this)),
     mBuyShopItems(new ShopItems(false, DEFAULT_CURRENCY)),
     mSellShopItems(new ShopItems(false, DEFAULT_CURRENCY)),
     mTradeItem(nullptr),
@@ -124,9 +124,9 @@ ShopWindow::ShopWindow() :
         fromBool(getOptionBool("showbuybackground", false), Opaque),
         "shop_buy_background.xml")),
     // TRANSLATORS: shop window label
-    mAddButton(new Button(this, _("Add"), "add", this)),
+    mAddButton(new Button(this, _("Add"), "add", BUTTON_SKIN, this)),
     // TRANSLATORS: shop window label
-    mDeleteButton(new Button(this, _("Delete"), "delete", this)),
+    mDeleteButton(new Button(this, _("Delete"), "delete", BUTTON_SKIN, this)),
     mAnnounceButton(nullptr),
     mPublishButton(nullptr),
     mRenameButton(nullptr),
@@ -191,17 +191,29 @@ ShopWindow::ShopWindow() :
 
     if (mHaveVending)
     {
-        // TRANSLATORS: shop window button
-        mPublishButton = new Button(this, _("Publish"), "publish", this);
-        // TRANSLATORS: shop window button
-        mRenameButton = new Button(this, _("Rename"), "rename", this);
+        mPublishButton = new Button(this,
+            // TRANSLATORS: shop window button
+            _("Publish"),
+            "publish",
+            BUTTON_SKIN,
+            this);
+        mRenameButton = new Button(this,
+            // TRANSLATORS: shop window button
+            _("Rename"),
+            "rename",
+            BUTTON_SKIN,
+            this);
         placer(2, 6, mPublishButton, 1, 1);
         placer(3, 6, mRenameButton, 1, 1);
     }
     else
     {
-        // TRANSLATORS: shop window button
-        mAnnounceButton = new Button(this, _("Announce"), "announce", this);
+        mAnnounceButton = new Button(this,
+            // TRANSLATORS: shop window button
+            _("Announce"),
+            "announce",
+            BUTTON_SKIN,
+            this);
         // TRANSLATORS: shop window checkbox
         mAnnounceLinks = new CheckBox(this, _("Show links in announce"), false,
             this, "link announce");

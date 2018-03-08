@@ -164,7 +164,7 @@ void ShortcutWindow::addButton(const std::string &text,
 {
     place(mButtonIndex++,
         5,
-        new Button(this, text, eventName, listener),
+        new Button(this, text, eventName, BUTTON_SKIN, listener),
         1,
         1);
     Window::widgetResized(Event(nullptr));

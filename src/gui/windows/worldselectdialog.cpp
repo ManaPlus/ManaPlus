@@ -50,9 +50,11 @@ WorldSelectDialog::WorldSelectDialog(const Worlds &worlds) :
     mWorldListModel(new WorldListModel(worlds)),
     mWorldList(CREATEWIDGETR(ListBox, this, mWorldListModel, "")),
     // TRANSLATORS: world dialog button
-    mChangeLoginButton(new Button(this, _("Change Login"), "login", this)),
+    mChangeLoginButton(new Button(this, _("Change Login"), "login",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: world dialog button
-    mChooseWorld(new Button(this, _("Choose World"), "world", this))
+    mChooseWorld(new Button(this, _("Choose World"), "world",
+        BUTTON_SKIN, this))
 {
     ScrollArea *const worldsScroll = new ScrollArea(this, mWorldList,
         fromBool(getOptionBool("showbackground", false), Opaque),

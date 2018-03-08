@@ -113,8 +113,16 @@ void TabbedArea::postInit()
     mWidgetContainer->setOpaque(Opaque_false);
     addWidgetListener(this);
 
-    mArrowButton[0] = new Button(this, "<", "shift_left", this);
-    mArrowButton[1] = new Button(this, ">", "shift_right", this);
+    mArrowButton[0] = new Button(this,
+        "<",
+        "shift_left",
+        BUTTON_SKIN,
+        this);
+    mArrowButton[1] = new Button(this,
+        ">",
+        "shift_right",
+        BUTTON_SKIN,
+        this);
 
     widgetResized(Event(nullptr));
 }

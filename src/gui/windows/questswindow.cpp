@@ -77,7 +77,7 @@ QuestsWindow::QuestsWindow() :
         fromBool(getOptionBool("showtextbackground", false), Opaque),
         "quests_text_background.xml")),
     // TRANSLATORS: quests window button
-    mCloseButton(new Button(this, _("Close"), "close", this)),
+    mCloseButton(new Button(this, _("Close"), "close", BUTTON_SKIN, this)),
     mCompleteIcon(Theme::getImageFromThemeXml("complete_icon.xml", "")),
     mIncompleteIcon(Theme::getImageFromThemeXml("incomplete_icon.xml", "")),
     mMapEffects(),

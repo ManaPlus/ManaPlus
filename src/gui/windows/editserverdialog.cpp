@@ -60,14 +60,15 @@ EditServerDialog::EditServerDialog(ServerDialog *const parent,
     mPacketVersionField(new IntTextField(this, 0, 0, maxPacketVersion,
         Enable_true, 0)),
     // TRANSLATORS: edit server dialog button
-    mConnectButton(new Button(this, _("Connect"), "connect", this)),
+    mConnectButton(new Button(this, _("Connect"), "connect",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: edit server dialog button
-    mOkButton(new Button(this, _("OK"), "addServer", this)),
+    mOkButton(new Button(this, _("OK"), "addServer", BUTTON_SKIN, this)),
     // TRANSLATORS: edit server dialog button
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", BUTTON_SKIN, this)),
     // TRANSLATORS: edit server dialog label
     mPersistentIp(new CheckBox(this, _("Use same ip"),
-                  true, this, "persistentIp")),
+        true, this, "persistentIp")),
     mTypeListModel(new TypeListModel),
     mTypeField(new DropDown(this, mTypeListModel,
         false, Modal_true, nullptr, std::string())),

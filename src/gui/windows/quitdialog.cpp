@@ -64,9 +64,9 @@ QuitDialog::QuitDialog(QuitDialog **const pointerToMe) :
         _("Switch character"), "quitdialog", false)),
     mRate(nullptr),
     // TRANSLATORS: quit dialog button
-    mOkButton(new Button(this, _("OK"), "ok", this)),
+    mOkButton(new Button(this, _("OK"), "ok", BUTTON_SKIN, this)),
     // TRANSLATORS: quit dialog button
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", BUTTON_SKIN, this)),
     mMyPointer(pointerToMe),
     mNeedForceQuit(false)
 {

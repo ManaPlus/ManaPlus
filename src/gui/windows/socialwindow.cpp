@@ -70,7 +70,7 @@ SocialWindow::SocialWindow() :
     mFriends(new SocialFriendsTab(this, _("F"),
         fromBool(getOptionBool("showtabbackground", false), Opaque))),
     // TRANSLATORS: social window button
-    mMenuButton(new Button(this, _("Menu"), "menu", this)),
+    mMenuButton(new Button(this, _("Menu"), "menu", BUTTON_SKIN, this)),
     mCountLabel(new Label(this, "1000 / 1000")),
     mTabs(CREATEWIDGETR(TabbedArea, this)),
     mMap(nullptr),

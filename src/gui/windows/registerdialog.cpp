@@ -60,9 +60,11 @@ RegisterDialog::RegisterDialog(LoginData &data) :
     mConfirmField(new PasswordField(this, std::string())),
     mEmailField(nullptr),
     // TRANSLATORS: register dialog. button.
-    mRegisterButton(new Button(this, _("Register"), "register", this)),
+    mRegisterButton(new Button(this, _("Register"), "register",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: register dialog. button.
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel",
+        BUTTON_SKIN, this)),
     mMaleButton(nullptr),
     mFemaleButton(nullptr),
     mWrongDataNoticeListener(new WrongDataNoticeListener)

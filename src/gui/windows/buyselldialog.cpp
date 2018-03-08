@@ -86,7 +86,11 @@ void BuySellDialog::init()
          *curBtn != nullptr;
          curBtn++)
     {
-        Button *const btn = new Button(this, gettext(*curBtn), *curBtn, this);
+        Button *const btn = new Button(this,
+            gettext(*curBtn),
+            *curBtn,
+            BUTTON_SKIN,
+            this);
         if (mBuyButton == nullptr)
             mBuyButton = btn;  // For focus request
         btn->setPosition(x, y);

@@ -48,8 +48,12 @@ EditDialog::EditDialog(const std::string &restrict title,
 void EditDialog::postInit()
 {
     Window::postInit();
-    // TRANSLATORS: edit dialog label
-    Button *const okButton = new Button(this, _("OK"), mEventOk, this);
+    Button *const okButton = new Button(this,
+        // TRANSLATORS: edit dialog label
+        _("OK"),
+        mEventOk,
+        BUTTON_SKIN,
+        this);
 
     const int pad = getPadding();
     const int pad2 = pad * 2;

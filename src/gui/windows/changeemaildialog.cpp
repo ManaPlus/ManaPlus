@@ -53,9 +53,9 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData &data) :
         nullptr, std::string(), false)),
     // TRANSLATORS: button in change email dialog
     mChangeEmailButton(new Button(this, _("Change Email Address"),
-        "change_email", this)),
+        "change_email", BUTTON_SKIN, this)),
     // TRANSLATORS: button in change email dialog
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", BUTTON_SKIN, this)),
     mWrongDataNoticeListener(new WrongDataNoticeListener),
     mLoginData(&data)
 {

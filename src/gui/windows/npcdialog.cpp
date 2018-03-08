@@ -124,18 +124,18 @@ NpcDialog::NpcDialog(const BeingId npcId) :
         nullptr, std::string(), false)),
     mIntField(new IntTextField(this, 0, 0, 0, Enable_true, 0)),
     // TRANSLATORS: npc dialog button
-    mPlusButton(new Button(this, _("+"), "inc", this)),
+    mPlusButton(new Button(this, _("+"), "inc", BUTTON_SKIN, this)),
     // TRANSLATORS: npc dialog button
-    mMinusButton(new Button(this, _("-"), "dec", this)),
+    mMinusButton(new Button(this, _("-"), "dec", BUTTON_SKIN, this)),
     // TRANSLATORS: npc dialog button
-    mClearButton(new Button(this, _("Clear"), "clear", this)),
-    mButton(new Button(this, "", "ok", this)),
+    mClearButton(new Button(this, _("Clear"), "clear", BUTTON_SKIN, this)),
+    mButton(new Button(this, "", "ok", BUTTON_SKIN, this)),
     // TRANSLATORS: npc dialog button
-    mButton2(new Button(this, _("Close"), "close", this)),
+    mButton2(new Button(this, _("Close"), "close", BUTTON_SKIN, this)),
     // TRANSLATORS: npc dialog button
-    mButton3(new Button(this, _("Add"), "add", this)),
+    mButton3(new Button(this, _("Add"), "add", BUTTON_SKIN, this)),
     // TRANSLATORS: npc dialog button
-    mResetButton(new Button(this, _("Reset"), "reset", this)),
+    mResetButton(new Button(this, _("Reset"), "reset", BUTTON_SKIN, this)),
     mInventory(new Inventory(InventoryType::Npc, 1)),
     mComplexInventory(new ComplexInventory(InventoryType::Craft, 1)),
     mItemContainer(new ItemContainer(this, mInventory,
@@ -1323,7 +1323,8 @@ void NpcDialog::createSkinControls()
         mDialogInfo->menu.buttons)
     {
         const NpcButtonInfo *const info = *it;
-        Button *const button = new Button(this);
+        Button *const button = new Button(this,
+            BUTTON_SKIN);
         button->setCaption(info->name);
         button->setActionEventId("skin_" + info->value);
         button->addActionListener(this);

@@ -102,7 +102,8 @@ class Button final : public Widget,
         /**
          * Default constructor.
          */
-        explicit Button(const Widget2 *const widget);
+        Button(const Widget2 *const widget,
+               const std::string &restrict skinName);
 
         /**
          * Constructor, sets the caption of the button to the given string and
@@ -111,6 +112,7 @@ class Button final : public Widget,
         Button(const Widget2 *const widget,
                const std::string &restrict caption,
                const std::string &restrict actionEventId,
+               const std::string &restrict skinName,
                ActionListener *const listener);
 
         /**
@@ -121,7 +123,8 @@ class Button final : public Widget,
                const std::string &restrict caption,
                const std::string &restrict imageName,
                const int imageWidth, const int imageHeight,
-               const std::string &actionEventId,
+               const std::string &restrict actionEventId,
+               const std::string &restrict skinName,
                ActionListener *const listener);
 
         /**
@@ -130,8 +133,10 @@ class Button final : public Widget,
          */
         Button(const Widget2 *const widget,
                const std::string &restrict imageName,
-               const int imageWidth, const int imageHeight,
+               const int imageWidth,
+               const int imageHeight,
                const std::string &restrict actionEventId,
+               const std::string &restrict skinName,
                ActionListener *const listener);
 
         /**
@@ -142,6 +147,7 @@ class Button final : public Widget,
                const std::string &restrict imageName,
                const std::string &restrict caption,
                const std::string &restrict actionEventId,
+               const std::string &restrict skinName,
                ActionListener *const listener);
 
         A_DELETE_COPY(Button)

@@ -198,16 +198,36 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     }
 
     // Buttons
-    // TRANSLATORS: item amount window button
-    Button *const minusAmountButton = new Button(this, _("-"), "dec", this);
-    // TRANSLATORS: item amount window button
-    Button *const plusAmountButton = new Button(this, _("+"), "inc", this);
-    // TRANSLATORS: item amount window button
-    Button *const okButton = new Button(this, _("OK"), "ok", this);
-    // TRANSLATORS: item amount window button
-    Button *const cancelButton = new Button(this, _("Cancel"), "cancel", this);
-    // TRANSLATORS: item amount window button
-    Button *const addAllButton = new Button(this, _("All"), "all", this);
+    Button *const minusAmountButton = new Button(this,
+        // TRANSLATORS: item amount window button
+        _("-"),
+        "dec",
+        BUTTON_SKIN,
+        this);
+    Button *const plusAmountButton = new Button(this,
+        // TRANSLATORS: item amount window button
+        _("+"),
+        "inc",
+        BUTTON_SKIN,
+        this);
+    Button *const okButton = new Button(this,
+        // TRANSLATORS: item amount window button
+        _("OK"),
+        "ok",
+        BUTTON_SKIN,
+        this);
+    Button *const cancelButton = new Button(this,
+        // TRANSLATORS: item amount window button
+        _("Cancel"),
+        "cancel",
+        BUTTON_SKIN,
+        this);
+    Button *const addAllButton = new Button(this,
+        // TRANSLATORS: item amount window button
+        _("All"),
+        "all",
+        BUTTON_SKIN,
+        this);
 
     minusAmountButton->adjustSize();
     minusAmountButton->setWidth(plusAmountButton->getWidth());
@@ -232,12 +252,18 @@ ItemAmountWindow::ItemAmountWindow(const ItemAmountWindowUsageT usage,
     if (mUsage == ItemAmountWindowUsage::ShopBuyAdd ||
         mUsage == ItemAmountWindowUsage::ShopSellAdd)
     {
-        Button *const minusPriceButton = new Button(
+        Button *const minusPriceButton = new Button(this,
             // TRANSLATORS: item amount window button
-            this, _("-"), "decPrice", this);
-        Button *const plusPriceButton = new Button(
+            _("-"),
+            "decPrice",
+            BUTTON_SKIN,
+            this);
+        Button *const plusPriceButton = new Button(this,
             // TRANSLATORS: item amount window button
-            this, _("+"), "incPrice", this);
+            _("+"),
+            "incPrice",
+            BUTTON_SKIN,
+            this);
         minusPriceButton->adjustSize();
         minusPriceButton->setWidth(plusPriceButton->getWidth());
 

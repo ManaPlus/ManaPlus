@@ -71,7 +71,7 @@ EquipmentWindow::EquipmentWindow(Equipment *const equipment,
         "equipment_playerbox.xml",
         "equipment_selectedplayerbox.xml")),
     // TRANSLATORS: equipment window button
-    mUnequip(new Button(this, _("Unequip"), "unequip", this)),
+    mUnequip(new Button(this, _("Unequip"), "unequip", BUTTON_SKIN, this)),
     mImageSet(nullptr),
     mBeing(being),
     mSlotBackground(),

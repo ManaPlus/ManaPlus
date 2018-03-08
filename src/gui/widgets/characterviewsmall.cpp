@@ -35,8 +35,8 @@ CharacterViewSmall::CharacterViewSmall(CharSelectDialog *const widget,
                                        const int padding) :
     CharacterViewBase(widget, padding),
     mSelectedEntry(nullptr),
-    mPrevious(new Button(this, "<", "prev", this)),
-    mNext(new Button(this, ">", "next", this)),
+    mPrevious(new Button(this, "<", "prev", BUTTON_SKIN, this)),
+    mNext(new Button(this, ">", "next", BUTTON_SKIN, this)),
     mNumber(new Label(this, "??")),
     mCharacterEntries(entries)
 {

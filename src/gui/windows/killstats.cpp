@@ -51,9 +51,11 @@ KillStats::KillStats() :
     AttributeListener(),
     mKillTimer(0),
     // TRANSLATORS: kill stats window button
-    mResetButton(new Button(this, _("Reset stats"), "reset", this)),
+    mResetButton(new Button(this, _("Reset stats"), "reset",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: kill stats window button
-    mTimerButton(new Button(this, _("Reset timer"), "timer", this)),
+    mTimerButton(new Button(this, _("Reset timer"), "timer",
+        BUTTON_SKIN, this)),
     mLine1(nullptr),
     mLine2(nullptr),
     mLine3(nullptr),

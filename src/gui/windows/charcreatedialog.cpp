@@ -100,9 +100,9 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     mLookLabel(nullptr),
     mLookNameLabel(nullptr),
     // TRANSLATORS: char create dialog button
-    mActionButton(new Button(this, _("^"), "action", this)),
+    mActionButton(new Button(this, _("^"), "action", BUTTON_SKIN, this)),
     // TRANSLATORS: char create dialog button
-    mRotateButton(new Button(this, _(">"), "rotate", this)),
+    mRotateButton(new Button(this, _(">"), "rotate", BUTTON_SKIN, this)),
     mAttributeSlider(),
     mAttributeLabel(),
     mAttributeValue(),
@@ -110,9 +110,9 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
         // TRANSLATORS: char create dialog label
         strprintf(_("Please distribute %d points"), 99))),
     // TRANSLATORS: char create dialog button
-    mCreateButton(new Button(this, _("Create"), "create", this)),
+    mCreateButton(new Button(this, _("Create"), "create", BUTTON_SKIN, this)),
     // TRANSLATORS: char create dialog button
-    mCancelButton(new Button(this, _("Cancel"), "cancel", this)),
+    mCancelButton(new Button(this, _("Cancel"), "cancel", BUTTON_SKIN, this)),
     mPlayer(Being::createBeing(BeingId_zero,
             ActorType::Player,
             BeingTypeId_zero,
@@ -191,14 +191,22 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (maxHairColor > minHairColor)
     {
-        // TRANSLATORS: This is a narrow symbol used to denote 'next'.
-        // You may change this symbol if your language uses another.
-        // TRANSLATORS: char create dialog button
-        mNextHairColorButton = new Button(this, _(">"), "nextcolor", this);
-        // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
-        // You may change this symbol if your language uses another.
-        // TRANSLATORS: char create dialog button
-        mPrevHairColorButton = new Button(this, _("<"), "prevcolor", this);
+        mNextHairColorButton = new Button(this,
+            // TRANSLATORS: This is a narrow symbol used to denote 'next'.
+            // You may change this symbol if your language uses another.
+            // TRANSLATORS: char create dialog button
+            _(">"),
+            "nextcolor",
+            BUTTON_SKIN,
+            this);
+        mPrevHairColorButton = new Button(this,
+            // TRANSLATORS: This is a narrow symbol used to denote 'previous'.
+            // You may change this symbol if your language uses another.
+            // TRANSLATORS: char create dialog button
+            _("<"),
+            "prevcolor",
+             BUTTON_SKIN,
+            this);
         // TRANSLATORS: char create dialog label
         mHairColorLabel = new Label(this, _("Hair color:"));
         mHairColorNameLabel = new Label(this, "");
@@ -206,10 +214,18 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (maxHairStyle > minHairStyle)
     {
-        // TRANSLATORS: char create dialog button
-        mNextHairStyleButton = new Button(this, _(">"), "nextstyle", this);
-        // TRANSLATORS: char create dialog button
-        mPrevHairStyleButton = new Button(this, _("<"), "prevstyle", this);
+        mNextHairStyleButton = new Button(this,
+            // TRANSLATORS: char create dialog button
+            _(">"),
+            "nextstyle",
+            BUTTON_SKIN,
+            this);
+        mPrevHairStyleButton = new Button(this,
+            // TRANSLATORS: char create dialog button
+            _("<"),
+            "prevstyle",
+            BUTTON_SKIN,
+            this);
         // TRANSLATORS: char create dialog label
         mHairStyleLabel = new Label(this, _("Hair style:"));
         mHairStyleNameLabel = new Label(this, "");
@@ -217,20 +233,36 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
     if (serverFeatures->haveRaceSelection() && mMinRace < mMaxRace)
     {
-        // TRANSLATORS: char create dialog button
-        mNextRaceButton = new Button(this, _(">"), "nextrace", this);
-        // TRANSLATORS: char create dialog button
-        mPrevRaceButton = new Button(this, _("<"), "prevrace", this);
+        mNextRaceButton = new Button(this,
+            // TRANSLATORS: char create dialog button
+            _(">"),
+            "nextrace",
+            BUTTON_SKIN,
+            this);
+        mPrevRaceButton = new Button(this,
+            // TRANSLATORS: char create dialog button
+            _("<"),
+            "prevrace",
+            BUTTON_SKIN,
+            this);
         // TRANSLATORS: char create dialog label
         mRaceLabel = new Label(this, _("Race:"));
         mRaceNameLabel = new Label(this, "");
     }
     if (serverFeatures->haveLookSelection() && mMinLook < mMaxLook)
     {
-        // TRANSLATORS: char create dialog button
-        mNextLookButton = new Button(this, _(">"), "nextlook", this);
-        // TRANSLATORS: char create dialog button
-        mPrevLookButton = new Button(this, _("<"), "prevlook", this);
+        mNextLookButton = new Button(this,
+            // TRANSLATORS: char create dialog button
+            _(">"),
+            "nextlook",
+            BUTTON_SKIN,
+            this);
+        mPrevLookButton = new Button(this,
+            // TRANSLATORS: char create dialog button
+            _("<"),
+            "prevlook",
+            BUTTON_SKIN,
+            this);
         // TRANSLATORS: char create dialog label
         mLookLabel = new Label(this, _("Look:"));
         mLookNameLabel = new Label(this, "");

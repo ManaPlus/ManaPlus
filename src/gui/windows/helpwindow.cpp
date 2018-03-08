@@ -58,7 +58,8 @@ HelpWindow::HelpWindow() :
     LinkHandler(),
     ActionListener(),
     // TRANSLATORS: help window. button.
-    mDYKButton(new Button(this, _("Did you know..."), "DYK", this)),
+    mDYKButton(new Button(this, _("Did you know..."), "DYK",
+        BUTTON_SKIN, this)),
     mBrowserBox(new StaticBrowserBox(this, Opaque_true,
         "browserbox.xml")),
     mScrollArea(new ScrollArea(this, mBrowserBox,

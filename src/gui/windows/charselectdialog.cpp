@@ -70,16 +70,17 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     KeyListener(),
     mLoginData(&data),
     // TRANSLATORS: char select dialog. button.
-    mSwitchLoginButton(new Button(this, _("Switch"), "switch", this)),
+    mSwitchLoginButton(new Button(this, _("Switch"), "switch",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: char select dialog. button.
-    mChangePasswordButton(new Button(this, _("Password"),
-                          "change_password", this)),
+    mChangePasswordButton(new Button(this, _("Password"), "change_password",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: char select dialog. button.
-    mPlayButton(new Button(this, _("Play"), "use", this)),
+    mPlayButton(new Button(this, _("Play"), "use", BUTTON_SKIN, this)),
     // TRANSLATORS: char select dialog. button.
-    mInfoButton(new Button(this, _("Info"), "info", this)),
+    mInfoButton(new Button(this, _("Info"), "info", BUTTON_SKIN, this)),
     // TRANSLATORS: char select dialog. button.
-    mDeleteButton(new Button(this, _("Delete"), "delete", this)),
+    mDeleteButton(new Button(this, _("Delete"), "delete", BUTTON_SKIN, this)),
     // TRANSLATORS: char select dialog. button.
     mRenameButton(nullptr),
     mChangePinButton(nullptr),
@@ -113,6 +114,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
             // TRANSLATORS: character rename button
             _("Rename"),
             "rename",
+            BUTTON_SKIN,
             this);
         placer(n, 0, mRenameButton, 1, 1);
         n ++;
@@ -125,6 +127,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
             // TRANSLATORS: change pincode button
             _("Change pin"),
             "changepin",
+            BUTTON_SKIN,
             this);
         placer(n, 0, mChangePinButton, 1, 1);
         n ++;

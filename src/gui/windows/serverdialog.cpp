@@ -105,19 +105,21 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
     mDir(dir),
     mDescription(new Label(this, std::string())),
     // TRANSLATORS: servers dialog button
-    mQuitButton(new Button(this, _("Quit"), "quit", this)),
+    mQuitButton(new Button(this, _("Quit"), "quit", BUTTON_SKIN, this)),
     // TRANSLATORS: servers dialog button
-    mConnectButton(new Button(this, _("Connect"), "connect", this)),
+    mConnectButton(new Button(this, _("Connect"), "connect",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: servers dialog button
-    mAddEntryButton(new Button(this, _("Add"), "addEntry", this)),
+    mAddEntryButton(new Button(this, _("Add"), "addEntry", BUTTON_SKIN, this)),
     // TRANSLATORS: servers dialog button
-    mEditEntryButton(new Button(this, _("Edit"), "editEntry", this)),
+    mEditEntryButton(new Button(this, _("Edit"), "editEntry",
+        BUTTON_SKIN, this)),
     // TRANSLATORS: servers dialog button
-    mDeleteButton(new Button(this, _("Delete"), "remove", this)),
+    mDeleteButton(new Button(this, _("Delete"), "remove", BUTTON_SKIN, this)),
     // TRANSLATORS: servers dialog button
-    mLoadButton(new Button(this, _("Load"), "load", this)),
+    mLoadButton(new Button(this, _("Load"), "load", BUTTON_SKIN, this)),
     // TRANSLATORS: servers dialog button
-    mInfoButton(new Button(this, _("Info"), "info", this)),
+    mInfoButton(new Button(this, _("Info"), "info", BUTTON_SKIN, this)),
     mServersListModel(new ServersListModel(&mServers, this)),
     mServersList(CREATEWIDGETR(ServersListBox, this, mServersListModel)),
     mDownload(nullptr),

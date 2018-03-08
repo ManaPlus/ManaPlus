@@ -78,7 +78,8 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
         (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u,
         nullptr, std::string())),
     // TRANSLATORS: relation dialog button
-    mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE, this)),
+    mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE,
+        BUTTON_SKIN, this)),
     mIgnoreActionChoicesModel(new IgnoreChoicesListModel),
     mIgnoreActionChoicesBox(new DropDown(widget, mIgnoreActionChoicesModel,
         false, Modal_false, nullptr, std::string()))

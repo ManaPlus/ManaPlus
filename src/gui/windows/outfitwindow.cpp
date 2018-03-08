@@ -61,11 +61,11 @@ OutfitWindow::OutfitWindow() :
     Window(_("Outfits"), Modal_false, nullptr, "outfits.xml"),
     ActionListener(),
     // TRANSLATORS: outfits window button
-    mPreviousButton(new Button(this, _("<"), "previous", this)),
+    mPreviousButton(new Button(this, _("<"), "previous", BUTTON_SKIN, this)),
     // TRANSLATORS: outfits window button
-    mNextButton(new Button(this, _(">"), "next", this)),
+    mNextButton(new Button(this, _(">"), "next", BUTTON_SKIN, this)),
     // TRANSLATORS: outfits window button
-    mEquipBottom(new Button(this, _("Equip"), "equip", this)),
+    mEquipBottom(new Button(this, _("Equip"), "equip", BUTTON_SKIN, this)),
     // TRANSLATORS: outfits window label
     mCurrentLabel(new Label(this, strprintf(_("Outfit: %d"), 1))),
     // TRANSLATORS: outfits window checkbox

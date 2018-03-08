@@ -90,9 +90,9 @@ SkillDialog::SkillDialog() :
     mDeleteTabs(),
     mPointsLabel(new Label(this, "0")),
     // TRANSLATORS: skills dialog button
-    mUseButton(new Button(this, _("Use"), "use", this)),
+    mUseButton(new Button(this, _("Use"), "use", BUTTON_SKIN, this)),
     // TRANSLATORS: skills dialog button
-    mIncreaseButton(new Button(this, _("Up"), "inc", this)),
+    mIncreaseButton(new Button(this, _("Up"), "inc", BUTTON_SKIN, this)),
     mDefaultModel(nullptr),
     mDefaultTab(nullptr)
 {
