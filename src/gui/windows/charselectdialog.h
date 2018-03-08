@@ -122,6 +122,7 @@ class CharSelectDialog final : public Window,
         Button *mInfoButton A_NONNULLPOINTER;
         Button *mDeleteButton A_NONNULLPOINTER;
         Button *mRenameButton;
+        Button *mChangePinButton;
         CharacterViewBase *mCharacterView;
 
         STD_VECTOR<CharacterDisplay*> mCharacterEntries;

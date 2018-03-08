@@ -82,6 +82,7 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
     mDeleteButton(new Button(this, _("Delete"), "delete", this)),
     // TRANSLATORS: char select dialog. button.
     mRenameButton(nullptr),
+    mChangePinButton(nullptr),
     mCharacterView(nullptr),
     mCharacterEntries(0),
     mCharServerHandler(charServerHandler),
@@ -114,6 +115,18 @@ CharSelectDialog::CharSelectDialog(LoginData &data) :
             "rename",
             this);
         placer(n, 0, mRenameButton, 1, 1);
+        n ++;
+    }
+#ifdef TMWA_SUPPORT
+    if (serverFeatures->havePincode())
+#endif
+    {
+        mChangePinButton = new Button(this,
+            // TRANSLATORS: change pincode button
+            _("Change pin"),
+            "changepin",
+            this);
+        placer(n, 0, mChangePinButton, 1, 1);
         n ++;
     }
     placer(n, 0, mInfoButton, 1, 1);
@@ -320,6 +333,13 @@ void CharSelectDialog::action(const ActionEvent &event)
             }
         }
         mDeleteIndex = -1;
+    }
+    else if (eventId == "changepin")
+    {
+        if (blocked)
+            return;
+        pincodeManager.setState(PincodeState::Change);
+        pincodeManager.updateState();
     }
 }
 
