@@ -55,7 +55,7 @@ class PincodeManager final
         void setAccountId(const BeingId id)
         { mAccountId = id; }
 
-        void setState(const PincodeState state)
+        void setState(const PincodeStateT state)
         { mState = state; }
 
         void changePincode(const std::string &pincode);
@@ -76,7 +76,7 @@ class PincodeManager final
         uint32_t mSeed;
         BeingId mAccountId;
         Window *mDialog;
-        PincodeState mState;
+        PincodeStateT mState;
 };
 
 extern PincodeManager pincodeManager;
