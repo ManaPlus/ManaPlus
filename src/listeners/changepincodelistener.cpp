@@ -37,7 +37,7 @@ void ChangePincodeListener::action(const ActionEvent &event)
             event.getSource());
         if (dialog != nullptr)
         {
-            const std::string pincode = dialog->getMsg();
+            const std::string &pincode = dialog->getMsg();
             pincodeManager.changePincode(pincode);
         }
     }
