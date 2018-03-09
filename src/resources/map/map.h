@@ -42,7 +42,10 @@
 #include "resources/map/properties.h"
 
 class AmbientLayer;
+#ifdef USE_OPENGL
 class AtlasResource;
+#endif  // USE_OPENGL
+
 class MapHeights;
 class MapItem;
 class MapLayer;
@@ -284,8 +287,6 @@ class Map final : public Properties,
         int getActorsCount() const restrict2 A_WARN_UNUSED
         { return CAST_S32(mActors.size()); }
 
-        int getAtlasCount() const restrict2 A_WARN_UNUSED;
-
         void setPvpMode(const int mode) restrict2;
 
         int getPvpMode() const restrict2 noexcept2 A_WARN_UNUSED
@@ -330,8 +331,15 @@ class Map final : public Properties,
                                             restrict2 noexcept2 A_WARN_UNUSED
         { return mTileAnimations; }
 
+#ifdef USE_OPENGL
+        int getAtlasCount() const restrict2 A_WARN_UNUSED;
+
         void setAtlas(AtlasResource *restrict const atlas) restrict2 noexcept2
         { mAtlas = atlas; }
+
+        bool haveAtlas() const
+        { return mAtlas != nullptr; }
+#endif  // USE_OPENGL
 
         const MetaTile *getMetaTiles() const restrict2 noexcept2
         { return mMetaTiles; }
@@ -364,9 +372,6 @@ class Map final : public Properties,
 
         std::string getCounterName() const override final
         { return mName; }
-
-        bool haveAtlas() const
-        { return mAtlas != nullptr; }
 
     protected:
         friend class Actor;
@@ -486,7 +491,10 @@ class Map final : public Properties,
         int mDrawScrollX;
         int mDrawScrollY;
         int mMask;
+#ifdef USE_OPENGL
         AtlasResource *mAtlas;
+#endif  // USE_OPENGL
+
         const MapHeights *mHeights;
         bool mRedrawMap;
         bool mBeingOpacity;

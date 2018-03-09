@@ -67,9 +67,11 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     mMapActorCountLabel(new Label(this, strprintf("%s %d",
         // TRANSLATORS: debug window label
         _("Map actors count:"), 88888))),
+#ifdef USE_OPENGL
     mMapAtlasCountLabel(new Label(this, strprintf("%s %d",
         // TRANSLATORS: debug window label
         _("Map atlas count:"), 88888))),
+#endif  // USE_OPENGL
     // TRANSLATORS: debug window label
     mXYLabel(new Label(this, strprintf("%s (?,?)", _("Player Position:")))),
     mTexturesLabel(nullptr),
@@ -144,11 +146,11 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
     place(0, 7, mTileMouseLabel, 2, 1);
     place(0, 8, mParticleCountLabel, 2, 1);
     place(0, 9, mMapActorCountLabel, 2, 1);
-    place(0, 10, mMapAtlasCountLabel, 2, 1);
 #ifdef USE_OPENGL
+    place(0, 10, mMapAtlasCountLabel, 2, 1);
 #if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS) \
     || defined(DEBUG_BIND_TEXTURE)
-    int n = 10;
+    int n = 11;
 #endif  // defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS)
         // || defined(DEBUG_BIND_TEXTURE)
 #ifdef DEBUG_OPENGL_LEAKS
@@ -225,11 +227,11 @@ void MapDebugTab::logic()
                 // TRANSLATORS: debug window label
                 strprintf("%s %d", _("Map actors count:"),
                 map->getActorsCount()));
+#ifdef USE_OPENGL
             mMapAtlasCountLabel->setCaption(
                 // TRANSLATORS: debug window label
                 strprintf("%s %d", _("Map atlas count:"),
                 map->getAtlasCount()));
-#ifdef USE_OPENGL
 #ifdef DEBUG_OPENGL_LEAKS
             mTexturesLabel->setCaption(strprintf("%s %d",
                 // TRANSLATORS: debug window label
@@ -269,14 +271,18 @@ void MapDebugTab::logic()
         mMapActorCountLabel->setCaption(
             // TRANSLATORS: debug window label
             strprintf("%s ?", _("Map actors count:")));
+#ifdef USE_OPENGL
         mMapAtlasCountLabel->setCaption(
             // TRANSLATORS: debug window label
             strprintf("%s ?", _("Map atlas count:")));
+#endif  // USE_OPENGL
     }
 
     mMapActorCountLabel->adjustSize();
-    mMapAtlasCountLabel->adjustSize();
     mParticleCountLabel->adjustSize();
+#ifdef USE_OPENGL
+    mMapAtlasCountLabel->adjustSize();
+#endif  // USE_OPENGL
 
     mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
     // TRANSLATORS: debug window label, logic per second

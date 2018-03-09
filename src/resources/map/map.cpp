@@ -147,7 +147,9 @@ Map::Map(const std::string &name,
     mDrawScrollX(-1),
     mDrawScrollY(-1),
     mMask(1),
+#ifdef USE_OPENGL
     mAtlas(nullptr),
+#endif  // USE_OPENGL
     mHeights(nullptr),
     mRedrawMap(true),
     mBeingOpacity(false),
@@ -192,11 +194,13 @@ Map::~Map()
     delete2(mTempLayer);
     delete2(mObjects);
     delete_all(mMapPortals);
+#ifdef USE_OPENGL
     if (mAtlas != nullptr)
     {
         mAtlas->decRef();
         mAtlas = nullptr;
     }
+#endif  // USE_OPENGL
     delete2(mHeights);
     delete [] mMetaTiles;
 }
@@ -1794,9 +1798,11 @@ int Map::calcMemoryChilds(const int level) const
     return sz;
 }
 
+#ifdef USE_OPENGL
 int Map::getAtlasCount() const restrict2
 {
     if (mAtlas == nullptr)
         return 0;
     return CAST_S32(mAtlas->atlases.size());
 }
+#endif  // USE_OPENGL

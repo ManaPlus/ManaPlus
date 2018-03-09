@@ -66,7 +66,9 @@ class MapDebugTab final : public DebugTab
         Label *mTileMouseLabel A_NONNULLPOINTER;
         Label *mParticleCountLabel A_NONNULLPOINTER;
         Label *mMapActorCountLabel A_NONNULLPOINTER;
+#ifdef USE_OPENGL
         Label *mMapAtlasCountLabel A_NONNULLPOINTER;
+#endif  // USE_OPENGL
         Label *mXYLabel A_NONNULLPOINTER;
         Label *mTexturesLabel A_NONNULLPOINTER;
         time_t mUpdateTime;
