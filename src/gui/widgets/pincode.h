@@ -21,14 +21,10 @@
 #ifndef GUI_WIDGETS_PINCODE_H
 #define GUI_WIDGETS_PINCODE_H
 
-#include "gui/fonts/textchunk.h"
-
 #include "gui/widgets/container.h"
 
 #include "listeners/actionlistener.h"
 #include "listeners/widgetlistener.h"
-
-#include "render/graphics.h"
 
 #include "localconsts.h"
 
