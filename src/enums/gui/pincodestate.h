@@ -30,7 +30,7 @@ enumStart(PincodeState)
     None = 0,
     Ask,
     Create,
-    Change,
+    Change
 }
 enumEnd(PincodeState);
 
