@@ -42,8 +42,8 @@ variables:
     expire_in: 3 week
   dependencies: []
 
-# too slow for one thread, with two threads rundom out of memory issue
-gcc-7_sanitize_i386:
+# crash in config tests
+.gcc-7_sanitize_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc7_sanitize.sh

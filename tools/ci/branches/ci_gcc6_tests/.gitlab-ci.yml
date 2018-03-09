@@ -28,6 +28,7 @@ variables:
   artifacts:
     paths:
     - logs
+    - manaplus/logs
     when: always
     expire_in: 3 week
   dependencies: []
@@ -36,6 +37,7 @@ variables:
   artifacts:
     paths:
     - logs
+    - manaplus/logs
     when: always
     expire_in: 3 week
   dependencies: []
@@ -55,10 +57,10 @@ gcc-6_sanitize_doctest_tests:
   tags:
     - docker
 
-gcc-6_sanitize_doctest_tests_i386:
+gcc-6_doctest_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc6_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   - ldd ./src/manaplustests | grep "libasan"
   image: vicamo/debian:sid-i386
   <<: *job-push

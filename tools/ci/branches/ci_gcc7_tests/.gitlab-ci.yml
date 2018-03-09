@@ -58,11 +58,10 @@ gcc-7_sanitize_doctest_tests:
   tags:
     - docker
 
-gcc-7_sanitize_doctest_tests_i386:
+gcc-7_doctest_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
+  - ./tools/ci/jobs/gcc7_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -291,23 +290,14 @@ gcc-7_separate_doctest_sanitize_sdl2:
   tags:
     - docker
 
-gcc-7_separate_doctest_sanitize_i386:
+gcc-7_separate_doctest_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
-  - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
-                    -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
-                    -fsanitize=vla-bound -fsanitize=null -fsanitize=return
-                    -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
-                    -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
-                    -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -316,23 +306,14 @@ gcc-7_separate_doctest_sanitize_i386:
   tags:
     - docker
 
-gcc-7_separate_doctest_sanitize_sdl2_i386:
+gcc-7_separate_doctest_sdl2_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
   - ./tools/ci/scripts/separateunittests.sh
-  - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
-                    -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
-                    -fsanitize=vla-bound -fsanitize=null -fsanitize=return
-                    -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
-                    -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
-                    -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 

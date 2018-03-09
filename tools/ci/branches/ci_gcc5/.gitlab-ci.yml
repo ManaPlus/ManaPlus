@@ -28,6 +28,7 @@ variables:
   artifacts:
     paths:
     - logs
+    - manaplus/logs
     when: always
     expire_in: 3 week
   dependencies: []
@@ -36,6 +37,7 @@ variables:
   artifacts:
     paths:
     - logs
+    - manaplus/logs
     when: always
     expire_in: 3 week
   dependencies: []
@@ -86,7 +88,8 @@ gcc-5_sanitize_tests:
   tags:
     - docker
 
-gcc-5_sanitize_tests_i386:
+# configure test look like crashed
+.gcc-5_sanitize_tests_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-dyecmd --without-manaplusgame
@@ -117,7 +120,8 @@ gcc-5_sanitize_no_opengl_tests:
   tags:
     - docker
 
-gcc-5_sanitize_no_opengltests_i386:
+# configure test look like crashed
+.gcc-5_sanitize_no_opengltests_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize_tests.sh --without-opengl --without-dyecmd --without-manaplusgame
@@ -148,7 +152,8 @@ gcc-5_sanitize:
   tags:
     - docker
 
-gcc-5_sanitize_i386:
+# configure test look like crashed
+.gcc-5_sanitize_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc5_sanitize.sh
