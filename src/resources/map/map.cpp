@@ -42,7 +42,9 @@
 
 #include "resources/ambientlayer.h"
 
+#ifdef USE_OPENGL
 #include "resources/atlas/atlasresource.h"
+#endif  // USE_OPENGL
 
 #include "resources/image/subimage.h"
 
@@ -58,7 +60,6 @@
 #include "resources/map/tileanimation.h"
 #include "resources/map/tileset.h"
 #include "resources/map/walklayer.h"
-
 
 #ifdef USE_OPENGL
 #include "render/renderers.h"
