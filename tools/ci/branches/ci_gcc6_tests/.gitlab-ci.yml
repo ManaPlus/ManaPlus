@@ -61,7 +61,6 @@ gcc-6_doctest_tests_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  - ldd ./src/manaplustests | grep "libasan"
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
