@@ -337,6 +337,7 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
     }
     msg.readInt16("len");
     bool isEnd = true;
+
     if (packetVersion < 20170419)
     {
         mailWindow->setOpenType(fromInt(msg.readUInt8("open type"),
@@ -356,7 +357,8 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
                 mail->time = CAST_S32(cur_time - msg.readInt32("reg time"));
                 mail->strTime = timeToStr(mail->time);
             }
-            mail->expireTime = msg.readInt32("expire time");
+            mail->expireTime = msg.readInt32("expire time") + cur_time;
+            mail->expired = mail->expireTime <= 0;
             mail->title = msg.readString(-1, "title");
             mailWindow->addMail(mail);
         }
@@ -375,7 +377,8 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
                 msg.readUInt8("type"));
             mail->sender = msg.readString(24, "sender name");
             mail->strTime = "-";
-            mail->expireTime = msg.readInt32("expire time");
+            mail->expireTime = msg.readInt32("expire time") + cur_time;
+            mail->expired = mail->expireTime <= 0;
             mail->title = msg.readString(-1, "title");
             mailWindow->addMail(mail);
         }

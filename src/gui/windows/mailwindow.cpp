@@ -194,6 +194,11 @@ std::string MailWindow::getMailHeader(const MailMessage *const message) const
     if (mUseMail2)
     {
         std::string header;
+        if (message->expired)
+        {
+            // TRANSLATORS: expired mail message prefix
+            header = _("(expired)");
+        }
         if (message->read)
             header.append(" ");
         else

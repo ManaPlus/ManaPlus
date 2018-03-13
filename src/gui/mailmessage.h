@@ -39,7 +39,8 @@ struct MailMessage final
         expireTime(0),
         money(0),
         type(MailMessageType::Text),
-        read(false)
+        read(false),
+        expired(false)
     {
     }
 
@@ -55,5 +56,6 @@ struct MailMessage final
     int64_t money;
     MailMessageType::Type type;
     bool read;
+    bool expired;
 };
 #endif  // GUI_MAILMESSAGE_H
