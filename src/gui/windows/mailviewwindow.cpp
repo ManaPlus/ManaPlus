@@ -206,6 +206,11 @@ void MailViewWindow::action(const ActionEvent &event)
         mailEditWindow->setTo(mMessage->sender);
         mailEditWindow->setSubject("Re:" + mMessage->title);
         mailEditWindow->setMessage(">" + mMessage->text);
+        mail2Handler->queueCheckName(MailQueueType::ValidateTo,
+            mMessage->sender,
+            std::string(),
+            std::string(),
+            0);
         scheduleDelete();
     }
 }
