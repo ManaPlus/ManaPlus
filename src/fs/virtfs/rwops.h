@@ -55,7 +55,8 @@ namespace VirtFs
 {
     struct File;
 
-    SDL_RWops *create_rwops(File *const file);
+    SDL_RWops *create_rwops(File *const file,
+                            const std::string &restrict fname);
 
     SDL_RWops *rwopsOpenRead(const std::string &restrict fname);
     SDL_RWops *rwopsOpenWrite(const std::string &restrict fname) A_WARN_UNUSED;

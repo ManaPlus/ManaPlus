@@ -50,6 +50,7 @@
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/fsfuncs.h"
 
+#include "utils/checkutils.h"
 #include "utils/fuzzer.h"
 
 PRAGMA48(GCC diagnostic push)
@@ -62,13 +63,15 @@ PRAGMA48(GCC diagnostic pop)
 namespace VirtFs
 {
 
-SDL_RWops *create_rwops(File *const file)
+SDL_RWops *create_rwops(File *const file,
+                        const std::string &restrict fname)
 {
     SDL_RWops *retval = nullptr;
 
     if (file == nullptr)
     {
-        logger->assertLog("VirtFs::rwops_seek: create rwops error.");
+        reportAlways("VirtFs::rwops_seek: create rwops error: %s",
+            fname.c_str());
     }
     else
     {
@@ -114,13 +117,15 @@ SDL_RWops *rwopsOpenRead(const std::string &restrict fname)
 #endif  // USE_FUZZER
 #ifdef USE_PROFILER
 
-    SDL_RWops *const ret = create_rwops(openRead(fname));
+    SDL_RWops *const ret = create_rwops(openRead(fname),
+        fname);
 
     BLOCK_END("RWopsopenRead")
     return ret;
 #else  // USE_PROFILER
 
-    return create_rwops(openRead(fname));
+    return create_rwops(openRead(fname),
+        fname);
 #endif  // USE_PROFILER
 } /* RWopsopenRead */
 
@@ -131,7 +136,8 @@ SDL_RWops *rwopsOpenWrite(const std::string &restrict fname)
         return nullptr;
 #endif  // __APPLE__
 
-    return create_rwops(openWrite(fname));
+    return create_rwops(openWrite(fname),
+        fname);
 } /* RWopsopenWrite */
 
 SDL_RWops *rwopsOpenAppend(const std::string &restrict fname)
@@ -141,7 +147,8 @@ SDL_RWops *rwopsOpenAppend(const std::string &restrict fname)
         return nullptr;
 #endif  // __APPLE__
 
-    return create_rwops(openAppend(fname));
+    return create_rwops(openAppend(fname),
+        fname);
 } /* RWopsopenAppend */
 
 }  // namespace VirtFs
