@@ -173,7 +173,7 @@ packet(SMSG_GUILD_SKILL_INFO,              0x0162,  -1, &GuildRecv::processGuild
 packet(SMSG_GUILD_UPDATE_COORDS,           0x01eb,  10, &GuildRecv::processGuildUpdateCoords,           0);
 packet(SMSG_IGNORE_ALL_RESPONSE,           0x00d2,   4, &Ea::ChatRecv::processIgnoreAllResponse,        0);
 packet(SMSG_IGNORE_NICK_ACK,               0x00d1,   4, &ChatRecv::processIgnoreNickAck,                0);
-packet(SMSG_ITEM_MVP_DROPPED,              0x07fd,  59, &ItemRecv::processItemMvpDropped,               0);
+packet(SMSG_ITEM_MVP_DROPPED,              0x07fd,  -1, &ItemRecv::processItemMvpDropped,               0);
 packet(SMSG_ITEM_REMOVE,                   0x00a1,   6, &Ea::ItemRecv::processItemRemove,               0);
 packet(SMSG_ITEM_USE_RESPONSE,             0x00a8,   7, &Ea::InventoryRecv::processItemUseResponse,     0);
 packet(SMSG_ITEM_VISIBLE,                  0x009d,  17, &ItemRecv::processItemVisible,                  0);
