@@ -4436,8 +4436,11 @@ void Being::recalcSpritesOrder() restrict2
                             if (repIt == itemReplacer.end())
                             {
                                 repIt = itemReplacer.find(0);
-                                if (repIt->second == 0)
+                                if (repIt == itemReplacer.end() ||
+                                    repIt->second == 0)
+                                {
                                     repIt = itemReplacer.end();
+                                }
                             }
                             if (repIt != itemReplacer.end())
                             {
