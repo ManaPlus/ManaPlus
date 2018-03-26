@@ -37,13 +37,12 @@ static class SortPartyFunctor final
         bool operator() (const PartyMember *const p1,
                          const PartyMember *const p2) const
         {
-            if ((p1 == nullptr) || (p2 == nullptr))
+            if (p1 == nullptr || p2 == nullptr)
                 return false;
-            if (p1->getLeader())
-                return true;
-            if (p2->getLeader())
-                return false;
-
+            const int leader1 = CAST_S32(p1->getLeader());
+            const int leader2 = CAST_S32(p2->getLeader());
+            if (leader1 != leader2)
+                return leader1 >= leader2;
             if (p1->getName() != p2->getName())
             {
                 std::string s1 = p1->getName();
