@@ -40,6 +40,7 @@ struct Location final
              MetaTile *const ptile) :
         x(px),
         y(py),
+        tileCost(ptile->Fcost),
         tile(ptile)
     {}
 
@@ -50,10 +51,11 @@ struct Location final
      */
     bool operator< (const Location &loc) const
     {
-        return tile->Fcost > loc.tile->Fcost;
+        return tileCost > loc.tileCost;
     }
 
     int x, y;
+    int tileCost;
     MetaTile *tile;
 };
 
