@@ -1301,6 +1301,8 @@ void MobileOpenGL2Graphics::finalize(ImageVertexes *restrict const vert)
     STD_VECTOR<GLuint>::const_iterator ivbo;
 
     const int sz = CAST_S32(floatTexPool.size());
+    if (sz == 0)
+        return;
     vbos.resize(sz);
     mglGenBuffers(sz, &vbos[0]);
 
