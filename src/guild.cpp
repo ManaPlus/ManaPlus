@@ -43,12 +43,12 @@ static class SortGuildFunctor final
 
             if (m1->getOnline() != m2->getOnline())
             {
-                return static_cast<int>(m1->getOnline()) >
+                return static_cast<int>(m1->getOnline()) >=
                     static_cast<int>(m2->getOnline());
             }
 
             if (m1->getPos() != m2->getPos())
-                return m1->getPos() > m2->getPos();
+                return m1->getPos() >= m2->getPos();
 
             if (m1->getName() != m2->getName())
             {
