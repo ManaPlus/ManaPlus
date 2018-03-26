@@ -63,6 +63,7 @@
 
 #include "gui/widgets/basiccontainer.h"
 
+#include "utils/checkutils.h"
 #include "utils/foreach.h"
 
 #include "render/graphics.h"
@@ -79,6 +80,12 @@ BasicContainer::~BasicContainer()
 
 void BasicContainer::moveToTop(Widget *const widget) restrict2
 {
+    if (widget == nullptr)
+    {
+        reportAlways("BasicContainer::moveToTop empty widget.");
+        return;
+    }
+
     FOR_EACH (WidgetListIterator, iter, mWidgets)
     {
         if (*iter == widget)
@@ -101,6 +108,11 @@ void BasicContainer::moveToTop(Widget *const widget) restrict2
 
 void BasicContainer::moveToBottom(Widget *const widget) restrict2
 {
+    if (widget == nullptr)
+    {
+        reportAlways("BasicContainer::moveToBottom empty widget.");
+        return;
+    }
     const WidgetListIterator iter = std::find(mWidgets.begin(),
         mWidgets.end(), widget);
     if (iter != mWidgets.end())
