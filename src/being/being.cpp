@@ -5589,12 +5589,12 @@ void Being::setGroupId(const int id)
     if (mGroupId != id)
     {
         mGroupId = id;
-        showGmBadge(id != 0);
         const bool gm = GroupDb::getHighlightName(mGroupId);
         if (mIsGM != gm)
         {
             mIsGM = gm;
             updateColors();
         }
+        showGmBadge(id != 0);
     }
 }
