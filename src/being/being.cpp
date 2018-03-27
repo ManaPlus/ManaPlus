@@ -2436,7 +2436,6 @@ void Being::drawSpeech(const int offsetX,
             mSpeechBubble->setPosition(px - (mSpeechBubble->getWidth() / 2),
                 py - getHeight() - (mSpeechBubble->getHeight()));
             mSpeechBubble->setVisible(Visible_true);
-            mSpeechBubble->requestMoveToBackground();
         }
     }
     else if (mSpeechTime > 0 && speech == BeingSpeech::TEXT_OVERHEAD)
