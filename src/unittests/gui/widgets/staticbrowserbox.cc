@@ -80,7 +80,7 @@ TEST_CASE("StaticBrowserBox tests", "browserbox")
     gui->postInit(mainGraphics);
 
     Widget::setGlobalFont(new Font(
-        "/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans-Oblique.ttf",
+        "fonts/dejavusans.ttf",
         18,
         TTF_STYLE_NORMAL));
     StaticBrowserBox *const box = new StaticBrowserBox(nullptr,
