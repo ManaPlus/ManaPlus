@@ -44,8 +44,6 @@
 
 #include "fs/virtfs/rwops.h"
 
-#include "logger.h"
-
 #include "fs/virtfs/file.h"
 #include "fs/virtfs/fs.h"
 #include "fs/virtfs/fsfuncs.h"
