@@ -4420,18 +4420,20 @@ void Being::recalcSpritesOrder() restrict2
             {
                 FOR_EACHP (SpriteToItemMapCIter, itr, spriteToItems)
                 {
-                    const int remSprite = itr->first;
+                    const int remSlot = itr->first;
                     const IntMap &restrict itemReplacer = itr->second;
-                    if (remSprite >= 0)
+                    if (remSlot >= 0)
                     {   // slot known
+                        if (CAST_U32(remSlot) >= spriteIdSize)
+                            continue;
                         if (itemReplacer.empty())
                         {
-                            mSpriteHide[remSprite] = 1;
+                            mSpriteHide[remSlot] = 1;
                         }
-                        else if (mSpriteHide[remSprite] != 1)
+                        else if (mSpriteHide[remSlot] != 1)
                         {
                             IntMapCIter repIt = itemReplacer.find(
-                                mSlots[remSprite].spriteId);
+                                mSlots[remSlot].spriteId);
                             if (repIt == itemReplacer.end())
                             {
                                 repIt = itemReplacer.find(0);
@@ -4443,21 +4445,21 @@ void Being::recalcSpritesOrder() restrict2
                             }
                             if (repIt != itemReplacer.end())
                             {
-                                mSpriteHide[remSprite] = repIt->second;
+                                mSpriteHide[remSlot] = repIt->second;
                                 if (repIt->second != 1)
                                 {
-                                    if (CAST_U32(remSprite)
+                                    if (CAST_U32(remSlot)
                                         != hairSlot)
                                     {
-                                        setTempSprite(remSprite,
+                                        setTempSprite(remSlot,
                                             repIt->second);
                                     }
                                     else
                                     {
-                                        setHairTempSprite(remSprite,
+                                        setHairTempSprite(remSlot,
                                             repIt->second);
                                     }
-                                    updatedSprite[remSprite] = true;
+                                    updatedSprite[remSlot] = true;
                                 }
                             }
                         }
