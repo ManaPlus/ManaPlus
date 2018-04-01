@@ -43,7 +43,9 @@ Pincode::Pincode(const Widget2 *const widget,
     mText(),
     mTextField(textField),
     mPadding(0),
-    mSpacing(2)
+    mSpacing(2),
+    mButtonWidth(0),
+    mButtonHeight(0)
 {
     mAllowLogic = false;
     setOpaque(Opaque_false);
