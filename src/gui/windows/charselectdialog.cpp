@@ -662,8 +662,6 @@ void CharSelectDialog::setName(const BeingId id, const std::string &newName)
          i < fsz;
          ++i)
     {
-        if (mCharacterEntries[i] == nullptr)
-            continue;
         CharacterDisplay *const character = mCharacterEntries[i];
         if (character == nullptr)
             continue;
