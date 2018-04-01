@@ -132,7 +132,7 @@ class Theme final : public Palette,
          *
          * @return the requested color
          */
-        inline const Color &getColor(ThemeColorIdT type,
+        inline const Color &getColor(const ThemeColorIdT type,
                                      const unsigned int alpha) A_WARN_UNUSED
         {
             if (CAST_SIZE(type) >= mColors.size())
@@ -140,11 +140,17 @@ class Theme final : public Palette,
                 logger->log("incorrect color request type: %d from %u",
                     CAST_S32(type),
                     CAST_U32(mColors.size()));
-                type = ThemeColorId::BROWSERBOX;
+                Color *const col = &mColors[CAST_SIZE(
+                    ThemeColorId::BROWSERBOX)].color;
+                col->a = alpha;
+                return *col;
             }
-            Color *const col = &mColors[CAST_SIZE(type)].color;
-            col->a = alpha;
-            return *col;
+            else
+            {
+                Color *const col = &mColors[CAST_SIZE(type)].color;
+                col->a = alpha;
+                return *col;
+            }
         }
 
         ThemeColorIdT getIdByChar(const signed char c,
