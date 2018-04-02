@@ -50,7 +50,6 @@ class MapHeights;
 class MapItem;
 class MapLayer;
 class ObjectsLayer;
-class Resource;
 class SpecialLayer;
 class Tileset;
 class TileAnimation;

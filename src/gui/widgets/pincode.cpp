@@ -162,7 +162,7 @@ void Pincode::action(const ActionEvent &event)
     }
     if (mText.size() >= 4)
         return;
-    Widget *const eventSrc = event.getSource();
+    const Widget *const eventSrc = event.getSource();
     for (int f = 0; f < 10; f ++)
     {
         if (mButtons[f] == eventSrc)
@@ -176,7 +176,7 @@ void Pincode::action(const ActionEvent &event)
     }
 }
 
-void Pincode::shuffle(uint32_t seed)
+void Pincode::shuffle(uint32_t seed) const
 {
     int tab[10];
     const uint32_t multiplier = 0x3498;

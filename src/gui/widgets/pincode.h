@@ -48,7 +48,7 @@ class Pincode final : public Container,
 
         void action(const ActionEvent &event) override final;
 
-        void shuffle(uint32_t seed);
+        void shuffle(uint32_t seed) const;
 
         static Skin *mSkin;
 
