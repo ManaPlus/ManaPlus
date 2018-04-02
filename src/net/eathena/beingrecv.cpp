@@ -1450,7 +1450,10 @@ void BeingRecv::processBeingSpecialEffect(Net::MessageIn &msg)
     const BeingId id = msg.readBeingId("being id");
     Being *const being = actorManager->findBeing(id);
     if (being == nullptr)
+    {
+        msg.readInt32("effect type");
         return;
+    }
 
     const int effectType = msg.readInt32("effect type");
 
