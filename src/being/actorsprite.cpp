@@ -61,8 +61,6 @@
 
 #define end_foreach }
 
-static const unsigned int STATUS_EFFECTS = 32;
-
 AnimatedSprite *ActorSprite::targetCursor
     [CAST_SIZE(TargetCursorType::NUM_TCT)]
     [CAST_SIZE(TargetCursorSize::NUM_TC)];
@@ -218,34 +216,6 @@ void ActorSprite::setStatusEffect(const int32_t index,
     }
 }
 
-// function for legacy configs only. Must be removed in future
-void ActorSprite::setStatusEffectBlock(const int offset,
-                                       const uint16_t newEffects)
-{
-    for (unsigned i = 0; i < STATUS_EFFECTS; i++)
-    {
-        const bool val = (newEffects & (1 << i)) > 0;
-        const int32_t index = StatusEffectDB::blockIdToId(
-            offset + i);  // block-id (offset + i) to id (index)
-
-        if (index != -1)
-        {
-            setStatusEffect(index,
-                fromBool(val, Enable),
-                IsStart_true);
-        }
-        else if (val && config.getBoolValue("unimplimentedLog"))
-        {
-            const std::string str = strprintf(
-                "Error: unknown effect by block-index. "
-                "Offset: %d, effect int: %d, i: %u",
-                offset, CAST_S32(newEffects), i);
-            logger->log(str);
-            DebugMessageListener::distributeEvent(str);
-        }
-    }
-}
-
 static void applyEffectByOption(ActorSprite *const actor,
                                 uint32_t option,
                                 const char *const name,
@@ -316,67 +286,32 @@ void ActorSprite::setStatusEffectOpitons(const uint32_t option,
                                          const uint32_t opt2,
                                          const uint32_t opt3)
 {
-    if (settings.legacyEffects == false)
-    {
-        applyEffectByOption(this, option, "option",
-            StatusEffectDB::getOptionMap());
-        applyEffectByOption1(this, opt1, "opt1",
-            StatusEffectDB::getOpt1Map());
-        applyEffectByOption(this, opt2, "opt2",
-            StatusEffectDB::getOpt2Map());
-        applyEffectByOption(this, opt3, "opt3",
-            StatusEffectDB::getOpt3Map());
-    }
-    else
-    {
-        uint32_t statusEffects = opt2;
-        statusEffects |= option << 16;
-        setStatusEffectBlock(0,
-            CAST_U16((statusEffects >> 16) & 0xffffU));
-        setStatusEffectBlock(16,
-            CAST_U16(statusEffects & 0xffffU));
-        setStatusEffectBlock(32,
-            CAST_U16(opt3));
-    }
+    applyEffectByOption(this, option, "option",
+        StatusEffectDB::getOptionMap());
+    applyEffectByOption1(this, opt1, "opt1",
+        StatusEffectDB::getOpt1Map());
+    applyEffectByOption(this, opt2, "opt2",
+        StatusEffectDB::getOpt2Map());
+    applyEffectByOption(this, opt3, "opt3",
+        StatusEffectDB::getOpt3Map());
 }
 
 void ActorSprite::setStatusEffectOpitons(const uint32_t option,
                                          const uint32_t opt1,
                                          const uint32_t opt2)
 {
-    if (settings.legacyEffects == false)
-    {
-        applyEffectByOption(this, option, "option",
-            StatusEffectDB::getOptionMap());
-        applyEffectByOption1(this, opt1, "opt1",
-            StatusEffectDB::getOpt1Map());
-        applyEffectByOption(this, opt2, "opt2",
-            StatusEffectDB::getOpt2Map());
-    }
-    else
-    {
-        uint32_t statusEffects = opt2;
-        statusEffects |= option << 16;
-        setStatusEffectBlock(0,
-            CAST_U16((statusEffects >> 16) & 0xffffU));
-        setStatusEffectBlock(16,
-            CAST_U16(statusEffects & 0xffffU));
-    }
+    applyEffectByOption(this, option, "option",
+        StatusEffectDB::getOptionMap());
+    applyEffectByOption1(this, opt1, "opt1",
+        StatusEffectDB::getOpt1Map());
+    applyEffectByOption(this, opt2, "opt2",
+        StatusEffectDB::getOpt2Map());
 }
 
 void ActorSprite::setStatusEffectOpiton0(const uint32_t option)
 {
-    if (settings.legacyEffects == false)
-    {
-        applyEffectByOption(this, option, "option",
-            StatusEffectDB::getOptionMap());
-    }
-    else
-    {
-        const uint32_t statusEffects = option << 16;
-        setStatusEffectBlock(0,
-            CAST_U16((statusEffects >> 16) & 0xffff));
-    }
+    applyEffectByOption(this, option, "option",
+        StatusEffectDB::getOptionMap());
 }
 
 void ActorSprite::updateStatusEffect(const int32_t index,

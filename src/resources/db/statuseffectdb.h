@@ -48,15 +48,6 @@ namespace StatusEffectDB
     StatusEffect *getStatusEffect(const int index,
                                   const Enable enabling) A_WARN_UNUSED;
 
-    /**
-     * Maps a block effect index to its corresponding effect index.  Block
-     * effect indices are used for opt2/opt3/status.option blocks; their
-     * mapping to regular effect indices is handled in the config file.
-     *
-     * Returns -1 on failure.
-     */
-    int blockIdToId(const int blocKIndex) A_WARN_UNUSED;
-
     void load();
 
     void loadXmlFile(const std::string &fileName,

@@ -91,7 +91,6 @@ class Settings final
             pseudoAwayMode(false),
             fixDeadAnimation(true),
             disableLoggingInGame(false),
-            legacyEffects(true),
             enableRemoteCommands(true),
             uselonglivesprites(false),
             unknownSkillsAutoTab(true),
@@ -156,7 +155,6 @@ class Settings final
         bool pseudoAwayMode;
         bool fixDeadAnimation;
         bool disableLoggingInGame;
-        bool legacyEffects;
         bool enableRemoteCommands;
         bool uselonglivesprites;
         bool unknownSkillsAutoTab;

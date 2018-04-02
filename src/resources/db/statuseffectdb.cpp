@@ -42,16 +42,7 @@ namespace
     OptionsMap opt1ToIdMap;
     OptionsMap opt2ToIdMap;
     OptionsMap opt3ToIdMap;
-
-    OptionsMap blockIdToIdMap;
 }  // namespace
-
-int StatusEffectDB::blockIdToId(const int blockIndex)
-{
-    if (blockIdToIdMap.find(blockIndex) == blockIdToIdMap.end())
-        return -1;
-    return blockIdToIdMap[blockIndex];
-}
 
 StatusEffect *StatusEffectDB::getStatusEffect(const int index,
                                               const Enable enabling)
@@ -78,11 +69,6 @@ void StatusEffectDB::load()
         SkipError_true);
     loadXmlDir("statusEffectsPatchDir", loadXmlFile);
 
-    if (!blockIdToIdMap.empty())
-    {
-        reportAlways("Detected legacy attribute block-id "
-            "in status-effects.xml");
-    }
     mLoaded = true;
 }
 
@@ -113,12 +99,6 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
         }
 
         int id = XML::getProperty(node, "id", -1);
-
-        // legacy field. Only for clients 1.6.3.12 and older
-        const int blockId = XML::getProperty(node, "block-id", -1);
-        if (id >= 0 && blockId >= 0)
-            blockIdToIdMap[blockId] = id;
-
         if (id == -1)
         {
             id = fakeId;
@@ -131,22 +111,18 @@ void StatusEffectDB::loadXmlFile(const std::string &fileName,
         if (option != 0)
         {
             optionToIdMap[option] = id;
-            settings.legacyEffects = false;
         }
         if (opt1 != 0)
         {
             opt1ToIdMap[opt1] = id;
-            settings.legacyEffects = false;
         }
         if (opt2 != 0)
         {
             opt2ToIdMap[opt2] = id;
-            settings.legacyEffects = false;
         }
         if (opt3 != 0)
         {
             opt3ToIdMap[opt3] = id;
-            settings.legacyEffects = false;
         }
 
         StatusEffect *startEffect = statusEffects[1][id];
@@ -225,7 +201,6 @@ void StatusEffectDB::unload()
     opt1ToIdMap.clear();
     opt2ToIdMap.clear();
     opt3ToIdMap.clear();
-    blockIdToIdMap.clear();
 
     mLoaded = false;
 }
