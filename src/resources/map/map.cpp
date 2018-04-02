@@ -539,12 +539,12 @@ void Map::draw(Graphics *restrict const graphics,
 }
 
 #define fillCollision(collision, color) \
-    if (x < endX && mMetaTiles[tilePtr].blockmask & collision)\
+    if (x < endX && mMetaTiles[tilePtr].blockmask & (collision))\
     {\
         width = mapTileSize;\
         for (int x2 = tilePtr + 1; x < endX; x2 ++)\
         {\
-            if (!(mMetaTiles[x2].blockmask & collision))\
+            if (!(mMetaTiles[x2].blockmask & (collision)))\
                 break;\
             width += mapTileSize;\
             x ++;\

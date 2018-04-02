@@ -48,7 +48,7 @@ extern const char *dirSeparator;
 
 #define readVal(val, sz, msg) \
     cnt = fread(static_cast<void*>(val), 1, sz, arcFile); \
-    if (cnt != sz) \
+    if (cnt != (sz)) \
     { \
         reportAlways("Error reading " msg " in file %s", \
             archiveName.c_str()); \

@@ -28,9 +28,9 @@
     mPackets[pid].version = ver
 
 #define packet2(pname, pid, sz, pfunc, ver) \
-    mPackets[pid + evolPacketOffset].name = #pname; \
-    mPackets[pid + evolPacketOffset].len = sz; \
-    mPackets[pid + evolPacketOffset].func = pfunc; \
-    mPackets[pid + evolPacketOffset].version = ver
+    mPackets[(pid) + (evolPacketOffset)].name = #pname; \
+    mPackets[(pid) + (evolPacketOffset)].len = sz; \
+    mPackets[(pid) + (evolPacketOffset)].func = pfunc; \
+    mPackets[(pid) + (evolPacketOffset)].version = ver
 
 #endif  // NET_RECVPACKETDEFINE_H

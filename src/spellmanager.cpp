@@ -322,9 +322,9 @@ void SpellManager::load()
 #define setOrDel(str, method) \
     const std::string var##method = spell->method(); \
     if (!var##method.empty()) \
-        serverConfig.setValue(str + toString(i), var##method); \
+        serverConfig.setValue((str) + toString(i), var##method); \
     else \
-        serverConfig.deleteKey(str + toString(i));
+        serverConfig.deleteKey((str) + toString(i));
 
 void SpellManager::save() const
 {

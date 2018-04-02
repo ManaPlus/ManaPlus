@@ -809,7 +809,7 @@ void ChatWindow::mouseDragged(MouseEvent &event)
 }
 
 #define ifKey(key, str) \
-    else if (actionId == key) \
+    else if (actionId == (key)) \
     { \
         temp = str; \
     }

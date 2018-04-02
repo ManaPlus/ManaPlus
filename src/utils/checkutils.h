@@ -182,7 +182,7 @@ void reportStack();
     }
 
 #define returnFalseVReal(val) \
-    if (!val) \
+    if (!(val)) \
         return;
 
 #define returnTrueVReal(val) \
@@ -190,7 +190,7 @@ void reportStack();
         return;
 
 #define returnFalseReal(ret, val) \
-    if (!val) \
+    if (!(val)) \
         return ret;
 
 #define returnTrueReal(ret, val) \
@@ -209,7 +209,7 @@ void reportStack();
 #define failTrue(val) (val)
 
 #define returnFailFalseV(val) \
-    if (!val) \
+    if (!(val)) \
         return;
 
 #define returnFailTrueV(val) \
@@ -217,7 +217,7 @@ void reportStack();
         return;
 
 #define returnFailFalse(ret, val) \
-    if (!val) \
+    if (!(val)) \
         return ret;
 
 #define returnFailTrue(ret, val) \

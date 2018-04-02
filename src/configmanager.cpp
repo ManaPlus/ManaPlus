@@ -364,7 +364,7 @@ void ConfigManager::storeSafeParameters()
 #endif  // __native_client__
 
 #define unassignKey(key, value) \
-    if (config.getStringValue(prefix + key) == value) \
+    if (config.getStringValue(prefix + (key)) == (value)) \
         config.setValue(key, "-1");
 
 void ConfigManager::checkConfigVersion()

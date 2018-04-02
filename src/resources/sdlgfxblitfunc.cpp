@@ -40,8 +40,8 @@ PRAGMA48(GCC diagnostic pop)
 #include "debug.h"
 
 #define GFX_DUFFS_LOOP4(pixel_copy_increment, width) \
-    int n = (width + 3) / 4; \
-    switch (width & 3) \
+    int n = ((width) + 3) / 4; \
+    switch ((width) & 3) \
     { \
         case 0: do { \
             pixel_copy_increment; \

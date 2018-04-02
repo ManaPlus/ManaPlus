@@ -36,13 +36,13 @@ PRAGMA48(GCC diagnostic pop)
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
 #define buildHex(a, b, c, d) \
-    (d) * 16777216U + (c) * 65536U + (b) * 256U + CAST_U32(a)
+    ((d) * 16777216U + (c) * 65536U + (b) * 256U + CAST_U32(a))
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 #define buildHex(a, b, c, d) \
-    (a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d)
+    ((a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d))
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
 #define buildHexOgl(a, b, c, d) \
-    (a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d)
+    ((a) * 16777216U + (b) * 65536U + (c) * 256U + CAST_U32(d))
 
 #endif  // UTILS_BUILDHEX_H
