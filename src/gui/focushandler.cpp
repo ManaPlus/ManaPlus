@@ -381,14 +381,14 @@ void FocusHandler::requestFocus(const Widget *const widget)
     {
         mFocusedWidget = mWidgets.at(toBeFocusedIndex);
 
+        Event focusEvent(mFocusedWidget);
+        distributeFocusGainedEvent(focusEvent);
+
         if (oldFocused != nullptr)
         {
-            Event focusEvent(oldFocused);
-            distributeFocusLostEvent(focusEvent);
+            Event oldFocusEvent(oldFocused);
+            distributeFocusLostEvent(oldFocusEvent);
         }
-
-        Event focusEvent(mWidgets.at(toBeFocusedIndex));
-        distributeFocusGainedEvent(focusEvent);
     }
 }
 
