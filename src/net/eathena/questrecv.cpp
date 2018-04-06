@@ -185,7 +185,10 @@ void QuestRecv::processUpdateQuestsObjectives(Net::MessageIn &msg)
     for (int f = 0; f < num; f ++)
     {
         msg.readInt32("quest id");
-        msg.readInt32("monster id");
+        if (msg.getVersion() >= 20150513)
+            msg.readInt32("hunt ident");
+        else
+            msg.readInt32("monster id");
         msg.readInt16("count old");
         msg.readInt16("count new");
     }
