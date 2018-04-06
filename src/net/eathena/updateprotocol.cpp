@@ -28,9 +28,13 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionMain;
+extern int packetVersionRe;
+extern int packetVersionZero;
 extern int serverVersion;
 extern int evolPacketOffset;
 extern bool packets_main;
+extern bool packets_re;
 extern bool packets_zero;
 
 namespace EAthena
@@ -39,6 +43,27 @@ namespace EAthena
 void updateProtocol()
 {
     logger->log("packet version: %d", packetVersion);
+    if (packets_main == true)
+    {
+        logger->log("packets version type: main");
+        packetVersionMain = packetVersion;
+        packetVersionRe = 0;
+        packetVersionZero = 0;
+    }
+    else if (packets_re == true)
+    {
+        logger->log("packets version type: re");
+        packetVersionRe = packetVersion;
+        packetVersionMain = 0;
+        packetVersionZero = 0;
+    }
+    else if (packets_zero == true)
+    {
+        logger->log("packets version type: zero");
+        packetVersionZero = packetVersion;
+        packetVersionMain = 0;
+        packetVersionRe = 0;
+    }
 #define PACKETS_UPDATE
 #include "net/protocoloutupdate.h"
 #include "net/eathena/packetsout.inc"

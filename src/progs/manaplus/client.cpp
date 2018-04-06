@@ -191,6 +191,9 @@ volatile bool runCounters;
 bool isSafeMode = false;
 int serverVersion = 0;
 int packetVersion = 0;
+int packetVersionMain = 0;
+int packetVersionRe = 0;
+int packetVersionZero = 0;
 int packetsType = 0;
 bool packets_main = true;
 bool packets_re = false;
@@ -2015,6 +2018,9 @@ void Client::unloadData()
     localClan.clear();
     serverVersion = 0;
     packetVersion = 0;
+    packetVersionMain = 0;
+    packetVersionRe = 0;
+    packetVersionZero = 0;
     tmwServerVersion = 0;
     evolPacketOffset = 0;
 }
