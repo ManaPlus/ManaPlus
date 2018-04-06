@@ -928,6 +928,7 @@ if (packetVersion >= 20150513)
     packet(SMSG_QUEST_LIST,                0x09f8,  -1, &QuestRecv::processAddQuests,                   20150513);
     packet(SMSG_QUEST_ADD,                 0x09f9, 143, &QuestRecv::processAddQuest,                    20150513);
     packet(SMSG_QUEST_UPDATE_OBJECTIVES,   0x09fa,  -1, &QuestRecv::processUpdateQuestsObjectives,      20150513);
+    packet(SMSG_QUEST_NOTIFY_OBJECTIVES,   0x08fe,  -1, &QuestRecv::processUpdateQuestsObjectives2,     20150513);
 }
 
 // 20150805

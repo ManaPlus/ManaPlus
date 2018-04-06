@@ -194,6 +194,19 @@ void QuestRecv::processUpdateQuestsObjectives(Net::MessageIn &msg)
     }
 }
 
+void QuestRecv::processUpdateQuestsObjectives2(Net::MessageIn &msg)
+{
+    // ignored
+    const int num = (msg.readInt16("len") - 4) / 12;
+    for (int f = 0; f < num; f ++)
+    {
+        msg.readInt32("quest id");
+        msg.readInt32("monster id");
+        msg.readInt16("max count");
+        msg.readInt16("count");
+    }
+}
+
 void QuestRecv::processRemoveQuest(Net::MessageIn &msg)
 {
     const int var = msg.readInt32("quest id");
