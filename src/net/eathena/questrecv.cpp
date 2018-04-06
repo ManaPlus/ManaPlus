@@ -94,7 +94,24 @@ void QuestRecv::processAddQuests(Net::MessageIn &msg)
         {
             msg.readInt32("time diff");
             msg.readInt32("time");
-            msg.readInt16("objectives count");
+            const int cnt = msg.readInt16("objectives count");
+            for (int d = 0; d < cnt; d ++)
+            {
+                if (msg.getVersion() >= 20150513)
+                {
+                    msg.readInt32("hunt ident");
+                    msg.readInt32("mob type");
+                }
+                msg.readInt32("mob id");
+                if (msg.getVersion() >= 20150513)
+                {
+                    msg.readInt16("level min");
+                    msg.readInt16("level max");
+                }
+                msg.readInt16("hunt count");
+                msg.readInt16("max count");
+                msg.readString(24, "mob name");
+            }
         }
         if (questsWindow != nullptr)
             questsWindow->updateQuest(var, val, 0, 0, 0);
