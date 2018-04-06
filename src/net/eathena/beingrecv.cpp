@@ -72,6 +72,8 @@
 
 extern int serverVersion;
 extern OkDialog *deathNotice;
+extern bool packets_re;
+extern bool packets_main;
 
 namespace EAthena
 {
@@ -2112,6 +2114,14 @@ void BeingRecv::processSkillCancel(Net::MessageIn &msg)
 
 void BeingRecv::processSolveCharName(Net::MessageIn &msg)
 {
+    if ((packets_re == true && msg.getVersion() >= 20180221) ||
+        (packets_main == true && msg.getVersion() >= 20180307))
+    {
+        const int flag = msg.readInt16("flag");
+        // name request errors
+        if (flag != 3)
+            return;
+    }
     const int id = msg.readInt32("char id");
     if (actorManager == nullptr)
     {

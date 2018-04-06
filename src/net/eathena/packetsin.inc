@@ -1017,6 +1017,24 @@ if (packetVersion >= 20171207)
     packet(SMSG_PARTY_INFO,                0x0ae5,  -1, &PartyRecv::processPartyInfo,                   20171207);
 }
 
+// re 20180221
+if (packets_re == true)
+{
+if (packetVersion >= 20180221)
+{
+    packet(SMSG_SOLVE_CHAR_NAME,           0x0af7,  32, &BeingRecv::processSolveCharName,               20180221);
+}
+}
+
+// main 20180307
+if (packets_main == true)
+{
+if (packetVersion >= 20180307)
+{
+    packet(SMSG_SOLVE_CHAR_NAME,           0x0af7,  32, &BeingRecv::processSolveCharName,               20180307);
+}
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
