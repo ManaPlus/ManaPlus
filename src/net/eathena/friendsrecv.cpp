@@ -50,7 +50,8 @@ void FriendsRecv::processFriendsList(Net::MessageIn &msg)
     {
         msg.readBeingId("account id");
         msg.readInt32("char id");
-        msg.readString(24, "name");
+        if (!(packetVersionMain >= 20180307 || packetVersionRe >= 20180221))
+            msg.readString(24, "name");
     }
 }
 
