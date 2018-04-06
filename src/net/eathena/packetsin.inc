@@ -293,6 +293,7 @@ packet(SMSG_BOOKING_SUB_FILTERING_LIST,    0x090c,  30, nullptr,                
 packet(SMSG_ADD_MAP_MARKER,                0x09c1,  10, &MapRecv::processAddMapMarker,                  0);
 packet(SMSG_GUILD_ONLINE_INFO,             0x016d,  14, &GuildRecv::processOnlineInfo,                  0);
 packet(SMSG_FORMAT_MESSAGE_STRING,         0x02c2,  -1, &ChatRecv::processFormatMessageString,          0);
+packet(SMSG_FORMAT_COLOR_MESSAGE,          0x09cd,   8, &ChatRecv::processFormatColor,                  0);
 
 // 3
 if (packetVersion >= 3)
