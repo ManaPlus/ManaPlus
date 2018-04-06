@@ -48,6 +48,7 @@ namespace EAthena
         void processChatIgnoreList(Net::MessageIn &msg);
         void processFormatMessage(Net::MessageIn &msg);
         void processFormatMessageNumber(Net::MessageIn &msg);
+        void processFormatMessageString(Net::MessageIn &msg);
         void processFormatMessageSkill(Net::MessageIn &msg);
         void processChatDisplay(Net::MessageIn &msg);
         void processChatRoomJoinAck(Net::MessageIn &msg);
