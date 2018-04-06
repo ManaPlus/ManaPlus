@@ -1029,12 +1029,16 @@ if (packetVersion >= 20180221)
 }
 
 // main 20180307
-if (packets_main == true)
-{
-if (packetVersion >= 20180307)
+if (packetVersionMain >= 20180307)
 {
     packet(SMSG_SOLVE_CHAR_NAME,           0x0af7,  32, &BeingRecv::processSolveCharName,               20180307);
+    packet(SMSG_FRIENDS_PLAYER_ONLINE,     0x0206,  35, &FriendsRecv::processPlayerOnline,              20180307);
 }
+
+// re 20180221
+if (packetVersionRe >= 20180221)
+{
+    packet(SMSG_FRIENDS_PLAYER_ONLINE,     0x0206,  35, &FriendsRecv::processPlayerOnline,              20180221);
 }
 
 // 0

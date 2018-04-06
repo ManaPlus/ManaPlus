@@ -88,6 +88,8 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionMain;
+extern int packetVersionRe;
 extern int serverVersion;
 extern int evolPacketOffset;
 extern bool packets_zero;

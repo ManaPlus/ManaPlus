@@ -26,6 +26,9 @@
 
 #include "debug.h"
 
+extern int packetVersionMain;
+extern int packetVersionRe;
+
 namespace EAthena
 {
 
@@ -35,6 +38,8 @@ void FriendsRecv::processPlayerOnline(Net::MessageIn &msg)
     msg.readBeingId("account id");
     msg.readInt32("char id");
     msg.readUInt8("flag");  // 0 - online, 1 - offline
+    if (packetVersionMain >= 20180307 || packetVersionRe >= 20180221)
+        msg.readString(24, "player name");
 }
 
 void FriendsRecv::processFriendsList(Net::MessageIn &msg)
