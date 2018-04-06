@@ -926,6 +926,7 @@ if (packetVersion >= 20150513)
     packet(SMSG_PLAYER_HEAL,               0x0a27,   8, &PlayerRecv::processPlayerHeal,                 20150513);
     packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  75, &HomunculusRecv::processHomunculusInfo,         20150513);
     packet(SMSG_QUEST_LIST,                0x09f8,  -1, &QuestRecv::processAddQuests,                   20150513);
+    packet(SMSG_QUEST_ADD,                 0x09f9, 143, &QuestRecv::processAddQuest,                    20150513);
 }
 
 // 20150805

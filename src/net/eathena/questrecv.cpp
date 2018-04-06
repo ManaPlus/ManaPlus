@@ -42,9 +42,20 @@ void QuestRecv::processAddQuest(Net::MessageIn &msg)
     for (int f = 0; f < num; f ++)
     {
         // need use in quests kills list
-        msg.readInt32("monster id");
-        msg.readInt16("count");
-        msg.readString(24, "monster name");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt32("hunt ident");
+            msg.readInt32("mob type");
+        }
+        msg.readInt32("mob id");
+        if (msg.getVersion() >= 20150513)
+        {
+            msg.readInt16("level min");
+            msg.readInt16("level max");
+        }
+        msg.readInt16("hunt count");
+        msg.readInt16("max count");
+        msg.readString(24, "mob name");
     }
 
     msg.skipToEnd("unused");
