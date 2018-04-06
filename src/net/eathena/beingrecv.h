@@ -74,6 +74,7 @@ namespace EAthena
                                             A_NONNULL(2);
         void processBeingSpecialEffect(Net::MessageIn &msg);
         void processBeingSpecialEffectNum(Net::MessageIn &msg);
+        void processBeingHatEffects(Net::MessageIn &msg);
         void processBeingSoundEffect(Net::MessageIn &msg);
         void processSkillGroundNoDamage(Net::MessageIn &msg);
         void processSkillEntry(Net::MessageIn &msg);

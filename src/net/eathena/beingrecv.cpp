@@ -1470,6 +1470,20 @@ void BeingRecv::processBeingSpecialEffect(Net::MessageIn &msg)
     }
 }
 
+void BeingRecv::processBeingHatEffects(Net::MessageIn &msg)
+{
+    // +++ add new type of permanent effects?
+    const int cnt = (msg.readInt16("len") - 9) / 2;
+    if (cnt > 0)
+    {
+        UNIMPLEMENTEDPACKET;
+    }
+    msg.readBeingId("being id");
+    msg.readUInt8("enable");
+    for (int f = 0; f < cnt; f ++)
+        msg.readInt16("hat effect");
+}
+
 void BeingRecv::processBeingSpecialEffectNum(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;

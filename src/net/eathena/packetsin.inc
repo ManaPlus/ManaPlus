@@ -910,6 +910,12 @@ if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
     packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0a2d,  -1, &BeingRecv::processBeingViewEquipment,          20150226);
 }
 
+// 20150422
+if (packetVersion >= 20150422)
+{
+    packet(SMSG_BEING_HAT_EFFECTS,         0x0a3b,  -1, &BeingRecv::processBeingHatEffects,             20150422);
+}
+
 // 20150513
 if (packetVersion >= 20150513)
 {
