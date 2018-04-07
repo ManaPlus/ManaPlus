@@ -22,7 +22,6 @@
 #include "being/actorsprite.h"
 
 #include "configuration.h"
-#include "settings.h"
 #include "statuseffect.h"
 
 #include "being/localplayer.h"
