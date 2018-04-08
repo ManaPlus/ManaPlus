@@ -186,7 +186,10 @@ void Download::setWriteFunction(WriteFunction write)
 
 bool Download::start()
 {
-    logger->log("Starting download: %s", mUrl.c_str());
+    if (mUpload)
+        logger->log("Starting upload: %s", mUrl.c_str());
+    else
+        logger->log("Starting download: %s", mUrl.c_str());
 
     mThread = SDL::createThread(&downloadThread, "download", this);
     if (mThread == nullptr)
