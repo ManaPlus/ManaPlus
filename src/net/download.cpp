@@ -622,7 +622,7 @@ void Download::prepareForm(curl_httppost **form, const std::string &fileName)
     delete [] line;
 
     curl_formadd(form, &lastPtr,
-        CURLFORM_COPYNAME, "sprunge",
+        CURLFORM_COPYNAME, "f:1",
         CURLFORM_COPYCONTENTS, str.str().c_str(),
         CURLFORM_END);
 }

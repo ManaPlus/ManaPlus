@@ -198,7 +198,7 @@ static void uploadFile(const std::string &str,
 {
     UploadChatInfo *const info = new UploadChatInfo;
     Net::Download *const upload = new Net::Download(info,
-        "http://sprunge.us",
+        "http://ix.io",
         &uploadUpdate,
         false, true, false);
     info->upload = upload;
@@ -1658,7 +1658,7 @@ impHandler(uploadLog)
     // TRANSLATORS: upload log chat message
     uploadFile(_("Log uploaded to:"),
         settings.logFileName,
-        "?txt",
+        "",
         event.tab);
     return true;
 }
