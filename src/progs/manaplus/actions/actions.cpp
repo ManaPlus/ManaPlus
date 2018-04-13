@@ -102,7 +102,6 @@
 #include "resources/resourcemanager/resourcemanager.h"
 
 #include "utils/chatutils.h"
-#include "utils/delete2.h"
 #include "utils/foreach.h"
 #include "utils/gettext.h"
 #include "utils/parameters.h"
