@@ -1,3 +1,21 @@
+2018-04-14 New release 1.8.4.14
+fix: group badge update on group change.
+fix: packet size for packet 0x07fd.
+fix: possible sorting issues in party and guild tabs.
+fix: possible issue in building walk path.
+fix: possible draw issue in speech texts.
+fix: crash in reordering sprites.
+fix: uploading files. Changed service to ex.io.
+add: allow any gm level for tmwa.
+add: separate sound messages for party, guild, clan tabs.
+add: support for item stat ranges.
+add: highlight attribute for groups.
+add: show atlases count in debug tab.
+add: pincode support.
+add: improve error message in resource loading.
+add: sorting field in gm item creation window.
+remove: legacy status effect field "block-id".
+
 2018-02-17 New release 1.8.2.17
 fix: some missing checks.
 add: new packets.
