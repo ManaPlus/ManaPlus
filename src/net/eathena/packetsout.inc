@@ -331,6 +331,7 @@ packet(CMSG_MAIL2_OPEN_MAILBOX,           0x0000,   0, nullptr);
 packet(CMSG_MAIL2_CLOSE_MAILBOX,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_CANCEL_WRITE_MAIL,      0x0000,   0, nullptr);
 packet(CMSG_CLAN_MESSAGE,                 0x0000,   0, nullptr);
+packet(CMSG_WINDOW_OPEN_REQUEST2,         0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1267,6 +1268,7 @@ if (packetVersion >= 20140326)
     packet(CMSG_MAIL2_CANCEL_WRITE_MAIL,  0x0a03,   2, clif->pRodexCancelWriteMail);
 }
 
+// 20140416
 if (packetVersion >= 20140416)
 {
     packet(CMSG_MAIL2_OPEN_WRITE_MAIL,    0x0a08,  26, clif->pRodexOpenWriteMail);
@@ -1288,6 +1290,7 @@ if (packetVersion >= 20140605)
     packet(CMSG_ROULETTE_CLOSE,           0x0a1d,  14, clif->pRouletteClose);
 }
 
+// 20140611
 if (packetVersion >= 20140611)
 {
 // new packets
@@ -1298,6 +1301,7 @@ if (packetVersion >= 20140611)
     packet(CMSG_ROULETTE_CLOSE,           0x0a1d,   2, clif->pRouletteClose);
 }
 
+// 20140618
 if (packetVersion >= 20140618)
 {
     packet(CMSG_ROULETTE_RECV_ITEM,       0x0a21,   3, clif->pRouletteRecvItem);
@@ -1309,11 +1313,19 @@ if (packetVersion >= 20141119)
     packet(CMSG_QUICK_IDENTIFY_ITEM,      0x0a35,   4, clif->pOneClick_ItemIdentify);
 }
 
+// 20151001
 if (packetVersion >= 20151001)
 {
     packet(CMSG_CHAR_CREATE,              0x0a39,  36, chr->parse_char_create_new_char);
 }
 
+// 20160323
+if (packetVersion >= 20160323)
+{
+    packet(CMSG_WINDOW_OPEN_REQUEST2,     0x0a68,   3, clif->pOpenUIRequest);
+}
+
+// 20160330
 if (packetVersion >= 20160330)
 {
     packet(CMSG_MAIL2_SEND_MAIL,          0x0a6e,  -1, clif->pRodexSendMail);

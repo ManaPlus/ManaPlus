@@ -33,6 +33,8 @@ class AttendanceHandler final : public Net::AttendanceHandler
         A_DELETE_COPY(AttendanceHandler)
 
         ~AttendanceHandler() override final;
+
+        void openAttendanceWindow() const override final;
 };
 
 }  // namespace TmwAthena

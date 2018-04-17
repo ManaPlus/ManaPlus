@@ -35,4 +35,8 @@ AttendanceHandler::~AttendanceHandler()
     attendanceHandler = nullptr;
 }
 
+void AttendanceHandler::openAttendanceWindow() const
+{
+}
+
 }  // namespace TmwAthena

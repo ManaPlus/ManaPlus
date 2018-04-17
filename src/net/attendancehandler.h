@@ -36,6 +36,8 @@ class AttendanceHandler notfinal
 
         virtual ~AttendanceHandler()
         { }
+
+        virtual void openAttendanceWindow() const = 0;
 };
 
 }  // namespace Net
