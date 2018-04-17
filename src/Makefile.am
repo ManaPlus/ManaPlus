@@ -1895,6 +1895,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/adminhandler.h \
 	      net/eathena/attendancehandler.cpp \
 	      net/eathena/attendancehandler.h \
+	      net/eathena/attendancerecv.cpp \
+	      net/eathena/attendancerecv.h \
 	      net/eathena/auctionrecv.cpp \
 	      net/eathena/auctionrecv.h \
 	      net/eathena/auctionhandler.cpp \

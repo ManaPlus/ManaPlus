@@ -1030,12 +1030,15 @@ if (packetVersion >= 20171207)
 }
 
 // re 20180221
-if (packets_re == true)
-{
-if (packetVersion >= 20180221)
+if (packetVersionRe >= 20180221)
 {
     packet(SMSG_SOLVE_CHAR_NAME,           0x0af7,  32, &BeingRecv::processSolveCharName,               20180221);
 }
+
+// re 20180221
+if (packetVersionRe >= 20180221)
+{
+    packet(SMSG_FRIENDS_PLAYER_ONLINE,     0x0206,  35, &FriendsRecv::processPlayerOnline,              20180221);
 }
 
 // main 20180307
@@ -1045,10 +1048,16 @@ if (packetVersionMain >= 20180307)
     packet(SMSG_FRIENDS_PLAYER_ONLINE,     0x0206,  35, &FriendsRecv::processPlayerOnline,              20180307);
 }
 
-// re 20180221
-if (packetVersionRe >= 20180221)
+// re 20180307
+if (packetVersionRe >= 20180307)
 {
-    packet(SMSG_FRIENDS_PLAYER_ONLINE,     0x0206,  35, &FriendsRecv::processPlayerOnline,              20180221);
+    packet(SMSG_OPEN_WINDOW2,              0x0ae2,   7, &AttendanceRecv::processOpenWindow,             20180307);
+}
+
+// main 20180404
+if (packetVersionMain >= 20180404)
+{
+    packet(SMSG_OPEN_WINDOW2,              0x0ae2,   7, &AttendanceRecv::processOpenWindow,             20180404);
 }
 
 // 0
