@@ -35,6 +35,8 @@ class AttendanceHandler final : public Net::AttendanceHandler
         ~AttendanceHandler() override final;
 
         void openAttendanceWindow() const override final;
+
+        void requestReward() const override final;
 };
 
 }  // namespace TmwAthena

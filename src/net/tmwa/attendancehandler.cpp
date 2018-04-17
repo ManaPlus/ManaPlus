@@ -39,4 +39,8 @@ void AttendanceHandler::openAttendanceWindow() const
 {
 }
 
+void AttendanceHandler::requestReward() const
+{
+}
+
 }  // namespace TmwAthena

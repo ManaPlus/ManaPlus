@@ -332,6 +332,7 @@ packet(CMSG_MAIL2_CLOSE_MAILBOX,          0x0000,   0, nullptr);
 packet(CMSG_MAIL2_CANCEL_WRITE_MAIL,      0x0000,   0, nullptr);
 packet(CMSG_CLAN_MESSAGE,                 0x0000,   0, nullptr);
 packet(CMSG_WINDOW_OPEN_REQUEST2,         0x0000,   0, nullptr);
+packet(CMSG_ATTENDANCE_REWARD,            0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1336,6 +1337,18 @@ if (packetVersion >= 20170419)
 {
     packet(CMSG_MAIL2_OPEN_MAILBOX,       0x0ac0,  26, clif->pRodexOpenMailbox);
     packet(CMSG_MAIL2_REFRESH_MAIL_LIST,  0x0ac1,  26, clif->pRodexRefreshMaillist);
+}
+
+// re 20180307
+if (packetVersionRe >= 20180307)
+{
+    packet(CMSG_ATTENDANCE_REWARD,        0x0aef,   2, clif->pAttendanceRewardRequest);
+}
+
+// main 20180404
+if (packetVersionMain >= 20180404)
+{
+    packet(CMSG_ATTENDANCE_REWARD,        0x0aef,   2, clif->pAttendanceRewardRequest);
 }
 
 #endif

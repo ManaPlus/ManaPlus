@@ -26,6 +26,8 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionRe;
+extern int packetVersionMain;
 
 namespace EAthena
 {
@@ -46,6 +48,17 @@ void AttendanceHandler::openAttendanceWindow() const
         return;
     createOutPacket(CMSG_WINDOW_OPEN_REQUEST2);
     outMsg.writeInt8(5, "window type");
+}
+
+void AttendanceHandler::requestReward() const
+{
+    if (packetVersionRe < 20180307 &&
+        packetVersionMain < 20180404)
+    {
+        return;
+    }
+
+    createOutPacket(CMSG_ATTENDANCE_REWARD);
 }
 
 }  // namespace EAthena
