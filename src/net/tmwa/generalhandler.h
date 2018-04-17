@@ -47,6 +47,7 @@ class TradeHandler;
 class QuestHandler;
 class ServerFeatures;
 class AuctionHandler;
+class AttendanceHandler;
 class BankHandler;
 class BattleGroundHandler;
 class BuyingStoreHandler;
@@ -112,6 +113,7 @@ class GeneralHandler final : public Net::GeneralHandler
         QuestHandler *mQuestHandler;
         ServerFeatures *mServerFeatures;
         AuctionHandler *mAuctionHandler;
+        AttendanceHandler *mAttendanceHandler;
         BankHandler *mBankHandler;
         BattleGroundHandler *mBattleGroundHandler;
         BuyingStoreHandler *mBuyingStoreHandler;

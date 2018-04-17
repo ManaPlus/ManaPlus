@@ -41,6 +41,7 @@ int evolPacketOffset = 0;
 namespace Net
 {
     class AuctionHandler;
+    class AttendanceHandler;
     class BankHandler;
     class BattleGroundHandler;
     class BuyingStoreHandler;
@@ -95,6 +96,7 @@ Net::BeingHandler *beingHandler = nullptr;
 Net::BuySellHandler *buySellHandler = nullptr;
 Net::ServerFeatures *serverFeatures = nullptr;
 Net::AuctionHandler *auctionHandler = nullptr;
+Net::AuctionHandler *attendanceHandler = nullptr;
 Net::BankHandler *bankHandler = nullptr;
 Net::BattleGroundHandler *battleGroundHandler = nullptr;
 Net::BuyingStoreHandler *buyingStoreHandler = nullptr;
