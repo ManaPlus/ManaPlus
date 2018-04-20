@@ -43,8 +43,9 @@ class Tileset final : public ImageSet
                 const int margin,
                 const int spacing) :
             ImageSet(img, w, h, margin, spacing),
+            mProperties(),
             mFirstGid(firstGid),
-            mProperties()
+            mIsEmpty(false)
         {
         }
 
@@ -92,10 +93,16 @@ class Tileset final : public ImageSet
             return sz;
         }
 
-    private:
-        int mFirstGid;
+        void setEmpty(const bool b)
+        { mIsEmpty = b; }
 
+        bool isEmpty() const
+        { return mIsEmpty; }
+
+    private:
         std::map<std::string, std::string> mProperties;
+        int mFirstGid;
+        bool mIsEmpty;
 };
 
 #endif  // RESOURCES_MAP_TILESET_H

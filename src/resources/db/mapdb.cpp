@@ -34,6 +34,7 @@ namespace
     MapDB::Maps mMaps;
     MapDB::MapInfos mInfos;
     MapDB::Atlases mAtlases;
+    std::set<std::string> mEmptyTilesets;
 }  // namespace
 
 namespace MapDB
@@ -137,7 +138,16 @@ void MapDB::readAtlas(XmlNodePtrConst node)
             mAtlases[atlas].push_back(file);
         }
     }
-    if (atlas != "all" && atlas != paths.getStringValue("emptyAtlasName"))
+    if (atlas == paths.getStringValue("emptyAtlasName"))
+    {
+        const StringVect *files = &mAtlases[atlas];
+        FOR_EACHP (StringVectCIter, it, files)
+        {
+            mEmptyTilesets.insert(*it);
+            logger->log("empty tileset: " + *it);
+        }
+    }
+    else if (atlas != "all")
     {
         const AtlasCIter &allAtlas = mAtlases.find("all");
         if (allAtlas != mAtlases.end())
@@ -222,4 +232,9 @@ const MapInfo *MapDB::getAtlas(const std::string &name)
     info->atlas = name;
     info->files = &(*it).second;
     return info;
+}
+
+bool MapDB::isEmptyTileset(const std::string &name)
+{
+    return mEmptyTilesets.find(name) != mEmptyTilesets.end();
 }

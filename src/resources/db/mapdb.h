@@ -57,6 +57,8 @@ namespace MapDB
 
     const MapInfo *getAtlas(const std::string &name) A_WARN_UNUSED;
 
+    bool isEmptyTileset(const std::string &name);
+
     // Maps DB
     typedef std::map<std::string, std::string> Maps;
     typedef Maps::iterator MapIterator;

@@ -565,10 +565,18 @@ inline static void setTile(Map *const map,
     {
         case MapLayerType::TILES:
         {
-            Image *const img = set != nullptr ?
-                set->get(gid - set->getFirstGid()) : nullptr;
-            if (layer != nullptr)
+            if (layer == nullptr)
+                break;
+            if (set != nullptr &&
+                !set->isEmpty())
+            {
+                Image *const img = set->get(gid - set->getFirstGid());
                 layer->setTile(x, y, img);
+            }
+            else
+            {
+                layer->setTile(x, y, nullptr);
+            }
             break;
         }
 
@@ -1112,10 +1120,12 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
             const std::string source = XML::getProperty(
                 childNode, "source", "");
 
+            const std::string sourceResolved = resolveRelativePath(pathDir,
+                source);
+
             if (!source.empty())
             {
-                Image *const tilebmp = Loader::getImage(
-                    resolveRelativePath(pathDir, source));
+                Image *const tilebmp = Loader::getImage(sourceResolved);
 
                 if (tilebmp != nullptr)
                 {
@@ -1126,6 +1136,8 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                         spacing);
                     tilebmp->decRef();
 #ifdef USE_OPENGL
+                    if (MapDB::isEmptyTileset(sourceResolved))
+                        set->setEmpty(true);
                     if (tilebmp->getType() == ImageType::Image &&
                         map->haveAtlas() == true &&
                         graphicsManager.getUseAtlases())
