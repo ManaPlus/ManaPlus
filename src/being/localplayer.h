@@ -55,8 +55,8 @@ class LocalPlayer final : public Being,
         /**
          * Constructor.
          */
-        explicit LocalPlayer(const BeingId id,
-                             const BeingTypeId subType);
+        LocalPlayer(const BeingId id,
+                    const BeingTypeId subType);
 
         A_DELETE_COPY(LocalPlayer)
 

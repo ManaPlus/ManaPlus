@@ -511,7 +511,7 @@ void PlayerHandler::setViewEquipment(const bool allow) const
 }
 
 #define setStatComplex(stat) \
-    PlayerInfo::setStatBase(stat, base, notify); \
+    PlayerInfo::setStatBase(stat, CAST_S32(base), notify); \
     if (mod != NoStat) \
         PlayerInfo::setStatMod(stat, mod, Notify_true)
 
@@ -524,9 +524,9 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
     switch (type)
     {
         case Sp::SPEED:
-            localPlayer->setWalkSpeed(base);
+            localPlayer->setWalkSpeed(CAST_S32(base));
             PlayerInfo::setStatBase(Attributes::PLAYER_WALK_SPEED,
-                base,
+                CAST_S32(base),
                 Notify_true);
             PlayerInfo::setStatMod(Attributes::PLAYER_WALK_SPEED,
                 0,
@@ -544,7 +544,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             break;
         case Sp::KARMA:
             PlayerInfo::setStatBase(Attributes::PLAYER_KARMA,
-                base,
+                CAST_S32(base),
                 Notify_true);
             PlayerInfo::setStatMod(Attributes::PLAYER_KARMA,
                 0,
@@ -552,7 +552,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
             break;
         case Sp::MANNER:
             PlayerInfo::setStatBase(Attributes::PLAYER_MANNER,
-                base,
+                CAST_S32(base),
                 Notify_true);
             PlayerInfo::setStatMod(Attributes::PLAYER_MANNER,
                 0,
@@ -568,7 +568,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                     ->getMember(localPlayer->getId());
                 if (m != nullptr)
                 {
-                    m->setHp(base);
+                    m->setHp(CAST_S32(base));
                     m->setMaxHp(PlayerInfo::getAttribute(
                         Attributes::PLAYER_MAX_HP));
                 }
@@ -586,7 +586,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 if (m != nullptr)
                 {
                     m->setHp(PlayerInfo::getAttribute(Attributes::PLAYER_HP));
-                    m->setMaxHp(base);
+                    m->setMaxHp(CAST_S32(base));
                 }
             }
             break;
@@ -611,7 +611,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 Notify_true);
             if (localPlayer != nullptr)
             {
-                localPlayer->setLevel(base);
+                localPlayer->setLevel(CAST_S32(base));
                 localPlayer->updateName();
             }
             break;
@@ -643,7 +643,7 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
         case Sp::ZENY:
         {
             const int oldMoney = PlayerInfo::getAttribute(Attributes::MONEY);
-            const int newMoney = base;
+            const int newMoney = CAST_S32(base);
             if (newMoney > oldMoney)
             {
                 NotifyManager::notify(NotifyTypes::MONEY_GET,
@@ -681,90 +681,96 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
                 Notify_true);
             break;
         case Sp::USTR:
-            statusWindow->setPointsNeeded(Attributes::PLAYER_STR, base);
+            statusWindow->setPointsNeeded(Attributes::PLAYER_STR,
+                CAST_S32(base));
             break;
         case Sp::UAGI:
-            statusWindow->setPointsNeeded(Attributes::PLAYER_AGI, base);
+            statusWindow->setPointsNeeded(Attributes::PLAYER_AGI,
+                CAST_S32(base));
             break;
         case Sp::UVIT:
-            statusWindow->setPointsNeeded(Attributes::PLAYER_VIT, base);
+            statusWindow->setPointsNeeded(Attributes::PLAYER_VIT,
+                CAST_S32(base));
             break;
         case Sp::UINT:
-            statusWindow->setPointsNeeded(Attributes::PLAYER_INT, base);
+            statusWindow->setPointsNeeded(Attributes::PLAYER_INT,
+                CAST_S32(base));
             break;
         case Sp::UDEX:
-            statusWindow->setPointsNeeded(Attributes::PLAYER_DEX, base);
+            statusWindow->setPointsNeeded(Attributes::PLAYER_DEX,
+                CAST_S32(base));
             break;
         case Sp::ULUK:
-            statusWindow->setPointsNeeded(Attributes::PLAYER_LUK, base);
+            statusWindow->setPointsNeeded(Attributes::PLAYER_LUK,
+                CAST_S32(base));
             break;
 
         case Sp::ATK1:
             PlayerInfo::setStatBase(Attributes::PLAYER_ATK,
-                base,
+                CAST_S32(base),
                 Notify_true);
             PlayerInfo::updateAttrs();
             break;
         case Sp::ATK2:
             PlayerInfo::setStatMod(Attributes::PLAYER_ATK,
-                base,
+                CAST_S32(base),
                 Notify_true);
             PlayerInfo::updateAttrs();
             break;
         case Sp::MATK1:
             PlayerInfo::setStatBase(Attributes::PLAYER_MATK,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::MATK2:
             PlayerInfo::setStatMod(Attributes::PLAYER_MATK,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::DEF1:
             PlayerInfo::setStatBase(Attributes::PLAYER_DEF,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::DEF2:
             PlayerInfo::setStatMod(Attributes::PLAYER_DEF,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::MDEF1:
             PlayerInfo::setStatBase(Attributes::PLAYER_MDEF,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::MDEF2:
             PlayerInfo::setStatMod(Attributes::PLAYER_MDEF,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::HIT:
             PlayerInfo::setStatBase(Attributes::PLAYER_HIT,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::FLEE1:
             PlayerInfo::setStatBase(Attributes::PLAYER_FLEE,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::FLEE2:
             PlayerInfo::setStatMod(Attributes::PLAYER_FLEE,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::CRITICAL:
             PlayerInfo::setStatBase(Attributes::PLAYER_CRIT,
-                base,
+                CAST_S32(base),
                 Notify_true);
             break;
         case Sp::ASPD:
-            localPlayer->setAttackSpeed(base);
+            localPlayer->setAttackSpeed(CAST_S32(base));
             PlayerInfo::setStatBase(Attributes::PLAYER_ATTACK_DELAY,
-                base,
+                CAST_S32(base),
                 Notify_true);
             PlayerInfo::setStatMod(Attributes::PLAYER_ATTACK_DELAY,
                 0,

@@ -52,7 +52,7 @@ struct MailMessage final
     std::string text;
     int64_t id;
     int time;
-    int expireTime;
+    int64_t expireTime;
     int64_t money;
     MailMessageType::Type type;
     bool read;

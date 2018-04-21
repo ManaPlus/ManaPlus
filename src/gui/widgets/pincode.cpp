@@ -184,7 +184,7 @@ void Pincode::shuffle(uint32_t seed) const
     int k = 2;
 
     for (size_t f = 0; f < 10; f ++)
-        tab[f] = f;
+        tab[f] = CAST_S32(f);
     for (size_t f = 1; f < 10; f ++)
     {
         seed = baseSeed + seed * multiplier;
