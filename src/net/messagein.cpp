@@ -189,7 +189,7 @@ int32_t MessageIn::readInt32(const char *const str)
 
 uint32_t MessageIn::readUInt32(const char *const str)
 {
-    uint32_t value = -1;
+    uint32_t value = 0;
     if (mPos + 4 <= mLength)
     {
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
