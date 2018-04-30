@@ -33,12 +33,12 @@
 
 PopupList::PopupList(DropDown *const widget,
                      ListModel *const listModel,
-                     const bool extended,
+                     const bool isExtended,
                      const Modal modal) :
     Popup("PopupList", "popuplist.xml"),
     FocusListener(),
     mListModel(listModel),
-    mListBox(extended ? CREATEWIDGETR(ExtendedListBox,
+    mListBox(isExtended ? CREATEWIDGETR(ExtendedListBox,
         widget, listModel, "extendedlistbox.xml", 0) :
         CREATEWIDGETR(ListBox,
         widget, listModel, "popuplistbox.xml")),

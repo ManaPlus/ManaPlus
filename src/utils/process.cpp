@@ -35,9 +35,11 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
-#ifndef __native_client__
+#if defined(WIN32) || defined(__linux__) || \
+    defined(__linux) || defined(__APPLE__)
 const int timeOut = 10;
-#endif  // __native_client__
+#endif  // defined(WIN32) || defined(__linux__) ||
+        // defined(__linux) || defined(__APPLE__)
 
 #ifdef WIN32
 
@@ -304,7 +306,7 @@ bool openBrowser(std::string url)
     return true;
 }
 #else  // OTHER
-bool openBrowser(std::string url)
+bool openBrowser(std::string url A_UNUSED)
 {
     return false;
 }
