@@ -62,52 +62,52 @@ variables:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
-deheader_libxml_opengl_tmwa:
+deheader_libxml_opengl_tmwa_cpp:
   stage: build
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
 
-deheader_sdl2_libxml_opengl_tmwa:
+deheader_sdl2_libxml_opengl_tmwa_cpp:
   stage: build
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
 
-deheader_libxml_tmwa:
+deheader_libxml_tmwa_cpp:
   stage: build
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
 
-deheader_sdl2_libxml_tmwa:
+deheader_sdl2_libxml_tmwa_cpp:
   stage: build
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
 
-deheader_tinyxml_opengl_tmwa:
+deheader_tinyxml_opengl_tmwa_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_TINYXML2 -DUSE_TINYXML_OLD -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - export FLAGS="-DENABLE_TINYXML2 -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   variables:
@@ -120,12 +120,12 @@ deheader_tinyxml_opengl_tmwa:
               libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
-deheader_sdl2_tinyxml_opengl_tmwa:
+deheader_sdl2_tinyxml_opengl_tmwa_cpp:
   stage: build
   script:
-  - export FLAGS="-DENABLE_TINYXML2 -DUSE_TINYXML_OLD -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - export FLAGS="-DENABLE_TINYXML2 -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   variables:
@@ -138,24 +138,122 @@ deheader_sdl2_tinyxml_opengl_tmwa:
               libtinyxml2-dev libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
 
-deheader_libxml_opengl:
+deheader_libxml_opengl_cpp:
   stage: build
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11"
   - ./tools/ci/jobs/deheader.sh
   - export skipPath="src/net/tmwa/"
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_shared
 
-deheader_sdl2_libxml_opengl:
+deheader_sdl2_libxml_opengl_cpp:
   stage: build
   script:
   - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
   - export skipPath="src/net/tmwa/"
-  - find ./src -type f \( -name "*.cpp" -o -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_sdl2_shared
+
+deheader_libxml_opengl_tmwa_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_shared
+
+deheader_sdl2_libxml_opengl_tmwa_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_sdl2_shared
+
+deheader_libxml_tmwa_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_shared
+
+deheader_sdl2_libxml_tmwa_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_sdl2_shared
+
+deheader_tinyxml_opengl_tmwa_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_TINYXML2 -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  variables:
+    GIT_DEPTH: "1"
+    INCLUDES: "-I/usr/include/SDL -I/usr/include/libxml2"
+    LOGFILE: logs/deheader.log
+    CXX: g++-5
+    PACKAGES: git python wget 
+              gcc-5 g++-5 
+              libtinyxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+
+deheader_sdl2_tinyxml_opengl_tmwa_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_TINYXML2 -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  variables:
+    GIT_DEPTH: "1"
+    INCLUDES: "-I/usr/include/SDL2 -I/usr/include/libxml2"
+    LOGFILE: logs/deheader.log
+    CXX: g++-5
+    PACKAGES: git python wget 
+              gcc-5 g++-5 
+              libtinyxml2-dev libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+
+deheader_libxml_opengl_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11"
+  - ./tools/ci/jobs/deheader.sh
+  - export skipPath="src/net/tmwa/"
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
+  - ./tools/ci/jobs/deheader2.sh
+  <<: *job-push
+  <<: *job-deheader_shared
+
+deheader_sdl2_libxml_opengl_h:
+  stage: build
+  script:
+  - export FLAGS="-DENABLE_LIBXML -DUSE_OPENGL -DUSE_X11 -DUSE_SDL2"
+  - ./tools/ci/jobs/deheader.sh
+  - export skipPath="src/net/tmwa/"
+  - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
   <<: *job-deheader_sdl2_shared
