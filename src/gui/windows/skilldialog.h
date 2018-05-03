@@ -81,6 +81,8 @@ class SkillDialog final : public Window,
 
         void updateModels();
 
+        void updateModelsHidden();
+
         void loadXmlFile(const std::string &fileName,
                          const SkipError skipError);
 

@@ -302,6 +302,31 @@ void SkillDialog::updateModels()
     }
 }
 
+void SkillDialog::updateModelsHidden()
+{
+    std::set<SkillModel*> models;
+
+    FOR_EACH (SkillMap::const_iterator, it, mSkills)
+    {
+        SkillInfo *const info = (*it).second;
+        if (info != nullptr)
+        {
+            if (info->visible == Visible_false)
+            {
+                SkillModel *const model = info->model;
+                if (model != nullptr)
+                    models.insert(model);
+            }
+        }
+    }
+    FOR_EACH (std::set<SkillModel*>::iterator, it, models)
+    {
+        SkillModel *const model = *it;
+        if (model != nullptr)
+            model->updateVisibilities();
+    }
+}
+
 void SkillDialog::clearSkills()
 {
     mTabs->removeAll(true);

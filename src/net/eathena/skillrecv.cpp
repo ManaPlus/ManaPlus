@@ -101,6 +101,7 @@ void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
     if (skillDialog != nullptr)
     {
         skillDialog->update();
+        skillDialog->updateModelsHidden();
         if (updateSkill != 0)
             skillDialog->playUpdateEffect(updateSkill);
     }
