@@ -28,6 +28,7 @@
 extern int packetVersion;
 extern int packetVersionRe;
 extern int packetVersionMain;
+extern int packetVersionZero;
 
 namespace EAthena
 {
@@ -53,7 +54,8 @@ void AttendanceHandler::openAttendanceWindow() const
 void AttendanceHandler::requestReward() const
 {
     if (packetVersionRe < 20180307 &&
-        packetVersionMain < 20180404)
+        packetVersionMain < 20180404 &&
+        packetVersionZero < 20180411)
     {
         return;
     }

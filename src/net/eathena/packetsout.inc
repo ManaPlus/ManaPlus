@@ -1351,4 +1351,10 @@ if (packetVersionMain >= 20180404)
     packet(CMSG_ATTENDANCE_REWARD,        0x0aef,   2, clif->pAttendanceRewardRequest);
 }
 
+// zero 20180411
+if (packetVersionZero >= 20180411)
+{
+    packet(CMSG_ATTENDANCE_REWARD,        0x0aef,   2, clif->pAttendanceRewardRequest);
+}
+
 #endif
