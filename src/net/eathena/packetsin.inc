@@ -1062,6 +1062,12 @@ if (packetVersionMain >= 20180404)
     packet(SMSG_OPEN_WINDOW2,              0x0ae2,   7, &AttendanceRecv::processOpenWindow,             20180404);
 }
 
+// zero 20180411
+if (packetVersionZero >= 20180411)
+{
+    packet(SMSG_OPEN_WINDOW2,              0x0ae2,   7, &AttendanceRecv::processOpenWindow,             20180411);
+}
+
 // 20180418
 if (packetVersion == 20180418)
 {
