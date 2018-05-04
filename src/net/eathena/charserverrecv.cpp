@@ -383,6 +383,20 @@ void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
         client->updatePinState();
 }
 
+void CharServerRecv::processPincodeMakeStatus(Net::MessageIn &msg)
+{
+    // UNIMPLEMENTEDPACKET
+    msg.readInt16("state");
+    msg.readInt32("seed");
+}
+
+void CharServerRecv::processPincodeEditStatus(Net::MessageIn &msg)
+{
+    // UNIMPLEMENTEDPACKET
+    msg.readInt16("state");
+    msg.readInt32("seed");
+}
+
 void CharServerRecv::processCharCreate(Net::MessageIn &msg)
 {
     BLOCK_START("CharServerRecv::processCharCreate")

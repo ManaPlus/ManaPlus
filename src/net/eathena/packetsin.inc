@@ -86,6 +86,8 @@ packet(SMSG_CHAR_LOGIN2,                   0x082d,  -1, &CharServerRecv::process
 packet(SMSG_CHAR_LOGIN_ERROR,              0x006c,   3, &Ea::CharServerRecv::processCharLoginError,     0);
 packet(SMSG_CHAR_MAP_INFO,                 0x0071,  28, &CharServerRecv::processCharMapInfo,            0);
 packet(SMSG_CHAR_PINCODE_STATUS,           0x08b9,  12, &CharServerRecv::processPincodeStatus,          0);
+packet(SMSG_CHAR_PINCODE_MAKE_STATUS,      0x08bb,   8, &CharServerRecv::processPincodeMakeStatus,      0);
+packet(SMSG_CHAR_PINCODE_EDIT_STATUS,      0x08bf,   8, &CharServerRecv::processPincodeEditStatus,      0);
 packet(SMSG_CHAR_RENAME,                   0x0290,   4, &CharServerRecv::processCharRename,             0);
 packet(SMSG_MAP_NOT_FOUND,                 0x0840,  -1, &GeneralRecv::processMapNotFound,               0);
 
@@ -1058,6 +1060,12 @@ if (packetVersionRe >= 20180307)
 if (packetVersionMain >= 20180404)
 {
     packet(SMSG_OPEN_WINDOW2,              0x0ae2,   7, &AttendanceRecv::processOpenWindow,             20180404);
+}
+
+// 20180418
+if (packetVersion == 20180418)
+{
+    packet(SMSG_ITEM_DROPPED,              0x0add,  22, &ItemRecv::processItemDropped,                  20180418);
 }
 
 // 0
