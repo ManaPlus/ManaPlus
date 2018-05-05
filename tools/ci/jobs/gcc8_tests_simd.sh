@@ -21,7 +21,7 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O5 -pipe -Wstrict-aliasing=2 \
 -ffast-math -funswitch-loops \
 -funsafe-loop-optimizations \
 -march=native -fsched-pressure
--std=gnu++1z -Wformat=1 \
+-std=gnu++2a -Wformat=1 \
 -fno-var-tracking -Wno-attributes"
 
 source ./tools/ci/flags/gcc8.sh

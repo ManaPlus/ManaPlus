@@ -26,7 +26,7 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -fsanitize=leak \
 -fsanitize=shift-exponent -fsanitize=shift-base -fsanitize=bounds-strict \
 -fsanitize-address-use-after-scope \
--std=gnu++1z -Wformat=1 \
+-std=gnu++2a -Wformat=1 \
 -Wno-attributes -fno-omit-frame-pointer"
 
 source ./tools/ci/flags/gcc8.sh
