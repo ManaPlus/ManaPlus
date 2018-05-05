@@ -13,10 +13,10 @@ export LANG=C
 
 export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
 -D_FORTIFY_SOURCE=2 \
--std=gnu++1z \
+-std=gnu++2a \
 -fno-var-tracking -Wno-attributes"
 
-source ./tools/ci/flags/gcc7.sh
+source ./tools/ci/flags/gcc8.sh
 
 export CXXFLAGS="$CXXFLAGS -Wno-null-dereference"
 

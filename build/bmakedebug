@@ -20,10 +20,10 @@ export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
 -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
 -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool \
 -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict \
--std=gnu++1z \
+-std=gnu++2a \
 -fno-var-tracking -Wno-attributes"
 
-source ./tools/ci/flags/gcc7.sh
+source ./tools/ci/flags/gcc8.sh
 
 autoreconf -i
 cd build/tmp

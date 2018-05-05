@@ -15,10 +15,10 @@ export CXXFLAGS="-pedantic -ggdb3 -O5 -pipe -ffast-math \
 -D_FORTIFY_SOURCE=2 \
 -funsafe-loop-optimizations -flto -fwhole-program \
 -march=native -fsched-pressure \
--std=gnu++1z \
+-std=gnu++2a \
 -fno-var-tracking -Wno-attributes"
 
-source ./tools/ci/flags/gcc7.sh
+source ./tools/ci/flags/gcc8.sh
 
 autoreconf -i
 cd build/tmp
