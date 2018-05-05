@@ -20,6 +20,7 @@ export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
 -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
 -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool \
 -fsanitize=enum -fsanitize=vptr \
+-fsanitize=pointer-compare -fsanitize=pointer-subtract -fsanitize=builtin -fsanitize=pointer-overflow \
 -std=gnu++2a \
 -fno-var-tracking -Wno-attributes"
 
