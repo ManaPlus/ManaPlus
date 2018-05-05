@@ -247,7 +247,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
             const uint8_t ashift = fmt->Ashift;
             const uint8_t aloss = fmt->Aloss;
             const uint32_t *pixels = static_cast<uint32_t*>(tmpImage->pixels);
-            cilk_for (size_t i = 0; i < sz; ++ i)
+            for (size_t i = 0; i < sz; ++ i)
             {
                 const unsigned v = (pixels[i] & amask) >> ashift;
                 const uint8_t a = static_cast<uint8_t>((v << aloss)

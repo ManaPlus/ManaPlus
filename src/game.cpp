@@ -696,7 +696,7 @@ void Game::slowLogic()
             whoIsOnline->slowLogic();
         Being::reReadConfig();
         if (killStats != nullptr)
-            cilk_spawn killStats->recalcStats();
+            killStats->recalcStats();
 
         if (time > mTime2 || mTime2 - time > 10)
         {
@@ -713,15 +713,15 @@ void Game::slowLogic()
 
 #ifdef TMWA_SUPPORT
     if (shopWindow != nullptr)
-        cilk_spawn shopWindow->updateTimes();
+        shopWindow->updateTimes();
     if (guildManager != nullptr)
         guildManager->slowLogic();
 #endif  // TMWA_SUPPORT
 
     if (skillDialog != nullptr)
-        cilk_spawn skillDialog->slowLogic();
+        skillDialog->slowLogic();
 
-    cilk_spawn PacketCounters::update();
+    PacketCounters::update();
 
     // Handle network stuff
     if (!gameHandler->isConnected())

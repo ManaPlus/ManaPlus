@@ -163,11 +163,6 @@ manaplus_SOURCES += manaplus.rc
 dyecmd_SOURCES += manaplus.rc
 endif
 
-if ENABLE_CILKPLUS
-dyecmd_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
-manaplus_CXXFLAGS += -DENABLE_CILKPLUS -fcilkplus -lcilkrts
-endif
-
 dyecmd_CXXFLAGS += -DDYECMD
 dyecmd_SOURCES += progs/dyecmd/dyemain.cpp
 

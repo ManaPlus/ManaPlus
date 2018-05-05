@@ -794,17 +794,6 @@ esac],[googleprofiler_enabled=false])
 
 AM_CONDITIONAL(ENABLE_GOOGLE_PROFILER, test x$googleprofiler_enabled = xtrue)
 
-# Enable cilk plus
-AC_ARG_ENABLE(cilkplus,
-[  --enable-cilkplus    Turn on parallelisation with CilkPlus],
-[case "${enableval}" in
-  yes) cilkplus_enabled=true ;;
-  no)  cilkplus_enabled=false ;;
-  *) AC_MSG_ERROR(bad value ${enableval} for --enable-cilkplus) ;;
-esac],[cilkplus_enabled=false])
-
-AM_CONDITIONAL(ENABLE_CILKPLUS, test x$cilkplus_enabled = xtrue)
-
 # Enable gcc check plugin
 AC_ARG_ENABLE(checkplugin,
 [  --enable-checkplugin    Turn on gcc check plugin],

@@ -48,47 +48,6 @@ void DyePalette::replaceSOGLColorDefault(uint32_t *restrict pixels,
     if ((sz % 2) != 0u)
         -- it_end;
 
-#ifdef ENABLE_CILKPLUS
-    cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
-    {
-        uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        const unsigned int data = (pixels[ptr]) & 0xffffff00;
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-        const unsigned int data = (pixels[ptr]) & 0x00ffffff;
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-        STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
-        while (it != it_end)
-        {
-            const DyeColor &col = *it;
-            ++ it;
-            const DyeColor &col2 = *it;
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int coldata = (col.value[0] << 24)
-                | (col.value[1] << 16) | (col.value[2] << 8);
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            const unsigned int coldata = (col.value[0])
-                | (col.value[1] << 8) | (col.value[2] << 16);
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            if (data == coldata)
-            {
-                p[0] = col2.value[0];
-                p[1] = col2.value[1];
-                p[2] = col2.value[2];
-                break;
-            }
-
-            ++ it;
-        }
-    }
-
-#else  // ENABLE_CILKPLUS
-
     for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
          pixels != p_end;
          ++pixels)
@@ -128,7 +87,6 @@ void DyePalette::replaceSOGLColorDefault(uint32_t *restrict pixels,
             ++ it;
         }
     }
-#endif  // ENABLE_CILKPLUS
 }
 
 #ifdef SIMD_SUPPORTED
@@ -184,47 +142,6 @@ void DyePalette::replaceSOGLColorSse2(uint32_t *restrict pixels,
     }
     else
     {
-#ifdef ENABLE_CILKPLUS
-        cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
-        {
-            uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int data = (pixels[ptr]) & 0xffffff00;
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            const unsigned int data = (pixels[ptr]) & 0x00ffffff;
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
-            while (it != it_end)
-            {
-                const DyeColor &col = *it;
-                ++ it;
-                const DyeColor &col2 = *it;
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                const unsigned int coldata = (col.value[0] << 24)
-                    | (col.value[1] << 16) | (col.value[2] << 8);
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-                const unsigned int coldata = (col.value[0])
-                    | (col.value[1] << 8) | (col.value[2] << 16);
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-                if (data == coldata)
-                {
-                    p[0] = col2.value[0];
-                    p[1] = col2.value[1];
-                    p[2] = col2.value[2];
-                    break;
-                }
-
-                ++ it;
-            }
-        }
-
-#else  // ENABLE_CILKPLUS
-
         for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
              pixels != p_end;
              ++pixels)
@@ -264,7 +181,6 @@ void DyePalette::replaceSOGLColorSse2(uint32_t *restrict pixels,
                 ++ it;
             }
         }
-#endif  // ENABLE_CILKPLUS
     }
 }
 
@@ -314,47 +230,6 @@ void DyePalette::replaceSOGLColorAvx2(uint32_t *restrict pixels,
     }
     else
     {
-#ifdef ENABLE_CILKPLUS
-        cilk_for (int ptr = 0; ptr < bufSize; ptr ++)
-        {
-            uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-            const unsigned int data = (pixels[ptr]) & 0xffffff00;
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            const unsigned int data = (pixels[ptr]) & 0x00ffffff;
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-            STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
-            while (it != it_end)
-            {
-                const DyeColor &col = *it;
-                ++ it;
-                const DyeColor &col2 = *it;
-
-#if SDL_BYTEORDER == SDL_BIG_ENDIAN
-                const unsigned int coldata = (col.value[0] << 24)
-                    | (col.value[1] << 16) | (col.value[2] << 8);
-#else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-                const unsigned int coldata = (col.value[0])
-                    | (col.value[1] << 8) | (col.value[2] << 16);
-#endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-
-                if (data == coldata)
-                {
-                    p[0] = col2.value[0];
-                    p[1] = col2.value[1];
-                    p[2] = col2.value[2];
-                    break;
-                }
-
-                ++ it;
-            }
-        }
-
-#else  // ENABLE_CILKPLUS
-
         for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
              pixels != p_end;
              ++pixels)
@@ -394,7 +269,6 @@ void DyePalette::replaceSOGLColorAvx2(uint32_t *restrict pixels,
                 ++ it;
             }
         }
-#endif  // ENABLE_CILKPLUS
     }
 }
 

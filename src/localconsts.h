@@ -121,25 +121,9 @@
 #endif  // __clang__
 #endif  // __native_client__
 
-#ifdef ENABLE_CILKPLUS
-#ifdef __GNUC__
-#if GCC_VERSION < 60000
-#define BAD_CILKPLUS
-#else  // GCC_VERSION < 60000
-#define GOOD_CILKPLUS
-#endif  // GCC_VERSION < 60000
-#endif  // __GNUC__
-#endif  // ENABLE_CILKPLUS
-
-#if defined(ENABLE_CILKPLUS) && defined(BAD_CILKPLUS)
-#define A_CONST
-#define A_PURE
-#define A_INLINE
-#else  // ENABLE_CILKPLUS
 #define A_CONST __attribute__ ((const))
 #define A_PURE __attribute__ ((pure))
 #define A_INLINE __attribute__ ((always_inline))
-#endif  // ENABLE_CILKPLUS
 
 #ifdef __x86_64__
 // gcc 4.8 look like support avx2, but need global define for enable any SIMD
@@ -161,11 +145,7 @@
 #endif  // GCC_VERSION < 40900
 #endif  // __INTEL_COMPILER
 
-#ifndef ENABLE_CILKPLUS
 #define A_NONNULL(...) __attribute__((nonnull (__VA_ARGS__)))
-#else  // ENABLE_CILKPLUS
-#define A_NONNULL(...)
-#endif  // ENABLE_CILKPLUS
 
 #else  // __GNUC__
 #define A_UNUSED
@@ -181,10 +161,6 @@
 #ifdef __clang__
 #define gnu_printf printf
 #endif  // __clang__
-
-#ifdef ENABLE_CILKPLUS
-#include <cilk/cilk.h>
-#endif  // ENABLE_CILKPLUS
 
 #ifdef ADVGCC
 
@@ -265,25 +241,6 @@
 #else  // GCC_VERSION > 40000
 #define PRAGMA4(str)
 #endif  // GCC_VERSION > 40000
-#endif  // __GNUC__
-
-#ifdef __GNUC__
-#ifdef ENABLE_CILKPLUS
-#if GCC_VERSION < 40900
-#define cilk_for for
-#define cilk_spawn
-#define cilk_sync
-#elif GCC_VERSION < 50000
-#ifdef cilk_for
-#undef cilk_for
-#endif  // cilk_for
-#define cilk_for for
-#endif  // GCC_VERSION < 40900
-#else  // ENABLE_CILKPLUS
-#define cilk_for for
-#define cilk_spawn
-#define cilk_sync
-#endif  // ENABLE_CILKPLUS
 #endif  // __GNUC__
 
 #define notfinal

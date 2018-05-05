@@ -947,7 +947,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
         switch (bpp)
         {
             case 1:
-                cilk_for (int y = y1; y < y2; y++)
+                for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p = static_cast<uint8_t *>(mWindow->pixels)
                         + CAST_SIZE(y * mWindow->pitch);
@@ -959,7 +959,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                 }
                 break;
             case 2:
-                cilk_for (int y = y1; y < y2; y++)
+                for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
                         + CAST_SIZE(y * mWindow->pitch);
@@ -980,7 +980,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                 const int cg = mColor.g * mColor.a;
                 const int cb = mColor.b * mColor.a;
 
-                cilk_for (int y = y1; y < y2; y++)
+                for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
                         + CAST_SIZE(y * mWindow->pitch);
@@ -1008,7 +1008,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                 const unsigned pr = (pixel & 0xff0000) * mColor.a;
                 const unsigned a1 = (255 - mColor.a);
 
-                cilk_for (int y = y1; y < y2; y++)
+                for (int y = y1; y < y2; y++)
                 {
                     uint8_t *const p0 = static_cast<uint8_t *>(mWindow->pixels)
                         + y * mWindow->pitch;
@@ -1071,7 +1071,7 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                     mOldAlpha = mColor.a;
                 }
 
-                cilk_for (int y = y1; y < y2; y++)
+                for (int y = y1; y < y2; y++)
                 {
                     uint32_t *const p0 = reinterpret_cast<uint32_t*>(
                         static_cast<uint8_t*>(mWindow->pixels)
