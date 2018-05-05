@@ -27,6 +27,7 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -Wstrict-aliasing=2 \
 -fsanitize=leak \
 -fsanitize=shift-exponent -fsanitize=shift-base -fsanitize=bounds-strict \
 -fsanitize-address-use-after-scope \
+-fsanitize=pointer-compare -fsanitize=pointer-subtract -fsanitize=builtin -fsanitize=pointer-overflow \
 -std=gnu++2a -Wformat=1 \
 -Wno-attributes"
 
