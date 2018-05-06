@@ -1061,9 +1061,8 @@ Rect ScrollArea::getVerticalMarkerDimension()
         if (length > height)
             length = height;
 
-        const int maxScroll = getVerticalMaxScroll();
-        if (maxScroll != 0)
-            pos = ((height - length) * mVScroll) / maxScroll;
+        if (maxV != 0)
+            pos = ((height - length) * mVScroll) / maxV;
         else
             pos = 0;
     }
@@ -1093,7 +1092,7 @@ Rect ScrollArea::getHorizontalMarkerDimension()
         width = mDimension.width - w2 - mScrollbarWidth;
 
     const int maxH = getHorizontalMaxScroll();
-    if ((mMarkerSize != 0) && (maxH != 0))
+    if (mMarkerSize != 0 && maxH != 0)
     {
         pos = (mHScroll * width / maxH - mMarkerSize / 2);
         length = mMarkerSize;
@@ -1119,10 +1118,9 @@ Rect ScrollArea::getHorizontalMarkerDimension()
         if (length > width)
             length = width;
 
-        if (getHorizontalMaxScroll() != 0)
+        if (maxH != 0)
         {
-            pos = ((width - length) * mHScroll)
-                / getHorizontalMaxScroll();
+            pos = ((width - length) * mHScroll) / maxH;
         }
         else
         {
