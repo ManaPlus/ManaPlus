@@ -36,4 +36,8 @@ MapHandler::~MapHandler()
     mapHandler = nullptr;
 }
 
+void MapHandler::blockPlayCancel() const
+{
+}
+
 }  // namespace TmwAthena

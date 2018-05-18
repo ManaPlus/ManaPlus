@@ -36,6 +36,8 @@ class MapHandler notfinal
 
         virtual ~MapHandler()
         { }
+
+        virtual void blockPlayCancel() const = 0;
 };
 
 }  // namespace Net

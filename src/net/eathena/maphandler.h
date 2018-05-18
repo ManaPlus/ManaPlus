@@ -34,6 +34,8 @@ class MapHandler final : public Net::MapHandler
         A_DELETE_COPY(MapHandler)
 
         ~MapHandler() override final;
+
+        void blockPlayCancel() const override final;
 };
 
 }  // namespace EAthena

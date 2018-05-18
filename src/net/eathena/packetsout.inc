@@ -333,6 +333,7 @@ packet(CMSG_MAIL2_CANCEL_WRITE_MAIL,      0x0000,   0, nullptr);
 packet(CMSG_CLAN_MESSAGE,                 0x0000,   0, nullptr);
 packet(CMSG_WINDOW_OPEN_REQUEST2,         0x0000,   0, nullptr);
 packet(CMSG_ATTENDANCE_REWARD,            0x0000,   0, nullptr);
+packet(CMSG_MAP_BLOCK_PLAY_CANCEL,        0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -562,6 +563,12 @@ if (packetVersion >= 20080910)
 if (packetVersion >= 20081210)
 {
     packet(CMSG_SKILL_SELECT_MENU,        0x0443,   8, clif->pSkillSelectMenu);
+}
+
+// 20090520
+if (packetVersion >= 20090520)
+{
+    packet(CMSG_MAP_BLOCK_PLAY_CANCEL,    0x0447,   2, clif->p_cz_blocking_play_cancel);
 }
 
 // 20090603

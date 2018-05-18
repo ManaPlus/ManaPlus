@@ -20,6 +20,9 @@
 
 #include "net/eathena/maphandler.h"
 
+#include "net/eathena/messageout.h"
+#include "net/eathena/protocolout.h"
+
 #include "debug.h"
 
 namespace EAthena
@@ -34,6 +37,11 @@ MapHandler::MapHandler() :
 MapHandler::~MapHandler()
 {
     mapHandler = nullptr;
+}
+
+void MapHandler::blockPlayCancel() const
+{
+    createOutPacket(CMSG_MAP_BLOCK_PLAY_CANCEL);
 }
 
 }  // namespace EAthena
