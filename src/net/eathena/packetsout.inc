@@ -1339,6 +1339,18 @@ if (packetVersion >= 20170419)
     packet(CMSG_MAIL2_REFRESH_MAIL_LIST,  0x0ac1,  26, clif->pRodexRefreshMaillist);
 }
 
+// zero 20180131
+if (packetVersionZero >= 20180131)
+{
+    packet(CMSG_SKILL_USE_POSITION,       0x0af4,  11, clif->pUseSkillToPos);
+}
+
+// 20180207
+if (packetVersion >= 20180207)
+{
+    packet(CMSG_SKILL_USE_POSITION,       0x0af4,  11, clif->pUseSkillToPos);
+}
+
 // re 20180307
 if (packetVersionRe >= 20180307)
 {
