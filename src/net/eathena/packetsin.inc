@@ -1056,6 +1056,12 @@ if (packetVersionRe >= 20180307)
     packet(SMSG_OPEN_WINDOW2,              0x0ae2,   7, &AttendanceRecv::processOpenWindow,             20180307);
 }
 
+// re 20180321
+if (packetVersionRe >= 20180321)
+{
+    packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20180321);
+}
+
 // main 20180404
 if (packetVersionMain >= 20180404)
 {

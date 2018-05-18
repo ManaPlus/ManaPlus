@@ -140,4 +140,10 @@ void NpcRecv::processNpcSkin(Net::MessageIn &msg)
     }
 }
 
+void NpcRecv::processPrivateAirShipResponse(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt32("flag");
+}
+
 }  // namespace EAthena

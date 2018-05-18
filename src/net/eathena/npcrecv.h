@@ -43,6 +43,7 @@ namespace EAthena
         void processProgressBarAbort(Net::MessageIn &msg);
         void processShowProgressBarFree(Net::MessageIn &msg);
         void processNpcSkin(Net::MessageIn &msg);
+        void processPrivateAirShipResponse(Net::MessageIn &msg);
     }  // namespace NpcRecv
 }  // namespace EAthena
 
