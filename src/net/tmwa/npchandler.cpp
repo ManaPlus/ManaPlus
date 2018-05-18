@@ -243,4 +243,9 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg,
     return npcId;
 }
 
+void NpcHandler::requestAirship(const std::string &mapName A_UNUSED,
+                                const int itemId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -94,6 +94,9 @@ class NpcHandler final : public Ea::NpcHandler
         void selectArrow(const int nameId) const override final;
 
         void selectAutoSpell(const int skillId) const override final;
+
+        void requestAirship(const std::string &mapName,
+                            const int itemId) const override final;
 };
 
 }  // namespace EAthena

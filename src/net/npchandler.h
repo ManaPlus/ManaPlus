@@ -113,6 +113,9 @@ class NpcHandler notfinal
 
         virtual void selectAutoSpell(const int skillId) const = 0;
 
+        virtual void requestAirship(const std::string &mapName,
+                                    const int itemId) const = 0;
+
         virtual NpcDialog *getCurrentNpcDialog() const = 0;
 };
 

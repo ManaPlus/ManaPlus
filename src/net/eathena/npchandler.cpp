@@ -46,6 +46,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionRe;
 
 namespace EAthena
 {
@@ -360,6 +361,16 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg,
             Ea::NpcRecv::mDialog->saveCamera();
     }
     return npcId;
+}
+
+void NpcHandler::requestAirship(const std::string &mapName,
+                                const int itemId) const
+{
+    if (packetVersionRe < 20180321)
+        return;
+    createOutPacket(CMSG_PRIVATE_AIRSHIP_REQUEST);
+    outMsg.writeString(mapName, 16, "map name");
+    outMsg.writeInt16(itemId, "item");
 }
 
 }  // namespace EAthena

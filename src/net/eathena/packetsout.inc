@@ -334,6 +334,7 @@ packet(CMSG_CLAN_MESSAGE,                 0x0000,   0, nullptr);
 packet(CMSG_WINDOW_OPEN_REQUEST2,         0x0000,   0, nullptr);
 packet(CMSG_ATTENDANCE_REWARD,            0x0000,   0, nullptr);
 packet(CMSG_MAP_BLOCK_PLAY_CANCEL,        0x0000,   0, nullptr);
+packet(CMSG_PRIVATE_AIRSHIP_REQUEST,      0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1362,6 +1363,12 @@ if (packetVersion >= 20180207)
 if (packetVersionRe >= 20180307)
 {
     packet(CMSG_ATTENDANCE_REWARD,        0x0aef,   2, clif->pAttendanceRewardRequest);
+}
+
+// re 20180321
+if (packetVersionRe >= 20180321)
+{
+    packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  20, clif->pPrivateAirshipRequest);
 }
 
 // main 20180404
