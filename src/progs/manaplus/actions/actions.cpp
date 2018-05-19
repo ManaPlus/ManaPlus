@@ -1692,17 +1692,36 @@ impHandler0(homunculusFeed)
 
 impHandler(useItem)
 {
-    const int itemId = atoi(event.args.c_str());
+    StringVect pars;
+    if (!splitParameters(pars, event.args, " ,", '\"'))
+        return false;
+    const int sz = pars.size();
+    if (sz < 1)
+        return false;
+
+    const int itemId = atoi(pars[0].c_str());
 
     if (itemId < SPELL_MIN_ID)
     {
         const Inventory *const inv = PlayerInfo::getInventory();
         if (inv != nullptr)
         {
-            // +++ ignoring item color for now
+            ItemColor color = ItemColor_one;
+            int16_t useType = 0;
+            StringVect pars2;
+            if (!splitParameters(pars2, pars[0], " ,", '\"'))
+                return false;
+            const int sz2 = pars2.size();
+            if (sz2 < 1)
+                return false;
+            if (sz2 >= 2)
+                color = fromInt(atoi(pars2[1].c_str()), ItemColor);
+            if (sz >= 2)
+                useType = atoi(pars[1].c_str());
             const Item *const item = inv->findItem(itemId,
-                ItemColor_one);
-            PlayerInfo::useEquipItem(item, 0, Sfx_true);
+                color);
+            logger->log("test: %d,%d, %d", itemId, CAST_S32(color), CAST_S32(useType));
+            PlayerInfo::useEquipItem(item, useType, Sfx_true);
         }
     }
     else if (itemId < SKILL_MIN_ID && (spellManager != nullptr))
