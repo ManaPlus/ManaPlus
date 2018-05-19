@@ -32,6 +32,7 @@ src/gui/widgets/attrs/changedisplay.cpp
 src/gui/widgets/characterdisplay.cpp
 src/gui/widgets/itemcontainer.cpp
 src/gui/widgets/itemlinkhandler.cpp
+src/gui/widgets/pincode.cpp
 src/gui/widgets/selldialog.cpp
 src/gui/widgets/setupitem.cpp
 src/gui/widgets/statspagebasic.cpp
@@ -105,6 +106,7 @@ src/gui/windows/ministatuswindow.cpp
 src/gui/windows/npcdialog.cpp
 src/gui/windows/npcselldialog.cpp
 src/gui/windows/outfitwindow.cpp
+src/gui/windows/pincodedialog.cpp
 src/gui/windows/questswindow.cpp
 src/gui/windows/quitdialog.cpp
 src/gui/windows/registerdialog.cpp
@@ -163,6 +165,7 @@ src/net/tmwa/generalhandler.cpp
 src/net/tmwa/generalrecv.cpp
 src/net/tmwa/loginrecv.cpp
 src/net/tmwa/skillrecv.cpp
+src/pincodemanager.cpp
 src/progs/dyecmd/client.cpp
 src/progs/dyecmd/dyemain.cpp
 src/progs/manaplus/actions/actions.cpp
