@@ -147,7 +147,7 @@ bool ServerFeatures::haveMoveWhileSit() const
 
 bool ServerFeatures::haveKillerId() const
 {
-    return serverVersion >= 14;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::havePincode() const
