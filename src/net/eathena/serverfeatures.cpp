@@ -137,7 +137,7 @@ bool ServerFeatures::haveExtendedRiding() const
 
 bool ServerFeatures::haveExtendedDropsPosition() const
 {
-    return serverVersion >= 12;
+    return serverVersion > 0;
 }
 
 bool ServerFeatures::haveMoveWhileSit() const
