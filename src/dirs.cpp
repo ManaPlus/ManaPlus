@@ -346,7 +346,7 @@ void Dirs::initLocalDataDir()
             branding.getValue("appName", "ManaPlus"));
 #elif defined __HAIKU__
         settings.localDataDir = pathJoin(VirtFs::getUserDir(),
-           "config/data/Mana");
+           "config/cache/Mana");
 #elif defined WIN32
         settings.localDataDir = getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
         if (settings.localDataDir.empty())
