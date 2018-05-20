@@ -71,7 +71,7 @@
 #include "debug.h"
 
 extern int serverVersion;
-extern OkDialog *deathNotice;
+extern Window *deathNotice;
 extern bool packets_re;
 extern bool packets_main;
 extern bool packets_zero;

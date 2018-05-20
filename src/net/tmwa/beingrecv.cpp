@@ -56,7 +56,7 @@
 
 #include "debug.h"
 
-extern OkDialog *deathNotice;
+extern Window *deathNotice;
 
 namespace TmwAthena
 {

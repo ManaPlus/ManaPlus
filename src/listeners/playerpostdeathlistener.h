@@ -30,11 +30,12 @@
 
 #include "gui/windows/npcdialog.h"
 
+#include "net/adminhandler.h"
 #include "net/playerhandler.h"
 
 #include "localconsts.h"
 
-extern OkDialog *deathNotice;
+extern Window *deathNotice;
 
 /**
   * Listener used for handling death message.
@@ -47,18 +48,30 @@ struct PlayerPostDeathListener final : public ActionListener
 
     A_DELETE_COPY(PlayerPostDeathListener)
 
-    void action(const ActionEvent &event A_UNUSED) override final
+    void action(const ActionEvent &event) override final
     {
-        if (playerHandler != nullptr)
-            playerHandler->respawn();
+        const bool respawn = !(event.getId() == "no");
         deathNotice = nullptr;
+        if (respawn)
+        {
+            if (playerHandler != nullptr)
+                playerHandler->respawn();
 
-        DialogsManager::closeDialogs();
-        PopupManager::closePopupMenu();
+            DialogsManager::closeDialogs();
+            PopupManager::closePopupMenu();
+            NpcDialog::clearDialogs();
 
-        NpcDialog::clearDialogs();
-        if (localPlayer != nullptr)
-            localPlayer->respawn();
+            if (localPlayer != nullptr)
+                localPlayer->respawn();
+        }
+        else
+        {
+            DialogsManager::closeDialogs();
+            PopupManager::closePopupMenu();
+            NpcDialog::clearDialogs();
+            if (localPlayer != nullptr)
+                adminHandler->alive(localPlayer->getName());
+        }
     }
 };
 

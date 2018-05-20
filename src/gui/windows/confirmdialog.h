@@ -52,6 +52,20 @@ class ConfirmDialog notfinal : public Window,
                       const Modal modal,
                       Window *const parent);
 
+        /**
+         * Constructor.
+         *
+         * @see Window::Window
+         */
+        ConfirmDialog(const std::string &restrict title,
+                      const std::string &restrict msg,
+                      const std::string &restrict yesMsg,
+                      const std::string &restrict noMsg,
+                      const std::string &restrict soundEvent,
+                      const bool ignore,
+                      const Modal modal,
+                      Window *const parent);
+
         A_DELETE_COPY(ConfirmDialog)
 
         /**
@@ -62,6 +76,8 @@ class ConfirmDialog notfinal : public Window,
         void postInit() override final;
 
     private:
+        std::string mYesMsg;
+        std::string mNoMsg;
         TextBox *mTextBox A_NONNULLPOINTER;
         bool mIgnore;
 };

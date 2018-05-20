@@ -22,6 +22,10 @@
 
 #include "configuration.h"
 
+#include "being/localplayer.h"
+
+#include "net/net.h"
+
 #include "utils/checkutils.h"
 
 #include "resources/beingcommon.h"
@@ -398,6 +402,32 @@ const GroupInfo *GroupDb::getGroup(const int id)
         return &mEmptyGroup;
     }
     return (*it).second;
+}
+
+bool GroupDb::isAllowCommand(const ServerCommandTypeT command)
+{
+    const int groupId = localPlayer->getGroupId();
+    const GroupInfo *const group = GroupDb::getGroup(groupId);
+    if (group == nullptr)
+        return false;
+
+#ifdef TMWA_SUPPORT
+    // allow any commands for legacy if group > 0
+    if (Net::getNetworkType() == ServerType::TMWATHENA &&
+        localPlayer != nullptr &&
+        localPlayer->isGM())
+    {
+        return true;
+    }
+#endif
+    if (group->mPermissions[CAST_SIZE(ServerPermissionType::all_commands)] ==
+        Enable_true)
+    {
+        return true;
+    }
+    const ServerCommandEnable::Type enabled =
+        group->mCommands[CAST_SIZE(command)];
+    return (enabled & ServerCommandEnable::Self) != 0;
 }
 
 #ifdef UNITTESTS

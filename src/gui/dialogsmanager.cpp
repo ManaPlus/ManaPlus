@@ -48,6 +48,7 @@
 #include "net/inventoryhandler.h"
 
 #include "resources/db/deaddb.h"
+#include "resources/db/groupdb.h"
 
 #include "utils/gettext.h"
 
@@ -57,7 +58,7 @@
 #undef ERROR
 #endif  // WIN32
 
-OkDialog *deathNotice = nullptr;
+Window *deathNotice = nullptr;
 DialogsManager *dialogsManager = nullptr;
 OkDialog *weightNotice = nullptr;
 time_t weightNoticeTime = 0;
@@ -141,17 +142,35 @@ void DialogsManager::playerDeath()
 #ifndef DYECMD
     if (deathNotice == nullptr)
     {
-        CREATEWIDGETV(deathNotice, OkDialog,
-            // TRANSLATORS: message header
-            _("Message"),
-            DeadDB::getRandomString(),
-            // TRANSLATORS: ok dialog button
-            _("Revive"),
-            DialogType::OK,
-            Modal_false,
-            ShowCenter_true,
-            nullptr,
-            260);
+        if (GroupDb::isAllowCommand(ServerCommandType::alive))
+        {
+            CREATEWIDGETV(deathNotice, ConfirmDialog,
+                // TRANSLATORS: message header
+                _("Message"),
+                DeadDB::getRandomString(),
+                // TRANSLATORS: ok dialog button
+                _("Revive"),
+                // TRANSLATORS: ok dialog button
+                _("GM revive"),
+                SOUND_REQUEST,
+                false,
+                Modal_false,
+                nullptr);
+        }
+        else
+        {
+            CREATEWIDGETV(deathNotice, OkDialog,
+                // TRANSLATORS: message header
+                _("Message"),
+                DeadDB::getRandomString(),
+                // TRANSLATORS: ok dialog button
+                _("Revive"),
+                DialogType::OK,
+                Modal_false,
+                ShowCenter_true,
+                nullptr,
+                260);
+        }
         deathNotice->addActionListener(&postDeathListener);
     }
 #endif  // DYECMD

@@ -21,6 +21,8 @@
 #ifndef RESOURCES_DB_GROUPDB_H
 #define RESOURCES_DB_GROUPDB_H
 
+#include "enums/resources/servercommandtype.h"
+
 #include "enums/simpletypes/skiperror.h"
 
 #include <map>
@@ -44,6 +46,7 @@ namespace GroupDb
     bool getHighlightName(const int id) A_WARN_UNUSED;
     const std::string &getBadge(const int id) A_WARN_UNUSED;
     const GroupInfo *getGroup(const int id) A_WARN_UNUSED RETURNS_NONNULL;
+    bool isAllowCommand(const ServerCommandTypeT command);
 
     typedef std::map<int, GroupInfo*> GroupInfos;
     typedef GroupInfos::iterator GroupInfosIter;

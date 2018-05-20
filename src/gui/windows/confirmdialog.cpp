@@ -41,6 +41,31 @@ ConfirmDialog::ConfirmDialog(const std::string &restrict title,
                              Window *const parent) :
     Window(title, modal, parent, "confirm.xml"),
     ActionListener(),
+    // TRANSLATORS: confirm dialog button
+    mYesMsg(_("Yes")),
+    // TRANSLATORS: confirm dialog button
+    mNoMsg(_("No")),
+    mTextBox(new TextBox(this)),
+    mIgnore(ignore)
+{
+    mTextBox->setEditable(false);
+    mTextBox->setOpaque(Opaque_false);
+    mTextBox->setTextWrapped(msg, 260);
+    soundManager.playGuiSound(soundEvent);
+}
+
+ConfirmDialog::ConfirmDialog(const std::string &restrict title,
+                             const std::string &restrict msg,
+                             const std::string &restrict yesMsg,
+                             const std::string &restrict noMsg,
+                             const std::string &restrict soundEvent,
+                             const bool ignore,
+                             const Modal modal,
+                             Window *const parent) :
+    Window(title, modal, parent, "confirm.xml"),
+    ActionListener(),
+    mYesMsg(yesMsg),
+    mNoMsg(noMsg),
     mTextBox(new TextBox(this)),
     mIgnore(ignore)
 {
@@ -54,14 +79,12 @@ void ConfirmDialog::postInit()
 {
     Window::postInit();
     Button *const yesButton = new Button(this,
-        // TRANSLATORS: confirm dialog button
-        _("Yes"),
+        mYesMsg,
         "yes",
         BUTTON_SKIN,
         this);
     Button *const noButton = new Button(this,
-        // TRANSLATORS: confirm dialog button
-        _("No"),
+        mNoMsg,
         "no",
         BUTTON_SKIN,
         this);
