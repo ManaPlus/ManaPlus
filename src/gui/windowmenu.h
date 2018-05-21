@@ -34,6 +34,7 @@
 #include "localconsts.h"
 
 class Button;
+class ImageSet;
 
 struct ButtonInfo;
 struct ButtonText;
@@ -95,6 +96,7 @@ class WindowMenu final : public Container,
 
     private:
         inline void addButton(const char *const text,
+                              const int iconNumber,
                               const std::string &description,
                               int &restrict x, int &restrict h,
                               const InputActionT key,
@@ -103,6 +105,7 @@ class WindowMenu final : public Container,
         void updateButtons();
 
         Skin *mSkin;
+        ImageSet *mImageSet;
         int mPadding;
         int mSpacing;
         STD_VECTOR <Button*> mButtons;

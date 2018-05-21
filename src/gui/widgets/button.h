@@ -192,6 +192,8 @@ class Button final : public Widget,
 
         void loadImageSet(const std::string &imageName);
 
+        void setImage(Image *const image);
+
         void adjustSize();
 
         void keyPressed(KeyEvent &event) override final;

@@ -33,6 +33,7 @@ Settings settings;
 void Settings::init()
 {
     uselonglivesprites = config.getBoolValue("uselonglivesprites");
+    showButtonIcons = config.getBoolValue("showButtonIcons");
 #ifndef DYECMD
     UserAgent::update();
 #endif  // DYECMD

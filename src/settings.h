@@ -94,7 +94,8 @@ class Settings final
             enableRemoteCommands(true),
             uselonglivesprites(false),
             unknownSkillsAutoTab(true),
-            enableNewMailSystem(true)
+            enableNewMailSystem(true),
+            showButtonIcons(false)
         { }
 
         A_DELETE_COPY(Settings)
@@ -159,6 +160,7 @@ class Settings final
         bool uselonglivesprites;
         bool unknownSkillsAutoTab;
         bool enableNewMailSystem;
+        bool showButtonIcons;
 };
 
 extern Settings settings;

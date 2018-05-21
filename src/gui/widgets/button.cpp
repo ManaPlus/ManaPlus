@@ -375,6 +375,22 @@ void Button::loadImage(const std::string &imageName)
         mImages[f] = image;
 }
 
+void Button::setImage(Image *const image)
+{
+    if (image == nullptr)
+        return;
+    if (mImageSet != nullptr)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
+    mImageWidth = image->getWidth();
+    mImageHeight = image->getHeight();
+    mImages = new Image*[BUTTON_COUNT];
+    for (int f = 0; f < BUTTON_COUNT; f ++)
+        mImages[f] = image;
+}
+
 void Button::loadImageSet(const std::string &imageName)
 {
     if (mImageSet != nullptr)

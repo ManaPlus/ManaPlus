@@ -23,6 +23,7 @@
 #include "gui/windowmenu.h"
 
 #include "configuration.h"
+#include "settings.h"
 
 #include "input/inputmanager.h"
 
@@ -42,6 +43,8 @@
 #include "utils/foreach.h"
 #include "utils/gettext.h"
 
+#include "resources/imageset.h"
+
 #include "debug.h"
 
 WindowMenu *windowMenu = nullptr;
@@ -54,6 +57,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     MouseListener(),
     mSkin(theme != nullptr ? theme->load("windowmenu.xml", "",
         true, Theme::getThemePath()) : nullptr),
+    mImageSet(nullptr),
     mPadding(mSkin != nullptr ? mSkin->getPadding() : 1),
     mSpacing(mSkin != nullptr ? mSkin->getOption("spacing", 3) : 3),
     mButtons(),
@@ -67,32 +71,46 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     int h = 0;
 
     setFocusable(false);
+
+    if (settings.showButtonIcons)
+    {
+        mImageSet = Theme::getImageSetFromTheme("buttonsicons.png",
+            mSkin->getOption("imageWidth", 20),
+            mSkin->getOption("imageHeight", 20));
+    }
+
     // TRANSLATORS: short button name for who is online window.
     addButton(N_("ONL"),
+        13,
         // TRANSLATORS: long button name for who is online window.
         _("Who is online"), x, h, InputAction::WINDOW_ONLINE,
         Visible_true);
     // TRANSLATORS: short button name for help window.
     addButton(N_("HLP"),
+        0,
         // TRANSLATORS: long button name for help window.
         _("Help"), x, h, InputAction::WINDOW_HELP,
         Visible_true);
     // TRANSLATORS: short button name for quests window.
     addButton(N_("QE"),
+        12,
         // TRANSLATORS: long button name for quests window.
         _("Quests"), x, h, InputAction::WINDOW_QUESTS,
         Visible_true);
     // TRANSLATORS: short button name for kill stats window.
     addButton(N_("KS"),
+        16,
         // TRANSLATORS: long button name for kill stats window.
         _("Kill stats"), x, h, InputAction::WINDOW_KILLS,
         Visible_true);
     addButton(":-)",
+        6,
         // TRANSLATORS: long button name for emotes window.
         _("Smilies"), x, h, InputAction::WINDOW_EMOTE_SHORTCUT,
         Visible_true);
     // TRANSLATORS: short button name for chat window.
     addButton(N_("CH"),
+        20,
         // TRANSLATORS: longt button name for chat window.
         _("Chat"), x, h, InputAction::WINDOW_CHAT,
 #ifdef ANDROID
@@ -103,26 +121,31 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 
     // TRANSLATORS: short button name for status window.
     addButton(N_("STA"),
+        17,
         // TRANSLATORS: long button name for status window.
         _("Status"), x, h, InputAction::WINDOW_STATUS,
         Visible_true);
     // TRANSLATORS: short button name for equipment window.
     addButton(N_("EQU"),
+        7,
         // TRANSLATORS: long button name for equipment window.
         _("Equipment"), x, h, InputAction::WINDOW_EQUIPMENT,
         Visible_true);
     // TRANSLATORS: short button name for inventory window.
     addButton(N_("INV"),
+        9,
         // TRANSLATORS: long button name for inventory window.
         _("Inventory"), x, h, InputAction::WINDOW_INVENTORY,
         Visible_true);
     // TRANSLATORS: short button name for cart window.
     addButton(N_("CA"),
+        11,
         // TRANSLATORS: long button name for cart window.
         _("Cart"), x, h, InputAction::WINDOW_CART,
         Visible_true);
     // TRANSLATORS: short button name for map window.
     addButton(N_("MAP"),
+        19,
         // TRANSLATORS: long button name for map window.
         _("Map"), x, h, InputAction::WINDOW_MINIMAP,
         Visible_false);
@@ -131,6 +154,7 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
     {
         // TRANSLATORS: short button name for skills window.
         addButton(N_("SKI"),
+            5,
             // TRANSLATORS: long button name for skills window.
             _("Skills"), x, h, InputAction::WINDOW_SKILL,
         Visible_true);
@@ -138,66 +162,79 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 
     // TRANSLATORS: short button name for social window.
     addButton(N_("SOC"),
+        1,
         // TRANSLATORS: long button name for social window.
         _("Social"), x, h, InputAction::WINDOW_SOCIAL,
         Visible_true);
     // TRANSLATORS: short button name for shortcuts window.
     addButton(N_("SH"),
+        14,
         // TRANSLATORS: long button name for shortcuts window.
         _("Shortcuts"), x, h, InputAction::WINDOW_SHORTCUT,
         Visible_true);
     // TRANSLATORS: short button name for spells window.
     addButton(N_("SP"),
+        15,
         // TRANSLATORS: long button name for spells window.
         _("Spells"), x, h, InputAction::WINDOW_SPELLS,
         Visible_true);
     // TRANSLATORS: short button name for drops window.
     addButton(N_("DR"),
+        26,
         // TRANSLATORS: long button name for drops window.
         _("Drop"), x, h, InputAction::WINDOW_DROP,
         Visible_false);
     // TRANSLATORS: short button name for did you know window.
     addButton(N_("YK"),
+        24,
         // TRANSLATORS: long button name for did you know window.
         _("Did you know"), x, h, InputAction::WINDOW_DIDYOUKNOW,
         Visible_false);
     // TRANSLATORS: short button name for shop window.
     addButton(N_("SHP"),
+        18,
         // TRANSLATORS: long button name for shop window.
         _("Shop"), x, h, InputAction::WINDOW_SHOP,
         Visible_false);
     // TRANSLATORS: short button name for outfits window.
     addButton(N_("OU"),
+        21,
         // TRANSLATORS: long button name for outfits window.
         _("Outfits"), x, h, InputAction::WINDOW_OUTFIT,
         Visible_false);
     // TRANSLATORS: short button name for updates window.
     addButton(N_("UP"),
+        25,
         // TRANSLATORS: long button name for updates window.
         _("Updates"), x, h, InputAction::WINDOW_UPDATER,
         Visible_false);
     // TRANSLATORS: short button name for bank window.
     addButton(N_("BA"),
+        2,
         // TRANSLATORS: long button name for bank window.
         _("Bank"), x, h, InputAction::WINDOW_BANK,
         Visible_true);
     // TRANSLATORS: short button name for mail window.
     addButton(N_("MA"),
+        10,
         // TRANSLATORS: long button name for mail window.
         _("Mail"), x, h, InputAction::WINDOW_MAIL,
         Visible_true);
     // TRANSLATORS: short button name for clan window.
     addButton(N_("CL"),
+        4,
         // TRANSLATORS: long button name for clan window.
         _("Clan"), x, h, InputAction::WINDOW_CLAN,
         Visible_true);
     // TRANSLATORS: short button name for server info window.
     addButton(N_("SI"),
+        8,
         // TRANSLATORS: long button name for server info window.
         _("Server info"), x, h, InputAction::WINDOW_SERVER_INFO,
         Visible_true);
     // TRANSLATORS: short button name for debug window.
     addButton(N_("DBG"),
+        22,
         // TRANSLATORS: long button name for debug window.
         _("Debug"), x, h, InputAction::WINDOW_DEBUG,
 #ifdef ANDROID
@@ -208,11 +245,13 @@ WindowMenu::WindowMenu(const Widget2 *const widget) :
 
     // TRANSLATORS: short button name for windows list menu.
     addButton(N_("WIN"),
+        23,
         // TRANSLATORS: long button name for windows list menu.
         _("Windows"), x, h, InputAction::SHOW_WINDOWS,
         Visible_false);
     // TRANSLATORS: short button name for setup window.
     addButton(N_("SET"),
+        3,
         // TRANSLATORS: long button name for setup window.
         _("Setup"), x, h, InputAction::WINDOW_SETUP,
         Visible_true);
@@ -252,6 +291,11 @@ WindowMenu::~WindowMenu()
     }
     delete_all(mButtonTexts);
     mButtonTexts.clear();
+    if (mImageSet != nullptr)
+    {
+        mImageSet->decRef();
+        mImageSet = nullptr;
+    }
     if (mSkin != nullptr)
     {
         if (theme != nullptr)
@@ -276,17 +320,46 @@ void WindowMenu::action(const ActionEvent &event)
 }
 
 void WindowMenu::addButton(const char *const text,
+                           const int iconNumber,
                            const std::string &description,
                            int &restrict x,
                            int &restrict h,
                            const InputActionT key,
                            const Visible visible)
 {
-    Button *const btn = new Button(this,
-        gettext(text),
-        text,
-        BUTTON_SKIN,
-        this);
+    Button *btn = nullptr;
+    if (settings.showButtonIcons &&
+        mImageSet)
+    {
+        Image *const image = mImageSet->get(iconNumber);
+        if (image != nullptr)
+        {
+/*
+            btn = new Button(this,
+                "buttonsicons.png",
+                20,
+                20,
+                text,
+                BUTTON_SKIN,
+                this);
+*/
+            btn = new Button(this,
+                std::string(),
+                text,
+                BUTTON_SKIN,
+                this);
+            btn->setImage(image);
+            btn->adjustSize();
+        }
+    }
+    if (btn == nullptr)
+    {
+        btn = new Button(this,
+            gettext(text),
+            text,
+            BUTTON_SKIN,
+            this);
+    }
     btn->setPosition(x, mPadding);
     btn->setDescription(description);
     btn->setTag(CAST_S32(key));

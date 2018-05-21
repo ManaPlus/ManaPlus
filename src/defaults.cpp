@@ -421,6 +421,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("allowHighDPI", false);
     AddDEF("sdlDriver", "");
     AddDEF("parallelAudioChannels", 16);
+    AddDEF("showButtonIcons", false);
 }
 
 void setConfigDefaults2(Configuration &cfg)

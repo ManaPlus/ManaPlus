@@ -14,6 +14,7 @@ gui_DATA =				\
 	buttonpin_highlighted.xml	\
 	buttonpin_pressed.xml		\
 	buttonplay.png			\
+	buttonsicons.png		\
 	buy.xml			\
 	charcreate_playerbox.xml	\
 	checkbox.xml			\

@@ -426,6 +426,11 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
         "autohideButtonsEvent", mShortcutsList, 200,
         MainConfig_true);
 
+    // TRANSLATORS: settings option
+    new SetupItemCheckBox(_("Show icons on shortcut buttons"), "",
+        "showButtonIcons", this, "showButtonIconsEvent",
+        MainConfig_true);
+
 
     // TRANSLATORS: settings group
     new SetupItemLabel(_("Proxy server"), "", this,
