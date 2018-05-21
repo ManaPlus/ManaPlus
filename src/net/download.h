@@ -106,6 +106,8 @@ class Download final
 
         static void addHeaders(CURL *const curl);
 
+        static void addCommonFlags(CURL *const curl);
+
         static unsigned long adlerBuffer(const char *const buffer, int size);
 
         static std::string getUploadResponse()

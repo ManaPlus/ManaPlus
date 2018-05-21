@@ -212,6 +212,8 @@ class Logger final
                            const uint32_t id2,
                            const uint32_t id3) const;
 
+        FILE *getFile() const;
+
     private:
         FILE *mLogFile;
         STD_VECTOR<std::string> mDelayedLog;

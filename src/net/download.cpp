@@ -343,6 +343,7 @@ int Download::downloadThread(void *ptr)
                     addProxy(d->mCurl);
                     secureCurl(d->mCurl);
                 }
+                addCommonFlags(d->mCurl);
 
                 if ((res = curl_easy_perform(d->mCurl)) != 0 &&
                     (d->mOptions.cancel == 0u) &&
@@ -607,6 +608,11 @@ void Download::addHeaders(CURL *const curl A_UNUSED)
 {
 }
 #endif  // LIBCURL_VERSION_NUM >= 0x071507
+
+void Download::addCommonFlags(CURL *const curl)
+{
+    curl_easy_setopt(curl, CURLOPT_STDERR, logger->getFile());
+}
 
 void Download::prepareForm(curl_httppost **form, const std::string &fileName)
 {

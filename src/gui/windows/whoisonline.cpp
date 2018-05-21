@@ -568,6 +568,7 @@ int WhoIsOnline::downloadThread(void *ptr)
             Net::Download::addHeaders(curl);
             Net::Download::addProxy(curl);
             Net::Download::secureCurl(curl);
+            Net::Download::addCommonFlags(curl);
 
             // Make sure the resources2.txt and news.txt aren't cached,
             // in order to always get the latest version.

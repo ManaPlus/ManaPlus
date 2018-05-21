@@ -543,3 +543,8 @@ void Logger::unimplemented(const uint32_t id,
         id3);
     DebugMessageListener::distributeEvent(str);
 }
+
+FILE *Logger::getFile() const
+{
+    return mLogFile;
+}
