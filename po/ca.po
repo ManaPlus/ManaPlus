@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-19 23:51+0300\n"
+"POT-Creation-Date: 2018-05-22 00:56+0300\n"
 "PO-Revision-Date: 2018-03-02 14:58+0000\n"
 "Last-Translator: Javier Muñoz Ramón <javier.mura84@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/akaras/manaplus/language/"
@@ -374,7 +374,7 @@ msgstr "General"
 #. TRANSLATORS: chat tab header
 #. TRANSLATORS: long button name for debug window.
 #. TRANSLATORS: debug window name
-#: src/game.cpp:299 src/gui/windowmanager.cpp:144 src/gui/windowmenu.cpp:202
+#: src/game.cpp:299 src/gui/windowmanager.cpp:144 src/gui/windowmenu.cpp:239
 #: src/gui/windows/debugwindow.cpp:43
 msgid "Debug"
 msgstr "Depura"
@@ -804,8 +804,8 @@ msgstr "Absent"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:186
-#: src/gui/dialogsmanager.cpp:206 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:205
+#: src/gui/dialogsmanager.cpp:225 src/gui/widgets/tabs/setup_input.cpp:169
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -857,7 +857,7 @@ msgstr "(F) mode de càmera lliure"
 #. TRANSLATORS: shop window button
 #. TRANSLATORS: close quick button
 #. TRANSLATORS: ok dialog button
-#: src/gui/dialogsmanager.cpp:119 src/gui/popups/popupmenu.cpp:842
+#: src/gui/dialogsmanager.cpp:120 src/gui/popups/popupmenu.cpp:842
 #: src/gui/popups/popupmenu.cpp:934 src/gui/popups/popupmenu.cpp:1194
 #: src/gui/windows/didyouknowwindow.cpp:85
 #: src/gui/windows/inventorywindow.cpp:309
@@ -871,31 +871,38 @@ msgid "Close"
 msgstr "Tanca"
 
 #. TRANSLATORS: error message question
-#: src/gui/dialogsmanager.cpp:131
+#: src/gui/dialogsmanager.cpp:132
 msgid "Do you want to open support page?"
 msgstr "Vol obrir la pàgina de suport?"
 
 #. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:146 src/gui/dialogsmanager.cpp:180
-#: src/gui/dialogsmanager.cpp:200
+#: src/gui/dialogsmanager.cpp:149 src/gui/dialogsmanager.cpp:164
+#: src/gui/dialogsmanager.cpp:199 src/gui/dialogsmanager.cpp:219
 msgid "Message"
 msgstr "Missatge"
 
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:149 src/gui/popups/popupmenu.cpp:2995
+#: src/gui/dialogsmanager.cpp:152 src/gui/dialogsmanager.cpp:167
+#: src/gui/popups/popupmenu.cpp:2995
 msgid "Revive"
 msgstr "Reviu"
 
+#. TRANSLATORS: ok dialog button
+#: src/gui/dialogsmanager.cpp:154
+#, fuzzy
+msgid "GM revive"
+msgstr "Reviu"
+
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:182
+#: src/gui/dialogsmanager.cpp:201
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "Porteu més de la meitat del vostre pes. No podeu recuperar salut."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:202
+#: src/gui/dialogsmanager.cpp:221
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr "Porteu menys de la meitat del vostre pes. Podeu recuperar salut."
 
@@ -1824,7 +1831,7 @@ msgstr "Restaura la càmera"
 #. TRANSLATORS: outfits button tooltip
 #. TRANSLATORS: outfits window name
 #: src/gui/popups/popupmenu.cpp:862 src/gui/setupinputpages.cpp:58
-#: src/gui/windowmenu.cpp:172 src/gui/windows/inventorywindow.cpp:265
+#: src/gui/windowmenu.cpp:203 src/gui/windows/inventorywindow.cpp:265
 #: src/gui/windows/outfitwindow.cpp:61
 msgid "Outfits"
 msgstr "Vestuari"
@@ -1844,7 +1851,7 @@ msgstr "Treu vestuari"
 
 #. TRANSLATORS: popup menu header
 #. TRANSLATORS: long button name for spells window.
-#: src/gui/popups/popupmenu.cpp:900 src/gui/windowmenu.cpp:152
+#: src/gui/popups/popupmenu.cpp:900 src/gui/windowmenu.cpp:179
 msgid "Spells"
 msgstr "Conjurs"
 
@@ -2301,7 +2308,7 @@ msgstr "Desatendre"
 #. TRANSLATORS: add player to ignore list
 #. TRANSLATORS: confirm dialog button
 #: src/gui/popups/popupmenu.cpp:2480 src/gui/popups/popupmenu.cpp:2516
-#: src/gui/popups/popupmenu.cpp:2555 src/gui/windows/confirmdialog.cpp:70
+#: src/gui/popups/popupmenu.cpp:2555 src/gui/windows/confirmdialog.cpp:93
 msgid "Ignore"
 msgstr "Ignorar"
 
@@ -2422,7 +2429,7 @@ msgstr "Llença tots"
 #. TRANSLATORS: drop item
 #. TRANSLATORS: long button name for drops window.
 #. TRANSLATORS: inventory button
-#: src/gui/popups/popupmenu.cpp:2883 src/gui/windowmenu.cpp:157
+#: src/gui/popups/popupmenu.cpp:2883 src/gui/windowmenu.cpp:185
 #: src/gui/windows/inventorywindow.cpp:998
 msgid "Drop"
 msgstr "Llença"
@@ -2463,7 +2470,7 @@ msgstr "Atributs"
 #. TRANSLATORS: long button name for inventory window.
 #. TRANSLATORS: inventory window name
 #. TRANSLATORS: inventory type name
-#: src/gui/popups/popupmenu.cpp:2927 src/gui/windowmenu.cpp:117
+#: src/gui/popups/popupmenu.cpp:2927 src/gui/windowmenu.cpp:138
 #: src/gui/windows/inventorywindow.cpp:154
 #: src/resources/inventory/inventory.cpp:360
 msgid "Inventory"
@@ -2481,7 +2488,7 @@ msgstr "Emmagatzematge"
 #. TRANSLATORS: long button name for cart window.
 #. TRANSLATORS: cart button tooltip
 #. TRANSLATORS: inventory type name
-#: src/gui/popups/popupmenu.cpp:2939 src/gui/windowmenu.cpp:122
+#: src/gui/popups/popupmenu.cpp:2939 src/gui/windowmenu.cpp:144
 #: src/gui/windows/inventorywindow.cpp:267
 #: src/resources/inventory/inventory.cpp:375
 msgid "Cart"
@@ -2853,7 +2860,7 @@ msgstr "Bàsic"
 
 #. TRANSLATORS: input tab sub tab name
 #. TRANSLATORS: long button name for shortcuts window.
-#: src/gui/setupinputpages.cpp:50 src/gui/windowmenu.cpp:147
+#: src/gui/setupinputpages.cpp:50 src/gui/windowmenu.cpp:173
 msgid "Shortcuts"
 msgstr "Dreceres"
 
@@ -2862,7 +2869,7 @@ msgstr "Dreceres"
 #. TRANSLATORS: long button name for windows list menu.
 #. TRANSLATORS: input action label
 #: src/gui/setupinputpages.cpp:52 src/gui/widgets/tabs/setup_misc.cpp:420
-#: src/gui/windowmenu.cpp:212 src/input/pages/windows.cpp:34
+#: src/gui/windowmenu.cpp:250 src/input/pages/windows.cpp:34
 msgid "Windows"
 msgstr "Finestres"
 
@@ -2885,7 +2892,7 @@ msgstr "Emoticones"
 #. TRANSLATORS: longt button name for chat window.
 #. TRANSLATORS: chat window name
 #: src/gui/setupinputpages.cpp:60 src/gui/widgets/tabs/setup_chat.cpp:40
-#: src/gui/windowmenu.cpp:97 src/gui/windows/chatwindow.cpp:95
+#: src/gui/windowmenu.cpp:115 src/gui/windows/chatwindow.cpp:95
 msgid "Chat"
 msgstr "Xat"
 
@@ -2897,7 +2904,7 @@ msgstr "Xat"
 #: src/gui/setupinputpages.cpp:62 src/gui/userpalette.cpp:474
 #: src/gui/widgets/tabs/setup_audio.cpp:188
 #: src/gui/widgets/tabs/setup_chat.cpp:325
-#: src/gui/widgets/tabs/setup_misc.cpp:500
+#: src/gui/widgets/tabs/setup_misc.cpp:505
 #: src/gui/widgets/tabs/setup_visual.cpp:223 src/input/pages/chat.cpp:145
 #: src/input/pages/gui.cpp:85 src/input/pages/other.cpp:106
 msgid "Other"
@@ -3353,7 +3360,7 @@ msgstr "%s ja no es troba en línia."
 #. TRANSLATORS: clan chat tab name
 #. TRANSLATORS: long button name for clan window.
 #. TRANSLATORS: clan window name
-#: src/gui/widgets/tabs/chat/clantab.cpp:39 src/gui/windowmenu.cpp:192
+#: src/gui/widgets/tabs/chat/clantab.cpp:39 src/gui/windowmenu.cpp:227
 #: src/gui/windows/clanwindow.cpp:41
 msgid "Clan"
 msgstr ""
@@ -4708,7 +4715,7 @@ msgstr "Alterna objectius del monstre"
 #. TRANSLATORS: long button name for map window.
 #. TRANSLATORS: debug window tab
 #. TRANSLATORS: mini map window name
-#: src/gui/widgets/tabs/setup_misc.cpp:169 src/gui/windowmenu.cpp:127
+#: src/gui/widgets/tabs/setup_misc.cpp:169 src/gui/windowmenu.cpp:150
 #: src/gui/windows/debugwindow.cpp:64 src/gui/windows/minimap.cpp:66
 #: src/gui/windows/minimap.cpp:129
 msgid "Map"
@@ -4883,7 +4890,7 @@ msgstr "Activa notificacions importants"
 #. TRANSLATORS: long button name for shop window.
 #. TRANSLATORS: shop window name
 #. TRANSLATORS: shop button tooltip
-#: src/gui/widgets/tabs/setup_misc.cpp:344 src/gui/windowmenu.cpp:167
+#: src/gui/widgets/tabs/setup_misc.cpp:344 src/gui/windowmenu.cpp:197
 #: src/gui/windows/buyselldialog.cpp:43 src/gui/windows/buyselldialog.cpp:54
 #: src/gui/windows/inventorywindow.cpp:269
 msgid "Shop"
@@ -4960,124 +4967,130 @@ msgstr "Activa solució temporal alt-tab"
 msgid "Shortcut buttons"
 msgstr "Dreceres"
 
+#. TRANSLATORS: settings option
+#: src/gui/widgets/tabs/setup_misc.cpp:430
+#, fuzzy
+msgid "Show icons on shortcut buttons"
+msgstr "Dreceres"
+
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_misc.cpp:431
+#: src/gui/widgets/tabs/setup_misc.cpp:436
 msgid "Proxy server"
 msgstr "Servidor intermediari"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:436
+#: src/gui/widgets/tabs/setup_misc.cpp:441
 msgid "Proxy type"
 msgstr "Tipus de servidor intermediari"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:441
+#: src/gui/widgets/tabs/setup_misc.cpp:446
 msgid "Proxy address:port"
 msgstr "Adreça de servidor intermediari:port"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:446
+#: src/gui/widgets/tabs/setup_misc.cpp:451
 msgid "Tunnel through HTTP proxy"
 msgstr "Túnel a través d'un servidor intermediari HTTP"
 
 #. TRANSLATORS: settings group
-#: src/gui/widgets/tabs/setup_misc.cpp:452
+#: src/gui/widgets/tabs/setup_misc.cpp:457
 msgid "Logging"
 msgstr "S'està enregistrant"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:456
+#: src/gui/widgets/tabs/setup_misc.cpp:461
 msgid "Enable OpenGL version check (do not disable)"
 msgstr "Activa comprovació de versió d'OpenGL (no desactivis)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:462
+#: src/gui/widgets/tabs/setup_misc.cpp:467
 msgid "Enable debug log"
 msgstr "Activa registre de depurador"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:467
+#: src/gui/widgets/tabs/setup_misc.cpp:472
 msgid "Ignore logging packets"
 msgstr "Ignora registre de paquets"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:472
+#: src/gui/widgets/tabs/setup_misc.cpp:477
 msgid "Log unimplemented packets"
 msgstr "Registra paquets sense implementar"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:477
+#: src/gui/widgets/tabs/setup_misc.cpp:482
 msgid "Enable OpenGL log"
 msgstr "Activa registre OpenGL"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:482
+#: src/gui/widgets/tabs/setup_misc.cpp:487
 msgid "Enable input log"
 msgstr "Activa registre d'entrada"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:489
+#: src/gui/widgets/tabs/setup_misc.cpp:494
 msgid "SDL logging level"
 msgstr "Nivell d'enregistrament SDL"
 
 #. TRANSLATORS: settings option
 #. TRANSLATORS: input action name
-#: src/gui/widgets/tabs/setup_misc.cpp:495 src/input/pages/other.cpp:408
+#: src/gui/widgets/tabs/setup_misc.cpp:500 src/input/pages/other.cpp:408
 msgid "Upload log file"
 msgstr "Puja arxiu de registre"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:504
+#: src/gui/widgets/tabs/setup_misc.cpp:509
 msgid "Enable server side attack"
 msgstr "Activa atac del servidor"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:509
+#: src/gui/widgets/tabs/setup_misc.cpp:514
 msgid "Hide support page link on error"
 msgstr "Amaga enllaç a pàgina de suport quan hi ha errors"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:514
+#: src/gui/widgets/tabs/setup_misc.cpp:519
 msgid "Enable double clicks"
 msgstr "Activa clics dobles"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:519
+#: src/gui/widgets/tabs/setup_misc.cpp:524
 msgid "Enable bot checker"
 msgstr "Activa comprovador de bot"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:524
+#: src/gui/widgets/tabs/setup_misc.cpp:529
 msgid "Enable buggy servers protection (do not disable)"
 msgstr "Activa protecció de servidors amb errors (no desactivis)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:530
+#: src/gui/widgets/tabs/setup_misc.cpp:535
 msgid "Low traffic mode"
 msgstr "Mode de tràfic baix"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:536
+#: src/gui/widgets/tabs/setup_misc.cpp:541
 msgid "Use FBO for screenshots (only for opengl)"
 msgstr "Utilitza FBO per a captures de pantalla (només per a opengl)"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:543
+#: src/gui/widgets/tabs/setup_misc.cpp:548
 msgid "Screenshot directory"
 msgstr "Directori de captures de pantalla"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:550
+#: src/gui/widgets/tabs/setup_misc.cpp:555
 msgid "Network delay between sub servers"
 msgstr "Latència de xarxa entre sub-servidors"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:555
+#: src/gui/widgets/tabs/setup_misc.cpp:560
 msgid "Show background"
 msgstr "Mostra fons"
 
 #. TRANSLATORS: settings option
-#: src/gui/widgets/tabs/setup_misc.cpp:561
+#: src/gui/widgets/tabs/setup_misc.cpp:566
 msgid "Screen density override"
 msgstr "Sobreescriu densitat de la pantalla"
 
@@ -5094,7 +5107,7 @@ msgstr "Sense mods presents"
 #. TRANSLATORS: texture compression type
 #. TRANSLATORS: confirm dialog button
 #: src/gui/widgets/tabs/setup_perfomance.cpp:46
-#: src/gui/windows/confirmdialog.cpp:64
+#: src/gui/windows/confirmdialog.cpp:47
 msgid "No"
 msgstr "No"
 
@@ -6071,231 +6084,231 @@ msgid "Visible players: %d"
 msgstr "Jugadors visibles: %d"
 
 #. TRANSLATORS: short button name for who is online window.
-#: src/gui/windowmenu.cpp:71
+#: src/gui/windowmenu.cpp:83
 msgid "ONL"
 msgstr "QEL"
 
 #. TRANSLATORS: long button name for who is online window.
-#: src/gui/windowmenu.cpp:73
+#: src/gui/windowmenu.cpp:86
 msgid "Who is online"
 msgstr "Qui està en línia"
 
 #. TRANSLATORS: short button name for help window.
-#: src/gui/windowmenu.cpp:76
+#: src/gui/windowmenu.cpp:89
 msgid "HLP"
 msgstr "AJU"
 
 #. TRANSLATORS: long button name for help window.
 #. TRANSLATORS: help window name
 #. TRANSLATORS: theme tab quick button
-#: src/gui/windowmenu.cpp:78 src/gui/windows/helpwindow.cpp:57
+#: src/gui/windowmenu.cpp:92 src/gui/windows/helpwindow.cpp:57
 #: src/progs/dyecmd/client.cpp:564 src/progs/manaplus/client.cpp:922
 msgid "Help"
 msgstr "Ajuda"
 
 #. TRANSLATORS: short button name for quests window.
-#: src/gui/windowmenu.cpp:81
+#: src/gui/windowmenu.cpp:95
 msgid "QE"
 msgstr "MI"
 
 #. TRANSLATORS: long button name for quests window.
 #. TRANSLATORS: quests window name
-#: src/gui/windowmenu.cpp:83 src/gui/windows/questswindow.cpp:65
+#: src/gui/windowmenu.cpp:98 src/gui/windows/questswindow.cpp:65
 msgid "Quests"
 msgstr "Missions"
 
 #. TRANSLATORS: short button name for kill stats window.
-#: src/gui/windowmenu.cpp:86
+#: src/gui/windowmenu.cpp:101
 msgid "KS"
 msgstr "EM"
 
 #. TRANSLATORS: long button name for kill stats window.
 #. TRANSLATORS: kill stats window name
-#: src/gui/windowmenu.cpp:88 src/gui/windows/killstats.cpp:49
+#: src/gui/windowmenu.cpp:104 src/gui/windows/killstats.cpp:49
 msgid "Kill stats"
 msgstr "Estadístiques de morts"
 
 #. TRANSLATORS: long button name for emotes window.
-#: src/gui/windowmenu.cpp:92
+#: src/gui/windowmenu.cpp:109
 msgid "Smilies"
 msgstr "Emoticones"
 
 #. TRANSLATORS: short button name for chat window.
-#: src/gui/windowmenu.cpp:95
+#: src/gui/windowmenu.cpp:112
 msgid "CH"
 msgstr "XA"
 
 #. TRANSLATORS: short button name for status window.
-#: src/gui/windowmenu.cpp:105
+#: src/gui/windowmenu.cpp:123
 msgid "STA"
 msgstr "EST"
 
 #. TRANSLATORS: long button name for status window.
-#: src/gui/windowmenu.cpp:107
+#: src/gui/windowmenu.cpp:126
 msgid "Status"
 msgstr "Estat"
 
 #. TRANSLATORS: short button name for equipment window.
-#: src/gui/windowmenu.cpp:110
+#: src/gui/windowmenu.cpp:129
 msgid "EQU"
 msgstr "EQU"
 
 #. TRANSLATORS: long button name for equipment window.
 #. TRANSLATORS: equipment window name
 #. TRANSLATORS: equipment button tooltip
-#: src/gui/windowmenu.cpp:112 src/gui/windows/equipmentwindow.cpp:67
+#: src/gui/windowmenu.cpp:132 src/gui/windows/equipmentwindow.cpp:67
 #: src/gui/windows/inventorywindow.cpp:271
 msgid "Equipment"
 msgstr "Equipament"
 
 #. TRANSLATORS: short button name for inventory window.
-#: src/gui/windowmenu.cpp:115
+#: src/gui/windowmenu.cpp:135
 msgid "INV"
 msgstr "INV"
 
 #. TRANSLATORS: short button name for cart window.
-#: src/gui/windowmenu.cpp:120
+#: src/gui/windowmenu.cpp:141
 msgid "CA"
 msgstr "CA"
 
 #. TRANSLATORS: short button name for map window.
-#: src/gui/windowmenu.cpp:125
+#: src/gui/windowmenu.cpp:147
 msgid "MAP"
 msgstr "MAP"
 
 #. TRANSLATORS: short button name for skills window.
-#: src/gui/windowmenu.cpp:133
+#: src/gui/windowmenu.cpp:156
 msgid "SKI"
 msgstr "HAB"
 
 #. TRANSLATORS: long button name for skills window.
 #. TRANSLATORS: skills dialog name
-#: src/gui/windowmenu.cpp:135 src/gui/windows/skilldialog.cpp:85
+#: src/gui/windowmenu.cpp:159 src/gui/windows/skilldialog.cpp:85
 msgid "Skills"
 msgstr "Habilitats"
 
 #. TRANSLATORS: short button name for social window.
-#: src/gui/windowmenu.cpp:140
+#: src/gui/windowmenu.cpp:164
 msgid "SOC"
 msgstr "SOC"
 
 #. TRANSLATORS: long button name for social window.
 #. TRANSLATORS: social window name
-#: src/gui/windowmenu.cpp:142 src/gui/windows/socialwindow.cpp:52
+#: src/gui/windowmenu.cpp:167 src/gui/windows/socialwindow.cpp:52
 msgid "Social"
 msgstr "Social"
 
 #. TRANSLATORS: short button name for shortcuts window.
-#: src/gui/windowmenu.cpp:145
+#: src/gui/windowmenu.cpp:170
 msgid "SH"
 msgstr "DR"
 
 #. TRANSLATORS: short button name for spells window.
-#: src/gui/windowmenu.cpp:150
+#: src/gui/windowmenu.cpp:176
 msgid "SP"
 msgstr "CON"
 
 #. TRANSLATORS: short button name for drops window.
-#: src/gui/windowmenu.cpp:155
+#: src/gui/windowmenu.cpp:182
 msgid "DR"
 msgstr "LLE"
 
 #. TRANSLATORS: short button name for did you know window.
-#: src/gui/windowmenu.cpp:160
+#: src/gui/windowmenu.cpp:188
 msgid "YK"
 msgstr "HS"
 
 #. TRANSLATORS: long button name for did you know window.
-#: src/gui/windowmenu.cpp:162
+#: src/gui/windowmenu.cpp:191
 msgid "Did you know"
 msgstr "Sabíeu que"
 
 #. TRANSLATORS: short button name for shop window.
-#: src/gui/windowmenu.cpp:165
+#: src/gui/windowmenu.cpp:194
 msgid "SHP"
 msgstr "BOT"
 
 #. TRANSLATORS: short button name for outfits window.
-#: src/gui/windowmenu.cpp:170
+#: src/gui/windowmenu.cpp:200
 msgid "OU"
 msgstr "VES"
 
 #. TRANSLATORS: short button name for updates window.
-#: src/gui/windowmenu.cpp:175
+#: src/gui/windowmenu.cpp:206
 msgid "UP"
 msgstr "AC"
 
 #. TRANSLATORS: long button name for updates window.
-#: src/gui/windowmenu.cpp:177
+#: src/gui/windowmenu.cpp:209
 msgid "Updates"
 msgstr "Actualitzacions"
 
 #. TRANSLATORS: short button name for bank window.
-#: src/gui/windowmenu.cpp:180
+#: src/gui/windowmenu.cpp:212
 msgid "BA"
 msgstr "BA"
 
 #. TRANSLATORS: long button name for bank window.
 #. TRANSLATORS: bank window name
-#: src/gui/windowmenu.cpp:182 src/gui/windows/bankwindow.cpp:43
+#: src/gui/windowmenu.cpp:215 src/gui/windows/bankwindow.cpp:43
 msgid "Bank"
 msgstr "Banc"
 
 #. TRANSLATORS: short button name for mail window.
-#: src/gui/windowmenu.cpp:185
+#: src/gui/windowmenu.cpp:218
 msgid "MA"
 msgstr "CO"
 
 #. TRANSLATORS: long button name for mail window.
 #. TRANSLATORS: mail window name
 #. TRANSLATORS: inventory type name
-#: src/gui/windowmenu.cpp:187 src/gui/windows/mailwindow.cpp:57
+#: src/gui/windowmenu.cpp:221 src/gui/windows/mailwindow.cpp:57
 #: src/resources/inventory/inventory.cpp:381
 msgid "Mail"
 msgstr "Correu"
 
 #. TRANSLATORS: short button name for clan window.
-#: src/gui/windowmenu.cpp:190
+#: src/gui/windowmenu.cpp:224
 msgid "CL"
 msgstr ""
 
 #. TRANSLATORS: short button name for server info window.
-#: src/gui/windowmenu.cpp:195
+#: src/gui/windowmenu.cpp:230
 msgid "SI"
 msgstr "IS"
 
 #. TRANSLATORS: long button name for server info window.
 #. TRANSLATORS: servers dialog name
-#: src/gui/windowmenu.cpp:197 src/gui/windows/serverinfowindow.cpp:41
+#: src/gui/windowmenu.cpp:233 src/gui/windows/serverinfowindow.cpp:41
 msgid "Server info"
 msgstr "Informació del servidor"
 
 #. TRANSLATORS: short button name for debug window.
-#: src/gui/windowmenu.cpp:200
+#: src/gui/windowmenu.cpp:236
 msgid "DBG"
 msgstr "DPR"
 
 #. TRANSLATORS: short button name for windows list menu.
-#: src/gui/windowmenu.cpp:210
+#: src/gui/windowmenu.cpp:247
 msgid "WIN"
 msgstr "FIN"
 
 #. TRANSLATORS: short button name for setup window.
-#: src/gui/windowmenu.cpp:215
+#: src/gui/windowmenu.cpp:253
 msgid "SET"
 msgstr "CON"
 
 #. TRANSLATORS: long button name for setup window.
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: setup tab quick button
-#: src/gui/windowmenu.cpp:217 src/gui/windows/setupwindow.cpp:67
+#: src/gui/windowmenu.cpp:256 src/gui/windows/setupwindow.cpp:67
 #: src/progs/dyecmd/client.cpp:549 src/progs/manaplus/client.cpp:907
 msgid "Setup"
 msgstr "Configuració"
 
 #. TRANSLATORS: short key name
 #. TRANSLATORS: outfits window label
-#: src/gui/windowmenu.cpp:355 src/gui/windows/outfitwindow.cpp:80
+#: src/gui/windowmenu.cpp:428 src/gui/windows/outfitwindow.cpp:80
 #: src/gui/windows/outfitwindow.cpp:631
 #, c-format
 msgid "Key: %s"
@@ -6688,7 +6701,7 @@ msgid "Antagonist"
 msgstr ""
 
 #. TRANSLATORS: confirm dialog button
-#: src/gui/windows/confirmdialog.cpp:58
+#: src/gui/windows/confirmdialog.cpp:45
 msgid "Yes"
 msgstr "Sí"
 
