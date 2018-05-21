@@ -370,7 +370,7 @@ void NpcHandler::requestAirship(const std::string &mapName,
         return;
     createOutPacket(CMSG_PRIVATE_AIRSHIP_REQUEST);
     outMsg.writeString(mapName, 16, "map name");
-    outMsg.writeInt16(itemId, "item");
+    outMsg.writeInt16(CAST_S16(itemId), "item");
 }
 
 }  // namespace EAthena

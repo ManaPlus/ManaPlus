@@ -1695,7 +1695,7 @@ impHandler(useItem)
     StringVect pars;
     if (!splitParameters(pars, event.args, " ,", '\"'))
         return false;
-    const int sz = pars.size();
+    const int sz = CAST_S32(pars.size());
     if (sz < 1)
         return false;
 
@@ -1711,13 +1711,13 @@ impHandler(useItem)
             StringVect pars2;
             if (!splitParameters(pars2, pars[0], " ,", '\"'))
                 return false;
-            const int sz2 = pars2.size();
+            const int sz2 = CAST_S32(pars2.size());
             if (sz2 < 1)
                 return false;
             if (sz2 >= 2)
                 color = fromInt(atoi(pars2[1].c_str()), ItemColor);
             if (sz >= 2)
-                useType = atoi(pars[1].c_str());
+                useType = CAST_S16(atoi(pars[1].c_str()));
             const Item *const item = inv->findItem(itemId,
                 color);
             logger->log("test: %d,%d, %d", itemId, CAST_S32(color), CAST_S32(useType));
