@@ -206,7 +206,7 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                     mForegroundColor,
                     spell->getSymbol(),
                     itemX + mTextOffsetX,
-                    itemY + mBoxHeight / 2);
+                    itemY + mTextOffsetY);
             }
         }
         else if (skillDialog != nullptr)
@@ -231,7 +231,7 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                         mForegroundColor,
                         skill->data->shortName,
                         itemX + mTextOffsetX,
-                        itemY + mBoxHeight / 2);
+                        itemY + mTextOffsetY);
                 }
             }
         }
@@ -353,7 +353,7 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                     mForegroundColor,
                     spell->getSymbol(),
                     itemX + mTextOffsetX,
-                    itemY + mBoxHeight / 2);
+                    itemY + mTextOffsetY);
             }
         }
         else if (skillDialog != nullptr)
@@ -378,7 +378,7 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                         mForegroundColor,
                         skill->data->shortName,
                         itemX + mTextOffsetX,
-                        itemY + mBoxHeight / 2);
+                        itemY + mTextOffsetY);
                 }
             }
         }

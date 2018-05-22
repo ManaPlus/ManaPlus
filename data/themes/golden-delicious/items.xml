@@ -6,6 +6,7 @@
         <option name="padding" value="8" />
         <option name="titlebarBold" value="1" />
         <option name="titlePadding" value="20" />
+        <option name="textOffsetY" value="21" /> 
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="20" height="53" />
