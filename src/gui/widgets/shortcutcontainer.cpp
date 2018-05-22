@@ -25,6 +25,7 @@
 #include "settings.h"
 
 #include "gui/gui.h"
+#include "gui/skin.h"
 
 #include "utils/delete2.h"
 
@@ -49,6 +50,10 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
     mBoxHeight(1),
     mGridWidth(1),
     mGridHeight(1),
+    mImageOffsetX(2),
+    mImageOffsetY(2),
+    mTextOffsetX(2),
+    mTextOffsetY(2),
     mVertexes(new ImageCollection)
 {
     mAllowLogic = false;
@@ -164,4 +169,11 @@ void ShortcutContainer::setSkin(const Widget2 *const widget,
 {
     setWidget2(widget);
     mSkin = skin;
+    if (mSkin)
+    {
+        mImageOffsetX = mSkin->getOption("imageOffsetX", 2);
+        mImageOffsetY = mSkin->getOption("imageOffsetY", 2);
+        mTextOffsetX = mSkin->getOption("textOffsetX", 2);
+        mTextOffsetY = mSkin->getOption("textOffsetY", 2);
+    }
 }

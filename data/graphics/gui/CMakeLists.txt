@@ -30,6 +30,7 @@ SET (FILES
     dropdown_background.xml
     dropdown_pressed.xml
     emote_selection.xml
+    emotes.xml
     emotetabs.xml
     equipment.xml
     equipment_background.xml

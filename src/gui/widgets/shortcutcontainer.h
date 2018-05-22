@@ -119,6 +119,10 @@ class ShortcutContainer notfinal : public Widget,
         int mBoxHeight;
         int mGridWidth;
         int mGridHeight;
+        int mImageOffsetX;
+        int mImageOffsetY;
+        int mTextOffsetX;
+        int mTextOffsetY;
         ImageCollection *mVertexes;
 };
 

@@ -109,7 +109,9 @@ void SpellShortcutContainer::draw(Graphics *const graphics)
                 if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
-                    graphics->drawImage(image, itemX, itemY);
+                    graphics->drawImage(image,
+                        itemX + mImageOffsetX,
+                        itemY + mImageOffsetY);
                 }
             }
 
@@ -117,7 +119,8 @@ void SpellShortcutContainer::draw(Graphics *const graphics)
                 mForegroundColor,
                 mForegroundColor2,
                 spell->getSymbol(),
-                itemX + 2, itemY + mBoxHeight / 2);
+                itemX + mTextOffsetX,
+                itemY + mBoxHeight / 2);
         }
     }
 
@@ -169,7 +172,9 @@ void SpellShortcutContainer::safeDraw(Graphics *const graphics)
                 if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
-                    graphics->drawImage(image, itemX, itemY);
+                    graphics->drawImage(image,
+                        itemX + mImageOffsetX,
+                        itemY + mImageOffsetY);
                 }
             }
 
@@ -177,7 +182,8 @@ void SpellShortcutContainer::safeDraw(Graphics *const graphics)
                 mForegroundColor,
                 mForegroundColor2,
                 spell->getSymbol(),
-                itemX + 2, itemY + mBoxHeight / 2);
+                itemX + mTextOffsetX,
+                itemY + mBoxHeight / 2);
         }
     }
 

@@ -124,7 +124,8 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
             mForegroundColor,
             mForegroundColor,
             key,
-            itemX + 2, itemY + 2);
+            itemX + mTextOffsetX,
+            itemY + mTextOffsetY);
 
         const int itemId = selShortcut->getItem(i);
         const ItemColor itemColor = selShortcut->getItemColor(i);
@@ -149,7 +150,9 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                         caption = "Eq.";
 
                     image->setAlpha(1.0F);
-                    graphics->drawImage(image, itemX, itemY);
+                    graphics->drawImage(image,
+                        itemX + mImageOffsetX,
+                        itemY + mImageOffsetY);
                     if (item->isEquipped() == Equipped_true)
                     {
                         font->drawString(graphics,
@@ -184,7 +187,9 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                     if (image != nullptr)
                     {
                         image->setAlpha(1.0F);
-                        graphics->drawImage(image, itemX, itemY);
+                        graphics->drawImage(image,
+                            itemX + mImageOffsetX,
+                            itemY + mImageOffsetY);
                     }
                 }
 
@@ -192,7 +197,8 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                     mForegroundColor,
                     mForegroundColor,
                     spell->getSymbol(),
-                    itemX + 2, itemY + mBoxHeight / 2);
+                    itemX + mTextOffsetX,
+                    itemY + mBoxHeight / 2);
             }
         }
         else if (skillDialog != nullptr)
@@ -206,7 +212,9 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                 if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
-                    graphics->drawImage(image, itemX, itemY);
+                    graphics->drawImage(image,
+                        itemX + mImageOffsetX,
+                        itemY + mImageOffsetY);
                 }
                 if (!skill->data->haveIcon)
                 {
@@ -214,7 +222,7 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
                         mForegroundColor,
                         mForegroundColor,
                         skill->data->shortName,
-                        itemX + 2,
+                        itemX + mTextOffsetX,
                         itemY + mBoxHeight / 2);
                 }
             }
@@ -263,7 +271,8 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
             mForegroundColor,
             mForegroundColor,
             key,
-            itemX + 2, itemY + 2);
+            itemX + mTextOffsetX,
+            itemY + mTextOffsetY);
 
         const int itemId = selShortcut->getItem(i);
         const ItemColor itemColor = selShortcut->getItemColor(i);
@@ -288,7 +297,9 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                         caption = "Eq.";
 
                     image->setAlpha(1.0F);
-                    graphics->drawImage(image, itemX, itemY);
+                    graphics->drawImage(image,
+                        itemX + mImageOffsetX,
+                        itemY + mImageOffsetY);
                     if (item->isEquipped() == Equipped_true)
                     {
                         font->drawString(graphics,
@@ -323,7 +334,9 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                     if (image != nullptr)
                     {
                         image->setAlpha(1.0F);
-                        graphics->drawImage(image, itemX, itemY);
+                        graphics->drawImage(image,
+                            itemX + mImageOffsetX,
+                            itemY + mImageOffsetY);
                     }
                 }
 
@@ -331,7 +344,8 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                     mForegroundColor,
                     mForegroundColor,
                     spell->getSymbol(),
-                    itemX + 2, itemY + mBoxHeight / 2);
+                    itemX + mTextOffsetX,
+                    itemY + mBoxHeight / 2);
             }
         }
         else if (skillDialog != nullptr)
@@ -345,7 +359,9 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                 if (image != nullptr)
                 {
                     image->setAlpha(1.0F);
-                    graphics->drawImage(image, itemX, itemY);
+                    graphics->drawImage(image,
+                        itemX + mImageOffsetX,
+                        itemY + mImageOffsetY);
                 }
                 if (!skill->data->haveIcon)
                 {
@@ -353,7 +369,7 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
                         mForegroundColor,
                         mForegroundColor,
                         skill->data->shortName,
-                        itemX + 2,
+                        itemX + mTextOffsetX,
                         itemY + mBoxHeight / 2);
                 }
             }

@@ -111,8 +111,8 @@ void EmoteShortcutContainer::draw(Graphics *restrict graphics) restrict2
             if (sprite != nullptr)
             {
                 sprite->draw(graphics,
-                    (i % mGridWidth) * mBoxWidth + 2,
-                    (i / mGridWidth) * mBoxHeight + 10);
+                    (i % mGridWidth) * mBoxWidth + mImageOffsetX,
+                    (i / mGridWidth) * mBoxHeight + mImageOffsetY);
             }
         }
     }
@@ -129,7 +129,8 @@ void EmoteShortcutContainer::draw(Graphics *restrict graphics) restrict2
             mForegroundColor,
             mForegroundColor2,
             key,
-            emoteX + 2, emoteY + 2);
+            emoteX + mTextOffsetX,
+            emoteY + mTextOffsetY);
     }
 
     BLOCK_END("EmoteShortcutContainer::draw")
@@ -163,8 +164,8 @@ void EmoteShortcutContainer::safeDraw(Graphics *restrict graphics) restrict2
             if (sprite != nullptr)
             {
                 sprite->draw(graphics,
-                    (i % mGridWidth) * mBoxWidth + 2,
-                    (i / mGridWidth) * mBoxHeight + 10);
+                    (i % mGridWidth) * mBoxWidth + mImageOffsetX,
+                    (i / mGridWidth) * mBoxHeight + mImageOffsetY);
             }
         }
     }
@@ -181,7 +182,8 @@ void EmoteShortcutContainer::safeDraw(Graphics *restrict graphics) restrict2
             mForegroundColor,
             mForegroundColor2,
             key,
-            emoteX + 2, emoteY + 2);
+            emoteX + mTextOffsetX,
+            emoteY + mTextOffsetY);
     }
 
     BLOCK_END("EmoteShortcutContainer::draw")

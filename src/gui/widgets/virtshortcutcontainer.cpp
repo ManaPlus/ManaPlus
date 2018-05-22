@@ -123,7 +123,9 @@ void VirtShortcutContainer::draw(Graphics *const graphics)
                     caption = "Eq.";
 
                 image->setAlpha(1.0F);
-                graphics->drawImage(image, itemX, itemY);
+                graphics->drawImage(image,
+                    itemX + mImageOffsetX,
+                    itemY + mImageOffsetY);
                 if (item->isEquipped() == Equipped_true)
                 {
                     font->drawString(graphics,
@@ -197,7 +199,9 @@ void VirtShortcutContainer::safeDraw(Graphics *const graphics)
                     caption = "Eq.";
 
                 image->setAlpha(1.0F);
-                graphics->drawImage(image, itemX, itemY);
+                graphics->drawImage(image,
+                    itemX + mImageOffsetX,
+                    itemY + mImageOffsetY);
                 if (item->isEquipped() == Equipped_true)
                 {
                     font->drawString(graphics,

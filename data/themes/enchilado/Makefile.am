@@ -5,6 +5,7 @@ gui_DATA =				\
 	buy.xml		\
 	colors.xml		\
 	cutin.xml		\
+	emotes.xml		\
 	equipment.xml		\
 	info.xml		\
 	inventory.xml		\
