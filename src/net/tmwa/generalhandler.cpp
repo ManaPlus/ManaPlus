@@ -118,6 +118,7 @@ GeneralHandler::GeneralHandler() :
     mVendingHandler(new VendingHandler)
 {
     generalHandler = this;
+    logger->log("Creating tmwa handler");
 }
 
 GeneralHandler::~GeneralHandler()

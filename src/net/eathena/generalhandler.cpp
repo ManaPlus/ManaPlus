@@ -119,6 +119,7 @@ GeneralHandler::GeneralHandler() :
     mSearchStoreHandler(new SearchStoreHandler)
 {
     generalHandler = this;
+    logger->log("Creating eathena handler");
 }
 
 GeneralHandler::~GeneralHandler()
