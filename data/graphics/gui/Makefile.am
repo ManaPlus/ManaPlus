@@ -47,6 +47,7 @@ gui_DATA =				\
 	item_selection.xml	\
 	item_shortcut_background.xml	\
 	itemcontainer.xml			\
+	items.xml			\
 	keyboard_icon.xml			\
 	label.xml			\
 	listbox.xml			\

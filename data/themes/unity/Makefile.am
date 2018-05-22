@@ -10,6 +10,7 @@ gui_DATA =				\
 	equipment.xml		\
 	info.xml		\
 	inventory.xml		\
+	items.xml		\
 	mailedit.xml		\
 	npc.xml		\
 	ok.xml		\
