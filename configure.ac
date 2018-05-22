@@ -118,6 +118,19 @@ esac],[openglerrors_enabled=false])
 
 AM_CONDITIONAL(ENABLE_OPENGLERRORS, test x$openglerrors_enabled = xtrue)
 
+# Enable password from command line
+AC_ARG_ENABLE(commandlinepassword,
+[  --enable-commandlinepassword    Enable command line option for set password],
+[case "${enableval}" in
+  yes) commandlinepassword_enabled=true
+ ;;
+  no)  commandlinepassword_enabled=false
+ ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-commandlinepassword) ;;
+esac],[commandlinepassword_enabled=false])
+
+AM_CONDITIONAL(ENABLE_COMMANDLINEPASSWORD, test x$commandlinepassword_enabled = xtrue)
+
 # Checks for android.
 AC_ARG_ENABLE(androidbuild,
 [  --enable-androidbuild    Turn on android building],
