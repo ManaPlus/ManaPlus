@@ -462,6 +462,11 @@ void BeingRecv::processBeingMove3(Net::MessageIn &msg)
             {
                 x2 -= dirx[dir];
                 y2 -= diry[dir];
+                // fix possible wrong move outside of map
+                if (x2 < 0)
+                    x2 = 0;
+                if (y2 < 0)
+                    y2 = 0;
                 path2.push_back(Position(x2, y2));
                 if (x2 == x && y2 == y)
                     break;
