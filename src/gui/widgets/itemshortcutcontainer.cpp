@@ -30,6 +30,7 @@
 
 #include "input/inputmanager.h"
 
+#include "gui/skin.h"
 #include "gui/viewport.h"
 
 #include "gui/fonts/font.h"
@@ -56,13 +57,15 @@
 ItemShortcutContainer::ItemShortcutContainer(Widget2 *const widget,
                                              const unsigned number) :
     ShortcutContainer(widget),
-    mItemClicked(false),
-    mNumber(number),
     mEquipedColor(getThemeColor(ThemeColorId::ITEM_EQUIPPED, 255U)),
     mEquipedColor2(getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE, 255U)),
     mUnEquipedColor(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED, 255U)),
     mUnEquipedColor2(getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED_OUTLINE,
-        255U))
+        255U)),
+    mNumber(number),
+    mKeyOffsetX(2),
+    mKeyOffsetY(2),
+    mItemClicked(false)
 {
     mMaxItems = ItemShortcut::getItemCount();
 }
@@ -82,6 +85,11 @@ void ItemShortcutContainer::setSkin(const Widget2 *const widget,
         255U);
     mForegroundColor = getThemeColor(ThemeColorId::TEXT, 255U);
     mForegroundColor2 = getThemeColor(ThemeColorId::TEXT_OUTLINE, 255U);
+    if (mSkin != nullptr)
+    {
+        mKeyOffsetX = mSkin->getOption("keyOffsetX", 2);
+        mKeyOffsetY = mSkin->getOption("keyOffsetY", 2);
+    }
 }
 
 void ItemShortcutContainer::draw(Graphics *const graphics)
@@ -124,8 +132,8 @@ void ItemShortcutContainer::draw(Graphics *const graphics)
             mForegroundColor,
             mForegroundColor,
             key,
-            itemX + mTextOffsetX,
-            itemY + mTextOffsetY);
+            itemX + mKeyOffsetX,
+            itemY + mKeyOffsetY);
 
         const int itemId = selShortcut->getItem(i);
         const ItemColor itemColor = selShortcut->getItemColor(i);
@@ -271,8 +279,8 @@ void ItemShortcutContainer::safeDraw(Graphics *const graphics)
             mForegroundColor,
             mForegroundColor,
             key,
-            itemX + mTextOffsetX,
-            itemY + mTextOffsetY);
+            itemX + mKeyOffsetX,
+            itemY + mKeyOffsetY);
 
         const int itemId = selShortcut->getItem(i);
         const ItemColor itemColor = selShortcut->getItemColor(i);

@@ -78,13 +78,14 @@ class ItemShortcutContainer final : public ShortcutContainer
                      Skin *const skin) override final;
 
     private:
-        bool mItemClicked;
-        unsigned mNumber;
-
         Color mEquipedColor;
         Color mEquipedColor2;
         Color mUnEquipedColor;
         Color mUnEquipedColor2;
+        unsigned mNumber;
+        int mKeyOffsetX;
+        int mKeyOffsetY;
+        bool mItemClicked;
 };
 
 #endif  // GUI_WIDGETS_ITEMSHORTCUTCONTAINER_H
