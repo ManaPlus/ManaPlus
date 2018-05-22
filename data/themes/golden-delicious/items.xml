@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="260" ypos="0">
-        <option name="captionoffsetx" value="20" /> 
+        <option name="captionoffsetx" value="20" />
         <option name="captionoffsety" value="8" />
         <option name="padding" value="8" />
         <option name="titlebarBold" value="1" />
         <option name="titlePadding" value="20" />
-        <option name="textOffsetY" value="21" /> 
+        <option name="textOffsetY" value="21" />
+        <option name="imageOffsetY" value="5" />
 
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="20" height="53" />
