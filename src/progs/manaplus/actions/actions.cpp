@@ -1720,7 +1720,6 @@ impHandler(useItem)
                 useType = CAST_S16(atoi(pars[1].c_str()));
             const Item *const item = inv->findItem(itemId,
                 color);
-            logger->log("test: %d,%d, %d", itemId, CAST_S32(color), CAST_S32(useType));
             PlayerInfo::useEquipItem(item, useType, Sfx_true);
         }
     }
