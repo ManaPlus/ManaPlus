@@ -120,7 +120,7 @@ void SpellShortcutContainer::draw(Graphics *const graphics)
                 mForegroundColor2,
                 spell->getSymbol(),
                 itemX + mTextOffsetX,
-                itemY + mBoxHeight / 2);
+                itemY + mTextOffsetY);
         }
     }
 
@@ -183,7 +183,7 @@ void SpellShortcutContainer::safeDraw(Graphics *const graphics)
                 mForegroundColor2,
                 spell->getSymbol(),
                 itemX + mTextOffsetX,
-                itemY + mBoxHeight / 2);
+                itemY + mTextOffsetY);
         }
     }
 

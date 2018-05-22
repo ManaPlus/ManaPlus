@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skinset name="Default" image="window.png">
     <widget type="Window" xpos="190" ypos="30">
+        <option name="textOffsetY" value="21" /> 
+
         <!-- Top Row -->
         <part type="top-left-corner" xpos="0" ypos="0" width="10" height="10" />
         <part type="top-edge" xpos="11" ypos="0" width="127" height="10" />
