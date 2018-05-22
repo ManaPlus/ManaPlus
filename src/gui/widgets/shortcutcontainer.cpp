@@ -43,6 +43,7 @@ ShortcutContainer::ShortcutContainer(Widget2 *const widget) :
     WidgetListener(),
     MouseListener(),
     mBackgroundImg(nullptr),
+    mSkin(nullptr),
     mMaxItems(0),
     mBoxWidth(1),
     mBoxHeight(1),
@@ -156,4 +157,11 @@ void ShortcutContainer::safeDrawBackground(Graphics *const g)
 void ShortcutContainer::widgetMoved(const Event& event A_UNUSED)
 {
     mRedraw = true;
+}
+
+void ShortcutContainer::setSkin(const Widget2 *const widget,
+                                Skin *const skin)
+{
+    setWidget2(widget);
+    mSkin = skin;
 }

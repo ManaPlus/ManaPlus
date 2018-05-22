@@ -30,6 +30,7 @@
 
 class Image;
 class ImageCollection;
+class Skin;
 
 /**
  * A generic shortcut container.
@@ -90,6 +91,9 @@ class ShortcutContainer notfinal : public Widget,
 
         void safeDrawBackground(Graphics *const g) A_NONNULL(2);
 
+        virtual void setSkin(const Widget2 *const widget,
+                             Skin *const skin);
+
     protected:
         /**
          * Constructor. Initializes the shortcut container.
@@ -107,6 +111,7 @@ class ShortcutContainer notfinal : public Widget,
                              const int pointY) const A_WARN_UNUSED;
 
         Image *mBackgroundImg;
+        Skin *mSkin;
         static float mAlpha;
 
         unsigned mMaxItems;

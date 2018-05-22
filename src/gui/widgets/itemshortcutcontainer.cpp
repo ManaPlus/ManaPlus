@@ -71,9 +71,10 @@ ItemShortcutContainer::~ItemShortcutContainer()
 {
 }
 
-void ItemShortcutContainer::setWidget2(const Widget2 *const widget)
+void ItemShortcutContainer::setSkin(const Widget2 *const widget,
+                                    Skin *const skin)
 {
-    Widget2::setWidget2(widget);
+    ShortcutContainer::setSkin(widget, skin);
     mEquipedColor = getThemeColor(ThemeColorId::ITEM_EQUIPPED, 255U);
     mEquipedColor2 = getThemeColor(ThemeColorId::ITEM_EQUIPPED_OUTLINE, 255U);
     mUnEquipedColor = getThemeColor(ThemeColorId::ITEM_NOT_EQUIPPED, 255U);

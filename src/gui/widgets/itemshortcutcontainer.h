@@ -74,7 +74,8 @@ class ItemShortcutContainer final : public ShortcutContainer
 
         void mouseMoved(MouseEvent &event) override final;
 
-        void setWidget2(const Widget2 *const widget) override final;
+        void setSkin(const Widget2 *const widget,
+                     Skin *const skin) override final;
 
     private:
         bool mItemClicked;

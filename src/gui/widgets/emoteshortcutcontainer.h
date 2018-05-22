@@ -79,8 +79,8 @@ class EmoteShortcutContainer final : public ShortcutContainer
         void widgetHidden(const Event &restrict event)
                           restrict2 override final;
 
-        void setWidget2(const Widget2 *restrict const widget)
-                        restrict2 override final;
+        void setSkin(const Widget2 *const widget,
+                     Skin *const skin) override final;
 
     private:
         STD_VECTOR<const EmoteSprite*> mEmoteImg;

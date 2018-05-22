@@ -72,7 +72,7 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
     mDragOffsetY = 0;
 
     if (content != nullptr)
-        content->setWidget2(this);
+        content->setSkin(this, mSkin);
     if (setupWindow != nullptr)
         setupWindow->registerWindowForReset(this);
 
@@ -181,7 +181,7 @@ void ShortcutWindow::addTab(const std::string &name,
         std::string());
     scroll->setPosition(SCROLL_PADDING, SCROLL_PADDING);
     scroll->setHorizontalScrollPolicy(ScrollArea::SHOW_NEVER);
-    content->setWidget2(this);
+    content->setSkin(this, mSkin);
     Tab *const tab = new ShortcutTab(this, name, content);
     mTabs->addTab(tab, scroll);
     mPages.push_back(content);
