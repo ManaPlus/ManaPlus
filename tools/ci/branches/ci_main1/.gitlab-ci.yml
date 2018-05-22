@@ -140,27 +140,27 @@ gcc-gentoo_sdl2:
   tags:
     - docker
 
-gcc7_without_mumble_sdl1:
+gcc8_without_mumble_sdl1:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --without-mumble --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --without-mumble --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc7_without_mumble_sdl2:
+gcc8_without_mumble_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --without-mumble --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --with-sdl2 --without-mumble --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
@@ -169,30 +169,30 @@ gcc7_without_mumble_sdl2:
 gcc_portable:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --with-opengl --enable-tmwa --enable-portable=yes
+  - ./tools/ci/jobs/gcc8.sh --with-opengl --enable-tmwa --enable-portable=yes
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc-7_no_asserts:
+gcc-8_no_asserts:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --disable-asserts
+  - ./tools/ci/jobs/gcc8.sh --disable-asserts
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc-7_default_i386:
+gcc-8_default_i386:
   stage: build
   script:
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
@@ -200,11 +200,11 @@ gcc-7_default_i386:
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    LOGFILE: gcc7.log
-    CC: gcc-7
-    CXX: g++-7
+    LOGFILE: gcc8.log
+    CC: gcc-8
+    CXX: g++-8
     CXXFLAGS: "-Wall -Wextra"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -212,57 +212,83 @@ gcc-7_default_i386:
   tags:
     - docker
 
-gcc-7_openglerrors_i386:
+gcc-8_openglerrors_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --enable-openglerrors
+  - ./tools/ci/jobs/gcc8.sh --enable-openglerrors
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc-7_openglerrors:
+gcc-8_openglerrors:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --enable-openglerrors
+  - ./tools/ci/jobs/gcc8.sh --enable-openglerrors
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc-7_unsigned_char:
+gcc-8_unsigned_char:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh
+  - ./tools/ci/jobs/gcc8.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
     POST_CXXFLAGS: "-funsigned-char"
 
-gcc7_unsigned_char_sdl2:
+gcc-8_unsigned_char_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --with-sdl2
+  - ./tools/ci/jobs/gcc8.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               git gdb valgrind netcat-openbsd procps
     POST_CXXFLAGS: "-funsigned-char"
+
+gcc-8_password:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8.sh --enable-commandlinepassword
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-8_password_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8.sh --enable-commandlinepassword
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
