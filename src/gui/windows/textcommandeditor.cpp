@@ -167,6 +167,11 @@ TextCommandEditor::TextCommandEditor(TextCommand *const command) :
             - MAGIC_START_ID);
         mSchoolLvlField->setValue(command->getSchoolLvl());
 #endif  // TMWA_SUPPORT
+
+        mSymbolTextField->setText(command->getSymbol());
+        mCommandTextField->setText(command->getCommand());
+        mCommentTextField->setText(command->getComment());
+        mTypeDropDown->setSelected(CAST_S32(command->getTargetType()));
     }
 
     ContainerPlacer placer(nullptr, nullptr);
