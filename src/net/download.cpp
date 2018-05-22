@@ -612,6 +612,9 @@ void Download::addHeaders(CURL *const curl A_UNUSED)
 void Download::addCommonFlags(CURL *const curl)
 {
     curl_easy_setopt(curl, CURLOPT_STDERR, logger->getFile());
+#if LIBCURL_VERSION_NUM >= 0x072D00
+    curl_easy_setopt(curl, CURLOPT_DEFAULT_PROTOCOL, "http");
+#endif  // LIBCURL_VERSION_NUM >= 0x072D00
 }
 
 void Download::prepareForm(curl_httppost **form, const std::string &fileName)
