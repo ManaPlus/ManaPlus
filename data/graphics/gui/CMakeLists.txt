@@ -82,6 +82,7 @@ SET (FILES
     slider_highlighted.xml
     speechbrowserbox.xml
     speechbubble.xml
+    spells.xml
     tab.xml
     tab_highlighted.xml
     tab_selected.xml

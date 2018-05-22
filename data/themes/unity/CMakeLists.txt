@@ -19,6 +19,7 @@ SET (FILES
     serverinfo.xml
     shop.xml
     social.xml
+    spells.xml
     window.png
     window.xml
     world.xml

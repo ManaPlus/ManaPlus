@@ -22,6 +22,7 @@ gui_DATA =				\
 	serverinfo.xml		\
 	shop.xml		\
 	social.xml		\
+	spells.xml		\
 	window.png			\
 	window.xml			\
 	world.xml
