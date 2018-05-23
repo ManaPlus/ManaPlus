@@ -43,7 +43,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-22 00:56+0300\n"
+"POT-Creation-Date: 2018-05-23 04:44+0300\n"
 "PO-Revision-Date: 2018-03-02 14:58+0000\n"
 "Last-Translator: Kristin Joris <kristin.joris@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/akaras/manaplus/language/"
@@ -74,12 +74,12 @@ msgid "miss"
 msgstr "verfehlt"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2567 src/gui/windows/whoisonline.cpp:890
+#: src/being/being.cpp:2567 src/gui/windows/whoisonline.cpp:891
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2572 src/gui/windows/whoisonline.cpp:895
+#: src/being/being.cpp:2572 src/gui/windows/whoisonline.cpp:896
 msgid "I"
 msgstr "I"
 
@@ -864,7 +864,7 @@ msgstr "Abwesend"
 #: src/net/eathena/charserverrecv.cpp:516 src/net/tmwa/charserverrecv.cpp:295
 #: src/pincodemanager.cpp:147 src/pincodemanager.cpp:206
 #: src/progs/manaplus/actions/actions.cpp:178
-#: src/progs/manaplus/client.cpp:1494 src/progs/manaplus/client.cpp:1529
+#: src/progs/manaplus/client.cpp:1502 src/progs/manaplus/client.cpp:1537
 msgid "OK"
 msgstr "OK"
 
@@ -901,8 +901,8 @@ msgstr "(F) Kameramodus: Frei"
 #: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:63
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:134
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:114
-#: src/progs/dyecmd/client.cpp:568 src/progs/manaplus/client.cpp:926
-#: src/progs/manaplus/client.cpp:1408 src/progs/manaplus/client.cpp:1427
+#: src/progs/dyecmd/client.cpp:568 src/progs/manaplus/client.cpp:934
+#: src/progs/manaplus/client.cpp:1416 src/progs/manaplus/client.cpp:1435
 msgid "Close"
 msgstr "Schließen"
 
@@ -959,7 +959,7 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_misc.cpp:100
 #: src/gui/widgets/tabs/setup_perfomance.cpp:74
 #: src/gui/widgets/tabs/setup_visual.cpp:81
-#: src/gui/windows/equipmentwindow.cpp:666 src/gui/windows/serverdialog.cpp:687
+#: src/gui/windows/equipmentwindow.cpp:666 src/gui/windows/serverdialog.cpp:688
 msgid "default"
 msgstr "Standard"
 
@@ -5153,7 +5153,7 @@ msgstr "Nein"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: perfoamance tab quick button
 #: src/gui/widgets/tabs/setup_perfomance.cpp:61 src/progs/dyecmd/client.cpp:552
-#: src/progs/manaplus/client.cpp:910
+#: src/progs/manaplus/client.cpp:918
 msgid "Performance"
 msgstr "Leistung"
 
@@ -5577,7 +5577,7 @@ msgstr "i"
 #. TRANSLATORS: theme settings tab name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/widgets/tabs/setup_theme.cpp:133 src/progs/dyecmd/client.cpp:558
-#: src/progs/manaplus/client.cpp:916
+#: src/progs/manaplus/client.cpp:924
 msgid "Theme"
 msgstr "Theme"
 
@@ -5736,7 +5736,7 @@ msgstr "Kein Fensterrahmen"
 #. TRANSLATORS: video settings tab name
 #. TRANSLATORS: video tab quick button
 #: src/gui/widgets/tabs/setup_video.cpp:121 src/progs/dyecmd/client.cpp:555
-#: src/progs/manaplus/client.cpp:913
+#: src/progs/manaplus/client.cpp:921
 msgid "Video"
 msgstr "Video"
 
@@ -6144,7 +6144,7 @@ msgstr "HIF"
 #. TRANSLATORS: help window name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/windowmenu.cpp:92 src/gui/windows/helpwindow.cpp:57
-#: src/progs/dyecmd/client.cpp:564 src/progs/manaplus/client.cpp:922
+#: src/progs/dyecmd/client.cpp:564 src/progs/manaplus/client.cpp:930
 msgid "Help"
 msgstr "Hilfe"
 
@@ -6344,7 +6344,7 @@ msgstr "EINST"
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: setup tab quick button
 #: src/gui/windowmenu.cpp:256 src/gui/windows/setupwindow.cpp:67
-#: src/progs/dyecmd/client.cpp:549 src/progs/manaplus/client.cpp:907
+#: src/progs/dyecmd/client.cpp:549 src/progs/manaplus/client.cpp:915
 msgid "Setup"
 msgstr "Einstellungen"
 
@@ -6453,8 +6453,8 @@ msgstr "Die eingetragenen E-Mailadressen stimmen nicht überein."
 #: src/net/eathena/charserverrecv.cpp:426
 #: src/net/eathena/charserverrecv.cpp:430
 #: src/net/eathena/charserverrecv.cpp:512 src/net/tmwa/charserverrecv.cpp:291
-#: src/progs/manaplus/client.cpp:1405 src/progs/manaplus/client.cpp:1424
-#: src/progs/manaplus/client.cpp:1630
+#: src/progs/manaplus/client.cpp:1413 src/progs/manaplus/client.cpp:1432
+#: src/progs/manaplus/client.cpp:1638
 msgid "Error"
 msgstr "Fehler"
 
@@ -6854,7 +6854,7 @@ msgstr "T"
 #. TRANSLATORS: unknown hosts group name
 #. TRANSLATORS: unknown skills tab name
 #. TRANSLATORS: Skill type
-#: src/gui/windows/equipmentwindow.cpp:675 src/gui/windows/serverdialog.cpp:496
+#: src/gui/windows/equipmentwindow.cpp:675 src/gui/windows/serverdialog.cpp:497
 #: src/gui/windows/skilldialog.cpp:147 src/resources/skill/skillinfo.cpp:125
 msgid "Unknown"
 msgstr "Unbekannt"
@@ -7453,44 +7453,45 @@ msgstr "Laden"
 msgid "Choose Your Server  *** SAFE MODE ***"
 msgstr "Wähle deinen Server  ***SICHERER MODUS ***"
 
-#: src/gui/windows/serverdialog.cpp:139
+#. TRANSLATORS: servers dialog name
+#: src/gui/windows/serverdialog.cpp:140
 #, fuzzy
 msgid "Choose Your Server  *** SOFTWARE RENDER MODE ***"
 msgstr "Wähle deinen Server  ***SICHERER MODUS ***"
 
 #. TRANSLATORS: servers dialog checkbox
-#: src/gui/windows/serverdialog.cpp:149
+#: src/gui/windows/serverdialog.cpp:150
 msgid "Use same ip for game sub servers"
 msgstr "Selbe IP auf Zweitservern des Spiels benutzen"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:435
+#: src/gui/windows/serverdialog.cpp:436
 #, c-format
 msgid "Downloading server list...%2.2f%%"
 msgstr "Serverliste herunterladen...%2.2f%%"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:441
+#: src/gui/windows/serverdialog.cpp:442
 msgid "Waiting for server..."
 msgstr "Auf den Server warten..."
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:446
+#: src/gui/windows/serverdialog.cpp:447
 msgid "Preparing download"
 msgstr "Download wird vorbereitet"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:451
+#: src/gui/windows/serverdialog.cpp:452
 msgid "Error retreiving server list!"
 msgstr "Fehler beim Empfangen der Serverliste!"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:617
+#: src/gui/windows/serverdialog.cpp:618
 msgid "requires a newer version"
 msgstr "benötigt eine neuere Version"
 
 #. TRANSLATORS: servers dialog label
-#: src/gui/windows/serverdialog.cpp:622
+#: src/gui/windows/serverdialog.cpp:623
 #, c-format
 msgid "requires v%s"
 msgstr "benötigt v%s"
@@ -7949,7 +7950,7 @@ msgid "Completed"
 msgstr "Fertig"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:97 src/gui/windows/whoisonline.cpp:668
+#: src/gui/windows/whoisonline.cpp:97 src/gui/windows/whoisonline.cpp:669
 msgid "Who Is Online - Updating"
 msgstr "Wer ist Online? - Aktualisierung"
 
@@ -7964,12 +7965,12 @@ msgid "Who Is Online - "
 msgstr "Wer ist Online - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:684
+#: src/gui/windows/whoisonline.cpp:685
 msgid "Who Is Online - error"
 msgstr "Wer ist Online - Fehler"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:731
+#: src/gui/windows/whoisonline.cpp:732
 msgid "Who Is Online - Update"
 msgstr "Wer ist Online - Aktualisierung"
 
@@ -9457,7 +9458,7 @@ msgid "Do you accept %s and %s as parents?"
 msgstr "Akzeptierst Du %s und %s als deine Eltern?"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:221 src/net/tmwa/generalhandler.cpp:223
+#: src/net/eathena/generalhandler.cpp:222 src/net/tmwa/generalhandler.cpp:224
 msgid "Got disconnected from server!"
 msgstr "Verbindung zum Server unterbrochen!"
 
@@ -9970,7 +9971,7 @@ msgid "Wrong pincode confirmation!"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
-#: src/progs/dyecmd/client.cpp:561 src/progs/manaplus/client.cpp:919
+#: src/progs/dyecmd/client.cpp:561 src/progs/manaplus/client.cpp:927
 msgid "About"
 msgstr "Über"
 
@@ -10041,24 +10042,24 @@ msgid "Log uploaded to:"
 msgstr ""
 
 #. TRANSLATORS: last seen disabled warning
-#: src/progs/manaplus/actions/actions.cpp:1943
+#: src/progs/manaplus/actions/actions.cpp:1942
 msgid ""
 "Last seen disabled. Enable in players / collect players ID and seen log."
 msgstr ""
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1964
+#: src/progs/manaplus/actions/actions.cpp:1963
 msgid "You have never seen this nick."
 msgstr ""
 
 #. TRANSLATORS: last seen message
-#: src/progs/manaplus/actions/actions.cpp:1972
+#: src/progs/manaplus/actions/actions.cpp:1971
 #, c-format
 msgid "Last seen for %s: %s"
 msgstr "Zuletzt gesehen für %s: %s"
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1983
+#: src/progs/manaplus/actions/actions.cpp:1982
 msgid "You have not seen this nick before."
 msgstr ""
 
@@ -10313,57 +10314,57 @@ msgid "Accepting incoming trade requests"
 msgstr "Eingehende Handelsanfragen akzeptieren"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1122
+#: src/progs/manaplus/client.cpp:1130
 msgid "Connecting to server"
 msgstr "Verbinde zum Server"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1181 src/unittests/gui/windowmanager.cc:830
+#: src/progs/manaplus/client.cpp:1189 src/unittests/gui/windowmanager.cc:830
 msgid "Logging in"
 msgstr "Anmelden"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1231
+#: src/progs/manaplus/client.cpp:1239
 msgid "Entering game world"
 msgstr "Betrete die Spielwelt"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1292
+#: src/progs/manaplus/client.cpp:1300
 msgid "Requesting characters"
 msgstr "Spielfiguren werden abgefragt"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1336
+#: src/progs/manaplus/client.cpp:1344
 msgid "Connecting to the game server"
 msgstr "Verbinde zum Spielserver"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1348
+#: src/progs/manaplus/client.cpp:1356
 msgid "Changing game servers"
 msgstr "Spielserver wechseln"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1443
+#: src/progs/manaplus/client.cpp:1451
 msgid "Requesting registration details"
 msgstr "Anfrage der Registrierungsdetails"
 
 #. TRANSLATORS: password change message header
-#: src/progs/manaplus/client.cpp:1490
+#: src/progs/manaplus/client.cpp:1498
 msgid "Password Change"
 msgstr "Passwort ändern"
 
 #. TRANSLATORS: password change message text
-#: src/progs/manaplus/client.cpp:1492
+#: src/progs/manaplus/client.cpp:1500
 msgid "Password changed successfully!"
 msgstr "Passwort erfolgreich geändert!"
 
 #. TRANSLATORS: email change message header
-#: src/progs/manaplus/client.cpp:1525
+#: src/progs/manaplus/client.cpp:1533
 msgid "Email Change"
 msgstr "E-Mail ändern"
 
 #. TRANSLATORS: email change message text
-#: src/progs/manaplus/client.cpp:1527
+#: src/progs/manaplus/client.cpp:1535
 msgid "Email changed successfully!"
 msgstr "E-Mail erfolgreich geändert!"
 
