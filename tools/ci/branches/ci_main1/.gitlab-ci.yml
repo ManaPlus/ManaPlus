@@ -283,7 +283,7 @@ gcc-8_password:
 gcc-8_password_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc8.sh --enable-commandlinepassword
+  - ./tools/ci/jobs/gcc8.sh --enable-commandlinepassword --with-sdl2
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
