@@ -218,6 +218,7 @@
 #endif  // __clang_major__ >= 6
 #else  // __clang__
 #define PRAGMACLANG(str)
+#define PRAGMACLANG5(str)
 #define PRAGMACLANG6(str)
 #define CLANG_FALLTHROUGH
 #endif  // __clang__
