@@ -136,6 +136,7 @@ ServerDialog::ServerDialog(ServerInfo *const serverInfo,
 #ifdef USE_OPENGL
     else if (config.getIntValue("opengl") == RENDER_SOFTWARE)
     {
+        // TRANSLATORS: servers dialog name
         setCaption(_("Choose Your Server  *** SOFTWARE RENDER MODE ***"));
     }
 #endif  // USE_OPENGL
