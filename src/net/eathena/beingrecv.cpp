@@ -42,7 +42,6 @@
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
-#include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 
 #include "net/character.h"

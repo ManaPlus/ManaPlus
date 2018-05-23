@@ -24,9 +24,11 @@
 
 #include "being/localplayer.h"
 
-#include "net/net.h"
-
 #include "utils/checkutils.h"
+
+#ifdef TMWA_SUPPORT
+#include "net/net.h"
+#endif  // TMWA_SUPPORT
 
 #include "resources/beingcommon.h"
 #include "resources/groupinfo.h"
