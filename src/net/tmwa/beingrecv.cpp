@@ -34,7 +34,6 @@
 
 #include "input/keyboardconfig.h"
 
-#include "gui/windows/okdialog.h"
 #include "gui/windows/outfitwindow.h"
 #include "gui/windows/socialwindow.h"
 
