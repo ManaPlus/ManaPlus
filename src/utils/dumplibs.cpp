@@ -29,10 +29,14 @@ PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+
+PRAGMACLANG5(GCC diagnostic push)
+PRAGMACLANG5(GCC diagnostic ignored "-Wzero-as-null-pointer-constant")
 PRAGMACLANG6GCC(GCC diagnostic push)
 PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
 #include <SDL_net.h>
 PRAGMACLANG6GCC(GCC diagnostic pop)
+PRAGMACLANG5(GCC diagnostic pop)
 #include <SDL_ttf.h>
 PRAGMA48(GCC diagnostic pop)
 

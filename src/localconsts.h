@@ -204,6 +204,11 @@
 
 #ifdef __clang__
 #define PRAGMACLANG(str) _Pragma(#str)
+#if CLANG_VERSION >= 50000
+#define PRAGMACLANG5(str) _Pragma(#str)
+#else  // CLANG_VERSION >= 50000
+#define PRAGMACLANG5(str)
+#endif  // CLANG_VERSION >= 50000
 #if CLANG_VERSION >= 30800
 #define PRAGMACLANG6(str) _Pragma(#str)
 #define CLANG_FALLTHROUGH [[clang::fallthrough]];
