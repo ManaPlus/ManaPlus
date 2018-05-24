@@ -162,10 +162,13 @@ int TcpNet::addSocket(const TcpNet::SocketSet set, const TcpNet::Socket sock)
 
 int TcpNet::socketReady(const TcpNet::Socket sock)
 {
+    PRAGMACLANG5(GCC diagnostic push)
+    PRAGMACLANG5(GCC diagnostic ignored "-Wzero-as-null-pointer-constant")
     PRAGMACLANG6GCC(GCC diagnostic push)
     PRAGMACLANG6GCC(GCC diagnostic ignored "-Wold-style-cast")
     return SDLNet_SocketReady(sock);
     PRAGMACLANG6GCC(GCC diagnostic pop)
+    PRAGMACLANG5(GCC diagnostic pop)
 }
 
 int TcpNet::checkSockets(const TcpNet::SocketSet set, const Uint32 timeout)
