@@ -225,6 +225,7 @@ UpdaterWindow::UpdaterWindow(const std::string &restrict updateHost,
     mBrowserBox->setProcessVars(true);
     mBrowserBox->setEnableKeys(true);
     mBrowserBox->setEnableTabs(true);
+    mBrowserBox->setEnableImages(true);
     mPlayButton->setEnabled(false);
 
     ContainerPlacer placer(nullptr, nullptr);
