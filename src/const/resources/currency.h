@@ -18,11 +18,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CONST_RESOURCES_SKILL_H
-#define CONST_RESOURCES_SKILL_H
+#ifndef CONST_RESOURCES_CURRENCY_H
+#define CONST_RESOURCES_CURRENCY_H
 
 #include <string>
 
 const std::string DEFAULT_CURRENCY = "default";
 
-#endif  // CONST_RESOURCES_SKILL_H
+#endif  // CONST_RESOURCES_CURRENCY_H

@@ -18,8 +18,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_DEBUGWINDOWTABS_H
-#define GUI_WIDGETS_TABS_DEBUGWINDOWTABS_H
+#ifndef GUI_WIDGETS_TABS_CLANWINDOWTABS_H
+#define GUI_WIDGETS_TABS_CLANWINDOWTABS_H
 
 #include "gui/widgets/container.h"
 
@@ -76,4 +76,4 @@ class RelationClanTab final : public Container
         STD_VECTOR<Label*> mLabels;
 };
 
-#endif  // GUI_WIDGETS_TABS_DEBUGWINDOWTABS_H
+#endif  // GUI_WIDGETS_TABS_CLANWINDOWTABS_H
