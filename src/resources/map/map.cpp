@@ -1009,7 +1009,8 @@ Path Map::findPath(const int startX, const int startY,
                        forbidden here. */
                     const int dx1 = std::abs(x - destX);
                     newTile->Hcost = std::abs(dx1 - dy1) * basicCost +
-                        std::min(dx1, dy1) * (basicCostF);
+                        CAST_S32(static_cast<float>(std::min(dx1, dy1)) *
+                        (basicCostF));
 
                     // Set the current tile as the parent of the new tile
                     newTile->parentX = curr.x;
