@@ -241,8 +241,7 @@ class TextBox final : public Widget,
          *
          * @param editable True if the text box should be editable, false otherwise.
          */
-        void setEditable(const bool editable)
-        { mEditable = editable; }
+        void setEditable(const bool editable);
 
         /**
          * Adds a row of text to the end of the text.

@@ -645,3 +645,9 @@ void TextBox::adjustSize()
     setWidth(width + 1);
     setHeight(font->getHeight() * CAST_S32(mTextRows.size()));
 }
+
+void TextBox::setEditable(const bool editable)
+{
+    mEditable = editable;
+    mSelectable = editable;
+}
