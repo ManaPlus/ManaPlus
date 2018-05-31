@@ -145,8 +145,7 @@ void DialogsManager::playerDeath()
         if (GroupDb::isAllowCommand(ServerCommandType::alive))
         {
             CREATEWIDGETV(deathNotice, ConfirmDialog,
-                // TRANSLATORS: message header
-                _("Message"),
+                std::string(),
                 DeadDB::getRandomString(),
                 // TRANSLATORS: ok dialog button
                 _("Revive"),
@@ -160,8 +159,7 @@ void DialogsManager::playerDeath()
         else
         {
             CREATEWIDGETV(deathNotice, OkDialog,
-                // TRANSLATORS: message header
-                _("Message"),
+                std::string(),
                 DeadDB::getRandomString(),
                 // TRANSLATORS: ok dialog button
                 _("Revive"),
@@ -195,8 +193,7 @@ void DialogsManager::attributeChanged(const AttributesT id,
             {
                 weightNoticeTime = cur_time + 5;
                 CREATEWIDGETV(weightNotice, OkDialog,
-                    // TRANSLATORS: message header
-                    _("Message"),
+                    std::string(),
                     // TRANSLATORS: weight message
                     _("You are carrying more than "
                     "half your weight. You are "
@@ -215,8 +212,7 @@ void DialogsManager::attributeChanged(const AttributesT id,
             {
                 weightNoticeTime = cur_time + 5;
                 CREATEWIDGETV(weightNotice, OkDialog,
-                    // TRANSLATORS: message header
-                    _("Message"),
+                    std::string(),
                     // TRANSLATORS: weight message
                     _("You are carrying less than "
                     "half your weight. You "
