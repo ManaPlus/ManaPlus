@@ -104,8 +104,9 @@ void runCharCommand(const std::string &command,
         chatHandler->talk(std::string(
             settings.gmCharCommandSymbol).append(
             command).append(
-            " ").append(
-            name));
+            " \"").append(
+            name).append(
+            "\" "));
     }
 }
 
