@@ -273,11 +273,8 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
 
     if (msg.getVersion() >= 20170315)
     {
-        msg.readInt32("unused1");
-        msg.readInt32("unused1");
-        msg.readInt32("unused1");
-        msg.readInt32("unused1");
-        msg.readUInt8("unused1");
+        msg.readString(16, "twitter auth token");
+        msg.readUInt8("twitter flag");
     }
 
     for (int i = 0; i < worldCount; i++)
