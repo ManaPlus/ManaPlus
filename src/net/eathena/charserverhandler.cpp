@@ -109,8 +109,7 @@ void CharServerHandler::newCharacter(const std::string &name, const int slot,
             outMsg.writeInt8(CAST_U8(slot), "slot");
             outMsg.writeInt16(CAST_S16(hairColor), "hair color");
             outMsg.writeInt16(CAST_S16(hairstyle), "hair style");
-            outMsg.writeInt16(CAST_S16(0), "starting job id");
-            outMsg.writeInt16(0, "unknown");
+            outMsg.writeInt32(CAST_S16(0), "starting job id");
             uint8_t sex = 0;
             if (gender == Gender::UNSPECIFIED)
                 sex = 99;
