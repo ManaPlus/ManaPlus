@@ -77,11 +77,14 @@ void SkillHandler::usePos(const int id, const int level,
         outMsg.writeInt16(CAST_S16(id), "skill id");
         outMsg.writeInt16(CAST_S16(x), "x");
         outMsg.writeInt16(CAST_S16(y), "y");
+/*
+        // disabled due priority from shuffle packets over normal.
         if (packetVersionZero >= 20180131 ||
             packetVersion >= 20180207)
         {
             outMsg.writeInt8(0, "unknown");
         }
+*/
     }
 }
 
