@@ -1,0 +1,26 @@
+stages:
+  - build
+
+# with :; prevent from run it on windows
+before_script:
+  - ":; uname -a"
+  - ":; cat /etc/os-release"
+  - ":; pwd"
+  - ":; cat /proc/sys/kernel/core_pattern"
+  - ":; mkdir logs || true"
+  - ":; ${UPDATEREPOS}"
+  - ":; ${DOCKERRETRY} ${PMUPDATE} >logs/apt.log"
+  - ":; ${DOCKERRETRY} ${PMINSTALL} ${PACKAGES} >>logs/apt.log"
+  - ":; ./tools/ci/scripts/clonesrc.sh"
+  - ":; cd manaplus"
+
+image: debian:unstable
+
+variables:
+  GET_SOURCES_ATTEMPTS: "5"
+  ARTIFACT_DOWNLOAD_ATTEMPTS: "5"
+  UPDATEREPOS: "tools/ci/scripts/updaterepos.sh"
+  PMUPDATE: "apt-get update"
+  PMINSTALL: "apt-get install -y -qq"
+  DOCKERRETRY: "./tools/ci/scripts/dockerretry.sh"
+  GIT_DEPTH: "1"
