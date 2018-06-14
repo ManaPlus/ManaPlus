@@ -111,6 +111,12 @@ class PlayerHandler notfinal
                              const int64_t base,
                              const int mod,
                              const Notify notify) const = 0;
+        virtual void selectStyle(const int headColor,
+                                 const int headStyle,
+                                 const int bodyColor,
+                                 const int topStyle,
+                                 const int middleStyle,
+                                 const int bottomStyle) const = 0;
 };
 
 }  // namespace Net

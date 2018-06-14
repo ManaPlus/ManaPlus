@@ -494,4 +494,13 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
 
 #undef setStatComplex
 
+void PlayerHandler::selectStyle(const int headColor A_UNUSED,
+                                const int headStyle A_UNUSED,
+                                const int bodyColor A_UNUSED,
+                                const int topStyle A_UNUSED,
+                                const int middleStyle A_UNUSED,
+                                const int bottomStyle A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

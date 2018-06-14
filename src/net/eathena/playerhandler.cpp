@@ -789,6 +789,24 @@ void PlayerHandler::setStat(Net::MessageIn &msg,
     }
 }
 
+void PlayerHandler::selectStyle(const int headColor,
+                                const int headStyle,
+                                const int bodyColor,
+                                const int topStyle,
+                                const int middleStyle,
+                                const int bottomStyle) const
+{
+    if (packetVersion < 20151104)
+        return;
+    createOutPacket(CMSG_PLAYER_SELECT_STYLE);
+    outMsg.writeInt16(headColor, "head color");
+    outMsg.writeInt16(headStyle, "head style");
+    outMsg.writeInt16(bodyColor, "body color");
+    outMsg.writeInt16(topStyle, "top style");
+    outMsg.writeInt16(middleStyle, "middle style");
+    outMsg.writeInt16(bottomStyle, "bottom style");
+}
+
 #undef setStatComplex
 
 }  // namespace EAthena

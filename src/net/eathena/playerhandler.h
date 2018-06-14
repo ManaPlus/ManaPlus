@@ -69,6 +69,12 @@ class PlayerHandler final : public Ea::PlayerHandler
         void requestPvpInfo() const override final;
         void revive() const override final;
         void setViewEquipment(const bool allow) const override final;
+        void selectStyle(const int headColor,
+                         const int headStyle,
+                         const int bodyColor,
+                         const int topStyle,
+                         const int middleStyle,
+                         const int bottomStyle) const override final;
 
         void setStat(Net::MessageIn &msg,
                      const int type,

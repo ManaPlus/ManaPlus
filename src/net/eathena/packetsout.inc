@@ -335,6 +335,7 @@ packet(CMSG_WINDOW_OPEN_REQUEST2,         0x0000,   0, nullptr);
 packet(CMSG_ATTENDANCE_REWARD,            0x0000,   0, nullptr);
 packet(CMSG_MAP_BLOCK_PLAY_CANCEL,        0x0000,   0, nullptr);
 packet(CMSG_PRIVATE_AIRSHIP_REQUEST,      0x0000,   0, nullptr);
+packet(CMSG_PLAYER_SELECT_STYLE,          0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1326,6 +1327,12 @@ if (packetVersion >= 20141119)
 if (packetVersion >= 20151001)
 {
     packet(CMSG_CHAR_CREATE,              0x0a39,  36, chr->parse_char_create_new_char);
+}
+
+// 20151104
+if (packetVersion >= 20151104)
+{
+    packet(CMSG_PLAYER_SELECT_STYLE,      0x0a46,  14, clif->pReqStyleChange);
 }
 
 // 20160323
