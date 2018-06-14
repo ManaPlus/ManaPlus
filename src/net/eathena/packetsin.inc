@@ -939,6 +939,12 @@ if (packetVersion >= 20150805)
     packet(SMSG_SELECT_CART,               0x097f,  -1, &InventoryRecv::processSelectCart,              20150805);
 }
 
+// 20151104
+if (packetVersion >= 20151104)
+{
+    packet(CMSG_PLAYER_SELECT_STYLE_ACK,   0x0a47,   3, &PlayerRecv::processSelectStyleAck,             20151104);
+}
+
 // 20151223
 if (packetVersion >= 20151223)
 {

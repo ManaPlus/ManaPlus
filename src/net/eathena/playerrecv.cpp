@@ -542,4 +542,10 @@ void PlayerRecv::processPlayerStatUpdate7(Net::MessageIn &msg)
     BLOCK_END("PlayerRecv::processPlayerStatUpdate7")
 }
 
+void PlayerRecv::processSelectStyleAck(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("flag");
+}
+
 }  // namespace EAthena
