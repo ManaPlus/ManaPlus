@@ -41,15 +41,15 @@ variables:
     expire_in: 3 week
   dependencies: []
 
-gcc-7_tests_gcov:
+gcc-8_tests_gcov:
   stage: build
   script:
   - ./tools/ci/scripts/clonesrc.sh
   - cd manaplus
-  - ./tools/ci/jobs/gcc7_tests_gcov.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -58,15 +58,15 @@ gcc-7_tests_gcov:
   tags:
     - docker
 
-gcc-7_sdl2_tests_gcov:
+gcc-8_sdl2_tests_gcov:
   stage: build
   script:
   - ./tools/ci/scripts/clonesrc.sh
   - cd manaplus
-  - ./tools/ci/jobs/gcc7_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_sdl2_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
@@ -127,8 +127,8 @@ pages:
   dependencies:
     - doxygen
     - gitstats
-    - gcc-7_tests_gcov
-    - gcc-7_sdl2_tests_gcov
+    - gcc-8_tests_gcov
+    - gcc-8_sdl2_tests_gcov
   variables:
     PACKAGES: git-core python
   artifacts:

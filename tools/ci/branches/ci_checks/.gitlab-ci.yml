@@ -42,77 +42,77 @@ variables:
     expire_in: 3 week
   dependencies: []
 
-gcc7_memdebug_sdl1:
+gcc8_memdebug_sdl1:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --enable-memdebug --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --enable-memdebug --enable-werror
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git
 
-gcc7_memdebug_sdl2:
+gcc8_memdebug_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-memdebug --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-memdebug --enable-werror
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               git
 
-gcc7_googleprofiler_sdl1:
+gcc8_googleprofiler_sdl1:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --enable-googleprofiler --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --enable-googleprofiler --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps libgoogle-perftools-dev
 
-gcc7_googleprofiler_sdl2:
+gcc8_googleprofiler_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-googleprofiler --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-googleprofiler --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               git gdb valgrind netcat-openbsd procps libgoogle-perftools-dev
 
-gcc7_checks_sdl1:
+gcc8_checks_sdl1:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --enable-checks --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --enable-checks --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc7_checks_sdl2:
+gcc8_checks_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-checks --enable-werror
+  - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-checks --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
