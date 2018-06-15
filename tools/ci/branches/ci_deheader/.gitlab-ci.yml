@@ -1,3 +1,5 @@
+image: ubuntu:artful
+
 .job-push: &job-push
   artifacts:
     paths:
