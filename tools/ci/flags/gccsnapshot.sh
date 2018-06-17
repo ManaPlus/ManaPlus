@@ -3,8 +3,8 @@
 #export CXXFLAGS="${CXXFLAGS} --all-warnings"
 #export CXXFLAGS="${CXXFLAGS} --extra-warnings"
 export CXXFLAGS="${CXXFLAGS} -W"
-export CXXFLAGS="${CXXFLAGS} -Wabi"
 # ignoring
+#export CXXFLAGS="${CXXFLAGS} -Wabi"
 #export CXXFLAGS="${CXXFLAGS} -Wabi-tag"
 #export CXXFLAGS="${CXXFLAGS} -Wabi="
 export CXXFLAGS="${CXXFLAGS} -Waddress"
