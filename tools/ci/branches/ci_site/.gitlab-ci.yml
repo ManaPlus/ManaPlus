@@ -2,6 +2,17 @@ stages:
   - build
   - stats
 
+# with :; prevent from run it on windows
+before_script:
+  - ":; uname -a"
+  - ":; cat /etc/os-release"
+  - ":; pwd"
+  - ":; cat /proc/sys/kernel/core_pattern"
+  - ":; mkdir logs || true"
+  - ":; ${UPDATEREPOS}"
+  - ":; ${DOCKERRETRY} ${PMUPDATE} >logs/apt.log"
+  - ":; ${DOCKERRETRY} ${PMINSTALL} ${PACKAGES} >>logs/apt.log"
+
 .job-push: &job-push
   artifacts:
     paths:
