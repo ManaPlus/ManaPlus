@@ -16,14 +16,14 @@
     expire_in: 3 week
   dependencies: []
 
-gcc-7_sanitize_doctest_tests:
+gcc-8_sanitize_doctest_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -32,14 +32,14 @@ gcc-7_sanitize_doctest_tests:
   tags:
     - docker
 
-gcc-7_doctest_tests_i386:
+gcc-8_doctest_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -48,13 +48,13 @@ gcc-7_doctest_tests_i386:
   tags:
     - docker
 
-gcc-7_tests_simd:
+gcc-8_tests_simd:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -62,14 +62,14 @@ gcc-7_tests_simd:
   tags:
     - docker
 
-gcc-7_tests_O0:
+gcc-8_tests_O0:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-O0"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -77,14 +77,14 @@ gcc-7_tests_O0:
   tags:
     - docker
 
-gcc-7_tests_O1:
+gcc-8_tests_O1:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-O1"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -92,14 +92,14 @@ gcc-7_tests_O1:
   tags:
     - docker
 
-gcc-7_tests_lto:
+gcc-8_tests_lto:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -107,15 +107,15 @@ gcc-7_tests_lto:
   tags:
     - docker
 
-gcc-7_tests_lto_i386:
+gcc-8_tests_lto_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -123,14 +123,14 @@ gcc-7_tests_lto_i386:
   tags:
     - docker
 
-gcc-7_tests_i386:
+gcc-8_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -138,14 +138,14 @@ gcc-7_tests_i386:
   tags:
     - docker
 
-gcc-7_tests:
+gcc-8_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -153,14 +153,14 @@ gcc-7_tests:
   tags:
     - docker
 
-gcc-7_sdl2_tests_i386:
+gcc-8_sdl2_tests_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
@@ -168,16 +168,16 @@ gcc-7_sdl2_tests_i386:
   tags:
     - docker
 
-gcc-7_tests_valgrind:
+gcc-8_tests_valgrind:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame || true
   - echo test valgrind
   - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
   - grep "invalid" logs/valg.log && exit 1 || true
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -185,17 +185,17 @@ gcc-7_tests_valgrind:
   tags:
     - docker
 
-gcc-7_tests_valgrind_i386:
+gcc-8_tests_valgrind_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame || true
   - echo test valgrind
   - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
   - grep "invalid" logs/valg.log && exit 1 || true
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -203,23 +203,23 @@ gcc-7_tests_valgrind_i386:
   tags:
     - docker
 
-gcc-7_separate_doctest:
+gcc-8_separate_doctest:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
+  - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
               git python
 
-gcc-7_separate_doctest_sanitize:
+gcc-8_separate_doctest_sanitize:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
+  - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
@@ -233,7 +233,7 @@ gcc-7_separate_doctest_sanitize:
                     -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
                     -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
                     -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -241,10 +241,10 @@ gcc-7_separate_doctest_sanitize:
   tags:
     - docker
 
-gcc-7_separate_doctest_sanitize_sdl2:
+gcc-8_separate_doctest_sanitize_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
+  - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
   - ./tools/ci/scripts/separateunittests.sh
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
@@ -258,7 +258,7 @@ gcc-7_separate_doctest_sanitize_sdl2:
                     -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
                     -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
                     -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
@@ -266,15 +266,15 @@ gcc-7_separate_doctest_sanitize_sdl2:
   tags:
     - docker
 
-gcc-7_separate_doctest_i386:
+gcc-8_separate_doctest_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
+  - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -282,15 +282,15 @@ gcc-7_separate_doctest_i386:
   tags:
     - docker
 
-gcc-7_separate_doctest_sdl2_i386:
+gcc-8_separate_doctest_sdl2_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
+  - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
   image: vicamo/debian:sid-i386
   variables:
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
@@ -298,14 +298,57 @@ gcc-7_separate_doctest_sdl2_i386:
   tags:
     - docker
 
-gcc-7_unsigned_char_tests:
+gcc-8_all_and_unittestsbin:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-8_systemcatch_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8_tests.sh --enable-unittests=systemcatch --without-dyecmd --without-manaplusgame 
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              git valgrind
+              catch
+  tags:
+    - docker
+
+gcc-8_systemdoctest_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8_tests.sh --enable-unittests=systemdoctest --without-dyecmd --without-manaplusgame 
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
+              git valgrind
+              doctest-dev
+  tags:
+    - docker
+
+gcc-8_unsigned_char_tests:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-funsigned-char"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -313,14 +356,14 @@ gcc-7_unsigned_char_tests:
   tags:
     - docker
 
-gcc-7_sdl2_unsigned_char_tests:
+gcc-8_sdl2_unsigned_char_tests:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc7_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
+  - ./tools/ci/jobs/gcc8_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-funsigned-char"
-    PACKAGES: gcc-7 g++-7 
+    PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 

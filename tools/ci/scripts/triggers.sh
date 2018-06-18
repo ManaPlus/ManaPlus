@@ -38,10 +38,11 @@ sleep 15s
 run "ci_checks"
 run "ci_gcc7_tests"
 sleep 15s
+run "ci_gcc8_tests"
 run "ci_gcc7"
-run "ci_gcc3"
 sleep 15s
-run "ci_clang7"
+run "ci_gcc3"
 run "ci_gcc8"
 sleep 15s
+run "ci_clang7"
 run "ci_site"
