@@ -20,6 +20,7 @@ export PATH=/usr/lib/gcc-snapshot/bin:$PATH
 source ./tools/ci/scripts/init.sh
 
 export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -Wstrict-aliasing=2 \
+-D_GLIBCXX_SANITIZE_VECTOR \
 -fno-omit-frame-pointer \
 -Wstrict-overflow=1 -Wformat=1 -D_FORTIFY_SOURCE=2 \
 -fsanitize=address -fsanitize=undefined \

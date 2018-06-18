@@ -225,7 +225,8 @@ gcc-7_separate_doctest_sanitize:
   <<: *job-push
   variables:
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
+    POST_CXXFLAGS: "-D_GLIBCXX_SANITIZE_VECTOR
+                    -fsanitize=address -fsanitize=undefined
                     -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
                     -fsanitize=vla-bound -fsanitize=null -fsanitize=return
                     -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
@@ -249,7 +250,8 @@ gcc-7_separate_doctest_sanitize_sdl2:
   <<: *job-push
   variables:
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
-    POST_CXXFLAGS: "-fsanitize=address -fsanitize=undefined
+    POST_CXXFLAGS: "-D_GLIBCXX_SANITIZE_VECTOR
+                    -fsanitize=address -fsanitize=undefined
                     -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable
                     -fsanitize=vla-bound -fsanitize=null -fsanitize=return
                     -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment

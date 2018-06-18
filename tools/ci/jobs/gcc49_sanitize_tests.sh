@@ -15,6 +15,7 @@ export LOGFILE=gcc49_tests.log
 source ./tools/ci/scripts/init.sh
 
 export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -ffast-math \
+-D_GLIBCXX_SANITIZE_VECTOR \
 -fsanitize=address \
 -fno-omit-frame-pointer -funswitch-loops \
 -Wvariadic-macros -Wvla -Wredundant-decls \

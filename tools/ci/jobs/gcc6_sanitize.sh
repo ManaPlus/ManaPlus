@@ -15,6 +15,7 @@ export LOGFILE=gcc6.log
 source ./tools/ci/scripts/init.sh
 
 export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
+-D_GLIBCXX_SANITIZE_VECTOR \
 -Wstrict-overflow=1 -Wformat=1 -D_FORTIFY_SOURCE=2 \
 -fsanitize=address -fsanitize=undefined \
 -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable \

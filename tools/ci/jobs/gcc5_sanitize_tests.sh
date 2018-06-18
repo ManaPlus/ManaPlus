@@ -15,6 +15,7 @@ export LOGFILE=gcc5_tests.log
 source ./tools/ci/scripts/init.sh
 
 export CXXFLAGS="-ggdb3 -O2 -ffast-math \
+-D_GLIBCXX_SANITIZE_VECTOR \
 -fsanitize=address -fsanitize=undefined \
 -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable \
 -fsanitize=vla-bound -fsanitize=null -fsanitize=return \

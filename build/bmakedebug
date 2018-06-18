@@ -11,7 +11,7 @@ export CXX="ccache g++"
 export LANG=C
 
 export CXXFLAGS="-pedantic -ggdb3 -O3 -pipe -ffast-math \
--D_FORTIFY_SOURCE=2 \
+-D_FORTIFY_SOURCE=2 -D_GLIBCXX_SANITIZE_VECTOR \
 -fno-omit-frame-pointer \
 -fsanitize=address -fsanitize=undefined \
 -fsanitize=shift -fsanitize=integer-divide-by-zero -fsanitize=unreachable \
