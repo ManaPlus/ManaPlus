@@ -1,0 +1,122 @@
+.job-push: &job-push
+  artifacts:
+    paths:
+    - logs
+    - manaplus/logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+.job-always: &job-always
+  artifacts:
+    paths:
+    - logs
+    - manaplus/logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+gcc-8_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-8_sdl2_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  image: vicamo/debian:sid-i386
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-8_default:
+  stage: build
+  script:
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LOGFILE: gcc8.log
+    CC: gcc-8
+    CXX: g++-8
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-8_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8_sanitize.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-8_sanitize_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8_sanitize.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-8_lto:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8_lto.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+    POST_CXXFLAGS: "-Wno-null-dereference"
+
+gcc-8_lto_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc8_lto.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: vicamo/debian:sid-i386
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+    POST_CXXFLAGS: "-Wno-null-dereference"
+  tags:
+    - docker
