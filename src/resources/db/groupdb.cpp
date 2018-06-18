@@ -410,8 +410,6 @@ bool GroupDb::isAllowCommand(const ServerCommandTypeT command)
 {
     const int groupId = localPlayer->getGroupId();
     const GroupInfo *const group = GroupDb::getGroup(groupId);
-    if (group == nullptr)
-        return false;
 
 #ifdef TMWA_SUPPORT
     // allow any commands for legacy if group > 0

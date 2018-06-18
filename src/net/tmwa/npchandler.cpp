@@ -206,11 +206,10 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg,
     const BeingId npcId = msg.readBeingId("npc id");
 
     const NpcDialogs::const_iterator diag = NpcDialog::mNpcDialogs.find(npcId);
-    Ea::NpcRecv::mDialog = nullptr;
 
     if (diag == NpcDialog::mNpcDialogs.end())
     {
-        // +++ must be removed packet id checks from here
+        Ea::NpcRecv::mDialog = nullptr;
         // Empty dialogs don't help
         if (action == NpcAction::Close)
         {

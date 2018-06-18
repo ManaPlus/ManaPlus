@@ -1120,11 +1120,11 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
             const std::string source = XML::getProperty(
                 childNode, "source", "");
 
-            const std::string sourceResolved = resolveRelativePath(pathDir,
-                source);
-
             if (!source.empty())
             {
+                const std::string sourceResolved = resolveRelativePath(pathDir,
+                    source);
+
                 Image *const tilebmp = Loader::getImage(sourceResolved);
 
                 if (tilebmp != nullptr)

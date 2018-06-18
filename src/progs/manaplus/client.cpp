@@ -304,7 +304,7 @@ void Client::gameInit()
 #ifndef ENABLE_COMMANDLINEPASSWORD
     if (!settings.options.password.empty())
     {
-        settings.options.password = std::string();
+        settings.options.password.clear();
         logger->log("Command line password parameter disabled.");
     }
 #endif
