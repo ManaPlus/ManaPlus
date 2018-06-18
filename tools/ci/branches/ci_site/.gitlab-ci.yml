@@ -103,6 +103,24 @@ gitstats:
   tags:
     - docker
 
+gitstatsh:
+  stage: build
+  script:
+  - ./tools/ci/scripts/clonesrc.sh
+  - cd manaplus
+  - ./tools/ci/jobs/gitstatsh.sh
+  artifacts:
+    paths:
+    - manaplus/stats2
+    expire_in: 3 week
+    when: always
+  dependencies: []
+  variables:
+    GIT_DEPTH: "100000"
+    PACKAGES: git-core python python-pip zlib1g
+  tags:
+    - docker
+
 # stats
 
 pages:
@@ -117,6 +135,7 @@ pages:
   dependencies:
     - doxygen
     - gitstats
+    - gitstatsh
     - gcc-7_tests_gcov
     - gcc-7_sdl2_tests_gcov
   variables:

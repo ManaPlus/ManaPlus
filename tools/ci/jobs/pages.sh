@@ -8,6 +8,7 @@ tools/ci/scripts/retry.sh git clone https://gitlab.com/4144/pagesindexgen.git pa
 
 mkdir -p ../public/docs
 mkdir -p ../public/stats
+mkdir -p ../public/stats2
 mkdir -p ../public/gcov
 mkdir -p ../public/version
 
@@ -25,3 +26,4 @@ check_error $?
 cd ..
 cp -r ./doxygen/html/* ../public/docs || exit 1
 cp -r ./stats/* ../public/stats || exit 1
+cp -r ./stats2/* ../public/stats2 || exit 1
