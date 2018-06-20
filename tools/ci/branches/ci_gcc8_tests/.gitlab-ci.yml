@@ -16,7 +16,8 @@
     expire_in: 3 week
   dependencies: []
 
-gcc-8_sanitize_doctest_tests:
+# disabled due asan bug or doctest corruption
+.gcc-8_sanitize_doctest_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc8_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
@@ -32,7 +33,8 @@ gcc-8_sanitize_doctest_tests:
   tags:
     - docker
 
-gcc-8_sanitize_glibcdebug_doctest_tests:
+# disabled due asan bug or doctest corruption
+.gcc-8_sanitize_glibcdebug_doctest_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc8_sanitize_tests.sh --enable-glibcdebug --enable-unittests=doctest --without-dyecmd --without-manaplusgame
