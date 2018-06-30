@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-23 04:44+0300\n"
-"PO-Revision-Date: 2018-03-02 14:58+0000\n"
+"POT-Creation-Date: 2018-06-30 22:45+0300\n"
+"PO-Revision-Date: 2018-05-23 02:38+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Japanese (http://www.transifex.com/akaras/manaplus/language/"
 "ja/)\n"
@@ -808,8 +808,8 @@ msgstr "アウェイ"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:205
-#: src/gui/dialogsmanager.cpp:225 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:202
+#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:169
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -818,7 +818,7 @@ msgstr "アウェイ"
 #: src/gui/widgets/tabs/setup_video.cpp:451
 #: src/gui/windows/changeemaildialog.cpp:171
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:509
+#: src/gui/windows/charcreatedialog.cpp:508
 #: src/gui/windows/charselectdialog.cpp:281
 #: src/gui/windows/charselectdialog.cpp:330 src/gui/windows/editdialog.cpp:53
 #: src/gui/windows/editserverdialog.cpp:66
@@ -879,33 +879,27 @@ msgstr "閉じる"
 msgid "Do you want to open support page?"
 msgstr ""
 
-#. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:149 src/gui/dialogsmanager.cpp:164
-#: src/gui/dialogsmanager.cpp:199 src/gui/dialogsmanager.cpp:219
-msgid "Message"
-msgstr "メッセージ"
-
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:152 src/gui/dialogsmanager.cpp:167
+#: src/gui/dialogsmanager.cpp:151 src/gui/dialogsmanager.cpp:165
 #: src/gui/popups/popupmenu.cpp:2995
 msgid "Revive"
 msgstr ""
 
 #. TRANSLATORS: ok dialog button
-#: src/gui/dialogsmanager.cpp:154
+#: src/gui/dialogsmanager.cpp:153
 msgid "GM revive"
 msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:201
+#: src/gui/dialogsmanager.cpp:198
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "インベントリーが体重の半分以上の為、体力は回復できません."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:221
+#: src/gui/dialogsmanager.cpp:217
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr "インベントリーが体重の半分以下になった為、体力は回復します."
 
@@ -3465,9 +3459,8 @@ msgstr "マップアクターの数:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:73
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:233
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:277
-#, fuzzy
 msgid "Map atlas count:"
-msgstr "マップアクターの数:"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:76
@@ -3788,21 +3781,18 @@ msgstr "ささやきメッセージ音"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:143
-#, fuzzy
 msgid "Guild message sound"
-msgstr "グローバルメッセージ音"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:148
-#, fuzzy
 msgid "Party message sound"
-msgstr "エラーメッセージ音"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:153
-#, fuzzy
 msgid "Clan message sound"
-msgstr "グローバルメッセージ音"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:158
@@ -4836,9 +4826,8 @@ msgstr "ショートカットボタン"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:430
-#, fuzzy
 msgid "Show icons on shortcut buttons"
-msgstr "ショートカットボタン"
+msgstr ""
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_misc.cpp:436
@@ -6259,7 +6248,7 @@ msgstr "メールアドレスが一致しません."
 #. TRANSLATORS: error message header
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:505
+#: src/gui/windows/charcreatedialog.cpp:504
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
@@ -6348,7 +6337,7 @@ msgstr ">"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:111
-#: src/gui/windows/charcreatedialog.cpp:633
+#: src/gui/windows/charcreatedialog.cpp:632
 #, c-format
 msgid "Please distribute %d points"
 msgstr "%d ポイントを振り分けてください"
@@ -6397,13 +6386,12 @@ msgstr "友達"
 msgid "M"
 msgstr ""
 
-#. TRANSLATORS: one char size other character gender
-#. TRANSLATORS: inventory outfits button
+#. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#: src/gui/windows/inventorywindow.cpp:236
-msgid "O"
-msgstr ""
+#, fuzzy
+msgid "H"
+msgstr "SH"
 
 #. TRANSLATORS: one char size unknown character gender
 #: src/gui/windows/charcreatedialog.cpp:300
@@ -6411,17 +6399,17 @@ msgid "U"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:507
+#: src/gui/windows/charcreatedialog.cpp:506
 msgid "Your name needs to be at least 4 characters."
 msgstr "名前は４文字以上必要です."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:623
+#: src/gui/windows/charcreatedialog.cpp:622
 msgid "Character stats OK"
 msgstr "能力ポイント配分量は問題ありません"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:639
+#: src/gui/windows/charcreatedialog.cpp:638
 #, c-format
 msgid "Please remove %d points"
 msgstr "%dポイントを取り除いてください"
@@ -6462,9 +6450,8 @@ msgstr "プレイ"
 
 #. TRANSLATORS: change pincode button
 #: src/gui/windows/charselectdialog.cpp:128
-#, fuzzy
 msgid "Change pin"
-msgstr "ログインの変更"
+msgstr ""
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:165
@@ -6706,6 +6693,11 @@ msgstr "挿入"
 #: src/resources/itemtypemapdata.h:89 src/resources/itemtypemapdata.h:93
 msgid "Equip"
 msgstr "装着"
+
+#. TRANSLATORS: inventory outfits button
+#: src/gui/windows/inventorywindow.cpp:236
+msgid "O"
+msgstr ""
 
 #. TRANSLATORS: inventory cart button
 #: src/gui/windows/inventorywindow.cpp:242
@@ -7261,9 +7253,8 @@ msgstr "サーバーを選んで下さい  *** セーフモード ***"
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:140
-#, fuzzy
 msgid "Choose Your Server  *** SOFTWARE RENDER MODE ***"
-msgstr "サーバーを選んで下さい  *** セーフモード ***"
+msgstr ""
 
 #. TRANSLATORS: servers dialog checkbox
 #: src/gui/windows/serverdialog.cpp:150
@@ -7729,27 +7720,27 @@ msgid "Connecting..."
 msgstr "接続しています..."
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:419
+#: src/gui/windows/updaterwindow.cpp:420
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:863
+#: src/gui/windows/updaterwindow.cpp:864
 msgid "##1  The update process is incomplete."
 msgstr "##1  アップデートは完了していません."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:866
+#: src/gui/windows/updaterwindow.cpp:867
 msgid "##1  It is strongly recommended that"
 msgstr "##1 する事を強く推奨します"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:869
+#: src/gui/windows/updaterwindow.cpp:870
 msgid "##1  you try again later."
 msgstr "##1  しばらくたってからもう一度試してください."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1058
+#: src/gui/windows/updaterwindow.cpp:1059
 msgid "Completed"
 msgstr "完了"
 
@@ -9731,9 +9722,8 @@ msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:80
-#, fuzzy
 msgid "Enter pincode"
-msgstr "パスワードを入力して下さい:"
+msgstr ""
 
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:91 src/pincodemanager.cpp:127
@@ -9748,9 +9738,8 @@ msgstr ""
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:105 src/pincodemanager.cpp:171
 #: src/pincodemanager.cpp:185
-#, fuzzy
 msgid "Change pincode"
-msgstr "マップビューモード変更"
+msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:107
@@ -11437,3 +11426,6 @@ msgstr ""
 #, c-format
 msgid "%d seconds"
 msgstr "%d秒"
+
+#~ msgid "Message"
+#~ msgstr "メッセージ"

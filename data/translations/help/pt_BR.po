@@ -7,14 +7,15 @@
 # freya <freya.df@gmail.com>, 2012
 # freya <freya.df@gmail.com>, 2012
 # Xtreem <guilhermegg11@hotmail.com>, 2014
+# Jesusaves <cpntb1@ymail.com>, 2018
 # Jesusaves <cpntb1@ymail.com>, 2014
 # Luciano Zago <lcnzg7@gmail.com>, 2013
 # Xtreem <guilhermegg11@hotmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
-"PO-Revision-Date: 2017-09-23 18:10+0000\n"
-"Last-Translator: Diogo RBG <diogorbg@gmail.com>\n"
+"PO-Revision-Date: 2018-06-14 22:26+0000\n"
+"Last-Translator: Jesusaves <cpntb1@ymail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/akaras/manaplus/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -310,7 +311,7 @@ msgid "\"Equipment window\""
 msgstr "\"Janela Equipamento\""
 
 msgid "Chrome store"
-msgstr "Chrome store"
+msgstr "Loja Chrome"
 
 msgid ""
 " To add an item to the shortcut bar click on the item in the inventory window,\n"

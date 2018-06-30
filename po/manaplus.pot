@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-23 04:44+0300\n"
+"POT-Creation-Date: 2018-06-30 22:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -799,8 +799,8 @@ msgstr ""
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:205
-#: src/gui/dialogsmanager.cpp:225 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:202
+#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:169
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -809,7 +809,7 @@ msgstr ""
 #: src/gui/widgets/tabs/setup_video.cpp:451
 #: src/gui/windows/changeemaildialog.cpp:171
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:509
+#: src/gui/windows/charcreatedialog.cpp:508
 #: src/gui/windows/charselectdialog.cpp:281
 #: src/gui/windows/charselectdialog.cpp:330 src/gui/windows/editdialog.cpp:53
 #: src/gui/windows/editserverdialog.cpp:66
@@ -870,33 +870,27 @@ msgstr ""
 msgid "Do you want to open support page?"
 msgstr ""
 
-#. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:149 src/gui/dialogsmanager.cpp:164
-#: src/gui/dialogsmanager.cpp:199 src/gui/dialogsmanager.cpp:219
-msgid "Message"
-msgstr ""
-
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:152 src/gui/dialogsmanager.cpp:167
+#: src/gui/dialogsmanager.cpp:151 src/gui/dialogsmanager.cpp:165
 #: src/gui/popups/popupmenu.cpp:2995
 msgid "Revive"
 msgstr ""
 
 #. TRANSLATORS: ok dialog button
-#: src/gui/dialogsmanager.cpp:154
+#: src/gui/dialogsmanager.cpp:153
 msgid "GM revive"
 msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:201
+#: src/gui/dialogsmanager.cpp:198
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:221
+#: src/gui/dialogsmanager.cpp:217
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 
@@ -6243,7 +6237,7 @@ msgstr ""
 #. TRANSLATORS: error message header
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:505
+#: src/gui/windows/charcreatedialog.cpp:504
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
@@ -6332,7 +6326,7 @@ msgstr ""
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:111
-#: src/gui/windows/charcreatedialog.cpp:633
+#: src/gui/windows/charcreatedialog.cpp:632
 #, c-format
 msgid "Please distribute %d points"
 msgstr ""
@@ -6381,12 +6375,10 @@ msgstr ""
 msgid "M"
 msgstr ""
 
-#. TRANSLATORS: one char size other character gender
-#. TRANSLATORS: inventory outfits button
+#. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#: src/gui/windows/inventorywindow.cpp:236
-msgid "O"
+msgid "H"
 msgstr ""
 
 #. TRANSLATORS: one char size unknown character gender
@@ -6395,17 +6387,17 @@ msgid "U"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:507
+#: src/gui/windows/charcreatedialog.cpp:506
 msgid "Your name needs to be at least 4 characters."
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:623
+#: src/gui/windows/charcreatedialog.cpp:622
 msgid "Character stats OK"
 msgstr ""
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:639
+#: src/gui/windows/charcreatedialog.cpp:638
 #, c-format
 msgid "Please remove %d points"
 msgstr ""
@@ -6688,6 +6680,11 @@ msgstr ""
 #: src/resources/itemtypemapdata.h:81 src/resources/itemtypemapdata.h:85
 #: src/resources/itemtypemapdata.h:89 src/resources/itemtypemapdata.h:93
 msgid "Equip"
+msgstr ""
+
+#. TRANSLATORS: inventory outfits button
+#: src/gui/windows/inventorywindow.cpp:236
+msgid "O"
 msgstr ""
 
 #. TRANSLATORS: inventory cart button
@@ -7711,27 +7708,27 @@ msgid "Connecting..."
 msgstr ""
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:419
+#: src/gui/windows/updaterwindow.cpp:420
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:863
+#: src/gui/windows/updaterwindow.cpp:864
 msgid "##1  The update process is incomplete."
 msgstr ""
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:866
+#: src/gui/windows/updaterwindow.cpp:867
 msgid "##1  It is strongly recommended that"
 msgstr ""
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:869
+#: src/gui/windows/updaterwindow.cpp:870
 msgid "##1  you try again later."
 msgstr ""
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1058
+#: src/gui/windows/updaterwindow.cpp:1059
 msgid "Completed"
 msgstr ""
 

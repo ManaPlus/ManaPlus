@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-23 04:44+0300\n"
-"PO-Revision-Date: 2018-03-02 14:58+0000\n"
-"Last-Translator: samuraiii <samurai.no.dojo@gmail.com>\n"
+"POT-Creation-Date: 2018-06-30 22:45+0300\n"
+"PO-Revision-Date: 2018-05-23 02:38+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Czech (http://www.transifex.com/akaras/manaplus/language/"
 "cs/)\n"
 "Language: cs\n"
@@ -810,8 +810,8 @@ msgstr "Pryč"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:205
-#: src/gui/dialogsmanager.cpp:225 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:202
+#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:169
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -820,7 +820,7 @@ msgstr "Pryč"
 #: src/gui/widgets/tabs/setup_video.cpp:451
 #: src/gui/windows/changeemaildialog.cpp:171
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:509
+#: src/gui/windows/charcreatedialog.cpp:508
 #: src/gui/windows/charselectdialog.cpp:281
 #: src/gui/windows/charselectdialog.cpp:330 src/gui/windows/editdialog.cpp:53
 #: src/gui/windows/editserverdialog.cpp:66
@@ -881,34 +881,27 @@ msgstr "Zavřít"
 msgid "Do you want to open support page?"
 msgstr "Preješ si otevřít stránku podpory?"
 
-#. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:149 src/gui/dialogsmanager.cpp:164
-#: src/gui/dialogsmanager.cpp:199 src/gui/dialogsmanager.cpp:219
-msgid "Message"
-msgstr "Zpráva"
-
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:152 src/gui/dialogsmanager.cpp:167
+#: src/gui/dialogsmanager.cpp:151 src/gui/dialogsmanager.cpp:165
 #: src/gui/popups/popupmenu.cpp:2995
 msgid "Revive"
 msgstr "Oživ"
 
 #. TRANSLATORS: ok dialog button
-#: src/gui/dialogsmanager.cpp:154
-#, fuzzy
+#: src/gui/dialogsmanager.cpp:153
 msgid "GM revive"
-msgstr "Oživ"
+msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:201
+#: src/gui/dialogsmanager.cpp:198
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "Nesete více než polovinu vaší váhy. Regenerace života nyní není možná."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:221
+#: src/gui/dialogsmanager.cpp:217
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Nesete méně než polovinu vaší váhy. Regenerace života je nyní opět možná."
@@ -3469,9 +3462,8 @@ msgstr "Počet hráčů na mapě:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:73
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:233
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:277
-#, fuzzy
 msgid "Map atlas count:"
-msgstr "Počet hráčů na mapě:"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:76
@@ -3792,21 +3784,18 @@ msgstr "Zvuk šeptané zprávy"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:143
-#, fuzzy
 msgid "Guild message sound"
-msgstr "Zvuk globálního oznámení"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:148
-#, fuzzy
 msgid "Party message sound"
-msgstr "Zvuk chybového oznámení"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:153
-#, fuzzy
 msgid "Clan message sound"
-msgstr "Zvuk globálního oznámení"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:158
@@ -4840,9 +4829,8 @@ msgstr "Knoflíky zkratek"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:430
-#, fuzzy
 msgid "Show icons on shortcut buttons"
-msgstr "Knoflíky zkratek"
+msgstr ""
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_misc.cpp:436
@@ -6273,7 +6261,7 @@ msgstr "Emailové adresy nesouhlasí."
 #. TRANSLATORS: error message header
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:505
+#: src/gui/windows/charcreatedialog.cpp:504
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
@@ -6362,7 +6350,7 @@ msgstr ">"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:111
-#: src/gui/windows/charcreatedialog.cpp:633
+#: src/gui/windows/charcreatedialog.cpp:632
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Rozdělte prosím %d bodů"
@@ -6411,13 +6399,12 @@ msgstr "P"
 msgid "M"
 msgstr ""
 
-#. TRANSLATORS: one char size other character gender
-#. TRANSLATORS: inventory outfits button
+#. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#: src/gui/windows/inventorywindow.cpp:236
-msgid "O"
-msgstr ""
+#, fuzzy
+msgid "H"
+msgstr "CH"
 
 #. TRANSLATORS: one char size unknown character gender
 #: src/gui/windows/charcreatedialog.cpp:300
@@ -6425,17 +6412,17 @@ msgid "U"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:507
+#: src/gui/windows/charcreatedialog.cpp:506
 msgid "Your name needs to be at least 4 characters."
 msgstr "Vaše jméno musí mít nejméně 4 znaky."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:623
+#: src/gui/windows/charcreatedialog.cpp:622
 msgid "Character stats OK"
 msgstr "Stav postavy je v pořádku"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:639
+#: src/gui/windows/charcreatedialog.cpp:638
 #, c-format
 msgid "Please remove %d points"
 msgstr "Odstraňte prosím %d bodů"
@@ -6476,9 +6463,8 @@ msgstr "Hrát"
 
 #. TRANSLATORS: change pincode button
 #: src/gui/windows/charselectdialog.cpp:128
-#, fuzzy
 msgid "Change pin"
-msgstr "Změň přihlášení"
+msgstr ""
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:165
@@ -6720,6 +6706,11 @@ msgstr "Insert"
 #: src/resources/itemtypemapdata.h:89 src/resources/itemtypemapdata.h:93
 msgid "Equip"
 msgstr "Vybavit"
+
+#. TRANSLATORS: inventory outfits button
+#: src/gui/windows/inventorywindow.cpp:236
+msgid "O"
+msgstr ""
 
 #. TRANSLATORS: inventory cart button
 #: src/gui/windows/inventorywindow.cpp:242
@@ -7281,9 +7272,8 @@ msgstr "Zvolte server *** BEZPEČNÝ MÓD ***"
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:140
-#, fuzzy
 msgid "Choose Your Server  *** SOFTWARE RENDER MODE ***"
-msgstr "Zvolte server *** BEZPEČNÝ MÓD ***"
+msgstr ""
 
 #. TRANSLATORS: servers dialog checkbox
 #: src/gui/windows/serverdialog.cpp:150
@@ -7747,27 +7737,27 @@ msgid "Connecting..."
 msgstr "Připojuji se..."
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:419
+#: src/gui/windows/updaterwindow.cpp:420
 msgid "Show all news (can be slow)"
 msgstr "Zobrazit všecky novinky (může být pomalé)"
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:863
+#: src/gui/windows/updaterwindow.cpp:864
 msgid "##1  The update process is incomplete."
 msgstr "##1  Proces aktualizace není kompletní."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:866
+#: src/gui/windows/updaterwindow.cpp:867
 msgid "##1  It is strongly recommended that"
 msgstr "##1  silně doporučujeme zkusit"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:869
+#: src/gui/windows/updaterwindow.cpp:870
 msgid "##1  you try again later."
 msgstr "##1  aktualizaci později."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1058
+#: src/gui/windows/updaterwindow.cpp:1059
 msgid "Completed"
 msgstr "Hotovo"
 
@@ -9751,28 +9741,24 @@ msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:80
-#, fuzzy
 msgid "Enter pincode"
-msgstr "Zadej heslo:"
+msgstr ""
 
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:91 src/pincodemanager.cpp:127
-#, fuzzy
 msgid "New pincode"
-msgstr "Prosím nastavte nový pin kód"
+msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:93 src/pincodemanager.cpp:173
-#, fuzzy
 msgid "Enter new pincode"
-msgstr "Prosím nastavte nový pin kód"
+msgstr ""
 
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:105 src/pincodemanager.cpp:171
 #: src/pincodemanager.cpp:185
-#, fuzzy
 msgid "Change pincode"
-msgstr "Změnit mód zobrazení mapy"
+msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:107
@@ -11457,3 +11443,6 @@ msgstr "%d vteřinu"
 #, c-format
 msgid "%d seconds"
 msgstr "%d vteřin"
+
+#~ msgid "Message"
+#~ msgstr "Zpráva"

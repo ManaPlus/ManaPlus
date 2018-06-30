@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-23 04:44+0300\n"
-"PO-Revision-Date: 2018-03-02 14:58+0000\n"
-"Last-Translator: Pak Long Wu <paklongwu1006@gmail.com>\n"
+"POT-Creation-Date: 2018-06-30 22:45+0300\n"
+"PO-Revision-Date: 2018-05-23 02:38+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Chinese (Hong Kong) (http://www.transifex.com/akaras/manaplus/"
 "language/zh_HK/)\n"
 "Language: zh_HK\n"
@@ -800,8 +800,8 @@ msgstr "暫離鍵盤"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:205
-#: src/gui/dialogsmanager.cpp:225 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:202
+#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:169
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -810,7 +810,7 @@ msgstr "暫離鍵盤"
 #: src/gui/widgets/tabs/setup_video.cpp:451
 #: src/gui/windows/changeemaildialog.cpp:171
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:509
+#: src/gui/windows/charcreatedialog.cpp:508
 #: src/gui/windows/charselectdialog.cpp:281
 #: src/gui/windows/charselectdialog.cpp:330 src/gui/windows/editdialog.cpp:53
 #: src/gui/windows/editserverdialog.cpp:66
@@ -871,34 +871,27 @@ msgstr "關閉"
 msgid "Do you want to open support page?"
 msgstr "你想打開幫助頁面嗎?"
 
-#. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:149 src/gui/dialogsmanager.cpp:164
-#: src/gui/dialogsmanager.cpp:199 src/gui/dialogsmanager.cpp:219
-msgid "Message"
-msgstr "訊息"
-
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:152 src/gui/dialogsmanager.cpp:167
+#: src/gui/dialogsmanager.cpp:151 src/gui/dialogsmanager.cpp:165
 #: src/gui/popups/popupmenu.cpp:2995
 msgid "Revive"
 msgstr "復活"
 
 #. TRANSLATORS: ok dialog button
-#: src/gui/dialogsmanager.cpp:154
-#, fuzzy
+#: src/gui/dialogsmanager.cpp:153
 msgid "GM revive"
-msgstr "復活"
+msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:201
+#: src/gui/dialogsmanager.cpp:198
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr "您在攜帶超過體重一半的物品.你將無法回復生命值."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:221
+#: src/gui/dialogsmanager.cpp:217
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr "您在攜帶少於體重一半的物品.你可以回復生命值了."
 
@@ -3780,15 +3773,13 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:143
-#, fuzzy
 msgid "Guild message sound"
-msgstr "公會成員"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:148
-#, fuzzy
 msgid "Party message sound"
-msgstr "隊伍成員"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:153
@@ -6247,7 +6238,7 @@ msgstr ""
 #. TRANSLATORS: error message header
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:505
+#: src/gui/windows/charcreatedialog.cpp:504
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
@@ -6336,7 +6327,7 @@ msgstr ""
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:111
-#: src/gui/windows/charcreatedialog.cpp:633
+#: src/gui/windows/charcreatedialog.cpp:632
 #, c-format
 msgid "Please distribute %d points"
 msgstr "請分配%d點數"
@@ -6385,12 +6376,10 @@ msgstr ""
 msgid "M"
 msgstr ""
 
-#. TRANSLATORS: one char size other character gender
-#. TRANSLATORS: inventory outfits button
+#. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#: src/gui/windows/inventorywindow.cpp:236
-msgid "O"
+msgid "H"
 msgstr ""
 
 #. TRANSLATORS: one char size unknown character gender
@@ -6399,17 +6388,17 @@ msgid "U"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:507
+#: src/gui/windows/charcreatedialog.cpp:506
 msgid "Your name needs to be at least 4 characters."
 msgstr "你的名字至少需要4個字元."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:623
+#: src/gui/windows/charcreatedialog.cpp:622
 msgid "Character stats OK"
 msgstr "角色狀態確定"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:639
+#: src/gui/windows/charcreatedialog.cpp:638
 #, c-format
 msgid "Please remove %d points"
 msgstr "請移除%d點數"
@@ -6450,9 +6439,8 @@ msgstr "開始"
 
 #. TRANSLATORS: change pincode button
 #: src/gui/windows/charselectdialog.cpp:128
-#, fuzzy
 msgid "Change pin"
-msgstr "更改"
+msgstr ""
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:165
@@ -6694,6 +6682,11 @@ msgstr ""
 #: src/resources/itemtypemapdata.h:89 src/resources/itemtypemapdata.h:93
 msgid "Equip"
 msgstr "裝備"
+
+#. TRANSLATORS: inventory outfits button
+#: src/gui/windows/inventorywindow.cpp:236
+msgid "O"
+msgstr ""
 
 #. TRANSLATORS: inventory cart button
 #: src/gui/windows/inventorywindow.cpp:242
@@ -7714,27 +7707,27 @@ msgid "Connecting..."
 msgstr "連線中..."
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:419
+#: src/gui/windows/updaterwindow.cpp:420
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:863
+#: src/gui/windows/updaterwindow.cpp:864
 msgid "##1  The update process is incomplete."
 msgstr ""
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:866
+#: src/gui/windows/updaterwindow.cpp:867
 msgid "##1  It is strongly recommended that"
 msgstr ""
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:869
+#: src/gui/windows/updaterwindow.cpp:870
 msgid "##1  you try again later."
 msgstr ""
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1058
+#: src/gui/windows/updaterwindow.cpp:1059
 msgid "Completed"
 msgstr "已完成"
 
@@ -9728,9 +9721,8 @@ msgstr ""
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:105 src/pincodemanager.cpp:171
 #: src/pincodemanager.cpp:185
-#, fuzzy
 msgid "Change pincode"
-msgstr "更改公會職位"
+msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:107
@@ -11415,3 +11407,6 @@ msgstr "%d 秒"
 #, c-format
 msgid "%d seconds"
 msgstr "%d 秒"
+
+#~ msgid "Message"
+#~ msgstr "訊息"

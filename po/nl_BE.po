@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-23 04:44+0300\n"
-"PO-Revision-Date: 2018-03-02 14:58+0000\n"
+"POT-Creation-Date: 2018-06-30 22:45+0300\n"
+"PO-Revision-Date: 2018-05-23 02:38+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Dutch (Belgium) (http://www.transifex.com/akaras/manaplus/"
 "language/nl_BE/)\n"
@@ -803,8 +803,8 @@ msgstr "Weg"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:205
-#: src/gui/dialogsmanager.cpp:225 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:202
+#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:169
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -813,7 +813,7 @@ msgstr "Weg"
 #: src/gui/widgets/tabs/setup_video.cpp:451
 #: src/gui/windows/changeemaildialog.cpp:171
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:509
+#: src/gui/windows/charcreatedialog.cpp:508
 #: src/gui/windows/charselectdialog.cpp:281
 #: src/gui/windows/charselectdialog.cpp:330 src/gui/windows/editdialog.cpp:53
 #: src/gui/windows/editserverdialog.cpp:66
@@ -874,27 +874,21 @@ msgstr "Sluiten"
 msgid "Do you want to open support page?"
 msgstr ""
 
-#. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:149 src/gui/dialogsmanager.cpp:164
-#: src/gui/dialogsmanager.cpp:199 src/gui/dialogsmanager.cpp:219
-msgid "Message"
-msgstr "Bericht"
-
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:152 src/gui/dialogsmanager.cpp:167
+#: src/gui/dialogsmanager.cpp:151 src/gui/dialogsmanager.cpp:165
 #: src/gui/popups/popupmenu.cpp:2995
 msgid "Revive"
 msgstr ""
 
 #. TRANSLATORS: ok dialog button
-#: src/gui/dialogsmanager.cpp:154
+#: src/gui/dialogsmanager.cpp:153
 msgid "GM revive"
 msgstr ""
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:201
+#: src/gui/dialogsmanager.cpp:198
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
@@ -902,7 +896,7 @@ msgstr ""
 "herstellen."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:221
+#: src/gui/dialogsmanager.cpp:217
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 
@@ -3462,9 +3456,8 @@ msgstr "Aantal kaart-acteurs:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:73
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:233
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:277
-#, fuzzy
 msgid "Map atlas count:"
-msgstr "Aantal kaart-acteurs:"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:76
@@ -3785,15 +3778,13 @@ msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:143
-#, fuzzy
 msgid "Guild message sound"
-msgstr "Guild leden"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:148
-#, fuzzy
 msgid "Party message sound"
-msgstr "Groep leden"
+msgstr ""
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:153
@@ -6258,7 +6249,7 @@ msgstr "De email adres ingaven zijn niet gelijk."
 #. TRANSLATORS: error message header
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:505
+#: src/gui/windows/charcreatedialog.cpp:504
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
@@ -6347,7 +6338,7 @@ msgstr ">"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:111
-#: src/gui/windows/charcreatedialog.cpp:633
+#: src/gui/windows/charcreatedialog.cpp:632
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Nog %d punten te verdelen"
@@ -6396,13 +6387,12 @@ msgstr "F"
 msgid "M"
 msgstr ""
 
-#. TRANSLATORS: one char size other character gender
-#. TRANSLATORS: inventory outfits button
+#. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#: src/gui/windows/inventorywindow.cpp:236
-msgid "O"
-msgstr ""
+#, fuzzy
+msgid "H"
+msgstr "CH"
 
 #. TRANSLATORS: one char size unknown character gender
 #: src/gui/windows/charcreatedialog.cpp:300
@@ -6410,17 +6400,17 @@ msgid "U"
 msgstr ""
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:507
+#: src/gui/windows/charcreatedialog.cpp:506
 msgid "Your name needs to be at least 4 characters."
 msgstr "Je naam moet uit tenminste 4 tekens bestaan."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:623
+#: src/gui/windows/charcreatedialog.cpp:622
 msgid "Character stats OK"
 msgstr "Attributen van personage OK"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:639
+#: src/gui/windows/charcreatedialog.cpp:638
 #, c-format
 msgid "Please remove %d points"
 msgstr "Verwijder alstublieft %d punten"
@@ -6461,9 +6451,8 @@ msgstr "Spelen"
 
 #. TRANSLATORS: change pincode button
 #: src/gui/windows/charselectdialog.cpp:128
-#, fuzzy
 msgid "Change pin"
-msgstr "Wijzig Login"
+msgstr ""
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:165
@@ -6705,6 +6694,11 @@ msgstr ""
 #: src/resources/itemtypemapdata.h:89 src/resources/itemtypemapdata.h:93
 msgid "Equip"
 msgstr "Uitrusten"
+
+#. TRANSLATORS: inventory outfits button
+#: src/gui/windows/inventorywindow.cpp:236
+msgid "O"
+msgstr ""
 
 #. TRANSLATORS: inventory cart button
 #: src/gui/windows/inventorywindow.cpp:242
@@ -7262,9 +7256,8 @@ msgstr "Kies Uw Server  *** VEILIGE MODUS ***"
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:140
-#, fuzzy
 msgid "Choose Your Server  *** SOFTWARE RENDER MODE ***"
-msgstr "Kies Uw Server  *** VEILIGE MODUS ***"
+msgstr ""
 
 #. TRANSLATORS: servers dialog checkbox
 #: src/gui/windows/serverdialog.cpp:150
@@ -7730,27 +7723,27 @@ msgid "Connecting..."
 msgstr "Verbinden..."
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:419
+#: src/gui/windows/updaterwindow.cpp:420
 msgid "Show all news (can be slow)"
 msgstr ""
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:863
+#: src/gui/windows/updaterwindow.cpp:864
 msgid "##1  The update process is incomplete."
 msgstr "##1 Het updateproces is onvolledig."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:866
+#: src/gui/windows/updaterwindow.cpp:867
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Het is ten sterkste aanbevolen dat"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:869
+#: src/gui/windows/updaterwindow.cpp:870
 msgid "##1  you try again later."
 msgstr "##1  probeer later opnieuw."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1058
+#: src/gui/windows/updaterwindow.cpp:1059
 msgid "Completed"
 msgstr "Voltooid"
 
@@ -9732,9 +9725,8 @@ msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:80
-#, fuzzy
 msgid "Enter pincode"
-msgstr "Geef wachtwoord:"
+msgstr ""
 
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:91 src/pincodemanager.cpp:127
@@ -9749,9 +9741,8 @@ msgstr ""
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:105 src/pincodemanager.cpp:171
 #: src/pincodemanager.cpp:185
-#, fuzzy
 msgid "Change pincode"
-msgstr "Wijzig Map Tonen Modus"
+msgstr ""
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:107
@@ -11438,3 +11429,6 @@ msgstr ""
 #, c-format
 msgid "%d seconds"
 msgstr "%d seconden"
+
+#~ msgid "Message"
+#~ msgstr "Bericht"

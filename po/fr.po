@@ -31,9 +31,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-05-23 04:44+0300\n"
-"PO-Revision-Date: 2018-05-23 01:42+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2018-06-30 22:45+0300\n"
+"PO-Revision-Date: 2018-05-28 12:59+0000\n"
+"Last-Translator: Lucas Helaine <lucashelaine14@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/akaras/manaplus/language/"
 "fr/)\n"
 "Language: fr\n"
@@ -832,8 +832,8 @@ msgstr "Inactif"
 #. TRANSLATORS: quit dialog button
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
-#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:205
-#: src/gui/dialogsmanager.cpp:225 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:202
+#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:169
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -842,7 +842,7 @@ msgstr "Inactif"
 #: src/gui/widgets/tabs/setup_video.cpp:451
 #: src/gui/windows/changeemaildialog.cpp:171
 #: src/gui/windows/changepassworddialog.cpp:159
-#: src/gui/windows/charcreatedialog.cpp:509
+#: src/gui/windows/charcreatedialog.cpp:508
 #: src/gui/windows/charselectdialog.cpp:281
 #: src/gui/windows/charselectdialog.cpp:330 src/gui/windows/editdialog.cpp:53
 #: src/gui/windows/editserverdialog.cpp:66
@@ -903,28 +903,21 @@ msgstr "Fermer"
 msgid "Do you want to open support page?"
 msgstr "Veux-tu ouvrir la page d'aide ?"
 
-#. TRANSLATORS: message header
-#: src/gui/dialogsmanager.cpp:149 src/gui/dialogsmanager.cpp:164
-#: src/gui/dialogsmanager.cpp:199 src/gui/dialogsmanager.cpp:219
-msgid "Message"
-msgstr "Message"
-
 #. TRANSLATORS: ok dialog button
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: revive player
-#: src/gui/dialogsmanager.cpp:152 src/gui/dialogsmanager.cpp:167
+#: src/gui/dialogsmanager.cpp:151 src/gui/dialogsmanager.cpp:165
 #: src/gui/popups/popupmenu.cpp:2995
 msgid "Revive"
 msgstr "Ressusciter"
 
 #. TRANSLATORS: ok dialog button
-#: src/gui/dialogsmanager.cpp:154
-#, fuzzy
+#: src/gui/dialogsmanager.cpp:153
 msgid "GM revive"
-msgstr "Ressusciter"
+msgstr "Résurection MJ"
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:201
+#: src/gui/dialogsmanager.cpp:198
 msgid ""
 "You are carrying more than half your weight. You are unable to regain health."
 msgstr ""
@@ -932,7 +925,7 @@ msgstr ""
 "en mesure de récupérer ta santé."
 
 #. TRANSLATORS: weight message
-#: src/gui/dialogsmanager.cpp:221
+#: src/gui/dialogsmanager.cpp:217
 msgid "You are carrying less than half your weight. You can regain health."
 msgstr ""
 "Tu portes moins de la moitié du poids maximal de ton inventaire. Tu peux "
@@ -3494,9 +3487,8 @@ msgstr "Nombre d'acteurs sur la carte :"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:73
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:233
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:277
-#, fuzzy
 msgid "Map atlas count:"
-msgstr "Nombre d'acteurs sur la carte :"
+msgstr "Nombre d'atlas de le carte:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:76
@@ -3817,21 +3809,18 @@ msgstr "Son des messages privés"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:143
-#, fuzzy
 msgid "Guild message sound"
-msgstr "Son des messages globaux"
+msgstr "Son du message de Guilde"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:148
-#, fuzzy
 msgid "Party message sound"
-msgstr "Son des messages d'erreur"
+msgstr "Son du message de groupe"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:153
-#, fuzzy
 msgid "Clan message sound"
-msgstr "Son des messages globaux"
+msgstr "Son du message de Clan"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:158
@@ -5011,9 +5000,8 @@ msgstr "Boutons de raccourcis"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:430
-#, fuzzy
 msgid "Show icons on shortcut buttons"
-msgstr "Boutons de raccourcis"
+msgstr "Afficher les icônes sur les boutons de raccourci"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_misc.cpp:436
@@ -6451,7 +6439,7 @@ msgstr "Les deux adresses mail ne sont pas identiques."
 #. TRANSLATORS: error message header
 #: src/gui/windows/changeemaildialog.cpp:168
 #: src/gui/windows/changepassworddialog.cpp:156
-#: src/gui/windows/charcreatedialog.cpp:505
+#: src/gui/windows/charcreatedialog.cpp:504
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
@@ -6540,7 +6528,7 @@ msgstr ">"
 
 #. TRANSLATORS: char create dialog label
 #: src/gui/windows/charcreatedialog.cpp:111
-#: src/gui/windows/charcreatedialog.cpp:633
+#: src/gui/windows/charcreatedialog.cpp:632
 #, c-format
 msgid "Please distribute %d points"
 msgstr "Distribues %d points"
@@ -6589,13 +6577,12 @@ msgstr "F"
 msgid "M"
 msgstr "H"
 
-#. TRANSLATORS: one char size other character gender
-#. TRANSLATORS: inventory outfits button
+#. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#: src/gui/windows/inventorywindow.cpp:236
-msgid "O"
-msgstr "O"
+#, fuzzy
+msgid "H"
+msgstr "CH"
 
 #. TRANSLATORS: one char size unknown character gender
 #: src/gui/windows/charcreatedialog.cpp:300
@@ -6603,17 +6590,17 @@ msgid "U"
 msgstr "I"
 
 #. TRANSLATORS: char creation error
-#: src/gui/windows/charcreatedialog.cpp:507
+#: src/gui/windows/charcreatedialog.cpp:506
 msgid "Your name needs to be at least 4 characters."
 msgstr "Ton nom doit comporter un minimum de 4 caractères."
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:623
+#: src/gui/windows/charcreatedialog.cpp:622
 msgid "Character stats OK"
 msgstr "Caractéristiques du personnage Ok"
 
 #. TRANSLATORS: char create dialog label
-#: src/gui/windows/charcreatedialog.cpp:639
+#: src/gui/windows/charcreatedialog.cpp:638
 #, c-format
 msgid "Please remove %d points"
 msgstr "Retires %d points"
@@ -6654,9 +6641,8 @@ msgstr "Jouer"
 
 #. TRANSLATORS: change pincode button
 #: src/gui/windows/charselectdialog.cpp:128
-#, fuzzy
 msgid "Change pin"
-msgstr "Changer de Compte"
+msgstr "Changer le code PIN"
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:165
@@ -6903,6 +6889,11 @@ msgstr "Insérer"
 #: src/resources/itemtypemapdata.h:89 src/resources/itemtypemapdata.h:93
 msgid "Equip"
 msgstr "Équiper"
+
+#. TRANSLATORS: inventory outfits button
+#: src/gui/windows/inventorywindow.cpp:236
+msgid "O"
+msgstr "O"
 
 #. TRANSLATORS: inventory cart button
 #: src/gui/windows/inventorywindow.cpp:242
@@ -7241,7 +7232,7 @@ msgstr "Ouvrir"
 #. TRANSLATORS: expired mail message prefix
 #: src/gui/windows/mailwindow.cpp:200
 msgid "(expired)"
-msgstr ""
+msgstr "(expiré)"
 
 #. TRANSLATORS: status bar name
 #: src/gui/windows/ministatuswindow.cpp:73
@@ -7460,9 +7451,8 @@ msgstr "Choisis ton serveur  *** Mode Sûr ***"
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:140
-#, fuzzy
 msgid "Choose Your Server  *** SOFTWARE RENDER MODE ***"
-msgstr "Choisis ton serveur  *** Mode Sûr ***"
+msgstr "Choisi ton serveur *** MODE RENDU LOGICIEL ***"
 
 #. TRANSLATORS: servers dialog checkbox
 #: src/gui/windows/serverdialog.cpp:150
@@ -7934,27 +7924,27 @@ msgid "Connecting..."
 msgstr "Connexion..."
 
 #. TRANSLATORS: updater window checkbox
-#: src/gui/windows/updaterwindow.cpp:419
+#: src/gui/windows/updaterwindow.cpp:420
 msgid "Show all news (can be slow)"
 msgstr "Afficher toutes les nouvelles (peut être lent)"
 
 #. TRANSLATORS: update message
-#: src/gui/windows/updaterwindow.cpp:863
+#: src/gui/windows/updaterwindow.cpp:864
 msgid "##1  The update process is incomplete."
 msgstr "##1 Le processus de mise à jour n'est pas achevé."
 
 #. TRANSLATORS: Continues "The update process is incomplete.".
-#: src/gui/windows/updaterwindow.cpp:866
+#: src/gui/windows/updaterwindow.cpp:867
 msgid "##1  It is strongly recommended that"
 msgstr "##1 Il est fortement recommandé de"
 
 #. TRANSLATORS: Begins "It is strongly recommended that".
-#: src/gui/windows/updaterwindow.cpp:869
+#: src/gui/windows/updaterwindow.cpp:870
 msgid "##1  you try again later."
 msgstr "##1 Essayes de nouveau plus tard."
 
 #. TRANSLATORS: updater window label
-#: src/gui/windows/updaterwindow.cpp:1058
+#: src/gui/windows/updaterwindow.cpp:1059
 msgid "Completed"
 msgstr "Terminé"
 
@@ -9938,47 +9928,43 @@ msgstr "Le poison n'a pas eu d'effet..."
 #: src/pincodemanager.cpp:78 src/pincodemanager.cpp:143
 #: src/pincodemanager.cpp:202
 msgid "Pincode"
-msgstr ""
+msgstr "Code PIN"
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:80
-#, fuzzy
 msgid "Enter pincode"
-msgstr "Entre le mot de passe :"
+msgstr "Rentre ton code PIN"
 
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:91 src/pincodemanager.cpp:127
-#, fuzzy
 msgid "New pincode"
-msgstr "Définis le nouveau code pin"
+msgstr "Nouveau code PIN"
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:93 src/pincodemanager.cpp:173
-#, fuzzy
 msgid "Enter new pincode"
-msgstr "Définis le nouveau code pin"
+msgstr "Tape le nouveau code PIN"
 
 #. TRANSLATORS: dialog caption
 #: src/pincodemanager.cpp:105 src/pincodemanager.cpp:171
 #: src/pincodemanager.cpp:185
-#, fuzzy
 msgid "Change pincode"
-msgstr "Changer la notice"
+msgstr "Changer le code PIN"
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:107
 msgid "Enter old pincode"
-msgstr ""
+msgstr "Entrer l'ancien code PIN"
 
 #. TRANSLATORS: dialog label
 #: src/pincodemanager.cpp:129 src/pincodemanager.cpp:187
 msgid "Confirm new pincode"
-msgstr ""
+msgstr "Confirme le nouveau code PIN"
 
 #. TRANSLATORS: error message
 #: src/pincodemanager.cpp:145 src/pincodemanager.cpp:204
 msgid "Wrong pincode confirmation!"
-msgstr ""
+msgstr "Mauvais code PIN"
 
 #. TRANSLATORS: theme tab quick button
 #: src/progs/dyecmd/client.cpp:561 src/progs/manaplus/client.cpp:927
@@ -11676,5 +11662,5 @@ msgstr "%d seconde"
 msgid "%d seconds"
 msgstr "%d secondes"
 
-#~ msgid "Guild / party / clan message sound"
-#~ msgstr "Son de message de la Guilde / Groupe / Clan "
+#~ msgid "Message"
+#~ msgstr "Message"
