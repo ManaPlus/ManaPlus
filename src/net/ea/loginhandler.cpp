@@ -115,7 +115,7 @@ void LoginHandler::registerAccount(const LoginData *const loginData1) const
         case Gender::MALE:
             username.append("_M");
             break;
-        case Gender::OTHER:
+        case Gender::HIDDEN:
             username.append("_O");
             break;
         case Gender::UNSPECIFIED:

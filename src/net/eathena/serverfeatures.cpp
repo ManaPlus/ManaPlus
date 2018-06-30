@@ -70,7 +70,7 @@ bool ServerFeatures::haveMove3() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveCharOtherGender() const
+bool ServerFeatures::haveCharHiddenGender() const
 {
     return true;
 }

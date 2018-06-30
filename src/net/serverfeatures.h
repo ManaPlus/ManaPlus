@@ -50,7 +50,7 @@ class ServerFeatures notfinal
 
         virtual bool haveMove3() const = 0;
 
-        virtual bool haveCharOtherGender() const = 0;
+        virtual bool haveCharHiddenGender() const = 0;
 
         virtual bool haveMonsterAttackRange() const = 0;
 

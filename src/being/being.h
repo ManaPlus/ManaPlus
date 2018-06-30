@@ -934,7 +934,7 @@ class Being notfinal : public ActorSprite,
                     return 0;
                 case Gender::MALE:
                     return 1;
-                case Gender::OTHER:
+                case Gender::HIDDEN:
                     return 3;
             }
         }
@@ -950,7 +950,7 @@ class Being notfinal : public ActorSprite,
                 case 1:
                     return Gender::MALE;
                 case 3:
-                    return Gender::OTHER;
+                    return Gender::HIDDEN;
             }
         }
 

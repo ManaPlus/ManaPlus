@@ -471,8 +471,8 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
         {
             if ((status & BeingFlag::GENDER_MALE) != 0)
                 gender = Gender::MALE;
-            else if ((status & BeingFlag::GENDER_OTHER) != 0)
-                gender = Gender::OTHER;
+            else if ((status & BeingFlag::GENDER_HIDDEN) != 0)
+                gender = Gender::HIDDEN;
             else
                 gender = Gender::FEMALE;
         }

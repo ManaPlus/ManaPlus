@@ -1494,7 +1494,7 @@ void BeingRecv::setServerGender(Being *const being,
             being->setGender(Gender::MALE);
             break;
         case 4:
-            being->setGender(Gender::OTHER);
+            being->setGender(Gender::HIDDEN);
             break;
         default:
             being->setGender(Gender::UNSPECIFIED);
