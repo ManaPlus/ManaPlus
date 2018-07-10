@@ -30,7 +30,7 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2018-06-30 22:45+0300\n"
-"PO-Revision-Date: 2018-05-23 02:38+0000\n"
+"PO-Revision-Date: 2018-07-10 13:40+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Spanish (http://www.transifex.com/akaras/manaplus/language/"
 "es/)\n"
@@ -6561,9 +6561,8 @@ msgstr "M"
 #. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#, fuzzy
 msgid "H"
-msgstr "CH"
+msgstr ""
 
 #. TRANSLATORS: one char size unknown character gender
 #: src/gui/windows/charcreatedialog.cpp:300
@@ -11626,6 +11625,3 @@ msgstr ""
 #, c-format
 msgid "%d seconds"
 msgstr "%d segundos"
-
-#~ msgid "Message"
-#~ msgstr "Mensaje"

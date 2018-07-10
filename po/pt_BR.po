@@ -29,8 +29,8 @@ msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
 "POT-Creation-Date: 2018-06-30 22:45+0300\n"
-"PO-Revision-Date: 2018-06-14 22:47+0000\n"
-"Last-Translator: Jesusaves <cpntb1@ymail.com>\n"
+"PO-Revision-Date: 2018-07-10 13:40+0000\n"
+"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/akaras/manaplus/"
 "language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -6549,9 +6549,8 @@ msgstr "M"
 #. TRANSLATORS: one char size hidden character gender
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
-#, fuzzy
 msgid "H"
-msgstr "CH"
+msgstr ""
 
 #. TRANSLATORS: one char size unknown character gender
 #: src/gui/windows/charcreatedialog.cpp:300
@@ -9974,7 +9973,7 @@ msgstr "Recursos de imagem:"
 #: src/progs/manaplus/actions/actions.cpp:1388
 #: src/progs/manaplus/actions/actions.cpp:1400
 msgid "Orphaned resource images:"
-msgstr "Imagens de recursos órfãos: "
+msgstr "Imagens de recursos órfãos:"
 
 #. TRANSLATORS: dump environment command
 #: src/progs/manaplus/actions/actions.cpp:1499
@@ -9984,7 +9983,7 @@ msgstr "Variáveis de ambiente despejada"
 #. TRANSLATORS: upload config chat message
 #: src/progs/manaplus/actions/actions.cpp:1638
 msgid "Config uploaded to:"
-msgstr "Configuração enviada para: "
+msgstr "Configuração enviada para:"
 
 #. TRANSLATORS: upload config chat message
 #: src/progs/manaplus/actions/actions.cpp:1648
@@ -11606,6 +11605,3 @@ msgstr "%d segundo(s)"
 #, c-format
 msgid "%d seconds"
 msgstr "%d Segundos"
-
-#~ msgid "Message"
-#~ msgstr "Mensagem"
