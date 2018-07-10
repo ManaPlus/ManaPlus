@@ -159,7 +159,6 @@ gcc-6_sdl2_tests:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev 
-              gcovr
               git valgrind
   tags:
     - docker
