@@ -214,14 +214,15 @@ function run_make_check {
         cat src/manaplustests.log
         exit ${ERR}
     fi
-    valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
-    export DATA=$(grep "invalid" logs/valg.log)
-    if [ "$DATA" != "" ];
-    then
-        cat logs/valg.log
-        echo "valgrind error"
-        exit 1
-    fi
+# disabled due performance issue. it runs bigger than gitlab limit (3h)
+#    valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
+#    export DATA=$(grep "invalid" logs/valg.log)
+#    if [ "$DATA" != "" ];
+#    then
+#        cat logs/valg.log
+#        echo "valgrind error"
+#        exit 1
+#    fi
 # disabled due some kind of bug in valgrind. look like false positives.
 #    export DATA=$(grep -A 2 "uninitialised" logs/valg.log|grep ".cpp")
 #    if [ "$DATA" != "" ];
