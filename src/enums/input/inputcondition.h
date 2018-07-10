@@ -25,35 +25,35 @@ namespace InputCondition
 {
     enum Type
     {
-        DEFAULT    = 1,                      // default condition
-        ENABLED    = 2,                      // keyboard must be enabled
-        NOINPUT    = 4,                      // input items must be unfocused
-        NOAWAY     = 8,                      // player not in away mode
-        NOSETUP    = 16,                     // setup window is hidde
-        VALIDSPEED = 32,                     // valid speed
-        NOMODAL    = 64,                     // modal windows inactive
-        NONPCINPUT = 128,                    // npc input field inactive
-        EMODS      = 256,                    // game modifiers enabled
-        NOTARGET   = 512,                    // no target/untarget keys
+        DEFAULT    = 1U,                      // default condition
+        ENABLED    = 2U,                      // keyboard must be enabled
+        NOINPUT    = 4U,                      // input items must be unfocused
+        NOAWAY     = 8U,                      // player not in away mode
+        NOSETUP    = 16U,                     // setup window is hidde
+        VALIDSPEED = 32U,                     // valid speed
+        NOMODAL    = 64U,                     // modal windows inactive
+        NONPCINPUT = 128U,                    // npc input field inactive
+        EMODS      = 256U,                    // game modifiers enabled
+        NOTARGET   = 512U,                    // no target/untarget keys
                                              // pressed
-        NOFOLLOW   = 1024,                   // follow mode disabled
-        INGAME     = 2048,                   // game must be started
-        NOBUYSELL  = 4096,                   // no active buy or sell dialogs
-        NONPCDIALOG = 8192,                  // no active npc dialog or
+        NOFOLLOW   = 1024U,                   // follow mode disabled
+        INGAME     = 2048U,                   // game must be started
+        NOBUYSELL  = 4096U,                   // no active buy or sell dialogs
+        NONPCDIALOG = 8192U,                  // no active npc dialog or
                                              // dialog almost closed
-        NOTALKING  = 16384,                  // player have no opened
+        NOTALKING  = 16384U,                  // player have no opened
                                              // dialogs what prevent moving
-        ALIVE      = 32768,                  // player alive
-        NOVENDING  = 65536,                  // vending disabled
-        NOROOM     = 131072,                 // not joined room
-        NOBLOCK    = 262144,                 // no blocked move (trick dead)
-        KEY_DOWN   = 524288,                 // key press allowed
-        KEY_UP     = 1048576,                // key release allowed
-        SHORTCUT   = 2 + 4 + 16 + 512 + 2048,  // flags for shortcut keys
-        SHORTCUT0  = 2 + 4 + 16 + 512,       // flags for shortcut keys
-        GAME       = 2 + 4 + 8 + 16 + 64 + 2048,  // main game key
-        GAME2      = 2 + 8 + 16 + 64 + 2048,
-        ARROWKEYS  = 2 + 4 + 8 + 16 + 64 + 2048 + 4096 +
+        ALIVE      = 32768U,                  // player alive
+        NOVENDING  = 65536U,                  // vending disabled
+        NOROOM     = 131072U,                 // not joined room
+        NOBLOCK    = 262144U,                 // no blocked move (trick dead)
+        KEY_DOWN   = 524288U,                 // key press allowed
+        KEY_UP     = 1048576U,                // key release allowed
+        SHORTCUT   = 2U + 4 + 16 + 512 + 2048,  // flags for shortcut keys
+        SHORTCUT0  = 2U + 4 + 16 + 512,       // flags for shortcut keys
+        GAME       = 2U + 4 + 8 + 16 + 64 + 2048,  // main game key
+        GAME2      = 2U + 8 + 16 + 64 + 2048,
+        ARROWKEYS  = 2U + 4 + 8 + 16 + 64 + 2048 + 4096 +
                      16384 + 65536 + 131072 + 262144
     };
 }  // namespace InputCondition
