@@ -186,6 +186,7 @@ gcc-6_tests_valgrind:
   - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
   - grep "invalid" logs/valg.log && exit 1 || true
   <<: *job-push
+  image: debian:stretch
   variables:
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
@@ -204,6 +205,7 @@ gcc-6_tests_valgrind_i386:
   - grep "invalid" logs/valg.log && exit 1 || true
   image: vicamo/debian:sid-i386
   <<: *job-push
+  image: debian:stretch
   variables:
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
