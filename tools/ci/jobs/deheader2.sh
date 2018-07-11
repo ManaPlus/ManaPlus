@@ -26,6 +26,7 @@ grep "deheader:" ${LOGFILE} \
 | grep -v "deheader: remove <vector> from ./src/utils/vector.h" \
 | grep -v "has more than one inclusion of \"resources/dye/dyepalette_replace" \
 | grep -v "/sdl2gfx/" \
+| grep -v "doctest.h" \
 | grep -v "deheader: remove <climits> from ./src/units.cpp" > ${LOGFILE2}
 
 export DATA=$(cat ${LOGFILE2})

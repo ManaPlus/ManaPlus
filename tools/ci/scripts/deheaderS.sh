@@ -39,4 +39,5 @@ grep -v "deheader: remove <netinet/tcp.h> from ./src/net/sdltcpnet.cpp" | \
 grep -v "deheader: remove <climits> from ./src/resources/db/unitsdb.cpp" | \
 grep -v "portability requires" | \
 grep -v "SDL2_rotozoom.cpp" | \
+grep -v "doctest.h" | \
 tee -a ${LOGFILE}
