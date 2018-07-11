@@ -34,6 +34,8 @@ before_script:
 gcc-6_tests_gcov:
   stage: build
   script:
+  - ./tools/ci/scripts/clonesrc.sh
+  - cd manaplus
   - ./tools/ci/jobs/gcc6_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
