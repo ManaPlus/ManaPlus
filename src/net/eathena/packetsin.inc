@@ -1119,6 +1119,12 @@ if (packetVersionMain >= 20180620)
     packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20180620);
 }
 
+// 20180523
+if (packetVersionMain >= 20180523)
+{
+    packet(SMSG_ROULETTE_INFO_ACK_TYPE,    0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20180523);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
