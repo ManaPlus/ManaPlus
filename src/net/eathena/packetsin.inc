@@ -915,6 +915,12 @@ if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
     packet(SMSG_BEING_VIEW_EQUIPMENT,      0x0a2d,  -1, &BeingRecv::processBeingViewEquipment,          20150226);
 }
 
+// 20150226
+if (packetVersion >= 20150226)
+{
+    packet(SMSG_SEARCHSTORE_SEARCH_ACK,    0x0836,   0, &SearchStoreRecv::processSearchAck,             20150226);
+}
+
 // 20150422
 if (packetVersion >= 20150422)
 {

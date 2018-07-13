@@ -53,6 +53,15 @@ void SearchStoreRecv::processSearchAck(Net::MessageIn &msg)
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d++)
             msg.readUInt16("card");
+        if (msg.getVersion() >= 20150226)
+        {
+            for (int d = 0; d < 5; d ++)
+            {
+                msg.readInt16("option index");
+                msg.readInt16("option value");
+                msg.readUInt8("option param");
+            }
+        }
 
         // +++ need use ItemColorManager for colors
     }
