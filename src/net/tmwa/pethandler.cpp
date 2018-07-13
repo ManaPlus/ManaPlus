@@ -81,4 +81,9 @@ void PetHandler::setDirection(const unsigned char type A_UNUSED) const
 {
 }
 
+void PetHandler::evolution(const Item *item A_UNUSED) const
+{
+}
+
+
 }  // namespace TmwAthena

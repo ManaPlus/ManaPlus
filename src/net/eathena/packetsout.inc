@@ -336,6 +336,7 @@ packet(CMSG_ATTENDANCE_REWARD,            0x0000,   0, nullptr);
 packet(CMSG_MAP_BLOCK_PLAY_CANCEL,        0x0000,   0, nullptr);
 packet(CMSG_PRIVATE_AIRSHIP_REQUEST,      0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SELECT_STYLE,          0x0000,   0, nullptr);
+packet(CMSG_PET_EVOLUTION,                0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1256,6 +1257,12 @@ if (packetVersion >= 20131230)
 if (packetVersion >= 20131230)
 {
     packet(CMSG_MAIL2_SEND_MAIL,          0x09ec,  -1, clif->pRodexSendMail);
+}
+
+// 20140122
+if (packetVersion >= 20140122)
+{
+    packet(CMSG_PET_EVOLUTION,            0x09fb,  -1, clif->pPetEvolution);
 }
 
 // 20140129

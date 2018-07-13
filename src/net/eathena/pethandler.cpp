@@ -27,7 +27,11 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
+#include "resources/item/item.h"
+
 #include "debug.h"
+
+extern int packetVersion;
 
 namespace EAthena
 {
@@ -121,6 +125,17 @@ void PetHandler::setDirection(const unsigned char type) const
     outMsg.writeInt8(0, "unused");
     outMsg.writeInt8(MessageOut::toServerDirection(type),
         "pet direction");
+}
+
+void PetHandler::evolution(const Item *const item) const
+{
+    if (packetVersion < 20140122 ||
+        item == nullptr)
+    {
+        return;
+    }
+    createOutPacket(CMSG_PET_EVOLUTION);
+    outMsg.writeInt16(CAST_S16(item->getId()), "egg id");
 }
 
 }  // namespace EAthena

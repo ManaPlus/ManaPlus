@@ -57,6 +57,8 @@ class PetHandler final :  public Net::PetHandler
         void unequip() const override final;
 
         void setDirection(const unsigned char type) const override final;
+
+        void evolution(const Item *const item) const override final;
 };
 
 }  // namespace EAthena

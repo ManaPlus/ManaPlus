@@ -23,6 +23,8 @@
 
 #include "being/being.h"
 
+class Item;
+
 namespace Net
 {
 
@@ -59,6 +61,8 @@ class PetHandler notfinal
         virtual void unequip() const = 0;
 
         virtual void setDirection(const unsigned char type) const = 0;
+
+        virtual void evolution(const Item *item) const = 0;
 };
 
 }  // namespace Net

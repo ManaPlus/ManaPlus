@@ -58,6 +58,8 @@ class PetHandler final : public Net::PetHandler
 
         void setDirection(const unsigned char type) const override final;
 
+        void evolution(const Item *const item) const override final;
+
     protected:
         int mRandCounter;
 };
