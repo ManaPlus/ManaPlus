@@ -1113,6 +1113,12 @@ if (packetVersion >= 20180418)
     packet(SMSG_ITEM_DROPPED,              0x0add,  22, &ItemRecv::processItemDropped,                  20180418);
 }
 
+// re 20180620
+if (packetVersionMain >= 20180620)
+{
+    packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20180620);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
