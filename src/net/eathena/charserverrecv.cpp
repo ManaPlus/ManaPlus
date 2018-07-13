@@ -349,38 +349,24 @@ void CharServerRecv::processPincodeStatus(Net::MessageIn &msg)
 {
     pincodeManager.setSeed(msg.readUInt32("pincode seed"));
     pincodeManager.setAccountId(msg.readBeingId("account id"));
-    const uint16_t state = CAST_U16(msg.readInt16("state"));
-    switch (state)
+    pincodeManager.setPincodeLockFlag(false);
+    if (pincodeManager.processPincodeStatus(CAST_U16(
+        msg.readInt16("state"))) == false)
     {
-        case 0:  // pin ok
-            pincodeManager.pinOk();
-            break;
-        case 1:  // ask for pin
-            pincodeManager.setState(PincodeState::Ask);
-            break;
-        case 2:  // create new pin
-        case 4:  // create new pin?
-        {
-            pincodeManager.setState(PincodeState::Create);
-            break;
-        }
-        case 3:  // pin must be changed
-            pincodeManager.setState(PincodeState::Change);
-            break;
-        case 8:  // pincode was incorrect
-        case 5:  // client show error?
-            pincodeManager.wrongPin();
-            return;
-        case 6:  // Unable to use your KSSN number
-            break;
-        case 7:  // char select window shows a button
-            break;
-        default:
-            UNIMPLEMENTEDPACKET;
-            break;
+        UNIMPLEMENTEDPACKET;
     }
-    if (client)
-        client->updatePinState();
+}
+
+void CharServerRecv::processPincodeStatus2(Net::MessageIn &msg)
+{
+    pincodeManager.setSeed(msg.readUInt32("pincode seed"));
+    pincodeManager.setAccountId(msg.readBeingId("account id"));
+    const uint16_t state = CAST_U16(msg.readInt16("state"));
+    pincodeManager.setPincodeLockFlag(msg.readInt16("flag") == 0);
+    if (pincodeManager.processPincodeStatus(state) == false)
+    {
+        UNIMPLEMENTEDPACKET;
+    }
 }
 
 void CharServerRecv::processPincodeMakeStatus(Net::MessageIn &msg)

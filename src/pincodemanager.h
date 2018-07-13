@@ -49,6 +49,8 @@ class PincodeManager final
 
         void wrongPin();
 
+        void lockedPin();
+
         void setSeed(const uint32_t seed)
         { mSeed = seed; }
 
@@ -57,6 +59,9 @@ class PincodeManager final
 
         void setState(const PincodeStateT state)
         { mState = state; }
+
+        void setPincodeLockFlag(const bool flag)
+        { mLockFlag = flag; }
 
         void changePincode(const std::string &pincode);
 
@@ -70,6 +75,8 @@ class PincodeManager final
 
         bool isBlocked();
 
+        bool processPincodeStatus(const uint16_t state);
+
     protected:
         std::string mOldPincode;
         std::string mNewPincode;
@@ -77,6 +84,7 @@ class PincodeManager final
         BeingId mAccountId;
         Window *mDialog;
         PincodeStateT mState;
+        bool mLockFlag;
 };
 
 extern PincodeManager pincodeManager;

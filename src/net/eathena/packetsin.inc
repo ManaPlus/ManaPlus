@@ -1037,6 +1037,24 @@ if (packetVersion >= 20171207)
     packet(SMSG_PARTY_INFO,                0x0ae5,  -1, &PartyRecv::processPartyInfo,                   20171207);
 }
 
+// main 20180124
+if (packetVersionMain >= 20180124)
+{
+    packet(SMSG_CHAR_PINCODE_STATUS2,      0x0ae9,  13, &CharServerRecv::processPincodeStatus2,         20180124);
+}
+
+// re 20180124
+if (packetVersionRe >= 20180124)
+{
+    packet(SMSG_CHAR_PINCODE_STATUS2,      0x0ae9,  13, &CharServerRecv::processPincodeStatus2,         20180124);
+}
+
+// zero 20180131
+if (packetVersionZero >= 20180131)
+{
+    packet(SMSG_CHAR_PINCODE_STATUS2,      0x0ae9,  13, &CharServerRecv::processPincodeStatus2,         20180124);
+}
+
 // re 20180221
 if (packetVersionRe >= 20180221)
 {
@@ -1081,7 +1099,7 @@ if (packetVersionZero >= 20180411)
 }
 
 // 20180418
-if (packetVersion == 20180418)
+if (packetVersion >= 20180418)
 {
     packet(SMSG_ITEM_DROPPED,              0x0add,  22, &ItemRecv::processItemDropped,                  20180418);
 }

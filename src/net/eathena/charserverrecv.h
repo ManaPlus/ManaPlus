@@ -44,6 +44,7 @@ namespace EAthena
         void readPlayerData(Net::MessageIn &msg,
                             Net::Character *const character);
         void processPincodeStatus(Net::MessageIn &msg);
+        void processPincodeStatus2(Net::MessageIn &msg);
         void processPincodeMakeStatus(Net::MessageIn &msg);
         void processPincodeEditStatus(Net::MessageIn &msg);
         void processCharLogin2(Net::MessageIn &msg);

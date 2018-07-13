@@ -46,7 +46,8 @@ PincodeManager::PincodeManager() :
     mSeed(0U),
     mAccountId(BeingId_zero),
     mDialog(nullptr),
-    mState(PincodeState::None)
+    mState(PincodeState::None),
+    mLockFlag(false)
 {
 }
 
@@ -235,6 +236,14 @@ void PincodeManager::pinOk()
         client->focusWindow();
 }
 
+void PincodeManager::lockedPin()
+{
+    // +++ here can be handled locked account by pin code.
+    // but hercules for now not have this feature
+    mState = PincodeState::Ask;
+    updateState();
+}
+
 void PincodeManager::wrongPin()
 {
     mState = PincodeState::Ask;
@@ -253,4 +262,44 @@ void PincodeManager::closeDialogs()
 bool PincodeManager::isBlocked()
 {
     return mState != PincodeState::None;
+}
+
+bool PincodeManager::processPincodeStatus(const uint16_t state)
+{
+    switch (state)
+    {
+        case 0:  // pin ok
+            pincodeManager.pinOk();
+            break;
+        case 1:  // ask for pin
+            pincodeManager.setState(PincodeState::Ask);
+            break;
+        case 2:  // create new pin
+        case 4:  // create new pin?
+        {
+            pincodeManager.setState(PincodeState::Create);
+            break;
+        }
+        case 3:  // pin must be changed
+            pincodeManager.setState(PincodeState::Change);
+            break;
+        case 8:  // pincode was incorrect
+        case 5:  // client show error?
+            if (mLockFlag)
+                pincodeManager.lockedPin();
+            else
+                pincodeManager.wrongPin();
+            return true;
+        case 6:  // Unable to use your KSSN number
+            break;
+        case 7:  // char select window shows a button
+            break;
+        default:
+            if (client)
+                client->updatePinState();
+            return false;
+    }
+    if (client)
+        client->updatePinState();
+    return true;
 }
