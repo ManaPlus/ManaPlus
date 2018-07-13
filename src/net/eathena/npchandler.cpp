@@ -46,6 +46,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionMain;
 extern int packetVersionRe;
 
 namespace EAthena
@@ -366,8 +367,11 @@ BeingId NpcHandler::getNpc(Net::MessageIn &msg,
 void NpcHandler::requestAirship(const std::string &mapName,
                                 const int itemId) const
 {
-    if (packetVersionRe < 20180321)
+    if (packetVersionRe < 20180321 &&
+        packetVersionMain < 20180620)
+    {
         return;
+    }
     createOutPacket(CMSG_PRIVATE_AIRSHIP_REQUEST);
     outMsg.writeString(mapName, 16, "map name");
     outMsg.writeInt16(CAST_S16(itemId), "item");

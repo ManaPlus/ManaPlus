@@ -1385,6 +1385,12 @@ if (packetVersionRe >= 20180321)
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  20, clif->pPrivateAirshipRequest);
 }
 
+// main 20180620
+if (packetVersionMain >= 20180620)
+{
+    packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  20, clif->pPrivateAirshipRequest);
+}
+
 // main 20180404
 if (packetVersionMain >= 20180404)
 {
