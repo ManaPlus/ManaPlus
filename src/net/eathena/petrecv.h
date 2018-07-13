@@ -37,6 +37,7 @@ namespace EAthena
         void processPetStatus(Net::MessageIn &msg);
         void processPetFood(Net::MessageIn &msg);
         void processPetCatchProcess(Net::MessageIn &msg);
+        void processPetEvolution(Net::MessageIn &msg);
     }  // namespace PetRecv
 }  // namespace EAthena
 

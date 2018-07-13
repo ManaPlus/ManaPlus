@@ -815,6 +815,9 @@ if (packetVersion >= 20131223)
 // 20131230
 packet(SMSG_MAIL2_SEND_RESULT,             0x09ed,   3, &Mail2Recv::processSendResult,                  20131230);
 
+// 20140122
+packet(SMSG_PET_EVOLUTION_RESULT,          0x09fc,   6, &PetRecv::processPetEvolution,                  20140122);
+
 // 20140409
 packet(SMSG_MAIL2_REQUEST_MONEY,           0x09f2,  12, &Mail2Recv::processRequestMoney,                20140409);
 packet(SMSG_MAIL2_REQUEST_ITEMS,           0x09f4,  12, &Mail2Recv::processRequestItems,                20140409);

@@ -180,4 +180,10 @@ void PetRecv::processPetCatchProcess(Net::MessageIn &msg A_UNUSED)
     NotifyManager::notify(NotifyTypes::PET_CATCH_PROCESS);
 }
 
+void PetRecv::processPetEvolution(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("result");
+}
+
 }  // namespace EAthena
