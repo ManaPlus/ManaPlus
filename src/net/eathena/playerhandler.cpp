@@ -503,11 +503,12 @@ void PlayerHandler::revive() const
     createOutPacket(CMSG_PLAYER_AUTO_REVIVE);
 }
 
-void PlayerHandler::setViewEquipment(const bool allow) const
+void PlayerHandler::setConfigOption(const int id,
+                                    const int data) const
 {
-    createOutPacket(CMSG_PLAYER_SET_EQUIPMENT_VISIBLE);
-    outMsg.writeInt32(0, "unused");
-    outMsg.writeInt32(allow ? 1 : 0, "allow");
+    createOutPacket(CMSG_SET_CONFIG_OPTION);
+    outMsg.writeInt32(id, "config option");
+    outMsg.writeInt32(data, "config data");
 }
 
 #define setStatComplex(stat) \

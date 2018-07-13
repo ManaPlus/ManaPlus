@@ -68,7 +68,8 @@ class PlayerHandler final : public Ea::PlayerHandler
         void explosionSpirits() const override final;
         void requestPvpInfo() const override final;
         void revive() const override final;
-        void setViewEquipment(const bool allow) const override final;
+        void setConfigOption(const int id,
+                             const int data) const override final;
         void selectStyle(const int headColor,
                          const int headStyle,
                          const int bodyColor,

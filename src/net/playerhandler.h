@@ -104,7 +104,8 @@ class PlayerHandler notfinal
 
         virtual void revive() const = 0;
 
-        virtual void setViewEquipment(const bool allow) const = 0;
+        virtual void setConfigOption(const int id A_UNUSED,
+                                     const int data A_UNUSED) const = 0;
 
         virtual void setStat(Net::MessageIn &msg,
                              const int type,

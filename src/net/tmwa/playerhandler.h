@@ -78,7 +78,8 @@ class PlayerHandler final : public Ea::PlayerHandler
 
         void revive() const override final;
 
-        void setViewEquipment(const bool allow) const override final;
+        void setConfigOption(const int id A_UNUSED,
+                             const int data A_UNUSED) const override final;
 
         void selectStyle(const int headColor,
                          const int headStyle,

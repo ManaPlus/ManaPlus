@@ -207,7 +207,8 @@ void PlayerHandler::shortcutShiftRow(const int row A_UNUSED) const
 {
 }
 
-void PlayerHandler::setViewEquipment(const bool allow A_UNUSED) const
+void PlayerHandler::setConfigOption(const int id A_UNUSED,
+                                    const int data A_UNUSED) const
 {
 }
 

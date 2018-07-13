@@ -92,7 +92,7 @@ packet(CMSG_PLAYER_UNEQUIP,               0x00ab,   4, clif->pUnequipItem);
 packet(CMSG_PLAYER_USE_CARD,              0x017a,   4, clif->pUseCard);
 packet(CMSG_PLAYER_INSERT_CARD,           0x017c,   6, clif->pInsertCard);
 packet(CMSG_PLAYER_VIEW_EQUIPMENT,        0x02d6,   6, clif->pViewPlayerEquip);
-packet(CMSG_PLAYER_SET_EQUIPMENT_VISIBLE, 0x02d8,  10, clif->pEquipTick);
+packet(CMSG_SET_CONFIG_OPTION,            0x02d8,  10, clif->pEquipTick);
 
 packet(CMSG_ITEM_PICKUP,                  0x009f,   6, clif->pTakeItem);
 packet(CMSG_PLAYER_CHANGE_DIR,            0x009b,   5, clif->pChangeDir);
