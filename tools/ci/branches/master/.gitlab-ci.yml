@@ -312,7 +312,7 @@ triggers:
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
   - echo /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvz}
-  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4
+  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.5
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} env
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --without-manaplusgame --without-dyecmd
   - export LD_PRELOAD
@@ -339,7 +339,7 @@ triggers:
   stage: build
   script:
   - ./tools/ci/scripts/downloadlib.sh ${LIBNAME} ${LIBVERSION}
-  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.4
+  - export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.5
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --with-sdl2 --without-manaplusgame --without-dyecmd
   - export LD_PRELOAD
   - /usr/local/spm/bin/${LIBNAME}_${LIBVERSION}/runenv.sh ${runenvx} ${runenvz} ./tools/ci/scripts/checkldd.sh src/manaplustests
