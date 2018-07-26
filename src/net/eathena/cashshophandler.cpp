@@ -145,8 +145,11 @@ void CashShopHandler::requestPoints() const
 
 void CashShopHandler::requestTab(const int tab) const
 {
-    if (packetVersion < 20110718)
+    if (packetVersion < 20110222 ||
+        packetVersion >= 20120000)
+    {
         return;
+    }
     createOutPacket(CMSG_NPC_CASH_SHOP_REQUEST_TAB);
     outMsg.writeInt16(CAST_S16(tab), "tab");
 }
