@@ -24,5 +24,3 @@ variables:
   PMINSTALL: "apt-get install -y -qq"
   DOCKERRETRY: "./tools/ci/scripts/dockerretry.sh"
   GIT_DEPTH: "1"
-
-# gitlab bug workaround test
