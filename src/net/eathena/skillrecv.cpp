@@ -60,6 +60,7 @@ static const unsigned int RFAIL_NEED_EQUIPMENT = 72;
 static const unsigned int RFAIL_SPIRITS        = 74;
 
 extern int serverVersion;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -273,7 +274,8 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
     // Action failed (ex. sit because you have not reached the
     // right level)
     const int skillId = msg.readInt16("skill id");
-    const int bskill  = msg.readInt32("btype");
+    const int bskill  = msg.readItemId("btype");
+    const int itemId  = msg.readItemId("item id");
     const signed char success = msg.readUInt8("success");
     const signed char reason  = msg.readUInt8("reason");
     if (success != CAST_S32(SKILL_FAILED)
@@ -372,8 +374,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             break;
         case RFAIL_NEED_EQUIPMENT:
         {
-            const int itemId = bskill >> 16U;
-            const int amount = bskill & 0xFFFFU;
+            const int amount = bskill;
             const ItemInfo &info = ItemDB::get(itemId);
             if (amount == 1)
             {
@@ -392,8 +393,7 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
         }
         case RFAIL_NEED_ITEM:
         {
-            const int itemId = bskill >> 16U;
-            const int amount = bskill & 0xFFFFU;
+            const int amount = bskill;
             const ItemInfo &info = ItemDB::get(itemId);
             if (amount == 1)
             {
@@ -466,12 +466,12 @@ void SkillRecv::processSkillProduceMixList(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
 
-    const int count = (msg.readInt16("len") - 8) / 8;
+    const int count = (msg.readInt16("len") - 4) / 4 * itemIdLen;
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         for (int d = 0; d < 3; d ++)
-            msg.readInt16("material id");
+            msg.readItemId("material id");
     }
 }
 
@@ -480,7 +480,7 @@ void SkillRecv::processSkillProduceEffect(Net::MessageIn &msg)
     UNIMPLEMENTEDPACKET;
 
     msg.readInt16("flag");
-    msg.readInt16("item id");
+    msg.readItemId("item id");
 }
 
 void SkillRecv::processSkillUnitUpdate(Net::MessageIn &msg)
@@ -494,9 +494,9 @@ void SkillRecv::processSkillArrowCreateList(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
 
-    const int count = (msg.readInt16("len") - 4) / 2;
+    const int count = (msg.readInt16("len") - 4) / itemIdLen;
     for (int f = 0; f < count; f ++)
-        msg.readInt16("item id");
+        msg.readItemId("item id");
 }
 
 void SkillRecv::processSkillAutoSpells(Net::MessageIn &msg)

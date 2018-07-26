@@ -75,7 +75,7 @@ void MarketHandler::buyItem(const int itemId,
     outMsg.writeInt16(CAST_S16(4 + 6 * cnt), "len");
     for (int f = 0; f < cnt; f ++)
     {
-        outMsg.writeInt16(CAST_S16(itemId), "item id");
+        outMsg.writeItemId(itemId, "item id");
         outMsg.writeInt32(CAST_S16(amount2), "amount");
     }
 }
@@ -129,14 +129,15 @@ void MarketHandler::buyItems(const STD_VECTOR<ShopItem*> &items) const
         {
             for (int f = 0; f < usedQuantity; f ++)
             {
-                outMsg.writeInt16(CAST_S16(item->getId()),
+                outMsg.writeItemId(item->getId(),
                     "item id");
                 outMsg.writeInt32(CAST_S16(1), "amount");
             }
         }
         else
         {
-            outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+            outMsg.writeItemId(item->getId(),
+                              "item id");
             outMsg.writeInt32(CAST_S16(usedQuantity), "amount");
         }
     }

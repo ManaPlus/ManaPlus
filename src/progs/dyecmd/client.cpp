@@ -126,6 +126,7 @@ int packetVersionMain = 0;
 int packetVersionRe = 0;
 int packetVersionZero = 0;
 int packetsType = 0;
+int itemIdLen = 2;
 bool packets_main = true;
 bool packets_re = false;
 bool packets_zero = false;

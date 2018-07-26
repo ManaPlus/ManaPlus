@@ -46,6 +46,8 @@
 
 #include "debug.h"
 
+extern int itemIdLen;
+
 namespace EAthena
 {
 
@@ -77,7 +79,7 @@ void BuyingStoreRecv::processBuyingStoreCreateFailed(Net::MessageIn &msg)
 
 void BuyingStoreRecv::processBuyingStoreOwnItems(Net::MessageIn &msg)
 {
-    const int count = (msg.readInt16("len") - 12) / 9;
+    const int count = (msg.readInt16("len") - 12) / (7 + itemIdLen);
     msg.readBeingId("account id");
     msg.readInt32("money limit");
     for (int f = 0; f < count; f ++)
@@ -85,7 +87,7 @@ void BuyingStoreRecv::processBuyingStoreOwnItems(Net::MessageIn &msg)
         msg.readInt32("price");
         msg.readInt16("amount");
         msg.readUInt8("item type");
-        msg.readInt16("item id");
+        msg.readItemId("item id");
     }
     PlayerInfo::enableVending(true);
     BuyingStoreModeListener::distributeEvent(true);
@@ -126,7 +128,7 @@ void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
 {
     if (actorManager == nullptr)
         return;
-    const int count = (msg.readInt16("len") - 16) / 9;
+    const int count = (msg.readInt16("len") - 16) / (7 + itemIdLen);
     const BeingId id = msg.readBeingId("account id");
     const int storeId = msg.readInt32("store id");
     // +++ in future need use it too
@@ -147,7 +149,7 @@ void BuyingStoreRecv::processBuyingStoreItemsList(Net::MessageIn &msg)
         const int amount = msg.readInt16("amount");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
 
         if (inv == nullptr)
             continue;
@@ -180,7 +182,7 @@ void BuyingStoreRecv::processBuyingStoreSellFailed(Net::MessageIn &msg)
 void BuyingStoreRecv::processBuyingStoreSellerSellFailed(Net::MessageIn &msg)
 {
     const int16_t result = msg.readInt16("result");
-    msg.readInt16("item id");
+    msg.readItemId("item id");
     switch (result)
     {
         case 5:
@@ -205,7 +207,7 @@ void BuyingStoreRecv::processBuyingStoreSellerSellFailed(Net::MessageIn &msg)
 void BuyingStoreRecv::processBuyingStoreReport(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    msg.readInt16("item id");
+    msg.readItemId("item id");
     msg.readInt16("amount");
     if (msg.getVersion() >= 20141016)
     {

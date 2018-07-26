@@ -41,6 +41,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -53,10 +54,13 @@ namespace CashShopRecv
 void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
 {
     int count;
+    int blockSize = 11;
+    if (itemIdLen == 4)
+        blockSize += 2;
     if (packetVersion >= 20070711)
-        count = (msg.readInt16("len") - 12) / 11;
+        count = (msg.readInt16("len") - 12) / blockSize;
     else
-        count = (msg.readInt16("len") - 8) / 11;
+        count = (msg.readInt16("len") - 8) / blockSize;
 
     const BeingTypeId npcId = NpcRecv::mNpcTypeId;
     std::string currency;
@@ -88,7 +92,7 @@ void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
         const int value = msg.readInt32("discount price");
         const ItemTypeT type = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemColor color = ItemColor_one;
         mBuyDialog->addItem(itemId, type, color, 0, value);
     }
@@ -157,7 +161,7 @@ void CashShopRecv::processCashShopTabPriceList(Net::MessageIn &msg)
 
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt16("item id");
+        msg.readInt16("item id");  // item id size always 16 bit
         msg.readInt32("price");
     }
 }
@@ -165,7 +169,10 @@ void CashShopRecv::processCashShopTabPriceList(Net::MessageIn &msg)
 void CashShopRecv::processCashShopSchedule(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    const int count = (msg.readInt16("len") - 8) / 6;
+    int blockSize = 6;
+    if (itemIdLen == 4)
+        blockSize += 2;
+    const int count = (msg.readInt16("len") - 8) / blockSize;
     const int itemsCount = msg.readInt16("count");
     msg.readInt16("tab");
     if (count != itemsCount)
@@ -173,7 +180,7 @@ void CashShopRecv::processCashShopSchedule(Net::MessageIn &msg)
 
     for (int f = 0; f < count; f ++)
     {
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         msg.readInt32("price");
     }
 }

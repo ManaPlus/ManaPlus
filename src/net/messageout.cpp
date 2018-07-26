@@ -40,6 +40,8 @@ PRAGMA48(GCC diagnostic pop)
 #error missing SDL_endian.h
 #endif  // SDL_BYTEORDER
 
+extern int itemIdLen;
+
 namespace Net
 {
 
@@ -96,6 +98,15 @@ void MessageOut::writeInt32(const int32_t value, const char *const str)
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     mPos += 4;
+}
+
+void MessageOut::writeItemId(const int32_t value,
+                             const char *const str)
+{
+    if (itemIdLen == 2)
+        writeInt16(CAST_S32(value), str);
+    else
+        writeInt32(value, str);
 }
 
 void MessageOut::writeInt64(const int64_t value, const char *const str)

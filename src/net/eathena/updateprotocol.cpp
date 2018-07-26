@@ -36,12 +36,14 @@ extern int evolPacketOffset;
 extern bool packets_main;
 extern bool packets_re;
 extern bool packets_zero;
+extern int itemIdLen;
 
 namespace EAthena
 {
 
 void updateProtocol()
 {
+    itemIdLen = 2;
     logger->log("packet version: %d", packetVersion);
     if (packets_main == true)
     {
@@ -63,6 +65,10 @@ void updateProtocol()
         packetVersionZero = packetVersion;
         packetVersionMain = 0;
         packetVersionRe = 0;
+    }
+    if (packetVersionRe >= 20180704)
+    {
+        itemIdLen = 4;
     }
 #define PACKETS_UPDATE
 #include "net/protocoloutupdate.h"

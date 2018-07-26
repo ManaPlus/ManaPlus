@@ -80,6 +80,8 @@ class MessageIn notfinal
 
         uint32_t readUInt32(const char *const str);
 
+        int readItemId(const char *const str);
+
         int64_t readInt64(const char *const str);
 
         BeingId readBeingId(const char *const str);

@@ -33,6 +33,7 @@
 #include "debug.h"
 
 extern unsigned int tmwServerVersion;
+extern int itemIdLen;
 
 namespace TmwAthena
 {
@@ -137,6 +138,7 @@ void LoginHandler::ping() const
 
 void LoginHandler::updatePacketVersion() const
 {
+    itemIdLen = 2;
 }
 
 }  // namespace TmwAthena

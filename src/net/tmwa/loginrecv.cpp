@@ -41,6 +41,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int itemIdLen;
 
 namespace TmwAthena
 {
@@ -55,6 +56,7 @@ enum ServerFlags
 void LoginRecv::processServerVersion(Net::MessageIn &msg)
 {
     packetVersion = 0;
+    itemIdLen = 2;
     const uint8_t b1 = msg.readUInt8("b1");  // -1
     const uint8_t b2 = msg.readUInt8("b2");
     const uint8_t b3 = msg.readUInt8("b3");

@@ -355,12 +355,12 @@ void PartyRecv::processPartyItemPickup(Net::MessageIn &msg)
     // +++ probably need add option to show pickup notifications
     // in party tab
     msg.readBeingId("account id");
-    msg.readInt16("item id");
+    msg.readItemId("item id");
     msg.readUInt8("identify");
     msg.readUInt8("attribute");
     msg.readUInt8("refine");
     for (int f = 0; f < maxCards; f++)
-        msg.readUInt16("card");
+        msg.readItemId("card");
     msg.readInt16("equip location");
     msg.readUInt8("item type");
     // for color can be used ItemColorManager

@@ -47,14 +47,14 @@ void AuctionRecv::processAuctionResults(Net::MessageIn &msg)
     {
         msg.readInt32("auction id");
         msg.readString(24, "seller name");
-        msg.readInt32("item id");
+        msg.readInt16("item id");  // here item always 16 bit
         msg.readInt32("auction type");
         msg.readInt16("item amount");  // always 1
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readUInt16("card");
+            msg.readUInt16("card");  // here item always 16 bit
         msg.readInt32("price");
         msg.readInt32("buy now");
         msg.readString(24, "buyer name");

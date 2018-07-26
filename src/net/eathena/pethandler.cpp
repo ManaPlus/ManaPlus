@@ -135,7 +135,7 @@ void PetHandler::evolution(const Item *const item) const
         return;
     }
     createOutPacket(CMSG_PET_EVOLUTION);
-    outMsg.writeInt16(CAST_S16(item->getId()), "egg id");
+    outMsg.writeItemId(item->getId(), "egg id");
 }
 
 }  // namespace EAthena

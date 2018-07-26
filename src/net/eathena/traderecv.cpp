@@ -74,7 +74,7 @@ void TradeRecv::processTradeResponse(Net::MessageIn &msg)
 
 void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
 {
-    const int type = msg.readInt16("type");
+    const int type = msg.readItemId("item id");
     ItemTypeT itemType = ItemType::Unknown;
     if (msg.getVersion() >= 20100223)
     {
@@ -87,7 +87,7 @@ void TradeRecv::processTradeItemAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readItemId("card");
     ItemOptionsList *options = nullptr;
     if (msg.getVersion() >= 20150226)
     {

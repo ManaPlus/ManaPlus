@@ -57,7 +57,7 @@ void RouletteRecv::processRouletteItemAck(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
     msg.readUInt8("result");
-    msg.readInt16("item id");
+    msg.readItemId("item id");
 }
 
 void RouletteRecv::processRouletteGenerateAckType(Net::MessageIn &msg)
@@ -66,7 +66,7 @@ void RouletteRecv::processRouletteGenerateAckType(Net::MessageIn &msg)
     msg.readUInt8("result");
     msg.readInt16("step");
     msg.readInt16("idx");
-    msg.readInt16("item id");
+    msg.readItemId("item id");
     msg.readInt32("remain gold");
     msg.readInt32("remain silver");
     msg.readInt32("remain bronze");
@@ -79,7 +79,7 @@ void RouletteRecv::processRouletteOpenAck(Net::MessageIn &msg)
     msg.readInt32("serial");
     msg.readUInt8("step");
     msg.readUInt8("idx");
-    msg.readInt16("additional item id");
+    msg.readItemId("additional item id");
     msg.readInt32("gold point");
     msg.readInt32("silver point");
     msg.readInt32("bronze point");

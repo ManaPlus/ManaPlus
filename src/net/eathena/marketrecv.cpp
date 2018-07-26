@@ -42,6 +42,8 @@
 
 #include "debug.h"
 
+extern int itemIdLen;
+
 namespace EAthena
 {
 
@@ -53,7 +55,7 @@ namespace MarketRecv
 
 void MarketRecv::processMarketOpen(Net::MessageIn &msg)
 {
-    const int len = (msg.readInt16("len") - 4) / 13;
+    const int len = (msg.readInt16("len") - 4) / (11 + itemIdLen);
 
     const BeingTypeId npcId = NpcRecv::mNpcTypeId;
     std::string currency;
@@ -78,7 +80,7 @@ void MarketRecv::processMarketOpen(Net::MessageIn &msg)
 
     for (int f = 0; f < len; f ++)
     {
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemTypeT type = static_cast<ItemTypeT>(msg.readUInt8("type"));
         const int value = msg.readInt32("price");
         const int amount = msg.readInt32("amount");
@@ -91,11 +93,11 @@ void MarketRecv::processMarketOpen(Net::MessageIn &msg)
 
 void MarketRecv::processMarketBuyAck(Net::MessageIn &msg)
 {
-    const int len = (msg.readInt16("len") - 5) / 8;
+    const int len = (msg.readInt16("len") - 5) / (6 + itemIdLen);
     const int res = msg.readUInt8("result");
     for (int f = 0; f < len; f ++)
     {
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         msg.readInt16("amount");
         msg.readInt32("price");
     }

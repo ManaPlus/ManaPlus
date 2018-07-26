@@ -145,7 +145,7 @@ void PetRecv::processPetStatus(Net::MessageIn &msg)
     const int level = msg.readInt16("level");
     const int hungry = msg.readInt16("hungry");
     const int intimacy = msg.readInt16("intimacy");
-    const int equip = msg.readInt16("equip");
+    const int equip = msg.readInt16("equip");  // look like always int16
 
 //    Being *const being = PlayerInfo::getPetBeing();
 //    if (being)
@@ -168,7 +168,7 @@ void PetRecv::processPetStatus(Net::MessageIn &msg)
 void PetRecv::processPetFood(Net::MessageIn &msg)
 {
     const int result = msg.readUInt8("result");
-    msg.readInt16("food id");
+    msg.readItemId("food id");
     if (result != 0)
         NotifyManager::notify(NotifyTypes::PET_FEED_OK);
     else

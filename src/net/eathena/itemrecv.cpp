@@ -41,7 +41,7 @@ namespace EAthena
 void ItemRecv::processItemDropped(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readItemId("item id");
     ItemTypeT itemType = ItemType::Unknown;
     if (msg.getVersion() >= 20130000)
         itemType = static_cast<ItemTypeT>(msg.readInt16("type"));
@@ -77,7 +77,7 @@ void ItemRecv::processItemDropped(Net::MessageIn &msg)
 void ItemRecv::processItemDropped2(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("id");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readInt16("item id");  // +++ need use int32
     const ItemTypeT itemType = static_cast<ItemTypeT>(msg.readUInt8("type"));
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
@@ -85,12 +85,13 @@ void ItemRecv::processItemDropped2(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readUInt16("card");  // ++ need use int32
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int amount = msg.readInt16("amount");
     const int subX = CAST_S32(msg.readInt8("subx"));
     const int subY = CAST_S32(msg.readInt8("suby"));
+    // +++ probably need add drop effect fields?
 
     if (actorManager != nullptr)
     {
@@ -113,7 +114,7 @@ void ItemRecv::processItemMvpDropped(Net::MessageIn &msg)
     UNIMPLEMENTEDPACKET;
     msg.readInt16("len");
     msg.readUInt8("type");
-    msg.readInt16("item id");
+    msg.readItemId("item id");
     msg.readUInt8("len");
     msg.readString(24, "name");
     msg.readUInt8("monster name len");
@@ -123,7 +124,7 @@ void ItemRecv::processItemMvpDropped(Net::MessageIn &msg)
 void ItemRecv::processItemVisible(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("item object id");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readItemId("item id");
     const Identified identified = fromInt(
         msg.readUInt8("identify"), Identified);
     const int x = msg.readInt16("x");
@@ -151,7 +152,7 @@ void ItemRecv::processItemVisible(Net::MessageIn &msg)
 void ItemRecv::processItemVisible2(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("item object id");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readInt16("item id");  // +++ need use int32
     const ItemTypeT itemType = static_cast<ItemTypeT>(
         msg.readUInt8("type"));
     const Identified identified = fromInt(
@@ -160,7 +161,7 @@ void ItemRecv::processItemVisible2(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readUInt16("card");  // +++ need use int32
     const int x = msg.readInt16("x");
     const int y = msg.readInt16("y");
     const int amount = msg.readInt16("amount");

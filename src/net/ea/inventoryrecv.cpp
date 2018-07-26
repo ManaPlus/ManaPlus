@@ -63,7 +63,7 @@ void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    msg.readInt16("item id");
+    msg.readItemId("item id");
     msg.readInt32("id?");
     const int amount = msg.readInt16("amount");
     msg.readUInt8("type");

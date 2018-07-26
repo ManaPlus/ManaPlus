@@ -31,13 +31,15 @@
 
 #include "debug.h"
 
+extern int itemIdLen;
+
 namespace EAthena
 {
 
 void SearchStoreRecv::processSearchAck(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    const int count = (msg.readInt16("len") - 7) / 106;
+    const int count = (msg.readInt16("len") - 7) / (104 + itemIdLen);
     msg.readUInt8("is first page");
     msg.readUInt8("is next page");
     msg.readUInt8("remain uses");
@@ -46,13 +48,13 @@ void SearchStoreRecv::processSearchAck(Net::MessageIn &msg)
         msg.readInt32("store id");
         msg.readInt32("aoount id");
         msg.readString(80, "store name");
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         msg.readUInt8("item type");
         msg.readInt32("price");
         msg.readInt16("amount");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d++)
-            msg.readUInt16("card");
+            msg.readItemId("card");
         if (msg.getVersion() >= 20150226)
         {
             for (int d = 0; d < 5; d ++)

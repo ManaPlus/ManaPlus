@@ -61,6 +61,9 @@ class MessageOut notfinal
         void writeInt32(const int32_t value,
                         const char *const str);
 
+        void writeItemId(const int32_t value,
+                         const char *const str);
+
         void writeInt64(const int64_t value,
                         const char *const str);
 

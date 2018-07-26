@@ -74,6 +74,7 @@ extern Window *deathNotice;
 extern bool packets_re;
 extern bool packets_main;
 extern bool packets_zero;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -202,12 +203,12 @@ void BeingRecv::processBeingChangeLook2(Net::MessageIn &msg)
         msg.readBeingId("being id"));
     const uint8_t type = msg.readUInt8("type");
 
-    const int id = msg.readInt16("id1");
-    unsigned int id2 = msg.readInt16("id2");
+    const int id = msg.readItemId("id1");
+    unsigned int id2 = msg.readItemId("id2");
     if (type != 2)
         id2 = 1;
 
-    if ((localPlayer == nullptr) || (dstBeing == nullptr))
+    if (localPlayer == nullptr || dstBeing == nullptr)
         return;
 
     processBeingChangeLookContinue(msg, dstBeing, type, id, id2, nullptr);
@@ -248,7 +249,7 @@ void BeingRecv::processBeingChangeLookCards(Net::MessageIn &msg)
         id2 = 1;
 
     for (int f = 0; f < maxCards; f ++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readUInt16("card");  // +++ probably need use int32
 
     if (dstBeing == nullptr)
         return;
@@ -500,9 +501,14 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     const int hairStyle = msg.readInt16("hair style");
     uint32_t weapon;
     if (msg.getVersion() >= 7)
-        weapon = CAST_U32(msg.readInt32("weapon"));
+    {
+        weapon = msg.readItemId("weapon");
+        msg.readItemId("shield");
+    }
     else
+    {
         weapon = CAST_U32(msg.readInt16("weapon"));
+    }
     const uint16_t headBottom = msg.readInt16("head bottom");
     if (msg.getVersion() < 7)
         msg.readInt16("shield");
@@ -689,9 +695,14 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     const int hairStyle = msg.readInt16("hair style");
     uint32_t weapon;
     if (msg.getVersion() >= 7)
-        weapon = CAST_U32(msg.readInt32("weapon"));
+    {
+        weapon = msg.readItemId("weapon");
+        msg.readItemId("shield");
+    }
     else
+    {
         weapon = CAST_U32(msg.readInt16("weapon"));
+    }
     const uint16_t headBottom = msg.readInt16("head bottom");
     msg.readInt32("tick");
     if (msg.getVersion() < 7)
@@ -883,9 +894,14 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
     const int hairStyle = msg.readInt16("hair style");
     uint32_t weapon;
     if (msg.getVersion() >= 7)
-        weapon = CAST_U32(msg.readInt32("weapon"));
+    {
+        weapon = msg.readItemId("weapon");
+        msg.readItemId("shield");
+    }
     else
+    {
         weapon = CAST_U32(msg.readInt16("weapon"));
+    }
     const uint16_t headBottom = msg.readInt16("head bottom");
     if (msg.getVersion() < 7)
         msg.readInt16("shield");
@@ -1963,7 +1979,7 @@ void BeingRecv::processBeingViewEquipment(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
 
-    const int count = (msg.readInt16("len") - 45) / 31;
+    const int count = (msg.readInt16("len") - 45) / (21 + itemIdLen * 5);
     msg.readString(24, "name");
     msg.readInt16("job");
     msg.readInt16("head");
@@ -1978,13 +1994,13 @@ void BeingRecv::processBeingViewEquipment(Net::MessageIn &msg)
     for (int f = 0; f < count; f ++)
     {
         msg.readInt16("index");
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         msg.readUInt8("item type");
         msg.readInt32("location");
         msg.readInt32("wear state");
         msg.readInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readUInt16("card");
+            msg.readItemId("card");
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");
