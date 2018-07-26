@@ -1125,6 +1125,13 @@ if (packetVersionMain >= 20180523)
     packet(SMSG_ROULETTE_INFO_ACK_TYPE,    0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20180523);
 }
 
+// 20180627
+if (packetVersion >= 20180627)
+{
+    // can conflict with custom packets
+    packet(SMSG_LOGIN_ERROR2,              0x0b02,  26, &LoginRecv::processLoginError2,                 20180627);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
