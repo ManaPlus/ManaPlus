@@ -39,7 +39,7 @@ void RouletteRecv::processRouletteInfoAckType(Net::MessageIn &msg)
     {
         msg.readInt16("row");
         msg.readInt16("position");
-        if (msg.getVersion() >= 20180523)
+        if (msg.getVersion() >= 20180511)
         {
             msg.readInt32("item id");
             msg.readInt16("count");
