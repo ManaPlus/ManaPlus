@@ -74,6 +74,7 @@ void updateProtocol()
 #include "net/protocoloutupdate.h"
 #include "net/eathena/packetsout.inc"
 #include "net/eathena/packetsout_shuffle_main.inc"
+#include "net/eathena/packetsout_shuffle_re.inc"
 #include "net/eathena/packetsout_shuffle_zero.inc"
 #undef packet
     Network *const network = Network::mInstance;

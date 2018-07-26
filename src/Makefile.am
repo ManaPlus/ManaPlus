@@ -2017,6 +2017,7 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/packetsin.inc \
 	      net/eathena/packetsout.inc \
 	      net/eathena/packetsout_shuffle_main.inc \
+	      net/eathena/packetsout_shuffle_re.inc \
 	      net/eathena/packetsout_shuffle_zero.inc \
 	      net/eathena/partyhandler.cpp \
 	      net/eathena/partyhandler.h \
