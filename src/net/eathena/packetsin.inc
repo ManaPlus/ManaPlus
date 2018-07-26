@@ -901,7 +901,7 @@ if (serverVersion > 0)
 }
 
 // 20150226
-if ((serverVersion >= 8 || serverVersion == 0) && packetVersion >= 20150226)
+if (packetVersion >= 20150226)
 {
     packet(SMSG_VENDING_OPEN,              0x0136,  -1, &VendingRecv::processOpen,                      20150226);
     packet(SMSG_VENDING_ITEMS_LIST,        0x0800,  -1, &VendingRecv::processItemsList,                 20150226);
