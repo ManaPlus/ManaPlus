@@ -48,6 +48,7 @@
 extern int packetVersion;
 extern int packetVersionMain;
 extern int packetVersionRe;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -164,13 +165,13 @@ void NpcHandler::buyItem(const BeingId beingId A_UNUSED,
     createOutPacket(CMSG_NPC_BUY_REQUEST);
     outMsg.writeInt16(8, "len");
     outMsg.writeInt16(CAST_S16(amount), "amount");
-    outMsg.writeInt16(CAST_S16(itemId), "item id");
+    outMsg.writeItemId(itemId, "item id");
 }
 
 void NpcHandler::buyItems(STD_VECTOR<ShopItem*> &items) const
 {
     int cnt = 0;
-    const int pairSize = 4;
+    const int pairSize = 2 + itemIdLen;
 
     FOR_EACH (STD_VECTOR<ShopItem*>::iterator, it, items)
     {
@@ -214,14 +215,14 @@ void NpcHandler::buyItems(STD_VECTOR<ShopItem*> &items) const
             for (int f = 0; f < usedQuantity; f ++)
             {
                 outMsg.writeInt16(CAST_S16(1), "amount");
-                outMsg.writeInt16(CAST_S16(item->getId()),
+                outMsg.writeItemId(item->getId(),
                     "item id");
             }
         }
         else
         {
             outMsg.writeInt16(CAST_S16(usedQuantity), "amount");
-            outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+            outMsg.writeItemId(item->getId(), "item id");
         }
     }
 }
@@ -374,7 +375,7 @@ void NpcHandler::requestAirship(const std::string &mapName,
     }
     createOutPacket(CMSG_PRIVATE_AIRSHIP_REQUEST);
     outMsg.writeString(mapName, 16, "map name");
-    outMsg.writeInt16(CAST_S16(itemId), "item");
+    outMsg.writeItemId(itemId, "item");
 }
 
 }  // namespace EAthena

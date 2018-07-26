@@ -58,6 +58,7 @@
 
 extern int packetVersion;
 extern int serverVersion;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -112,6 +113,8 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         packetLen = 53;
     else if (msg.getVersion() >= 20150226)
         packetLen = 47;
+    if (itemIdLen == 4)
+        packetLen += 10;
     int offset = 8;
     if (msg.getVersion() >= 20100105)
         offset += 4;
@@ -133,12 +136,12 @@ void VendingRecv::processItemsList(Net::MessageIn &msg)
         const int index = msg.readInt16("inv index");
         const ItemTypeT type = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            cards[d] = msg.readUInt16("card");
+            cards[d] = msg.readItemId("card");
         ItemOptionsList *options = nullptr;
         if (msg.getVersion() >= 20150226)
         {
@@ -207,6 +210,8 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
     int packetLen = 22;
     if (msg.getVersion() >= 20150226)
         packetLen += 25;
+    if (itemIdLen == 4)
+        packetLen += 10;
 
     const int count = (msg.readInt16("len") - 8) / packetLen;
     msg.readInt32("id");
@@ -216,12 +221,12 @@ void VendingRecv::processOpen(Net::MessageIn &msg)
         msg.readInt16("inv index");
         msg.readInt16("amount");
         msg.readUInt8("item type");
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         msg.readUInt8("identify");
         msg.readUInt8("attribute");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readUInt16("card");
+            msg.readItemId("card");
         if (msg.getVersion() >= 20150226)
         {
             for (int d = 0; d < 5; d ++)

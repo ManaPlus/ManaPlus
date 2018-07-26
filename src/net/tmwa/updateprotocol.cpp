@@ -25,11 +25,14 @@
 
 #include "debug.h"
 
+extern int itemIdLen;
+
 namespace TmwAthena
 {
 
 void updateProtocol()
 {
+    itemIdLen = 2;
 #define PACKETS_UPDATE
 #include "net/protocoloutupdate.h"
 #include "net/tmwa/packetsout.inc"

@@ -35,6 +35,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -57,14 +58,14 @@ void BuyingStoreHandler::create(const std::string &name,
     if (packetVersion < 20100303)
         return;
     createOutPacket(CMSG_BUYINGSTORE_CREATE);
-    outMsg.writeInt16(CAST_S16(89 + items.size() * 8), "len");
+    outMsg.writeInt16(CAST_S16(89 + items.size() * (6 + itemIdLen)), "len");
     outMsg.writeInt32(maxMoney, "limit money");
     outMsg.writeInt8(static_cast<int8_t>(flag), "flag");
     outMsg.writeString(name, 80, "store name");
     FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
         const ShopItem *const item = *it;
-        outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+        outMsg.writeItemId(item->getId(), "item id");
         outMsg.writeInt16(CAST_S16(item->getQuantity()), "amount");
         outMsg.writeInt32(item->getPrice(), "price");
     }
@@ -105,7 +106,7 @@ void BuyingStoreHandler::sell(const Being *const being,
     outMsg.writeInt16(CAST_S16(
         item->getInvIndex() + INVENTORY_OFFSET),
         "index");
-    outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+    outMsg.writeItemId(item->getId(), "item id");
     outMsg.writeInt16(CAST_S16(amount), "amount");
 }
 

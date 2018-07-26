@@ -81,7 +81,7 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
     const int res = msg.readUInt8("result");
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     const int amount = msg.readInt16("amount");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readItemId("item id");
     const ItemTypeT itemType = static_cast<ItemTypeT>(
         msg.readUInt8("item type"));
     const uint8_t identify = msg.readUInt8("identify");
@@ -89,7 +89,7 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readItemId("card");
     ItemOptionsList *options = new ItemOptionsList(5);
     for (int f = 0; f < 5; f ++)
     {
@@ -99,11 +99,8 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
         options->add(idx, val);
     }
     msg.readInt16("weight");
-    msg.readUInt8("unknown 1");
-    msg.readUInt8("unknown 2");
-    msg.readUInt8("unknown 3");
-    msg.readUInt8("unknown 4");
-    msg.readUInt8("unknown 5");
+    Favorite favorite = fromBool(msg.readUInt8("favorite"), Favorite);
+    msg.readInt32("location");
 
     if (mailEditWindow == nullptr)
     {
@@ -159,7 +156,7 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
             ItemColorManager::getColorFromCards(&cards[0]),
             fromBool(identify, Identified),
             damaged,
-            Favorite_false,
+            favorite,
             Equipm_false,
             Equipped_false);
         if (slot == -1)
@@ -412,15 +409,16 @@ void Mail2Recv::processReadMail(Net::MessageIn &msg)
         for (int f = 0; f < itemsCount; f ++)
         {
             msg.readInt16("amount");
-            msg.readInt16("item id");
+            msg.readItemId("item id");
             msg.readUInt8("identify");
             msg.readUInt8("damaged");
             msg.readUInt8("refine");
             for (int d = 0; d < maxCards; d ++)
-                msg.readUInt16("card");
-            msg.readInt32("unknown");
+                msg.readItemId("card");
+            msg.readInt32("location");
             msg.readUInt8("type");
-            msg.readInt32("unknown");
+            msg.readInt16("view sprite");
+            msg.readInt16("bind on equip");
             for (int d = 0; d < 5; d ++)
             {
                 msg.readInt16("option index");
@@ -443,17 +441,18 @@ void Mail2Recv::processReadMail(Net::MessageIn &msg)
         if (msg.getUnreadLength() == 0)
             break;
         const int amount = msg.readInt16("amount");
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const uint8_t identify = msg.readUInt8("identify");
         const Damaged damaged = fromBool(msg.readUInt8("attribute"), Damaged);
         const uint8_t refine = msg.readUInt8("refine");
         int cards[maxCards];
         for (int d = 0; d < maxCards; d ++)
-            cards[d] = msg.readUInt16("card");
-        msg.readInt32("unknown");
+            cards[d] = msg.readItemId("card");
+        msg.readInt32("location");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
-        msg.readInt32("unknown");
+        msg.readInt16("view sprite");
+        msg.readInt16("bind on equip");
         ItemOptionsList *options = new ItemOptionsList(5);
         for (int d = 0; d < 5; d ++)
         {

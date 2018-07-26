@@ -728,13 +728,13 @@ void ChatRecv::processChatRoomRoleChange(Net::MessageIn &msg)
 void ChatRecv::processMVPItem(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    msg.readInt16("item id");
+    msg.readItemId("item id");
 }
 
 void ChatRecv::processMVPExp(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    msg.readInt32("exo");
+    msg.readInt32("exp");
 }
 
 void ChatRecv::processMVPNoItem(Net::MessageIn &msg)

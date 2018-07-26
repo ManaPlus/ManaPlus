@@ -31,6 +31,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -55,11 +56,11 @@ void CashShopHandler::buyItem(const int points,
     if (packetVersion < 20101124)
         return;
     createOutPacket(CMSG_NPC_CASH_SHOP_BUY);
-    outMsg.writeInt16(10 + 4, "len");
+    outMsg.writeInt16(10 + (2 + itemIdLen), "len");
     outMsg.writeInt32(points, "points");
     outMsg.writeInt16(1, "count");
     outMsg.writeInt16(CAST_S16(amount), "amount");
-    outMsg.writeInt16(CAST_S16(itemId), "item id");
+    outMsg.writeItemId(itemId, "item id");
 }
 
 void CashShopHandler::buyItems(const int points,
@@ -69,7 +70,7 @@ void CashShopHandler::buyItems(const int points,
         return;
 
     int cnt = 0;
-    const int pairSize = 4;
+    const int pairSize = 2 + itemIdLen;
 
     FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
     {
@@ -116,14 +117,14 @@ void CashShopHandler::buyItems(const int points,
             for (int f = 0; f < usedQuantity; f ++)
             {
                 outMsg.writeInt16(CAST_S16(1), "amount");
-                outMsg.writeInt16(CAST_S16(item->getId()),
+                outMsg.writeItemId(item->getId(),
                     "item id");
             }
         }
         else
         {
             outMsg.writeInt16(CAST_S16(usedQuantity), "amount");
-            outMsg.writeInt16(CAST_S16(item->getId()), "item id");
+            outMsg.writeItemId(item->getId(), "item id");
         }
     }
 }

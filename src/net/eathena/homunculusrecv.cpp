@@ -227,7 +227,7 @@ void HomunculusRecv::processHomunculusSkillUp(Net::MessageIn &msg)
 void HomunculusRecv::processHomunculusFood(Net::MessageIn &msg)
 {
     const int flag = msg.readUInt8("fail");
-    const int itemId = msg.readInt16("food id");
+    const int itemId = msg.readItemId("food id");
     if (flag != 0)
     {
         NotifyManager::notify(NotifyTypes::HOMUNCULUS_FEED_OK);

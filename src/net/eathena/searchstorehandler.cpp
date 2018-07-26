@@ -56,7 +56,8 @@ void SearchStoreHandler::search(const StoreSearchTypeT type,
     outMsg.writeInt32(minPrice, "min price");
     outMsg.writeInt32(1, "items count");
     outMsg.writeInt32(0, "cards count");
-    outMsg.writeInt16(CAST_S16(itemId), "item id");
+    outMsg.writeItemId(itemId, "item id");
+    // +++ missing for by items and cards
 }
 
 void SearchStoreHandler::nextPage() const
@@ -82,7 +83,7 @@ void SearchStoreHandler::select(const int accountId,
     createOutPacket(CMSG_SEARCHSTORE_CLICK);
     outMsg.writeInt32(accountId, "account id");
     outMsg.writeInt32(storeId, "store id");
-    outMsg.writeInt16(CAST_S16(itemId), "item id");
+    outMsg.writeItemId(itemId, "item id");
 }
 
 }  // namespace EAthena

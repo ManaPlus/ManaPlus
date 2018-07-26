@@ -388,7 +388,7 @@ void PlayerRecv::processPlayerUpgradeMessage(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
     msg.readInt32("result");
-    msg.readInt16("item id");
+    msg.readItemId("item id");
 }
 
 void PlayerRecv::processPlayerFameTaekwon(Net::MessageIn &msg)
@@ -407,6 +407,7 @@ void PlayerRecv::processPlayerReadBook(Net::MessageIn &msg)
 
 void PlayerRecv::processPlayerEquipTickAck(Net::MessageIn &msg)
 {
+    // +++ actually ZC_CONFIG
     UNIMPLEMENTEDPACKET;
     msg.readInt32("unused");
     msg.readInt32("flag");

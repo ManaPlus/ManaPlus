@@ -46,13 +46,15 @@
 
 #include "debug.h"
 
+extern int itemIdLen;
+
 namespace EAthena
 {
 
 void BuySellRecv::processNpcBuy(Net::MessageIn &msg)
 {
     msg.readInt16("len");
-    const int sz = 11;
+    const int sz = 9 + itemIdLen;
     const int n_items = (msg.getLength() - 4) / sz;
 
     const BeingTypeId npcId = NpcRecv::mNpcTypeId;
@@ -83,7 +85,7 @@ void BuySellRecv::processNpcBuy(Net::MessageIn &msg)
         msg.readInt32("dc value?");
         const ItemTypeT type = static_cast<ItemTypeT>(
             msg.readUInt8("type"));
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemColor color = ItemColor_one;
         Ea::BuySellRecv::mBuyDialog->addItem(itemId, type, color, 0, value);
     }

@@ -62,6 +62,7 @@
 
 extern int serverVersion;
 extern int packetVersion;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -125,13 +126,14 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         packetLen += 2;
     if (msg.getVersion() >= 20150226)
         packetLen += 26;
+    packetLen += itemIdLen * 5 - 2 * 5;   // - 5 items by 2 bytes. + 5 items
 
     const int number = (msg.getLength() - 4) / packetLen;
 
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
         int equipType;
@@ -150,7 +152,7 @@ void InventoryRecv::processPlayerEquipment(Net::MessageIn &msg)
         const uint8_t refine = CAST_U8(msg.readInt8("refine"));
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readUInt16("card");
+            cards[f] = msg.readItemId("card");
         if (msg.getVersion() >= 20071002)
             msg.readInt32("hire expire date (?)");
         if (msg.getVersion() >= 20080102)
@@ -216,14 +218,14 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
     }
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     int amount = msg.readInt16("count");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readItemId("item id");
     const uint8_t identified = msg.readUInt8("identified");
     const uint8_t damaged = msg.readUInt8("is damaged");
     const uint8_t refine = msg.readUInt8("refine");
     Favorite favorite = Favorite_false;
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readItemId("card");
     int equipType;
     if (msg.getVersion() >= 20120925)
         equipType = msg.readInt32("location");
@@ -389,13 +391,14 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         packetLen += 8;
     if (msg.getVersion() >= 20080102)
         packetLen += 4;
+    packetLen += itemIdLen * 5 - 10;
 
     const int number = (msg.getLength() - 4) / packetLen;
 
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
         if (msg.getVersion() < 20120925)
@@ -409,7 +412,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
         if (packetVersion >= 5)
         {
             for (int f = 0; f < maxCards; f++)
-                cards[f] = msg.readUInt16("card");
+                cards[f] = msg.readItemId("card");
         }
         else
         {
@@ -459,6 +462,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         packetLen += 8;
     if (msg.getVersion() >= 20080102)
         packetLen += 4;
+    packetLen += itemIdLen * 5 - 10;
 
     int number;
     if (msg.getVersion() >= 20120925)
@@ -474,7 +478,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("item index") - STORAGE_OFFSET;
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
         if (msg.getVersion() < 20120925)
@@ -488,7 +492,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         if (msg.getVersion() >= 5)
         {
             for (int f = 0; f < maxCards; f++)
-                cards[f] = msg.readUInt16("card");
+                cards[f] = msg.readItemId("card");
         }
         else
         {
@@ -661,6 +665,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         packetLen += 2;
     if (msg.getVersion() >= 20150226)
         packetLen += 26;
+    packetLen += itemIdLen * 5 - 10;
 
     int number;
     if (msg.getVersion() >= 20120925)
@@ -676,7 +681,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("index") - STORAGE_OFFSET;
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
         const int amount = 1;
@@ -695,7 +700,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         const uint8_t refine = msg.readUInt8("refine level");
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readUInt16("card");
+            cards[f] = msg.readItemId("card");
         if (msg.getVersion() >= 20071002)
             msg.readInt32("hire expire date");
         if (msg.getVersion() >= 20080102)
@@ -745,7 +750,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     // Move an item into storage
     const int index = msg.readInt16("index") - STORAGE_OFFSET;
     const int amount = msg.readInt32("amount");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readItemId("item id");
     ItemTypeT itemType;
     if (msg.getVersion() >= 5)
         itemType = static_cast<ItemTypeT>(msg.readUInt8("type"));
@@ -756,7 +761,7 @@ void InventoryRecv::processPlayerStorageAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readItemId("card");
     ItemOptionsList *options = nullptr;
     if (msg.getVersion() >= 20150226)
     {
@@ -857,7 +862,7 @@ void InventoryRecv::processPlayerInsertCard(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerItemRentalTime(Net::MessageIn &msg)
 {
-    const int id = msg.readInt16("item id");
+    const int id = msg.readItemId("item id");
     const int seconds = msg.readInt32("seconds");
     const ItemInfo &info = ItemDB::get(id);
     const std::string timeStr = timeDiffToString(seconds);
@@ -873,7 +878,7 @@ void InventoryRecv::processPlayerItemRentalExpired(Net::MessageIn &msg)
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    const int id = msg.readInt16("item id");
+    const int id = msg.readItemId("item id");
     const ItemInfo &info = ItemDB::get(id);
 
     NotifyManager::notify(NotifyTypes::RENTAL_TIME_EXPIRED,
@@ -957,7 +962,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
     int amount = msg.readInt32("count");
-    const int itemId = msg.readInt16("item id");
+    const int itemId = msg.readItemId("item id");
     ItemTypeT itemType = ItemType::Unknown;
     if (msg.getVersion() >= 5)
     {
@@ -969,7 +974,7 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
     const uint8_t refine = msg.readUInt8("refine");
     int cards[maxCards];
     for (int f = 0; f < maxCards; f++)
-        cards[f] = msg.readUInt16("card");
+        cards[f] = msg.readItemId("card");
     ItemOptionsList *options = nullptr;
     if (msg.getVersion() >= 20150226)
     {
@@ -1042,12 +1047,13 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
         packetLen += 2;
     if (msg.getVersion() >= 20150226)
         packetLen += 26;
+    packetLen += itemIdLen * 5 - 10;
 
     const int number = (msg.getLength() - 4) / packetLen;
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
         const int amount = 1;
@@ -1066,7 +1072,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
         const uint8_t refine = msg.readUInt8("refine level");
         int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            cards[f] = msg.readUInt16("card");
+            cards[f] = msg.readItemId("card");
         if (msg.getVersion() >= 20071002)
             msg.readInt32("hire expire date");
         if (msg.getVersion() >= 20080102)
@@ -1124,12 +1130,13 @@ void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
         packetLen += 8;
     if (msg.getVersion() >= 20080102)
         packetLen += 4;
+    packetLen += itemIdLen * 5 - 10;
 
     const int number = (msg.getLength() - 4) / packetLen;
     for (int loop = 0; loop < number; loop++)
     {
         const int index = msg.readInt16("item index") - INVENTORY_OFFSET;
-        const int itemId = msg.readInt16("item id");
+        const int itemId = msg.readItemId("item id");
         const ItemTypeT itemType = static_cast<ItemTypeT>(
             msg.readUInt8("item type"));
         if (msg.getVersion() < 20120925)
@@ -1141,7 +1148,7 @@ void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
         if (msg.getVersion() >= 5)
         {
             for (int f = 0; f < maxCards; f++)
-                cards[f] = msg.readUInt16("card");
+                cards[f] = msg.readItemId("card");
         }
         else
         {
@@ -1252,14 +1259,15 @@ void InventoryRecv::processPlayerRepairList(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
 
-    const int count = (msg.readInt16("len") - 4) / 13;
+    const int count = (msg.readInt16("len") - 4) /
+        (3 + (1 + maxCards) * itemIdLen);
     for (int f = 0; f < count; f ++)
     {
         msg.readInt16("index");
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readUInt16("card");
+            msg.readItemId("card");
     }
     menu = MenuType::RepairWespon;
 }
@@ -1276,15 +1284,16 @@ void InventoryRecv::processPlayerRefineList(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
 
-    const int count = (msg.readInt16("len") - 4) / 13;
+    const int count = (msg.readInt16("len") - 4) /
+        (3 + (1 + maxCards) * itemIdLen);
 
     for (int f = 0; f < count; f ++)
     {
         msg.readInt16("item index");
-        msg.readInt16("item id");
+        msg.readItemId("item id");
         msg.readUInt8("refine");
         for (int d = 0; d < maxCards; d ++)
-            msg.readUInt16("card");
+            msg.readItemId("card");
     }
     menu = MenuType::WeaponeRefine;
 }
@@ -1308,10 +1317,10 @@ void InventoryRecv::processPlayerCookingList(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
 
-    const int count = (msg.readInt16("len") - 6) / 2;
+    const int count = (msg.readInt16("len") - 6) / itemIdLen;
     msg.readInt16("list type");
     for (int f = 0; f < count; f ++)
-        msg.readInt16("item id");
+        msg.readItemId("item id");
 }
 
 void InventoryRecv::processItemDamaged(Net::MessageIn &msg)

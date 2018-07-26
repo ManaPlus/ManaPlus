@@ -42,6 +42,8 @@ PRAGMA48(GCC diagnostic pop)
     (CAST_U16((CAST_U8(low)) | \
     (CAST_U16(CAST_U8(high))) << 8))
 
+extern int itemIdLen;
+
 namespace Net
 {
 
@@ -206,6 +208,13 @@ uint32_t MessageIn::readUInt32(const char *const str)
     mPos += 4;
     PacketCounters::incInBytes(4);
     return value;
+}
+
+int MessageIn::readItemId(const char *const str)
+{
+    if (itemIdLen == 2)
+        return readUInt16(str);
+    return readInt32(str);
 }
 
 BeingId MessageIn::readBeingId(const char *const str)
