@@ -35,7 +35,8 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -Wstrict-aliasing=2 \
 -fsanitize=pointer-overflow -fsanitize=builtin \
 -fsanitize-address-use-after-scope \
 -std=gnu++1z -Wformat=1 \
--Wno-attributes"
+-Wno-attributes \
+-Wno-deprecated-copy"
 
 #source ./tools/ci/flags/${FLAGS}
 
