@@ -279,10 +279,10 @@ void NpcHandler::produceMix(const int nameId,
                             const int materialId3) const
 {
     createOutPacket(CMSG_NPC_PRODUCE_MIX);
-    outMsg.writeInt16(CAST_S16(nameId), "name id");
-    outMsg.writeInt16(CAST_S16(materialId1), "material 1");
-    outMsg.writeInt16(CAST_S16(materialId2), "material 2");
-    outMsg.writeInt16(CAST_S16(materialId3), "material 3");
+    outMsg.writeItemId(nameId, "item id");
+    outMsg.writeItemId(materialId1, "material 1");
+    outMsg.writeItemId(materialId2, "material 2");
+    outMsg.writeItemId(materialId3, "material 3");
 }
 
 void NpcHandler::cooking(const CookingTypeT type,
@@ -290,13 +290,18 @@ void NpcHandler::cooking(const CookingTypeT type,
 {
     createOutPacket(CMSG_NPC_COOKING);
     outMsg.writeInt16(CAST_S16(type), "type");
-    outMsg.writeInt16(CAST_S16(nameId), "name id");
+    outMsg.writeItemId(nameId, "item id");
 }
 
 void NpcHandler::repair(const int index) const
 {
     createOutPacket(CMSG_NPC_REPAIR);
     outMsg.writeInt16(CAST_S16(index), "index");
+    // unused fields.
+    outMsg.writeItemId(0, "item id");
+    outMsg.writeInt8(0, "refine");
+    for (int f = 0; f < maxCards; f ++)
+        outMsg.writeItemId(0, "card");
 }
 
 void NpcHandler::refine(const int index) const
@@ -314,7 +319,7 @@ void NpcHandler::identify(const int index) const
 void NpcHandler::selectArrow(const int nameId) const
 {
     createOutPacket(CMSG_NPC_SELECT_ARROW);
-    outMsg.writeInt16(CAST_S16(nameId), "name id");
+    outMsg.writeItemId(nameId, "item id");
 }
 
 void NpcHandler::selectAutoSpell(const int skillId) const

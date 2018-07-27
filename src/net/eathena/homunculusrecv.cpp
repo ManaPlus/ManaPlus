@@ -123,7 +123,7 @@ void HomunculusRecv::processHomunculusInfo(Net::MessageIn &msg)
         Notify_true);
     const int hungry = msg.readInt16("hungry");
     const int intimacy = msg.readInt16("intimacy");
-    const int equip = msg.readInt16("equip");
+    const int equip = msg.readItemId("item id");
     PlayerInfo::setStatBase(Attributes::HOMUN_ATK,
         msg.readInt16("atk"),
         Notify_true);

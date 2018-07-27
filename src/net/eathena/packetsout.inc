@@ -1403,4 +1403,14 @@ if (packetVersionZero >= 20180411)
     packet(CMSG_ATTENDANCE_REWARD,        0x0aef,   2, clif->pAttendanceRewardRequest);
 }
 
+// 20180704 re
+if (packetVersionRe >= 20180704)
+{
+    packet(CMSG_NPC_PRODUCE_MIX,          0x018e,  18, clif->pProduceMix);
+    packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
+    packet(CMSG_NPC_REPAIR,               0x01fd,  25, clif->pRepairItem);
+    packet(CMSG_NPC_COOKING,              0x025b,   8, clif->pCooking);
+    packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  22, clif->pPrivateAirshipRequest);
+}
+
 #endif
