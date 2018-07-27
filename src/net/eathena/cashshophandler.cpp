@@ -56,7 +56,7 @@ void CashShopHandler::buyItem(const int points,
     if (packetVersion < 20101124)
         return;
     createOutPacket(CMSG_NPC_CASH_SHOP_BUY);
-    outMsg.writeInt16(10 + (2 + itemIdLen), "len");
+    outMsg.writeInt16(CAST_S16(10 + (2 + itemIdLen)), "len");
     outMsg.writeInt32(points, "points");
     outMsg.writeInt16(1, "count");
     outMsg.writeInt16(CAST_S16(amount), "amount");

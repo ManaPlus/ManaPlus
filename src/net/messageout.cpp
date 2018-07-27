@@ -104,7 +104,7 @@ void MessageOut::writeItemId(const int32_t value,
                              const char *const str)
 {
     if (itemIdLen == 2)
-        writeInt16(CAST_S32(value), str);
+        writeInt16(CAST_S16(value), str);
     else
         writeInt32(value, str);
 }

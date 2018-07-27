@@ -800,12 +800,12 @@ void PlayerHandler::selectStyle(const int headColor,
     if (packetVersion < 20151104)
         return;
     createOutPacket(CMSG_PLAYER_SELECT_STYLE);
-    outMsg.writeInt16(headColor, "head color");
-    outMsg.writeInt16(headStyle, "head style");
-    outMsg.writeInt16(bodyColor, "body color");
-    outMsg.writeInt16(topStyle, "top style");
-    outMsg.writeInt16(middleStyle, "middle style");
-    outMsg.writeInt16(bottomStyle, "bottom style");
+    outMsg.writeInt16(CAST_S16(headColor), "head color");
+    outMsg.writeInt16(CAST_S16(headStyle), "head style");
+    outMsg.writeInt16(CAST_S16(bodyColor), "body color");
+    outMsg.writeInt16(CAST_S16(topStyle), "top style");
+    outMsg.writeInt16(CAST_S16(middleStyle), "middle style");
+    outMsg.writeInt16(CAST_S16(bottomStyle), "bottom style");
 }
 
 #undef setStatComplex
