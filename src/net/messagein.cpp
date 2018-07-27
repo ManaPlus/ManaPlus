@@ -43,6 +43,9 @@ PRAGMA48(GCC diagnostic pop)
     (CAST_U16(CAST_U8(high))) << 8))
 
 extern int itemIdLen;
+extern int packetVersionMain;
+extern int packetVersionRe;
+extern int packetVersionZero;
 
 namespace Net
 {
@@ -472,6 +475,27 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
 
     PacketCounters::incInBytes(length);
     return buf;
+}
+
+int MessageIn::getVersionMain() const noexcept2
+{
+    if (packetVersionMain >= mVersion)
+        return mVersion;
+    return 0;
+}
+
+int MessageIn::getVersionRe() const noexcept2
+{
+    if (packetVersionRe >= mVersion)
+        return mVersion;
+    return 0;
+}
+
+int MessageIn::getVersionZero() const noexcept2
+{
+    if (packetVersionZero >= mVersion)
+        return mVersion;
+    return 0;
 }
 
 }  // namespace Net

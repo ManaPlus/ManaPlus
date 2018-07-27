@@ -130,8 +130,14 @@ class MessageIn notfinal
         static uint8_t fromServerDirection(const uint8_t serverDir)
                                            A_WARN_UNUSED;
 
-        unsigned int getVersion() const noexcept2 A_WARN_UNUSED
+        int getVersion() const noexcept2 A_WARN_UNUSED
         { return mVersion; }
+
+        int getVersionMain() const noexcept2 A_WARN_UNUSED;
+
+        int getVersionRe() const noexcept2 A_WARN_UNUSED;
+
+        int getVersionZero() const noexcept2 A_WARN_UNUSED;
 
     protected:
         /**
@@ -148,7 +154,7 @@ class MessageIn notfinal
          * reading it.
          */
         unsigned int mPos;
-        unsigned int mVersion;
+        int mVersion;
         uint16_t mId;          /**< The message ID. */
         bool mIgnore;
 };
