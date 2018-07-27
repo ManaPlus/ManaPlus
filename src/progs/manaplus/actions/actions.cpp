@@ -825,7 +825,19 @@ impHandler(sell)
 
 impHandler(talk)
 {
-    Being *being = findBeing(event.args, true);
+    const std::string args = event.args;
+    Being *being = nullptr;
+
+    if (!args.empty() && args[0] == ':')
+    {
+        being = actorManager->findBeing(fromInt(atoi(
+            args.substr(1).c_str()), BeingId));
+    }
+    else
+    {
+        being = findBeing(args, true);
+    }
+
     if (being == nullptr)
         return false;
 

@@ -329,7 +329,7 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: talk with npc
-                mBrowserBox->addRow("/talk 'NAME'", _("Talk"));
+                mBrowserBox->addRow("/talk :'BEINGID'", _("Talk"));
 #ifdef TMWA_SUPPORT
                 if (Net::getNetworkType() != ServerType::TMWATHENA)
 #endif
