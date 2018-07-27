@@ -381,9 +381,9 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
-                idx ++;
-                if (idx == SLOTS_PER_ROW)
+                if ((idx + 1) % SLOTS_PER_ROW == 0)
                     break;
+                idx ++;
                 mCharacterView->show(idx);
                 updateState();
             }
@@ -396,7 +396,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
-                if ((idx == 0) || idx == SLOTS_PER_ROW)
+                if (idx == 0 || idx % SLOTS_PER_ROW == 0)
                     break;
                 idx --;
                 mCharacterView->show(idx);
@@ -426,7 +426,7 @@ void CharSelectDialog::keyPressed(KeyEvent &event)
             int idx = mCharacterView->getSelected();
             if (idx >= 0)
             {
-                if (idx >= SLOTS_PER_ROW)
+                if (idx >= mLoginData->characterSlots - SLOTS_PER_ROW)
                     break;
                 idx += SLOTS_PER_ROW;
                 mCharacterView->show(idx);
