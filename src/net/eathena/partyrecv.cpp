@@ -189,16 +189,18 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
     }
 
     int partySize = 0;
-    int offset = 0;
-    if (msg.getVersion() >= 20170502)
+    const int offset = 28;
+    if (msg.getVersion() >= 20171207)
     {
-        partySize = 50;
-        offset = 28 + 6;
+        partySize = 4 + 4 + 24 + 16 + 1 + 1 + 2 + 2;
+    }
+    else if (msg.getVersion() >= 20170502)
+    {
+        partySize = 4 + 24 + 16 + 1 + 1 + 2 + 2;
     }
     else
     {
-        partySize = 46;
-        offset = 28;
+        partySize = 4 + 24 + 16 + 1 + 1;
     }
 
     const int count = (length - offset) / partySize;
