@@ -59,7 +59,8 @@ export CXXFLAGS="${CXXFLAGS} -Wcast-qual"
 export CXXFLAGS="${CXXFLAGS} -Wchar-subscripts"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wcharacter-truncation"
-export CXXFLAGS="${CXXFLAGS} -Wchkp"
+# depricated
+#export CXXFLAGS="${CXXFLAGS} -Wchkp"
 export CXXFLAGS="${CXXFLAGS} -Wclass-memaccess"
 export CXXFLAGS="${CXXFLAGS} -Wclobbered"
 export CXXFLAGS="${CXXFLAGS} -Wcomment"
