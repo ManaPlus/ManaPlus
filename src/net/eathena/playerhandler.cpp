@@ -46,6 +46,7 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionRe;
 extern int serverVersion;
 
 namespace EAthena
@@ -795,7 +796,8 @@ void PlayerHandler::selectStyle(const int headColor,
                                 const int bodyColor,
                                 const int topStyle,
                                 const int middleStyle,
-                                const int bottomStyle) const
+                                const int bottomStyle,
+                                const int bodyStyle) const
 {
     if (packetVersion < 20151104)
         return;
@@ -806,6 +808,8 @@ void PlayerHandler::selectStyle(const int headColor,
     outMsg.writeInt16(CAST_S16(topStyle), "top style");
     outMsg.writeInt16(CAST_S16(middleStyle), "middle style");
     outMsg.writeInt16(CAST_S16(bottomStyle), "bottom style");
+    if (packetVersionRe >= 20180718)
+        outMsg.writeInt16(CAST_S16(bodyStyle), "body style");
 }
 
 #undef setStatComplex

@@ -1413,4 +1413,10 @@ if (packetVersionRe >= 20180704)
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  22, clif->pPrivateAirshipRequest);
 }
 
+// 20180718 re
+if (packetVersionRe >= 20180718)
+{
+    packet(CMSG_PLAYER_SELECT_STYLE,      0x0afc,  16, clif->pReqStyleChange);
+}
+
 #endif

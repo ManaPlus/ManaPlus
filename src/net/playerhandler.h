@@ -117,7 +117,8 @@ class PlayerHandler notfinal
                                  const int bodyColor,
                                  const int topStyle,
                                  const int middleStyle,
-                                 const int bottomStyle) const = 0;
+                                 const int bottomStyle,
+                                 const int bodyStyle) const = 0;
 };
 
 }  // namespace Net

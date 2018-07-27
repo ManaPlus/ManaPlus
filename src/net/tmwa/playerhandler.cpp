@@ -500,7 +500,8 @@ void PlayerHandler::selectStyle(const int headColor A_UNUSED,
                                 const int bodyColor A_UNUSED,
                                 const int topStyle A_UNUSED,
                                 const int middleStyle A_UNUSED,
-                                const int bottomStyle A_UNUSED) const
+                                const int bottomStyle A_UNUSED,
+                                const int bodyStyle A_UNUSED) const
 {
 }
 

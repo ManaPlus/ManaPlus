@@ -75,7 +75,8 @@ class PlayerHandler final : public Ea::PlayerHandler
                          const int bodyColor,
                          const int topStyle,
                          const int middleStyle,
-                         const int bottomStyle) const override final;
+                         const int bottomStyle,
+                         const int bodyStyle) const override final;
 
         void setStat(Net::MessageIn &msg,
                      const int type,
