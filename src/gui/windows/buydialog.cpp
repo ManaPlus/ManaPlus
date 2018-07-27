@@ -734,8 +734,16 @@ void BuyDialog::updateButtonsAndLabels()
             else
                 mMaxItems = 1;
 
-            if (item->getQuantity() > 0 && mMaxItems > item->getQuantity())
+            if (mNpcId == fromInt(Market, BeingId))
+            {
+                if (mMaxItems > item->getQuantity())
+                    mMaxItems = item->getQuantity();
+            }
+            else if (item->getQuantity() > 0 &&
+                     mMaxItems > item->getQuantity())
+            {
                 mMaxItems = item->getQuantity();
+            }
 
             if (mAmountItems > mMaxItems)
                 mAmountItems = mMaxItems;
