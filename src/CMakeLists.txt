@@ -1750,6 +1750,12 @@ SET(SRCS
     net/eathena/traderecv.h
     net/eathena/updateprotocol.cpp
     net/eathena/updateprotocol.h
+    net/eathena/updateprotocol_main.cpp
+    net/eathena/updateprotocol_main.h
+    net/eathena/updateprotocol_re.cpp
+    net/eathena/updateprotocol_re.h
+    net/eathena/updateprotocol_zero.cpp
+    net/eathena/updateprotocol_zero.h
     net/eathena/vendinghandler.cpp
     net/eathena/vendinghandler.h
     net/eathena/vendingrecv.cpp

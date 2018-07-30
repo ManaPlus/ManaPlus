@@ -24,6 +24,9 @@
 
 #include "net/eathena/network.h"
 #include "net/eathena/protocolout.h"
+#include "net/eathena/updateprotocol_main.h"
+#include "net/eathena/updateprotocol_re.h"
+#include "net/eathena/updateprotocol_zero.h"
 
 #include "debug.h"
 
@@ -31,7 +34,6 @@ extern int packetVersion;
 extern int packetVersionMain;
 extern int packetVersionRe;
 extern int packetVersionZero;
-extern int serverVersion;
 extern int evolPacketOffset;
 extern bool packets_main;
 extern bool packets_re;
@@ -73,10 +75,10 @@ void updateProtocol()
 #define PACKETS_UPDATE
 #include "net/protocoloutupdate.h"
 #include "net/eathena/packetsout.inc"
-#include "net/eathena/packetsout_shuffle_main.inc"
-#include "net/eathena/packetsout_shuffle_re.inc"
-#include "net/eathena/packetsout_shuffle_zero.inc"
 #undef packet
+    updateProtocolMain();
+    updateProtocolRe();
+    updateProtocolZero();
     Network *const network = Network::mInstance;
     if (network != nullptr)
     {
@@ -87,9 +89,6 @@ void updateProtocol()
 }
 
 PACKETSOUT_VOID
-PACKETSOUT_SHUFFLE_MAIN_VOID
-PACKETSOUT_SHUFFLE_RE_VOID
-PACKETSOUT_SHUFFLE_ZERO_VOID
 PROTOCOLOUTUPDATE_VOID
 PROTOCOLOUT_VOID
 
