@@ -38,17 +38,18 @@
 #endif  // USE_X11
 
 #ifdef __native_client__
-#include <limits.h>
 #define realpath(N, R) strcpy(R, N)
 #endif  // __native_client__
 
 #ifdef WIN32
 #include "fs/specialfolder.h"
 #define realpath(N, R) _fullpath((R), (N), _MAX_PATH)
-#elif defined __OpenBSD__
+#endif
+
+#if defined __OpenBSD__
 #include <limits>
-#elif defined __native_client__
-#include <limits.h>
+#else
+#include <climits>
 #endif  // WIN32
 
 #ifndef WIN32
@@ -79,6 +80,12 @@ std::string getRealPath(const std::string &str)
     if (str.find("(unreachable)") != std::string::npos)
         return "";
 #endif  // defined(__GLIBC__)
+
+    // possible fix for realpath overflow
+    if (str.size() > SSIZE_MAX / 10)
+    {
+        return std::string();
+    }
 #if defined(__OpenBSD__) || defined(__ANDROID__) || defined(__native_client__)
     char *realPath = reinterpret_cast<char*>(calloc(PATH_MAX, sizeof(char)));
     if (!realPath)
