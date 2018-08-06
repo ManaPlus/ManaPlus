@@ -560,4 +560,29 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
     return CAST_S32(EQUIP_POINTS[position]);
 }
 
+void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
+{
+    BLOCK_START("InventoryRecv::processPlayerInventoryUse")
+    Inventory *const inventory = localPlayer != nullptr
+        ? PlayerInfo::getInventory() : nullptr;
+
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    msg.readItemId("item id");
+    msg.readInt32("id?");
+    const int amount = msg.readInt16("amount");
+    msg.readUInt8("type");
+
+    if (inventory != nullptr)
+    {
+        if (Item *const item = inventory->getItem(index))
+        {
+            if (amount != 0)
+                item->setQuantity(amount);
+            else
+                inventory->removeItemAt(index);
+        }
+    }
+    BLOCK_END("InventoryRecv::processPlayerInventoryUse")
+}
+
 }  // namespace TmwAthena

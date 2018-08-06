@@ -44,6 +44,7 @@ namespace TmwAthena
         void processPlayerStorageAdd(Net::MessageIn &msg);
         void processPlayerStorageRemove(Net::MessageIn &msg);
         void processPlayerInventoryRemove(Net::MessageIn &msg);
+        void processPlayerInventoryUse(Net::MessageIn &msg);
 
         int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
     }  // namespace InventoryRecv

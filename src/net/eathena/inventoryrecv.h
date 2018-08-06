@@ -73,6 +73,7 @@ namespace EAthena
         void processSelectCart(Net::MessageIn &msg);
         void processMergeItem(Net::MessageIn &msg);
         void processMergeItemResponse(Net::MessageIn &msg);
+        void processPlayerInventoryUse(Net::MessageIn &msg);
 
         int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
     }  // namespace InventoryRecv

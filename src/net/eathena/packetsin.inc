@@ -300,7 +300,7 @@ packet(SMSG_FORMAT_COLOR_MESSAGE,          0x09cd,   8, &ChatRecv::processFormat
 // 3
 if (packetVersion >= 3)
 {
-    packet(SMSG_PLAYER_INVENTORY_USE,      0x01c8,  13, &Ea::InventoryRecv::processPlayerInventoryUse,  3);
+    packet(SMSG_PLAYER_INVENTORY_USE,      0x01c8,  13, &InventoryRecv::processPlayerInventoryUse,      3);
     packet(SMSG_SKILL_DAMAGE,              0x01de,  33, &BeingRecv::processSkillDamage,                 3);
 }
 
@@ -1140,7 +1140,7 @@ if (packetVersionRe >= 20180704)
     packet(SMSG_SKILL_FAILED,              0x0110,  14, &SkillRecv::processSkillFailed,                 20180704);
     packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT, 0x018f, 8, &SkillRecv::processSkillProduceEffect,          20180704);
     packet(SMSG_PET_FOOD,                  0x01a3,   7, &PetRecv::processPetFood,                       20180704);
-    packet(SMSG_PLAYER_INVENTORY_USE,      0x01c8,  15, &Ea::InventoryRecv::processPlayerInventoryUse,  20180704);
+    packet(SMSG_PLAYER_INVENTORY_USE,      0x01c8,  15, &InventoryRecv::processPlayerInventoryUse,      20180704);
     packet(SMSG_BEING_CHANGE_LOOKS2,       0x01d7,  15, &BeingRecv::processBeingChangeLook2,            20180704);
     packet(SMSG_PLAYER_UPGRADE_MESSAGE,    0x0223,  10, &PlayerRecv::processPlayerUpgradeMessage,       20180704);
     packet(SMSG_HOMUNCULUS_FOOD,           0x022f,   7, &HomunculusRecv::processHomunculusFood,         20180704);
