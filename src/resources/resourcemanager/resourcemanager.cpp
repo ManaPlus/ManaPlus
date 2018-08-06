@@ -498,8 +498,9 @@ void release(Resource *const res)
     }
     if (resIter->second != res)
     {
-        reportAlways("in cache other image: %s",
-            res->mIdPath.c_str());
+// +++ need reenable after Resource will have type field
+//        reportAlways("in cache other image: %s",
+//            res->mIdPath.c_str());
         delete res;
         return;
     }
