@@ -23,8 +23,11 @@
 
 #include "enums/resources/item/itemsoundevent.h"
 
+#include <string>
+
 #include "localconsts.h"
 
+class Being;
 class FloorItem;
 class Item;
 class ItemInfo;
@@ -45,6 +48,14 @@ class ItemSoundManager final
 
         static void playSfx(const ItemInfo &info,
                             const ItemSoundEvent::Type sound);
+
+        static void playSfx(const Being *const being,
+                            const int itemId,
+                            const ItemSoundEvent::Type sound);
+
+        static std::string getSoundEffect(const Being *const being,
+                                          const ItemInfo &info,
+                                          const ItemSoundEvent::Type sound);
 };
 
 #endif  // ITEMSOUNDMANAGER_H

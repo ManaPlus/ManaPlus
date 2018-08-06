@@ -22,8 +22,10 @@
 
 #include "net/eathena/inventoryrecv.h"
 
+#include "actormanager.h"
 #include "notifymanager.h"
 #include "itemcolormanager.h"
+#include "itemsoundmanager.h"
 
 #include "being/localplayer.h"
 
@@ -1456,20 +1458,34 @@ void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
         ? PlayerInfo::getInventory() : nullptr;
 
     const int index = msg.readInt16("index") - INVENTORY_OFFSET;
-    msg.readItemId("item id");
-    msg.readInt32("id?");
+    const int itemId = msg.readItemId("item id");
+    const BeingId id = msg.readBeingId("account id");
     const int amount = msg.readInt16("amount");
-    msg.readUInt8("type");
+    const uint8_t flag = msg.readUInt8("type");
+    Being *const dstBeing = actorManager->findBeing(id);
 
-    if (inventory != nullptr)
+    if (dstBeing == localPlayer)
     {
-        if (Item *const item = inventory->getItem(index))
+        if (flag == 0)
         {
-            if (amount != 0)
-                item->setQuantity(amount);
-            else
-                inventory->removeItemAt(index);
+            NotifyManager::notify(NotifyTypes::USE_FAILED);
+            return;
         }
+        if (inventory != nullptr)
+        {
+            if (Item *const item = inventory->getItem(index))
+            {
+                if (amount != 0)
+                    item->setQuantity(amount);
+                else
+                    inventory->removeItemAt(index);
+            }
+        }
+    }
+    else
+    {
+        // +++ here can count left items in other player slot + id + amount
+        ItemSoundManager::playSfx(dstBeing, itemId, ItemSoundEvent::USE);
     }
     BLOCK_END("InventoryRecv::processPlayerInventoryUse")
 }

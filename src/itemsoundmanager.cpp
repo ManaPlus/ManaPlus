@@ -53,16 +53,38 @@ void ItemSoundManager::playSfx(const FloorItem *const item,
     playSfx(ItemDB::get(item->getItemId()), sound);
 }
 
-void ItemSoundManager::playSfx(const ItemInfo &info,
-                               const ItemSoundEvent::Type sound)
+std::string ItemSoundManager::getSoundEffect(const Being *const being,
+                                             const ItemInfo &info,
+                                             const ItemSoundEvent::Type sound)
 {
     std::string sfx = info.getSound(sound).sound;
     if (sfx.empty())
     {
+        if (being == nullptr)
+            return std::string();
+
         // fallback to player race sound if no item sound.
-        const int id = -100 - toInt(localPlayer->getSubType(), int);
+        const int id = -100 - toInt(being->getSubType(), int);
         const ItemInfo &info2 = ItemDB::get(id);
         sfx = info2.getSound(sound).sound;
     }
-    soundManager.playGuiSfx(sfx);
+    return sfx;
+}
+
+void ItemSoundManager::playSfx(const ItemInfo &info,
+                               const ItemSoundEvent::Type sound)
+{
+    soundManager.playGuiSfx(getSoundEffect(localPlayer, info, sound));
+}
+
+void ItemSoundManager::playSfx(const Being *const being,
+                               const int itemId,
+                               const ItemSoundEvent::Type sound)
+{
+    if (being == nullptr)
+        return;
+
+    soundManager.playSfx(getSoundEffect(being, ItemDB::get(itemId), sound),
+        being->getTileX(),
+        being->getTileY());
 }
