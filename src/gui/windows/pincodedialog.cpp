@@ -22,8 +22,6 @@
 
 #include "pincodemanager.h"
 
-#include "input/keyboardconfig.h"
-
 #include "gui/widgets/button.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/passwordfield.h"
@@ -46,12 +44,9 @@ PincodeDialog::PincodeDialog(const std::string &restrict title,
     mPasswordField(new PasswordField(this, std::string())),
     mPincode(new Pincode(this, mPasswordField)),
     // TRANSLATORS: text dialog button
-    mOkButton(new Button(this, _("OK"), "OK", BUTTON_SKIN, this)),
-    mEnabledKeyboard(keyboard.isEnabled())
+    mOkButton(new Button(this, _("OK"), "OK", BUTTON_SKIN, this))
 {
     setStickyButtonLock(true);
-
-    keyboard.setEnabled(false);
 
     Label *const textLabel = new Label(this, msg);
     Button *const cancelButton = new Button(this,
@@ -124,7 +119,6 @@ const std::string &PincodeDialog::getMsg() const
 
 void PincodeDialog::close()
 {
-    keyboard.setEnabled(mEnabledKeyboard);
     pincodeManager.clearDialog(this);
     scheduleDelete();
 }

@@ -61,7 +61,6 @@ class PincodeDialog final : public Window,
         PasswordField *mPasswordField;
         Pincode *mPincode;
         Button *mOkButton;
-        bool mEnabledKeyboard;
 };
 
 #endif  // GUI_WINDOWS_PINCODEDIALOG_H
