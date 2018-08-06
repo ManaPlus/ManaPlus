@@ -178,7 +178,7 @@ namespace ZipReader
                         header->fileName.c_str());
 #endif  // DEBUG_ZIP
                     dirs.push_back(header->fileName);
-                    delete header;
+                    delete2(header);
                 }
             }
             else if (buf[0] == 0x50 &&
