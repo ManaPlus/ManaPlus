@@ -74,7 +74,9 @@ std::string ItemSoundManager::getSoundEffect(const Being *const being,
 void ItemSoundManager::playSfx(const ItemInfo &info,
                                const ItemSoundEvent::Type sound)
 {
-    soundManager.playGuiSfx(getSoundEffect(localPlayer, info, sound));
+    soundManager.playSfx(getSoundEffect(localPlayer, info, sound),
+        0,
+        0);
 }
 
 void ItemSoundManager::playSfx(const Being *const being,
