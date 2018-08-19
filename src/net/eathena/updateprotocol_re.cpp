@@ -20,9 +20,6 @@
 
 #include "net/eathena/updateprotocol_re.h"
 
-#include "logger.h"
-
-#include "net/eathena/network.h"
 #include "net/eathena/protocolout.h"
 
 #include "debug.h"
