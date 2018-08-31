@@ -408,13 +408,14 @@ const GroupInfo *GroupDb::getGroup(const int id)
 
 bool GroupDb::isAllowCommand(const ServerCommandTypeT command)
 {
+    if (localPlayer == nullptr)
+        return false;
     const int groupId = localPlayer->getGroupId();
     const GroupInfo *const group = GroupDb::getGroup(groupId);
 
 #ifdef TMWA_SUPPORT
     // allow any commands for legacy if group > 0
     if (Net::getNetworkType() == ServerType::TMWATHENA &&
-        localPlayer != nullptr &&
         localPlayer->isGM())
     {
         return true;
