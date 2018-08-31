@@ -47,7 +47,7 @@ class ShortcutContainer notfinal : public Widget,
         /**
          * Destructor.
          */
-        virtual ~ShortcutContainer() override;
+        ~ShortcutContainer() override;
 
         /**
          * Invoked when a widget changes its size. This is used to determine
