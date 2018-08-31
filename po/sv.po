@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-06-30 22:45+0300\n"
+"POT-Creation-Date: 2018-08-31 22:20+0300\n"
 "PO-Revision-Date: 2018-07-10 13:40+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/akaras/manaplus/"
@@ -50,7 +50,7 @@ msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:517
+#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:518
 #, c-format
 msgid "You were killed by %s."
 msgstr ""
@@ -819,15 +819,15 @@ msgstr "Iväg"
 #: src/gui/windows/editserverdialog.cpp:66
 #: src/gui/windows/editserverdialog.cpp:217
 #: src/gui/windows/itemamountwindow.cpp:215
-#: src/gui/windows/pincodedialog.cpp:49 src/gui/windows/quitdialog.cpp:67
+#: src/gui/windows/pincodedialog.cpp:47 src/gui/windows/quitdialog.cpp:67
 #: src/gui/windows/registerdialog.cpp:253 src/gui/windows/textdialog.cpp:53
 #: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
-#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:453
-#: src/net/eathena/charserverrecv.cpp:488
-#: src/net/eathena/charserverrecv.cpp:516 src/net/tmwa/charserverrecv.cpp:295
-#: src/pincodemanager.cpp:147 src/pincodemanager.cpp:206
+#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:439
+#: src/net/eathena/charserverrecv.cpp:474
+#: src/net/eathena/charserverrecv.cpp:502 src/net/tmwa/charserverrecv.cpp:295
+#: src/pincodemanager.cpp:148 src/pincodemanager.cpp:207
 #: src/progs/manaplus/actions/actions.cpp:178
-#: src/progs/manaplus/client.cpp:1502 src/progs/manaplus/client.cpp:1537
+#: src/progs/manaplus/client.cpp:1503 src/progs/manaplus/client.cpp:1538
 msgid "OK"
 msgstr "OK"
 
@@ -864,8 +864,8 @@ msgstr "(F) fritt kamera-läge"
 #: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:63
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:134
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:114
-#: src/progs/dyecmd/client.cpp:568 src/progs/manaplus/client.cpp:934
-#: src/progs/manaplus/client.cpp:1416 src/progs/manaplus/client.cpp:1435
+#: src/progs/dyecmd/client.cpp:569 src/progs/manaplus/client.cpp:935
+#: src/progs/manaplus/client.cpp:1417 src/progs/manaplus/client.cpp:1436
 msgid "Close"
 msgstr "Stäng"
 
@@ -1743,7 +1743,7 @@ msgstr "Lägg till namnet i chat"
 #: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:68
 #: src/gui/windows/itemamountwindow.cpp:221
-#: src/gui/windows/pincodedialog.cpp:59 src/gui/windows/quitdialog.cpp:69
+#: src/gui/windows/pincodedialog.cpp:54 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:66 src/gui/windows/setupwindow.cpp:106
 #: src/gui/windows/textcommandeditor.cpp:108 src/gui/windows/textdialog.cpp:61
 #: src/gui/windows/updaterwindow.cpp:194 src/input/pages/gui.cpp:103
@@ -2701,8 +2701,8 @@ msgstr ""
 #: src/gui/popups/popupmenu.cpp:3316 src/gui/popups/popupmenu.cpp:3345
 #: src/gui/popups/popupmenu.cpp:3364 src/gui/windows/charselectdialog.cpp:81
 #: src/gui/windows/clanwindow.cpp:63 src/gui/windows/serverdialog.cpp:122
-#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:449
-#: src/net/eathena/charserverrecv.cpp:485
+#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:435
+#: src/net/eathena/charserverrecv.cpp:471
 msgid "Info"
 msgstr "Info"
 
@@ -3297,7 +3297,7 @@ msgstr "-"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:165 src/gui/widgets/selldialog.cpp:391
-#: src/gui/windows/buydialog.cpp:319 src/gui/windows/buydialog.cpp:760
+#: src/gui/windows/buydialog.cpp:319 src/gui/windows/buydialog.cpp:768
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Pris: %s / Totalt: %s"
@@ -4965,8 +4965,8 @@ msgstr "Nej"
 
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: perfoamance tab quick button
-#: src/gui/widgets/tabs/setup_perfomance.cpp:61 src/progs/dyecmd/client.cpp:552
-#: src/progs/manaplus/client.cpp:918
+#: src/gui/widgets/tabs/setup_perfomance.cpp:61 src/progs/dyecmd/client.cpp:553
+#: src/progs/manaplus/client.cpp:919
 msgid "Performance"
 msgstr ""
 
@@ -5382,8 +5382,8 @@ msgstr "i"
 
 #. TRANSLATORS: theme settings tab name
 #. TRANSLATORS: theme tab quick button
-#: src/gui/widgets/tabs/setup_theme.cpp:133 src/progs/dyecmd/client.cpp:558
-#: src/progs/manaplus/client.cpp:924
+#: src/gui/widgets/tabs/setup_theme.cpp:133 src/progs/dyecmd/client.cpp:559
+#: src/progs/manaplus/client.cpp:925
 msgid "Theme"
 msgstr "Tema"
 
@@ -5541,8 +5541,8 @@ msgstr "Ingen ram"
 
 #. TRANSLATORS: video settings tab name
 #. TRANSLATORS: video tab quick button
-#: src/gui/widgets/tabs/setup_video.cpp:121 src/progs/dyecmd/client.cpp:555
-#: src/progs/manaplus/client.cpp:921
+#: src/gui/widgets/tabs/setup_video.cpp:121 src/progs/dyecmd/client.cpp:556
+#: src/progs/manaplus/client.cpp:922
 msgid "Video"
 msgstr "Video"
 
@@ -5946,7 +5946,7 @@ msgstr "HLP"
 #. TRANSLATORS: help window name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/windowmenu.cpp:92 src/gui/windows/helpwindow.cpp:57
-#: src/progs/dyecmd/client.cpp:564 src/progs/manaplus/client.cpp:930
+#: src/progs/dyecmd/client.cpp:565 src/progs/manaplus/client.cpp:931
 msgid "Help"
 msgstr "Hjälp"
 
@@ -6146,7 +6146,7 @@ msgstr "SET"
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: setup tab quick button
 #: src/gui/windowmenu.cpp:256 src/gui/windows/setupwindow.cpp:67
-#: src/progs/dyecmd/client.cpp:549 src/progs/manaplus/client.cpp:915
+#: src/progs/dyecmd/client.cpp:550 src/progs/manaplus/client.cpp:916
 msgid "Setup"
 msgstr "Inställningar"
 
@@ -6252,11 +6252,11 @@ msgstr "E-postadressen matchar inte."
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
-#: src/net/eathena/charserverrecv.cpp:426
-#: src/net/eathena/charserverrecv.cpp:430
-#: src/net/eathena/charserverrecv.cpp:512 src/net/tmwa/charserverrecv.cpp:291
-#: src/progs/manaplus/client.cpp:1413 src/progs/manaplus/client.cpp:1432
-#: src/progs/manaplus/client.cpp:1638
+#: src/net/eathena/charserverrecv.cpp:412
+#: src/net/eathena/charserverrecv.cpp:416
+#: src/net/eathena/charserverrecv.cpp:498 src/net/tmwa/charserverrecv.cpp:291
+#: src/progs/manaplus/client.cpp:1414 src/progs/manaplus/client.cpp:1433
+#: src/progs/manaplus/client.cpp:1639
 msgid "Error"
 msgstr "Error"
 
@@ -9152,7 +9152,7 @@ msgstr "Användarnamnet är permanent raderat."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:129 src/net/eathena/loginrecv.cpp:129
-#: src/net/eathena/loginrecv.cpp:235 src/net/tmwa/loginrecv.cpp:128
+#: src/net/eathena/loginrecv.cpp:235 src/net/tmwa/loginrecv.cpp:130
 msgid "Unknown error."
 msgstr "Okänt fel."
 
@@ -9173,33 +9173,33 @@ msgstr "Anslutningen till servern avslutad. "
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:428
-#: src/net/eathena/charserverrecv.cpp:476
+#: src/net/eathena/charserverrecv.cpp:414
+#: src/net/eathena/charserverrecv.cpp:462
 msgid "Character rename error."
 msgstr ""
 
 #. TRANSLATORS: info message
-#: src/net/eathena/charserverrecv.cpp:451
+#: src/net/eathena/charserverrecv.cpp:437
 msgid "Character renamed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:467
+#: src/net/eathena/charserverrecv.cpp:453
 msgid "Rename not allowed."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:471
+#: src/net/eathena/charserverrecv.cpp:457
 msgid "New name is not set."
 msgstr ""
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:480
+#: src/net/eathena/charserverrecv.cpp:466
 msgid "Character not found."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/charserverrecv.cpp:514 src/net/tmwa/charserverrecv.cpp:293
+#: src/net/eathena/charserverrecv.cpp:500 src/net/tmwa/charserverrecv.cpp:293
 msgid "Failed to delete character."
 msgstr "Misslyckades att radera karaktär."
 
@@ -9466,7 +9466,7 @@ msgid "Guild castle: %s"
 msgstr "Guild slott: %s"
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:866
+#: src/net/eathena/inventoryrecv.cpp:873
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr ""
@@ -9475,24 +9475,24 @@ msgstr ""
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: unknown item name
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:1230
-#: src/net/eathena/inventoryrecv.cpp:1363 src/net/eathena/mail2recv.cpp:207
+#: src/net/eathena/inventoryrecv.cpp:1239
+#: src/net/eathena/inventoryrecv.cpp:1374 src/net/eathena/mail2recv.cpp:204
 #: src/resources/db/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Okänt item"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:223 src/net/tmwa/loginrecv.cpp:116
+#: src/net/eathena/loginrecv.cpp:223 src/net/tmwa/loginrecv.cpp:118
 msgid "Account was not found. Please re-login."
 msgstr "Kontot hittades inte. Vänligen logga ut och logga in igen."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:227 src/net/tmwa/loginrecv.cpp:120
+#: src/net/eathena/loginrecv.cpp:227 src/net/tmwa/loginrecv.cpp:122
 msgid "Old password incorrect."
 msgstr "Gamla lösenordet är felaktigt."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:231 src/net/tmwa/loginrecv.cpp:124
+#: src/net/eathena/loginrecv.cpp:231 src/net/tmwa/loginrecv.cpp:126
 msgid "New password too short."
 msgstr "Det nya lösenordet är för kort."
 
@@ -9503,90 +9503,90 @@ msgid "You have new mail from %s with subject %s"
 msgstr ""
 
 #. TRANSLATORS: player killed message
-#: src/net/eathena/playerrecv.cpp:506
+#: src/net/eathena/playerrecv.cpp:507
 msgid "You were killed by unknown source."
 msgstr ""
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:304
+#: src/net/eathena/skillrecv.cpp:306
 #, c-format
 msgid "Unknown skill error: %d"
 msgstr ""
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:317
+#: src/net/eathena/skillrecv.cpp:319
 #, c-format
 msgid "Unknown skill error: %d."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:326 src/net/tmwa/skillrecv.cpp:146
+#: src/net/eathena/skillrecv.cpp:328 src/net/tmwa/skillrecv.cpp:146
 msgid "You have not yet reached a high enough lvl!"
 msgstr "Du har ännu inte nått required lvl!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:330 src/net/tmwa/skillrecv.cpp:150
+#: src/net/eathena/skillrecv.cpp:332 src/net/tmwa/skillrecv.cpp:150
 msgid "Insufficient HP!"
 msgstr "Otillräckligt HP!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:334 src/net/tmwa/skillrecv.cpp:154
+#: src/net/eathena/skillrecv.cpp:336 src/net/tmwa/skillrecv.cpp:154
 msgid "Insufficient SP!"
 msgstr "Otillräckligt SP!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:338 src/net/tmwa/skillrecv.cpp:158
+#: src/net/eathena/skillrecv.cpp:340 src/net/tmwa/skillrecv.cpp:158
 msgid "You have no memos!"
 msgstr "Du har inga memos!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:342 src/net/tmwa/skillrecv.cpp:162
+#: src/net/eathena/skillrecv.cpp:344 src/net/tmwa/skillrecv.cpp:162
 msgid "You cannot do that right now!"
 msgstr "Du kan inte göra det just nu!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:346 src/net/tmwa/skillrecv.cpp:166
+#: src/net/eathena/skillrecv.cpp:348 src/net/tmwa/skillrecv.cpp:166
 msgid "Seems you need more money... ;-)"
 msgstr "Verkar som att du behöver mer money... ;-)"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:350 src/net/tmwa/skillrecv.cpp:170
+#: src/net/eathena/skillrecv.cpp:352 src/net/tmwa/skillrecv.cpp:170
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Du kan inte använda denna skill med det vapnet!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:355 src/net/tmwa/skillrecv.cpp:175
+#: src/net/eathena/skillrecv.cpp:357 src/net/tmwa/skillrecv.cpp:175
 msgid "You need another red gem!"
 msgstr "Du behöver en till röd gem!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:359 src/net/tmwa/skillrecv.cpp:179
+#: src/net/eathena/skillrecv.cpp:361 src/net/tmwa/skillrecv.cpp:179
 msgid "You need another blue gem!"
 msgstr "Du behöver en till blå gem!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:363 src/net/tmwa/skillrecv.cpp:183
+#: src/net/eathena/skillrecv.cpp:365 src/net/tmwa/skillrecv.cpp:183
 msgid "You're carrying to much to do this!"
 msgstr "Du bär för mycket för att kunna göra detta!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:367
+#: src/net/eathena/skillrecv.cpp:369
 msgid "Fail summon."
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:371
+#: src/net/eathena/skillrecv.cpp:373
 msgid "Need spirits."
 msgstr ""
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:381
+#: src/net/eathena/skillrecv.cpp:382
 #, c-format
 msgid "Need equipment %s."
 msgstr ""
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:387
+#: src/net/eathena/skillrecv.cpp:388
 #, c-format
 msgid "Need equipment %s and amount %d"
 msgstr ""
@@ -9614,13 +9614,13 @@ msgid "Select warp target"
 msgstr ""
 
 #. TRANSLATORS: vending sold item message
-#: src/net/eathena/vendingrecv.cpp:262
+#: src/net/eathena/vendingrecv.cpp:267
 #, c-format
 msgid "Sold item %s amount %d. You got: %s"
 msgstr ""
 
 #. TRANSLATORS: vending sold item message
-#: src/net/eathena/vendingrecv.cpp:270
+#: src/net/eathena/vendingrecv.cpp:275
 #, c-format
 msgid "Sold item %s amount %d"
 msgstr ""
@@ -9719,49 +9719,49 @@ msgstr "Poison hade ingen effekt..."
 
 #. TRANSLATORS: dialog caption
 #. TRANSLATORS: error header
-#: src/pincodemanager.cpp:78 src/pincodemanager.cpp:143
-#: src/pincodemanager.cpp:202
+#: src/pincodemanager.cpp:79 src/pincodemanager.cpp:144
+#: src/pincodemanager.cpp:203
 msgid "Pincode"
 msgstr ""
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:80
+#: src/pincodemanager.cpp:81
 msgid "Enter pincode"
 msgstr ""
 
 #. TRANSLATORS: dialog caption
-#: src/pincodemanager.cpp:91 src/pincodemanager.cpp:127
+#: src/pincodemanager.cpp:92 src/pincodemanager.cpp:128
 msgid "New pincode"
 msgstr ""
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:93 src/pincodemanager.cpp:173
+#: src/pincodemanager.cpp:94 src/pincodemanager.cpp:174
 msgid "Enter new pincode"
 msgstr ""
 
 #. TRANSLATORS: dialog caption
-#: src/pincodemanager.cpp:105 src/pincodemanager.cpp:171
-#: src/pincodemanager.cpp:185
+#: src/pincodemanager.cpp:106 src/pincodemanager.cpp:172
+#: src/pincodemanager.cpp:186
 msgid "Change pincode"
 msgstr ""
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:107
+#: src/pincodemanager.cpp:108
 msgid "Enter old pincode"
 msgstr ""
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:129 src/pincodemanager.cpp:187
+#: src/pincodemanager.cpp:130 src/pincodemanager.cpp:188
 msgid "Confirm new pincode"
 msgstr ""
 
 #. TRANSLATORS: error message
-#: src/pincodemanager.cpp:145 src/pincodemanager.cpp:204
+#: src/pincodemanager.cpp:146 src/pincodemanager.cpp:205
 msgid "Wrong pincode confirmation!"
 msgstr ""
 
 #. TRANSLATORS: theme tab quick button
-#: src/progs/dyecmd/client.cpp:561 src/progs/manaplus/client.cpp:927
+#: src/progs/dyecmd/client.cpp:562 src/progs/manaplus/client.cpp:928
 msgid "About"
 msgstr ""
 
@@ -9787,69 +9787,69 @@ msgstr ""
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/progs/manaplus/actions/actions.cpp:1100
-#: src/progs/manaplus/actions/actions.cpp:1115
+#: src/progs/manaplus/actions/actions.cpp:1112
+#: src/progs/manaplus/actions/actions.cpp:1127
 msgid "Cache cleared"
 msgstr ""
 
 #. TRANSLATORS: uptime command
-#: src/progs/manaplus/actions/actions.cpp:1313
-#: src/progs/manaplus/actions/actions.cpp:1321
+#: src/progs/manaplus/actions/actions.cpp:1325
+#: src/progs/manaplus/actions/actions.cpp:1333
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Klientupptid: %s"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1385
-#: src/progs/manaplus/actions/actions.cpp:1394
+#: src/progs/manaplus/actions/actions.cpp:1397
+#: src/progs/manaplus/actions/actions.cpp:1406
 msgid "Resource images:"
 msgstr "Resurs-bilder:"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1388
 #: src/progs/manaplus/actions/actions.cpp:1400
+#: src/progs/manaplus/actions/actions.cpp:1412
 msgid "Orphaned resource images:"
 msgstr ""
 
 #. TRANSLATORS: dump environment command
-#: src/progs/manaplus/actions/actions.cpp:1499
+#: src/progs/manaplus/actions/actions.cpp:1511
 msgid "Environment variables dumped"
 msgstr "Omgivningsvariabler dumpade"
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1638
+#: src/progs/manaplus/actions/actions.cpp:1650
 msgid "Config uploaded to:"
 msgstr ""
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1648
+#: src/progs/manaplus/actions/actions.cpp:1660
 msgid "Server config Uploaded to:"
 msgstr ""
 
 #. TRANSLATORS: upload log chat message
-#: src/progs/manaplus/actions/actions.cpp:1658
+#: src/progs/manaplus/actions/actions.cpp:1670
 msgid "Log uploaded to:"
 msgstr ""
 
 #. TRANSLATORS: last seen disabled warning
-#: src/progs/manaplus/actions/actions.cpp:1942
+#: src/progs/manaplus/actions/actions.cpp:1954
 msgid ""
 "Last seen disabled. Enable in players / collect players ID and seen log."
 msgstr ""
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1963
+#: src/progs/manaplus/actions/actions.cpp:1975
 msgid "You have never seen this nick."
 msgstr ""
 
 #. TRANSLATORS: last seen message
-#: src/progs/manaplus/actions/actions.cpp:1971
+#: src/progs/manaplus/actions/actions.cpp:1983
 #, c-format
 msgid "Last seen for %s: %s"
 msgstr ""
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1982
+#: src/progs/manaplus/actions/actions.cpp:1994
 msgid "You have not seen this nick before."
 msgstr ""
 
@@ -10102,57 +10102,57 @@ msgid "Accepting incoming trade requests"
 msgstr "Acceptera inkommande bytes-förfrågningar"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1130
+#: src/progs/manaplus/client.cpp:1131
 msgid "Connecting to server"
 msgstr "Ansluter till server"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1189 src/unittests/gui/windowmanager.cc:830
+#: src/progs/manaplus/client.cpp:1190 src/unittests/gui/windowmanager.cc:830
 msgid "Logging in"
 msgstr "Loggar in"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1239
+#: src/progs/manaplus/client.cpp:1240
 msgid "Entering game world"
 msgstr "Går in i spelvärld"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1300
+#: src/progs/manaplus/client.cpp:1301
 msgid "Requesting characters"
 msgstr "Begär karaktärer"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1344
+#: src/progs/manaplus/client.cpp:1345
 msgid "Connecting to the game server"
 msgstr "Ansluter till spelservern"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1356
+#: src/progs/manaplus/client.cpp:1357
 msgid "Changing game servers"
 msgstr "Ändrar spelserver"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1451
+#: src/progs/manaplus/client.cpp:1452
 msgid "Requesting registration details"
 msgstr "Begär registreringsuppgifter"
 
 #. TRANSLATORS: password change message header
-#: src/progs/manaplus/client.cpp:1498
+#: src/progs/manaplus/client.cpp:1499
 msgid "Password Change"
 msgstr "Lösenordsändring"
 
 #. TRANSLATORS: password change message text
-#: src/progs/manaplus/client.cpp:1500
+#: src/progs/manaplus/client.cpp:1501
 msgid "Password changed successfully!"
 msgstr "Lösenordsändring har lyckats!"
 
 #. TRANSLATORS: email change message header
-#: src/progs/manaplus/client.cpp:1533
+#: src/progs/manaplus/client.cpp:1534
 msgid "Email Change"
 msgstr "Byte av E-post"
 
 #. TRANSLATORS: email change message text
-#: src/progs/manaplus/client.cpp:1535
+#: src/progs/manaplus/client.cpp:1536
 msgid "Email changed successfully!"
 msgstr "E-posten har ändrats!"
 

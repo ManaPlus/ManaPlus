@@ -5,13 +5,13 @@
 # Translators:
 # Andrei Karas <akaras@inbox.ru>, 2011,2016
 # Rubén Leal Coba <mekjotradukoj@outlook.com>, 2013
-# Tirifto <tirifto@posteo.cz>, 2017
+# Tirifto <tirifto@posteo.cz>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-06-30 22:45+0300\n"
-"PO-Revision-Date: 2018-07-10 13:40+0000\n"
+"POT-Creation-Date: 2018-08-31 22:20+0300\n"
+"PO-Revision-Date: 2018-08-31 19:35+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Esperanto (http://www.transifex.com/akaras/manaplus/language/"
 "eo/)\n"
@@ -52,7 +52,7 @@ msgstr "N"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:517
+#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:518
 #, c-format
 msgid "You were killed by %s."
 msgstr "Vin mortigis %s."
@@ -182,7 +182,7 @@ msgstr "Tute malatenti"
 #. TRANSLATORS: ignore/unignore action
 #: src/being/playerrelations.cpp:507
 msgid "Print '...'"
-msgstr "Presi '...'"
+msgstr "Presi ‹...›"
 
 #. TRANSLATORS: ignore/unignore action
 #: src/being/playerrelations.cpp:532
@@ -192,7 +192,7 @@ msgstr "Pulsa nomo"
 #. TRANSLATORS: ignore strategi
 #: src/being/playerrelations.cpp:583
 msgid "Floating '...' bubble"
-msgstr "Flita '...' bobelo"
+msgstr "Glita bobelo ‹...›"
 
 #. TRANSLATORS: ignore strategi
 #: src/being/playerrelations.cpp:587
@@ -298,7 +298,7 @@ msgstr "  -u --skip-update    : Preterpasi la ĝisdatigan elŝutadon"
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:98
 msgid "  -d --data           : Directory to load game data from"
-msgstr "  -d --data           : Dosierujo de kiu ŝarĝi datumojn"
+msgstr "  -d --data           : Dosierujo kun enlegotaj datumojn"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:101
@@ -324,12 +324,12 @@ msgstr "     --renderer       : Agordi tipon de bildigilo"
 #: src/commandline.cpp:114
 msgid "  -T --tests          : Start testing drivers and auto configuring"
 msgstr ""
-"  -T --tests          : Komenci testadon de peliloj kaj aŭtomate sinadapti"
+"  -T --tests          : Komenci testadon de peliloj kaj memfare sinadapti"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:118
 msgid "  -V --validate       : Start validating client data"
-msgstr ""
+msgstr "  -V --validate       : Komenci kontrolon de klientaj datumoj"
 
 #. TRANSLATORS: command line help
 #: src/commandline.cpp:123
@@ -403,17 +403,17 @@ msgstr "Reta Eraro"
 #. TRANSLATORS: auto adjust settings message
 #: src/game.cpp:831
 msgid "Auto disable Show beings transparency"
-msgstr ""
+msgstr "Memfare malŝalti montron de estaĵa travidebleco"
 
 #. TRANSLATORS: auto adjust settings message
 #: src/game.cpp:852
 msgid "Auto lower Particle effects"
-msgstr ""
+msgstr "Memfare malpliigi partiklojn"
 
 #. TRANSLATORS: auto adjust settings message
 #: src/game.cpp:873
 msgid "Auto enable opacity cache"
-msgstr ""
+msgstr "Memfare ŝalti kaŝmemoron por netravidebleco"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:149
@@ -438,7 +438,7 @@ msgstr "(C) movoj kun frenezaj movoj"
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:157
 msgid "(d) double normal + crazy"
-msgstr "(d) duoble normolaj + frenezaj"
+msgstr "(d) duoblaj normalaj + frenezaj"
 
 #. TRANSLATORS: move type in status bar
 #: src/gamemodifiers.cpp:159
@@ -549,7 +549,7 @@ msgstr "(M) spegula sekvado"
 #. TRANSLATORS: folow mode in status bar
 #: src/gamemodifiers.cpp:240
 msgid "(P) pet follow"
-msgstr "(P) dorlotbesta sekvado"
+msgstr "(P) kunbesta sekvado"
 
 #. TRANSLATORS: folow mode in status bar
 #: src/gamemodifiers.cpp:242
@@ -592,7 +592,7 @@ msgstr "(A) iri, ataki, preni"
 #. TRANSLATORS: attack type in status bar
 #: src/gamemodifiers.cpp:268
 msgid "(d) without auto attack"
-msgstr "(d) set aŭtomata atako"
+msgstr "(d) sen memfara atako"
 
 #. TRANSLATORS: targeting type in status bar
 #: src/gamemodifiers.cpp:276
@@ -820,15 +820,15 @@ msgstr "For"
 #: src/gui/windows/editserverdialog.cpp:66
 #: src/gui/windows/editserverdialog.cpp:217
 #: src/gui/windows/itemamountwindow.cpp:215
-#: src/gui/windows/pincodedialog.cpp:49 src/gui/windows/quitdialog.cpp:67
+#: src/gui/windows/pincodedialog.cpp:47 src/gui/windows/quitdialog.cpp:67
 #: src/gui/windows/registerdialog.cpp:253 src/gui/windows/textdialog.cpp:53
 #: src/net/ea/charserverrecv.cpp:108 src/net/ea/charserverrecv.cpp:134
-#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:453
-#: src/net/eathena/charserverrecv.cpp:488
-#: src/net/eathena/charserverrecv.cpp:516 src/net/tmwa/charserverrecv.cpp:295
-#: src/pincodemanager.cpp:147 src/pincodemanager.cpp:206
+#: src/net/ea/gamerecv.cpp:71 src/net/eathena/charserverrecv.cpp:439
+#: src/net/eathena/charserverrecv.cpp:474
+#: src/net/eathena/charserverrecv.cpp:502 src/net/tmwa/charserverrecv.cpp:295
+#: src/pincodemanager.cpp:148 src/pincodemanager.cpp:207
 #: src/progs/manaplus/actions/actions.cpp:178
-#: src/progs/manaplus/client.cpp:1502 src/progs/manaplus/client.cpp:1537
+#: src/progs/manaplus/client.cpp:1503 src/progs/manaplus/client.cpp:1538
 msgid "OK"
 msgstr "Bone"
 
@@ -865,8 +865,8 @@ msgstr "(F) libera reĝimo de vidpunkto"
 #: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:63
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:134
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:114
-#: src/progs/dyecmd/client.cpp:568 src/progs/manaplus/client.cpp:934
-#: src/progs/manaplus/client.cpp:1416 src/progs/manaplus/client.cpp:1435
+#: src/progs/dyecmd/client.cpp:569 src/progs/manaplus/client.cpp:935
+#: src/progs/manaplus/client.cpp:1417 src/progs/manaplus/client.cpp:1436
 msgid "Close"
 msgstr "Fermi"
 
@@ -886,7 +886,7 @@ msgstr "Reviviĝi"
 #. TRANSLATORS: ok dialog button
 #: src/gui/dialogsmanager.cpp:153
 msgid "GM revive"
-msgstr ""
+msgstr "LG-a revivigo"
 
 #. TRANSLATORS: weight message
 #: src/gui/dialogsmanager.cpp:198
@@ -1252,12 +1252,12 @@ msgstr "Malamiko"
 #. TRANSLATORS: server license comment
 #: src/gui/models/serverslistmodel.h:76
 msgid "(NON FREE)"
-msgstr ""
+msgstr "(NELIBERA)"
 
 #. TRANSLATORS: server license comment
 #: src/gui/models/serverslistmodel.h:82
 msgid "(UNKNOWN)"
-msgstr ""
+msgstr "(NEKONATA)"
 
 #. TRANSLATORS: buy dialog sort type.
 #: src/gui/models/sortlistmodelbuy.h:33
@@ -1279,7 +1279,7 @@ msgstr "laŭ nomo"
 #. TRANSLATORS: inventory sort mode
 #: src/gui/models/sortlistmodelbuy.h:39 src/gui/models/sortlistmodelinv.h:36
 msgid "by id"
-msgstr "laŭ identigaĵo"
+msgstr "laŭ identigilo"
 
 #. TRANSLATORS: buy dialog sort type.
 #. TRANSLATORS: inventory sort mode
@@ -1323,7 +1323,7 @@ msgstr "Normala"
 #. TRANSLATORS: update type
 #: src/gui/models/updatetypemodel.h:34
 msgid "Auto Close"
-msgstr "Aŭtomate Fermi"
+msgstr "Memfare Fermi"
 
 #. TRANSLATORS: update type
 #: src/gui/models/updatetypemodel.h:36
@@ -1346,13 +1346,13 @@ msgstr "Intimeco: %d"
 #: src/gui/popups/beingpopup.cpp:181
 #, c-format
 msgid "Group: %s (%d)"
-msgstr ""
+msgstr "Grupo: %s (%d)"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:192
 #, c-format
 msgid "Party: %s"
-msgstr "Partio: %s"
+msgstr "Bando: %s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:202
@@ -1364,7 +1364,7 @@ msgstr "Gildo: %s"
 #: src/gui/popups/beingpopup.cpp:212
 #, c-format
 msgid "Clan: %s"
-msgstr ""
+msgstr "Klano: %s"
 
 #. TRANSLATORS: being popup label
 #: src/gui/popups/beingpopup.cpp:222
@@ -1744,7 +1744,7 @@ msgstr "Aldoni nomon al retbabilo"
 #: src/gui/windows/connectiondialog.cpp:52
 #: src/gui/windows/editserverdialog.cpp:68
 #: src/gui/windows/itemamountwindow.cpp:221
-#: src/gui/windows/pincodedialog.cpp:59 src/gui/windows/quitdialog.cpp:69
+#: src/gui/windows/pincodedialog.cpp:54 src/gui/windows/quitdialog.cpp:69
 #: src/gui/windows/registerdialog.cpp:66 src/gui/windows/setupwindow.cpp:106
 #: src/gui/windows/textcommandeditor.cpp:108 src/gui/windows/textdialog.cpp:61
 #: src/gui/windows/updaterwindow.cpp:194 src/input/pages/gui.cpp:103
@@ -1762,7 +1762,7 @@ msgstr "Ludantoj"
 #: src/gui/popups/popupmenu.cpp:648 src/gui/popups/popupmenu.cpp:2657
 #: src/gui/popups/popupmenu.cpp:2682
 msgid "Kick from party"
-msgstr "Eksigi el partio"
+msgstr "Forpeli el bando"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: pickup item from ground
@@ -1954,7 +1954,7 @@ msgstr "Ludantaj"
 #. TRANSLATORS: show emotes for pet
 #: src/gui/popups/popupmenu.cpp:1229
 msgid "Pet"
-msgstr "Dorlotbesto"
+msgstr "Kunbesto"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show emotes for homuncules
@@ -2207,7 +2207,7 @@ msgstr "Scipovo"
 #. TRANSLATORS: add skill to shortcurs tab
 #: src/gui/popups/popupmenu.cpp:2282
 msgid "Add skill shortcut"
-msgstr ""
+msgstr "Aldoni scipovan fulmoklavon"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: set skill level
@@ -2366,7 +2366,7 @@ msgstr "Vendi (?)"
 #. TRANSLATORS: invite player to party
 #: src/gui/popups/popupmenu.cpp:2651 src/gui/popups/popupmenu.cpp:2676
 msgid "Invite to party"
-msgstr "Inviti en partion"
+msgstr "Inviti en bandon"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: invite player to party
@@ -2538,7 +2538,7 @@ msgstr "Revoki"
 #. TRANSLATORS: recall all party members to player location
 #: src/gui/popups/popupmenu.cpp:3009
 msgid "Recall party"
-msgstr "Revoki partion"
+msgstr "Revoki bandon"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: recall all guild members to player location
@@ -2550,7 +2550,7 @@ msgstr "Revoki gildon"
 #. TRANSLATORS: give party leader status
 #: src/gui/popups/popupmenu.cpp:3030
 msgid "Give party leader"
-msgstr "Doni rangon de partiestro"
+msgstr "Doni rangon de bandestro"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: show menu
@@ -2702,8 +2702,8 @@ msgstr "Generi sklavon"
 #: src/gui/popups/popupmenu.cpp:3316 src/gui/popups/popupmenu.cpp:3345
 #: src/gui/popups/popupmenu.cpp:3364 src/gui/windows/charselectdialog.cpp:81
 #: src/gui/windows/clanwindow.cpp:63 src/gui/windows/serverdialog.cpp:122
-#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:449
-#: src/net/eathena/charserverrecv.cpp:485
+#: src/net/ea/charserverrecv.cpp:130 src/net/eathena/charserverrecv.cpp:435
+#: src/net/eathena/charserverrecv.cpp:471
 msgid "Info"
 msgstr "Informoj"
 
@@ -2783,7 +2783,7 @@ msgstr "Poŝti al..."
 #. TRANSLATORS: catch pet command
 #: src/gui/popups/popupmenu.cpp:3496
 msgid "Taming pet"
-msgstr "Dresi dorlotbeston"
+msgstr "Dresi kunbeston"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: adopt child command
@@ -2795,14 +2795,14 @@ msgstr "Filigi"
 #. TRANSLATORS: leave party
 #: src/gui/popups/popupmenu.cpp:3518
 msgid "Leave party"
-msgstr "Eliri el partio"
+msgstr "Eliri el bando"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: create party
 #. TRANSLATORS: dialog header
 #: src/gui/popups/popupmenu.cpp:3524 src/progs/manaplus/actions/chat.cpp:362
 msgid "Create party"
-msgstr "Krei partion"
+msgstr "Krei bandon"
 
 #. TRANSLATORS: popup menu item
 #. TRANSLATORS: leave guild
@@ -2821,7 +2821,7 @@ msgstr "Krei gildon"
 #. TRANSLATORS: change guild notice message
 #: src/gui/popups/popupmenu.cpp:3562
 msgid "Change notice"
-msgstr "Ŝanĝi avizon"
+msgstr "Ŝanĝi sciigon"
 
 #. TRANSLATORS: skill level
 #: src/gui/popups/skillpopup.cpp:145
@@ -2977,7 +2977,7 @@ msgstr "Scipova elemento"
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:235
 msgid "Party members"
-msgstr "Partianoj"
+msgstr "Bandanoj"
 
 #. TRANSLATORS: palette color
 #: src/gui/userpalette.cpp:241
@@ -3298,7 +3298,7 @@ msgstr "-"
 #. TRANSLATORS: sell dialog label
 #. TRANSLATORS: buy dialog label
 #: src/gui/widgets/selldialog.cpp:165 src/gui/widgets/selldialog.cpp:391
-#: src/gui/windows/buydialog.cpp:319 src/gui/windows/buydialog.cpp:760
+#: src/gui/windows/buydialog.cpp:319 src/gui/windows/buydialog.cpp:768
 #, c-format
 msgid "Price: %s / Total: %s"
 msgstr "Kosto: %s / Entute: %s"
@@ -3356,7 +3356,7 @@ msgstr "%s eksterretiĝis."
 #: src/gui/widgets/tabs/chat/clantab.cpp:39 src/gui/windowmenu.cpp:227
 #: src/gui/windows/clanwindow.cpp:41
 msgid "Clan"
-msgstr ""
+msgstr "Klano"
 
 #. TRANSLATORS: guild chat tab name
 #. TRANSLATORS: tab in social window
@@ -3382,27 +3382,27 @@ msgstr "Lingva"
 #: src/gui/widgets/tabs/chat/partytab.cpp:48
 #: src/gui/widgets/tabs/socialpartytab.h:54
 msgid "Party"
-msgstr "Partio"
+msgstr "Bando"
 
 #. TRANSLATORS: not in clan label
 #: src/gui/widgets/tabs/clanwindowtabs.cpp:57
 msgid "Not in clan"
-msgstr ""
+msgstr "Sen klano"
 
 #. TRANSLATORS: clan name label
 #: src/gui/widgets/tabs/clanwindowtabs.cpp:66
 msgid "Clan name"
-msgstr ""
+msgstr "Nomo de klano"
 
 #. TRANSLATORS: clan master name label
 #: src/gui/widgets/tabs/clanwindowtabs.cpp:70
 msgid "Master name"
-msgstr ""
+msgstr "Nomo de klanestro"
 
 #. TRANSLATORS: clan map name label
 #: src/gui/widgets/tabs/clanwindowtabs.cpp:74
 msgid "Map name"
-msgstr ""
+msgstr "Nomo de mapo"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:54
@@ -3557,7 +3557,7 @@ msgstr "Celo:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:362
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:429
 msgid "Target Id:"
-msgstr "Identigaĵo de Celo:"
+msgstr "Identigilo de Celo:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:301
@@ -3580,7 +3580,7 @@ msgstr "Gento de celo:"
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:307
 msgid "Target party:"
-msgstr "Partio de celo:"
+msgstr "Bando de celo:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:309
@@ -3648,7 +3648,7 @@ msgstr "Nivelo de Celo:"
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:384
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:435
 msgid "Target Party:"
-msgstr "Partio de Celo:"
+msgstr "Bando de Celo:"
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/debugwindowtabs.cpp:388
@@ -3678,7 +3678,7 @@ msgstr "El: %d bajtoj/s"
 #. TRANSLATORS: audio tab in settings
 #: src/gui/widgets/tabs/setup_audio.cpp:48
 msgid "Audio"
-msgstr "Aŭdio"
+msgstr "Sono"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:56
@@ -3688,7 +3688,7 @@ msgstr "Bazaj agordoj"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:60
 msgid "Enable Audio"
-msgstr "Ŝalti Aŭdion"
+msgstr "Ŝalti Sonon"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:64
@@ -3723,7 +3723,7 @@ msgstr "Ŝalti fordissolvon de muziko"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:98
 msgid "Audio frequency"
-msgstr "Aŭdia frekvenco"
+msgstr "Sona frekvenco"
 
 #. TRANSLATORS: audio type
 #: src/gui/widgets/tabs/setup_audio.cpp:103
@@ -3748,12 +3748,12 @@ msgstr "ĉirkaŭa+centra+basa"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:111
 msgid "Audio channels"
-msgstr "Aŭdiaj kanaloj"
+msgstr "Sonaj kanaloj"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:118
 msgid "Parallel number of sounds"
-msgstr ""
+msgstr "Samtempa nombro da sonoj"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_audio.cpp:124
@@ -3763,12 +3763,12 @@ msgstr "Sonefikoj"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:128
 msgid "Information dialog sound"
-msgstr "Sono de informa dialogujo"
+msgstr "Sono de informa interagujo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:133
 msgid "Request dialog sound"
-msgstr "Sono de peta dialogujo"
+msgstr "Sono de peta interagujo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:138
@@ -3778,17 +3778,17 @@ msgstr "Sono de flustra mesaĝo"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:143
 msgid "Guild message sound"
-msgstr ""
+msgstr "Sono de gilda mesaĝo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:148
 msgid "Party message sound"
-msgstr ""
+msgstr "Sono de banda mesaĝo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:153
 msgid "Clan message sound"
-msgstr ""
+msgstr "Sono de klana mesaĝo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_audio.cpp:158
@@ -3838,7 +3838,7 @@ msgstr "Fenestro"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:52
 msgid "Auto hide chat window"
-msgstr "Aŭtomate kaŝi retbabilan fenestron"
+msgstr "Memfare kaŝi retbabilan fenestron"
 
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:54
@@ -3847,7 +3847,7 @@ msgid ""
 "\n"
 "Hit Enter or hover mouse to show chat again."
 msgstr ""
-"Retbabila fenestro neuzata aŭtomate kaŝiĝos.\n"
+"Retbabila fenestro neuzata memfare kaŝiĝos.\n"
 "\n"
 "Premu enigan klavon por remontri ĝin."
 
@@ -4013,13 +4013,13 @@ msgid ""
 "If this setting enabled, client will load old chat tabs content from logs on "
 "startup instead of starting with empty chat tabs."
 msgstr ""
-"Se ŝaltita, la kliento ŝarĝos protokolojn de retbabilaj langedoj anstataŭ "
+"Se ŝaltita, la kliento enlegos protokolojn de retbabilaj langedoj anstataŭ "
 "komenco kun malplenaj langetoj."
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:158
 msgid "Show party online messages"
-msgstr "Montri mesaĝojn pri partiaj enretiĝoj"
+msgstr "Montri mesaĝojn pri bandaj enretiĝoj"
 
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:160
@@ -4030,8 +4030,8 @@ msgid ""
 "This adds some extra noise to chat, but allows one to see when your buddies "
 "are coming online."
 msgstr ""
-"Se ŝaltita, ŝanĝoj de enreta stato de partianoj montriĝos en la partia "
-"langeto de retbabilo.\n"
+"Se ŝaltita, ŝanĝoj de enreta stato de bandanoj montriĝos en la banda langeto "
+"de retbabilo.\n"
 "\n"
 "Tio ĉi aldonas iom bruo al la retbabilo, set permasas vin vidi kiam viaj "
 "kompanoj enretiĝas."
@@ -4039,7 +4039,7 @@ msgstr ""
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:167
 msgid "Show guild online messages"
-msgstr "Montri mesaĝojn pri partiaj enretiĝoj"
+msgstr "Montri mesaĝojn pri bandaj enretiĝoj"
 
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:169
@@ -4294,7 +4294,7 @@ msgid ""
 "\n"
 "Note: its mostly about jumpy attitude vs less usable space for text."
 msgstr ""
-"Se ŝaltita, teksto en retbabilejo aŭtomate adaptiĝos al stato de retbabila "
+"Se ŝaltita, teksto en retbabilejo memfare adaptiĝos al stato de retbabila "
 "enigejo kiam vi entajpantos mesaĝon kaj kiam la enigejo de retbabilejo "
 "malaperos (neentajpata). Se malŝaltita, enigejo ĉiam okupos sian spacon, kiu "
 "aliel povus okupitiĝi per teksto.\n"
@@ -4347,7 +4347,7 @@ msgstr ""
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_chat.cpp:338
 msgid "Globals ignore names (separated by comma)"
-msgstr "Malatenti avizojn laŭ nomoj (perkome disigitaj)"
+msgstr "Malatenti sciigojn laŭ nomoj (perkome disigitaj)"
 
 #. TRANSLATORS: settings description
 #: src/gui/widgets/tabs/setup_chat.cpp:340
@@ -4378,7 +4378,7 @@ msgid ""
 "default."
 msgstr ""
 "Se ŝaltita, butono aperos apud tekst-enigejo. Tiu ĉi butono alvokas "
-"fenestreton, kie oni povas facile enmeti eksentojn mienetojn kaj aranĝi "
+"fenestreton, kie oni povas facile enmeti eksentojn mienojn kaj aranĝi "
 "tekston.\n"
 "\n"
 "Komento: la saman fenestreton oni povas alvoki dum tajpado, implicite per la "
@@ -4474,7 +4474,7 @@ msgstr "Malatribui"
 #. TRANSLATORS: button in input settings tab
 #: src/gui/widgets/tabs/setup_input.cpp:74
 msgid "Reset all keys"
-msgstr "Reŝarĝi ĉiujn klavojn"
+msgstr "Enlegi ĉiujn klavojn"
 
 #. TRANSLATORS: setting tab name
 #: src/gui/widgets/tabs/setup_input.cpp:84
@@ -4553,12 +4553,12 @@ msgstr "Ĉiam montri"
 #. TRANSLATORS: show buttons at top right corner type
 #: src/gui/widgets/tabs/setup_misc.cpp:52
 msgid "Auto hide in small resolution"
-msgstr "Aŭtomate kaŝi en malgranda distingvo"
+msgstr "Memfare kaŝi en malgranda distingvo"
 
 #. TRANSLATORS: show buttons at top right corner type
 #: src/gui/widgets/tabs/setup_misc.cpp:54
 msgid "Always auto hide"
-msgstr "Ĉiam aŭtomate kaŝi"
+msgstr "Ĉiam memfare kaŝi"
 
 #. TRANSLATORS: Proxy type selection
 #: src/gui/widgets/tabs/setup_misc.cpp:62
@@ -4618,32 +4618,32 @@ msgstr "xxmulta"
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:102
 msgid "verbose"
-msgstr ""
+msgstr "parolema"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:104
 msgid "debug"
-msgstr ""
+msgstr "sencimigi"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:106
 msgid "info"
-msgstr ""
+msgstr "informo"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:108
 msgid "warn"
-msgstr ""
+msgstr "averto"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:110
 msgid "error"
-msgstr ""
+msgstr "eraro"
 
 #. TRANSLATORS: sdl2 log level
 #: src/gui/widgets/tabs/setup_misc.cpp:112
 msgid "critical"
-msgstr ""
+msgstr "grava"
 
 #. TRANSLATORS: misc tab in settings
 #: src/gui/widgets/tabs/setup_misc.cpp:126
@@ -4658,12 +4658,12 @@ msgstr "Montri difekton kaŭzitan al monstroj"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:142
 msgid "Auto target only reachable monsters"
-msgstr "Aŭtomate celi nur atingeblajn monstrojn"
+msgstr "Memfare celi nur atingeblajn monstrojn"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:147
 msgid "Select auto target for attack skills"
-msgstr "Aŭtomate elekti celon por atakaj scipovoj"
+msgstr "Memfare elekti celon por atakaj scipovoj"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:152
@@ -4743,7 +4743,7 @@ msgstr "Rulumada radiuso"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:223
 msgid "Auto resize minimaps"
-msgstr "Aŭtomate regrandigi mapetojn"
+msgstr "Memfare regrandigi mapetojn"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:228
@@ -4758,7 +4758,7 @@ msgstr "Movado"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:238
 msgid "Auto fix position"
-msgstr "Aŭtomate adapti pozicion"
+msgstr "Memfare adapti pozicion"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:243
@@ -4848,12 +4848,12 @@ msgstr "Ŝalti reklaman protokolon"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:334
 msgid "Enabled pets support"
-msgstr "Ŝalti dorlotbestojn"
+msgstr "Ŝalti kunbestojn"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:339
 msgid "Enable weight notifications"
-msgstr "Ŝalti avizojn pri pezo"
+msgstr "Ŝalti sciigojn pri pezo"
 
 #. TRANSLATORS: settings group
 #. TRANSLATORS: long button name for shop window.
@@ -4930,7 +4930,7 @@ msgstr "Propro ripeta intervalo"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:413
 msgid "Enable alt-tab workaround"
-msgstr ""
+msgstr "Ŝalti ĉirkaŭiron per alt-klavo kun taba klavo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:425
@@ -4940,7 +4940,7 @@ msgstr "Fulmoklavoj"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:430
 msgid "Show icons on shortcut buttons"
-msgstr ""
+msgstr "Montri bildsimbolojn sur fulmoklavaj butonoj"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_misc.cpp:436
@@ -4960,12 +4960,12 @@ msgstr "Prokura adreso:pordo"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:451
 msgid "Tunnel through HTTP proxy"
-msgstr ""
+msgstr "Tuneli tra HTTP-prokurilo"
 
 #. TRANSLATORS: settings group
 #: src/gui/widgets/tabs/setup_misc.cpp:457
 msgid "Logging"
-msgstr ""
+msgstr "Protokolado"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:461
@@ -5000,7 +5000,7 @@ msgstr "Ŝalti protokolon de enigo"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_misc.cpp:494
 msgid "SDL logging level"
-msgstr ""
+msgstr "Protokolada nivelo de SDL"
 
 #. TRANSLATORS: settings option
 #. TRANSLATORS: input action name
@@ -5082,8 +5082,8 @@ msgstr "Ne"
 
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: perfoamance tab quick button
-#: src/gui/widgets/tabs/setup_perfomance.cpp:61 src/progs/dyecmd/client.cpp:552
-#: src/progs/manaplus/client.cpp:918
+#: src/gui/widgets/tabs/setup_perfomance.cpp:61 src/progs/dyecmd/client.cpp:553
+#: src/progs/manaplus/client.cpp:919
 msgid "Performance"
 msgstr "Rendimento"
 
@@ -5095,7 +5095,7 @@ msgstr "Pli bona rendimento (ŝalti por pli bona rendimento)"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:83
 msgid "Auto adjust performance"
-msgstr "Aŭtomate ĝustigi rendimenton"
+msgstr "Memfare ĝustigi rendimenton"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:88
@@ -5120,7 +5120,7 @@ msgstr "Ŝalti kunmetitan prokraston de bildoj (Programa)"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:110
 msgid "Enable delayed images load (OpenGL)"
-msgstr "Ŝalti prokrastitan ŝarĝon de bildoj (OpenGL)"
+msgstr "Ŝalti prokrastitan enlegon de bildoj (OpenGL)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:115
@@ -5180,7 +5180,7 @@ msgstr "Diversaj agordoj (ŝalti aŭ malŝalti povas plibonigi rendimenton)"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:179
 msgid "Try first sdl driver (only for SDL2 default mode)"
-msgstr ""
+msgstr "Provu unuan pelilon de SDL (nur por la implicita reĝimo de SDL2)"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_perfomance.cpp:186
@@ -5257,12 +5257,12 @@ msgstr "montri dum elekto"
 #. TRANSLATORS: show on top or down
 #: src/gui/widgets/tabs/setup_players.cpp:71
 msgid "top"
-msgstr ""
+msgstr "supro"
 
 #. TRANSLATORS: show on top or down
 #: src/gui/widgets/tabs/setup_players.cpp:73
 msgid "bottom"
-msgstr ""
+msgstr "subo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:90
@@ -5297,12 +5297,12 @@ msgstr "Montri ludantajn nomojn"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:125
 msgid "Show player names at"
-msgstr ""
+msgstr "Montri nomojn de ludantoj je"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:131
 msgid "Auto move names"
-msgstr "Aŭtomate movi nomojn"
+msgstr "Memfare movi nomojn"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:137
@@ -5327,7 +5327,7 @@ msgstr "Montri statojn"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:157
 msgid "Show ip addresses on screenshots"
-msgstr "Montri ip adresojn sur ekrankopioj"
+msgstr "Montri ip-adresojn sur ekrankopioj"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:162
@@ -5347,7 +5347,7 @@ msgstr "Kaŝi forigitajn ludantajn kaŝnomojn"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:177
 msgid "Collect players id and seen log"
-msgstr "Kolekti identigaĵojn kaj vidajn protokolojn de ludantoj"
+msgstr "Kolekti identigilojn kaj vidajn protokolojn de ludantoj"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_players.cpp:182
@@ -5401,7 +5401,7 @@ msgstr "Rilato"
 #. TRANSLATORS: relation dialog button
 #: src/gui/widgets/tabs/setup_relations.cpp:73
 msgid "Allow trading"
-msgstr "Permesi negecon"
+msgstr "Permesi negocon"
 
 #. TRANSLATORS: relation dialog button
 #: src/gui/widgets/tabs/setup_relations.cpp:77
@@ -5500,8 +5500,8 @@ msgstr "i"
 
 #. TRANSLATORS: theme settings tab name
 #. TRANSLATORS: theme tab quick button
-#: src/gui/widgets/tabs/setup_theme.cpp:133 src/progs/dyecmd/client.cpp:558
-#: src/progs/manaplus/client.cpp:924
+#: src/gui/widgets/tabs/setup_theme.cpp:133 src/progs/dyecmd/client.cpp:559
+#: src/progs/manaplus/client.cpp:925
 msgid "Theme"
 msgstr "Etoso"
 
@@ -5635,7 +5635,7 @@ msgstr "Detekti plej bonan reĝimon"
 #. TRANSLATORS: video settings checkbox
 #: src/gui/widgets/tabs/setup_video.cpp:100
 msgid "High DPI"
-msgstr ""
+msgstr "Multaj punktoj cole"
 
 #. TRANSLATORS: video settings checkbox
 #: src/gui/widgets/tabs/setup_video.cpp:106
@@ -5659,8 +5659,8 @@ msgstr "Sen kadro"
 
 #. TRANSLATORS: video settings tab name
 #. TRANSLATORS: video tab quick button
-#: src/gui/widgets/tabs/setup_video.cpp:121 src/progs/dyecmd/client.cpp:555
-#: src/progs/manaplus/client.cpp:921
+#: src/gui/widgets/tabs/setup_video.cpp:121 src/progs/dyecmd/client.cpp:556
+#: src/progs/manaplus/client.cpp:922
 msgid "Video"
 msgstr "Video"
 
@@ -5714,24 +5714,23 @@ msgstr "Ŝanĝi OpenGL bezonas restartigon."
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:397
 msgid "Custom resolution (example: 1024x768)"
-msgstr "Propra distingivo (ekzemple: 1024:768)"
+msgstr "Propra distingo (ekzemple: 1024:768)"
 
 #. TRANSLATORS: resolution question dialog
 #: src/gui/widgets/tabs/setup_video.cpp:399
 msgid "Enter new resolution:                "
-msgstr "Enigu novan distingivon:                "
+msgstr "Enigu novan distingon:                "
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:428
 #: src/gui/widgets/tabs/setup_video.cpp:446
 msgid "Screen Resolution Changed"
-msgstr "Distingivo de Ekrano Ŝanĝita"
+msgstr "Distingo de Ekrano Ŝanĝita"
 
 #. TRANSLATORS: video settings warning
 #: src/gui/widgets/tabs/setup_video.cpp:432
 msgid "Some windows may be moved to fit the lowered resolution."
-msgstr ""
-"Iaj fenestroj eble moviĝos por konformi al la pli malgranda distingivo."
+msgstr "Iaj fenestroj eble moviĝos por konformi al la pli malgranda distingo."
 
 #. TRANSLATORS: speach type
 #: src/gui/widgets/tabs/setup_visual.cpp:43
@@ -5794,17 +5793,17 @@ msgstr "Skalo"
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:121
 msgid "Notifications"
-msgstr "Avizoj"
+msgstr "Sciigoj"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:125
 msgid "Show pickup notifications in chat"
-msgstr "Montri prenaj avizoj en retbabilejo"
+msgstr "Montri prenajn sciigojn en retbabilo"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:130
 msgid "Show pickup notifications as particle effects"
-msgstr "Montri prenaj avizoj kiel partiklaj efektoj"
+msgstr "Montri prenaj sciigojn kiel partiklajn efektojn"
 
 #. TRANSLATORS: settings option
 #: src/gui/widgets/tabs/setup_visual.cpp:135
@@ -5994,35 +5993,35 @@ msgstr "Pordoj: %u/%u"
 #: src/gui/widgets/tabs/socialpartytab.h:91
 #, c-format
 msgid "Invited user %s to party."
-msgstr "Invitis uzanton %s en partion."
+msgstr "Invitis uzanton %s en bandon."
 
 #. TRANSLATORS: tab in social window
 #: src/gui/widgets/tabs/socialpartytab.h:110
 #, c-format
 msgid "Party %s quit requested."
-msgstr "Partio %s eliro petita."
+msgstr "Bando %s eliro petita."
 
 #. TRANSLATORS: party invite message
 #: src/gui/widgets/tabs/socialpartytab.h:128
 msgid "Member Invite to Party"
-msgstr "Invito al Partio"
+msgstr "Invito al Bando"
 
 #. TRANSLATORS: party invite message
 #: src/gui/widgets/tabs/socialpartytab.h:130
 #, c-format
 msgid "Who would you like to invite to party %s?"
-msgstr "Kiun vi volas inviti al partio %s?"
+msgstr "Kiun vi volas inviti al bando %s?"
 
 #. TRANSLATORS: party leave message
 #: src/gui/widgets/tabs/socialpartytab.h:142
 msgid "Leave Party?"
-msgstr "Eliri el Partio?"
+msgstr "Ĉu Eliri el Bando?"
 
 #. TRANSLATORS: party leave message
 #: src/gui/widgets/tabs/socialpartytab.h:144
 #, c-format
 msgid "Are you sure you want to leave party %s?"
-msgstr "Ĉu vi certe volas eliri el partio %s?"
+msgstr "Ĉu vi certe volas eliri el bando %s?"
 
 #. TRANSLATORS: Pickup filter tab name in social window.
 #. TRANSLATORS: Should be small
@@ -6065,7 +6064,7 @@ msgstr "HEL"
 #. TRANSLATORS: help window name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/windowmenu.cpp:92 src/gui/windows/helpwindow.cpp:57
-#: src/progs/dyecmd/client.cpp:564 src/progs/manaplus/client.cpp:930
+#: src/progs/dyecmd/client.cpp:565 src/progs/manaplus/client.cpp:931
 msgid "Help"
 msgstr "Helpo"
 
@@ -6094,7 +6093,7 @@ msgstr "Mortiga statistiko"
 #. TRANSLATORS: long button name for emotes window.
 #: src/gui/windowmenu.cpp:109
 msgid "Smilies"
-msgstr "Mienetoj"
+msgstr "Mienoj"
 
 #. TRANSLATORS: short button name for chat window.
 #: src/gui/windowmenu.cpp:112
@@ -6233,18 +6232,18 @@ msgstr "Poŝto"
 #. TRANSLATORS: short button name for clan window.
 #: src/gui/windowmenu.cpp:224
 msgid "CL"
-msgstr ""
+msgstr "KL"
 
 #. TRANSLATORS: short button name for server info window.
 #: src/gui/windowmenu.cpp:230
 msgid "SI"
-msgstr ""
+msgstr "SI"
 
 #. TRANSLATORS: long button name for server info window.
 #. TRANSLATORS: servers dialog name
 #: src/gui/windowmenu.cpp:233 src/gui/windows/serverinfowindow.cpp:41
 msgid "Server info"
-msgstr ""
+msgstr "Servilaj informoj"
 
 #. TRANSLATORS: short button name for debug window.
 #: src/gui/windowmenu.cpp:236
@@ -6265,7 +6264,7 @@ msgstr "AG"
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: setup tab quick button
 #: src/gui/windowmenu.cpp:256 src/gui/windows/setupwindow.cpp:67
-#: src/progs/dyecmd/client.cpp:549 src/progs/manaplus/client.cpp:915
+#: src/progs/dyecmd/client.cpp:550 src/progs/manaplus/client.cpp:916
 msgid "Setup"
 msgstr "Agordoj"
 
@@ -6286,7 +6285,7 @@ msgstr "Mono en banko: %s"
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:52
 msgid "Withdraw"
-msgstr "Retrati"
+msgstr "Repreni"
 
 #. TRANSLATORS: bank window button
 #: src/gui/windows/bankwindow.cpp:55
@@ -6371,11 +6370,11 @@ msgstr "La retpoŝtadresoj ne kongruas."
 #: src/gui/windows/charselectdialog.cpp:326
 #: src/gui/windows/editserverdialog.cpp:212
 #: src/gui/windows/registerdialog.cpp:253 src/net/ea/charserverrecv.cpp:105
-#: src/net/eathena/charserverrecv.cpp:426
-#: src/net/eathena/charserverrecv.cpp:430
-#: src/net/eathena/charserverrecv.cpp:512 src/net/tmwa/charserverrecv.cpp:291
-#: src/progs/manaplus/client.cpp:1413 src/progs/manaplus/client.cpp:1432
-#: src/progs/manaplus/client.cpp:1638
+#: src/net/eathena/charserverrecv.cpp:412
+#: src/net/eathena/charserverrecv.cpp:416
+#: src/net/eathena/charserverrecv.cpp:498 src/net/tmwa/charserverrecv.cpp:291
+#: src/progs/manaplus/client.cpp:1414 src/progs/manaplus/client.cpp:1433
+#: src/progs/manaplus/client.cpp:1639
 msgid "Error"
 msgstr "Eraro"
 
@@ -6509,7 +6508,7 @@ msgstr "B"
 #: src/gui/windows/charcreatedialog.cpp:293
 #: src/gui/windows/charcreatedialog.cpp:310
 msgid "H"
-msgstr ""
+msgstr "K"
 
 #. TRANSLATORS: one char size unknown character gender
 #: src/gui/windows/charcreatedialog.cpp:300
@@ -6569,7 +6568,7 @@ msgstr "Ludi"
 #. TRANSLATORS: change pincode button
 #: src/gui/windows/charselectdialog.cpp:128
 msgid "Change pin"
-msgstr ""
+msgstr "Ŝanĝi personan identigan numeron"
 
 #. TRANSLATORS: char select dialog name
 #: src/gui/windows/charselectdialog.cpp:165
@@ -6592,6 +6591,11 @@ msgid ""
 "Experience: %s\n"
 "Money: %s"
 msgstr ""
+"Sano: %u/%u\n"
+"Manao: %u/%u\n"
+"Nivelo: %u\n"
+"Sperto: %s\n"
+"Mono: %s"
 
 #. TRANSLATORS: error message
 #: src/gui/windows/charselectdialog.cpp:328
@@ -6648,12 +6652,12 @@ msgstr "Difekta kaŝnomo detektita: "
 #. TRANSLATORS: clan window tab
 #: src/gui/windows/clanwindow.cpp:67
 msgid "Ally"
-msgstr ""
+msgstr "Kunpacano"
 
 #. TRANSLATORS: clan window tab
 #: src/gui/windows/clanwindow.cpp:69
 msgid "Antagonist"
-msgstr ""
+msgstr "Kontraŭulo"
 
 #. TRANSLATORS: confirm dialog button
 #: src/gui/windows/confirmdialog.cpp:45
@@ -6683,7 +6687,7 @@ msgstr "Sekva >"
 #. TRANSLATORS: did you know window checkbox
 #: src/gui/windows/didyouknowwindow.cpp:67
 msgid "Auto open this window"
-msgstr "Aŭtomate malfermi tiun ĉi fenestron"
+msgstr "Memfare malfermi tiun ĉi fenestron"
 
 #. TRANSLATORS: edit server dialog name
 #: src/gui/windows/editserverdialog.cpp:47
@@ -6911,7 +6915,7 @@ msgstr "Nekonata."
 #. TRANSLATORS: kill stats window button
 #: src/gui/windows/killstats.cpp:54
 msgid "Reset stats"
-msgstr "Reŝarĝi atributojn"
+msgstr "Restarigi atributojn"
 
 #. TRANSLATORS: kill stats window button
 #: src/gui/windows/killstats.cpp:57
@@ -6981,7 +6985,7 @@ msgstr "Nivelo: %d je %f%%"
 #: src/gui/windows/killstats.cpp:133 src/gui/windows/killstats.cpp:257
 #, c-format
 msgid "Exp: %s/%s Left: %s"
-msgstr ""
+msgstr "Sperto: %s/%s Restas: %s"
 
 #. TRANSLATORS: kill stats window label
 #: src/gui/windows/killstats.cpp:139 src/gui/windows/killstats.cpp:265
@@ -7101,11 +7105,11 @@ msgstr "Montri poŝton"
 #. TRANSLATORS: mail view attach / items button
 #: src/gui/windows/mailviewwindow.cpp:57
 msgid "Get items"
-msgstr ""
+msgstr "Ricevi objektojn"
 
 #: src/gui/windows/mailviewwindow.cpp:57
 msgid "Get attach"
-msgstr "Akiri aldonaĵon"
+msgstr "Ricevi aldonaĵon"
 
 #. TRANSLATORS: mail view window button
 #: src/gui/windows/mailviewwindow.cpp:67
@@ -7125,7 +7129,7 @@ msgstr "De:"
 #. TRANSLATORS: mail view attached money button
 #: src/gui/windows/mailviewwindow.cpp:126
 msgid "Get money"
-msgstr ""
+msgstr "Ricevi monon"
 
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:68
@@ -7140,7 +7144,7 @@ msgstr "Nova"
 #. TRANSLATORS: mail window button
 #: src/gui/windows/mailwindow.cpp:76
 msgid "Get old"
-msgstr ""
+msgstr "Ricevi malnovajn"
 
 #: src/gui/windows/mailwindow.cpp:76
 msgid "Return"
@@ -7154,7 +7158,7 @@ msgstr "Malfermi"
 #. TRANSLATORS: expired mail message prefix
 #: src/gui/windows/mailwindow.cpp:200
 msgid "(expired)"
-msgstr ""
+msgstr "(senvalidiĝinta)"
 
 #. TRANSLATORS: status bar name
 #: src/gui/windows/ministatuswindow.cpp:73
@@ -7304,12 +7308,12 @@ msgstr "Konfirmi:"
 #. TRANSLATORS: register dialog. button.
 #: src/gui/windows/registerdialog.cpp:96
 msgid "Male"
-msgstr "Iĉa"
+msgstr "Iĉo"
 
 #. TRANSLATORS: register dialog. button.
 #: src/gui/windows/registerdialog.cpp:98
 msgid "Female"
-msgstr "Ina"
+msgstr "Ino"
 
 #. TRANSLATORS: register dialog. label.
 #: src/gui/windows/registerdialog.cpp:108
@@ -7354,7 +7358,7 @@ msgstr "Malĝusta retpoŝtadreso."
 #. TRANSLATORS: error message
 #: src/gui/windows/registerdialog.cpp:233
 msgid "Email too long."
-msgstr "Retpoŝtadreso tro longa."
+msgstr "Retpoŝtadreso estas tro longa."
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:99
@@ -7364,7 +7368,7 @@ msgstr "Elektu Vian Servilon"
 #. TRANSLATORS: servers dialog button
 #: src/gui/windows/serverdialog.cpp:120
 msgid "Load"
-msgstr "Ŝarĝi"
+msgstr "Enlegi"
 
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:134
@@ -7374,12 +7378,12 @@ msgstr "Elektu Vian Servilon *** SENDANĜERA REĜIMO ***"
 #. TRANSLATORS: servers dialog name
 #: src/gui/windows/serverdialog.cpp:140
 msgid "Choose Your Server  *** SOFTWARE RENDER MODE ***"
-msgstr ""
+msgstr "Elektu Vian Servilon *** REĜIMO DE PROGRAMA BILDIGO ***"
 
 #. TRANSLATORS: servers dialog checkbox
 #: src/gui/windows/serverdialog.cpp:150
 msgid "Use same ip for game sub servers"
-msgstr "Uzi la saman ip adreson por subludaj serviloj"
+msgstr "Uzi la saman ip-adreson por subludaj serviloj"
 
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:436
@@ -7405,7 +7409,7 @@ msgstr "Eraro ricevante liston de serviloj!"
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:618
 msgid "requires a newer version"
-msgstr "postuli novan version"
+msgstr "bezonas pli novan version"
 
 #. TRANSLATORS: servers dialog label
 #: src/gui/windows/serverdialog.cpp:623
@@ -7416,22 +7420,22 @@ msgstr "bezonas v%s"
 #. TRANSLATORS: server info comment
 #: src/gui/windows/serverinfowindow.cpp:103
 msgid "##BServer with free license."
-msgstr ""
+msgstr "##BServilo kun libera permesilo."
 
 #. TRANSLATORS: server info comment
 #: src/gui/windows/serverinfowindow.cpp:109
 msgid "##BServer with non free license."
-msgstr ""
+msgstr "##BServilo kun mallibera permesilo."
 
 #. TRANSLATORS: server info comment
 #: src/gui/windows/serverinfowindow.cpp:116
 msgid "##BServer unknown license."
-msgstr ""
+msgstr "##BServilo kun nekonata permesilo."
 
 #. TRANSLATORS: server info comment
 #: src/gui/windows/serverinfowindow.cpp:122
 msgid "Server"
-msgstr ""
+msgstr "Servilo"
 
 #. TRANSLATORS: server info comment
 #. TRANSLATORS: Skill type
@@ -7443,17 +7447,17 @@ msgstr "Subtena"
 #. TRANSLATORS: server info non free comment
 #: src/gui/windows/serverinfowindow.cpp:132
 msgid "##BNon free sources"
-msgstr ""
+msgstr "##BMalliberaj fontoj"
 
 #. TRANSLATORS: server info non free comment
 #: src/gui/windows/serverinfowindow.cpp:135
 msgid "##BFree sources"
-msgstr ""
+msgstr "##BLiberaj fontoj"
 
 #. TRANSLATORS: server info documentation comment
 #: src/gui/windows/serverinfowindow.cpp:138
 msgid "##BDocumentation"
-msgstr ""
+msgstr "##BDokumentaĵo"
 
 #. TRANSLATORS: setup button
 #: src/gui/windows/setupwindow.cpp:104
@@ -7605,13 +7609,13 @@ msgstr "Menuo"
 #: src/gui/windows/socialwindow.cpp:277
 #, c-format
 msgid "Accepted party invite from %s."
-msgstr "Akceptis partian inviton de %s."
+msgstr "Akceptis bandan inviton de %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:291
 #, c-format
 msgid "Rejected party invite from %s."
-msgstr "Rifuzis partian inviton de %s."
+msgstr "Rifuzis bandan inviton de %s."
 
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:311
@@ -7644,35 +7648,35 @@ msgstr "Akcepti Gildan Inviton"
 #. TRANSLATORS: chat message
 #: src/gui/windows/socialwindow.cpp:437
 msgid "Received party request, but one already exists."
-msgstr "Ricevis partian peton, sed unu jam ekzistas."
+msgstr "Ricevis bandan peton, sed unu jam ekzistas."
 
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:452
 msgid "You have been invited you to join a party."
-msgstr "Vi estas invitita en partion."
+msgstr "Vi estas invitita en bandon."
 
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:457
 #, c-format
 msgid "You have been invited to join the %s party."
-msgstr "Vi estis invitita en la partion %s."
+msgstr "Vi estis invitita en la bandon %s."
 
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:466
 #, c-format
 msgid "%s has invited you to join their party."
-msgstr "%s invitis vin en sian partion."
+msgstr "%s invitis vin en sian bandon."
 
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:472
 #, c-format
 msgid "%s has invited you to join the %s party."
-msgstr "%s invitis vin en la %s partion."
+msgstr "%s invitis vin en la bandon %s."
 
 #. TRANSLATORS: party invite message
 #: src/gui/windows/socialwindow.cpp:488
 msgid "Accept Party Invite"
-msgstr "Akcepti Partian Inviton"
+msgstr "Akcepti Bandan Inviton"
 
 #. TRANSLATORS: status window label
 #: src/gui/windows/statuswindow.cpp:78
@@ -7704,7 +7708,7 @@ msgstr "Lerto:"
 #: src/gui/windows/statuswindow.cpp:274
 #, c-format
 msgid "Level: %d (%s %d)"
-msgstr ""
+msgstr "Nivelo: %d (%s %d)"
 
 #. TRANSLATORS: command editor name
 #: src/gui/windows/textcommandeditor.cpp:56
@@ -8026,12 +8030,12 @@ msgstr "Ŝanĝi tipon de celado"
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:148
 msgid "Target pet"
-msgstr "Celi dorlotbeston"
+msgstr "Celi kunbeston"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:154
 msgid "Catch pet"
-msgstr "Kapti dorlotbeston"
+msgstr "Kapti kunbeston"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/basic.cpp:160
@@ -8126,12 +8130,12 @@ msgstr "Retbabileja modifa klavo"
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:49
 msgid "Scroll Chat Up"
-msgstr "Rulumu Retbabilon Supren"
+msgstr "Rulumi Retbabilon Supren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:55
 msgid "Scroll Chat Down"
-msgstr "Rulumu Retbabilon Suben"
+msgstr "Rulumi Retbabilon Suben"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:67
@@ -8191,7 +8195,7 @@ msgstr "Elekti lingvan langeton"
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:133
 msgid "Select party tab"
-msgstr "Elekti partian langeton"
+msgstr "Elekti bandan langeton"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:139
@@ -8226,12 +8230,12 @@ msgstr "Sekva retbabila linio"
 #. TRANSLATORS: input action group
 #: src/input/pages/chat.cpp:181
 msgid "Smiles"
-msgstr "Mienetoj"
+msgstr "Mienoj"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/chat.cpp:187
 msgid "Show smiles"
-msgstr "Montri mienetojn"
+msgstr "Montri mienojn"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/craft.cpp:32 src/input/pages/craft.cpp:38
@@ -8256,7 +8260,7 @@ msgstr "Miena modifa klavo"
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:47
 msgid "Pet emote modifier key"
-msgstr "Dorlotbesta miena modifa klavo"
+msgstr "Kunbesta miena modifa klavo"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:53
@@ -8300,7 +8304,7 @@ msgstr "Miena Fulmoklavo %d"
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:358
 msgid "Pet emote shortcuts"
-msgstr "Dorlotbestaj mienaj fulmoklavoj"
+msgstr "Kunbestaj mienaj fulmoklavoj"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/emotes.cpp:364 src/input/pages/emotes.cpp:370
@@ -8329,7 +8333,7 @@ msgstr "Dorlotbestaj mienaj fulmoklavoj"
 #: src/input/pages/emotes.cpp:640 src/input/pages/emotes.cpp:646
 #, c-format
 msgid "Pet emote shortcut %d"
-msgstr "Dorlotbesta miena fulmoklavo %d"
+msgstr "Kunbesta miena fulmoklavo %d"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/gui.cpp:31
@@ -8434,32 +8438,32 @@ msgstr "Movi ludanton antaŭen"
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:71
 msgid "Move pet up"
-msgstr "Movi dorlotbeston supren"
+msgstr "Movi kunbeston supren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:77
 msgid "Move pet down"
-msgstr "Movi dorlotbeston suben"
+msgstr "Movi kunbeston suben"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:83
 msgid "Move pet left"
-msgstr "Movi dorlotbeston maldekstren"
+msgstr "Movi kunbeston maldekstren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:89
 msgid "Move pet right"
-msgstr "Movi dorlotbeston dekstren"
+msgstr "Movi kunbeston dekstren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:95
 msgid "Move homunculus to master"
-msgstr ""
+msgstr "Movi artohomon al mastro"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:101
 msgid "Move mercenary to master"
-msgstr ""
+msgstr "Movi lusoldaton al mastro"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/move.cpp:107
@@ -8538,22 +8542,22 @@ msgstr "Direkti ludanton dekstren"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:82
 msgid "Pet direct up"
-msgstr "Direkti dorlotbeston supren"
+msgstr "Direkti kunbeston supren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:88
 msgid "Pet direct down"
-msgstr "Direkti dorlotbeston suben"
+msgstr "Direkti kunbeston suben"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:94
 msgid "Pet direct left"
-msgstr "Direkti dorlotbeston maldekstren"
+msgstr "Direkti kunbeston maldekstren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:100
 msgid "Pet direct right"
-msgstr "Direkti dorlotbeston dekstren"
+msgstr "Direkti kunbeston dekstren"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:112
@@ -8643,7 +8647,7 @@ msgstr "Malŝalti / Ŝalti Ludajn modifajn klavojn"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:214
 msgid "On / Off audio"
-msgstr "Ek / For aŭdio"
+msgstr "Ek / For sono"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:220
@@ -8703,7 +8707,7 @@ msgstr "Listigi ĉiujn videblajn estaĵojn en letbabilejo"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:286
 msgid "Load shop items list from disk"
-msgstr "Ŝarĝi liston de butikaj objektoj de disko"
+msgstr "Enlegi liston de butikaj objektoj de disko"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:292
@@ -8808,37 +8812,37 @@ msgstr "Maldungi vian lusoldaton"
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:420
 msgid "Pet ai start"
-msgstr "Komencigi dorlotbestan AI-on"
+msgstr "Komencigi kunbestan AI-on"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:426
 msgid "Pet ai stop"
-msgstr "Haltigi dorlotbestan AI-on"
+msgstr "Haltigi kunbestan AI-on"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:432
 msgid "Feed homunculus"
-msgstr ""
+msgstr "Manĝigi artohomon"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:438
 msgid "Feed pet"
-msgstr ""
+msgstr "Manĝigi kunbeston"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:444
 msgid "Drop pet's loot"
-msgstr ""
+msgstr "Demeti prenaĵon de kunbesto"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:450
 msgid "Return pet to egg"
-msgstr ""
+msgstr "Remeti kunbeston en ovon"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/other.cpp:456
 msgid "Unequip pet"
-msgstr ""
+msgstr "Malsurhavi kunbeston"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/outfits.cpp:35
@@ -8962,7 +8966,7 @@ msgstr "Helpa Fenestro"
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:70
 msgid "Server Info Window"
-msgstr ""
+msgstr "Servile Informa Fenestro"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:76
@@ -9067,17 +9071,17 @@ msgstr "Ĝisdatiga Fenestro"
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:196
 msgid "Cart window"
-msgstr "Ĉara fenestro"
+msgstr "Ĉara Fenestro"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:202
 msgid "Quick settings window"
-msgstr "Rapida agorda fenestro"
+msgstr "Rapide Agorda Fenestro"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:208
 msgid "Clan window"
-msgstr ""
+msgstr "Klana Fenestro"
 
 #. TRANSLATORS: input action name
 #: src/input/pages/windows.cpp:220
@@ -9133,7 +9137,7 @@ msgstr ""
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:55
 msgid "Cannot use this ID."
-msgstr "Ne eblas uzi tiun ĉi identigaĵon."
+msgstr "Ne eblas uzi tiun ĉi identigilon."
 
 #. TRANSLATORS: error message
 #: src/net/ea/charserverrecv.cpp:59
@@ -9211,7 +9215,7 @@ msgstr "Peto ĉesi rifuzita!"
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:76 src/net/eathena/loginrecv.cpp:69
 msgid "Unregistered ID."
-msgstr "Nerestrigita identigaĵo."
+msgstr "Nerestrigita identigilo."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:80 src/net/eathena/loginrecv.cpp:73
@@ -9270,7 +9274,7 @@ msgstr "Uzantnomo daŭre forigita."
 
 #. TRANSLATORS: error message
 #: src/net/ea/loginrecv.cpp:129 src/net/eathena/loginrecv.cpp:129
-#: src/net/eathena/loginrecv.cpp:235 src/net/tmwa/loginrecv.cpp:128
+#: src/net/eathena/loginrecv.cpp:235 src/net/tmwa/loginrecv.cpp:130
 msgid "Unknown error."
 msgstr "Nekonata eraro."
 
@@ -9291,33 +9295,33 @@ msgstr "Konekto al servilo finita. "
 
 #. TRANSLATORS: error message
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:428
-#: src/net/eathena/charserverrecv.cpp:476
+#: src/net/eathena/charserverrecv.cpp:414
+#: src/net/eathena/charserverrecv.cpp:462
 msgid "Character rename error."
 msgstr "Eraro renomi avataron."
 
 #. TRANSLATORS: info message
-#: src/net/eathena/charserverrecv.cpp:451
+#: src/net/eathena/charserverrecv.cpp:437
 msgid "Character renamed."
 msgstr "Avataro renomita."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:467
+#: src/net/eathena/charserverrecv.cpp:453
 msgid "Rename not allowed."
 msgstr "Renomo ne permesita."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:471
+#: src/net/eathena/charserverrecv.cpp:457
 msgid "New name is not set."
 msgstr "Nova nomo ne agordita."
 
 #. TRANSLATORS: char rename error
-#: src/net/eathena/charserverrecv.cpp:480
+#: src/net/eathena/charserverrecv.cpp:466
 msgid "Character not found."
 msgstr "Avataro ne trovita."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/charserverrecv.cpp:514 src/net/tmwa/charserverrecv.cpp:293
+#: src/net/eathena/charserverrecv.cpp:500 src/net/tmwa/charserverrecv.cpp:293
 msgid "Failed to delete character."
 msgstr "Malsukcesis forigi avataron."
 
@@ -9392,7 +9396,7 @@ msgstr "Iu alia provas uzi tiun ĉi konton."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:66 src/net/tmwa/generalrecv.cpp:66
 msgid "This account is already logged in."
-msgstr "Tiu ĉi konto jam estas ensalutita."
+msgstr "Tiu ĉi konto jam estas salutita."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:71 src/net/tmwa/generalrecv.cpp:71
@@ -9402,7 +9406,7 @@ msgstr "Rapideca trompo detektita."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:75
 msgid "Server full."
-msgstr "Servilo plena."
+msgstr "Servilo plenas."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:79
@@ -9512,12 +9516,12 @@ msgstr "Nepermesita raso."
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:165
 msgid "Access restricted in hours 00:00 to 06:00."
-msgstr ""
+msgstr "Atingo forbarita de 00:00 ĝis 06:00."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:169
 msgid "You was banned."
-msgstr ""
+msgstr "Vin forbaris oni."
 
 #. TRANSLATORS: error message
 #: src/net/eathena/generalrecv.cpp:173 src/net/tmwa/generalrecv.cpp:79
@@ -9584,7 +9588,7 @@ msgid "Guild castle: %s"
 msgstr "Gilda kastelo: %s"
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:866
+#: src/net/eathena/inventoryrecv.cpp:873
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr "Restas %s luotempo por objekto %s."
@@ -9593,24 +9597,24 @@ msgstr "Restas %s luotempo por objekto %s."
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: unknown item name
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:1230
-#: src/net/eathena/inventoryrecv.cpp:1363 src/net/eathena/mail2recv.cpp:207
+#: src/net/eathena/inventoryrecv.cpp:1239
+#: src/net/eathena/inventoryrecv.cpp:1374 src/net/eathena/mail2recv.cpp:204
 #: src/resources/db/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Nekonata objekto"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:223 src/net/tmwa/loginrecv.cpp:116
+#: src/net/eathena/loginrecv.cpp:223 src/net/tmwa/loginrecv.cpp:118
 msgid "Account was not found. Please re-login."
 msgstr "Konto ne trovita. Bonvolu resaluti."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:227 src/net/tmwa/loginrecv.cpp:120
+#: src/net/eathena/loginrecv.cpp:227 src/net/tmwa/loginrecv.cpp:122
 msgid "Old password incorrect."
 msgstr "Malnova pasvorto malĝusta."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/loginrecv.cpp:231 src/net/tmwa/loginrecv.cpp:124
+#: src/net/eathena/loginrecv.cpp:231 src/net/tmwa/loginrecv.cpp:126
 msgid "New password too short."
 msgstr "Nova pasvorto estas tro mallonga."
 
@@ -9621,90 +9625,90 @@ msgid "You have new mail from %s with subject %s"
 msgstr "Vi havas novan leteron de %s kun temo %s"
 
 #. TRANSLATORS: player killed message
-#: src/net/eathena/playerrecv.cpp:506
+#: src/net/eathena/playerrecv.cpp:507
 msgid "You were killed by unknown source."
 msgstr "Vin mortigis nekonataĵo."
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:304
+#: src/net/eathena/skillrecv.cpp:306
 #, c-format
 msgid "Unknown skill error: %d"
 msgstr "Eraro de nekonata scipovo: %d"
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:317
+#: src/net/eathena/skillrecv.cpp:319
 #, c-format
 msgid "Unknown skill error: %d."
 msgstr "Eraro de nekonata scipovo: %d."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:326 src/net/tmwa/skillrecv.cpp:146
+#: src/net/eathena/skillrecv.cpp:328 src/net/tmwa/skillrecv.cpp:146
 msgid "You have not yet reached a high enough lvl!"
 msgstr "Vi ankoraŭ ne atingis sufiĉe altan nivelon!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:330 src/net/tmwa/skillrecv.cpp:150
+#: src/net/eathena/skillrecv.cpp:332 src/net/tmwa/skillrecv.cpp:150
 msgid "Insufficient HP!"
 msgstr "Nesufiĉa sano!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:334 src/net/tmwa/skillrecv.cpp:154
+#: src/net/eathena/skillrecv.cpp:336 src/net/tmwa/skillrecv.cpp:154
 msgid "Insufficient SP!"
 msgstr "Nesufiĉa manao!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:338 src/net/tmwa/skillrecv.cpp:158
+#: src/net/eathena/skillrecv.cpp:340 src/net/tmwa/skillrecv.cpp:158
 msgid "You have no memos!"
 msgstr "Vi ne havas memorigilojn!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:342 src/net/tmwa/skillrecv.cpp:162
+#: src/net/eathena/skillrecv.cpp:344 src/net/tmwa/skillrecv.cpp:162
 msgid "You cannot do that right now!"
 msgstr "Vi ne povas fari tion nun!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:346 src/net/tmwa/skillrecv.cpp:166
+#: src/net/eathena/skillrecv.cpp:348 src/net/tmwa/skillrecv.cpp:166
 msgid "Seems you need more money... ;-)"
 msgstr "Ŝajnas, ke vi bezonas pli multe da mono... ;-)"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:350 src/net/tmwa/skillrecv.cpp:170
+#: src/net/eathena/skillrecv.cpp:352 src/net/tmwa/skillrecv.cpp:170
 msgid "You cannot use this skill with that kind of weapon!"
 msgstr "Vi ne povas uzi tiun ĉi scipovon kun tia armilo!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:355 src/net/tmwa/skillrecv.cpp:175
+#: src/net/eathena/skillrecv.cpp:357 src/net/tmwa/skillrecv.cpp:175
 msgid "You need another red gem!"
 msgstr "Vi bezonas pluan ruĝan brilianton!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:359 src/net/tmwa/skillrecv.cpp:179
+#: src/net/eathena/skillrecv.cpp:361 src/net/tmwa/skillrecv.cpp:179
 msgid "You need another blue gem!"
 msgstr "Vi bezonas pluan bluan brilianton!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:363 src/net/tmwa/skillrecv.cpp:183
+#: src/net/eathena/skillrecv.cpp:365 src/net/tmwa/skillrecv.cpp:183
 msgid "You're carrying to much to do this!"
 msgstr "Vi portas tro multe por fari tion!"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:367
+#: src/net/eathena/skillrecv.cpp:369
 msgid "Fail summon."
 msgstr "Malsukcesa voko."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/skillrecv.cpp:371
+#: src/net/eathena/skillrecv.cpp:373
 msgid "Need spirits."
 msgstr "Bezonas feojn."
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:381
+#: src/net/eathena/skillrecv.cpp:382
 #, c-format
 msgid "Need equipment %s."
 msgstr "Bezonas surhavatan %s."
 
 #. TRANSLATORS: skill error message
-#: src/net/eathena/skillrecv.cpp:387
+#: src/net/eathena/skillrecv.cpp:388
 #, c-format
 msgid "Need equipment %s and amount %d"
 msgstr "Bezonas surhavatan %s kaj nombron %d"
@@ -9732,13 +9736,13 @@ msgid "Select warp target"
 msgstr "Elekti varpan celon"
 
 #. TRANSLATORS: vending sold item message
-#: src/net/eathena/vendingrecv.cpp:262
+#: src/net/eathena/vendingrecv.cpp:267
 #, c-format
 msgid "Sold item %s amount %d. You got: %s"
 msgstr "Vendis %s nombro %d. Vi ricevis: %s"
 
 #. TRANSLATORS: vending sold item message
-#: src/net/eathena/vendingrecv.cpp:270
+#: src/net/eathena/vendingrecv.cpp:275
 #, c-format
 msgid "Sold item %s amount %d"
 msgstr "Vendis %s nombro %d"
@@ -9808,7 +9812,7 @@ msgstr "Malsukcesis kreo de retbabilejo!"
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:129
 msgid "Could not join party!"
-msgstr "Malsukcesis aliĝi al partio!"
+msgstr "Malsukcesis aliĝi al bando!"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:133
@@ -9837,49 +9841,49 @@ msgstr "Veneno malefikis..."
 
 #. TRANSLATORS: dialog caption
 #. TRANSLATORS: error header
-#: src/pincodemanager.cpp:78 src/pincodemanager.cpp:143
-#: src/pincodemanager.cpp:202
+#: src/pincodemanager.cpp:79 src/pincodemanager.cpp:144
+#: src/pincodemanager.cpp:203
 msgid "Pincode"
-msgstr ""
+msgstr "Persona identiga numero"
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:80
+#: src/pincodemanager.cpp:81
 msgid "Enter pincode"
-msgstr ""
+msgstr "Enigu personan identigan numeron"
 
 #. TRANSLATORS: dialog caption
-#: src/pincodemanager.cpp:91 src/pincodemanager.cpp:127
+#: src/pincodemanager.cpp:92 src/pincodemanager.cpp:128
 msgid "New pincode"
-msgstr ""
+msgstr "Nova persona identiga numero"
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:93 src/pincodemanager.cpp:173
+#: src/pincodemanager.cpp:94 src/pincodemanager.cpp:174
 msgid "Enter new pincode"
-msgstr ""
+msgstr "Enigi novan personan identigan numeron"
 
 #. TRANSLATORS: dialog caption
-#: src/pincodemanager.cpp:105 src/pincodemanager.cpp:171
-#: src/pincodemanager.cpp:185
+#: src/pincodemanager.cpp:106 src/pincodemanager.cpp:172
+#: src/pincodemanager.cpp:186
 msgid "Change pincode"
-msgstr ""
+msgstr "Ŝanĝi personan identigan numeron"
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:107
+#: src/pincodemanager.cpp:108
 msgid "Enter old pincode"
-msgstr ""
+msgstr "Enigu malnovan personan identigan numeron"
 
 #. TRANSLATORS: dialog label
-#: src/pincodemanager.cpp:129 src/pincodemanager.cpp:187
+#: src/pincodemanager.cpp:130 src/pincodemanager.cpp:188
 msgid "Confirm new pincode"
-msgstr ""
+msgstr "Konfirmu novan personan identigan numeron"
 
 #. TRANSLATORS: error message
-#: src/pincodemanager.cpp:145 src/pincodemanager.cpp:204
+#: src/pincodemanager.cpp:146 src/pincodemanager.cpp:205
 msgid "Wrong pincode confirmation!"
-msgstr ""
+msgstr "Misa konfirmo de persona identiga numero!"
 
 #. TRANSLATORS: theme tab quick button
-#: src/progs/dyecmd/client.cpp:561 src/progs/manaplus/client.cpp:927
+#: src/progs/dyecmd/client.cpp:562 src/progs/manaplus/client.cpp:928
 msgid "About"
 msgstr "Pri"
 
@@ -9905,71 +9909,73 @@ msgstr "Dosiero alŝutita"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/progs/manaplus/actions/actions.cpp:1100
-#: src/progs/manaplus/actions/actions.cpp:1115
+#: src/progs/manaplus/actions/actions.cpp:1112
+#: src/progs/manaplus/actions/actions.cpp:1127
 msgid "Cache cleared"
-msgstr ""
+msgstr "Kaŝmemoro vakiĝis"
 
 #. TRANSLATORS: uptime command
-#: src/progs/manaplus/actions/actions.cpp:1313
-#: src/progs/manaplus/actions/actions.cpp:1321
+#: src/progs/manaplus/actions/actions.cpp:1325
+#: src/progs/manaplus/actions/actions.cpp:1333
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Daŭro de klienta funkciado: %s"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1385
-#: src/progs/manaplus/actions/actions.cpp:1394
+#: src/progs/manaplus/actions/actions.cpp:1397
+#: src/progs/manaplus/actions/actions.cpp:1406
 msgid "Resource images:"
-msgstr "Risurcaj bildoj:"
+msgstr "Rimedaj bildoj:"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1388
 #: src/progs/manaplus/actions/actions.cpp:1400
+#: src/progs/manaplus/actions/actions.cpp:1412
 msgid "Orphaned resource images:"
-msgstr ""
+msgstr "Orfaj rimedaj bildoj:"
 
 #. TRANSLATORS: dump environment command
-#: src/progs/manaplus/actions/actions.cpp:1499
+#: src/progs/manaplus/actions/actions.cpp:1511
 msgid "Environment variables dumped"
-msgstr "Mediaj variabloj ŝutitaj"
+msgstr "Mediaj variantoj ŝutitaj"
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1638
+#: src/progs/manaplus/actions/actions.cpp:1650
 msgid "Config uploaded to:"
-msgstr ""
+msgstr "Agordaro alŝutita al:"
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1648
+#: src/progs/manaplus/actions/actions.cpp:1660
 msgid "Server config Uploaded to:"
-msgstr ""
+msgstr "Servila agordaro alŝutita al:"
 
 #. TRANSLATORS: upload log chat message
-#: src/progs/manaplus/actions/actions.cpp:1658
+#: src/progs/manaplus/actions/actions.cpp:1670
 msgid "Log uploaded to:"
-msgstr ""
+msgstr "Protokolo alŝutita al:"
 
 #. TRANSLATORS: last seen disabled warning
-#: src/progs/manaplus/actions/actions.cpp:1942
+#: src/progs/manaplus/actions/actions.cpp:1954
 msgid ""
 "Last seen disabled. Enable in players / collect players ID and seen log."
 msgstr ""
+"Lasta vido estas malŝaltita. Ŝaltu ĝin el ludantoj / kolekti identigilojn "
+"kaj vidojn de ludantoj."
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1963
+#: src/progs/manaplus/actions/actions.cpp:1975
 msgid "You have never seen this nick."
-msgstr ""
+msgstr "Vi neniam vidis ĉi tiun kaŝnomon."
 
 #. TRANSLATORS: last seen message
-#: src/progs/manaplus/actions/actions.cpp:1971
+#: src/progs/manaplus/actions/actions.cpp:1983
 #, c-format
 msgid "Last seen for %s: %s"
 msgstr "Lastatempe vidita dum %s: %s"
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1982
+#: src/progs/manaplus/actions/actions.cpp:1994
 msgid "You have not seen this nick before."
-msgstr ""
+msgstr "Vi ne vidis ĉi tiun kaŝnomon antaŭe."
 
 #. TRANSLATORS: whisper send
 #: src/progs/manaplus/actions/chat.cpp:279
@@ -10028,7 +10034,7 @@ msgstr "surhavata ĉapelo %s."
 #. TRANSLATORS: dialog header
 #: src/progs/manaplus/actions/chat.cpp:695
 msgid "Guild notice"
-msgstr "Gilda avizo"
+msgstr "Gilda sciigo"
 
 #. TRANSLATORS: translation error message
 #: src/progs/manaplus/actions/chat.cpp:747
@@ -10187,27 +10193,27 @@ msgstr "Kunhavado de sperto nekonata."
 #. TRANSLATORS: chat message
 #: src/progs/manaplus/actions/commands.cpp:1950
 msgid "Auto item sharing enabled."
-msgstr "Aŭtomata kunhavado de objektoj ŝaltita."
+msgstr "Memfara kunhavado de objektoj ŝaltita."
 
 #. TRANSLATORS: chat message
 #: src/progs/manaplus/actions/commands.cpp:1957
 msgid "Auto item sharing disabled."
-msgstr "Aŭtomata kunhavado de objektoj malŝaltita."
+msgstr "Memfara kunhavado de objektoj malŝaltita."
 
 #. TRANSLATORS: chat message
 #: src/progs/manaplus/actions/commands.cpp:1964
 msgid "Auto item sharing not possible."
-msgstr "Aŭtomata kunhavado de objektoj ne eblas."
+msgstr "Memfara kunhavado de objektoj ne eblas."
 
 #. TRANSLATORS: chat message
 #: src/progs/manaplus/actions/commands.cpp:1971
 msgid "Auto item sharing unknown."
-msgstr "Aŭtomata kunhavado de objektoj nekonata."
+msgstr "Memfara kunhavado de objektoj nekonata."
 
 #. TRANSLATORS: dialog header
 #: src/progs/manaplus/actions/pets.cpp:87
 msgid "Rename your pet"
-msgstr "Renomi vian dorlotbeston"
+msgstr "Renomi vian kunbeston"
 
 #. TRANSLATORS: disable trades message
 #: src/progs/manaplus/actions/statusbar.cpp:180
@@ -10220,57 +10226,57 @@ msgid "Accepting incoming trade requests"
 msgstr "Atentanta envenantajn negocajn petojn"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1130
+#: src/progs/manaplus/client.cpp:1131
 msgid "Connecting to server"
 msgstr "Konektanta al servilo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1189 src/unittests/gui/windowmanager.cc:830
+#: src/progs/manaplus/client.cpp:1190 src/unittests/gui/windowmanager.cc:830
 msgid "Logging in"
-msgstr "Ensalutanta"
+msgstr "Salutanta"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1239
+#: src/progs/manaplus/client.cpp:1240
 msgid "Entering game world"
 msgstr "Eniranta ludan mondon"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1300
+#: src/progs/manaplus/client.cpp:1301
 msgid "Requesting characters"
 msgstr "Petanta avatarojn"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1344
+#: src/progs/manaplus/client.cpp:1345
 msgid "Connecting to the game server"
 msgstr "Konektanta al la luda servilo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1356
+#: src/progs/manaplus/client.cpp:1357
 msgid "Changing game servers"
 msgstr "Ŝanĝanta ludajn servilojn"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1451
+#: src/progs/manaplus/client.cpp:1452
 msgid "Requesting registration details"
 msgstr "Petanta detalojn de registrado"
 
 #. TRANSLATORS: password change message header
-#: src/progs/manaplus/client.cpp:1498
+#: src/progs/manaplus/client.cpp:1499
 msgid "Password Change"
 msgstr "Ŝanĝo de Pasvorto"
 
 #. TRANSLATORS: password change message text
-#: src/progs/manaplus/client.cpp:1500
+#: src/progs/manaplus/client.cpp:1501
 msgid "Password changed successfully!"
 msgstr "Sukcese ŝanĝis pasvorton!"
 
 #. TRANSLATORS: email change message header
-#: src/progs/manaplus/client.cpp:1533
+#: src/progs/manaplus/client.cpp:1534
 msgid "Email Change"
 msgstr "Ŝanĝo de Retpoŝtadreso"
 
 #. TRANSLATORS: email change message text
-#: src/progs/manaplus/client.cpp:1535
+#: src/progs/manaplus/client.cpp:1536
 msgid "Email changed successfully!"
 msgstr "Sukcese ŝanĝis retpoŝtadreson!"
 
@@ -10334,7 +10340,7 @@ msgstr "sennoma"
 #. TRANSLATORS: unknown info name
 #: src/resources/db/petdb.cpp:103
 msgid "pet"
-msgstr "dorlotbesto"
+msgstr "kunbesto"
 
 #. TRANSLATORS: unknown info name
 #: src/resources/db/skillunitdb.cpp:102
@@ -10533,44 +10539,44 @@ msgstr "Ne eblas malsurhavi."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:152
 msgid "Couldn't create party."
-msgstr "Ne eblas krei partion."
+msgstr "Ne eblas krei bandon."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:156
 msgid "Party successfully created."
-msgstr "Sukcese kreis partion."
+msgstr "Sukcese kreis bandon."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:160
 msgid "You have left the party."
-msgstr "Vi eliris el la partio."
+msgstr "Vi eliris el la bando."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:164
 msgid "You can't leave party on this map."
-msgstr "Vi ne povas eliri el partio en tiu ĉi mapo."
+msgstr "Vi ne povas eliri el bando en tiu ĉi mapo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:168
 msgid "You were kicked from party."
-msgstr "Vin eksigis de partio."
+msgstr "Vin forpelis oni de bando."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:172
 msgid "You can't be kicked from party on this map."
-msgstr "Vin ne eblas eksigi de partio en tiu ĉi mapo."
+msgstr "Vin ne eblas forpeli de bando en tiu ĉi mapo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:176
 #, c-format
 msgid "%s has joined your party."
-msgstr "%s aliĝis al via partio."
+msgstr "%s aliĝis al via bando."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:180
 #, c-format
 msgid "%s is already a member of a party."
-msgstr "%s jam estas ano de iu partio."
+msgstr "%s jam estas ano de iu bando."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:184
@@ -10582,13 +10588,13 @@ msgstr "%s rifuzis vian inviton."
 #: src/resources/notifications.h:188
 #, c-format
 msgid "%s is now a member of your party."
-msgstr "%s nun estas ano de via partio."
+msgstr "%s nun estas ano de via bando."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:192
 #, c-format
 msgid "%s can't join your party because party is full."
-msgstr "%s ne povas aliĝi al via partio ĉar ĝi estas plena."
+msgstr "%s ne povas aliĝi al via bando ĉar ĝi estas plena."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:196
@@ -10600,19 +10606,19 @@ msgstr "QQQ Nekonata respondo al invito por %s."
 #: src/resources/notifications.h:224
 #, c-format
 msgid "%s has left your party."
-msgstr "%s eliris el via partio."
+msgstr "%s eliris el via bando."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:228 src/resources/notifications.h:236
 #, c-format
 msgid "%s can't be kicked from party on this map."
-msgstr "%s-n ne eblas eksigi de partio en tiu ĉi mapo."
+msgstr "%s-n ne eblas eksigi de bando en tiu ĉi mapo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:232
 #, c-format
 msgid "%s has kicked from your party."
-msgstr "%s eksigis de via partio."
+msgstr "%s estas forpelita de via bando."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:240
@@ -10624,7 +10630,7 @@ msgstr "Nekonata ano provis diri: %s"
 #: src/resources/notifications.h:244
 #, c-format
 msgid "%s is not in your party!"
-msgstr "%s ne estas en via partio!"
+msgstr "%s ne estas en via bando!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:248
@@ -10778,7 +10784,7 @@ msgstr "nekonata lkl"
 #: src/resources/notifications.h:364
 #, c-format
 msgid "Char from account %s is already in your party!"
-msgstr "Avataro de konto %s jam estas en via partio!"
+msgstr "Avataro de konto %s jam estas en via bando!"
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:368
@@ -10794,18 +10800,18 @@ msgstr "Avataro estas eksterreta!"
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:376
 msgid "Pet catch failed."
-msgstr "Malsukcesis kapti dorlotbeston."
+msgstr "Malsukcesis kapti kunbeston."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:380
 msgid "Pet caught."
-msgstr "Dorlotbesto kaptita."
+msgstr "Kunbesto kaptita."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:384
 #, c-format
 msgid "Pet catch unknown error: %d."
-msgstr "Eraro nekonata kaptante dorlotbeston: %d."
+msgstr "Eraro nekonata kaptante kunbeston: %d."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:388
@@ -10856,7 +10862,7 @@ msgstr "Karto enmetita."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:424
 msgid "Bank check failed. Bank probably disabled."
-msgstr ""
+msgstr "Kontrolo de banko malsukcesis. Banko estas probable malŝaltita."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:428
@@ -10870,7 +10876,7 @@ msgstr "Malsukcesis depono. Vi probable ne havas tiom da mono kun vi."
 msgid ""
 "Withdraw failed. You probably don't have this amount of money in the bank "
 "right now."
-msgstr "Malsukcesis retrato. Vi probable ne havas tiom da mona en la banko."
+msgstr "Malsukcesis repreno. Vi probable ne havas tiom da mono en la banko."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:438
@@ -10959,12 +10965,12 @@ msgstr "Neniaj disponeblaj informoj pri butiko."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:506
 msgid "Pet feeding success."
-msgstr "Sukcese nutris dorlotbeston."
+msgstr "Sukcese nutris kunbeston."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:510
 msgid "Pet feeding error."
-msgstr "Eraro nutrante dorlotbeston."
+msgstr "Eraro nutrante kunbeston."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:514
@@ -11267,7 +11273,7 @@ msgstr "Nekonata tipo de malatento."
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:748
 msgid "Pet catch started."
-msgstr "Kapto de dorlotbesto komencis."
+msgstr "Kapto de kunbesto komencis."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:782
@@ -11371,22 +11377,22 @@ msgstr "Ne eblas aĉeti. Malĝustaj objektoj elektitaj."
 #: src/resources/notifications.h:858
 #, c-format
 msgid "Mail destination name %s is wrong."
-msgstr ""
+msgstr "Nomo de poŝta celo %s estas malĝusta."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:862
 msgid "Item attach failed. Weight too big."
-msgstr ""
+msgstr "Kunsendo de objekto malsukcesis. Ĝi estas tro peza."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:866
 msgid "Item attach failed. Fatal error."
-msgstr ""
+msgstr "Kunsendo de objekto malsukcesis. Fiasko okazis."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:870
 msgid "Item attach failed. No more space."
-msgstr ""
+msgstr "Kunsendo de objekto malsukcesis. Ne restas spaco."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:874
@@ -11396,53 +11402,55 @@ msgstr ""
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:878
 msgid "Item attach failed. Unknown error."
-msgstr ""
+msgstr "Kunsendo de objekto malsukcesis. Nekonata eraro."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:882
 #, c-format
 msgid "Item %s remove failed."
-msgstr ""
+msgstr "Forigo de objekto %s malsukcesis."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:886
 msgid "Mail send failed. Fatal error."
-msgstr ""
+msgstr "Sendo de poŝtaĵo malsukcesis. Fiasko okazis."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:890
 msgid "Mail send failed. Too many mails sent."
-msgstr ""
+msgstr "Sendo de poŝtaĵo malsukcesis. Tro multaj jam sendiĝis."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:894
 msgid "Mail send failed. Wrong attach found."
-msgstr ""
+msgstr "Sendo de poŝtaĵo malsukcesis. Troviĝis malĝusta kunsendaĵo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:898
 msgid "Mail send failed. Receiver name wrong or not checked."
 msgstr ""
+"Sendo de poŝtaĵo malsukcesis. Nomo de ricevonto estas malĝusta aŭ "
+"nekontrolita."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:902
 msgid "Error on getting attach. No space or weight too high."
-msgstr ""
+msgstr "Eraro ricevante kunsendaĵon. Ĝi estas tro peza, aŭ ne restas spaco."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:906
 msgid "You got money from mail."
-msgstr ""
+msgstr "Vi ricevis monon de la poŝtaĵo."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:910
 msgid "Error on getting money attach."
-msgstr ""
+msgstr "Eraro ricevante kunsenditan monon."
 
 #. TRANSLATORS: notification message
 #: src/resources/notifications.h:914
 msgid "Error on getting money attach. Too many money."
-msgstr ""
+msgstr "Eraro ricevante kunsenditan monon. Tro multe da mono."
 
 #. TRANSLATORS: skill level
 #: src/resources/skill/skillinfo.cpp:113
@@ -11492,7 +11500,7 @@ msgstr "CelKaptilo"
 #: src/utils/booleanoptions.h:29
 #, c-format
 msgid "Options to /%s are \"yes\", \"no\", \"true\", \"false\", \"1\", \"0\"."
-msgstr "Opcioj por /%s estas «jes», «ne», «vera», «malvera», «1», kaj «0»."
+msgstr "Elektebloj por /%s estas «jes», «ne», «vera», «malvera», «1», kaj «0»."
 
 #. TRANSLATORS: uptime command
 #: src/utils/stringutils.cpp:960
