@@ -131,7 +131,7 @@ void ServerInfoWindow::showServerInfo()
         // TRANSLATORS: server info non free comment
         _("##BNon free sources"));
     addSourcesList(mServerInfo.freeSources,
-        // TRANSLATORS: server info non free comment
+        // TRANSLATORS: server info free comment
         _("##BFree sources"));
     addSourcesList(mServerInfo.docs,
         // TRANSLATORS: server info documentation comment
