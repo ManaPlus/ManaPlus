@@ -67,6 +67,12 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #endif  // ANDROID
 PRAGMA48(GCC diagnostic pop)
 
+#ifdef __native_client__
+#ifndef SSIZE_MAX
+#define SSIZE_MAX INT_MAX
+#endif
+#endif  // __native_client__
+
 #include "debug.h"
 
 namespace
