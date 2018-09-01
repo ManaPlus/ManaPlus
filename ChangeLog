@@ -1,3 +1,37 @@
+2018-09-01 New release 1.8.9.1
+fix: visual issue with used tiles from empty atlases.
+fix: hiding deleted temporary skills.
+fix: crash with wrong moving paths.
+fix: loading commands in text command editor.
+fix: some packets.
+fix: quotes in some char gm commands.
+fix: cross compilation issue. (by Helmut Grohne)
+fix: dont allow buy items with amount 0 from market shop types.
+fix: moving between slots by keyboard in character select dialog.
+fix: sending talk request to npc from menu if npc have not unique names.
+fix: split updateprotocol.cpp into parts for less memory usage in compilation.
+fix: add possible workaround for realpath overflow.
+fix: crash if read corrupted zip archive.
+fix: disable errors "in cache other image" due false positives.
+add: some new chat emotes.
+add: extent chat /use command for support colors and use actions.
+add: show warning in servers dialog if software mode selected.
+add: gm revive button in death dialog if player have revive command.
+add: shortcuts buttons icons by Guaritore. (disabled by default)
+add: log libcurl errors into manaplus.log.
+add: disable password from command line by default.
+add: extend shortcuts bars skining.
+add: use cache dir for game data files on Haiku.
+add: enable images in updater window.
+add: allow dragging by uneditable text boxes.
+add: use more strict flags in asan/ubsan builds.
+add: dont disable keyboard input in pincode dialogs.
+add: play item usage sounds for all players around.
+add: update packets.
+remove: support for CILK plus.
+remove: support for hercules plugin version 12 and older.
+remove: text "Message" from message related windows.
+
 2018-04-14 New release 1.8.4.14
 fix: group badge update on group change.
 fix: packet size for packet 0x07fd.
