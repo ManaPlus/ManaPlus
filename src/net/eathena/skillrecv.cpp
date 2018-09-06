@@ -68,7 +68,7 @@ namespace EAthena
 void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
 {
     msg.readInt16("len");
-    const int sz = (serverVersion >= 15) ? 41 : 37;
+    const int sz = (serverVersion > 0) ? 41 : 37;
     const int skillCount = (msg.getLength() - 4) / sz;
     int updateSkill = 0;
 
@@ -79,7 +79,7 @@ void SkillRecv::processPlayerSkills(Net::MessageIn &msg)
         const int skillId = msg.readInt16("skill id");
         const SkillType::SkillType inf = static_cast<SkillType::SkillType>(
             msg.readInt32("inf"));
-        if (serverVersion >= 15)
+        if (serverVersion > 0)
             msg.readInt32("inf2");
         const int level = msg.readInt16("skill level");
         const int sp = msg.readInt16("sp");
