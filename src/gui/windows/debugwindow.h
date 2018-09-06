@@ -27,6 +27,7 @@
 
 class MapDebugTab;
 class NetDebugTab;
+class StatDebugTab;
 class TabbedArea;
 class TargetDebugTab;
 
@@ -71,6 +72,7 @@ class DebugWindow final : public Window
         MapDebugTab *mMapWidget A_NONNULLPOINTER;
         TargetDebugTab *mTargetWidget A_NONNULLPOINTER;
         NetDebugTab *mNetWidget A_NONNULLPOINTER;
+        StatDebugTab *mStatWidget A_NONNULLPOINTER;
 };
 
 extern DebugWindow *debugWindow;

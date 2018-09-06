@@ -86,8 +86,6 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 #endif  // DEBUG_BIND_TEXTURE
     // TRANSLATORS: debug window label, frames per second
     mFPSLabel(new Label(this, strprintf(_("%d FPS"), 0))),
-    // TRANSLATORS: debug window label, logic per second
-    mLPSLabel(new Label(this, strprintf(_("%d LPS"), 0))),
     mFPSText()
 {
     LayoutHelper h(this);
@@ -135,20 +133,19 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
 #endif  // USE_OPENGL
 
     place(0, 0, mFPSLabel, 2, 1);
-    place(0, 1, mLPSLabel, 2, 1);
-    place(0, 2, mMusicFileLabel, 2, 1);
-    place(0, 3, mMapLabel, 2, 1);
-    place(0, 4, mMapNameLabel, 2, 1);
-    place(0, 5, mMinimapLabel, 2, 1);
-    place(0, 6, mXYLabel, 2, 1);
-    place(0, 7, mTileMouseLabel, 2, 1);
-    place(0, 8, mParticleCountLabel, 2, 1);
-    place(0, 9, mMapActorCountLabel, 2, 1);
+    place(0, 1, mMusicFileLabel, 2, 1);
+    place(0, 2, mMapLabel, 2, 1);
+    place(0, 3, mMapNameLabel, 2, 1);
+    place(0, 4, mMinimapLabel, 2, 1);
+    place(0, 5, mXYLabel, 2, 1);
+    place(0, 6, mTileMouseLabel, 2, 1);
+    place(0, 7, mParticleCountLabel, 2, 1);
+    place(0, 8, mMapActorCountLabel, 2, 1);
 #ifdef USE_OPENGL
-    place(0, 10, mMapAtlasCountLabel, 2, 1);
+    place(0, 9, mMapAtlasCountLabel, 2, 1);
 #if defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS) \
     || defined(DEBUG_BIND_TEXTURE)
-    int n = 11;
+    int n = 10;
 #endif  // defined (DEBUG_OPENGL_LEAKS) || defined(DEBUG_DRAW_CALLS)
         // || defined(DEBUG_BIND_TEXTURE)
 #ifdef DEBUG_OPENGL_LEAKS
@@ -283,7 +280,5 @@ void MapDebugTab::logic()
 #endif  // USE_OPENGL
 
     mFPSLabel->setCaption(strprintf(mFPSText.c_str(), fps));
-    // TRANSLATORS: debug window label, logic per second
-    mLPSLabel->setCaption(strprintf(_("%d LPS"), lps));
     BLOCK_END("MapDebugTab::logic")
 }

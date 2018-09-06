@@ -31,6 +31,7 @@
 
 #include "gui/widgets/tabs/mapdebugtab.h"
 #include "gui/widgets/tabs/netdebugtab.h"
+#include "gui/widgets/tabs/statdebugtab.h"
 #include "gui/widgets/tabs/targetdebugtab.h"
 
 #include "utils/delete2.h"
@@ -46,7 +47,8 @@ DebugWindow::DebugWindow(const std::string &name) :
     mTabs(CREATEWIDGETR(TabbedArea, this)),
     mMapWidget(new MapDebugTab(this)),
     mTargetWidget(new TargetDebugTab(this)),
-    mNetWidget(new NetDebugTab(this))
+    mNetWidget(new NetDebugTab(this)),
+    mStatWidget(new StatDebugTab(this))
 {
     setWindowName(name);
     if (setupWindow != nullptr)
@@ -68,6 +70,8 @@ DebugWindow::DebugWindow(const std::string &name) :
     mTabs->addTab(std::string(_("Target")), mTargetWidget);
     // TRANSLATORS: debug window tab
     mTabs->addTab(std::string(_("Net")), mNetWidget);
+    // TRANSLATORS: debug window tab
+    mTabs->addTab(std::string(_("Stat")), mStatWidget);
 
     mTabs->setDimension(Rect(0, 0, 600, 300));
 
@@ -76,6 +80,7 @@ DebugWindow::DebugWindow(const std::string &name) :
     mMapWidget->resize(w, h);
     mTargetWidget->resize(w, h);
     mNetWidget->resize(w, h);
+    mStatWidget->resize(w, h);
     loadWindowState();
     enableVisibleSound(true);
 }
@@ -85,6 +90,7 @@ DebugWindow::~DebugWindow()
     delete2(mMapWidget);
     delete2(mTargetWidget);
     delete2(mNetWidget);
+    delete2(mStatWidget);
 }
 
 void DebugWindow::postInit()
@@ -113,6 +119,9 @@ void DebugWindow::slowLogic()
             break;
         case 2:
             mNetWidget->logic();
+            break;
+        case 3:
+            mStatWidget->logic();
             break;
     }
 

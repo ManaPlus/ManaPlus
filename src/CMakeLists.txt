@@ -310,6 +310,8 @@ SET(SRCS
     gui/widgets/tabs/socialplayerstab.h
     gui/widgets/tabs/socialtab.h
     gui/widgets/tabs/socialtabbase.h
+    gui/widgets/tabs/statdebugtab.cpp
+    gui/widgets/tabs/statdebugtab.h
     gui/widgets/tabs/tab.cpp
     gui/widgets/tabs/tab.h
     gui/widgets/tabbedarea.cpp

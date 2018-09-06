@@ -1254,6 +1254,8 @@ SRC = ${BASE_SRC} \
 	      gui/widgets/tabs/socialplayerstab.h \
 	      gui/widgets/tabs/socialtab.h \
 	      gui/widgets/tabs/socialtabbase.h \
+	      gui/widgets/tabs/statdebugtab.cpp \
+	      gui/widgets/tabs/statdebugtab.h \
 	      gui/models/skillmodel.cpp \
 	      gui/models/skillmodel.h \
 	      gui/models/sortlistmodelbuy.h \

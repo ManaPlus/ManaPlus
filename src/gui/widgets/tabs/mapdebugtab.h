@@ -60,7 +60,6 @@ class MapDebugTab final : public DebugTab
 #endif  // DEBUG_BIND_TEXTURE
 
         Label *mFPSLabel A_NONNULLPOINTER;
-        Label *mLPSLabel A_NONNULLPOINTER;
         std::string mFPSText;
 };
 
