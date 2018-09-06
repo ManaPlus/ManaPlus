@@ -1771,7 +1771,7 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
     uint16_t mount = 0;
     mount = msg.readInt16("mount");
     int language = -1;
-    if (serverVersion >= 17 && len > 14)
+    if (len > 14)
         language = msg.readInt16("language");
     int clanId = 0;
     if (len > 16)
