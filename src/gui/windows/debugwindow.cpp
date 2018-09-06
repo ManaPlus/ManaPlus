@@ -29,7 +29,9 @@
 #include "gui/widgets/createwidget.h"
 #include "gui/widgets/tabbedarea.h"
 
-#include "gui/widgets/tabs/debugwindowtabs.h"
+#include "gui/widgets/tabs/mapdebugtab.h"
+#include "gui/widgets/tabs/netdebugtab.h"
+#include "gui/widgets/tabs/targetdebugtab.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"

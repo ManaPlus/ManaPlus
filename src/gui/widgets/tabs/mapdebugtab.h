@@ -20,32 +20,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_DEBUGWINDOWTABS_H
-#define GUI_WIDGETS_TABS_DEBUGWINDOWTABS_H
+#ifndef GUI_WIDGETS_TABS_MAPDEBUGTAB_H
+#define GUI_WIDGETS_TABS_MAPDEBUGTAB_H
 
-#include "gui/widgets/container.h"
+#include "gui/widgets/tabs/debugtab.h"
 
 class Label;
-
-class DebugTab notfinal : public Container
-{
-    friend class DebugWindow;
-
-    public:
-        A_DELETE_COPY(DebugTab)
-
-        void logic() override
-        {
-        }
-
-        void resize(const int x, const int y)
-        { setDimension(Rect(0, 0, x, y)); }
-
-    protected:
-        explicit DebugTab(const Widget2 *const widget) :
-            Container(widget)
-        { setSelectable(false); }
-};
 
 class MapDebugTab final : public DebugTab
 {
@@ -84,49 +64,4 @@ class MapDebugTab final : public DebugTab
         std::string mFPSText;
 };
 
-class TargetDebugTab final : public DebugTab
-{
-    friend class DebugWindow;
-
-    public:
-        explicit TargetDebugTab(const Widget2 *const widget);
-
-        A_DELETE_COPY(TargetDebugTab)
-
-        void logic() override final;
-
-    private:
-        Label *mTargetLabel A_NONNULLPOINTER;
-        Label *mTargetIdLabel A_NONNULLPOINTER;
-        Label *mTargetTypeLabel A_NONNULLPOINTER;
-        Label *mTargetLevelLabel A_NONNULLPOINTER;
-        Label *mTargetRaceLabel A_NONNULLPOINTER;
-        Label *mTargetPartyLabel A_NONNULLPOINTER;
-        Label *mTargetGuildLabel A_NONNULLPOINTER;
-        Label *mAttackDelayLabel A_NONNULLPOINTER;
-        Label *mMinHitLabel A_NONNULLPOINTER;
-        Label *mMaxHitLabel A_NONNULLPOINTER;
-        Label *mCriticalHitLabel A_NONNULLPOINTER;
-        Label *mKarmaLabel A_NONNULLPOINTER;
-        Label *mMannerLabel A_NONNULLPOINTER;
-        Label *mEffectsLabel A_NONNULLPOINTER;
-};
-
-class NetDebugTab final : public DebugTab
-{
-    friend class DebugWindow;
-
-    public:
-        explicit NetDebugTab(const Widget2 *const widget);
-
-        A_DELETE_COPY(NetDebugTab)
-
-        void logic() override final;
-
-    private:
-        Label *mPingLabel A_NONNULLPOINTER;
-        Label *mInPackets1Label A_NONNULLPOINTER;
-        Label *mOutPackets1Label A_NONNULLPOINTER;
-};
-
-#endif  // GUI_WIDGETS_TABS_DEBUGWINDOWTABS_H
+#endif  // GUI_WIDGETS_TABS_MAPDEBUGTAB_H

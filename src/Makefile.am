@@ -1135,8 +1135,13 @@ SRC = ${BASE_SRC} \
 	      gui/widgets/attrs/derdisplay.h \
 	      gui/widgets/tabs/clanwindowtabs.cpp \
 	      gui/widgets/tabs/clanwindowtabs.h \
-	      gui/widgets/tabs/debugwindowtabs.cpp \
-	      gui/widgets/tabs/debugwindowtabs.h \
+	      gui/widgets/tabs/debugtab.h \
+	      gui/widgets/tabs/mapdebugtab.cpp \
+	      gui/widgets/tabs/mapdebugtab.h \
+	      gui/widgets/tabs/netdebugtab.cpp \
+	      gui/widgets/tabs/netdebugtab.h \
+	      gui/widgets/tabs/targetdebugtab.cpp \
+	      gui/widgets/tabs/targetdebugtab.h \
 	      gui/widgets/tabs/chat/chattab.cpp \
 	      gui/widgets/tabs/chat/chattab.h \
 	      gui/widgets/tabs/chat/clantab.cpp \
