@@ -124,7 +124,7 @@ void InventoryHandler::useItem(const Item *const item,
     if (item == nullptr)
         return;
 
-    if (serverVersion >= 19)
+    if (serverVersion > 0)
     {
         createOutPacket(CMSG_PLAYER_INVENTORY_USE2);
         outMsg.writeInt16(CAST_S16(

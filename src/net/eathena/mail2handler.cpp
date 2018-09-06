@@ -61,11 +61,8 @@ Mail2Handler::~Mail2Handler()
 
 void Mail2Handler::openWriteMail(const std::string &receiver) const
 {
-    if (packetVersion < 20140416 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140416)
         return;
-    }
     createOutPacket(CMSG_MAIL2_OPEN_WRITE_MAIL);
     outMsg.writeString(receiver, 24, "receiver name");
 }
@@ -75,11 +72,8 @@ void Mail2Handler::addItem(const Item *const item,
 {
     if (item == nullptr)
         return;
-    if (packetVersion < 20140416 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140416)
         return;
-    }
 
     createOutPacket(CMSG_MAIL2_ADD_ITEM_TO_MAIL);
     outMsg.writeInt16(CAST_S16(
@@ -90,11 +84,8 @@ void Mail2Handler::addItem(const Item *const item,
 void Mail2Handler::removeItem(const int index,
                               const int amount) const
 {
-    if (packetVersion < 20140416 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140416)
         return;
-    }
 
     createOutPacket(CMSG_MAIL2_REMOVE_ITEM_MAIL);
     outMsg.writeInt16(CAST_S16(index + INVENTORY_OFFSET), "index");
@@ -106,11 +97,8 @@ void Mail2Handler::sendMail(const std::string &to,
                             const std::string &body,
                             const int64_t &money) const
 {
-    if (packetVersion < 20131230 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20131230)
         return;
-    }
     if (localPlayer == nullptr)
         return;
 
@@ -159,11 +147,8 @@ void Mail2Handler::queueCheckName(const MailQueueTypeT type,
 void Mail2Handler::nextPage(const MailOpenTypeT openType,
                             const int64_t mailId) const
 {
-    if (packetVersion < 20131218 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20131218)
         return;
-    }
     createOutPacket(CMSG_MAIL2_NEXT_PAGE);
     outMsg.writeInt8(toInt(openType, int8_t), "open type");
     outMsg.writeInt64(mailId, "mail id");
@@ -172,11 +157,8 @@ void Mail2Handler::nextPage(const MailOpenTypeT openType,
 void Mail2Handler::readMail(const MailOpenTypeT openType,
                             const int64_t mailId) const
 {
-    if (packetVersion < 20131223 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20131223)
         return;
-    }
     createOutPacket(CMSG_MAIL2_READ_MAIL);
     outMsg.writeInt8(toInt(openType, int8_t), "open type");
     outMsg.writeInt64(mailId, "mail id");
@@ -185,11 +167,8 @@ void Mail2Handler::readMail(const MailOpenTypeT openType,
 void Mail2Handler::deleteMail(const MailOpenTypeT openType,
                               const int64_t mailId) const
 {
-    if (packetVersion < 20131218 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20131218)
         return;
-    }
     createOutPacket(CMSG_MAIL2_DELETE_MAIL);
     outMsg.writeInt8(toInt(openType, int8_t), "open type");
     outMsg.writeInt64(mailId, "mail id");
@@ -198,11 +177,8 @@ void Mail2Handler::deleteMail(const MailOpenTypeT openType,
 void Mail2Handler::requestMoney(const MailOpenTypeT openType,
                                 const int64_t mailId) const
 {
-    if (packetVersion < 20140326 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140326)
         return;
-    }
     createOutPacket(CMSG_MAIL2_REQUEST_MONEY);
     outMsg.writeInt64(mailId, "mail id");
     outMsg.writeInt8(toInt(openType, int8_t), "open type");
@@ -211,11 +187,8 @@ void Mail2Handler::requestMoney(const MailOpenTypeT openType,
 void Mail2Handler::requestItems(const MailOpenTypeT openType,
                                 const int64_t mailId) const
 {
-    if (packetVersion < 20140326 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140326)
         return;
-    }
     createOutPacket(CMSG_MAIL2_REQUEST_ITEMS);
     outMsg.writeInt64(mailId, "mail id");
     outMsg.writeInt8(toInt(openType, int8_t), "open type");
@@ -224,11 +197,8 @@ void Mail2Handler::requestItems(const MailOpenTypeT openType,
 void Mail2Handler::refreshMailList(const MailOpenTypeT openType,
                                    const int64_t mailId) const
 {
-    if (packetVersion < 20131218 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20131218)
         return;
-    }
     createOutPacket(CMSG_MAIL2_REFRESH_MAIL_LIST);
     if (packetVersion >= 20170419)
     {
@@ -247,11 +217,8 @@ void Mail2Handler::refreshMailList(const MailOpenTypeT openType,
 
 void Mail2Handler::openMailBox(const MailOpenTypeT openType) const
 {
-    if (packetVersion < 20140212 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140212)
         return;
-    }
     createOutPacket(CMSG_MAIL2_OPEN_MAILBOX);
     if (packetVersion >= 20170419)
     {
@@ -270,31 +237,22 @@ void Mail2Handler::openMailBox(const MailOpenTypeT openType) const
 
 void Mail2Handler::closeMailBox() const
 {
-    if (packetVersion < 20131211 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20131211)
         return;
-    }
     createOutPacket(CMSG_MAIL2_CLOSE_MAILBOX);
 }
 
 void Mail2Handler::cancelWriteMail() const
 {
-    if (packetVersion < 20140326 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140326)
         return;
-    }
     createOutPacket(CMSG_MAIL2_CANCEL_WRITE_MAIL);
 }
 
 void Mail2Handler::requestCheckName(const std::string &name) const
 {
-    if (packetVersion < 20140423 ||
-        (serverVersion < 19 && serverVersion != 0))
-    {
+    if (packetVersion < 20140423)
         return;
-    }
     createOutPacket(CMSG_MAIL2_CHECK_NAME);
     outMsg.writeString(name, 24, "name");
 }
