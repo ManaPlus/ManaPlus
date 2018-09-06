@@ -172,7 +172,7 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
             logger->log("autofix Hercules packet version to: %d",
                 packetVersion);
         }
-        if (serverVersion >= 16 && len >= 18)
+        if (len >= 18)
         {
             evolPacketOffset = msg.readInt16("evol packet offset");
         }
