@@ -1778,8 +1778,7 @@ void BeingRecv::processBeingAttrs(Net::MessageIn &msg)
         clanId = msg.readInt32("clan id");
     if (dstBeing != nullptr)
     {
-        if (serverVersion <= 17 ||
-            dstBeing != localPlayer)
+        if (dstBeing != localPlayer)
         {
             dstBeing->setGroupId(groupId);
         }
