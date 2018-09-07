@@ -23,9 +23,15 @@
 
 #include "gui/widgets/tabs/debugtab.h"
 
+#include "const/utils/perfstat.h"
+
+#include "listeners/actionlistener.h"
+
+class Button;
 class Label;
 
-class StatDebugTab final : public DebugTab
+class StatDebugTab final : public DebugTab,
+                           public ActionListener
 {
     friend class DebugWindow;
 
@@ -36,8 +42,14 @@ class StatDebugTab final : public DebugTab
 
         void logic() override final;
 
+        void action(const ActionEvent &event) override;
+
     private:
         Label *mLPSLabel A_NONNULLPOINTER;
+        Button *mResetButton A_NONNULLPOINTER;
+        Button *mCopyButton A_NONNULLPOINTER;
+        Label *mStatLabels[PERFSTAT_LAST_STAT - 1] A_NONNULLPOINTER;
+        size_t mDrawIndex;
 };
 
 #endif  // GUI_WIDGETS_TABS_STATDEBUGTAB_H

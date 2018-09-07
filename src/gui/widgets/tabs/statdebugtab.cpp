@@ -20,11 +20,17 @@
 
 #include "gui/widgets/tabs/statdebugtab.h"
 
+#include "const/utils/timer.h"
+
+#include "gui/widgets/button.h"
 #include "gui/widgets/containerplacer.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
 
+#include "gui/windows/chatwindow.h"
+
 #include "utils/gettext.h"
+#include "utils/perfstat.h"
 #include "utils/stringutils.h"
 #include "utils/timer.h"
 
@@ -33,12 +39,27 @@
 StatDebugTab::StatDebugTab(const Widget2 *const widget) :
     DebugTab(widget),
     // TRANSLATORS: debug window label, logic per second
-    mLPSLabel(new Label(this, strprintf(_("LPS: %d"), 0)))
+    mLPSLabel(new Label(this, strprintf(_("LPS: %d"), 0))),
+    // TRANSLATORS: debug window stats reset button
+    mResetButton(new Button(this, _("Reset"), "reset", BUTTON_SKIN, this)),
+    // TRANSLATORS: debug window stats copy button
+    mCopyButton(new Button(this, _("Copy"), "copy", BUTTON_SKIN, this)),
+    mStatLabels(),
+    mDrawIndex(0)
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
 
     place(0, 0, mLPSLabel, 2, 1);
+    place(0, 1, mResetButton, 1, 1);
+    place(1, 1, mCopyButton, 1, 1);
+    for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+    {
+        mStatLabels[f - 1] = new Label(this,
+            // TRANSLATORS: debug window stat label
+            strprintf(_("stat%d: %d (%d) ms"), f, 0, 0));
+        place(0, f + 1, mStatLabels[f - 1], 2, 1);
+    }
 
     place.getCell().matchColWidth(0, 0);
     place = h.getPlacer(0, 1);
@@ -50,5 +71,42 @@ void StatDebugTab::logic()
     BLOCK_START("StatDebugTab::logic")
     // TRANSLATORS: debug window label, logic per second
     mLPSLabel->setCaption(strprintf(_("LPS: %d"), lps));
+
+    for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+    {
+        mStatLabels[f - 1]->setCaption(
+            // TRANSLATORS: debug window stat label
+            strprintf(_("stat%d: %d (%d) ms"),
+            f,
+            Perf::getTime(prevPerfFrameId, f) * MILLISECONDS_IN_A_TICK,
+            Perf::getWorstTime(f) * MILLISECONDS_IN_A_TICK));
+    }
+    mDrawIndex = prevPerfFrameId;
     BLOCK_END("StatDebugTab::logic")
+}
+
+void StatDebugTab::action(const ActionEvent &event)
+{
+    const std::string &eventId = event.getId();
+    if (eventId == "reset")
+    {
+        Perf::init();
+    }
+    else if (eventId == "copy")
+    {
+        std::string data("perf:");
+        for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+        {
+            data.append(strprintf(" %d",
+                Perf::getTime(mDrawIndex, f) * MILLISECONDS_IN_A_TICK));
+        }
+        data.append(",");
+        for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+        {
+            data.append(strprintf(" %d",
+                Perf::getWorstTime(f) * MILLISECONDS_IN_A_TICK));
+        }
+        chatWindow->addInputText(data,
+            true);
+    }
 }

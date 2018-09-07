@@ -127,6 +127,7 @@
 #ifdef ANDROID
 #include "fs/paths.h"
 #endif  // ANDROID
+#include "utils/perfstat.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/sdlhelper.h"
 #include "utils/timer.h"
@@ -952,20 +953,30 @@ int Client::gameExec()
 {
     int lastTickTime = tick_time;
 
+    Perf::init();
+
     while (mState != State::EXIT)
     {
         PROFILER_START();
+        PERF_STAT(0);
         if (eventsManager.handleEvents())
             continue;
+
+        PERF_STAT(1);
 
         BLOCK_START("Client::gameExec 3")
         if (generalHandler != nullptr)
             generalHandler->flushNetwork();
         BLOCK_END("Client::gameExec 3")
 
+        PERF_STAT(2);
+
         BLOCK_START("Client::gameExec 4")
         if (gui != nullptr)
             gui->logic();
+
+        PERF_STAT(3);
+
         cur_time = time(nullptr);
         int k = 0;
         while (lastTickTime != tick_time &&
@@ -979,14 +990,28 @@ int Client::gameExec()
             ++lastTickTime;
             k ++;
         }
+
+        PERF_STAT(4);
+
         soundManager.logic();
+
+        PERF_STAT(5);
 
         logic_count += k;
         if (gui != nullptr)
             gui->slowLogic();
+
+        PERF_STAT(6);
+
         if (mGame != nullptr)
             mGame->slowLogic();
+
+        PERF_STAT(7);
+
         slowLogic();
+
+        PERF_STAT(8);
+
         BLOCK_END("Client::gameExec 4")
 
         // This is done because at some point tick_time will wrap.
@@ -1005,10 +1030,14 @@ int Client::gameExec()
             SDL_Delay(100);
         }
 
+        PERF_STAT(9);
+
         BLOCK_START("~Client::SDL_framerateDelay")
         if (settings.limitFps)
             SDL_framerateDelay(&fpsManager);
         BLOCK_END("~Client::SDL_framerateDelay")
+
+        PERF_STAT(10);
 
         BLOCK_START("Client::gameExec 6")
         if (mState == State::CONNECT_GAME)
@@ -1033,6 +1062,8 @@ int Client::gameExec()
             stateSwitchLogin1();
         }
         BLOCK_END("Client::gameExec 6")
+
+        PERF_STAT(11);
 
         if (mState != mOldState)
         {
@@ -1373,6 +1404,7 @@ int Client::gameExec()
                         if (mumbleManager)
                             mumbleManager->setPlayer(localPlayer->getName());
 #endif  // USE_MUMBLE
+                        Perf::init();
                     }
 
                     // Fade out logon-music here too to give the desired effect
@@ -1656,6 +1688,8 @@ int Client::gameExec()
             }
             BLOCK_END("Client::gameExec 8")
         }
+        PERF_STAT(12);
+        PERF_NEXTFRAME();
         PROFILER_END();
     }
 

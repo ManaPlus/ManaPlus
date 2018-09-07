@@ -940,6 +940,8 @@ SET(SRCS
     fs/paths.h
     utils/perfomance.cpp
     utils/perfomance.h
+    utils/perfstat.cpp
+    utils/perfstat.h
     utils/pnglib.cpp
     utils/pnglib.h
     fs/virtfs/fsfuncs.h
@@ -1128,6 +1130,7 @@ SET(SRCS
     const/equipment.h
     const/itemshortcut.h
     const/spells.h
+    const/utils/perfstat.h
     const/utils/timer.h
     const/utils/utf8.h
     const/gui/chat.h

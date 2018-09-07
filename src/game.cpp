@@ -125,6 +125,7 @@
 #include "utils/delete2.h"
 #include "utils/foreach.h"
 #include "utils/gettext.h"
+#include "utils/perfstat.h"
 #include "utils/pnglib.h"
 #include "utils/sdlcheckutils.h"
 #include "utils/timer.h"
@@ -1092,6 +1093,7 @@ void Game::changeMap(const std::string &mapPath)
 {
     BLOCK_START("Game::changeMap")
 
+    skipPerfFrames = 3;
     resetAdjustLevel();
     ResourceManager::cleanProtected();
 
@@ -1182,6 +1184,7 @@ void Game::changeMap(const std::string &mapPath)
         localPlayer->recreateItemParticles();
 
     gameHandler->mapLoadedEvent();
+    Perf::init();
     BLOCK_END("Game::changeMap")
 }
 
