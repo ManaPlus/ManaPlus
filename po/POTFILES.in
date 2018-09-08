@@ -46,7 +46,8 @@ src/gui/widgets/tabs/chat/langtab.cpp
 src/gui/widgets/tabs/chat/partytab.cpp
 src/gui/widgets/tabs/chat/tradetab.cpp
 src/gui/widgets/tabs/clanwindowtabs.cpp
-src/gui/widgets/tabs/debugwindowtabs.cpp
+src/gui/widgets/tabs/mapdebugtab.cpp
+src/gui/widgets/tabs/netdebugtab.cpp
 src/gui/widgets/tabs/setup_audio.cpp
 src/gui/widgets/tabs/setup_chat.cpp
 src/gui/widgets/tabs/setup_colors.cpp
@@ -71,6 +72,8 @@ src/gui/widgets/tabs/socialpartytab.h
 src/gui/widgets/tabs/socialpickuptab.h
 src/gui/widgets/tabs/socialplayerstab.h
 src/gui/widgets/tabs/socialtabbase.h
+src/gui/widgets/tabs/statdebugtab.cpp
+src/gui/widgets/tabs/targetdebugtab.cpp
 src/gui/windowmanager.cpp
 src/gui/windowmenu.cpp
 src/gui/windows/bankwindow.cpp
