@@ -240,7 +240,7 @@ void KillStats::gainXp(int64_t xp)
 
     double timeDiff = difftime(cur_time, mKillTimer) / 60;
 
-    if (timeDiff <= 0.001)
+    if (timeDiff <= 0.01)
         timeDiff = 1;
 
     const int64_t exp = PlayerInfo::getAttribute64(Attributes::PLAYER_EXP);
