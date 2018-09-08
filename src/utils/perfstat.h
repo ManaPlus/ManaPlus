@@ -33,6 +33,8 @@ struct PerfStats final
             ticks[f] = -1;
     }
 
+    A_DEFAULT_COPY(PerfStats)
+
     int ticks[16];
 };
 
