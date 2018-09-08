@@ -1032,13 +1032,6 @@ int Client::gameExec()
 
         PERF_STAT(9);
 
-        BLOCK_START("~Client::SDL_framerateDelay")
-        if (settings.limitFps)
-            SDL_framerateDelay(&fpsManager);
-        BLOCK_END("~Client::SDL_framerateDelay")
-
-        PERF_STAT(10);
-
         BLOCK_START("Client::gameExec 6")
         if (mState == State::CONNECT_GAME)
         {
@@ -1063,7 +1056,7 @@ int Client::gameExec()
         }
         BLOCK_END("Client::gameExec 6")
 
-        PERF_STAT(11);
+        PERF_STAT(10);
 
         if (mState != mOldState)
         {
@@ -1688,6 +1681,14 @@ int Client::gameExec()
             }
             BLOCK_END("Client::gameExec 8")
         }
+
+        PERF_STAT(11);
+
+        BLOCK_START("~Client::SDL_framerateDelay")
+        if (settings.limitFps)
+            SDL_framerateDelay(&fpsManager);
+        BLOCK_END("~Client::SDL_framerateDelay")
+
         PERF_STAT(12);
         PERF_NEXTFRAME();
         PROFILER_END();

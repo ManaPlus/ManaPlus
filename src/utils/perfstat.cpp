@@ -88,7 +88,7 @@ namespace Perf
         {
             if (f == perfFrameId)
                 continue;
-            const int time1 = Perf::getTime(f, PERFSTAT_LAST_STAT - 1);
+            const int time1 = Perf::getTime(f, PERFSTAT_FPS_STAT - 1);
             if (time1 > time)
             {
                 time = time1;
@@ -99,8 +99,10 @@ namespace Perf
         {
             worstFrameStats = perfStats[index];
             logger->log("worst frame: %d, %d",
-                perfStats[index].ticks[PERFSTAT_LAST_STAT - 1],
-                worstFrameStats.ticks[PERFSTAT_LAST_STAT - 1]);
+                perfStats[index].ticks[PERFSTAT_FPS_STAT - 1] -
+                perfStats[index].ticks[0],
+                worstFrameStats.ticks[PERFSTAT_FPS_STAT - 1] -
+                worstFrameStats.ticks[0]);
             worstTime = time;
         }
     }

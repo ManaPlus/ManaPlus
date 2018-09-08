@@ -25,5 +25,6 @@
 
 static const int PERFSTAT_MAX = 120;
 static const int PERFSTAT_LAST_STAT = 13;
+static const int PERFSTAT_FPS_STAT = 12;
 
 #endif  // CONST_UTILS_PERFSTAT_H
