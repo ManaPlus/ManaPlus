@@ -45,10 +45,14 @@ StatDebugTab::StatDebugTab(const Widget2 *const widget) :
     // TRANSLATORS: debug window stats copy button
     mCopyButton(new Button(this, _("Copy"), "copy", BUTTON_SKIN, this)),
     mStatLabels(),
+    mWorseStatLabels(),
     mDrawIndex(0)
 {
     LayoutHelper h(this);
     ContainerPlacer place = h.getPlacer(0, 0);
+
+    mResetButton->adjustSize();
+    mCopyButton->adjustSize();
 
     place(0, 0, mLPSLabel, 2, 1);
     place(0, 1, mResetButton, 1, 1);
@@ -57,13 +61,16 @@ StatDebugTab::StatDebugTab(const Widget2 *const widget) :
     {
         mStatLabels[f - 1] = new Label(this,
             // TRANSLATORS: debug window stat label
-            strprintf(_("stat%d: %d (%d) ms"), f, 0, 0));
-        place(0, f + 1, mStatLabels[f - 1], 2, 1);
+            strprintf(_("stat%d: %d ms"), f, 1000));
+        mStatLabels[f - 1]->adjustSize();
+        mWorseStatLabels[f - 1] = new Label(this,
+            // TRANSLATORS: debug window stat label
+            strprintf(_("%d ms"), 1000));
+        place(0, f + 1, mStatLabels[f - 1], 3, 1);
+        place(3, f + 1, mWorseStatLabels[f - 1], 1, 1);
     }
 
-    place.getCell().matchColWidth(0, 0);
-    place = h.getPlacer(0, 1);
-    setDimension(Rect(0, 0, 600, 300));
+    setDimension(Rect(0, 0, 200, 300));
 }
 
 void StatDebugTab::logic()
@@ -76,9 +83,12 @@ void StatDebugTab::logic()
     {
         mStatLabels[f - 1]->setCaption(
             // TRANSLATORS: debug window stat label
-            strprintf(_("stat%d: %d (%d) ms"),
+            strprintf(_("stat%d: %d ms"),
             f,
-            Perf::getTime(prevPerfFrameId, f) * MILLISECONDS_IN_A_TICK,
+            Perf::getTime(prevPerfFrameId, f) * MILLISECONDS_IN_A_TICK));
+        mWorseStatLabels[f - 1]->setCaption(
+            // TRANSLATORS: debug window stat label
+            strprintf(_("%d ms"),
             Perf::getWorstTime(f) * MILLISECONDS_IN_A_TICK));
     }
     mDrawIndex = prevPerfFrameId;

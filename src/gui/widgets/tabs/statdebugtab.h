@@ -49,6 +49,7 @@ class StatDebugTab final : public DebugTab,
         Button *mResetButton A_NONNULLPOINTER;
         Button *mCopyButton A_NONNULLPOINTER;
         Label *mStatLabels[PERFSTAT_LAST_STAT - 1] A_NONNULLPOINTER;
+        Label *mWorseStatLabels[PERFSTAT_LAST_STAT - 1] A_NONNULLPOINTER;
         size_t mDrawIndex;
 };
 
