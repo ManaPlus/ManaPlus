@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-struct PerfStats
+struct PerfStats final
 {
     PerfStats()
     {
