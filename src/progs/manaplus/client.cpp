@@ -1017,21 +1017,6 @@ int Client::gameExec()
         // This is done because at some point tick_time will wrap.
         lastTickTime = tick_time;
 
-        // Update the screen when application is visible, delay otherwise.
-        if (!WindowManager::getIsMinimized())
-        {
-            frame_count++;
-            if (gui != nullptr)
-                gui->draw();
-            mainGraphics->updateScreen();
-        }
-        else
-        {
-            SDL_Delay(100);
-        }
-
-        PERF_STAT(9);
-
         BLOCK_START("Client::gameExec 6")
         if (mState == State::CONNECT_GAME)
         {
@@ -1056,7 +1041,7 @@ int Client::gameExec()
         }
         BLOCK_END("Client::gameExec 6")
 
-        PERF_STAT(10);
+        PERF_STAT(9);
 
         if (mState != mOldState)
         {
@@ -1680,6 +1665,21 @@ int Client::gameExec()
                     break;
             }
             BLOCK_END("Client::gameExec 8")
+        }
+
+        PERF_STAT(10);
+
+        // Update the screen when application is visible, delay otherwise.
+        if (!WindowManager::getIsMinimized())
+        {
+            frame_count++;
+            if (gui != nullptr)
+                gui->draw();
+            mainGraphics->updateScreen();
+        }
+        else
+        {
+            SDL_Delay(100);
         }
 
         PERF_STAT(11);
