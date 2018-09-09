@@ -20,6 +20,8 @@
 
 #include "utils/perfstat.h"
 
+#include "utils/cast.h"
+
 #include "logger.h"
 
 #include "debug.h"
@@ -90,7 +92,7 @@ namespace Perf
             if (time1 > time)
             {
                 time = time1;
-                index = f;
+                index = CAST_S32(f);
             }
         }
         if (index >= 0)

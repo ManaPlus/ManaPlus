@@ -66,8 +66,8 @@ StatDebugTab::StatDebugTab(const Widget2 *const widget) :
         mWorseStatLabels[f - 1] = new Label(this,
             // TRANSLATORS: debug window stat label
             strprintf(_("%d ms"), 1000));
-        place(0, f + 1, mStatLabels[f - 1], 3, 1);
-        place(3, f + 1, mWorseStatLabels[f - 1], 1, 1);
+        place(0, CAST_S32(f + 1), mStatLabels[f - 1], 3, 1);
+        place(3, CAST_S32(f + 1), mWorseStatLabels[f - 1], 1, 1);
     }
 
     setDimension(Rect(0, 0, 200, 300));
