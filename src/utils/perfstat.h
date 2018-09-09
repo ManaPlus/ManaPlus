@@ -46,7 +46,7 @@ namespace Perf
     int getTime(const size_t frameId,
                 const size_t counterId);
     int getWorstTime(const size_t counterId);
-}
+}  // namespace Perf
 
 extern PerfStats perfStats[PERFSTAT_MAX];
 extern size_t perfFrameId;

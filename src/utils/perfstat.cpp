@@ -115,7 +115,7 @@ namespace Perf
         const int val2 = perf.ticks[counterId];
         if (val2 >= val1)
             return val2 - val1;
-        return val1 - val1;
+        return val1 - val2;
     }
 
     int getWorstTime(const size_t counterId)
@@ -124,6 +124,6 @@ namespace Perf
         const int val2 = worstFrameStats.ticks[counterId];
         if (val2 >= val1)
             return val2 - val1;
-        return val1 - val1;
+        return val1 - val2;
     }
-}
+}  // namespace Perf
