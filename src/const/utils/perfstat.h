@@ -23,8 +23,8 @@
 
 #include "localconsts.h"
 
-static const int PERFSTAT_MAX = 120;
-static const int PERFSTAT_LAST_STAT = 13;
-static const int PERFSTAT_FPS_STAT = 12;
+static const size_t PERFSTAT_MAX = 120U;
+static const size_t PERFSTAT_LAST_STAT = 13U;
+static const size_t PERFSTAT_FPS_STAT = 12U;
 
 #endif  // CONST_UTILS_PERFSTAT_H

@@ -22,8 +22,6 @@
 
 #include "logger.h"
 
-#include "utils/timer.h"
-
 #include "debug.h"
 
 PerfStats perfStats[PERFSTAT_MAX];

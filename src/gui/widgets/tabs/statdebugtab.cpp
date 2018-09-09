@@ -57,11 +57,11 @@ StatDebugTab::StatDebugTab(const Widget2 *const widget) :
     place(0, 0, mLPSLabel, 2, 1);
     place(0, 1, mResetButton, 1, 1);
     place(1, 1, mCopyButton, 1, 1);
-    for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+    for (size_t f = 1; f < PERFSTAT_LAST_STAT; f ++)
     {
         mStatLabels[f - 1] = new Label(this,
             // TRANSLATORS: debug window stat label
-            strprintf(_("stat%d: %d ms"), f, 1000));
+            strprintf(_("stat%u: %d ms"), CAST_U32(f), 1000));
         mStatLabels[f - 1]->adjustSize();
         mWorseStatLabels[f - 1] = new Label(this,
             // TRANSLATORS: debug window stat label
@@ -79,12 +79,12 @@ void StatDebugTab::logic()
     // TRANSLATORS: debug window label, logic per second
     mLPSLabel->setCaption(strprintf(_("LPS: %d"), lps));
 
-    for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+    for (size_t f = 1; f < PERFSTAT_LAST_STAT; f ++)
     {
         mStatLabels[f - 1]->setCaption(
             // TRANSLATORS: debug window stat label
-            strprintf(_("stat%d: %d ms"),
-            f,
+            strprintf(_("stat%u: %d ms"),
+            CAST_U32(f),
             Perf::getTime(prevPerfFrameId, f) * MILLISECONDS_IN_A_TICK));
         mWorseStatLabels[f - 1]->setCaption(
             // TRANSLATORS: debug window stat label
@@ -105,13 +105,13 @@ void StatDebugTab::action(const ActionEvent &event)
     else if (eventId == "copy")
     {
         std::string data("perf:");
-        for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+        for (size_t f = 1; f < PERFSTAT_LAST_STAT; f ++)
         {
             data.append(strprintf(" %d",
                 Perf::getTime(mDrawIndex, f) * MILLISECONDS_IN_A_TICK));
         }
         data.append(",");
-        for (int f = 1; f < PERFSTAT_LAST_STAT; f ++)
+        for (size_t f = 1; f < PERFSTAT_LAST_STAT; f ++)
         {
             data.append(strprintf(" %d",
                 Perf::getWorstTime(f) * MILLISECONDS_IN_A_TICK));
