@@ -1,0 +1,74 @@
+jobs:
+- job: mxe_32_build
+  pool:
+    name: 'Hosted Ubuntu 1604'
+  steps:
+  - script: |
+      uname -a
+      export BITS=32
+      export CROSS="i686-w64-mingw32.shared"
+      ./tools/ci/scripts/azure/mxetest.sh
+      cp ./dlls/* "$(Build.ArtifactStagingDirectory)"
+      cp ./src/*.exe "$(Build.ArtifactStagingDirectory)"
+      ls "$(Build.ArtifactStagingDirectory)"
+      echo done
+  - task: PublishBuildArtifacts@1
+    inputs:
+      artifactName: manaplus32
+
+- job: mxe_32_test
+  dependsOn: mxe_32_build
+  pool:
+    name: 'Hosted VS2017'
+  steps:
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      buildType: 'current'
+      project: 'ManaPlus'
+      artifactName: 'manaplus32'
+  - script: dir "$(Build.ArtifactStagingDirectory)\manaplus32"
+  - script: copy "$(Build.ArtifactStagingDirectory)\manaplus32\*" .
+  - script: type data\test\serverlistplus.xml
+  - script: tools\ci\scripts\addextrafiles.cmd
+  - script: dir
+  - script: |
+      set SDL_VIDEODRIVER=dummy
+      echo run
+      manaplustests.exe
+
+- job: mxe_64_build
+  pool:
+    name: 'Hosted Ubuntu 1604'
+  steps:
+  - script: |
+      uname -a
+      export BITS=64
+      export CROSS="x86_64-w64-mingw32.shared"
+      ./tools/ci/scripts/azure/mxetest.sh
+      cp ./dlls/* "$(Build.ArtifactStagingDirectory)"
+      cp ./src/*.exe "$(Build.ArtifactStagingDirectory)"
+      ls "$(Build.ArtifactStagingDirectory)"
+      echo done
+  - task: PublishBuildArtifacts@1
+    inputs:
+      artifactName: manaplus64
+
+- job: mxe_64_test
+  dependsOn: mxe_64_build
+  pool:
+    name: 'Hosted VS2017'
+  steps:
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      buildType: 'current'
+      project: 'ManaPlus'
+      artifactName: 'manaplus64'
+  - script: dir "$(Build.ArtifactStagingDirectory)\manaplus64"
+  - script: copy "$(Build.ArtifactStagingDirectory)\manaplus64\*" .
+  - script: type data\test\serverlistplus.xml
+  - script: tools\ci\scripts\addextrafiles.cmd
+  - script: dir
+  - script: |
+      set SDL_VIDEODRIVER=dummy
+      echo run
+      manaplustests.exe
