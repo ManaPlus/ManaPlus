@@ -14,6 +14,9 @@ Semaphore CI: [![Build Status](https://semaphoreci.com/api/v1/4144/manaplus/bran
 
 Travis CI: [![travis build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master)](https://travis-ci.org/ManaPlus/ManaPlus/builds/)
 
+Azure CI: [![Build Status macosx](https://dev.azure.com/manaplus/ManaPlus/_apis/build/status/ManaPlus%20macosx)](https://dev.azure.com/manaplus/ManaPlus/_build/latest?definitionId=2)
+          [![Build Status windows](https://dev.azure.com/manaplus/ManaPlus/_apis/build/status/ManaPlus%20main)](https://dev.azure.com/manaplus/ManaPlus/_build/latest?definitionId=1)
+
 Coverage: [![coverage report](https://gitlab.com/manaplus/manaplus/badges/master/coverage.svg)](http://stats.manaplus.org/gcov/gcc-6.html)
 
 Doxygen: [![doxygen](https://img.shields.io/badge/Docs-Doxygen/manaplus-blue.svg)](http://stats.manaplus.org/docs/index.html)

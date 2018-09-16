@@ -11,6 +11,8 @@ THE MANA PLUS CLIENT
   Circle CI: https://circleci.com/gh/ManaPlus/ManaPlus/tree/master.svg?style=svg
   Semaphore CI https://semaphoreci.com/4144/manaplus
   Travis: https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master
+  Azure CI: windows: https://dev.azure.com/manaplus/ManaPlus/_build/latest?definitionId=1
+            macosx: https://dev.azure.com/manaplus/ManaPlus/_build/latest?definitionId=2
   Coverage: http://stats.manaplus.org/gcov/gcc-6.html
   Doxygen: http://stats.manaplus.org/docs/index.html
   Coverity: https://scan.coverity.com/projects/manaplus
