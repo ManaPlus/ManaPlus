@@ -1,0 +1,17 @@
+parameters:
+  name: ''
+  xcode: ''
+  vmImage: 'macOS 10.13'
+
+jobs:
+- job: ${{ parameters.name }}
+  pool:
+    vmImage: '${{ parameters.vmImage }}'
+  steps:
+  - script: |
+      export xcodename="${{ parameters.xcode }}"
+      export artifacts="$(Build.ArtifactStagingDirectory)"
+      ./tools/ci/jobs/xcode.sh
+  - task: PublishBuildArtifacts@1
+    inputs:
+      artifactName: ${{ parameters.name }}

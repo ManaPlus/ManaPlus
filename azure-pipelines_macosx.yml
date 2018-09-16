@@ -1,0 +1,49 @@
+jobs:
+- job: list_xcode
+  pool:
+    vmImage: 'macOS 10.13'
+  steps:
+  - script: |
+      ls /Applications/ | grep Xcode|sort
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_8
+    xcode: Xcode_8.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_9
+    xcode: Xcode_9.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode
+    xcode: Xcode.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_8_3_3
+    xcode: Xcode_8.3.3.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_9_4_1
+    xcode: Xcode_9.4.1.app
+
+- job: vars
+  pool:
+    name: 'Hosted Ubuntu 1604'
+  dependsOn:
+    - xcode_8
+    - xcode_9
+    - xcode
+    - xcode_8_3_3
+    - xcode_9_4_1
+  steps:
+  - script: |
+      curl -X POST \
+          -F token=$(IMAGETOKEN) \
+          -F "ref=macos" \
+          -F "variables[AZUREURL]=$(System.TeamFoundationCollectionUri)$(System.TeamProjectId)/_apis/build/builds/$(Build.BuildId)/artifacts?artifactName=ANAME&api-version=5.0-preview.3&%24format=zip" \
+          https://gitlab.com/api/v4/projects/2872004/trigger/pipeline
