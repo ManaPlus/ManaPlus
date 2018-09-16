@@ -157,7 +157,7 @@ Other:
 
 If you're having issues with this client, feel free to report them to us.
 You can report on forum (http://forums.themanaworld.org/viewforum.php?f=12),
-bugtracker (http://bugs.evolonline.org) or IRC on irc.freenode.net in the #manaplus channel.
+bugtracker (https://gitlab.com/manaplus/manaplus/issues/) or IRC on irc.freenode.net in the #manaplus channel.
 
 If you have feedback about a specific game that uses the ManaPlus client, be sure
 to contact the developers of the game instead.

@@ -161,7 +161,7 @@ Whispers:
 
 If you're having issues with this client, feel free to report them to us.
 You can report on [![forum](https://img.shields.io/badge/forum-forums.themanaworld.org-yellow.svg)](http://forums.themanaworld.org/viewforum.php?f=12),
-[bugtracker](http://bugs.evolonline.org) or
+[bugtracker](https://gitlab.com/manaplus/manaplus/issues/) or
 [![IRC](https://img.shields.io/badge/IRC-FreeNode/manaplus-yellow.svg)](webchat.freenode.net/?channels=manaplus)
 on irc.freenode.net in the #manaplus channel.
 
