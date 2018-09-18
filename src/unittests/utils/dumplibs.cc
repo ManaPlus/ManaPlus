@@ -38,6 +38,11 @@ PRAGMA48(GCC diagnostic pop)
 
 #include <zlib.h>
 
+#ifdef ENABLE_LIBXML
+#include <libxml/threads.h>
+#include <libxml/xmlversion.h>
+#endif  // ENABLE_LIBXML
+
 #include "debug.h"
 
 TEST_CASE("dumplibs tests", "")
@@ -48,6 +53,17 @@ TEST_CASE("dumplibs tests", "")
         const std::string link = zlibVersion();
         REQUIRE(build == link);
     }
+
+#ifdef ENABLE_LIBXML
+    SECTION("libxml2")
+    {
+        const char **xmlVersion = __xmlParserVersion();
+        REQUIRE(xmlVersion != nullptr);
+        REQUIRE(*xmlVersion != nullptr);
+        REQUIRE(std::string(*xmlVersion) ==
+            std::string(LIBXML_VERSION_STRING LIBXML_VERSION_EXTRA));
+    }
+#endif  // ENABLE_LIBXML
 
     SECTION("sdl")
     {

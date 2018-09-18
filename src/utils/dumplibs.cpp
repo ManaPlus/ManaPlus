@@ -45,6 +45,7 @@ PRAGMA48(GCC diagnostic pop)
 #include <curl/curl.h>
 
 #ifdef ENABLE_LIBXML
+#include <libxml/threads.h>
 #include <libxml/xmlversion.h>
 #endif  // ENABLE_LIBXML
 
@@ -117,7 +118,9 @@ void dumpLibs()
     logger->log("Compiled with:");
     logger->log(" zLib: %s", ZLIB_VERSION);
 #ifdef ENABLE_LIBXML
-    logger->log(" libxml2: %s", LIBXML_DOTTED_VERSION);
+    logger->log(" libxml2: %s, %s",
+        LIBXML_DOTTED_VERSION,
+        LIBXML_VERSION_STRING LIBXML_VERSION_EXTRA);
 #endif  // ENABLE_LIBXML
 
     logger->log(" libcurl: %s", LIBCURL_VERSION);
@@ -136,6 +139,11 @@ void dumpLibs()
 #ifdef LIBXML_TEST_VERSION
     LIBXML_TEST_VERSION
 #endif  // LIBXML_TEST_VERSION
+#ifdef ENABLE_LIBXML
+    const char **xmlVersion = __xmlParserVersion();
+    if (xmlVersion != nullptr)
+        logger->log(" libxml2: %s", *xmlVersion);
+#endif  // ENABLE_LIBXML
 #ifdef USE_SDL2
     SDL_version sdlVersion;
     sdlVersion.major = 0;
@@ -152,6 +160,14 @@ void dumpLibs()
     dumpLinkedSdlVersion("SDL_ttf", TTF_Linked_Version());
 
     compareVersions("zLib", ZLIB_VERSION, zlibVersion());
+#ifdef ENABLE_LIBXML
+    if (xmlVersion != nullptr)
+    {
+        compareVersions("libxml2",
+            LIBXML_VERSION_STRING LIBXML_VERSION_EXTRA,
+            *xmlVersion);
+    }
+#endif  // ENABLE_LIBXML
 #ifdef USE_SDL2
     compareSDLVersions("SDL", sdlVersionJoin(SDL), &sdlVersion);
 #else  // USE_SDL2
