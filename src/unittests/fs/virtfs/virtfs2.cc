@@ -1555,16 +1555,10 @@ TEST_CASE("VirtFs2 getFilesWithDir2", "")
         list.clear();
 
         VirtFs::getFilesWithDir(pathJoin("evol", "icons"), list);
-#ifdef WIN32
-        REQUIRE(list.size() == 1);
-        REQUIRE(inList(list, pathJoin("evol", "icons"), "evol-client.ico"));
-#else  // WIN32
-
         REQUIRE(list.size() == 3);
         REQUIRE(inList(list, pathJoin("evol", "icons"), "evol-client.ico"));
         REQUIRE(inList(list, pathJoin("evol", "icons"), "evol-client.png"));
         REQUIRE(inList(list, pathJoin("evol", "icons"), "evol-client.xpm"));
-#endif  // WIN32
 
         VirtFs::unmountDir(prefix + "data");
     }
