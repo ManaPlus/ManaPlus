@@ -155,6 +155,23 @@ TEST_CASE("xml doc", "")
         REQUIRE(!strcmp(XmlChildContent(doc.rootNode()), "this is test"));
     }
 
+    SECTION("load5")
+    {
+        XML::Document doc(pathJoin(VirtFs::getRealDir(
+            "test/serverlistplus.xml"), "test/serverlistplus.xml"),
+            UseVirtFs_false,
+            SkipError_false);
+        REQUIRE(doc.isLoaded() == true);
+        REQUIRE(doc.isValid() == true);
+        REQUIRE(doc.rootNode() != nullptr);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "serverlist") == true);
+        REQUIRE(xmlNameEqual(doc.rootNode(), "serverlist123") == false);
+        REQUIRE(xmlTypeEqual(doc.rootNode(), XML_ELEMENT_NODE) == true);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option1") == false);
+        REQUIRE(XmlHasProp(doc.rootNode(), "option123") == false);
+        REQUIRE(XmlHasProp(doc.rootNode(), "version") == true);
+    }
+
     SECTION("properties")
     {
         XML::Document doc("graphics/gui/browserbox.xml",
