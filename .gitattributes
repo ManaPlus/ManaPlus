@@ -1,0 +1,16 @@
+*.xml text eol=lf
+*.xsd text eol=lf
+*.yml text eol=lf
+*.gpl text eol=lf
+*.mk text eol=lf
+*.po text eol=lf
+*.pot text eol=lf
+*.desktop text eol=lf
+*.manaplus text eol=lf
+*.sh text eol=lf
+*.in text eol=lf
+*.am text eol=lf
+*.sfd text eol=lf
+*.glsl text eol=lf
+*.idx text eol=lf
+Makefile text eol=lf
