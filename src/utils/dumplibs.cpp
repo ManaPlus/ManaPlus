@@ -45,8 +45,7 @@ PRAGMA48(GCC diagnostic pop)
 #include <curl/curl.h>
 
 #ifdef ENABLE_LIBXML
-#include <libxml/threads.h>
-#include <libxml/xmlversion.h>
+#include <libxml/globals.h>
 #endif  // ENABLE_LIBXML
 
 #include "debug.h"
