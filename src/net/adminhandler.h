@@ -183,6 +183,8 @@ class AdminHandler notfinal
         virtual void breakGuild(const std::string &name) const = 0;
 
         virtual void guildRecall(const std::string &name) const = 0;
+
+        virtual void changeDress() const = 0;
 };
 
 }  // namespace Net

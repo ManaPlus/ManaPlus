@@ -32,6 +32,9 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+extern int packetVersionZero;
+
 namespace EAthena
 {
 
@@ -374,6 +377,16 @@ void AdminHandler::slide(const int x, const int y) const
 {
     Gm::runCommand("slide",
         strprintf("%d %d", x, y));
+}
+
+void AdminHandler::changeDress() const
+{
+    if (packetVersionZero < 20171214 &&
+        packetVersion < 20171220)
+    {
+        return;
+    }
+    createOutPacket(CMSG_CHANGE_DRESS);
 }
 
 }  // namespace EAthena

@@ -339,6 +339,7 @@ packet(CMSG_PLAYER_SELECT_STYLE,          0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SELECT_STYLE2,         0x0000,   0, nullptr);
 packet(CMSG_PET_EVOLUTION,                0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SET_TITLE,             0x0000,   0, nullptr);
+packet(CMSG_CHANGE_DRESS,                 0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1367,6 +1368,18 @@ if (packetVersion >= 20170419)
 {
     packet(CMSG_MAIL2_OPEN_MAILBOX,       0x0ac0,  26, clif->pRodexOpenMailbox);
     packet(CMSG_MAIL2_REFRESH_MAIL_LIST,  0x0ac1,  26, clif->pRodexRefreshMaillist);
+}
+
+// 20171214 zero
+if (packetVersionZero >= 20171214)
+{
+    packet(CMSG_CHANGE_DRESS,             0x0ae8,   2, clif->pChangeDress);
+}
+
+// 20171220
+if (packetVersion >= 20171220)
+{
+    packet(CMSG_CHANGE_DRESS,             0x0ae8,   2, clif->pChangeDress);
 }
 
 // zero 20180131

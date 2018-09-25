@@ -296,4 +296,8 @@ void AdminHandler::slide(const int x, const int y) const
     warp(Game::instance()->getCurrentMapName(), x, y);
 }
 
+void AdminHandler::changeDress() const
+{
+}
+
 }  // namespace TmwAthena

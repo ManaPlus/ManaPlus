@@ -157,6 +157,8 @@ class AdminHandler final : public Ea::AdminHandler
         void guildRecall(const std::string &name) const override final;
 
         void slide(const int x, const int y) const override final;
+
+        void changeDress() const override final;
 };
 
 }  // namespace TmwAthena

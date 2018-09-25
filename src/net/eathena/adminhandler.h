@@ -158,6 +158,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void slide(const int x, const int y) const override final;
 
+        void changeDress() const override final;
+
     protected:
         static std::string mStatsName;
 };
