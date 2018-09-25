@@ -65,6 +65,7 @@ namespace EAthena
         void processGuildPositionInfo(Net::MessageIn &msg);
         void processGuildMemberLogin(Net::MessageIn &msg);
         void processGuildExpulsion(Net::MessageIn &msg);
+        void processGuildExpulsion2(Net::MessageIn &msg);
         void processGuildExpulsionList(Net::MessageIn &msg);
         void processGuildEmblem(Net::MessageIn &msg);
         void processOnlineInfo(Net::MessageIn &msg);

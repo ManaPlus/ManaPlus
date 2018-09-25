@@ -993,12 +993,14 @@ if (packetVersion >= 20160921)
 // 20160921 re
 if (packetVersionRe >= 20160921)
 {
+    packet(SMSG_GUILD_EXPULSION2,          0x0a82,  46, &GuildRecv::processGuildExpulsion2,             20160921);
     packet(SMSG_GUILD_LEAVE2,              0x0a83,  46, &GuildRecv::processGuildLeave2,                 20160921);
 }
 
 // 20161019 main
 if (packetVersionMain >= 20161019)
 {
+    packet(SMSG_GUILD_EXPULSION2,          0x0a82,  46, &GuildRecv::processGuildExpulsion2,             20161019);
     packet(SMSG_GUILD_LEAVE2,              0x0a83,  46, &GuildRecv::processGuildLeave2,                 20161019);
 }
 
@@ -1115,6 +1117,7 @@ if (packets_zero == true)
     packet(SMSG_PARTY_INFO,                0x0a44,  -1, &PartyRecv::processPartyInfo,                   20171018);
     packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20171018);
     packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20171018);
+    packet(SMSG_GUILD_EXPULSION2,          0x0a82,  46, &GuildRecv::processGuildExpulsion2,             20171018);
     packet(SMSG_GUILD_LEAVE2,              0x0a83,  46, &GuildRecv::processGuildLeave2,                 20171018);
 }
 

@@ -743,6 +743,24 @@ void GuildRecv::processGuildExpulsion(Net::MessageIn &msg)
     GuildRecv::processGuildExpulsionContinue(nick);
 }
 
+void GuildRecv::processGuildExpulsion2(Net::MessageIn &msg)
+{
+    msg.readString(40, "message");
+    const int charId = msg.readInt32("char id");
+
+    std::string nick;
+
+    if (taGuild != nullptr)
+    {
+        const GuildMember *const member = taGuild->getMemberByCharId(charId);
+        if (member != nullptr)
+        {
+            nick = member->getName();
+            GuildRecv::processGuildExpulsionContinue(nick);
+        }
+    }
+}
+
 void GuildRecv::processGuildExpulsionList(Net::MessageIn &msg)
 {
     const int length = msg.readInt16("len");
