@@ -1490,4 +1490,20 @@ void InventoryRecv::processPlayerInventoryUse(Net::MessageIn &msg)
     BLOCK_END("InventoryRecv::processPlayerInventoryUse")
 }
 
+void InventoryRecv::processItemMoveFailed(Net::MessageIn &msg)
+{
+    Inventory *const inventory = localPlayer != nullptr
+        ? PlayerInfo::getInventory() : nullptr;
+    const int index = msg.readInt16("index") - INVENTORY_OFFSET;
+    msg.readInt16("unknown");  // 1
+    if (inventory != nullptr)
+    {
+        if (Item *const item = inventory->getItem(index))
+        {
+            NotifyManager::notify(NotifyTypes::DELETE_ITEM_DROPPED,
+                item->getName());
+        }
+    }
+}
+
 }  // namespace EAthena

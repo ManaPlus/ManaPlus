@@ -985,6 +985,18 @@ if (packetVersion >= 20161026)
     packet(SMSG_GUILD_MEMBER_LIST,         0x0aa5,  -1, &GuildRecv::processGuildMemberList,             20161026);
 }
 
+// 20161130 re
+if (packetVersionRe >= 20161130)
+{
+    packet(SMSG_ITEM_MOVE_FAILED,          0x0aa7,   6, &InventoryRecv::processItemMoveFailed,          20161130);
+}
+
+// 20161214 main
+if (packetVersionMain >= 20161214)
+{
+    packet(SMSG_ITEM_MOVE_FAILED,          0x0aa7,   6, &InventoryRecv::processItemMoveFailed,          20161214);
+}
+
 // 20170315
 if (packetVersion >= 20170315)
 {
@@ -1037,6 +1049,7 @@ packet(SMSG_PLAYER_GET_EXP2,               0x0acc,  18, &PlayerRecv::processPlay
 if (packets_zero == true)
 {
     packet(SMSG_ITEM_DROPPED,              0x0add,  22, &ItemRecv::processItemDropped,                  20171018);
+    packet(SMSG_ITEM_MOVE_FAILED,          0x0aa7,   6, &InventoryRecv::processItemMoveFailed,          20171018);
 }
 
 // 20171207
