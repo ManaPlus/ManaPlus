@@ -83,6 +83,8 @@ class PlayerHandler final : public Ea::PlayerHandler
                      const int64_t base,
                      const int mod,
                      const Notify notify) const override final;
+
+        void setTitle(const int titleId) const override final;
 };
 
 }  // namespace EAthena

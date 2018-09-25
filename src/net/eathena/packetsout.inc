@@ -337,6 +337,7 @@ packet(CMSG_MAP_BLOCK_PLAY_CANCEL,        0x0000,   0, nullptr);
 packet(CMSG_PRIVATE_AIRSHIP_REQUEST,      0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SELECT_STYLE,          0x0000,   0, nullptr);
 packet(CMSG_PET_EVOLUTION,                0x0000,   0, nullptr);
+packet(CMSG_PLAYER_SET_TITLE,             0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1322,6 +1323,12 @@ if (packetVersion >= 20140611)
 if (packetVersion >= 20140618)
 {
     packet(CMSG_ROULETTE_RECV_ITEM,       0x0a21,   3, clif->pRouletteRecvItem);
+}
+
+// 20140903
+if (packetVersion >= 20140903)
+{
+    packet(CMSG_PLAYER_SET_TITLE,         0x0a2e,   6, clif->pChangeTitle);
 }
 
 // 20141119

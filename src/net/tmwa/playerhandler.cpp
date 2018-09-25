@@ -505,4 +505,8 @@ void PlayerHandler::selectStyle(const int headColor A_UNUSED,
 {
 }
 
+void PlayerHandler::setTitle(const int titleId A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

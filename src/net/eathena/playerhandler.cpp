@@ -812,6 +812,14 @@ void PlayerHandler::selectStyle(const int headColor,
         outMsg.writeInt16(CAST_S16(bodyStyle), "body style");
 }
 
+void PlayerHandler::setTitle(const int titleId) const
+{
+    if (packetVersion < 20140903)
+        return;
+    createOutPacket(CMSG_PLAYER_SET_TITLE);
+    outMsg.writeInt32(titleId, "title");
+}
+
 #undef setStatComplex
 
 }  // namespace EAthena

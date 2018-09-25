@@ -119,6 +119,8 @@ class PlayerHandler notfinal
                                  const int middleStyle,
                                  const int bottomStyle,
                                  const int bodyStyle) const = 0;
+
+        virtual void setTitle(const int titleId) const = 0;
 };
 
 }  // namespace Net
