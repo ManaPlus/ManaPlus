@@ -26,6 +26,7 @@
 #include "notifymanager.h"
 #include "itemcolormanager.h"
 #include "itemsoundmanager.h"
+#include "settings.h"
 
 #include "being/localplayer.h"
 
@@ -1504,6 +1505,11 @@ void InventoryRecv::processItemMoveFailed(Net::MessageIn &msg)
                 item->getName());
         }
     }
+}
+
+void InventoryRecv::processOverWeightPercent(Net::MessageIn &msg)
+{
+    settings.overweightPercent = msg.readUInt32("parcent");
 }
 
 }  // namespace EAthena

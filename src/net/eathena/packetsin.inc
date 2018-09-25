@@ -1131,6 +1131,24 @@ if (packets_zero == true)
     packet(SMSG_GUILD_LEAVE2,              0x0a83,  46, &GuildRecv::processGuildLeave2,                 20171018);
 }
 
+// 20171019 zero
+if (packetVersionZero >= 20171019)
+{
+    packet(SMSG_OVERWEIGHT_PERCENT,        0x0ade,   6, &InventoryRecv::processOverWeightPercent,       20171019);
+}
+
+// 20171025 re
+if (packetVersionRe >= 20171025)
+{
+    packet(SMSG_OVERWEIGHT_PERCENT,        0x0ade,   6, &InventoryRecv::processOverWeightPercent,       20171025);
+}
+
+// 20171108 main
+if (packetVersionMain >= 20171108)
+{
+    packet(SMSG_OVERWEIGHT_PERCENT,        0x0ade,   6, &InventoryRecv::processOverWeightPercent,       20171108);
+}
+
 // 20171207
 if (packetVersion >= 20171207)
 {
