@@ -505,6 +505,57 @@ void GuildRecv::processGuildLeave(Net::MessageIn &msg)
     }
 }
 
+void GuildRecv::processGuildLeave2(Net::MessageIn &msg)
+{
+    const int charId = msg.readInt32("char id");
+    msg.readString(40, "message");
+    std::string nick;
+
+    if (taGuild != nullptr)
+    {
+        const GuildMember *const member = taGuild->getMemberByCharId(charId);
+        if (member != nullptr)
+        {
+            nick = member->getName();
+            taGuild->removeMember(member);
+        }
+    }
+
+    if (localPlayer == nullptr)
+        return;
+
+    if (charId == PlayerInfo::getCharId())
+    {
+        if (taGuild != nullptr)
+        {
+            taGuild->removeFromMembers();
+            taGuild->clearMembers();
+            localPlayer->removeGuild(taGuild->getId());
+        }
+        NotifyManager::notify(NotifyTypes::GUILD_LEFT);
+        delete2(guildTab)
+
+        if ((socialWindow != nullptr) && (taGuild != nullptr))
+            socialWindow->removeTab(taGuild);
+        if (actorManager != nullptr)
+            actorManager->updatePlayerColors();
+    }
+    else
+    {
+        NotifyManager::notify(NotifyTypes::GUILD_USER_LEFT, nick);
+        if (actorManager != nullptr)
+        {
+            Being *const b = actorManager->findBeingByName(
+                nick, ActorType::Player);
+
+            if (b != nullptr)
+                b->clearGuilds();
+            if (taGuild != nullptr)
+                taGuild->removeMember(nick);
+        }
+    }
+}
+
 void GuildRecv::processGuildMessage(Net::MessageIn &msg)
 {
     const int msgLength = msg.readInt16("len") - 4;

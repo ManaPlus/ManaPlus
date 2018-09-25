@@ -169,6 +169,23 @@ GuildMember *Guild::getMember(const BeingId accountId,
     return nullptr;
 }
 
+GuildMember *Guild::getMemberByCharId(const int charId) const
+{
+    MemberList::const_iterator itr = mMembers.begin();
+    const MemberList::const_iterator itr_end = mMembers.end();
+    while (itr != itr_end)
+    {
+        if ((*itr) != nullptr &&
+            (*itr)->mCharId == charId)
+        {
+            return (*itr);
+        }
+        ++itr;
+    }
+
+    return nullptr;
+}
+
 GuildMember *Guild::getMember(const std::string &name) const
 {
     MemberList::const_iterator itr = mMembers.begin();

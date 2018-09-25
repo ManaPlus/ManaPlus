@@ -107,6 +107,13 @@ class Guild final : public AvatarListModel
                                const A_WARN_UNUSED;
 
         /**
+         * Find a member by char ID.
+         *
+         * @return the member with the given ID, or NULL if they don't exist.
+         */
+        GuildMember *getMemberByCharId(const int charId) const A_WARN_UNUSED;
+
+        /**
          * Find a member by name.
          *
          * @return the member with the given name, or NULL if they don't exist.
@@ -133,7 +140,7 @@ class Guild final : public AvatarListModel
         void removeMember(const GuildMember *const member);
 
         /**
-         * Removes a member from the guild.
+         * Removes a member from the guild by account id.
          */
         void removeMember(const BeingId id);
 
