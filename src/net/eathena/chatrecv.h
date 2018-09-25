@@ -50,6 +50,7 @@ namespace EAthena
         void processFormatMessageNumber(Net::MessageIn &msg);
         void processFormatColor(Net::MessageIn &msg);
         void processFormatMessageString(Net::MessageIn &msg);
+        void processFormatMessageStringColor(Net::MessageIn &msg);
         void processFormatMessageSkill(Net::MessageIn &msg);
         void processChatDisplay(Net::MessageIn &msg);
         void processChatRoomJoinAck(Net::MessageIn &msg);

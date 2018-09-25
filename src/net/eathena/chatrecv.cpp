@@ -194,6 +194,18 @@ void ChatRecv::processFormatMessageString(Net::MessageIn &msg)
     processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
 }
 
+void ChatRecv::processFormatMessageStringColor(Net::MessageIn &msg)
+{
+    const int strLen = msg.readInt16("len") - 10;
+    const int msgId = msg.readInt16("msg id");
+    msg.readInt32("color");
+    const std::string message = msg.readString(strLen, "value");
+    // +++ here need load message from configuration file
+    const std::string chatMsg = strprintf(
+        "Message #%d, value: %s", msgId, message.c_str());
+    processChatContinue(chatMsg, ChatMsgType::BY_SERVER);
+}
+
 void ChatRecv::processFormatMessageSkill(Net::MessageIn &msg)
 {
     const int skillId = msg.readInt16("skill id");
