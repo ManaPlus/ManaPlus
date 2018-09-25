@@ -336,6 +336,7 @@ packet(CMSG_ATTENDANCE_REWARD,            0x0000,   0, nullptr);
 packet(CMSG_MAP_BLOCK_PLAY_CANCEL,        0x0000,   0, nullptr);
 packet(CMSG_PRIVATE_AIRSHIP_REQUEST,      0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SELECT_STYLE,          0x0000,   0, nullptr);
+packet(CMSG_PLAYER_SELECT_STYLE2,         0x0000,   0, nullptr);
 packet(CMSG_PET_EVOLUTION,                0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SET_TITLE,             0x0000,   0, nullptr);
 #else
@@ -1408,6 +1409,24 @@ if (packetVersionMain >= 20180404)
 if (packetVersionZero >= 20180411)
 {
     packet(CMSG_ATTENDANCE_REWARD,        0x0aef,   2, clif->pAttendanceRewardRequest);
+}
+
+// 20180516 main
+if (packetVersionMain >= 20180516)
+{
+    packet(CMSG_PLAYER_SELECT_STYLE2,     0x0afc,  16, clif->pReqStyleChange2);
+}
+
+// 20180516 re
+if (packetVersionRe >= 20180516)
+{
+    packet(CMSG_PLAYER_SELECT_STYLE2,     0x0afc,  16, clif->pReqStyleChange2);
+}
+
+// 20180523 zero
+if (packetVersionZero >= 20180523)
+{
+    packet(CMSG_PLAYER_SELECT_STYLE2,     0x0afc,  16, clif->pReqStyleChange2);
 }
 
 // 20180704 re

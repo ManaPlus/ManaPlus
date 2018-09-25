@@ -46,7 +46,9 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionMain;
 extern int packetVersionRe;
+extern int packetVersionZero;
 extern int serverVersion;
 
 namespace EAthena
@@ -801,15 +803,29 @@ void PlayerHandler::selectStyle(const int headColor,
 {
     if (packetVersion < 20151104)
         return;
-    createOutPacket(CMSG_PLAYER_SELECT_STYLE);
-    outMsg.writeInt16(CAST_S16(headColor), "head color");
-    outMsg.writeInt16(CAST_S16(headStyle), "head style");
-    outMsg.writeInt16(CAST_S16(bodyColor), "body color");
-    outMsg.writeInt16(CAST_S16(topStyle), "top style");
-    outMsg.writeInt16(CAST_S16(middleStyle), "middle style");
-    outMsg.writeInt16(CAST_S16(bottomStyle), "bottom style");
-    if (packetVersionRe >= 20180718)
+    if (packetVersionMain >= 20180516 ||
+        packetVersionRe >= 20180516 ||
+        packetVersionZero >= 20180523)
+    {
+        createOutPacket(CMSG_PLAYER_SELECT_STYLE2);
+        outMsg.writeInt16(CAST_S16(headColor), "head color");
+        outMsg.writeInt16(CAST_S16(headStyle), "head style");
+        outMsg.writeInt16(CAST_S16(bodyColor), "body color");
+        outMsg.writeInt16(CAST_S16(topStyle), "top style");
+        outMsg.writeInt16(CAST_S16(middleStyle), "middle style");
+        outMsg.writeInt16(CAST_S16(bottomStyle), "bottom style");
         outMsg.writeInt16(CAST_S16(bodyStyle), "body style");
+    }
+    else
+    {
+        createOutPacket(CMSG_PLAYER_SELECT_STYLE);
+        outMsg.writeInt16(CAST_S16(headColor), "head color");
+        outMsg.writeInt16(CAST_S16(headStyle), "head style");
+        outMsg.writeInt16(CAST_S16(bodyColor), "body color");
+        outMsg.writeInt16(CAST_S16(topStyle), "top style");
+        outMsg.writeInt16(CAST_S16(middleStyle), "middle style");
+        outMsg.writeInt16(CAST_S16(bottomStyle), "bottom style");
+    }
 }
 
 void PlayerHandler::setTitle(const int titleId) const
