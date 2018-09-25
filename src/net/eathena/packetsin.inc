@@ -1027,11 +1027,22 @@ if (packetVersion >= 20170419)
     packet(SMSG_MAIL2_MAIL_LIST_PAGE,      0x0ac2,  -1, &Mail2Recv::processMailListPage,                20170419);
 }
 
+// 20170419 re
+if (packetVersionRe >= 20170419)
+{
+    packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20170419);
+}
+
 // 20170502
 if (packetVersion >= 20170502)
 {
     packet(SMSG_PARTY_MEMBER_INFO,         0x0a43,  85, &PartyRecv::processPartyMemberInfo,             20170502);
     packet(SMSG_PARTY_INFO,                0x0a44,  -1, &PartyRecv::processPartyInfo,                   20170502);
+}
+
+// 20170502 main
+if (packetVersionMain >= 20170502)
+{
     packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20170502);
 }
 
@@ -1079,6 +1090,7 @@ if (packets_zero == true)
     packet(SMSG_SKILL_WARP_POINT,          0x0abe,  -1, &SkillRecv::processSkillWarpPoint2,             20171018);
     packet(SMSG_PARTY_MEMBER_INFO,         0x0a43,  85, &PartyRecv::processPartyMemberInfo,             20171018);
     packet(SMSG_PARTY_INFO,                0x0a44,  -1, &PartyRecv::processPartyInfo,                   20171018);
+    packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20171018);
 }
 
 // 20171207
