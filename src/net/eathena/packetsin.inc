@@ -1035,6 +1035,20 @@ if (packetVersion >= 20170502)
     packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20170502);
 }
 
+// 20170502 re
+if (packetVersionRe >= 20170502)
+{
+    packet(SMSG_PARTY_MEMBER_INFO,         0x0a43,  85, &PartyRecv::processPartyMemberInfo,             20170502);
+    packet(SMSG_PARTY_INFO,                0x0a44,  -1, &PartyRecv::processPartyInfo,                   20170502);
+}
+
+// 20170524 re
+if (packetVersionMain >= 20170524)
+{
+    packet(SMSG_PARTY_MEMBER_INFO,         0x0a43,  85, &PartyRecv::processPartyMemberInfo,             20170524);
+    packet(SMSG_PARTY_INFO,                0x0a44,  -1, &PartyRecv::processPartyInfo,                   20170524);
+}
+
 // 20170315
 if (packetVersion >= 20170315)
 {
@@ -1063,6 +1077,8 @@ if (packets_zero == true)
     packet(SMSG_ITEM_DROPPED,              0x0add,  22, &ItemRecv::processItemDropped,                  20171018);
     packet(SMSG_ITEM_MOVE_FAILED,          0x0aa7,   6, &InventoryRecv::processItemMoveFailed,          20171018);
     packet(SMSG_SKILL_WARP_POINT,          0x0abe,  -1, &SkillRecv::processSkillWarpPoint2,             20171018);
+    packet(SMSG_PARTY_MEMBER_INFO,         0x0a43,  85, &PartyRecv::processPartyMemberInfo,             20171018);
+    packet(SMSG_PARTY_INFO,                0x0a44,  -1, &PartyRecv::processPartyInfo,                   20171018);
 }
 
 // 20171207

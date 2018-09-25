@@ -42,6 +42,8 @@
 
 #include "debug.h"
 
+extern bool packets_zero;
+
 namespace EAthena
 {
 
@@ -63,7 +65,9 @@ void PartyRecv::processPartyMemberInfo(Net::MessageIn &msg)
         msg.readBeingId("char id");
     const bool leader = msg.readInt32("leader") == 0U;
     int level = 0;
-    if (msg.getVersion() >= 20170502)
+    if (msg.getVersionMain() >= 20170524 ||
+        msg.getVersionRe() >= 20170502 ||
+        packets_zero == true)
     {
         msg.readInt16("class");
         level = msg.readInt16("level");
@@ -194,7 +198,9 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
     {
         partySize = 4 + 4 + 24 + 16 + 1 + 1 + 2 + 2;
     }
-    else if (msg.getVersion() >= 20170502)
+    else if (msg.getVersionMain() >= 20170524 ||
+             msg.getVersionRe() >= 20170502 ||
+             packets_zero == true)
     {
         partySize = 4 + 24 + 16 + 1 + 1 + 2 + 2;
     }
@@ -221,7 +227,9 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         const bool leader = msg.readUInt8("leader") == 0U;
         const bool online = msg.readUInt8("online") == 0U;
         int level = 0;
-        if (msg.getVersion() >= 20170502)
+        if (msg.getVersionMain() >= 20170524 ||
+            msg.getVersionRe() >= 20170502 ||
+            packets_zero == true)
         {
             msg.readInt16("class");
             level = msg.readInt16("level");
@@ -262,6 +270,7 @@ void PartyRecv::processPartyInfo(Net::MessageIn &msg)
         }
     }
 
+    // fix for wrong data sent by old hercules. in future need delete it
     if (msg.getVersion() >= 20170502 && msg.getUnreadLength() >= 6)
     {
         msg.readInt8("pickup item share (&1)");
