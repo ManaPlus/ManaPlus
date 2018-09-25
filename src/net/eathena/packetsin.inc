@@ -187,7 +187,6 @@ packet(SMSG_MARRIAGE_PROCESS_OUTDATED,     0x01e4,   2, nullptr,                
 packet(SMSG_MARRIAGE_PROPOSAL_OUTDATED,    0x01e2,  34, nullptr,                                        0);
 packet(SMSG_MONSTER_INFO,                  0x018c,  29, &BeingRecv::processMonsterInfo,                 0);
 packet(SMSG_MVP_ITEM,                      0x010a,   4, &ChatRecv::processMVPItem,                      0);
-packet(SMSG_MVP_EXP,                       0x010b,   6, &ChatRecv::processMVPExp,                       0);
 packet(SMSG_MVP_EFFECT,                    0x010c,   6, &Ea::ChatRecv::processMVPEffect,                0);
 packet(SMSG_MVP_NO_ITEM,                   0x010d,   2, &ChatRecv::processMVPNoItem,                    0);
 packet(SMSG_NPC_BUY,                       0x00c6,  -1, &BuySellRecv::processNpcBuy,                    0);
@@ -510,6 +509,12 @@ if (packetVersion >= 20080102)
 packet(SMSG_NPC_SHOW_PROGRESS_BAR,         0x02f0,  10, &NpcRecv::processNpcShowProgressBar,            20080318);
 packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgressBarAbort,              20080318);
 
+// 20080827 re
+if (packetVersionRe >= 20080827)
+{
+    packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20080827);
+}
+
 // 20080827
 if (packetVersion >= 20080827)
 {
@@ -543,6 +548,12 @@ packet(SMSG_BEING_STATUS_CHANGE,           0x043f,  25, &BeingRecv::processBeing
 
 // 20090218
 packet(SMSG_QUEST_NPC_EFFECT,              0x0446,  14, &QuestRecv::processNpcQuestEffect,              20090218);
+
+// 20090401 main
+if (packetVersionRe >= 20090401)
+{
+    packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20090401);
+}
 
 // 20090603
 packet(SMSG_PARTY_SETTINGS,                0x07d8,   8, &PartyRecv::processPartySettings,               20090603);
@@ -1091,6 +1102,7 @@ if (packets_zero == true)
     packet(SMSG_PARTY_MEMBER_INFO,         0x0a43,  85, &PartyRecv::processPartyMemberInfo,             20171018);
     packet(SMSG_PARTY_INFO,                0x0a44,  -1, &PartyRecv::processPartyInfo,                   20171018);
     packet(SMSG_PARTY_MEMBER_JOB_LEVEL,    0x0abd,  10, &PartyRecv::processPartyMemberJobLevel,         20171018);
+    packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20171018);
 }
 
 // 20171207
