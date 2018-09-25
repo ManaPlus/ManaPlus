@@ -42,6 +42,7 @@ namespace EAthena
         void processSkillUpdate2(Net::MessageIn &msg);
         void processSkillDelete(Net::MessageIn &msg);
         void processSkillWarpPoint(Net::MessageIn &msg);
+        void processSkillWarpPoint2(Net::MessageIn &msg);
         void processSkillMemoMessage(Net::MessageIn &msg);
         void processSkillProduceMixList(Net::MessageIn &msg);
         void processSkillProduceEffect(Net::MessageIn &msg);

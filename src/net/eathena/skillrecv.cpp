@@ -442,6 +442,24 @@ void SkillRecv::processSkillWarpPoint(Net::MessageIn &msg)
         dialog->addText(msg.readString(16, "map name"));
 }
 
+void SkillRecv::processSkillWarpPoint2(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 6) / 16;
+    const int skillId = msg.readInt16("skill id");
+
+    TextSelectDialog *const dialog = CREATEWIDGETR(TextSelectDialog,
+        // TRANSLATORS: warp select window name
+        _("Select warp target"),
+        // TRANSLATORS: warp select button
+        _("Warp"),
+        AllowQuit_false);
+    skillWarpListener.setDialog(dialog);
+    skillWarpListener.setSkill(skillId);
+    dialog->addActionListener(&skillWarpListener);
+    for (int f = 0; f < count; f ++)
+        dialog->addText(msg.readString(16, "map name"));
+}
+
 void SkillRecv::processSkillMemoMessage(Net::MessageIn &msg)
 {
     const int type = msg.readUInt8("type");
