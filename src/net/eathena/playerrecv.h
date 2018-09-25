@@ -57,6 +57,7 @@ namespace EAthena
         void processPlayerAttrs(Net::MessageIn &msg);
         void processPlayerStatUpdate7(Net::MessageIn &msg);
         void processSelectStyleAck(Net::MessageIn &msg);
+        void processSetTitleAck(Net::MessageIn &msg);
     }  // namespace PlayerRecv
 }  // namespace EAthena
 

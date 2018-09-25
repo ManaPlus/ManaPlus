@@ -854,10 +854,13 @@ packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRo
 packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20141016);
 packet(SMSG_ROULETTE_GENERATE_ACK_TYPE,    0x0a20,  21, &RouletteRecv::processRouletteGenerateAckType,  20141016);
 packet(SMSG_ROULETTE_RECV_ITEM_ACK,        0x0a22,   5, &RouletteRecv::processRouletteItemAck,          20141016);
+
+// 20141016
 if (packetVersion >= 20141016)
 {
     packet(SMSG_VENDING_REPORT,            0x09e5,  18, &VendingRecv::processReport,                    20141016);
     packet(SMSG_BUYINGSTORE_REPORT,        0x09e6,  22, &BuyingStoreRecv::processBuyingStoreReport,     20141016);
+    packet(SMSG_PLAYER_SET_TITLE_ACK,      0x0a2f,   7, &PlayerRecv::processSetTitleAck,                20141016);
 }
 
 // 20141022

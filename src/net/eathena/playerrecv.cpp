@@ -549,4 +549,11 @@ void PlayerRecv::processSelectStyleAck(Net::MessageIn &msg)
     msg.readUInt8("flag");
 }
 
+void PlayerRecv::processSetTitleAck(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("fail flag");
+    msg.readInt32("title");
+}
+
 }  // namespace EAthena
