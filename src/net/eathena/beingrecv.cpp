@@ -1651,6 +1651,42 @@ void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
     BLOCK_END("BeingRecv::processPlayerGuilPartyInfo")
 }
 
+void BeingRecv::processPlayerGuilPartyInfo2(Net::MessageIn &msg)
+{
+    BLOCK_START("BeingRecv::processPlayerGuilPartyInfo2")
+    if (actorManager == nullptr)
+    {
+        BLOCK_END("BeingRecv::processPlayerGuilPartyInfo2")
+        return;
+    }
+
+    const BeingId beingId = msg.readBeingId("being id");
+    const std::string name = msg.readString(24, "char name");
+    actorManager->updateNameId(name, beingId);
+    Being *const dstBeing = actorManager->findBeing(beingId);
+    if (dstBeing != nullptr)
+    {
+        if (beingId == localPlayer->getId())
+        {
+            localPlayer->pingResponse();
+        }
+        dstBeing->setName(name);
+        dstBeing->setPartyName(msg.readString(24, "party name"));
+        dstBeing->setGuildName(msg.readString(24, "guild name"));
+        dstBeing->setGuildPos(msg.readString(24, "guild pos"));
+        dstBeing->addToCache();
+    }
+    else
+    {
+        msg.readString(24, "party name");
+        msg.readString(24, "guild name");
+        msg.readString(24, "guild pos");
+    }
+    // +++ need use it for show player title
+    msg.readInt32("title");
+    BLOCK_END("BeingRecv::processPlayerGuilPartyInfo2")
+}
+
 void BeingRecv::processBeingRemoveSkill(Net::MessageIn &msg)
 {
     const BeingId id = msg.readBeingId("skill unit id");

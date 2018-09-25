@@ -938,6 +938,12 @@ if (packetVersion >= 20150422)
     packet(SMSG_BEING_HAT_EFFECTS,         0x0a3b,  -1, &BeingRecv::processBeingHatEffects,             20150422);
 }
 
+// 20150503
+if (packetVersion >= 20150503)
+{
+    packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20150503);
+}
+
 // 20150513
 if (packetVersion >= 20150513)
 {
