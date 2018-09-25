@@ -69,6 +69,7 @@ namespace EAthena
         void processGuildExpulsionList(Net::MessageIn &msg);
         void processGuildEmblem(Net::MessageIn &msg);
         void processOnlineInfo(Net::MessageIn &msg);
+        void processGuildSetPosition(Net::MessageIn &msg);
     }  // namespace GuildRecv
     extern Guild *taGuild;
 }  // namespace EAthena

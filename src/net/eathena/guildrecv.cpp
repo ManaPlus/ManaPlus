@@ -802,4 +802,21 @@ void GuildRecv::processOnlineInfo(Net::MessageIn &msg)
     msg.readInt32("online");
 }
 
+void GuildRecv::processGuildSetPosition(Net::MessageIn &msg)
+{
+    const int positionLen = msg.readInt16("len") - 8;
+    const BeingId beingId = msg.readBeingId("being id");
+    std::string position;
+    if (positionLen > 0)
+    {
+        position = msg.readString(positionLen, "position");
+    }
+    Being *const dstBeing = actorManager->findBeing(beingId);
+    if (dstBeing != nullptr)
+    {
+        dstBeing->setGuildPos(position);
+        dstBeing->addToCache();
+    }
+}
+
 }  // namespace EAthena

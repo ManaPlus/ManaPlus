@@ -1195,6 +1195,12 @@ if (packetVersion >= 20180418)
     packet(SMSG_ITEM_DROPPED,              0x0add,  22, &ItemRecv::processItemDropped,                  20180418);
 }
 
+// 20180605
+if (packetVersion >= 20180605)
+{
+    packet(SMSG_GUILD_SET_POSITION,        0x0afd,  -1, &GuildRecv::processGuildSetPosition,            20180605);
+}
+
 // re 20180620
 if (packetVersionMain >= 20180620)
 {
