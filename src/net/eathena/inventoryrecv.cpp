@@ -1534,4 +1534,17 @@ void InventoryRecv::processInventoryStart3(Net::MessageIn &msg)
         msg.readString(nameLen, "inventory name");
 }
 
+void InventoryRecv::processInventoryEnd1(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("flag");
+}
+
+void InventoryRecv::processInventoryEnd2(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("type");
+    msg.readUInt8("flag");
+}
+
 }  // namespace EAthena
