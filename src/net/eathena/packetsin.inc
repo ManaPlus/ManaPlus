@@ -1310,6 +1310,7 @@ if (packetVersionRe >= 20180829)
 {
     packet(SMSG_INVENTORY_START1,          0x0b08,  26, &InventoryRecv::processInventoryStart1,         20180829);
     packet(SMSG_INVENTORY_END1,            0x0b0b,   3, &InventoryRecv::processInventoryEnd1,           20180829);
+    packet(SMSG_PLAYER_COMBINED_INVENTORY1, 0x0b09, -1, &InventoryRecv::processPlayerCombinedInventory1, 20180829);
 }
 
 // 20180912 re
@@ -1317,6 +1318,7 @@ if (packetVersionRe >= 20180912)
 {
     packet(SMSG_INVENTORY_START2,          0x0b08,  27, &InventoryRecv::processInventoryStart2,         20180912);
     packet(SMSG_INVENTORY_END2,            0x0b0b,   4, &InventoryRecv::processInventoryEnd2,           20180912);
+    packet(SMSG_PLAYER_COMBINED_INVENTORY2, 0x0b09, -1, &InventoryRecv::processPlayerCombinedInventory2, 20180912);
 }
 
 // 20180919 re
@@ -1330,6 +1332,7 @@ if (packetVersionZero >= 20180919)
 {
     packet(SMSG_INVENTORY_START3,          0x0b08,  -1, &InventoryRecv::processInventoryStart3,         20180919);
     packet(SMSG_INVENTORY_END2,            0x0b0b,   4, &InventoryRecv::processInventoryEnd2,           20180919);
+    packet(SMSG_PLAYER_COMBINED_INVENTORY2, 0x0b09, -1, &InventoryRecv::processPlayerCombinedInventory2, 20180919);
 }
 
 // 0

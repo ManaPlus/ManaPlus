@@ -18,18 +18,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ENUMS_NET_INVENTORYTYPE_H
-#define ENUMS_NET_INVENTORYTYPE_H
+#ifndef ENUMS_NET_NETINVENTORYTYPE_H
+#define ENUMS_NET_NETINVENTORYTYPE_H
 
 #include "enums/simpletypes/enumdefines.h"
 
-enumStart(InventoryType)
+enumStart(NetInventoryType)
 {
     Inventory    = 0,
     Cart         = 1,
     Storage      = 2,
     GuildStorage = 3
 }
-enumEnd(InventoryType);
+enumEnd(NetInventoryType);
 
-#endif  // ENUMS_NET_INVENTORYTYPE_H
+#endif  // ENUMS_NET_NETINVENTORYTYPE_H

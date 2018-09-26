@@ -574,7 +574,7 @@ SET(SRCS
     enums/net/battlegroundtype.h
     enums/net/deleteitemreason.h
     enums/net/downloadstatus.h
-    enums/net/inventorytype.h
+    enums/net/netinventorytype.h
     enums/net/mailmessagetype.h
     enums/net/mailopentype.h
     enums/net/npcaction.h

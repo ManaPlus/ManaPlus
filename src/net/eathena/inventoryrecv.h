@@ -25,6 +25,8 @@
 
 #include "net/ea/inventoryitem.h"
 
+#include "enums/net/netinventorytype.h"
+
 namespace Net
 {
     class MessageIn;
@@ -81,8 +83,13 @@ namespace EAthena
         void processInventoryStart3(Net::MessageIn &msg);
         void processInventoryEnd1(Net::MessageIn &msg);
         void processInventoryEnd2(Net::MessageIn &msg);
+        void processPlayerCombinedInventory1(Net::MessageIn &msg);
+        void processPlayerCombinedInventory2(Net::MessageIn &msg);
 
         int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
+        void processInventoryContinue(Net::MessageIn &msg,
+                                      const int len,
+                                      const NetInventoryTypeT invType);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 
