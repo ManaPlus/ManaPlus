@@ -1299,10 +1299,34 @@ if (packetVersionRe >= 20180704)
     packet(SMSG_ITEM_DROPPED,              0x0add,  24, &ItemRecv::processItemDropped,                  20180704);
 }
 
-// 20180801
+// 20180801 re
 if (packetVersionRe >= 20180801)
 {
     packet(SMSG_BEING_VIEW_EQUIPMENT2,     0x0b03,  -1, &BeingRecv::processBeingViewEquipment2,         20180801);
+}
+
+// 20180829 re
+if (packetVersionRe >= 20180829)
+{
+    packet(SMSG_INVENTORY_START1,          0x0b08,  26, &InventoryRecv::processInventoryStart1,         20180829);
+}
+
+// 20180912 re
+if (packetVersionRe >= 20180912)
+{
+    packet(SMSG_INVENTORY_START2,          0x0b08,  27, &InventoryRecv::processInventoryStart2,         20180912);
+}
+
+// 20180919 re
+if (packetVersionRe >= 20180919)
+{
+    packet(SMSG_INVENTORY_START3,          0x0b08,  -1, &InventoryRecv::processInventoryStart3,         20180919);
+}
+
+// 20180919 zero
+if (packetVersionZero >= 20180919)
+{
+    packet(SMSG_INVENTORY_START3,          0x0b08,  -1, &InventoryRecv::processInventoryStart3,         20180919);
 }
 
 // 0

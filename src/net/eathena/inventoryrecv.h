@@ -76,6 +76,9 @@ namespace EAthena
         void processPlayerInventoryUse(Net::MessageIn &msg);
         void processItemMoveFailed(Net::MessageIn &msg);
         void processOverWeightPercent(Net::MessageIn &msg);
+        void processInventoryStart1(Net::MessageIn &msg);
+        void processInventoryStart2(Net::MessageIn &msg);
+        void processInventoryStart3(Net::MessageIn &msg);
 
         int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
     }  // namespace InventoryRecv

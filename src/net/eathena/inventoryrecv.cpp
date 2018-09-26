@@ -1512,4 +1512,26 @@ void InventoryRecv::processOverWeightPercent(Net::MessageIn &msg)
     settings.overweightPercent = msg.readUInt32("parcent");
 }
 
+void InventoryRecv::processInventoryStart1(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readString(24, "storage name");
+}
+
+void InventoryRecv::processInventoryStart2(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("type");
+    msg.readString(24, "inventory name");
+}
+
+void InventoryRecv::processInventoryStart3(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int nameLen = msg.readInt16("len") - 5;
+    msg.readUInt8("type");
+    if (nameLen > 0)
+        msg.readString(nameLen, "inventory name");
+}
+
 }  // namespace EAthena
