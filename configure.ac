@@ -217,7 +217,6 @@ AC_TYPE_INT64_T
 AC_TYPE_SSIZE_T
 
 # Search for *-config
-AC_PATH_PROG(PKG_CONFIG, pkg-config)
 PKG_PROG_PKG_CONFIG
 AC_PATH_PROG(CURL_CONFIG, curl-config)
 AC_PATH_PROG(ICU_CONFIG, icu-config)
