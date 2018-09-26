@@ -341,6 +341,7 @@ packet(CMSG_PET_EVOLUTION,                0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SET_TITLE,             0x0000,   0, nullptr);
 packet(CMSG_CHANGE_DRESS,                 0x0000,   0, nullptr);
 packet(CMSG_INSTANCE_COMMAND,             0x0000,   0, nullptr);
+packet(CMSG_ACHIEVEMENT_GET_REWARD,       0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1318,6 +1319,7 @@ if (packetVersion >= 20140611)
 // new packets
     packet(CMSG_ROULETTE_GENERATE,        0x0a1f,   2, clif->pRouletteGenerate);
     packet(CMSG_ROULETTE_RECV_ITEM,       0x0a21,   6, clif->pRouletteRecvItem);
+    packet(CMSG_ACHIEVEMENT_GET_REWARD,   0x0a25,   6, clif->pAchievementGetReward);
 // changed packets
     packet(CMSG_ROULETTE_OPEN,            0x0a19,   2, clif->pRouletteOpen);
     packet(CMSG_ROULETTE_CLOSE,           0x0a1d,   2, clif->pRouletteClose);

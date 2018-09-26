@@ -1576,6 +1576,7 @@ SRC = ${BASE_SRC} \
 	      resources/map/walklayer.cpp \
 	      resources/map/walklayer.h \
 	      net/adminhandler.h \
+	      net/achievementhandler.h \
 	      net/attendancehandler.h \
 	      net/beinghandler.h \
 	      net/buysellhandler.h \
@@ -1719,6 +1720,8 @@ SRC += \
 	      gui/windows/shopselldialog.h \
 	      net/tmwa/adminhandler.cpp \
 	      net/tmwa/adminhandler.h \
+	      net/tmwa/achievementhandler.cpp \
+	      net/tmwa/achievementhandler.h \
 	      net/tmwa/attendancehandler.cpp \
 	      net/tmwa/attendancehandler.h \
 	      net/tmwa/beingrecv.cpp \
@@ -1906,6 +1909,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/adminrecv.h \
 	      net/eathena/adminhandler.cpp \
 	      net/eathena/adminhandler.h \
+	      net/eathena/achievementhandler.cpp \
+	      net/eathena/achievementhandler.h \
 	      net/eathena/attendancehandler.cpp \
 	      net/eathena/attendancehandler.h \
 	      net/eathena/attendancerecv.cpp \

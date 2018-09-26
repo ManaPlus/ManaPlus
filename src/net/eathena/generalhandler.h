@@ -48,6 +48,7 @@ class TradeHandler;
 class QuestHandler;
 class ServerFeatures;
 class AuctionHandler;
+class AchievementHandler;
 class AttendanceHandler;
 class BankHandler;
 class BattleGroundHandler;
@@ -116,6 +117,7 @@ class GeneralHandler final : public Net::GeneralHandler
         Mail2Handler *mMail2Handler;
         MailHandler *mMailHandler;
         AuctionHandler *mAuctionHandler;
+        AchievementHandler *mAchievementHandler;
         AttendanceHandler *mAttendanceHandler;
         CashShopHandler *mCashShopHandler;
         FamilyHandler *mFamilyHandler;

@@ -560,6 +560,7 @@ SET(SRCS
     gui/windows/worldselectdialog.cpp
     gui/windows/worldselectdialog.h
     net/adminhandler.h
+    net/achievementhandler.h
     net/attendancehandler.h
     net/character.h
     net/characters.h
@@ -1596,6 +1597,8 @@ SET(SRCS
     net/eathena/adminrecv.h
     net/eathena/adminhandler.cpp
     net/eathena/adminhandler.h
+    net/eathena/achievementhandler.cpp
+    net/eathena/achievementhandler.h
     net/eathena/attendancehandler.cpp
     net/eathena/attendancehandler.h
     net/eathena/attendancerecv.cpp
@@ -2037,6 +2040,8 @@ SET(SRCS_TMWA
     gui/windows/shopselldialog.h
     net/tmwa/adminhandler.cpp
     net/tmwa/adminhandler.h
+    net/tmwa/achievementhandler.cpp
+    net/tmwa/achievementhandler.h
     net/tmwa/attendancehandler.cpp
     net/tmwa/attendancehandler.h
     net/tmwa/beingrecv.cpp

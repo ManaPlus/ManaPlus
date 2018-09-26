@@ -34,6 +34,7 @@
 
 #include "net/eathena/adminhandler.h"
 #include "net/eathena/auctionhandler.h"
+#include "net/eathena/achievementhandler.h"
 #include "net/eathena/attendancehandler.h"
 #include "net/eathena/bankhandler.h"
 #include "net/eathena/battlegroundhandler.h"
@@ -102,6 +103,7 @@ GeneralHandler::GeneralHandler() :
     mMail2Handler(new Mail2Handler),
     mMailHandler(new MailHandler),
     mAuctionHandler(new AuctionHandler),
+    mAchievementHandler(new AchievementHandler),
     mAttendanceHandler(new AttendanceHandler),
     mCashShopHandler(new CashShopHandler),
     mFamilyHandler(new FamilyHandler),
@@ -148,6 +150,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mMail2Handler);
     delete2(mMailHandler);
     delete2(mAuctionHandler);
+    delete2(mAchievementHandler);
     delete2(mAttendanceHandler);
     delete2(mCashShopHandler);
     delete2(mFamilyHandler);

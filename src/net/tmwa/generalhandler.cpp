@@ -52,6 +52,7 @@
 #include "net/tmwa/questhandler.h"
 
 #include "net/tmwa/auctionhandler.h"
+#include "net/tmwa/achievementhandler.h"
 #include "net/tmwa/attendancehandler.h"
 #include "net/tmwa/bankhandler.h"
 #include "net/tmwa/battlegroundhandler.h"
@@ -99,6 +100,7 @@ GeneralHandler::GeneralHandler() :
     mQuestHandler(new QuestHandler),
     mServerFeatures(new ServerFeatures),
     mAuctionHandler(new AuctionHandler),
+    mAchievementHandler(new AchievementHandler),
     mAttendanceHandler(new AttendanceHandler),
     mBankHandler(new BankHandler),
     mBattleGroundHandler(new BattleGroundHandler),
@@ -145,6 +147,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mQuestHandler);
     delete2(mServerFeatures);
     delete2(mAuctionHandler);
+    delete2(mAchievementHandler);
     delete2(mAttendanceHandler);
     delete2(mBankHandler);
     delete2(mBattleGroundHandler);
