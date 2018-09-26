@@ -40,6 +40,7 @@
 #include "net/ea/skillrecv.h"
 #include "net/ea/traderecv.h"
 
+#include "net/eathena/achievementrecv.h"
 #include "net/eathena/adminrecv.h"
 #include "net/eathena/auctionrecv.h"
 #include "net/eathena/attendancerecv.h"

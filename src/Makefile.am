@@ -1900,6 +1900,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/roulettehandler.h \
 	      net/searchstorehandler.h \
 	      net/vendinghandler.h \
+	      net/eathena/achievementrecv.cpp \
+	      net/eathena/achievementrecv.h \
 	      net/eathena/adminrecv.cpp \
 	      net/eathena/adminrecv.h \
 	      net/eathena/adminhandler.cpp \
