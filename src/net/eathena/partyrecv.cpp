@@ -434,4 +434,15 @@ void PartyRecv::processPartyAutoItemSettingsContinue(Net::MessageIn &msg,
     }
 }
 
+void PartyRecv::processPartyMemberDead(Net::MessageIn &msg)
+{
+    const BeingId id = msg.readBeingId("account id");
+    const int isDead = msg.readUInt8("is dead");
+    PartyMember *const member = Ea::taParty->getMember(id);
+    if (member != nullptr && isDead != 0)
+    {
+        member->setHp(0);
+    }
+}
+
 }  // namespace EAthena
