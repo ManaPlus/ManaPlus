@@ -1589,4 +1589,56 @@ void InventoryRecv::processInventoryContinue(Net::MessageIn &msg,
     }
 }
 
+void InventoryRecv::processPlayerCombinedEquipment1(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int dataLen = msg.readInt32("len") - 4;
+    processEquipmentContinue(msg,
+        dataLen,
+        NetInventoryType::Storage);
+}
+
+void InventoryRecv::processPlayerCombinedEquipment2(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int dataLen = msg.readInt32("len") - 5;
+    const NetInventoryTypeT invType = static_cast<NetInventoryTypeT>(
+        msg.readUInt8("type"));
+    processEquipmentContinue(msg,
+        dataLen,
+        invType);
+}
+
+void InventoryRecv::processEquipmentContinue(Net::MessageIn &msg,
+                                             const int len,
+                                             const NetInventoryTypeT invType
+                                             A_UNUSED)
+{
+    const int packetLen = 47 + itemIdLen * 5;
+    const int number = len / packetLen;
+
+    for (int loop = 0; loop < number; loop++)
+    {
+        msg.readInt16("index");
+        msg.readItemId("item id");
+        msg.readUInt8("item type");
+        msg.readInt32("location");
+        msg.readInt32("wear state");
+        msg.readInt8("refine");
+        for (int f = 0; f < maxCards; f++)
+            msg.readItemId("card");
+        msg.readInt32("hire expire date (?)");
+        msg.readInt16("equip type");
+        msg.readInt16("item sprite number");
+        msg.readUInt8("option count");
+        for (int f = 0; f < 5; f ++)
+        {
+            msg.readInt16("option index");
+            msg.readInt16("option value");
+            msg.readUInt8("option param");
+        }
+        msg.readUInt8("flags");
+    }
+}
+
 }  // namespace EAthena

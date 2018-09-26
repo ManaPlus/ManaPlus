@@ -85,11 +85,17 @@ namespace EAthena
         void processInventoryEnd2(Net::MessageIn &msg);
         void processPlayerCombinedInventory1(Net::MessageIn &msg);
         void processPlayerCombinedInventory2(Net::MessageIn &msg);
+        void processPlayerCombinedEquipment1(Net::MessageIn &msg);
+        void processPlayerCombinedEquipment2(Net::MessageIn &msg);
 
         int getSlot(const int eAthenaSlot) A_WARN_UNUSED;
         void processInventoryContinue(Net::MessageIn &msg,
                                       const int len,
                                       const NetInventoryTypeT invType);
+        void processEquipmentContinue(Net::MessageIn &msg,
+                                      const int len,
+                                      const NetInventoryTypeT invType
+                                      A_UNUSED);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 
