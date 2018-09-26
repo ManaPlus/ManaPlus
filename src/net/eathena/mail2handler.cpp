@@ -222,11 +222,9 @@ void Mail2Handler::openMailBox(const MailOpenTypeT openType) const
     createOutPacket(CMSG_MAIL2_OPEN_MAILBOX);
     if (packetVersion >= 20170419)
     {
-        outMsg.writeInt64(0, "mail id");
-        outMsg.writeInt32(0, "unknown 1");
-        outMsg.writeInt32(0, "unknown 2");
-        outMsg.writeInt32(0, "unknown 3");
-        outMsg.writeInt32(0, "unknown 4");
+        outMsg.writeInt64(0, "char mail id");
+        outMsg.writeInt64(0, "return mail id");
+        outMsg.writeInt64(0, "account mail id");
     }
     else
     {
