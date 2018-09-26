@@ -882,6 +882,7 @@ packet(SMSG_MAIL2_ADD_ITEM_RESULT,         0x0a05,  53, &Mail2Recv::processAddIt
 if (packetVersionRe >= 20141126)
 {
     packet(SMSG_ACHIEVEMENT_LIST,          0x0a23,  -1, &AchievementRecv::processAchievementList,       20141126);
+    packet(SMSG_ACHIEVEMENT_UPDATE,        0x0a24,  66, &AchievementRecv::processAchievementUpdate,     20141126);
 }
 
 // 0
@@ -924,6 +925,7 @@ if (serverVersion > 0)
 if (packetVersionMain >= 20150225)
 {
     packet(SMSG_ACHIEVEMENT_LIST,          0x0a23,  -1, &AchievementRecv::processAchievementList,       20150225);
+    packet(SMSG_ACHIEVEMENT_UPDATE,        0x0a24,  66, &AchievementRecv::processAchievementUpdate,     20150225);
 }
 
 // 20150226
@@ -1145,6 +1147,7 @@ if (packets_zero == true)
     packet(SMSG_GUILD_LEAVE2,              0x0a83,  46, &GuildRecv::processGuildLeave2,                 20171018);
     packet(SMSG_PARTY_MEMBER_DEAD,         0x0ab2,   7, &PartyRecv::processPartyMemberDead,             20171018);
     packet(SMSG_ACHIEVEMENT_LIST,          0x0a23,  -1, &AchievementRecv::processAchievementList,       20171018);
+    packet(SMSG_ACHIEVEMENT_UPDATE,        0x0a24,  66, &AchievementRecv::processAchievementUpdate,     20171018);
 }
 
 // 20171019 zero

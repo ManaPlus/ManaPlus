@@ -49,4 +49,19 @@ void AchievementRecv::processAchievementList(Net::MessageIn &msg)
     }
 }
 
+void AchievementRecv::processAchievementUpdate(Net::MessageIn &msg)
+{
+    msg.readInt32("total points");
+    msg.readInt16("rank level");
+    msg.readInt32("rank points");
+    msg.readInt32("rank points need");
+
+    msg.readInt32("ach id");
+    msg.readUInt8("completed");
+    for (int d = 0; d < 10; d ++)
+        msg.readInt32("objective");
+    msg.readInt32("completed at");
+    msg.readUInt8("reward");
+}
+
 }  // namespace EAthena
