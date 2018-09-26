@@ -44,4 +44,10 @@ void MapHandler::blockPlayCancel() const
     createOutPacket(CMSG_MAP_BLOCK_PLAY_CANCEL);
 }
 
+void MapHandler::destroyInstance() const
+{
+    createOutPacket(CMSG_INSTANCE_COMMAND);
+    outMsg.writeInt32(3, "command");
+}
+
 }  // namespace EAthena

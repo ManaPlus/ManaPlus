@@ -340,6 +340,7 @@ packet(CMSG_PLAYER_SELECT_STYLE2,         0x0000,   0, nullptr);
 packet(CMSG_PET_EVOLUTION,                0x0000,   0, nullptr);
 packet(CMSG_PLAYER_SET_TITLE,             0x0000,   0, nullptr);
 packet(CMSG_CHANGE_DRESS,                 0x0000,   0, nullptr);
+packet(CMSG_INSTANCE_COMMAND,             0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -540,6 +541,7 @@ if (packetVersion >= 20070212)
 if (packetVersion >= 20070227)
 {
     packet(CMSG_PARTY_INVITE2,            0x02c4,  26, clif->pPartyInvite2);
+    packet(CMSG_INSTANCE_COMMAND,         0x02cf,   6, clif->pMemorialDungeonCommand);
 }
 
 // 20080827

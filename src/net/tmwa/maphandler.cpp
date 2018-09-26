@@ -40,4 +40,8 @@ void MapHandler::blockPlayCancel() const
 {
 }
 
+void MapHandler::destroyInstance() const
+{
+}
+
 }  // namespace TmwAthena

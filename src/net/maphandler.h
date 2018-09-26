@@ -38,6 +38,8 @@ class MapHandler notfinal
         { }
 
         virtual void blockPlayCancel() const = 0;
+
+        virtual void destroyInstance() const = 0;
 };
 
 }  // namespace Net
