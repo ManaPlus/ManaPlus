@@ -107,6 +107,7 @@ namespace EAthena
         void processBeingMilleniumShield(Net::MessageIn &msg);
         void processBeingCharm(Net::MessageIn &msg);
         void processBeingViewEquipment(Net::MessageIn &msg);
+        void processBeingViewEquipment2(Net::MessageIn &msg);
         void processPvpSet(Net::MessageIn &msg);
         void processNameResponse2(Net::MessageIn &msg);
         void processSkillCancel(Net::MessageIn &msg);

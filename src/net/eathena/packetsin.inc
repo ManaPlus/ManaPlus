@@ -1280,6 +1280,12 @@ if (packetVersionRe >= 20180704)
     packet(SMSG_ITEM_DROPPED,              0x0add,  24, &ItemRecv::processItemDropped,                  20180704);
 }
 
+// 20180801
+if (packetVersionRe >= 20180801)
+{
+    packet(SMSG_BEING_VIEW_EQUIPMENT2,     0x0b03,  -1, &BeingRecv::processBeingViewEquipment2,         20180801);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

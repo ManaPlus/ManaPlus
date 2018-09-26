@@ -2007,6 +2007,39 @@ void BeingRecv::processBeingViewEquipment(Net::MessageIn &msg)
     }
 }
 
+void BeingRecv::processBeingViewEquipment2(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 47) / (21 + itemIdLen * 5);
+    msg.readString(24, "name");
+    msg.readInt16("job");
+    msg.readInt16("head");
+    msg.readInt16("accessory");
+    msg.readInt16("accessory2");
+    msg.readInt16("accessory3");
+    msg.readInt16("robe");
+    msg.readInt16("hair color");
+    msg.readInt16("body color");
+    msg.readInt16("body2");
+    msg.readUInt8("gender");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readInt16("index");
+        msg.readItemId("item id");
+        msg.readUInt8("item type");
+        msg.readInt32("location");
+        msg.readInt32("wear state");
+        msg.readInt8("refine");
+        for (int d = 0; d < maxCards; d ++)
+            msg.readItemId("card");
+        msg.readInt32("hire expire date (?)");
+        msg.readInt16("equip type");
+        msg.readInt16("item sprite number");
+        msg.readUInt8("flags");
+    }
+}
+
 void BeingRecv::processPvpSet(Net::MessageIn &msg)
 {
     BLOCK_START("BeingRecv::processPvpSet")
