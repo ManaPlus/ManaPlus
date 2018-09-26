@@ -32,6 +32,7 @@ namespace EAthena
     {
         void processAchievementList(Net::MessageIn &msg);
         void processAchievementUpdate(Net::MessageIn &msg);
+        void processAchievementGetReward(Net::MessageIn &msg);
     }  // namespace AchievementRecv
 }  // namespace EAthena
 

@@ -51,6 +51,7 @@ void AchievementRecv::processAchievementList(Net::MessageIn &msg)
 
 void AchievementRecv::processAchievementUpdate(Net::MessageIn &msg)
 {
+    UNIMPLEMENTEDPACKET;
     msg.readInt32("total points");
     msg.readInt16("rank level");
     msg.readInt32("rank points");
@@ -62,6 +63,13 @@ void AchievementRecv::processAchievementUpdate(Net::MessageIn &msg)
         msg.readInt32("objective");
     msg.readInt32("completed at");
     msg.readUInt8("reward");
+}
+
+void AchievementRecv::processAchievementGetReward(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("received");
+    msg.readInt32("ach id");
 }
 
 }  // namespace EAthena
