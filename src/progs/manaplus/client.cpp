@@ -880,8 +880,7 @@ void Client::stateConnectServer1()
             config.write();
         }
     }
-    else if (mOldState != State::CHOOSE_SERVER &&
-             (loginHandler != nullptr) &&
+    else if (loginHandler != nullptr &&
              loginHandler->isConnected())
     {
         mState = State::PRE_LOGIN;

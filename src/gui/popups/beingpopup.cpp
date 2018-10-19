@@ -61,6 +61,7 @@ BeingPopup::BeingPopup() :
 
 BeingPopup::~BeingPopup()
 {
+    mBeingName = nullptr;
 }
 
 void BeingPopup::postInit()

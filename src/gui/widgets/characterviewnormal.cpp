@@ -101,7 +101,7 @@ void CharacterViewNormal::resize()
     if (sz == 0)
         return;
     const CharacterDisplay *const firtChar = (*mCharacterEntries)[0];
-    int y = 0;
+    unsigned int y = 0;
     const int width = firtChar->getWidth();
     const int height = firtChar->getHeight();
     int x = 0;

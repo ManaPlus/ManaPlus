@@ -1598,8 +1598,7 @@ void Map::reduce() restrict2
                             ++ ri;
                             continue;
                         }
-                        const size_t pos = CAST_SIZE(
-                            x + y * layer2->mWidth);
+                        const size_t pos = x + y * CAST_SIZE(layer2->mWidth);
                         img = layer2->mTiles[pos].image;
                         if (img != nullptr)
                         {

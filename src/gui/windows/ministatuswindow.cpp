@@ -253,14 +253,14 @@ void MiniStatusWindow::eraseIcon(const int index)
 void MiniStatusWindow::drawIcons(Graphics *const graphics)
 {
     // Draw icons
-    int icon_x = mMaxX + mIconPadding;
+    unsigned int icon_x = mMaxX + mIconPadding;
     for (size_t i = 0, sz = mIcons.size(); i < sz; i ++)
     {
         const AnimatedSprite *const icon = mIcons[i];
         if (icon != nullptr)
         {
-            icon->draw(graphics, icon_x, mIconPadding);
-            icon_x += mIconSpacing + icon->getWidth();
+            icon->draw(graphics, CAST_S32(icon_x), mIconPadding);
+            icon_x += CAST_U32(mIconSpacing + icon->getWidth());
         }
     }
 }

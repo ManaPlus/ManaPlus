@@ -175,7 +175,7 @@ class SocialNavigationTab final : public SocialTab
                 return;
 
             const Avatar *const ava = avatars->at(num);
-            if ((ava != nullptr) && (localPlayer != nullptr))
+            if (ava != nullptr)
                 localPlayer->navigateTo(ava->getX(), ava->getY());
         }
 

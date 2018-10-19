@@ -649,11 +649,11 @@ void CharCreateDialog::unlock()
 
 int CharCreateDialog::getDistributedPoints() const
 {
-    int points = 0;
+    unsigned int points = 0;
 
     for (size_t i = 0, sz = mAttributeSlider.size(); i < sz; i++)
-        points += CAST_S32(mAttributeSlider[i]->getValue());
-    return points;
+        points += CAST_U32(mAttributeSlider[i]->getValue());
+    return CAST_S32(points);
 }
 
 void CharCreateDialog::setAttributes(const StringVect &labels,

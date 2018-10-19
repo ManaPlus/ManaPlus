@@ -168,12 +168,12 @@ int StaticTableModel::getColumns() const
 
 int StaticTableModel::getWidth() const
 {
-    int width = 0;
+    size_t width = 0;
 
     for (size_t i = 0, sz = mWidths.size(); i < sz; i++)
-        width += mWidths[i];
+        width += CAST_SIZE(mWidths[i]);
 
-    return width;
+    return CAST_S32(width);
 }
 
 int StaticTableModel::getHeight() const

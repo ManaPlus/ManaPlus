@@ -169,8 +169,7 @@ GLfloat *OpenGLGraphicsVertexes::continueFloatTexArray() restrict2
 {
     if (mFloatTexPool.empty())
     {
-        mFloatTexArray = new GLfloat[CAST_SIZE(
-            vertexBufSize * 4 + 30)];
+        mFloatTexArray = new GLfloat[CAST_SIZE(vertexBufSize) * 4 + 30];
         mFloatTexPool.push_back(mFloatTexArray);
     }
     else
@@ -198,8 +197,7 @@ GLshort *OpenGLGraphicsVertexes::continueShortVertArray() restrict2
 {
     if (mShortVertPool.empty())
     {
-        mShortVertArray = new GLshort[CAST_SIZE(
-            vertexBufSize * 4 + 30)];
+        mShortVertArray = new GLshort[CAST_SIZE(vertexBufSize) * 4 + 30];
         mShortVertPool.push_back(mShortVertArray);
     }
     else
