@@ -322,7 +322,7 @@ void TextField::keyPressed(KeyEvent &event)
         if (mNumeric)
         {
             if ((val >= '0' && val <= '9') ||
-                (val == '-' && mCaretPosition == 0u))
+                (val == '-' && mCaretPosition == 0U))
             {
                 char buf[2];
                 buf[0] = CAST_8(val);

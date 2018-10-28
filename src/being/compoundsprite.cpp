@@ -160,7 +160,7 @@ void CompoundSprite::drawSimple(Graphics *const graphics,
     {
         graphics->drawImage(mImage, posX + mOffsetX, posY + mOffsetY);
     }
-    else if ((mAlpha != 0.0f) && (mAlphaImage != nullptr))
+    else if ((mAlpha != 0.0F) && (mAlphaImage != nullptr))
     {
         mAlphaImage->setAlpha(mAlpha);
         graphics->drawImage(mAlphaImage,

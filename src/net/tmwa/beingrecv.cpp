@@ -280,7 +280,7 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
     }
 
     uint8_t dir = dstBeing->getDirectionDelayed();
-    if (dir != 0u)
+    if (dir != 0U)
     {
         if (dir != dstBeing->getDirection())
             dstBeing->setDirection(dir);
@@ -425,7 +425,7 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
     }
 
     uint8_t dir = dstBeing->getDirectionDelayed();
-    if (dir != 0u)
+    if (dir != 0U)
     {
         if (dir != dstBeing->getDirection())
             dstBeing->setDirection(dir);
@@ -566,7 +566,7 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
     }
 
     const uint8_t dir = dstBeing->getDirectionDelayed();
-    if (dir != 0u)
+    if (dir != 0U)
     {
         if (dir != dstBeing->getDirection())
             dstBeing->setDirection(dir);

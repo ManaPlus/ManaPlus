@@ -253,7 +253,7 @@ void DyePalette::initFunctions()
 {
 #ifdef SIMD_SUPPORTED
     const uint32_t flags = Cpu::getFlags();
-    if ((flags & Cpu::FEATURE_AVX2) != 0u)
+    if ((flags & Cpu::FEATURE_AVX2) != 0U)
     {
         funcReplaceSColor = &DyePalette::replaceSColorAvx2;
         funcReplaceSColorAvx2 = &DyePalette::replaceSColorAvx2;
@@ -271,7 +271,7 @@ void DyePalette::initFunctions()
         funcReplaceAOGLColorSse2 = &DyePalette::replaceAOGLColorSse2;
 #endif  // USE_OPENGL
     }
-    else if ((flags & Cpu::FEATURE_SSE2) != 0u)
+    else if ((flags & Cpu::FEATURE_SSE2) != 0U)
     {
         funcReplaceSColor = &DyePalette::replaceSColorSse2;
         funcReplaceSColorAvx2 = &DyePalette::replaceSColorSse2;

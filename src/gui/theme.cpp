@@ -965,7 +965,7 @@ ImageSet *Theme::getImageSetFromThemeXml(const std::string &name,
         {
             Image *const image = rect.grid[0];
             const SDL_Rect &rect2 = image->mBounds;
-            if ((rect2.w != 0u) && (rect2.h != 0u))
+            if ((rect2.w != 0U) && (rect2.h != 0U))
             {
                 ImageSet *const imageSet = Loader::getSubImageSet(
                     image, w, h);

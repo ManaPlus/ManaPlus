@@ -43,9 +43,9 @@ void DyePalette::replaceSOGLColorDefault(uint32_t *restrict pixels,
 {
     STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if ((sz == 0u) || (pixels == nullptr))
+    if ((sz == 0U) || (pixels == nullptr))
         return;
-    if ((sz % 2) != 0u)
+    if ((sz % 2) != 0U)
         -- it_end;
 
     for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
@@ -104,9 +104,9 @@ void DyePalette::replaceSOGLColorSse2(uint32_t *restrict pixels,
 {
     STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if ((sz == 0u) || (pixels == nullptr))
+    if ((sz == 0U) || (pixels == nullptr))
         return;
-    if ((sz % 2) != 0u)
+    if ((sz % 2) != 0U)
         -- it_end;
 
     if (bufSize >= 8)
@@ -190,9 +190,9 @@ void DyePalette::replaceSOGLColorAvx2(uint32_t *restrict pixels,
 {
     STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if ((sz == 0u) || (pixels == nullptr))
+    if ((sz == 0U) || (pixels == nullptr))
         return;
-    if ((sz % 2) != 0u)
+    if ((sz % 2) != 0U)
         -- it_end;
 
     if (bufSize >= 8)

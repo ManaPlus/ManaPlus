@@ -762,7 +762,7 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
     {
         d = dstBeing->calcDirection(dstX, dstY);
     }
-    if ((d != 0u) && dstBeing->getDirection() != d)
+    if ((d != 0U) && dstBeing->getDirection() != d)
         dstBeing->setDirection(d);
 
     const int level = CAST_S32(msg.readInt16("level"));

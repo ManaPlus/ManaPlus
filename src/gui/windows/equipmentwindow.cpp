@@ -352,7 +352,7 @@ void EquipmentWindow::action(const ActionEvent &event)
         PlayerInfo::unequipItem(item, Sfx_true);
         setSelected(-1);
     }
-    else if (eventId.find("tab_") == 0u)
+    else if (eventId.find("tab_") == 0U)
     {
         Button *const button = dynamic_cast<Button*>(event.getSource());
         if (button == nullptr)

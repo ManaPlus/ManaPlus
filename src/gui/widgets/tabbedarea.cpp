@@ -516,7 +516,7 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
             innerWidth = 0;
 
         int newWidth = mVisibleTabsWidth;
-        while ((mTabScrollIndex != 0u) && newWidth < innerWidth)
+        while ((mTabScrollIndex != 0U) && newWidth < innerWidth)
         {
             Tab *const tab = mTabs[mTabScrollIndex - 1].first;
             if ((tab != nullptr) && tab->mVisible == Visible_true)
@@ -659,7 +659,7 @@ void TabbedArea::action(const ActionEvent& actionEvent)
         const std::string &eventId = actionEvent.getId();
         if (eventId == "shift_left")
         {
-            if (mTabScrollIndex != 0u)
+            if (mTabScrollIndex != 0U)
                 --mTabScrollIndex;
         }
         else if (eventId == "shift_right")
@@ -694,7 +694,7 @@ void TabbedArea::updateArrowEnableState()
     }
 
     // Left arrow consistency check
-    if (mTabScrollIndex == 0u)
+    if (mTabScrollIndex == 0U)
         mArrowButton[0]->setEnabled(false);
     else
         mArrowButton[0]->setEnabled(true);

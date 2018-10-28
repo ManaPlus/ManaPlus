@@ -1526,7 +1526,7 @@ void Gui::handleModalFocusReleased()
 
 int Gui::getMousePressLength() const
 {
-    if (mLastMousePressTimeStamp == 0u)
+    if (mLastMousePressTimeStamp == 0U)
         return 0;
     unsigned int ticks = SDL_GetTicks();
     if (ticks > mLastMousePressTimeStamp)

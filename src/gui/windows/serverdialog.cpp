@@ -868,11 +868,11 @@ int ServerDialog::downloadUpdate(void *ptr,
     else
     {
         float progress = static_cast<float>(remaining);
-        if (total != 0u)
+        if (total != 0U)
             progress /= static_cast<float>(total);
 
         if (progress != progress || progress < 0.0F)
-            progress = 0.0f;
+            progress = 0.0F;
         else if (progress > 1.0F)
             progress = 1.0F;
 

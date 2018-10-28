@@ -43,7 +43,7 @@ ShaderProgram::ShaderProgram(const unsigned int id,
 
 ShaderProgram::~ShaderProgram()
 {
-    if (mProgramId != 0u)
+    if (mProgramId != 0U)
         mglDeleteProgram(mProgramId);
     if (mVertex != nullptr)
         mVertex->decRef();

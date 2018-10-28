@@ -153,7 +153,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
     uint8_t *alphaChannel = new uint8_t[sz];
 
     const SDL_PixelFormat *const fmt = tmpImage->format;
-    if (fmt->Amask != 0u)
+    if (fmt->Amask != 0U)
     {
         for (size_t i = 0; i < sz; ++ i)
         {
@@ -241,7 +241,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
     if (tmpImage->format->palette == nullptr)
     {
         const SDL_PixelFormat *const fmt = tmpImage->format;
-        if (fmt->Amask != 0u)
+        if (fmt->Amask != 0U)
         {
             const uint32_t amask = fmt->Amask;
             const uint8_t ashift = fmt->Ashift;

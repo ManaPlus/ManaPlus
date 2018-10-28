@@ -883,7 +883,7 @@ void ChatWindow::keyPressed(KeyEvent &event)
         const ChatTab *const tab = getFocused();
         if ((tab != nullptr) && tab->hasRows())
         {
-            if (mChatHistoryIndex == 0u)
+            if (mChatHistoryIndex == 0U)
             {
                 mChatHistoryIndex = CAST_U32(
                     tab->getRows().size());

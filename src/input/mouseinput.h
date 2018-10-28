@@ -72,7 +72,7 @@
 class MouseInput final
 {
     public:
-        MouseInput() :
+        MouseInput() noexcept2 :
             mType(MouseEventType::MOVED),
             mButton(MouseButton::EMPTY),
             mTimeStamp(0),
@@ -82,7 +82,7 @@ class MouseInput final
             mRealY(0)
         { }
 
-        MouseInput(const MouseInput &m) :
+        MouseInput(const MouseInput &m) noexcept2 :
             mType(m.mType),
             mButton(m.mButton),
             mTimeStamp(m.mTimeStamp),
@@ -95,7 +95,7 @@ class MouseInput final
 
         A_DEFAULT_COPY(MouseInput)
 
-        MouseInput &operator=(const MouseInput &m)
+        MouseInput &operator=(const MouseInput &m) noexcept2
         {
             mType = m.mType;
             mButton = m.mButton;

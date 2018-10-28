@@ -375,7 +375,7 @@ void StaticBrowserBox::draw(Graphics *const graphics)
     if (mSelectedLink >= 0 &&
         mSelectedLink < CAST_S32(mLinks.size()))
     {
-        if ((mHighlightMode & LinkHighlightMode::BACKGROUND) != 0u)
+        if ((mHighlightMode & LinkHighlightMode::BACKGROUND) != 0U)
         {
             BrowserLink &link = mLinks[CAST_SIZE(mSelectedLink)];
             graphics->setColor(mHighlightColor);
@@ -386,7 +386,7 @@ void StaticBrowserBox::draw(Graphics *const graphics)
                 link.y2 - link.y1));
         }
 
-        if ((mHighlightMode & LinkHighlightMode::UNDERLINE) != 0u)
+        if ((mHighlightMode & LinkHighlightMode::UNDERLINE) != 0U)
         {
             BrowserLink &link = mLinks[CAST_SIZE(mSelectedLink)];
             graphics->setColor(mHyperLinkColor);
@@ -407,7 +407,7 @@ void StaticBrowserBox::draw(Graphics *const graphics)
             continue;
         if (part.mY > yEnd)
             break;
-        if (part.mType == 0u)
+        if (part.mType == 0U)
         {
             if (part.mBold)
             {

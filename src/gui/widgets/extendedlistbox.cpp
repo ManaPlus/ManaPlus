@@ -41,7 +41,7 @@ ExtendedListBox::ExtendedListBox(const Widget2 *const widget,
     mListItems(),
     mSelectedItems()
 {
-    if (rowHeight != 0u)
+    if (rowHeight != 0U)
         mRowHeight = rowHeight;
 }
 

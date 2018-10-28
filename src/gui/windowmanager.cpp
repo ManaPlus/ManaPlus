@@ -247,7 +247,7 @@ void WindowManager::updateTitle()
 
 void WindowManager::setFramerate(const unsigned int fpsLimit)
 {
-    if (fpsLimit == 0u)
+    if (fpsLimit == 0U)
         return;
 
     if (!settings.limitFps)

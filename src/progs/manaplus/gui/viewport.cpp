@@ -412,7 +412,7 @@ bool Viewport::openContextMenu(const MouseEvent &event)
         popupMenu->showPopup(eventX, eventY, mHoverSign);
         return true;
     }
-    else if (settings.cameraMode != 0u)
+    else if (settings.cameraMode != 0U)
     {
         if (mMap == nullptr)
             return false;
@@ -1041,7 +1041,7 @@ void Viewport::toggleCameraMode()
     settings.cameraMode ++;
     if (settings.cameraMode > 1)
         settings.cameraMode = 0;
-    if (settings.cameraMode == 0u)
+    if (settings.cameraMode == 0U)
     {
         mCameraRelativeX = 0;
         mCameraRelativeY = 0;

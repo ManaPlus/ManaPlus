@@ -171,7 +171,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         Ea::InventoryRecv::mSentPickups.pop();
     }
 
-    if (err != 0u)
+    if (err != 0U)
     {
         PickupT pickup;
         switch (err)
@@ -381,7 +381,7 @@ void InventoryRecv::processPlayerEquip(Net::MessageIn &msg)
     const int equipType = msg.readInt16("equip type");
     const uint8_t flag = msg.readUInt8("flag");
 
-    if (flag == 0u)
+    if (flag == 0U)
     {
         NotifyManager::notify(NotifyTypes::EQUIP_FAILED);
     }
@@ -401,7 +401,7 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
     const int equipType = msg.readInt16("equip type");
     const uint8_t flag = msg.readUInt8("flag");
 
-    if (flag != 0u)
+    if (flag != 0U)
     {
         Ea::InventoryRecv::mEquips.setEquipment(
             InventoryRecv::getSlot(equipType),
@@ -550,7 +550,7 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
 
     unsigned int mask = 1;
     int position = 0;
-    while ((eAthenaSlot & mask) == 0u)
+    while ((eAthenaSlot & mask) == 0U)
     {
         mask <<= 1;
         position++;

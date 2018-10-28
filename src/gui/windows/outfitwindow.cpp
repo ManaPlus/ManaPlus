@@ -74,7 +74,7 @@ OutfitWindow::OutfitWindow() :
         nullptr, std::string())),
     // TRANSLATORS: outfits window checkbox
     mAwayOutfitCheck(new CheckBox(this, _("Away outfit"),
-        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1) != 0u,
+        serverConfig.getValue("OutfitAwayIndex", OUTFITS_COUNT - 1) != 0U,
         nullptr, std::string())),
     // TRANSLATORS: outfits window label
     mKeyLabel(new Label(this, strprintf(_("Key: %s"),

@@ -2592,7 +2592,7 @@ void PopupMenu::addFollow()
 
 void PopupMenu::addBuySell(const Being *const being)
 {
-    if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)
+    if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0U)
     {
         mBrowserBox->addSeparator("##3---");
         const bool haveVending =
@@ -2626,7 +2626,7 @@ void PopupMenu::addBuySell(const Being *const being)
 
 void PopupMenu::addBuySellDefault()
 {
-    if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0u)
+    if ((playerRelations.getDefault() & PlayerRelation::TRADE) != 0U)
     {
         mBrowserBox->addSeparator("##3---");
         // TRANSLATORS: popup menu item

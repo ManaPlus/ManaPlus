@@ -209,7 +209,7 @@ void ShopListBox::setPriceCheck(const bool check)
 
 void ShopListBox::mouseMoved(MouseEvent &event)
 {
-    if ((itemPopup == nullptr) || (mRowHeight == 0u))
+    if ((itemPopup == nullptr) || (mRowHeight == 0U))
         return;
 
     if (mShopItems == nullptr)

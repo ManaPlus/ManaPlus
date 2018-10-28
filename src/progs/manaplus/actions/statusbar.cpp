@@ -172,7 +172,7 @@ impHandler0(changeMapMode)
 impHandler0(changeTrade)
 {
     unsigned int deflt = playerRelations.getDefault();
-    if ((deflt & PlayerRelation::TRADE) != 0u)
+    if ((deflt & PlayerRelation::TRADE) != 0U)
     {
         if (localChatTab != nullptr)
         {

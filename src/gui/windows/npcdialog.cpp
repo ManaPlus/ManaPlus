@@ -1354,7 +1354,7 @@ std::string NpcDialog::complexItemToStr(const ComplexItem *const item)
     {
         const STD_VECTOR<Item*> &items = item->getChilds();
         const size_t sz = items.size();
-        if (sz == 0u)
+        if (sz == 0U)
             return str;
 
         const Item *item2 = items[0];

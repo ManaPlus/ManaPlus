@@ -987,7 +987,7 @@ void Being::handleAttack(Being *restrict const victim,
     {
         const uint8_t dir = calcDirection(victim->mX,
             victim->mY);
-        if (dir != 0u)
+        if (dir != 0U)
             setDirection(dir);
     }
 
@@ -1090,7 +1090,7 @@ void Being::handleSkill(Being *restrict const victim,
     {
         const uint8_t dir = calcDirection(victim->mX,
             victim->mY);
-        if (dir != 0u)
+        if (dir != 0U)
             setDirection(dir);
     }
     if ((damage != 0) && victim->mType == ActorType::Player
@@ -1791,7 +1791,7 @@ void Being::nextTile() restrict2
     mPath.pop_front();
 
     const uint8_t dir = calcDirection(pos.x, pos.y);
-    if (dir != 0u)
+    if (dir != 0U)
         setDirection(dir);
 
     if (mMap == nullptr ||
@@ -2303,7 +2303,7 @@ void Being::updateBotDirection(const int dstX,
             break;
         }
     }
-    if ((newDir != 0u) && newDir != mDirection)
+    if ((newDir != 0U) && newDir != mDirection)
     {
         if (mType == ActorType::Homunculus)
             homunculusHandler->setDirection(newDir);
@@ -2317,7 +2317,7 @@ void Being::updateBadgesPosition()
     const int px = mPixelX - mapTileSize / 2;
     const int py = mPixelY - mapTileSize * 2 - mapTileSize;
     if (mShowBadges != BadgeDrawType::Hide &&
-        mBadgesCount != 0u)
+        mBadgesCount != 0U)
     {
         if (mDispName != nullptr &&
             gui != nullptr)
@@ -2386,7 +2386,7 @@ void Being::drawEmotion(Graphics *restrict const graphics,
     if (mAnimationEffect != nullptr)
         mAnimationEffect->draw(graphics, px, py);
     if (mShowBadges != BadgeDrawType::Hide &&
-        mBadgesCount != 0u)
+        mBadgesCount != 0U)
     {
         int x = mBadgesX - offsetX;
         const int y = mBadgesY - offsetY;
@@ -2778,7 +2778,7 @@ void Being::updateSprite(const unsigned int slot,
     if (slot >= CAST_U32(mSlots.size()))
         mSlots.resize(slot + 1, BeingSlot());
 
-    if ((slot != 0u) && mSlots[slot].spriteId == id)
+    if ((slot != 0U) && mSlots[slot].spriteId == id)
         return;
     setSpriteColor(slot,
         id,
@@ -3503,7 +3503,7 @@ bool Being::updateFromCache() restrict2
         showInactiveBadge(mInactive);
         showAwayBadge(mAway);
         updateAwayEffect();
-        if (mType == ActorType::Player || (mTeamId != 0u))
+        if (mType == ActorType::Player || (mTeamId != 0U))
             updateColors();
         return true;
     }
@@ -3951,7 +3951,7 @@ void Being::drawCompound(Graphics *const graphics,
             posX + mOffsetX,
             posY + mOffsetY);
     }
-    else if ((mAlpha != 0.0f) && (mAlphaImage != nullptr))
+    else if ((mAlpha != 0.0F) && (mAlphaImage != nullptr))
     {
         mAlphaImage->setAlpha(mAlpha);
         graphics->drawImage(mAlphaImage,
@@ -5198,7 +5198,7 @@ void Being::showTeamBadge(const bool show) restrict2
 {
     delete2(mBadges[BadgeIndex::Team]);
     if (show &&
-        mTeamId != 0u &&
+        mTeamId != 0U &&
         mShowBadges != BadgeDrawType::Hide)
     {
         const std::string name = paths.getStringValue("badges") +

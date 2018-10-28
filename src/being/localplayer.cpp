@@ -452,7 +452,7 @@ void LocalPlayer::nextTile()
         if (mPickUpTarget != nullptr)
             pickUp(mPickUpTarget);
 
-        if (mWalkingDir != 0u)
+        if (mWalkingDir != 0U)
             startWalking(mWalkingDir);
     }
     else if (mPath.size() == 1)
@@ -648,7 +648,7 @@ void LocalPlayer::setWalkingDir(const unsigned char dir)
     mWalkingDir = dir;
 
     // If we're not already walking, start walking.
-    if (mAction != BeingAction::MOVE && (dir != 0u))
+    if (mAction != BeingAction::MOVE && (dir != 0U))
         startWalking(dir);
 }
 
@@ -656,7 +656,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
 {
     // This function is called by setWalkingDir(),
     // but also by nextTile() for TMW-Athena...
-    if ((mMap == nullptr) || (dir == 0u))
+    if ((mMap == nullptr) || (dir == 0U))
         return;
 
     mPickUpTarget = nullptr;
@@ -707,7 +707,7 @@ void LocalPlayer::startWalking(const unsigned char dir)
 
 void LocalPlayer::stopWalking(const bool sendToServer)
 {
-    if (mAction == BeingAction::MOVE && (mWalkingDir != 0u))
+    if (mAction == BeingAction::MOVE && (mWalkingDir != 0U))
     {
         mWalkingDir = 0;
         mPickUpTarget = nullptr;
@@ -1676,10 +1676,10 @@ void LocalPlayer::moveByDirection(const unsigned char dir)
 
 void LocalPlayer::specialMove(const unsigned char direction)
 {
-    if ((direction != 0u) && ((mNavigateX != 0) || (mNavigateY != 0)))
+    if ((direction != 0U) && ((mNavigateX != 0) || (mNavigateY != 0)))
         navigateClean();
 
-    if ((direction != 0u) && (settings.moveType >= 2
+    if ((direction != 0U) && (settings.moveType >= 2
         && settings.moveType <= 4))
     {
         if (mAction == BeingAction::MOVE)
@@ -2635,7 +2635,7 @@ void LocalPlayer::fixAttackTarget()
     if ((mMap == nullptr) || (mTarget == nullptr))
         return;
 
-    if (settings.moveToTargetType == 11 || (settings.attackType == 0u)
+    if (settings.moveToTargetType == 11 || (settings.attackType == 0U)
         || !config.getBoolValue("autofixPos"))
     {
         return;
@@ -2676,7 +2676,7 @@ void LocalPlayer::updateNavigateList()
         if (iter != mHomes.end())
         {
             const Vector &pos = mHomes[(*iter).first];
-            if ((pos.x != 0.0f) && (pos.y != 0.0f))
+            if ((pos.x != 0.0F) && (pos.y != 0.0F))
             {
                 mMap->addPortalTile("home", MapItemType::HOME,
                     CAST_S32(pos.x), CAST_S32(pos.y));

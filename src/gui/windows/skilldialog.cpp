@@ -595,25 +595,25 @@ void SkillDialog::loadSkillData(XmlNodeConstPtr node,
     missile.particle = XML::getProperty(
         node, "missile-particle", "");
     missile.z = XML::getFloatProperty(
-        node, "missile-z", 32.0f);
+        node, "missile-z", 32.0F);
     missile.lifeTime = XML::getProperty(
         node, "missile-lifetime", 500);
     missile.speed = XML::getFloatProperty(
-        node, "missile-speed", 7.0f);
+        node, "missile-speed", 7.0F);
     missile.dieDistance = XML::getFloatProperty(
-        node, "missile-diedistance", 8.0f);
+        node, "missile-diedistance", 8.0F);
 
     MissileInfo &castingMissile = data->castingMissile;
     castingMissile.particle = XML::getProperty(
         node, "castingMissile-particle", "");
     castingMissile.z = XML::getFloatProperty(
-        node, "castingMissile-z", 32.0f);
+        node, "castingMissile-z", 32.0F);
     castingMissile.lifeTime = XML::getProperty(
         node, "castingMissile-lifetime", 500);
     castingMissile.speed = XML::getFloatProperty(
-        node, "castingMissile-speed", 7.0f);
+        node, "castingMissile-speed", 7.0F);
     castingMissile.dieDistance = XML::getFloatProperty(
-        node, "castingMissile-diedistance", 8.0f);
+        node, "castingMissile-diedistance", 8.0F);
 
     data->castingAnimation = XML::getProperty(
         node,

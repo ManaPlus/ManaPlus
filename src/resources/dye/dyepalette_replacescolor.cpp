@@ -41,9 +41,9 @@ void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
 {
     STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (sz == 0u || pixels == nullptr)
+    if (sz == 0U || pixels == nullptr)
         return;
-    if ((sz % 2) != 0u)
+    if ((sz % 2) != 0U)
         -- it_end;
 
     for (const uint32_t *const p_end = pixels + CAST_SIZE(bufSize);
@@ -102,9 +102,9 @@ void DyePalette::replaceSColorSse2(uint32_t *restrict pixels,
 {
     STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (sz == 0u || pixels == nullptr)
+    if (sz == 0U || pixels == nullptr)
         return;
-    if ((sz % 2) != 0u)
+    if ((sz % 2) != 0U)
         -- it_end;
     const int mod = bufSize % 8;
     const int bufEnd = bufSize - mod;
@@ -183,9 +183,9 @@ void DyePalette::replaceSColorAvx2(uint32_t *restrict pixels,
 {
     STD_VECTOR<DyeColor>::const_iterator it_end = mColors.end();
     const size_t sz = mColors.size();
-    if (sz == 0u || pixels == nullptr)
+    if (sz == 0U || pixels == nullptr)
         return;
-    if ((sz % 2) != 0u)
+    if ((sz % 2) != 0U)
         -- it_end;
     const int mod = bufSize % 8;
     const int bufEnd = bufSize - mod;

@@ -79,7 +79,7 @@
 class KeyInput final
 {
     public:
-        KeyInput() :
+        KeyInput() noexcept2 :
             mKey(0),
             mType(KeyEventType::PRESSED),
 #ifdef USE_SDL2
@@ -88,7 +88,7 @@ class KeyInput final
             mActionId(InputAction::UNDEFINED_VALUE)
         { }
 
-        KeyInput(const KeyInput &k) :
+        KeyInput(const KeyInput &k) noexcept2 :
             mKey(k.mKey),
             mType(k.mType),
 #ifdef USE_SDL2

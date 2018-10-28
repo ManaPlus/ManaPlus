@@ -938,7 +938,7 @@ impHandler(targetAttack)
             }
         }
 
-        if ((target == nullptr) && (settings.targetingType == 0u))
+        if ((target == nullptr) && (settings.targetingType == 0U))
             target = localPlayer->getTarget();
 
         if (target == nullptr)

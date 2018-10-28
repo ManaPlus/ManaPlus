@@ -145,7 +145,7 @@ void Particle::updateSelf() restrict2
                     dist.x * dist.x + dist.y * dist.y + dist.z * dist.z);
                 break;
             case ParticlePhysics::Fast:
-                if (dist.x == 0.0f)
+                if (dist.x == 0.0F)
                 {
                     invHypotenuse = 0;
                     break;
@@ -162,7 +162,7 @@ void Particle::updateSelf() restrict2
                 break;
         }
 
-        if (invHypotenuse != 0.0f)
+        if (invHypotenuse != 0.0F)
         {
             if (mInvDieDistance > 0.0F && invHypotenuse > mInvDieDistance)
                 mAlive = AliveStatus::DEAD_IMPACT;

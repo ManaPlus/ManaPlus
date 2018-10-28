@@ -461,7 +461,7 @@ bool AnimatedSprite::updateNumber(const unsigned num) restrict2
     {
         mNumber1 = num;
         mNumber = mSprite->findNumber(num);
-        if (mNumber == 0u)
+        if (mNumber == 0U)
         {
             mNumber = 100;
             return false;

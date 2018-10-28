@@ -196,7 +196,7 @@ Image::Image(const GLuint glimage, const int width, const int height,
     mBounds.w = CAST_U16(width);
     mBounds.h = CAST_U16(height);
 
-    if (mGLImage != 0u)
+    if (mGLImage != 0U)
     {
         mLoaded = true;
     }
@@ -249,7 +249,7 @@ void Image::unload()
 #endif  // USE_SDL2
 
 #ifdef USE_OPENGL
-    if (mGLImage != 0u)
+    if (mGLImage != 0U)
     {
         glDeleteTextures(1, &mGLImage);
         mGLImage = 0;
@@ -521,7 +521,7 @@ int Image::calcMemoryLocal() const
 #ifdef USE_OPENGL
 void Image::decRef()
 {
-    if ((mGLImage != 0u) && mRefCount <= 1)
+    if ((mGLImage != 0U) && mRefCount <= 1)
         OpenGLImageHelper::invalidate(mGLImage);
     Resource::decRef();
 }

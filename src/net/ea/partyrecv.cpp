@@ -54,7 +54,7 @@ namespace PartyRecv
 
 void PartyRecv::processPartyCreate(Net::MessageIn &msg)
 {
-    if (msg.readUInt8("flag") != 0u)
+    if (msg.readUInt8("flag") != 0U)
         NotifyManager::notify(NotifyTypes::PARTY_CREATE_FAILED);
     else
         NotifyManager::notify(NotifyTypes::PARTY_CREATED);

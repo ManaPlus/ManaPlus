@@ -397,7 +397,7 @@ static int _SDL_gfxBlitRGBACall(const SDL_Surface *const src,
     /*
     * Set up source and destination buffer pointers, then blit
     */
-    if ((srcrect->w != 0u) && (srcrect->h != 0u))
+    if ((srcrect->w != 0U) && (srcrect->h != 0U))
     {
         SDL_gfxBlitInfo info;
 

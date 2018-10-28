@@ -516,23 +516,23 @@ bool Graphics::videoInfo() restrict2
         return false;
 
     logger->log("Possible to create hardware surfaces: %s",
-            ((vi->hw_available) != 0u ? "yes" : "no"));
+            ((vi->hw_available) != 0U ? "yes" : "no"));
     logger->log("Window manager available: %s",
-            ((vi->wm_available) != 0u ? "yes" : "no"));
+            ((vi->wm_available) != 0U ? "yes" : "no"));
     logger->log("Accelerated hardware to hardware blits: %s",
-            ((vi->blit_hw) != 0u ? "yes" : "no"));
+            ((vi->blit_hw) != 0U ? "yes" : "no"));
     logger->log("Accelerated hardware to hardware colorkey blits: %s",
-            ((vi->blit_hw_CC) != 0u ? "yes" : "no"));
+            ((vi->blit_hw_CC) != 0U ? "yes" : "no"));
     logger->log("Accelerated hardware to hardware alpha blits: %s",
-            ((vi->blit_hw_A) != 0u ? "yes" : "no"));
+            ((vi->blit_hw_A) != 0U ? "yes" : "no"));
     logger->log("Accelerated software to hardware blits: %s",
-            ((vi->blit_sw) != 0u ? "yes" : "no"));
+            ((vi->blit_sw) != 0U ? "yes" : "no"));
     logger->log("Accelerated software to hardware colorkey blits: %s",
-            ((vi->blit_sw_CC) != 0u ? "yes" : "no"));
+            ((vi->blit_sw_CC) != 0U ? "yes" : "no"));
     logger->log("Accelerated software to hardware alpha blits: %s",
-            ((vi->blit_sw_A) != 0u ? "yes" : "no"));
+            ((vi->blit_sw_A) != 0U ? "yes" : "no"));
     logger->log("Accelerated color fills: %s",
-            ((vi->blit_fill) != 0u ? "yes" : "no"));
+            ((vi->blit_fill) != 0U ? "yes" : "no"));
 #endif  // USE_SDL2
 
     return true;

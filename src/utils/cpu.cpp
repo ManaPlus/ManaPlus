@@ -153,21 +153,21 @@ void Cpu::printFlags()
     if (logger == nullptr)
         return;
     std::string str("CPU features:");
-    if ((mCpuFlags & FEATURE_MMX) != 0u)
+    if ((mCpuFlags & FEATURE_MMX) != 0U)
         str.append(" mmx");
-    if ((mCpuFlags & FEATURE_SSE) != 0u)
+    if ((mCpuFlags & FEATURE_SSE) != 0U)
         str.append(" sse");
-    if ((mCpuFlags & FEATURE_SSE2) != 0u)
+    if ((mCpuFlags & FEATURE_SSE2) != 0U)
         str.append(" sse2");
-    if ((mCpuFlags & FEATURE_SSSE3) != 0u)
+    if ((mCpuFlags & FEATURE_SSSE3) != 0U)
         str.append(" ssse3");
-    if ((mCpuFlags & FEATURE_SSE4) != 0u)
+    if ((mCpuFlags & FEATURE_SSE4) != 0U)
         str.append(" sse4");
-    if ((mCpuFlags & FEATURE_SSE42) != 0u)
+    if ((mCpuFlags & FEATURE_SSE42) != 0U)
         str.append(" sse4_2");
-    if ((mCpuFlags & FEATURE_AVX) != 0u)
+    if ((mCpuFlags & FEATURE_AVX) != 0U)
         str.append(" avx");
-    if ((mCpuFlags & FEATURE_AVX2) != 0u)
+    if ((mCpuFlags & FEATURE_AVX2) != 0U)
         str.append(" avx2");
     logger->log(str);
 }

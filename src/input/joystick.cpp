@@ -263,7 +263,7 @@ void Joystick::logic()
             logger->log("axis 4 pos: %d", SDL_JoystickGetAxis(mJoystick, 4));
 #endif  // DEBUG_JOYSTICK
 
-        if ((mDirection == 0u) && mHaveHats)
+        if ((mDirection == 0U) && mHaveHats)
         {
             // reading only hat 0
             const uint8_t hat = SDL_JoystickGetHat(mJoystick, 0);

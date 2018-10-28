@@ -213,7 +213,7 @@ Window::Window(const std::string &caption,
             }
             setTitleBarHeight(CAST_U32(
                 getOption("titlebarHeight", 0)));
-            if (mTitleBarHeight == 0u)
+            if (mTitleBarHeight == 0U)
                 mTitleBarHeight = mCaptionFont->getHeight() + mPadding;
 
             mTitleBarHeight += getOption("titlebarHeightRelative", 0);

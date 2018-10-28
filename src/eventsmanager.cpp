@@ -627,7 +627,7 @@ void EventsManager::handleActive(const SDL_Event &event)
 
     if ((event.active.state & SDL_APPACTIVE) != 0)
     {
-        if (event.active.gain != 0u)
+        if (event.active.gain != 0U)
         {   // window restore
             WindowManager::setIsMinimized(false);
 #ifndef DYECMD
@@ -670,11 +670,11 @@ void EventsManager::handleActive(const SDL_Event &event)
 
     if ((event.active.state & SDL_APPINPUTFOCUS) != 0)
     {
-        settings.inputFocused = (event.active.gain != 0u) ?
+        settings.inputFocused = (event.active.gain != 0U) ?
             KeyboardFocus::Focused : KeyboardFocus::Unfocused;
     }
     if ((event.active.state & SDL_APPMOUSEFOCUS) != 0)
-        settings.mouseFocused = (event.active.gain != 0u);
+        settings.mouseFocused = (event.active.gain != 0U);
 #ifndef DYECMD
     if (inGame)
         Game::instance()->updateFrameRate(fpsLimit);

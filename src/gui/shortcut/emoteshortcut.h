@@ -101,7 +101,7 @@ class EmoteShortcut final
          * A flag to check if the Emote is selected.
          */
         bool isEmoteSelected() const noexcept2 A_WARN_UNUSED
-        { return mEmoteSelected != 0u; }
+        { return mEmoteSelected != 0U; }
 
         /**
          * Remove a Emote from the shortcut.

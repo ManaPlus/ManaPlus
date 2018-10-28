@@ -119,7 +119,7 @@ void GameModifiers::changeMode(unsigned *restrict const var,
     }
     else
     {
-        if (*var == 0u)
+        if (*var == 0U)
             *var = limit - 1;
         else
             (*var) --;
@@ -502,7 +502,7 @@ void GameModifiers::resetModifiers()
     settings.mapDrawType = MapType::NORMAL;
     if (viewport != nullptr)
     {
-        if (settings.cameraMode != 0u)
+        if (settings.cameraMode != 0U)
             viewport->toggleCameraMode();
         Map *const map = viewport->getMap();
         if (map != nullptr)

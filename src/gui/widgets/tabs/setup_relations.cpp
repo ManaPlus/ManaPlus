@@ -71,11 +71,11 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
         mPlayerTable, Opaque_true, std::string())),
     // TRANSLATORS: relation dialog button
     mDefaultTrading(new CheckBox(this, _("Allow trading"),
-        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u,
+        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0U,
         nullptr, std::string())),
     // TRANSLATORS: relation dialog button
     mDefaultWhisper(new CheckBox(this, _("Allow whispers"),
-        (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u,
+        (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0U,
         nullptr, std::string())),
     // TRANSLATORS: relation dialog button
     mDeleteButton(new Button(this, _("Delete"), ACTION_DELETE,
@@ -236,9 +236,9 @@ void Setup_Relations::updatedPlayer(const std::string &name A_UNUSED)
 {
     mPlayerTableModel->playerRelationsUpdated();
     mDefaultTrading->setSelected(
-            (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u);
+            (playerRelations.getDefault() & PlayerRelation::TRADE) != 0U);
     mDefaultWhisper->setSelected(
-            (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u);
+            (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0U);
     if (localPlayer != nullptr)
         localPlayer->updateName();
 }
@@ -265,7 +265,7 @@ void Setup_Relations::updateAll()
 void Setup_Relations::externalUpdated()
 {
     mDefaultTrading->setSelected(
-        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0u);
+        (playerRelations.getDefault() & PlayerRelation::TRADE) != 0U);
     mDefaultWhisper->setSelected(
-        (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0u);
+        (playerRelations.getDefault() & PlayerRelation::WHISPER) != 0U);
 }

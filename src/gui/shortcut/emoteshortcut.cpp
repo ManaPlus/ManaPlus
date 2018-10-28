@@ -68,7 +68,7 @@ void EmoteShortcut::save() const
 {
     for (int i = 0; i < SHORTCUT_EMOTES; i++)
     {
-        const unsigned char emoteId = mEmotes[i] != 0u ? mEmotes[i]
+        const unsigned char emoteId = mEmotes[i] != 0U ? mEmotes[i]
             : CAST_U8(0);
         serverConfig.setValue("emoteshortcut" + toString(i),
             CAST_U32(emoteId));

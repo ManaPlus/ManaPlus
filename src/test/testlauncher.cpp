@@ -753,7 +753,7 @@ int TestLauncher::testDraw()
     mainGraphics->setColor(Color(0xFFU, 0x00U, 0x00U, 0xB0U));
     img[0]->setAlpha(0.5f);
     mainGraphics->drawImage(img[0], 190, 383);
-    img[0]->setAlpha(1.0f);
+    img[0]->setAlpha(1.0F);
 
     mainGraphics->calcWindow(col2,
                 5, 40,

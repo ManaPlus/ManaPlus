@@ -81,7 +81,7 @@ Download::Download(void *const ptr,
 
     mOptions.cancel = 0;
     mOptions.memoryWrite = 0;
-    mOptions.checkAdler = 1u;
+    mOptions.checkAdler = 1U;
     if (!mUpload)
     {
         const std::string serverName = settings.serverName;
@@ -170,7 +170,7 @@ void Download::setFile(const std::string &filename, const int64_t adler32)
     if (adler32 > -1)
     {
         mAdler = static_cast<unsigned long>(adler32);
-        mOptions.checkAdler = 1u;
+        mOptions.checkAdler = 1U;
     }
     else
     {
@@ -180,7 +180,7 @@ void Download::setFile(const std::string &filename, const int64_t adler32)
 
 void Download::setWriteFunction(WriteFunction write)
 {
-    mOptions.memoryWrite = 1u;
+    mOptions.memoryWrite = 1U;
     mWriteFunction = write;
 }
 
@@ -209,7 +209,7 @@ void Download::cancel()
 {
     logger->log("Canceling download: %s", mUrl.c_str());
 
-    mOptions.cancel = 1u;
+    mOptions.cancel = 1U;
     SDL::WaitThread(mThread);
     mThread = nullptr;
 }
@@ -230,7 +230,7 @@ int Download::downloadProgress(void *clientp, double dltotal, double dlnow,
     if (d->mUpload)
         return 0;
 
-    if (d->mOptions.cancel != 0u)
+    if (d->mOptions.cancel != 0U)
     {
         return d->mUpdateFunction(d->mPtr, DownloadStatus::Cancelled,
                                   CAST_SIZE(dltotal),
@@ -260,7 +260,7 @@ int Download::downloadThread(void *ptr)
     }
     else
     {
-        if (d->mOptions.memoryWrite == 0u)
+        if (d->mOptions.memoryWrite == 0U)
             outFilename = d->mFileName + ".part";
         else
             outFilename.clear();
@@ -276,19 +276,19 @@ int Download::downloadThread(void *ptr)
         logger->log_r("selected url: %s", d->mUrl.c_str());
         while (attempts < 3 &&
                !complete &&
-               (d->mOptions.cancel == 0u) &&
+               (d->mOptions.cancel == 0U) &&
                isTerminate == false)
         {
             d->mUpdateFunction(d->mPtr, DownloadStatus::Starting, 0, 0);
 
-            if ((d->mOptions.cancel != 0u) || isTerminate == true)
+            if ((d->mOptions.cancel != 0U) || isTerminate == true)
             {
                 return 0;
             }
             d->mCurl = curl_easy_init();
 
             if (d->mCurl != nullptr &&
-                d->mOptions.cancel == 0u &&
+                d->mOptions.cancel == 0U &&
                 isTerminate == false)
             {
                 FILE *file = nullptr;
@@ -308,7 +308,7 @@ int Download::downloadThread(void *ptr)
                     curl_easy_setopt(d->mCurl, CURLOPT_FOLLOWLOCATION, 1);
                     curl_easy_setopt(d->mCurl, CURLOPT_HTTPHEADER,
                         d->mHeaders);
-                    if (d->mOptions.memoryWrite != 0u)
+                    if (d->mOptions.memoryWrite != 0U)
                     {
                         curl_easy_setopt(d->mCurl, CURLOPT_FAILONERROR, 1);
                         curl_easy_setopt(d->mCurl, CURLOPT_WRITEFUNCTION,
@@ -346,7 +346,7 @@ int Download::downloadThread(void *ptr)
                 addCommonFlags(d->mCurl);
 
                 if ((res = curl_easy_perform(d->mCurl)) != 0 &&
-                    (d->mOptions.cancel == 0u) &&
+                    (d->mOptions.cancel == 0U) &&
                     isTerminate == false)
                 {
                     PRAGMA45(GCC diagnostic push)
@@ -354,7 +354,7 @@ int Download::downloadThread(void *ptr)
                     switch (res)
                     {
                         case CURLE_ABORTED_BY_CALLBACK:
-                            d->mOptions.cancel = 1u;
+                            d->mOptions.cancel = 1U;
                             break;
                         case CURLE_COULDNT_CONNECT:
                         default:
@@ -362,7 +362,7 @@ int Download::downloadThread(void *ptr)
                     }
                     PRAGMA45(GCC diagnostic pop)
 
-                    if (res != 0u)
+                    if (res != 0U)
                     {
                         if (d->mError != nullptr)
                         {
@@ -373,7 +373,7 @@ int Download::downloadThread(void *ptr)
                         continue;
                     }
 
-                    if ((d->mOptions.cancel != 0u) || isTerminate == true)
+                    if ((d->mOptions.cancel != 0U) || isTerminate == true)
                         break;
 
 //                    d->mUpdateFunction(d->mPtr, DownloadStatus::Error, 0, 0);
@@ -383,7 +383,7 @@ int Download::downloadThread(void *ptr)
                         fclose(file);
                         file = nullptr;
                     }
-                    if (!d->mUpload && (d->mOptions.memoryWrite == 0u))
+                    if (!d->mUpload && (d->mOptions.memoryWrite == 0U))
                         ::remove(outFilename.c_str());
                     attempts++;
                     continue;
@@ -404,10 +404,10 @@ int Download::downloadThread(void *ptr)
                 }
                 else
                 {
-                    if (d->mOptions.memoryWrite == 0u)
+                    if (d->mOptions.memoryWrite == 0U)
                     {
                         // Don't check resources.xml checksum
-                        if (d->mOptions.checkAdler != 0u)
+                        if (d->mOptions.checkAdler != 0U)
                         {
                             const unsigned long adler = fadler32(file);
 
@@ -438,7 +438,7 @@ int Download::downloadThread(void *ptr)
 
                         // Any existing file with this name is deleted first,
                         // otherwise the rename will fail on Windows.
-                        if ((d->mOptions.cancel == 0u) && isTerminate == false)
+                        if ((d->mOptions.cancel == 0U) && isTerminate == false)
                         {
                             if (d->mIsXml)
                             {
@@ -478,18 +478,18 @@ int Download::downloadThread(void *ptr)
                 d->mCurl = nullptr;
             }
 
-            if ((d->mOptions.cancel != 0u) || isTerminate == true)
+            if ((d->mOptions.cancel != 0U) || isTerminate == true)
             {
                 return 0;
             }
             attempts++;
         }
 
-        if ((complete && attempts < 3) || (d->mOptions.cancel != 0u))
+        if ((complete && attempts < 3) || (d->mOptions.cancel != 0U))
             break;
     }
 
-    if ((d->mOptions.cancel != 0u) || isTerminate == true)
+    if ((d->mOptions.cancel != 0U) || isTerminate == true)
     {
         // Nothing to do...
     }

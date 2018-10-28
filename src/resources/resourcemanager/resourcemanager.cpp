@@ -327,7 +327,7 @@ void clearDeleted(const bool full)
         std::set<Resource*>::iterator resDelIter = mDeletedResources.begin();
         while (resDelIter != mDeletedResources.end())
         {
-            if ((*resDelIter)->mRefCount == 0u)
+            if ((*resDelIter)->mRefCount == 0U)
             {
                 status = true;
                 Resource *res = *resDelIter;
@@ -604,7 +604,7 @@ void deleteInstance()
         const Resource *const res = iter->second;
         if (res != nullptr)
         {
-            if (res->mRefCount != 0u)
+            if (res->mRefCount != 0U)
             {
                 logger->log(std::string("ResourceLeak: ").append(
                     res->mIdPath).append(" (").append(toString(

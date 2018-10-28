@@ -589,7 +589,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
     if ((playerRelations.checkPermissionSilently(sender_name,
-        PlayerRelation::SPEECH_LOG) != 0u) && (chatWindow != nullptr))
+        PlayerRelation::SPEECH_LOG) != 0U) && (chatWindow != nullptr))
     {
         allow = chatWindow->resortChatLog(
             removeColors(sender_name).append(" : ").append(chatMsg),

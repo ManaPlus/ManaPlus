@@ -216,7 +216,7 @@ void EmoteShortcutContainer::mousePressed(MouseEvent &restrict event) restrict2
             emoteShortcut->setEmote(index);
             emoteShortcut->setEmoteSelected(0);
         }
-        else if (emoteShortcut->getEmote(index) != 0u)
+        else if (emoteShortcut->getEmote(index) != 0U)
         {
             mEmoteClicked = true;
         }
@@ -250,12 +250,12 @@ void EmoteShortcutContainer::mouseReleased(MouseEvent &restrict event)
             return;
         }
 
-        if (mEmoteMoved != 0u)
+        if (mEmoteMoved != 0U)
         {
             emoteShortcut->setEmotes(index, mEmoteMoved);
             mEmoteMoved = 0;
         }
-        else if ((emoteShortcut->getEmote(index) != 0u) && mEmoteClicked)
+        else if ((emoteShortcut->getEmote(index) != 0U) && mEmoteClicked)
         {
             emoteShortcut->useEmote(index + 1);
         }

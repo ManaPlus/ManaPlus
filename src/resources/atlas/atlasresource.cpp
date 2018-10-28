@@ -58,7 +58,7 @@ AtlasResource::~AtlasResource()
 
 void AtlasResource::incRef()
 {
-    if (mRefCount == 0u)
+    if (mRefCount == 0U)
         AtlasManager::injectToResources(this);
     Resource::incRef();
 }
@@ -66,7 +66,7 @@ void AtlasResource::incRef()
 void AtlasResource::decRef()
 {
     Resource::decRef();
-    if (mRefCount == 0u)
+    if (mRefCount == 0U)
         AtlasManager::moveToDeleted(this);
 }
 

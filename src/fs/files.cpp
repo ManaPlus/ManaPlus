@@ -188,7 +188,7 @@ int Files::copyFile(const std::string &restrict srcName,
     const int chunkSize = 512000;
     char *buf = new char[chunkSize];
     size_t sz = 0;
-    while ((sz = fread(buf, 1, chunkSize, srcFile)) != 0u)
+    while ((sz = fread(buf, 1, chunkSize, srcFile)) != 0U)
     {
         if (fwrite(buf, 1, sz, dstFile) != sz)
         {

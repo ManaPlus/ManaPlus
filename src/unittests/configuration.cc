@@ -67,7 +67,7 @@ TEST_CASE("configuration tests", "configuration")
     {
         const char *const key = "sfxVolume";
         REQUIRE(config.getIntValue(key) == 100);
-        REQUIRE(config.getFloatValue(key) >= 100.0f);
+        REQUIRE(config.getFloatValue(key) >= 100.0F);
         REQUIRE(config.getStringValue(key) == "100");
         REQUIRE(config.getBoolValue(key) == true);
     }
@@ -76,7 +76,7 @@ TEST_CASE("configuration tests", "configuration")
     {
         const char *const key = "guialpha";
         REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.8f);
+        REQUIRE(config.getFloatValue(key) >= 0.8F);
         REQUIRE(config.getStringValue(key).substr(0, 3) == "0.8");
         REQUIRE(config.getBoolValue(key) == false);
     }
@@ -85,7 +85,7 @@ TEST_CASE("configuration tests", "configuration")
     {
         const char *const key = "soundwhisper";
         REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.0f);
+        REQUIRE(config.getFloatValue(key) >= 0.0F);
         REQUIRE(config.getStringValue(key) == "newmessage");
         REQUIRE(config.getBoolValue(key) == true);
     }
@@ -94,7 +94,7 @@ TEST_CASE("configuration tests", "configuration")
     {
         const char *const key = "showgender";
         REQUIRE(config.getIntValue(key) == 1);
-        REQUIRE(config.getFloatValue(key) >= 1.0f);
+        REQUIRE(config.getFloatValue(key) >= 1.0F);
         REQUIRE(config.getStringValue(key) == "1");
         REQUIRE(config.getBoolValue(key) == true);
     }
@@ -103,7 +103,7 @@ TEST_CASE("configuration tests", "configuration")
     {
         const char *const key = "showlevel";
         REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.0f);
+        REQUIRE(config.getFloatValue(key) >= 0.0F);
         REQUIRE(config.getStringValue(key) == "0");
         REQUIRE(config.getBoolValue(key) == false);
     }
@@ -113,7 +113,7 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "sfxVolume";
         config.setValue(key, 50);
         REQUIRE(config.getIntValue(key) == 50);
-        REQUIRE(config.getFloatValue(key) >= 50.0f);
+        REQUIRE(config.getFloatValue(key) >= 50.0F);
         REQUIRE(config.getStringValue(key) == "50");
         REQUIRE(config.getBoolValue(key) == true);
 
@@ -132,7 +132,7 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "guialpha";
         config.setValue(key, 50.5);
         REQUIRE(config.getIntValue(key) == 50);
-        REQUIRE(config.getFloatValue(key) >= 50.4f);
+        REQUIRE(config.getFloatValue(key) >= 50.4F);
         REQUIRE(config.getStringValue(key).substr(0, 2) == "50");
         REQUIRE(config.getBoolValue(key) == true);
 
@@ -151,7 +151,7 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "soundwhisper";
         config.setValue(key, "test line");
         REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.0f);
+        REQUIRE(config.getFloatValue(key) >= 0.0F);
         REQUIRE(config.getStringValue(key) == "test line");
         REQUIRE(config.getBoolValue(key) == false);
 
@@ -170,7 +170,7 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "showgender";
         config.setValue(key, true);
         REQUIRE(config.getIntValue(key) == 1);
-        REQUIRE(config.getFloatValue(key) >= 1.0f);
+        REQUIRE(config.getFloatValue(key) >= 1.0F);
         REQUIRE(config.getStringValue(key) == "1");
         REQUIRE(config.getBoolValue(key) == true);
 
@@ -189,7 +189,7 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "showgender";
         config.setValue(key, false);
         REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.0f);
+        REQUIRE(config.getFloatValue(key) >= 0.0F);
         REQUIRE(config.getStringValue(key) == "0");
         REQUIRE(config.getBoolValue(key) == false);
 
@@ -249,12 +249,12 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "sfxVolume";
         config.setValue(key, 20);
         REQUIRE(config.getIntValue(key) == 20);
-        REQUIRE(config.getFloatValue(key) >= 20.0f);
+        REQUIRE(config.getFloatValue(key) >= 20.0F);
         REQUIRE(config.getStringValue(key) == "20");
         REQUIRE(config.getBoolValue(key) == true);
         config.resetIntValue(key);
         REQUIRE(config.getIntValue(key) == 100);
-        REQUIRE(config.getFloatValue(key) >= 100.0f);
+        REQUIRE(config.getFloatValue(key) >= 100.0F);
         REQUIRE(config.getStringValue(key) == "100");
         REQUIRE(config.getBoolValue(key) == true);
     }
@@ -264,13 +264,13 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "showgender";
         config.setValue(key, false);
         REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.0f);
+        REQUIRE(config.getFloatValue(key) >= 0.0F);
         REQUIRE(config.getStringValue(key) == "0");
         REQUIRE(config.getBoolValue(key) == false);
 
         config.resetBoolValue(key);
         REQUIRE(config.getIntValue(key) == 1);
-        REQUIRE(config.getFloatValue(key) >= 1.0f);
+        REQUIRE(config.getFloatValue(key) >= 1.0F);
         REQUIRE(config.getStringValue(key) == "1");
         REQUIRE(config.getBoolValue(key) == true);
     }
@@ -280,13 +280,13 @@ TEST_CASE("configuration tests", "configuration")
         const char *const key = "showlevel";
         config.setValue(key, true);
         REQUIRE(config.getIntValue(key) == 1);
-        REQUIRE(config.getFloatValue(key) >= 1.0f);
+        REQUIRE(config.getFloatValue(key) >= 1.0F);
         REQUIRE(config.getStringValue(key) == "1");
         REQUIRE(config.getBoolValue(key) == true);
 
         config.resetBoolValue(key);
         REQUIRE(config.getIntValue(key) == 0);
-        REQUIRE(config.getFloatValue(key) >= 0.0f);
+        REQUIRE(config.getFloatValue(key) >= 0.0F);
         REQUIRE(config.getStringValue(key) == "0");
         REQUIRE(config.getBoolValue(key) == false);
     }

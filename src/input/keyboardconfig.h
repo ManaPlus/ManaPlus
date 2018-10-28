@@ -96,7 +96,7 @@ class KeyboardConfig final
             return event.key.keysym.scancode;
 #else  // USE_SDL2
 
-            if (event.key.keysym.sym != 0u)
+            if (event.key.keysym.sym != 0U)
                 return CAST_S32(event.key.keysym.sym);
             else if (event.key.keysym.scancode > 1)
                 return -event.key.keysym.scancode;

@@ -126,17 +126,17 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
 void ModernOpenGLGraphics::deleteGLObjects() restrict2
 {
     delete2(mProgram);
-    if (mVbo != 0u)
+    if (mVbo != 0U)
     {
 //        logger->log("delete buffer vbo: %u", mVbo);
         mglDeleteBuffers(1, &mVbo);
     }
-    if (mEbo != 0u)
+    if (mEbo != 0U)
     {
 //        logger->log("delete buffer ebo: %u", mEbo);
         mglDeleteBuffers(1, &mEbo);
     }
-    if (mVao != 0u)
+    if (mVao != 0U)
         mglDeleteVertexArrays(1, &mVao);
 }
 
@@ -176,7 +176,7 @@ void ModernOpenGLGraphics::postInit() restrict2
         logger->safeError("Shader creation error. See manaplus.log.");
     }
     mProgramId = mProgram->getProgramId();
-    if (mProgramId == 0u)
+    if (mProgramId == 0U)
         logger->error("Shaders compilation error.");
 
     logger->log("Shaders compilation done.");
@@ -191,7 +191,7 @@ void ModernOpenGLGraphics::postInit() restrict2
     mDrawTypeUniform = mglGetUniformLocation(mProgramId, "drawType");
     mTextureColorUniform = mglGetUniformLocation(mProgramId, "alpha");
 
-    mglUniform1f(mTextureColorUniform, 1.0f);
+    mglUniform1f(mTextureColorUniform, 1.0F);
 
     mglBindVertexBuffer(0, mVbo, 0, 4 * sizeof(GLint));
     mglVertexAttribBinding(mPosAttrib, 0);
@@ -199,8 +199,8 @@ void ModernOpenGLGraphics::postInit() restrict2
     mAttributesBinded = mVbo;
 
     mglUniform2f(mScreenUniform,
-        static_cast<float>(mWidth) / 2.0f,
-        static_cast<float>(mHeight) / 2.0f);
+        static_cast<float>(mWidth) / 2.0F,
+        static_cast<float>(mHeight) / 2.0F);
     mglUniform4f(mSimpleColorUniform,
         0.0F,
         0.0F,
@@ -1032,7 +1032,7 @@ void ModernOpenGLGraphics::enableTexturingAndBlending() restrict2
     if (!mTextureDraw)
     {
         mTextureDraw = true;
-        mglUniform1f(mDrawTypeUniform, 1.0f);
+        mglUniform1f(mDrawTypeUniform, 1.0F);
     }
     if (!mAlpha)
     {
@@ -1046,7 +1046,7 @@ void ModernOpenGLGraphics::disableTexturingAndBlending() restrict2
     if (mTextureDraw)
     {
         mTextureDraw = false;
-        mglUniform1f(mDrawTypeUniform, 0.0f);
+        mglUniform1f(mDrawTypeUniform, 0.0F);
     }
     if (mAlpha && !mColorAlpha)
     {
@@ -1107,13 +1107,13 @@ void ModernOpenGLGraphics::drawNet(const int x1, const int y1,
     {
         mIntArray[vp + 0] = x;
         mIntArray[vp + 1] = ys1;
-        mIntArray[vp + 2] = 0.0f;
-        mIntArray[vp + 3] = 0.0f;
+        mIntArray[vp + 2] = 0.0F;
+        mIntArray[vp + 3] = 0.0F;
 
         mIntArray[vp + 4] = x;
         mIntArray[vp + 5] = ys2;
-        mIntArray[vp + 6] = 0.0f;
-        mIntArray[vp + 7] = 0.0f;
+        mIntArray[vp + 6] = 0.0F;
+        mIntArray[vp + 7] = 0.0F;
 
         vp += 8;
         if (vp >= vLimit)

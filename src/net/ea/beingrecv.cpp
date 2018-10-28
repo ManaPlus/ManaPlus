@@ -261,7 +261,7 @@ void BeingRecv::processBeingEmotion(Net::MessageIn &msg)
     }
 
     const uint8_t emote = msg.readUInt8("emote");
-    if ((emote != 0u) &&
+    if ((emote != 0U) &&
         playerRelations.hasPermission(dstBeing, PlayerRelation::EMOTE))
     {
         dstBeing->setEmote(emote, 0);

@@ -34,7 +34,7 @@ Shader::Shader(const unsigned int id) :
 
 Shader::~Shader()
 {
-    if (mShaderId != 0u)
+    if (mShaderId != 0U)
         mglDeleteShader(mShaderId);
 }
 

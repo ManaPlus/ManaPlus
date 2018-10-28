@@ -395,7 +395,7 @@ void UpdaterWindow::loadNews()
         {
             firstLine = false;
             const size_t i = line.find("##9 Latest client version: ##6");
-            if (i == 0u)
+            if (i == 0U)
                 continue;
 
             if (file.is_open())
@@ -529,7 +529,7 @@ int UpdaterWindow::updateProgress(void *ptr,
         }
     }
 
-    if (dt == 0u)
+    if (dt == 0U)
         dt = 1;
 
     float progress = static_cast<float>(dn) /

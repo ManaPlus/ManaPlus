@@ -73,7 +73,7 @@ void SDL_initFramerate(FPSmanager * manager)
     */
     manager->framecount = 0;
     manager->rate = FPS_DEFAULT;
-    manager->rateticks = (1000.0f / static_cast<float>(FPS_DEFAULT));
+    manager->rateticks = (1000.0F / static_cast<float>(FPS_DEFAULT));
     manager->baseticks = _getTicks();
     manager->lastticks = manager->baseticks;
 
@@ -96,7 +96,7 @@ int SDL_setFramerate(FPSmanager * manager, Uint32 rate)
     {
         manager->framecount = 0;
         manager->rate = rate;
-        manager->rateticks = (1000.0f / static_cast<float>(rate));
+        manager->rateticks = (1000.0F / static_cast<float>(rate));
         return (0);
     }
     else

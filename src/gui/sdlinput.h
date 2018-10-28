@@ -331,7 +331,7 @@ class SDLInput final
             }
             PRAGMA45(GCC diagnostic pop)
 
-            if ((CAST_U32(keysym.mod) & KMOD_NUM) == 0u)
+            if ((CAST_U32(keysym.mod) & KMOD_NUM) == 0U)
             {
                 PRAGMA45(GCC diagnostic push)
                 PRAGMA45(GCC diagnostic ignored "-Wswitch-enum")

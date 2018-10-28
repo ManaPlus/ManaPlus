@@ -514,7 +514,7 @@ void InventoryWindow::action(const ActionEvent &event)
         mItems->setName(mNameFilter->getText());
         mItems->updateMatrix();
     }
-    else if (eventId.find("tag_") == 0u)
+    else if (eventId.find("tag_") == 0U)
     {
         std::string tagName = event.getId().substr(4);
         mItems->setFilter(ItemDB::getTagId(tagName));

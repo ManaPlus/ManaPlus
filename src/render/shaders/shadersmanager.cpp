@@ -86,7 +86,7 @@ ShaderProgram *ShadersManager::createProgram(const std::string &vertex,
     }
 
     GLuint programId = mglCreateProgram();
-    if (programId == 0u)
+    if (programId == 0U)
     {
         vertexShader->decRef();
         fragmentShader->decRef();

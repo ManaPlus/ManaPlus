@@ -163,12 +163,12 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             beingSlot.cardsId);
     }
 
-    if (maxHairColor == 0u)
+    if (maxHairColor == 0U)
         maxHairColor = ColorDB::getHairSize();
-    if (maxHairStyle == 0u)
+    if (maxHairStyle == 0U)
         maxHairStyle = ItemDB::getNumOfHairstyles();
 
-    if (maxHairStyle != 0u)
+    if (maxHairStyle != 0U)
     {
         mHairStyle = (CAST_U32(rand())
             % maxHairStyle) + minHairStyle;
@@ -177,7 +177,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     {
         mHairStyle = 0;
     }
-    if (maxHairColor != 0u)
+    if (maxHairColor != 0U)
     {
         mHairColor = (CAST_U32(rand())
             % maxHairColor) + minHairColor;

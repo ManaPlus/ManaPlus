@@ -427,7 +427,7 @@ void MobileOpenGLGraphics::drawPatternCached(const Image *restrict const image,
 
 void MobileOpenGLGraphics::completeCache() restrict2
 {
-    if (mImageCached == 0u)
+    if (mImageCached == 0U)
         return;
 
     setColorAlpha(mAlphaCached);

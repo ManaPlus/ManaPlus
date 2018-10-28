@@ -182,12 +182,12 @@ bool KeyboardConfig::isActionActive(const InputActionT index) const
         const int value = val.value;
         if (value >= 0)
         {
-            if (mActiveKeys[value] != 0u)
+            if (mActiveKeys[value] != 0U)
                 return true;
         }
         else if (value < -1 && value > -500)
         {
-            if (mActiveKeys2[-value] != 0u)
+            if (mActiveKeys2[-value] != 0U)
                 return true;
         }
     }
@@ -247,12 +247,12 @@ void KeyboardConfig::handleRepeat(const int time)
         const int key = (*it).first;
         if (key >= 0)
         {
-            if ((mActiveKeys != nullptr) && (mActiveKeys[key] != 0u))
+            if ((mActiveKeys != nullptr) && (mActiveKeys[key] != 0U))
                 repeat = true;
         }
         else if (key < -1 && key > -500)
         {
-            if ((mActiveKeys2 != nullptr) && (mActiveKeys2[-key] != 0u))
+            if ((mActiveKeys2 != nullptr) && (mActiveKeys2[-key] != 0U))
                 repeat = true;
         }
         if (repeat)

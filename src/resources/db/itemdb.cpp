@@ -369,13 +369,13 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         std::string missileParticle = XML::getProperty(
             node, "missile-particle", "");
         float missileZ = XML::getFloatProperty(
-            node, "missile-z", 32.0f);
+            node, "missile-z", 32.0F);
         int missileLifeTime = XML::getProperty(
             node, "missile-lifetime", 500);
         float missileSpeed = XML::getFloatProperty(
-            node, "missile-speed", 7.0f);
+            node, "missile-speed", 7.0F);
         float missileDieDistance = XML::getFloatProperty(
-            node, "missile-diedistance", 8.0f);
+            node, "missile-diedistance", 8.0F);
         int hitEffectId = XML::getProperty(node, "hit-effect-id",
             paths.getIntValue("hitEffectId"));
         int criticalEffectId = XML::getProperty(

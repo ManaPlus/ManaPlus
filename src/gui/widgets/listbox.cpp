@@ -357,7 +357,7 @@ void ListBox::mouseDragged(MouseEvent &event)
         return;
 
     // Make list selection update on drag, but guard against negative y
-    if (getRowHeight() != 0u)
+    if (getRowHeight() != 0U)
         setSelected(std::max(0, getSelectionByMouse(event.getY())));
 }
 

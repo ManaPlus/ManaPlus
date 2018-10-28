@@ -141,7 +141,7 @@ TEST_CASE("stringuntils toString 1", "")
     REQUIRE(strprintf("%d", 123) == toString(CAST_U8(123)));
     REQUIRE(strprintf("%u", static_cast<uint32_t>(30000000)) == toString(
         static_cast<uint32_t>(30000000)));
-    REQUIRE(strprintf("%f", 3.1f) == toString(3.1f));
+    REQUIRE(strprintf("%f", 3.1F) == toString(3.1F));
     REQUIRE(strprintf("%f", 3.1) == toString(3.1));
 }
 

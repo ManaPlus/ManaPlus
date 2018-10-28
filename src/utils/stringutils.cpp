@@ -236,7 +236,7 @@ const std::string encodeStr(unsigned int value, const unsigned int size)
         buf += CAST_S8(value % base + start);
         value /= base;
     }
-    while (value != 0u);
+    while (value != 0U);
 
     while (buf.length() < size)
         buf += CAST_S8(start);
@@ -944,7 +944,7 @@ std::string timeToStr(const uint32_t time)
     char buf[101];
     const time_t tempTime = time;
     tm *const timeInfo = localtime(&tempTime);
-    if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo) != 0u)
+    if (strftime(&buf[0], 100, "%Y-%m-%d_%H-%M-%S", timeInfo) != 0U)
         return std::string(buf);
     return "unknown";
 }

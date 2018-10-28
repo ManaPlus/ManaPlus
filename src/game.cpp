@@ -1006,7 +1006,7 @@ void Game::moveInDirection(const unsigned char direction)
     if (viewport == nullptr)
         return;
 
-    if (settings.cameraMode == 0u)
+    if (settings.cameraMode == 0U)
     {
         if (localPlayer != nullptr)
             localPlayer->specialMove(direction);
@@ -1190,7 +1190,7 @@ void Game::changeMap(const std::string &mapPath)
 
 void Game::updateHistory(const SDL_Event &event)
 {
-    if ((localPlayer == nullptr) || (settings.attackType == 0u))
+    if ((localPlayer == nullptr) || (settings.attackType == 0U))
         return;
 
     if (CAST_S32(event.key.keysym.sym) != -1)
@@ -1250,7 +1250,7 @@ void Game::checkKeys()
     const int timeRange = 120;
     const int cntInTime = 130;
 
-    if ((localPlayer == nullptr) || (settings.attackType == 0u))
+    if ((localPlayer == nullptr) || (settings.attackType == 0U))
         return;
 
     const time_t time = cur_time;

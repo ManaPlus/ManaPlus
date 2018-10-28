@@ -64,7 +64,7 @@ MessageIn::MessageIn(const char *const data,
 
 MessageIn::~MessageIn()
 {
-    if (mLength != 0u)
+    if (mLength != 0U)
     {
         if (mPos != mLength && mPos != 2)
         {
@@ -463,7 +463,7 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
     str += " ";
     for (int f = 0; f < length; f ++)
     {
-        if (buf[f] != 0u)
+        if (buf[f] != 0U)
             str.append(strprintf("%c", buf[f]));
         else
             str.append("_");

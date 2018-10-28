@@ -1043,11 +1043,11 @@ void SDLGraphics::fillRectangle(const Rect &restrict rectangle) restrict2
                 unsigned rShift = rMask / 0xff;
                 unsigned gShift = gMask / 0xff;
                 unsigned bShift = bMask / 0xff;
-                if (rShift == 0u)
+                if (rShift == 0U)
                     rShift = 1;
-                if (gShift == 0u)
+                if (gShift == 0U)
                     gShift = 1;
-                if (bShift == 0u)
+                if (bShift == 0U)
                     bShift = 1;
                 if (pixel != mOldPixel || mColor.a != mOldAlpha)
                 {

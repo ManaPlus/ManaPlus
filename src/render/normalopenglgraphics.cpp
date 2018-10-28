@@ -416,10 +416,10 @@ void NormalOpenGLGraphics::testDraw() restrict2
     {
         GLfloat tex[] =
         {
-            0.0f, 0.781250f,
-            0.0f, 0.781250f,
-            0.0f, 0.585938f,
-            0.0f, 0.585938f
+            0.0F, 0.781250f,
+            0.0F, 0.781250f,
+            0.0F, 0.585938f,
+            0.0F, 0.585938f
         };
 
         GLint vert[] =
@@ -631,7 +631,7 @@ void NormalOpenGLGraphics::drawPatternCached(const Image *restrict const image,
 
 void NormalOpenGLGraphics::completeCache() restrict2
 {
-    if (mImageCached == 0u)
+    if (mImageCached == 0U)
         return;
 
     setColorAlpha(mAlphaCached);

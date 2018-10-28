@@ -278,7 +278,7 @@ void SDLInput::pushInput(const SDL_Event &event)
              * application loses its mousefocus.
              */
             if ((event.active.state & SDL_APPMOUSEFOCUS) != 0 &&
-                event.active.gain == 0u)
+                event.active.gain == 0U)
             {
                 mMouseInWindow = false;
 
@@ -294,7 +294,7 @@ void SDLInput::pushInput(const SDL_Event &event)
             }
 
             if ((event.active.state & SDL_APPMOUSEFOCUS) != 0 &&
-                event.active.gain != 0u)
+                event.active.gain != 0U)
             {
                 mMouseInWindow = true;
             }

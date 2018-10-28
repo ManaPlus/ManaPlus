@@ -77,7 +77,7 @@ void ChatRecv::processChatContinue(std::string chatMsg)
     }
 
     const std::string senseStr("You sense the following: ");
-    if ((actorManager != nullptr) && (chatMsg.find(senseStr) == 0u))
+    if ((actorManager != nullptr) && (chatMsg.find(senseStr) == 0U))
     {
         actorManager->parseLevels(
             chatMsg.substr(senseStr.size()));
@@ -372,7 +372,7 @@ void ChatRecv::processBeingChat(Net::MessageIn &msg)
     // because ignorePlayer' side effects are triggered
     // right below for Being::IGNORE_SPEECH_FLOAT.
     if ((playerRelations.checkPermissionSilently(sender_name,
-        PlayerRelation::SPEECH_LOG) != 0u) &&
+        PlayerRelation::SPEECH_LOG) != 0U) &&
         (chatWindow != nullptr))
     {
         allow = chatWindow->resortChatLog(

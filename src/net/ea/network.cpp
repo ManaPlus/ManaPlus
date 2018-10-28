@@ -155,7 +155,7 @@ void Network::disconnect()
 
 void Network::flush()
 {
-    if ((mOutSize == 0u) || mState != CONNECTED)
+    if ((mOutSize == 0U) || mState != CONNECTED)
         return;
 
     SDL_mutexP(mMutexOut);
@@ -181,7 +181,7 @@ void Network::skip(const int len)
 {
     SDL_mutexP(mMutexIn);
     mToSkip += len;
-    if (mInSize == 0u)
+    if (mInSize == 0U)
     {
         SDL_mutexV(mMutexIn);
         return;
@@ -301,7 +301,7 @@ void Network::receive()
                 {
 //                    DEBUGLOG("Receive " + toString(ret) + " bytes");
                     mInSize += ret;
-                    if (mToSkip != 0u)
+                    if (mToSkip != 0U)
                     {
                         if (mInSize >= mToSkip)
                         {

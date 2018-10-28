@@ -271,7 +271,7 @@ void InventoryRecv::processPlayerInventoryAdd(Net::MessageIn &msg)
         Ea::InventoryRecv::mSentPickups.pop();
     }
 
-    if (err != 0u)
+    if (err != 0U)
     {
         PickupT pickup;
         switch (err)
@@ -570,7 +570,7 @@ void InventoryRecv::processPlayerUnEquip(Net::MessageIn &msg)
         equipType = msg.readInt16("wear location");
     const uint8_t flag = msg.readUInt8("result");
 
-    if (flag != 0u)
+    if (flag != 0U)
     {
         NotifyManager::notify(NotifyTypes::UNEQUIP_FAILED);
     }
@@ -834,7 +834,7 @@ void InventoryRecv::processPlayerInsertCard(Net::MessageIn &msg)
 {
     const int itemIndex = msg.readInt16("item index") - INVENTORY_OFFSET;
     const int cardIndex = msg.readInt16("card index") - INVENTORY_OFFSET;
-    if (msg.readUInt8("flag") != 0u)
+    if (msg.readUInt8("flag") != 0U)
     {
         NotifyManager::notify(NotifyTypes::CARD_INSERT_FAILED);
     }
@@ -1424,7 +1424,7 @@ int InventoryRecv::getSlot(const int eAthenaSlot)
 
     unsigned int mask = 1;
     int position = 0;
-    while ((eAthenaSlot & mask) == 0u)
+    while ((eAthenaSlot & mask) == 0U)
     {
         mask <<= 1;
         position++;

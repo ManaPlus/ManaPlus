@@ -129,10 +129,10 @@ MobileOpenGL2Graphics::~MobileOpenGL2Graphics()
 void MobileOpenGL2Graphics::deleteGLObjects() restrict2
 {
     delete2(mProgram);
-    if (mVbo != 0u)
+    if (mVbo != 0U)
         mglDeleteBuffers(1, &mVbo);
 #ifndef __native_client__
-    if (mVao != 0u)
+    if (mVao != 0U)
         mglDeleteVertexArrays(1, &mVao);
 #endif  // __native_client__
 }
@@ -172,7 +172,7 @@ void MobileOpenGL2Graphics::postInit() restrict2
         logger->safeError("Shader creation error. See manaplus.log.");
     }
     mProgramId = mProgram->getProgramId();
-    if (mProgramId == 0u)
+    if (mProgramId == 0U)
         logger->safeError("Shaders compilation error.");
 
     logger->log("Shaders compilation done.");
@@ -186,19 +186,19 @@ void MobileOpenGL2Graphics::postInit() restrict2
     mTextureColorUniform = mglGetUniformLocation(mProgramId, "alpha");
     mTextureSizeUniform = mglGetUniformLocation(mProgramId, "textureSize");
 
-    mglUniform1f(mTextureColorUniform, 1.0f);
+    mglUniform1f(mTextureColorUniform, 1.0F);
 
     mglVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, nullptr);
     mglEnableVertexAttribArray(0);
     mAttributesBinded = mVbo;
 
     mglUniform2f(mScreenUniform,
-        static_cast<float>(mWidth) / 2.0f,
-        static_cast<float>(mHeight) / 2.0f);
+        static_cast<float>(mWidth) / 2.0F,
+        static_cast<float>(mHeight) / 2.0F);
     // for safty init texture size to 1x1
     mglUniform2f(mTextureSizeUniform,
-        1.0f,
-        1.0f);
+        1.0F,
+        1.0F);
     mglUniform4f(mSimpleColorUniform,
         0.0F,
         0.0F,
@@ -946,7 +946,7 @@ void MobileOpenGL2Graphics::drawPoint(int x, int y) restrict2
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
     {
-        toGL(x + clipArea.xOffset), toGL(y + clipArea.yOffset), 0.0f, 0.0f
+        toGL(x + clipArea.xOffset), toGL(y + clipArea.yOffset), 0.0F, 0.0F
     };
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
@@ -967,8 +967,8 @@ void MobileOpenGL2Graphics::drawLine(int x1, int y1,
     const ClipRect &clipArea = mClipStack.top();
     GLfloat vertices[] =
     {
-        toGL(x1 + clipArea.xOffset), toGL(y1 + clipArea.yOffset), 0.0f, 0.0f,
-        toGL(x2 + clipArea.xOffset), toGL(y2 + clipArea.yOffset), 0.0f, 0.0f
+        toGL(x1 + clipArea.xOffset), toGL(y1 + clipArea.yOffset), 0.0F, 0.0F,
+        toGL(x2 + clipArea.xOffset), toGL(y2 + clipArea.yOffset), 0.0F, 0.0F
     };
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
         vertices, GL_STREAM_DRAW);
@@ -992,10 +992,10 @@ void MobileOpenGL2Graphics::drawRectangle(const Rect &restrict rect) restrict2
     const GLfloat y2 = y1 + static_cast<GLfloat>(rect.height);
     GLfloat vertices[] =
     {
-        x1, y1, 0.0f, 0.0f,
-        x1, y2, 0.0f, 0.0f,
-        x2, y2, 0.0f, 0.0f,
-        x2, y1, 0.0f, 0.0f
+        x1, y1, 0.0F, 0.0F,
+        x1, y2, 0.0F, 0.0F,
+        x2, y2, 0.0F, 0.0F,
+        x2, y1, 0.0F, 0.0F
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -1020,10 +1020,10 @@ void MobileOpenGL2Graphics::fillRectangle(const Rect &restrict rect) restrict2
     const GLfloat y2 = y1 + static_cast<GLfloat>(rect.height);
     GLfloat vertices[] =
     {
-        x1, y1, 0.0f, 0.0f,
-        x2, y1, 0.0f, 0.0f,
-        x1, y2, 0.0f, 0.0f,
-        x2, y2, 0.0f, 0.0f
+        x1, y1, 0.0F, 0.0F,
+        x2, y1, 0.0F, 0.0F,
+        x1, y2, 0.0F, 0.0F,
+        x2, y2, 0.0F, 0.0F
     };
 
     mglBufferData(GL_ARRAY_BUFFER, sizeof(vertices),
@@ -1042,7 +1042,7 @@ void MobileOpenGL2Graphics::enableTexturingAndBlending() restrict2
     if (!mTextureDraw)
     {
         mTextureDraw = true;
-        mglUniform1f(mDrawTypeUniform, 1.0f);
+        mglUniform1f(mDrawTypeUniform, 1.0F);
     }
     if (!mAlpha)
     {
@@ -1056,7 +1056,7 @@ void MobileOpenGL2Graphics::disableTexturingAndBlending() restrict2
     if (mTextureDraw)
     {
         mTextureDraw = false;
-        mglUniform1f(mDrawTypeUniform, 0.0f);
+        mglUniform1f(mDrawTypeUniform, 0.0F);
     }
     if (mAlpha && !mColorAlpha)
     {
@@ -1100,13 +1100,13 @@ void MobileOpenGL2Graphics::drawNet(const int x1,
     {
         mFloatArray[vp + 0] = xs1;
         mFloatArray[vp + 1] = toGL(y);
-        mFloatArray[vp + 2] = 0.0f;
-        mFloatArray[vp + 3] = 0.0f;
+        mFloatArray[vp + 2] = 0.0F;
+        mFloatArray[vp + 3] = 0.0F;
 
         mFloatArray[vp + 4] = xs2;
         mFloatArray[vp + 5] = toGL(y);
-        mFloatArray[vp + 6] = 0.0f;
-        mFloatArray[vp + 7] = 0.0f;
+        mFloatArray[vp + 6] = 0.0F;
+        mFloatArray[vp + 7] = 0.0F;
 
         vp += 8;
         if (vp >= vLimit)
@@ -1120,13 +1120,13 @@ void MobileOpenGL2Graphics::drawNet(const int x1,
     {
         mFloatArray[vp + 0] = toGL(x);
         mFloatArray[vp + 1] = ys1;
-        mFloatArray[vp + 2] = 0.0f;
-        mFloatArray[vp + 3] = 0.0f;
+        mFloatArray[vp + 2] = 0.0F;
+        mFloatArray[vp + 3] = 0.0F;
 
         mFloatArray[vp + 4] = toGL(x);
         mFloatArray[vp + 5] = ys2;
-        mFloatArray[vp + 6] = 0.0f;
-        mFloatArray[vp + 7] = 0.0f;
+        mFloatArray[vp + 6] = 0.0F;
+        mFloatArray[vp + 7] = 0.0F;
 
         vp += 8;
         if (vp >= vLimit)

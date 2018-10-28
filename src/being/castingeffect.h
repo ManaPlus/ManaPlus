@@ -58,7 +58,7 @@ class CastingEffect final : public Actor
         bool isTerminated() const;
 
         float getAlpha() const override final A_WARN_UNUSED
-        { return 1.0f; }
+        { return 1.0F; }
 
         void setAlpha(const float alpha A_UNUSED) override final
         { }

@@ -387,7 +387,7 @@ Image *SafeOpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         MSDL_FreeSurface(tmpImage);
 
     GLenum error = graphicsManager.getLastError();
-    if (error != 0u)
+    if (error != 0U)
     {
         std::string errmsg = GraphicsManager::errorToString(error);
         logger->log("Error: Image GL import failed: %s (%u)",
