@@ -1364,6 +1364,24 @@ if (packetVersion >= 20181002)
     packet(SMSG_BEING_REMOVE_SPECIAL_EFFECT, 0x0b0d, 10, &BeingRecv::processBeingRemoveSpecialEffect,   20181002);
 }
 
+// 20181010 zero
+if (packetVersionZero >= 20181010)
+{
+    packet(SMSG_QUEST_LIST,                0x0aff,  -1, &QuestRecv::processAddQuests,                   20181010);
+}
+
+// 20181017 main
+if (packetVersionMain >= 20181017)
+{
+    packet(SMSG_QUEST_LIST,                0x0aff,  -1, &QuestRecv::processAddQuests,                   20181017);
+}
+
+// 20181017 re
+if (packetVersionRe >= 20181017)
+{
+    packet(SMSG_QUEST_LIST,                0x0aff,  -1, &QuestRecv::processAddQuests,                   20181017);
+}
+
 // 20181017 main
 if (packetVersionMain >= 20181017)
 {

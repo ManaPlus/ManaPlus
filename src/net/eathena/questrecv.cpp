@@ -108,7 +108,13 @@ void QuestRecv::processAddQuests(Net::MessageIn &msg)
             const int cnt = msg.readInt16("objectives count");
             for (int d = 0; d < cnt; d ++)
             {
-                if (msg.getVersion() >= 20150513)
+                if (msg.getVersion() >= 20181010)
+                {
+                    msg.readInt32("hunt ident");
+                    msg.readInt32("hunt ident2");
+                    msg.readInt32("mob type");
+                }
+                else if (msg.getVersion() >= 20150513)
                 {
                     msg.readInt32("hunt ident");
                     msg.readInt32("mob type");
