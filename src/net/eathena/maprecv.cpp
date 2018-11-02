@@ -65,4 +65,13 @@ void MapRecv::processAddMapMarker(Net::MessageIn &msg)
     msg.readInt16("y");
 }
 
+void MapRecv::processCameraInfo(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("action");
+    msg.readInt32("range");
+    msg.readInt32("rotation");
+    msg.readInt32("latitude");
+}
+
 }  // namespace EAthena

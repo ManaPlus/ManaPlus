@@ -978,6 +978,12 @@ if (packetVersion >= 20150513)
     packet(SMSG_QUEST_NOTIFY_OBJECTIVES,   0x08fe,  -1, &QuestRecv::processUpdateQuestsObjectives2,     20150513);
 }
 
+// 20160525
+if (packetVersion >= 20160525)
+{
+    packet(SMSG_CAMERA_INFO,               0x0a78,  15, &MapRecv::processCameraInfo,                    20160525);
+}
+
 // 20150805
 if (packetVersion >= 20150805)
 {
