@@ -1369,6 +1369,7 @@ if (packetVersionZero >= 20181010)
 {
     packet(SMSG_QUEST_LIST,                0x0aff,  -1, &QuestRecv::processAddQuests,                   20181010);
     packet(SMSG_QUEST_ADD,                 0x0b0c, 155, &QuestRecv::processAddQuest,                    20181010);
+    packet(SMSG_QUEST_UPDATE_OBJECTIVES,   0x0afe,  -1, &QuestRecv::processUpdateQuestsObjectives,      20181010);
 }
 
 // 20181017 main
@@ -1376,6 +1377,7 @@ if (packetVersionMain >= 20181017)
 {
     packet(SMSG_QUEST_LIST,                0x0aff,  -1, &QuestRecv::processAddQuests,                   20181017);
     packet(SMSG_QUEST_ADD,                 0x0b0c, 155, &QuestRecv::processAddQuest,                    20181017);
+    packet(SMSG_QUEST_UPDATE_OBJECTIVES,   0x0afe,  -1, &QuestRecv::processUpdateQuestsObjectives,      20181017);
 }
 
 // 20181017 re
@@ -1383,6 +1385,7 @@ if (packetVersionRe >= 20181017)
 {
     packet(SMSG_QUEST_LIST,                0x0aff,  -1, &QuestRecv::processAddQuests,                   20181017);
     packet(SMSG_QUEST_ADD,                 0x0b0c, 155, &QuestRecv::processAddQuest,                    20181017);
+    packet(SMSG_QUEST_UPDATE_OBJECTIVES,   0x0afe,  -1, &QuestRecv::processUpdateQuestsObjectives,      20181017);
 }
 
 // 20181017 main
