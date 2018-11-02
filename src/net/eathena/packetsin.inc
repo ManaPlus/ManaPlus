@@ -1364,6 +1364,15 @@ if (packetVersion >= 20181002)
     packet(SMSG_BEING_REMOVE_SPECIAL_EFFECT, 0x0b0d, 10, &BeingRecv::processBeingRemoveSpecialEffect,   20181002);
 }
 
+// 20181002 main
+if (packetVersionMain >= 20181002)
+{
+    packet(SMSG_INVENTORY_START3,          0x0b08,  -1, &InventoryRecv::processInventoryStart3,         20181002);
+    packet(SMSG_INVENTORY_END2,            0x0b0b,   4, &InventoryRecv::processInventoryEnd2,           20181002);
+    packet(SMSG_PLAYER_COMBINED_INVENTORY2, 0x0b09, -1, &InventoryRecv::processPlayerCombinedInventory2, 20181002);
+    packet(SMSG_PLAYER_COMBINED_EQUIPMENT2, 0x0b0a, -1, &InventoryRecv::processPlayerCombinedEquipment2, 20181002);
+}
+
 // 20181010 zero
 if (packetVersionZero >= 20181010)
 {
