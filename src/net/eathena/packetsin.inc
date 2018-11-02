@@ -1338,6 +1338,12 @@ if (packetVersionZero >= 20180919)
     packet(SMSG_PLAYER_COMBINED_EQUIPMENT2, 0x0b0a, -1, &InventoryRecv::processPlayerCombinedEquipment2, 20180919);
 }
 
+// 20181002
+if (packetVersion >= 20181002)
+{
+    packet(SMSG_BEING_REMOVE_SPECIAL_EFFECT, 0x0b0d, 10, &BeingRecv::processBeingRemoveSpecialEffect,   20181002);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

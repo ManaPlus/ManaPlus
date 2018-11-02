@@ -1450,6 +1450,13 @@ void BeingRecv::processBeingSpecialEffect(Net::MessageIn &msg)
     }
 }
 
+void BeingRecv::processBeingRemoveSpecialEffect(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readBeingId("being id");
+    msg.readInt32("effect type");
+}
+
 void BeingRecv::processBeingHatEffects(Net::MessageIn &msg)
 {
     // +++ add new type of permanent effects?
