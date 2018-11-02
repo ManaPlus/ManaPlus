@@ -1364,6 +1364,18 @@ if (packetVersion >= 20181002)
     packet(SMSG_BEING_REMOVE_SPECIAL_EFFECT, 0x0b0d, 10, &BeingRecv::processBeingRemoveSpecialEffect,   20181002);
 }
 
+// 20181017 main
+if (packetVersionMain >= 20181017)
+{
+    packet(SMSG_ITEM_PREVIEW2,             0x0b13,  40, &InventoryRecv::processShowItemPreview2,        20181017);
+}
+
+// 20181017 re
+if (packetVersionRe >= 20181017)
+{
+    packet(SMSG_ITEM_PREVIEW2,             0x0b13,  48, &InventoryRecv::processShowItemPreview2,        20181017);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);
