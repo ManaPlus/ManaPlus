@@ -42,7 +42,13 @@ void QuestRecv::processAddQuest(Net::MessageIn &msg)
     for (int f = 0; f < num; f ++)
     {
         // need use in quests kills list
-        if (msg.getVersion() >= 20150513)
+        if (msg.getVersion() >= 20181010)
+        {
+            msg.readInt32("hunt ident");
+            msg.readInt32("hunt ident2");
+            msg.readInt32("mob type");
+        }
+        else if (msg.getVersion() >= 20150513)
         {
             msg.readInt32("hunt ident");
             msg.readInt32("mob type");
