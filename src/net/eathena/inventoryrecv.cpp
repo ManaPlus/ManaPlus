@@ -1641,4 +1641,19 @@ void InventoryRecv::processEquipmentContinue(Net::MessageIn &msg,
     }
 }
 
+void InventoryRecv::processShowItemPreview1(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readInt16("inv index");
+    msg.readInt16("refine");
+    for (int f = 0; f < maxCards; f++)
+        msg.readItemId("card");
+    for (int f = 0; f < 5; f ++)
+    {
+        msg.readInt16("option index");
+        msg.readInt16("option value");
+        msg.readUInt8("option param");
+    }
+}
+
 }  // namespace EAthena

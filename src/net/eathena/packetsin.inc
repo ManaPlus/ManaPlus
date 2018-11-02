@@ -1137,6 +1137,18 @@ if (packetVersionMain >= 20170502)
     packet(SMSG_SKILL_WARP_POINT,          0x0abe,  -1, &SkillRecv::processSkillWarpPoint2,             20170502);
 }
 
+// 20170621 re
+if (packetVersionRe >= 20170621)
+{
+    packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  39, &InventoryRecv::processShowItemPreview1,        20170621);
+}
+
+// 20170726 main
+if (packetVersionMain >= 20170726)
+{
+    packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  39, &InventoryRecv::processShowItemPreview1,        20170726);
+}
+
 // 20170830
 packet(SMSG_PLAYER_STAT_UPDATE_7,          0x0acb,  12, &PlayerRecv::processPlayerStatUpdate7,          20170830);
 packet(SMSG_PLAYER_GET_EXP2,               0x0acc,  18, &PlayerRecv::processPlayerGetExp2,              20170830);
@@ -1157,6 +1169,7 @@ if (packets_zero == true)
     packet(SMSG_ACHIEVEMENT_LIST,          0x0a23,  -1, &AchievementRecv::processAchievementList,       20171018);
     packet(SMSG_ACHIEVEMENT_UPDATE,        0x0a24,  66, &AchievementRecv::processAchievementUpdate,     20171018);
     packet(SMSG_ACHIEVEMENT_GET_REWARD,    0x0a26,   6, &AchievementRecv::processAchievementGetReward,  20171018);
+    packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  39, &InventoryRecv::processShowItemPreview1,        20171018);
 }
 
 // 20171019 zero
@@ -1303,6 +1316,7 @@ if (packetVersionRe >= 20180704)
     packet(SMSG_ROULETTE_RECV_ITEM_ACK,    0x0a22,   7, &RouletteRecv::processRouletteItemAck,          20180704);
     packet(SMSG_PLAYER_INVENTORY_ADD,      0x0a37,  69, &InventoryRecv::processPlayerInventoryAdd,      20180704);
     packet(SMSG_ITEM_DROPPED,              0x0add,  24, &ItemRecv::processItemDropped,                  20180704);
+    packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  47, &InventoryRecv::processShowItemPreview1,        20180704);
 }
 
 // 20180801 re

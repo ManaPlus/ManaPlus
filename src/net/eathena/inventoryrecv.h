@@ -96,6 +96,7 @@ namespace EAthena
                                       const int len,
                                       const NetInventoryTypeT invType
                                       A_UNUSED);
+        void processShowItemPreview1(Net::MessageIn &msg);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 
