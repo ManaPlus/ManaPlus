@@ -176,7 +176,7 @@ void LoginRecv::processServerVersion(Net::MessageIn &msg)
         {
             evolPacketOffset = msg.readInt16("evol packet offset");
         }
-        if (serverVersion >= 20 && len >= 20)
+        if (len >= 20)
         {
             packetsType = msg.readInt16("server packets type");
             packets_re = (packetsType & 1) != 0;

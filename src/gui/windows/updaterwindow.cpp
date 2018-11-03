@@ -454,7 +454,7 @@ void UpdaterWindow::loadPatch()
     if (line != nullptr)
     {
         version = line;
-        if (serverVersion < 1)
+        if (serverVersion == 0)
         {
             line = strtok(nullptr, "\n");
             if (line != nullptr)
