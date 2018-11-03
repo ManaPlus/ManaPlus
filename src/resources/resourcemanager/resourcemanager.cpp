@@ -491,8 +491,9 @@ void release(Resource *const res)
 
     if (resIter == mResources.end())
     {
-        reportAlways("no resource in cache: %s",
-            res->mIdPath.c_str());
+// +++ need reenable after Resource will have type field
+//        reportAlways("no resource in cache: %s",
+//            res->mIdPath.c_str());
         delete res;
         return;
     }
