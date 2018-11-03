@@ -21,7 +21,7 @@ clang-3.9:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
+    PACKAGES: gcc g++ clang-3.9 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -283,7 +283,7 @@ clang-3.9_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
+    PACKAGES: gcc g++ clang-3.9 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
