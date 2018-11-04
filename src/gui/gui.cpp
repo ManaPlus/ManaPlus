@@ -698,7 +698,8 @@ void Gui::handleMouseMoved(const MouseInput &mouseInput)
         && Widget::widgetExists(widget) &&
         (widget != nullptr))
     {
-        int x, y;
+        int x;
+        int y;
         widget->getAbsolutePosition(x, y);
 
         if (x > mouseX || y > mouseY
@@ -1273,7 +1274,8 @@ Widget* Gui::getWidgetAt(const int x, const int y) const
     while (child != nullptr)
     {
         Widget *const swap = child;
-        int parentX, parentY;
+        int parentX;
+        int parentY;
         parent->getAbsolutePosition(parentX, parentY);
         child = parent->getWidgetAt(x - parentX, y - parentY);
         parent = swap;

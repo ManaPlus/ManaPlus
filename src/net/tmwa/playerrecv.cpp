@@ -173,7 +173,10 @@ void PlayerRecv::processWalkResponse(Net::MessageIn &msg)
       * and that the server will send a correction notice
       * otherwise.
       */
-    uint16_t srcX, srcY, dstX, dstY;
+    uint16_t srcX;
+    uint16_t srcY;
+    uint16_t dstX;
+    uint16_t dstY;
     msg.readInt32("tick");
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
     msg.readUInt8("unused");

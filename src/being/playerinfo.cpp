@@ -173,7 +173,8 @@ int getStatEffective(const AttributesT id)
 const std::pair<int, int> getStatExperience(const AttributesT id)
 {
     const StatMap::const_iterator it = mData.mStats.find(id);
-    int a, b;
+    int a;
+    int b;
     if (it != mData.mStats.end())
     {
         a = it->second.exp;

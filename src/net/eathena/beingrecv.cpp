@@ -546,7 +546,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
         true);
 
     uint8_t dir;
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     msg.readCoordinates(x, y, dir, "position");
     msg.readInt8("xs");
     msg.readInt8("ys");
@@ -728,7 +729,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         gloves,
         !serverFeatures->haveMove3());
 
-    uint16_t srcX, srcY, dstX, dstY;
+    uint16_t srcX;
+    uint16_t srcY;
+    uint16_t dstX;
+    uint16_t dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
     msg.readUInt8("(sx<<4) | (sy&0x0f)");
     msg.readInt8("xs");
@@ -915,7 +919,8 @@ void BeingRecv::processBeingSpawn(Net::MessageIn &msg)
         true);
 
     uint8_t dir;
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     msg.readCoordinates(x, y, dir, "position");
     msg.readInt8("xs");
     msg.readInt8("ys");
@@ -1153,7 +1158,10 @@ void BeingRecv::processBeingMove2(Net::MessageIn &msg)
     Being *const dstBeing = actorManager->findBeing(
         msg.readBeingId("being id"));
 
-    uint16_t srcX, srcY, dstX, dstY;
+    uint16_t srcX;
+    uint16_t srcY;
+    uint16_t dstX;
+    uint16_t dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
     msg.readUInt8("(sx<<4) | (sy&0x0f)");
     msg.readInt32("tick");
@@ -1707,7 +1715,8 @@ void BeingRecv::processBeingRemoveSkill(Net::MessageIn &msg)
 
 void BeingRecv::processBeingFakeName(Net::MessageIn &msg)
 {
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     uint8_t dir;
     if (msg.getVersion() < 20071106)
     {

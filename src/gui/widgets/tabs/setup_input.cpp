@@ -151,7 +151,8 @@ Setup_Input::~Setup_Input()
 void Setup_Input::apply()
 {
     keyUnresolved();
-    InputActionT key1, key2;
+    InputActionT key1;
+    InputActionT key2;
 
     if (inputManager.hasConflicts(key1, key2))
     {

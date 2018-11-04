@@ -102,7 +102,10 @@ unsigned char *php3_base64_decode(const unsigned char *restrict const string,
                                   int *restrict const ret_length)
 {
     const unsigned char *current = string;
-    int ch, i = 0, j = 0, k;
+    int ch;
+    int i = 0;
+    int j = 0;
+    int k;
 
     unsigned char *result = static_cast<unsigned char *>(
         calloc(length + 1, 1));

@@ -105,7 +105,8 @@ void Dye::instantiate(std::string &restrict target,
 
     std::ostringstream s;
     s << target.substr(0, next_pos);
-    size_t last_pos = target.length(), pal_pos = 0;
+    size_t last_pos = target.length();
+    size_t pal_pos = 0;
     do
     {
         const size_t pos = next_pos;

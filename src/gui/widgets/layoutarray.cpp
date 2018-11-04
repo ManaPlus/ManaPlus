@@ -299,7 +299,10 @@ void LayoutArray::reflow(const int nx, const int ny,
                 [CAST_SIZE(gridX)];
             if ((cell != nullptr) && cell->mType != LayoutCell::NONE)
             {
-                int dx = x, dy = y, dw = 0, dh = 0;
+                int dx = x;
+                int dy = y;
+                int dw = 0;
+                int dh = 0;
                 align(dx, dw, 0, *cell,
                     &widths[CAST_SIZE(gridX)], szW - gridX);
                 align(dy, dh, 1, *cell,

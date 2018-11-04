@@ -351,7 +351,8 @@ int Font::getWidth(const std::string &text) const
     }
 
     // if string was not drawed
-    int w, h;
+    int w;
+    int h;
     getSafeUtf8String(text, strBuf);
     TTF_SizeUTF8(mFont, strBuf, &w, &h);
     return w;

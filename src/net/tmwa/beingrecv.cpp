@@ -353,7 +353,8 @@ void BeingRecv::processPlayerUpdate1(Net::MessageIn &msg)
     }
     localPlayer->imitateOutfit(dstBeing, -1);
 
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     msg.readCoordinates(x, y, dir, "position");
     dstBeing->setTileCoords(x, y);
     dstBeing->setDirection(dir);
@@ -497,7 +498,8 @@ void BeingRecv::processPlayerUpdate2(Net::MessageIn &msg)
     }
     localPlayer->imitateOutfit(dstBeing, -1);
 
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     msg.readCoordinates(x, y, dir, "position");
     dstBeing->setTileCoords(x, y);
     dstBeing->setDirection(dir);
@@ -641,7 +643,10 @@ void BeingRecv::processPlayerMove(Net::MessageIn &msg)
     }
     localPlayer->imitateOutfit(dstBeing, -1);
 
-    uint16_t srcX, srcY, dstX, dstY;
+    uint16_t srcX;
+    uint16_t srcY;
+    uint16_t dstX;
+    uint16_t dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "moving path");
 
     localPlayer->followMoveTo(dstBeing, srcX, srcY, dstX, dstY);
@@ -875,7 +880,8 @@ void BeingRecv::processBeingVisible(Net::MessageIn &msg)
     }
 
     uint8_t dir;
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     msg.readCoordinates(x, y, dir, "position");
     dstBeing->setTileCoords(x, y);
 
@@ -1083,7 +1089,10 @@ void BeingRecv::processBeingMove(Net::MessageIn &msg)
         setServerGender(dstBeing, gender);
     }
 
-    uint16_t srcX, srcY, dstX, dstY;
+    uint16_t srcX;
+    uint16_t srcY;
+    uint16_t dstX;
+    uint16_t dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
     if (disguiseId == 0)
     {
@@ -1187,7 +1196,10 @@ void BeingRecv::processBeingMove2(Net::MessageIn &msg)
         return;
     }
 
-    uint16_t srcX, srcY, dstX, dstY;
+    uint16_t srcX;
+    uint16_t srcY;
+    uint16_t dstX;
+    uint16_t dstY;
     msg.readCoordinatePair(srcX, srcY, dstX, dstY, "move path");
     msg.readInt32("tick");
 

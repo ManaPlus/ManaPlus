@@ -47,7 +47,8 @@ void GameRecv::processMapAccountId(Net::MessageIn &msg)
 void GameRecv::processMapLogin(Net::MessageIn &msg)
 {
     unsigned char direction;
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     msg.readInt32("start time");
     msg.readCoordinates(x, y, direction, "position");
     msg.readInt8("x size");

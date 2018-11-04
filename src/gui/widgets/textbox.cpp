@@ -554,9 +554,9 @@ void TextBox::setCaretRow(const int row)
 
 unsigned int TextBox::getCaretPosition() const
 {
-    int pos = 0, row;
+    int pos = 0;
 
-    for (row = 0; row < mCaretRow; row++)
+    for (int row = 0; row < mCaretRow; row++)
         pos += CAST_S32(mTextRows[row].size());
 
     return pos + mCaretColumn;

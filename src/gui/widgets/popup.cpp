@@ -175,8 +175,10 @@ void Popup::setLocationRelativeTo(const Widget *const widget)
     if (widget == nullptr)
         return;
 
-    int wx, wy;
-    int x, y;
+    int wx;
+    int wy;
+    int x;
+    int y;
 
     widget->getAbsolutePosition(wx, wy);
     getAbsolutePosition(x, y);

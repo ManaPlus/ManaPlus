@@ -36,7 +36,7 @@ struct ZipEntry final : public FsEntry
 {
     ZipEntry(const std::string &restrict archiveName,
              const std::string &subDir0,
-             FsFuncs *restrict const funcs);
+             FsFuncs *restrict const funcs0);
 
     A_DELETE_COPY(ZipEntry)
 

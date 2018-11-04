@@ -900,10 +900,8 @@ Being *ActorManager::findNearestByName(const std::string &name,
 
     int dist = 0;
     Being* closestBeing = nullptr;
-    int x, y;
-
-    x = localPlayer->getTileX();
-    y = localPlayer->getTileY();
+    int x = localPlayer->getTileX();
+    int y = localPlayer->getTileY();
 
     for_actorsm
     {

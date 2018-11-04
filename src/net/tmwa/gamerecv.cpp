@@ -41,7 +41,8 @@ extern ServerInfo mapServer;
 void GameRecv::processMapLogin(Net::MessageIn &msg)
 {
     unsigned char direction;
-    uint16_t x, y;
+    uint16_t x;
+    uint16_t y;
     msg.readInt32("tick");
     msg.readCoordinates(x, y, direction, "position");
     msg.readInt16("unknown?");

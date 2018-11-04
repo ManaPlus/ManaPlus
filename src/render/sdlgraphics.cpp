@@ -839,7 +839,10 @@ int SDLGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const src,
                                    const SDL_Surface *restrict const dst,
                                    SDL_Rect *restrict dstrect) const restrict2
 {
-    int srcx, srcy, w, h;
+    int srcx;
+    int srcy;
+    int w;
+    int h;
 
     // Make sure the surfaces aren't locked
     if ((src == nullptr) || (dst == nullptr))

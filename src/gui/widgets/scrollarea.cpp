@@ -1019,7 +1019,8 @@ Rect ScrollArea::getVerticalMarkerDimension()
     if (!mVBarVisible)
         return Rect(0, 0, 0, 0);
 
-    int length, pos;
+    int length;
+    int pos;
     int height;
     const int h2 = mShowButtons
         ? mScrollbarWidth : mMarkerSize / 2;
@@ -1076,7 +1077,8 @@ Rect ScrollArea::getHorizontalMarkerDimension()
     if (!mHBarVisible)
         return Rect(0, 0, 0, 0);
 
-    int length, pos;
+    int length;
+    int pos;
     int width;
     const int w2 = mShowButtons
         ? mScrollbarWidth : mMarkerSize / 2;

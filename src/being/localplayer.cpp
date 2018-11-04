@@ -667,7 +667,8 @@ void LocalPlayer::startWalking(const unsigned char dir)
         return;
     }
 
-    int dx = 0, dy = 0;
+    int dx = 0;
+    int dy = 0;
     if ((dir & BeingDirection::UP) != 0)
         dy--;
     if ((dir & BeingDirection::DOWN) != 0)
@@ -1579,7 +1580,10 @@ bool LocalPlayer::pickUpItems(int pickUpType)
     if (pickUpType == 0)
         return status;
 
-    int x1, y1, x2, y2;
+    int x1;
+    int y1;
+    int x2;
+    int y2;
     switch (pickUpType)
     {
         case 1:
@@ -1662,7 +1666,8 @@ bool LocalPlayer::pickUpItems(int pickUpType)
 
 void LocalPlayer::moveByDirection(const unsigned char dir)
 {
-    int dx = 0, dy = 0;
+    int dx = 0;
+    int dy = 0;
     if ((dir & BeingDirection::UP) != 0)
         dy--;
     if ((dir & BeingDirection::DOWN) != 0)

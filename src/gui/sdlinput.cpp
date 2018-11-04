@@ -367,7 +367,8 @@ void SDLInput::simulateMouseMove()
         return;
 
     mMouseMoveTime = cur_time;
-    int x, y;
+    int x;
+    int y;
     Gui::getMouseState(x, y);
 
     MouseInput mouseInput;
