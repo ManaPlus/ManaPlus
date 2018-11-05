@@ -22,6 +22,7 @@ clang-4.0:
   - ./tools/ci/jobs/clang40.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
+  image: debian:stretch-backports
   variables:
     PACKAGES: clang-4.0 libc++-dev libc++abi-dev 
               make autoconf automake autopoint gettext 
@@ -37,7 +38,7 @@ clang-5.0:
   - ./tools/ci/jobs/clang50.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: stretch-backports
+  image: debian:stretch-backports
   variables:
     PACKAGES: clang-5.0 libc++-dev libc++abi-dev libclang-5.0-dev 
               make autoconf automake autopoint gettext 

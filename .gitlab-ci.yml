@@ -98,6 +98,7 @@ clang-3.9:
   - ./tools/ci/jobs/clang39.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
