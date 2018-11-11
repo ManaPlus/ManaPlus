@@ -26,6 +26,8 @@
 
 #include "fs/virtfs/fs.h"
 
+#include "resources/dye/dyepalette.h"
+
 #include "resources/image/image.h"
 
 #ifdef USE_SDL2
@@ -34,6 +36,7 @@
 
 #include "resources/loaders/imageloader.h"
 
+#include "utils/cpu.h"
 #include "utils/gettext.h"
 #include "utils/pnglib.h"
 #include "utils/sdlhelper.h"
@@ -78,6 +81,9 @@ int main(int argc, char **argv)
 
     VirtFs::init(argv[0]);
     SDL_Init(SDL_INIT_VIDEO);
+
+    Cpu::detect();
+    DyePalette::initFunctions();
 
     graphicsManager.createWindow(10, 10, 0, SDL_ANYFORMAT);
 
