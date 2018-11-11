@@ -36,6 +36,8 @@
 
 #include "resources/loaders/imageloader.h"
 
+#include "resources/resourcemanager/resourcemanager.h"
+
 #include "utils/cpu.h"
 #include "utils/gettext.h"
 #include "utils/pnglib.h"
@@ -120,6 +122,8 @@ int main(int argc, char **argv)
         image->getSDLSurface());
     PngLib::writePNG(surface, dst);
     SDL_FreeSurface(surface);
+    image->decRef();
+    ResourceManager::cleanOrphans(true);
     VirtFs::deinit();
     return 0;
 }
