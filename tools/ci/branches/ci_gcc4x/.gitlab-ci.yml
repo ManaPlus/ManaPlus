@@ -19,6 +19,7 @@ gcc-4.4:
   script:
   - ./tools/ci/jobs/gcc44.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: debian:wheezy
   <<: *job-push
   variables:
@@ -35,6 +36,7 @@ gcc-4.1_sdl1:
   script:
   - ./tools/ci/jobs/gcc41.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl1
   <<: *job-push
   variables:
@@ -50,6 +52,7 @@ gcc-4.1_sdl2:
   script:
   - ./tools/ci/jobs/gcc41.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc41_sdl2
   <<: *job-push
   variables:
@@ -65,6 +68,7 @@ gcc-4.3_sdl1:
   script:
   - ./tools/ci/jobs/gcc43.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl1
   <<: *job-push
   variables:
@@ -80,6 +84,7 @@ gcc-4.3_sdl2:
   script:
   - ./tools/ci/jobs/gcc43.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc43_sdl2
   <<: *job-push
   variables:
@@ -95,6 +100,7 @@ gcc-4.4_i386:
   script:
   - ./tools/ci/jobs/gcc44.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: vicamo/debian:wheezy-i386
   <<: *job-push
   variables:
@@ -111,6 +117,7 @@ gcc-4.5:
   script:
   - ./tools/ci/jobs/gcc45.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: ubuntu:12.04
   <<: *job-push
   variables:
@@ -127,6 +134,7 @@ gcc-4.6:
   script:
   - ./tools/ci/jobs/gcc46.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: debian:wheezy
   <<: *job-push
   variables:
@@ -143,6 +151,7 @@ gcc-4.6_i386:
   script:
   - ./tools/ci/jobs/gcc46.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: vicamo/debian:wheezy-i386
   <<: *job-push
   variables:
@@ -159,8 +168,10 @@ gcc-4.7:
   script:
   - ./tools/ci/jobs/gcc47.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   - ./tools/ci/jobs/gcc47_c++11.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: debian:wheezy
   <<: *job-push
   variables:
@@ -177,6 +188,7 @@ gcc-4.7_i386:
   script:
   - ./tools/ci/jobs/gcc47.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: vicamo/debian:wheezy-i386
   <<: *job-push
   variables:
@@ -193,8 +205,10 @@ gcc-4.8:
   script:
   - ./tools/ci/jobs/gcc48.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   - ./tools/ci/jobs/gcc48_c++11.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: debian:jessie
   <<: *job-push
   variables:
@@ -209,6 +223,7 @@ gcc-4.8_i386:
   script:
   - ./tools/ci/jobs/gcc48.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:
@@ -225,6 +240,7 @@ gcc-4.8_sdl2:
   script:
   - ./tools/ci/jobs/gcc48.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: debian:jessie
   <<: *job-push
   variables:
@@ -239,6 +255,7 @@ gcc-4.8_sdl2_i386:
   script:
   - ./tools/ci/jobs/gcc48.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: vicamo/debian:jessie-i386
   <<: *job-push
   variables:

@@ -21,6 +21,7 @@ gcc-3_sdl1:
   script:
   - ./tools/ci/jobs/gcc3.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl1
   <<: *job-push
   variables:
@@ -34,6 +35,7 @@ gcc-3_sdl2:
   script:
   - ./tools/ci/jobs/gcc3.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: registry.gitlab.com/manaplus/images:gentoo_gcc3_sdl2
   <<: *job-push
   variables:

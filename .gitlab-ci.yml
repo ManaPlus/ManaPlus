@@ -80,6 +80,7 @@ gcc-7-i386:
   script:
   - ./tools/ci/jobs/gcc7.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   image: vicamo/debian:sid-i386
   <<: *job-push
   variables:
@@ -96,6 +97,7 @@ clang-3.9:
   script:
   - ./tools/ci/jobs/clang39.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   <<: *job-push
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 
@@ -109,6 +111,7 @@ gcc-6:
   script:
   - ./tools/ci/jobs/gcc6.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -122,6 +125,7 @@ gcc-8:
   script:
   - ./tools/ci/jobs/gcc8.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -135,6 +139,7 @@ gcc-6_default:
   script:
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   <<: *job-push
   variables:
     LOGFILE: gcc6.log
@@ -152,6 +157,7 @@ gcc-7_default:
   script:
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   <<: *job-push
   variables:
     LOGFILE: gcc6.log
@@ -194,6 +200,7 @@ gcc-5_sdl2:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
   - ./tools/ci/scripts/runtests.sh
@@ -222,6 +229,7 @@ gcc-7_dyecmd_only:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc7.sh --without-manaplusgame
+  - ./tools/ci/scripts/rundyecmd.sh
   <<: *job-push
   variables:
     PACKAGES: gcc-7 g++-7 

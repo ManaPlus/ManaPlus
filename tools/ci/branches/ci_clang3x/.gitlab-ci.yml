@@ -281,6 +281,7 @@ clang-3.9_sdl2:
   script:
   - ./tools/ci/jobs/clang39_sdl2.sh
   - ./tools/ci/scripts/runtests.sh
+  - ./tools/ci/scripts/rundyecmd.sh
   <<: *job-push
   variables:
     PACKAGES: gcc g++ clang-3.9 libc++-dev libc++abi-dev 
