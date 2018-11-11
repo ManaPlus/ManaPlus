@@ -373,7 +373,8 @@ impHandler0(mouseClick)
     if ((guiInput == nullptr) || (gui == nullptr))
         return false;
 
-    int mouseX, mouseY;
+    int mouseX;
+    int mouseY;
     Gui::getMouseState(mouseX, mouseY);
     guiInput->simulateMouseClick(mouseX, mouseY, MouseButton::RIGHT);
     return true;
