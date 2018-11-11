@@ -96,13 +96,6 @@ void MapLayer::optionChanged(const std::string &value) restrict
     }
 }
 
-void MapLayer::setTile(const int x,
-                       const int y,
-                       Image *const img) restrict
-{
-    mTiles[x + y * mWidth].image = img;
-}
-
 void MapLayer::draw(Graphics *const graphics,
                     int startX,
                     int startY,
@@ -763,14 +756,6 @@ int MapLayer::getEmptyTileDrawWidth(const TileInfo *restrict tilePtr,
 
     nextTile = c;
     return c;
-}
-
-void MapLayer::setDrawLayerFlags(const MapTypeT &n) restrict
-{
-    mDrawLayerFlags = n;
-    mSpecialFlag = (mDrawLayerFlags != MapType::SPECIAL &&
-        mDrawLayerFlags != MapType::SPECIAL2 &&
-        mDrawLayerFlags != MapType::SPECIAL4);
 }
 
 void MapLayer::updateConditionTiles(const MetaTile *const metaTiles,

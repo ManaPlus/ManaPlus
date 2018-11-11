@@ -91,6 +91,14 @@
     name &operator=(const name&) = delete;
 #endif  // !defined(__GXX_EXPERIMENTAL_CXX0X__)
 
+#ifdef __clang__
+#define constexpr3
+#elif GCC_VERSION > 70000
+#define constexpr3 constexpr
+#else
+#define constexpr3
+#endif
+
 #ifdef __GNUC__
 #define A_UNUSED  __attribute__ ((unused))
 #define A_WARN_UNUSED __attribute__ ((warn_unused_result))

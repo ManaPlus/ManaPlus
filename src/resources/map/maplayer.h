@@ -74,15 +74,18 @@ class MapLayer final : public MemoryCounter, public ConfigListener
         /**
          * Set tile image, with x and y in layer coordinates.
          */
-        void setTile(const int x,
-                     const int y,
-                     Image *restrict const img) restrict;
+        constexpr3 void setTile(const int x,
+                                const int y,
+                                Image *restrict const img) restrict
+        {
+            mTiles[x + y * mWidth].image = img;
+        }
 
         /**
          * Set tile image with x + y * width already known.
          */
-        void setTile(const int index,
-                     Image *restrict const img) restrict
+        constexpr3 void setTile(const int index,
+                                Image *restrict const img) restrict
         { mTiles[index].image = img; }
 
         /**
@@ -134,27 +137,36 @@ class MapLayer final : public MemoryCounter, public ConfigListener
                         const int scrollY,
                         const Actors &actors) const restrict A_NONNULL(2);
 
-        bool isFringeLayer() const restrict noexcept2 A_WARN_UNUSED
+        constexpr3 bool isFringeLayer() const restrict noexcept2 A_WARN_UNUSED
         { return mIsFringeLayer; }
 
-        void setSpecialLayer(const SpecialLayer *restrict const val) restrict
+        constexpr3 void setSpecialLayer(const SpecialLayer *restrict const val)
+                                        restrict noexcept2
         { mSpecialLayer = val; }
 
-        void setTempLayer(const SpecialLayer *restrict const val) restrict
+        constexpr3 void setTempLayer(const SpecialLayer *restrict const val)
+                                     restrict noexcept2
         { mTempLayer = val; }
 
-        int getWidth() const restrict noexcept2 A_WARN_UNUSED
+        constexpr3 int getWidth() const restrict noexcept2 A_WARN_UNUSED
         { return mWidth; }
 
-        int getHeight() const restrict noexcept2 A_WARN_UNUSED
+        constexpr3 int getHeight() const restrict noexcept2 A_WARN_UNUSED
         { return mHeight; }
 
         void optionChanged(const std::string &restrict value)
                            restrict override final;
 
-        void setDrawLayerFlags(const MapTypeT &restrict n) restrict;
+        constexpr3 void setDrawLayerFlags(const MapTypeT &restrict n)
+                                          restrict noexcept2
+        {
+            mDrawLayerFlags = n;
+            mSpecialFlag = (mDrawLayerFlags != MapType::SPECIAL &&
+                mDrawLayerFlags != MapType::SPECIAL2 &&
+                mDrawLayerFlags != MapType::SPECIAL4);
+        }
 
-        void setActorsFix(const int y) restrict
+        constexpr3 void setActorsFix(const int y) restrict noexcept2
         { mActorsFix = y; }
 
         int calcMemoryLocal() const override final;
@@ -165,12 +177,12 @@ class MapLayer final : public MemoryCounter, public ConfigListener
         { return mName; }
 
 #ifdef UNITTESTS
-        TileInfo *getTiles() const
+        constexpr3 TileInfo *getTiles() const restrict noexcept2
         {
             return mTiles;
         }
 
-        void setTileCondition(const int c)
+        constexpr3 void setTileCondition(const int c) restrict noexcept2
         {
             mTileCondition = c;
         }
