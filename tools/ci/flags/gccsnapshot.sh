@@ -31,7 +31,7 @@ export CXXFLAGS="${CXXFLAGS} -Warray-bounds=2"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Warray-temporaries"
 #export CXXFLAGS="${CXXFLAGS} -Wassign-intercept"
-export CXXFLAGS="${CXXFLAGS} -Wattribute-alias"
+export CXXFLAGS="${CXXFLAGS} -Wattribute-alias=2"
 export CXXFLAGS="${CXXFLAGS} -Wattributes"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wbad-function-cast"
