@@ -22,12 +22,20 @@
 
 #include "net/tmwa/playerrecv.h"
 
+#include "configuration.h"
+
+#include "being/beingflag.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
+#include "gui/onlineplayer.h"
+
 #include "gui/windows/statuswindow.h"
+#include "gui/windows/whoisonline.h"
 
 #include "net/messagein.h"
+
+#include "resources/db/groupdb.h"
 
 #include "debug.h"
 
@@ -183,6 +191,57 @@ void PlayerRecv::processWalkResponse(Net::MessageIn &msg)
     if (localPlayer != nullptr)
         localPlayer->setRealPos(dstX, dstY);
     BLOCK_END("PlayerRecv::processWalkResponse")
+}
+
+void PlayerRecv::processOnlineList(Net::MessageIn &msg)
+{
+    if (whoIsOnline == nullptr)
+        return;
+
+    BLOCK_START("PlayerRecv::processOnlineList")
+    const int count = (msg.readInt16("len") - 4) / 31;
+    STD_VECTOR<OnlinePlayer*> arr;
+
+    if (count == 0)
+    {
+        if (whoIsOnline != nullptr)
+            whoIsOnline->loadList(arr);
+        BLOCK_END("PlayerRecv::processOnlineList")
+        return;
+    }
+
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readBeingId("account id");
+        const std::string name = msg.readString(24, "name");
+        const unsigned char level = msg.readUInt8("level");
+        const unsigned char group = msg.readUInt8("group");
+        GenderT gender = static_cast<GenderT>(msg.readUInt8("gender"));
+        unsigned char status = 0;
+        switch (gender)
+        {
+            case Gender::MALE:
+                status |= BeingFlag::GENDER_MALE;
+                break;
+            case Gender::HIDDEN:
+                status |= BeingFlag::GENDER_HIDDEN;
+                break;
+            case Gender::FEMALE:
+            case Gender::UNSPECIFIED:
+            default:
+                break;
+        }
+        if (GroupDb::getShowBadge(group))
+            status |= BeingFlag::GM;
+        if (!config.getBoolValue("showgender"))
+            gender = Gender::UNSPECIFIED;
+        arr.push_back(new OnlinePlayer(name,
+            status, level, gender, 0));
+    }
+
+    if (whoIsOnline != nullptr)
+        whoIsOnline->loadList(arr);
+    BLOCK_END("PlayerRecv::processOnlineList")
 }
 
 }  // namespace TmwAthena

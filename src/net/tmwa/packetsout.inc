@@ -105,6 +105,8 @@ packet(CMSG_IGNORE_NICK,             0x00cf,   0, nullptr);
 packet(CMSG_CLIENT_DISCONNECT,       0x7532,   0, nullptr);
 packet(CMSG_IGNORE_ALL,              0x00d0,   0, nullptr);
 
+packet(CMSG_ONLINE_LIST,             0x0210,   0, nullptr);
+
 #ifdef PACKETS_UPDATE
 // condition code here
 #endif

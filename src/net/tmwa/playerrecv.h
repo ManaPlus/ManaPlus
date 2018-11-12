@@ -34,6 +34,7 @@ namespace TmwAthena
     {
         void processPlayerStatUpdate5(Net::MessageIn &msg);
         void processWalkResponse(Net::MessageIn &msg);
+        void processOnlineList(Net::MessageIn &msg);
     }  // namespace PlayerRecv
 }  // namespace TmwAthena
 

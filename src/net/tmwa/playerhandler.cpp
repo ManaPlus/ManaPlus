@@ -162,6 +162,7 @@ void PlayerHandler::respawn() const
 
 void PlayerHandler::requestOnlineList() const
 {
+    createOutPacket(CMSG_ONLINE_LIST);
 }
 
 void PlayerHandler::removeOption() const
