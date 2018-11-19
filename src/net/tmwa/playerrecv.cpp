@@ -22,6 +22,7 @@
 
 #include "net/tmwa/playerrecv.h"
 
+#include "actormanager.h"
 #include "configuration.h"
 
 #include "being/beingflag.h"
@@ -212,7 +213,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
 
     for (int f = 0; f < count; f ++)
     {
-        msg.readBeingId("account id");
+        const BeingId beingId = msg.readBeingId("account id");
         const std::string name = msg.readString(24, "name");
         const unsigned char level = msg.readUInt8("level");
         const unsigned char group = msg.readUInt8("group");
@@ -237,6 +238,8 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
             gender = Gender::UNSPECIFIED;
         arr.push_back(new OnlinePlayer(name,
             status, level, gender, 0));
+        if (actorManager)
+            actorManager->updateNameId(name, beingId);
     }
 
     if (whoIsOnline != nullptr)
