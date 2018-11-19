@@ -35,7 +35,7 @@ ServerFeatures::ServerFeatures() :
 
 bool ServerFeatures::haveServerOnlineList() const
 {
-    return tmwServerVersion > 0x120b0b;
+    return tmwServerVersion >= 0x120b0b;
 }
 
 bool ServerFeatures::haveServerHp() const
