@@ -19,6 +19,7 @@
 gcc-6-i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6.sh
   - ./tools/ci/scripts/runtests.sh
   image: vicamo/debian:sid-i386
@@ -35,6 +36,7 @@ gcc-6-i386:
 gcc-6:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -75,6 +77,7 @@ gcc-6_sdl2_i386:
 gcc-6_default:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -92,6 +95,7 @@ gcc-6_default:
 gcc-6_sanitize:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -108,6 +112,7 @@ gcc-6_sanitize:
 .gcc-6_sanitize_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
   image: vicamo/debian:sid-i386
@@ -139,6 +144,7 @@ gcc-6_sanitize_sdl2:
 gcc-6_lto:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_lto.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -152,6 +158,7 @@ gcc-6_lto:
 gcc-6_lto_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_lto.sh
   - ./tools/ci/scripts/runtests.sh
   image: vicamo/debian:sid-i386
@@ -168,6 +175,7 @@ gcc-6_lto_i386:
 gcc-6_default_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push

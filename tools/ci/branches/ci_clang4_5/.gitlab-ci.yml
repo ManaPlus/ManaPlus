@@ -19,6 +19,7 @@
 clang-4.0:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang40.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -35,6 +36,7 @@ clang-4.0:
 clang-5.0:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang50.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push

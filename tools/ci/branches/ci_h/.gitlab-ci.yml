@@ -17,6 +17,7 @@
 gcc-5_h_all:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
@@ -33,6 +34,7 @@ gcc-5_h_all:
 gcc-5_h_all_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
@@ -52,6 +54,7 @@ gcc-5_h_all_i386:
 gcc-5_h_pugi_all:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_PUGIXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_PUGIXML -I/usr/include/SDL
@@ -68,6 +71,7 @@ gcc-5_h_pugi_all:
 gcc-5_h_tinyxml2_all:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_TINYXML2 -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_TINYXML2 -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_TINYXML2 -I/usr/include/SDL

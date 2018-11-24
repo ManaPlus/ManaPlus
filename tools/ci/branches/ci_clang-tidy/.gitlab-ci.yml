@@ -17,6 +17,7 @@
 clang-tidy:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang_tidy.sh
   <<: *job-push
   variables:

@@ -17,6 +17,7 @@
 gcc_with_customnls:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -43,6 +44,7 @@ gcc_with_customnls_sdl2:
 gcc_with_customnls_nonls:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push

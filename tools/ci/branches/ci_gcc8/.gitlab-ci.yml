@@ -46,6 +46,7 @@ gcc-8_sdl2_i386:
 gcc-8_default:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -63,6 +64,7 @@ gcc-8_default:
 gcc-8_sanitize:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -93,6 +95,7 @@ gcc-8_sanitize_sdl2:
 gcc-8_lto:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_lto.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -107,6 +110,7 @@ gcc-8_lto:
 gcc-8_lto_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_lto.sh
   - ./tools/ci/scripts/runtests.sh
   image: vicamo/debian:sid-i386

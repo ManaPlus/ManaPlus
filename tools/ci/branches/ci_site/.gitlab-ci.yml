@@ -36,6 +36,7 @@ gcc-6_tests_gcov:
   script:
   - ./tools/ci/scripts/clonesrc.sh
   - cd manaplus
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests_gcov.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -72,6 +73,7 @@ doxygen:
   script:
   - ./tools/ci/scripts/clonesrc.sh
   - cd manaplus
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/doxygen.sh
   artifacts:
     paths:

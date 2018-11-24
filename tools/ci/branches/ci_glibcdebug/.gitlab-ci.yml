@@ -19,6 +19,7 @@
 gcc-8_tests_glibcdebug_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   image: vicamo/debian:sid-i386
   <<: *job-push
@@ -34,6 +35,7 @@ gcc-8_tests_glibcdebug_i386:
 gcc-8_glibcdebug:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -47,6 +49,7 @@ gcc-8_glibcdebug:
 gcc-8_glibcdebug_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -89,6 +92,7 @@ gcc-8_glibcdebug_sdl2_i386:
 clang-7.0_glibcdebug_tests:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang70_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   <<: *job-push
   variables:
@@ -117,6 +121,7 @@ clang-7.0_glibcdebug_tests_sdl2:
 clang-7.0_glibcdebug:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang70.sh --enable-glibcdebug
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push

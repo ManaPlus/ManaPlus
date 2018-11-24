@@ -18,6 +18,7 @@ gcc-8_tests_jmalloc:
   stage: build
   script:
   - ls ${MALLOC}
+  - ./tools/ci/scripts/patchsdl1.sh
   - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -34,6 +35,7 @@ gcc-8_tests_jmalloc_i386:
   stage: build
   script:
   - ls ${MALLOC}
+  - ./tools/ci/scripts/patchsdl1.sh
   - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   image: vicamo/debian:sid-i386
@@ -83,6 +85,7 @@ gcc-8_tests_jmalloc_sdl2_i386:
 gcc-8_tests_tcmalloc:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --enable-tcmalloc --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -97,6 +100,7 @@ gcc-8_tests_tcmalloc:
 gcc-8_tests_tcmalloc_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --enable-tcmalloc --without-dyecmd --without-manaplusgame
   <<: *job-push
   image: vicamo/debian:sid-i386

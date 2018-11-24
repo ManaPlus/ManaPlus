@@ -19,6 +19,7 @@
 gcc-7_sanitize_doctest_tests:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
@@ -35,6 +36,7 @@ gcc-7_sanitize_doctest_tests:
 gcc-7_doctest_tests_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-push
@@ -51,6 +53,7 @@ gcc-7_doctest_tests_i386:
 gcc-7_tests_simd:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -65,6 +68,7 @@ gcc-7_tests_simd:
 gcc-7_tests_O0:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -80,6 +84,7 @@ gcc-7_tests_O0:
 gcc-7_tests_O1:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests_simd.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -95,6 +100,7 @@ gcc-7_tests_O1:
 gcc-7_tests_lto:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -110,6 +116,7 @@ gcc-7_tests_lto:
 gcc-7_tests_lto_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   image: vicamo/debian:sid-i386
@@ -126,6 +133,7 @@ gcc-7_tests_lto_i386:
 gcc-7_tests_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   image: vicamo/debian:sid-i386
   <<: *job-push
@@ -141,6 +149,7 @@ gcc-7_tests_i386:
 gcc-7_tests_flags:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
   <<: *job-push
@@ -156,6 +165,7 @@ gcc-7_tests_flags:
 gcc-7_tests:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
@@ -185,6 +195,7 @@ gcc-7_sdl2_tests_i386:
 .gcc-7_tests_valgrind:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
   - echo test valgrind
   - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
@@ -202,6 +213,7 @@ gcc-7_sdl2_tests_i386:
 .gcc-7_tests_valgrind_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame || true
   - echo test valgrind
   - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
@@ -220,6 +232,7 @@ gcc-7_sdl2_tests_i386:
 gcc-7_separate_doctest:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
@@ -233,6 +246,7 @@ gcc-7_separate_doctest:
 gcc-7_separate_doctest_sanitize:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   - ldd ./src/manaplustests | grep "libasan"
@@ -283,6 +297,7 @@ gcc-7_separate_doctest_sanitize_sdl2:
 gcc-7_separate_doctest_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
@@ -315,6 +330,7 @@ gcc-7_separate_doctest_sdl2_i386:
 gcc-7_unsigned_char_tests:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:

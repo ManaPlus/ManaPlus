@@ -19,6 +19,7 @@
 gcc-snapshot:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gccsnapshot.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -34,6 +35,7 @@ gcc-snapshot:
 gcc-snapshot_i386:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gccsnapshot.sh
   - ./tools/ci/scripts/runtests.sh
   image: vicamo/debian:sid-i386

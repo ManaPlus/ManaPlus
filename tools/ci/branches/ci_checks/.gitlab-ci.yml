@@ -19,6 +19,7 @@
 gcc8_memdebug_sdl1:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-memdebug --enable-werror
   <<: *job-push
   variables:
@@ -43,6 +44,7 @@ gcc8_memdebug_sdl2:
 gcc8_googleprofiler_sdl1:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-googleprofiler --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
@@ -69,6 +71,7 @@ gcc8_googleprofiler_sdl2:
 gcc8_checks_sdl1:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-checks --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
