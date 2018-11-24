@@ -19,6 +19,7 @@
 .fedora_gcc-snapshot_sanitize_tests:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gccsnapshot_sanitize_tests.sh --without-dyecmd --without-manaplusgame
   - ldd ./src/manaplustests | grep "libasan"
   <<: *job-push
@@ -47,6 +48,7 @@
 fedora_gcc-snapshot_tests:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gccsnapshot_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
   image: fedora:rawhide
@@ -73,6 +75,7 @@ fedora_gcc-snapshot_sdl2_tests:
 fedora_gcc-snapshot:
   stage: build
   script:
+  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gccsnapshot.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
