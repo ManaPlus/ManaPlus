@@ -35,11 +35,13 @@ class OnlinePlayer final
                      const unsigned char status,
                      const signed char level,
                      const GenderT gender,
-                     const signed char version) :
+                     const signed char version,
+                     const unsigned char group) :
             mNick(nick),
             mText(),
             mStatus(status),
             mLevel(level),
+            mGroup(group),
             mVersion(version),
             mGender(gender),
             mIsGM(false)
@@ -79,6 +81,8 @@ class OnlinePlayer final
         unsigned char mStatus;
 
         signed char mLevel;
+
+        unsigned char mGroup;
 
         signed char mVersion;
 

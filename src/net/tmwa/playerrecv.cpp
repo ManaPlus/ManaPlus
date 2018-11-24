@@ -232,12 +232,11 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
             default:
                 break;
         }
-        if (GroupDb::getShowBadge(group))
-            status |= BeingFlag::GM;
+
         if (!config.getBoolValue("showgender"))
             gender = Gender::UNSPECIFIED;
         arr.push_back(new OnlinePlayer(name,
-            status, level, gender, 0));
+            status, level, gender, 0, group));
         if (actorManager)
             actorManager->updateNameId(name, beingId);
     }
