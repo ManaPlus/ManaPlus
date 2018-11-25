@@ -44,7 +44,7 @@ void NetworkDb::load()
     logger->log1("Initializing network database...");
     loadXmlFile(paths.getStringValue("networkFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("networkPatchFile"), SkipError_true);
-    loadXmlDir("networkPatchDir", loadXmlFile);
+    loadXmlDir("networkPatchDir", loadXmlFile)
     mLoaded = true;
 }
 

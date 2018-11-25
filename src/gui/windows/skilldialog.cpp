@@ -360,7 +360,7 @@ void SkillDialog::loadSkills()
     if (mSkills.empty())
         loadXmlFile(paths.getStringValue("skillsFile2"), SkipError_false);
     loadXmlFile(paths.getStringValue("skillsPatchFile"), SkipError_true);
-    loadXmlDir("skillsPatchDir", loadXmlFile);
+    loadXmlDir("skillsPatchDir", loadXmlFile)
     addDefaultTab();
 
     update();
@@ -452,7 +452,7 @@ void SkillDialog::loadXmlFile(const std::string &fileName,
                 }
                 default:
                     reportAlways("Unsupported skillset type: %s",
-                        setTypeStr.c_str());
+                        setTypeStr.c_str())
                     return;
             }
             if (mDefaultModel == nullptr)
@@ -1191,7 +1191,7 @@ void SkillDialog::useSkillTarget(const SkillInfo *const info,
     }
     else
     {
-        reportAlways("Unsupported skill type: %d", type);
+        reportAlways("Unsupported skill type: %d", type)
     }
 }
 
@@ -1276,7 +1276,7 @@ void SkillDialog::useSkillPosition(const SkillInfo *const info,
     }
     else
     {
-        reportAlways("Unsupported skill type: %d", type);
+        reportAlways("Unsupported skill type: %d", type)
     }
 }
 
@@ -1378,7 +1378,7 @@ void SkillDialog::useSkillDefault(const SkillInfo *const info,
     }
     else
     {
-        reportAlways("Unsupported skill type: %d", type);
+        reportAlways("Unsupported skill type: %d", type)
     }
 }
 

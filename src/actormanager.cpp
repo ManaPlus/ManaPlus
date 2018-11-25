@@ -332,7 +332,7 @@ Being *ActorManager::createBeing(const BeingId id,
         case ActorType::FloorItem:
         case ActorType::Avatar:
         case ActorType::Unknown:
-            reportAlways("CreateBeing for unknown type %d", CAST_S32(type));
+            reportAlways("CreateBeing for unknown type %d", CAST_S32(type))
             break;
     }
 
@@ -382,7 +382,7 @@ FloorItem *ActorManager::createItem(const BeingId id,
 
 void ActorManager::destroy(ActorSprite *const actor)
 {
-    returnNullptrV(actor);
+    returnNullptrV(actor)
 
     if (actor == localPlayer)
         return;
@@ -392,7 +392,7 @@ void ActorManager::destroy(ActorSprite *const actor)
 
 void ActorManager::erase(ActorSprite *const actor)
 {
-    returnNullptrV(actor);
+    returnNullptrV(actor)
 
     if (actor == localPlayer)
         return;
@@ -405,7 +405,7 @@ void ActorManager::erase(ActorSprite *const actor)
 
 void ActorManager::undelete(const ActorSprite *const actor)
 {
-    returnNullptrV(actor);
+    returnNullptrV(actor)
 
     if (actor == localPlayer)
         return;
@@ -682,7 +682,7 @@ FloorItem *ActorManager::findItem(const BeingId id) const
     if (it != mActorsIdMap.end())
     {
         ActorSprite *const actor = (*it).second;
-        returnNullptr(nullptr, actor);
+        returnNullptr(nullptr, actor)
         if (actor->getId() == id &&
             actor->getType() == ActorType::FloorItem)
         {
@@ -1922,14 +1922,14 @@ void ActorManager::removePickupItem(const std::string &name)
 
 void ActorManager::addAttackMob(const std::string &name)
 {
-    addMobToList(name, AttackMob);
+    addMobToList(name, AttackMob)
     rebuildPriorityAttackMobs();
     storeAttackList();
 }
 
 void ActorManager::addPriorityAttackMob(const std::string &name)
 {
-    addMobToList(name, PriorityAttackMob);
+    addMobToList(name, PriorityAttackMob)
     storeAttackList();
 }
 
@@ -1944,7 +1944,7 @@ void ActorManager::addIgnoreAttackMob(const std::string &name)
 
 void ActorManager::addPickupItem(const std::string &name)
 {
-    addMobToList(name, PickupItem);
+    addMobToList(name, PickupItem)
     rebuildPickupItems();
     storeAttackList();
 }
@@ -1959,17 +1959,17 @@ void ActorManager::addIgnorePickupItem(const std::string &name)
 
 void ActorManager::rebuildPriorityAttackMobs()
 {
-    rebuildMobsList(PriorityAttackMob);
+    rebuildMobsList(PriorityAttackMob)
 }
 
 void ActorManager::rebuildAttackMobs()
 {
-    rebuildMobsList(AttackMob);
+    rebuildMobsList(AttackMob)
 }
 
 void ActorManager::rebuildPickupItems()
 {
-    rebuildMobsList(PickupItem);
+    rebuildMobsList(PickupItem)
 }
 
 int ActorManager::getIndexByName(const std::string &name,
@@ -2019,9 +2019,9 @@ void ActorManager::loadAttackList()
     std::list<std::string>::const_iterator i;
     std::list<std::string>::const_iterator i_end;
 
-    loadList("attackPriorityMobs", PriorityAttackMob);
-    loadList("attackMobs", AttackMob);
-    loadList("ignoreAttackMobs", IgnoreAttackMob);
+    loadList("attackPriorityMobs", PriorityAttackMob)
+    loadList("attackMobs", AttackMob)
+    loadList("ignoreAttackMobs", IgnoreAttackMob)
     if (!empty)
     {
         mAttackMobs.push_back("");
@@ -2029,8 +2029,8 @@ void ActorManager::loadAttackList()
     }
     empty = false;
 
-    loadList("pickupItems", PickupItem);
-    loadList("ignorePickupItems", IgnorePickupItem);
+    loadList("pickupItems", PickupItem)
+    loadList("ignorePickupItems", IgnorePickupItem)
     if (!empty)
     {
         mPickupItems.push_back("");
@@ -2101,7 +2101,7 @@ Being *ActorManager::cloneBeing(const Being *const srcBeing,
                                 const int dx, const int dy,
                                 const int id)
 {
-    returnNullptr(nullptr, srcBeing);
+    returnNullptr(nullptr, srcBeing)
     Being *const dstBeing = actorManager->createBeing(fromInt(
         toInt(srcBeing->getId(), int) + id, BeingId),
         ActorType::Player,

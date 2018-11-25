@@ -395,8 +395,8 @@ TEST_CASE("xml doc", "")
         ::remove(tempXmlName);
     }
 
-    delete2(theme);
-    delete2(client);
+    delete2(theme)
+    delete2(client)
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");

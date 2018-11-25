@@ -66,9 +66,9 @@ void TranslationManager::loadGettextLang()
 
 void TranslationManager::close()
 {
-    delete2(translator);
-    delete2(dictionary);
-    delete2(reverseDictionary);
+    delete2(translator)
+    delete2(dictionary)
+    delete2(reverseDictionary)
 }
 
 PoDict *TranslationManager::loadLang(const LangVect &lang,

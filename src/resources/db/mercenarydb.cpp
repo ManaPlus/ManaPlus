@@ -47,7 +47,7 @@ void MercenaryDB::load()
     logger->log1("Initializing mercenary database...");
     loadXmlFile(paths.getStringValue("mercenariesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("mercenariesPatchFile"), SkipError_true);
-    loadXmlDir("mercenariesPatchDir", loadXmlFile);
+    loadXmlDir("mercenariesPatchDir", loadXmlFile)
 
     mLoaded = true;
 }
@@ -149,7 +149,7 @@ BeingInfo *MercenaryDB::get(const BeingTypeId id)
         {
             reportAlways("MercenaryDB: Warning, unknown mercenary ID "
                 "%d requested",
-                toInt(id, int));
+                toInt(id, int))
             return BeingInfo::unknown;
         }
     }

@@ -27,7 +27,7 @@
 #include "debug.h"
 
 #define dumpSize(str) \
-    logger->log(" sizeof("#str"): %d", CAST_S32(sizeof(str)));
+    logger->log(" sizeof("#str"): %d", CAST_S32(sizeof(str)))
 
 void dumpSizes()
 {

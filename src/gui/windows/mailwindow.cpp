@@ -118,9 +118,9 @@ MailWindow::MailWindow() :
 MailWindow::~MailWindow()
 {
     delete_all(mMessages);
-    delete2(mMailModel);
-    delete2(mailViewWindow);
-    delete2(mailEditWindow);
+    delete2(mMailModel)
+    delete2(mailViewWindow)
+    delete2(mailEditWindow)
 }
 
 void MailWindow::action(const ActionEvent &event)

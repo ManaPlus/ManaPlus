@@ -348,7 +348,7 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     {
         reportAlways("Error creating surface for atlas. Size: %dx%d",
             width,
-            height);
+            height)
         BLOCK_END("AtlasManager::createSDLAtlas")
         return;
     }
@@ -365,7 +365,7 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
     {
         reportAlways("Error converting surface to texture. Size: %dx%d",
             width,
-            height);
+            height)
         return;
     }
 

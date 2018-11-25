@@ -92,7 +92,7 @@ void StatDb::load()
 
     loadXmlFile(paths.getStringValue("statFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("statPatchFile"), SkipError_true);
-    loadXmlDir("statPatchDir", loadXmlFile);
+    loadXmlDir("statPatchDir", loadXmlFile)
     mLoaded = true;
 }
 
@@ -112,7 +112,7 @@ static void loadBasicStats(XmlNodeConstPtr rootNode)
                 {
                     reportAlways("Wrong attr or id for basic "
                         "stat with name %s",
-                        name.c_str());
+                        name.c_str())
                     continue;
                 }
                 const std::string tag = XML::getProperty(node, "tag", "");
@@ -150,7 +150,7 @@ static void loadStats(XmlNodeConstPtr rootNode,
                 {
                     reportAlways("Wrong attr or id for extended "
                         "stat with name %s",
-                        name.c_str());
+                        name.c_str())
                     continue;
                 }
                 stats.push_back(BasicStat(static_cast<AttributesT>(id),
@@ -207,7 +207,7 @@ void StatDb::loadXmlFile(const std::string &fileName,
             std::string page = XML::langProperty(node, "name", "");
             if (page.empty())
             {
-                reportAlways("Page without name in stats.xml");
+                reportAlways("Page without name in stats.xml")
                 page = "Unknown";
             }
             loadStats(node, page);
@@ -218,7 +218,7 @@ void StatDb::loadXmlFile(const std::string &fileName,
         if (mBasicStats.empty() &&
             mStats.empty())
         {
-            reportAlways("StatDb: no stats found");
+            reportAlways("StatDb: no stats found")
             addDefaultStats();
         }
     }

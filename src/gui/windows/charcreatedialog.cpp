@@ -460,7 +460,7 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
 
 CharCreateDialog::~CharCreateDialog()
 {
-    delete2(mPlayer);
+    delete2(mPlayer)
 
     if (charServerHandler != nullptr)
         charServerHandler->setCharCreateDialog(nullptr);

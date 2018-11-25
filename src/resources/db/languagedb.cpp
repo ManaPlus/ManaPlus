@@ -42,7 +42,7 @@ void LanguageDb::load()
     logger->log1("Initializing languages database...");
     loadXmlFile(paths.getStringValue("languagesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("languagesPatchFile"), SkipError_true);
-    loadXmlDir("languagesPatchDir", loadXmlFile);
+    loadXmlDir("languagesPatchDir", loadXmlFile)
 }
 
 void LanguageDb::loadXmlFile(const std::string &fileName,
@@ -73,14 +73,14 @@ void LanguageDb::loadXmlFile(const std::string &fileName,
             const int id = XML::getProperty(node, "id", -1);
             if (id < 0)
             {
-                reportAlways("Missing lang id");
+                reportAlways("Missing lang id")
                 continue;
             }
             const std::string icon = XML::getProperty(node, "icon", "");
             const std::string po = XML::getProperty(node, "po", "");
             if (icon.empty())
             {
-                reportAlways("LanguageDb: empty icon field");
+                reportAlways("LanguageDb: empty icon field")
             }
             else
             {
@@ -88,7 +88,7 @@ void LanguageDb::loadXmlFile(const std::string &fileName,
             }
             if (po.empty())
             {
-                reportAlways("LanguageDb: empty po field");
+                reportAlways("LanguageDb: empty po field")
             }
             else
             {

@@ -49,7 +49,7 @@ void QuestDb::load()
     logger->log1("Initializing quest database...");
     loadXmlFile(paths.getStringValue("questsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("questsPatchFile"), SkipError_true);
-    loadXmlDir("questsPatchDir", loadXmlFile);
+    loadXmlDir("questsPatchDir", loadXmlFile)
 }
 
 static void loadQuest(const int var,

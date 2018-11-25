@@ -275,7 +275,7 @@ UpdaterWindow::~UpdaterWindow()
         delete2(mDownload)
     }
     free(mMemoryBuffer);
-    delete2(mItemLinkHandler);
+    delete2(mItemLinkHandler)
 }
 
 void UpdaterWindow::setProgress(const float p)

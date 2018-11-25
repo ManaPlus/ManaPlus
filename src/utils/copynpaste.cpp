@@ -387,7 +387,7 @@ bool retrieveBuffer(std::string& text, size_t& pos)
 {
     SDL_SysWMinfo info;
 
-    SDL_VERSION(&info.version);
+    SDL_VERSION(&info.version)
     if (SDL::getWindowWMInfo(mainGraphics->getWindow(), &info))
     {
         Display *const dpy = info.info.x11.display;

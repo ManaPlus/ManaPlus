@@ -96,8 +96,8 @@ Skin::~Skin()
         mStickyImageDown = nullptr;
     }
 
-    delete2(mOptions);
-    delete2(mBorder);
+    delete2(mOptions)
+    delete2(mBorder)
 }
 
 void Skin::updateAlpha(const float minimumOpacityAllowed)

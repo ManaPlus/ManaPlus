@@ -280,9 +280,9 @@ TEST_CASE("SpecialLayer updateCache", "")
 
     delete layer;
     ResourceManager::cleanOrphans(false);
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
 }

@@ -60,7 +60,7 @@ ProgressIndicator::~ProgressIndicator()
     if (gui != nullptr)
         gui->removeDragged(this);
 
-    delete2(mIndicator);
+    delete2(mIndicator)
 }
 
 void ProgressIndicator::logic()

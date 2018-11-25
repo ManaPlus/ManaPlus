@@ -51,7 +51,7 @@ void MonsterDB::load()
     logger->log1("Initializing monster database...");
     loadXmlFile(paths.getStringValue("monstersFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("monstersPatchFile"), SkipError_true);
-    loadXmlDir("monstersPatchDir", loadXmlFile);
+    loadXmlDir("monstersPatchDir", loadXmlFile)
 
     mLoaded = true;
 }
@@ -152,7 +152,7 @@ BeingInfo *MonsterDB::get(const BeingTypeId id)
         if (i == mMonsterInfos.end())
         {
             reportAlways("MonsterDB: Warning, unknown monster ID %d requested",
-                toInt(id, int));
+                toInt(id, int))
             return BeingInfo::unknown;
         }
     }

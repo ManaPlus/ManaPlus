@@ -203,19 +203,19 @@ int inflateMemory(unsigned char *restrict const in,
     {
         if (ret == Z_MEM_ERROR)
         {
-            reportAlways("Error: Out of memory while decompressing map data!");
+            reportAlways("Error: Out of memory while decompressing map data!")
         }
         else if (ret == Z_VERSION_ERROR)
         {
-            reportAlways("Error: Incompatible zlib version!");
+            reportAlways("Error: Incompatible zlib version!")
         }
         else if (ret == Z_DATA_ERROR)
         {
-            reportAlways("Error: Incorrect zlib compressed data!");
+            reportAlways("Error: Incorrect zlib compressed data!")
         }
         else
         {
-            reportAlways("Error: Unknown error while decompressing map data!");
+            reportAlways("Error: Unknown error while decompressing map data!")
         }
 
         free(out);
@@ -284,7 +284,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
     else
     {
         reportAlways("Error while parsing map file (%s)!",
-            realFilename.c_str());
+            realFilename.c_str())
     }
 
     if (map != nullptr)
@@ -306,7 +306,7 @@ Map *MapReader::readMap(const std::string &restrict filename,
 void MapReader::loadLayers(const std::string &path)
 {
     BLOCK_START("MapReader::loadLayers")
-    loadXmlDir2(path, addLayerToList, ".tmx", SkipError_false);
+    loadXmlDir2(path, addLayerToList, ".tmx", SkipError_false)
     BLOCK_END("MapReader::loadLayers")
 }
 
@@ -348,7 +348,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     {
         reportAlways("MapReader: Warning: "
             "Uninitialized tile width or height value for map: %s",
-            path.c_str());
+            path.c_str())
         BLOCK_END("MapReader::readMap xml")
         return nullptr;
     }
@@ -377,7 +377,7 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
         else
         {
             reportAlways("Missing atlas for map: %s",
-                fileName.c_str());
+                fileName.c_str())
         }
     }
     BLOCK_END("MapReader::readMap load atlas")
@@ -674,7 +674,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
         && compression != "zlib")
     {
         reportAlways("Warning: only gzip and zlib layer"
-            " compression supported!");
+            " compression supported!")
         return false;
     }
 
@@ -730,7 +730,7 @@ bool MapReader::readBase64Layer(XmlNodeConstPtrConst childNode,
 
             if (inflated == nullptr)
             {
-                reportAlways("Error: Could not decompress layer!");
+                reportAlways("Error: Could not decompress layer!")
                 return false;
             }
         }
@@ -1143,14 +1143,14 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                         graphicsManager.getUseAtlases())
                     {
                         reportAlways("Error: image '%s' not present in atlas",
-                            source.c_str());
+                            source.c_str())
                     }
 #endif  // USE_OPENGL
                 }
                 else
                 {
                     reportAlways("Error: Failed to load tileset (%s)",
-                        source.c_str());
+                        source.c_str())
                 }
             }
         }

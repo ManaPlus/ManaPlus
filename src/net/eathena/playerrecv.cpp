@@ -507,7 +507,7 @@ void PlayerRecv::processKilledBy(Net::MessageIn &msg)
     {
         debugMsg(
             // TRANSLATORS: player killed message
-            _("You were killed by unknown source."));
+            _("You were killed by unknown source."))
     }
     else
     {
@@ -519,7 +519,7 @@ void PlayerRecv::processKilledBy(Net::MessageIn &msg)
         debugMsg(strprintf(
             // TRANSLATORS: player killed message
             _("You were killed by %s."),
-            name.c_str()));
+            name.c_str()))
     }
 }
 

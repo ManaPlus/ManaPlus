@@ -44,7 +44,7 @@ EffectManager::EffectManager() :
     logger->log1("Effects are now loading");
     loadXmlFile(paths.getStringValue("effectsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("effectsPatchFile"), SkipError_true);
-    loadXmlDir("effectsPatchDir", loadXmlFile);
+    loadXmlDir("effectsPatchDir", loadXmlFile)
 }
 
 void EffectManager::loadXmlFile(const std::string &fileName,
@@ -143,7 +143,7 @@ bool EffectManager::trigger(const int id,
             return rValue;
         }
     }
-    reportAlways("Missing effect %d", id);
+    reportAlways("Missing effect %d", id)
     BLOCK_END("EffectManager::trigger")
     return rValue;
 }
@@ -174,7 +174,7 @@ Particle *EffectManager::triggerReturn(const int id,
             return rValue;
         }
     }
-    reportAlways("Missing effect %d", id);
+    reportAlways("Missing effect %d", id)
     return rValue;
 }
 
@@ -207,7 +207,7 @@ bool EffectManager::trigger(const int id,
             return rValue;
         }
     }
-    reportAlways("Missing effect %d", id);
+    reportAlways("Missing effect %d", id)
     return rValue;
 }
 

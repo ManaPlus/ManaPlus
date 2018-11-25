@@ -57,7 +57,7 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     if (tmpImage == nullptr)
     {
         reportAlways("Error, image load failed: %s",
-            SDL_GetError());
+            SDL_GetError())
         return nullptr;
     }
 
@@ -196,7 +196,7 @@ Image *SDLImageHelper::createTextSurface(SDL_Surface *const tmpImage,
 
     if (image == nullptr)
     {
-        reportAlways("Error: Image convert failed.");
+        reportAlways("Error: Image convert failed.")
         delete [] alphaChannel;
         return nullptr;
     }
@@ -224,7 +224,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
 
     if (tmpImage->format->BitsPerPixel != 32)
     {
-        reportAlways("Non 32 bit image detected");
+        reportAlways("Non 32 bit image detected")
         tmpImage = convertTo32Bit(tmpImage);
 
         if (tmpImage == nullptr)
@@ -296,7 +296,7 @@ Image *SDLImageHelper::_SDLload(SDL_Surface *tmpImage)
 
     if (image == nullptr)
     {
-        reportAlways("Error: Image convert failed.");
+        reportAlways("Error: Image convert failed.")
         delete [] alphaChannel;
         return nullptr;
     }

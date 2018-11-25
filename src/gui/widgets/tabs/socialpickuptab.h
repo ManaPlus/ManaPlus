@@ -63,9 +63,9 @@ class SocialPickupTab final : public SocialTab
         {
             updateAtkListStart();
             // TRANSLATORS: items group name in social window
-            addAvatars(PickupItem, _("Pickup items"), PICKUP);
+            addAvatars(PickupItem, _("Pickup items"), PICKUP)
             // TRANSLATORS: items group name in social window
-            addAvatars(IgnorePickupItem, _("Ignore items"), NOPICKUP);
+            addAvatars(IgnorePickupItem, _("Ignore items"), NOPICKUP)
         }
 
     private:

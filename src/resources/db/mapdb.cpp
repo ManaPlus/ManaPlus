@@ -53,11 +53,11 @@ void MapDB::load()
         SkipError_true);
     loadRemapXmlFile(paths.getStringValue("mapsRemapPatchFile"),
         SkipError_true);
-    loadXmlDir("mapsRemapPatchDir", loadRemapXmlFile);
+    loadXmlDir("mapsRemapPatchDir", loadRemapXmlFile)
 
     loadInfo(paths.getStringValue("mapsFile"), SkipError_false);
     loadInfo(paths.getStringValue("mapsPatchFile"), SkipError_true);
-    loadXmlDir("mapsPatchDir", loadInfo);
+    loadXmlDir("mapsPatchDir", loadInfo)
     mLoaded = true;
 }
 

@@ -154,8 +154,8 @@ ShortcutWindow::~ShortcutWindow()
 {
     if (mTabs != nullptr)
         mTabs->removeAll(true);
-    delete2(mTabs);
-    delete2(mItems);
+    delete2(mTabs)
+    delete2(mItems)
 }
 
 void ShortcutWindow::addButton(const std::string &text,

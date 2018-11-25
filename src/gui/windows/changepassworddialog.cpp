@@ -85,7 +85,7 @@ ChangePasswordDialog::ChangePasswordDialog(LoginData &data) :
 
 ChangePasswordDialog::~ChangePasswordDialog()
 {
-    delete2(mWrongDataNoticeListener);
+    delete2(mWrongDataNoticeListener)
 }
 
 void ChangePasswordDialog::action(const ActionEvent &event)

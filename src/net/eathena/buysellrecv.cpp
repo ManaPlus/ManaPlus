@@ -137,7 +137,7 @@ void BuySellRecv::processNpcBuyResponse(Net::MessageIn &msg)
         default:
             NotifyManager::notify(NotifyTypes::BUY_FAILED);
             break;
-    };
+    }
 }
 
 }  // namespace EAthena

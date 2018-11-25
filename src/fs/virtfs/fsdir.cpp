@@ -73,7 +73,7 @@ namespace FsDir
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFs::open file open error: %s",
-                filename.c_str());
+                filename.c_str())
             return nullptr;
         }
         return new File(&funcs, fd);
@@ -252,7 +252,7 @@ namespace FsDir
         if (checkPath(name) == false)
         {
             reportAlways("FsDir::isSymbolicLink invalid path: %s",
-                name.c_str());
+                name.c_str())
             return false;
         }
 #ifndef WIN32
@@ -286,7 +286,7 @@ namespace FsDir
         prepareFsPath(dirname);
         if (mWriteDir.empty())
         {
-            reportAlways("FsDir::mkdir write dir is empty");
+            reportAlways("FsDir::mkdir write dir is empty")
             return false;
         }
         return mkdir_r((mWriteDir + dirname).c_str()) != -1;
@@ -297,7 +297,7 @@ namespace FsDir
         prepareFsPath(filename);
         if (mWriteDir.empty())
         {
-            reportAlways("FsDir::remove write dir is empty");
+            reportAlways("FsDir::remove write dir is empty")
             return false;
         }
         return ::remove((mWriteDir + filename).c_str()) != 0;
@@ -326,7 +326,7 @@ namespace FsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("FsDir::read file not opened.");
+            reportAlways("FsDir::read file not opened.")
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -350,7 +350,7 @@ namespace FsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("FsDir::write file not opened.");
+            reportAlways("FsDir::write file not opened.")
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -371,14 +371,14 @@ namespace FsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("FsDir::fileLength file not opened.");
+            reportAlways("FsDir::fileLength file not opened.")
             return 0;
         }
 #ifdef USE_FILE_FOPEN
         const long pos = ftell(fd);
         if (pos < 0)
         {
-            reportAlways("FsDir::fileLength ftell error.");
+            reportAlways("FsDir::fileLength ftell error.")
             return -1;
         }
         fseek(fd, 0, SEEK_END);
@@ -389,7 +389,7 @@ namespace FsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("FsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.")
             return -1;
         }
         return static_cast<int64_t>(statbuf.st_size);
@@ -404,7 +404,7 @@ namespace FsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("FsDir::tell file not opened.");
+            reportAlways("FsDir::tell file not opened.")
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -423,7 +423,7 @@ namespace FsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("FsDir::seek file not opened.");
+            reportAlways("FsDir::seek file not opened.")
             return 0;
         }
         const int64_t res = FILESEEK(fd, pos, SEEK_SET);
@@ -440,7 +440,7 @@ namespace FsDir
         FILEHTYPE fd = file->mFd;
         if (fd == FILEHDEFAULT)
         {
-            reportAlways("FsDir::eof file not opened.");
+            reportAlways("FsDir::eof file not opened.")
             return 0;
         }
 #ifdef USE_FILE_FOPEN
@@ -454,7 +454,7 @@ namespace FsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("FsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.")
             return -1;
         }
         const int64_t len = static_cast<int64_t>(statbuf.st_size);
@@ -475,7 +475,7 @@ namespace FsDir
         if (fd == FILEHDEFAULT)
         {
             reportAlways("VirtFs::loadFile file open error: %s",
-                filename.c_str());
+                filename.c_str())
             return nullptr;
         }
 
@@ -488,7 +488,7 @@ namespace FsDir
         const long sz = ftell(fd);
         if (sz < 0)
         {
-            reportAlways("FsDir::fileLength ftell error.");
+            reportAlways("FsDir::fileLength ftell error.")
             if (fd != FILEHDEFAULT)
                 FILECLOSE(fd);
             return nullptr;
@@ -499,7 +499,7 @@ namespace FsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("FsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.")
             if (fd != FILEHDEFAULT)
                 FILECLOSE(fd);
             return nullptr;

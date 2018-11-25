@@ -120,7 +120,7 @@ ProgressBar::~ProgressBar()
         mSkin = nullptr;
     }
     Theme::unloadRect(mFillRect, 0, 8);
-    delete2(mVertexes);
+    delete2(mVertexes)
     mTextChunk.deleteImage();
 }
 

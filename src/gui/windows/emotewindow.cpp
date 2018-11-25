@@ -146,16 +146,16 @@ EmoteWindow::~EmoteWindow()
 {
     mTabs->removeAll(false);
     mTabs->removeTab(mTabs->getTabByIndex(0));
-    delete2(mEmotePage);
-    delete2(mColorPage);
-    delete2(mColorModel);
-    delete2(mScrollColorPage);
-    delete2(mFontPage);
-    delete2(mFontModel);
-    delete2(mScrollFontPage);
-    delete2(mTextPage);
-    delete2(mTextModel);
-    delete2(mScrollTextPage);
+    delete2(mEmotePage)
+    delete2(mColorPage)
+    delete2(mColorModel)
+    delete2(mScrollColorPage)
+    delete2(mFontPage)
+    delete2(mFontModel)
+    delete2(mScrollFontPage)
+    delete2(mTextPage)
+    delete2(mTextModel)
+    delete2(mScrollTextPage)
     if (mImageSet != nullptr)
     {
         mImageSet->decRef();

@@ -45,7 +45,7 @@ void ItemOptionDb::load()
     logger->log1("Initializing item options database...");
     loadXmlFile(paths.getStringValue("itemOptionsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("itemOptionsPatchFile"), SkipError_true);
-    loadXmlDir("itemOptionsPatchDir", loadXmlFile);
+    loadXmlDir("itemOptionsPatchDir", loadXmlFile)
     mLoaded = true;
 }
 
@@ -99,7 +99,7 @@ void ItemOptionDb::loadXmlFile(const std::string &fileName,
         else
         {
             reportAlways("ItemFieldDb: Error while loading %s!",
-                fileName.c_str());
+                fileName.c_str())
         }
         return;
     }
@@ -125,7 +125,7 @@ void ItemOptionDb::loadXmlFile(const std::string &fileName,
                 0);
             if (id <= 0)
             {
-                reportAlways("Empty id field in ItemOptionDb");
+                reportAlways("Empty id field in ItemOptionDb")
                 continue;
             }
             STD_VECTOR<ItemFieldType*> &options = mOptions[id];

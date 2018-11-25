@@ -215,8 +215,8 @@ void BeingInfo::addAttack(const int id,
 
 void BeingInfo::clear()
 {
-    delete2(unknown);
-    delete2(empty);
+    delete2(unknown)
+    delete2(empty)
 }
 
 void BeingInfo::init()

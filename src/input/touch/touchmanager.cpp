@@ -200,7 +200,7 @@ void TouchManager::clear() restrict2
     FOR_EACH (TouchItemVectorCIter, it, mObjects)
         unload(*it);
     mObjects.clear();
-    delete2(mVertexes);
+    delete2(mVertexes)
     mRedraw = true;
 }
 
@@ -394,7 +394,7 @@ void TouchManager::unload(TouchItem *restrict const item)
         if (item->images != nullptr)
         {
             Theme::unloadRect(*item->images, 0, 8);
-            delete2(item->images);
+            delete2(item->images)
             if (item->icon != nullptr)
             {
                 item->icon->decRef();
@@ -647,7 +647,7 @@ void TouchManager::loadButtons() restrict2
                     nullptr, nullptr, nullptr, nullptr);
                 break;
             }
-        };
+        }
         theme->unload(skin);
     }
 }

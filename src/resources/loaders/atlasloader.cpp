@@ -47,7 +47,7 @@ struct AtlasLoader final
         AtlasResource *const resource = AtlasManager::loadTextureAtlas(
             rl->name, *rl->files);
         if (resource == nullptr)
-            reportAlways("Atlas creation error: %s", rl->name.c_str());
+            reportAlways("Atlas creation error: %s", rl->name.c_str())
         return resource;
     }
 };

@@ -44,7 +44,7 @@ void DeadDB::load()
 
     loadXmlFile(paths.getStringValue("deadMessagesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("deadMessagesPatchFile"), SkipError_true);
-    loadXmlDir("deadMessagesPatchDir", loadXmlFile);
+    loadXmlDir("deadMessagesPatchDir", loadXmlFile)
     mLoaded = true;
 }
 

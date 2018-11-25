@@ -236,13 +236,13 @@ Setup_Theme::Setup_Theme(const Widget2 *const widget) :
 
 Setup_Theme::~Setup_Theme()
 {
-    delete2(mInfo);
-    delete2(mThemesModel);
-    delete2(mFontsModel);
-    delete2(mFontSizeListModel);
-    delete2(mNpcFontSizeListModel);
-    delete2(mLangListModel);
-    delete2(mInfo);
+    delete2(mInfo)
+    delete2(mThemesModel)
+    delete2(mFontsModel)
+    delete2(mFontSizeListModel)
+    delete2(mNpcFontSizeListModel)
+    delete2(mLangListModel)
+    delete2(mInfo)
 }
 
 void Setup_Theme::updateInfo()
@@ -347,7 +347,7 @@ void Setup_Theme::cancel()
 }
 
 #define updateField(name1, name2) if (!mInfo->name1.empty()) \
-    name2 = mInfo->name1;
+    name2 = mInfo->name1
 
 void Setup_Theme::apply()
 {

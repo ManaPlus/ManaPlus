@@ -69,7 +69,7 @@ Image *OpenGLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     SDL_Surface *const tmpImage = loadPng(rw);
     if (tmpImage == nullptr)
     {
-        reportAlways("Error, image load failed: %s", SDL_GetError());
+        reportAlways("Error, image load failed: %s", SDL_GetError())
         return nullptr;
     }
 
@@ -148,7 +148,7 @@ SDL_Surface *OpenGLImageHelper::convertSurfaceNormalize(SDL_Surface *tmpImage,
     if (realWidth < width || realHeight < height)
     {
         reportAlways("Warning: image too large, cropping to %dx%d texture!",
-            tmpImage->w, tmpImage->h);
+            tmpImage->w, tmpImage->h)
     }
 
 #ifdef USE_SDL2
@@ -190,7 +190,7 @@ SDL_Surface *OpenGLImageHelper::convertSurfaceNormalize(SDL_Surface *tmpImage,
 
         if (tmpImage == nullptr)
         {
-            reportAlways("Error, image convert failed: out of memory");
+            reportAlways("Error, image convert failed: out of memory")
             return nullptr;
         }
         SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
@@ -242,7 +242,7 @@ SDL_Surface *OpenGLImageHelper::convertSurface(SDL_Surface *tmpImage,
 
         if (tmpImage == nullptr)
         {
-            reportAlways("Error, image convert failed: out of memory");
+            reportAlways("Error, image convert failed: out of memory")
             return nullptr;
         }
         SDL_BlitSurface(oldImage, nullptr, tmpImage, nullptr);
@@ -298,7 +298,7 @@ void OpenGLImageHelper::bindTexture(const GLuint texture)
         case RENDER_NULL:
         case RENDER_LAST:
         default:
-            reportAlways("Unknown OpenGL backend: %d", mUseOpenGL);
+            reportAlways("Unknown OpenGL backend: %d", mUseOpenGL)
             break;
     }
 }
@@ -416,7 +416,7 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
     {
         std::string errmsg = GraphicsManager::errorToString(error);
         reportAlways("Error: Image GL import failed: %s (%u)",
-            errmsg.c_str(), error);
+            errmsg.c_str(), error)
 //        return nullptr;
     }
 

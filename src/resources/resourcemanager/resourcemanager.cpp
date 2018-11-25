@@ -96,7 +96,7 @@ void deleteResourceManager()
 
 #ifdef UNITTESTS
     if (status)
-        reportAlways("Found leaked resources.");
+        reportAlways("Found leaked resources.")
 #endif  // UNITTESTS
 
     iter = mResources.begin();
@@ -447,7 +447,7 @@ Resource *get(const std::string &idPath,
     }
     else
     {
-        reportAlways("Error loading image: %s", idPath.c_str());
+        reportAlways("Error loading image: %s", idPath.c_str())
     }
 #else  // DISABLE_RESOURCE_CACHING
 
@@ -464,7 +464,7 @@ Resource *get(const std::string &idPath,
     }
     else
     {
-        reportAlways("Error loading image: " + idPath);
+        reportAlways("Error loading image: " + idPath)
     }
 #endif  // DISABLE_RESOURCE_CACHING
 
@@ -493,7 +493,7 @@ void release(Resource *const res)
     {
 // +++ need reenable after Resource will have type field
 //        reportAlways("no resource in cache: %s",
-//            res->mIdPath.c_str());
+//            res->mIdPath.c_str())
         delete res;
         return;
     }
@@ -501,7 +501,7 @@ void release(Resource *const res)
     {
 // +++ need reenable after Resource will have type field
 //        reportAlways("in cache other image: %s",
-//            res->mIdPath.c_str());
+//            res->mIdPath.c_str())
         delete res;
         return;
     }
@@ -619,7 +619,7 @@ void deleteInstance()
     }
 #ifdef UNITTESTS
     if (status)
-        reportAlways("Found leaked resources.");
+        reportAlways("Found leaked resources.")
 #endif  // UNITTESTS
 #endif  // DUMP_LEAKED_RESOURCES
 

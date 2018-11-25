@@ -436,7 +436,7 @@ void init()
 void deinit()
 {
     clearInventory();
-    delete2(mMercenary);
+    delete2(mMercenary)
     mPetBeingId = BeingId_zero;
 }
 
@@ -460,9 +460,9 @@ bool isTalking()
 
 void gameDestroyed()
 {
-    delete2(mInventory);
-    delete2(mEquipment);
-    delete2(mCartInventory);
+    delete2(mInventory)
+    delete2(mEquipment)
+    delete2(mCartInventory)
 }
 
 void stateChange(const StateT state)

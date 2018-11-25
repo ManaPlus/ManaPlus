@@ -227,7 +227,7 @@ void Joystick::logic()
         doCalibration();
         BLOCK_END("Joystick::logic")
         return;
-    };
+    }
 
     if (!mEnabled || !mCalibrated)
     {

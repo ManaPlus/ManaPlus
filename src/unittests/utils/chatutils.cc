@@ -249,9 +249,9 @@ TEST_CASE("chatutils replaceVars", "")
         Party::clearParties();
     }
 
-    delete2(actorManager);
-    delete2(localPlayer);
-    delete2(client);
+    delete2(actorManager)
+    delete2(localPlayer)
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
 }

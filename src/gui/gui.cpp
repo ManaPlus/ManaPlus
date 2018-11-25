@@ -267,7 +267,7 @@ void Gui::postInit(Graphics *const graphics)
 Gui::~Gui()
 {
     config.removeListeners(mConfigListener);
-    delete2(mConfigListener);
+    delete2(mConfigListener)
 
     if (mMouseCursors != nullptr)
     {
@@ -283,16 +283,16 @@ Gui::~Gui()
     Window::setWindowContainer(nullptr);
     delete top;
 
-    delete2(mGuiFont);
-    delete2(boldFont);
-    delete2(mHelpFont);
-    delete2(mSecureFont);
-    delete2(mInfoParticleFont);
-    delete2(mNpcFont);
-    delete2(guiInput);
-    delete2(theme);
+    delete2(mGuiFont)
+    delete2(boldFont)
+    delete2(mHelpFont)
+    delete2(mSecureFont)
+    delete2(mInfoParticleFont)
+    delete2(mNpcFont)
+    delete2(guiInput)
+    delete2(theme)
 
-    delete2(mFocusHandler);
+    delete2(mFocusHandler)
     Label::finalCleanup();
     Tab::finalCleanup();
     Widget::cleanGlobalFont();

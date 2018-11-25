@@ -76,7 +76,7 @@ static bool testFailAlways1()
 
 static bool testFailAlways2()
 {
-    reportAlways("test fail");
+    reportAlways("test fail")
     return false;
 }
 
@@ -96,7 +96,7 @@ TEST_CASE("CheckUtils", "")
 
     SECTION("reportAlways")
     {
-        reportAlwaysReal("test report");
+        reportAlwaysReal("test report")
     }
 
     SECTION("failFalse")

@@ -351,7 +351,7 @@ void ItemAmountWindow::postInit()
 
 ItemAmountWindow::~ItemAmountWindow()
 {
-    delete2(mItemsModal);
+    delete2(mItemsModal)
 }
 
 // Show ItemTooltip

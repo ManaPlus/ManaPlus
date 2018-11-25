@@ -47,7 +47,7 @@ void HomunculusDB::load()
     logger->log1("Initializing homunculus database...");
     loadXmlFile(paths.getStringValue("homunculusesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("homunculusesPatchFile"), SkipError_true);
-    loadXmlDir("homunculusesPatchDir", loadXmlFile);
+    loadXmlDir("homunculusesPatchDir", loadXmlFile)
 
     mLoaded = true;
 }
@@ -151,7 +151,7 @@ BeingInfo *HomunculusDB::get(const BeingTypeId id)
         {
             reportAlways("HomunculusDB: Warning, unknown homunculus ID "
                 "%d requested",
-                toInt(id, int));
+                toInt(id, int))
             return BeingInfo::unknown;
         }
     }

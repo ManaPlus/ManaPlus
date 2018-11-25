@@ -134,7 +134,7 @@ AnimatedSprite::~AnimatedSprite()
     {
         mDelayLoad->clearSprite();
         DelayedManager::removeDelayLoad(mDelayLoad);
-        delete2(mDelayLoad);
+        delete2(mDelayLoad)
     }
 }
 

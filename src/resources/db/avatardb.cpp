@@ -50,7 +50,7 @@ void AvatarDB::load()
     logger->log1("Initializing avatar database...");
     loadXmlFile(paths.getStringValue("avatarsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("avatarsPatchFile"), SkipError_true);
-    loadXmlDir("avatarsPatchDir", loadXmlFile);
+    loadXmlDir("avatarsPatchDir", loadXmlFile)
 }
 
 void AvatarDB::loadXmlFile(const std::string &fileName,

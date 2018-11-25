@@ -140,14 +140,14 @@ Tab::~Tab()
             theme->unload(tabImg[mode]);
     }
 
-    delete2(mLabel);
+    delete2(mLabel)
 
     if (mImage != nullptr)
     {
         mImage->decRef();
         mImage = nullptr;
     }
-    delete2(mVertexes);
+    delete2(mVertexes)
 }
 
 void Tab::init()

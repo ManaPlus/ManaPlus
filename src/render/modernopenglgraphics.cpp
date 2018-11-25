@@ -77,7 +77,7 @@
     var[vp + 20] = dstX + w; \
     var[vp + 21] = dstY + h; \
     var[vp + 22] = x2; \
-    var[vp + 23] = y2;
+    var[vp + 23] = y2
 
 GLuint ModernOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS
@@ -125,7 +125,7 @@ ModernOpenGLGraphics::~ModernOpenGLGraphics()
 
 void ModernOpenGLGraphics::deleteGLObjects() restrict2
 {
-    delete2(mProgram);
+    delete2(mProgram)
     if (mVbo != 0U)
     {
 //        logger->log("delete buffer vbo: %u", mVbo);

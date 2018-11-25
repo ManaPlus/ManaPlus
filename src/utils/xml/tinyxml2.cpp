@@ -95,7 +95,7 @@ namespace XML
                 if (size < 0)
                 {
                     reportAlways("Error loading XML file %s",
-                        filename.c_str());
+                        filename.c_str())
                 }
                 else
                 {
@@ -108,7 +108,7 @@ namespace XML
             else if (skipError == SkipError_false)
             {
                 reportAlways("Error loading XML file %s",
-                    filename.c_str());
+                    filename.c_str())
             }
         }
 
@@ -128,7 +128,7 @@ namespace XML
         }
         else if (skipError == SkipError_false)
         {
-            reportAlways("Error loading %s", filename.c_str());
+            reportAlways("Error loading %s", filename.c_str())
         }
         mIsValid = valid;
         BLOCK_END("XML::Document::Document")

@@ -45,7 +45,7 @@ SetupTabScroll::SetupTabScroll(const Widget2 *const widget) :
 SetupTabScroll::~SetupTabScroll()
 {
     mScroll = nullptr;
-    delete2(mContainer);
+    delete2(mContainer)
     removeItems();
 }
 

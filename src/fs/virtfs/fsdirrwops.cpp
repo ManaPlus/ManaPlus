@@ -87,7 +87,7 @@ namespace FsDir
             const long curpos = ftell(fd);
             if (curpos < 0)
             {
-                reportAlways("FsDir::fileLength ftell error.");
+                reportAlways("FsDir::fileLength ftell error.")
                 return -1;
             }
             fseek(fd, 0, SEEK_END);
@@ -97,7 +97,7 @@ namespace FsDir
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
             {
-                reportAlways("FsDir::fileLength error.");
+                reportAlways("FsDir::fileLength error.")
                 len = -1;
             }
             else
@@ -111,7 +111,7 @@ namespace FsDir
 #ifdef USE_FILE_FOPEN
                 if (fseek(fd, curpos, SEEK_SET) < 0)
                 {
-                    reportAlways("FsDir::fileLength fseek error.");
+                    reportAlways("FsDir::fileLength fseek error.")
                 }
 #endif  // USE_FILE_FOPEN
                 logger->assertLog(
@@ -184,7 +184,7 @@ namespace FsDir
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
             {
-                reportAlways("FsDir::fileLength error.");
+                reportAlways("FsDir::fileLength error.")
                 return CAST_S32(rc);
             }
         }
@@ -220,7 +220,7 @@ namespace FsDir
             struct stat statbuf;
             if (fstat(fd, &statbuf) == -1)
             {
-                reportAlways("FsDir::fileLength error.");
+                reportAlways("FsDir::fileLength error.")
                 return CAST_S32(rc);
             }
         }
@@ -256,7 +256,7 @@ namespace FsDir
         struct stat statbuf;
         if (fstat(fd, &statbuf) == -1)
         {
-            reportAlways("FsDir::fileLength error.");
+            reportAlways("FsDir::fileLength error.")
             return -1;
         }
         return static_cast<int64_t>(statbuf.st_size);

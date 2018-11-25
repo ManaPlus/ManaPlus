@@ -172,8 +172,8 @@ ScrollArea::~ScrollArea()
         }
     }
 
-    delete2(mVertexes);
-    delete2(mVertexes2);
+    delete2(mVertexes)
+    delete2(mVertexes2)
 
     setContent(nullptr);
 }

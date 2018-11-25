@@ -152,7 +152,7 @@ void Inventory::setItem(const int index,
     if (index < 0 || index >= CAST_S32(mSize))
     {
         reportAlways("Warning: invalid inventory index: %d",
-            index);
+            index)
         return;
     }
 
@@ -197,7 +197,7 @@ void Inventory::setCards(const int index,
     if (index < 0 || index >= CAST_S32(mSize))
     {
         reportAlways("Warning: invalid inventory index: %d",
-            index);
+            index)
         return;
     }
 
@@ -212,7 +212,7 @@ void Inventory::setOptions(const int index,
     if (index < 0 || index >= CAST_S32(mSize))
     {
         reportAlways("Warning: invalid inventory index: %d",
-            index);
+            index)
         return;
     }
     Item *const item1 = mItems[index];
@@ -226,7 +226,7 @@ void Inventory::setTag(const int index,
     if (index < 0 || index >= CAST_S32(mSize))
     {
         reportAlways("Warning: invalid inventory index: %d",
-            index);
+            index)
         return;
     }
     Item *const item1 = mItems[index];
@@ -254,7 +254,7 @@ void Inventory::removeItemAt(const int index)
 {
     if (mItems[index] == nullptr)
         return;
-    delete2(mItems[index]);
+    delete2(mItems[index])
     mUsed--;
     if (mUsed < 0)  // Already at 0, no need to distribute event
         mUsed = 0;

@@ -49,7 +49,7 @@ void PETDB::load()
     logger->log1("Initializing PET database...");
     loadXmlFile(paths.getStringValue("petsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("petsPatchFile"), SkipError_true);
-    loadXmlDir("petsPatchDir", loadXmlFile);
+    loadXmlDir("petsPatchDir", loadXmlFile)
     mLoaded = true;
 }
 
@@ -88,7 +88,7 @@ void PETDB::loadXmlFile(const std::string &fileName,
         if (id == BeingTypeId_negOne)
         {
             reportAlways("PET Database: PET with missing ID in %s!",
-                paths.getStringValue("petsFile").c_str());
+                paths.getStringValue("petsFile").c_str())
             continue;
         }
 
@@ -160,7 +160,7 @@ BeingInfo *PETDB::get(const BeingTypeId id)
     if (i == mPETInfos.end())
     {
         reportAlways("PETDB: Warning, unknown PET ID %d requested",
-            toInt(id, int));
+            toInt(id, int))
         return BeingInfo::unknown;
     }
     return i->second;

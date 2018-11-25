@@ -53,7 +53,7 @@ void NPCDB::load()
 
     loadXmlFile(paths.getStringValue("npcsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("npcsPatchFile"), SkipError_true);
-    loadXmlDir("npcsPatchDir", loadXmlFile);
+    loadXmlDir("npcsPatchDir", loadXmlFile)
 
     mLoaded = true;
 }
@@ -92,7 +92,7 @@ void NPCDB::loadXmlFile(const std::string &fileName,
         if (id == BeingTypeId_zero)
         {
             reportAlways("NPC Database: NPC with missing ID in %s!",
-                paths.getStringValue("npcsFile").c_str());
+                paths.getStringValue("npcsFile").c_str())
             continue;
         }
         else if (mNPCInfos.find(id) != mNPCInfos.end())
@@ -127,7 +127,7 @@ void NPCDB::loadXmlFile(const std::string &fileName,
         {
             reportAlways("Not found currency '%s' for npc %d",
                 currency.c_str(),
-                CAST_S32(id));
+                CAST_S32(id))
         }
         currentInfo->setCurrency(currency);
 
@@ -191,7 +191,7 @@ BeingInfo *NPCDB::get(const BeingTypeId id)
     if (i == mNPCInfos.end())
     {
         reportAlways("NPCDB: Warning, unknown NPC ID %d requested",
-            toInt(id, int));
+            toInt(id, int))
         return BeingInfo::unknown;
     }
     return i->second;

@@ -42,7 +42,7 @@ void SoundDB::load()
     logger->log1("Initializing sound database...");
     loadXmlFile(paths.getStringValue("soundsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("soundsPatchFile"), SkipError_true);
-    loadXmlDir("soundsPatchDir", loadXmlFile);
+    loadXmlDir("soundsPatchDir", loadXmlFile)
 }
 
 void SoundDB::loadXmlFile(const std::string &fileName,

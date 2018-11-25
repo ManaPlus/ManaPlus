@@ -572,11 +572,11 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
 
 Setup_Misc::~Setup_Misc()
 {
-    delete2(mProxyTypeList);
-    delete2(mShortcutsList);
-    delete2(mDensityList);
+    delete2(mProxyTypeList)
+    delete2(mShortcutsList)
+    delete2(mDensityList)
 #ifdef USE_SDL2
-    delete2(mSdlLogList);
+    delete2(mSdlLogList)
 #endif  // USE_SDL2
 }
 

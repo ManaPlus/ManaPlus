@@ -132,7 +132,7 @@ void WindowManager::createWindows()
     CREATEWIDGETV0(itemPopup, ItemPopup);
     CREATEWIDGETV0(spellPopup, SpellPopup);
     CREATEWIDGETV0(skillPopup, SkillPopup);
-    delete2(debugChatTab);
+    delete2(debugChatTab)
     if (chatWindow != nullptr)
     {
         chatWindow->scheduleDelete();
@@ -171,34 +171,34 @@ void WindowManager::createValidateWindows()
 void WindowManager::deleteValidateWindows()
 {
 #ifndef DYECMD
-    delete2(skillDialog);
-    delete2(beingEquipmentWindow);
-    delete2(questsWindow);
+    delete2(skillDialog)
+    delete2(beingEquipmentWindow)
+    delete2(questsWindow)
 #endif  // DYECMD
 }
 
 void WindowManager::deleteWindows()
 {
 #ifndef DYECMD
-    delete2(textBoxPopup);
-    delete2(beingPopup);
-    delete2(itemPopup);
-    delete2(spellPopup);
-    delete2(skillPopup);
-    delete2(popupMenu);
-    delete2(didYouKnowWindow);
-    delete2(helpWindow);
-    delete2(setupWindow);
-    delete2(userPalette);
+    delete2(textBoxPopup)
+    delete2(beingPopup)
+    delete2(itemPopup)
+    delete2(spellPopup)
+    delete2(skillPopup)
+    delete2(popupMenu)
+    delete2(didYouKnowWindow)
+    delete2(helpWindow)
+    delete2(setupWindow)
+    delete2(userPalette)
     delete2(spellManager)
     delete2(spellShortcut)
 
-    delete2(debugChatTab);
-    delete2(chatWindow);
-    delete2(debugWindow);
+    delete2(debugChatTab)
+    delete2(chatWindow)
+    delete2(debugWindow)
 #endif  // DYECMD
 
-    delete2(textPopup);
+    delete2(textPopup)
 }
 
 void WindowManager::initTitle()

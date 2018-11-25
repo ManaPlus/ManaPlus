@@ -135,7 +135,7 @@ Slider::~Slider()
     if (gui != nullptr)
         gui->removeDragged(this);
 
-    delete2(mVertexes);
+    delete2(mVertexes)
     mInstances--;
     if (mInstances == 0)
     {

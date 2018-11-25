@@ -297,7 +297,7 @@ ItemContainer::~ItemContainer()
         theme->unload(mSkin);
 
     delete []mShowMatrix;
-    delete2(mVertexes);
+    delete2(mVertexes)
 }
 
 void ItemContainer::logic()
@@ -745,7 +745,7 @@ void ItemContainer::mouseReleased(MouseEvent &event)
         case SEL_SELECTED:
         default:
             break;
-    };
+    }
 
     if (dragDrop.isEmpty())
     {

@@ -60,7 +60,7 @@ void PaletteDB::loadPalette()
     }
     if (*it != "GIMP Palette")
     {
-        reportAlways("wrong GIMP palette file");
+        reportAlways("wrong GIMP palette file")
         return;
     }
     ++ it;

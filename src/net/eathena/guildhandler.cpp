@@ -52,7 +52,7 @@ GuildHandler::GuildHandler() :
 
 GuildHandler::~GuildHandler()
 {
-    delete2(guildTab);
+    delete2(guildTab)
     guildHandler = nullptr;
     taGuild = nullptr;
 }

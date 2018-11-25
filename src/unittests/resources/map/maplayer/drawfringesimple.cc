@@ -492,13 +492,13 @@ TEST_CASE("MapLayer drawFringe simple", "")
         REQUIRE(mock->mDraws[1].image == img2);
     }
 
-    delete2(localPlayer);
+    delete2(localPlayer)
     delete map;
     delete img1;
     delete img2;
     delete img3;
     delete mock;
-    delete2(theme);
+    delete2(theme)
     GraphicsManager::deleteRenderers();
     ResourceManager::cleanOrphans(true);
     ResourceManager::deleteInstance();

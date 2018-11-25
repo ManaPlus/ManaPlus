@@ -175,7 +175,7 @@ EquipmentWindow::~EquipmentWindow()
         mSlotBackground->decRef();
     if (mSlotHighlightedBackground != nullptr)
         mSlotHighlightedBackground->decRef();
-    delete2(mVertexes);
+    delete2(mVertexes)
 }
 
 void EquipmentWindow::draw(Graphics *const graphics)
@@ -751,7 +751,7 @@ void EquipmentWindow::prepareSlotNames()
         const std::string name = XML::getProperty(slotNode, "name", "");
         if (name.empty())
         {
-            reportAlways("Empty slot name detected.");
+            reportAlways("Empty slot name detected.")
             continue;
         }
 
@@ -760,7 +760,7 @@ void EquipmentWindow::prepareSlotNames()
         {
             reportAlways("Wrong slot id '%d' for slot with name '%s'",
                 slot,
-                name.c_str());
+                name.c_str())
             continue;
         }
         mSlotNames[name] = slot;

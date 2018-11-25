@@ -504,7 +504,7 @@ bool Viewport::leftMouseAction()
             case ActorType::Avatar:
             default:
                 reportAlways("Left click on unknown actor type: %d",
-                    CAST_S32(type));
+                    CAST_S32(type))
                 break;
         }
     }

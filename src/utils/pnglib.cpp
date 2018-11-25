@@ -47,7 +47,7 @@ bool PngLib::writePNG(SDL_Surface *const surface,
         nullptr, nullptr, nullptr);
     if (png_ptr == nullptr)
     {
-        reportAlways("Had trouble creating png_structp");
+        reportAlways("Had trouble creating png_structp")
         return false;
     }
 
@@ -55,14 +55,14 @@ bool PngLib::writePNG(SDL_Surface *const surface,
     if (info_ptr == nullptr)
     {
         png_destroy_write_struct(&png_ptr, static_cast<png_infopp>(nullptr));
-        reportAlways("Could not create png_info");
+        reportAlways("Could not create png_info")
         return false;
     }
 
     if (setjmp(png_jmpbuf(png_ptr)))
     {
         png_destroy_write_struct(&png_ptr, &info_ptr);
-        reportAlways("problem writing to %s", filename.c_str());
+        reportAlways("problem writing to %s", filename.c_str())
         return false;
     }
 
@@ -70,7 +70,7 @@ bool PngLib::writePNG(SDL_Surface *const surface,
     if (fp == nullptr)
     {
         reportAlways("could not open file %s for writing",
-            filename.c_str());
+            filename.c_str())
         return false;
     }
 

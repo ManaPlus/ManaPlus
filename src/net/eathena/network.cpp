@@ -133,7 +133,7 @@ void Network::registerFakeHandlers()
         const size_t id = (*it).first;
         if (id >= packet_lengths_size)
         {
-            reportAlways("Wrong fake packet id %d", CAST_S32(id));
+            reportAlways("Wrong fake packet id %d", CAST_S32(id))
             continue;
         }
         if (mPackets[id].len != 0 ||
@@ -159,7 +159,7 @@ void Network::registerFakeHandlers()
         const size_t id = *it;
         if (id >= packet_lengths_size)
         {
-            reportAlways("Wrong remove packet id %d", CAST_S32(id));
+            reportAlways("Wrong remove packet id %d", CAST_S32(id))
             continue;
         }
         if (mPackets[id].len == 0 &&

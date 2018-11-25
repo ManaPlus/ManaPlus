@@ -69,7 +69,7 @@ SDL_RWops *create_rwops(File *const file,
     if (file == nullptr)
     {
         reportAlways("VirtFs::rwops_seek: create rwops error: %s",
-            fname.c_str());
+            fname.c_str())
     }
     else
     {

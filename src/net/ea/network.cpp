@@ -90,9 +90,9 @@ Network::~Network()
     SDL_DestroyMutex(mMutexOut);
     mMutexOut = nullptr;
 
-    delete2Arr(mInBuffer);
-    delete2Arr(mOutBuffer);
-    delete2Arr(mPackets);
+    delete2Arr(mInBuffer)
+    delete2Arr(mOutBuffer)
+    delete2Arr(mPackets)
 
     TcpNet::quit();
 }

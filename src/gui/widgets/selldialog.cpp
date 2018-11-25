@@ -221,7 +221,7 @@ void SellDialog::postInit()
 
 SellDialog::~SellDialog()
 {
-    delete2(mShopItems);
+    delete2(mShopItems)
     instances.remove(this);
 }
 

@@ -79,6 +79,6 @@ ENUMS_RESOURCES_MAP_MAPITEMTYPE_H
     Avatar *ava = nullptr;\
     std::list<std::string> mobs;\
     std::list<std::string>::const_iterator i;\
-    std::list<std::string>::const_iterator i_end;
+    std::list<std::string>::const_iterator i_end
 
 #endif  // GUI_WIDGETS_TABS_SOCIALTABBASE_H

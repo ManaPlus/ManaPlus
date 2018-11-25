@@ -162,7 +162,7 @@ MiniStatusWindow::MiniStatusWindow() :
 
 MiniStatusWindow::~MiniStatusWindow()
 {
-    delete2(mStatusPopup);
+    delete2(mStatusPopup)
     delete_all(mIcons);
     mIcons.clear();
 

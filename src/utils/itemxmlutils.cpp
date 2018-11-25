@@ -81,7 +81,7 @@ void readItemStatsString(std::string &effect,
 {
     if (translator == nullptr)
     {
-        reportAlways("called readItemStatsString without translator");
+        reportAlways("called readItemStatsString without translator")
         return;
     }
 
@@ -102,7 +102,7 @@ void readItemStatsVector(STD_VECTOR<std::string> &effect,
 {
     if (translator == nullptr)
     {
-        reportAlways("called readItemStatsVector without translator");
+        reportAlways("called readItemStatsVector without translator")
         return;
     }
 

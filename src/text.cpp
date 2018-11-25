@@ -114,7 +114,7 @@ Text::~Text()
         textManager->removeText(this);
     if (--mInstances == 0)
     {
-        delete2(textManager);
+        delete2(textManager)
         for (int f = 0; f < 9; f ++)
         {
             if (mBubble.grid[f] != nullptr)

@@ -304,7 +304,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
         if (id == 0)
         {
             reportAlways("ItemDB: Invalid or missing item ID in %s!",
-                fileName.c_str());
+                fileName.c_str())
             continue;
         }
         else if (mItemInfos.find(id) != mItemInfos.end())
@@ -403,7 +403,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             {
                 reportAlways("Inherit item %d from not existing item %d",
                     id,
-                    inherit);
+                    inherit)
             }
         }
 
@@ -682,7 +682,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
             if (attackRange == 0)
             {
                 reportAlways("ItemDB: Missing attack range from weapon %i!",
-                    id);
+                    id)
             }
         }
 
@@ -760,7 +760,7 @@ void ItemDB::unload()
 {
     logger->log1("Unloading item database...");
 
-    delete2(mUnknown);
+    delete2(mUnknown)
 
     delete_all(mItemInfos);
     mItemInfos.clear();
@@ -798,7 +798,7 @@ const ItemInfo &ItemDB::get(const int id)
 
     if (i == mItemInfos.end())
     {
-        reportAlways("ItemDB: Warning, unknown item ID# %d", id);
+        reportAlways("ItemDB: Warning, unknown item ID# %d", id)
         return *mUnknown;
     }
 
@@ -818,7 +818,7 @@ const ItemInfo &ItemDB::get(const std::string &name)
         if (!name.empty())
         {
             reportAlways("ItemDB: Warning, unknown item name \"%s\"",
-                name.c_str());
+                name.c_str())
         }
         return *mUnknown;
     }
@@ -1000,7 +1000,7 @@ static void loadSoundRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
     else
     {
         reportAlways("ItemDB: Ignoring unknown sound event '%s'",
-            event.c_str());
+            event.c_str())
     }
 }
 

@@ -51,7 +51,7 @@ void GroupDb::load()
 
     loadXmlFile(paths.getStringValue("groupsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("groupsPatchFile"), SkipError_true);
-    loadXmlDir("groupsPatchDir", loadXmlFile);
+    loadXmlDir("groupsPatchDir", loadXmlFile)
     mLoaded = true;
 }
 
@@ -75,7 +75,7 @@ static ServerCommandTypeT parseCommand(const std::string &str,
     {
         reportAlways("GroupsDb: unknown command name: '%s' in group id '%d'.",
             str.c_str(),
-            id);
+            id)
     }
 
     return ServerCommandType::Max;
@@ -103,7 +103,7 @@ static ServerPermissionTypeT parsePermission(const std::string &str,
         reportAlways("GroupsDb: unknown permission name: "
             "'%s' in group id '%d'.",
             str.c_str(),
-            id);
+            id)
     }
 
     return ServerPermissionType::Max;
@@ -137,7 +137,7 @@ static ServerCommandEnable::Type parseUseFlag(const std::string &str,
         reportAlways("GroupsDb: unknown use flag: '%s' in group id '%d'."
             "Possible values 'self', 'other', 'both'.",
             str.c_str(),
-            id);
+            id)
         return ServerCommandEnable::No;
     }
 }
@@ -234,7 +234,7 @@ static void parseInherit(XmlNodePtr groupNode,
         {
             reportAlways("Unknown inherit group id '%d' in group '%d'",
                 id2,
-                id);
+                id)
             continue;
         }
         GroupInfo *const groupInfo2 = (*it2).second;
@@ -271,7 +271,7 @@ void GroupDb::loadXmlFile(const std::string &fileName,
         else
         {
             reportAlways("GroupsDb: Error while loading %s!",
-                fileName.c_str());
+                fileName.c_str())
         }
         return;
     }
@@ -292,7 +292,7 @@ void GroupDb::loadXmlFile(const std::string &fileName,
                 -1);
             if (id < 0)
             {
-                reportAlways("Empty id field in GroupDb");
+                reportAlways("Empty id field in GroupDb")
                 continue;
             }
             GroupInfosIter it = mGroups.find(id);
@@ -300,7 +300,7 @@ void GroupDb::loadXmlFile(const std::string &fileName,
             if (it != mGroups.end())
             {
                 reportAlways("GroupDb: group with id %d already added",
-                    id);
+                    id)
                 group = (*it).second;
             }
             else
@@ -345,7 +345,7 @@ const std::string &GroupDb::getName(const int id)
     GroupInfos::const_iterator it = mGroups.find(id);
     if (it == mGroups.end())
     {
-        reportAlways("Unknown group id requested: %d", id);
+        reportAlways("Unknown group id requested: %d", id)
         return mEmptyGroup.name;
     }
     return (*it).second->name;
@@ -356,7 +356,7 @@ const std::string &GroupDb::getLongName(const int id)
     GroupInfos::const_iterator it = mGroups.find(id);
     if (it == mGroups.end())
     {
-        reportAlways("Unknown group id requested: %d", id);
+        reportAlways("Unknown group id requested: %d", id)
         return mEmptyGroup.longName;
     }
     return (*it).second->longName;
@@ -367,7 +367,7 @@ bool GroupDb::getShowBadge(const int id)
     GroupInfos::const_iterator it = mGroups.find(id);
     if (it == mGroups.end())
     {
-        reportAlways("Unknown group id requested: %d", id);
+        reportAlways("Unknown group id requested: %d", id)
         return mEmptyGroup.showBadge;
     }
     return (*it).second->showBadge;
@@ -378,7 +378,7 @@ bool GroupDb::getHighlightName(const int id)
     GroupInfos::const_iterator it = mGroups.find(id);
     if (it == mGroups.end())
     {
-        reportAlways("Unknown group id requested: %d", id);
+        reportAlways("Unknown group id requested: %d", id)
         return mEmptyGroup.highlightName;
     }
     return (*it).second->highlightName;
@@ -389,7 +389,7 @@ const std::string &GroupDb::getBadge(const int id)
     GroupInfos::const_iterator it = mGroups.find(id);
     if (it == mGroups.end())
     {
-        reportAlways("Unknown group id requested: %d", id);
+        reportAlways("Unknown group id requested: %d", id)
         return mEmptyGroup.badge;
     }
     return (*it).second->badge;
@@ -400,7 +400,7 @@ const GroupInfo *GroupDb::getGroup(const int id)
     GroupInfos::const_iterator it = mGroups.find(id);
     if (it == mGroups.end())
     {
-        reportAlways("Unknown group id requested: %d", id);
+        reportAlways("Unknown group id requested: %d", id)
         return &mEmptyGroup;
     }
     return (*it).second;

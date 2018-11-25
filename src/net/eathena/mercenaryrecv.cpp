@@ -47,7 +47,7 @@ namespace EAthena
             PlayerInfo::setStatBase(stat, \
                 val, \
                 Notify_true); \
-            break;
+            break
 
 void MercenaryRecv::processMercenaryUpdate(Net::MessageIn &msg)
 {
@@ -71,7 +71,7 @@ void MercenaryRecv::processMercenaryUpdate(Net::MessageIn &msg)
         setMercStat(Sp::MERCFAITH, Attributes::MERC_FAITH);
         default:
             reportAlways("Unknown mercenary stat %d",
-                sp);
+                sp)
             break;
     }
 }

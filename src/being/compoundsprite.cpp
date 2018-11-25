@@ -290,7 +290,7 @@ void CompoundSprite::removeSprite(const int layer)
     if (mSprites[layer] == nullptr)
         return;
 
-    delete2(mSprites[layer]);
+    delete2(mSprites[layer])
     mNeedsRedraw = true;
 }
 
@@ -305,7 +305,7 @@ void CompoundSprite::clear()
     mNeedsRedraw = true;
     delete_all(imagesCache);
     imagesCache.clear();
-    delete2(mCacheItem);
+    delete2(mCacheItem)
     mLastTime = 0;
 }
 
@@ -368,7 +368,7 @@ void CompoundSprite::redraw() const
 
     drawSpritesSDL(graphics, posX, posY);
 
-    delete2(graphics);
+    delete2(graphics)
 
     SDL_SetAlpha(surface, 0, SDL_ALPHA_OPAQUE);
 

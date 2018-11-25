@@ -52,7 +52,7 @@ StatusEffect *StatusEffectDB::getStatusEffect(const int index,
     if (it != effects.end())
         return (*it).second;
     reportAlways("Missing status effect: %d",
-        index);
+        index)
     return nullptr;
 }
 
@@ -66,7 +66,7 @@ void StatusEffectDB::load()
     loadXmlFile(paths.getStringValue("statusEffectsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("statusEffectsPatchFile"),
         SkipError_true);
-    loadXmlDir("statusEffectsPatchDir", loadXmlFile);
+    loadXmlDir("statusEffectsPatchDir", loadXmlFile)
 
     mLoaded = true;
 }

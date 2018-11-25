@@ -83,10 +83,10 @@ ClanWindow::ClanWindow() :
 
 ClanWindow::~ClanWindow()
 {
-    delete2(mInfoWidget);
-    delete2(mStatsWidget);
-    delete2(mAllyWidget);
-    delete2(mAntagonistWidget);
+    delete2(mInfoWidget)
+    delete2(mStatsWidget)
+    delete2(mAllyWidget)
+    delete2(mAntagonistWidget)
 }
 
 void ClanWindow::postInit()

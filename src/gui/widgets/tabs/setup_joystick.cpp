@@ -105,7 +105,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
 
 Setup_Joystick::~Setup_Joystick()
 {
-    delete2(mNamesModel);
+    delete2(mNamesModel)
 }
 
 void Setup_Joystick::action(const ActionEvent &event)

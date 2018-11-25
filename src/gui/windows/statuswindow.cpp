@@ -231,7 +231,7 @@ StatusWindow::StatusWindow() :
 
 StatusWindow::~StatusWindow()
 {
-    delete2(mBasicStatsPage);
+    delete2(mBasicStatsPage)
     delete_all(mPages);
 }
 

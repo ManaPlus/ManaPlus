@@ -256,25 +256,25 @@ NpcDialog::~NpcDialog()
 
     deleteSkinControls();
 
-    delete2(mTextBox);
-    delete2(mClearButton);
-    delete2(mButton);
-    delete2(mButton2);
-    delete2(mButton3);
-    delete2(mScrollArea);
-    delete2(mItemList);
-    delete2(mTextField);
-    delete2(mIntField);
-    delete2(mResetButton);
-    delete2(mPlusButton);
-    delete2(mMinusButton);
-    delete2(mItemLinkHandler);
-    delete2(mItemContainer);
-    delete2(mInventory);
-    delete2(mComplexInventory);
-    delete2(mItemScrollArea);
-    delete2(mListScrollArea);
-    delete2(mSkinScrollArea);
+    delete2(mTextBox)
+    delete2(mClearButton)
+    delete2(mButton)
+    delete2(mButton2)
+    delete2(mButton3)
+    delete2(mScrollArea)
+    delete2(mItemList)
+    delete2(mTextField)
+    delete2(mIntField)
+    delete2(mResetButton)
+    delete2(mPlusButton)
+    delete2(mMinusButton)
+    delete2(mItemLinkHandler)
+    delete2(mItemContainer)
+    delete2(mInventory)
+    delete2(mComplexInventory)
+    delete2(mItemScrollArea)
+    delete2(mListScrollArea)
+    delete2(mSkinScrollArea)
 
     FOR_EACH (ImageVectorIter, it, mImages)
     {

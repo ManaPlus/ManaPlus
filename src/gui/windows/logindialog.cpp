@@ -224,8 +224,8 @@ LoginDialog::~LoginDialog()
     if (mUpdateHostDropDown != nullptr)
         mUpdateHostDropDown->hideDrop(false);
 
-    delete2(mUpdateTypeModel);
-    delete2(mUpdateListModel);
+    delete2(mUpdateTypeModel)
+    delete2(mUpdateListModel)
 }
 
 void LoginDialog::action(const ActionEvent &event)

@@ -238,7 +238,7 @@ LocalPlayer::~LocalPlayer()
         soundManager.volumeRestore();
         delete2(mAwayDialog)
     }
-    delete2(mAwayListener);
+    delete2(mAwayListener)
 }
 
 void LocalPlayer::logic()
@@ -404,7 +404,7 @@ void LocalPlayer::setAction(const BeingActionT &action,
         {
             // TRANSLATORS: chat message after death
             debugMsg(strprintf(_("You were killed by %s."),
-                mLastHitFrom.c_str()));
+                mLastHitFrom.c_str()))
             mLastHitFrom.clear();
         }
         setTarget(nullptr);
@@ -2340,12 +2340,12 @@ void LocalPlayer::setFollow(const std::string &player)
     {
         // TRANSLATORS: follow command message
         std::string msg = strprintf(_("Follow: %s"), player.c_str());
-        debugMsg(msg);
+        debugMsg(msg)
     }
     else
     {
         // TRANSLATORS: follow command message
-        debugMsg(_("Follow canceled"));
+        debugMsg(_("Follow canceled"))
     }
 }
 
@@ -2356,12 +2356,12 @@ void LocalPlayer::setImitate(const std::string &player)
     {
         // TRANSLATORS: imitate command message
         std::string msg = strprintf(_("Imitation: %s"), player.c_str());
-        debugMsg(msg);
+        debugMsg(msg)
     }
     else
     {
         // TRANSLATORS: imitate command message
-        debugMsg(_("Imitation canceled"));
+        debugMsg(_("Imitation canceled"))
     }
 }
 
@@ -2370,12 +2370,12 @@ void LocalPlayer::cancelFollow()
     if (!mPlayerFollowed.empty())
     {
         // TRANSLATORS: cancel follow message
-        debugMsg(_("Follow canceled"));
+        debugMsg(_("Follow canceled"))
     }
     if (!mPlayerImitated.empty())
     {
         // TRANSLATORS: cancel follow message
-        debugMsg(_("Imitation canceled"));
+        debugMsg(_("Imitation canceled"))
     }
     mPlayerFollowed.clear();
     mPlayerImitated.clear();
@@ -2733,7 +2733,7 @@ void LocalPlayer::checkNewName(Being *const being)
     if (!mWaitFor.empty() && mWaitFor == nick)
     {
         // TRANSLATORS: wait player/monster message
-        debugMsg(strprintf(_("You see %s"), mWaitFor.c_str()));
+        debugMsg(strprintf(_("You see %s"), mWaitFor.c_str()))
         soundManager.playGuiSound(SOUND_INFO);
         mWaitFor.clear();
     }

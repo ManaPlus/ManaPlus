@@ -67,7 +67,7 @@ namespace
             if (rw == nullptr)
             {
                 delete d;
-                reportAlways("Image loading error: %s", path1.c_str());
+                reportAlways("Image loading error: %s", path1.c_str())
                 BLOCK_END("DyedImageLoader::load")
                 return nullptr;
             }
@@ -75,7 +75,7 @@ namespace
                 : imageHelper->load(rw);
             delete d;
             if (res == nullptr)
-                reportAlways("Image loading error: %s", path1.c_str());
+                reportAlways("Image loading error: %s", path1.c_str())
             BLOCK_END("DyedImageLoader::load")
             return res;
         }

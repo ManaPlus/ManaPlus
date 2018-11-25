@@ -113,6 +113,6 @@ Setup_Quick::Setup_Quick(const Widget2 *const widget) :
 
 Setup_Quick::~Setup_Quick()
 {
-    delete2(mMoveTypeList);
-    delete2(mCrazyMoveTypeList);
+    delete2(mMoveTypeList)
+    delete2(mCrazyMoveTypeList)
 }

@@ -139,7 +139,7 @@ void prepareFsPath(std::string &path)
     {
         reportAlways("Path can be improved: '%s' -> '%s'",
             path2.c_str(),
-            path.c_str());
+            path.c_str())
     }
 #endif
 }

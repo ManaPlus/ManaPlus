@@ -128,7 +128,7 @@ void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
                            const int profile)
 {
     SDL_SysWMinfo info;
-    SDL_VERSION(&info.version);
+    SDL_VERSION(&info.version)
     SDL_GetWMInfo(&info);
     void *context = GlxHelper::createContext(info.info.x11.window,
         info.info.x11.display, major, minor, profile);
@@ -162,7 +162,7 @@ void *SDL::createGLContext(SDL_Surface *const window A_UNUSED,
 void SDL::makeCurrentContext(void *const context)
 {
     SDL_SysWMinfo info;
-    SDL_VERSION(&info.version);
+    SDL_VERSION(&info.version)
     SDL_GetWMInfo(&info);
     GlxHelper::makeCurrent(info.info.x11.window,
         info.info.x11.display,

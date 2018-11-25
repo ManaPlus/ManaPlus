@@ -685,9 +685,9 @@ TEST_CASE("resourcemanager", "resourcemanager")
         REQUIRE(ResourceManager::getDeletedResources().empty() == true);
     }
 
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
 }

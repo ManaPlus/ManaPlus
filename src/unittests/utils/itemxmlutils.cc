@@ -211,9 +211,9 @@ TEST_CASE("itemxmlutils readItemStatsString 1", "")
     {
         delete (*it).second;
     }
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");
@@ -413,9 +413,9 @@ TEST_CASE("itemxmlutils readItemStatsVector 1", "")
     {
         delete (*it).second;
     }
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");

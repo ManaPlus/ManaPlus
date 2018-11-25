@@ -51,7 +51,7 @@ namespace
                 = static_cast<const ShaderLoader *>(v);
             Shader *const resource = shaders.createShader(rl->type, rl->name);
             if (resource == nullptr)
-                reportAlways("Shader creation error: %s", rl->name.c_str());
+                reportAlways("Shader creation error: %s", rl->name.c_str())
             return resource;
         }
     };

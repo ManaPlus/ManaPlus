@@ -60,13 +60,13 @@ CastingEffect::CastingEffect(const int skillId,
         reportAlways("Skill %d/%d casting animation '%s' load failed",
             skillId,
             skillLevel,
-            animation.c_str());
+            animation.c_str())
     }
 }
 
 CastingEffect::~CastingEffect()
 {
-    delete2(mSprite);
+    delete2(mSprite)
 }
 
 void CastingEffect::draw(Graphics *const graphics,

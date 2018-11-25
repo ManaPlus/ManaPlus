@@ -192,7 +192,7 @@ TEST_CASE("AnimatedSprite tests", "animatedsprite")
         delete sprite2;
     }
 
-    delete2(client);
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
 }

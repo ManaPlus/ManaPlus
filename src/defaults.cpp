@@ -84,7 +84,7 @@ VariableData* createData(const bool defData)
 
 #define AddDEF(key, value)  \
     configData.insert(std::pair<std::string, VariableData*> \
-    (key, createData(value)));
+        (key, createData(value)))
 
 void setConfigDefaults(Configuration &cfg)
 {

@@ -49,7 +49,7 @@ void SkillUnitDb::load()
     logger->log1("Initializing skill unit database...");
     loadXmlFile(paths.getStringValue("skillUnitsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("skillUnitsPatchFile"), SkipError_true);
-    loadXmlDir("skillUnitsPatchDir", loadXmlFile);
+    loadXmlDir("skillUnitsPatchDir", loadXmlFile)
     mLoaded = true;
 }
 
@@ -87,7 +87,7 @@ void SkillUnitDb::loadXmlFile(const std::string &fileName,
         if (id == BeingTypeId_negOne)
         {
             reportAlways("SkillUnitDb: skill unit with missing ID in %s!",
-                paths.getStringValue("skillUnitsFile").c_str());
+                paths.getStringValue("skillUnitsFile").c_str())
             continue;
         }
 
@@ -154,7 +154,7 @@ BeingInfo *SkillUnitDb::get(const BeingTypeId id)
     {
         reportAlways("SkillUnitDb: Warning, unknown skill unit id "
             "%d requested",
-            toInt(id, int));
+            toInt(id, int))
         return BeingInfo::unknown;
     }
     return i->second;

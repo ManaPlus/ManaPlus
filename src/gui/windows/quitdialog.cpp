@@ -133,10 +133,10 @@ QuitDialog::~QuitDialog()
 {
     if (mMyPointer != nullptr)
         *mMyPointer = nullptr;
-    delete2(mForceQuit);
-    delete2(mLogoutQuit);
-    delete2(mSwitchAccountServer);
-    delete2(mSwitchCharacter);
+    delete2(mForceQuit)
+    delete2(mLogoutQuit)
+    delete2(mSwitchAccountServer)
+    delete2(mSwitchCharacter)
 }
 
 void QuitDialog::placeOption(ContainerPlacer &placer,

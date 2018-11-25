@@ -45,7 +45,7 @@ void ModDB::load()
     logger->log1("Initializing mod database...");
     loadXmlFile(paths.getStringValue("modsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("modsPatchFile"), SkipError_true);
-    loadXmlDir("modsPatchDir", loadXmlFile);
+    loadXmlDir("modsPatchDir", loadXmlFile)
     mLoaded = true;
 }
 

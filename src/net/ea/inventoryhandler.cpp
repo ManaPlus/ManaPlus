@@ -52,12 +52,12 @@ InventoryHandler::~InventoryHandler()
         storageWindow = nullptr;
     }
 
-    delete2(InventoryRecv::mStorage);
+    delete2(InventoryRecv::mStorage)
 }
 
 void InventoryHandler::clear() const
 {
-    delete2(InventoryRecv::mStorage);
+    delete2(InventoryRecv::mStorage)
 }
 
 bool InventoryHandler::canSplit(const Item *const item A_UNUSED) const

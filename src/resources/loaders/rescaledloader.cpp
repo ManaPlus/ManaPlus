@@ -53,7 +53,7 @@ namespace
             if (rescaled == nullptr)
             {
                 reportAlways("Rescale image failed: %s",
-                    rl->image->mIdPath.c_str());
+                    rl->image->mIdPath.c_str())
                 return nullptr;
             }
             return rescaled;

@@ -104,14 +104,14 @@ void Mail2Recv::processAddItemResult(Net::MessageIn &msg)
 
     if (mailEditWindow == nullptr)
     {
-        reportAlways("Mail edit window not created");
+        reportAlways("Mail edit window not created")
         delete options;
         return;
     }
     Inventory *const inventory = mailEditWindow->getInventory();
     if (inventory == nullptr)
     {
-        reportAlways("Mail edit window inventory not exists");
+        reportAlways("Mail edit window inventory not exists")
         delete options;
         return;
     }
@@ -189,7 +189,7 @@ void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)
         const Inventory *const inv = PlayerInfo::getInventory();
         if (inv == nullptr)
         {
-            reportAlways("Player inventory not exists");
+            reportAlways("Player inventory not exists")
             return;
         }
         std::string itemName;
@@ -211,25 +211,25 @@ void Mail2Recv::processRemoveItemResult(Net::MessageIn &msg)
     }
     if (mailEditWindow == nullptr)
     {
-        reportAlways("Mail edit window not created");
+        reportAlways("Mail edit window not created")
         return;
     }
     Inventory *const inventory = mailEditWindow->getInventory();
     if (inventory == nullptr)
     {
-        reportAlways("Mail edit window inventory not exists");
+        reportAlways("Mail edit window inventory not exists")
         return;
     }
     const int index2 = inventory->findIndexByTag(index);
     if (index2 == -1)
     {
-        reportAlways("Item not exists in mail edit window.");
+        reportAlways("Item not exists in mail edit window.")
         return;
     }
     Item *const item = inventory->getItem(index2);
     if (item == nullptr)
     {
-        reportAlways("Item not exists.");
+        reportAlways("Item not exists.")
         return;
     }
 
@@ -248,7 +248,7 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
     if (mMailQueue.empty())
     {
         reportAlways("Mail2Recv::processCheckNameResult no names in queue."
-            "Char id: %d", charId);
+            "Char id: %d", charId)
         return;
     }
     MailQueue *const mail = mMailQueue.front();
@@ -272,7 +272,7 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
         case MailQueueType::EditMail:
             if (mailWindow == nullptr)
             {
-                reportAlways("Mail window not created");
+                reportAlways("Mail window not created")
             }
             else
             {
@@ -282,7 +282,7 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
         case MailQueueType::ValidateTo:
             if (mailEditWindow == nullptr)
             {
-                reportAlways("Mail edit window not created");
+                reportAlways("Mail edit window not created")
             }
             else
             {
@@ -291,7 +291,7 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
             break;
         case MailQueueType::Unknown:
         default:
-            reportAlways("Not implemented yet.");
+            reportAlways("Not implemented yet.")
             break;
     }
     delete mail;
@@ -329,7 +329,7 @@ void Mail2Recv::processMailListPage(Net::MessageIn &msg)
 {
     if (mailWindow == nullptr)
     {
-        reportAlways("mail window not created");
+        reportAlways("mail window not created")
         return;
     }
     msg.readInt16("len");
@@ -405,7 +405,7 @@ void Mail2Recv::processReadMail(Net::MessageIn &msg)
 
     if (mail == nullptr)
     {
-        reportAlways("Mail message not found");
+        reportAlways("Mail message not found")
         for (int f = 0; f < itemsCount; f ++)
         {
             msg.readInt16("amount");
@@ -490,7 +490,7 @@ void Mail2Recv::processMailDelete(Net::MessageIn &msg)
     const int64_t mailId = msg.readInt64("mail id");
     if (mailWindow == nullptr)
     {
-        reportAlways("Mail window not created.");
+        reportAlways("Mail window not created.")
         return;
     }
     mailWindow->removeMail(mailId);

@@ -166,11 +166,11 @@ SocialWindow::~SocialWindow()
 
         mPartyInviter.clear();
     }
-    delete2(mPlayers);
-    delete2(mNavigation);
-    delete2(mAttackFilter);
-    delete2(mPickupFilter);
-    delete2(mFriends);
+    delete2(mPlayers)
+    delete2(mNavigation)
+    delete2(mAttackFilter)
+    delete2(mPickupFilter)
+    delete2(mFriends)
     FOR_EACH (GuildMap::iterator, it, mGuilds)
     {
         delete (*it).second;

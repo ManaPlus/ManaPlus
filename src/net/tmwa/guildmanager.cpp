@@ -66,7 +66,7 @@ GuildManager::GuildManager() :
 
 GuildManager::~GuildManager()
 {
-    delete2(mTab);
+    delete2(mTab)
 }
 
 void GuildManager::init()
@@ -90,7 +90,7 @@ void GuildManager::init()
     }
     else if (guildManager != nullptr)
     {
-        delete2(guildManager);
+        delete2(guildManager)
     }
 }
 
@@ -112,7 +112,7 @@ void GuildManager::reload()
         if ((guild != nullptr) && (socialWindow != nullptr))
             socialWindow->removeTab(guild);
     }
-    delete2(mTab);
+    delete2(mTab)
 }
 
 void GuildManager::send(const std::string &msg)
@@ -528,7 +528,7 @@ bool GuildManager::afterRemove()
         localPlayer->clearGuilds();
     }
     NotifyManager::notify(NotifyTypes::GUILD_LEFT);
-    delete2(mTab);
+    delete2(mTab)
 
     if (socialWindow != nullptr)
         socialWindow->removeTab(guild);

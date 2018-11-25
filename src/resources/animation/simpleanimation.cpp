@@ -67,7 +67,7 @@ SimpleAnimation::SimpleAnimation(XmlNodeConstPtr animationNode,
 
 SimpleAnimation::~SimpleAnimation()
 {
-    delete2(mAnimation);
+    delete2(mAnimation)
     if (mImageSet != nullptr)
     {
         mImageSet->decRef();
@@ -185,7 +185,7 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
 
             if (index < 0)
             {
-                reportAlways("No valid value for 'index'");
+                reportAlways("No valid value for 'index'")
                 continue;
             }
 
@@ -193,7 +193,7 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
 
             if (img == nullptr)
             {
-                reportAlways("No image at index %d", index);
+                reportAlways("No image at index %d", index)
                 continue;
             }
 
@@ -207,7 +207,7 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
 
             if (start < 0 || end < 0)
             {
-                reportAlways("No valid value for 'start' or 'end'");
+                reportAlways("No valid value for 'start' or 'end'")
                 continue;
             }
 
@@ -217,7 +217,7 @@ void SimpleAnimation::initializeAnimation(XmlNodeConstPtr animationNode,
 
                 if (img == nullptr)
                 {
-                    reportAlways("No image at index %d", start);
+                    reportAlways("No image at index %d", start)
                     continue;
                 }
 

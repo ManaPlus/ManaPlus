@@ -117,7 +117,7 @@ void PartyRecv::processPartyMemberJobLevel(Net::MessageIn &msg)
     }
     else
     {
-        reportAlways("processPartyMemberJobLevel: party member not exists.");
+        reportAlways("processPartyMemberJobLevel: party member not exists.")
     }
 }
 

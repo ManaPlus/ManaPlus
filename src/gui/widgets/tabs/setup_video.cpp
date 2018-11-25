@@ -217,10 +217,10 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
 
 Setup_Video::~Setup_Video()
 {
-    delete2(mModeListModel);
-    delete2(mModeList);
-    delete2(mOpenGLListModel);
-    delete2(mDialog);
+    delete2(mModeListModel)
+    delete2(mModeList)
+    delete2(mOpenGLListModel)
+    delete2(mDialog)
 }
 
 void Setup_Video::apply()

@@ -346,16 +346,16 @@ Being::~Being()
     mSpriteDraw = nullptr;
 
     for_each_badges()
-        delete2(mBadges[f]);
+        delete2(mBadges[f])
 
-    delete2(mSpeechBubble);
-    delete2(mDispName);
-    delete2(mText);
-    delete2(mEmotionSprite);
-    delete2(mAnimationEffect);
-    delete2(mCastingEffect);
+    delete2(mSpeechBubble)
+    delete2(mDispName)
+    delete2(mText)
+    delete2(mEmotionSprite)
+    delete2(mAnimationEffect)
+    delete2(mCastingEffect)
     mBadgesCount = 0;
-    delete2(mChat);
+    delete2(mChat)
     removeHorse();
 
     removeAllItemsParticles();
@@ -509,7 +509,7 @@ void Being::setSubtype(const BeingTypeId subtype,
         case ActorType::FloorItem:
         default:
             reportAlways("Wrong being type %d in setSubType",
-                CAST_S32(mType));
+                CAST_S32(mType))
             break;
     }
 }
@@ -1117,7 +1117,7 @@ void Being::handleSkill(Being *restrict const victim,
 
 void Being::showNameBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Name]);
+    delete2(mBadges[BadgeIndex::Name])
     if (show &&
         !mName.empty() &&
         mShowBadges != BadgeDrawType::Hide)
@@ -1177,7 +1177,7 @@ void Being::setShowName(const bool doShowName) restrict2
 
 void Being::showGuildBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Guild]);
+    delete2(mBadges[BadgeIndex::Guild])
     if (show &&
         !mGuildName.empty() &&
         mShowBadges != BadgeDrawType::Hide)
@@ -1204,7 +1204,7 @@ void Being::setGuildName(const std::string &restrict name) restrict2
 
 void Being::showClanBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Clan]);
+    delete2(mBadges[BadgeIndex::Clan])
     if (show &&
         !mClanName.empty() &&
         mShowBadges != BadgeDrawType::Hide)
@@ -1860,7 +1860,7 @@ void Being::logic() restrict2
     if (A_UNLIKELY(mCastEndTime != 0 && mCastEndTime < tick_time))
     {
         mCastEndTime = 0;
-        delete2(mCastingEffect);
+        delete2(mCastingEffect)
     }
 
     if (A_UNLIKELY(mAnimationEffect))
@@ -2580,7 +2580,7 @@ void Being::showName() restrict2
     if (mName.empty())
         return;
 
-    delete2(mDispName);
+    delete2(mDispName)
 
     if (mHideErased && playerRelations.getRelation(mName) == Relation::ERASED)
         return;
@@ -3645,7 +3645,7 @@ void Being::setGender(const GenderT gender) restrict2
 
 void Being::showGmBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Gm]);
+    delete2(mBadges[BadgeIndex::Gm])
     if (show &&
         mIsGM &&
         mShowBadges != BadgeDrawType::Hide &&
@@ -4945,7 +4945,7 @@ void Being::removeSpecialEffect() restrict2
         mChildParticleEffects.removeLocally(mSpecialParticle);
         mSpecialParticle = nullptr;
     }
-    delete2(mAnimationEffect);
+    delete2(mAnimationEffect)
 }
 
 void Being::updateAwayEffect() restrict2
@@ -5023,7 +5023,7 @@ void Being::setTileCoords(const int x, const int y) restrict2
 void Being::setMap(Map *restrict const map) restrict2
 {
     mCastEndTime = 0;
-    delete2(mCastingEffect);
+    delete2(mCastingEffect)
     ActorSprite::setMap(map);
     if (mMap != nullptr)
     {
@@ -5196,7 +5196,7 @@ void Being::setTeamId(const uint16_t teamId) restrict2
 
 void Being::showTeamBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Team]);
+    delete2(mBadges[BadgeIndex::Team])
     if (show &&
         mTeamId != 0U &&
         mShowBadges != BadgeDrawType::Hide)
@@ -5225,7 +5225,7 @@ void Being::showBadges(const bool show) restrict2
 
 void Being::showPartyBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Party]);
+    delete2(mBadges[BadgeIndex::Party])
     if (show &&
         !mPartyName.empty() &&
         mShowBadges != BadgeDrawType::Hide)
@@ -5254,7 +5254,7 @@ void Being::setPartyName(const std::string &restrict name) restrict2
 
 void Being::showShopBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Shop]);
+    delete2(mBadges[BadgeIndex::Shop])
     if (show &&
         mShop &&
         mShowBadges != BadgeDrawType::Hide)
@@ -5273,7 +5273,7 @@ void Being::showShopBadge(const bool show) restrict2
 
 void Being::showInactiveBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Inactive]);
+    delete2(mBadges[BadgeIndex::Inactive])
     if (show &&
         mInactive &&
         mShowBadges != BadgeDrawType::Hide)
@@ -5292,7 +5292,7 @@ void Being::showInactiveBadge(const bool show) restrict2
 
 void Being::showAwayBadge(const bool show) restrict2
 {
-    delete2(mBadges[BadgeIndex::Away]);
+    delete2(mBadges[BadgeIndex::Away])
     if (show &&
         mAway &&
         mShowBadges != BadgeDrawType::Hide)
@@ -5382,7 +5382,7 @@ void Being::addCast(const int dstX,
     SkillData *const data = skillDialog->getSkillDataByLevel(
         skillId,
         skillLevel);
-    delete2(mCastingEffect);
+    delete2(mCastingEffect)
     if (data != nullptr)
     {
         const std::string castingAnimation = data->castingAnimation;
@@ -5397,7 +5397,7 @@ void Being::addCast(const int dstX,
     else
     {
         reportAlways("Want to draw casting for unknown skill %d",
-            skillId);
+            skillId)
     }
 }
 
@@ -5556,7 +5556,7 @@ void Being::setLanguageId(const int lang) restrict2 noexcept2
 {
     if (lang != mLanguageId)
     {
-        delete2(mBadges[BadgeIndex::Lang]);
+        delete2(mBadges[BadgeIndex::Lang])
         const std::string &badge = LanguageDb::getIcon(lang);
         if (!badge.empty())
         {

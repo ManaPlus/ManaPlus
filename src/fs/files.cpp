@@ -236,7 +236,7 @@ bool Files::loadTextFileLocal(const std::string &fileName,
     if (!file.is_open())
     {
         reportAlways("Couldn't load text file: %s",
-            fileName.c_str());
+            fileName.c_str())
         return false;
     }
 
@@ -262,7 +262,7 @@ void Files::saveTextFile(const std::string &path,
         else
         {
             reportAlways("Error opening file for writing: %s",
-                fileName.c_str());
+                fileName.c_str())
         }
         file.close();
     }

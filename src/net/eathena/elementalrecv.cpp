@@ -38,7 +38,7 @@ namespace EAthena
             PlayerInfo::setStatBase(stat, \
                 val, \
                 Notify_true); \
-            break;
+            break
 
 void ElementalRecv::processElementalUpdateStatus(Net::MessageIn &msg)
 {
@@ -52,7 +52,7 @@ void ElementalRecv::processElementalUpdateStatus(Net::MessageIn &msg)
         setElementalStat(Sp::MAXSP, Attributes::ELEMENTAL_MAX_MP);
         default:
             reportAlways("Unknown elemental stat %d",
-                sp);
+                sp)
             break;
     }
 }

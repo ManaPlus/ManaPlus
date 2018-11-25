@@ -57,7 +57,7 @@ namespace
             if (res == nullptr)
             {
                 reportAlways("SubImage loading error: %s",
-                    rl->parent->mSource.c_str());
+                    rl->parent->mSource.c_str())
             }
             return res;
         }

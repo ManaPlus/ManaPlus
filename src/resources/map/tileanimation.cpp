@@ -40,7 +40,7 @@ TileAnimation::TileAnimation(Animation *const ani) :
 
 TileAnimation::~TileAnimation()
 {
-    delete2(mAnimation);
+    delete2(mAnimation)
 }
 
 bool TileAnimation::update(const int ticks)

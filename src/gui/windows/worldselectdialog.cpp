@@ -96,7 +96,7 @@ void WorldSelectDialog::postInit()
 
 WorldSelectDialog::~WorldSelectDialog()
 {
-    delete2(mWorldListModel);
+    delete2(mWorldListModel)
 }
 
 void WorldSelectDialog::action(const ActionEvent &event)

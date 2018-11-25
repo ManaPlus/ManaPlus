@@ -126,46 +126,46 @@ GeneralHandler::GeneralHandler() :
 
 GeneralHandler::~GeneralHandler()
 {
-    delete2(Network::mInstance);
+    delete2(Network::mInstance)
 
-    delete2(mAdminHandler);
-    delete2(mBeingHandler);
-    delete2(mBuySellHandler);
-    delete2(mCharServerHandler);
-    delete2(mChatHandler);
-    delete2(mClanHandler);
-    delete2(mGameHandler);
-    delete2(mGuildHandler);
-    delete2(mInventoryHandler);
-    delete2(mItemHandler);
-    delete2(mLoginHandler);
-    delete2(mNpcHandler);
-    delete2(mPartyHandler);
-    delete2(mPetHandler);
-    delete2(mPlayerHandler);
-    delete2(mSkillHandler);
-    delete2(mTradeHandler);
-    delete2(mQuestHandler);
-    delete2(mServerFeatures);
-    delete2(mMail2Handler);
-    delete2(mMailHandler);
-    delete2(mAuctionHandler);
-    delete2(mAchievementHandler);
-    delete2(mAttendanceHandler);
-    delete2(mCashShopHandler);
-    delete2(mFamilyHandler);
-    delete2(mBankHandler);
-    delete2(mBattleGroundHandler);
-    delete2(mMercenaryHandler);
-    delete2(mBuyingStoreHandler);
-    delete2(mHomunculusHandler);
-    delete2(mFriendsHandler);
-    delete2(mElementalHandler);
-    delete2(mMapHandler);
-    delete2(mMarketHandler);
-    delete2(mVendingHandler);
-    delete2(mRouletteHandler);
-    delete2(mSearchStoreHandler);
+    delete2(mAdminHandler)
+    delete2(mBeingHandler)
+    delete2(mBuySellHandler)
+    delete2(mCharServerHandler)
+    delete2(mChatHandler)
+    delete2(mClanHandler)
+    delete2(mGameHandler)
+    delete2(mGuildHandler)
+    delete2(mInventoryHandler)
+    delete2(mItemHandler)
+    delete2(mLoginHandler)
+    delete2(mNpcHandler)
+    delete2(mPartyHandler)
+    delete2(mPetHandler)
+    delete2(mPlayerHandler)
+    delete2(mSkillHandler)
+    delete2(mTradeHandler)
+    delete2(mQuestHandler)
+    delete2(mServerFeatures)
+    delete2(mMail2Handler)
+    delete2(mMailHandler)
+    delete2(mAuctionHandler)
+    delete2(mAchievementHandler)
+    delete2(mAttendanceHandler)
+    delete2(mCashShopHandler)
+    delete2(mFamilyHandler)
+    delete2(mBankHandler)
+    delete2(mBattleGroundHandler)
+    delete2(mMercenaryHandler)
+    delete2(mBuyingStoreHandler)
+    delete2(mHomunculusHandler)
+    delete2(mFriendsHandler)
+    delete2(mElementalHandler)
+    delete2(mMapHandler)
+    delete2(mMarketHandler)
+    delete2(mVendingHandler)
+    delete2(mRouletteHandler)
+    delete2(mSearchStoreHandler)
 }
 
 void GeneralHandler::load() const
@@ -249,9 +249,9 @@ void GeneralHandler::gameEnded() const
         socialWindow->removeTab(Ea::taParty);
     }
 
-    delete2(guildTab);
-    delete2(partyTab);
-    delete2(clanTab);
+    delete2(guildTab)
+    delete2(partyTab)
+    delete2(clanTab)
 }
 
 }  // namespace EAthena

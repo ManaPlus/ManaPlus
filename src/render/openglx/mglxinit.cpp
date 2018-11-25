@@ -30,13 +30,13 @@
 
 void Glx::initFunctions()
 {
-    assignFunction(glXCreateContext);
-    assignFunction(glXGetCurrentContext);
-    assignFunctionARB(glXCreateContextAttribs);
-    assignFunction(glXChooseFBConfig);
-    assignFunction(glXDestroyContext);
-    assignFunction(glXMakeCurrent);
-    assignFunction(glXSwapBuffers);
+    assignFunction(glXCreateContext)
+    assignFunction(glXGetCurrentContext)
+    assignFunctionARB(glXCreateContextAttribs)
+    assignFunction(glXChooseFBConfig)
+    assignFunction(glXDestroyContext)
+    assignFunction(glXMakeCurrent)
+    assignFunction(glXSwapBuffers)
 }
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)

@@ -352,8 +352,8 @@ TEST_CASE("integrity tests", "integrity")
 
     ResourceManager::cleanOrphans(true);
 
-    delete2(userPalette);
-    delete2(client);
+    delete2(userPalette)
+    delete2(client)
 
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");

@@ -185,7 +185,7 @@ TEST_CASE("StaticBrowserBox tests", "browserbox")
     delete Widget::getGloablFont();
     Widget::setGlobalFont(nullptr);
     delete box;
-    delete2(client);
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
 }

@@ -67,7 +67,7 @@ void ColorDB::load()
         SkipError_false);
     loadColorLists(paths.getStringValue("itemColorsPatchFile"),
         SkipError_true);
-    loadXmlDir("itemColorsPatchDir", loadColorLists);
+    loadXmlDir("itemColorsPatchDir", loadColorLists)
 
     it = mColorLists.find("hair");
     if (it != mColorLists.end())
@@ -95,7 +95,7 @@ void ColorDB::loadHair(const std::string &fileName,
         return;
     }
 
-    reportAlways("Found legacy hair.xml");
+    reportAlways("Found legacy hair.xml")
     for_each_xml_child_node(node, root)
     {
         if (xmlNameEqual(node, "include"))
@@ -113,7 +113,7 @@ void ColorDB::loadHair(const std::string &fileName,
             if (colors.find(id) != colors.end())
             {
                 reportAlways("ColorDB: Redefinition of dye ID %d",
-                    toInt(id, int));
+                    toInt(id, int))
             }
 
             colors[id] = ItemColorData(id, XML::langProperty(node, "name", ""),
@@ -194,7 +194,7 @@ std::string &ColorDB::getHairColorName(const ItemColor id)
     const ColorListsIterator it = mColorLists.find("hair");
     if (it == mColorLists.end())
     {
-        reportAlways("ColorDB: Error, hair colors list empty");
+        reportAlways("ColorDB: Error, hair colors list empty")
         return mFail;
     }
 
@@ -203,7 +203,7 @@ std::string &ColorDB::getHairColorName(const ItemColor id)
     if (i == (*it).second.end())
     {
         reportAlways("ColorDB: Error, unknown dye ID# %d",
-            toInt(id, int));
+            toInt(id, int))
         return mFail;
     }
     return i->second.name;

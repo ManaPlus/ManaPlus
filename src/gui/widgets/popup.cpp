@@ -84,7 +84,7 @@ Popup::~Popup()
 {
     logger->log("Popup::~Popup(\"%s\")", mPopupName.c_str());
 
-    delete2(mVertexes);
+    delete2(mVertexes)
 
     if (mSkin != nullptr)
     {

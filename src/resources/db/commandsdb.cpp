@@ -45,7 +45,7 @@ void CommandsDB::load()
         SkipError_false);
     loadXmlFile(paths.getStringValue("defaultCommandsPatchFile"),
         SkipError_true);
-    loadXmlDir("defaultCommandsPatchDir", loadXmlFile);
+    loadXmlDir("defaultCommandsPatchDir", loadXmlFile)
     mLoaded = true;
 }
 

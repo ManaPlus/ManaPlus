@@ -413,7 +413,7 @@ void BrowserBox::draw(Graphics *const graphics)
         setHeight(mHeight);
         mUpdateTime = cur_time;
         if (mDimension.width != mWidth)
-            reportAlways("browserbox resize in draw");
+            reportAlways("browserbox resize in draw")
     }
 
     if (mOpaque == Opaque_true)

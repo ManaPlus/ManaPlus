@@ -55,7 +55,7 @@ namespace
                 rl->fragment,
                 rl->isNewShader);
             if (resource == nullptr)
-                reportAlways("Shader program creation error");
+                reportAlways("Shader program creation error")
             return resource;
         }
     };

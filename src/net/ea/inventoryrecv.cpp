@@ -137,7 +137,7 @@ void InventoryRecv::processPlayerStorageClose(Net::MessageIn &msg A_UNUSED)
     if (mStorage != nullptr)
         mStorage->clear();
 
-    delete2(mStorage);
+    delete2(mStorage)
     BLOCK_END("InventoryRecv::processPlayerStorageClose")
 }
 

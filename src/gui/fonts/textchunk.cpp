@@ -81,7 +81,7 @@ TextChunk::TextChunk(const std::string &restrict text0,
 
 TextChunk::~TextChunk()
 {
-    delete2(img);
+    delete2(img)
 #ifdef UNITTESTS
     textChunkCnt --;
 #endif  // UNITTESTS
@@ -198,6 +198,6 @@ void TextChunk::deleteImage()
     }
     else
     {
-        delete2(img);
+        delete2(img)
     }
 }

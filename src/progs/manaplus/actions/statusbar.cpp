@@ -55,7 +55,7 @@ namespace Actions
 
 impHandler0(switchQuickDrop)
 {
-    callYellowBarCond(changeQuickDropCounter)
+    callYellowBarCond(changeQuickDropCounter);
 }
 
 impHandler0(changeCrazyMove)

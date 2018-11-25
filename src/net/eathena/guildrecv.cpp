@@ -208,7 +208,7 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
     if (msg.getVersion() >= 20161026)
     {
         guildSize = 34;
-        reportAlways("missing guild member names");
+        reportAlways("missing guild member names")
     }
     else
     {

@@ -252,8 +252,8 @@ void SetupWindow::unloadAdditionalTabs()
 {
     unloadTab(mModsTab);
     unloadTab(mQuickTab);
-    delete2(mModsTab);
-    delete2(mQuickTab);
+    delete2(mModsTab)
+    delete2(mQuickTab)
 }
 
 void SetupWindow::externalUnload()

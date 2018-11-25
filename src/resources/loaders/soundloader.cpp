@@ -50,7 +50,7 @@ namespace
             if (rw == nullptr)
             {
                 reportAlways("Error loading resource: %s",
-                    rl->path.c_str());
+                    rl->path.c_str())
                 return nullptr;
             }
             // Load the music data and free the RWops structure
@@ -61,7 +61,7 @@ namespace
                 return new SoundEffect(tmpSoundEffect, rl->path);
             }
             reportAlways("Error, failed to load sound effect: %s",
-                SDL_GetError());
+                SDL_GetError())
             return nullptr;
         }
     };

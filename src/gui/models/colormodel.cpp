@@ -66,7 +66,7 @@ void ColorModel::add(const std::string &name, const Color *const color1,
 
 #define addColor(name, color) \
     model->add(name, &widget->getThemeColor(ThemeColorId::color, 255U), \
-        &widget->getThemeColor(ThemeColorId::color##_OUTLINE, 255U));
+        &widget->getThemeColor(ThemeColorId::color##_OUTLINE, 255U))
 
 ColorModel *ColorModel::createDefault(const Widget2 *const widget)
 {

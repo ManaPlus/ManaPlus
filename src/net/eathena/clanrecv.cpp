@@ -66,7 +66,7 @@ void ClanRecv::processClanInfo(Net::MessageIn &msg)
     if (info == nullptr)
     {
         reportAlways("missing clan %d in clandb",
-            localClan.id);
+            localClan.id)
     }
     else
     {
@@ -85,7 +85,7 @@ void ClanRecv::processClanOnlineCount(Net::MessageIn &msg)
 
 void ClanRecv::processClanLeave(Net::MessageIn &msg A_UNUSED)
 {
-    delete2(clanTab);
+    delete2(clanTab)
     localClan.clear();
     clanWindow->resetClan();
 }
@@ -99,7 +99,7 @@ void ClanRecv::processClanChat(Net::MessageIn &msg)
     std::string chatMsg = msg.readString(chatMsgLength, "message");
     if (clanTab == nullptr)
     {
-        reportAlways("received clan chat messages without clan.");
+        reportAlways("received clan chat messages without clan.")
         return;
     }
     const size_t pos = chatMsg.find(" : ", 0);

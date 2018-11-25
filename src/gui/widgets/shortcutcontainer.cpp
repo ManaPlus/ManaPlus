@@ -91,7 +91,7 @@ ShortcutContainer::~ShortcutContainer()
     if (gui != nullptr)
         gui->removeDragged(this);
 
-    delete2(mVertexes);
+    delete2(mVertexes)
 }
 
 void ShortcutContainer::widgetResized(const Event &event A_UNUSED)

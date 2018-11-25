@@ -77,7 +77,7 @@ void HorseDB::load()
 
     loadXmlFile(paths.getStringValue("horsesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("horsesPatchFile"), SkipError_true);
-    loadXmlDir("horsesPatchDir", loadXmlFile);
+    loadXmlDir("horsesPatchDir", loadXmlFile)
 
     mLoaded = true;
 }
@@ -135,7 +135,7 @@ static void loadRiderOffset(XmlNodePtrConst node,
     if (dir == -1)
     {
         reportAlways("Wrong or missing horse rider direcion: %s",
-            dirName.c_str());
+            dirName.c_str())
         return;
     }
     HorseOffset &offset = currentInfo->offsets[dir];
@@ -180,7 +180,7 @@ void HorseDB::loadXmlFile(const std::string &fileName,
         if (id == -1)
         {
             reportAlways("Horse Database: Horse with missing ID in %s!",
-                paths.getStringValue("horsesFile").c_str());
+                paths.getStringValue("horsesFile").c_str())
             continue;
         }
         HorseInfo *currentInfo = nullptr;
@@ -214,7 +214,7 @@ static void loadOffset(XmlNodePtrConst node,
     if (dir == -1)
     {
         reportAlways("Wrong or missing horse direcion: %s",
-            dirName.c_str());
+            dirName.c_str())
         return;
     }
     HorseOffset &offset = currentInfo->offsets[dir];
@@ -290,7 +290,7 @@ HorseInfo *HorseDB::get(const int id, const bool allowNull)
         if (allowNull)
             return nullptr;
         reportAlways("HorseDB: Warning, unknown horse ID %d requested",
-            id);
+            id)
         return &mUnknown;
     }
     return i->second;

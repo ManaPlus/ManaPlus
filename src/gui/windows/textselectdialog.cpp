@@ -132,7 +132,7 @@ void TextSelectDialog::postInit()
 
 TextSelectDialog::~TextSelectDialog()
 {
-    delete2(mModel);
+    delete2(mModel)
 }
 
 void TextSelectDialog::action(const ActionEvent &event)

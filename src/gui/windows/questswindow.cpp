@@ -137,11 +137,11 @@ QuestsWindow::QuestsWindow() :
 
 QuestsWindow::~QuestsWindow()
 {
-    delete2(mQuestsModel);
+    delete2(mQuestsModel)
 
     QuestDb::unload();
 
-    delete2(mItemLinkHandler);
+    delete2(mItemLinkHandler)
     mQuestLinks.clear();
     mQuestReverseLinks.clear();
     if (mCompleteIcon != nullptr)

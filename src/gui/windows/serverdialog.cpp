@@ -219,7 +219,7 @@ ServerDialog::~ServerDialog()
         mDownload->cancel();
         delete2(mDownload)
     }
-    delete2(mServersListModel);
+    delete2(mServersListModel)
 }
 
 void ServerDialog::connectToSelectedServer()

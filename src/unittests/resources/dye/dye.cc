@@ -2004,9 +2004,9 @@ TEST_CASE("Dye real dye", "")
         dyeCheck("|A:#0000FFFF,FF000050", "arrow_up_A.png");
     }
 
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
     VirtFs::unmountDirSilent("data/test");

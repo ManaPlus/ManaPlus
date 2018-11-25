@@ -383,7 +383,7 @@ static void _SDL_gfxBlitBlitterRGBA(const SDL_gfxBlitInfo *const info)
 
             src += 4;
             dst += 4;
-        }, width);
+        }, width)
         src += srcskip;
         dst += dstskip;
     }
@@ -451,7 +451,7 @@ int SDLgfxBlitRGBA(SDL_Surface *const src,
     if (src == nullptr ||
         dst == nullptr)
     {
-        reportAlways("SDLgfxBlitRGBA: passed a NULL surface");
+        reportAlways("SDLgfxBlitRGBA: passed a NULL surface")
         return -1;
     }
 

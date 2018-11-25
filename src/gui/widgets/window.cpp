@@ -179,7 +179,7 @@ Window::Window(const std::string &caption,
     if (skin.empty())
     {
         reportAlways("Default skin was used for window: %s",
-            caption.c_str());
+            caption.c_str())
         skin = "window.xml";
     }
 
@@ -251,7 +251,7 @@ void Window::postInit()
     {
         reportAlways("error: Window created with calling postInit() "
             "more than once: %s",
-            mWindowName.c_str());
+            mWindowName.c_str())
     }
     mInit = true;
 }
@@ -272,7 +272,7 @@ Window::~Window()
 
     saveWindowState();
 
-    delete2(mLayout);
+    delete2(mLayout)
 
     while (!mWidgets.empty())
         delete mWidgets.front();
@@ -280,7 +280,7 @@ Window::~Window()
     mWidgets.clear();
 
     removeWidgetListener(this);
-    delete2(mVertexes);
+    delete2(mVertexes)
 
     windowInstances--;
 
@@ -298,7 +298,7 @@ Window::~Window()
     if (!mInit)
     {
         reportAlways("error: Window created without calling postInit(): %s",
-            mWindowName.c_str());
+            mWindowName.c_str())
     }
 }
 
@@ -1398,7 +1398,7 @@ void Window::reflowLayout(int w, int h)
         return;
 
     mLayout->reflow(w, h);
-    delete2(mLayout);
+    delete2(mLayout)
     setContentSize(w, h);
 }
 

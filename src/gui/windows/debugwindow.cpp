@@ -87,10 +87,10 @@ DebugWindow::DebugWindow(const std::string &name) :
 
 DebugWindow::~DebugWindow()
 {
-    delete2(mMapWidget);
-    delete2(mTargetWidget);
-    delete2(mNetWidget);
-    delete2(mStatWidget);
+    delete2(mMapWidget)
+    delete2(mTargetWidget)
+    delete2(mNetWidget)
+    delete2(mStatWidget)
 }
 
 void DebugWindow::postInit()

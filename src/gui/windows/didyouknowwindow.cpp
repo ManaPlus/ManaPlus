@@ -116,7 +116,7 @@ void DidYouKnowWindow::postInit()
 
 DidYouKnowWindow::~DidYouKnowWindow()
 {
-    delete2(mItemLinkHandler);
+    delete2(mItemLinkHandler)
 }
 
 void DidYouKnowWindow::action(const ActionEvent &event)

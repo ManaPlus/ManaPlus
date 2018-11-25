@@ -122,21 +122,21 @@ void MailRecv::processReadMail(Net::MessageIn &msg)
     mail->strTime = timeToStr(mail->time);
     if (mailWindow == nullptr)
     {
-        reportAlways("Mail window not created");
+        reportAlways("Mail window not created")
         delete mail;
         return;
     }
     mailWindow->showMessage(mail, itemId != 0 ? 1 : 0);
     if (mailViewWindow == nullptr)
     {
-        reportAlways("Mail view window not created");
+        reportAlways("Mail view window not created")
         return;
     }
 
     Inventory *const inventory = mailViewWindow->getInventory();
     if (inventory == nullptr)
     {
-        reportAlways("Mail view window missing inventory");
+        reportAlways("Mail view window missing inventory")
         return;
     }
 

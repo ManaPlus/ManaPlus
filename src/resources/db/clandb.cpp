@@ -50,7 +50,7 @@ void ClanDb::load()
     logger->log1("Initializing clans database...");
     loadXmlFile(paths.getStringValue("clansFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("clansPatchFile"), SkipError_true);
-    loadXmlDir("clansPatchDir", loadXmlFile);
+    loadXmlDir("clansPatchDir", loadXmlFile)
 
     mLoaded = true;
 }
@@ -90,7 +90,7 @@ void ClanDb::loadXmlFile(const std::string &fileName,
         ClanInfo *clanInfo = nullptr;
         if (mClansInfos.find(id) != mClansInfos.end())
         {
-            reportAlways("ClanDb: Redefinition of clan ID %d", id);
+            reportAlways("ClanDb: Redefinition of clan ID %d", id)
             clanInfo = mClansInfos[id];
         }
         if (clanInfo == nullptr)
@@ -130,7 +130,7 @@ const ClanInfo *ClanDb::get(const int clanId)
         {
             reportAlways("ClanDb: Warning, unknown clan ID "
                 "%d requested",
-                clanId);
+                clanId)
             return nullptr;
         }
     }

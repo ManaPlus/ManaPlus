@@ -184,7 +184,7 @@ static int uploadUpdate(void *ptr,
             }
         }
     }
-//    delete2(info->upload);
+//    delete2(info->upload)
     info->upload = nullptr;
     delete info;
     return 0;

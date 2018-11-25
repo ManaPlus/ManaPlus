@@ -229,8 +229,8 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
 
 Setup_Perfomance::~Setup_Perfomance()
 {
-    delete2(mTexturesList);
+    delete2(mTexturesList)
 #ifdef USE_SDL2
-    delete2(mSdlDriversList);
+    delete2(mSdlDriversList)
 #endif  // USE_SDL2
 }

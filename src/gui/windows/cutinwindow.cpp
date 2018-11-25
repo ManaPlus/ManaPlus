@@ -52,7 +52,7 @@ CutInWindow::CutInWindow() :
 
 CutInWindow::~CutInWindow()
 {
-    delete2(mImage);
+    delete2(mImage)
 }
 
 void CutInWindow::draw(Graphics *const graphics)
@@ -76,7 +76,7 @@ void CutInWindow::draw2(Graphics *const graphics)
 void CutInWindow::show(const std::string &name,
                        const CutInT cutin)
 {
-    delete2(mImage);
+    delete2(mImage)
     if (name.empty())
     {
         setVisible(Visible_false);
@@ -138,7 +138,7 @@ void CutInWindow::show(const std::string &name,
 
 void CutInWindow::hide()
 {
-    delete2(mImage);
+    delete2(mImage)
     setVisible(Visible_false);
 }
 

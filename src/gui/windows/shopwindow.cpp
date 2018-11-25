@@ -248,11 +248,11 @@ ShopWindow::~ShopWindow()
 {
     saveList();
 
-    delete2(mBuyShopItemList);
-    delete2(mSellShopItemList);
-    delete2(mBuyShopItems);
-    delete2(mSellShopItems);
-    delete2(mTradeItem);
+    delete2(mBuyShopItemList)
+    delete2(mSellShopItemList)
+    delete2(mBuyShopItems)
+    delete2(mSellShopItems)
+    delete2(mTradeItem)
 
     instances.remove(this);
 }
@@ -560,7 +560,7 @@ void ShopWindow::loadList()
         if (!shopFile.is_open())
         {
             reportAlways("Error opening file for reading: %s",
-                shopListName.c_str());
+                shopListName.c_str())
             shopFile.close();
             return;
         }
@@ -616,7 +616,7 @@ void ShopWindow::saveList() const
     if (!shopFile.is_open())
     {
         reportAlways("Error opening file writing: %s",
-            shopListName.c_str());
+            shopListName.c_str())
         return;
     }
 

@@ -166,8 +166,8 @@ TradeWindow::TradeWindow() :
 
 TradeWindow::~TradeWindow()
 {
-    delete2(mMyInventory);
-    delete2(mPartnerInventory);
+    delete2(mMyInventory)
+    delete2(mPartnerInventory)
 }
 
 void TradeWindow::setMoney(const int amount)

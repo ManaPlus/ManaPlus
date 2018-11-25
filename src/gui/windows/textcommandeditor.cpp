@@ -245,10 +245,10 @@ void TextCommandEditor::postInit()
 
 TextCommandEditor::~TextCommandEditor()
 {
-    delete2(mIconsModel);
-    delete2(mTargetTypeModel);
+    delete2(mIconsModel)
+    delete2(mTargetTypeModel)
 #ifdef TMWA_SUPPORT
-    delete2(mMagicSchoolModel);
+    delete2(mMagicSchoolModel)
 #endif  // TMWA_SUPPORT
 }
 

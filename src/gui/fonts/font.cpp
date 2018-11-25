@@ -124,7 +124,7 @@ Font::Font(std::string filename,
     {
         reportAlways("Error: requested load font %s with size %d",
             filename.c_str(),
-            size);
+            size)
         size = 4;
     }
 
@@ -151,7 +151,7 @@ Font::Font(std::string filename,
         {
 #ifdef UNITTESTS
             reportAlways("Font load failed %s",
-                filename.c_str());
+                filename.c_str())
 #endif  // UNITTESTS
             logger->error("Font::Font: " +
                 std::string(SDL_GetError()));
@@ -205,7 +205,7 @@ TTF_Font *Font::openFont(const char *const name,
 #ifndef UNITTESTS
         // +++ in future need trigger assert in unit tests here too
         reportAlways("Font::openFont font not exists: %s",
-            path.c_str());
+            path.c_str())
 #endif  // UNITTESTS
         return nullptr;
     }
@@ -489,7 +489,7 @@ void Font::insertChunk(TextChunk *const chunk)
         chunk->color, chunk->color2));
     if (i != search.end())
     {
-        delete2(chunk->img);
+        delete2(chunk->img)
         return;
     }
 

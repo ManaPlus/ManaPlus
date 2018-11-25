@@ -60,7 +60,7 @@ EmotePage::~EmotePage()
         mEmotes->decRef();
         mEmotes = nullptr;
     }
-    delete2(mVertexes);
+    delete2(mVertexes)
 }
 
 void EmotePage::draw(Graphics *const graphics)

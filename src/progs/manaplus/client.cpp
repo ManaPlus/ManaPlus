@@ -651,7 +651,7 @@ void Client::gameClear()
     isTerminate = true;
     config.removeListeners(this);
 
-    delete2(assertListener);
+    delete2(assertListener)
 
     IPC::stop();
     eventsManager.shutdown();
@@ -671,10 +671,10 @@ void Client::gameClear()
     if (charServerHandler != nullptr)
         charServerHandler->clear();
 
-    delete2(ipc);
+    delete2(ipc)
 
 #ifdef USE_MUMBLE
-    delete2(mumbleManager);
+    delete2(mumbleManager)
 #endif  // USE_MUMBLE
 
     PlayerInfo::deinit();
@@ -682,18 +682,18 @@ void Client::gameClear()
     // Before config.write() since it writes the shortcuts to the config
     for (unsigned f = 0; f < SHORTCUT_TABS; f ++)
         delete2(itemShortcut[f])
-    delete2(emoteShortcut);
-    delete2(dropShortcut);
+    delete2(emoteShortcut)
+    delete2(dropShortcut)
 
     playerRelations.store();
 
     if (logger != nullptr)
         logger->log1("Quitting2");
 
-    delete2(mCurrentDialog);
-    delete2(popupManager);
-    delete2(dialogsManager);
-    delete2(gui);
+    delete2(mCurrentDialog)
+    delete2(popupManager)
+    delete2(dialogsManager)
+    delete2(gui)
 
     if (inventoryHandler != nullptr)
         inventoryHandler->clear();
@@ -735,7 +735,7 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting9");
 
-    delete2(joystick);
+    delete2(joystick)
 
     keyboard.deinit();
 
@@ -772,7 +772,7 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting12");
 
-    delete2(chatLogger);
+    delete2(chatLogger)
     TranslationManager::close();
 }
 
@@ -1049,7 +1049,7 @@ int Client::gameExec()
 
             if (mOldState == State::GAME)
             {
-                delete2(mGame);
+                delete2(mGame)
                 assertListener = new AssertListener;
                 Game::clearInstance();
                 ResourceManager::cleanOrphans(false);
@@ -1081,7 +1081,7 @@ int Client::gameExec()
             mOldState = mState;
 
             // Get rid of the dialog of the previous state
-            delete2(mCurrentDialog);
+            delete2(mCurrentDialog)
 
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore
@@ -1395,16 +1395,16 @@ int Client::gameExec()
                         chatLogger->setServerName(settings.serverName);
 
 #ifdef ANDROID
-                    delete2(mCloseButton);
+                    delete2(mCloseButton)
 #endif  // ANDROID
 
-                    delete2(mSetupButton);
-                    delete2(mVideoButton);
-                    delete2(mThemesButton);
-                    delete2(mAboutButton);
-                    delete2(mHelpButton);
-                    delete2(mPerfomanceButton);
-                    delete2(desktop);
+                    delete2(mSetupButton)
+                    delete2(mVideoButton)
+                    delete2(mThemesButton)
+                    delete2(mAboutButton)
+                    delete2(mHelpButton)
+                    delete2(mPerfomanceButton)
+                    delete2(desktop)
 
                     mCurrentDialog = nullptr;
 
@@ -1846,7 +1846,7 @@ void Client::initTradeFilter()
         else
         {
             reportAlways("Error opening file for writing: %s",
-                tradeListName.c_str());
+                tradeListName.c_str())
         }
         tradeFile.close();
     }
@@ -2075,7 +2075,7 @@ void Client::runValidate()
 
     WindowManager::deleteValidateWindows();
     unloadData();
-    delete2(client);
+    delete2(client)
     VirtFs::deinit();
     exit(0);
 }

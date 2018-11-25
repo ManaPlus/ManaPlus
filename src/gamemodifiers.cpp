@@ -131,7 +131,7 @@ void GameModifiers::changeMode(unsigned *restrict const var,
     GameModifierListener::distributeEvent();
     const std::string str = (*func)();
     if (str.size() > 4)
-        debugMsg(str.substr(4));
+        debugMsg(str.substr(4))
 }
 
 const char *GameModifiers::getVarItem(const char *const *const arr,

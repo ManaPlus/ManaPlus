@@ -138,14 +138,14 @@ Setup_Input::Setup_Input(const Widget2 *const widget) :
 
 Setup_Input::~Setup_Input()
 {
-    delete2(mKeyList);
-    delete2(mKeyListModel);
-    delete2(mAssignKeyButton);
-    delete2(mUnassignKeyButton);
-    delete2(mResetKeysButton);
+    delete2(mKeyList)
+    delete2(mKeyListModel)
+    delete2(mAssignKeyButton)
+    delete2(mUnassignKeyButton)
+    delete2(mResetKeysButton)
     delete [] mActionDataSize;
     mActionDataSize = nullptr;
-    delete2(mScrollArea);
+    delete2(mScrollArea)
 }
 
 void Setup_Input::apply()

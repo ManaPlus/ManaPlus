@@ -149,7 +149,7 @@ Setup_Relations::Setup_Relations(const Widget2 *const widget) :
 Setup_Relations::~Setup_Relations()
 {
     playerRelations.removeListener(this);
-    delete2(mIgnoreActionChoicesModel);
+    delete2(mIgnoreActionChoicesModel)
 }
 
 

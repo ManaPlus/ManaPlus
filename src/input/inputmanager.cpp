@@ -906,7 +906,7 @@ bool InputManager::executeChatCommand(const std::string &restrict cmd,
     {
         reportAlways("Unknown chat command: /%s %s",
             cmd.c_str(),
-            args.c_str());
+            args.c_str())
     }
     return false;
 }

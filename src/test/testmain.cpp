@@ -48,7 +48,7 @@ TestMain::TestMain() :
 
 TestMain::~TestMain()
 {
-    delete2(log);
+    delete2(log)
 }
 
 void TestMain::initConfig()

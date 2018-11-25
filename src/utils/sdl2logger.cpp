@@ -117,7 +117,7 @@ static void logCallback(void *userData A_UNUSED,
     }
     reportAlways("%s %s",
         message.c_str(),
-        msg);
+        msg)
 }
 
 static SDL_AssertState assertCallback(const SDL_AssertData *data,
@@ -128,7 +128,7 @@ static SDL_AssertState assertCallback(const SDL_AssertData *data,
         data->function,
         data->filename,
         data->linenum,
-        data->condition);
+        data->condition)
     return SDL_ASSERTION_IGNORE;
 }
 

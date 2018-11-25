@@ -152,10 +152,10 @@ MailViewWindow::~MailViewWindow()
     }
     else
     {
-        delete2(mMessage);
-        delete2(mGetMoneyButton);
+        delete2(mMessage)
+        delete2(mGetMoneyButton)
     }
-    delete2(mInventory);
+    delete2(mInventory)
     mailViewWindow = nullptr;
 }
 

@@ -63,11 +63,11 @@ class SocialAttackTab final : public SocialTab
         {
             updateAtkListStart();
             // TRANSLATORS: mobs group name in social window
-            addAvatars(PriorityAttackMob, _("Priority mobs"), PRIORITY);
+            addAvatars(PriorityAttackMob, _("Priority mobs"), PRIORITY)
             // TRANSLATORS: mobs group name in social window
-            addAvatars(AttackMob, _("Attack mobs"), ATTACK);
+            addAvatars(AttackMob, _("Attack mobs"), ATTACK)
             // TRANSLATORS: mobs group name in social window
-            addAvatars(IgnoreAttackMob, _("Ignore mobs"), IGNORE_);
+            addAvatars(IgnoreAttackMob, _("Ignore mobs"), IGNORE_)
         }
 
     private:

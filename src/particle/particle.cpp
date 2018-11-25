@@ -98,7 +98,7 @@ Particle::~Particle()
     }
     // Delete child emitters and child particles
     clear();
-    delete2(mAnimation);
+    delete2(mAnimation)
     if (mImage != nullptr)
     {
         if (mType == ParticleType::Image)

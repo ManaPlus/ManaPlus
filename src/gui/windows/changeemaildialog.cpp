@@ -108,7 +108,7 @@ ChangeEmailDialog::ChangeEmailDialog(LoginData &data) :
 
 ChangeEmailDialog::~ChangeEmailDialog()
 {
-    delete2(mWrongDataNoticeListener);
+    delete2(mWrongDataNoticeListener)
 }
 
 void ChangeEmailDialog::action(const ActionEvent &event)

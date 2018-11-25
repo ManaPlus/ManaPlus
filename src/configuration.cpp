@@ -443,7 +443,7 @@ int Configuration::getIntValue(const std::string &key) const
             reportAlways(
                 "%s: No integer value in registry for key %s",
                 mConfigPath.c_str(),
-                key.c_str());
+                key.c_str())
         }
     }
     else
@@ -462,7 +462,7 @@ int Configuration::resetIntValue(const std::string &key)
     {
         reportAlways("%s: No integer value in registry for key %s",
             mConfigPath.c_str(),
-            key.c_str());
+            key.c_str())
     }
     else
     {
@@ -477,7 +477,7 @@ int Configuration::resetIntValue(const std::string &key)
         {
             reportAlways("%s: No integer value in registry for key %s",
                 mConfigPath.c_str(),
-                key.c_str());
+                key.c_str())
         }
     }
     setValue(key, defaultValue);
@@ -527,7 +527,7 @@ std::string Configuration::getStringValue(const std::string &key) const
         {
             reportAlways("%s: No string value in registry for key %s",
                 mConfigPath.c_str(),
-                key.c_str());
+                key.c_str())
         }
     }
     else
@@ -583,7 +583,7 @@ float Configuration::getFloatValue(const std::string &key) const
         {
             reportAlways("%s: No float value in registry for key %s",
                 mConfigPath.c_str(),
-                key.c_str());
+                key.c_str())
         }
     }
     else
@@ -651,7 +651,7 @@ bool Configuration::getBoolValue(const std::string &key) const
             reportAlways(
                 "%s: No boolean value in registry for key %s",
                 mConfigPath.c_str(),
-                key.c_str());
+                key.c_str())
         }
     }
     else
@@ -672,7 +672,7 @@ bool Configuration::resetBoolValue(const std::string &key)
     {
         reportAlways("%s: No boolean value in registry for key %s",
             mConfigPath.c_str(),
-            key.c_str());
+            key.c_str())
     }
     else
     {
@@ -686,7 +686,7 @@ bool Configuration::resetBoolValue(const std::string &key)
         {
             reportAlways("%s: No boolean value in registry for key %s",
                 mConfigPath.c_str(),
-                key.c_str());
+                key.c_str())
         }
     }
 
@@ -870,7 +870,7 @@ void Configuration::write()
     if (testFile == nullptr)
     {
         reportAlways("Configuration::write() couldn't open %s for writing",
-            mConfigPath.c_str());
+            mConfigPath.c_str())
         BLOCK_END("Configuration::write")
         return;
     }

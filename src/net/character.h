@@ -49,7 +49,7 @@ struct Character final
 
     ~Character()
     {
-        delete2(dummy);
+        delete2(dummy)
     }
 
     LocalPlayer *dummy;  /**< A dummy representing this character */

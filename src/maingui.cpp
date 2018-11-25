@@ -149,7 +149,7 @@ int mainGui(int argc, char *argv[])
         client->testsInit();
         ret = Client::testsExec();
     }
-    delete2(client);
+    delete2(client)
     VirtFs::deinit();
 
 #if SDL_MIXER_VERSION_ATLEAST(1, 2, 11)

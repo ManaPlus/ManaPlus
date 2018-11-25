@@ -443,15 +443,15 @@ void Client::gameClear()
 
     stopTimers();
 
-    delete2(ipc);
+    delete2(ipc)
 
     if (logger != nullptr)
         logger->log1("Quitting2");
 
-    delete2(mCurrentDialog);
-    delete2(popupManager);
-    delete2(dialogsManager);
-    delete2(gui);
+    delete2(mCurrentDialog)
+    delete2(popupManager)
+    delete2(dialogsManager)
+    delete2(gui)
 
     if (logger != nullptr)
         logger->log1("Quitting3");
@@ -484,7 +484,7 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting9");
 
-    delete2(joystick);
+    delete2(joystick)
 
     keyboard.deinit();
 
@@ -521,7 +521,7 @@ void Client::gameClear()
     if (logger != nullptr)
         logger->log1("Quitting12");
 
-//    delete2(chatLogger);
+//    delete2(chatLogger)
     TranslationManager::close();
     VirtFs::deinit();
 }
@@ -646,7 +646,7 @@ int Client::gameExec()
             mOldState = mState;
 
             // Get rid of the dialog of the previous state
-            delete2(mCurrentDialog);
+            delete2(mCurrentDialog)
 
             // State has changed, while the quitDialog was active, it might
             // not be correct anymore

@@ -133,7 +133,7 @@ MailEditWindow::MailEditWindow() :
 MailEditWindow::~MailEditWindow()
 {
     mailEditWindow = nullptr;
-    delete2(mInventory);
+    delete2(mInventory)
 }
 
 void MailEditWindow::action(const ActionEvent &event)

@@ -568,14 +568,14 @@ namespace FsZip
     File *openWrite(FsEntry *restrict const entry A_UNUSED,
                     const std::string &filename A_UNUSED)
     {
-        reportAlways("VirtFs::openWrite for zip not implemented.");
+        reportAlways("VirtFs::openWrite for zip not implemented.")
         return nullptr;
     }
 
     File *openAppend(FsEntry *restrict const entry A_UNUSED,
                      const std::string &filename A_UNUSED)
     {
-        reportAlways("VirtFs::openAppend for zip not implemented.");
+        reportAlways("VirtFs::openAppend for zip not implemented.")
         return nullptr;
     }
 
@@ -600,7 +600,7 @@ namespace FsZip
         }
         if (buffer == nullptr)
         {
-            reportAlways("FsZip::read buffer is null");
+            reportAlways("FsZip::read buffer is null")
             return 0;
         }
         const size_t pos = file->mPos;

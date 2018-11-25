@@ -82,7 +82,7 @@ void BasicContainer::moveToTop(Widget *const widget) restrict2
 {
     if (widget == nullptr)
     {
-        reportAlways("BasicContainer::moveToTop empty widget.");
+        reportAlways("BasicContainer::moveToTop empty widget.")
         return;
     }
 
@@ -110,7 +110,7 @@ void BasicContainer::moveToBottom(Widget *const widget) restrict2
 {
     if (widget == nullptr)
     {
-        reportAlways("BasicContainer::moveToBottom empty widget.");
+        reportAlways("BasicContainer::moveToBottom empty widget.")
         return;
     }
     const WidgetListIterator iter = std::find(mWidgets.begin(),

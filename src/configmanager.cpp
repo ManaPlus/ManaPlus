@@ -87,7 +87,7 @@ void ConfigManager::initServerConfig(const std::string &serverName)
     else
     {
         reportAlways("Error creating server config: %s",
-            configPath.c_str());
+            configPath.c_str())
     }
 
     const bool val = Client::isTmw();
@@ -160,7 +160,7 @@ void ConfigManager::initConfiguration()
     if (configFile == nullptr)
     {
         reportAlways("Can't create %s. Using defaults.",
-            configPath.c_str());
+            configPath.c_str())
     }
     else
     {
@@ -429,10 +429,10 @@ void ConfigManager::checkConfigVersion()
         const std::string prefix = std::string();
 #endif  // USE_SDL2
 
-        unassignKey("keyDirectUp", "k108");
-        unassignKey("keyDirectDown", "k59");
-        unassignKey("keyDirectLeft", "k107");
-        unassignKey("keyDirectRight", "k39");
+        unassignKey("keyDirectUp", "k108")
+        unassignKey("keyDirectDown", "k59")
+        unassignKey("keyDirectLeft", "k107")
+        unassignKey("keyDirectRight", "k39")
     }
     if (version < 12)
     {
@@ -443,7 +443,7 @@ void ConfigManager::checkConfigVersion()
         const std::string prefix = std::string();
 #endif  // USE_SDL2
 
-        unassignKey("keyAttack", "k120");
+        unassignKey("keyAttack", "k120")
     }
 
     if (version < 13)

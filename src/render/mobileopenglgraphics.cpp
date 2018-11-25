@@ -68,7 +68,7 @@
     vVar[vp + 8] = static_cast<GLshort>(dstX); \
     vVar[vp + 9] = static_cast<GLshort>(dstY + h); \
     vVar[vp + 10] = static_cast<GLshort>(dstX + w); \
-    vVar[vp + 11] = static_cast<GLshort>(dstY + h);
+    vVar[vp + 11] = static_cast<GLshort>(dstY + h)
 
 GLuint MobileOpenGLGraphics::mTextureBinded = 0;
 #ifdef DEBUG_DRAW_CALLS

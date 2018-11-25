@@ -219,9 +219,9 @@ ChatWindow::~ChatWindow()
     config.setValue("ReturnToggles", mReturnToggles);
     removeAllWhispers();
     removeAllChannels();
-    delete2(mItemLinkHandler);
-    delete2(mColorPicker);
-    delete2(mColorListModel);
+    delete2(mItemLinkHandler)
+    delete2(mColorPicker)
+    delete2(mColorListModel)
 }
 
 void ChatWindow::postInit()
@@ -1060,7 +1060,7 @@ void ChatWindow::attributeChanged(const AttributesT id,
         }
         default:
             break;
-    };
+    }
     PRAGMA45(GCC diagnostic pop)
 }
 

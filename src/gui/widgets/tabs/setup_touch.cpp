@@ -137,7 +137,7 @@ Setup_Touch::Setup_Touch(const Widget2 *const widget) :
 
 Setup_Touch::~Setup_Touch()
 {
-    delete2(mSizeList);
-    delete2(mFormatList);
-    delete2(mActionsList);
+    delete2(mSizeList)
+    delete2(mFormatList)
+    delete2(mActionsList)
 }

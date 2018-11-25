@@ -59,27 +59,27 @@ void StatusPopup::postInit()
     Popup::postInit();
     const int fontHeight = getFont()->getHeight();
     int y = 0;
-    addLabel(0);
-    addLabel(1);
-    addLabel(2);
-    addLabel(3);
+    addLabel(0)
+    addLabel(1)
+    addLabel(2)
+    addLabel(3)
     y += 4;
-    addLabel(4);
-    addLabel(5);
-    addLabel(9);
-    addLabel(10);
+    addLabel(4)
+    addLabel(5)
+    addLabel(9)
+    addLabel(10)
     y += 4;
-    addLabel(6);
-    addLabel(7);
+    addLabel(6)
+    addLabel(7)
     y += 4;
-    addLabel(8);
+    addLabel(8)
     y += 4;
-    addLabel(12);
-    addLabel(13);
-    addLabel(14);
-    addLabel(15);
+    addLabel(12)
+    addLabel(13)
+    addLabel(14)
+    addLabel(15)
     y += 4;
-    addLabel(11);
+    addLabel(11)
 }
 
 StatusPopup::~StatusPopup()

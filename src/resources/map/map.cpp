@@ -191,9 +191,9 @@ Map::~Map()
     delete_all(mForegrounds);
     delete_all(mBackgrounds);
     delete_all(mTileAnimations);
-    delete2(mSpecialLayer);
-    delete2(mTempLayer);
-    delete2(mObjects);
+    delete2(mSpecialLayer)
+    delete2(mTempLayer)
+    delete2(mObjects)
     delete_all(mMapPortals);
 #ifdef USE_OPENGL
     if (mAtlas != nullptr)
@@ -202,7 +202,7 @@ Map::~Map()
         mAtlas = nullptr;
     }
 #endif  // USE_OPENGL
-    delete2(mHeights);
+    delete2(mHeights)
     delete [] mMetaTiles;
 }
 
@@ -601,12 +601,12 @@ void Map::drawCollision(Graphics *restrict const graphics,
             int width = 0;
             const int x0 = x;
 
-            fillCollision(BlockMask::WALL, COLLISION_HIGHLIGHT);
-            fillCollision(BlockMask::AIR, AIR_COLLISION_HIGHLIGHT);
-            fillCollision(BlockMask::WATER, WATER_COLLISION_HIGHLIGHT);
-            fillCollision(BlockMask::GROUNDTOP, GROUNDTOP_COLLISION_HIGHLIGHT);
-            fillCollision(BlockMask::PLAYERWALL, COLLISION_HIGHLIGHT);
-            fillCollision(BlockMask::MONSTERWALL, MONSTER_COLLISION_HIGHLIGHT);
+            fillCollision(BlockMask::WALL, COLLISION_HIGHLIGHT)
+            fillCollision(BlockMask::AIR, AIR_COLLISION_HIGHLIGHT)
+            fillCollision(BlockMask::WATER, WATER_COLLISION_HIGHLIGHT)
+            fillCollision(BlockMask::GROUNDTOP, GROUNDTOP_COLLISION_HIGHLIGHT)
+            fillCollision(BlockMask::PLAYERWALL, COLLISION_HIGHLIGHT)
+            fillCollision(BlockMask::MONSTERWALL, MONSTER_COLLISION_HIGHLIGHT)
         }
     }
 }
@@ -1241,7 +1241,7 @@ void Map::saveExtraLayer() const restrict2
     if (!mapFile.is_open())
     {
         reportAlways("Error opening file for writing: %s",
-            mapFileName.c_str());
+            mapFileName.c_str())
         return;
     }
 

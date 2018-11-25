@@ -136,14 +136,14 @@ TabbedArea::~TabbedArea()
     remove(mTabContainer);
     remove(mWidgetContainer);
 
-    delete2(mTabContainer);
-    delete2(mWidgetContainer);
+    delete2(mTabContainer)
+    delete2(mWidgetContainer)
 
     for (size_t i = 0, sz = mTabsToDelete.size(); i < sz; i++)
         delete2(mTabsToDelete[i])
 
-    delete2(mArrowButton[0]);
-    delete2(mArrowButton[1]);
+    delete2(mArrowButton[0])
+    delete2(mArrowButton[1])
 }
 
 void TabbedArea::enableScrollButtons(const bool enable)

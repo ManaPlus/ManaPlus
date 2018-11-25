@@ -51,8 +51,8 @@ extern const char *dirSeparator;
     if (cnt != (sz)) \
     { \
         reportAlways("Error reading " msg " in file %s", \
-            archiveName.c_str()); \
-        delete2(header); \
+            archiveName.c_str()) \
+        delete2(header) \
         delete [] buf; \
         fclose(arcFile); \
         return false; \
@@ -75,7 +75,7 @@ namespace ZipReader
     {
         if (entry == nullptr)
         {
-            reportAlways("Entry is null.");
+            reportAlways("Entry is null.")
             return false;
         }
         const std::string archiveName = entry->root;
@@ -86,7 +86,7 @@ namespace ZipReader
         if (arcFile == nullptr)
         {
             reportAlways("Can't open zip file %s",
-                archiveName.c_str());
+                archiveName.c_str())
             return false;
         }
         uint8_t *const buf = new uint8_t[65535 + 10];
@@ -104,7 +104,7 @@ namespace ZipReader
             size_t cnt = 0U;
             // file header pointer on 0
             // read file header signature
-            readVal(buf, 4, "zip file header");  // + 4
+            readVal(buf, 4, "zip file header")  // + 4
             // pointer on 4
 
             if (buf[0] == 0x50 &&
@@ -138,7 +138,7 @@ namespace ZipReader
                 if (fileNameLen > 1000)
                 {
                     reportAlways("Error too long file name in file %s",
-                        archiveName.c_str());
+                        archiveName.c_str())
                     delete header;
                     delete [] buf;
                     fclose(arcFile);
@@ -148,7 +148,7 @@ namespace ZipReader
                 swapVal16(val16)
                 // file header pointer on 30
                 const uint32_t extraFieldLen = CAST_U32(val16);
-                readVal(buf, fileNameLen, "file name");
+                readVal(buf, fileNameLen, "file name")
                 // file header pointer on 30 + fileNameLen
                 buf[fileNameLen] = 0;
                 header->fileName = std::string(
@@ -178,7 +178,7 @@ namespace ZipReader
                         header->fileName.c_str());
 #endif  // DEBUG_ZIP
                     dirs.push_back(header->fileName);
-                    delete2(header);
+                    delete2(header)
                 }
             }
             else if (buf[0] == 0x50 &&
@@ -209,7 +209,7 @@ namespace ZipReader
                     buf[1],
                     buf[2],
                     buf[3],
-                    archiveName.c_str());
+                    archiveName.c_str())
                 delete [] buf;
                 fclose(arcFile);
                 return false;
@@ -225,7 +225,7 @@ namespace ZipReader
     {
         reportAlways("Zlib error: '%s' in %s",
             text.c_str(),
-            getZlibError(err).c_str());
+            getZlibError(err).c_str())
     }
 
     std::string getZlibError(const int err)
@@ -243,7 +243,7 @@ namespace ZipReader
     {
         if (header == nullptr)
         {
-            reportAlways("ZipReader::readCompressedFile: header is null");
+            reportAlways("ZipReader::readCompressedFile: header is null")
             return nullptr;
         }
         FILE *restrict const arcFile = fopen(
@@ -252,7 +252,7 @@ namespace ZipReader
         if (arcFile == nullptr)
         {
             reportAlways("Can't open zip file %s",
-                header->zipEntry->root.c_str());
+                header->zipEntry->root.c_str())
             return nullptr;
         }
 
@@ -263,7 +263,7 @@ namespace ZipReader
             compressSize)
         {
             reportAlways("Read zip compressed file error from archive: %s",
-                header->zipEntry->root.c_str());
+                header->zipEntry->root.c_str())
             fclose(arcFile);
             delete [] buf;
             return nullptr;
@@ -276,7 +276,7 @@ namespace ZipReader
     {
         if (header == nullptr)
         {
-            reportAlways("Open zip file error. header is null.");
+            reportAlways("Open zip file error. header is null.")
             return nullptr;
         }
         uint8_t *restrict const in = readCompressedFile(header);

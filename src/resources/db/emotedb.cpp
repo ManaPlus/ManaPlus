@@ -63,7 +63,7 @@ void EmoteDB::load()
     mLastEmote = 0;
     loadXmlFile(paths.getStringValue("emotesFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("emotesPatchFile"), SkipError_true);
-    loadXmlDir("emotesPatchDir", loadXmlFile);
+    loadXmlDir("emotesPatchDir", loadXmlFile)
     loadSpecialXmlFile("graphics/sprites/manaplus_emotes.xml",
         SkipError_false);
 
@@ -106,7 +106,7 @@ void EmoteDB::loadXmlFile(const std::string &fileName,
         if (id == -1)
         {
             reportAlways("Emote Database: Emote with missing ID in %s!",
-                paths.getStringValue("emotesFile").c_str());
+                paths.getStringValue("emotesFile").c_str())
             continue;
         }
         EmoteInfo *currentInfo = nullptr;
@@ -179,7 +179,7 @@ void EmoteDB::loadSpecialXmlFile(const std::string &fileName,
         if (id == -1)
         {
             reportAlways("Emote Database: Emote with missing ID in "
-                "manaplus_emotes.xml!");
+                "manaplus_emotes.xml!")
             continue;
         }
         const int altId = XML::getProperty(emoteNode, "altid", -1);
@@ -263,7 +263,7 @@ const EmoteInfo *EmoteDB::get(const int id, const bool allowNull)
         if (allowNull)
             return nullptr;
         reportAlways("EmoteDB: Warning, unknown emote ID %d requested",
-            id);
+            id)
         return &mUnknown;
     }
     return i->second;
@@ -282,7 +282,7 @@ const EmoteInfo *EmoteDB::get2(int id, const bool allowNull)
         if (allowNull)
             return nullptr;
         reportAlways("EmoteDB: Warning, unknown emote ID %d requested",
-            id);
+            id)
         return &mUnknown;
     }
     return i->second;

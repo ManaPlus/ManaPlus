@@ -205,8 +205,8 @@ Setup_Audio::Setup_Audio(const Widget2 *const widget) :
 
 Setup_Audio::~Setup_Audio()
 {
-    delete2(mSoundModel);
-    delete2(mChannelsList);
+    delete2(mSoundModel)
+    delete2(mChannelsList)
 }
 
 void Setup_Audio::apply()

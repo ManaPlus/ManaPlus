@@ -537,7 +537,7 @@ void EventsManager::logEvent(const SDL_Event &event)
             logger->assertLog("event: other: %u",
                 CAST_U32(event.type));
             break;
-    };
+    }
 }
 
 #ifdef USE_SDL2

@@ -324,7 +324,7 @@ void SpellManager::load()
     if (!var##method.empty()) \
         serverConfig.setValue((str) + toString(i), var##method); \
     else \
-        serverConfig.deleteKey((str) + toString(i));
+        serverConfig.deleteKey((str) + toString(i))
 
 void SpellManager::save() const
 {

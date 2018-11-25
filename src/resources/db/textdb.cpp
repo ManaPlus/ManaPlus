@@ -39,7 +39,7 @@ void TextDb::load()
     logger->log1("Initializing text database...");
     loadXmlFile(paths.getStringValue("textsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("textsPatchFile"), SkipError_true);
-    loadXmlDir("textsPatchDir", loadXmlFile);
+    loadXmlDir("textsPatchDir", loadXmlFile)
 }
 
 void TextDb::loadXmlFile(const std::string &fileName,

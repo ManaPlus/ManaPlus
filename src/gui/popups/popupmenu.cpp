@@ -1546,7 +1546,7 @@ void PopupMenu::handleLink(const std::string &link,
     // Unknown actions
     else if (link != "cancel")
     {
-        reportAlways("PopupMenu: Warning, unknown action '%s'", link.c_str());
+        reportAlways("PopupMenu: Warning, unknown action '%s'", link.c_str())
     }
 
     if (!mAllowCleanMenu)

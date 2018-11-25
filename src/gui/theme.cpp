@@ -891,7 +891,7 @@ void Theme::loadRect(ImageRect &image,
         Theme::getThemePath());
     if (skin != nullptr)
     {
-        loadGrid();
+        loadGrid()
         unload(skin);
     }
 }
@@ -907,7 +907,7 @@ Skin *Theme::loadSkinRect(ImageRect &image,
         true,
         Theme::getThemePath());
     if (skin != nullptr)
-        loadGrid();
+        loadGrid()
     return skin;
 }
 

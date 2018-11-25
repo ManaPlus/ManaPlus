@@ -59,7 +59,7 @@ void WindowContainer::scheduleDelete(Widget *const widget)
     else
     {
         reportAlways("double adding pointer %p for deletion in scheduleDelete",
-            static_cast<void*>(widget));
+            static_cast<void*>(widget))
     }
 }
 

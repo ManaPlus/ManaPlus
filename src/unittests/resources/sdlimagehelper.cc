@@ -548,9 +548,9 @@ TEST_CASE("sdlimagehelper combineSurface", "")
         MSDL_FreeSurface(surface2);
     }
 
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
 }

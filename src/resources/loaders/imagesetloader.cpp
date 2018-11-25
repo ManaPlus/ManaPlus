@@ -53,7 +53,7 @@ struct ImageSetLoader final
         Image *const img = Loader::getImage(rl->path);
         if (img == nullptr)
         {
-            reportAlways("Image loading error: %s", rl->path.c_str());
+            reportAlways("Image loading error: %s", rl->path.c_str())
             return nullptr;
         }
         ImageSet *const res = new ImageSet(img, rl->w, rl->h, 0, 0);

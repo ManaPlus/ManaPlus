@@ -52,7 +52,7 @@ AttrDisplay::AttrDisplay(const Widget2 *const widget,
 
 AttrDisplay::~AttrDisplay()
 {
-    delete2(mLayout);
+    delete2(mLayout)
 }
 
 std::string AttrDisplay::update()

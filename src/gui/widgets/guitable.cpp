@@ -73,7 +73,7 @@ GuiTable::~GuiTable()
         gui->removeDragged(this);
 
     uninstallActionListeners();
-    delete2(mModel);
+    delete2(mModel)
 }
 
 const TableModel *GuiTable::getModel() const

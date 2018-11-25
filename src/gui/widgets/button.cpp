@@ -346,7 +346,7 @@ Button::~Button()
         for (int mode = 0; mode < BUTTON_COUNT; mode ++)
             theme->unload(mSkin[mode]);
     }
-    delete2(mVertexes2);
+    delete2(mVertexes2)
     if (mImageSet != nullptr)
     {
         mImageSet->decRef();

@@ -39,7 +39,7 @@ INPUT_INPUTMANAGER_H
 #define callYellowBar(name) \
     GameModifiers::name(!inputManager.isActionActive( \
         InputAction::STOP_ATTACK)); \
-    return true;
+    return true
 
 #define callYellowBarCond(name) \
     if (!settings.disableGameModifiers) \
@@ -48,6 +48,6 @@ INPUT_INPUTMANAGER_H
             InputAction::STOP_ATTACK)); \
         return true; \
     } \
-    return false;
+    return false
 
 #endif  // ACTIONS_ACTIONDEF_H

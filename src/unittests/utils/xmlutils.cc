@@ -96,9 +96,9 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
     REQUIRE(1 == arr[3]);
     REQUIRE(1 == arr[4]);
 
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
@@ -154,9 +154,9 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
     REQUIRE(arr["xD"] == "1");
     REQUIRE(arr["Metal"] == "26");
 
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
@@ -214,9 +214,9 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
     REQUIRE(arr[10] == 20);
     REQUIRE(arr[3] == 0);
 
-    delete2(userPalette);
-    delete2(theme);
-    delete2(client);
+    delete2(userPalette)
+    delete2(theme)
+    delete2(client)
     ResourceManager::deleteInstance();
     VirtFs::unmountDirSilent("data/test");
     VirtFs::unmountDirSilent("../data/test");

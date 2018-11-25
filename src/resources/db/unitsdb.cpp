@@ -113,7 +113,7 @@ void UnitsDb::load()
 
     loadXmlFile(paths.getStringValue("unitsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("unitsPatchFile"), SkipError_true);
-    loadXmlDir("unitsPatchDir", loadXmlFile);
+    loadXmlDir("unitsPatchDir", loadXmlFile)
 }
 
 void UnitsDb::unload()
@@ -186,7 +186,7 @@ static void loadCurrencies(XmlNodePtr parentNode)
             const std::string name = XML::getProperty(node, "name", "");
             if (name.empty())
             {
-                reportAlways("Error: unknown currency name.");
+                reportAlways("Error: unknown currency name.")
                 continue;
             }
             mCurrencies[name] = loadUnit(node);

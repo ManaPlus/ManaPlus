@@ -59,7 +59,7 @@
     vVar[vp + 4] = dstX + w; \
     vVar[vp + 5] = dstY + h; \
     vVar[vp + 6] = dstX; \
-    vVar[vp + 7] = dstY + h;
+    vVar[vp + 7] = dstY + h
 
 
 #define vertFillNv(tVar, vVar, srcX, srcY, dstX, dstY, w, h) \
@@ -78,7 +78,7 @@
     vVar[vp + 4] = dstX + w; \
     vVar[vp + 5] = dstY + h; \
     vVar[vp + 6] = dstX; \
-    vVar[vp + 7] = dstY + h;
+    vVar[vp + 7] = dstY + h
 
 namespace
 {

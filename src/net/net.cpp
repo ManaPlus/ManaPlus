@@ -136,7 +136,7 @@ void connectToServer(const ServerInfo &server)
             generalHandler != nullptr)
         {
             generalHandler->unload();
-            delete2(generalHandler);
+            delete2(generalHandler)
         }
 
         switch (server.type)
@@ -178,7 +178,7 @@ void unload()
     if (handler != nullptr)
         handler->unload();
     ignorePackets.clear();
-    delete2(generalHandler);
+    delete2(generalHandler)
 }
 
 ServerTypeT getNetworkType()

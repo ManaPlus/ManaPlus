@@ -153,7 +153,7 @@ void RegisterDialog::postInit()
 
 RegisterDialog::~RegisterDialog()
 {
-    delete2(mWrongDataNoticeListener);
+    delete2(mWrongDataNoticeListener)
 }
 
 void RegisterDialog::action(const ActionEvent &event)

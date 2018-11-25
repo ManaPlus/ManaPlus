@@ -46,7 +46,7 @@ void ElementalDb::load()
     logger->log1("Initializing elemental database...");
     loadXmlFile(paths.getStringValue("elementalsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("elementalsPatchFile"), SkipError_true);
-    loadXmlDir("elementalsPatchDir", loadXmlFile);
+    loadXmlDir("elementalsPatchDir", loadXmlFile)
 
     mLoaded = true;
 }
@@ -145,7 +145,7 @@ BeingInfo *ElementalDb::get(const BeingTypeId id)
         {
             reportAlways("ElementalDb: Warning, unknown elemental ID "
                 "%d requested",
-                toInt(id, int));
+                toInt(id, int))
             return BeingInfo::unknown;
         }
     }

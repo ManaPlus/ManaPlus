@@ -44,7 +44,7 @@ PartyHandler::PartyHandler() :
 
 PartyHandler::~PartyHandler()
 {
-    delete2(partyTab);
+    delete2(partyTab)
     taParty = nullptr;
 }
 

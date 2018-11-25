@@ -130,7 +130,7 @@ TEST_CASE("PoParser tests", "PoParser")
         delete parser;
         delete dict;
     }
-    delete2(client);
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
 }

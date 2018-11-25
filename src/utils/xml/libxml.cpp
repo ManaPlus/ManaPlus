@@ -118,7 +118,7 @@ namespace XML
                 if (size < 0)
                 {
                     reportAlways("Error loading XML file %s",
-                        filename.c_str());
+                        filename.c_str())
                 }
                 else
                 {
@@ -131,7 +131,7 @@ namespace XML
             else if (skipError == SkipError_false)
             {
                 reportAlways("Error loading XML file %s",
-                    filename.c_str());
+                    filename.c_str())
             }
         }
 
@@ -142,12 +142,12 @@ namespace XML
 
             if (mDoc == nullptr)
             {
-                reportAlways("Error parsing XML file %s", filename.c_str());
+                reportAlways("Error parsing XML file %s", filename.c_str())
             }
         }
         else if (skipError == SkipError_false)
         {
-            reportAlways("Error loading XML file %s", filename.c_str());
+            reportAlways("Error loading XML file %s", filename.c_str())
         }
         mIsValid = valid;
         BLOCK_END("XML::Document::Document")
@@ -304,7 +304,7 @@ namespace XML
     void initXML()
     {
         xmlInitParser();
-        LIBXML_TEST_VERSION;
+        LIBXML_TEST_VERSION
 
         // Suppress libxml2 error messages
         xmlSetGenericErrorFunc(nullptr, &xmlErrorLogger);

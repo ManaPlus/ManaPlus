@@ -146,7 +146,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
                 mSortDropDown->setSelected(config.getIntValue(
                     "cartSortOrder"));
                 break;
-        };
+        }
     }
     else
     {
@@ -374,7 +374,7 @@ InventoryWindow::InventoryWindow(Inventory *const inventory) :
         case InventoryType::Craft:
         case InventoryType::TypeEnd:
             break;
-    };
+    }
 
     Layout &layout = getLayout();
     layout.setRowHeight(2, LayoutType::SET);
@@ -420,7 +420,7 @@ InventoryWindow::~InventoryWindow()
         invInstances.front()->updateDropButton();
 
     mSortDropDown->hideDrop(false);
-    delete2(mSortModel);
+    delete2(mSortModel)
 }
 
 void InventoryWindow::storeSortOrder() const
@@ -449,7 +449,7 @@ void InventoryWindow::storeSortOrder() const
                 config.setValue("cartSortOrder",
                     mSortDropDown->getSelected());
                 break;
-        };
+        }
     }
 }
 

@@ -189,7 +189,7 @@ static void setBasicFields(Being *restrict const dstBeing,
         case ActorType::Avatar:
         case ActorType::Unknown:
             reportAlways("Wrong being type detected: %d",
-                CAST_S32(actorType));
+                CAST_S32(actorType))
             break;
     }
 }

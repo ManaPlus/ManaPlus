@@ -47,7 +47,7 @@ void ItemFieldDb::load()
 
     loadXmlFile(paths.getStringValue("itemFieldsFile"), SkipError_false);
     loadXmlFile(paths.getStringValue("itemFieldsPatchFile"), SkipError_true);
-    loadXmlDir("itemFieldsPatchDir", loadXmlFile);
+    loadXmlDir("itemFieldsPatchDir", loadXmlFile)
     mLoaded = true;
 }
 
@@ -65,7 +65,7 @@ static void loadFields(XmlNodeConstPtr groupNode,
             "");
         if (name.empty())
         {
-            reportAlways("Empty name field in ItemFieldDb");
+            reportAlways("Empty name field in ItemFieldDb")
             continue;
         }
         const std::string description = XML::langProperty(node,
@@ -73,7 +73,7 @@ static void loadFields(XmlNodeConstPtr groupNode,
             "");
         if (description.empty())
         {
-            reportAlways("Empty description field in ItemFieldDb");
+            reportAlways("Empty description field in ItemFieldDb")
             continue;
         }
         const bool sign = XML::getBoolProperty(node,
@@ -83,14 +83,14 @@ static void loadFields(XmlNodeConstPtr groupNode,
         {
             reportAlways(
                 "Same field name detected in requeted and add groups: %s",
-                name.c_str());
+                name.c_str())
             continue;
         }
         if (fields1.find(name) != fields1.end())
         {
             reportAlways(
                 "Same field name detected: %s",
-                name.c_str());
+                name.c_str())
             continue;
         }
         fields1[name] = new ItemFieldType(name,

@@ -105,7 +105,7 @@ SpriteDef *SpriteDef::load(const std::string &animationFile,
     if ((rootNode == nullptr) || !xmlNameEqual(rootNode, "sprite"))
     {
         reportAlways("Error, failed to parse sprite %s",
-            animationFile.c_str());
+            animationFile.c_str())
         const std::string errorFile = pathJoin(paths.getStringValue("sprites"),
             paths.getStringValue("spriteErrorFile"));
         BLOCK_END("SpriteDef::load")
@@ -256,7 +256,7 @@ void SpriteDef::loadImageSet(XmlNodeConstPtr node,
     {
         reportAlways("%s: Couldn't load imageset: %s",
             mSource.c_str(),
-            imageSrc.c_str());
+            imageSrc.c_str())
         return;
     }
 
@@ -273,7 +273,7 @@ const ImageSet *SpriteDef::getImageSet(const std::string &imageSetName) const
         reportAlways("%s: Imageset \"%s\" not defined in %s",
             mSource.c_str(),
             imageSetName.c_str(),
-            mIdPath.c_str());
+            mIdPath.c_str())
         return nullptr;
     }
     return si->second;
@@ -295,7 +295,7 @@ void SpriteDef::loadAction(XmlNodeConstPtr node,
         reportAlways("%s: Unknown action \"%s\" defined in %s",
             mSource.c_str(),
             actionName.c_str(),
-            mIdPath.c_str());
+            mIdPath.c_str())
         return;
     }
     Action *const action = new Action(actionName);
@@ -305,7 +305,7 @@ void SpriteDef::loadAction(XmlNodeConstPtr node,
     // dirty hack to fix bad resources in tmw server
     if (actionName == "attack_stab")
     {
-        reportAlways("Found legacy attribute attack_stab in animation");
+        reportAlways("Found legacy attribute attack_stab in animation")
         addAction(hp, "attack", action);
     }
 
@@ -345,7 +345,7 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
         reportAlways("%s: Unknown direction \"%s\" used in %s",
             mSource.c_str(),
             directionName.c_str(),
-            mIdPath.c_str());
+            mIdPath.c_str())
         return;
     }
 
@@ -383,7 +383,7 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
                 reportAlways(
                     "%s: No valid value for 'index' at direction '%s'",
                     mSource.c_str(),
-                    directionName.c_str());
+                    directionName.c_str())
                 continue;
             }
 
@@ -393,7 +393,7 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
                 reportAlways("%s: No image at index %d at direction '%s'",
                     mSource.c_str(),
                     index + variant_offset,
-                    directionName.c_str());
+                    directionName.c_str())
                 continue;
             }
 
@@ -411,7 +411,7 @@ void SpriteDef::loadAnimation(XmlNodeConstPtr animationNode,
             {
                 reportAlways("%s: No valid value for 'repeat' at direction %s",
                     mSource.c_str(),
-                    directionName.c_str());
+                    directionName.c_str())
                 continue;
             }
 
@@ -495,7 +495,7 @@ void SpriteDef::includeSprite(XmlNodeConstPtr includeNode, const int variant)
     {
         reportAlways("%s: Tried to include %s which already is included.",
             mSource.c_str(),
-            filename.c_str());
+            filename.c_str())
         return;
     }
     mProcessedFiles.insert(filename);
@@ -511,7 +511,7 @@ void SpriteDef::includeSprite(XmlNodeConstPtr includeNode, const int variant)
     {
         reportAlways("%s: No sprite root node in %s",
             mSource.c_str(),
-            filename.c_str());
+            filename.c_str())
         doc->decRef();
         return;
     }
@@ -599,7 +599,7 @@ bool SpriteDef::addSequence(const int start,
     if (start < 0 || end < 0)
     {
         reportAlways("%s: No valid value for 'start' or 'end'",
-            mSource.c_str());
+            mSource.c_str())
         return true;
     }
 
@@ -616,7 +616,7 @@ bool SpriteDef::addSequence(const int start,
                 {
                     reportAlways("%s: No image at index %d",
                         mSource.c_str(),
-                        pos + variant_offset);
+                        pos + variant_offset)
                     pos ++;
                     continue;
                 }
@@ -641,7 +641,7 @@ bool SpriteDef::addSequence(const int start,
                 {
                     reportAlways("%s: No image at index %d",
                         mSource.c_str(),
-                        pos + variant_offset);
+                        pos + variant_offset)
                     pos ++;
                     continue;
                 }

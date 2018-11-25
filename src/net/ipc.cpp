@@ -156,7 +156,7 @@ void IPC::stop()
         return;
 
     logger->log("Stopping IPC...");
-    delete2(ipc);
+    delete2(ipc)
 }
 
 void IPC::start()
@@ -183,7 +183,7 @@ void IPC::start()
 
         port ++;
     }
-    delete2(ipc);
+    delete2(ipc)
 }
 
 void IPC::flush()

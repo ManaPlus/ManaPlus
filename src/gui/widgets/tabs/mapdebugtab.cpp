@@ -125,7 +125,7 @@ MapDebugTab::MapDebugTab(const Widget2 *const widget) :
             // TRANSLATORS: debug window label
             mFPSText = _("%d FPS (SDL2 default)");
             break;
-    };
+    }
 #else  // USE_OPENGL
 
     // TRANSLATORS: debug window label

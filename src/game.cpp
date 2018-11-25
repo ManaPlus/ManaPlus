@@ -311,7 +311,7 @@ static void createGuiWindows()
                 IgnoreRecord_false,
                 TryRemoveColors_true);
         }
-        delete2(assertListener);
+        delete2(assertListener)
     }
     if (config.getBoolValue("enableTradeTab"))
         chatWindow->addSpecialChannelTab(TRADE_CHANNEL, false);
@@ -357,20 +357,20 @@ static void destroyGuiWindows()
     GuildManager::clear();
 #endif  // TMWA_SUPPORT
 
-    delete2(windowMenu);
+    delete2(windowMenu)
     delete2(localChatTab)  // Need to do this first, so it can remove itself
     delete2(debugChatTab)
     delete2(tradeChatTab)
     delete2(battleChatTab)
     delete2(langChatTab)
-    delete2(gmChatTab);
+    delete2(gmChatTab)
 #ifdef TMWA_SUPPORT
     if (guildManager != nullptr && GuildManager::getEnableGuildBot())
         guildManager->reload();
 #endif  // TMWA_SUPPORT
 
     logger->log("start deleting");
-    delete2(emoteWindow);
+    delete2(emoteWindow)
     delete2(chatWindow)
     logger->log("end deleting");
     delete2(statusWindow)
@@ -388,15 +388,15 @@ static void destroyGuiWindows()
     delete2(emoteShortcutWindow)
     delete2(outfitWindow)
     delete2(socialWindow)
-    delete2(dropShortcutWindow);
-    delete2(spellShortcutWindow);
-    delete2(bankWindow);
-    delete2(cutInWindow);
-    delete2(mailWindow);
-    delete2(questsWindow);
-    delete2(whoIsOnline);
-    delete2(killStats);
-    delete2(clanWindow);
+    delete2(dropShortcutWindow)
+    delete2(spellShortcutWindow)
+    delete2(bankWindow)
+    delete2(cutInWindow)
+    delete2(mailWindow)
+    delete2(questsWindow)
+    delete2(whoIsOnline)
+    delete2(killStats)
+    delete2(clanWindow)
 }
 
 Game *Game::mInstance = nullptr;
@@ -508,8 +508,8 @@ Game::~Game()
     delete2(mumbleManager)
 #endif  // USE_MUMBLE
 
-    delete2(crazyMoves);
-    delete2(emptyBeingSlot);
+    delete2(crazyMoves)
+    delete2(emptyBeingSlot)
 
     Being::clearCache();
     mInstance = nullptr;

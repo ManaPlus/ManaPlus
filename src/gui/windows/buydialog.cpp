@@ -426,8 +426,8 @@ void BuyDialog::init()
 
 BuyDialog::~BuyDialog()
 {
-    delete2(mShopItems);
-    delete2(mSortModel);
+    delete2(mShopItems)
+    delete2(mSortModel)
     instances.remove(this);
     if (buySellHandler != nullptr)
         buySellHandler->cleanDialogReference(this);

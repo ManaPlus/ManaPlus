@@ -256,12 +256,12 @@ Setup_Visual::Setup_Visual(const Widget2 *const widget) :
 
 Setup_Visual::~Setup_Visual()
 {
-    delete2(mSpeachList);
-    delete2(mAmbientFxList);
-    delete2(mParticleList);
-    delete2(mParticleTypeList);
-    delete2(mVSyncList);
-    delete2(mScaleList);
+    delete2(mSpeachList)
+    delete2(mAmbientFxList)
+    delete2(mParticleList)
+    delete2(mParticleTypeList)
+    delete2(mVSyncList)
+    delete2(mScaleList)
 }
 
 void Setup_Visual::apply()

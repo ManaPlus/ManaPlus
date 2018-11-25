@@ -105,8 +105,10 @@ PRAGMA48(GCC diagnostic pop)
 #define GL_MAX_RENDERBUFFER_SIZE 0x84E8
 #endif  // GL_MAX_RENDERBUFFER_SIZE
 #define useCompression(name) \
-    OpenGLImageHelper::setInternalTextureType(name); \
-    logger->log("using " #name " texture compression");
+    { \
+        OpenGLImageHelper::setInternalTextureType(name); \
+        logger->log("using " #name " texture compression"); \
+    }
 #endif  // USE_OPENGL
 
 GraphicsManager graphicsManager;
@@ -378,7 +380,7 @@ void GraphicsManager::createRenderers()
         case RENDER_SDL2_DEFAULT:
             RENDER_SDL2_DEFAULT_INIT
             break;
-    };
+    }
     mUseAtlases = (useOpenGL == RENDER_NORMAL_OPENGL ||
         useOpenGL == RENDER_SAFE_OPENGL ||
         useOpenGL == RENDER_MODERN_OPENGL ||
@@ -440,11 +442,11 @@ void GraphicsManager::createRenderers()
 
 void GraphicsManager::deleteRenderers()
 {
-    delete2(mainGraphics);
+    delete2(mainGraphics)
     if (imageHelper != surfaceImageHelper)
         delete surfaceImageHelper;
     surfaceImageHelper = nullptr;
-    delete2(imageHelper);
+    delete2(imageHelper)
 }
 
 void GraphicsManager::setVideoMode()
@@ -641,7 +643,7 @@ void GraphicsManager::updateExtensions()
     logger->log1("opengl extensions: ");
     if (checkGLVersion(3, 0))
     {   // get extensions in new way
-        assignFunction2(glGetStringi, "glGetStringi");
+        assignFunction2(glGetStringi, "glGetStringi")
         std::string extList;
         int num = 0;
         glGetIntegerv(GL_NUM_EXTENSIONS, &num);
@@ -669,7 +671,7 @@ void GraphicsManager::updateExtensions()
 void GraphicsManager::updatePlanformExtensions()
 {
     SDL_SysWMinfo info;
-    SDL_VERSION(&info.version);
+    SDL_VERSION(&info.version)
     if (SDL::getWindowWMInfo(mainGraphics->getWindow(), &info))
     {
 #ifdef WIN32
@@ -777,7 +779,7 @@ void GraphicsManager::updateTextureCompressionFormat() const
                         if (compressionFormat == 1)
                         {
                             delete []formats;
-                            useCompression(GL_COMPRESSED_RGBA_S3TC_DXT5_EXT);
+                            useCompression(GL_COMPRESSED_RGBA_S3TC_DXT5_EXT)
                             return;
                         }
                         break;
@@ -785,7 +787,7 @@ void GraphicsManager::updateTextureCompressionFormat() const
                         if (compressionFormat == 2)
                         {
                             delete []formats;
-                            useCompression(GL_COMPRESSED_RGBA_FXT1_3DFX);
+                            useCompression(GL_COMPRESSED_RGBA_FXT1_3DFX)
                             return;
                         }
                         break;
@@ -793,7 +795,7 @@ void GraphicsManager::updateTextureCompressionFormat() const
                         if (compressionFormat == 4)
                         {
                             delete []formats;
-                            useCompression(GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
+                            useCompression(GL_COMPRESSED_RGBA_BPTC_UNORM_ARB)
                             return;
                         }
                         break;
@@ -804,7 +806,7 @@ void GraphicsManager::updateTextureCompressionFormat() const
             if (compressionFormat == 3)
             {
                 delete []formats;
-                useCompression(GL_COMPRESSED_RGBA_ARB);
+                useCompression(GL_COMPRESSED_RGBA_ARB)
                 return;
             }
 
@@ -813,7 +815,7 @@ void GraphicsManager::updateTextureCompressionFormat() const
                 && supportExtension("GL_ARB_texture_compression_bptc"))
             {
                 delete []formats;
-                useCompression(GL_COMPRESSED_RGBA_BPTC_UNORM_ARB);
+                useCompression(GL_COMPRESSED_RGBA_BPTC_UNORM_ARB)
                 return;
             }
         }
@@ -1023,10 +1025,10 @@ void GraphicsManager::initOpenGLFunctions()
     if (is10 && (is33 || supportExtension("GL_ARB_sampler_objects")))
     {
         logger->log1("found GL_ARB_sampler_objects");
-        assignFunction(glGenSamplers);
-        assignFunction(glDeleteSamplers);
-        assignFunction(glBindSampler);
-        assignFunction(glSamplerParameteri);
+        assignFunction(glGenSamplers)
+        assignFunction(glDeleteSamplers)
+        assignFunction(glBindSampler)
+        assignFunction(glSamplerParameteri)
         if (isGLNotNull(mglGenSamplers)
             && config.getBoolValue("useTextureSampler"))
         {
@@ -1076,19 +1078,19 @@ void GraphicsManager::initOpenGLFunctions()
             if (is45)
             {
                 logger->log1("found GL_EXT_direct_state_access");
-                assignFunction(glTextureSubImage2D);
+                assignFunction(glTextureSubImage2D)
             }
             else if (supportExtension("GL_EXT_direct_state_access"))
             {
                 logger->log1("found GL_EXT_direct_state_access");
                 assignFunctionEmu2(glTextureSubImage2DEXT,
-                    "glTextureSubImage2DEXT");
+                    "glTextureSubImage2DEXT")
             }
             else if (supportExtension("GL_ARB_direct_state_access"))
             {
                 logger->log1("found GL_ARB_direct_state_access");
                 logger->log1("GL_EXT_direct_state_access not found");
-                assignFunction(glTextureSubImage2D);
+                assignFunction(glTextureSubImage2D)
             }
             else
             {
@@ -1107,7 +1109,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (is12 && (is42 || supportExtension("GL_ARB_texture_storage")))
     {
         logger->log1("found GL_ARB_texture_storage");
-        assignFunction(glTexStorage2D);
+        assignFunction(glTexStorage2D)
     }
     else
     {
@@ -1117,7 +1119,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (is13 || supportExtension("GL_ARB_multitexture"))
     {
         logger->log1("found GL_ARB_multitexture or OpenGL 1.3");
-        assignFunction(glActiveTexture);
+        assignFunction(glActiveTexture)
     }
     else
     {
@@ -1128,7 +1130,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (is20 || supportExtension("GL_ARB_explicit_attrib_location"))
     {
         logger->log1("found GL_ARB_explicit_attrib_location or OpenGL 2.0");
-        assignFunction(glBindAttribLocation);
+        assignFunction(glBindAttribLocation)
     }
     else
     {
@@ -1138,29 +1140,29 @@ void GraphicsManager::initOpenGLFunctions()
     if (is30 || supportExtension("GL_ARB_framebuffer_object"))
     {   // frame buffer supported
         logger->log1("found GL_ARB_framebuffer_object");
-        assignFunction(glGenRenderbuffers);
-        assignFunction(glBindRenderbuffer);
-        assignFunction(glRenderbufferStorage);
-        assignFunction(glGenFramebuffers);
-        assignFunction(glBindFramebuffer);
-        assignFunction(glFramebufferTexture2D);
-        assignFunction(glFramebufferRenderbuffer);
-        assignFunction(glDeleteFramebuffers);
-        assignFunction(glDeleteRenderbuffers);
-        assignFunction(glCheckFramebufferStatus);
+        assignFunction(glGenRenderbuffers)
+        assignFunction(glBindRenderbuffer)
+        assignFunction(glRenderbufferStorage)
+        assignFunction(glGenFramebuffers)
+        assignFunction(glBindFramebuffer)
+        assignFunction(glFramebufferTexture2D)
+        assignFunction(glFramebufferRenderbuffer)
+        assignFunction(glDeleteFramebuffers)
+        assignFunction(glDeleteRenderbuffers)
+        assignFunction(glCheckFramebufferStatus)
     }
     else if (supportExtension("GL_EXT_framebuffer_object"))
     {   // old frame buffer extension
         logger->log1("found GL_EXT_framebuffer_object");
-        assignFunctionEXT(glGenRenderbuffers);
-        assignFunctionEXT(glBindRenderbuffer);
-        assignFunctionEXT(glRenderbufferStorage);
-        assignFunctionEXT(glGenFramebuffers);
-        assignFunctionEXT(glBindFramebuffer);
-        assignFunctionEXT(glFramebufferTexture2D);
-        assignFunctionEXT(glFramebufferRenderbuffer);
-        assignFunctionEXT(glDeleteFramebuffers);
-        assignFunctionEXT(glDeleteRenderbuffers);
+        assignFunctionEXT(glGenRenderbuffers)
+        assignFunctionEXT(glBindRenderbuffer)
+        assignFunctionEXT(glRenderbufferStorage)
+        assignFunctionEXT(glGenFramebuffers)
+        assignFunctionEXT(glBindFramebuffer)
+        assignFunctionEXT(glFramebufferTexture2D)
+        assignFunctionEXT(glFramebufferRenderbuffer)
+        assignFunctionEXT(glDeleteFramebuffers)
+        assignFunctionEXT(glDeleteRenderbuffers)
     }
     else
     {   // no frame buffer support
@@ -1173,18 +1175,18 @@ void GraphicsManager::initOpenGLFunctions()
     if (is43 || supportExtension("GL_KHR_debug"))
     {
         logger->log1("found GL_KHR_debug");
-        assignFunction(glDebugMessageControl);
-        assignFunction(glDebugMessageCallback);
-        assignFunction(glPushDebugGroup);
-        assignFunction(glPopDebugGroup);
-        assignFunction(glObjectLabel);
+        assignFunction(glDebugMessageControl)
+        assignFunction(glDebugMessageCallback)
+        assignFunction(glPushDebugGroup)
+        assignFunction(glPopDebugGroup)
+        assignFunction(glObjectLabel)
         mSupportDebug = 2;
     }
     else if (supportExtension("GL_ARB_debug_output"))
     {
         logger->log1("found GL_ARB_debug_output");
-        assignFunctionARB(glDebugMessageControl);
-        assignFunctionARB(glDebugMessageCallback);
+        assignFunctionARB(glDebugMessageControl)
+        assignFunctionARB(glDebugMessageCallback)
         mSupportDebug = 1;
     }
     else
@@ -1196,7 +1198,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (supportExtension("GL_GREMEDY_frame_terminator"))
     {
         logger->log1("found GL_GREMEDY_frame_terminator");
-        assignFunction2(glFrameTerminator, "glFrameTerminatorGREMEDY");
+        assignFunction2(glFrameTerminator, "glFrameTerminatorGREMEDY")
     }
     else
     {
@@ -1205,10 +1207,10 @@ void GraphicsManager::initOpenGLFunctions()
     if (is44 || supportExtension("GL_EXT_debug_label"))
     {
         logger->log1("found GL_EXT_debug_label");
-        assignFunction2(glLabelObject, "glObjectLabel");
+        assignFunction2(glLabelObject, "glObjectLabel")
         if (isGLNull(mglLabelObject))
-            assignFunctionEXT(glLabelObject);
-        assignFunctionEXT(glGetObjectLabel);
+            assignFunctionEXT(glLabelObject)
+        assignFunctionEXT(glGetObjectLabel)
     }
     else
     {
@@ -1217,7 +1219,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (supportExtension("GL_GREMEDY_string_marker"))
     {
         logger->log1("found GL_GREMEDY_string_marker");
-        assignFunction2(glPushGroupMarker, "glStringMarkerGREMEDY");
+        assignFunction2(glPushGroupMarker, "glStringMarkerGREMEDY")
     }
     else
     {
@@ -1226,9 +1228,9 @@ void GraphicsManager::initOpenGLFunctions()
     if (supportExtension("GL_EXT_debug_marker"))
     {
         logger->log1("found GL_EXT_debug_marker");
-        assignFunctionEXT(glInsertEventMarker);
-        assignFunctionEXT(glPushGroupMarker);
-        assignFunctionEXT(glPopGroupMarker);
+        assignFunctionEXT(glInsertEventMarker)
+        assignFunctionEXT(glPushGroupMarker)
+        assignFunctionEXT(glPopGroupMarker)
     }
     else
     {
@@ -1237,12 +1239,12 @@ void GraphicsManager::initOpenGLFunctions()
     if (is15 && (is30 || supportExtension("GL_EXT_timer_query")))
     {
         logger->log1("found GL_EXT_timer_query");
-        assignFunction(glGenQueries);
-        assignFunction(glBeginQuery);
-        assignFunction(glEndQuery);
-        assignFunction(glDeleteQueries);
-        assignFunction(glGetQueryObjectiv);
-        assignFunctionEXT(glGetQueryObjectui64v);
+        assignFunction(glGenQueries)
+        assignFunction(glBeginQuery)
+        assignFunction(glEndQuery)
+        assignFunction(glDeleteQueries)
+        assignFunction(glGetQueryObjectiv)
+        assignFunctionEXT(glGetQueryObjectui64v)
     }
     else
     {
@@ -1251,7 +1253,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (is20 && (is43 || supportExtension("GL_ARB_invalidate_subdata")))
     {
         logger->log1("found GL_ARB_invalidate_subdata");
-        assignFunction(glInvalidateTexImage);
+        assignFunction(glInvalidateTexImage)
     }
     else
     {
@@ -1260,13 +1262,13 @@ void GraphicsManager::initOpenGLFunctions()
     if (is21 && (is30 || supportExtension("GL_ARB_vertex_array_object")))
     {
         logger->log1("found GL_ARB_vertex_array_object");
-        assignFunction(glGenVertexArrays);
-        assignFunction(glBindVertexArray);
-        assignFunction(glDeleteVertexArrays);
-        assignFunction(glVertexAttribPointer);
-        assignFunction(glEnableVertexAttribArray);
-        assignFunction(glDisableVertexAttribArray);
-        assignFunction(glVertexAttribIPointer);
+        assignFunction(glGenVertexArrays)
+        assignFunction(glBindVertexArray)
+        assignFunction(glDeleteVertexArrays)
+        assignFunction(glVertexAttribPointer)
+        assignFunction(glEnableVertexAttribArray)
+        assignFunction(glDisableVertexAttribArray)
+        assignFunction(glVertexAttribIPointer)
     }
     else
     {
@@ -1275,11 +1277,11 @@ void GraphicsManager::initOpenGLFunctions()
     }
     if (is20 || supportExtension("GL_ARB_vertex_buffer_object"))
     {
-        assignFunction(glGenBuffers);
-        assignFunction(glDeleteBuffers);
-        assignFunction(glBindBuffer);
-        assignFunction(glBufferData);
-        assignFunction(glIsBuffer);
+        assignFunction(glGenBuffers)
+        assignFunction(glDeleteBuffers)
+        assignFunction(glBindBuffer)
+        assignFunction(glBufferData)
+        assignFunction(glIsBuffer)
     }
     else
     {
@@ -1289,7 +1291,7 @@ void GraphicsManager::initOpenGLFunctions()
     if (is43 || supportExtension("GL_ARB_copy_image"))
     {
         logger->log1("found GL_ARB_copy_image");
-        assignFunction(glCopyImageSubData);
+        assignFunction(glCopyImageSubData)
     }
     else
     {
@@ -1298,8 +1300,8 @@ void GraphicsManager::initOpenGLFunctions()
     if (is44 || supportExtension("GL_ARB_clear_texture"))
     {
         logger->log1("found GL_ARB_clear_texture");
-        assignFunction(glClearTexImage);
-        assignFunction(glClearTexSubImage);
+        assignFunction(glClearTexImage)
+        assignFunction(glClearTexSubImage)
     }
     else
     {
@@ -1308,35 +1310,35 @@ void GraphicsManager::initOpenGLFunctions()
     if (is20 || supportExtension("GL_ARB_shader_objects"))
     {
         logger->log1("found GL_ARB_shader_objects");
-        assignFunction(glCreateShader);
-        assignFunction(glDeleteShader);
-        assignFunction(glGetShaderiv);
-        assignFunction(glGetShaderInfoLog);
-        assignFunction(glGetShaderSource);
-        assignFunction(glShaderSource);
-        assignFunction(glCompileShader);
-        assignFunction(glLinkProgram);
-        assignFunction(glGetProgramInfoLog);
-        assignFunction(glDeleteProgram);
-        assignFunction(glCreateProgram);
-        assignFunction(glAttachShader);
-        assignFunction(glDetachShader);
-        assignFunction(glGetAttachedShaders);
-        assignFunction(glGetUniformLocation);
-        assignFunction(glGetActiveUniform);
-        assignFunction(glGetProgramiv);
-        assignFunction(glUseProgram);
-        assignFunction(glValidateProgram);
-        assignFunction(glGetAttribLocation);
-        assignFunction(glUniform1f);
-        assignFunction(glUniform2f);
-        assignFunction(glUniform3f);
-        assignFunction(glUniform4f);
+        assignFunction(glCreateShader)
+        assignFunction(glDeleteShader)
+        assignFunction(glGetShaderiv)
+        assignFunction(glGetShaderInfoLog)
+        assignFunction(glGetShaderSource)
+        assignFunction(glShaderSource)
+        assignFunction(glCompileShader)
+        assignFunction(glLinkProgram)
+        assignFunction(glGetProgramInfoLog)
+        assignFunction(glDeleteProgram)
+        assignFunction(glCreateProgram)
+        assignFunction(glAttachShader)
+        assignFunction(glDetachShader)
+        assignFunction(glGetAttachedShaders)
+        assignFunction(glGetUniformLocation)
+        assignFunction(glGetActiveUniform)
+        assignFunction(glGetProgramiv)
+        assignFunction(glUseProgram)
+        assignFunction(glValidateProgram)
+        assignFunction(glGetAttribLocation)
+        assignFunction(glUniform1f)
+        assignFunction(glUniform2f)
+        assignFunction(glUniform3f)
+        assignFunction(glUniform4f)
 
         if (is30 || supportExtension("GL_EXT_gpu_shader4"))
         {
             logger->log1("found GL_EXT_gpu_shader4");
-            assignFunction(glBindFragDataLocation);
+            assignFunction(glBindFragDataLocation)
         }
         else
         {
@@ -1346,10 +1348,10 @@ void GraphicsManager::initOpenGLFunctions()
         if (is41 || supportExtension("GL_ARB_separate_shader_objects"))
         {
             logger->log1("found GL_ARB_separate_shader_objects");
-            assignFunction(glProgramUniform1f);
-            assignFunction(glProgramUniform2f);
-            assignFunction(glProgramUniform3f);
-            assignFunction(glProgramUniform4f);
+            assignFunction(glProgramUniform1f)
+            assignFunction(glProgramUniform2f)
+            assignFunction(glProgramUniform3f)
+            assignFunction(glProgramUniform4f)
         }
         else
         {
@@ -1358,10 +1360,10 @@ void GraphicsManager::initOpenGLFunctions()
         if (is43 || supportExtension("GL_ARB_vertex_attrib_binding"))
         {
             logger->log1("found GL_ARB_vertex_attrib_binding");
-            assignFunction(glBindVertexBuffer);
-            assignFunction(glVertexAttribBinding);
-            assignFunction(glVertexAttribFormat);
-            assignFunction(glVertexAttribIFormat);
+            assignFunction(glBindVertexBuffer)
+            assignFunction(glVertexAttribBinding)
+            assignFunction(glVertexAttribFormat)
+            assignFunction(glVertexAttribIFormat)
         }
         else
         {
@@ -1371,7 +1373,7 @@ void GraphicsManager::initOpenGLFunctions()
         if (is44 || supportExtension("GL_ARB_multi_bind"))
         {
             logger->log1("found GL_ARB_multi_bind");
-            assignFunction(glBindVertexBuffers);
+            assignFunction(glBindVertexBuffers)
         }
         else
         {
@@ -1385,7 +1387,7 @@ void GraphicsManager::initOpenGLFunctions()
     }
 
 #ifdef WIN32
-    assignFunctionARB(wglGetExtensionsString);
+    assignFunctionARB(wglGetExtensionsString)
 #endif  // WIN32
 #endif  // __native_client__
 }
@@ -1653,7 +1655,7 @@ void GraphicsManager::updateDebugLog() const
 void GraphicsManager::detectPixelSize()
 {
     SDL_SysWMinfo info;
-    SDL_VERSION(&info.version);
+    SDL_VERSION(&info.version)
     if (SDL::getWindowWMInfo(mainGraphics->getWindow(), &info))
     {
 #ifdef WIN32

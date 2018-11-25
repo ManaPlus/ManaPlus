@@ -51,7 +51,7 @@ namespace
             if (rw == nullptr)
             {
                 reportAlways("Error loading resource: %s",
-                    rl->path.c_str());
+                    rl->path.c_str())
                 return nullptr;
             }
             if (Mix_Music *const music = SDL::LoadMUSOgg_RW(rw))

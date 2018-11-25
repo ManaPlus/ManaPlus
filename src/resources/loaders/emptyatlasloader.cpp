@@ -48,7 +48,7 @@ struct EmptyAtlasLoader final
         AtlasResource *const resource = AtlasManager::loadEmptyAtlas(
             rl->name, *rl->files);
         if (resource == nullptr)
-            reportAlways("Empty atlas creation error: %s", rl->name.c_str());
+            reportAlways("Empty atlas creation error: %s", rl->name.c_str())
         return resource;
     }
 };

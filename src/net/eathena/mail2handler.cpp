@@ -108,7 +108,7 @@ void Mail2Handler::sendMail(const std::string &to,
     int32_t sz = 2 + 2 + 24 + 24 + 8 + 2 + 2 + titleSz + bodySz;
     if (sz > 32767 - 4)
     {
-        reportAlways("Mail message too big");
+        reportAlways("Mail message too big")
         return;
     }
     if (packetVersion >= 20160600)

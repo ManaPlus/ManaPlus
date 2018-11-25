@@ -392,7 +392,7 @@ TEST_CASE("DyePalette tests", "")
         REQUIRE(palette.mColors[0].value[2] == 46);
         REQUIRE(palette.mColors[0].value[3] == 0x77);
     }
-    delete2(client);
+    delete2(client)
     VirtFs::unmountDirSilent("data");
     VirtFs::unmountDirSilent("../data");
     VirtFs::unmountDirSilent("data/test");

@@ -264,7 +264,7 @@ void SoundManager::info()
     uint16_t audioFormat = 0;
     int channels = 0;
 
-    MIX_VERSION(&compiledVersion);
+    MIX_VERSION(&compiledVersion)
     const SDL_version *const linkedVersion = Mix_Linked_Version();
 
 #ifdef USE_SDL2
@@ -342,7 +342,7 @@ static SDLMusic *loadMusic(const std::string &fileName,
     if (!VirtFs::exists(path))
     {
         if (skipError == SkipError_false)
-            reportAlways("Music file not found: %s", fileName.c_str());
+            reportAlways("Music file not found: %s", fileName.c_str())
         return nullptr;
     }
     return Loader::getMusic(path);

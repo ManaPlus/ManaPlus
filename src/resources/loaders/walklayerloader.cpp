@@ -49,7 +49,7 @@ struct WalkLayerLoader final
             WalkLayerLoader *>(v);
         Resource *const resource = NavigationManager::loadWalkLayer(rl->map);
         if (resource == nullptr)
-            reportAlways("WalkLayer creation error");
+            reportAlways("WalkLayer creation error")
         return resource;
     }
 };
