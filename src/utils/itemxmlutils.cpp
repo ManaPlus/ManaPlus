@@ -29,6 +29,15 @@
 
 #include "debug.h"
 
+static void convertSignedValue(std::string &outStr,
+                               const std::string &srcStr)
+{
+    if (!srcStr.empty() && srcStr[0] != '-')
+        outStr = std::string("+").append(srcStr);
+    else
+        outStr = srcStr;
+}
+
 static bool readField(ItemFieldInfos::const_iterator it,
                       XmlNodeConstPtr node,
                       std::string &combined)
@@ -52,8 +61,8 @@ static bool readField(ItemFieldInfos::const_iterator it,
         std::string value2;
         if (field->sign)
         {
-            value1 = std::string("+").append(tokens[0]);
-            value2 = std::string("+").append(tokens[1]);
+            convertSignedValue(value1, tokens[0]);
+            convertSignedValue(value2, tokens[1]);
         }
         else
         {
@@ -67,7 +76,7 @@ static bool readField(ItemFieldInfos::const_iterator it,
     else
     {
         if (field->sign)
-            value = std::string("+").append(value);
+            convertSignedValue(value, value);
     }
     const std::string format = translator->getStr(field->description);
     combined = strprintf(format.c_str(),
