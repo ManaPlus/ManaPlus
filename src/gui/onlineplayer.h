@@ -36,12 +36,12 @@ class OnlinePlayer final
                      const signed char level,
                      const GenderT gender,
                      const signed char version,
-                     const unsigned char group) :
+                     const int group) :
             mNick(nick),
             mText(),
+            mGroup(group),
             mStatus(status),
             mLevel(level),
-            mGroup(group),
             mVersion(version),
             mGender(gender),
             mIsGM(false)
@@ -78,11 +78,11 @@ class OnlinePlayer final
 
         std::string mText;
 
+        int mGroup;
+
         unsigned char mStatus;
 
         signed char mLevel;
-
-        unsigned char mGroup;
 
         signed char mVersion;
 

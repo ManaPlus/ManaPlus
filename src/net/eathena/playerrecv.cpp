@@ -481,7 +481,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
                 gender = Gender::FEMALE;
         }
         arr.push_back(new OnlinePlayer(static_cast<const char*>(buf),
-            status, level, gender, ver, 0));
+            status, level, gender, ver, -1));
         buf += strlen(buf) + 1;
     }
 

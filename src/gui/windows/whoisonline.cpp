@@ -55,7 +55,9 @@
 #include "net/playerhandler.h"
 #include "net/serverfeatures.h"
 
+#ifdef TMWA_SUPPORT
 #include "resources/db/groupdb.h"
+#endif  // TMWA_SUPPORT
 
 #include "utils/foreach.h"
 #include "utils/gettext.h"
@@ -473,7 +475,7 @@ void WhoIsOnline::loadWebList()
 
                 OnlinePlayer *const player = new OnlinePlayer(nick,
                     CAST_U8(255), level,
-                    Gender::UNSPECIFIED, -1, 0);
+                    Gender::UNSPECIFIED, -1, -1);
                 mOnlinePlayers.insert(player);
                 mOnlineNicks.insert(nick);
 
@@ -872,14 +874,17 @@ void OnlinePlayer::setText(std::string color)
         }
     }
 
-    if (GroupDb::getShowBadge(mGroup))
+#ifdef TMWA_SUPPORT
+    if (mGroup != -1 && GroupDb::getShowBadge(mGroup))
     {
         const std::string name = GroupDb::getName(mGroup);
         mText.append(strprintf("(%s) ", name.c_str()));
     }
-    else if ((mStatus != 255 && ((mStatus & BeingFlag::GM) != 0)) || mIsGM)
+    else
+#endif
     {
-        mText.append("(GM) ");
+        if ((mStatus != 255 && ((mStatus & BeingFlag::GM) != 0)) || mIsGM)
+            mText.append("(GM) ");
     }
 
     if (mLevel > 0)
@@ -890,8 +895,10 @@ void OnlinePlayer::setText(std::string color)
     else if (mGender == Gender::MALE)
         mText.append("\u2642");
 
-    if (GroupDb::getHighlightName(mGroup) && color == "0")
+#ifdef TMWA_SUPPORT
+    if (mGroup != -1 && GroupDb::getHighlightName(mGroup) && color == "0")
         color = "2";
+#endif
 
     if (mStatus > 0 && mStatus != 255)
     {
