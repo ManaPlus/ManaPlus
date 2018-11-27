@@ -411,7 +411,6 @@ gcc-8_unsigned_char_tests:
 gcc-8_sdl2_unsigned_char_tests:
   stage: build
   script:
-  - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
   variables:
