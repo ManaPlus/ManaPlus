@@ -44,10 +44,17 @@
 
 #include "net/tmwa/guildmanager.h"
 
+#include "utils/gettext.h"
+
 #include "debug.h"
 
 namespace TmwAthena
 {
+
+namespace ChatRecv
+{
+    std::string mShopRequestName;
+}  // namespace ChatRecv
 
 void ChatRecv::processChat(Net::MessageIn &msg)
 {
@@ -248,6 +255,16 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                              && chatMsg.find("\302\202") == 0)
                     {
                         chatMsg = chatMsg.erase(0, 2);
+                        if (mShopRequestName != nick)
+                        {
+                            debugMsg(strprintf(
+                                // TRANSLATORS: message about spam player
+                                _("Detected spam from: %s"),
+                                nick.c_str()));
+                            BLOCK_END("ChatRecv::processWhisper")
+                            return;
+                        }
+                        mShopRequestName.clear();
                         if (showMsg && chatWindow != nullptr)
                         {
                             chatWindow->addWhisper(nick,

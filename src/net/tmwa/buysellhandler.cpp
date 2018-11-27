@@ -31,6 +31,8 @@
 
 #include "net/ea/buysellrecv.h"
 
+#include "net/tmwa/chatrecv.h"
+
 #include "utils/timer.h"
 
 #include "debug.h"
@@ -57,6 +59,7 @@ void BuySellHandler::requestSellList(const std::string &nick) const
 
     const std::string data("!selllist " + toString(tick_time));
     shopWindow->setAcceptPlayer(nick);
+    ChatRecv::mShopRequestName = nick;
     if (config.getBoolValue("hideShopMessages"))
     {
         chatHandler->privateMessage(nick, data);
@@ -75,7 +78,7 @@ void BuySellHandler::requestBuyList(const std::string &nick) const
 
     const std::string data("!buylist " + toString(tick_time));
     shopWindow->setAcceptPlayer(nick);
-
+    ChatRecv::mShopRequestName = nick;
     if (config.getBoolValue("hideShopMessages"))
     {
         chatHandler->privateMessage(nick, data);

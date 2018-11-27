@@ -34,6 +34,8 @@ namespace TmwAthena
 {
     namespace ChatRecv
     {
+        extern std::string mShopRequestName;
+
         void processChat(Net::MessageIn &msg);
         void processChatContinue(std::string chatMsg);
         void processGmChat(Net::MessageIn &msg);
