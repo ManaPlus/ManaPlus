@@ -877,7 +877,7 @@ void OnlinePlayer::setText(std::string color)
 #ifdef TMWA_SUPPORT
     if (mGroup != -1 && GroupDb::getShowBadge(mGroup))
     {
-        const std::string name = GroupDb::getName(mGroup);
+        const std::string &name = GroupDb::getName(mGroup);
         mText.append(strprintf("(%s) ", name.c_str()));
     }
     else
