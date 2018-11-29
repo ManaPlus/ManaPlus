@@ -36,8 +36,6 @@
 
 #include "net/messagein.h"
 
-#include "resources/db/groupdb.h"
-
 #include "debug.h"
 
 extern unsigned int tmwServerVersion;
