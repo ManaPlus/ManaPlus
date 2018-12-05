@@ -48,7 +48,8 @@ namespace EAthena
         void processSkillProduceEffect(Net::MessageIn &msg);
         void processSkillUnitUpdate(Net::MessageIn &msg);
         void processSkillArrowCreateList(Net::MessageIn &msg);
-        void processSkillAutoSpells(Net::MessageIn &msg);
+        void processSkillAutoSpells1(Net::MessageIn &msg);
+        void processSkillAutoSpells2(Net::MessageIn &msg);
         void processSkillDevotionEffect(Net::MessageIn &msg);
         void processSkillItemListWindow(Net::MessageIn &msg);
         void processSkillScale(Net::MessageIn &msg);

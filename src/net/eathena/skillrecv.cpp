@@ -517,11 +517,22 @@ void SkillRecv::processSkillArrowCreateList(Net::MessageIn &msg)
         msg.readItemId("item id");
 }
 
-void SkillRecv::processSkillAutoSpells(Net::MessageIn &msg)
+void SkillRecv::processSkillAutoSpells1(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
 
     for (int f = 0; f < 7; f ++)
+        msg.readInt32("skill id");
+
+    menu = MenuType::AutoSpell;
+}
+
+void SkillRecv::processSkillAutoSpells2(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+
+    const int count = (msg.readInt16("len") - 4) / 4;
+    for (int f = 0; f < count; f ++)
         msg.readInt32("skill id");
 
     menu = MenuType::AutoSpell;
