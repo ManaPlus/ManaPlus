@@ -217,7 +217,7 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
         const std::string name = msg.readString(24, "name");
         const unsigned char level = msg.readUInt8("level");
         const unsigned char group = msg.readUInt8("group");
-        GenderT gender = static_cast<GenderT>(msg.readUInt8("gender"));
+        GenderT gender = Being::intToGender(msg.readUInt8("gender"));
         unsigned char status = 0;
         switch (gender)
         {
