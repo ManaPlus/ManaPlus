@@ -50,6 +50,8 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+
 namespace EAthena
 {
 
@@ -198,7 +200,8 @@ void ChatRecv::processFormatMessageStringColor(Net::MessageIn &msg)
 {
     const int strLen = msg.readInt16("len") - 10;
     const int msgId = msg.readInt16("msg id");
-    msg.readInt32("color");
+    if (packetVersion >= 20160406)
+        msg.readInt32("color");
     const std::string message = msg.readString(strLen, "value");
     // +++ here need load message from configuration file
     const std::string chatMsg = strprintf(
