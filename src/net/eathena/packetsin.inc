@@ -1409,6 +1409,12 @@ if (packetVersionRe >= 20181017)
     packet(SMSG_ITEM_PREVIEW2,             0x0b13,  48, &InventoryRecv::processShowItemPreview2,        20181017);
 }
 
+// 20181024 zero
+if (packetVersionZero >= 20181024)
+{
+    packet(SMSG_ITEM_PREVIEW2,             0x0b13,  48, &InventoryRecv::processShowItemPreview2,        20181024);
+}
+
 // 20181031 re
 if (packetVersionRe >= 20181031)
 {
