@@ -27,7 +27,7 @@
 enumStart(TargetCursorType)
 {
     NONE = -1,
-    NORMAL = 0,
+    NORMAL,
     IN_RANGE,
     NUM_TCT
 }

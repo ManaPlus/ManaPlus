@@ -27,9 +27,9 @@
 
 enumStart(PartyShare)
 {
-    UNKNOWN = -1,
-    NO,
-    YES,
+    UNKNOWN      = -1,
+    NO           = 0,
+    YES          = 1,
     NOT_POSSIBLE = 2
 }
 enumEnd(PartyShare);

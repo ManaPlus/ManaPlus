@@ -40,8 +40,8 @@ enumStart(AttackType)
     CRITICAL      = 10,
     FLEE          = 11,
     TOUCH_SKILL   = 12,
-    MISS = 0xffff,  // pseudo value for miss attacks
-    SKILLMISS       // pseudo value for skill miss attacks
+    MISS          = 0xffff,  // pseudo value for miss attacks
+    SKILLMISS     = 0x10000  // pseudo value for skill miss attacks
 }
 enumEnd(AttackType);
 

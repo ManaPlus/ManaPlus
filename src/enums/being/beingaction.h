@@ -27,15 +27,15 @@
 
 enumStart(BeingAction)
 {
-    STAND  = 0,
-    MOVE   = 1,
-    ATTACK = 2,
-    CAST   = 3,
-    SIT    = 4,
-    DEAD   = 5,
-    HURT   = 6,
-    SPAWN  = 7,
-    PRESTAND
+    STAND    = 0,
+    MOVE     = 1,
+    ATTACK   = 2,
+    CAST     = 3,
+    SIT      = 4,
+    DEAD     = 5,
+    HURT     = 6,
+    SPAWN    = 7,
+    PRESTAND = 8
 }
 enumEnd(BeingAction);
 

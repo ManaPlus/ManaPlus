@@ -27,15 +27,15 @@
 
 enumStart(ChatMsgType)
 {
-    BY_GM = 0,
+    BY_UNKNOWN = -1,
+    BY_GM,
     BY_PLAYER,
     BY_OTHER,
     BY_SERVER,
     BY_CHANNEL,
     ACT_WHISPER,      // getting whispered at
     ACT_IS,           // equivalent to "/me" on IRC
-    BY_LOGGER,
-    BY_UNKNOWN = -1
+    BY_LOGGER
 }
 enumEnd(ChatMsgType);
 

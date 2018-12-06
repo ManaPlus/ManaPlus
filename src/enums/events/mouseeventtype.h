@@ -68,16 +68,16 @@
 
 enumStart(MouseEventType)
 {
-    MOVED = 0,
-    PRESSED,
-    RELEASED,
-    WHEEL_MOVED_DOWN,
-    WHEEL_MOVED_UP,
-    CLICKED,
-    ENTERED,
-    EXITED,
-    DRAGGED,
-    RELEASED2 = 100
+    MOVED            = 0,
+    PRESSED          = 1,
+    RELEASED         = 2,
+    WHEEL_MOVED_DOWN = 3,
+    WHEEL_MOVED_UP   = 4,
+    CLICKED          = 5,
+    ENTERED          = 6,
+    EXITED           = 7,
+    DRAGGED          = 8,
+    RELEASED2        = 100
 }
 enumEnd(MouseEventType);
 

@@ -68,11 +68,11 @@
 
 enumStart(MouseButton)
 {
-    WHEEL = -1,
-    EMPTY = 0,
-    LEFT,
-    RIGHT,
-    MIDDLE
+    WHEEL  = -1,
+    EMPTY  = 0,
+    LEFT   = 1,
+    RIGHT  = 2,
+    MIDDLE = 3
 }
 enumEnd(MouseButton);
 

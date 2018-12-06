@@ -32,7 +32,7 @@
 enumStart(State)
 {
     ERROR = -1,
-    START = 0,
+    START,
     CHOOSE_SERVER,
     CONNECT_SERVER,
     PRE_LOGIN,

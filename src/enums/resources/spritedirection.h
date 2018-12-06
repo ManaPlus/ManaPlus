@@ -27,16 +27,16 @@ namespace SpriteDirection
 {
     enum Type
     {
-        DEFAULT = 0,
-        UP = 1,
-        DOWN = 2,
-        LEFT = 3,
-        RIGHT = 4,
-        UPLEFT = 5,
-        UPRIGHT = 6,
-        DOWNLEFT = 7,
+        DEFAULT   = 0,
+        UP        = 1,
+        DOWN      = 2,
+        LEFT      = 3,
+        RIGHT     = 4,
+        UPLEFT    = 5,
+        UPRIGHT   = 6,
+        DOWNLEFT  = 7,
         DOWNRIGHT = 8,
-        INVALID
+        INVALID   = 9
     };
 }  // namespace SpriteDirection
 

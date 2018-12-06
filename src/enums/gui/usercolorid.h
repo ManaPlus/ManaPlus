@@ -29,7 +29,7 @@
 enumStart(UserColorId)
 {
     NO_COLOR = -1,
-    LABEL_BEING = 0,
+    LABEL_BEING,
     BEING,
     FRIEND,
     DISREGARDED,
