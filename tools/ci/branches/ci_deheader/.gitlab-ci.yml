@@ -103,7 +103,6 @@ deheader_tinyxml_opengl_tmwa_cpp:
 deheader_sdl2_tinyxml_opengl_tmwa_cpp:
   stage: build
   script:
-  - ./tools/ci/scripts/patchsdl1.sh
   - export FLAGS="-DENABLE_TINYXML2 -DUSE_OPENGL -DUSE_X11 -DTMWA_SUPPORT -DUSE_SDL2"
   - ./tools/ci/jobs/deheader.sh
   - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
