@@ -314,16 +314,16 @@ void AtlasManager::createSDLAtlas(TextureAtlas *const atlas)
 {
     BLOCK_START("AtlasManager::createSDLAtlas")
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    const unsigned int rmask = 0xff000000;
-    const unsigned int gmask = 0x00ff0000;
-    const unsigned int bmask = 0x0000ff00;
-    const unsigned int amask = 0x000000ff;
+    const uint32_t rmask = 0xff000000U;
+    const uint32_t gmask = 0x00ff0000U;
+    const uint32_t bmask = 0x0000ff00U;
+    const uint32_t amask = 0x000000ffU;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-    const unsigned int rmask = 0x000000ff;
-    const unsigned int gmask = 0x0000ff00;
-    const unsigned int bmask = 0x00ff0000;
-    const unsigned int amask = 0xff000000;
+    const uint32_t rmask = 0x000000ffU;
+    const uint32_t gmask = 0x0000ff00U;
+    const uint32_t bmask = 0x00ff0000U;
+    const uint32_t amask = 0xff000000U;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     // do not create atlas based on only one image

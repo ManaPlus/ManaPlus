@@ -52,10 +52,10 @@ void DyePalette::replaceSColorDefault(uint32_t *restrict pixels,
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(pixels);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        const unsigned int data = (*pixels) & 0x00ffffff;
+        const unsigned int data = (*pixels) & 0x00ffffffU;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        const unsigned int data = (*pixels) & 0xffffff00;
+        const unsigned int data = (*pixels) & 0xffffff00U;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
@@ -111,7 +111,7 @@ void DyePalette::replaceSColorSse2(uint32_t *restrict pixels,
 
     for (int ptr = 0; ptr < bufEnd; ptr += 4)
     {
-        __m128i mask = _mm_set1_epi32(0xffffff00);
+        __m128i mask = _mm_set1_epi32(0xffffff00U);
 //        __m128i base = _mm_load_si128(reinterpret_cast<__m128i*>(pixels));
         __m128i base = _mm_loadu_si128(reinterpret_cast<__m128i*>(
             &pixels[ptr]));
@@ -142,10 +142,10 @@ void DyePalette::replaceSColorSse2(uint32_t *restrict pixels,
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        const unsigned int data = pixels[ptr] & 0x00ffffff;
+        const unsigned int data = pixels[ptr] & 0x00ffffffU;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        const unsigned int data = pixels[ptr] & 0xffffff00;
+        const unsigned int data = pixels[ptr] & 0xffffff00U;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
@@ -192,7 +192,7 @@ void DyePalette::replaceSColorAvx2(uint32_t *restrict pixels,
 
     for (int ptr = 0; ptr < bufEnd; ptr += 8)
     {
-        __m256i mask = _mm256_set1_epi32(0xffffff00);
+        __m256i mask = _mm256_set1_epi32(0xffffff00U);
 //        __m256i base = _mm256_load_si256(reinterpret_cast<__m256i*>(pixels));
         __m256i base = _mm256_loadu_si256(reinterpret_cast<__m256i*>(
             &pixels[ptr]));
@@ -223,10 +223,10 @@ void DyePalette::replaceSColorAvx2(uint32_t *restrict pixels,
     {
         uint8_t *const p = reinterpret_cast<uint8_t *>(&pixels[ptr]);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        const unsigned int data = pixels[ptr] & 0x00ffffff;
+        const unsigned int data = pixels[ptr] & 0x00ffffffU;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        const unsigned int data = pixels[ptr] & 0xffffff00;
+        const unsigned int data = pixels[ptr] & 0xffffff00U;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();

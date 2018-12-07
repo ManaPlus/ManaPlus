@@ -62,7 +62,7 @@ SDL_Surface *MobileOpenGLScreenshotHelper::getScreenshot()
 
     SDL_Surface *const tmpImage = MSDL_CreateRGBSurface(
         SDL_SWSURFACE, w, h, 32,
-        0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+        0x00ff0000U, 0x0000ff00U, 0x000000ffU, 0xff000000U);
 
     if (tmpImage == nullptr)
         return nullptr;

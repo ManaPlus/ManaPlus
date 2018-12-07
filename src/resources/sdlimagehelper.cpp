@@ -73,23 +73,23 @@ Image *SDLImageHelper::load(SDL_RWops *const rw, Dye const &dye)
     rgba.Aloss = 0;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    rgba.Rmask = 0x000000FF;
+    rgba.Rmask = 0x000000FFU;
     rgba.Rshift = 24;
-    rgba.Gmask = 0x0000FF00;
+    rgba.Gmask = 0x0000FF00U;
     rgba.Gshift = 16;
-    rgba.Bmask = 0x00FF0000;
+    rgba.Bmask = 0x00FF0000U;
     rgba.Bshift = 8;
-    rgba.Amask = 0xFF000000;
+    rgba.Amask = 0xFF000000U;
     rgba.Ashift = 0;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-    rgba.Rmask = 0xFF000000;
+    rgba.Rmask = 0xFF000000U;
     rgba.Rshift = 0;
-    rgba.Gmask = 0x00FF0000;
+    rgba.Gmask = 0x00FF0000U;
     rgba.Gshift = 8;
-    rgba.Bmask = 0x0000FF00;
+    rgba.Bmask = 0x0000FF00U;
     rgba.Bshift = 16;
-    rgba.Amask = 0x000000FF;
+    rgba.Amask = 0x000000FFU;
     rgba.Ashift = 24;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 

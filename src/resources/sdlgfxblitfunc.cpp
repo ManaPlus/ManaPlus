@@ -365,10 +365,10 @@ static void _SDL_gfxBlitBlitterRGBA(const SDL_gfxBlitInfo *const info)
             sA = ((pixel & srcfmt->Amask) >> srcfmt->Ashift);
 
             pixel = *(reinterpret_cast<uint32_t *>(dst));
-            dR = pixel & 0xff;
-            dG = ((pixel & 0xff00) >> 8);
-            dB = ((pixel & 0xff0000) >> 16);
-            dA = ((pixel & 0xff000000) >> 24);
+            dR = pixel & 0xffU;
+            dG = ((pixel & 0xff00U) >> 8);
+            dB = ((pixel & 0xff0000U) >> 16);
+            dA = ((pixel & 0xff000000U) >> 24);
 
             sAA = GFX_ALPHA_ADJUST_ARRAY[sA & 255];
             dR = (((sR - dR) * (sAA)) / 255) + dR;

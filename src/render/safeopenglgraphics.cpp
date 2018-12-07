@@ -210,13 +210,13 @@ void SafeOpenGLGraphics::testDraw() restrict2
     if (SafeOpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
         glBegin(GL_QUADS);
-        glTexCoord2f(0.0F, 0.781250f);
+        glTexCoord2f(0.0F, 0.781250F);
         glVertex2i(0, 0);
-        glTexCoord2f(0.0F, 0.781250f);
+        glTexCoord2f(0.0F, 0.781250F);
         glVertex2i(800, 0);
-        glTexCoord2f(0.0F, 0.585938f);
+        glTexCoord2f(0.0F, 0.585938F);
         glVertex2i(800, 600);
-        glTexCoord2f(0.0F, 0.585938f);
+        glTexCoord2f(0.0F, 0.585938F);
         glVertex2i(0, 600);
         glEnd();
     }

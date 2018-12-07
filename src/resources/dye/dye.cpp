@@ -232,10 +232,10 @@ void Dye::normalOGLDye(uint32_t *restrict pixels,
     {
         const uint32_t p = *pixels;
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-        const int alpha = p & 255;
+        const uint32_t alpha = p & 255U;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
-        const int alpha = p & 0xff000000;
+        const uint32_t alpha = p & 0xff000000U;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
         if (alpha == 0)

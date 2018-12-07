@@ -156,10 +156,10 @@ bool EventsManager::handleEvents() const
         {
             if (!handleCommonEvents(event))
             {
-                switch (event.type)
-                {
 #ifdef ANDROID
 #ifndef USE_SDL2
+                switch (event.type)
+                {
                     case SDL_ACTIVEEVENT:
                         if ((event.active.state & SDL_APPACTIVE)
                             && !event.active.gain)
@@ -169,11 +169,11 @@ bool EventsManager::handleEvents() const
                         }
                         break;
 
-#endif  // USE_SDL2
-#endif  // ANDROID
                     default:
                         break;
                 }
+#endif  // USE_SDL2
+#endif  // ANDROID
             }
 
 #ifdef USE_MUMBLE

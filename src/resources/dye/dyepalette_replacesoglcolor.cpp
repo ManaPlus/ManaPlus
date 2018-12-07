@@ -238,7 +238,7 @@ void DyePalette::replaceSOGLColorAvx2(uint32_t *restrict pixels,
         STD_VECTOR<DyeColor>::const_iterator it = mColors.begin();
         while (it != it_end)
         {
-        const DyeColor &col = *it;
+            const DyeColor &col = *it;
             ++ it;
             const DyeColor &col2 = *it;
 

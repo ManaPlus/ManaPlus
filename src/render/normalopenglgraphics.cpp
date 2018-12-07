@@ -416,10 +416,10 @@ void NormalOpenGLGraphics::testDraw() restrict2
     {
         GLfloat tex[] =
         {
-            0.0F, 0.781250f,
-            0.0F, 0.781250f,
-            0.0F, 0.585938f,
-            0.0F, 0.585938f
+            0.0F, 0.781250F,
+            0.0F, 0.781250F,
+            0.0F, 0.585938F,
+            0.0F, 0.585938F
         };
 
         GLint vert[] =

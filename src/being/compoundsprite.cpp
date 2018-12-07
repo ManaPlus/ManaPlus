@@ -324,15 +324,15 @@ void CompoundSprite::redraw() const
 #ifndef USE_SDL2
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
-    const int rmask = 0xff000000;
-    const int gmask = 0x00ff0000;
-    const int bmask = 0x0000ff00;
-    const int amask = 0x000000ff;
+    const uint32_t rmask = 0xff000000U;
+    const uint32_t gmask = 0x00ff0000U;
+    const uint32_t bmask = 0x0000ff00U;
+    const uint32_t amask = 0x000000ffU;
 #else  // SDL_BYTEORDER == SDL_BIG_ENDIAN
-    const int rmask = 0x000000ff;
-    const int gmask = 0x0000ff00;
-    const int bmask = 0x00ff0000;
-    const int amask = 0xff000000;
+    const uint32_t rmask = 0x000000ffU;
+    const uint32_t gmask = 0x0000ff00U;
+    const uint32_t bmask = 0x00ff0000U;
+    const uint32_t amask = 0xff000000U;
 #endif  // SDL_BYTEORDER == SDL_BIG_ENDIAN
 
     SDL_Surface *const surface = MSDL_CreateRGBSurface(SDL_HWSURFACE,
