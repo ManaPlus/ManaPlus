@@ -164,6 +164,7 @@ src/net/eathena/vendingrecv.cpp
 src/net/ea/traderecv.cpp
 src/net/tmwa/charserverhandler.cpp
 src/net/tmwa/charserverrecv.cpp
+src/net/tmwa/chatrecv.cpp
 src/net/tmwa/generalhandler.cpp
 src/net/tmwa/generalrecv.cpp
 src/net/tmwa/loginrecv.cpp

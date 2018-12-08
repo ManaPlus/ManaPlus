@@ -28,8 +28,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-09-08 21:32+0300\n"
-"PO-Revision-Date: 2018-07-10 15:23+0000\n"
+"POT-Creation-Date: 2018-12-08 19:06+0300\n"
+"PO-Revision-Date: 2018-09-09 01:29+0000\n"
 "Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/akaras/manaplus/"
 "language/pt_BR/)\n"
@@ -40,7 +40,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1592
+#: src/actormanager.cpp:1590
 msgid "Visible on map"
 msgstr "Mapa visivel"
 
@@ -59,70 +59,70 @@ msgid "miss"
 msgstr "errou"
 
 #. TRANSLATORS: this away status writed in player nick
-#: src/being/being.cpp:2567 src/gui/windows/whoisonline.cpp:891
+#: src/being/being.cpp:2567 src/gui/windows/whoisonline.cpp:910
 msgid "A"
 msgstr "A"
 
 #. TRANSLATORS: this inactive status writed in player nick
-#: src/being/being.cpp:2572 src/gui/windows/whoisonline.cpp:896
+#: src/being/being.cpp:2572 src/gui/windows/whoisonline.cpp:915
 msgid "I"
 msgstr "I"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:518
+#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:521
 #, c-format
 msgid "You were killed by %s."
 msgstr "Você foi morto(a) por %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:890
+#: src/being/localplayer.cpp:891
 msgid "Tried to pick up nonexistent item."
 msgstr "Você tentou pegar um item não existente."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:894
+#: src/being/localplayer.cpp:895
 msgid "Item is too heavy."
 msgstr "Este item é muito pesado."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:898
+#: src/being/localplayer.cpp:899
 msgid "Item is too far away."
 msgstr "Item está muito longe."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:902
+#: src/being/localplayer.cpp:903
 msgid "Inventory is full."
 msgstr "O inventário está cheio."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:906
+#: src/being/localplayer.cpp:907
 msgid "Stack is too big."
 msgstr "Esta pilha é muito grande."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:910
+#: src/being/localplayer.cpp:911
 msgid "Item belongs to someone else."
 msgstr "Este item pertence a outra pessoa."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:914
+#: src/being/localplayer.cpp:915
 msgid "You can't pickup this amount of items."
 msgstr "Você não pode pegar essa quantia de itens."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:918
+#: src/being/localplayer.cpp:919
 msgid "Your item stack has max amount."
 msgstr "Sua pilha de itens possui a quantidade máxima."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:925
+#: src/being/localplayer.cpp:926
 msgid "Unknown problem picking up item."
 msgstr "Problema desconhecido ao tentar pegar item."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:961
+#: src/being/localplayer.cpp:962
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -131,58 +131,58 @@ msgstr[1] "Você pegou %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1175 src/being/localplayer.cpp:1177
-#: src/being/localplayer.cpp:1213 src/being/localplayer.cpp:1227
+#: src/being/localplayer.cpp:1176 src/being/localplayer.cpp:1178
+#: src/being/localplayer.cpp:1214 src/being/localplayer.cpp:1228
 msgid "xp"
 msgstr "exp"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1183 src/being/localplayer.cpp:1191
-#: src/being/localplayer.cpp:1200
+#: src/being/localplayer.cpp:1184 src/being/localplayer.cpp:1192
+#: src/being/localplayer.cpp:1201
 msgid "job"
 msgstr "profissão"
 
 #. TRANSLATORS: get homunculus xp message
-#: src/being/localplayer.cpp:1224
+#: src/being/localplayer.cpp:1225
 msgid "Homun"
 msgstr "Homúnculo"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1237
+#: src/being/localplayer.cpp:1238
 msgid "hp"
 msgstr "hp"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1247
+#: src/being/localplayer.cpp:1248
 msgid "mana"
 msgstr "mana"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2337
+#: src/being/localplayer.cpp:2342
 #, c-format
 msgid "Follow: %s"
 msgstr "Seguindo: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2343 src/being/localplayer.cpp:2368
+#: src/being/localplayer.cpp:2348 src/being/localplayer.cpp:2373
 msgid "Follow canceled"
 msgstr "Seguindo cancelado"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2353
+#: src/being/localplayer.cpp:2358
 #, c-format
 msgid "Imitation: %s"
 msgstr "Imitando: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2359 src/being/localplayer.cpp:2373
+#: src/being/localplayer.cpp:2364 src/being/localplayer.cpp:2378
 msgid "Imitation canceled"
 msgstr "Imitação cancelada"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2731
+#: src/being/localplayer.cpp:2736
 #, c-format
 msgid "You see %s"
 msgstr "Você vê %s"
@@ -825,7 +825,7 @@ msgstr "Indisponivel"
 #. TRANSLATORS: text dialog button
 #. TRANSLATORS: ok dialog button
 #: src/gamemodifiers.cpp:448 src/gui/dialogsmanager.cpp:202
-#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:169
+#: src/gui/dialogsmanager.cpp:221 src/gui/widgets/tabs/setup_input.cpp:170
 #: src/gui/widgets/tabs/setup_theme.cpp:326
 #: src/gui/widgets/tabs/setup_theme.cpp:362
 #: src/gui/widgets/tabs/setup_video.cpp:277
@@ -848,7 +848,7 @@ msgstr "Indisponivel"
 #: src/net/eathena/charserverrecv.cpp:502 src/net/tmwa/charserverrecv.cpp:295
 #: src/pincodemanager.cpp:148 src/pincodemanager.cpp:207
 #: src/progs/manaplus/actions/actions.cpp:178
-#: src/progs/manaplus/client.cpp:1513 src/progs/manaplus/client.cpp:1548
+#: src/progs/manaplus/client.cpp:1512 src/progs/manaplus/client.cpp:1547
 msgid "OK"
 msgstr "OK"
 
@@ -885,8 +885,8 @@ msgstr "(F) Modo de jogo câmera livre"
 #: src/gui/windows/maileditwindow.cpp:59 src/gui/windows/mailviewwindow.cpp:63
 #: src/gui/windows/npcdialog.cpp:88 src/gui/windows/npcdialog.cpp:134
 #: src/gui/windows/questswindow.cpp:80 src/gui/windows/shopwindow.cpp:114
-#: src/progs/dyecmd/client.cpp:569 src/progs/manaplus/client.cpp:936
-#: src/progs/manaplus/client.cpp:1427 src/progs/manaplus/client.cpp:1446
+#: src/progs/dyecmd/client.cpp:569 src/progs/manaplus/client.cpp:935
+#: src/progs/manaplus/client.cpp:1426 src/progs/manaplus/client.cpp:1445
 msgid "Close"
 msgstr "Fechar"
 
@@ -1355,73 +1355,73 @@ msgid "Skip"
 msgstr "Passar"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:142 src/gui/popups/beingpopup.cpp:161
+#: src/gui/popups/beingpopup.cpp:143 src/gui/popups/beingpopup.cpp:162
 #, c-format
 msgid "Hungry: %d"
 msgstr "Fome: %d"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:148 src/gui/popups/beingpopup.cpp:167
+#: src/gui/popups/beingpopup.cpp:149 src/gui/popups/beingpopup.cpp:168
 #, c-format
 msgid "Intimacy: %d"
 msgstr "Intimidade: %d"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:181
+#: src/gui/popups/beingpopup.cpp:182
 #, c-format
 msgid "Group: %s (%d)"
 msgstr "Grupo GM: %s (%d)"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:192
+#: src/gui/popups/beingpopup.cpp:193
 #, c-format
 msgid "Party: %s"
 msgstr "Grupo: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:202
+#: src/gui/popups/beingpopup.cpp:203
 #, c-format
 msgid "Guild: %s"
 msgstr "Guilda: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:212
+#: src/gui/popups/beingpopup.cpp:213
 #, c-format
 msgid "Clan: %s"
 msgstr "Clã: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:222
+#: src/gui/popups/beingpopup.cpp:223
 #, c-format
 msgid "Pvp rank: %u"
 msgstr "Posição no PVP: %u"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:232
+#: src/gui/popups/beingpopup.cpp:233
 #, c-format
 msgid "Buy shop: %s"
 msgstr "Loja de compra: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:242
+#: src/gui/popups/beingpopup.cpp:243
 #, c-format
 msgid "Sell shop: %s"
 msgstr "Loja de venda: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:252
+#: src/gui/popups/beingpopup.cpp:253
 #, c-format
 msgid "Comment: %s"
 msgstr "Comentário: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:263
+#: src/gui/popups/beingpopup.cpp:264
 #, c-format
 msgid "Effects: %s"
 msgstr "Efeitos: %s"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:274
+#: src/gui/popups/beingpopup.cpp:275
 #, c-format
 msgid "Chat room: %s"
 msgstr "Sala de chat: %s"
@@ -1431,7 +1431,7 @@ msgstr "Sala de chat: %s"
 #. TRANSLATORS: skill level
 #. TRANSLATORS: status bar label
 #. TRANSLATORS: status window label
-#: src/gui/popups/beingpopup.cpp:286 src/gui/popups/popupmenu.cpp:2380
+#: src/gui/popups/beingpopup.cpp:287 src/gui/popups/popupmenu.cpp:2380
 #: src/gui/popups/skillpopup.cpp:154 src/gui/windows/ministatuswindow.cpp:382
 #: src/gui/windows/statuswindow.cpp:74 src/gui/windows/statuswindow.cpp:282
 #: src/gui/windows/statuswindow.cpp:322
@@ -1440,13 +1440,13 @@ msgid "Level: %d"
 msgstr "Nível: %d"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:302
+#: src/gui/popups/beingpopup.cpp:303
 #, c-format
 msgid "Hp: %d/%d"
 msgstr "Hp: %d/%d"
 
 #. TRANSLATORS: being popup label
-#: src/gui/popups/beingpopup.cpp:312
+#: src/gui/popups/beingpopup.cpp:313
 #, c-format
 msgid "Particles: %u"
 msgstr "Partículas: %u"
@@ -1826,7 +1826,7 @@ msgstr "Remover"
 #. TRANSLATORS: warp to map item
 #. TRANSLATORS: warp select button
 #: src/gui/popups/popupmenu.cpp:794 src/gui/popups/popupmenu.cpp:824
-#: src/net/eathena/skillrecv.cpp:436
+#: src/net/eathena/skillrecv.cpp:436 src/net/eathena/skillrecv.cpp:454
 msgid "Warp"
 msgstr "Urdidura"
 
@@ -4405,12 +4405,12 @@ msgid "Input"
 msgstr "Entrada"
 
 #. TRANSLATORS: input settings error header
-#: src/gui/widgets/tabs/setup_input.cpp:163
+#: src/gui/widgets/tabs/setup_input.cpp:164
 msgid "Key Conflict(s) Detected."
 msgstr "Conflitos de teclas detectado."
 
 #. TRANSLATORS: input settings error
-#: src/gui/widgets/tabs/setup_input.cpp:165
+#: src/gui/widgets/tabs/setup_input.cpp:166
 #, c-format
 msgid ""
 "Conflict \"%s\" and \"%s\" keys. Resolve them, or gameplay may result in "
@@ -4421,7 +4421,7 @@ msgstr ""
 
 #. TRANSLATORS: unknown key name
 #. TRANSLATORS: quests window quest name
-#: src/gui/widgets/tabs/setup_input.cpp:337 src/resources/db/questdb.cpp:62
+#: src/gui/widgets/tabs/setup_input.cpp:338 src/resources/db/questdb.cpp:62
 #: src/resources/db/questdb.cpp:255 src/resources/db/questdb.cpp:261
 msgid "unknown"
 msgstr "desconhecido"
@@ -5005,7 +5005,7 @@ msgstr "Não"
 #. TRANSLATORS: settings tab name
 #. TRANSLATORS: perfoamance tab quick button
 #: src/gui/widgets/tabs/setup_perfomance.cpp:61 src/progs/dyecmd/client.cpp:553
-#: src/progs/manaplus/client.cpp:920
+#: src/progs/manaplus/client.cpp:919
 msgid "Performance"
 msgstr "Desempenho"
 
@@ -5426,7 +5426,7 @@ msgstr "i"
 #. TRANSLATORS: theme settings tab name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/widgets/tabs/setup_theme.cpp:133 src/progs/dyecmd/client.cpp:559
-#: src/progs/manaplus/client.cpp:926
+#: src/progs/manaplus/client.cpp:925
 msgid "Theme"
 msgstr "Tema"
 
@@ -5585,7 +5585,7 @@ msgstr "Sem moldura de janela"
 #. TRANSLATORS: video settings tab name
 #. TRANSLATORS: video tab quick button
 #: src/gui/widgets/tabs/setup_video.cpp:121 src/progs/dyecmd/client.cpp:556
-#: src/progs/manaplus/client.cpp:923
+#: src/progs/manaplus/client.cpp:922
 msgid "Video"
 msgstr "Vídeo"
 
@@ -5973,9 +5973,9 @@ msgstr "Jogadores visíveis: %d"
 #. TRANSLATORS: debug window label, logic per second
 #: src/gui/widgets/tabs/statdebugtab.cpp:42
 #: src/gui/widgets/tabs/statdebugtab.cpp:80
-#, fuzzy, c-format
+#, c-format
 msgid "LPS: %d"
-msgstr "Nível: %d"
+msgstr ""
 
 #. TRANSLATORS: debug window stats reset button
 #. TRANSLATORS: npc dialog button
@@ -5987,15 +5987,15 @@ msgstr "Resetar"
 #: src/gui/widgets/tabs/statdebugtab.cpp:64
 #: src/gui/widgets/tabs/statdebugtab.cpp:86
 #, c-format
-msgid "stat%d: %d ms"
+msgid "stat%u: %d ms"
 msgstr ""
 
 #. TRANSLATORS: debug window stat label
 #: src/gui/widgets/tabs/statdebugtab.cpp:68
 #: src/gui/widgets/tabs/statdebugtab.cpp:91
-#, fuzzy, c-format
+#, c-format
 msgid "%d ms"
-msgstr "%d Minutos"
+msgstr ""
 
 #. TRANSLATORS: debug window label
 #: src/gui/widgets/tabs/targetdebugtab.cpp:37
@@ -6127,7 +6127,7 @@ msgstr "AJU"
 #. TRANSLATORS: help window name
 #. TRANSLATORS: theme tab quick button
 #: src/gui/windowmenu.cpp:92 src/gui/windows/helpwindow.cpp:57
-#: src/progs/dyecmd/client.cpp:565 src/progs/manaplus/client.cpp:932
+#: src/progs/dyecmd/client.cpp:565 src/progs/manaplus/client.cpp:931
 msgid "Help"
 msgstr "Ajuda"
 
@@ -6327,7 +6327,7 @@ msgstr "CON"
 #. TRANSLATORS: setup window name
 #. TRANSLATORS: setup tab quick button
 #: src/gui/windowmenu.cpp:256 src/gui/windows/setupwindow.cpp:67
-#: src/progs/dyecmd/client.cpp:550 src/progs/manaplus/client.cpp:917
+#: src/progs/dyecmd/client.cpp:550 src/progs/manaplus/client.cpp:916
 msgid "Setup"
 msgstr "Configurar"
 
@@ -6436,8 +6436,8 @@ msgstr "Os emails informados não são iguais."
 #: src/net/eathena/charserverrecv.cpp:412
 #: src/net/eathena/charserverrecv.cpp:416
 #: src/net/eathena/charserverrecv.cpp:498 src/net/tmwa/charserverrecv.cpp:291
-#: src/progs/manaplus/client.cpp:1424 src/progs/manaplus/client.cpp:1443
-#: src/progs/manaplus/client.cpp:1649
+#: src/progs/manaplus/client.cpp:1423 src/progs/manaplus/client.cpp:1442
+#: src/progs/manaplus/client.cpp:1648
 msgid "Error"
 msgstr "Erro"
 
@@ -6734,9 +6734,8 @@ msgstr "Rede"
 
 #. TRANSLATORS: debug window tab
 #: src/gui/windows/debugwindow.cpp:74
-#, fuzzy
 msgid "Stat"
-msgstr "Status"
+msgstr ""
 
 #. TRANSLATORS: did you know window name
 #: src/gui/windows/didyouknowwindow.cpp:55
@@ -7932,27 +7931,27 @@ msgid "Completed"
 msgstr "Concluído"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:97 src/gui/windows/whoisonline.cpp:669
+#: src/gui/windows/whoisonline.cpp:101 src/gui/windows/whoisonline.cpp:673
 msgid "Who Is Online - Updating"
 msgstr "Quem está online - Atualizando"
 
 #. TRANSLATORS: who is online. button.
-#: src/gui/windows/whoisonline.cpp:110
+#: src/gui/windows/whoisonline.cpp:114
 msgid "Update"
 msgstr "Atualizar"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:242
+#: src/gui/windows/whoisonline.cpp:246
 msgid "Who Is Online - "
 msgstr "Quem está online - "
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:685
+#: src/gui/windows/whoisonline.cpp:689
 msgid "Who Is Online - error"
 msgstr "Quem está online - Erro"
 
 #. TRANSLATORS: who is online window name
-#: src/gui/windows/whoisonline.cpp:732
+#: src/gui/windows/whoisonline.cpp:736
 msgid "Who Is Online - Update"
 msgstr "Quem está online - Atualizado"
 
@@ -9390,38 +9389,38 @@ msgid "Failed to delete character."
 msgstr "Falha ao deletar personagem."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/chatrecv.cpp:136
+#: src/net/eathena/chatrecv.cpp:138
 msgid "Can't cast skill in this area."
 msgstr "Não é possível conjurar habilidade nesta área."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/chatrecv.cpp:140
+#: src/net/eathena/chatrecv.cpp:142
 msgid "Can't use item in this area."
 msgstr "Não é possível usar item nesta área."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/chatrecv.cpp:144
+#: src/net/eathena/chatrecv.cpp:146
 msgid "Can't equip. Wrong level."
 msgstr "Não é possível equipar. Nível errado."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/chatrecv.cpp:148
+#: src/net/eathena/chatrecv.cpp:150
 msgid "Can't use. Wrong level."
 msgstr "Não é possível usar. Nível errado."
 
 #. TRANSLATORS: error message
-#: src/net/eathena/chatrecv.cpp:152
+#: src/net/eathena/chatrecv.cpp:154
 msgid "Work in progress."
 msgstr "Trabalho em andamento."
 
 #. TRANSLATORS: chat message
-#: src/net/eathena/chatrecv.cpp:365
+#: src/net/eathena/chatrecv.cpp:380
 #, c-format
 msgid "Message could not be sent, channel %s is not exists."
 msgstr "Mensagem não pode ser enviada, canal %s não existe."
 
 #. TRANSLATORS: chat message
-#: src/net/eathena/chatrecv.cpp:491
+#: src/net/eathena/chatrecv.cpp:506
 #, c-format
 msgid "Can't open channel. Channel %s is not exists."
 msgstr "Não pode abrir canal. Canal %s não existe."
@@ -9438,7 +9437,7 @@ msgid "Do you accept %s and %s as parents?"
 msgstr "Você aceita %s e %s como pais?"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:222 src/net/tmwa/generalhandler.cpp:224
+#: src/net/eathena/generalhandler.cpp:225 src/net/tmwa/generalhandler.cpp:227
 msgid "Got disconnected from server!"
 msgstr "Você foi desconectado(a) do servidor!"
 
@@ -9652,7 +9651,7 @@ msgid "Guild castle: %s"
 msgstr "Castelo Guilda : %s"
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:873
+#: src/net/eathena/inventoryrecv.cpp:874
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr "Faltam %s tempo de aluguel pelo item %s."
@@ -9661,8 +9660,8 @@ msgstr "Faltam %s tempo de aluguel pelo item %s."
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: unknown item name
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:1239
-#: src/net/eathena/inventoryrecv.cpp:1374 src/net/eathena/mail2recv.cpp:204
+#: src/net/eathena/inventoryrecv.cpp:1240
+#: src/net/eathena/inventoryrecv.cpp:1375 src/net/eathena/mail2recv.cpp:204
 #: src/resources/db/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Item desconhecido"
@@ -9689,7 +9688,7 @@ msgid "You have new mail from %s with subject %s"
 msgstr "Você tem um novo E-mail de %s assunto %s"
 
 #. TRANSLATORS: player killed message
-#: src/net/eathena/playerrecv.cpp:507
+#: src/net/eathena/playerrecv.cpp:510
 msgid "You were killed by unknown source."
 msgstr "Você foi morto(a) por uma fonte desconhecida."
 
@@ -9795,7 +9794,7 @@ msgid "Skill failed!"
 msgstr "Habilidade falhou!"
 
 #. TRANSLATORS: warp select window name
-#: src/net/eathena/skillrecv.cpp:434
+#: src/net/eathena/skillrecv.cpp:434 src/net/eathena/skillrecv.cpp:452
 msgid "Select warp target"
 msgstr "Selecione o alvo do warp"
 
@@ -9852,6 +9851,12 @@ msgstr "Destreza:"
 #: src/net/tmwa/charserverhandler.cpp:158
 msgid "Luck:"
 msgstr "Sorte:"
+
+#. TRANSLATORS: message about spam player
+#: src/net/tmwa/chatrecv.cpp:262
+#, fuzzy, c-format
+msgid "Detected spam from: %s"
+msgstr "Rejeitou convite para o grupo de  %s."
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:113
@@ -9947,22 +9952,22 @@ msgid "Wrong pincode confirmation!"
 msgstr "Confirmação de Código PIN errada!"
 
 #. TRANSLATORS: theme tab quick button
-#: src/progs/dyecmd/client.cpp:562 src/progs/manaplus/client.cpp:929
+#: src/progs/dyecmd/client.cpp:562 src/progs/manaplus/client.cpp:928
 msgid "About"
 msgstr "Sobre"
 
 #. TRANSLATORS: command line help
-#: src/progs/dyecmd/dyemain.cpp:57
+#: src/progs/dyecmd/dyemain.cpp:62
 msgid "dyecmd srcfile dyestring dstfile"
 msgstr "dyecmd srcfile dyestring dstfile"
 
 #. TRANSLATORS: command line help
-#: src/progs/dyecmd/dyemain.cpp:59
+#: src/progs/dyecmd/dyemain.cpp:64
 msgid "or"
 msgstr "ou"
 
 #. TRANSLATORS: command line help
-#: src/progs/dyecmd/dyemain.cpp:61
+#: src/progs/dyecmd/dyemain.cpp:66
 msgid "dyecmd srcdyestring dstfile"
 msgstr "dyecmd srcdyestring dstfile"
 
@@ -9973,52 +9978,52 @@ msgstr "Arquivo enviado"
 
 #. TRANSLATORS: clear graphics command message
 #. TRANSLATORS: clear fonts cache message
-#: src/progs/manaplus/actions/actions.cpp:1112
-#: src/progs/manaplus/actions/actions.cpp:1127
+#: src/progs/manaplus/actions/actions.cpp:1113
+#: src/progs/manaplus/actions/actions.cpp:1128
 msgid "Cache cleared"
 msgstr "Cache limpo"
 
 #. TRANSLATORS: uptime command
-#: src/progs/manaplus/actions/actions.cpp:1325
-#: src/progs/manaplus/actions/actions.cpp:1333
+#: src/progs/manaplus/actions/actions.cpp:1326
+#: src/progs/manaplus/actions/actions.cpp:1334
 #, c-format
 msgid "Client uptime: %s"
 msgstr "Uptime do cliente: %s"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1397
-#: src/progs/manaplus/actions/actions.cpp:1406
+#: src/progs/manaplus/actions/actions.cpp:1398
+#: src/progs/manaplus/actions/actions.cpp:1407
 msgid "Resource images:"
 msgstr "Recursos de imagem:"
 
 #. TRANSLATORS: dump command
-#: src/progs/manaplus/actions/actions.cpp:1400
-#: src/progs/manaplus/actions/actions.cpp:1412
+#: src/progs/manaplus/actions/actions.cpp:1401
+#: src/progs/manaplus/actions/actions.cpp:1413
 msgid "Orphaned resource images:"
 msgstr "Imagens de recursos órfãos:"
 
 #. TRANSLATORS: dump environment command
-#: src/progs/manaplus/actions/actions.cpp:1511
+#: src/progs/manaplus/actions/actions.cpp:1512
 msgid "Environment variables dumped"
 msgstr "Variáveis de ambiente despejada"
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1650
+#: src/progs/manaplus/actions/actions.cpp:1651
 msgid "Config uploaded to:"
 msgstr "Configuração enviada para:"
 
 #. TRANSLATORS: upload config chat message
-#: src/progs/manaplus/actions/actions.cpp:1660
+#: src/progs/manaplus/actions/actions.cpp:1661
 msgid "Server config Uploaded to:"
 msgstr "Configuração do servidor enviada para:"
 
 #. TRANSLATORS: upload log chat message
-#: src/progs/manaplus/actions/actions.cpp:1670
+#: src/progs/manaplus/actions/actions.cpp:1671
 msgid "Log uploaded to:"
 msgstr "Logs enviados para:"
 
 #. TRANSLATORS: last seen disabled warning
-#: src/progs/manaplus/actions/actions.cpp:1954
+#: src/progs/manaplus/actions/actions.cpp:1955
 msgid ""
 "Last seen disabled. Enable in players / collect players ID and seen log."
 msgstr ""
@@ -10026,18 +10031,18 @@ msgstr ""
 "log de visualização."
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1975
+#: src/progs/manaplus/actions/actions.cpp:1976
 msgid "You have never seen this nick."
 msgstr "Você nunca viu este nick."
 
 #. TRANSLATORS: last seen message
-#: src/progs/manaplus/actions/actions.cpp:1983
+#: src/progs/manaplus/actions/actions.cpp:1984
 #, c-format
 msgid "Last seen for %s: %s"
 msgstr "Visto pela última vez por %s: %s"
 
 #. TRANSLATORS: last seen error
-#: src/progs/manaplus/actions/actions.cpp:1994
+#: src/progs/manaplus/actions/actions.cpp:1995
 msgid "You have not seen this nick before."
 msgstr "Você não viu esse nick antes."
 
@@ -10292,57 +10297,57 @@ msgid "Accepting incoming trade requests"
 msgstr "Aceitando propostas de negócios"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1140
+#: src/progs/manaplus/client.cpp:1139
 msgid "Connecting to server"
 msgstr "Conectando-se ao servidor"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1199 src/unittests/gui/windowmanager.cc:830
+#: src/progs/manaplus/client.cpp:1198 src/unittests/gui/windowmanager.cc:830
 msgid "Logging in"
 msgstr "Fazendo login"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1249
+#: src/progs/manaplus/client.cpp:1248
 msgid "Entering game world"
 msgstr "Entrando no mundo do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1310
+#: src/progs/manaplus/client.cpp:1309
 msgid "Requesting characters"
 msgstr "Requerindo personagens"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1354
+#: src/progs/manaplus/client.cpp:1353
 msgid "Connecting to the game server"
 msgstr "Conectando ao servidor do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1366
+#: src/progs/manaplus/client.cpp:1365
 msgid "Changing game servers"
 msgstr "Mudando de servidor do jogo"
 
 #. TRANSLATORS: connection dialog header
-#: src/progs/manaplus/client.cpp:1462
+#: src/progs/manaplus/client.cpp:1461
 msgid "Requesting registration details"
 msgstr "Requisitando detalhes do registro"
 
 #. TRANSLATORS: password change message header
-#: src/progs/manaplus/client.cpp:1509
+#: src/progs/manaplus/client.cpp:1508
 msgid "Password Change"
 msgstr "Mudar senha"
 
 #. TRANSLATORS: password change message text
-#: src/progs/manaplus/client.cpp:1511
+#: src/progs/manaplus/client.cpp:1510
 msgid "Password changed successfully!"
 msgstr "Senha modificada com sucesso!"
 
 #. TRANSLATORS: email change message header
-#: src/progs/manaplus/client.cpp:1544
+#: src/progs/manaplus/client.cpp:1543
 msgid "Email Change"
 msgstr "Mudar email"
 
 #. TRANSLATORS: email change message text
-#: src/progs/manaplus/client.cpp:1546
+#: src/progs/manaplus/client.cpp:1545
 msgid "Email changed successfully!"
 msgstr "Email modificado com sucesso!"
 
@@ -11627,6 +11632,3 @@ msgstr "%d segundo(s)"
 #, c-format
 msgid "%d seconds"
 msgstr "%d Segundos"
-
-#~ msgid "%d LPS"
-#~ msgstr "%d LPS"
