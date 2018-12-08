@@ -1,3 +1,16 @@
+2018-12-08 New release 1.8.12.8
+fix: dyecmd crash in A and S dye.
+fix: out of bound access in dye code if run with AVX support.
+fix: display stats with negative values.
+fix: avoid shop spam in legacy server.
+add: basic stat counters into debug window.
+add: new hercules packets.
+add: over weight flag from server side.
+add: server side online list on legacy server.
+change: protocol version changed to 25.
+remove: support for evol plugin version 19 or older.
+remove: some debug messages about cache usage.
+
 2018-09-01 New release 1.8.9.1
 fix: visual issue with used tiles from empty atlases.
 fix: hiding deleted temporary skills.
