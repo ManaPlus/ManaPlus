@@ -140,12 +140,12 @@ class MapLayer final : public MemoryCounter, public ConfigListener
         constexpr3 bool isFringeLayer() const restrict noexcept2 A_WARN_UNUSED
         { return mIsFringeLayer; }
 
-        constexpr3 void setSpecialLayer(const SpecialLayer *restrict const val)
-                                        restrict noexcept2
+        void setSpecialLayer(const SpecialLayer *restrict const val)
+                             restrict noexcept2
         { mSpecialLayer = val; }
 
-        constexpr3 void setTempLayer(const SpecialLayer *restrict const val)
-                                     restrict noexcept2
+        void setTempLayer(const SpecialLayer *restrict const val)
+                          restrict noexcept2
         { mTempLayer = val; }
 
         constexpr3 int getWidth() const restrict noexcept2 A_WARN_UNUSED
@@ -157,8 +157,8 @@ class MapLayer final : public MemoryCounter, public ConfigListener
         void optionChanged(const std::string &restrict value)
                            restrict override final;
 
-        constexpr3 void setDrawLayerFlags(const MapTypeT &restrict n)
-                                          restrict noexcept2
+        void setDrawLayerFlags(const MapTypeT &restrict n)
+                               restrict noexcept2
         {
             mDrawLayerFlags = n;
             mSpecialFlag = (mDrawLayerFlags != MapType::SPECIAL &&
@@ -166,7 +166,7 @@ class MapLayer final : public MemoryCounter, public ConfigListener
                 mDrawLayerFlags != MapType::SPECIAL4);
         }
 
-        constexpr3 void setActorsFix(const int y) restrict noexcept2
+        void setActorsFix(const int y) restrict noexcept2
         { mActorsFix = y; }
 
         int calcMemoryLocal() const override final;
@@ -182,7 +182,7 @@ class MapLayer final : public MemoryCounter, public ConfigListener
             return mTiles;
         }
 
-        constexpr3 void setTileCondition(const int c) restrict noexcept2
+        void setTileCondition(const int c) restrict noexcept2
         {
             mTileCondition = c;
         }
