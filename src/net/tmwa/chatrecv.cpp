@@ -260,7 +260,7 @@ void ChatRecv::processWhisperContinue(const std::string &nick,
                             debugMsg(strprintf(
                                 // TRANSLATORS: message about spam player
                                 _("Detected spam from: %s"),
-                                nick.c_str()));
+                                nick.c_str()))
                             BLOCK_END("ChatRecv::processWhisper")
                             return;
                         }
