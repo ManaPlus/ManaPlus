@@ -4,7 +4,7 @@
  *  All code listed below is in the public domain and can be used, shared or
  *  modified freely
  *
- *  Copyright (C) 2011-2018  The ManaPlus Developers
+ *  Copyright (C) 2011-2019  The ManaPlus Developers
  */
 
 #ifndef MUMBLEMANAGER_H

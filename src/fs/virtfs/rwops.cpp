@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2013-2018  The ManaPlus Developers
+ *  Copyright (C) 2013-2019  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -39,7 +39,7 @@
  *
  *  This file was written by Ryan C. Gordon. (icculus@icculus.org).
  *
- *  Copyright (C) 2012-2018  The ManaPlus Developers
+ *  Copyright (C) 2012-2019  The ManaPlus Developers
  */
 
 #include "fs/virtfs/rwops.h"

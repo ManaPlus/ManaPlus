@@ -1,6 +1,6 @@
 /*
  *  The ManaPlus Client
- *  Copyright (C) 2015-2018  The ManaPlus Developers
+ *  Copyright (C) 2015-2019  The ManaPlus Developers
  *
  *  This file is part of The ManaPlus Client.
  *
