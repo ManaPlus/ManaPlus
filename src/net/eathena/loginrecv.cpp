@@ -329,4 +329,10 @@ void LoginRecv::processLoginOtp3(Net::MessageIn &msg)
     msg.readString(tokenLen, "token");
 }
 
+void LoginRecv::processMobileOtp(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readBeingId("accound id");
+}
+
 }  // namespace EAthena

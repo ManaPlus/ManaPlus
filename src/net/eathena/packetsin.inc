@@ -1178,6 +1178,7 @@ if (packets_zero == true)
     packet(SMSG_ACHIEVEMENT_GET_REWARD,    0x0a26,   6, &AchievementRecv::processAchievementGetReward,  20171018);
     packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  39, &InventoryRecv::processShowItemPreview1,        20171018);
     packet(SMSG_LOGIN_OTP,                 0x0ad1,  -1, &LoginRecv::processLoginOtp1,                   20171018);
+    packet(SMSG_LOGIN_MOBILE_OTP,          0x09a2,   6, &LoginRecv::processMobileOtp,                   20171018);
 }
 
 // 20171019 zero
@@ -1451,6 +1452,18 @@ if (packetVersionZero >= 20181024)
 if (packetVersionRe >= 20181031)
 {
     packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x0afb,  -1, &SkillRecv::processSkillAutoSpells2,            20181031);
+}
+
+// 20181114 main
+if (packetVersionMain >= 20181114)
+{
+    packet(SMSG_LOGIN_MOBILE_OTP,          0x09a2,   6, &LoginRecv::processMobileOtp,                   20181114);
+}
+
+// 20181114 re
+if (packetVersionRe >= 20181114)
+{
+    packet(SMSG_LOGIN_MOBILE_OTP,          0x09a2,   6, &LoginRecv::processMobileOtp,                   20181114);
 }
 
 // 20181128 main

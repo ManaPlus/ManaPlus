@@ -41,6 +41,7 @@ namespace EAthena
         void processLoginOtp1(Net::MessageIn &msg);
         void processLoginOtp2(Net::MessageIn &msg);
         void processLoginOtp3(Net::MessageIn &msg);
+        void processMobileOtp(Net::MessageIn &msg);
     }  // namespace LoginRecv
 }  // namespace EAthena
 
