@@ -68,7 +68,9 @@ void updateProtocol()
         packetVersionMain = 0;
         packetVersionRe = 0;
     }
-    if (packetVersionRe >= 20180704)
+    if (packetVersionMain >= 20181121 ||
+        packetVersionRe >= 20180704 ||
+        packetVersionZero >= 20181114)
     {
         itemIdLen = 4;
     }
