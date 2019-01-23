@@ -342,6 +342,7 @@ packet(CMSG_PLAYER_SET_TITLE,             0x0000,   0, nullptr);
 packet(CMSG_CHANGE_DRESS,                 0x0000,   0, nullptr);
 packet(CMSG_INSTANCE_COMMAND,             0x0000,   0, nullptr);
 packet(CMSG_ACHIEVEMENT_GET_REWARD,       0x0000,   0, nullptr);
+packet(CMSG_LOGIN_MOBILE_OTP,             0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1460,6 +1461,18 @@ if (packetVersionRe >= 20180704)
 if (packetVersionRe >= 20180718)
 {
     packet(CMSG_PLAYER_SELECT_STYLE,      0x0afc,  16, clif->pReqStyleChange);
+}
+
+// 20181114 main
+if (packetVersionMain >= 20181114)
+{
+    packet(CMSG_LOGIN_MOBILE_OTP,         0x09a3,  -1, lclif->p->parse_CA_ACK_MOBILE_OTP);
+}
+
+// 20181114 re
+if (packetVersionRe >= 20181114)
+{
+    packet(CMSG_LOGIN_MOBILE_OTP,         0x09a3,  -1, lclif->p->parse_CA_ACK_MOBILE_OTP);
 }
 
 #endif

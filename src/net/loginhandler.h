@@ -24,6 +24,9 @@
 #define NET_LOGINHANDLER_H
 
 #include "net/serverinfo.h"
+
+#include "enums/simpletypes/beingid.h"
+
 #include "net/worldinfo.h"
 
 class LoginData;
@@ -94,6 +97,9 @@ class LoginHandler notfinal
         virtual void ping() const = 0;
 
         virtual void updatePacketVersion() const = 0;
+
+        virtual void sendMobileCode(const BeingId accountId,
+                                    const std::string &code) const = 0;
 
         virtual ~LoginHandler()
         { }

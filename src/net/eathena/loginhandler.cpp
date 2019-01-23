@@ -35,6 +35,10 @@
 
 #include "debug.h"
 
+extern int packetVersionMain;
+extern int packetVersionRe;
+extern int packets_zero;
+
 namespace EAthena
 {
 
@@ -162,6 +166,20 @@ void LoginHandler::ping() const
 void LoginHandler::updatePacketVersion() const
 {
     updateProtocol();
+}
+
+void LoginHandler::sendMobileCode(const BeingId accountId,
+                                  const std::string &code) const
+{
+    if (packetVersionMain < 20181114 &&
+        packetVersionRe < 20181114)
+    {
+        return;
+    }
+    createOutPacket(CMSG_LOGIN_MOBILE_OTP);
+    outMsg.writeInt16(14, "len");
+    outMsg.writeBeingId(accountId, "account id");
+    outMsg.writeStringNoLog(code, 6, "code");
 }
 
 }  // namespace EAthena

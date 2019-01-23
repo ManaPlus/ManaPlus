@@ -141,4 +141,9 @@ void LoginHandler::updatePacketVersion() const
     itemIdLen = 2;
 }
 
+void LoginHandler::sendMobileCode(const BeingId accountId A_UNUSED,
+                                  const std::string &code A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

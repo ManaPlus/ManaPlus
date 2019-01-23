@@ -60,6 +60,9 @@ class LoginHandler final : public Ea::LoginHandler
 
         static void requestUpdateHosts();
 
+        void sendMobileCode(const BeingId accountId,
+                            const std::string &code) const override final;
+
     private:
         void sendLoginRegister(const std::string &restrict username,
                                const std::string &restrict password,
