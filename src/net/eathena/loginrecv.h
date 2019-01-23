@@ -38,6 +38,9 @@ namespace EAthena
         void processCondingKey(Net::MessageIn &msg);
         void processCharPasswordResponse(Net::MessageIn &msg);
         void processLoginData(Net::MessageIn &msg);
+        void processLoginOtp1(Net::MessageIn &msg);
+        void processLoginOtp2(Net::MessageIn &msg);
+        void processLoginOtp3(Net::MessageIn &msg);
     }  // namespace LoginRecv
 }  // namespace EAthena
 

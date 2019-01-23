@@ -303,4 +303,30 @@ void LoginRecv::processLoginData(Net::MessageIn &msg)
     client->setState(State::WORLD_SELECT);
 }
 
+void LoginRecv::processLoginOtp1(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int tokenLen = msg.readInt16("len") - 8;
+    msg.readInt32("login flag");
+    msg.readString(tokenLen, "token");
+}
+
+void LoginRecv::processLoginOtp2(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int tokenLen = msg.readInt16("len") - 14;
+    msg.readInt32("login flag");
+    msg.readString(6, "login flag2");
+    msg.readString(tokenLen, "token");
+}
+
+void LoginRecv::processLoginOtp3(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int tokenLen = msg.readInt16("len") - 28;
+    msg.readInt32("login flag");
+    msg.readString(20, "login flag2");
+    msg.readString(tokenLen, "token");
+}
+
 }  // namespace EAthena

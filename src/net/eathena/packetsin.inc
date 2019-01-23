@@ -1137,10 +1137,17 @@ if (packetVersionMain >= 20170502)
     packet(SMSG_SKILL_WARP_POINT,          0x0abe,  -1, &SkillRecv::processSkillWarpPoint2,             20170502);
 }
 
+// 20170621 main
+if (packetVersionMain >= 20170621)
+{
+    packet(SMSG_LOGIN_OTP,                 0x0ad1,  -1, &LoginRecv::processLoginOtp1,                   20170621);
+}
+
 // 20170621 re
 if (packetVersionRe >= 20170621)
 {
     packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  39, &InventoryRecv::processShowItemPreview1,        20170621);
+    packet(SMSG_LOGIN_OTP,                 0x0ad1,  -1, &LoginRecv::processLoginOtp1,                   20170621);
 }
 
 // 20170726 main
@@ -1170,6 +1177,7 @@ if (packets_zero == true)
     packet(SMSG_ACHIEVEMENT_UPDATE,        0x0a24,  66, &AchievementRecv::processAchievementUpdate,     20171018);
     packet(SMSG_ACHIEVEMENT_GET_REWARD,    0x0a26,   6, &AchievementRecv::processAchievementGetReward,  20171018);
     packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  39, &InventoryRecv::processShowItemPreview1,        20171018);
+    packet(SMSG_LOGIN_OTP,                 0x0ad1,  -1, &LoginRecv::processLoginOtp1,                   20171018);
 }
 
 // 20171019 zero
@@ -1190,11 +1198,35 @@ if (packetVersionMain >= 20171108)
     packet(SMSG_OVERWEIGHT_PERCENT,        0x0ade,   6, &InventoryRecv::processOverWeightPercent,       20171108);
 }
 
+// 20171123 zero
+if (packetVersionZero >= 20171123)
+{
+    packet(SMSG_LOGIN_OTP,                 0x0ae3,  -1, &LoginRecv::processLoginOtp2,                   20171123);
+}
+
 // 20171207
 if (packetVersion >= 20171207)
 {
     packet(SMSG_PARTY_MEMBER_INFO,         0x0ae4,  89, &PartyRecv::processPartyMemberInfo,             20171207);
     packet(SMSG_PARTY_INFO,                0x0ae5,  -1, &PartyRecv::processPartyInfo,                   20171207);
+}
+
+// 20171213 main
+if (packetVersionMain >= 20171213)
+{
+    packet(SMSG_LOGIN_OTP,                 0x0ae3,  -1, &LoginRecv::processLoginOtp3,                   20171213);
+}
+
+// 20171213 re
+if (packetVersionRe >= 20171213)
+{
+    packet(SMSG_LOGIN_OTP,                 0x0ae3,  -1, &LoginRecv::processLoginOtp3,                   20171213);
+}
+
+// 20171808 zero
+if (packetVersionZero >= 20171808)
+{
+    packet(SMSG_LOGIN_OTP,                 0x0ae3,  -1, &LoginRecv::processLoginOtp3,                   20171808);
 }
 
 // main 20180124
