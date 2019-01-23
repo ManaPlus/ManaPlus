@@ -182,4 +182,16 @@ void LoginHandler::sendMobileCode(const BeingId accountId,
     outMsg.writeStringNoLog(code, 6, "code");
 }
 
+void LoginHandler::sendOtpCode(const std::string &code) const
+{
+    if (packetVersionMain < 20181114 &&
+        packetVersionRe < 20181114 &&
+        packets_zero == false)
+    {
+        return;
+    }
+    createOutPacket(CMSG_LOGIN_OTP_CODE);
+    outMsg.writeStringNoLog(code, 9, "code");
+}
+
 }  // namespace EAthena

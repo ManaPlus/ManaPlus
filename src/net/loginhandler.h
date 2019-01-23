@@ -101,6 +101,8 @@ class LoginHandler notfinal
         virtual void sendMobileCode(const BeingId accountId,
                                     const std::string &code) const = 0;
 
+        virtual void sendOtpCode(const std::string &code) const = 0;
+
         virtual ~LoginHandler()
         { }
 

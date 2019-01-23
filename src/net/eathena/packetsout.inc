@@ -343,6 +343,7 @@ packet(CMSG_CHANGE_DRESS,                 0x0000,   0, nullptr);
 packet(CMSG_INSTANCE_COMMAND,             0x0000,   0, nullptr);
 packet(CMSG_ACHIEVEMENT_GET_REWARD,       0x0000,   0, nullptr);
 packet(CMSG_LOGIN_MOBILE_OTP,             0x0000,   0, nullptr);
+packet(CMSG_LOGIN_OTP_CODE,               0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1467,12 +1468,14 @@ if (packetVersionRe >= 20180718)
 if (packetVersionMain >= 20181114)
 {
     packet(CMSG_LOGIN_MOBILE_OTP,         0x09a3,  -1, lclif->p->parse_CA_ACK_MOBILE_OTP);
+    packet(CMSG_LOGIN_OTP_CODE,           0x0ad0,  11, lclif->p->parse_CA_OTP_CODE);
 }
 
 // 20181114 re
 if (packetVersionRe >= 20181114)
 {
     packet(CMSG_LOGIN_MOBILE_OTP,         0x09a3,  -1, lclif->p->parse_CA_ACK_MOBILE_OTP);
+    packet(CMSG_LOGIN_OTP_CODE,           0x0ad0,  11, lclif->p->parse_CA_OTP_CODE);
 }
 
 #endif

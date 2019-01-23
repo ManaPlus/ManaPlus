@@ -146,4 +146,8 @@ void LoginHandler::sendMobileCode(const BeingId accountId A_UNUSED,
 {
 }
 
+void LoginHandler::sendOtpCode(const std::string &code A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

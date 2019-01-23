@@ -61,6 +61,8 @@ class LoginHandler final : public Ea::LoginHandler
         void sendMobileCode(const BeingId accountId,
                             const std::string &code) const override final;
 
+        void sendOtpCode(const std::string &code) const override final;
+
     private:
         void sendLoginRegister(const std::string &restrict username,
                                const std::string &restrict password,
