@@ -366,7 +366,6 @@ packet(SMSG_HOMUNCULUS_DATA,               0x0230,  12, &HomunculusRecv::process
 // 20050530
 packet(SMSG_HOMUNCULUS_SKILLS,             0x0235,  -1, &HomunculusRecv::processHomunculusSkills,       20050530);
 packet(SMSG_PK_RANKS_LIST,                 0x0238, 282, &BeingRecv::processPkRanksList,                 20050530);
-packet(SMSG_HOMUNCULUS_INFO,               0x022e,  71, &HomunculusRecv::processHomunculusInfo,         20050530);
 
 // 20050531
 packet(SMSG_HOMUNCULUS_SKILL_UP,           0x0239,  11, &HomunculusRecv::processHomunculusSkillUp,      20050531);
@@ -513,6 +512,7 @@ packet(SMSG_NPC_PROGRESS_BAR_ABORT,        0x02f2,   2, &NpcRecv::processProgres
 if (packetVersionRe >= 20080827)
 {
     packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20080827);
+    packet(SMSG_HOMUNCULUS_INFO,           0x022e,  71, &HomunculusRecv::processHomunculusInfo1,        20080827);
 }
 
 // 20080827
@@ -668,6 +668,12 @@ if (packetVersion >= 20100701)
 
 // 20100803
 packet(SMSG_GUILD_EXPULSION,               0x0839,  66, &GuildRecv::processGuildExpulsion,              20100803);
+
+// 20101005 main
+if (packetVersionMain >= 20101005)
+{
+    packet(SMSG_HOMUNCULUS_INFO,           0x022e,  71, &HomunculusRecv::processHomunculusInfo1,        20101005);
+}
 
 // 20101124
 if (packetVersion >= 20101124)
@@ -826,6 +832,12 @@ if (packetVersion >= 20131223)
 // 20131230
 packet(SMSG_MAIL2_SEND_RESULT,             0x09ed,   3, &Mail2Recv::processSendResult,                  20131230);
 
+// 20131230
+if (packetVersion >= 20131230)
+{
+    packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  75, &HomunculusRecv::processHomunculusInfo2,        20131230);
+}
+
 // 20140122
 packet(SMSG_PET_EVOLUTION_RESULT,          0x09fc,   6, &PetRecv::processPetEvolution,                  20140122);
 
@@ -971,7 +983,6 @@ if (packetVersion >= 20150513)
     packet(SMSG_BEING_SPAWN,               0x09fe,  -1, &BeingRecv::processBeingSpawn,                  20150513);
     packet(SMSG_BEING_MOVE,                0x09fd,  -1, &BeingRecv::processBeingMove,                   20150513);
     packet(SMSG_PLAYER_HEAL,               0x0a27,   8, &PlayerRecv::processPlayerHeal,                 20150513);
-    packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  75, &HomunculusRecv::processHomunculusInfo,         20150513);
     packet(SMSG_QUEST_LIST,                0x09f8,  -1, &QuestRecv::processAddQuests,                   20150513);
     packet(SMSG_QUEST_ADD,                 0x09f9, 143, &QuestRecv::processAddQuest,                    20150513);
     packet(SMSG_QUEST_UPDATE_OBJECTIVES,   0x09fa,  -1, &QuestRecv::processUpdateQuestsObjectives,      20150513);
@@ -1339,7 +1350,7 @@ if (packetVersionRe >= 20180704)
     packet(SMSG_PARTY_ITEM_PICKUP,         0x02b8,  32, &PartyRecv::processPartyItemPickup,             20180704);
     packet(SMSG_BUYINGSTORE_SELLER_SELL_FAILED, 0x0824, 8, &BuyingStoreRecv::processBuyingStoreSellerSellFailed, 20180704);
     packet(SMSG_BUYINGSTORE_REPORT,        0x09e6,  24, &BuyingStoreRecv::processBuyingStoreReport,     20180704);
-    packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo,         20180704);
+    packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20180704);
     packet(SMSG_MAIL2_ADD_ITEM_RESULT,     0x0a05,  63, &Mail2Recv::processAddItemResult,               20180704);
     packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  55, &TradeRecv::processTradeItemAdd,                20180704);
     packet(SMSG_PLAYER_STORAGE_ADD,        0x0a0a,  57, &InventoryRecv::processPlayerStorageAdd,        20180704);
@@ -1464,6 +1475,18 @@ if (packetVersionMain >= 20181114)
 if (packetVersionRe >= 20181114)
 {
     packet(SMSG_LOGIN_MOBILE_OTP,          0x09a2,   6, &LoginRecv::processMobileOtp,                   20181114);
+}
+
+// 20181114 zero
+if (packetVersionZero >= 20181114)
+{
+    packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181114);
+}
+
+// 20181121 main
+if (packetVersionMain >= 20181121)
+{
+    packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181121);
 }
 
 // 20181128 main
