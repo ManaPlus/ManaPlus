@@ -1690,4 +1690,10 @@ void InventoryRecv::processInventoryExpansionAck(Net::MessageIn &msg)
     msg.readItemId("item id");
 }
 
+void InventoryRecv::processInventoryExpansionResult(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("result");
+}
+
 }  // namespace EAthena

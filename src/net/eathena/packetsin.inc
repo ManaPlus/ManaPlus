@@ -1500,6 +1500,7 @@ if (packetVersionZero >= 20181212)
 {
     packet(SMSG_INVENTORY_EXPANSION_INFO,  0x0b18,   4, &InventoryRecv::processInventoryExpansionInfo,  20181212);
     packet(SMSG_INVENTORY_EXPANSION_ACK,   0x0b15,   7, &InventoryRecv::processInventoryExpansionAck,   20181212);
+    packet(SMSG_INVENTORY_EXPANSION_RESULT, 0x0b17,  3, &InventoryRecv::processInventoryExpansionResult, 20181212);
 }
 
 // 20181219 main
@@ -1507,6 +1508,7 @@ if (packetVersionMain >= 20181219)
 {
     packet(SMSG_INVENTORY_EXPANSION_INFO,  0x0b18,   4, &InventoryRecv::processInventoryExpansionInfo,  20181219);
     packet(SMSG_INVENTORY_EXPANSION_ACK,   0x0b15,   7, &InventoryRecv::processInventoryExpansionAck,   20181219);
+    packet(SMSG_INVENTORY_EXPANSION_RESULT, 0x0b17,  3, &InventoryRecv::processInventoryExpansionResult, 20181212);
 }
 
 // 20181219 re
@@ -1514,6 +1516,7 @@ if (packetVersionRe >= 20181219)
 {
     packet(SMSG_INVENTORY_EXPANSION_INFO,  0x0b18,   4, &InventoryRecv::processInventoryExpansionInfo,  20181219);
     packet(SMSG_INVENTORY_EXPANSION_ACK,   0x0b15,   7, &InventoryRecv::processInventoryExpansionAck,   20181219);
+    packet(SMSG_INVENTORY_EXPANSION_RESULT, 0x0b17,  3, &InventoryRecv::processInventoryExpansionResult, 20181212);
 }
 
 // 0
