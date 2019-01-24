@@ -78,6 +78,7 @@ class Settings final
             crazyMoveState(0U),
             targetingType(0U),
             overweightPercent(50U),
+            fixedInventorySize(100U),
             playerNameOffset(64),
             playerBadgeAtRightOffset(32),
             mapDrawType(MapType::NORMAL),
@@ -143,6 +144,7 @@ class Settings final
         unsigned int crazyMoveState;
         unsigned int targetingType;
         unsigned int overweightPercent;
+        unsigned int fixedInventorySize;
         int playerNameOffset;
         int playerBadgeAtRightOffset;
         MapTypeT mapDrawType;

@@ -1495,6 +1495,24 @@ if (packetVersionMain >= 20181128)
     packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x0afb,  -1, &SkillRecv::processSkillAutoSpells2,            20181128);
 }
 
+// 20181212 zero
+if (packetVersionZero >= 20181212)
+{
+    packet(SMSG_INVENTORY_EXPANSION_INFO,  0x0b18,   4, &InventoryRecv::processInventoryExpansionInfo,  20181212);
+}
+
+// 20181219 main
+if (packetVersionMain >= 20181219)
+{
+    packet(SMSG_INVENTORY_EXPANSION_INFO,  0x0b18,   4, &InventoryRecv::processInventoryExpansionInfo,  20181219);
+}
+
+// 20181219 re
+if (packetVersionRe >= 20181219)
+{
+    packet(SMSG_INVENTORY_EXPANSION_INFO,  0x0b18,   4, &InventoryRecv::processInventoryExpansionInfo,  20181219);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

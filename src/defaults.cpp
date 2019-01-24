@@ -724,6 +724,7 @@ void setPathsDefaults(Configuration &cfg)
     AddDEF("overweightPercent", 50);
     AddDEF("playerNameOffset", 64);
     AddDEF("playerBadgeAtRightOffset", 32);
+    AddDEF("fixedInventorySize", 100);
 
 #ifdef TMWA_SUPPORT
     AddDEF("gmDefaultLevel", 60);

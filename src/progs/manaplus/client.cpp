@@ -1804,6 +1804,7 @@ void Client::initPaths()
     if (settings.linkCommandSymbol.empty())
         settings.linkCommandSymbol = "=";
     settings.overweightPercent = paths.getIntValue("overweightPercent");
+    settings.fixedInventorySize = paths.getIntValue("fixedInventorySize");
     settings.playerNameOffset = paths.getIntValue(
         "playerNameOffset");
     settings.playerBadgeAtRightOffset = paths.getIntValue(

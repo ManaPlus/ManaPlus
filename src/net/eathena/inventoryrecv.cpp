@@ -1672,4 +1672,16 @@ void InventoryRecv::processShowItemPreview2(Net::MessageIn &msg)
     }
 }
 
+void InventoryRecv::processInventoryExpansionInfo(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int newSize = msg.readInt16("expansion size") +
+        settings.fixedInventorySize;
+    Inventory *const inv = PlayerInfo::getInventory();
+    if (inv != nullptr)
+    {
+        inv->resize(newSize);
+    }
+}
+
 }  // namespace EAthena
