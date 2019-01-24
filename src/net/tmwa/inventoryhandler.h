@@ -79,6 +79,8 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         void mergetItemsCancel() const override final;
 
+        void expandInventory() const override final;
+
         int getProjectileSlot() const override final
         { return 10; }
 

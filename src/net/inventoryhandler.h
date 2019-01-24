@@ -105,6 +105,8 @@ class InventoryHandler notfinal
         virtual void mergeItemsAck(const STD_VECTOR<Item*> &items) const = 0;
 
         virtual void mergetItemsCancel() const = 0;
+
+        virtual void expandInventory() const = 0;
 };
 
 }  // namespace Net

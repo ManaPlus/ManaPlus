@@ -38,6 +38,9 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionMain;
+extern int packetVersionRe;
+extern int packetVersionZero;
 extern int serverVersion;
 
 // this conversion from bit corrupted LOOK_* to EquipSlot
@@ -598,6 +601,17 @@ void InventoryHandler::mergeItemsAck(const STD_VECTOR<Item*> &items) const
 void InventoryHandler::mergetItemsCancel() const
 {
     createOutPacket(CMSG_MERGE_ITEM_CANCEL);
+}
+
+void InventoryHandler::expandInventory() const
+{
+    if (packetVersionMain < 20181031 &&
+        packetVersionRe < 20181031 &&
+        packetVersionZero < 20181114)
+    {
+        return;
+    }
+    createOutPacket(CMSG_INVENTORY_EXPAND);
 }
 
 }  // namespace EAthena

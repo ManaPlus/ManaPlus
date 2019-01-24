@@ -193,4 +193,8 @@ void InventoryHandler::mergetItemsCancel() const
 {
 }
 
+void InventoryHandler::expandInventory() const
+{
+}
+
 }  // namespace TmwAthena
