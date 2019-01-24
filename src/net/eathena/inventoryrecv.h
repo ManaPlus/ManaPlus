@@ -99,6 +99,7 @@ namespace EAthena
         void processShowItemPreview1(Net::MessageIn &msg);
         void processShowItemPreview2(Net::MessageIn &msg);
         void processInventoryExpansionInfo(Net::MessageIn &msg);
+        void processInventoryExpansionAck(Net::MessageIn &msg);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 
