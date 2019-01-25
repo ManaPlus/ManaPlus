@@ -48,6 +48,7 @@
 extern int packetVersion;
 extern int packetVersionMain;
 extern int packetVersionRe;
+extern bool packets_zero;
 extern int itemIdLen;
 
 namespace EAthena
@@ -374,7 +375,8 @@ void NpcHandler::requestAirship(const std::string &mapName,
                                 const int itemId) const
 {
     if (packetVersionRe < 20180321 &&
-        packetVersionMain < 20180620)
+        packetVersionMain < 20180620 &&
+        packets_zero == false)
     {
         return;
     }

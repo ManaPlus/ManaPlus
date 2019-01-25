@@ -1384,6 +1384,11 @@ if (packetVersion >= 20170419)
     packet(CMSG_MAIL2_REFRESH_MAIL_LIST,  0x0ac1,  26, clif->pRodexRefreshMaillist);
 }
 
+if (packets_zero >= true)
+{
+    packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  20, clif->pPrivateAirshipRequest);
+}
+
 // 20171214 zero
 if (packetVersionZero >= 20171214)
 {
@@ -1530,12 +1535,14 @@ if (packetVersionZero >= 20181114)
     packet(CMSG_INVENTORY_EXPAND_CONFIRM, 0x0b16,   2, clif->pInventoryExpansionConfirm);
     packet(CMSG_INVENTORY_EXPAND_REJECT,  0x0b19,   2, clif->pInventoryExpansionReject);
     packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
+    packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  22, clif->pPrivateAirshipRequest);
 }
 
 // 20181121 main
 if (packetVersionMain >= 20181121)
 {
     packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
+    packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  22, clif->pPrivateAirshipRequest);
 }
 
 // 20181226 zero
