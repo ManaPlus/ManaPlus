@@ -81,6 +81,8 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         void expandInventory() const override final;
 
+        void expandInventoryConfirm() const override final;
+
         int getProjectileSlot() const override final
         { return 10; }
 

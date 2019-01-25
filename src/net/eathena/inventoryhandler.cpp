@@ -614,4 +614,15 @@ void InventoryHandler::expandInventory() const
     createOutPacket(CMSG_INVENTORY_EXPAND);
 }
 
+void InventoryHandler::expandInventoryConfirm() const
+{
+    if (packetVersionMain < 20181031 &&
+        packetVersionRe < 20181031 &&
+        packetVersionZero < 20181114)
+    {
+        return;
+    }
+    createOutPacket(CMSG_INVENTORY_EXPAND_CONFIRM);
+}
+
 }  // namespace EAthena

@@ -107,6 +107,8 @@ class InventoryHandler notfinal
         virtual void mergetItemsCancel() const = 0;
 
         virtual void expandInventory() const = 0;
+
+        virtual void expandInventoryConfirm() const = 0;
 };
 
 }  // namespace Net
