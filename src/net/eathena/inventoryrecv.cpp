@@ -1696,4 +1696,12 @@ void InventoryRecv::processInventoryExpansionResult(Net::MessageIn &msg)
     msg.readUInt8("result");
 }
 
+void InventoryRecv::processEnchantEquipment(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readInt16("wear state");
+    msg.readInt16("card slot");
+    msg.readItemId("item id");
+}
+
 }  // namespace EAthena

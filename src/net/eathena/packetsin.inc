@@ -1025,6 +1025,12 @@ if (packetVersion >= 20151104)
     packet(CMSG_PLAYER_SELECT_STYLE_ACK,   0x0a47,   3, &PlayerRecv::processSelectStyleAck,             20151104);
 }
 
+// 20151118 re
+if (packetVersionRe >= 20151118)
+{
+    packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,   9, &InventoryRecv::processEnchantEquipment,        20151118);
+}
+
 // 20151223
 if (packetVersion >= 20151223)
 {
@@ -1042,6 +1048,12 @@ if (packetVersion >= 20160330)
 if (packetVersion >= 20160622)
 {
     packet(SMSG_GUILD_BASIC_INFO,          0x0a84,  94, &GuildRecv::processGuildBasicInfo,              20160622);
+}
+
+// 20160831 amin
+if (packetVersionMain >= 20160831)
+{
+    packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,   9, &InventoryRecv::processEnchantEquipment,        20160831);
 }
 
 // 20160921
@@ -1212,6 +1224,7 @@ if (packets_zero == true)
     packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x01cd,  30, &SkillRecv::processSkillAutoSpells1,            20171018);
     packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20171018);
     packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20171018);
+    packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,   9, &InventoryRecv::processEnchantEquipment,        20171018);
 }
 
 // 20171019 zero
@@ -1383,6 +1396,7 @@ if (packetVersionRe >= 20180704)
     packet(SMSG_PLAYER_INVENTORY_ADD,      0x0a37,  69, &InventoryRecv::processPlayerInventoryAdd,      20180704);
     packet(SMSG_ITEM_DROPPED,              0x0add,  24, &ItemRecv::processItemDropped,                  20180704);
     packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  47, &InventoryRecv::processShowItemPreview1,        20180704);
+    packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20180704);
 }
 
 // 20180801 re
@@ -1503,12 +1517,14 @@ if (packetVersionRe >= 20181114)
 if (packetVersionZero >= 20181114)
 {
     packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181114);
+    packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20181114);
 }
 
 // 20181121 main
 if (packetVersionMain >= 20181121)
 {
     packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181121);
+    packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20181121);
 }
 
 // 20181128 main
