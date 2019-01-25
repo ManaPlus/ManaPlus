@@ -109,6 +109,8 @@ class InventoryHandler notfinal
         virtual void expandInventory() const = 0;
 
         virtual void expandInventoryConfirm() const = 0;
+
+        virtual void expandInventoryReject() const = 0;
 };
 
 }  // namespace Net

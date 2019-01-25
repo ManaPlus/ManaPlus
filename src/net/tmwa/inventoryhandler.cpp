@@ -201,4 +201,8 @@ void InventoryHandler::expandInventoryConfirm() const
 {
 }
 
+void InventoryHandler::expandInventoryReject() const
+{
+}
+
 }  // namespace TmwAthena

@@ -346,6 +346,7 @@ packet(CMSG_LOGIN_MOBILE_OTP,             0x0000,   0, nullptr);
 packet(CMSG_LOGIN_OTP_CODE,               0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND,             0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND_CONFIRM,     0x0000,   0, nullptr);
+packet(CMSG_INVENTORY_EXPAND_REJECT,      0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1471,6 +1472,7 @@ if (packetVersionMain >= 20181031)
 {
     packet(CMSG_INVENTORY_EXPAND,         0x0b14,   2, clif->pInventoryExpansion);
     packet(CMSG_INVENTORY_EXPAND_CONFIRM, 0x0b16,   2, clif->pInventoryExpansionConfirm);
+    packet(CMSG_INVENTORY_EXPAND_REJECT,  0x0b19,   2, clif->pInventoryExpansionReject);
 }
 
 // 20181031 re
@@ -1478,6 +1480,7 @@ if (packetVersionRe >= 20181031)
 {
     packet(CMSG_INVENTORY_EXPAND,         0x0b14,   2, clif->pInventoryExpansion);
     packet(CMSG_INVENTORY_EXPAND_CONFIRM, 0x0b16,   2, clif->pInventoryExpansionConfirm);
+    packet(CMSG_INVENTORY_EXPAND_REJECT,  0x0b19,   2, clif->pInventoryExpansionReject);
 }
 
 // 20181114 main
@@ -1499,6 +1502,7 @@ if (packetVersionZero >= 20181114)
 {
     packet(CMSG_INVENTORY_EXPAND,         0x0b14,   2, clif->pInventoryExpansion);
     packet(CMSG_INVENTORY_EXPAND_CONFIRM, 0x0b16,   2, clif->pInventoryExpansionConfirm);
+    packet(CMSG_INVENTORY_EXPAND_REJECT,  0x0b19,   2, clif->pInventoryExpansionReject);
 }
 
 #endif
