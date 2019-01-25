@@ -51,6 +51,8 @@ class GameHandler final : public Ea::GameHandler
 
         void mapLoadedEvent() const override final;
 
+        void reqRemainTime() const override final;
+
         bool mustPing() const override final A_WARN_UNUSED
         { return true; }
 };

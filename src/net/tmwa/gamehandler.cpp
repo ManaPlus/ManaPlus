@@ -132,4 +132,8 @@ void GameHandler::disconnect2() const
     createOutPacket(CMSG_CLIENT_DISCONNECT);
 }
 
+void GameHandler::reqRemainTime() const
+{
+}
+
 }  // namespace TmwAthena

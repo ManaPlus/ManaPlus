@@ -254,6 +254,8 @@ packet(CMSG_VENDING_CREATE_SHOP,          0x01b2,  -1, clif->pOpenVending);
 packet(CMSG_MERGE_ITEM_ACK,               0x096e,  -1, clif->ackmergeitems);
 packet(CMSG_MERGE_ITEM_CANCEL,            0x0974,   2, clif->cancelmergeitem);
 
+packet(CMSG_REQ_REMAIN_TIME,              0x01c0,   2, clif->pReqRemainTime);
+
 packet2(CMSG_SET_STATUS,                  0x0b0e,   0, nullptr);
 
 packet2(CMSG_ONLINE_LIST,                 0x0b0f,   0, nullptr);

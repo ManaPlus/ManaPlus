@@ -223,4 +223,9 @@ void GameHandler::disconnect2() const
     createOutPacket(CMSG_CLIENT_QUIT);
 }
 
+void GameHandler::reqRemainTime() const
+{
+    createOutPacket(CMSG_REQ_REMAIN_TIME);
+}
+
 }  // namespace EAthena

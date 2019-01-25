@@ -62,6 +62,8 @@ class GameHandler notfinal
         virtual void initEngines() const = 0;
 
         virtual void clear() const = 0;
+
+        virtual void reqRemainTime() const = 0;
 };
 
 }  // namespace Net
