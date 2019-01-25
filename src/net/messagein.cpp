@@ -246,6 +246,22 @@ int64_t MessageIn::readInt64(const char *const str)
     return value;
 }
 
+float MessageIn::readFloat(const char *const str)
+{
+    float value = 0;
+    if (mPos + 4 <= mLength)
+    {
+        memcpy(&value, mData + CAST_SIZE(mPos), sizeof(float));
+    }
+#ifdef ENABLEDEBUGLOG
+    std::string text = strprintf("readFloat: %f", value);
+    DEBUGLOG2(str, mPos, text.c_str());
+#endif
+    mPos += 4;
+    PacketCounters::incInBytes(4);
+    return value;
+}
+
 uint8_t MessageIn::fromServerDirection(const uint8_t serverDir)
 {
     // Translate from eAthena format

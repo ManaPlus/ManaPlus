@@ -69,9 +69,9 @@ void MapRecv::processCameraInfo(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
     msg.readUInt8("action");
-    msg.readInt32("range");
-    msg.readInt32("rotation");
-    msg.readInt32("latitude");
+    msg.readFloat("range");
+    msg.readFloat("rotation");
+    msg.readFloat("latitude");
 }
 
 }  // namespace EAthena

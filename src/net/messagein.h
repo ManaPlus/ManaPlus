@@ -86,6 +86,8 @@ class MessageIn notfinal
 
         BeingId readBeingId(const char *const str);
 
+        float readFloat(const char *const str);
+
         /**
          * Reads a special 3 byte block used by eAthena, containing x and y
          * coordinates and direction.
