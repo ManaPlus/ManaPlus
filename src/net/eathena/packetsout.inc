@@ -1528,6 +1528,13 @@ if (packetVersionZero >= 20181114)
     packet(CMSG_INVENTORY_EXPAND,         0x0b14,   2, clif->pInventoryExpansion);
     packet(CMSG_INVENTORY_EXPAND_CONFIRM, 0x0b16,   2, clif->pInventoryExpansionConfirm);
     packet(CMSG_INVENTORY_EXPAND_REJECT,  0x0b19,   2, clif->pInventoryExpansionReject);
+    packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
+}
+
+// 20181121
+if (packetVersionMain >= 20181121)
+{
+    packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
 }
 
 #endif
