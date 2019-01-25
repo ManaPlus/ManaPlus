@@ -1211,6 +1211,7 @@ if (packets_zero == true)
     packet(SMSG_LOGIN_MOBILE_OTP,          0x09a2,   6, &LoginRecv::processMobileOtp,                   20171018);
     packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x01cd,  30, &SkillRecv::processSkillAutoSpells1,            20171018);
     packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20171018);
+    packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20171018);
 }
 
 // 20171019 zero
@@ -1335,7 +1336,7 @@ if (packetVersion >= 20180605)
     packet(SMSG_GUILD_SET_POSITION,        0x0afd,  -1, &GuildRecv::processGuildSetPosition,            20180605);
 }
 
-// re 20180620
+// 20180620 main
 if (packetVersionMain >= 20180620)
 {
     packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20180620);
