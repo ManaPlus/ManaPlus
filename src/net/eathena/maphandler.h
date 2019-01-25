@@ -38,6 +38,11 @@ class MapHandler final : public Net::MapHandler
         void blockPlayCancel() const override final;
 
         void destroyInstance() const override final;
+
+        void camera(int action,
+                    float range,
+                    float rotation,
+                    float latitude) const override final;
 };
 
 }  // namespace EAthena

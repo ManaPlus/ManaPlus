@@ -130,6 +130,17 @@ void MessageOut::writeBeingId(const BeingId value, const char *const str)
     writeInt32(toInt(value, int32_t), str);
 }
 
+void MessageOut::writeFloat(const float value, const char *const str)
+{
+#ifdef ENABLEDEBUGLOG
+    std::string text = strprintf("writeFloat: %f", value);
+    DEBUGLOG2(text.c_str(), mPos, str);
+#endif
+    expand(4);
+    memcpy(mData + CAST_SIZE(mPos), &value, sizeof(float));
+    mPos += 4;
+}
+
 #define LOBYTE(w) (CAST_U8(w))
 #define HIBYTE(w) (CAST_U8((CAST_U16(w)) >> 8))
 

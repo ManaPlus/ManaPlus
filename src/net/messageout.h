@@ -91,6 +91,9 @@ class MessageOut notfinal
                               int length,
                               const char *const str);
 
+        void writeFloat(const float value,
+                        const char *const str);
+
         /**
          * Returns the content of the message.
          */

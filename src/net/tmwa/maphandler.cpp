@@ -44,4 +44,11 @@ void MapHandler::destroyInstance() const
 {
 }
 
+void MapHandler::camera(int action A_UNUSED,
+                        float range A_UNUSED,
+                        float rotation A_UNUSED,
+                        float latitude A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

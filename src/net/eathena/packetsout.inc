@@ -352,6 +352,7 @@ packet(CMSG_INVENTORY_EXPAND_REJECT,      0x0000,   0, nullptr);
 packet(CMSG_SKILL_USE_BEING_START,        0x0000,   0, nullptr);
 packet(CMSG_SKILL_USE_BEING_STOP,         0x0000,   0, nullptr);
 packet(CMSG_NPC_BARTER_CLOSE,             0x0000,   0, nullptr);
+packet(CMSG_CAMERA_INFO,                  0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1375,6 +1376,12 @@ if (packetVersion >= 20160323)
 if (packetVersion >= 20160330)
 {
     packet(CMSG_MAIL2_SEND_MAIL,          0x0a6e,  -1, clif->pRodexSendMail);
+}
+
+// 20160525
+if (packetVersion >= 20160525)
+{
+    packet(CMSG_CAMERA_INFO,              0x0a77,  15, clif->pCameraInfo);
 }
 
 // 20170419

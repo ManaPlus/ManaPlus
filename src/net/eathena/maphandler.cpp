@@ -25,6 +25,8 @@
 
 #include "debug.h"
 
+extern int packetVersion;
+
 namespace EAthena
 {
 
@@ -48,6 +50,20 @@ void MapHandler::destroyInstance() const
 {
     createOutPacket(CMSG_INSTANCE_COMMAND);
     outMsg.writeInt32(3, "command");
+}
+
+void MapHandler::camera(int action,
+                        float range,
+                        float rotation,
+                        float latitude) const
+{
+    if (packetVersion < 20160525)
+        return;
+    createOutPacket(CMSG_CAMERA_INFO);
+    outMsg.writeInt8(action, "action");
+    outMsg.writeFloat(range, "range");
+    outMsg.writeFloat(rotation, "rotation");
+    outMsg.writeFloat(latitude, "latitude");
 }
 
 }  // namespace EAthena
