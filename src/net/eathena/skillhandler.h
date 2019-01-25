@@ -45,6 +45,8 @@ class SkillHandler final : public Ea::SkillHandler
                            const int level,
                            const BeingId beingId) const override final;
 
+        void useStop(const int id) const override final;
+
         void usePos(const int id,
                     const int level,
                     const int x, const int y) const override final;

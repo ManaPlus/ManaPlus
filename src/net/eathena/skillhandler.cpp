@@ -73,6 +73,19 @@ void SkillHandler::useBeingStart(const int id,
     outMsg.writeInt32(toInt(beingId, int), "target id");
 }
 
+void SkillHandler::useStop(const int id) const
+{
+    if (packetVersionMain < 20181002 &&
+        packetVersionRe < 20181002 &&
+        packetVersionZero < 20181010)
+    {
+        return;
+    }
+
+    createOutPacket(CMSG_SKILL_USE_BEING_STOP);
+    outMsg.writeInt16(CAST_S16(id), "skill id");
+}
+
 void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y) const
 {

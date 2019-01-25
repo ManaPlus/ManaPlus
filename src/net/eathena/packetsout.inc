@@ -350,6 +350,7 @@ packet(CMSG_INVENTORY_EXPAND,             0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND_CONFIRM,     0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND_REJECT,      0x0000,   0, nullptr);
 packet(CMSG_SKILL_USE_BEING_START,        0x0000,   0, nullptr);
+packet(CMSG_SKILL_USE_BEING_STOP,         0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1474,18 +1475,21 @@ if (packetVersionRe >= 20180718)
 if (packetVersionMain >= 20181002)
 {
     packet(CMSG_SKILL_USE_BEING_START,    0x0b10,  10, clif->pStartUseSkillToId);
+    packet(CMSG_SKILL_USE_BEING_STOP,     0x0b11,   4, clif->pStopUseSkillToId);
 }
 
 // 20181002 re
 if (packetVersionRe >= 20181002)
 {
     packet(CMSG_SKILL_USE_BEING_START,    0x0b10,  10, clif->pStartUseSkillToId);
+    packet(CMSG_SKILL_USE_BEING_STOP,     0x0b11,   4, clif->pStopUseSkillToId);
 }
 
 // 20181010 zero
 if (packetVersionZero >= 20181010)
 {
     packet(CMSG_SKILL_USE_BEING_START,    0x0b10,  10, clif->pStartUseSkillToId);
+    packet(CMSG_SKILL_USE_BEING_STOP,     0x0b11,   4, clif->pStopUseSkillToId);
 }
 
 // 20181031 main

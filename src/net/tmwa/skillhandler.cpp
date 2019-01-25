@@ -56,6 +56,10 @@ void SkillHandler::useBeingStart(const int id A_UNUSED,
 {
 }
 
+void SkillHandler::useStop(const int id A_UNUSED) const
+{
+}
+
 void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y) const
 {
