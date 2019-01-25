@@ -1557,6 +1557,24 @@ if (packetVersionRe >= 20181219)
     packet(SMSG_INVENTORY_EXPANSION_RESULT, 0x0b17,  3, &InventoryRecv::processInventoryExpansionResult, 20181212);
 }
 
+// 20181226 zero
+if (packetVersionZero >= 20181226)
+{
+    packet(SMSG_NPC_BARTER_OPEN,           0x0b0e,   -1, &BarterRecv::processOpenShop,                  20181226);
+}
+
+// 20190116 main
+if (packetVersionMain >= 20190116)
+{
+    packet(SMSG_NPC_BARTER_OPEN,           0x0b0e,   -1, &BarterRecv::processOpenShop,                  20190116);
+}
+
+// 20190116 re
+if (packetVersionRe >= 20190116)
+{
+    packet(SMSG_NPC_BARTER_OPEN,           0x0b0e,   -1, &BarterRecv::processOpenShop,                  20190116);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

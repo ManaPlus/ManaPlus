@@ -33,6 +33,8 @@ namespace EAthena
     namespace BarterRecv
     {
         extern BuyDialog *mBuyDialog;
+
+        void processOpenShop(Net::MessageIn &msg);
     }  // namespace BarterRecv
 }  // namespace EAthena
 

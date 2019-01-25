@@ -45,6 +45,7 @@
 #include "net/eathena/auctionrecv.h"
 #include "net/eathena/attendancerecv.h"
 #include "net/eathena/bankrecv.h"
+#include "net/eathena/barterrecv.h"
 #include "net/eathena/battlegroundrecv.h"
 #include "net/eathena/beingrecv.h"
 #include "net/eathena/buyingstorerecv.h"

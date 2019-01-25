@@ -37,4 +37,19 @@ namespace BarterRecv
 }  // namespace BarterRecv
 
 
+void BarterRecv::processOpenShop(Net::MessageIn &msg)
+{
+    const int count = (msg.readInt16("len") - 4) / (itemIdLen * 2 + 17);
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readItemId("item id");
+        msg.readUInt8("item type");
+        msg.readInt32("amount");
+        msg.readItemId("currency item id");
+        msg.readInt32("currency amount");
+        msg.readInt32("weight");
+        msg.readInt32("shop index");
+    }
+}
+
 }  // namespace EAthena
