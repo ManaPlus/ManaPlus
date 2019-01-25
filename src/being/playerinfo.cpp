@@ -23,6 +23,7 @@
 
 #include "configuration.h"
 #include "itemsoundmanager.h"
+#include "settings.h"
 
 #include "being/localplayer.h"
 
@@ -471,7 +472,8 @@ void stateChange(const StateT state)
     {
         if (mInventory == nullptr)
         {
-            mInventory = new Inventory(InventoryType::Inventory, -1);
+            mInventory = new Inventory(InventoryType::Inventory,
+                settings.fixedInventorySize);
             mEquipment = new Equipment;
             mCartInventory = new Inventory(InventoryType::Cart, -1);
         }
