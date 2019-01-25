@@ -29,6 +29,8 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionMain;
+extern int packetVersionRe;
 extern int packetVersionZero;
 
 namespace EAthena
@@ -49,6 +51,23 @@ void SkillHandler::useBeing(const int id, const int level,
                             const BeingId beingId) const
 {
     createOutPacket(CMSG_SKILL_USE_BEING);
+    outMsg.writeInt16(CAST_S16(level), "skill level");
+    outMsg.writeInt16(CAST_S16(id), "skill id");
+    outMsg.writeInt32(toInt(beingId, int), "target id");
+}
+
+void SkillHandler::useBeingStart(const int id,
+                                 const int level,
+                                 const BeingId beingId) const
+{
+    if (packetVersionMain < 20181002 &&
+        packetVersionRe < 20181002 &&
+        packetVersionZero < 20181010)
+    {
+        return;
+    }
+
+    createOutPacket(CMSG_SKILL_USE_BEING_START);
     outMsg.writeInt16(CAST_S16(level), "skill level");
     outMsg.writeInt16(CAST_S16(id), "skill id");
     outMsg.writeInt32(toInt(beingId, int), "target id");

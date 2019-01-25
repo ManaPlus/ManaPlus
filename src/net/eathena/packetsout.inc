@@ -349,6 +349,7 @@ packet(CMSG_LOGIN_OTP_CODE,               0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND,             0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND_CONFIRM,     0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND_REJECT,      0x0000,   0, nullptr);
+packet(CMSG_SKILL_USE_BEING_START,        0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1467,6 +1468,24 @@ if (packetVersionRe >= 20180704)
 if (packetVersionRe >= 20180718)
 {
     packet(CMSG_PLAYER_SELECT_STYLE,      0x0afc,  16, clif->pReqStyleChange);
+}
+
+// 20181002 main
+if (packetVersionMain >= 20181002)
+{
+    packet(CMSG_SKILL_USE_BEING_START,    0x0b10,  10, clif->pStartUseSkillToId);
+}
+
+// 20181002 re
+if (packetVersionRe >= 20181002)
+{
+    packet(CMSG_SKILL_USE_BEING_START,    0x0b10,  10, clif->pStartUseSkillToId);
+}
+
+// 20181010 zero
+if (packetVersionZero >= 20181010)
+{
+    packet(CMSG_SKILL_USE_BEING_START,    0x0b10,  10, clif->pStartUseSkillToId);
 }
 
 // 20181031 main

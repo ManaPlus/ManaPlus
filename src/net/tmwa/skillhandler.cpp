@@ -50,6 +50,12 @@ void SkillHandler::useBeing(const int id, const int level,
     outMsg.writeBeingId(beingId, "target id");
 }
 
+void SkillHandler::useBeingStart(const int id A_UNUSED,
+                                 const int level A_UNUSED,
+                                 const BeingId beingId A_UNUSED) const
+{
+}
+
 void SkillHandler::usePos(const int id, const int level,
                           const int x, const int y) const
 {

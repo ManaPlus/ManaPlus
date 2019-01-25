@@ -46,6 +46,10 @@ class SkillHandler notfinal
                               const int level,
                               const BeingId beingId) const = 0;
 
+        virtual void useBeingStart(const int id,
+                                   const int level,
+                                   const BeingId beingId) const = 0;
+
         virtual void usePos(const int id,
                             const int level,
                             const int x, const int y) const = 0;
