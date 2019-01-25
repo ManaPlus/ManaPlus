@@ -762,11 +762,6 @@ if (packetVersion >= 20120604)
     packet(SMSG_PLAYER_SKILL_COOLDOWN_LIST, 0x0985,  -1, &SkillRecv::processSkillCoolDownList,           20120604);
 }
 
-// 20120702
-if (packetVersion >= 20120702)
-{
-    packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20120702);
-}
 
 // 20120716
 if (packetVersion >= 20120716)
@@ -806,6 +801,18 @@ if (packetVersion >= 20121212)
 if (packetVersion >= 20130000)
 {
     packet(SMSG_ITEM_DROPPED,              0x084b,  19, &ItemRecv::processItemDropped,                  20130000);
+}
+
+// 20130605 re
+if (packetVersionRe >= 20130605)
+{
+    packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20130605);
+}
+
+// 20130626 main
+if (packetVersionMain >= 20130626)
+{
+    packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20130626);
 }
 
 // 20130710
@@ -1203,6 +1210,7 @@ if (packets_zero == true)
     packet(SMSG_LOGIN_OTP,                 0x0ad1,  -1, &LoginRecv::processLoginOtp1,                   20171018);
     packet(SMSG_LOGIN_MOBILE_OTP,          0x09a2,   6, &LoginRecv::processMobileOtp,                   20171018);
     packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x01cd,  30, &SkillRecv::processSkillAutoSpells1,            20171018);
+    packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20171018);
 }
 
 // 20171019 zero
