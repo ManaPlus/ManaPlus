@@ -351,6 +351,7 @@ packet(CMSG_INVENTORY_EXPAND_CONFIRM,     0x0000,   0, nullptr);
 packet(CMSG_INVENTORY_EXPAND_REJECT,      0x0000,   0, nullptr);
 packet(CMSG_SKILL_USE_BEING_START,        0x0000,   0, nullptr);
 packet(CMSG_SKILL_USE_BEING_STOP,         0x0000,   0, nullptr);
+packet(CMSG_NPC_BARTER_CLOSE,             0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1531,10 +1532,28 @@ if (packetVersionZero >= 20181114)
     packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
 }
 
-// 20181121
+// 20181121 main
 if (packetVersionMain >= 20181121)
 {
     packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
+}
+
+// 20181226 zero
+if (packetVersionZero >= 20181226)
+{
+    packet(CMSG_NPC_BARTER_CLOSE,         0x0b12,   2, clif->pNPCBarterClosed);
+}
+
+// 20190116 main
+if (packetVersionMain >= 20190116)
+{
+    packet(CMSG_NPC_BARTER_CLOSE,         0x0b12,   2, clif->pNPCBarterClosed);
+}
+
+// 20190116 re
+if (packetVersionRe >= 20190116)
+{
+    packet(CMSG_NPC_BARTER_CLOSE,         0x0b12,   2, clif->pNPCBarterClosed);
 }
 
 #endif

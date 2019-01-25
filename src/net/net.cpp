@@ -44,6 +44,7 @@ namespace Net
     class AchievementHandler;
     class AttendanceHandler;
     class BankHandler;
+    class BarterHandler;
     class BattleGroundHandler;
     class BuyingStoreHandler;
     class CashShopHandler;
@@ -111,6 +112,7 @@ Net::Mail2Handler *mail2Handler = nullptr;
 Net::MailHandler *mailHandler = nullptr;
 Net::MapHandler *mapHandler = nullptr;
 Net::MarketHandler *marketHandler = nullptr;
+Net::BarterHandler *barterHandler = nullptr;
 Net::MercenaryHandler *mercenaryHandler = nullptr;
 Net::RouletteHandler *rouletteHandler = nullptr;
 Net::SearchStoreHandler *searchStoreHandler = nullptr;

@@ -28,6 +28,7 @@
 namespace TmwAthena
 {
 class AdminHandler;
+class BarterHandler;
 class BeingHandler;
 class BuySellHandler;
 class CharServerHandler;
@@ -128,6 +129,7 @@ class GeneralHandler final : public Net::GeneralHandler
         MailHandler *mMailHandler;
         MapHandler *mMapHandler;
         MarketHandler *mMarketHandler;
+        BarterHandler *mBarterHandler;
         MercenaryHandler *mMercenaryHandler;
         RouletteHandler *mRouletteHandler;
         SearchStoreHandler *mSearchStoreHandler;

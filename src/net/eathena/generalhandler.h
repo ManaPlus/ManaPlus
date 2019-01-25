@@ -29,6 +29,7 @@ namespace EAthena
 {
 
 class AdminHandler;
+class BarterHandler;
 class BeingHandler;
 class BuySellHandler;
 class CharServerHandler;
@@ -130,6 +131,7 @@ class GeneralHandler final : public Net::GeneralHandler
         ElementalHandler *mElementalHandler;
         MapHandler *mMapHandler;
         MarketHandler *mMarketHandler;
+        BarterHandler *mBarterHandler;
         VendingHandler *mVendingHandler;
         RouletteHandler *mRouletteHandler;
         SearchStoreHandler *mSearchStoreHandler;

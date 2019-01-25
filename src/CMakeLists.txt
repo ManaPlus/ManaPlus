@@ -1576,6 +1576,7 @@ SET(SRCS
     listeners/vendingslotslistener.h
     net/auctionhandler.h
     net/bankhandler.h
+    net/barterhandler.h
     net/battlegroundhandler.h
     net/buyingstorehandler.h
     net/cashshophandler.h
@@ -1703,6 +1704,10 @@ SET(SRCS
     net/eathena/markethandler.h
     net/eathena/marketrecv.cpp
     net/eathena/marketrecv.h
+    net/eathena/barterhandler.cpp
+    net/eathena/barterhandler.h
+    net/eathena/barterrecv.cpp
+    net/eathena/barterrecv.h
     net/eathena/menu.cpp
     net/eathena/menu.h
     enums/net/menutype.h
@@ -2154,6 +2159,8 @@ SET(SRCS_TMWA
     net/tmwa/maphandler.h
     net/tmwa/markethandler.cpp
     net/tmwa/markethandler.h
+    net/tmwa/barterhandler.cpp
+    net/tmwa/barterhandler.h
     net/tmwa/mercenaryhandler.cpp
     net/tmwa/mercenaryhandler.h
     net/tmwa/roulettehandler.cpp

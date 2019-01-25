@@ -55,6 +55,7 @@
 #include "net/tmwa/achievementhandler.h"
 #include "net/tmwa/attendancehandler.h"
 #include "net/tmwa/bankhandler.h"
+#include "net/tmwa/barterhandler.h"
 #include "net/tmwa/battlegroundhandler.h"
 #include "net/tmwa/buyingstorehandler.h"
 #include "net/tmwa/cashshophandler.h"
@@ -114,6 +115,7 @@ GeneralHandler::GeneralHandler() :
     mMailHandler(new MailHandler),
     mMapHandler(new MapHandler),
     mMarketHandler(new MarketHandler),
+    mBarterHandler(new BarterHandler),
     mMercenaryHandler(new MercenaryHandler),
     mRouletteHandler(new RouletteHandler),
     mSearchStoreHandler(new SearchStoreHandler),
@@ -161,6 +163,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mMailHandler)
     delete2(mMapHandler)
     delete2(mMarketHandler)
+    delete2(mBarterHandler)
     delete2(mMercenaryHandler)
     delete2(mRouletteHandler)
     delete2(mSearchStoreHandler)

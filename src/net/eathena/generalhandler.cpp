@@ -37,6 +37,7 @@
 #include "net/eathena/achievementhandler.h"
 #include "net/eathena/attendancehandler.h"
 #include "net/eathena/bankhandler.h"
+#include "net/eathena/barterhandler.h"
 #include "net/eathena/battlegroundhandler.h"
 #include "net/eathena/beinghandler.h"
 #include "net/eathena/buyingstorehandler.h"
@@ -116,6 +117,7 @@ GeneralHandler::GeneralHandler() :
     mElementalHandler(new ElementalHandler),
     mMapHandler(new MapHandler),
     mMarketHandler(new MarketHandler),
+    mBarterHandler(new BarterHandler),
     mVendingHandler(new VendingHandler),
     mRouletteHandler(new RouletteHandler),
     mSearchStoreHandler(new SearchStoreHandler)
@@ -163,6 +165,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mElementalHandler)
     delete2(mMapHandler)
     delete2(mMarketHandler)
+    delete2(mBarterHandler)
     delete2(mVendingHandler)
     delete2(mRouletteHandler)
     delete2(mSearchStoreHandler)
