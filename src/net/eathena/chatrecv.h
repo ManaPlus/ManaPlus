@@ -74,6 +74,7 @@ namespace EAthena
         void processChatTalkieBox(Net::MessageIn &msg);
         void processBattleChatMessage(Net::MessageIn &msg);
         void processScriptMessage(Net::MessageIn &msg);
+        void processServiceMessageColor(Net::MessageIn &msg);
         extern std::string mChatRoom;
     }  // namespace ChatRecv
 }  // namespace EAthena

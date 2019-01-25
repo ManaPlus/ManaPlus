@@ -1181,6 +1181,7 @@ if (packetVersionMain >= 20170726)
 // 20170830
 packet(SMSG_PLAYER_STAT_UPDATE_7,          0x0acb,  12, &PlayerRecv::processPlayerStatUpdate7,          20170830);
 packet(SMSG_PLAYER_GET_EXP2,               0x0acc,  18, &PlayerRecv::processPlayerGetExp2,              20170830);
+packet(SMSG_SERVICE_MESSAGE_COLOR,         0x0adb,  -1, &ChatRecv::processServiceMessageColor,          20170830);
 
 // zero 20171018
 if (packets_zero == true)

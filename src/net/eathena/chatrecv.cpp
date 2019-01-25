@@ -822,4 +822,15 @@ void ChatRecv::processScriptMessage(Net::MessageIn &msg)
         TryRemoveColors_true);
 }
 
+void ChatRecv::processServiceMessageColor(Net::MessageIn &msg)
+{
+    const int sz = msg.readInt16("len") - 8;
+    msg.readInt32("color");
+    const std::string message = msg.readString(sz, "message");
+    localChatTab->chatLog(message,
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
+}
+
 }  // namespace EAthena
