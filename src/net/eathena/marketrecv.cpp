@@ -84,7 +84,7 @@ void MarketRecv::processMarketOpen(Net::MessageIn &msg)
         const ItemTypeT type = static_cast<ItemTypeT>(msg.readUInt8("type"));
         const int value = msg.readInt32("price");
         const int amount = msg.readInt32("amount");
-        msg.readInt16("view");
+        msg.readInt16("weight");  // +++ compare with item weight from db?
         const ItemColor color = ItemColor_one;
         mBuyDialog->addItem(itemId, type, color, amount, value);
     }
