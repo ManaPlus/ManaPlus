@@ -241,7 +241,6 @@ packet(SMSG_PLAYER_REFINE,                 0x0188,   8, &InventoryRecv::processP
 packet(SMSG_PLAYER_REPAIR_EFFECT,          0x01fe,   5, &InventoryRecv::processPlayerRepairEffect,      0);
 packet(SMSG_PLAYER_REPAIR_LIST,            0x01fc,  -1, &InventoryRecv::processPlayerRepairList,        0);
 packet(SMSG_PLAYER_SKILLS,                 0x010f,  -1, &SkillRecv::processPlayerSkills,                0);
-packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,      0x01cd,  30, &SkillRecv::processSkillAutoSpells1,            0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT,   0x018f,   6, &SkillRecv::processSkillProduceEffect,          0);
 packet(SMSG_PLAYER_SKILL_PRODUCE_MIX_LIST, 0x018d,  -1, &SkillRecv::processSkillProduceMixList,         0);
 packet(SMSG_PLAYER_SKILL_UP,               0x010e,  11, &Ea::SkillRecv::processPlayerSkillUp,           0);
@@ -553,6 +552,18 @@ packet(SMSG_QUEST_NPC_EFFECT,              0x0446,  14, &QuestRecv::processNpcQu
 if (packetVersionRe >= 20090401)
 {
     packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20090401);
+}
+
+// all re
+if (packets_re == true)
+{
+    packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x01cd,  30, &SkillRecv::processSkillAutoSpells1,            0);
+}
+
+// 20090406 main
+if (packetVersionRe >= 20090406)
+{
+    packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x01cd,  30, &SkillRecv::processSkillAutoSpells1,            20090406);
 }
 
 // 20090603
@@ -1190,6 +1201,7 @@ if (packets_zero == true)
     packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  39, &InventoryRecv::processShowItemPreview1,        20171018);
     packet(SMSG_LOGIN_OTP,                 0x0ad1,  -1, &LoginRecv::processLoginOtp1,                   20171018);
     packet(SMSG_LOGIN_MOBILE_OTP,          0x09a2,   6, &LoginRecv::processMobileOtp,                   20171018);
+    packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x01cd,  30, &SkillRecv::processSkillAutoSpells1,            20171018);
 }
 
 // 20171019 zero
