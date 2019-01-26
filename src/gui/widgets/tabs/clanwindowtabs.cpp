@@ -54,7 +54,7 @@ InfoClanTab::InfoClanTab(const Widget2 *const widget) :
 void InfoClanTab::resetClan()
 {
     // TRANSLATORS: not in clan label
-    mNameLabel->setCaption(strprintf(_("Not in clan")));
+    mNameLabel->setCaption(_("Not in clan"));
     mMasterLabel->setCaption(std::string());
     mMapLabel->setCaption(std::string());
 }
