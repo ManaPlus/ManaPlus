@@ -55,7 +55,8 @@ export CXXFLAGS="${CXXFLAGS} -Wcast-qual"
 export CXXFLAGS="${CXXFLAGS} -Wchar-subscripts"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wcharacter-truncation"
-export CXXFLAGS="${CXXFLAGS} -Wchkp"
+# not supporter
+#export CXXFLAGS="${CXXFLAGS} -Wchkp"
 # still missing in fedora
 #export CXXFLAGS="${CXXFLAGS} -Wclass-memaccess"
 export CXXFLAGS="${CXXFLAGS} -Wclobbered"
