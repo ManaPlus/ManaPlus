@@ -8,8 +8,8 @@ jobs:
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
-    name: xcode_8
-    xcode: Xcode_8.app
+    name: xcode_10
+    xcode: Xcode_10.app
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
