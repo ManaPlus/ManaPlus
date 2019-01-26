@@ -62,7 +62,7 @@ env:
                   valgrind"
 
 # i386, sdl1, --disable-tmwa
-      - IMAGE=386/ubuntu:cosmic
+      - IMAGE=i386/ubuntu:cosmic
         COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL1}"
@@ -74,7 +74,7 @@ env:
         COMMAND="./tools/ci/jobs/gcc7.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-7 g++-7 
                   ${LIBS_PACKAGES} ${SDL1}"
-      - IMAGE=386/ubuntu:cosmic
+      - IMAGE=i386/ubuntu:cosmic
         COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL1}

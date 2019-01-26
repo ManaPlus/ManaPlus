@@ -35,7 +35,7 @@ jobs:
   pool:
     name: 'Hosted Ubuntu 1604'
   dependsOn:
-    - xcode_8
+    - xcode_10
     - xcode_9
     - xcode
     - xcode_8_3_3
