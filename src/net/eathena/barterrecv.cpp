@@ -20,8 +20,6 @@
 
 #include "net/eathena/barterrecv.h"
 
-#include "gui/windows/buydialog.h"
-
 #include "net/messagein.h"
 
 #include "debug.h"
