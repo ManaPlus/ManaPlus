@@ -37,7 +37,7 @@
 
 extern int packetVersionMain;
 extern int packetVersionRe;
-extern int packets_zero;
+extern bool packets_zero;
 
 namespace EAthena
 {
