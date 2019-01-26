@@ -35,6 +35,8 @@ class BarterHandler final : public Net::BarterHandler
         ~BarterHandler() override final;
 
         void close() const override final;
+
+        void buyItems(const STD_VECTOR<ShopItem*> &items) const override final;
 };
 
 }  // namespace TmwAthena

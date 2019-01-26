@@ -23,6 +23,8 @@
 
 #include "localconsts.h"
 
+#include "utils/vector.h"
+
 class ShopItem;
 
 namespace Net
@@ -40,6 +42,8 @@ class BarterHandler notfinal
         { }
 
         virtual void close() const = 0;
+
+        virtual void buyItems(const STD_VECTOR<ShopItem*> &items) const = 0;
 };
 
 }  // namespace Net

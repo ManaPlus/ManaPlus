@@ -353,6 +353,7 @@ packet(CMSG_SKILL_USE_BEING_START,        0x0000,   0, nullptr);
 packet(CMSG_SKILL_USE_BEING_STOP,         0x0000,   0, nullptr);
 packet(CMSG_NPC_BARTER_CLOSE,             0x0000,   0, nullptr);
 packet(CMSG_CAMERA_INFO,                  0x0000,   0, nullptr);
+packet(CMSG_NPC_BARTER_BUY,               0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1556,18 +1557,21 @@ if (packetVersionMain >= 20181121)
 if (packetVersionZero >= 20181226)
 {
     packet(CMSG_NPC_BARTER_CLOSE,         0x0b12,   2, clif->pNPCBarterClosed);
+    packet(CMSG_NPC_BARTER_BUY,           0x0b0f,  -1, clif->pNPCBarterPurchase);
 }
 
 // 20190116 main
 if (packetVersionMain >= 20190116)
 {
     packet(CMSG_NPC_BARTER_CLOSE,         0x0b12,   2, clif->pNPCBarterClosed);
+    packet(CMSG_NPC_BARTER_BUY,           0x0b0f,  -1, clif->pNPCBarterPurchase);
 }
 
 // 20190116 re
 if (packetVersionRe >= 20190116)
 {
     packet(CMSG_NPC_BARTER_CLOSE,         0x0b12,   2, clif->pNPCBarterClosed);
+    packet(CMSG_NPC_BARTER_BUY,           0x0b0f,  -1, clif->pNPCBarterPurchase);
 }
 
 #endif

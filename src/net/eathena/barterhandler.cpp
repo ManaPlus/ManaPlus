@@ -24,11 +24,16 @@
 #include "net/eathena/messageout.h"
 #include "net/eathena/protocolout.h"
 
+#include "utils/foreach.h"
+
+#include "resources/item/shopitem.h"
+
 #include "debug.h"
 
 extern int packetVersionMain;
 extern int packetVersionRe;
 extern int packetVersionZero;
+extern int itemIdLen;
 
 namespace EAthena
 {
@@ -55,6 +60,81 @@ void BarterHandler::close() const
     }
 
     createOutPacket(CMSG_NPC_BARTER_CLOSE);
+}
+
+void BarterHandler::buyItems(const STD_VECTOR<ShopItem*> &items) const
+{
+    if (packetVersionMain < 20190116 &&
+        packetVersionRe < 20190116 &&
+        packetVersionZero < 20181226)
+    {
+        return;
+    }
+    int cnt = 0;
+    const int pairSize = 10 + itemIdLen;
+
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
+    {
+        const ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        const ItemTypeT type = item->getType();
+        if (usedQuantity == 0)
+            continue;
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
+        {
+            cnt += item->getUsedQuantity();
+        }
+        else
+        {
+            cnt ++;
+        }
+    }
+
+    if (cnt > 100)
+        return;
+
+    createOutPacket(CMSG_NPC_MARKET_BUY);
+    outMsg.writeInt16(CAST_S16(4 + pairSize * cnt), "len");
+    FOR_EACH (STD_VECTOR<ShopItem*>::const_iterator, it, items)
+    {
+        ShopItem *const item = *it;
+        const int usedQuantity = item->getUsedQuantity();
+        if (usedQuantity == 0)
+            continue;
+        item->increaseQuantity(usedQuantity);
+        item->increaseUsedQuantity(-usedQuantity);
+        item->update();
+        const ItemTypeT type = item->getType();
+        if (type == ItemType::Weapon ||
+            type == ItemType::Armor ||
+            type == ItemType::PetEgg ||
+            type == ItemType::PetArmor)
+        {
+            for (int f = 0; f < usedQuantity; f ++)
+            {
+                outMsg.writeItemId(item->getId(),
+                    "item id");
+                outMsg.writeInt32(CAST_S16(1), "amount");
+                // +++ need use player inventory index
+                outMsg.writeInt16(0, "inv index");
+                outMsg.writeInt32(item->getCurrentInvIndex(),
+                    "inv index");
+            }
+        }
+        else
+        {
+            outMsg.writeItemId(item->getId(),
+                              "item id");
+            outMsg.writeInt32(CAST_S16(usedQuantity), "amount");
+            // +++ need use player inventory index
+            outMsg.writeInt16(0, "inv index");
+            outMsg.writeInt32(item->getCurrentInvIndex(),
+                "inv index");
+        }
+    }
 }
 
 }  // namespace EAthena

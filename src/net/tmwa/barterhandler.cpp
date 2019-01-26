@@ -40,4 +40,8 @@ void BarterHandler::close() const
 {
 }
 
+void BarterHandler::buyItems(const STD_VECTOR<ShopItem*> &items A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena
