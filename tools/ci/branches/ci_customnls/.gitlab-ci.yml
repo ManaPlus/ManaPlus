@@ -18,11 +18,11 @@ gcc_with_customnls:
   stage: build
   script:
   - ./tools/ci/scripts/patchsdl1.sh
-  - ./tools/ci/jobs/gcc5.sh --enable-customnls --enable-werror
+  - ./tools/ci/jobs/gcc6.sh --enable-customnls --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-5 g++-5 
+    PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -31,11 +31,11 @@ gcc_with_customnls:
 gcc_with_customnls_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --with-sdl2 --enable-customnls --enable-werror
+  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-customnls --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-5 g++-5 
+    PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
@@ -45,11 +45,11 @@ gcc_with_customnls_nonls:
   stage: build
   script:
   - ./tools/ci/scripts/patchsdl1.sh
-  - ./tools/ci/jobs/gcc5.sh --enable-customnls --disable-nls --enable-werror
+  - ./tools/ci/jobs/gcc6.sh --enable-customnls --disable-nls --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-5 g++-5 
+    PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
@@ -58,11 +58,11 @@ gcc_with_customnls_nonls:
 gcc_with_customnls_nonls_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc5.sh --with-sdl2 --enable-customnls --disable-nls --enable-werror
+  - ./tools/ci/jobs/gcc6.sh --with-sdl2 --enable-customnls --disable-nls --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
-    PACKAGES: gcc-5 g++-5 
+    PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev

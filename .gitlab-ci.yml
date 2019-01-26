@@ -49,7 +49,7 @@ gcc-5_c++11_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc5_c++11.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/ubuntu:cosmic
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -214,6 +214,7 @@ gcc-5_sdl2:
   - ./tools/ci/jobs/gcc5_sdl2_c++11.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
+  image: ubuntu:cosmic
   variables:
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
@@ -292,6 +293,7 @@ gcc-5_h_all:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   <<: *job-push
+  image: ubuntu:cosmic
   variables:
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
@@ -307,7 +309,7 @@ gcc-5_h_all_i386:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
-  image: vicamo/debian:sid-i386
+  image: i386/ubuntu:cosmic
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
