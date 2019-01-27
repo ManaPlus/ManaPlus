@@ -89,7 +89,6 @@ deheader_tinyxml_opengl_tmwa_cpp:
   - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
-  image: debian:unstable
   variables:
     GIT_DEPTH: "1"
     INCLUDES: "-I/usr/include/SDL -I/usr/include/libxml2"
@@ -108,7 +107,6 @@ deheader_sdl2_tinyxml_opengl_tmwa_cpp:
   - find ./src -type f \( -name "*.cpp" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
-  image: debian:unstable
   variables:
     GIT_DEPTH: "1"
     INCLUDES: "-I/usr/include/SDL2 -I/usr/include/libxml2"
@@ -193,7 +191,6 @@ deheader_tinyxml_opengl_tmwa_h:
   - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
-  image: debian:unstable
   variables:
     GIT_DEPTH: "1"
     INCLUDES: "-I/usr/include/SDL -I/usr/include/libxml2"
@@ -212,7 +209,6 @@ deheader_sdl2_tinyxml_opengl_tmwa_h:
   - find ./src -type f \( -name "*.h" \) -exec tools/ci/scripts/deheader.sh {} \;
   - ./tools/ci/jobs/deheader2.sh
   <<: *job-push
-  image: debian:unstable
   variables:
     GIT_DEPTH: "1"
     INCLUDES: "-I/usr/include/SDL2 -I/usr/include/libxml2"
