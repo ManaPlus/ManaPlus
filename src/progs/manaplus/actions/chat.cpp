@@ -658,7 +658,7 @@ impHandler(hat)
     if (sprite == 0)
     {
         // TRANSLATORS: equipped hat chat message
-        str = strprintf(_("no hat equipped."));
+        str = _("no hat equipped.");
     }
     else
     {
