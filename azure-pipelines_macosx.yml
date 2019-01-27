@@ -8,11 +8,6 @@ jobs:
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
-    name: xcode_10
-    xcode: Xcode_10.app
-
-- template: tools/ci/templates/azure/macosx.yml
-  parameters:
     name: xcode_9
     xcode: Xcode_9.app
 
@@ -35,7 +30,6 @@ jobs:
   pool:
     name: 'Hosted Ubuntu 1604'
   dependsOn:
-    - xcode_10
     - xcode_9
     - xcode
     - xcode_8_3_3
