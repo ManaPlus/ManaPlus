@@ -134,7 +134,7 @@ void MessageOut::writeFloat(const float value, const char *const str)
 {
 #ifdef ENABLEDEBUGLOG
     std::string text = strprintf("writeFloat: %f", value);
-    DEBUGLOG2(text.c_str(), mPos, str);
+    DEBUGLOG2(text, mPos, str);
 #endif
     expand(4);
     memcpy(mData + CAST_SIZE(mPos), &value, sizeof(float));
