@@ -66,4 +66,12 @@ void MapHandler::camera(int action,
     outMsg.writeFloat(latitude, "latitude");
 }
 
+void MapHandler::clientVersion(const int version) const
+{
+    if (packetVersion < 20090406)
+        return;
+    createOutPacket(CMSG_CLIENT_VERSION);
+    outMsg.writeInt32(version, "version");
+}
+
 }  // namespace EAthena

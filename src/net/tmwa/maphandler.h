@@ -43,6 +43,8 @@ class MapHandler final : public Net::MapHandler
                     float range,
                     float rotation,
                     float latitude) const override final;
+
+        void clientVersion(const int version) const override final;
 };
 
 }  // namespace TmwAthena

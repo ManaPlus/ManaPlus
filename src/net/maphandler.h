@@ -45,6 +45,8 @@ class MapHandler notfinal
                             float range,
                             float rotation,
                             float latitude) const = 0;
+
+        virtual void clientVersion(const int version) const = 0;
 };
 
 }  // namespace Net

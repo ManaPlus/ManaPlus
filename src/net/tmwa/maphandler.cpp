@@ -51,4 +51,8 @@ void MapHandler::camera(int action A_UNUSED,
 {
 }
 
+void MapHandler::clientVersion(const int version A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

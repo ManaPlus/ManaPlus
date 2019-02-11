@@ -354,6 +354,7 @@ packet(CMSG_SKILL_USE_BEING_STOP,         0x0000,   0, nullptr);
 packet(CMSG_NPC_BARTER_CLOSE,             0x0000,   0, nullptr);
 packet(CMSG_CAMERA_INFO,                  0x0000,   0, nullptr);
 packet(CMSG_NPC_BARTER_BUY,               0x0000,   0, nullptr);
+packet(CMSG_CLIENT_VERSION,               0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -584,6 +585,12 @@ if (packetVersion >= 20080910)
 if (packetVersion >= 20081210)
 {
     packet(CMSG_SKILL_SELECT_MENU,        0x0443,   8, clif->pSkillSelectMenu);
+}
+
+// 20090406
+if (packetVersion >= 20090406)
+{
+    packet(CMSG_CLIENT_VERSION,           0x044a,   6, clif->pClientVersion);
 }
 
 // 20090520
