@@ -1005,10 +1005,8 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
     const int dstX = msg.readInt16("dst x");
     const int dstY = msg.readInt16("dst y");
     const int skillId = msg.readInt16("skill id");
-    msg.readInt32("property");  // can be used to trigger effect
+    msg.readInt32("element");  // +++ use different effects
     const int castTime = msg.readInt32("cast time");
-    if (msg.getVersion() >= 20091124)
-        msg.readInt8("dispossable");
 
     processSkillCastingContinue(msg,
         srcId, dstId,
@@ -1022,6 +1020,49 @@ void BeingRecv::processSkillCasting(Net::MessageIn &msg)
 
 void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
 {
+    const BeingId srcId = msg.readBeingId("src id");
+    const BeingId dstId = msg.readBeingId("dst id");
+    const int dstX = msg.readInt16("dst x");
+    const int dstY = msg.readInt16("dst y");
+    const int skillId = msg.readInt16("skill id");
+    msg.readInt32("element");  // +++ use different effects
+    const int castTime = msg.readInt32("cast time");
+    msg.readInt8("dispossable");
+
+    processSkillCastingContinue(msg,
+        srcId, dstId,
+        dstX, dstY,
+        skillId,
+        1,
+        0,
+        SkillType2::Unknown,
+        castTime);
+}
+
+void BeingRecv::processSkillCasting3(Net::MessageIn &msg)
+{
+    const BeingId srcId = msg.readBeingId("src id");
+    const BeingId dstId = msg.readBeingId("dst id");
+    const int dstX = msg.readInt16("dst x");
+    const int dstY = msg.readInt16("dst y");
+    const int skillId = msg.readInt16("skill id");
+    msg.readInt32("element");  // +++ use different effects
+    const int castTime = msg.readInt32("cast time");
+    msg.readInt8("dispossable");
+    msg.readInt32("unknown");
+
+    processSkillCastingContinue(msg,
+        srcId, dstId,
+        dstX, dstY,
+        skillId,
+        1,
+        0,
+        SkillType2::Unknown,
+        castTime);
+}
+
+void BeingRecv::processSkillCastingEvol(Net::MessageIn &msg)
+{
     msg.readInt16("len");  // for now unused
     const BeingId srcId = msg.readBeingId("src id");
     const BeingId dstId = msg.readBeingId("dst id");
@@ -1029,11 +1070,12 @@ void BeingRecv::processSkillCasting2(Net::MessageIn &msg)
     const int dstY = msg.readInt16("dst y");
     const int skillId = msg.readInt16("skill id");
     const int skillLevel = msg.readInt16("skill level");
-    msg.readInt32("property");  // can be used to trigger effect
+    msg.readInt32("element");  // +++ use different effects
     const int castTime = msg.readInt32("cast time");
     const int range = msg.readInt32("skill range");
     const SkillType2::SkillType2 inf2 =
         static_cast<SkillType2::SkillType2>(msg.readInt32("inf2"));
+    // +++ add new unknown field
 
     processSkillCastingContinue(msg,
         srcId, dstId,

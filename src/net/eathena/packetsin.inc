@@ -50,7 +50,6 @@ packet(SMSG_PLAYER_CART_ITEMS,             0x0123,  -1, &InventoryRecv::processP
 packet(SMSG_PLAYER_CART_ADD,               0x0124,  21, &InventoryRecv::processPlayerCartAdd,           1);
 packet(SMSG_VENDING_ITEMS_LIST,            0x0133,  -1, &VendingRecv::processItemsList,                 1);
 packet(SMSG_VENDING_OPEN,                  0x0136,  -1, &VendingRecv::processOpen,                      1);
-packet(SMSG_SKILL_CASTING,                 0x013e,  24, &BeingRecv::processSkillCasting,                1);
 packet(SMSG_BEING_STATUS_CHANGE,           0x0196,   9, &BeingRecv::processBeingStatusChange,           1);
 packet(SMSG_QUEST_LIST,                    0x02b1,  -1, &QuestRecv::processAddQuests,                   1);
 packet(SMSG_BEING_VIEW_EQUIPMENT,          0x02d7,  -1, &BeingRecv::processBeingViewEquipment,          1);
@@ -512,6 +511,7 @@ if (packetVersionRe >= 20080827)
 {
     packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20080827);
     packet(SMSG_HOMUNCULUS_INFO,           0x022e,  71, &HomunculusRecv::processHomunculusInfo1,        20080827);
+    packet(SMSG_SKILL_CASTING,             0x013e,  24, &BeingRecv::processSkillCasting,                20080827);
 }
 
 // 20080827
@@ -548,10 +548,16 @@ packet(SMSG_BEING_STATUS_CHANGE,           0x043f,  25, &BeingRecv::processBeing
 // 20090218
 packet(SMSG_QUEST_NPC_EFFECT,              0x0446,  14, &QuestRecv::processNpcQuestEffect,              20090218);
 
-// 20090401 main
+// 20090401 re
 if (packetVersionRe >= 20090401)
 {
     packet(SMSG_MVP_EXP,                   0x010b,   6, &ChatRecv::processMVPExp,                       20090401);
+}
+
+// 20090406 main
+if (packetVersionRe >= 20090406)
+{
+    packet(SMSG_SKILL_CASTING,             0x013e,  24, &BeingRecv::processSkillCasting,                20090406);
 }
 
 // all re
@@ -605,7 +611,7 @@ packet(SMSG_PLAYER_INVENTORY_REMOVE2,      0x07fa,   8, &InventoryRecv::processP
 // 20091124
 if (packetVersion >= 20091124)
 {
-    packet(SMSG_SKILL_CASTING,             0x07fb,  25, &BeingRecv::processSkillCasting,                20091124);
+    packet(SMSG_SKILL_CASTING,             0x07fb,  25, &BeingRecv::processSkillCasting2,               20091124);
 }
 
 // 20091201
@@ -939,7 +945,7 @@ if (serverVersion > 0)
     packet2(SMSG_MAP_SET_TILES_TYPE,       0x0b1b,  34, &Ea::MapRecv::processSetTilesType,              0);
     packet2(SMSG_NPC_SKIN,                 0x0b1c,  -1, &NpcRecv::processNpcSkin,                       0);
     packet2(SMSG_PLAYER_KILLED_BY,         0x0b1d,   6, &PlayerRecv::processKilledBy,                   0);
-    packet2(SMSG_SKILL_CASTING2,           0x0b1e,  -1, &BeingRecv::processSkillCasting2,               0);
+    packet2(SMSG_SKILL_CASTING2,           0x0b1e,  -1, &BeingRecv::processSkillCastingEvol,            0);
     packet2(SMSG_PLAYER_ADD_SKILL2,        0x0b1f,  -1, &SkillRecv::processSkillAdd2,                   0);
     packet2(SMSG_PLAYER_UPDATE_SKILL2,     0x0b20,  -1, &SkillRecv::processSkillUpdate2,                0);
     packet2(SMSG_WALK_ERROR,               0x0b21,  10, &PlayerRecv::processWalkError,                  0);
@@ -1573,6 +1579,12 @@ if (packetVersionMain >= 20190116)
 if (packetVersionRe >= 20190116)
 {
     packet(SMSG_NPC_BARTER_OPEN,           0x0b0e,   -1, &BarterRecv::processOpenShop,                  20190116);
+}
+
+// 20190130 zero
+if (packetVersionRe >= 20190130)
+{
+    packet(SMSG_SKILL_CASTING,             0x0b1a,  29, &BeingRecv::processSkillCasting3,               20190130);
 }
 
 // 0
