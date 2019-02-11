@@ -22,6 +22,7 @@ gcc-6_sanitize_doctest_tests:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   - ldd ./src/manaplustests | grep "libasan"
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -37,7 +38,7 @@ gcc-6_doctest_tests_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -53,6 +54,7 @@ gcc-6_tests_simd:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests_simd.sh --without-dyecmd --without-manaplusgame
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -68,6 +70,7 @@ gcc-6_tests_lto:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:stretch
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
@@ -85,7 +88,7 @@ gcc-6_tests_lto_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   variables:
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
     PACKAGES: gcc-6 g++-6 
@@ -101,6 +104,7 @@ gcc-6_tests:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -116,7 +120,7 @@ gcc-6_tests_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -132,6 +136,7 @@ gcc-6_tests_glibcdebug:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -147,7 +152,7 @@ gcc-6_tests_glibcdebug_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -162,6 +167,7 @@ gcc-6_sdl2_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sdl2_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -176,7 +182,7 @@ gcc-6_sdl2_tests_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc6_sdl2_tests.sh --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -230,6 +236,7 @@ gcc-6_tarball_tests:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_tarball_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 

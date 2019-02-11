@@ -118,6 +118,7 @@ gcc-6:
   - ./tools/ci/jobs/gcc6.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -148,6 +149,7 @@ gcc-6_default:
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     LOGFILE: gcc6.log

@@ -22,7 +22,7 @@ gcc-6-i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -39,6 +39,7 @@ gcc-6:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6.sh
   - ./tools/ci/scripts/runtests.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -52,6 +53,7 @@ gcc-6_sdl2:
   script:
   - ./tools/ci/jobs/gcc6.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -65,8 +67,8 @@ gcc-6_sdl2_i386:
   script:
   - ./tools/ci/jobs/gcc6.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: i386/debian:stretch
   <<: *job-push
-  image: vicamo/debian:sid-i386
   variables:
     PACKAGES: gcc-6 g++-6 
               make autoconf automake autopoint gettext 
@@ -80,6 +82,7 @@ gcc-6_default:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     LOGFILE: gcc6.log
@@ -98,6 +101,7 @@ gcc-6_sanitize:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -115,7 +119,7 @@ gcc-6_sanitize:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -131,6 +135,7 @@ gcc-6_sanitize_sdl2:
   script:
   - ./tools/ci/jobs/gcc6_sanitize.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -147,6 +152,7 @@ gcc-6_lto:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_lto.sh
   - ./tools/ci/scripts/runtests.sh
+  image: debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -161,7 +167,7 @@ gcc-6_lto_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc6_lto.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:stretch
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -178,8 +184,8 @@ gcc-6_default_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
+  image: i386/debian:stretch
   <<: *job-push
-  image: vicamo/debian:sid-i386
   variables:
     LOGFILE: gcc6.log
     CC: gcc-6
