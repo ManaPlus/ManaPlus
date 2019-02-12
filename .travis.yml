@@ -32,7 +32,7 @@ env:
         COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL1}"
-      - IMAGE=debian:unstable
+      - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL1}"
@@ -45,7 +45,7 @@ env:
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL1}
                   valgrind"
-      - IMAGE=debian:unstable
+      - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL1}
@@ -66,7 +66,7 @@ env:
         COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL1}"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL1}"
@@ -79,7 +79,7 @@ env:
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL1}
                   valgrind"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL1}
@@ -95,7 +95,7 @@ env:
         COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL2}"
-      - IMAGE=debian:unstable
+      - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL2}"
@@ -108,7 +108,7 @@ env:
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL2}
                   valgrind"
-      - IMAGE=debian:unstable
+      - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL2}
@@ -129,7 +129,7 @@ env:
         COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL2}"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL2}"
@@ -142,7 +142,7 @@ env:
         PACKAGES="gcc-5 g++-5 
                   ${LIBS_PACKAGES} ${SDL2}
                   valgrind"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL2}
