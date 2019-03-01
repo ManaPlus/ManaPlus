@@ -47,7 +47,7 @@ namespace Ea
     namespace InventoryRecv
     {
         extern EquipBackend mEquips;
-        extern InventoryItems mInventoryItems;
+        extern InventoryItems mStorageItems;
         extern Inventory *mStorage;
         extern PickupQueue mSentPickups;
         extern bool mDebugInventory;

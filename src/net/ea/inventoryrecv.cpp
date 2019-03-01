@@ -50,7 +50,7 @@ namespace Ea
 namespace InventoryRecv
 {
     EquipBackend mEquips;
-    InventoryItems mInventoryItems;
+    InventoryItems mStorageItems;
     Inventory *mStorage = nullptr;
     PickupQueue mSentPickups;
     bool mDebugInventory = true;
@@ -99,7 +99,7 @@ void InventoryRecv::processPlayerStorageStatus(Net::MessageIn &msg)
     if (mStorage == nullptr)
         mStorage = new Inventory(InventoryType::Storage, size);
 
-    FOR_EACH (Ea::InventoryItems::const_iterator, it, mInventoryItems)
+    FOR_EACH (Ea::InventoryItems::const_iterator, it, mStorageItems)
     {
         mStorage->setItem((*it).slot,
             (*it).id,
@@ -113,7 +113,7 @@ void InventoryRecv::processPlayerStorageStatus(Net::MessageIn &msg)
             (*it).equip,
             Equipped_false);
     }
-    mInventoryItems.clear();
+    mStorageItems.clear();
 
     if (storageWindow == nullptr)
     {

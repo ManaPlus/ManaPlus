@@ -27,6 +27,8 @@
 
 #include "enums/net/netinventorytype.h"
 
+#include <string>
+
 namespace Net
 {
     class MessageIn;
@@ -36,6 +38,7 @@ namespace EAthena
 {
     namespace InventoryRecv
     {
+        extern Ea::InventoryItems mInventoryItems;
         extern Ea::InventoryItems mCartItems;
 
         void processPlayerEquipment(Net::MessageIn &msg);
@@ -102,6 +105,9 @@ namespace EAthena
         void processInventoryExpansionAck(Net::MessageIn &msg);
         void processInventoryExpansionResult(Net::MessageIn &msg);
         void processEnchantEquipment(Net::MessageIn &msg);
+
+        void processInventoryStartContinue(const NetInventoryTypeT type,
+                                           const std::string &name);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 

@@ -36,7 +36,7 @@ InventoryHandler::InventoryHandler() :
     Net::InventoryHandler()
 {
     InventoryRecv::mEquips.clear();
-    InventoryRecv::mInventoryItems.clear();
+    InventoryRecv::mStorageItems.clear();
     InventoryRecv::mStorage = nullptr;
     storageWindow = nullptr;
     while (!InventoryRecv::mSentPickups.empty())

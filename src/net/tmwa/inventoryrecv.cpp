@@ -331,7 +331,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
 void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventory")
-    Ea::InventoryRecv::mInventoryItems.clear();
+    Ea::InventoryRecv::mStorageItems.clear();
 
     msg.readInt16("len");
     const int number = (msg.getLength() - 4) / 18;
@@ -357,7 +357,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
                         cards[0], cards[1], cards[2], cards[3]);
         }
 
-        Ea::InventoryRecv::mInventoryItems.push_back(Ea::InventoryItem(
+        Ea::InventoryRecv::mStorageItems.push_back(Ea::InventoryItem(
             index,
             itemId,
             itemType,
@@ -444,7 +444,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
                 CAST_U32(refine));
         }
 
-        Ea::InventoryRecv::mInventoryItems.push_back(Ea::InventoryItem(
+        Ea::InventoryRecv::mStorageItems.push_back(Ea::InventoryItem(
             index,
             itemId,
             itemType,

@@ -26,6 +26,8 @@
 
 #include "enums/equipslot.h"
 
+#include "net/ea/inventoryrecv.h"
+
 #include "net/eathena/inventoryrecv.h"
 #include "net/eathena/menu.h"
 #include "net/eathena/messageout.h"
@@ -76,12 +78,21 @@ InventoryHandler::InventoryHandler() :
 {
     inventoryHandler = this;
 
+    InventoryRecv::mInventoryItems.clear();
     InventoryRecv::mCartItems.clear();
 }
 
 InventoryHandler::~InventoryHandler()
 {
     inventoryHandler = nullptr;
+}
+
+void InventoryHandler::clear() const
+{
+    Ea::InventoryHandler::clear();
+    Ea::InventoryRecv::mStorageItems.clear();
+    InventoryRecv::mInventoryItems.clear();
+    InventoryRecv::mCartItems.clear();
 }
 
 void InventoryHandler::equipItem(const Item *const item) const

@@ -100,6 +100,7 @@ namespace InventoryRecv
         EquipSlot::SHADOW_ACCESSORY1_SLOT,  // 21 2097152 EQP_SHADOW_ACC_L
     };
 
+    Ea::InventoryItems mInventoryItems;
     Ea::InventoryItems mCartItems;
 }  // namespace InventoryRecv
 
@@ -453,7 +454,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
 void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventory")
-    Ea::InventoryRecv::mInventoryItems.clear();
+    Ea::InventoryRecv::mStorageItems.clear();
 
     msg.readInt16("len");
 
@@ -511,7 +512,7 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
         else
             flags.byte = 0;
 
-        Ea::InventoryRecv::mInventoryItems.push_back(Ea::InventoryItem(
+        Ea::InventoryRecv::mStorageItems.push_back(Ea::InventoryItem(
             index,
             itemId,
             itemType,
@@ -730,7 +731,7 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
         else
             flags.byte = 0;
 
-        Ea::InventoryRecv::mInventoryItems.push_back(Ea::InventoryItem(
+        Ea::InventoryRecv::mStorageItems.push_back(Ea::InventoryItem(
             index,
             itemId,
             itemType,
@@ -1121,7 +1122,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
 void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerCartItems")
-    Ea::InventoryRecv::mInventoryItems.clear();
+    Ea::InventoryRecv::mStorageItems.clear();
 
     msg.readInt16("len");
 
@@ -1515,24 +1516,61 @@ void InventoryRecv::processOverWeightPercent(Net::MessageIn &msg)
 
 void InventoryRecv::processInventoryStart1(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readString(24, "storage name");
+    const std::string name = msg.readString(24, "storage name");
+    processInventoryStartContinue(NetInventoryType::Storage, name);
 }
 
 void InventoryRecv::processInventoryStart2(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readUInt8("type");
-    msg.readString(24, "inventory name");
+    const NetInventoryTypeT type = static_cast<NetInventoryTypeT>(
+        msg.readUInt8("type"));
+    const std::string name = msg.readString(24, "inventory name");
+    processInventoryStartContinue(type, name);
 }
 
 void InventoryRecv::processInventoryStart3(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     const int nameLen = msg.readInt16("len") - 5;
-    msg.readUInt8("type");
+    const NetInventoryTypeT type = static_cast<NetInventoryTypeT>(
+        msg.readUInt8("type"));
+    std::string name;
     if (nameLen > 0)
-        msg.readString(nameLen, "inventory name");
+        name = msg.readString(nameLen, "inventory name");
+    processInventoryStartContinue(type, name);
+}
+
+void InventoryRecv::processInventoryStartContinue(const NetInventoryTypeT type,
+                                                  const std::string &name)
+{
+    Inventory *inventory = nullptr;
+    InventoryWindow *window = nullptr;
+    switch (type)
+    {
+        case NetInventoryType::Inventory:
+            InventoryRecv::mInventoryItems.clear();
+            inventory = PlayerInfo::getInventory();
+            window = inventoryWindow;
+            break;
+        case NetInventoryType::Cart:
+            InventoryRecv::mCartItems.clear();
+            inventory = PlayerInfo::getCartInventory();
+            window = cartWindow;
+            break;
+        case NetInventoryType::Storage:
+        case NetInventoryType::GuildStorage:
+            Ea::InventoryRecv::mStorageItems.clear();
+            inventory = Ea::InventoryRecv::mStorage;
+            window = storageWindow;
+            break;
+        default:
+            break;
+    }
+    if (window != nullptr)
+    {
+        window->setCaption(name);
+    }
+    if (inventory != nullptr)
+        inventory->clear();
 }
 
 void InventoryRecv::processInventoryEnd1(Net::MessageIn &msg)

@@ -41,7 +41,7 @@ class InventoryHandler notfinal : public Net::InventoryHandler
 
         ~InventoryHandler() override;
 
-        void clear() const override final;
+        void clear() const override;
 
         bool canSplit(const Item *const item) const
                       override final A_CONST A_WARN_UNUSED;

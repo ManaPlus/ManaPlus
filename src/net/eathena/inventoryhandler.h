@@ -37,6 +37,8 @@ class InventoryHandler final : public Ea::InventoryHandler
 
         ~InventoryHandler() override final;
 
+        void clear() const override final;
+
         void equipItem(const Item *const item) const override final;
 
         void unequipItem(const Item *const item) const override final;
