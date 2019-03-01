@@ -37,6 +37,7 @@
 #include "enums/resources/notifytypes.h"
 
 #include "enums/net/deleteitemreason.h"
+#include "enums/net/netinventorytype.h"
 
 #include "gui/popups/itempopup.h"
 
@@ -1550,7 +1551,7 @@ void InventoryRecv::processInventoryEnd2(Net::MessageIn &msg)
 void InventoryRecv::processPlayerCombinedInventory1(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    const int dataLen = msg.readInt32("len") - 4;
+    const int dataLen = msg.readInt16("len") - 4;
     processInventoryContinue(msg,
         dataLen,
         NetInventoryType::Storage);
@@ -1559,7 +1560,7 @@ void InventoryRecv::processPlayerCombinedInventory1(Net::MessageIn &msg)
 void InventoryRecv::processPlayerCombinedInventory2(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    const int dataLen = msg.readInt32("len") - 5;
+    const int dataLen = msg.readInt16("len") - 5;
     const NetInventoryTypeT invType = static_cast<NetInventoryTypeT>(
         msg.readUInt8("type"));
     processInventoryContinue(msg,
@@ -1592,7 +1593,7 @@ void InventoryRecv::processInventoryContinue(Net::MessageIn &msg,
 void InventoryRecv::processPlayerCombinedEquipment1(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    const int dataLen = msg.readInt32("len") - 4;
+    const int dataLen = msg.readInt16("len") - 4;
     processEquipmentContinue(msg,
         dataLen,
         NetInventoryType::Storage);
@@ -1601,7 +1602,7 @@ void InventoryRecv::processPlayerCombinedEquipment1(Net::MessageIn &msg)
 void InventoryRecv::processPlayerCombinedEquipment2(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
-    const int dataLen = msg.readInt32("len") - 5;
+    const int dataLen = msg.readInt16("len") - 5;
     const NetInventoryTypeT invType = static_cast<NetInventoryTypeT>(
         msg.readUInt8("type"));
     processEquipmentContinue(msg,
