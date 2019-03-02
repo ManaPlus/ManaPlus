@@ -58,6 +58,7 @@
 
 #include "resources/iteminfo.h"
 
+#include "utils/checkutils.h"
 #include "utils/gettext.h"
 #include "utils/foreach.h"
 #include "utils/stringutils.h"
@@ -1547,12 +1548,12 @@ void InventoryRecv::processInventoryStartContinue(const NetInventoryTypeT type,
     switch (type)
     {
         case NetInventoryType::Inventory:
-            InventoryRecv::mInventoryItems.clear();
+            mInventoryItems.clear();
             inventory = PlayerInfo::getInventory();
             window = inventoryWindow;
             break;
         case NetInventoryType::Cart:
-            InventoryRecv::mCartItems.clear();
+            mCartItems.clear();
             inventory = PlayerInfo::getCartInventory();
             window = cartWindow;
             break;
@@ -1588,7 +1589,6 @@ void InventoryRecv::processInventoryEnd2(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerCombinedInventory1(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     const int dataLen = msg.readInt16("len") - 4;
     processInventoryContinue(msg,
         dataLen,
@@ -1597,7 +1597,6 @@ void InventoryRecv::processPlayerCombinedInventory1(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerCombinedInventory2(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     const int dataLen = msg.readInt16("len") - 5;
     const NetInventoryTypeT invType = static_cast<NetInventoryTypeT>(
         msg.readUInt8("type"));
@@ -1608,23 +1607,71 @@ void InventoryRecv::processPlayerCombinedInventory2(Net::MessageIn &msg)
 
 void InventoryRecv::processInventoryContinue(Net::MessageIn &msg,
                                              const int len,
-                                             const NetInventoryTypeT invType
-                                             A_UNUSED)
+                                             const NetInventoryTypeT invType)
 {
     const int packetLen = 14 + itemIdLen * 5;
     const int number = len / packetLen;
+    int offset = INVENTORY_OFFSET;
+
+    switch (invType)
+    {
+        case NetInventoryType::Inventory:
+        case NetInventoryType::Cart:
+        default:
+            offset = INVENTORY_OFFSET;
+            break;
+        case NetInventoryType::Storage:
+        case NetInventoryType::GuildStorage:
+            offset = STORAGE_OFFSET;
+            break;
+    }
+
+    Ea::InventoryItems *items = nullptr;
+    switch (invType)
+    {
+        case NetInventoryType::Inventory:
+            items = &mInventoryItems;
+            break;
+        case NetInventoryType::Cart:
+            items = &mCartItems;
+            break;
+        case NetInventoryType::Storage:
+        case NetInventoryType::GuildStorage:
+            items = &Ea::InventoryRecv::mStorageItems;
+            break;
+        default:
+            reportAlways("Unknown inventory type %d", CAST_S32(invType));
+            return;
+    }
 
     for (int loop = 0; loop < number; loop++)
     {
-        msg.readInt16("item index");
-        msg.readItemId("item id");
-        msg.readUInt8("item type");
-        msg.readInt16("amount");
+        const int index = msg.readInt16("item index") - offset;
+        const int itemId = msg.readItemId("item id");
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
+        const int amount = msg.readInt16("amount");
         msg.readInt32("wear state / equip");
+        int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            msg.readItemId("card");
-        msg.readInt32("hire expire date");
-        msg.readUInt8("flags");
+            cards[f] = msg.readItemId("card");
+
+        msg.readInt32("hire expire date (?)");
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
+
+        items->push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            nullptr,
+            amount,
+            0,
+            ItemColorManager::getColorFromCards(&cards[0]),
+            fromBool(flags.bits.isIdentified, Identified),
+            fromBool(flags.bits.isDamaged, Damaged),
+            fromBool(flags.bits.isFavorite, Favorite),
+            Equipm_false));
     }
 }
 
