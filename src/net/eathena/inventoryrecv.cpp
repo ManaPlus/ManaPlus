@@ -525,7 +525,8 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
-            Equipm_false));
+            Equipm_false,
+            -1));
     }
     BLOCK_END("InventoryRecv::processPlayerInventory")
 }
@@ -744,7 +745,8 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
-            Equipm_false));
+            Equipm_false,
+            -1));
         delete options;
     }
     BLOCK_END("InventoryRecv::processPlayerStorageEquip")
@@ -1029,7 +1031,8 @@ void InventoryRecv::processPlayerCartAdd(Net::MessageIn &msg)
             fromBool(identified, Identified),
             damaged,
             Favorite_false,
-            Equipm_false));
+            Equipm_false,
+            -1));
     }
     delete options;
     BLOCK_END("InventoryRecv::processPlayerCartAdd")
@@ -1114,7 +1117,8 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
-            Equipm_false));
+            Equipm_false,
+            -1));
         delete options;
     }
     BLOCK_END("InventoryRecv::processPlayerCartEquip")
@@ -1180,7 +1184,8 @@ void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
-            Equipm_false));
+            Equipm_false,
+            -1));
     }
     BLOCK_END("InventoryRecv::processPlayerCartItems")
 }
@@ -1671,13 +1676,13 @@ void InventoryRecv::processInventoryContinue(Net::MessageIn &msg,
             fromBool(flags.bits.isIdentified, Identified),
             fromBool(flags.bits.isDamaged, Damaged),
             fromBool(flags.bits.isFavorite, Favorite),
-            Equipm_false));
+            Equipm_false,
+            -1));
     }
 }
 
 void InventoryRecv::processPlayerCombinedEquipment1(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     const int dataLen = msg.readInt16("len") - 4;
     processEquipmentContinue(msg,
         dataLen,
@@ -1686,7 +1691,6 @@ void InventoryRecv::processPlayerCombinedEquipment1(Net::MessageIn &msg)
 
 void InventoryRecv::processPlayerCombinedEquipment2(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
     const int dataLen = msg.readInt16("len") - 5;
     const NetInventoryTypeT invType = static_cast<NetInventoryTypeT>(
         msg.readUInt8("type"));
@@ -1697,33 +1701,83 @@ void InventoryRecv::processPlayerCombinedEquipment2(Net::MessageIn &msg)
 
 void InventoryRecv::processEquipmentContinue(Net::MessageIn &msg,
                                              const int len,
-                                             const NetInventoryTypeT invType
-                                             A_UNUSED)
+                                             const NetInventoryTypeT invType)
 {
     const int packetLen = 47 + itemIdLen * 5;
     const int number = len / packetLen;
+    int offset = INVENTORY_OFFSET;
+
+    switch (invType)
+    {
+        case NetInventoryType::Inventory:
+        case NetInventoryType::Cart:
+        default:
+            offset = INVENTORY_OFFSET;
+            break;
+        case NetInventoryType::Storage:
+        case NetInventoryType::GuildStorage:
+            offset = STORAGE_OFFSET;
+            break;
+    }
+
+    Ea::InventoryItems *items = nullptr;
+    switch (invType)
+    {
+        case NetInventoryType::Inventory:
+            items = &mInventoryItems;
+            break;
+        case NetInventoryType::Cart:
+            items = &mCartItems;
+            break;
+        case NetInventoryType::Storage:
+        case NetInventoryType::GuildStorage:
+            items = &Ea::InventoryRecv::mStorageItems;
+            break;
+        default:
+            reportAlways("Unknown inventory type %d", CAST_S32(invType));
+            return;
+    }
 
     for (int loop = 0; loop < number; loop++)
     {
-        msg.readInt16("index");
-        msg.readItemId("item id");
-        msg.readUInt8("item type");
+        const int index = msg.readInt16("item index") - offset;
+        const int itemId = msg.readItemId("item id");
+        const ItemTypeT itemType = static_cast<ItemTypeT>(
+            msg.readUInt8("item type"));
         msg.readInt32("location");
-        msg.readInt32("wear state");
-        msg.readInt8("refine");
+        int equipType = msg.readInt32("wear state");
+        const uint8_t refine = CAST_U8(msg.readInt8("refine"));
+        int cards[maxCards];
         for (int f = 0; f < maxCards; f++)
-            msg.readItemId("card");
+            cards[f] = msg.readItemId("card");
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");
-        msg.readUInt8("option count");
+        ItemOptionsList *options = new ItemOptionsList(msg.readUInt8("option count"));
         for (int f = 0; f < 5; f ++)
         {
-            msg.readInt16("option index");
-            msg.readInt16("option value");
+            const uint16_t idx = msg.readInt16("option index");
+            const uint16_t val = msg.readInt16("option value");
             msg.readUInt8("option param");
+            options->add(idx, val);
         }
-        msg.readUInt8("flags");
+        ItemFlags flags;
+        flags.byte = msg.readUInt8("flags");
+
+        items->push_back(Ea::InventoryItem(index,
+            itemId,
+            itemType,
+            cards,
+            options,
+            1,
+            refine,
+            ItemColorManager::getColorFromCards(&cards[0]),
+            fromBool(flags.bits.isIdentified, Identified),
+            fromBool(flags.bits.isDamaged, Damaged),
+            fromBool(flags.bits.isFavorite, Favorite),
+            Equipm_true,
+            equipType));
+        delete options;
     }
 }
 

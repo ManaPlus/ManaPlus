@@ -369,7 +369,8 @@ void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
             fromBool(identified, Identified),
             Damaged_false,
             Favorite_false,
-            Equipm_false));
+            Equipm_false,
+            -1));
     }
     BLOCK_END("InventoryRecv::processPlayerInventory")
 }
@@ -456,7 +457,8 @@ void InventoryRecv::processPlayerStorageEquip(Net::MessageIn &msg)
             fromBool(identified, Identified),
             Damaged_false,
             Favorite_false,
-            Equipm_false));
+            Equipm_false,
+            -1));
     }
     BLOCK_END("InventoryRecv::processPlayerStorageEquip")
 }

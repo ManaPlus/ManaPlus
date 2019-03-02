@@ -60,6 +60,7 @@ class InventoryItem final
         Damaged damaged;
         Favorite favorite;
         Equipm equip;
+        int equipIndex;
 
         InventoryItem(const int slot0,
                       const int id0,
@@ -72,7 +73,8 @@ class InventoryItem final
                       const Identified identified0,
                       const Damaged damaged0,
                       const Favorite favorite0,
-                      Equipm equip0) :
+                      Equipm equip0,
+                      int equipIndex0) :
             slot(slot0),
             id(id0),
             type(type0),
@@ -84,7 +86,8 @@ class InventoryItem final
             identified(identified0),
             damaged(damaged0),
             favorite(favorite0),
-            equip(equip0)
+            equip(equip0),
+            equipIndex(equipIndex0)
         {
             if (cards0 == nullptr)
                 return;
@@ -104,7 +107,8 @@ class InventoryItem final
             identified(c.identified),
             damaged(c.damaged),
             favorite(c.favorite),
-            equip(c.equip)
+            equip(c.equip),
+            equipIndex(c.equipIndex)
         {
             for (int f = 0; f < 4; f ++)
                 cards[f] = c.cards[f];
