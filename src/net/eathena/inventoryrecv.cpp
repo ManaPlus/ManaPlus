@@ -455,7 +455,7 @@ void InventoryRecv::processPlayerInventory(Net::MessageIn &msg)
 void InventoryRecv::processPlayerStorage(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerInventory")
-    Ea::InventoryRecv::mStorageItems.clear();
+//    Ea::InventoryRecv::mStorageItems.clear();
 
     msg.readInt16("len");
 
@@ -1127,7 +1127,7 @@ void InventoryRecv::processPlayerCartEquip(Net::MessageIn &msg)
 void InventoryRecv::processPlayerCartItems(Net::MessageIn &msg)
 {
     BLOCK_START("InventoryRecv::processPlayerCartItems")
-    Ea::InventoryRecv::mStorageItems.clear();
+//    Ea::InventoryRecv::mStorageItems.clear();
 
     msg.readInt16("len");
 
@@ -1581,15 +1581,81 @@ void InventoryRecv::processInventoryStartContinue(const NetInventoryTypeT type,
 
 void InventoryRecv::processInventoryEnd1(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readUInt8("flag");
+    const uint8_t flag = msg.readUInt8("flag");
+    if (flag != 0)
+    {
+        UNIMPLEMENTEDPACKET;
+        return;
+    }
+    processInventoryEndContinue(NetInventoryType::Storage);
 }
 
 void InventoryRecv::processInventoryEnd2(Net::MessageIn &msg)
 {
-    UNIMPLEMENTEDPACKET;
-    msg.readUInt8("type");
-    msg.readUInt8("flag");
+    const NetInventoryTypeT invType = static_cast<NetInventoryTypeT>(
+        msg.readUInt8("type"));
+    const uint8_t flag = msg.readUInt8("flag");
+    if (flag != 0)
+    {
+        UNIMPLEMENTEDPACKET;
+        return;
+    }
+    processInventoryEndContinue(invType);
+}
+
+void InventoryRecv::processInventoryEndContinue(const NetInventoryTypeT invType)
+{
+    switch (invType)
+    {
+        case NetInventoryType::Inventory:
+            break;
+        case NetInventoryType::Cart:
+            // insert data in handler processCartInfo
+            return;
+        case NetInventoryType::Storage:
+        case NetInventoryType::GuildStorage:
+            // insert data in processPlayerStorageStatus
+            return;
+        default:
+            return;
+    }
+    Inventory *inventory = PlayerInfo::getInventory();
+    if (PlayerInfo::getEquipment() != nullptr)
+    {
+        Ea::InventoryRecv::mEquips.clear();
+        PlayerInfo::getEquipment()->setBackend(
+            &Ea::InventoryRecv::mEquips);
+    }
+    if (inventory == nullptr)
+        return;
+
+    inventory->clear();
+    FOR_EACH (Ea::InventoryItems::const_iterator, it, mInventoryItems)
+    {
+        const int index = (*it).slot;
+        const int equipIndex = (*it).equipIndex;
+        inventory->setItem(index,
+            (*it).id,
+            (*it).type,
+            (*it).quantity,
+            (*it).refine,
+            (*it).color,
+            (*it).identified,
+            (*it).damaged,
+            (*it).favorite,
+            (*it).equip,
+            Equipped_false);
+        inventory->setCards(index, (*it).cards, maxCards);
+        if ((*it).options)
+            inventory->setOptions(index, (*it).options);
+        if (equipIndex > 0)
+        {
+            Ea::InventoryRecv::mEquips.setEquipment(
+                InventoryRecv::getSlot(equipIndex),
+                index);
+        }
+    }
+    mInventoryItems.clear();
 }
 
 void InventoryRecv::processPlayerCombinedInventory1(Net::MessageIn &msg)

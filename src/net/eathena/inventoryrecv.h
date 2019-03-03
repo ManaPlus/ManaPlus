@@ -108,6 +108,7 @@ namespace EAthena
 
         void processInventoryStartContinue(const NetInventoryTypeT type,
                                            const std::string &name);
+        void processInventoryEndContinue(const NetInventoryTypeT invType);
     }  // namespace InventoryRecv
 }  // namespace EAthena
 
