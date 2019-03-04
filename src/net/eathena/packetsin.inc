@@ -445,7 +445,7 @@ if (packetVersion >= 20070227)
     packet(SMSG_PARTY_INVITATION_STATS,    0x02c9,   3, &PartyRecv::processPartyInvitationStats,        20070227);
     packet(SMSG_INSTANCE_CREATE,           0x02cc,   4, &MapRecv::processInstanceCreate,                20070227);
     packet(SMSG_INSTANCE_DELETE,           0x02ce,  10, &MapRecv::processInstanceDelete,                20070227);
-    packet(SMSG_PLAYER_EQUIP_TICK_ACK,     0x02d9,  10, &PlayerRecv::processPlayerEquipTickAck,         20070227);
+    packet(SMSG_PLAYER_ZC_CONFIG,          0x02d9,  10, &PlayerRecv::processPlayerZCConfig,             20070227);
     packet(SMSG_PLAYER_SHOW_EQUIP,         0x02da,   3, &PlayerRecv::processPlayerShowEquip,            20070227);
     packet(SMSG_BATTLE_CHAT_MESSAGE,       0x02dc,  -1, &ChatRecv::processBattleChatMessage,            20070227);
     packet(SMSG_BATTLE_EMBLEM,             0x02dd,  32, &BattleGroundRecv::processBattleEmblem,         20070227);

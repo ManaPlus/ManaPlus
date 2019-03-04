@@ -48,7 +48,7 @@ namespace EAthena
         void processPlayerUpgradeMessage(Net::MessageIn &msg);
         void processPlayerFameTaekwon(Net::MessageIn &msg);
         void processPlayerReadBook(Net::MessageIn &msg);
-        void processPlayerEquipTickAck(Net::MessageIn &msg);
+        void processPlayerZCConfig(Net::MessageIn &msg);
         void processPlayerAutoShadowSpellList(Net::MessageIn &msg);
         void processPlayerRankPoints(Net::MessageIn &msg);
         void processOnlineList(Net::MessageIn &msg);

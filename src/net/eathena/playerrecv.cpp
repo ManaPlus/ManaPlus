@@ -408,11 +408,10 @@ void PlayerRecv::processPlayerReadBook(Net::MessageIn &msg)
     msg.readInt32("page");
 }
 
-void PlayerRecv::processPlayerEquipTickAck(Net::MessageIn &msg)
+void PlayerRecv::processPlayerZCConfig(Net::MessageIn &msg)
 {
-    // +++ actually ZC_CONFIG
     UNIMPLEMENTEDPACKET;
-    msg.readInt32("unused");
+    msg.readInt32("type");
     msg.readInt32("flag");
 }
 
