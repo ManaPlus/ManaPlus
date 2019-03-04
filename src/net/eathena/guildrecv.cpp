@@ -36,6 +36,7 @@
 
 #include "gui/widgets/tabs/chat/guildtab.h"
 
+#include "net/beinghandler.h"
 #include "net/messagein.h"
 
 #include "net/eathena/guildhandler.h"
@@ -208,7 +209,6 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
     if (msg.getVersion() >= 20161026)
     {
         guildSize = 34;
-        reportAlways("missing guild member names")
     }
     else
     {
@@ -247,7 +247,11 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
         else
         {
             msg.readInt32("last login");  // for now unused
-            continue;
+            name = actorManager->findCharById(charId);
+            if (name.empty())
+            {
+                beingHandler->requestNameByCharId(charId);
+            }
         }
 
         GuildMember *const m = taGuild->addMember(id, charId, name);

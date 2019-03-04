@@ -23,6 +23,7 @@
 #include "actormanager.h"
 
 #include "game.h"
+#include "guild.h"
 #include "configuration.h"
 #include "settings.h"
 
@@ -2281,5 +2282,14 @@ void ActorManager::addChar(const int32_t id,
     if (guiInput == nullptr)
         return;
 
+    if (localPlayer != nullptr)
+    {
+        Guild *const guild = localPlayer->getGuild();
+        if (guild != nullptr)
+        {
+            GuildMember *const member = guild->getMemberByCharId(id);
+            member->setName(name);
+        }
+    }
     guiInput->simulateMouseMove();
 }
