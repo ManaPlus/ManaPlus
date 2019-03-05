@@ -202,6 +202,9 @@ void GuildRecv::processGuildAlianceInfo(Net::MessageIn &msg)
 
 void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
 {
+    if (actorManager == nullptr)
+        return;
+
     const int length = msg.readInt16("len");
     if (length < 4)
         return;
@@ -285,11 +288,8 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
         }
     }
     taGuild->sort();
-    if (actorManager != nullptr)
-    {
-        actorManager->updatePlayerGuild();
-        actorManager->updatePlayerColors();
-    }
+    actorManager->updatePlayerGuild();
+    actorManager->updatePlayerColors();
     if (socialWindow != nullptr)
         socialWindow->updateGuildCounter(onlineNum, totalNum);
 }

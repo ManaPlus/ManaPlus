@@ -1711,7 +1711,7 @@ void InventoryRecv::processInventoryContinue(Net::MessageIn &msg,
             items = &Ea::InventoryRecv::mStorageItems;
             break;
         default:
-            reportAlways("Unknown inventory type %d", CAST_S32(invType));
+            reportAlways("Unknown inventory type %d", CAST_S32(invType))
             return;
     }
 
@@ -1800,7 +1800,7 @@ void InventoryRecv::processEquipmentContinue(Net::MessageIn &msg,
             items = &Ea::InventoryRecv::mStorageItems;
             break;
         default:
-            reportAlways("Unknown inventory type %d", CAST_S32(invType));
+            reportAlways("Unknown inventory type %d", CAST_S32(invType))
             return;
     }
 
@@ -1819,7 +1819,8 @@ void InventoryRecv::processEquipmentContinue(Net::MessageIn &msg,
         msg.readInt32("hire expire date (?)");
         msg.readInt16("equip type");
         msg.readInt16("item sprite number");
-        ItemOptionsList *options = new ItemOptionsList(msg.readUInt8("option count"));
+        ItemOptionsList *options = new ItemOptionsList(
+            msg.readUInt8("option count"));
         for (int f = 0; f < 5; f ++)
         {
             const uint16_t idx = msg.readInt16("option index");
