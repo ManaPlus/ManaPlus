@@ -69,8 +69,6 @@
 #include "net/net.h"
 #endif  // TMWA_SUPPORT
 
-#include <algorithm>
-
 #include "debug.h"
 
 #define for_actors for (ActorSpritesConstIterator it = mActors.begin(), \

@@ -37,7 +37,6 @@
 #include "enums/resources/notifytypes.h"
 
 #include "enums/net/deleteitemreason.h"
-#include "enums/net/netinventorytype.h"
 
 #include "gui/popups/itempopup.h"
 
