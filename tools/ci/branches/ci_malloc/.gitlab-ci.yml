@@ -26,8 +26,8 @@ gcc-8_tests_jmalloc:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              git valgrind libjemalloc1
-    MALLOC: /usr/lib/x86_64-linux-gnu/libjemalloc.so.1
+              git valgrind libjemalloc2
+    MALLOC: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2
   tags:
     - docker
 
@@ -38,14 +38,14 @@ gcc-8_tests_jmalloc_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
-              git valgrind libjemalloc1
-    MALLOC: /usr/lib/i386-linux-gnu/libjemalloc.so.1
+              git valgrind libjemalloc2
+    MALLOC: /usr/lib/i386-linux-gnu/libjemalloc.so.2
   tags:
     - docker
 
@@ -60,8 +60,8 @@ gcc-8_tests_jmalloc_sdl2:
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              git valgrind libjemalloc1
-    MALLOC: /usr/lib/x86_64-linux-gnu/libjemalloc.so.1
+              git valgrind libjemalloc2
+    MALLOC: /usr/lib/x86_64-linux-gnu/libjemalloc.so.2
   tags:
     - docker
 
@@ -71,14 +71,14 @@ gcc-8_tests_jmalloc_sdl2_i386:
   - ls ${MALLOC}
   - LD_PRELOAD=${MALLOC} ./tools/ci/jobs/gcc8_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
-              git valgrind libjemalloc1
-    MALLOC: /usr/lib/i386-linux-gnu/libjemalloc.so.1
+              git valgrind libjemalloc2
+    MALLOC: /usr/lib/i386-linux-gnu/libjemalloc.so.2
   tags:
     - docker
 
@@ -103,7 +103,7 @@ gcc-8_tests_tcmalloc_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --enable-tcmalloc --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
@@ -132,7 +132,7 @@ gcc-8_tests_tcmalloc_sdl2_i386:
   script:
   - ./tools/ci/jobs/gcc8_tests.sh --enable-tcmalloc --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
