@@ -1157,6 +1157,37 @@ std::string urlJoin(std::string str1,
     }
 }
 
+size_t rfindSepatator(const std::string &str1)
+{
+    const size_t idx1 = str1.rfind('/');
+    const size_t idx2 = str1.rfind('\\');
+    if (idx1 != std::string::npos)
+    {   // idx1
+        if (idx2 != std::string::npos)
+        {   // idx1, idx2
+            if (idx1 >= idx2)
+                return idx1;
+            else
+                return idx2;
+        }
+        else
+        {   // idx1, not idx2
+            return idx1;
+        }
+    }
+    else
+    {   // not idx1
+        if (idx2 != std::string::npos)
+        {   // not idx1, idx2
+            return idx2;
+        }
+        else
+        {   // not idx1, not idx2
+            return std::string::npos;
+        }
+    }
+}
+
 #ifndef DYECMD
 void replaceItemLinks(std::string &msg)
 {

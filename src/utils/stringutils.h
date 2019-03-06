@@ -293,4 +293,6 @@ std::string pathJoin(std::string str1,
 std::string urlJoin(std::string str1,
                     const std::string &str2);
 
+size_t rfindSepatator(const std::string &str1);
+
 #endif  // UTILS_STRINGUTILS_H

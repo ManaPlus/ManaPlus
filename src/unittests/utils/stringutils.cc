@@ -1451,6 +1451,27 @@ TEST_CASE("stringuntils secureChatCommand", "")
     REQUIRE(str == "_#test");
 }
 
+TEST_CASE("stringuntils rfindSepatator", "")
+{
+    REQUIRE(rfindSepatator("test1") == std::string("test1").rfind('/'));
+    REQUIRE(rfindSepatator("test2/") == std::string("test2/").rfind('/'));
+    REQUIRE(rfindSepatator("test3\\") == std::string("test3\\").rfind('\\'));
+    REQUIRE(rfindSepatator("test4/qqq") ==
+        std::string("test4/qqq").rfind('/'));
+    REQUIRE(rfindSepatator("test5\\qqq") ==
+        std::string("test5\\qqq").rfind('\\'));
+    REQUIRE(rfindSepatator("test6/qqq/www") ==
+        std::string("test6/qqq/www").rfind('/'));
+    REQUIRE(rfindSepatator("test7\\qqq\\www") ==
+        std::string("test7\\qqq\\www").rfind('\\'));
+    REQUIRE(rfindSepatator("/test8") == std::string("/test8").rfind('/'));
+    REQUIRE(rfindSepatator("\\test9") == std::string("\\test9").rfind('\\'));
+    REQUIRE(rfindSepatator("test10/qqq\\www") ==
+        std::string("test10/qqq\\www").rfind('\\'));
+    REQUIRE(rfindSepatator("test11\\qqq/www") ==
+        std::string("test11\\qqq/www").rfind('/'));
+}
+
 #ifdef ENABLE_NLS
 TEST_CASE("stringuntils timeDiffToString", "")
 {
