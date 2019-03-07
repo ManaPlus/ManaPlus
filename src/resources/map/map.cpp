@@ -850,7 +850,7 @@ const std::string Map::getFilename() const restrict2
 const std::string Map::getGatName() const restrict2
 {
     const std::string fileName = getProperty("_filename", std::string());
-    const size_t lastSlash = fileName.rfind('/') + 1;
+    const size_t lastSlash = rfindSepatator(fileName) + 1;
     return fileName.substr(lastSlash,
         fileName.rfind('.') - lastSlash).append(".gat");
 }
