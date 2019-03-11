@@ -1539,6 +1539,18 @@ if (packetVersionMain >= 20181128)
     packet(SMSG_PLAYER_SKILL_AUTO_SPELLS,  0x0afb,  -1, &SkillRecv::processSkillAutoSpells2,            20181128);
 }
 
+// 20181212 main
+if (packetVersionMain >= 20181212)
+{
+    packet(SMSG_SKILL_CASTING,             0x0b1a,  29, &BeingRecv::processSkillCasting3,               20181212);
+}
+
+// 20181212 re
+if (packetVersionRe >= 20181212)
+{
+    packet(SMSG_SKILL_CASTING,             0x0b1a,  29, &BeingRecv::processSkillCasting3,               20181212);
+}
+
 // 20181212 zero
 if (packetVersionZero >= 20181212)
 {
