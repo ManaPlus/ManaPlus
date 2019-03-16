@@ -48,19 +48,19 @@ namespace Ea
 class InventoryItem final
 {
     public:
-        int slot;
-        int id;
-        ItemTypeT type;
         int cards[maxCards];
         ItemOptionsList *options;
+        int slot;
+        int id;
         int quantity;
-        uint8_t refine;
+        int equipIndex;
+        ItemTypeT type;
         ItemColor color;
         Identified identified;
         Damaged damaged;
         Favorite favorite;
         Equipm equip;
-        int equipIndex;
+        uint8_t refine;
 
         InventoryItem(const int slot0,
                       const int id0,
@@ -75,19 +75,19 @@ class InventoryItem final
                       const Favorite favorite0,
                       Equipm equip0,
                       int equipIndex0) :
-            slot(slot0),
-            id(id0),
-            type(type0),
             cards(),
             options(ItemOptionsList::copy(options0)),
+            slot(slot0),
+            id(id0),
             quantity(quantity0),
-            refine(refine0),
+            equipIndex(equipIndex0),
+            type(type0),
             color(color0),
             identified(identified0),
             damaged(damaged0),
             favorite(favorite0),
             equip(equip0),
-            equipIndex(equipIndex0)
+            refine(refine0)
         {
             if (cards0 == nullptr)
                 return;
@@ -96,19 +96,19 @@ class InventoryItem final
         }
 
         InventoryItem(const InventoryItem &c) :
-            slot(c.slot),
-            id(c.id),
-            type(c.type),
             cards(),
             options(ItemOptionsList::copy(c.options)),
+            slot(c.slot),
+            id(c.id),
             quantity(c.quantity),
-            refine(c.refine),
+            equipIndex(c.equipIndex),
+            type(c.type),
             color(c.color),
             identified(c.identified),
             damaged(c.damaged),
             favorite(c.favorite),
             equip(c.equip),
-            equipIndex(c.equipIndex)
+            refine(c.refine)
         {
             for (int f = 0; f < 4; f ++)
                 cards[f] = c.cards[f];
