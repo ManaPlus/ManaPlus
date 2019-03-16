@@ -268,18 +268,15 @@ void GuildRecv::processGuildMemberList(Net::MessageIn &msg)
             m->setExp(exp);
             m->setPos(pos);
             m->setRace(race);
-            if (actorManager != nullptr)
+            Being *const being = actorManager->findBeingByName(
+                name, ActorType::Player);
+            if (being != nullptr)
             {
-                Being *const being = actorManager->findBeingByName(
-                    name, ActorType::Player);
-                if (being != nullptr)
+                being->setGuildName(taGuild->getName());
+                if (being->getLevel() != level)
                 {
-                    being->setGuildName(taGuild->getName());
-                    if (being->getLevel() != level)
-                    {
-                        being->setLevel(level);
-                        being->updateName();
-                    }
+                    being->setLevel(level);
+                    being->updateName();
                 }
             }
             if (online != 0)
