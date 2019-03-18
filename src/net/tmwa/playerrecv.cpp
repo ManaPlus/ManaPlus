@@ -25,7 +25,6 @@
 #include "actormanager.h"
 #include "configuration.h"
 
-#include "being/beingflag.h"
 #include "being/localplayer.h"
 #include "being/playerinfo.h"
 
