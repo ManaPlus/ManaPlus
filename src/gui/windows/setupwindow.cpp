@@ -189,7 +189,10 @@ void SetupWindow::action(const ActionEvent &event)
     if (eventId == "Apply")
     {
         setVisible(Visible_false);
-        for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::apply));
+        FOR_EACH (std::list<SetupTab*>::iterator, it, mTabs)
+        {
+            (*it)->apply();
+        }
     }
     else if (eventId == "Cancel")
     {
@@ -297,7 +300,10 @@ void SetupWindow::hideWindows()
 void SetupWindow::doCancel()
 {
     setVisible(Visible_false);
-    for_each(mTabs.begin(), mTabs.end(), std::mem_fun(&SetupTab::cancel));
+    FOR_EACH (std::list<SetupTab*>::iterator, it, mTabs)
+    {
+        (*it)->cancel();
+    }
 }
 
 void SetupWindow::activateTab(const std::string &name)
