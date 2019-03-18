@@ -218,25 +218,11 @@ void PlayerRecv::processOnlineList(Net::MessageIn &msg)
         const unsigned char level = msg.readUInt8("level");
         const unsigned char group = msg.readUInt8("group");
         GenderT gender = Being::intToGender(msg.readUInt8("gender"));
-        unsigned char status = 0;
-        switch (gender)
-        {
-            case Gender::MALE:
-                status |= BeingFlag::GENDER_MALE;
-                break;
-            case Gender::HIDDEN:
-                status |= BeingFlag::GENDER_HIDDEN;
-                break;
-            case Gender::FEMALE:
-            case Gender::UNSPECIFIED:
-            default:
-                break;
-        }
 
         if (!config.getBoolValue("showgender"))
             gender = Gender::UNSPECIFIED;
         arr.push_back(new OnlinePlayer(name,
-            status, level, gender, 0, group));
+            CAST_U8(255), level, gender, 0, group));
         if (actorManager)
             actorManager->updateNameId(name, beingId);
     }
