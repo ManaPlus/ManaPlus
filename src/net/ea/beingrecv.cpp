@@ -54,7 +54,6 @@ namespace Ea
 
 namespace BeingRecv
 {
-    bool mSync = false;
     BeingId mSpawnId = BeingId_zero;
 }  // namespace BeingRecv
 
@@ -345,7 +344,7 @@ void BeingRecv::processPlayerStop(Net::MessageIn &msg)
 
     const BeingId id = msg.readBeingId("account id");
 
-    if (mSync || id != localPlayer->getId())
+//    if (mSync || id != localPlayer->getId())
     {
         Being *const dstBeing = actorManager->findBeing(id);
         if (dstBeing != nullptr)

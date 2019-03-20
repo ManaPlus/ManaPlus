@@ -480,14 +480,21 @@ void LocalPlayer::nextTile()
     if (mPath.empty())
     {
         if (mNavigatePath.empty() || mAction != BeingAction::MOVE)
+        {
             setAction(BeingAction::STAND, 0);
+            // +++ probably sync position here always?
+        }
         else
+        {
             mNextStep = true;
+        }
     }
     else
     {
         Being::nextTile();
     }
+
+    fixPos();
 }
 
 bool LocalPlayer::pickUp(FloorItem *const item)
@@ -2577,8 +2584,8 @@ void LocalPlayer::fixPos()
     if ((mCrossX == 0) && (mCrossY == 0))
         return;
 
-    const int dx = abs(mX - mCrossX);
-    const int dy = abs(mY - mCrossY);
+    const int dx = (mX >= mCrossX) ? mX - mCrossX : mCrossX - mX;
+    const int dy = (mY >= mCrossY) ? mY - mCrossY : mCrossY - mY;
     const int dist = dx > dy ? dx : dy;
     const time_t time = cur_time;
     const int maxDist = mSyncPlayerMove ? mSyncPlayerMoveDistance : 7;
@@ -2586,10 +2593,32 @@ void LocalPlayer::fixPos()
     if (dist > maxDist)
     {
         mActivityTime = time;
+#ifdef ENABLEDEBUGLOG
+        logger->dlog(strprintf("Fix position from (%d,%d) to (%d,%d)",
+            mX, mY,
+            mCrossX, mCrossY));
+#endif
         setTileCoords(mCrossX, mCrossY);
+/*
+        if (mNavigateX != 0 || mNavigateY != 0)
+        {
+#ifdef ENABLEDEBUGLOG
+            logger->dlog(strprintf("Renavigate to (%d,%d)",
+                mNavigateX, mNavigateY));
+#endif
+            navigateTo(mNavigateX, mNavigateY);
+        }
+*/
 // alternative way to fix, move to real position
 //        setDestination(mCrossX, mCrossY);
     }
+}
+
+void LocalPlayer::setTileCoords(const int x, const int y) restrict2
+{
+    Being::setTileCoords(x, y);
+    mCrossX = x;
+    mCrossY = y;
 }
 
 void LocalPlayer::setRealPos(const int x, const int y)
@@ -2630,11 +2659,14 @@ void LocalPlayer::setRealPos(const int x, const int y)
         {
             mCrossX = x;
             mCrossY = y;
+            // +++ possible configuration option
+            fixPos();
         }
     }
     if (mMap->isCustom())
         mMap->setWalk(x, y);
 }
+
 void LocalPlayer::fixAttackTarget()
 {
     if ((mMap == nullptr) || (mTarget == nullptr))
@@ -2693,6 +2725,7 @@ void LocalPlayer::updateNavigateList()
 void LocalPlayer::failMove(const int x A_UNUSED,
                            const int y A_UNUSED)
 {
+    fixPos();
 }
 
 void LocalPlayer::waitFor(const std::string &nick)

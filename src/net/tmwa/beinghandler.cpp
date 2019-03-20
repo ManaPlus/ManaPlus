@@ -31,8 +31,8 @@
 namespace TmwAthena
 {
 
-BeingHandler::BeingHandler(const bool enableSync) :
-    Ea::BeingHandler(enableSync)
+BeingHandler::BeingHandler() :
+    Ea::BeingHandler()
 {
     beingHandler = this;
 }

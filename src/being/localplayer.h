@@ -277,6 +277,9 @@ class LocalPlayer final : public Being,
 
         void fixPos();
 
+        void setTileCoords(const int x,
+                           const int y) restrict2 override final;
+
         /**
          * Sets the map the being is on
          */

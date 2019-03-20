@@ -31,7 +31,7 @@ namespace EAthena
 class BeingHandler final : public Ea::BeingHandler
 {
     public:
-        explicit BeingHandler(const bool enableSync);
+        explicit BeingHandler();
 
         A_DELETE_COPY(BeingHandler)
 

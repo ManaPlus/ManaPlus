@@ -176,7 +176,7 @@ class Being notfinal : public ActorSprite,
         /**
          * Sets the tile x and y coord
          */
-        void setTileCoords(const int x, const int y) restrict2;
+        virtual void setTileCoords(const int x, const int y) restrict2;
 
         /**
          * Puts a "speech balloon" above this being for the specified amount

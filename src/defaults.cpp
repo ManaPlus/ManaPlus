@@ -175,7 +175,6 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("screenshotDirectory3", "");
     AddDEF("useScreenshotDirectorySuffix", true);
     AddDEF("screenshotDirectorySuffix", "");
-    AddDEF("EnableSync", false);
     AddDEF("joystickEnabled", false);
     AddDEF("upTolerance", 100);
     AddDEF("downTolerance", 100);

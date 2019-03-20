@@ -473,20 +473,23 @@ unsigned char *MessageIn::readBytes(int length, const char *const dstr)
     mPos += length;
 
 #ifdef ENABLEDEBUGLOG
-    std::string str;
-    for (int f = 0; f < length; f ++)
-        str.append(strprintf("%02x", CAST_U32(buf[f])));
-    str += " ";
-    for (int f = 0; f < length; f ++)
+    if (!mIgnore)
     {
-        if (buf[f] != 0U)
-            str.append(strprintf("%c", buf[f]));
-        else
-            str.append("_");
+        std::string str;
+        for (int f = 0; f < length; f ++)
+            str.append(strprintf("%02x", CAST_U32(buf[f])));
+        str += " ";
+        for (int f = 0; f < length; f ++)
+        {
+            if (buf[f] != 0U)
+                str.append(strprintf("%c", buf[f]));
+            else
+                str.append("_");
+        }
+        if (dstr != nullptr)
+            logger->dlog(dstr);
+        logger->dlog("ReadBytes: " + str);
     }
-    if (dstr != nullptr)
-        logger->dlog(dstr);
-    logger->dlog("ReadBytes: " + str);
 #endif  // ENABLEDEBUGLOG
 
     PacketCounters::incInBytes(length);

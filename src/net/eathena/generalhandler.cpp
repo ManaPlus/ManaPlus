@@ -83,7 +83,7 @@ namespace EAthena
 
 GeneralHandler::GeneralHandler() :
     mAdminHandler(new AdminHandler),
-    mBeingHandler(new BeingHandler(config.getBoolValue("EnableSync"))),
+    mBeingHandler(new BeingHandler),
     mBuySellHandler(new BuySellHandler),
     mCharServerHandler(new CharServerHandler),
     mChatHandler(new ChatHandler),
