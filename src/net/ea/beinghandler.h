@@ -34,7 +34,7 @@ class BeingHandler notfinal : public Net::BeingHandler
         A_DELETE_COPY(BeingHandler)
 
     protected:
-        explicit BeingHandler();
+        BeingHandler();
 };
 
 }  // namespace Ea
