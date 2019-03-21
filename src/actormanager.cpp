@@ -2286,7 +2286,8 @@ void ActorManager::addChar(const int32_t id,
         if (guild != nullptr)
         {
             GuildMember *const member = guild->getMemberByCharId(id);
-            member->setName(name);
+            if (member != nullptr)
+                member->setName(name);
         }
     }
     guiInput->simulateMouseMove();
