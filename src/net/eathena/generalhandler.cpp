@@ -23,7 +23,6 @@
 #include "net/eathena/generalhandler.h"
 
 #include "client.h"
-#include "configuration.h"
 
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/socialwindow.h"
