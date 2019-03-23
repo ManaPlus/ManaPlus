@@ -12,6 +12,7 @@
 # Ильшат Сайдуллин <bio_editor@mail.ru>, 2013
 # Necromonger <Necromong@inbox.ru>, 2011
 # Necromonger <Necromong@inbox.ru>, 2011
+# RatreX <ratrex@mail.ru>, 2019
 # Yummie <reslayer@mail.ru>, 2011
 # RatreX <ratrex@mail.ru>, 2016-2018
 # Yummie <reslayer@mail.ru>, 2011
@@ -21,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ManaPlus\n"
 "Report-Msgid-Bugs-To: akaras@inbox.ru\n"
-"POT-Creation-Date: 2018-12-08 19:06+0300\n"
-"PO-Revision-Date: 2018-09-09 01:29+0000\n"
-"Last-Translator: Andrei Karas <akaras@inbox.ru>\n"
+"POT-Creation-Date: 2019-03-23 22:01+0300\n"
+"PO-Revision-Date: 2019-02-26 20:51+0000\n"
+"Last-Translator: RatreX <ratrex@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/akaras/manaplus/language/"
 "ru/)\n"
 "Language: ru\n"
@@ -35,7 +36,7 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #. TRANSLATORS: visible beings on map
-#: src/actormanager.cpp:1590
+#: src/actormanager.cpp:1589
 msgid "Visible on map"
 msgstr "Видимые на карте"
 
@@ -65,59 +66,59 @@ msgstr "Б"
 
 #. TRANSLATORS: chat message after death
 #. TRANSLATORS: player killed message
-#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:521
+#: src/being/localplayer.cpp:406 src/net/eathena/playerrecv.cpp:520
 #, c-format
 msgid "You were killed by %s."
 msgstr "Вас убил %s."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:891
+#: src/being/localplayer.cpp:898
 msgid "Tried to pick up nonexistent item."
 msgstr "Попытка поднять несуществующий предмет."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:895
+#: src/being/localplayer.cpp:902
 msgid "Item is too heavy."
 msgstr "Предмет слишком тяжелый."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:899
+#: src/being/localplayer.cpp:906
 msgid "Item is too far away."
 msgstr "Предмет слишком далеко."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:903
+#: src/being/localplayer.cpp:910
 msgid "Inventory is full."
 msgstr "Инвентарь переполнен."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:907
+#: src/being/localplayer.cpp:914
 msgid "Stack is too big."
 msgstr "Слишком много предметов."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:911
+#: src/being/localplayer.cpp:918
 msgid "Item belongs to someone else."
 msgstr "Предмет принадлежит кому-то еще."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:915
+#: src/being/localplayer.cpp:922
 msgid "You can't pickup this amount of items."
 msgstr "Вы не можете поднять такое количество."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:919
+#: src/being/localplayer.cpp:926
 msgid "Your item stack has max amount."
 msgstr "Слишком много предметов в стэке."
 
 #. TRANSLATORS: pickup error message
-#: src/being/localplayer.cpp:926
+#: src/being/localplayer.cpp:933
 msgid "Unknown problem picking up item."
 msgstr "Неизвестная проблема при поднятии предмета."
 
 #. TRANSLATORS: %d is number,
 #. [@@%d|%s@@] - here player can see link to item
-#: src/being/localplayer.cpp:962
+#: src/being/localplayer.cpp:969
 #, c-format
 msgid "You picked up %d [@@%d|%s@@]."
 msgid_plural "You picked up %d [@@%d|%s@@]."
@@ -128,58 +129,58 @@ msgstr[3] "Вы подняли %d [@@%d|%s@@]."
 
 #. TRANSLATORS: this is normal experience
 #. TRANSLATORS: get xp message
-#: src/being/localplayer.cpp:1176 src/being/localplayer.cpp:1178
-#: src/being/localplayer.cpp:1214 src/being/localplayer.cpp:1228
+#: src/being/localplayer.cpp:1183 src/being/localplayer.cpp:1185
+#: src/being/localplayer.cpp:1221 src/being/localplayer.cpp:1235
 msgid "xp"
 msgstr "опыт"
 
 #. TRANSLATORS: this is job experience
-#: src/being/localplayer.cpp:1184 src/being/localplayer.cpp:1192
-#: src/being/localplayer.cpp:1201
+#: src/being/localplayer.cpp:1191 src/being/localplayer.cpp:1199
+#: src/being/localplayer.cpp:1208
 msgid "job"
 msgstr "работа"
 
 #. TRANSLATORS: get homunculus xp message
-#: src/being/localplayer.cpp:1225
+#: src/being/localplayer.cpp:1232
 msgid "Homun"
 msgstr "Гомун"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1238
+#: src/being/localplayer.cpp:1245
 msgid "hp"
 msgstr "здоровье"
 
 #. TRANSLATORS: get hp message
-#: src/being/localplayer.cpp:1248
+#: src/being/localplayer.cpp:1255
 msgid "mana"
 msgstr "мана"
 
 #. TRANSLATORS: follow command message
-#: src/being/localplayer.cpp:2342
+#: src/being/localplayer.cpp:2349
 #, c-format
 msgid "Follow: %s"
 msgstr "Следовать за: %s"
 
 #. TRANSLATORS: follow command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2348 src/being/localplayer.cpp:2373
+#: src/being/localplayer.cpp:2355 src/being/localplayer.cpp:2380
 msgid "Follow canceled"
 msgstr "Следование отменено"
 
 #. TRANSLATORS: imitate command message
-#: src/being/localplayer.cpp:2358
+#: src/being/localplayer.cpp:2365
 #, c-format
 msgid "Imitation: %s"
 msgstr "Имитация: %s"
 
 #. TRANSLATORS: imitate command message
 #. TRANSLATORS: cancel follow message
-#: src/being/localplayer.cpp:2364 src/being/localplayer.cpp:2378
+#: src/being/localplayer.cpp:2371 src/being/localplayer.cpp:2385
 msgid "Imitation canceled"
 msgstr "Имитация отменена"
 
 #. TRANSLATORS: wait player/monster message
-#: src/being/localplayer.cpp:2736
+#: src/being/localplayer.cpp:2769
 #, c-format
 msgid "You see %s"
 msgstr "Вы видите %s"
@@ -9366,7 +9367,7 @@ msgid "Do you accept %s and %s as parents?"
 msgstr "Вы принимаете %s и %s как своих родителей?"
 
 #. TRANSLATORS: error message
-#: src/net/eathena/generalhandler.cpp:225 src/net/tmwa/generalhandler.cpp:227
+#: src/net/eathena/generalhandler.cpp:227 src/net/tmwa/generalhandler.cpp:230
 msgid "Got disconnected from server!"
 msgstr "Отключено от сервера!"
 
@@ -9526,61 +9527,61 @@ msgid "Map not found"
 msgstr "Карта не найдена"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:129
+#: src/net/eathena/guildrecv.cpp:130
 #, c-format
 msgid "Guild name: %s"
 msgstr "Имя гильдии: %s"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:137
+#: src/net/eathena/guildrecv.cpp:138
 #, c-format
 msgid "Guild master: %s"
 msgstr "Мастер гильдии: %s"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:144
+#: src/net/eathena/guildrecv.cpp:145
 #, c-format
 msgid "Guild level: %d"
 msgstr "Уровень гильдии: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:149
+#: src/net/eathena/guildrecv.cpp:150
 #, c-format
 msgid "Online members: %d"
 msgstr "Пользователей онлайн: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:154
+#: src/net/eathena/guildrecv.cpp:155
 #, c-format
 msgid "Max members: %d"
 msgstr "Макс. членов: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:159
+#: src/net/eathena/guildrecv.cpp:160
 #, c-format
 msgid "Average level: %d"
 msgstr "Средний уровень: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:164
+#: src/net/eathena/guildrecv.cpp:165
 #, c-format
 msgid "Guild exp: %d"
 msgstr "Опыт гильдии: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:169
+#: src/net/eathena/guildrecv.cpp:170
 #, c-format
 msgid "Guild next exp: %d"
 msgstr "Нужно опыта до следующего уровня: %d"
 
 #. TRANSLATORS: guild info message
-#: src/net/eathena/guildrecv.cpp:174
+#: src/net/eathena/guildrecv.cpp:175
 #, c-format
 msgid "Guild castle: %s"
 msgstr "Замки гильдии: %s"
 
 #. TRANSLATORS: notification message
-#: src/net/eathena/inventoryrecv.cpp:874
+#: src/net/eathena/inventoryrecv.cpp:878
 #, c-format
 msgid "Left %s rental time for item %s."
 msgstr "Осталось %s арендного времени для %s."
@@ -9589,8 +9590,8 @@ msgstr "Осталось %s арендного времени для %s."
 #. TRANSLATORS: unknown item message
 #. TRANSLATORS: unknown item name
 #. TRANSLATORS: item name
-#: src/net/eathena/inventoryrecv.cpp:1240
-#: src/net/eathena/inventoryrecv.cpp:1375 src/net/eathena/mail2recv.cpp:204
+#: src/net/eathena/inventoryrecv.cpp:1247
+#: src/net/eathena/inventoryrecv.cpp:1382 src/net/eathena/mail2recv.cpp:204
 #: src/resources/db/itemdb.cpp:171
 msgid "Unknown item"
 msgstr "Неизвестный предмет"
@@ -9617,7 +9618,7 @@ msgid "You have new mail from %s with subject %s"
 msgstr "Вам пришло сообщение от %s и заголовком %s"
 
 #. TRANSLATORS: player killed message
-#: src/net/eathena/playerrecv.cpp:510
+#: src/net/eathena/playerrecv.cpp:509
 msgid "You were killed by unknown source."
 msgstr "Вы были убиты неизвестным."
 
@@ -9783,9 +9784,9 @@ msgstr "Удача (luk):"
 
 #. TRANSLATORS: message about spam player
 #: src/net/tmwa/chatrecv.cpp:262
-#, fuzzy, c-format
+#, c-format
 msgid "Detected spam from: %s"
-msgstr "Отклонено приглашение в группу от %s."
+msgstr "Обнаружен спам от: %s"
 
 #. TRANSLATORS: error message
 #: src/net/tmwa/skillrecv.cpp:113
