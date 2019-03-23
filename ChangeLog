@@ -1,3 +1,14 @@
+2019-03-23 New release 1.9.3.23
+fix: guild members in 2018 packet versions.
+fix: dynamic walls on windows.
+fix: badges state in legacy server.
+fix: improved auto sync logic for fix desyncs.
+add: troll emote by Tirifto.
+add: support for packets with item id in int32.
+add: support for 2018 packet versions.
+add: dynamic inventory size.
+update: different packets.
+
 2018-12-08 New release 1.8.12.8
 fix: dyecmd crash in A and S dye.
 fix: out of bound access in dye code if run with AVX support.
