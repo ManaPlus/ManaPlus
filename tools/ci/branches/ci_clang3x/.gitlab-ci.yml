@@ -28,7 +28,8 @@ clang-3.9:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-clang-3.0:
+# was removed from debian and ubuntu
+.clang-3.0:
   stage: build
   script:
   - ./tools/ci/jobs/clang.sh clang
@@ -44,7 +45,8 @@ clang-3.0:
   tags:
     - docker
 
-clang-3.0_i386:
+# was removed from debian and ubuntu
+.clang-3.0_i386:
   stage: build
   script:
   - ./tools/ci/jobs/clang.sh clang

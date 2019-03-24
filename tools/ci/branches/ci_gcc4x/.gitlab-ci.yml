@@ -20,7 +20,7 @@ gcc-4.4:
   - ./tools/ci/jobs/gcc44.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
-  image: debian:wheezy
+  image: ubuntu:trusty
   <<: *job-push
   variables:
     PACKAGES: git gcc-4.4 g++-4.4 
@@ -101,7 +101,7 @@ gcc-4.4_i386:
   - ./tools/ci/jobs/gcc44.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
-  image: vicamo/debian:wheezy-i386
+  image: i386/ubuntu:trusty
   <<: *job-push
   variables:
     PACKAGES: git gcc-4.4 g++-4.4 
@@ -135,7 +135,7 @@ gcc-4.6:
   - ./tools/ci/jobs/gcc46.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
-  image: debian:wheezy
+  image: ubuntu:trusty
   <<: *job-push
   variables:
     PACKAGES: git gcc-4.6 g++-4.6 
@@ -152,7 +152,7 @@ gcc-4.6_i386:
   - ./tools/ci/jobs/gcc46.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
-  image: vicamo/debian:wheezy-i386
+  image: i386/ubuntu:trusty
   <<: *job-push
   variables:
     PACKAGES: git gcc-4.6 g++-4.6 
@@ -172,7 +172,7 @@ gcc-4.7:
   - ./tools/ci/jobs/gcc47_c++11.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
-  image: debian:wheezy
+  image: ubuntu:trusty
   <<: *job-push
   variables:
     PACKAGES: git gcc-4.7 g++-4.7 
@@ -189,7 +189,7 @@ gcc-4.7_i386:
   - ./tools/ci/jobs/gcc47.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
-  image: vicamo/debian:wheezy-i386
+  image: i386/ubuntu:trusty
   <<: *job-push
   variables:
     PACKAGES: git gcc-4.7 g++-4.7 
