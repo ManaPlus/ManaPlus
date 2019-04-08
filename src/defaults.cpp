@@ -118,6 +118,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("imitationMode", 0);
     AddDEF("syncPlayerMove", true);
     AddDEF("syncPlayerMoveDistance", 5);
+    AddDEF("syncPlayerMoveDistanceLegacy", 15);
     AddDEF("drawPath", false);
     AddDEF("moveToTargetType", 10);
     AddDEF("crazyMoveProgram", "mumrsonmdmlon");

@@ -266,6 +266,13 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
         MainConfig_true);
 
     // TRANSLATORS: settings option
+    new SetupItemIntTextField(_("Sync player move distance on legacy servers"),
+        "",
+        "syncPlayerMoveDistanceLegacy",
+        this, "syncPlayerMoveDistanceLegacyEvent", 1, 30,
+        MainConfig_true);
+
+    // TRANSLATORS: settings option
     new SetupItemTextField(_("Crazy move A program"), "",
         "crazyMoveProgram", this, "crazyMoveProgramEvent",
         MainConfig_true, UseBase64_false);

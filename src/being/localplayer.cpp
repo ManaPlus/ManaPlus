@@ -153,7 +153,13 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mTestParticleName(),
     mTestParticleTime(0),
     mTestParticleHash(0L),
+#ifdef TMWA_SUPPORT
+    mSyncPlayerMoveDistance(Net::getNetworkType() == ServerType::TMWATHENA ?
+        config.getIntValue("syncPlayerMoveDistanceLegacy") :
+        config.getIntValue("syncPlayerMoveDistance")),
+#else
     mSyncPlayerMoveDistance(config.getIntValue("syncPlayerMoveDistance")),
+#endif
     mUnfreezeTime(0),
     mWalkingDir(0),
     mUpdateName(true),
@@ -207,6 +213,9 @@ LocalPlayer::LocalPlayer(const BeingId id,
     serverConfig.addListener("enableBuggyServers", this);
     config.addListener("syncPlayerMove", this);
     config.addListener("syncPlayerMoveDistance", this);
+#ifdef TMWA_SUPPORT
+    config.addListener("syncPlayerMoveDistanceLegacy", this);
+#endif
     config.addListener("drawPath", this);
     config.addListener("serverAttack", this);
     config.addListener("attackMoving", this);
@@ -1126,8 +1135,18 @@ void LocalPlayer::optionChanged(const std::string &value)
     }
     else if (value == "syncPlayerMoveDistance")
     {
-        mSyncPlayerMoveDistance = config.getIntValue("syncPlayerMoveDistance");
+#ifdef TMWA_SUPPORT
+        if (Net::getNetworkType() != ServerType::TMWATHENA)
+#endif
+            mSyncPlayerMoveDistance = config.getIntValue("syncPlayerMoveDistance");
     }
+#ifdef TMWA_SUPPORT
+    else if (value == "syncPlayerMoveDistanceLegacy")
+    {
+        if (Net::getNetworkType() == ServerType::TMWATHENA)
+            mSyncPlayerMoveDistance = config.getIntValue("syncPlayerMoveDistanceLegacy");
+    }
+#endif
     else if (value == "drawPath")
     {
         mDrawPath = config.getBoolValue("drawPath");
@@ -2588,7 +2607,23 @@ void LocalPlayer::fixPos()
     const int dy = (mY >= mCrossY) ? mY - mCrossY : mCrossY - mY;
     const int dist = dx > dy ? dx : dy;
     const time_t time = cur_time;
-    const int maxDist = mSyncPlayerMove ? mSyncPlayerMoveDistance : 7;
+
+#ifdef TMWA_SUPPORT
+    int maxDist;
+    if (mSyncPlayerMove)
+    {
+        maxDist = mSyncPlayerMoveDistance;
+    }
+    else
+    {
+        if (Net::getNetworkType() == ServerType::TMWATHENA)
+            maxDist = 30;
+        else
+            maxDist = 10;
+    }
+#else
+    const int maxDist = mSyncPlayerMove ? mSyncPlayerMoveDistance : 10;
+#endif
 
     if (dist > maxDist)
     {
