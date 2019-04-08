@@ -55,6 +55,8 @@ class GameHandler final : public Ea::GameHandler
 
         bool mustPing() const override final A_WARN_UNUSED
         { return true; }
+
+        void ping2() const override final;
 };
 
 }  // namespace EAthena

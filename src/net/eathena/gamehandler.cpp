@@ -40,6 +40,9 @@
 #include "debug.h"
 
 extern int packetVersion;
+extern int packetVersionMain;
+extern int packetVersionRe;
+extern int packetVersionZero;
 
 namespace EAthena
 {
@@ -226,6 +229,17 @@ void GameHandler::disconnect2() const
 void GameHandler::reqRemainTime() const
 {
     createOutPacket(CMSG_REQ_REMAIN_TIME);
+}
+
+void GameHandler::ping2() const
+{
+    if (packetVersionMain < 20190227 &&
+        packetVersionRe < 20190220 &&
+        packetVersionZero < 20190220)
+    {
+        return;
+    }
+    createOutPacket(CMSG_MAP_PING2);
 }
 
 }  // namespace EAthena

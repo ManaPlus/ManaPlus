@@ -356,6 +356,7 @@ packet(CMSG_CAMERA_INFO,                  0x0000,   0, nullptr);
 packet(CMSG_NPC_BARTER_BUY,               0x0000,   0, nullptr);
 packet(CMSG_CLIENT_VERSION,               0x0000,   0, nullptr);
 packet(CMSG_PLAYER_STYLE_CLOSE,           0x0000,   0, nullptr);
+packet(CMSG_MAP_PING2,                    0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1581,6 +1582,24 @@ if (packetVersionRe >= 20190116)
 {
     packet(CMSG_NPC_BARTER_CLOSE,         0x0b12,   2, clif->pNPCBarterClosed);
     packet(CMSG_NPC_BARTER_BUY,           0x0b0f,  -1, clif->pNPCBarterPurchase);
+}
+
+//20190220 re
+if (packetVersionRe >= 20190220)
+{
+    packet(CMSG_MAP_PING2,                0x0b1c,   2, clif->pPing);
+}
+
+//20190220 zero
+if (packetVersionZero >= 20190220)
+{
+    packet(CMSG_MAP_PING2,                0x0b1c,   2, clif->pPing);
+}
+
+//20190227 main
+if (packetVersionMain >= 20190227)
+{
+    packet(CMSG_MAP_PING2,                0x0b1c,   2, clif->pPing);
 }
 
 #endif

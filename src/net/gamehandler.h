@@ -51,6 +51,8 @@ class GameHandler notfinal
 
         virtual void ping(const int tick) const = 0;
 
+        virtual void ping2() const = 0;
+
         virtual bool removeDeadBeings() const = 0;
 
         virtual void disconnect2() const = 0;

@@ -136,4 +136,8 @@ void GameHandler::reqRemainTime() const
 {
 }
 
+void GameHandler::ping2() const
+{
+}
+
 }  // namespace TmwAthena
