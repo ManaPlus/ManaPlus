@@ -153,13 +153,7 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mTestParticleName(),
     mTestParticleTime(0),
     mTestParticleHash(0L),
-#ifdef TMWA_SUPPORT
-    mSyncPlayerMoveDistance(Net::getNetworkType() == ServerType::TMWATHENA ?
-        config.getIntValue("syncPlayerMoveDistanceLegacy") :
-        config.getIntValue("syncPlayerMoveDistance")),
-#else
     mSyncPlayerMoveDistance(config.getIntValue("syncPlayerMoveDistance")),
-#endif
     mUnfreezeTime(0),
     mWalkingDir(0),
     mUpdateName(true),
@@ -188,6 +182,14 @@ LocalPlayer::LocalPlayer(const BeingId id,
     mFreezed(false)
 {
     logger->log1("LocalPlayer::LocalPlayer");
+
+#ifdef TMWA_SUPPORT
+    if (Net::getNetworkType() == ServerType::TMWATHENA)
+    {
+        mSyncPlayerMoveDistance =
+            config.getIntValue("syncPlayerMoveDistanceLegacy");
+    }
+#endif
 
     postInit(subType, nullptr);
     mAttackRange = 0;
@@ -1138,13 +1140,19 @@ void LocalPlayer::optionChanged(const std::string &value)
 #ifdef TMWA_SUPPORT
         if (Net::getNetworkType() != ServerType::TMWATHENA)
 #endif
-            mSyncPlayerMoveDistance = config.getIntValue("syncPlayerMoveDistance");
+        {
+            mSyncPlayerMoveDistance =
+                config.getIntValue("syncPlayerMoveDistance");
+        }
     }
 #ifdef TMWA_SUPPORT
     else if (value == "syncPlayerMoveDistanceLegacy")
     {
         if (Net::getNetworkType() == ServerType::TMWATHENA)
-            mSyncPlayerMoveDistance = config.getIntValue("syncPlayerMoveDistanceLegacy");
+        {
+            mSyncPlayerMoveDistance =
+                config.getIntValue("syncPlayerMoveDistanceLegacy");
+        }
     }
 #endif
     else if (value == "drawPath")
