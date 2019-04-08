@@ -159,6 +159,8 @@ class AdminHandler final : public Ea::AdminHandler
         void slide(const int x, const int y) const override final;
 
         void changeDress() const override final;
+
+        void resetCooldowns() const override final;
 };
 
 }  // namespace TmwAthena

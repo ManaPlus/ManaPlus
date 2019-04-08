@@ -389,4 +389,11 @@ void AdminHandler::changeDress() const
     createOutPacket(CMSG_CHANGE_DRESS);
 }
 
+void AdminHandler::resetCooldowns() const
+{
+    if (packetVersion < 20160622)
+        return;
+    createOutPacket(CMSG_ADMIN_RESET_COOLDOWNS);
+}
+
 }  // namespace EAthena

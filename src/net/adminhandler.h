@@ -185,6 +185,8 @@ class AdminHandler notfinal
         virtual void guildRecall(const std::string &name) const = 0;
 
         virtual void changeDress() const = 0;
+
+        virtual void resetCooldowns() const = 0;
 };
 
 }  // namespace Net

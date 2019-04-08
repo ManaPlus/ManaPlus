@@ -160,6 +160,8 @@ class AdminHandler final : public Ea::AdminHandler
 
         void changeDress() const override final;
 
+        void resetCooldowns() const override final;
+
     protected:
         static std::string mStatsName;
 };

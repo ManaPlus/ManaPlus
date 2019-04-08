@@ -300,4 +300,8 @@ void AdminHandler::changeDress() const
 {
 }
 
+void AdminHandler::resetCooldowns() const
+{
+}
+
 }  // namespace TmwAthena
