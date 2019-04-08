@@ -355,6 +355,7 @@ packet(CMSG_NPC_BARTER_CLOSE,             0x0000,   0, nullptr);
 packet(CMSG_CAMERA_INFO,                  0x0000,   0, nullptr);
 packet(CMSG_NPC_BARTER_BUY,               0x0000,   0, nullptr);
 packet(CMSG_CLIENT_VERSION,               0x0000,   0, nullptr);
+packet(CMSG_PLAYER_STYLE_CLOSE,           0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1372,6 +1373,7 @@ if (packetVersion >= 20151001)
 if (packetVersion >= 20151104)
 {
     packet(CMSG_PLAYER_SELECT_STYLE,      0x0a46,  14, clif->pReqStyleChange);
+    packet(CMSG_PLAYER_STYLE_CLOSE,       0x0a48,  2, clif->pStyleClose);
 }
 
 // 20160323

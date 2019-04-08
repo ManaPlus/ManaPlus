@@ -836,6 +836,13 @@ void PlayerHandler::setTitle(const int titleId) const
     outMsg.writeInt32(titleId, "title");
 }
 
+void PlayerHandler::closeStyleWindow() const
+{
+    if (packetVersion < 20151104)
+        return;
+    createOutPacket(CMSG_PLAYER_STYLE_CLOSE);
+}
+
 #undef setStatComplex
 
 }  // namespace EAthena

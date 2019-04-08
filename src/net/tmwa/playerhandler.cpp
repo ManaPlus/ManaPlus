@@ -510,4 +510,8 @@ void PlayerHandler::setTitle(const int titleId A_UNUSED) const
 {
 }
 
+void PlayerHandler::closeStyleWindow() const
+{
+}
+
 }  // namespace TmwAthena

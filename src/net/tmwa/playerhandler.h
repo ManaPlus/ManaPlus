@@ -96,6 +96,8 @@ class PlayerHandler final : public Ea::PlayerHandler
                      const Notify notify) const override final;
 
         void setTitle(const int titleId) const override final;
+
+        void closeStyleWindow() const override final;
 };
 
 }  // namespace TmwAthena
