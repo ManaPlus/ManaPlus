@@ -1147,4 +1147,6 @@ void Viewport::videoResized()
 {
     updateMidVars();
     updateMaxVars();
+    if (mMap != nullptr)
+        mMap->screenResized();
 }

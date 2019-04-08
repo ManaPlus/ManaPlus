@@ -372,6 +372,8 @@ class Map final : public Properties,
         std::string getCounterName() const override final
         { return mName; }
 
+        void screenResized();
+
     protected:
         friend class Actor;
         friend class Minimap;
@@ -500,6 +502,7 @@ class Map final : public Properties,
         bool mCachedDraw;
         bool mCustom;
         bool mDrawOnlyFringe;
+        bool mClear;
 };
 
 #endif  // RESOURCES_MAP_MAP_H

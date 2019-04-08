@@ -163,7 +163,8 @@ Map::Map(const std::string &name,
     mCachedDraw(false),
 #endif  // USE_OPENGL
     mCustom(false),
-    mDrawOnlyFringe(false)
+    mDrawOnlyFringe(false),
+    mClear(false)
 {
     config.addListener("OverlayDetail", this);
     config.addListener("guialpha", this);
@@ -339,6 +340,9 @@ void Map::draw(Graphics *restrict const graphics,
 {
     if (localPlayer == nullptr)
         return;
+
+    if (mClear)
+        mainGraphics->clearScreen();
 
     BLOCK_START("Map::draw")
     // Calculate range of tiles which are on-screen
@@ -1797,6 +1801,19 @@ int Map::calcMemoryChilds(const int level) const
     if (mHeights != nullptr)
         mHeights->calcMemory(level + 1);
     return sz;
+}
+
+void Map::screenResized()
+{
+    if (mWidth * mapTileSize < mainGraphics->mWidth ||
+        mHeight * mapTileSize < mainGraphics->mHeight)
+    {
+        mClear = true;
+    }
+    else
+    {
+        mClear = false;
+    }
 }
 
 #ifdef USE_OPENGL

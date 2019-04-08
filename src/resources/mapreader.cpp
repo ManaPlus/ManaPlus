@@ -35,6 +35,8 @@
 
 #include "fs/virtfs/fs.h"
 
+#include "render/graphics.h"
+
 #include "resources/map/map.h"
 #include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"
@@ -359,6 +361,8 @@ Map *MapReader::readMap(XmlNodePtrConst node, const std::string &path)
     Map *const map = new Map(path,
         w, h,
         tilew, tileh);
+
+    map->screenResized();
 
     const std::string fileName = path.substr(path.rfind(dirSeparator) + 1);
     map->setProperty("shortName", fileName);
