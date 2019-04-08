@@ -1599,6 +1599,24 @@ if (packetVersionRe >= 20190130)
     packet(SMSG_SKILL_CASTING,             0x0b1a,  29, &BeingRecv::processSkillCasting3,               20190130);
 }
 
+// 20190227 main
+if (packetVersionMain >= 20190227)
+{
+    packet(SMSG_MAP_PING2,                 0x0b1d,   2, &GameRecv::processPing2,                        20190227);
+}
+
+// 20190220 re
+if (packetVersionRe >= 20190220)
+{
+    packet(SMSG_MAP_PING2,                 0x0b1d,   2, &GameRecv::processPing2,                        20190220);
+}
+
+// 20190220 zero
+if (packetVersionRe >= 20190220)
+{
+    packet(SMSG_MAP_PING2,                 0x0b1d,   2, &GameRecv::processPing2,                        20190220);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

@@ -84,4 +84,10 @@ void GameRecv::processMapAuthRefuse(Net::MessageIn &msg)
     UNIMPLEMENTEDPACKET;
     msg.readUInt8("error");
 }
+
+void GameRecv::processPing2(Net::MessageIn &msg A_UNUSED)
+{
+    // do nothing
+}
+
 }  // namespace EAthena

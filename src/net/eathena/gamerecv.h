@@ -36,6 +36,7 @@ namespace EAthena
         void processMapLogin(Net::MessageIn &msg);
         void processServerTick(Net::MessageIn &msg);
         void processMapAuthRefuse(Net::MessageIn &msg);
+        void processPing2(Net::MessageIn &msg);
     }  // namespace GameRecv
 }  // namespace EAthena
 
