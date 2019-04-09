@@ -35,8 +35,6 @@
 
 #include "fs/virtfs/fs.h"
 
-#include "render/graphics.h"
-
 #include "resources/map/map.h"
 #include "resources/map/mapheights.h"
 #include "resources/map/maplayer.h"
