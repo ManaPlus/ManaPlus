@@ -129,7 +129,7 @@ clang-3.5:
   script:
   - ./tools/ci/jobs/clang35.sh
   - ./tools/ci/scripts/runtests.sh
-  image: debian:jessie-backports
+  image: debian:jessie
   <<: *job-push
   variables:
     PACKAGES: clang-3.5 libc++-dev 
@@ -143,7 +143,7 @@ clang-3.5_i386:
   script:
   - ./tools/ci/jobs/clang35.sh
   - ./tools/ci/scripts/runtests.sh
-  image: i386/debian:jessie-backports
+  image: i386/debian:jessie
   <<: *job-push
   variables:
     PACKAGES: clang-3.5 libc++-dev 
