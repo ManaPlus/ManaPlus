@@ -153,7 +153,6 @@ packet(SMSG_GUILD_CREATE_RESPONSE,         0x0167,   3, &GuildRecv::processGuild
 packet(SMSG_GUILD_DEL_ALLIANCE,            0x0184,  10, &GuildRecv::processGuildDelAlliance,        0);
 packet(SMSG_GUILD_EMBLEM,                  0x01b4,  12, &GuildRecv::processGuildEmblem,                 0);
 packet(SMSG_GUILD_EMBLEM_DATA,             0x0152,  -1, &GuildRecv::processGuildEmblemData,         0);
-packet(SMSG_GUILD_EXPULSION_LIST,          0x0163,  -1, &GuildRecv::processGuildExpulsionList,          0);
 packet(SMSG_GUILD_INVITE,                  0x016a,  30, &GuildRecv::processGuildInvite,             0);
 packet(SMSG_GUILD_INVITE_ACK,              0x0169,   3, &GuildRecv::processGuildInviteAck,          0);
 packet(SMSG_GUILD_LEAVE,                   0x015a,  66, &GuildRecv::processGuildLeave,              0);
@@ -293,6 +292,7 @@ packet(SMSG_ADD_MAP_MARKER,                0x09c1,  10, &MapRecv::processAddMapM
 packet(SMSG_GUILD_ONLINE_INFO,             0x016d,  14, &GuildRecv::processOnlineInfo,                  0);
 packet(SMSG_FORMAT_MESSAGE_STRING,         0x02c2,  -1, &ChatRecv::processFormatMessageString,          0);
 packet(SMSG_FORMAT_COLOR_MESSAGE,          0x09cd,   8, &ChatRecv::processFormatColor,                  0);
+packet(SMSG_GUILD_EXPULSION_LIST,          0x0163,  -1, &GuildRecv::processGuildExpulsionList1,         0);
 
 // 3
 if (packetVersion >= 3)
@@ -686,6 +686,7 @@ if (packetVersion >= 20100701)
 
 // 20100803
 packet(SMSG_GUILD_EXPULSION,               0x0839,  66, &GuildRecv::processGuildExpulsion,              20100803);
+packet(SMSG_GUILD_EXPULSION_LIST,          0x0163,  -1, &GuildRecv::processGuildExpulsionList2,         20100803);
 
 // 20101005 main
 if (packetVersionMain >= 20101005)
@@ -1075,6 +1076,7 @@ if (packetVersionRe >= 20160921)
 {
     packet(SMSG_GUILD_EXPULSION2,          0x0a82,  46, &GuildRecv::processGuildExpulsion2,             20160921);
     packet(SMSG_GUILD_LEAVE2,              0x0a83,  46, &GuildRecv::processGuildLeave2,                 20160921);
+    packet(SMSG_GUILD_EXPULSION_LIST,      0x0a87,  -1, &GuildRecv::processGuildExpulsionList3,         20160921);
 }
 
 // 20161019 main
@@ -1082,6 +1084,7 @@ if (packetVersionMain >= 20161019)
 {
     packet(SMSG_GUILD_EXPULSION2,          0x0a82,  46, &GuildRecv::processGuildExpulsion2,             20161019);
     packet(SMSG_GUILD_LEAVE2,              0x0a83,  46, &GuildRecv::processGuildLeave2,                 20161019);
+    packet(SMSG_GUILD_EXPULSION_LIST,      0x0a87,  -1, &GuildRecv::processGuildExpulsionList3,         20161019);
 }
 
 // 20161026
@@ -1232,6 +1235,7 @@ if (packets_zero == true)
     packet(SMSG_CLAN_INFO,                 0x098a,  -1, &ClanRecv::processClanInfo,                     20171018);
     packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20171018);
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,   9, &InventoryRecv::processEnchantEquipment,        20171018);
+    packet(SMSG_GUILD_EXPULSION_LIST,      0x0a87,  -1, &GuildRecv::processGuildExpulsionList3,         20171018);
 }
 
 // 20171019 zero

@@ -762,27 +762,49 @@ void GuildRecv::processGuildExpulsion2(Net::MessageIn &msg)
     }
 }
 
-void GuildRecv::processGuildExpulsionList(Net::MessageIn &msg)
+void GuildRecv::processGuildExpulsionList1(Net::MessageIn &msg)
 {
+    UNIMPLEMENTEDPACKET;
     const int length = msg.readInt16("len");
     if (length < 4)
         return;
 
-    int count;
-    if (msg.getVersion() < 20100803)
+    const int count = (length - 4) / 88;
+    for (int i = 0; i < count; i++)
     {
-        count = (length - 4) / 64;
-        for (int i = 0; i < count; i++)
-        {
-            msg.readString(24, "name");
-            msg.readString(40, "message");
-        }
+        msg.readString(24, "char name");
+        msg.readString(24, "account name");
+        msg.readString(40, "message");
     }
-    else
+}
+
+void GuildRecv::processGuildExpulsionList2(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int length = msg.readInt16("len");
+    if (length < 4)
+        return;
+
+    const int count = (length - 4) / 64;
+    for (int i = 0; i < count; i++)
     {
-        count = (length - 4) / 40;
-        for (int i = 0; i < count; i++)
-            msg.readString(40, "message");
+        msg.readString(24, "name");
+        msg.readString(40, "message");
+    }
+}
+
+void GuildRecv::processGuildExpulsionList3(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    const int length = msg.readInt16("len");
+    if (length < 4)
+        return;
+
+    int count = (length - 4) / 44;
+    for (int i = 0; i < count; i++)
+    {
+        msg.readInt32("char id");
+        msg.readString(40, "message");
     }
 }
 
