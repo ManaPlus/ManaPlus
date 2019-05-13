@@ -442,7 +442,6 @@ if (packetVersion >= 20070227)
     packet(SMSG_QUEST_ACTIVATE,            0x02b7,   7, &QuestRecv::processActivateQuest,               20070227);
     packet(SMSG_ITEM_DAMAGED,              0x02bb,   8, &InventoryRecv::processItemDamaged,             20070227);
     packet(SMSG_COLOR_MESSAGE,             0x02c1,  -1, &ChatRecv::processColorChat,                    20070227);
-    packet(SMSG_PARTY_INVITATION_STATS,    0x02c9,   3, &PartyRecv::processPartyInvitationStats,        20070227);
     packet(SMSG_INSTANCE_CREATE,           0x02cc,   4, &MapRecv::processInstanceCreate,                20070227);
     packet(SMSG_INSTANCE_DELETE,           0x02ce,  10, &MapRecv::processInstanceDelete,                20070227);
     packet(SMSG_PLAYER_ZC_CONFIG,          0x02d9,  10, &PlayerRecv::processPlayerZCConfig,             20070227);
@@ -453,6 +452,8 @@ if (packetVersion >= 20070227)
     packet(SMSG_BATTLE_UPDATE_COORDS,      0x02df,  36, &BattleGroundRecv::processBattleUpdateCoords,   20070227);
     packet(SMSG_BATTLE_UPDATE_HP,          0x02e0,  34, &BattleGroundRecv::processBattleUpdateHp,       20070227);
 }
+
+packet(SMSG_PARTY_INVITATION_STATS,        0x02c9,   3, &PartyRecv::processPartyInvitationStats,        20070227);
 
 // 20070821
 packet(SMSG_PARTY_INVITE_RESPONSE,         0x02c5,  30, &PartyRecv::processPartyInviteResponse,         20070821);
