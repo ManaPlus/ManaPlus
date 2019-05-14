@@ -731,11 +731,18 @@ if (packetVersion >= 20120221)
     packet(SMSG_BEING_SPAWN,               0x090f,  -1, &BeingRecv::processBeingSpawn,                  20120221);
 }
 
-// 20120229
-if (packetVersion >= 20120229)
+// 20120221 re
+if (packetVersionRe >= 20120221)
 {
-    packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20120229);
-    packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20120229);
+    packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20120221);
+    packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20120221);
+}
+
+// 20120314 main
+if (packetVersionMain >= 20120314)
+{
+    packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20120314);
+    packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20120314);
 }
 
 // 20120328 re
@@ -1258,6 +1265,8 @@ if (packets_zero == true)
     packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20171018);
     packet(SMSG_NPC_CASH_BUY,              0x0849,  16, &CashShopRecv::processCashShopBuy,              20171018);
     packet(SMSG_ROULETTE_CLOSE,            0x0a1e,   3, &RouletteRecv::processRouletteClose,            20171018);
+    packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20171018);
+    packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20171018);
 }
 
 // 20171019 zero
