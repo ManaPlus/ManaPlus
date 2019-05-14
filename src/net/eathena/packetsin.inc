@@ -922,6 +922,7 @@ if (packetVersionRe >= 20141126)
     packet(SMSG_ACHIEVEMENT_LIST,          0x0a23,  -1, &AchievementRecv::processAchievementList,       20141126);
     packet(SMSG_ACHIEVEMENT_UPDATE,        0x0a24,  66, &AchievementRecv::processAchievementUpdate,     20141126);
     packet(SMSG_ACHIEVEMENT_GET_REWARD,    0x0a26,   6, &AchievementRecv::processAchievementGetReward,  20141126);
+    packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20141126);
 }
 
 // 0
@@ -966,6 +967,7 @@ if (packetVersionMain >= 20150225)
     packet(SMSG_ACHIEVEMENT_LIST,          0x0a23,  -1, &AchievementRecv::processAchievementList,       20150225);
     packet(SMSG_ACHIEVEMENT_UPDATE,        0x0a24,  66, &AchievementRecv::processAchievementUpdate,     20150225);
     packet(SMSG_ACHIEVEMENT_GET_REWARD,    0x0a26,   6, &AchievementRecv::processAchievementGetReward,  20150225);
+    packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20150225);
 }
 
 // 20150226
@@ -993,12 +995,6 @@ if (packetVersion >= 20150226)
 if (packetVersion >= 20150422)
 {
     packet(SMSG_BEING_HAT_EFFECTS,         0x0a3b,  -1, &BeingRecv::processBeingHatEffects,             20150422);
-}
-
-// 20150503
-if (packetVersion >= 20150503)
-{
-    packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20150503);
 }
 
 // 20150513
@@ -1236,6 +1232,7 @@ if (packets_zero == true)
     packet(SMSG_PRIVATE_AIRSHIP_RESPONSE,  0x0A4A,   6, &NpcRecv::processPrivateAirShipResponse,        20171018);
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,   9, &InventoryRecv::processEnchantEquipment,        20171018);
     packet(SMSG_GUILD_EXPULSION_LIST,      0x0a87,  -1, &GuildRecv::processGuildExpulsionList3,         20171018);
+    packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20171018);
 }
 
 // 20171019 zero
