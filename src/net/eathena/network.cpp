@@ -74,6 +74,7 @@
 #include "net/eathena/petrecv.h"
 #include "net/eathena/playerrecv.h"
 #include "net/eathena/questrecv.h"
+#include "net/eathena/refinerecv.h"
 #include "net/eathena/rouletterecv.h"
 #include "net/eathena/searchstorerecv.h"
 #include "net/eathena/skillrecv.h"

@@ -1119,6 +1119,12 @@ if (packetVersion >= 20161026)
     packet(SMSG_GUILD_MEMBER_LIST,         0x0aa5,  -1, &GuildRecv::processGuildMemberList,             20161026);
 }
 
+// 20161130 main
+if (packetVersionMain >= 20161130)
+{
+    packet(SMSG_REFINE_WINDOW_OPEN,        0x0aa0,   2, &RefineRecv::processRefineOpen,                 20161130);
+}
+
 // 20161130 re
 if (packetVersionRe >= 20161130)
 {

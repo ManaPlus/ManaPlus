@@ -2063,6 +2063,8 @@ SRC += gui/windows/bankwindow.cpp \
 	      net/eathena/questrecv.cpp \
 	      net/eathena/questrecv.h \
 	      net/eathena/recvpackets.inc \
+	      net/eathena/refinerecv.cpp \
+	      net/eathena/refinerecv.h \
 	      net/eathena/roulettehandler.cpp \
 	      net/eathena/roulettehandler.h \
 	      net/eathena/rouletterecv.cpp \
