@@ -1653,6 +1653,24 @@ if (packetVersionRe >= 20190220)
     packet(SMSG_MAP_PING2,                 0x0b1d,   2, &GameRecv::processPing2,                        20190220);
 }
 
+// 20190320 re
+if (packetVersionRe >= 20190320)
+{
+    packet(SMSG_MAP_LOAD_CONFIRM,          0x0b1b,   2, &GameRecv::processLoadConfirm,                  20190320);
+}
+
+// 20190403 main
+if (packetVersionMain >= 20190403)
+{
+    packet(SMSG_MAP_LOAD_CONFIRM,          0x0b1b,   2, &GameRecv::processLoadConfirm,                  20190403);
+}
+
+// 20190410 zero
+if (packetVersionZero >= 20190410)
+{
+    packet(SMSG_MAP_LOAD_CONFIRM,          0x0b1b,   2, &GameRecv::processLoadConfirm,                  20190410);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

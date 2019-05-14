@@ -90,4 +90,9 @@ void GameRecv::processPing2(Net::MessageIn &msg A_UNUSED)
     // do nothing
 }
 
+void GameRecv::processLoadConfirm(Net::MessageIn &msg A_UNUSED)
+{
+    UNIMPLEMENTEDPACKET;
+}
+
 }  // namespace EAthena
