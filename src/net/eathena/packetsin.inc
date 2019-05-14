@@ -898,6 +898,18 @@ if (packetVersion >= 20140613)
     packet(SMSG_BATTLE_UPDATE_HP,          0x0a0e,  14, &BattleGroundRecv::processBattleUpdateHp,       20140613);
 }
 
+// 20140903 re
+if (packetVersionRe >= 20140903)
+{
+    packet(SMSG_ROULETTE_CLOSE,            0x0a1e,   3, &RouletteRecv::processRouletteClose,            20140903);
+}
+
+// 20141008 main
+if (packetVersionMain >= 20141008)
+{
+    packet(SMSG_ROULETTE_CLOSE,            0x0a1e,   3, &RouletteRecv::processRouletteClose,            20141008);
+}
+
 // 20141016
 packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
 packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20141016);
@@ -1245,6 +1257,7 @@ if (packets_zero == true)
     packet(SMSG_GUILD_EXPULSION_LIST,      0x0a87,  -1, &GuildRecv::processGuildExpulsionList3,         20171018);
     packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20171018);
     packet(SMSG_NPC_CASH_BUY,              0x0849,  16, &CashShopRecv::processCashShopBuy,              20171018);
+    packet(SMSG_ROULETTE_CLOSE,            0x0a1e,   3, &RouletteRecv::processRouletteClose,            20171018);
 }
 
 // 20171019 zero

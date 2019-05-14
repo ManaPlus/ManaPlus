@@ -34,6 +34,7 @@ namespace EAthena
         void processRouletteItemAck(Net::MessageIn &msg);
         void processRouletteGenerateAckType(Net::MessageIn &msg);
         void processRouletteOpenAck(Net::MessageIn &msg);
+        void processRouletteClose(Net::MessageIn &msg);
     }  // namespace RouletteRecv
 }  // namespace EAthena
 

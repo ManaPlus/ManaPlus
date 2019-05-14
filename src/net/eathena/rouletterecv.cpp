@@ -85,4 +85,10 @@ void RouletteRecv::processRouletteOpenAck(Net::MessageIn &msg)
     msg.readInt32("bronze point");
 }
 
+void RouletteRecv::processRouletteClose(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readUInt8("result");
+}
+
 }  // namespace EAthena
