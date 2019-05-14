@@ -54,4 +54,13 @@ void RefineRecv::processRefineAddItem(Net::MessageIn &msg)
     }
 }
 
+void RefineRecv::processRefineAnnounce(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    msg.readString(24, "char name");
+    msg.readItemId("item id");
+    msg.readInt8("refine level");
+    msg.readInt8("status");
+}
+
 }  // namespace EAthena

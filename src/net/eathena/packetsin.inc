@@ -1251,6 +1251,18 @@ packet(SMSG_PLAYER_STAT_UPDATE_7,          0x0acb,  12, &PlayerRecv::processPlay
 packet(SMSG_PLAYER_GET_EXP2,               0x0acc,  18, &PlayerRecv::processPlayerGetExp2,              20170830);
 packet(SMSG_SERVICE_MESSAGE_COLOR,         0x0adb,  -1, &ChatRecv::processServiceMessageColor,          20170830);
 
+// 20170830 re
+if (packetVersionRe >= 20170830)
+{
+    packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  30, &RefineRecv::processRefineAnnounce,             20170830);
+}
+
+// 20170906 main
+if (packetVersionMain >= 20170906)
+{
+    packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  30, &RefineRecv::processRefineAnnounce,             20170906);
+}
+
 // zero 20171018
 if (packets_zero == true)
 {
@@ -1281,6 +1293,7 @@ if (packets_zero == true)
     packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20171018);
     packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20171018);
     packet(SMSG_REFINE_ADD_ITEM,           0x0aa2,  -1, &RefineRecv::processRefineAddItem,              20171018);
+    packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  30, &RefineRecv::processRefineAnnounce,             20171018);
 }
 
 // 20171019 zero
@@ -1453,6 +1466,7 @@ if (packetVersionRe >= 20180704)
     packet(SMSG_ITEM_DROPPED,              0x0add,  24, &ItemRecv::processItemDropped,                  20180704);
     packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  47, &InventoryRecv::processShowItemPreview1,        20180704);
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20180704);
+    packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  32, &RefineRecv::processRefineAnnounce,             20180704);
 }
 
 // 20180801 re
@@ -1574,6 +1588,7 @@ if (packetVersionZero >= 20181114)
 {
     packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181114);
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20181114);
+    packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  32, &RefineRecv::processRefineAnnounce,             20181114);
 }
 
 // 20181121 main
@@ -1581,6 +1596,7 @@ if (packetVersionMain >= 20181121)
 {
     packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181121);
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20181121);
+    packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  32, &RefineRecv::processRefineAnnounce,             20181121);
 }
 
 // 20181128 main
