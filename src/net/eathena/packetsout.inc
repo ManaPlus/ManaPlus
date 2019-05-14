@@ -359,6 +359,7 @@ packet(CMSG_PLAYER_STYLE_CLOSE,           0x0000,   0, nullptr);
 packet(CMSG_MAP_PING2,                    0x0000,   0, nullptr);
 packet(CMSG_ADMIN_RESET_COOLDOWNS,        0x0000,   0, nullptr);
 packet(CMSG_REFINE_ADD_ITEM,              0x0000,   0, nullptr);
+packet(CMSG_REFINE_ITEM,                  0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1401,12 +1402,14 @@ if (packetVersion >= 20160525)
 if (packetVersionMain >= 20161005)
 {
     packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
+    packet(CMSG_REFINE_ITEM,              0x0aa3,   7, clif->pRefineryUIRefine);
 }
 
 // 20161005 re
 if (packetVersionRe >= 20161005)
 {
     packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
+    packet(CMSG_REFINE_ITEM,              0x0aa3,   7, clif->pRefineryUIRefine);
 }
 
 // 20170419
@@ -1421,6 +1424,7 @@ if (packets_zero >= true)
 {
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  20, clif->pPrivateAirshipRequest);
     packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
+    packet(CMSG_REFINE_ITEM,              0x0aa3,   7, clif->pRefineryUIRefine);
 }
 
 // 20171214 zero
@@ -1503,6 +1507,7 @@ if (packetVersionRe >= 20180704)
     packet(CMSG_NPC_REPAIR,               0x01fd,  25, clif->pRepairItem);
     packet(CMSG_NPC_COOKING,              0x025b,   8, clif->pCooking);
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  22, clif->pPrivateAirshipRequest);
+    packet(CMSG_REFINE_ITEM,              0x0aa3,   9, clif->pRefineryUIRefine);
 }
 
 // 20180718 re
@@ -1570,6 +1575,7 @@ if (packetVersionZero >= 20181114)
     packet(CMSG_INVENTORY_EXPAND_REJECT,  0x0b19,   2, clif->pInventoryExpansionReject);
     packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  22, clif->pPrivateAirshipRequest);
+    packet(CMSG_REFINE_ITEM,              0x0aa3,   9, clif->pRefineryUIRefine);
 }
 
 // 20181121 main
@@ -1577,6 +1583,7 @@ if (packetVersionMain >= 20181121)
 {
     packet(CMSG_NPC_SELECT_ARROW,         0x01ae,   6, clif->pSelectArrow);
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  22, clif->pPrivateAirshipRequest);
+    packet(CMSG_REFINE_ITEM,              0x0aa3,   9, clif->pRefineryUIRefine);
 }
 
 // 20181226 zero

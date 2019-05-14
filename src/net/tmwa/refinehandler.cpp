@@ -40,4 +40,10 @@ void RefineHandler::addItem(const Item *const item A_UNUSED) const
 {
 }
 
+void RefineHandler::refineItem(const Item *const item1 A_UNUSED,
+                               const Item *const item2 A_UNUSED,
+                               int blessing A_UNUSED) const
+{
+}
+
 }  // namespace TmwAthena

@@ -50,4 +50,20 @@ void RefineHandler::addItem(const Item *const item) const
         item->getInvIndex() + INVENTORY_OFFSET), "inv index");
 }
 
+void RefineHandler::refineItem(const Item *const item1,
+                               const Item *const item2,
+                               int blessing) const
+{
+    if (item1 == nullptr ||
+        item2 == nullptr)
+    {
+        return;
+    }
+    createOutPacket(CMSG_REFINE_ITEM);
+    outMsg.writeInt16(CAST_S16(
+        item1->getInvIndex() + INVENTORY_OFFSET), "inv index");
+    outMsg.writeItemId(item2->getId(), "item id");
+    outMsg.writeInt8(blessing, "blessing");
+}
+
 }  // namespace EAthena
