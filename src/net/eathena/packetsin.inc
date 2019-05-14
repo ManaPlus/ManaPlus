@@ -1320,6 +1320,18 @@ if (packetVersionZero >= 20171123)
     packet(SMSG_LOGIN_OTP,                 0x0ae3,  -1, &LoginRecv::processLoginOtp2,                   20171123);
 }
 
+// 20171129 re
+if (packetVersionRe >= 20171129)
+{
+    packet(SMSG_NAME_RESPONSE_TITLE,       0x0adf,  58, &BeingRecv::processNameResponseTitle,           20171129);
+}
+
+// 20171130 zero
+if (packetVersionZero >= 20171130)
+{
+    packet(SMSG_NAME_RESPONSE_TITLE,       0x0adf,  58, &BeingRecv::processNameResponseTitle,           20171130);
+}
+
 // 20171207
 if (packetVersion >= 20171207)
 {
@@ -1361,6 +1373,12 @@ if (packetVersionRe >= 20180124)
 if (packetVersionZero >= 20180131)
 {
     packet(SMSG_CHAR_PINCODE_STATUS2,      0x0ae9,  13, &CharServerRecv::processPincodeStatus2,         20180124);
+}
+
+// 20180207 main
+if (packetVersionMain >= 20180207)
+{
+    packet(SMSG_NAME_RESPONSE_TITLE,       0x0adf,  58, &BeingRecv::processNameResponseTitle,           20180207);
 }
 
 // re 20180221

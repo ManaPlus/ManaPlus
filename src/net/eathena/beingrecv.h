@@ -83,6 +83,7 @@ namespace EAthena
         void processSkillEntry(Net::MessageIn &msg);
         void processPlayerStatusChange(Net::MessageIn &msg);
         void processBeingResurrect(Net::MessageIn &msg);
+        void processNameResponseTitle(Net::MessageIn &msg);
         void processPlayerGuilPartyInfo(Net::MessageIn &msg);
         void processPlayerGuilPartyInfo2(Net::MessageIn &msg);
         void processBeingRemoveSkill(Net::MessageIn &msg);

@@ -34,6 +34,8 @@
 
 #include "enums/resources/notifytypes.h"
 
+#include "enums/resources/map/mapitemtype.h"
+
 #include "particle/particleengine.h"
 
 #include "input/keyboardconfig.h"
@@ -1672,6 +1674,64 @@ void BeingRecv::processBeingResurrect(Net::MessageIn &msg)
 
     dstBeing->setAction(BeingAction::STAND, 0);
     BLOCK_END("BeingRecv::processBeingResurrect")
+}
+
+void BeingRecv::processNameResponseTitle(Net::MessageIn &msg)
+{
+    if (actorManager == nullptr)
+        return;
+
+    const BeingId beingId = msg.readBeingId("being id");
+    msg.readInt32("group id");  // +++ can be used for icon or other
+    const std::string name = msg.readString(24, "name");
+    msg.readString(24, "title");  // +++ can be used for second name part
+    Being *const dstBeing = actorManager->findBeing(beingId);
+
+    actorManager->updateNameId(name, beingId);
+
+    if (dstBeing != nullptr)
+    {
+        if (beingId == localPlayer->getId())
+        {
+            localPlayer->pingResponse();
+        }
+        else
+        {
+            if (dstBeing->getType() != ActorType::Portal)
+            {
+                dstBeing->setName(name);
+            }
+            else if (viewport != nullptr)
+            {
+                Map *const map = viewport->getMap();
+                if (map != nullptr)
+                {
+                    map->addPortalTile(name, MapItemType::PORTAL,
+                        dstBeing->getTileX(), dstBeing->getTileY());
+                }
+            }
+            dstBeing->updateGuild();
+            dstBeing->addToCache();
+
+            if (dstBeing->getType() == ActorType::Player)
+                dstBeing->updateColors();
+
+            if (localPlayer != nullptr)
+            {
+                const Party *const party = localPlayer->getParty();
+                if (party != nullptr && party->isMember(dstBeing->getId()))
+                {
+                    PartyMember *const member = party->getMember(
+                        dstBeing->getId());
+
+                    if (member != nullptr)
+                        member->setName(dstBeing->getName());
+                }
+                localPlayer->checkNewName(dstBeing);
+            }
+            return;
+        }
+    }
 }
 
 void BeingRecv::processPlayerGuilPartyInfo(Net::MessageIn &msg)
