@@ -102,8 +102,7 @@ void CashShopRecv::processCashShopOpen(Net::MessageIn &msg)
 void CashShopRecv::processCashShopBuyAck(Net::MessageIn &msg)
 {
     msg.readInt32("cash points");
-    if (packetVersion >= 20070711)
-        msg.readInt32("kafra points");
+    msg.readInt32("kafra points");
     const uint16_t res = msg.readInt16("error");
     switch (res)
     {

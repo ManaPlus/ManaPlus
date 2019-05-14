@@ -190,7 +190,6 @@ packet(SMSG_MVP_NO_ITEM,                   0x010d,   2, &ChatRecv::processMVPNoI
 packet(SMSG_NPC_BUY,                       0x00c6,  -1, &BuySellRecv::processNpcBuy,                    0);
 packet(SMSG_NPC_BUY_RESPONSE,              0x00ca,   3, &BuySellRecv::processNpcBuyResponse,            0);
 packet(SMSG_NPC_BUY_SELL_CHOICE,           0x00c4,   6, &Ea::BuySellRecv::processNpcBuySellChoice,      0);
-packet(SMSG_NPC_CASH_BUY,                  0x0849,  16, &CashShopRecv::processCashShopBuy,              0);
 packet(SMSG_NPC_CASH_POINTS,               0x0845,  10, &CashShopRecv::processCashShopPoints,           0);
 packet(SMSG_NPC_CASH_SCHEDULE,             0x08ca,  -1, &CashShopRecv::processCashShopSchedule,         0);
 packet(SMSG_NPC_CASH_TAB_PRICE_LIST,       0x08c0,  -1, &CashShopRecv::processCashShopTabPriceList,     0);
@@ -694,6 +693,12 @@ if (packetVersionMain >= 20101005)
     packet(SMSG_HOMUNCULUS_INFO,           0x022e,  71, &HomunculusRecv::processHomunculusInfo1,        20101005);
 }
 
+// 20101123 main
+if (packetVersionMain >= 20101123)
+{
+    packet(SMSG_NPC_CASH_BUY,              0x0849,  16, &CashShopRecv::processCashShopBuy,              20101123);
+}
+
 // 20101124
 if (packetVersion >= 20101124)
 {
@@ -731,6 +736,12 @@ if (packetVersion >= 20120229)
 {
     packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20120229);
     packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20120229);
+}
+
+// 20120328 re
+if (packetVersionRe >= 20120328)
+{
+    packet(SMSG_NPC_CASH_BUY,              0x0849,  16, &CashShopRecv::processCashShopBuy,              20120328);
 }
 
 // 20120410
@@ -1233,6 +1244,7 @@ if (packets_zero == true)
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,   9, &InventoryRecv::processEnchantEquipment,        20171018);
     packet(SMSG_GUILD_EXPULSION_LIST,      0x0a87,  -1, &GuildRecv::processGuildExpulsionList3,         20171018);
     packet(SMSG_PLAYER_GUILD_PARTY_INFO,   0x0a30, 106, &BeingRecv::processPlayerGuilPartyInfo2,        20171018);
+    packet(SMSG_NPC_CASH_BUY,              0x0849,  16, &CashShopRecv::processCashShopBuy,              20171018);
 }
 
 // 20171019 zero
