@@ -1119,10 +1119,17 @@ if (packetVersion >= 20161026)
     packet(SMSG_GUILD_MEMBER_LIST,         0x0aa5,  -1, &GuildRecv::processGuildMemberList,             20161026);
 }
 
+// 20161109 re
+if (packetVersionRe >= 20161109)
+{
+    packet(SMSG_REFINE_ADD_ITEM,           0x0aa2,  -1, &RefineRecv::processRefineAddItem,              20161109);
+}
+
 // 20161130 main
 if (packetVersionMain >= 20161130)
 {
     packet(SMSG_REFINE_WINDOW_OPEN,        0x0aa0,   2, &RefineRecv::processRefineOpen,                 20161130);
+    packet(SMSG_REFINE_ADD_ITEM,           0x0aa2,  -1, &RefineRecv::processRefineAddItem,              20161130);
 }
 
 // 20161130 re
@@ -1273,6 +1280,7 @@ if (packets_zero == true)
     packet(SMSG_ROULETTE_CLOSE,            0x0a1e,   3, &RouletteRecv::processRouletteClose,            20171018);
     packet(SMSG_MERGE_ITEM,                0x096d,  -1, &InventoryRecv::processMergeItem,               20171018);
     packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20171018);
+    packet(SMSG_REFINE_ADD_ITEM,           0x0aa2,  -1, &RefineRecv::processRefineAddItem,              20171018);
 }
 
 // 20171019 zero

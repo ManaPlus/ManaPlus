@@ -31,6 +31,7 @@ namespace EAthena
     namespace RefineRecv
     {
         void processRefineOpen(Net::MessageIn &msg);
+        void processRefineAddItem(Net::MessageIn &msg);
     }  // namespace RefineRecv
 }  // namespace EAthena
 

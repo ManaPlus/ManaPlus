@@ -26,12 +26,32 @@
 
 #include "debug.h"
 
+extern int itemIdLen;
+
 namespace EAthena
 {
 
 void RefineRecv::processRefineOpen(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
+}
+
+void RefineRecv::processRefineAddItem(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    int blockSize = 7;
+    if (itemIdLen == 4)
+        blockSize += 2;
+
+    const int count = (msg.readInt16("len") - 7) / blockSize;
+    msg.readInt16("item index");
+    msg.readUInt8("blacksmith blessing");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readItemId("item id");
+        msg.readUInt8("chance");
+        msg.readInt32("money");
+    }
 }
 
 }  // namespace EAthena
