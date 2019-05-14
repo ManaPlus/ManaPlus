@@ -39,6 +39,8 @@ class RefineHandler final : public Net::RefineHandler
         void refineItem(const Item *const item1,
                         const Item *const item2,
                         int blessing) const override final;
+
+        void close() const override final;
 };
 
 }  // namespace TmwAthena

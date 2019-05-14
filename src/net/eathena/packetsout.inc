@@ -360,6 +360,7 @@ packet(CMSG_MAP_PING2,                    0x0000,   0, nullptr);
 packet(CMSG_ADMIN_RESET_COOLDOWNS,        0x0000,   0, nullptr);
 packet(CMSG_REFINE_ADD_ITEM,              0x0000,   0, nullptr);
 packet(CMSG_REFINE_ITEM,                  0x0000,   0, nullptr);
+packet(CMSG_REFINE_CLOSE,                 0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1403,6 +1404,7 @@ if (packetVersionMain >= 20161005)
 {
     packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
     packet(CMSG_REFINE_ITEM,              0x0aa3,   7, clif->pRefineryUIRefine);
+    packet(CMSG_REFINE_CLOSE,             0x0aa4,   2, clif->pRefineryUIClose);
 }
 
 // 20161005 re
@@ -1410,6 +1412,7 @@ if (packetVersionRe >= 20161005)
 {
     packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
     packet(CMSG_REFINE_ITEM,              0x0aa3,   7, clif->pRefineryUIRefine);
+    packet(CMSG_REFINE_CLOSE,             0x0aa4,   2, clif->pRefineryUIClose);
 }
 
 // 20170419
@@ -1425,6 +1428,7 @@ if (packets_zero >= true)
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  20, clif->pPrivateAirshipRequest);
     packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
     packet(CMSG_REFINE_ITEM,              0x0aa3,   7, clif->pRefineryUIRefine);
+    packet(CMSG_REFINE_CLOSE,             0x0aa4,   2, clif->pRefineryUIClose);
 }
 
 // 20171214 zero

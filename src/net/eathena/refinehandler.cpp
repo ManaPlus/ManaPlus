@@ -66,4 +66,9 @@ void RefineHandler::refineItem(const Item *const item1,
     outMsg.writeInt8(blessing, "blessing");
 }
 
+void RefineHandler::close() const
+{
+    createOutPacket(CMSG_REFINE_CLOSE);
+}
+
 }  // namespace EAthena

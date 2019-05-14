@@ -46,4 +46,8 @@ void RefineHandler::refineItem(const Item *const item1 A_UNUSED,
 {
 }
 
+void RefineHandler::close() const
+{
+}
+
 }  // namespace TmwAthena
