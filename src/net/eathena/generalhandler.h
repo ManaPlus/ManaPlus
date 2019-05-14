@@ -64,6 +64,7 @@ class Mail2Handler;
 class MapHandler;
 class MarketHandler;
 class MercenaryHandler;
+class RefineHandler;
 class RouletteHandler;
 class SearchStoreHandler;
 class VendingHandler;
@@ -133,6 +134,7 @@ class GeneralHandler final : public Net::GeneralHandler
         MarketHandler *mMarketHandler;
         BarterHandler *mBarterHandler;
         VendingHandler *mVendingHandler;
+        RefineHandler *mRefineHandler;
         RouletteHandler *mRouletteHandler;
         SearchStoreHandler *mSearchStoreHandler;
 };

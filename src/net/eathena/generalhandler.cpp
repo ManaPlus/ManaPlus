@@ -64,6 +64,8 @@
 #include "net/eathena/partyhandler.h"
 #include "net/eathena/pethandler.h"
 #include "net/eathena/playerhandler.h"
+#include "net/eathena/refinehandler.h"
+#include "net/eathena/refinehandler.h"
 #include "net/eathena/roulettehandler.h"
 #include "net/eathena/searchstorehandler.h"
 #include "net/eathena/serverfeatures.h"
@@ -118,6 +120,7 @@ GeneralHandler::GeneralHandler() :
     mMarketHandler(new MarketHandler),
     mBarterHandler(new BarterHandler),
     mVendingHandler(new VendingHandler),
+    mRefineHandler(new RefineHandler),
     mRouletteHandler(new RouletteHandler),
     mSearchStoreHandler(new SearchStoreHandler)
 {
@@ -166,6 +169,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mMarketHandler)
     delete2(mBarterHandler)
     delete2(mVendingHandler)
+    delete2(mRefineHandler)
     delete2(mRouletteHandler)
     delete2(mSearchStoreHandler)
 }

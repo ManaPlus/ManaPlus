@@ -358,6 +358,7 @@ packet(CMSG_CLIENT_VERSION,               0x0000,   0, nullptr);
 packet(CMSG_PLAYER_STYLE_CLOSE,           0x0000,   0, nullptr);
 packet(CMSG_MAP_PING2,                    0x0000,   0, nullptr);
 packet(CMSG_ADMIN_RESET_COOLDOWNS,        0x0000,   0, nullptr);
+packet(CMSG_REFINE_ADD_ITEM,              0x0000,   0, nullptr);
 #else
 // 20040713
 if (packetVersion >= 20040713)
@@ -1396,6 +1397,18 @@ if (packetVersion >= 20160525)
     packet(CMSG_CAMERA_INFO,              0x0a77,  15, clif->pCameraInfo);
 }
 
+// 20161005 main
+if (packetVersionMain >= 20161005)
+{
+    packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
+}
+
+// 20161005 re
+if (packetVersionRe >= 20161005)
+{
+    packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
+}
+
 // 20170419
 if (packetVersion >= 20170419)
 {
@@ -1403,9 +1416,11 @@ if (packetVersion >= 20170419)
     packet(CMSG_MAIL2_REFRESH_MAIL_LIST,  0x0ac1,  26, clif->pRodexRefreshMaillist);
 }
 
+// zero
 if (packets_zero >= true)
 {
     packet(CMSG_PRIVATE_AIRSHIP_REQUEST,  0x0a49,  20, clif->pPrivateAirshipRequest);
+    packet(CMSG_REFINE_ADD_ITEM,          0x0aa1,   4, clif->pAddItemRefineryUI);
 }
 
 // 20171214 zero

@@ -1590,6 +1590,7 @@ SET(SRCS
     net/maphandler.h
     net/markethandler.h
     net/mercenaryhandler.h
+    net/refinehandler.h
     net/roulettehandler.h
     net/searchstorehandler.h
     net/vendinghandler.h
@@ -1749,6 +1750,8 @@ SET(SRCS
     net/eathena/questrecv.cpp
     net/eathena/questrecv.h
     net/eathena/recvpackets.inc
+    net/eathena/refinehandler.cpp
+    net/eathena/refinehandler.h
     net/eathena/refinerecv.cpp
     net/eathena/refinerecv.h
     net/eathena/roulettehandler.cpp
@@ -2165,6 +2168,8 @@ SET(SRCS_TMWA
     net/tmwa/barterhandler.h
     net/tmwa/mercenaryhandler.cpp
     net/tmwa/mercenaryhandler.h
+    net/tmwa/refinehandler.cpp
+    net/tmwa/refinehandler.h
     net/tmwa/roulettehandler.cpp
     net/tmwa/roulettehandler.h
     net/tmwa/searchstorehandler.cpp

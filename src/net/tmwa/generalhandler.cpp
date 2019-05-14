@@ -67,6 +67,7 @@
 #include "net/tmwa/maphandler.h"
 #include "net/tmwa/markethandler.h"
 #include "net/tmwa/mercenaryhandler.h"
+#include "net/tmwa/refinehandler.h"
 #include "net/tmwa/roulettehandler.h"
 #include "net/tmwa/searchstorehandler.h"
 #include "net/tmwa/vendinghandler.h"
@@ -116,6 +117,7 @@ GeneralHandler::GeneralHandler() :
     mMarketHandler(new MarketHandler),
     mBarterHandler(new BarterHandler),
     mMercenaryHandler(new MercenaryHandler),
+    mRefineHandler(new RefineHandler),
     mRouletteHandler(new RouletteHandler),
     mSearchStoreHandler(new SearchStoreHandler),
     mVendingHandler(new VendingHandler)
@@ -164,6 +166,7 @@ GeneralHandler::~GeneralHandler()
     delete2(mMarketHandler)
     delete2(mBarterHandler)
     delete2(mMercenaryHandler)
+    delete2(mRefineHandler)
     delete2(mRouletteHandler)
     delete2(mSearchStoreHandler)
     delete2(mVendingHandler)
