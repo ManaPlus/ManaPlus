@@ -216,7 +216,7 @@ uint32_t MessageIn::readUInt32(const char *const str)
 int MessageIn::readItemId(const char *const str)
 {
     if (itemIdLen == 2)
-        return readUInt16(str);
+        return readInt16(str);
     return readInt32(str);
 }
 

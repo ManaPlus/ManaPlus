@@ -26,6 +26,6 @@
 
 #define CARD0_FORGE 0x00FF
 #define CARD0_CREATE 0x00FE
-#define CARD0_PET static_cast<uint16_t>(0xFF00)
+#define CARD0_PET static_cast<int16_t>(0xFF00)
 
 #endif  // CONST_RESOURCES_ITEM_CARDS_H

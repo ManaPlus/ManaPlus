@@ -335,7 +335,7 @@ std::string ItemPopup::getCardsString(const int *const cards)
 
     switch (cards[0])
     {
-        case 0xfe:  // named item
+        case CARD0_CREATE:  // named item
         {
             const int32_t charId = cards[2] + 65536 * cards[3];
             std::string name = actorManager->findCharById(charId);
@@ -349,11 +349,11 @@ std::string ItemPopup::getCardsString(const int *const cards)
             label.append(strprintf(_("Item named: %s"), name.c_str()));
             return label;
         }
-        case 0x00FFU:  // forged item
+        case CARD0_FORGE:  // forged item
         {
             return label;
         }
-        case 0xFF00U:
+        case CARD0_PET:
         {
             return label;
         }
