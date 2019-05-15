@@ -11,10 +11,10 @@ jobs:
     name: xcode_9
     xcode: Xcode_9.app
 
-- template: tools/ci/templates/azure/macosx.yml
-  parameters:
-    name: xcode
-    xcode: Xcode.app
+#- template: tools/ci/templates/azure/macosx.yml
+#  parameters:
+#    name: xcode
+#    xcode: Xcode.app
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
