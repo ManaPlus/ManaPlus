@@ -1607,6 +1607,29 @@ if (packetVersionZero >= 20181114)
     packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181114);
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20181114);
     packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  32, &RefineRecv::processRefineAnnounce,             20181114);
+    packet(SMSG_BEING_CHANGE_LOOKS2,       0x01d7,  15, &BeingRecv::processBeingChangeLook2,            20181114);
+    packet(SMSG_MVP_ITEM,                  0x010a,   6, &ChatRecv::processMVPItem,                      20180704);
+    packet(SMSG_SKILL_FAILED,              0x0110,  14, &SkillRecv::processSkillFailed,                 20180704);
+    packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT, 0x018f, 8, &SkillRecv::processSkillProduceEffect,          20180704);
+    packet(SMSG_PET_FOOD,                  0x01a3,   7, &PetRecv::processPetFood,                       20180704);
+    packet(SMSG_PLAYER_INVENTORY_USE,      0x01c8,  15, &InventoryRecv::processPlayerInventoryUse,      20180704);
+    packet(SMSG_PLAYER_UPGRADE_MESSAGE,    0x0223,  10, &PlayerRecv::processPlayerUpgradeMessage,       20180704);
+    packet(SMSG_HOMUNCULUS_FOOD,           0x022f,   7, &HomunculusRecv::processHomunculusFood,         20180704);
+    packet(SMSG_PLAYER_ITEM_RENTAL_TIME,   0x0298,  10, &InventoryRecv::processPlayerItemRentalTime,    20180704);
+    packet(SMSG_PLAYER_ITEM_RENTAL_EXPIRED, 0x0299,  8, &InventoryRecv::processPlayerItemRentalExpired, 20180704);
+    packet(SMSG_PARTY_ITEM_PICKUP,         0x02b8,  32, &PartyRecv::processPartyItemPickup,             20180704);
+    packet(SMSG_BUYINGSTORE_SELLER_SELL_FAILED, 0x0824, 8, &BuyingStoreRecv::processBuyingStoreSellerSellFailed, 20180704);
+    packet(SMSG_BUYINGSTORE_REPORT,        0x09e6,  24, &BuyingStoreRecv::processBuyingStoreReport,     20180704);
+    packet(SMSG_MAIL2_ADD_ITEM_RESULT,     0x0a05,  63, &Mail2Recv::processAddItemResult,               20180704);
+    packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  55, &TradeRecv::processTradeItemAdd,                20180704);
+    packet(SMSG_PLAYER_STORAGE_ADD,        0x0a0a,  57, &InventoryRecv::processPlayerStorageAdd,        20180704);
+    packet(SMSG_PLAYER_CART_ADD,           0x0a0b,  57, &InventoryRecv::processPlayerCartAdd,           20180704);
+    packet(SMSG_ROULETTE_OPEN_ACK,         0x0a1a,  25, &RouletteRecv::processRouletteOpenAck,          20180704);
+    packet(SMSG_ROULETTE_GENERATE_ACK_TYPE, 0x0a20, 23, &RouletteRecv::processRouletteGenerateAckType,  20180704);
+    packet(SMSG_ROULETTE_RECV_ITEM_ACK,    0x0a22,   7, &RouletteRecv::processRouletteItemAck,          20180704);
+    packet(SMSG_PLAYER_INVENTORY_ADD,      0x0a37,  69, &InventoryRecv::processPlayerInventoryAdd,      20180704);
+    packet(SMSG_ITEM_DROPPED,              0x0add,  24, &ItemRecv::processItemDropped,                  20180704);
+    packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  47, &InventoryRecv::processShowItemPreview1,        20180704);
 }
 
 // 20181121 main
@@ -1615,6 +1638,29 @@ if (packetVersionMain >= 20181121)
     packet(SMSG_HOMUNCULUS_INFO,           0x09f7,  77, &HomunculusRecv::processHomunculusInfo2,        20181121);
     packet(SMSG_ENCHANT_EQUIPMENT,         0x0a3f,  11, &InventoryRecv::processEnchantEquipment,        20181121);
     packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  32, &RefineRecv::processRefineAnnounce,             20181121);
+    packet(SMSG_BEING_CHANGE_LOOKS2,       0x01d7,  15, &BeingRecv::processBeingChangeLook2,            20181121);
+    packet(SMSG_MVP_ITEM,                  0x010a,   6, &ChatRecv::processMVPItem,                      20180704);
+    packet(SMSG_SKILL_FAILED,              0x0110,  14, &SkillRecv::processSkillFailed,                 20180704);
+    packet(SMSG_PLAYER_SKILL_PRODUCE_EFFECT, 0x018f, 8, &SkillRecv::processSkillProduceEffect,          20180704);
+    packet(SMSG_PET_FOOD,                  0x01a3,   7, &PetRecv::processPetFood,                       20180704);
+    packet(SMSG_PLAYER_INVENTORY_USE,      0x01c8,  15, &InventoryRecv::processPlayerInventoryUse,      20180704);
+    packet(SMSG_PLAYER_UPGRADE_MESSAGE,    0x0223,  10, &PlayerRecv::processPlayerUpgradeMessage,       20180704);
+    packet(SMSG_HOMUNCULUS_FOOD,           0x022f,   7, &HomunculusRecv::processHomunculusFood,         20180704);
+    packet(SMSG_PLAYER_ITEM_RENTAL_TIME,   0x0298,  10, &InventoryRecv::processPlayerItemRentalTime,    20180704);
+    packet(SMSG_PLAYER_ITEM_RENTAL_EXPIRED, 0x0299,  8, &InventoryRecv::processPlayerItemRentalExpired, 20180704);
+    packet(SMSG_PARTY_ITEM_PICKUP,         0x02b8,  32, &PartyRecv::processPartyItemPickup,             20180704);
+    packet(SMSG_BUYINGSTORE_SELLER_SELL_FAILED, 0x0824, 8, &BuyingStoreRecv::processBuyingStoreSellerSellFailed, 20180704);
+    packet(SMSG_BUYINGSTORE_REPORT,        0x09e6,  24, &BuyingStoreRecv::processBuyingStoreReport,     20180704);
+    packet(SMSG_MAIL2_ADD_ITEM_RESULT,     0x0a05,  63, &Mail2Recv::processAddItemResult,               20180704);
+    packet(SMSG_TRADE_ITEM_ADD,            0x0a09,  55, &TradeRecv::processTradeItemAdd,                20180704);
+    packet(SMSG_PLAYER_STORAGE_ADD,        0x0a0a,  57, &InventoryRecv::processPlayerStorageAdd,        20180704);
+    packet(SMSG_PLAYER_CART_ADD,           0x0a0b,  57, &InventoryRecv::processPlayerCartAdd,           20180704);
+    packet(SMSG_ROULETTE_OPEN_ACK,         0x0a1a,  25, &RouletteRecv::processRouletteOpenAck,          20180704);
+    packet(SMSG_ROULETTE_GENERATE_ACK_TYPE, 0x0a20, 23, &RouletteRecv::processRouletteGenerateAckType,  20180704);
+    packet(SMSG_ROULETTE_RECV_ITEM_ACK,    0x0a22,   7, &RouletteRecv::processRouletteItemAck,          20180704);
+    packet(SMSG_PLAYER_INVENTORY_ADD,      0x0a37,  69, &InventoryRecv::processPlayerInventoryAdd,      20180704);
+    packet(SMSG_ITEM_DROPPED,              0x0add,  24, &ItemRecv::processItemDropped,                  20180704);
+    packet(SMSG_ITEM_PREVIEW1,             0x0ab9,  47, &InventoryRecv::processShowItemPreview1,        20180704);
 }
 
 // 20181128 main
