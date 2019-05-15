@@ -1,4 +1,4 @@
-image: ubuntu:artful
+image: ubuntu:bionic
 
 .job-push: &job-push
   artifacts:
