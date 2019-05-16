@@ -65,7 +65,6 @@
 #include "net/eathena/pethandler.h"
 #include "net/eathena/playerhandler.h"
 #include "net/eathena/refinehandler.h"
-#include "net/eathena/refinehandler.h"
 #include "net/eathena/roulettehandler.h"
 #include "net/eathena/searchstorehandler.h"
 #include "net/eathena/serverfeatures.h"
