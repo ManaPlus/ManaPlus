@@ -32,7 +32,7 @@ ${dir}/deheader -q -i "\"debug.h\"" \
 -c "$CXX" \
 -d "$FLAGS" \
 -s "-std=gnu++1z" \
--m "-c -Werror -Wall -Wextra -Wundef -Wmissing-declarations -DLOCALEDIR=\\\"\\\" -I/usr/include $INCLUDES -I${dir}/src" $1 2>&1 | \
+-m "-c -Werror -Wall -Wextra -Wundef -Wmissing-declarations -DUCHAR_TYPE=uint16_t -DLOCALEDIR=\\\"\\\" -I/usr/include $INCLUDES -I${dir}/src" $1 2>&1 | \
 grep -v "deheader: ./src/net/sdltcpnet.cpp has more than one inclusion of <netinet/tcp.h>" | \
 grep -v "deheader: remove <netinet/tcp.h> from ./src/net/sdltcpnet.cpp" | \
 grep -v "deheader: remove <climits> from ./src/resources/db/unitsdb.cpp" | \
