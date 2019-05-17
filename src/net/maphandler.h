@@ -41,10 +41,10 @@ class MapHandler notfinal
 
         virtual void destroyInstance() const = 0;
 
-        virtual void camera(int action,
-                            float range,
-                            float rotation,
-                            float latitude) const = 0;
+        virtual void camera(const int action,
+                            const float range,
+                            const float rotation,
+                            const float latitude) const = 0;
 
         virtual void clientVersion(const int version) const = 0;
 };

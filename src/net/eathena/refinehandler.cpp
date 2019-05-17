@@ -52,7 +52,7 @@ void RefineHandler::addItem(const Item *const item) const
 
 void RefineHandler::refineItem(const Item *const item1,
                                const Item *const item2,
-                               int blessing) const
+                               const int blessing) const
 {
     if (item1 == nullptr ||
         item2 == nullptr)

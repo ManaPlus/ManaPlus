@@ -1602,7 +1602,8 @@ void InventoryRecv::processInventoryEnd2(Net::MessageIn &msg)
     processInventoryEndContinue(invType);
 }
 
-void InventoryRecv::processInventoryEndContinue(const NetInventoryTypeT invType)
+void InventoryRecv::processInventoryEndContinue(const NetInventoryTypeT
+                                                invType)
 {
     switch (invType)
     {

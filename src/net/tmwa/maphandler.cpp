@@ -44,10 +44,10 @@ void MapHandler::destroyInstance() const
 {
 }
 
-void MapHandler::camera(int action A_UNUSED,
-                        float range A_UNUSED,
-                        float rotation A_UNUSED,
-                        float latitude A_UNUSED) const
+void MapHandler::camera(const int action A_UNUSED,
+                        const float range A_UNUSED,
+                        const float rotation A_UNUSED,
+                        const float latitude A_UNUSED) const
 {
 }
 

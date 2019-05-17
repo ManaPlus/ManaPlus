@@ -52,10 +52,10 @@ void MapHandler::destroyInstance() const
     outMsg.writeInt32(3, "command");
 }
 
-void MapHandler::camera(int action,
-                        float range,
-                        float rotation,
-                        float latitude) const
+void MapHandler::camera(const int action,
+                        const float range,
+                        const float rotation,
+                        const float latitude) const
 {
     if (packetVersion < 20160525)
         return;

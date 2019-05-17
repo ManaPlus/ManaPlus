@@ -43,7 +43,7 @@ class RefineHandler notfinal
 
         virtual void refineItem(const Item *const item1,
                                 const Item *const item2,
-                                int blessing) const = 0;
+                                const int blessing) const = 0;
 
         virtual void close() const = 0;
 };

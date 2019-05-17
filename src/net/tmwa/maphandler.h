@@ -39,10 +39,10 @@ class MapHandler final : public Net::MapHandler
 
         void destroyInstance() const override final;
 
-        void camera(int action,
-                    float range,
-                    float rotation,
-                    float latitude) const override final;
+        void camera(const int action,
+                    const float range,
+                    const float rotation,
+                    const float latitude) const override final;
 
         void clientVersion(const int version) const override final;
 };
