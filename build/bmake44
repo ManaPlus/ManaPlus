@@ -45,8 +45,8 @@ autoreconf -i
 --mandir=$dir/run/share/man
 
 cd po
-#make -j8 update-po 2>../build/make1.log
-make -j8 update-gmo 2>../build/make1.log
+#make -j16 update-po 2>../build/make1.log
+make -j16 update-gmo 2>../build/make1.log
 cd ..
-make -j8 2>build/make2.log
+make -j16 2>build/make2.log
 

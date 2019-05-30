@@ -7,5 +7,5 @@ export CXXFLAGS="-Wall -O5 -flto -fwhole-program -ffast-math -funswitch-loops -f
 #export CXXFLAGS="-Wall -O5 -g1 -ffast-math -funswitch-loops -funsafe-loop-optimizations -std=gnu++0x"
 cmake -DCMAKE_TOOLCHAIN_FILE=build/toolchain.cmake . 2>build/make1.log
 
-make -j8 VERBOSE=1 2>>build/make.log
+make -j16 VERBOSE=1 2>>build/make.log
 

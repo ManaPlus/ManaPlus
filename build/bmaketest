@@ -24,6 +24,6 @@ autoreconf -i
 --enable-unittests=doctest
 
 cd po
-make -j8 update-gmo 2>../build/make1.log
+make -j16 update-gmo 2>../build/make1.log
 cd ..
-make -j8 check 2>build/make2.log
+make -j16 check 2>build/make2.log

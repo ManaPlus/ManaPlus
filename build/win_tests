@@ -14,4 +14,4 @@ cd build/tmp
 --host=${CROSS} \
 --enable-unittests || exit 1
 
-make check -j8 2>../make2.log || exit 1
+make check -j16 2>../make2.log || exit 1

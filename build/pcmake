@@ -6,5 +6,5 @@ export PATH=/home/mingw/cross/i686-w64-mingw32/bin:/home/mingw/cross/bin:$PATH
 export CXXFLAGS="-Wall -g1 -O2 -pg -ffast-math -std=gnu++0x -Wno-attributes"
 cmake -DCMAKE_TOOLCHAIN_FILE=build/toolchain.cmake . 2>build/make1.log
 
-make -j8 VERBOSE=1 2>>build/make.log
+make -j16 VERBOSE=1 2>>build/make.log
 

@@ -28,7 +28,7 @@ cd build/tmp
 --mandir=$dir/run/share/man
 
 cd po
-make -j8 update-gmo 2>../../make1.log
+make -j16 update-gmo 2>../../make1.log
 cd ..
-make -j8 2>../make2.log
+make -j16 2>../make2.log
 
