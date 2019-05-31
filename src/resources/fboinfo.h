@@ -36,6 +36,10 @@ PRAGMA48(GCC diagnostic pop)
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)
+// avoid SDL 2 issue
+#ifdef GL_GLEXT_VERSION
+#undef GL_GLEXT_VERSION
+#endif
 #include <GL/glext.h>
 #endif  // defined(__APPLE__)
 #endif  // ANDROID
