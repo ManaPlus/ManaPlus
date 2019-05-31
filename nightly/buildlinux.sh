@@ -13,7 +13,7 @@ if [ "$result" != 0 ]; then
     exit $result
 fi
 
-make -j8
+make -j16
 result=$?
 if [ "$result" != 0 ]; then
     exit $result

@@ -11,7 +11,7 @@ if [ "$result" != 0 ]; then
     exit $result
 fi
 
-make -j5 2>build/make.log
+make -j16 2>build/make.log
 result=$?
 if [ "$result" != 0 ]; then
     exit $result
