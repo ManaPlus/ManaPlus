@@ -53,6 +53,37 @@ AC_DEFUN([AC_CHECK_LD_FLAG],
     ]
 )
 
+AC_DEFUN([AC_CHECK_GLXEXT],
+    [
+        AC_MSG_CHECKING([whether have glext.h])
+        OLD_CXXFLAGS="$CXXFLAGS"
+        CXXFLAGS=""
+        $1=no
+        AC_LINK_IFELSE(
+            [AC_LANG_SOURCE([
+                #include <GL/gl.h>
+                #include <GL/glext.h>
+                #ifndef __gl_glext_h_
+                #error __gl_glext_h_ not defined
+                #endif
+                int main(int argc, char **argv)
+                {
+                    return 0;
+                }
+            ])],
+            [
+                AC_MSG_RESULT([yes])
+                $1=yes
+            ],
+            [
+                AC_MSG_RESULT([no])
+                $1=no
+            ]
+        )
+        CXXFLAGS="$OLD_CXXFLAGS"
+    ]
+)
+
 # Enable -Werror
 AC_ARG_ENABLE(werror,
 [  --enable-werror    Fail build if warning present],
@@ -332,6 +363,9 @@ else
 fi
 
 AM_CONDITIONAL(USE_SDL2, test x$with_sdl2 = xyes)
+
+AC_CHECK_GLXEXT(have_glext)
+AM_CONDITIONAL(HAVE_GLEXT, test x$have_glext = xyes)
 
 # Option to enable internal sdl-gfx for SDL2 (for now it enabled by default)
 if test "x$with_internalsdlgfx" == "xno"; then

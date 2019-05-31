@@ -29,10 +29,16 @@
 #include <GLES/gl.h>
 #include <GLES/glext.h>
 #else  // ANDROID
+#ifdef HAVE_GLEXT
+#define NO_SDL_GLEXT
+#endif  // HAVE_GLEXT
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_opengl.h>
 PRAGMA48(GCC diagnostic pop)
+#ifdef HAVE_GLEXT
+#include <GL/glext.h>
+#endif  // HAVE_GLEXT
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)

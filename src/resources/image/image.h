@@ -37,10 +37,16 @@
 #ifndef USE_SDL2
 #define GL_GLEXT_PROTOTYPES 1
 #endif  // USE_SDL2
+#ifdef HAVE_GLEXT
+#define NO_SDL_GLEXT
+#endif  // HAVE_GLEXT
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #include <SDL_opengl.h>
 PRAGMA48(GCC diagnostic pop)
+#ifdef HAVE_GLEXT
+#include <GL/glext.h>
+#endif  // HAVE_GLEXT
 #endif  // ANDROID
 #endif  // USE_OPENGL
 
