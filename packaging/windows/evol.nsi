@@ -49,6 +49,7 @@ RequestExecutionLevel admin
 !System "${UPX} --best --crp-ms=999999 --compress-icons=0 --nrv2d ${EXEDIR}\manaplus.exe"
 
 !define MULTIUSER_INSTALLMODE_COMMANDLINE
+!define MULTIUSER_EXECUTIONLEVEL "admin"
 !include "MultiUser.nsh"
 
 ; HM NIS Edit helper defines
