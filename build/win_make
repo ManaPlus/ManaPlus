@@ -13,4 +13,4 @@ cd build/tmp
 --host=${CROSS} \
 --enable-werror || exit 1
 
-make -j9 2>../make2.log || exit 1
+make -j16 2>../make2.log || exit 1
