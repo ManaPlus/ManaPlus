@@ -407,15 +407,6 @@ SectionEnd
 ;   File "${EXEDIR}\dyecmd.exe"
 ; SectionEnd
 
-Section /o "Evol Online music" SecEvolMusic
-  AddSize 9787
-  CreateDirectory "$INSTDIR\data\music"
-  SetOutPath "$INSTDIR\data\music"
-  NSISdl::download "http://downloads.sourceforge.net/project/evolonline/music/evolmusic-beta2-1.tar.gz" "$TEMP\evolmusic-beta2-1.tar.gz"
-  untgz::extract -j -d "$INSTDIR\data\music" "$TEMP\evolmusic-beta2-1.tar.gz"
-  Delete "$TEMP\evolmusic-beta2-1.tar.gz"
-SectionEnd
-
 Section "Translations" SecTrans
   SetOutPath "$INSTDIR"
   File /nonfatal /r "${SRCDIR}\translations"
@@ -426,7 +417,6 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "The core program files."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecShortcuts} "Create game shortcuts and register extensions."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecPortable} "Portable client. (If selected client will work as portable client.)"
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecEvolMusic} "Background evol music. (If selected the evol music will be downloaded from the internet.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to detect stability issues."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecProfiler} "Install profiler build to detect perfomance issues."
