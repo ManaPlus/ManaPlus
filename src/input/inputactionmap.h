@@ -5966,6 +5966,12 @@ static const InputActionData inputActionData
         "clanwindow|clan",
         UseArgs_false,
         Protected_false},
+    {"keyTrimMemory",
+        defaultAction(&Actions::trimMemory),
+        InputCondition::KEY_DOWN | InputCondition::INGAME,
+        "trim|trimmemory|memorytrim",
+        UseArgs_false,
+        Protected_true},
 };
 
 #undef defaultAction

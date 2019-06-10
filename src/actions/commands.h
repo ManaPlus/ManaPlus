@@ -163,6 +163,7 @@ namespace Actions
     decHandler(movePriorityAttackUp);
     decHandler(movePriorityAttackDown);
     decHandler(addSkillShortcut);
+    decHandler(trimMemory);
 }  // namespace Actions
 
 #undef decHandler

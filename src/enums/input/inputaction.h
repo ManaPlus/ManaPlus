@@ -710,6 +710,7 @@ enumStart(InputAction)
     PET_UNEQUIP,
     ADD_SKILL_SHORTCUT,
     WINDOW_CLAN,
+    TRIM_MEMORY,
     TOTAL
 }
 enumEnd(InputAction);

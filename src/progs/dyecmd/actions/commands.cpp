@@ -163,5 +163,6 @@ impHandlerVoid(moveAttackDown)
 impHandlerVoid(movePriorityAttackUp)
 impHandlerVoid(movePriorityAttackDown)
 impHandlerVoid(addSkillShortcut)
+impHandlerVoid(trimMemory)
 
 }  // namespace Actions

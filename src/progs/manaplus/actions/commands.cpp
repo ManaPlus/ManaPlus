@@ -85,6 +85,8 @@
 #include "utils/parameters.h"
 #include "utils/process.h"
 
+#include <malloc.h>
+
 #include "debug.h"
 
 namespace Actions
@@ -2197,6 +2199,19 @@ impHandler(addSkillShortcut)
         skill->toDataStr());
 
 //    popupMenu->showSkillLevelPopup(skill);
+    return true;
+}
+
+impHandler0(trimMemory)
+{
+#ifdef HAVE_MALLOC_TRIM
+    malloc_trim(0);
+#else
+    localChatTab->chatLog(_("Trim memory not supported"),
+        ChatMsgType::BY_SERVER,
+        IgnoreRecord_false,
+        TryRemoveColors_true);
+#endif
     return true;
 }
 

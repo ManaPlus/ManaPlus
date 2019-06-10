@@ -235,6 +235,7 @@ AC_FUNC_MMAP
 AC_CHECK_FUNCS([atexit floor getcwd gethostbyname memset mkdir select socket])
 AC_CHECK_FUNCS([clock_gettime dup2 gettimeofday memchr memmove pow putenv])
 AC_CHECK_FUNCS([realpath setenv setlocale sqrt strchr munmap])
+AC_CHECK_FUNCS([malloc_trim])
 #AC_CHECK_HEADER_STDBOOL
 AC_CHECK_HEADERS([libintl.h limits.h sys/param.h sys/time.h wchar.h])
 
