@@ -291,7 +291,6 @@ bool PincodeManager::processPincodeStatus(const uint16_t state)
                 pincodeManager.wrongPin();
             return true;
         case 6:  // Unable to use your KSSN number
-            break;
         case 7:  // char select window shows a button
             break;
         default:

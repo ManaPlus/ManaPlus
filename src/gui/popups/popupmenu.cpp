@@ -2082,7 +2082,6 @@ void PopupMenu::showAttackMonsterPopup(const int x, const int y,
             break;
         }
         case MapItemType::IGNORE_:
-            break;
         default:
             break;
     }

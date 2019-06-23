@@ -2065,9 +2065,6 @@ void Being::botLogic() restrict2
             break;
         }
         case BeingAction::SIT:
-            botFixOffset(dstX, dstY);
-            moveBotTo(dstX, dstY);
-            break;
         case BeingAction::DEAD:
             botFixOffset(dstX, dstY);
             moveBotTo(dstX, dstY);

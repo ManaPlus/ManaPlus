@@ -350,9 +350,6 @@ std::string ItemPopup::getCardsString(const int *const cards)
             return label;
         }
         case CARD0_FORGE:  // forged item
-        {
-            return label;
-        }
         case CARD0_PET:
         {
             return label;

@@ -320,8 +320,6 @@ class SDLInput final
                   value = KeyValue::RIGHT;
                   break;
               case SDLK_RETURN:
-                  value = KeyValue::ENTER;
-                  break;
               case SDLK_KP_ENTER:
                   value = KeyValue::ENTER;
                   break;

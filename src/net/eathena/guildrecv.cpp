@@ -75,7 +75,7 @@ void GuildRecv::processGuildCreateResponse(Net::MessageIn &msg)
 
         case 2:
             // Unable to make (likely name already in use)
-            NotifyManager::notify(NotifyTypes::GUILD_ALREADY);
+            NotifyManager::notify(NotifyTypes::GUILD_ERROR);
             break;
 
         case 3:

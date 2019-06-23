@@ -1295,8 +1295,6 @@ void BeingRecv::processBeingAction2(Net::MessageIn &msg)
             break;
 
         case AttackType::PICKUP:
-            break;
-
         case AttackType::TOUCH_SKILL:
             break;
 

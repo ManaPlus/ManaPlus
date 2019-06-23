@@ -1850,9 +1850,7 @@ void ActorManager::optionChanged(const std::string &name)
         mCycleNPC = config.getBoolValue("cycleNPC");
     else if (name == "extMouseTargeting")
         mExtMouseTargeting = config.getBoolValue("extMouseTargeting");
-    else if (name == "showBadges")
-        updateBadges();
-    else if (name == "visiblenamespos")
+    else if (name == "showBadges" || name == "visiblenamespos")
         updateBadges();
     else if (name == "enableIdCollecting")
         mEnableIdCollecting = config.getBoolValue("enableIdCollecting");

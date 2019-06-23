@@ -109,7 +109,7 @@ class FlashText final : public Text
         FlashText(const std::string &text, const int x, const int y,
                   const Graphics::Alignment alignment,
                   const Color *const color,
-                  Font *const font = nullptr);
+                  Font *const font);
 
         A_DELETE_COPY(FlashText)
 

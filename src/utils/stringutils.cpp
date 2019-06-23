@@ -338,10 +338,11 @@ std::string getFileName(const std::string &path)
 {
     size_t pos1 = path.rfind('/');
     const size_t pos2 = path.rfind('\\');
-    if (pos1 == std::string::npos)
+    if (pos1 == std::string::npos ||
+        (pos2 != std::string::npos && pos2 > pos1))
+    {
         pos1 = pos2;
-    else if (pos2 != std::string::npos && pos2 > pos1)
-        pos1 = pos2;
+    }
 
     if (pos1 == std::string::npos)
         return path;
@@ -352,10 +353,11 @@ std::string getFileDir(const std::string &path)
 {
     size_t pos1 = path.rfind('/');
     const size_t pos2 = path.rfind('\\');
-    if (pos1 == std::string::npos)
+    if (pos1 == std::string::npos ||
+        (pos2 != std::string::npos && pos2 > pos1))
+    {
         pos1 = pos2;
-    else if (pos2 != std::string::npos && pos2 > pos1)
-        pos1 = pos2;
+    }
 
     if (pos1 == std::string::npos)
         return path;
