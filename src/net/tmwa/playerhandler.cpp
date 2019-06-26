@@ -204,7 +204,8 @@ void PlayerHandler::revive() const
 {
 }
 
-void PlayerHandler::shortcutShiftRow(const int row A_UNUSED) const
+void PlayerHandler::shortcutShiftRow(const int row A_UNUSED,
+                                     const int tab A_UNUSED) const
 {
 }
 

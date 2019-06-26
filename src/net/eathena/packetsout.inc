@@ -1299,7 +1299,7 @@ if (packetVersion >= 20140122)
 // 20140129
 if (packetVersion >= 20140129)
 {
-    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0a01,   3, clif->pHotkeyRowShift);
+    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0a01,   3, clif->pHotkeyRowShift1);
 }
 
 // 20140212
@@ -1627,6 +1627,18 @@ if (packetVersionZero >= 20190220)
 if (packetVersionMain >= 20190227)
 {
     packet(CMSG_MAP_PING2,                0x0b1c,   2, clif->pPing);
+}
+
+// 20190508 re
+if (packetVersionRe >= 20190508)
+{
+    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0b22,   3, clif->pHotkeyRowShift2);
+}
+
+// 20190522 main
+if (packetVersionMain >= 20190522)
+{
+    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0b22,   3, clif->pHotkeyRowShift2);
 }
 
 // 20160622

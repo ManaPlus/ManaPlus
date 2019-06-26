@@ -460,11 +460,17 @@ void PlayerHandler::setShortcut(const int idx,
     outMsg.writeInt16(CAST_S16(level), "level");
 }
 
-void PlayerHandler::shortcutShiftRow(const int row) const
+void PlayerHandler::shortcutShiftRow(const int row,
+                                     const int tab) const
 {
     if (packetVersion < 20140129)
         return;
     createOutPacket(CMSG_SHORTCUTS_ROW_SHIFT);
+    if (packetVersionMain >= 20190522 ||
+        packetVersionRe >= 20190508)
+    {
+        outMsg.writeInt16(CAST_S16(tab), "tab");
+    }
     outMsg.writeInt8(CAST_S8(row), "row");
 }
 
