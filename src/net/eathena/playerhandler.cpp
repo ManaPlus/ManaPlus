@@ -449,11 +449,17 @@ void PlayerHandler::updateStatus(const uint8_t status) const
 }
 
 void PlayerHandler::setShortcut(const int idx,
+                                const int tab,
                                 const uint8_t type,
                                 const int id,
                                 const int level) const
 {
     createOutPacket(CMSG_SET_SHORTCUTS);
+    if (packetVersionMain >= 20190522 ||
+        packetVersionRe >= 20190508)
+    {
+        outMsg.writeInt16(CAST_S16(tab), "tab");
+    }
     outMsg.writeInt16(CAST_S16(idx), "index");
     outMsg.writeInt8(CAST_S8(type), "type");
     outMsg.writeInt32(id, "id");

@@ -57,6 +57,7 @@ class PlayerHandler final : public Ea::PlayerHandler
         void requestOnlineList() const override final;
         void respawn() const override final;
         void setShortcut(const int idx,
+                         const int tab,
                          const uint8_t type,
                          const int id,
                          const int level) const override final;

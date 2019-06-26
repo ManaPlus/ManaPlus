@@ -182,6 +182,7 @@ void PlayerHandler::updateStatus(const uint8_t status A_UNUSED) const
 }
 
 void PlayerHandler::setShortcut(const int idx A_UNUSED,
+                                const int tab A_UNUSED,
                                 const uint8_t type A_UNUSED,
                                 const int id A_UNUSED,
                                 const int level A_UNUSED) const

@@ -181,7 +181,7 @@ packet(CMSG_SOLVE_CHAR_NAME,              0x0193,   6, clif->pSolveCharName);
 packet(CMSG_IGNORE_ALL,                   0x00d0,   3, clif->pPMIgnoreAll);
 packet(CMSG_IGNORE_NICK,                  0x00cf,  27, clif->pPMIgnore);
 packet(CMSG_REQUEST_IGNORE_LIST,          0x00d3,   2, clif->pPMIgnoreList);
-packet(CMSG_SET_SHORTCUTS,                0x02ba,  11, clif->pHotkey);
+packet(CMSG_SET_SHORTCUTS,                0x02ba,  11, clif->pHotkey1);
 packet(CMSG_NPC_COMPLETE_PROGRESS_BAR,    0x02f1,   2, clif->pProgressbar);
 packet(CMSG_NPC_PRODUCE_MIX,              0x018e,  10, clif->pProduceMix);
 packet(CMSG_NPC_COOKING,                  0x025b,   6, clif->pCooking);
@@ -1632,12 +1632,14 @@ if (packetVersionMain >= 20190227)
 // 20190508 re
 if (packetVersionRe >= 20190508)
 {
+    packet(CMSG_SET_SHORTCUTS,            0x0b21,  13, clif->pHotkey2);
     packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0b22,   3, clif->pHotkeyRowShift2);
 }
 
 // 20190522 main
 if (packetVersionMain >= 20190522)
 {
+    packet(CMSG_SET_SHORTCUTS,            0x0b21,  13, clif->pHotkey2);
     packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0b22,   3, clif->pHotkeyRowShift2);
 }
 
