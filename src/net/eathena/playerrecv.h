@@ -32,7 +32,9 @@ namespace EAthena
 {
     namespace PlayerRecv
     {
-        void processPlayerShortcuts(Net::MessageIn &msg);
+        void processPlayerShortcuts1(Net::MessageIn &msg);
+        void processPlayerShortcuts2(Net::MessageIn &msg);
+        void processPlayerShortcuts3(Net::MessageIn &msg);
         void processPlayerShowEquip(Net::MessageIn &msg);
         void processPlayerStatUpdate5(Net::MessageIn &msg);
         void processPlayerGetExp(Net::MessageIn &msg);

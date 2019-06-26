@@ -52,19 +52,43 @@
 namespace EAthena
 {
 
-void PlayerRecv::processPlayerShortcuts(Net::MessageIn &msg)
+void PlayerRecv::processPlayerShortcuts1(Net::MessageIn &msg)
 {
     // +++ player shortcuts ignored. It also disabled on server side.
     // may be in future better use it?
-    if (msg.getVersion() >= 20141022)
-        msg.readUInt8("rotate");
-    for (int f = 0; f < 27; f ++)
+    for (int f = 0; f < 38; f ++)
     {
         msg.readUInt8("type 0: item, 1: skill");
         msg.readInt32("item or skill id");
         msg.readInt16("skill level");
     }
-    msg.skip(77, "unused");
+}
+
+void PlayerRecv::processPlayerShortcuts2(Net::MessageIn &msg)
+{
+    // +++ player shortcuts ignored. It also disabled on server side.
+    // may be in future better use it?
+    msg.readUInt8("rotate");
+    for (int f = 0; f < 38; f ++)
+    {
+        msg.readUInt8("type 0: item, 1: skill");
+        msg.readInt32("item or skill id");
+        msg.readInt16("skill level");
+    }
+}
+
+void PlayerRecv::processPlayerShortcuts3(Net::MessageIn &msg)
+{
+    // +++ player shortcuts ignored. It also disabled on server side.
+    // may be in future better use it?
+    msg.readUInt8("rotate");
+    msg.readInt16("tab");
+    for (int f = 0; f < 38; f ++)
+    {
+        msg.readUInt8("type 0: item, 1: skill");
+        msg.readInt32("item or skill id");
+        msg.readInt16("skill level");
+    }
 }
 
 void PlayerRecv::processPlayerShowEquip(Net::MessageIn &msg)

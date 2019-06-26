@@ -454,6 +454,9 @@ if (packetVersion >= 20070227)
 
 packet(SMSG_PARTY_INVITATION_STATS,        0x02c9,   3, &PartyRecv::processPartyInvitationStats,        20070227);
 
+// 20070711
+packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 268, &PlayerRecv::processPlayerShortcuts1,           20070711);
+
 // 20070821
 packet(SMSG_PARTY_INVITE_RESPONSE,         0x02c5,  30, &PartyRecv::processPartyInviteResponse,         20070821);
 packet(SMSG_PARTY_INVITED,                 0x02c6,  30, &PartyRecv::processPartyInvited,                20070821);
@@ -574,7 +577,6 @@ if (packetVersionRe >= 20090406)
 
 // 20090603
 packet(SMSG_PARTY_SETTINGS,                0x07d8,   8, &PartyRecv::processPartySettings,               20090603);
-packet(SMSG_PLAYER_SHORTCUTS,              0x07d9, 268, &PlayerRecv::processPlayerShortcuts,            20090603);
 
 // 20090715
 packet(SMSG_PLAYER_UPDATE_SKILL,           0x07e1,  15, &SkillRecv::processSkillUpdate,                 20090715);
@@ -917,6 +919,12 @@ if (packetVersionMain >= 20141008)
     packet(SMSG_ROULETTE_CLOSE,            0x0a1e,   3, &RouletteRecv::processRouletteClose,            20141008);
 }
 
+// 20141015 re
+if (packetVersionRe >= 20141015)
+{
+    packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts2,           20141015);
+}
+
 // 20141016
 packet(SMSG_ROULETTE_OPEN_ACK,             0x0a1a,  23, &RouletteRecv::processRouletteOpenAck,          20141016);
 packet(SMSG_ROULETTE_INFO_ACK_TYPE,        0x0a1c,  -1, &RouletteRecv::processRouletteInfoAckType,      20141016);
@@ -931,11 +939,16 @@ if (packetVersion >= 20141016)
     packet(SMSG_PLAYER_SET_TITLE_ACK,      0x0a2f,   7, &PlayerRecv::processSetTitleAck,                20141016);
 }
 
+// 20141022 main
+if (packetVersionMain >= 20141022)
+{
+    packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts2,           20141022);
+}
+
 // 20141022
 if (packetVersion >= 20141022)
 {
     packet(SMSG_QUEST_LIST,                0x097a,  -1, &QuestRecv::processAddQuests,                   20141022);
-    packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts,            20141022);
     packet(SMSG_MAP_LOGIN_SUCCESS,         0x0a18,  14, &GameRecv::processMapLogin,                     20141022);
     packet(SMSG_VENDING_OPEN_STATUS,       0x0a28,   3, &VendingRecv::processOpenStatus,                20141022);
 }
@@ -1294,6 +1307,7 @@ if (packets_zero == true)
     packet(SMSG_ACK_MERGE_ITEMS,           0x096f,   7, &InventoryRecv::processMergeItemResponse,       20171018);
     packet(SMSG_REFINE_ADD_ITEM,           0x0aa2,  -1, &RefineRecv::processRefineAddItem,              20171018);
     packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  30, &RefineRecv::processRefineAnnounce,             20171018);
+    packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts2,           20171018);
 }
 
 // 20171019 zero
@@ -1763,6 +1777,18 @@ if (packetVersionMain >= 20190403)
 if (packetVersionZero >= 20190410)
 {
     packet(SMSG_MAP_LOAD_CONFIRM,          0x0b1b,   2, &GameRecv::processLoadConfirm,                  20190410);
+}
+
+// 20190508 re
+if (packetVersionRe >= 20190508)
+{
+    packet(SMSG_PLAYER_SHORTCUTS,          0x0b20, 271, &PlayerRecv::processPlayerShortcuts3,           20190508);
+}
+
+// 20190522 main
+if (packetVersionMain >= 20190522)
+{
+    packet(SMSG_PLAYER_SHORTCUTS,          0x0b20, 271, &PlayerRecv::processPlayerShortcuts3,           20190522);
 }
 
 // 0
