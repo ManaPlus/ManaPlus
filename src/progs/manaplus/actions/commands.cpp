@@ -2207,6 +2207,7 @@ impHandler0(trimMemory)
 #ifdef HAVE_MALLOC_TRIM
     malloc_trim(0);
 #else
+    // TRANSLATORS: chat error about trim command
     localChatTab->chatLog(_("Trim memory not supported"),
         ChatMsgType::BY_SERVER,
         IgnoreRecord_false,
