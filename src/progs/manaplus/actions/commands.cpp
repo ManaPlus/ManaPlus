@@ -85,7 +85,9 @@
 #include "utils/parameters.h"
 #include "utils/process.h"
 
+#ifdef HAVE_MALLOC_TRIM
 #include <malloc.h>
+#endif
 
 #include "debug.h"
 
