@@ -16,9 +16,9 @@
 
 #include "utils/mathutils.h"
 
-#ifdef __OpenBSD__
+#if defined(__NetBSD__) || defined(__OpenBSD__)
 #include <sys/param.h>
-#endif  // __OpenBSD__
+#endif  // defined(__NetBSD__) || defined(__OpenBSD__)
 #include <wchar.h>
 #include <cctype>
 
