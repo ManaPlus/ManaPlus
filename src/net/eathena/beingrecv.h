@@ -65,7 +65,8 @@ namespace EAthena
         void processMonsterHp(Net::MessageIn &msg);
         void processBeingHp(Net::MessageIn &msg);
         void processSkillAutoCast(Net::MessageIn &msg);
-        void processRanksList(Net::MessageIn &msg);
+        void processRanksList1(Net::MessageIn &msg);
+        void processRanksList2(Net::MessageIn &msg);
         void processBeingChangeDirection(Net::MessageIn &msg);
         void processBeingChangeLookContinue(const Net::MessageIn &msg,
                                             Being *const dstBeing,

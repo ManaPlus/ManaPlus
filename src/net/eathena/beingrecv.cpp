@@ -1393,13 +1393,27 @@ void BeingRecv::processSkillAutoCast(Net::MessageIn &msg)
     }
 }
 
-void BeingRecv::processRanksList(Net::MessageIn &msg)
+void BeingRecv::processRanksList1(Net::MessageIn &msg)
+{
+    UNIMPLEMENTEDPACKET;
+    // +++ here need window with rank tables.
+    const int count = (msg.readInt16("len") - 4) / 28;
+    msg.readInt16("rank type");
+    for (int f = 0; f < count; f ++)
+    {
+        msg.readString(24, "name");
+        msg.readInt32("points");
+    }
+    msg.readInt32("my points");
+}
+
+void BeingRecv::processRanksList2(Net::MessageIn &msg)
 {
     UNIMPLEMENTEDPACKET;
     // +++ here need window with rank tables.
     msg.readInt16("rank type");
     for (int f = 0; f < 10; f ++)
-        msg.readString(24, "name");
+        msg.readBeingId("char id");
     for (int f = 0; f < 10; f ++)
         msg.readInt32("points");
     msg.readInt32("my points");

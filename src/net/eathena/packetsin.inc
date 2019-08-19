@@ -772,12 +772,6 @@ if (packetVersion >= 20120419)
     packet(SMSG_CHAR_CHARACTERS,           0x099d,  -1, &CharServerRecv::processCharCharacters,         20120419);
 }
 
-// 20120502
-if (packetVersion >= 20120502)
-{
-    packet(SMSG_RANKS_LIST,                0x097d, 288, &BeingRecv::processRanksList,                   20120502);
-}
-
 // 20120618
 if (packetVersion >= 20120618)
 {
@@ -829,6 +823,18 @@ if (packetVersion >= 20121212)
 if (packetVersion >= 20130000)
 {
     packet(SMSG_ITEM_DROPPED,              0x084b,  19, &ItemRecv::processItemDropped,                  20130000);
+}
+
+// 20130529 re
+if (packetVersionRe >= 20130529)
+{
+    packet(SMSG_RANKS_LIST,                0x097d, 288, &BeingRecv::processRanksList1,                  20130529);
+}
+
+// 20130605 main
+if (packetVersionMain >= 20130605)
+{
+    packet(SMSG_RANKS_LIST,                0x097d, 288, &BeingRecv::processRanksList1,                  20130605);
 }
 
 // 20130605 re
@@ -1308,6 +1314,7 @@ if (packets_zero == true)
     packet(SMSG_REFINE_ADD_ITEM,           0x0aa2,  -1, &RefineRecv::processRefineAddItem,              20171018);
     packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  30, &RefineRecv::processRefineAnnounce,             20171018);
     packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts2,           20171018);
+    packet(SMSG_RANKS_LIST,                0x097d, 288, &BeingRecv::processRanksList1,                  20130529);
 }
 
 // 20171019 zero
@@ -1807,6 +1814,18 @@ if (packetVersionMain >= 20190619)
 if (packetVersionZero >= 20190626)
 {
     packet(SMSG_HOMUNCULUS_INFO,           0x0b2f,  73, &HomunculusRecv::processHomunculusInfo3,        20190626);
+}
+
+// 20190703 re
+if (packetVersionRe >= 20190703)
+{
+    packet(SMSG_RANKS_LIST,                0x097d, 88, &BeingRecv::processRanksList2,                   20190703);
+}
+
+// 20190724 zero
+if (packetVersionZero >= 20190724)
+{
+    packet(SMSG_RANKS_LIST,                0x097d, 88, &BeingRecv::processRanksList2,                   20190724);
 }
 
 // 0
