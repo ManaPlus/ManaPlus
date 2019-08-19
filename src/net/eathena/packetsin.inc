@@ -1040,10 +1040,16 @@ if (packetVersion >= 20150226)
     packet(SMSG_SEARCHSTORE_SEARCH_ACK,    0x0836,   0, &SearchStoreRecv::processSearchAck,             20150226);
 }
 
-// 20150422
-if (packetVersion >= 20150422)
+// 20150429 ret
+if (packetVersionRe >= 20150429)
 {
-    packet(SMSG_BEING_HAT_EFFECTS,         0x0a3b,  -1, &BeingRecv::processBeingHatEffects,             20150422);
+    packet(SMSG_BEING_HAT_EFFECTS,         0x0a3b,  -1, &BeingRecv::processBeingHatEffects,             20150429);
+}
+
+// 20150507 main
+if (packetVersionMain >= 20150507)
+{
+    packet(SMSG_BEING_HAT_EFFECTS,         0x0a3b,  -1, &BeingRecv::processBeingHatEffects,             20150507);
 }
 
 // 20150513
@@ -1314,7 +1320,8 @@ if (packets_zero == true)
     packet(SMSG_REFINE_ADD_ITEM,           0x0aa2,  -1, &RefineRecv::processRefineAddItem,              20171018);
     packet(SMSG_REFINE_ANNOUNCE,           0x0ada,  30, &RefineRecv::processRefineAnnounce,             20171018);
     packet(SMSG_PLAYER_SHORTCUTS,          0x0a00, 269, &PlayerRecv::processPlayerShortcuts2,           20171018);
-    packet(SMSG_RANKS_LIST,                0x097d, 288, &BeingRecv::processRanksList1,                  20130529);
+    packet(SMSG_RANKS_LIST,                0x097d, 288, &BeingRecv::processRanksList1,                  20171018);
+    packet(SMSG_BEING_HAT_EFFECTS,         0x0a3b,  -1, &BeingRecv::processBeingHatEffects,             20171018);
 }
 
 // 20171019 zero
