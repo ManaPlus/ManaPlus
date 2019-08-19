@@ -1791,6 +1791,24 @@ if (packetVersionMain >= 20190522)
     packet(SMSG_PLAYER_SHORTCUTS,          0x0b20, 271, &PlayerRecv::processPlayerShortcuts3,           20190522);
 }
 
+// 20190605 re
+if (packetVersionRe >= 20190605)
+{
+    packet(SMSG_HOMUNCULUS_INFO,           0x0b2f,  73, &HomunculusRecv::processHomunculusInfo3,        20190605);
+}
+
+// 20190619 main
+if (packetVersionMain >= 20190619)
+{
+    packet(SMSG_HOMUNCULUS_INFO,           0x0b2f,  73, &HomunculusRecv::processHomunculusInfo3,        20190619);
+}
+
+// 20190626 zero
+if (packetVersionZero >= 20190626)
+{
+    packet(SMSG_HOMUNCULUS_INFO,           0x0b2f,  73, &HomunculusRecv::processHomunculusInfo3,        20190626);
+}
+
 // 0
 // evol always packets
 packet(SMSG_SERVER_VERSION_RESPONSE,       0x7531,  -1, &LoginRecv::processServerVersion,               0);

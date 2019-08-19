@@ -34,6 +34,7 @@ namespace EAthena
         void processHomunculusData(Net::MessageIn &msg);
         void processHomunculusInfo1(Net::MessageIn &msg);
         void processHomunculusInfo2(Net::MessageIn &msg);
+        void processHomunculusInfo3(Net::MessageIn &msg);
         void processHomunculusSkillUp(Net::MessageIn &msg);
         void processHomunculusFood(Net::MessageIn &msg);
         void processHomunculusExp(Net::MessageIn &msg);
