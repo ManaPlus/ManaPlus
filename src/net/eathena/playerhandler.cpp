@@ -456,7 +456,8 @@ void PlayerHandler::setShortcut(const int idx,
 {
     createOutPacket(CMSG_SET_SHORTCUTS);
     if (packetVersionMain >= 20190522 ||
-        packetVersionRe >= 20190508)
+        packetVersionRe >= 20190508 ||
+        packetVersionZero >= 20190605)
     {
         outMsg.writeInt16(CAST_S16(tab), "tab");
     }
@@ -473,7 +474,8 @@ void PlayerHandler::shortcutShiftRow(const int row,
         return;
     createOutPacket(CMSG_SHORTCUTS_ROW_SHIFT);
     if (packetVersionMain >= 20190522 ||
-        packetVersionRe >= 20190508)
+        packetVersionRe >= 20190508 ||
+        packetVersionZero >= 20190605)
     {
         outMsg.writeInt16(CAST_S16(tab), "tab");
     }

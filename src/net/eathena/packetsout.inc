@@ -1643,6 +1643,13 @@ if (packetVersionMain >= 20190522)
     packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0b22,   3, clif->pHotkeyRowShift2);
 }
 
+// 20190605 zero
+if (packetVersionZero >= 20190605)
+{
+    packet(CMSG_SET_SHORTCUTS,            0x0b21,  13, clif->pHotkey2);
+    packet(CMSG_SHORTCUTS_ROW_SHIFT,      0x0b22,   3, clif->pHotkeyRowShift2);
+}
+
 // 20160622
 if (packetVersion >= 20160622)
 {
