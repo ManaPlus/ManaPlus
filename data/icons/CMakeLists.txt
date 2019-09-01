@@ -1,7 +1,7 @@
 SET(FILES
-    manaplus.png
+    manaplus.svg
     )
 
 INSTALL(FILES ${FILES} DESTINATION ${DATA_DIR}/icons)
 
-INSTALL(FILES "manaplus.png" DESTINATION share/pixmaps)
+INSTALL(FILES "manaplus.svg" DESTINATION share/icons/hicolor/scalable/apps)
