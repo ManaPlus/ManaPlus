@@ -2,7 +2,7 @@
 <application>
   <id type="desktop">manaplus.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <license>GPL-2.0</license>
+  <project_license>GPL-2.0</project_license>
   <name>The Mana Plus Client</name>
   <summary>Extended client for The Mana World and similar servers</summary>
   <description>
@@ -24,4 +24,9 @@
     <screenshot>http://manaplus.org/_media/manaplus_screenshot_11.png</screenshot>
     <screenshot>http://manaplus.org/_media/manaplus_screenshot_15.png</screenshot>
   </screenshots>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">mild</content_attribute>
+    <content_attribute id="violence-fantasy">mild</content_attribute>
+    <content_attribute id="social-chat">intense</content_attribute>
+  </content_rating>
 </application>
