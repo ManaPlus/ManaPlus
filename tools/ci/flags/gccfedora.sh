@@ -133,6 +133,7 @@ export CXXFLAGS="${CXXFLAGS} -Wignored-qualifiers"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-fallthrough"
 export CXXFLAGS="${CXXFLAGS} -Wimplicit-fallthrough=5"
+# not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-function-declaration"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-int"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-interface"
