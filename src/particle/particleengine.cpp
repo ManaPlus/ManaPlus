@@ -64,7 +64,7 @@ ParticleEngine::~ParticleEngine()
     ParticleEngine::particleCount--;
 }
 
-void ParticleEngine::setupEngine() restrict2
+void ParticleEngine::setupEngine()
 {
     ParticleEngine::maxCount = config.getIntValue("particleMaxCount");
     ParticleEngine::fastPhysics = fromInt(config.getIntValue(

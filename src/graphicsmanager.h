@@ -78,8 +78,8 @@ class GraphicsManager final
 
         static void setVideoMode();
 
-        SDL_Window *createWindow(const int w, const int h,
-                                 const int bpp, const int flags);
+        static SDL_Window *createWindow(const int w, const int h,
+                                        const int bpp, const int flags);
 
 #ifdef USE_SDL2
         SDL_Renderer *createRenderer(SDL_Window *const window,

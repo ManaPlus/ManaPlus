@@ -39,14 +39,14 @@ class MemoryManager final
         ~MemoryManager()
         { }
 
-        int getSurfaceSize(const SDL_Surface *const surface);
+        static int getSurfaceSize(const SDL_Surface *const surface);
 
-        void printMemory(const std::string &name,
-                         const int level,
-                         const int localSum,
-                         const int childsSum);
+        static void printMemory(const std::string &name,
+                                const int level,
+                                const int localSum,
+                                const int childsSum);
 
-        void printAllMemory(ChatTab *const tab);
+        static void printAllMemory(ChatTab *const tab);
 };
 
 extern MemoryManager memoryManager;

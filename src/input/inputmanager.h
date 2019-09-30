@@ -143,8 +143,7 @@ class InputManager final
         InputActionT getActionByKey(const SDL_Event &restrict event)
                                     const restrict2 A_WARN_UNUSED;
 
-        InputActionT getActionByConfigField(const std::string &field)
-                                            const restrict2 A_WARN_UNUSED;
+        static InputActionT getActionByConfigField(const std::string &field);
 
         void executeAction(const InputActionT keyNum) restrict2;
 
@@ -160,7 +159,7 @@ class InputManager final
                                 const std::string &restrict args,
                                 ChatTab *restrict const tab) restrict2;
 
-        void addChatCommands(std::list<std::string> &restrict arr) restrict;
+        static void addChatCommands(std::list<std::string> &restrict arr);
 
     protected:
         void resetKey(const InputActionT i) restrict2;

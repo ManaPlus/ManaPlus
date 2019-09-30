@@ -119,7 +119,7 @@ class Client final : public ConfigListener,
         static void logVars();
 #endif  // ANDROID
 
-        void stateConnectGame1();
+        static void stateConnectGame1();
 
         void stateConnectServer1();
 

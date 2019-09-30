@@ -73,7 +73,7 @@ class ParticleEngine final
          * Gives a particle the properties of an engine root particle and loads
          * the particle-related config settings.
          */
-        void setupEngine() restrict2;
+        static void setupEngine();
 
         /**
          * Updates particle position, returns false when the particle should

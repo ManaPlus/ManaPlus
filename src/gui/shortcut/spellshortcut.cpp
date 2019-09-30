@@ -57,7 +57,7 @@ void SpellShortcut::load()
     }
 }
 
-unsigned int SpellShortcut::getSpellsCount() const
+unsigned int SpellShortcut::getSpellsCount()
 {
     return SPELL_SHORTCUT_ITEMS;
 }

@@ -78,7 +78,8 @@ class ItemPopup final : public Popup
     private:
         std::string getCardsString(const int *const cards);
 
-        std::string getOptionsString(const ItemOptionsList *const options);
+        static std::string getOptionsString(const ItemOptionsList *const
+                                            options);
 
         Label *mItemName A_NONNULLPOINTER;
         TextBox *mItemDesc A_NONNULLPOINTER;

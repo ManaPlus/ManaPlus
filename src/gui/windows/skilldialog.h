@@ -217,8 +217,8 @@ class SkillDialog final : public Window,
         SkillInfo *loadSkill(XmlNodeConstPtr node,
                              SkillModel *const model);
 
-        void loadSkillData(XmlNodeConstPtr node,
-                           SkillInfo *const skill);
+        static void loadSkillData(XmlNodeConstPtr node,
+                                  SkillInfo *const skill);
 
         void addDefaultTab();
 

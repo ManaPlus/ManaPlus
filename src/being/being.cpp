@@ -869,7 +869,7 @@ void Being::takeDamage(Being *restrict const attacker,
 int Being::getHitEffect(const Being *restrict const attacker,
                         const AttackTypeT type,
                         const int attackId,
-                        const int level) const restrict2
+                        const int level)
 {
     if (effectManager == nullptr)
         return 0;

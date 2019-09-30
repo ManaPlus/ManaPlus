@@ -1929,7 +1929,7 @@ void ChatWindow::saveState() const
 }
 
 bool ChatWindow::saveTab(const int num,
-                         const ChatTab *const tab) const
+                         const ChatTab *const tab)
 {
     if (tab == nullptr)
         return false;

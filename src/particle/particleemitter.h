@@ -88,7 +88,7 @@ class ParticleEmitter final
         template <typename T> static ParticleEmitterProp<T>
             readParticleEmitterProp(XmlNodePtrConst propertyNode, T def);
 
-        ImageSet *getImageSet(XmlNodePtrConst node);
+        static ImageSet *getImageSet(XmlNodePtrConst node);
 
         /**
          * initial position of particles:

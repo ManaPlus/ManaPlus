@@ -48,7 +48,7 @@ class SpellShortcut final
          */
         void load();
 
-        unsigned int getSpellsCount() const A_CONST A_WARN_UNUSED;
+        static unsigned int getSpellsCount();
 
         /**
          * Set the item that is selected.

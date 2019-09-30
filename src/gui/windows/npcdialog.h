@@ -264,9 +264,9 @@ class NpcDialog final : public Window,
 
         void deleteSkinControls();
 
-        void restoreVirtuals();
+        static void restoreVirtuals();
 
-        std::string complexItemToStr(const ComplexItem *const item);
+        static std::string complexItemToStr(const ComplexItem *const item);
 
         BeingId mNpcId;
 

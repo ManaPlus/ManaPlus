@@ -1061,7 +1061,6 @@ InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
 }
 
 InputActionT InputManager::getActionByConfigField(const std::string &field)
-                                                  const restrict2
 {
     for (int i = 0; i < CAST_S32(InputAction::TOTAL); i ++)
     {
@@ -1073,7 +1072,6 @@ InputActionT InputManager::getActionByConfigField(const std::string &field)
 }
 
 void InputManager::addChatCommands(std::list<std::string> &restrict arr)
-                                   restrict
 {
     const int sz = CAST_S32(InputAction::TOTAL);
     for (int i = 0; i < sz; i++)

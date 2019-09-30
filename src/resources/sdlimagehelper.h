@@ -94,7 +94,7 @@ class SDLImageHelper final : public ImageHelper
 
     protected:
         /** SDL_Surface to SDL_Surface Image loader */
-        Image *_SDLload(SDL_Surface *tmpImage) A_WARN_UNUSED;
+        static Image *_SDLload(SDL_Surface *tmpImage);
 
         static bool mEnableAlphaCache;
 };

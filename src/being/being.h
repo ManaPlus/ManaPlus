@@ -884,10 +884,10 @@ class Being notfinal : public ActorSprite,
 
         void recalcSpritesOrder() restrict2;
 
-        int getHitEffect(const Being *restrict const attacker,
-                         const AttackTypeT type,
-                         const int attackId,
-                         const int level) const restrict2 A_WARN_UNUSED;
+        static int getHitEffect(const Being *restrict const attacker,
+                                const AttackTypeT type,
+                                const int attackId,
+                                const int level);
 
         CursorT getHoverCursor() const restrict2 A_WARN_UNUSED
         {

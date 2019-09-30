@@ -68,7 +68,7 @@ class MailWindow final : public Window,
 
         void postConnection();
 
-        void createMail(const std::string &to);
+        static void createMail(const std::string &to);
 
         MailMessage *findMail(const int64_t id) A_WARN_UNUSED;
 
