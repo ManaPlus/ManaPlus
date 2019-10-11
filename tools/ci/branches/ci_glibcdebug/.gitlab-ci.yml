@@ -95,6 +95,7 @@ clang-7.0_glibcdebug_tests:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang70_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   <<: *job-push
+  image: debian:buster
   variables:
     PACKAGES: clang-7 libc++-dev libc++abi-dev libclang-7-dev 
               make autoconf automake autopoint gettext 
@@ -109,6 +110,7 @@ clang-7.0_glibcdebug_tests_sdl2:
   script:
   - ./tools/ci/jobs/clang70_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame --enable-glibcdebug
   <<: *job-push
+  image: debian:buster
   variables:
     PACKAGES: clang-7 libc++-dev libc++abi-dev libclang-7-dev 
               make autoconf automake autopoint gettext 
@@ -125,6 +127,7 @@ clang-7.0_glibcdebug:
   - ./tools/ci/jobs/clang70.sh --enable-glibcdebug
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
+  image: debian:buster
   variables:
     PACKAGES: clang-7 libc++-dev libc++abi-dev libclang-7-dev 
               make autoconf automake autopoint gettext 
@@ -140,6 +143,7 @@ clang-7.0_glibcdebug_sdl2:
   - ./tools/ci/jobs/clang70.sh --with-sdl2 --enable-glibcdebug
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
+  image: debian:buster
   variables:
     PACKAGES: clang-7 libc++-dev libc++abi-dev libclang-7-dev 
               make autoconf automake autopoint gettext 
