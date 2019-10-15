@@ -752,7 +752,7 @@ bool SDLGraphics::setVideoMode(const int w, const int h,
         noFrame,
         allowHighDPI);
 
-    if (!(mWindow = graphicsManager.createWindow(w, h, bpp,
+    if (!(mWindow = GraphicsManager::createWindow(w, h, bpp,
         getSoftwareFlags())))
     {
         mRect.w = 0;

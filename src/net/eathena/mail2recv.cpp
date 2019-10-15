@@ -276,7 +276,7 @@ void Mail2Recv::processCheckNameResult(Net::MessageIn &msg)
             }
             else
             {
-                mailWindow->createMail(mail->to);
+                MailWindow::createMail(mail->to);
             }
             break;
         case MailQueueType::ValidateTo:

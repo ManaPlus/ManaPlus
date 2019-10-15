@@ -513,7 +513,7 @@ int Image::calcMemoryLocal() const
     if (mSDLSurface != nullptr)
     {
         sz += CAST_S32(mAlphaCache.size()) *
-            memoryManager.getSurfaceSize(mSDLSurface);
+            MemoryManager::getSurfaceSize(mSDLSurface);
     }
     return sz;
 }

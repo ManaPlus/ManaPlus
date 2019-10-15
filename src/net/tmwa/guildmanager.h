@@ -46,7 +46,7 @@ class GuildManager final
 
         static void send(const std::string &msg);
 
-        void getNames(StringVect &names) const;
+        static void getNames(StringVect &names);
 
         void requestGuildInfo();
 
@@ -65,7 +65,7 @@ class GuildManager final
 
         void createTab(Guild *const guild);
 
-        Guild *createGuild() const A_WARN_UNUSED;
+        static Guild *createGuild() A_WARN_UNUSED;
 
         static void clear();
 

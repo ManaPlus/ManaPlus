@@ -779,7 +779,7 @@ impHandler(sendGuiKey)
     }
     if (sz == 2)
     {
-        const InputActionT actionId = inputManager.getActionByConfigField(
+        const InputActionT actionId = InputManager::getActionByConfigField(
             pars[1]);
         guiInput->simulateKey(keyValue, actionId);
     }

@@ -82,7 +82,7 @@ void EmulateGuildTab::getAutoCompleteList(StringVect &names) const
     if (guildManager == nullptr)
         return;
 
-    guildManager->getNames(names);
+    GuildManager::getNames(names);
 }
 
 void EmulateGuildTab::getAutoCompleteCommands(StringVect &names) const

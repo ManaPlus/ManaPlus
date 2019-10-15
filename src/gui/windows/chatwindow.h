@@ -330,8 +330,8 @@ class ChatWindow final : public Window,
 
         std::string autoCompleteHistory(const std::string &partName) const;
 
-        std::string autoComplete(const std::string &partName,
-                                 const History *const words) const;
+        static std::string autoComplete(const std::string &partName,
+                                        const History *const words);
 
         static std::string autoComplete(const StringVect &names,
                                         std::string partName);

@@ -47,7 +47,7 @@ SpellShortcutContainer::SpellShortcutContainer(Widget2 *const widget,
     mSpellClicked(false)
 {
     if (spellShortcut != nullptr)
-        mMaxItems = spellShortcut->getSpellsCount();
+        mMaxItems = SpellShortcut::getSpellsCount();
     else
         mMaxItems = 0;
 }

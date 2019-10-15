@@ -1670,7 +1670,7 @@ impHandler(mailTo)
     }
     else
     {
-        mailWindow->createMail(args);
+        MailWindow::createMail(args);
     }
     return true;
 }

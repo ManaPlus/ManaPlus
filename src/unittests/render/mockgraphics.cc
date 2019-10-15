@@ -268,7 +268,7 @@ bool MockGraphics::setVideoMode(const int w, const int h,
 {
     setMainFlags(w, h, scale, bpp, fs, hwaccel, resize, noFrame, allowHighDPI);
 
-    if ((mWindow = graphicsManager.createWindow(w, h, bpp,
+    if ((mWindow = GraphicsManager::createWindow(w, h, bpp,
         getSoftwareFlags())) == nullptr)
     {
         mRect.w = 0;

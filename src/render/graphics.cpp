@@ -283,7 +283,7 @@ bool Graphics::setOpenGLMode() restrict2
 {
 #ifdef USE_OPENGL
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    if ((mWindow = graphicsManager.createWindow(
+    if ((mWindow = GraphicsManager::createWindow(
         mActualWidth, mActualHeight,
         mBpp, getOpenGLFlags())) == nullptr)
     {

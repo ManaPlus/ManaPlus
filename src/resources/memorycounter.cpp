@@ -37,7 +37,7 @@ int MemoryCounter::calcMemory(const int level) const
 {
     const int sumLocal = calcMemoryLocal();
     const int sumChilds = calcMemoryChilds(level);
-    memoryManager.printMemory(getCounterName(),
+    MemoryManager::printMemory(getCounterName(),
         level,
         sumLocal,
         sumChilds);

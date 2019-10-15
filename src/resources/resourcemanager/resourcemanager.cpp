@@ -652,7 +652,7 @@ int calcMemoryLocal()
     int sz = 24;
     FOR_EACH (std::set<SDL_Surface*>::iterator, it, deletedSurfaces)
     {
-        sz += memoryManager.getSurfaceSize(*it);
+        sz += MemoryManager::getSurfaceSize(*it);
     }
     return sz;
 }
@@ -681,7 +681,7 @@ int calcMemory(const int level)
 {
     const int sumLocal = calcMemoryLocal();
     const int sumChilds = calcMemoryChilds(0);
-    memoryManager.printMemory("resource manager",
+    MemoryManager::printMemory("resource manager",
         level,
         sumLocal,
         sumChilds);

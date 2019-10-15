@@ -87,7 +87,7 @@ int main(int argc, char **argv)
     Cpu::detect();
     DyePalette::initFunctions();
 
-    graphicsManager.createWindow(10, 10, 0, SDL_ANYFORMAT);
+    GraphicsManager::createWindow(10, 10, 0, SDL_ANYFORMAT);
 
 #ifdef USE_SDL2
     imageHelper = new SurfaceImageHelper;

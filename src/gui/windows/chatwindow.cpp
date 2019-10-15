@@ -253,7 +253,7 @@ void ChatWindow::loadCommandsFile(const std::string &name)
 void ChatWindow::fillCommands()
 {
     loadCommandsFile("chatcommands.txt");
-    inputManager.addChatCommands(mCommands);
+    InputManager::addChatCommands(mCommands);
 }
 
 void ChatWindow::loadGMCommands()
@@ -1531,7 +1531,7 @@ std::string ChatWindow::autoComplete(const StringVect &names,
 }
 
 std::string ChatWindow::autoComplete(const std::string &partName,
-                                     const History *const words) const
+                                     const History *const words)
 {
     if (words == nullptr)
         return "";

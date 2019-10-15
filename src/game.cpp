@@ -175,7 +175,7 @@ static void initEngines()
 
     particleEngine = new ParticleEngine;
     particleEngine->setMap(nullptr);
-    particleEngine->setupEngine();
+    ParticleEngine::setupEngine();
     BeingInfo::init();
 
     if (gameHandler != nullptr)

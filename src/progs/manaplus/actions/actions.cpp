@@ -2004,9 +2004,9 @@ impHandler(seen)
 impHandler(dumpMemoryUsage)
 {
     if (event.tab != nullptr)
-        memoryManager.printAllMemory(event.tab);
+        MemoryManager::printAllMemory(event.tab);
     else
-        memoryManager.printAllMemory(localChatTab);
+        MemoryManager::printAllMemory(localChatTab);
     return true;
 }
 

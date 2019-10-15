@@ -64,11 +64,11 @@ TEST_CASE("xmlutils readXmlIntVector 1", "")
 
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        graphicsManager.createWindow(640, 480, 0,
+        GraphicsManager::createWindow(640, 480, 0,
         SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
 #else  // USE_SDL2
 
-    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+    GraphicsManager::createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
@@ -124,11 +124,11 @@ TEST_CASE("xmlutils readXmlStringMap 1", "")
 
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        graphicsManager.createWindow(640, 480, 0,
+        GraphicsManager::createWindow(640, 480, 0,
         SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
 #else  // USE_SDL2
 
-    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+    GraphicsManager::createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
@@ -184,11 +184,11 @@ TEST_CASE("xmlutils readXmlIntMap 1", "")
 
 #ifdef USE_SDL2
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        graphicsManager.createWindow(640, 480, 0,
+        GraphicsManager::createWindow(640, 480, 0,
         SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
 #else  // USE_SDL2
 
-    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+    GraphicsManager::createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;

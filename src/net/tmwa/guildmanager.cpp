@@ -129,7 +129,7 @@ void GuildManager::chat(const std::string &msg)
     mTab->chatLog(localPlayer->getName(), msg);
 }
 
-void GuildManager::getNames(StringVect &names) const
+void GuildManager::getNames(StringVect &names)
 {
     const Guild *const guild = createGuild();
     if (guild != nullptr)
@@ -240,7 +240,7 @@ void GuildManager::createTab(Guild *const guild)
     }
 }
 
-Guild *GuildManager::createGuild() const
+Guild *GuildManager::createGuild()
 {
     Guild *const guild = Guild::getGuild(1);
     if (guild == nullptr)

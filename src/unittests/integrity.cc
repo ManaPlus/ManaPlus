@@ -132,13 +132,13 @@ TEST_CASE("integrity tests", "integrity")
     imageHelper = new SurfaceImageHelper;
 
     SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        graphicsManager.createWindow(640, 480, 0,
+        GraphicsManager::createWindow(640, 480, 0,
         SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
 #else  // USE_SDL2
 
     imageHelper = new SDLImageHelper();
 
-    graphicsManager.createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
+    GraphicsManager::createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
 #endif  // USE_SDL2
 
     userPalette = new UserPalette;
