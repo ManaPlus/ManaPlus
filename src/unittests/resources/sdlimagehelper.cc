@@ -87,14 +87,7 @@ TEST_CASE("sdlimagehelper combineSurface", "")
     setBrandingDefaults(branding);
     ConfigManager::initConfiguration();
 
-#ifdef USE_SDL2
-    SDLImageHelper::setRenderer(graphicsManager.createRenderer(
-        GraphicsManager::createWindow(640, 480, 0,
-        SDL_WINDOW_SHOWN | SDL_SWSURFACE), SDL_RENDERER_SOFTWARE));
-#else  // USE_SDL2
-
     GraphicsManager::createWindow(640, 480, 0, SDL_ANYFORMAT | SDL_SWSURFACE);
-#endif  // USE_SDL2
 
     userPalette = new UserPalette;
 
