@@ -841,7 +841,10 @@ int SDL2SoftwareGraphics::SDL_FakeUpperBlit(const SDL_Surface *restrict const
                                             SDL_Rect *restrict dstrect)
                                             const restrict2
 {
-    int srcx, srcy, w, h;
+    int srcx;
+    int srcy;
+    int w;
+    int h;
 
     // Make sure the surfaces aren't locked
     if (!src || !dst)
@@ -942,7 +945,8 @@ void SDL2SoftwareGraphics::fillRectangle(const Rect &restrict rectangle)
             area.x + area.width : top.x + top.width;
         const int y2 = area.y + area.height < top.y + top.height ?
             area.y + area.height : top.y + top.height;
-        int x, y;
+        int x;
+        int y;
 
         SDL_LockSurface(mSurface);
 
