@@ -251,7 +251,7 @@ unsigned int decodeStr(const std::string &str)
 
     int res = str[0] - start;
     int mult = 1;
-    for (unsigned int f = 1; f < str.length(); f ++)
+    for (size_t f = 1; f < str.length(); f ++)
     {
         mult *= base;
         res = res + (str[f] - start) * mult;

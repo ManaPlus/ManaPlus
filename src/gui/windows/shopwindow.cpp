@@ -878,7 +878,7 @@ void ShopWindow::showList(const std::string &nick, std::string data)
     if (sellDialog != nullptr)
         sellDialog->setMoney(PlayerInfo::getAttribute(Attributes::MONEY));
 
-    for (unsigned f = 0; f < data.length(); f += 9)
+    for (size_t f = 0; f < data.length(); f += 9)
     {
         if (f + 9 > data.length())
             break;
