@@ -66,7 +66,7 @@ static uint32_t nextSecond(uint32_t interval, void *param A_UNUSED);
  */
 static uint32_t nextTick(uint32_t interval, void *param A_UNUSED)
 {
-    tick_time++;
+    tick_time = tick_time + 1;
     if (tick_time == MAX_TICK_VALUE)
         tick_time = 0;
     return interval;

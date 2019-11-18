@@ -996,7 +996,7 @@ int Client::gameExec()
 
         PERF_STAT(5);
 
-        logic_count += k;
+        logic_count = logic_count + k;
         if (gui != nullptr)
             gui->slowLogic();
 
@@ -1671,7 +1671,7 @@ int Client::gameExec()
         // Update the screen when application is visible, delay otherwise.
         if (!WindowManager::getIsMinimized())
         {
-            frame_count++;
+            frame_count = frame_count + 1;
             if (gui != nullptr)
                 gui->draw();
             mainGraphics->updateScreen();
