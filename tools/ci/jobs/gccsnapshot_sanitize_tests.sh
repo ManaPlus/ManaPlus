@@ -38,6 +38,8 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -Wstrict-aliasing=2 \
 -Wno-attributes \
 -Wno-deprecated-copy"
 
+export LDFLAGS="$LDFLAGS -lm -ldl"
+
 #source ./tools/ci/flags/${FLAGS}
 
 export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"

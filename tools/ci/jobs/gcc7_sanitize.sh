@@ -30,6 +30,8 @@ export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -std=gnu++1z -Wformat=1 \
 -Wno-attributes -fno-omit-frame-pointer"
 
+export LDFLAGS="$LDFLAGS -lm -ldl"
+
 source ./tools/ci/flags/gcc7.sh
 
 export CXXFLAGS="$CXXFLAGS $POST_CXXFLAGS"

@@ -46,6 +46,8 @@ export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -ffast-math \
 -Wconditionally-supported -Wdate-time -Woverloaded-virtual \
 -fno-var-tracking $POST_CXXFLAGS"
 
+export LDFLAGS="$LDFLAGS -lm -ldl"
+
 do_init
 run_configure --enable-werror $*
 run_make

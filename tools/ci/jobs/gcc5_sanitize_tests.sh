@@ -58,6 +58,8 @@ export CXXFLAGS="-ggdb3 -O2 -ffast-math \
 -Wreturn-type -Wsequence-point -Wswitch \
 -Wno-attributes"
 
+export LDFLAGS="$LDFLAGS -lm -ldl"
+
 do_init
 run_configure --enable-unittests=yes $*
 export SDL_VIDEODRIVER=dummy

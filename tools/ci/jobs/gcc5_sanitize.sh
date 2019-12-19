@@ -58,6 +58,8 @@ export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -ffast-math \
 -Wreturn-type -Wsequence-point -Wswitch \
 -Wno-attributes $POST_CXXFLAGS"
 
+export LDFLAGS="$LDFLAGS -lm -ldl"
+
 do_init
 run_configure --enable-werror $*
 run_make
