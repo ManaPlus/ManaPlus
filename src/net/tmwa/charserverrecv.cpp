@@ -216,6 +216,7 @@ void CharServerRecv::processCharMapInfo(Net::MessageIn &restrict msg)
         server.hostname = ipToString(msg.readInt32("ip address"));
     }
     server.port = msg.readInt16("port");
+    server.althostname = charServer.althostname;
 
     // Prevent the selected local player from being deleted
     localPlayer = Net::CharServerHandler::mSelectedCharacter->dummy;

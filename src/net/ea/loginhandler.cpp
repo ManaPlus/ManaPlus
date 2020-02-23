@@ -97,6 +97,7 @@ void LoginHandler::chooseServer(const unsigned int server,
         }
         charServer->port = LoginRecv::mWorlds[server]->port;
     }
+    charServer->althostname = mServer.althostname;
 
     client->setState(State::UPDATE);
 }
