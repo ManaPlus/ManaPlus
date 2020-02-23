@@ -433,7 +433,7 @@ static int _SDL_gfxBlitRGBACall(const SDL_Surface *const src,
     return 0;
 }
 
-int SDLgfxBlitRGBA(SDL_Surface *const src,
+int SDLgfxBlitRGBA(const SDL_Surface *const src,
                    const SDL_Rect *const srcrect,
                    SDL_Surface *const dst,
                    const SDL_Rect *const dstrect)

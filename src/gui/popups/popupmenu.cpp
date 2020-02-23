@@ -1393,10 +1393,10 @@ void PopupMenu::handleLink(const std::string &link,
     {
         if (localPlayer != nullptr)
         {
-            const int num = atoi(link.substr(10).c_str());
             const Guild *const guild = localPlayer->getGuild();
             if (guild != nullptr)
             {
+                const int num = atoi(link.substr(10).c_str());
                 guildHandler->changeMemberPostion(
                     guild->getMember(mName), num);
             }

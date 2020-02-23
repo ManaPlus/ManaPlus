@@ -78,9 +78,9 @@ ShortcutWindow::ShortcutWindow(const std::string &restrict title,
 
     setMinWidth(32);
     setMinHeight(32);
-    const int border = SCROLL_PADDING * 2 + getPadding() * 2;
     if (mItems != nullptr)
     {
+        const int border = SCROLL_PADDING * 2 + getPadding() * 2;
         const int bw = mItems->getBoxWidth();
         const int bh = mItems->getBoxHeight();
         const int maxItems = mItems->getMaxItems();

@@ -152,7 +152,6 @@ void Label::draw(Graphics *const graphics)
     BLOCK_START("Label::draw")
     int textX;
     const Rect &rect = mDimension;
-    const int textY = rect.height / 2 - getFont()->getHeight() / 2;
     Font *const font = getFont();
 
     switch (mAlignment)
@@ -185,7 +184,10 @@ void Label::draw(Graphics *const graphics)
 
     const Image *const image = mTextChunk.img;
     if (image != nullptr)
+    {
+        const int textY = rect.height / 2 - font->getHeight() / 2;
         graphics->drawImage(image, textX, textY);
+    }
     BLOCK_END("Label::draw")
 }
 

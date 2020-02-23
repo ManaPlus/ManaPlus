@@ -1101,9 +1101,11 @@ void LocalPlayer::handleStatusEffect(const StatusEffect *const effect,
 
             if (!found)
             {   // add new
-                const int offset = CAST_S32(mStatusEffectIcons.size());
                 if (miniStatusWindow != nullptr)
+                {
+                    const int offset = CAST_S32(mStatusEffectIcons.size());
                     miniStatusWindow->setIcon(offset, sprite);
+                }
                 mStatusEffectIcons.push_back(effectId);
             }
         }

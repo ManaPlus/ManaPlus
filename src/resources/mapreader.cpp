@@ -1196,10 +1196,10 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                         haveAnimation = true;
                         const std::string name = XML::getProperty(
                             propertyNode, "name", "");
-                        const int value = XML::getProperty(
-                            propertyNode, "value", 0);
                         if (!name.empty())
                         {
+                            const int value = XML::getProperty(
+                                propertyNode, "value", 0);
                             tileProperties[name] = value;
                             logger->log("Tile Prop of %d \"%s\" = \"%d\"",
                                 tileGID, name.c_str(), value);
@@ -1241,13 +1241,13 @@ Tileset *MapReader::readTileset(XmlNodePtr node,
                         if (!xmlNameEqual(frameNode, "frame"))
                             continue;
 
-                        const int tileId = XML::getProperty(
-                            frameNode, "tileid", 0);
-                        const int duration = XML::getProperty(
-                            frameNode, "duration", 0) /  10;
-
                         if (set != nullptr)
                         {
+                            const int tileId = XML::getProperty(
+                                frameNode, "tileid", 0);
+                            const int duration = XML::getProperty(
+                                frameNode, "duration", 0) /  10;
+
                             ani->addFrame(set->get(tileId),
                                 duration,
                                 0, 0, 100);

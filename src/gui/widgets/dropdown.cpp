@@ -226,7 +226,6 @@ void DropDown::draw(Graphics *const graphics)
     updateAlpha();
 
     const unsigned int alpha = CAST_U32(mAlpha * 255.0F);
-    const int pad = 2 * mPadding;
     mHighlightColor.a = alpha;
     mShadowColor.a = alpha;
 
@@ -272,6 +271,7 @@ void DropDown::draw(Graphics *const graphics)
 
     if (isFocused())
     {
+        const int pad = 2 * mPadding;
         graphics->setColor(mHighlightColor);
         graphics->drawRectangle(Rect(mPadding, mPadding,
             mDimension.width - h - pad, h - pad));
@@ -321,11 +321,10 @@ void DropDown::safeDrawFrame(Graphics *const graphics)
 
 void DropDown::drawButton(Graphics *const graphics)
 {
-    const int height = mDroppedDown ? mFoldedUpHeight : mDimension.height;
-
-    Image *image = buttons[mDroppedDown][mPushed];
+    Image *const image = buttons[mDroppedDown][mPushed];
     if (image != nullptr)
     {
+        const int height = mDroppedDown ? mFoldedUpHeight : mDimension.height;
         graphics->drawImage(image,
             mDimension.width - image->getWidth() - mImagePadding,
             (height - image->getHeight()) / 2);

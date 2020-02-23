@@ -365,8 +365,6 @@ void ItemContainer::draw(Graphics *const graphics)
         int itemIndex = j * mGridColumns - 1;
         for (int i = 0; i < mGridColumns; i++)
         {
-            int itemX = i * mBoxWidth;
-            int itemY = intY0;
             itemIndex ++;
             if (mShowMatrix[itemIndex] < 0)
                 continue;
@@ -380,6 +378,8 @@ void ItemContainer::draw(Graphics *const graphics)
             Image *const image = item->getImage();
             if (image != nullptr)
             {
+                int itemX = i * mBoxWidth;
+                int itemY = intY0;
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
                     if (mSelImg != nullptr)
@@ -487,8 +487,6 @@ void ItemContainer::safeDraw(Graphics *const graphics)
         int itemIndex = j * mGridColumns - 1;
         for (int i = 0; i < mGridColumns; i++)
         {
-            int itemX = i * mBoxWidth;
-            int itemY = intY0;
             itemIndex ++;
             if (mShowMatrix[itemIndex] < 0)
                 continue;
@@ -502,6 +500,8 @@ void ItemContainer::safeDraw(Graphics *const graphics)
             Image *const image = item->getImage();
             if (image != nullptr)
             {
+                int itemX = i * mBoxWidth;
+                int itemY = intY0;
                 if (mShowMatrix[itemIndex] == mSelectedIndex)
                 {
                     if (mSelImg != nullptr)
@@ -1148,9 +1148,9 @@ void ItemContainer::adjustHeight()
         mGridRows = maxRows;
     }
 
-    const int num = updateMatrix();
     if (mShowEmptyRows == ShowEmptyRows_false)
     {
+        const int num = updateMatrix();
         mDrawRows = num / mGridColumns;
         if (mDrawRows == 0 || num % mGridColumns > 0)
             ++mDrawRows;

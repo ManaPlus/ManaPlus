@@ -567,8 +567,6 @@ void Viewport::mousePressed(MouseEvent &event)
     mMousePressX = event.getX();
     mMousePressY = event.getY();
     const MouseButtonT eventButton = event.getButton();
-    const int pixelX = mMousePressX + mPixelViewX;
-    const int pixelY = mMousePressY + mPixelViewY;
 
     // Right click might open a popup
     if (eventButton == MouseButton::RIGHT)
@@ -601,6 +599,8 @@ void Viewport::mousePressed(MouseEvent &event)
         // Find the being nearest to the clicked position
         if (actorManager != nullptr)
         {
+            const int pixelX = mMousePressX + mPixelViewX;
+            const int pixelY = mMousePressY + mPixelViewY;
             Being *const target = actorManager->findNearestLivingBeing(
                 pixelX, pixelY, 20, ActorType::Monster, nullptr);
 

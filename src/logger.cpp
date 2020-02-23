@@ -485,7 +485,7 @@ void Logger::error(const std::string &error_text)
 //    StandardAlert(kAlertStopAlert,
 //                  (const unsigned char*)"\pError",
 //                  (ConstStr255Param) msg, nullptr, nullptr);
-#elif defined(__linux__) || defined(_linux)
+#elif defined(__linux__) || defined(__linux)
     std::cerr << "Error: " << error_text << std::endl;
     const std::string msg("xmessage \"Error happened. "
         "Please see log file for more information.\"");

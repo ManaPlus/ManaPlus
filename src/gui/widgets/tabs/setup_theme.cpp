@@ -242,7 +242,6 @@ Setup_Theme::~Setup_Theme()
     delete2(mFontSizeListModel)
     delete2(mNpcFontSizeListModel)
     delete2(mLangListModel)
-    delete2(mInfo)
 }
 
 void Setup_Theme::updateInfo()

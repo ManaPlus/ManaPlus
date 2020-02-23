@@ -76,11 +76,11 @@ void ShortcutBase::save() const
     for (size_t i = 0; i < mMaxSize; i++)
     {
         const int itemId = mItems[i] != 0 ? mItems[i] : -1;
-        const int itemColor = (mItemColors[i] != ItemColor_zero)
-            ? toInt(mItemColors[i], int) : 1;
         const std::string num = toString(CAST_S32(i));
         if (itemId != -1)
         {
+            const int itemColor = (mItemColors[i] != ItemColor_zero)
+                ? toInt(mItemColors[i], int) : 1;
             serverConfig.setValue(mItemName + num, itemId);
             serverConfig.setValue(mColorName + num, itemColor);
         }

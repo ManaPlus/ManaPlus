@@ -1274,9 +1274,11 @@ impHandler(undress)
 
     if (sz == 2)
     {
-        const int itemId = atoi(pars[1].c_str());
         if (target != nullptr)
+        {
+            const int itemId = atoi(pars[1].c_str());
             target->undressItemById(itemId);
+        }
     }
     else
     {

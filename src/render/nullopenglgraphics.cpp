@@ -271,9 +271,6 @@ void NullOpenGLGraphics::drawPatternInline(const Image *restrict const image,
     if (iw == 0 || ih == 0)
         return;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
     setColorAlpha(image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
@@ -289,6 +286,9 @@ void NullOpenGLGraphics::drawPatternInline(const Image *restrict const image,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
+
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
@@ -610,9 +610,6 @@ void NullOpenGLGraphics::calcPatternInline(ImageVertexes *restrict const vert,
 
     const int srcX = imageRect.x;
     const int srcY = imageRect.y;
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
     const unsigned int vLimit = mMaxVertices * 4;
 
     OpenGLGraphicsVertexes &ogl = vert->ogl;
@@ -621,6 +618,9 @@ void NullOpenGLGraphics::calcPatternInline(ImageVertexes *restrict const vert,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
+
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
@@ -816,9 +816,6 @@ void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
     const int srcX = imageRect.x;
     const int srcY = imageRect.y;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
     const unsigned int vLimit = mMaxVertices * 4;
 
     OpenGLGraphicsVertexes &ogl = vert->ogl;
@@ -829,6 +826,9 @@ void NullOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
+
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 

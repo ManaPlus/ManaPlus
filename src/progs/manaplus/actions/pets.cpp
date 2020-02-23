@@ -102,9 +102,11 @@ impHandler(petEmote)
     if (event.action >= InputAction::PET_EMOTE_1
         && event.action <= InputAction::PET_EMOTE_48)
     {
-        const int emotion = event.action - InputAction::PET_EMOTE_1;
         if (emoteShortcut != nullptr)
+        {
+            const int emotion = event.action - InputAction::PET_EMOTE_1;
             petHandler->emote(emoteShortcut->getEmote(emotion));
+        }
         if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;

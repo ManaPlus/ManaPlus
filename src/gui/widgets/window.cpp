@@ -1011,7 +1011,6 @@ void Window::mouseDragged(MouseEvent &event)
 
     if ((mouseResize != 0) && !mMoved)
     {
-        const int dx = event.getX() - mDragOffsetX;
         const int dy = event.getY() - mDragOffsetY;
         Rect newDim = getDimension();
 
@@ -1028,6 +1027,7 @@ void Window::mouseDragged(MouseEvent &event)
 
         if ((mouseResize & (LEFT | RIGHT)) != 0)
         {
+            const int dx = event.getX() - mDragOffsetX;
             const int newWidth = newDim.width
                 + ((mouseResize & LEFT) != 0 ? -dx : dx);
             newDim.width = std::min(mMaxWinWidth,

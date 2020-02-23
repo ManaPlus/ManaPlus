@@ -34,7 +34,7 @@ struct SDL_Rect;
 
 // src surface can be any format (most time 32 bit surface with any masks)
 // dst surface always correct 32 sufraces (shared format for all)
-int SDLgfxBlitRGBA(SDL_Surface *const src,
+int SDLgfxBlitRGBA(const SDL_Surface *const src,
                    const SDL_Rect *const srcrect,
                    SDL_Surface *const dst,
                    const SDL_Rect *const dstrect);

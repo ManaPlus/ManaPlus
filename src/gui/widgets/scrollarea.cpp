@@ -457,14 +457,13 @@ void ScrollArea::drawFrame(Graphics *const graphics)
     BLOCK_START("ScrollArea::drawFrame")
     if (mOpaque == Opaque_true)
     {
-        const int bs = mFrameSize * 2;
-        const int w = mDimension.width + bs;
-        const int h = mDimension.height + bs;
-
         updateCalcFlag(graphics);
 
         if (mRedraw)
         {
+            const int bs = mFrameSize * 2;
+            const int w = mDimension.width + bs;
+            const int h = mDimension.height + bs;
             mVertexes2->clear();
             graphics->calcWindow(mVertexes2,
                 0, 0,
@@ -759,10 +758,10 @@ void ScrollArea::mouseExited(MouseEvent& event A_UNUSED)
 void ScrollArea::widgetResized(const Event &event A_UNUSED)
 {
     mRedraw = true;
-    const unsigned int frameSize = 2 * mFrameSize;
     Widget *const content = getContent();
     if (content != nullptr)
     {
+        const unsigned int frameSize = 2 * mFrameSize;
         content->setSize(mDimension.width - frameSize,
             mDimension.height - frameSize);
     }
@@ -935,13 +934,12 @@ void ScrollArea::mouseDragged(MouseEvent &event)
     if (mIsVerticalMarkerDragged)
     {
         const Rect barDim = getVerticalBarDimension();
-
-        const int pos = event.getY() - barDim.y
-              - mVerticalMarkerDragOffset;
         const int length = getVerticalMarkerDimension().height;
 
         if ((barDim.height - length) > 0)
         {
+            const int pos = event.getY() - barDim.y
+                - mVerticalMarkerDragOffset;
             setVerticalScrollAmount((getVerticalMaxScroll() * pos)
                                       / (barDim.height - length));
         }
@@ -954,13 +952,12 @@ void ScrollArea::mouseDragged(MouseEvent &event)
     if (mIsHorizontalMarkerDragged)
     {
         const Rect barDim = getHorizontalBarDimension();
-
-        const int pos = event.getX() - barDim.x
-            - mHorizontalMarkerDragOffset;
         const int length = getHorizontalMarkerDimension().width;
 
         if ((barDim.width - length) > 0)
         {
+            const int pos = event.getX() - barDim.x
+                - mHorizontalMarkerDragOffset;
             setHorizontalScrollAmount((getHorizontalMaxScroll() * pos)
                                       / (barDim.width - length));
         }

@@ -47,8 +47,8 @@ namespace FsZip
             return -1;
         File *const handle = static_cast<File *>(
             rw->hidden.unknown.data1);
-        size_t mPos = handle->mPos;
-        size_t mSize = handle->mSize;
+        const size_t mPos = handle->mPos;
+        const size_t mSize = handle->mSize;
 
         RWOPSINT pos = 0;
 

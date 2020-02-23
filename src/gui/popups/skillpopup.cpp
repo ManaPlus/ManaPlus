@@ -209,7 +209,6 @@ void SkillPopup::show(const SkillInfo *const skill,
         minWidth = mSkillCastType->getMinWidth();
 
     const int numRowsDesc = mSkillDesc->getNumberOfRows();
-    const int numRowsEffect = mSkillEffect->getNumberOfRows();
     const int numRowsLevel = mSkillLevel->getNumberOfRows();
     const int numRowsCast = mSkillCastType->getNumberOfRows();
     const int height = getFont()->getHeight();
@@ -223,6 +222,7 @@ void SkillPopup::show(const SkillInfo *const skill,
     }
     else
     {
+        const int numRowsEffect = mSkillEffect->getNumberOfRows();
         setContentSize(minWidth,
             (numRowsDesc + numRowsLevel + numRowsEffect + numRowsCast + 1) *
             height);

@@ -478,7 +478,6 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
     const int widgetFrameSize = 2 * mWidgetContainer->getFrameSize();
     const int w1 = mDimension.width;
     const int h1 = mDimension.height;
-    const int width = w1 - frameSize - widgetFrameSize;
     const int height = h1 - frameSize
         - mWidgetContainer->getY() - widgetFrameSize;
 
@@ -529,6 +528,7 @@ void TabbedArea::widgetResized(const Event &event A_UNUSED)
 
         if (mArrowButton[1] != nullptr)
         {
+            const int width = w1 - frameSize - widgetFrameSize;
             // Move the right arrow to fit the windows content.
             newWidth = width - mArrowButton[1]->getWidth() - mRightMargin;
             if (newWidth < 0)

@@ -174,9 +174,9 @@ void AvatarListBox::draw(Graphics *const graphics)
                 text = strprintf("%s %d/%d", a->getComplexName().c_str(),
                                  a->getHp(), a->getMaxHp());
             }
-            const bool isPoison = a->getPoison();
             if (a->getMaxHp() != 0)
             {
+                const bool isPoison = a->getPoison();
                 const ProgressColorIdT themeColor = (isPoison
                     ? ProgressColorId::PROG_HP_POISON
                     : ProgressColorId::PROG_HP);
@@ -412,9 +412,9 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
                 text = strprintf("%s %d/%d", a->getComplexName().c_str(),
                                  a->getHp(), a->getMaxHp());
             }
-            const bool isPoison = a->getPoison();
             if (a->getMaxHp() != 0)
             {
+                const bool isPoison = a->getPoison();
                 const ProgressColorIdT themeColor = (isPoison
                     ? ProgressColorId::PROG_HP_POISON
                     : ProgressColorId::PROG_HP);

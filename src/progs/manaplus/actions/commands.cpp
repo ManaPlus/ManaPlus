@@ -1036,9 +1036,11 @@ impHandler(homunEmote)
         event.action >= InputAction::HOMUN_EMOTE_1 &&
         event.action <= InputAction::HOMUN_EMOTE_48)
     {
-        const int emotion = event.action - InputAction::HOMUN_EMOTE_1;
         if (emoteShortcut != nullptr)
+        {
+            const int emotion = event.action - InputAction::HOMUN_EMOTE_1;
             homunculusHandler->emote(emoteShortcut->getEmote(emotion));
+        }
         if (Game::instance() != nullptr)
             Game::instance()->setValidSpeed();
         return true;

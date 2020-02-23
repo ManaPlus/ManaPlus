@@ -100,17 +100,18 @@ void VirtShortcutContainer::draw(Graphics *const graphics)
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {
-        const int itemX = (i % mGridWidth) * mBoxWidth;
-        const int itemY = (i / mGridWidth) * mBoxHeight;
-
-        if (mShortcut->getItem(i) < 0)
+        const int itemId = mShortcut->getItem(i);
+        if (itemId < 0)
             continue;
 
-        const Item *const item = inv->findItem(mShortcut->getItem(i),
+        const Item *const item = inv->findItem(itemId,
             mShortcut->getItemColor(i));
 
         if (item != nullptr)
         {
+            const int itemX = (i % mGridWidth) * mBoxWidth;
+            const int itemY = (i / mGridWidth) * mBoxHeight;
+
             // Draw item icon.
             Image *const image = item->getImage();
 
@@ -176,13 +177,14 @@ void VirtShortcutContainer::safeDraw(Graphics *const graphics)
 
     for (unsigned i = 0; i < mMaxItems; i++)
     {
-        const int itemX = (i % mGridWidth) * mBoxWidth;
-        const int itemY = (i / mGridWidth) * mBoxHeight;
-
-        if (mShortcut->getItem(i) < 0)
+        const int itemId = mShortcut->getItem(i);
+        if (itemId < 0)
             continue;
 
-        const Item *const item = inv->findItem(mShortcut->getItem(i),
+        if (itemId < 0)
+            continue;
+
+        const Item *const item = inv->findItem(itemId,
             mShortcut->getItemColor(i));
 
         if (item != nullptr)
@@ -192,6 +194,9 @@ void VirtShortcutContainer::safeDraw(Graphics *const graphics)
 
             if (image != nullptr)
             {
+                const int itemX = (i % mGridWidth) * mBoxWidth;
+                const int itemY = (i / mGridWidth) * mBoxHeight;
+
                 std::string caption;
                 if (item->getQuantity() > 1)
                     caption = toString(item->getQuantity());

@@ -141,9 +141,9 @@ void ExtendedListBox::draw(Graphics *const graphics)
     for (size_t f = 0; f < itemsSz; ++f)
     {
         const ExtendedListBoxItem &item = mListItems[f];
-        const int row1 = item.row;
         if (item.image)
         {
+            const int row1 = item.row;
             const Image *const image = model->getImageAt(row1);
             if (image != nullptr)
             {
@@ -201,9 +201,9 @@ void ExtendedListBox::draw(Graphics *const graphics)
     for (size_t f = 0; f < selSz; ++f)
     {
         const ExtendedListBoxItem &item = mSelectedItems[f];
-        const int row1 = item.row;
         if (item.image)
         {
+            const int row1 = item.row;
             const Image *const image = model->getImageAt(row1);
             if (image != nullptr)
             {

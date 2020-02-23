@@ -294,7 +294,6 @@ void ItemPopup::setItem(const ItemInfo &item,
         minWidth = mItemOptions->getMinWidth();
 
     const int numRowsDesc = mItemDesc->getNumberOfRows();
-    const int numRowsEffect = mItemEffect->getNumberOfRows();
     const int numRowsWeight = mItemWeight->getNumberOfRows();
     const int numRowsCards = mItemCards->getNumberOfRows();
     const int numRowsOptions = mItemOptions->getNumberOfRows();
@@ -312,6 +311,7 @@ void ItemPopup::setItem(const ItemInfo &item,
     }
     else
     {
+        const int numRowsEffect = mItemEffect->getNumberOfRows();
         setContentSize(minWidth, (numRowsDesc + numRowsEffect + 2
             + numRowsWeight + numRowsCards + numRowsOptions) * height);
         mItemEffect->setPosition(0, (numRowsDesc + 2) * height);

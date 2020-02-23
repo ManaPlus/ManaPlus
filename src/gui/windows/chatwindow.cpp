@@ -1883,12 +1883,12 @@ void ChatWindow::loadState()
         if (nick.empty())
             break;
 
-        const int flags = serverConfig.getValue(
-            "chatWhisperFlags" + toString(num), 1);
-
         ChatTab *const tab = addChatTab(nick, false, false);
         if (tab != nullptr)
         {
+            const int flags = serverConfig.getValue(
+                "chatWhisperFlags" + toString(num), 1);
+
             tab->setAllowHighlight((flags & 1) != 0);
             tab->setRemoveNames(((flags & 2) / 2) != 0);
             tab->setNoAway(((flags & 4) / 4) != 0);

@@ -805,12 +805,16 @@ void Button::adjustSize()
 
     if (mImages != nullptr)
     {
-        const int spacing = mSpacing[BUTTON_STANDARD];
         const int width = font->getWidth(mCaption);
         if (width != 0)
+        {
+            const int spacing = mSpacing[BUTTON_STANDARD];
             setWidth(width + mImageWidth + spacing + 2 * padding);
+        }
         else
+        {
             setWidth(mImageWidth + 2 * padding);
+        }
         int height = font->getHeight();
         if (height < mImageHeight)
             height = mImageHeight;

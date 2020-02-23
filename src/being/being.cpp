@@ -650,11 +650,11 @@ void Being::setSpeech(const std::string &restrict text) restrict2
     }
     else
     {
-        const bool isShowName = (speech == BeingSpeech::NAME_IN_BUBBLE);
         if (mSpeechBubble == nullptr)
             createSpeechBubble();
         if (mSpeechBubble != nullptr)
         {
+            const bool isShowName = (speech == BeingSpeech::NAME_IN_BUBBLE);
             mSpeechBubble->setCaption(isShowName ? mName : "",
                 &theme->getColor(ThemeColorId::BUBBLE_NAME, 255),
                 &theme->getColor(ThemeColorId::BUBBLE_NAME_OUTLINE, 255));

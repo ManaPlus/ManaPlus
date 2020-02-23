@@ -643,11 +643,11 @@ void InventoryWindow::mouseClicked(MouseEvent &event)
             /* Convert relative to the window coordinates to absolute screen
              * coordinates.
              */
-            const int mx = event.getX() + getX();
-            const int my = event.getY() + getY();
-
             if (popupMenu != nullptr)
             {
+                const int mx = event.getX() + getX();
+                const int my = event.getY() + getY();
+
                 popupMenu->showPopup(this,
                     mx, my,
                     item,

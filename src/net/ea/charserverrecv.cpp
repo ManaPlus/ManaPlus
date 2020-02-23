@@ -119,9 +119,9 @@ void CharServerRecv::processCharCreateFailed(Net::MessageIn &msg)
 void CharServerRecv::processCharDelete(Net::MessageIn &msg A_UNUSED)
 {
     BLOCK_START("CharServerRecv::processCharDelete")
-    delete Net::CharServerHandler::mSelectedCharacter;
     Net::CharServerHandler::mCharacters.remove(
         Net::CharServerHandler::mSelectedCharacter);
+    delete Net::CharServerHandler::mSelectedCharacter;
     Net::CharServerHandler::mSelectedCharacter = nullptr;
     Net::CharServerHandler::updateCharSelectDialog();
     Net::CharServerHandler::unlockCharSelectDialog();

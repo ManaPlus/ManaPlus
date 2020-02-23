@@ -493,9 +493,6 @@ void NormalOpenGLGraphics::drawImageCached(const Image *restrict const image,
     const int srcX = imageRect.x;
     const int srcY = imageRect.y;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
     const unsigned int vLimit = mMaxVertices * 4;
 
     unsigned int vp = mVpCached;
@@ -503,6 +500,9 @@ void NormalOpenGLGraphics::drawImageCached(const Image *restrict const image,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
+
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
@@ -567,14 +567,14 @@ void NormalOpenGLGraphics::drawPatternCached(const Image *restrict const image,
     if (iw == 0 || ih == 0)
         return;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
     unsigned int vp = mVpCached;
     const unsigned int vLimit = mMaxVertices * 4;
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
+
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
@@ -708,9 +708,6 @@ void NormalOpenGLGraphics::drawPatternInline(const Image *restrict const image,
     if (iw == 0 || ih == 0)
         return;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
     setColorAlpha(image->mAlpha);
 
 #ifdef DEBUG_BIND_TEXTURE
@@ -726,6 +723,9 @@ void NormalOpenGLGraphics::drawPatternInline(const Image *restrict const image,
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
+
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
@@ -990,8 +990,6 @@ void NormalOpenGLGraphics::calcPatternInline(ImageVertexes *
 
     const int srcX = imageRect.x;
     const int srcY = imageRect.y;
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
 
     const unsigned int vLimit = mMaxVertices * 4;
 
@@ -1001,6 +999,8 @@ void NormalOpenGLGraphics::calcPatternInline(ImageVertexes *
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 
@@ -1159,9 +1159,6 @@ void NormalOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
     const int srcX = imageRect.x;
     const int srcY = imageRect.y;
 
-    const float tw = static_cast<float>(image->mTexWidth);
-    const float th = static_cast<float>(image->mTexHeight);
-
     const unsigned int vLimit = mMaxVertices * 4;
 
     OpenGLGraphicsVertexes &ogl = vert->ogl;
@@ -1172,6 +1169,9 @@ void NormalOpenGLGraphics::calcTileVertexesInline(ImageVertexes *
     // Draw a set of textured rectangles
     if (OpenGLImageHelper::mTextureType == GL_TEXTURE_2D)
     {
+        const float tw = static_cast<float>(image->mTexWidth);
+        const float th = static_cast<float>(image->mTexHeight);
+
         const float texX1 = static_cast<float>(srcX) / tw;
         const float texY1 = static_cast<float>(srcY) / th;
 

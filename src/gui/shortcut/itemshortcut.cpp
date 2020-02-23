@@ -120,9 +120,9 @@ void ItemShortcut::save() const
     for (unsigned int i = 0; i < SHORTCUT_ITEMS; i++)
     {
         const int itemId = mItems[i] != 0 ? mItems[i] : -1;
-        const int itemColor = toInt(mItemColors[i], int);
         if (itemId != -1)
         {
+            const int itemColor = toInt(mItemColors[i], int);
             const std::string itemData = mItemData[i];
             serverConfig.setValue(name + toString(i), itemId);
             serverConfig.setValue(color + toString(i), itemColor);

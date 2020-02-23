@@ -428,7 +428,6 @@ void TouchManager::loadPad() restrict2
 
 void TouchManager::loadButtons() restrict2
 {
-    const int sz = (mButtonsSize + 1) * 50;
     if (theme == nullptr)
         return;
     Skin *const skin = theme->load("dbutton.xml",
@@ -438,6 +437,7 @@ void TouchManager::loadButtons() restrict2
 
     if (skin != nullptr)
     {
+        const int sz = (mButtonsSize + 1) * 50;
         const int x = skin->getOption("x", 10);
         const int y = skin->getOption("y", 10);
         const int pad = skin->getPadding();

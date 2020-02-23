@@ -439,7 +439,6 @@ void ShopWindow::updateButtonsAndLabels()
 {
     bool allowDel(false);
     bool allowAdd(false);
-    const bool sellNotEmpty = mSellShopItems->getNumberOfElements() > 0;
     if (isBuySelected)
     {
         allowAdd = !mEnableBuyingStore;
@@ -467,6 +466,7 @@ void ShopWindow::updateButtonsAndLabels()
     }
     else
     {
+        const bool sellNotEmpty = mSellShopItems->getNumberOfElements() > 0;
         allowAdd = !mEnableVending && mSelectedItem != -1;
         allowDel = !mEnableVending
             && mSellShopItemList->getSelected() != -1
