@@ -52,7 +52,7 @@ cmake_install.cmake
 install_manifest.txt
 CMakeLists.txt
 
-# files created during build
+# files created during build & test
 *.o
 *.gmo
 *.gcda
@@ -65,6 +65,7 @@ src/manaplustests.log
 src/manaplustests.trs
 src/dyecmd
 /src/test-suite.log
+test/
 
 # files created during Windows build
 .objs
@@ -81,6 +82,15 @@ packaging/windows/upx/*
 
 # files created by Qt Creator
 mana.creator.user*
+
+# files created by some IDEs
+local.properties
+.cproject
+.project
+.settings/
+*.layout
+*.depend
+
 
 run/*
 my/*
