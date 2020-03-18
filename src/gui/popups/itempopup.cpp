@@ -270,8 +270,8 @@ void ItemPopup::setItem(const ItemInfo &item,
     mItemName->adjustSize();
     setLabelColor(mItemName, mItemType);
     mItemName->setPosition(space, 0);
-
-    mItemEffect->setTextWrapped(item.getEffect(), 196);
+    const std::string readableEffect = replaceChar((char*)item.getEffect().c_str(), '/', '\n');
+    mItemEffect->setTextWrapped(readableEffect, 196);
     // TRANSLATORS: popup label
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
         UnitsDb::formatWeight(item.getWeight()).c_str()), 196);
@@ -465,4 +465,16 @@ void ItemPopup::resetPopup()
     mLastName.clear();
     mLastColor = ItemColor_one;
     mLastId = 0;
+}
+
+char* ItemPopup::replaceChar(char* str, char find, char replace)
+{
+	char *currentPos = str;
+	while ((currentPos = strchr(currentPos, find)) != NULL)
+	{
+		*currentPos = ' ';
+		*currentPos++;
+		*currentPos = replace;
+	}
+	return str;
 }
