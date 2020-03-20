@@ -132,6 +132,12 @@ class ItemInfo final
         int getWeight() const noexcept2 A_WARN_UNUSED
         { return mWeight; }
 
+        void setReqLevel(const int level) noexcept2
+        { mReqLevel = level; }
+
+        int getReqLevel() const noexcept2 A_WARN_UNUSED
+        { return mReqLevel; }
+
         int getView() const noexcept2 A_WARN_UNUSED
         { return mView; }
 
@@ -349,6 +355,7 @@ class ItemInfo final
         std::string mUseButton2;
         ItemDbTypeT mType;          /**< Item type. */
         int mWeight;                /**< Weight in grams. */
+        int mReqLevel;				/**< Req. level>*/
         int mView;                  /**< Item ID of how this item looks. */
         int mId;                    /**< Item ID */
         bool mIsRemoveSprites;

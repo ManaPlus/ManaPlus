@@ -317,6 +317,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
 
         const std::string typeStr = XML::getProperty(node, "type", "");
         int weight = XML::getProperty(node, "weight", 0);
+        int reqLevel = XML::getProperty(node, "level", 1); /** < xsl::level > */
         int view = XML::getProperty(node, "view", 0);
         const int cardColor = XML::getProperty(node, "cardColor", -1);
         const int inherit = XML::getProperty(node, "inherit", -1);
@@ -509,6 +510,8 @@ void ItemDB::loadXmlFile(const std::string &fileName,
                 view = inheritItemInfo->getView();
             if (weight == 0)
                 weight = inheritItemInfo->getWeight();
+            if (reqLevel == 0)
+                reqLevel = inheritItemInfo->getReqLevel();
             if (attackAction.empty())
                 attackAction = inheritItemInfo->getAttackAction();
             if (skyAttackAction.empty())
@@ -548,6 +551,7 @@ void ItemDB::loadXmlFile(const std::string &fileName,
 
         itemInfo->setView(view);
         itemInfo->setWeight(weight);
+        itemInfo->setReqLevel(reqLevel);
         itemInfo->setAttackAction(attackAction);
         itemInfo->setSkyAttackAction(skyAttackAction);
         itemInfo->setWaterAttackAction(waterAttackAction);

@@ -26,7 +26,7 @@
 
 #include "utils/gettext.h"
 
-static const char *const SORT_NAME_INVENTORY[6] =
+static const char *const SORT_NAME_INVENTORY[7] =
 {
     // TRANSLATORS: inventory sort mode
     N_("default"),
@@ -39,7 +39,9 @@ static const char *const SORT_NAME_INVENTORY[6] =
     // TRANSLATORS: inventory sort mode
     N_("by amount"),
     // TRANSLATORS: inventory sort mode
-    N_("by type")
+    N_("by type"),
+    // TRANSLATORS: inventory sort mode
+    N_("by level")
 };
 
 class SortListModelInv final : public ListModel
@@ -52,7 +54,7 @@ class SortListModelInv final : public ListModel
         A_DELETE_COPY(SortListModelInv)
 
         int getNumberOfElements() override final
-        { return 6; }
+        { return 7; }
 
         std::string getElementAt(int i) override final
         {

@@ -219,6 +219,36 @@ namespace
                 return t1 < t2;
             }
     } itemTypeInvSorter;
+
+    class SortItemLevelFunctor final
+    {
+        public:
+            A_DEFAULT_COPY(SortItemLevelFunctor)
+
+        bool operator() (const ItemIdPair *const pair1,
+                                     const ItemIdPair *const pair2) const
+		{
+			if ((pair1->mItem == nullptr) || (pair2->mItem == nullptr))
+				return false;
+			const int w1 = pair1->mItem->getInfo().getReqLevel();
+			const int w2 = pair2->mItem->getInfo().getReqLevel();
+			const std::string name1 = pair1->mItem->getInfo().getName();
+			const std::string name2 = pair2->mItem->getInfo().getName();
+			if (w1 == w2)
+			{
+				if (name1 == name2)
+				{
+					return pair1->mItem->getInvIndex() <
+						pair2->mItem->getInvIndex();
+				}
+				return name1 < name2;
+			}
+			return w1 < w2;
+		}
+    } itemLevelInvSorter;
+
+
+
 }  // namespace
 
 ItemContainer::ItemContainer(const Widget2 *const widget,
@@ -1219,7 +1249,8 @@ int ItemContainer::updateMatrix()
                 itemAlphaInvSorter);
             break;
         case 2:
-            std::sort(sortedItems.begin(), sortedItems.end(), itemIdInvSorter);
+            std::sort(sortedItems.begin(), sortedItems.end(),
+            	itemIdInvSorter);
             break;
         case 3:
             std::sort(sortedItems.begin(), sortedItems.end(),
@@ -1232,6 +1263,10 @@ int ItemContainer::updateMatrix()
         case 5:
             std::sort(sortedItems.begin(), sortedItems.end(),
                 itemTypeInvSorter);
+            break;
+        case 6:
+            std::sort(sortedItems.begin(), sortedItems.end(),
+                itemLevelInvSorter);
             break;
     }
 

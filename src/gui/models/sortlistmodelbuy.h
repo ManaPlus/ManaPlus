@@ -27,7 +27,7 @@
 
 #include "utils/gettext.h"
 
-static const char *const SORT_NAME_BUY[7] =
+static const char *const SORT_NAME_BUY[8] =
 {
     // TRANSLATORS: buy dialog sort type.
     N_("unsorted"),
@@ -42,7 +42,9 @@ static const char *const SORT_NAME_BUY[7] =
     // TRANSLATORS: buy dialog sort type.
     N_("by amount"),
     // TRANSLATORS: buy dialog sort type.
-    N_("by type")
+    N_("by type"),
+    // TRANSLATORS: buy dialog sort type.
+    N_("by level")
 };
 
 class SortListModelBuy final : public ListModel
@@ -55,7 +57,7 @@ class SortListModelBuy final : public ListModel
         A_DELETE_COPY(SortListModelBuy)
 
         int getNumberOfElements() override final
-        { return 7; }
+        { return 8; }
 
         std::string getElementAt(int i) override final
         {
