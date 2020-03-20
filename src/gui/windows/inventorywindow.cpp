@@ -440,7 +440,6 @@ void InventoryWindow::storeSortOrder() const
             default:
                 config.setValue("inventorySortOrder",
                     mSortDropDown->getSelected());
-                logger->log("WROTE %d LVL IN LOG!", mSortDropDown->getSelected());
                 break;
             case InventoryType::Storage:
                 config.setValue("storageSortOrder",
