@@ -473,7 +473,7 @@ char* ItemPopup::replaceChar(char* str, char find, char replace)
 	while ((currentPos = strchr(currentPos, find)) != NULL)
 	{
 		*currentPos = ' ';
-		*currentPos++;
+		currentPos++;
 		*currentPos = replace;
 	}
 	return str;
