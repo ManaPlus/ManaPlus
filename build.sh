@@ -12,5 +12,7 @@ cd po
 make update-gmo
 cd ..
 make
-mkdir run
+if [ ! -d "run" ]; then
+    mkdir run
+fi
 make install
