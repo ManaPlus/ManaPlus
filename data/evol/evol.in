@@ -1,2 +1,2 @@
 #!/bin/sh
-exec manaplus @datadir@/manaplus/data/evol/evol.manaplus "$@"
+exec manaplus @datarootdir@/manaplus/data/evol/evol.manaplus "$@"

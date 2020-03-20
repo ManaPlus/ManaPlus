@@ -3,7 +3,7 @@
 Version=1.0
 Name=EvolOnline
 Comment=A 2D MMORPG client
-Exec=manaplus @datadir@/manaplus/data/evol/evol.manaplus
+Exec=manaplus @datarootdir@/manaplus/data/evol/evol.manaplus
 StartupNotify=false
 Terminal=false
 Type=Application

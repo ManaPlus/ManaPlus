@@ -260,7 +260,7 @@ CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libpng`"
 
 # Checks for internationalization support
 AM_GNU_GETTEXT([external],[need-ngettext])
-AM_GNU_GETTEXT_VERSION([0.16.1])
+AM_GNU_GETTEXT_VERSION([0.19])
 
 case $host in 
   (*mingw*)
