@@ -181,7 +181,8 @@ gcc-7_default:
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               gdb valgrind netcat-openbsd procps
 
-mxe_gcc6_shared_32:
+#removed would not build, to many errors (docker not configured)
+.mxe_gcc6_shared_32:
   stage: prebuild
   script:
   - ls /mxe
@@ -194,7 +195,8 @@ mxe_gcc6_shared_32:
   tags:
     - docker
 
-mxe_gcc6_shared_64:
+#removed would not build, to many errors (docker not configured)
+.mxe_gcc6_shared_64:
   stage: prebuild
   script:
   - ls /mxe
@@ -207,7 +209,7 @@ mxe_gcc6_shared_64:
   tags:
     - docker
 
-gcc-5_sdl2:
+.gcc-5_sdl2:
   stage: prebuild
   script:
   - ./tools/ci/jobs/gcc5_sdl2.sh
@@ -285,7 +287,7 @@ linters:
   variables:
     PACKAGES: python wget pngcheck imagemagick git grep
 
-gcc-5_h_all:
+.gcc-5_h_all:
   stage: prebuild
   script:
   - ./tools/ci/scripts/patchsdl1.sh
@@ -302,7 +304,7 @@ gcc-5_h_all:
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 
-gcc-5_h_all_i386:
+.gcc-5_h_all_i386:
   stage: prebuild
   script:
   - ./tools/ci/scripts/patchsdl1.sh
