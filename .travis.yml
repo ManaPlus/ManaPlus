@@ -1,9 +1,11 @@
 sudo: required
 
+os: linux
+
 services:
   - docker
 
-language: c++
+language: cpp
 dist: trusty
 
 before_script:
@@ -28,10 +30,6 @@ env:
                        libxml2-dev libcurl4-gnutls-dev libpng-dev"
     matrix:
 # amd64, sdl1, --disable-tmwa
-      - IMAGE=ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL1}"
       - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-6 g++-6 
@@ -40,11 +38,6 @@ env:
         COMMAND="./tools/ci/jobs/gcc7.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-7 g++-7 
                   ${LIBS_PACKAGES} ${SDL1}"
-      - IMAGE=ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL1}
-                  valgrind"
       - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
         PACKAGES="gcc-6 g++-6 
@@ -55,17 +48,8 @@ env:
         PACKAGES="gcc-7 g++-7 
                   ${LIBS_PACKAGES} ${SDL1}
                   valgrind"
-      - IMAGE=ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL1}
-                  valgrind"
 
 # i386, sdl1, --disable-tmwa
-      - IMAGE=i386/ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL1}"
       - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-6 g++-6 
@@ -74,11 +58,6 @@ env:
         COMMAND="./tools/ci/jobs/gcc7.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-7 g++-7 
                   ${LIBS_PACKAGES} ${SDL1}"
-      - IMAGE=i386/ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL1}
-                  valgrind"
       - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
         PACKAGES="gcc-6 g++-6 
@@ -91,10 +70,6 @@ env:
                   valgrind"
 
 # amd64, sdl2, --disable-tmwa
-      - IMAGE=ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa --with-sdl2"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL2}"
       - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-6 g++-6 
@@ -103,11 +78,6 @@ env:
         COMMAND="./tools/ci/jobs/gcc7.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-7 g++-7 
                   ${LIBS_PACKAGES} ${SDL2}"
-      - IMAGE=ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL2}
-                  valgrind"
       - IMAGE=debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
         PACKAGES="gcc-6 g++-6 
@@ -118,17 +88,8 @@ env:
         PACKAGES="gcc-7 g++-7 
                   ${LIBS_PACKAGES} ${SDL2}
                   valgrind"
-      - IMAGE=ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5_sanitize_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL2}
-                  valgrind"
 
 # i386, sdl2, --disable-tmwa
-      - IMAGE=i386/ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5.sh --enable-werror --disable-tmwa --with-sdl2"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL2}"
       - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-6 g++-6 
@@ -137,11 +98,6 @@ env:
         COMMAND="./tools/ci/jobs/gcc7.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-7 g++-7 
                   ${LIBS_PACKAGES} ${SDL2}"
-      - IMAGE=i386/ubuntu:cosmic
-        COMMAND="./tools/ci/jobs/gcc5_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
-        PACKAGES="gcc-5 g++-5 
-                  ${LIBS_PACKAGES} ${SDL2}
-                  valgrind"
       - IMAGE=i386/debian:stretch
         COMMAND="./tools/ci/jobs/gcc6_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
         PACKAGES="gcc-6 g++-6 
