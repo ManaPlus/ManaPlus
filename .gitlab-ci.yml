@@ -43,7 +43,7 @@ variables:
 
 # pre build
 
-gcc-5_c++11_i386:
+.gcc-5_c++11_i386:
   stage: prebuild
   script:
   - ./tools/ci/scripts/patchsdl1.sh

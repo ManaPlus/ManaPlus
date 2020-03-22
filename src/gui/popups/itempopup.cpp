@@ -270,7 +270,7 @@ void ItemPopup::setItem(const ItemInfo &item,
     mItemName->adjustSize();
     setLabelColor(mItemName, mItemType);
     mItemName->setPosition(space, 0);
-    const std::string readableEffect = replaceChar((char*)item.getEffect().c_str(), '/', '\n');
+    std::string readableEffect = replaceChar(item.getEffect(), '/', '\n');
     mItemEffect->setTextWrapped(readableEffect, 196);
     // TRANSLATORS: popup label
     mItemWeight->setTextWrapped(strprintf(_("Weight: %s"),
@@ -467,9 +467,9 @@ void ItemPopup::resetPopup()
     mLastId = 0;
 }
 
-char* ItemPopup::replaceChar(char* str, char find, char replace)
+std::string ItemPopup::replaceChar(std::string str, char find, char replace)
 {
-	char *currentPos = str;
+	char* currentPos = const_cast<char*>(str.c_str());
 	while ((currentPos = strchr(currentPos, find)) != NULL)
 	{
 		*currentPos = ' ';

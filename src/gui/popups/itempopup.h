@@ -98,7 +98,7 @@ class ItemPopup final : public Popup
         void setLabelColor(Label *label,
                            const ItemDbTypeT type) const A_NONNULL(2);
 
-        char* replaceChar(char* str ,char find,char replace);
+        std::string replaceChar(std::string str ,char find,char replace);
 };
 
 extern ItemPopup *itemPopup;
