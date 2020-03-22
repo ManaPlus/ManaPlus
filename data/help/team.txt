@@ -10,6 +10,7 @@
 ##3<<Android porting>>
 ##9Andrei Karas (4144) <akaras inbox ru>
 ##9Danil Sagunov (Vasily_Makarov) <danilka.pro gmail com>
+##9Mike Wollmann (jak1) <jak1 germantmw de>
 
 ##3<<Chrome (nacl) porting>>
 ##9Andrei Karas (4144) <akaras inbox ru>

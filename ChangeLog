@@ -1,3 +1,9 @@
+2020-03-22 New release 1.10.3.01
+add: inventory sorting by required level
+update: gettext version [1.19]
+change: versioning (major.minor.month.build)
+remove: support for gcc5 and older
+
 2019-03-23 New release 1.9.3.23
 fix: guild members in 2018 packet versions.
 fix: dynamic walls on windows.
