@@ -50,7 +50,7 @@ ItemInfo::ItemInfo() :
     mUseButton2(),
     mType(ItemDbType::UNUSABLE),
     mWeight(0),
-	mReqLevel(0),
+    mReqLevel(0),
     mView(0),
     mId(0),
     mIsRemoveSprites(false),
