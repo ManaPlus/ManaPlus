@@ -355,7 +355,7 @@ class ItemInfo final
         std::string mUseButton2;
         ItemDbTypeT mType;          /**< Item type. */
         int mWeight;                /**< Weight in grams. */
-        int mReqLevel;				/**< Req. level>*/
+        int mReqLevel;              /**< Req. level>*/
         int mView;                  /**< Item ID of how this item looks. */
         int mId;                    /**< Item ID */
         bool mIsRemoveSprites;

@@ -469,12 +469,12 @@ void ItemPopup::resetPopup()
 
 std::string ItemPopup::replaceChar(std::string str, char find, char replace)
 {
-	char* currentPos = const_cast<char*>(str.c_str());
-	while ((currentPos = strchr(currentPos, find)) != NULL)
-	{
-		*currentPos = ' ';
-		currentPos++;
-		*currentPos = replace;
-	}
-	return str;
+    char* currentPos = const_cast<char*>(str.c_str());
+    while ((currentPos = strchr(currentPos, find)) != NULL)
+    {
+        *currentPos = ' ';
+        currentPos++;
+        *currentPos = replace;
+    }
+    return str;
 }

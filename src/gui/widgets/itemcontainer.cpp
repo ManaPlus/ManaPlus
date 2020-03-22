@@ -227,24 +227,24 @@ namespace
 
         bool operator() (const ItemIdPair *const pair1,
                                      const ItemIdPair *const pair2) const
-		{
-			if ((pair1->mItem == nullptr) || (pair2->mItem == nullptr))
-				return false;
-			const int w1 = pair1->mItem->getInfo().getReqLevel();
-			const int w2 = pair2->mItem->getInfo().getReqLevel();
-			const std::string name1 = pair1->mItem->getInfo().getName();
-			const std::string name2 = pair2->mItem->getInfo().getName();
-			if (w1 == w2)
-			{
-				if (name1 == name2)
-				{
-					return pair1->mItem->getInvIndex() <
-						pair2->mItem->getInvIndex();
-				}
-				return name1 < name2;
-			}
-			return w1 < w2;
-		}
+            {
+                if ((pair1->mItem == nullptr) || (pair2->mItem == nullptr))
+                    return false;
+                const int w1 = pair1->mItem->getInfo().getReqLevel();
+                const int w2 = pair2->mItem->getInfo().getReqLevel();
+                const std::string name1 = pair1->mItem->getInfo().getName();
+                const std::string name2 = pair2->mItem->getInfo().getName();
+                if (w1 == w2)
+                {
+                    if (name1 == name2)
+                    {
+                        return pair1->mItem->getInvIndex() <
+                            pair2->mItem->getInvIndex();
+                    }
+                    return name1 < name2;
+                }
+                return w1 < w2;
+            }
     } itemLevelInvSorter;
 
 
@@ -1250,7 +1250,7 @@ int ItemContainer::updateMatrix()
             break;
         case 2:
             std::sort(sortedItems.begin(), sortedItems.end(),
-            	itemIdInvSorter);
+                itemIdInvSorter);
             break;
         case 3:
             std::sort(sortedItems.begin(), sortedItems.end(),
