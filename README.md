@@ -6,16 +6,14 @@ Version: 1.10.3.22        Date: 2020-03-22
 
 ### Build status
 
-Gitlab CI: [![gitlab build status](https://gitlab.com/manaplus/manaplus/badges/master/build.svg)](https://gitlab.com/manaplus/manaplus/commits/master)
+Gitlab CI: [![gitlab build status](https://gitlab.com/manaplus2/manaplus/badges/master/pipeline.svg)](https://gitlab.com/manaplus2/manaplus/commits/master)
 
 Cicle CI: [![CircleCI](https://circleci.com/gh/ManaPlus/ManaPlus/tree/master.svg?style=svg)](https://circleci.com/gh/ManaPlus/ManaPlus/tree/master)
 
-Semaphore CI: [![Build Status](https://semaphoreci.com/api/v1/4144/manaplus/branches/master/badge.svg)](https://semaphoreci.com/4144/manaplus)
+Travis CI: [![travis build status](https://travis-ci.com/jak1/manaplus.svg?branch=master)](https://travis-ci.com/jak1/manaplus/builds/)
 
-Travis CI: [![travis build status](https://travis-ci.org/ManaPlus/ManaPlus.svg?branch=master)](https://travis-ci.org/ManaPlus/ManaPlus/builds/)
-
-Azure CI: [![Build Status macosx](https://dev.azure.com/manaplus/ManaPlus/_apis/build/status/ManaPlus%20macosx)](https://dev.azure.com/manaplus/ManaPlus/_build/latest?definitionId=2)
-          [![Build Status windows](https://dev.azure.com/manaplus/ManaPlus/_apis/build/status/ManaPlus%20main)](https://dev.azure.com/manaplus/ManaPlus/_build/latest?definitionId=1)
+Azure CI: [![Build Status macosx](https://dev.azure.com/schnuffi0072001/manaplus/_apis/build/status/maxOSX?branchName=master)](https://dev.azure.com/schnuffi0072001/manaplus/_build/latest?definitionId=2&branchName=master)
+          [![Build Status windows](https://dev.azure.com/schnuffi0072001/manaplus/_apis/build/status/windows32bit%2664bit?branchName=master)](https://dev.azure.com/schnuffi0072001/manaplus/_build/latest?definitionId=1&branchName=master)
 
 Coverage: [![coverage report](https://gitlab.com/manaplus/manaplus/badges/master/coverage.svg)](http://stats.manaplus.org/gcov/gcc-6.html)
 
