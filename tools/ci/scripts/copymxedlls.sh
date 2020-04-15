@@ -6,7 +6,7 @@ source ./tools/ci/flags/mingw6.sh || exit 1
 $CC --version
 $CXX --version
 
-export MXE="/mxe/usr/${CROSS}/bin/"
+export MXE="/opt/mxe/usr/${CROSS}/bin/"
 export DSTDIR="$1"
 
 function mxefile {
@@ -27,7 +27,7 @@ mxefile libintl-8.dll
 mxefile libjpeg-9.dll
 mxefile libogg-0.dll
 mxefile libpng16-16.dll
-mxefile libreadline6.dll
+#mxefile libreadline6.dll
 mxefile libSDL_gfx-15.dll
 mxefile libstdc++-6.dll
 mxefile libtermcap.dll
@@ -40,5 +40,5 @@ mxefile SDL_image.dll
 mxefile SDL_net.dll
 mxefile SDL_ttf.dll
 mxefile zlib1.dll
-mxefile1 libgcc_s_sjlj-1.dll
-mxefile1 libgcc_s_seh-1.dll
+#mxefile1 libgcc_s_sjlj-1.dll
+#mxefile1 libgcc_s_seh-1.dll

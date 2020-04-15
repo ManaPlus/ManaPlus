@@ -370,28 +370,28 @@ Section /o "Portable" SecPortable
   File "portable.xml"
 SectionEnd
 
-Section /o "Debugger" SecDebug
-  SetOutPath "$INSTDIR"
-  File "${DLLDIR}\gdb.exe"
-  File "${DLLDIR}\libdl.dll"
-  File "${DLLDIR}\libexpat-1.dll"
-  File "${DLLDIR}\libreadline6.dll"
-  File "${DLLDIR}\libtermcap.dll"
-  File "${EXEDIR}\manaplusd.exe"
-  ${If} ${SectionIsSelected} ${SecShortcuts}
-    CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplusd.exe"' "$INSTDIR\manaplusd.exe"
-    CreateShortCut "$DESKTOP\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplusd.exe"' "$INSTDIR\manaplusd.exe"
-  ${EndIf}
-SectionEnd
+;Section /o "Debugger" SecDebug
+;  SetOutPath "$INSTDIR"
+;  File "${DLLDIR}\gdb.exe"
+;  File "${DLLDIR}\libdl.dll"
+;  File "${DLLDIR}\libexpat-1.dll"
+;  File "${DLLDIR}\libreadline6.dll"
+;  File "${DLLDIR}\libtermcap.dll"
+;  File "${EXEDIR}\manaplusd.exe"
+;  ${If} ${SectionIsSelected} ${SecShortcuts}
+;    CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplusd.exe"' "$INSTDIR\manaplusd.exe"
+;    CreateShortCut "$DESKTOP\ManaPlus (debug).lnk" '"$INSTDIR\gdb.exe"' '"$INSTDIR\manaplusd.exe"' "$INSTDIR\manaplusd.exe"
+;  ${EndIf}
+;SectionEnd
 
-Section /o "Profiler" SecProfiler
-  SetOutPath "$INSTDIR"
-  File "${EXEDIR}\manaplusp.exe"
-  ${If} ${SectionIsSelected} ${SecShortcuts}
-    CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (profiler).lnk" "$INSTDIR\manaplusp.exe"
-    CreateShortCut "$DESKTOP\ManaPlus (profiler).lnk" "$INSTDIR\manaplusp.exe"
-  ${EndIf}
-SectionEnd
+;Section /o "Profiler" SecProfiler
+;  SetOutPath "$INSTDIR"
+;  File "${EXEDIR}\manaplusp.exe"
+;  ${If} ${SectionIsSelected} ${SecShortcuts}
+;    CreateShortCut "$SMPROGRAMS\Mana\ManaPlus (profiler).lnk" "$INSTDIR\manaplusp.exe"
+;    CreateShortCut "$DESKTOP\ManaPlus (profiler).lnk" "$INSTDIR\manaplusp.exe"
+;  ${EndIf}
+;SectionEnd
 
 ; Section "Tools" SecTools
 ;   SetOutPath "$INSTDIR"

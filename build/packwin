@@ -8,7 +8,7 @@ cd packaging/windows
 ./make-translations.sh
 makensis -DDLLDIR=$dir/../libs/dll/ \
     -DPRODUCT_VERSION="1.10.3.22" \
-    -DEXESUFFIX=/src \
+    -DEXESUFFIX=/build/tmp/src \
     -DUPX=true \
     -DBITS=${BITS} \
     -DSEHDLL=${SEHDLL} \
