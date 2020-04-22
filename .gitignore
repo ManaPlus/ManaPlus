@@ -161,3 +161,12 @@ gmon.out
 
 #english po
 /po/en.po
+
+# CLion ide
+.idea
+cmake-build-*
+
+# Nintendo Switch port
+src/manaplus.nacp
+src/manaplus.nro
+src/resources/image/image.h.gch

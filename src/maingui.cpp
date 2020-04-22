@@ -97,6 +97,29 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
+#ifdef __SWITCH__
+extern "C" {
+#include <switch/runtime/devices/socket.h>
+#include <switch/runtime/nxlink.h>
+}
+#include <unistd.h>
+static int sock = -1;
+void initNxLink() {
+    socketInitializeDefault();
+    sock = nxlinkStdio();
+    if (sock < 0) {
+        socketExit();
+    }
+}
+void deinitNxLink() {
+    if (sock >= 0) {
+        close(sock);
+        socketExit();
+        sock = -1;
+    }
+}
+#endif
+
 char *selfName = nullptr;
 
 #ifndef UNITTESTS
@@ -107,6 +130,9 @@ int main(int argc, char *argv[])
 int mainGui(int argc, char *argv[])
 #endif  // ANDROID
 {
+#ifdef __SWITCH__
+    initNxLink();
+#endif
 #if defined(__MINGW32__)
     // load mingw crash handler. Won't fail if dll is not present.
     // may load libray from current dir, it may not same as program dir
@@ -158,6 +184,10 @@ int mainGui(int argc, char *argv[])
 #if SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
     IMG_Quit();
 #endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
+
+#ifdef __SWITCH__
+    deinitNxLink();
+#endif
 
     return ret;
 }

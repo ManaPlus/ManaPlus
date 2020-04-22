@@ -41,6 +41,9 @@ static RenderType getDefault() noexcept2
 
 RenderType intToRenderType(const int mode) noexcept2
 {
+#ifdef __SWITCH__
+	return RENDER_SDL2_DEFAULT;
+#endif
     if (mode < 0 || mode >= RENDER_LAST)
         return getDefault();
 

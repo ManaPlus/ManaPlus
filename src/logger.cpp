@@ -120,7 +120,11 @@ void Logger::setLogFile(const std::string &logFilename)
 {
     closeFile();
 
+#ifdef __SWITCH__
+	mLogFile = nullptr;
+#else
     mLogFile = fopen(logFilename.c_str(), "wt");
+#endif
 
     if (mLogFile == nullptr)
     {

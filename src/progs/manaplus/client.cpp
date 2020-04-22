@@ -411,7 +411,7 @@ void Client::gameInit()
     DyePalette::initFunctions();
 #if defined(USE_OPENGL)
 #if !defined(ANDROID) && !defined(__APPLE__) && \
-    !defined(__native_client__) && !defined(UNITTESTS)
+    !defined(__native_client__) && !defined(__SWITCH__) && !defined(UNITTESTS)
     if (!settings.options.safeMode &&
         settings.options.renderer < 0 &&
         settings.options.test.empty() &&

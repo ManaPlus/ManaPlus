@@ -37,7 +37,7 @@
 #include "utils/foreach.h"
 #endif  // USE_X11
 
-#ifdef __native_client__
+#if defined(__native_client__) || defined(__SWITCH__)
 #define realpath(N, R) strcpy(R, N)
 #endif  // __native_client__
 
@@ -67,7 +67,7 @@ PRAGMA48(GCC diagnostic ignored "-Wshadow")
 #endif  // ANDROID
 PRAGMA48(GCC diagnostic pop)
 
-#ifdef __native_client__
+#if defined(__native_client__) || defined(__SWITCH__)
 #ifndef SSIZE_MAX
 #define SSIZE_MAX INT_MAX
 #endif
@@ -92,7 +92,7 @@ std::string getRealPath(const std::string &str)
     {
         return std::string();
     }
-#if defined(__OpenBSD__) || defined(__ANDROID__) || defined(__native_client__)
+#if defined(__OpenBSD__) || defined(__ANDROID__) || defined(__native_client__) || defined(__SWITCH__)
     char *realPath = reinterpret_cast<char*>(calloc(PATH_MAX, sizeof(char)));
     if (!realPath)
         return "";
@@ -261,6 +261,9 @@ std::string getHomePath()
     const char *path = getenv("HOME");
     if (path == nullptr)
     {
+#ifdef __SWITCH__
+        return "/switch/manaplus";
+#else
         const uid_t uid = getuid();
         const struct passwd *const pw = getpwuid(uid);
         if (pw != nullptr &&
@@ -270,6 +273,7 @@ std::string getHomePath()
         }
         if (path == nullptr)
             return dirSeparator;
+#endif
     }
     std::string dir = path;
     if (findLast(dir, std::string(dirSeparator)) == false)
