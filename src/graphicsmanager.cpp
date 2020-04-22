@@ -481,6 +481,9 @@ void GraphicsManager::setVideoMode()
     int width = info->current_w;
     int height = info->current_h;
 #endif  // USE_SDL2
+#elif defined __SWITCH__
+    int width = 1280;
+    int height = 720;
 #else  // defined __native_client__
 
     int width = config.getIntValue("screenwidth");

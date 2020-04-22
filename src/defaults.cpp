@@ -176,7 +176,11 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("screenshotDirectory3", "");
     AddDEF("useScreenshotDirectorySuffix", true);
     AddDEF("screenshotDirectorySuffix", "");
+#ifdef __SWITCH__
+    AddDEF("joystickEnabled", true);
+#else
     AddDEF("joystickEnabled", false);
+#endif
     AddDEF("upTolerance", 100);
     AddDEF("downTolerance", 100);
     AddDEF("leftTolerance", 100);

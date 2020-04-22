@@ -88,6 +88,9 @@ InputManager::InputManager() :
 
 void InputManager::init() restrict2
 {
+#ifdef __SWITCH__
+    SDL_SetHint(SDL_HINT_TOUCH_MOUSE_EVENTS, "1");
+#endif
     for (size_t i = 0;
          i < CAST_SIZE(InputAction::TOTAL);
          i ++)

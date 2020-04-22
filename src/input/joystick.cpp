@@ -177,8 +177,17 @@ bool Joystick::open()
     if (mButtonsNumber > MAX_BUTTONS)
         mButtonsNumber = MAX_BUTTONS;
 
+#ifdef __SWITCH__
+    config.setValue("joystick" + toString(mNumber) + "calibrated", true);
+    config.setValue("leftTolerance" + toString(mNumber), 100);
+    config.setValue("rightTolerance" + toString(mNumber), 100);
+    config.setValue("upTolerance" + toString(mNumber), 100);
+    config.setValue("downTolerance" + toString(mNumber), 100);
+    config.setValue("useInactiveJoystick", true);
+#endif
     mCalibrated = config.getValueBool("joystick"
         + toString(mNumber) + "calibrated", false);
+
     mUpTolerance = config.getIntValue("upTolerance" + toString(mNumber));
     mDownTolerance = config.getIntValue("downTolerance" + toString(mNumber));
     mLeftTolerance = config.getIntValue("leftTolerance" + toString(mNumber));
