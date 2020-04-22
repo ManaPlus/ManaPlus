@@ -995,7 +995,7 @@ impHandler0(stopSit)
 
 impHandler0(showKeyboard)
 {
-#ifdef ANDROID
+#if defined(ANDROID) || defined(__SWITCH__)
 #ifdef USE_SDL2
     if (SDL_GetEventState(SDL_TEXTINPUT) == SDL_ENABLE)
         SDL_StopTextInput();

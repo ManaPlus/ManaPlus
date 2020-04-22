@@ -97,7 +97,7 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
-#ifdef __SWITCH__
+#if defined(__SWITCH__) && !defined(NDEBUG)
 extern "C" {
 #include <switch/runtime/devices/socket.h>
 #include <switch/runtime/nxlink.h>
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
 int mainGui(int argc, char *argv[])
 #endif  // ANDROID
 {
-#ifdef __SWITCH__
+#if defined(__SWITCH__) && !defined(NDEBUG)
     initNxLink();
 #endif
 #if defined(__MINGW32__)
@@ -185,7 +185,7 @@ int mainGui(int argc, char *argv[])
     IMG_Quit();
 #endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
 
-#ifdef __SWITCH__
+#if defined(__SWITCH__) && !defined(NDEBUG)
     deinitNxLink();
 #endif
 
