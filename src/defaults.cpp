@@ -153,7 +153,11 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("showScreenButtons", false);
     AddDEF("showBeingPopup", true);
     AddDEF("mouseDirectionMove", false);
+#ifdef __SWITCH__
+    AddDEF("showScreenKeyboard", true);
+#else
     AddDEF("showScreenKeyboard", false);
+#endif
     AddDEF("fpslimit", 60);
     AddDEF("showChatColorsList", true);
     AddDEF("customcursor", true);
@@ -165,7 +169,11 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("showEmotesButton", true);
     AddDEF("screen", false);
     AddDEF("hwaccel", false);
+#ifdef __SWITCH__
+    AddDEF("sound", true);
+#else
     AddDEF("sound", false);
+#endif
     AddDEF("sfxVolume", 100);
     AddDEF("musicVolume", 60);
     AddDEF("remember", false);
@@ -177,7 +185,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("useScreenshotDirectorySuffix", true);
     AddDEF("screenshotDirectorySuffix", "");
 #ifdef __SWITCH__
-    AddDEF("joystickEnabled", true);
+    AddDEF("joystickEnabled", false);
 #else
     AddDEF("joystickEnabled", false);
 #endif
