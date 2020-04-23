@@ -22,7 +22,7 @@
 
 #include "resources/safeopenglimagehelper.h"
 
-#if defined(USE_OPENGL) && !defined(ANDROID)
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__SWITCH__)
 
 #include "graphicsmanager.h"
 

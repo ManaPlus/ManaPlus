@@ -20,7 +20,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined USE_OPENGL && !defined ANDROID
+#if defined USE_OPENGL && !defined ANDROID && !defined(__SWITCH__)
 #include "render/safeopenglgraphics.h"
 
 #ifdef DEBUG_OPENGL

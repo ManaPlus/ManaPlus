@@ -263,13 +263,15 @@ void OpenGLImageHelper::bindTexture(const GLuint texture)
         case RENDER_GLES_OPENGL:
             MobileOpenGLGraphics::bindTexture(mTextureType, texture);
             break;
-#elif defined(__native_client__)
+#elif defined(__native_client__) || defined(__SWITCH__)
         case RENDER_NORMAL_OPENGL:
         case RENDER_MODERN_OPENGL:
         case RENDER_GLES_OPENGL:
             break;
         case RENDER_SAFE_OPENGL:
+#ifndef __SWITCH__
             SafeOpenGLGraphics::bindTexture(mTextureType, texture);
+#endif
             break;
         case RENDER_GLES2_OPENGL:
             MobileOpenGL2Graphics::bindTexture(mTextureType, texture);
@@ -336,7 +338,9 @@ Image *OpenGLImageHelper::glLoad(SDL_Surface *tmpImage,
         mUseOpenGL != RENDER_GLES_OPENGL &&
         mUseOpenGL != RENDER_GLES2_OPENGL)
     {
+#ifndef __SWITCH__
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+#endif
 #ifdef OPENGLERRORS
         graphicsManager.logError();
 #endif  // OPENGLERRORS

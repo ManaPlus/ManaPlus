@@ -23,7 +23,7 @@
 #ifndef RENDER_SAFEOPENGLGRAPHICS_H
 #define RENDER_SAFEOPENGLGRAPHICS_H
 
-#if defined USE_OPENGL && !defined ANDROID
+#if defined USE_OPENGL && !defined ANDROID && !defined(__SWITCH__)
 
 #include "render/graphics.h"
 

@@ -23,7 +23,7 @@
 #ifndef RENDER_MODERNOPENGLGRAPHICS_H
 #define RENDER_MODERNOPENGLGRAPHICS_H
 
-#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__)
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
 
 #include "localconsts.h"
 

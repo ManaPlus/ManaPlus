@@ -360,7 +360,7 @@ bool Graphics::setOpenGLMode() restrict2
         OpenGLImageHelper::mTextureSize = texSize;
         logger->log("OpenGL texture size: %d pixels (rectangle textures)",
             OpenGLImageHelper::mTextureSize);
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__SWITCH__)
         SafeOpenGLImageHelper::mTextureType = GL_TEXTURE_RECTANGLE_ARB;
         SafeOpenGLImageHelper::mTextureSize = texSize;
 #endif  // ANDROID
@@ -370,7 +370,7 @@ bool Graphics::setOpenGLMode() restrict2
         glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
         OpenGLImageHelper::mTextureType = GL_TEXTURE_2D;
         OpenGLImageHelper::mTextureSize = texSize;
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__SWITCH__)
         SafeOpenGLImageHelper::mTextureType = GL_TEXTURE_2D;
         SafeOpenGLImageHelper::mTextureSize = texSize;
 #endif  // ANDROID

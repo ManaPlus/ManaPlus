@@ -186,7 +186,7 @@ int GraphicsManager::detectGraphics()
     logger->log1("enable opengl mode");
     int textureSampler = 0;
     int compressTextures = 0;
-#if !defined(ANDROID) && !defined(__native_client__)
+#if !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
     mainGraphics = new NormalOpenGLGraphics;
 #endif  // !defined(ANDROID) && !defined(__native_client__)
 
@@ -285,7 +285,7 @@ int GraphicsManager::detectGraphics()
 #define RENDER_SDL2_DEFAULT_INIT
 #endif  // USE_SDL2
 
-#if defined(ANDROID) || defined(__native_client__)
+#if defined(ANDROID) || defined(__native_client__) || defined(__SWITCH__)
 #define RENDER_NORMAL_OPENGL_INIT
 #define RENDER_MODERN_OPENGL_INIT
 #else  // defined(ANDROID) || defined(__native_client__)
@@ -307,12 +307,16 @@ int GraphicsManager::detectGraphics()
 #define RENDER_SAFE_OPENGL_INIT
 #define RENDER_GLES2_OPENGL_INIT
 #else  // defined(ANDROID)
+#ifdef __SWITCH__
+#define RENDER_SAFE_OPENGL_INIT
+#else
 #define RENDER_SAFE_OPENGL_INIT \
     imageHelper = new SafeOpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
     mainGraphics = new SafeOpenGLGraphics; \
     screenshortHelper = new OpenGLScreenshotHelper; \
     mUseTextureSampler = false;
+#endif
 #define RENDER_GLES2_OPENGL_INIT \
     imageHelper = new OpenGLImageHelper; \
     surfaceImageHelper = new SurfaceImageHelper; \
@@ -321,7 +325,7 @@ int GraphicsManager::detectGraphics()
     mUseTextureSampler = false;
 #endif  // defined(ANDROID)
 
-#if defined(__native_client__)
+#if defined(__native_client__) || defined(__SWITCH__)
 #define RENDER_GLES_OPENGL_INIT
 #else  // defined(__native_client__)
 #define RENDER_GLES_OPENGL_INIT \
@@ -533,7 +537,7 @@ void GraphicsManager::initGraphics()
     openGLMode = intToRenderType(config.getIntValue("opengl"));
 #ifdef USE_OPENGL
     OpenGLImageHelper::setBlur(config.getBoolValue("blur"));
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__SWITCH__)
     SafeOpenGLImageHelper::setBlur(config.getBoolValue("blur"));
 #endif  // ANDROID
     SurfaceImageHelper::SDLSetEnableAlphaCache(
@@ -844,7 +848,7 @@ void GraphicsManager::updateTextureFormat()
         config.getBoolValue("newtextures"))
     {
         OpenGLImageHelper::setInternalTextureType(GL_RGBA);
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__SWITCH__)
         SafeOpenGLImageHelper::setInternalTextureType(GL_RGBA);
 #endif  // ANDROID
 
@@ -853,7 +857,7 @@ void GraphicsManager::updateTextureFormat()
     else
     {
         OpenGLImageHelper::setInternalTextureType(4);
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__SWITCH__)
         SafeOpenGLImageHelper::setInternalTextureType(4);
 #endif  // ANDROID
 
@@ -1462,7 +1466,7 @@ void GraphicsManager::createTextureSampler()
         }
     }
     OpenGLImageHelper::setUseTextureSampler(mUseTextureSampler);
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__SWITCH__)
     SafeOpenGLImageHelper::setUseTextureSampler(false);
 #endif  // ANDROID
 }

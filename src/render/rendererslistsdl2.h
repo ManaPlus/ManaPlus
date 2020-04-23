@@ -106,7 +106,7 @@ const RenderType indexToRender[] =
 {
     RENDER_SOFTWARE,
     RENDER_SDL2_DEFAULT,
-    RENDER_MODERN_OPENGL
+    RENDER_GLES2_OPENGL
 };
 
 const char *OPENGL_NAME[] =
@@ -116,14 +116,14 @@ const char *OPENGL_NAME[] =
     // TRANSLATORS: draw backend
     N_("SDL2 default"),
     // TRANSLATORS: draw backend
-    N_("Modern OpenGL")
+    N_("OpenGL ES 2")
 };
 
 const int renderModesListSize = 3;
 
 const int renderToIndex[] =
 {
-    2,  // RENDER_SOFTWARE
+    0,  // RENDER_SOFTWARE
     2,  // RENDER_NORMAL_OPENGL
     2,  // RENDER_SAFE_OPENGL
     2,  // RENDER_GLES_OPENGL

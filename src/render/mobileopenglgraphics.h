@@ -23,7 +23,7 @@
 #ifndef RENDER_MOBILEOPENGLGRAPHICS_H
 #define RENDER_MOBILEOPENGLGRAPHICS_H
 
-#if defined(USE_OPENGL) && !defined(__native_client__)
+#if defined(USE_OPENGL) && !defined(__native_client__) && !defined(__SWITCH__)
 
 #include "localconsts.h"
 

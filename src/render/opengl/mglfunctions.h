@@ -35,6 +35,8 @@ LOGGER_H
 #define getFunction(name) nullptr
 #elif defined __native_client__
 #define getFunction(name) glGetProcAddressREGAL(name)
+#elif defined(__SWITCH__)
+#define getFunction(name) SDL_GL_GetProcAddress(name)
 #else  // WIN32
 #define getFunction(name) glXGetProcAddress(\
     reinterpret_cast<const GLubyte*>(name))

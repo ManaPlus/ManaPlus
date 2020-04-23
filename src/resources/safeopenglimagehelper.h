@@ -25,7 +25,7 @@
 
 #include "localconsts.h"
 
-#if defined(USE_OPENGL) && !defined(ANDROID)
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__SWITCH__)
 
 #ifndef GL_TEXTURE_RECTANGLE_ARB
 #define GL_TEXTURE_RECTANGLE_ARB 0x84F5
