@@ -192,6 +192,10 @@ int mainGui(int argc, char *argv[])
 #endif  // SDL_IMAGE_VERSION_ATLEAST(1, 2, 11)
 
 #ifdef __SWITCH__
+    SDL_Quit();
+#endif
+
+#ifdef __SWITCH__
     NxDeinit();
 #endif
 

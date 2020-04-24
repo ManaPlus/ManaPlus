@@ -387,8 +387,9 @@ void Client::gameInit()
         logger->safeError(strprintf("Could not initialize SDL: %s",
             SDL_GetError()));
     }
+#ifndef __SWITCH__
     atexit(SDL_Quit);
-
+#endif
     PacketLimiter::initPacketLimiter();
 #ifndef USE_SDL2
     SDL_EnableUNICODE(1);
