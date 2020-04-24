@@ -66,6 +66,7 @@ set(FLAGS -DPACKAGE_NAME=\"ManaPlus\" -DPACKAGE_TARNAME=\"manaplus\" -DPACKAGE_V
         -DHAVE_CURL_CURL_H=1 -DHAVE_LIBXML2=1 -DHAVE_LIBXML_XMLREADER_H=1 -DHAVE_LIBPNG=1 -DSTDC_HEADERS=1 -DHAVE_ARPA_INET_H=1
         -DHAVE_FCNTL_H=1 -DHAVE_MALLOC_H=1 -DHAVE_NETDB_H=1 -DHAVE_NETINET_IN_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1
         -DHAVE_SYS_SOCKET_H=1 -DHAVE_UNISTD_H=1 -Wall -DENABLE_ASSERTS  -DHAVE_GLEXT -DENABLE_LIBXML -DUSE_SDL2 -DTMWA_SUPPORT -DCURL_STATICLIB
+        -DUSE_OPENGL=1
         )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
@@ -79,6 +80,7 @@ target_link_libraries(${PROJECT_NAME}
         SDL2_net
         SDL2_ttf freetype bz2
         curl mbedtls mbedx509 mbedcrypto
+        GLESv2
         EGL
         glapi
         drm_nouveau

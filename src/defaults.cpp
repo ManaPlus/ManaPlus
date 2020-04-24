@@ -185,7 +185,7 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("useScreenshotDirectorySuffix", true);
     AddDEF("screenshotDirectorySuffix", "");
 #ifdef __SWITCH__
-    AddDEF("joystickEnabled", false);
+    AddDEF("joystickEnabled", true);
 #else
     AddDEF("joystickEnabled", false);
 #endif
