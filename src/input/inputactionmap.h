@@ -351,11 +351,15 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyQuit",
         addKey(SDLK_ESCAPE),
-#if defined(USE_SDL2) && defined(ANDROID)
+#if defined(USE_SDL2)
+#if defined(ANDROID)
         addKey(SDLK_AC_BACK),
-#else  // defined(USE_SDL2) && defined(ANDROID)
+#elif defined(__SWITCH__)
+        joystickButton(10),
+#else
         emptyKey,
-#endif  // defined(USE_SDL2) && defined(ANDROID)
+#endif
+#endif  // defined(USE_SDL2)
         Input::GRP_DEFAULT,
         &Actions::quit,
         InputAction::NO_VALUE, 50,
@@ -2779,11 +2783,15 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyGUICancel",
         addKey(SDLK_ESCAPE),
-#if defined(USE_SDL2) && defined(ANDROID)
+#if defined(USE_SDL2)
+#if defined(ANDROID)
         addKey(SDLK_AC_BACK),
-#else  // defined(USE_SDL2) && defined(ANDROID)
+#elif defined(__SWITCH__)
+        joystickButton(10),
+#else
         emptyKey,
-#endif  // defined(USE_SDL2) && defined(ANDROID)
+#endif
+#endif  // defined(USE_SDL2)
         Input::GRP_GUICHAN,
         nullptr,
         InputAction::NO_VALUE, 50,

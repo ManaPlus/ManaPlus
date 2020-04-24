@@ -25,7 +25,12 @@
 
 #include "localconsts.h"
 
+#ifdef __SWITCH__
+static const int defaultScreenWidth = 1280;
+static const int defaultScreenHeight = 720;
+#else
 static const int defaultScreenWidth = 800;
 static const int defaultScreenHeight = 600;
+#endif
 
 #endif  // CONST_RENDER_GRAPHICS_H
