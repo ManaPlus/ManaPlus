@@ -178,6 +178,9 @@ void setConfigDefaults(Configuration &cfg)
     AddDEF("musicVolume", 60);
     AddDEF("remember", false);
     AddDEF("username", "");
+#ifdef SAVE_PASSWORD
+    AddDEF("password", "");
+#endif
     AddDEF("lastCharacter", "");
     AddDEF("altfpslimit", 5);
     AddDEF("updatehost", "");

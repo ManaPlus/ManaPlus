@@ -151,15 +151,23 @@ void LoginHandler::loginOrRegister(LoginData *const data) const
     else
         loginAccount(data);
 
+    const bool remember = data->remember;
+    if (remember) {
+        serverConfig.setValue("username", data->username);
+#ifdef SAVE_PASSWORD
+        serverConfig.setValue("password", data->password);
+#endif
+    }
+    else {
+        serverConfig.setValue("username", "");
+#ifdef SAVE_PASSWORD
+        serverConfig.setValue("password", "");
+#endif
+    }
+    serverConfig.setValue("remember", remember);
+
     // Clear the password, avoids auto login when returning to login
     data->password.clear();
-
-    const bool remember = data->remember;
-    if (remember)
-        serverConfig.setValue("username", data->username);
-    else
-        serverConfig.setValue("username", "");
-    serverConfig.setValue("remember", remember);
 }
 
 void LoginHandler::logout() const

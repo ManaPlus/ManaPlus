@@ -860,6 +860,11 @@ void Client::stateConnectServer1()
         {
             loginData.username = settings.options.username;
         }
+#ifdef SAVE_PASSWORD
+        LoginDialog::savedPassword = loginData.remember ?
+                serverConfig.getValue("password", "") : "";
+        loginData.password = settings.options.password = LoginDialog::savedPassword;
+#endif
         settings.login = loginData.username;
         WindowManager::updateTitle();
 
@@ -1639,6 +1644,12 @@ int Client::gameExec()
                 case State::ERROR:
                     BLOCK_START("Client::gameExec State::ERROR")
                     config.write();
+#ifdef SAVE_PASSWORD
+                    if(errorMessage == "Wrong password.") {
+                        serverConfig.setValue("password", "");
+                        serverConfig.write();
+                    }
+#endif
                     if (mOldState == State::GAME)
                         serverConfig.write();
                     logger->log1("State: ERROR");
