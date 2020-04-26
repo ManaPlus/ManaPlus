@@ -73,7 +73,7 @@
 
 #include "gui/gui.h"
 #include "gui/skin.h"
-#ifdef ANDROID
+#if defined(ANDROID) || defined(__SWITCH__)
 #include "gui/windowmanager.h"
 #endif  // ANDROID
 
@@ -766,7 +766,7 @@ void TextField::fontChanged()
 
 void TextField::mousePressed(MouseEvent &event)
 {
-#ifdef ANDROID
+#if defined(ANDROID) || defined(__SWITCH__)
     if (!WindowManager::isKeyboardVisible())
         inputManager.executeAction(InputAction::SHOW_KEYBOARD);
 #endif  // ANDROID
@@ -789,7 +789,7 @@ void TextField::mousePressed(MouseEvent &event)
 
 void TextField::focusGained(const Event &event A_UNUSED)
 {
-#ifdef ANDROID
+#if defined(ANDROID) || defined(__SWITCH__)
     if (!WindowManager::isKeyboardVisible())
         inputManager.executeAction(InputAction::SHOW_KEYBOARD);
 #endif  // ANDROID

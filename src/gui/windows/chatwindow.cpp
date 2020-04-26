@@ -84,6 +84,10 @@
 #include <fstream>
 #include <sstream>
 
+#ifdef __SWITCH__
+#include "enums/input/keyvalue.h"
+#endif
+
 #include "debug.h"
 
 ChatWindow *chatWindow = nullptr;
@@ -818,6 +822,13 @@ void ChatWindow::keyPressed(KeyEvent &event)
 {
     const InputActionT actionId = event.getActionId();
     std::string temp;
+#ifdef __SWITCH__
+    if(event.getKey().getValue() == KeyValue::TEXTINPUT)
+    {
+        action(ActionEvent(this, "chatinput"));
+        return;
+    } else
+#endif
     if (actionId == InputAction::GUI_DOWN)
     {
         if (mCurHist != mHistory.end())

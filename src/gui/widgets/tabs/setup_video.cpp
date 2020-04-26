@@ -84,7 +84,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     mAltFpsSlider(new Slider(this, 2.0, 160.0, 1.0)),
     // TRANSLATORS: video settings label
     mAltFpsLabel(new Label(this, _("Alt FPS limit: "))),
-#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
+#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__) && !defined(__SWITCH__)
     // TRANSLATORS: video settings button
     mDetectButton(new Button(this, _("Detect best mode"), "detect",
         BUTTON_SKIN, this)),
@@ -195,7 +195,7 @@ Setup_Video::Setup_Video(const Widget2 *const widget) :
     place(0, 7, mAltFpsSlider, 1, 1);
     place(1, 7, mAltFpsLabel, 1, 1).setPadding(3);
 
-#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)
+#if !defined(ANDROID) && !defined(__APPLE__) && !defined(__native_client__)  && !defined(__SWITCH__)
     place(0, 8, mDetectButton, 1, 1);
 #else  // !defined(ANDROID) && !defined(__APPLE__) &&
        // !defined(__native_client__)

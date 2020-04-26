@@ -409,7 +409,7 @@ void WindowManager::newChatMessage()
 
 void WindowManager::setIcon()
 {
-#ifndef ANDROID
+#if !defined(ANDROID) && !defined(__SWITCH__)
     std::string iconFile = branding.getValue("appIcon", "icons/manaplus");
 #ifdef WIN32
     iconFile.append(".ico");
