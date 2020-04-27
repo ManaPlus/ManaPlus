@@ -91,6 +91,10 @@ PRAGMA48(GCC diagnostic pop)
 
 #include "debug.h"
 
+#ifdef __SWITCH__
+bool keyboardClosed = false;
+#endif
+
 extern volatile time_t cur_time;
 
 SDLInput *guiInput = nullptr;
@@ -133,6 +137,20 @@ void SDLInput::pushInput(const SDL_Event &event)
     BLOCK_START("SDLInput::pushInput")
     KeyInput keyInput;
     MouseInput mouseInput;
+
+#ifdef __SWITCH__
+    // send an escape/cancel key on keyboard dismiss event
+    bool visible = SDL_GetEventState(SDL_TEXTINPUT) == SDL_ENABLE;
+    if(visible)
+    {
+        keyboardClosed = false;
+    }
+    else if(!keyboardClosed)
+    {
+        simulateKey(KeyValue::ESCAPE, InputAction::GUI_CANCEL);
+        keyboardClosed = true;
+    }
+#endif
 
     switch (event.type)
     {
