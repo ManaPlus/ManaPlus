@@ -266,17 +266,21 @@ void InputManager::resetKey(const InputActionT i) restrict2
     val1.type = kd.defaultType2;
 #ifdef USE_SDL2
     if (kd.defaultType1 == InputType::KEYBOARD)
+    {
         val0.value = SDL_GetScancodeFromKey(kd.defaultValue1);
+        if (val0.value == SDL_SCANCODE_UNKNOWN)
+            val0.value = -1;
+    }
     else
         val0.value = kd.defaultValue1;
     if (kd.defaultType2 == InputType::KEYBOARD)
+    {
         val1.value = SDL_GetScancodeFromKey(kd.defaultValue2);
+        if (val1.value == SDL_SCANCODE_UNKNOWN)
+            val1.value = -1;
+    }
     else
         val1.value = kd.defaultValue2;
-    if (val0.value == SDL_SCANCODE_UNKNOWN)
-        val0.value = -1;
-    if (val1.value == SDL_SCANCODE_UNKNOWN)
-        val1.value = -1;
 #else  // USE_SDL2
 
     val0.value = kd.defaultValue1;
