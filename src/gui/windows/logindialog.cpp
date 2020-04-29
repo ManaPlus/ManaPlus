@@ -204,14 +204,15 @@ void LoginDialog::postInit()
     loadWindowState();
     reflowLayout(0, 0);
 
+#ifdef SAVE_PASSWORD
+    mPassField->setText(LoginDialog::savedPassword);
+#else
     if (mUserField->getText().empty())
         mUserField->requestFocus();
     else {
-#ifdef SAVE_PASSWORD
-        mPassField->setText(LoginDialog::savedPassword);
-#endif
         mPassField->requestFocus();
     }
+#endif
 
     mLoginButton->setEnabled(canSubmit());
     if (loginHandler != nullptr)

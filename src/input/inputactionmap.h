@@ -100,7 +100,11 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyAttack",
         addKey(SDLK_x),
+#ifdef __SWITCH__
+        joystickButton(9),
+#else
         emptyKey,
+#endif
         Input::GRP_DEFAULT | Input::GRP_REPEAT,
         &Actions::attack,
         InputAction::NO_VALUE, 50,
@@ -127,7 +131,11 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyMoveToTarget",
         addKey(SDLK_v),
+#ifdef __SWITCH__
+        joystickButton(3),
+#else
         emptyKey,
+#endif
         Input::GRP_DEFAULT,
         &Actions::moveToTarget,
         InputAction::NO_VALUE, 50,
@@ -188,7 +196,11 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyTalk",
         addKey(SDLK_t),
+#ifdef __SWITCH__
+        joystickButton(8),
+#else
         emptyKey,
+#endif
         Input::GRP_DEFAULT,
         &Actions::talk,
         InputAction::NO_VALUE, 50,
@@ -198,7 +210,11 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyTarget",
         addKey(SDLK_LSHIFT),
+#ifdef __SWITCH__
+        emptyKey,
+#else
         joystickButton(4),
+#endif
         Input::GRP_DEFAULT,
         &Actions::stopAttack,
         InputAction::NO_VALUE, 50,
@@ -214,7 +230,11 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyTargetMonster",
         addKey(SDLK_a),
+#ifdef __SWITCH__
+        joystickButton(7),
+#else
         joystickButton(3),
+#endif
         Input::GRP_DEFAULT | Input::GRP_REPEAT,
         &Actions::targetMonster,
         InputAction::NO_VALUE, 50,
@@ -227,7 +247,11 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyTargetNPC",
         addKey(SDLK_n),
+#ifdef __SWITCH__
+        joystickButton(6),
+#else
         emptyKey,
+#endif
         Input::GRP_DEFAULT,
         &Actions::targetNPC,
         InputAction::NO_VALUE, 50,
@@ -251,7 +275,11 @@ static const InputActionData inputActionData
         Protected_false},
     {"keyPickup",
         addKey(SDLK_z),
+#ifdef __SWITCH__
+        joystickButton(2),
+#else
         joystickButton(1),
+#endif
         Input::GRP_DEFAULT,
         &Actions::pickup,
         InputAction::NO_VALUE, 50,
@@ -288,7 +316,11 @@ static const InputActionData inputActionData
         Protected_true},
     {"keyBeingSit",
         addKey(SDLK_s),
+#ifdef __SWITCH__
+        emptyKey,
+#else
         joystickButton(2),
+#endif
         Input::GRP_DEFAULT,
         &Actions::sit,
         InputAction::NO_VALUE, 50,
@@ -355,7 +387,7 @@ static const InputActionData inputActionData
 #if defined(ANDROID)
         addKey(SDLK_AC_BACK),
 #elif defined(__SWITCH__)
-        joystickButton(10),
+        joystickButton(11),
 #else
         emptyKey,
 #endif
@@ -2320,7 +2352,11 @@ static const InputActionData inputActionData
         Protected_true},
     {"keyChat",
         addKey(SDLK_RETURN),
+#ifdef __SWITCH__
+        joystickButton(10),
+#else
         emptyKey,
+#endif
         Input::GRP_DEFAULT | Input::GRP_CHAT,
         &Actions::toggleChat,
         InputAction::NO_VALUE, 50,
@@ -2787,7 +2823,7 @@ static const InputActionData inputActionData
 #if defined(ANDROID)
         addKey(SDLK_AC_BACK),
 #elif defined(__SWITCH__)
-        joystickButton(10),
+        joystickButton(11),
 #else
         emptyKey,
 #endif
@@ -2900,7 +2936,15 @@ static const InputActionData inputActionData
         UseArgs_false,
         Protected_true},
     {"keyStopSit",
+#ifdef __SWITCH__
+        emptyKey,
+        joystickButton(1),
+        Input::GRP_DEFAULT,
+        &Actions::stopSit,
+        InputAction::NO_VALUE, 50,
+#else
         defaultAction(&Actions::stopSit),
+#endif
         InputCondition::KEY_DOWN |
             InputCondition::DEFAULT |
             InputCondition::INGAME,
