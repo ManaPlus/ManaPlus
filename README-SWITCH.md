@@ -1,5 +1,11 @@
-Nintendo Switch button mapping (https://manaplus.germantmw.de/?site=2):
+Installation
+-
+ - Register for a "Mana World" account on your computer: https://www.themanaworld.org/register 
+ - Copy the "manaplus" folder to your sdcard ("/switch/manaplus")
+ - Launch the game, login and enjoy
 
+Default buttons mapping:
+-
 ```
 KEY_A               JButton1    "target + move + attack"
 KEY_B               JButton2    "stop attack / sit"
