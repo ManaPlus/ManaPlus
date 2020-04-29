@@ -104,32 +104,26 @@ const int renderToIndex[] =
 // map for index to RenderType
 const RenderType indexToRender[] =
 {
-    RENDER_SOFTWARE,
-    RENDER_SDL2_DEFAULT,
     RENDER_GLES2_OPENGL
 };
 
 const char *OPENGL_NAME[] =
 {
     // TRANSLATORS: draw backend
-    N_("Software"),
-    // TRANSLATORS: draw backend
-    N_("SDL2 default"),
-    // TRANSLATORS: draw backend
     N_("OpenGL ES 2")
 };
 
-const int renderModesListSize = 3;
+const int renderModesListSize = 1;
 
 const int renderToIndex[] =
 {
     0,  // RENDER_SOFTWARE
-    2,  // RENDER_NORMAL_OPENGL
-    2,  // RENDER_SAFE_OPENGL
-    2,  // RENDER_GLES_OPENGL
-    1,  // RENDER_SDL2_DEFAULT
-    2,  // RENDER_MODERN_OPENGL
-    2   // RENDER_GLES2_OPENGL
+    0,  // RENDER_NORMAL_OPENGL
+    0,  // RENDER_SAFE_OPENGL
+    0,  // RENDER_GLES_OPENGL
+    0,  // RENDER_SDL2_DEFAULT
+    0,  // RENDER_MODERN_OPENGL
+    0   // RENDER_GLES2_OPENGL
 };
 
 #else  // ANDROID or nacl
