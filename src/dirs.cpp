@@ -359,6 +359,8 @@ void Dirs::initLocalDataDir()
             "local");
 #elif defined __native_client__
         settings.localDataDir = pathJoin(_nacl_dir, "local");
+#elif defined __SWITCH__
+        settings.localDataDir = pathJoin(VirtFs::getUserDir(),"local");
 #else  // __APPLE__
 
         settings.localDataDir = pathJoin(VirtFs::getUserDir(),
@@ -421,6 +423,8 @@ void Dirs::initConfigDir()
             "config");
 #elif defined __native_client__
         settings.configDir = pathJoin(_nacl_dir, "config");
+#elif defined __SWITCH__
+        settings.configDir = pathJoin(VirtFs::getUserDir(), "config");
 #else  // __APPLE__
 
         settings.configDir = pathJoin(VirtFs::getUserDir(),

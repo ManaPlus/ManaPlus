@@ -139,7 +139,7 @@ void SDLInput::pushInput(const SDL_Event &event)
     MouseInput mouseInput;
 
 #ifdef __SWITCH__
-    // send an escape/cancel key on keyboard dismiss event
+    // send an enter/select key on keyboard dismiss event
     bool visible = SDL_GetEventState(SDL_TEXTINPUT) == SDL_ENABLE;
     if(visible)
     {
@@ -147,7 +147,7 @@ void SDLInput::pushInput(const SDL_Event &event)
     }
     else if(!keyboardClosed)
     {
-        simulateKey(KeyValue::ESCAPE, InputAction::GUI_CANCEL);
+        simulateKey(KeyValue::ENTER, InputAction::GUI_SELECT2);
         keyboardClosed = true;
     }
 #endif

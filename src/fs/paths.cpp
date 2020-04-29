@@ -257,13 +257,12 @@ std::string getHomePath()
 #else  // defined(UNITTESTS) && defined(UNITESTSDIR)
 #ifdef WIN32
     return getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
+#elif __SWITCH__
+    return VirtFs::getBaseDir();
 #else
     const char *path = getenv("HOME");
     if (path == nullptr)
     {
-#ifdef __SWITCH__
-        return "/switch/manaplus";
-#else
         const uid_t uid = getuid();
         const struct passwd *const pw = getpwuid(uid);
         if (pw != nullptr &&
@@ -273,7 +272,6 @@ std::string getHomePath()
         }
         if (path == nullptr)
             return dirSeparator;
-#endif
     }
     std::string dir = path;
     if (findLast(dir, std::string(dirSeparator)) == false)
