@@ -1,54 +1,43 @@
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-set(CMAKE_SYSTEM_NAME "Generic")
+option(PLATFORM_LINUX "Linux platform target" OFF)
+option(PLATFORM_SWITCH "Nintendo Switch platform target" OFF)
 
-set(DEVKITPRO $ENV{DEVKITPRO})
-set(CMAKE_SYSTEM_PROCESSOR "armv8-a")
-set(CMAKE_C_COMPILER "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-gcc")
-set(CMAKE_CXX_COMPILER "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-g++")
-set(CMAKE_ASM_COMPILER "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-as")
-set(CMAKE_AR "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-gcc-ar" CACHE STRING "")
-set(CMAKE_RANLIB "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-gcc-ranlib" CACHE STRING "")
-set(CMAKE_C_FLAGS "-g -march=armv8-a -mtune=cortex-a57 -mtp=soft -ftls-model=local-exec -fPIC -I${DEVKITPRO}/libnx/include -I${DEVKITPRO}/portlibs/switch/include" CACHE STRING "C flags")
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}" CACHE STRING "C++ flags") #-fno-rtti -fno-exceptions
-set(CMAKE_FIND_ROOT_PATH ${DEVKITPRO} ${DEVKITPRO}/devkitA64 ${DEVKITPRO}/libnx ${DEVKITPRO}/portlibs/switch)
-set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "Shared libs not available")
+if (PLATFORM_LINUX)
+    set(CMAKE_SYSTEM_NAME "Linux")
+elseif (PLATFORM_SWITCH)
+    set(CMAKE_SYSTEM_NAME "Generic")
+    set(DEVKITPRO $ENV{DEVKITPRO})
+    set(CMAKE_SYSTEM_PROCESSOR "armv8-a")
+    set(CMAKE_C_COMPILER "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-gcc")
+    set(CMAKE_CXX_COMPILER "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-g++")
+    set(CMAKE_ASM_COMPILER "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-as")
+    set(CMAKE_AR "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-gcc-ar" CACHE STRING "")
+    set(CMAKE_RANLIB "${DEVKITPRO}/devkitA64/bin/aarch64-none-elf-gcc-ranlib" CACHE STRING "")
+    set(CMAKE_C_FLAGS "-g -march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -ftls-model=local-exec -fPIC -I${DEVKITPRO}/libnx/include -I${DEVKITPRO}/portlibs/switch/include" CACHE STRING "C flags")
+    set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}" CACHE STRING "C++ flags") #-fno-rtti -fno-exceptions
+    set(CMAKE_FIND_ROOT_PATH ${DEVKITPRO} ${DEVKITPRO}/devkitA64 ${DEVKITPRO}/libnx ${DEVKITPRO}/portlibs/switch)
+    set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+    set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+    set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+    set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+    set(BUILD_SHARED_LIBS OFF CACHE INTERNAL "Shared libs not available")
+endif ()
 
 project(ManaPlus)
 
 file(GLOB SOURCES src/*.cpp)
-set(SOURCES_DIRS
-        src/being
-        src/enums/being
-        src/fs
-        src/gui
-        src/input
-        src/listeners
-        src/net
-        src/particle
-        src/progs/manaplus
-        src/render
-        src/resources
-        src/sdl2gfx
-        src/test
-        src/utils
-        )
+set(SOURCES_DIRS src/being src/enums/being src/fs src/gui src/input
+        src/listeners src/net src/particle src/progs/manaplus src/render
+        src/resources src/sdl2gfx src/test src/utils)
 
 foreach (DIR ${SOURCES_DIRS})
     file(GLOB_RECURSE FILES ${DIR}/*.cpp)
     list(APPEND SOURCES ${FILES})
 endforeach (DIR)
 
-set(INCLUDES
-        ${DEVKITPRO}/portlibs/switch/include/SDL2
-        ${DEVKITPRO}/portlibs/switch/include/libxml2
-        src src/sdl2gfx
-        )
+set(INCLUDES src src/sdl2gfx)
 
 set(FLAGS -DPACKAGE_NAME=\"ManaPlus\" -DPACKAGE_TARNAME=\"manaplus\" -DPACKAGE_VERSION=\"1.9.3.23\"
         -DPACKAGE_STRING=\"ManaPlus\ 1.9.3.23\" -DPACKAGE_BUGREPORT=\"akaras@inbox.ru\" -DPACKAGE_URL=\"\"
@@ -65,31 +54,59 @@ set(FLAGS -DPACKAGE_NAME=\"ManaPlus\" -DPACKAGE_TARNAME=\"manaplus\" -DPACKAGE_V
         -DHAVE_LIBSDL2_NET=1 -DUSE_INTERNALSDLGFX=1 -DHAVE_SDL_H=1 -DHAVE_LIBPTHREAD=1 -DHAVE_LIBZ=1 -DHAVE_LIBCURL=1
         -DHAVE_CURL_CURL_H=1 -DHAVE_LIBXML2=1 -DHAVE_LIBXML_XMLREADER_H=1 -DHAVE_LIBPNG=1 -DSTDC_HEADERS=1 -DHAVE_ARPA_INET_H=1
         -DHAVE_FCNTL_H=1 -DHAVE_MALLOC_H=1 -DHAVE_NETDB_H=1 -DHAVE_NETINET_IN_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1
-        -DHAVE_SYS_SOCKET_H=1 -DHAVE_UNISTD_H=1 -Wall -DENABLE_ASSERTS  -DHAVE_GLEXT -DENABLE_LIBXML -DUSE_SDL2 -DTMWA_SUPPORT -DCURL_STATICLIB
-        -DUSE_OPENGL=1
+        -DHAVE_SYS_SOCKET_H=1 -DHAVE_UNISTD_H=1 -Wall -DENABLE_ASSERTS -DHAVE_GLEXT -DENABLE_LIBXML -DUSE_SDL2 -DTMWA_SUPPORT -DCURL_STATICLIB
+        -DUSE_OPENGL=1 -DSAVE_PASSWORD=1
         )
+
+if (PLATFORM_SWITCH)
+    list(APPEND INCLUDES
+            ${DEVKITPRO}/portlibs/switch/include/SDL2
+            ${DEVKITPRO}/portlibs/switch/include/libxml2)
+    list(APPEND FLAGS -D__SWITCH__ )
+    list(APPEND LDFLAGS
+            png xml2 curl z pthread SDL2_net SDL2_mixer SDL2_ttf SDL2_image SDL2
+            SDL2_image png16 z m nx z jpeg webp
+            SDL2_mixer vorbisidec modplug mpg123
+            opusfile ogg opus SDL2_net SDL2_ttf freetype bz2
+            curl mbedtls mbedx509 mbedcrypto
+            GLESv2 EGL glapi drm_nouveau nx stdc++ m
+            )
+else ()
+    include(FindPkgConfig)
+    pkg_search_module(SDL2 REQUIRED sdl2)
+    pkg_search_module(SDL2_TTF REQUIRED SDL2_ttf)
+    pkg_search_module(SDL2_IMAGE REQUIRED SDL2_image)
+    pkg_search_module(SDL2_MIXER REQUIRED SDL2_mixer)
+    pkg_search_module(SDL2_NET REQUIRED SDL2_net)
+    pkg_search_module(ZLIB REQUIRED zlib)
+    pkg_search_module(FREETYPE REQUIRED freetype2)
+    pkg_search_module(XML2 REQUIRED libxml-2.0)
+    pkg_search_module(PNG REQUIRED libpng)
+    pkg_search_module(CURL REQUIRED libcurl)
+    set(OpenGL_GL_PREFERENCE GLVND)
+    find_package(OpenGL REQUIRED)
+    #find_package(X11)
+    list(APPEND INCLUDES
+            ${SDL2_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_MIXER_INCLUDE_DIRS} ${SDL2_NET_INCLUDE_DIRS}
+            ${ZLIB_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS} ${XML2_INCLUDE_DIRS} ${PNG_INCLUDE_DIRS} ${CURL_INCLUDE_DIRS}
+            ${OPENGL_INCLUDE_DIR}
+            )
+    list(APPEND LDFLAGS
+            ${SDL2_LIBRARIES} ${SDL2_TTF_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_MIXER_LIBRARIES} ${SDL2_NET_LIBRARIES}
+            ${ZLIB_LIBRARIES} ${FREETYPE_LIBRARIES} ${XML2_LIBRARIES} ${PNG_LIBRARIES} ${CURL_LIBRARIES}
+            ${OPENGL_LIBRARIES}
+            )
+endif ()
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDES})
-target_compile_options(${PROJECT_NAME} PRIVATE -D__SWITCH__ ${FLAGS})
-target_link_libraries(${PROJECT_NAME}
-        png xml2 curl z pthread SDL2_net SDL2_mixer SDL2_ttf SDL2_image SDL2
-        SDL2_image png16 z m nx z jpeg webp
-        SDL2_mixer vorbisidec modplug mpg123
-        opusfile ogg opus
-        SDL2_net
-        SDL2_ttf freetype bz2
-        curl mbedtls mbedx509 mbedcrypto
-        GLESv2
-        EGL
-        glapi
-        drm_nouveau
-        nx
-        stdc++
-        m
-        )
-set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
-        "-specs=${DEVKITPRO}/libnx/switch.specs -L${DEVKITPRO}/libnx/lib -L${DEVKITPRO}/portlibs/switch/lib")
-add_custom_target(${PROJECT_NAME}.nro
-        DEPENDS ${PROJECT_NAME}
-        COMMAND elf2nro ${PROJECT_NAME} ${PROJECT_NAME}.nro)
+target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})
+target_link_libraries(${PROJECT_NAME} ${LDFLAGS})
+if (PLATFORM_SWITCH)
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
+            "-specs=${DEVKITPRO}/libnx/switch.specs -L${DEVKITPRO}/libnx/lib -L${DEVKITPRO}/portlibs/switch/lib")
+    add_custom_target(${PROJECT_NAME}.nro
+            DEPENDS ${PROJECT_NAME}
+            COMMAND ${DEVKITPRO}/tools/bin/nacptool --create "${PROJECT_NAME}" "cpasjuste" "1.9.3.23" ${PROJECT_NAME}.nacp
+            COMMAND ${DEVKITPRO}/tools/bin/elf2nro ${PROJECT_NAME} ${PROJECT_NAME}.nro --icon=${CMAKE_CURRENT_SOURCE_DIR}/data/icons/manaplus-switch.jpeg --nacp=${PROJECT_NAME}.nacp)
+endif ()
