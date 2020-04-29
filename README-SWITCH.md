@@ -32,3 +32,14 @@ KEY_RSTICK_UP       JButton22
 KEY_RSTICK_RIGHT    JButton23
 KEY_RSTICK_DOWN     JButton24
 ```
+
+Building
+-
+```
+git clone https://github.com/Cpasjuste/ManaPlus.git
+cd ManaPlus
+cp CMakeLists.txt.switch CMakeLists.txt
+mkdir cmake-build-release && cd cmake-build-release
+cmake -DPLATFORM_SWITCH=ON -DCMAKE_BUILD_TYPE=Release ../
+make ManaPlus.nro
+```
