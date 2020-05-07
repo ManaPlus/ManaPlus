@@ -139,7 +139,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
     maxHairStyle(CharDB::getMaxHairStyle()),
     minHairStyle(CharDB::getMinHairStyle()),
     mAction(0),
-    mDirection(0)
+    mDirection(0),
+    mShowHiddenGender(CharDB::getShowHiddenGender())
 {
     setStickyButtonLock(true);
     setSticky(true);
@@ -285,7 +286,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             mGenderStrip->addButton(_("F"), "f", false);
             if (features.getIntValue("forceAccountGender") == -1)
             {
-                if (serverFeatures->haveCharHiddenGender())
+                if (mShowHiddenGender &&
+                    serverFeatures->haveCharHiddenGender())
                 {
                     // TRANSLATORS: one char size male character gender
                     mGenderStrip->addButton(_("M"), "m", true);
@@ -304,7 +306,8 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             {
                 // TRANSLATORS: one char size male character gender
                 mGenderStrip->addButton(_("M"), "m", true);
-                if (serverFeatures->haveCharHiddenGender())
+                if (mShowHiddenGender &&
+                    serverFeatures->haveCharHiddenGender())
                 {
                     // TRANSLATORS: one char size hidden character gender
                     mGenderStrip->addButton(_("H"), "h", false);

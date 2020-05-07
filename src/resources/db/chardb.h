@@ -47,6 +47,8 @@ namespace CharDB
                     unsigned *restrict const min,
                     unsigned *restrict const max);
 
+    void loadFlags(XmlNodeConstPtr node);
+
     unsigned getMinHairColor() A_WARN_UNUSED;
 
     unsigned getMaxHairColor() A_WARN_UNUSED;
@@ -70,6 +72,8 @@ namespace CharDB
     unsigned getMaxRace() A_WARN_UNUSED;
 
     const STD_VECTOR<BeingSlot> &getDefaultItems() A_WARN_UNUSED;
+
+    bool getShowHiddenGender();
 }  // namespace CharDB
 
 #endif  // RESOURCES_DB_CHARDB_H
