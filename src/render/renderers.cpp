@@ -42,7 +42,7 @@ static RenderType getDefault() noexcept2
 RenderType intToRenderType(const int mode) noexcept2
 {
 #ifdef __SWITCH__
-	return RENDER_GLES2_OPENGL;
+    return RENDER_GLES2_OPENGL;
 #endif
     if (mode < 0 || mode >= RENDER_LAST)
         return getDefault();

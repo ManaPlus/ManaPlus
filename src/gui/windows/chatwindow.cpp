@@ -823,11 +823,12 @@ void ChatWindow::keyPressed(KeyEvent &event)
     const InputActionT actionId = event.getActionId();
     std::string temp;
 #ifdef __SWITCH__
-    if(event.getKey().getValue() == KeyValue::TEXTINPUT)
+    if (event.getKey().getValue() == KeyValue::TEXTINPUT)
     {
         action(ActionEvent(this, "chatinput"));
         return;
-    } else
+    }
+    else
 #endif
     if (actionId == InputAction::GUI_DOWN)
     {

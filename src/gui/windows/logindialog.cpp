@@ -74,10 +74,11 @@ LoginDialog::LoginDialog(LoginData &data,
     mUserField(new TextField(this, mLoginData->username,
         LoseFocusOnTab_true, nullptr, std::string(), false)),
     mPassField(new PasswordField(this, mLoginData->password)),
-    // TRANSLATORS: login dialog label
 #ifdef SAVE_PASSWORD
+    // TRANSLATORS: login dialog label
     mKeepCheck(new CheckBox(this, _("Remember user and password"),
 #else
+    // TRANSLATORS: login dialog label
     mKeepCheck(new CheckBox(this, _("Remember username"),
 #endif
     mLoginData->remember, nullptr, std::string())),
@@ -209,9 +210,8 @@ void LoginDialog::postInit()
 #else
     if (mUserField->getText().empty())
         mUserField->requestFocus();
-    else {
+    else
         mPassField->requestFocus();
-    }
 #endif
 
     mLoginButton->setEnabled(canSubmit());

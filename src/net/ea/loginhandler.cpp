@@ -152,13 +152,15 @@ void LoginHandler::loginOrRegister(LoginData *const data) const
         loginAccount(data);
 
     const bool remember = data->remember;
-    if (remember) {
+    if (remember)
+    {
         serverConfig.setValue("username", data->username);
 #ifdef SAVE_PASSWORD
         serverConfig.setValue("password", data->password);
 #endif
     }
-    else {
+    else
+    {
         serverConfig.setValue("username", "");
 #ifdef SAVE_PASSWORD
         serverConfig.setValue("password", "");

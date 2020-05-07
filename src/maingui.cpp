@@ -98,7 +98,8 @@ PRAGMA48(GCC diagnostic pop)
 #include "debug.h"
 
 #ifdef __SWITCH__
-extern "C" {
+extern "C"
+{
 #include <switch/runtime/devices/socket.h>
 #include <switch/runtime/nxlink.h>
 }
@@ -106,18 +107,22 @@ extern "C" {
 #include <unistd.h>
 static int sock = -1;
 #endif
-void nxInit() {
+void nxInit()
+{
     socketInitializeDefault();
 #ifndef NDEBUG
     sock = nxlinkStdio();
-    if (sock < 0) {
+    if (sock < 0)
+    {
         socketExit();
     }
 #endif
 }
-void NxDeinit() {
+void NxDeinit()
+{
 #ifndef NDEBUG
-    if (sock >= 0) {
+    if (sock >= 0)
+    {
         close(sock);
         sock = -1;
     }

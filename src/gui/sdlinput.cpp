@@ -141,11 +141,11 @@ void SDLInput::pushInput(const SDL_Event &event)
 #ifdef __SWITCH__
     // send an enter/select key on keyboard dismiss event
     bool visible = SDL_GetEventState(SDL_TEXTINPUT) == SDL_ENABLE;
-    if(visible)
+    if (visible)
     {
         keyboardClosed = false;
     }
-    else if(!keyboardClosed)
+    else if (!keyboardClosed)
     {
         simulateKey(KeyValue::ENTER, InputAction::GUI_SELECT2);
         keyboardClosed = true;

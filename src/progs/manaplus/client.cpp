@@ -1645,7 +1645,8 @@ int Client::gameExec()
                     BLOCK_START("Client::gameExec State::ERROR")
                     config.write();
 #ifdef SAVE_PASSWORD
-                    if(errorMessage == "Wrong password.") {
+                    if (errorMessage == "Wrong password.")
+                    {
                         serverConfig.setValue("password", "");
                         serverConfig.write();
                     }
