@@ -19,6 +19,9 @@
 ##9Philippe Groarke (Socapex) <>
 ##9Haru <haru dotalux com>
 
+##3<<Switch porting>>
+##9Cpasjuste
+
 ##3<<Main development>>
 ##9Andrei Karas (4144) <akaras inbox ru>
 
