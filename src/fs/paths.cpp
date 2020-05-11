@@ -257,7 +257,7 @@ std::string getHomePath()
 #else  // defined(UNITTESTS) && defined(UNITESTSDIR)
 #ifdef WIN32
     return getSpecialFolderLocation(CSIDL_LOCAL_APPDATA);
-#elif __SWITCH__
+#elif defined(__SWITCH__)
     return VirtFs::getBaseDir();
 #else
     const char *path = getenv("HOME");
