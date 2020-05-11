@@ -26,6 +26,10 @@
 
 #include "render/openglx/mglx.h"
 
+#ifdef USE_SDL2
+#include <SDL_video.h>
+#endif
+
 #include "debug.h"
 
 void Glx::initFunctions()
