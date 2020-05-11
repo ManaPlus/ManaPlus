@@ -194,7 +194,7 @@ namespace FsDir
     {
         const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
             dirName;
-        const struct dirent *next_file = nullptr;
+        const dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir != nullptr)
         {
@@ -538,7 +538,7 @@ namespace FsDir
     {
         const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
             dirName;
-        const struct dirent *next_file = nullptr;
+        const dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir != nullptr)
         {
@@ -588,7 +588,7 @@ namespace FsDir
     {
         const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
             dirName;
-        const struct dirent *next_file = nullptr;
+        const dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir != nullptr)
         {
@@ -638,7 +638,7 @@ namespace FsDir
     {
         const std::string path = static_cast<DirEntry*>(entry)->rootSubDir +
             dirName;
-        const struct dirent *next_file = nullptr;
+        const dirent *next_file = nullptr;
         DIR *const dir = opendir(path.c_str());
         if (dir != nullptr)
         {

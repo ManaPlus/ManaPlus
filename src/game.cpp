@@ -578,7 +578,7 @@ bool Game::saveScreenshot(SDL_Surface *const screenshot,
     time_t rawtime;
     char buffer [100];
     time(&rawtime);
-    struct tm *const timeinfo = localtime(&rawtime);
+    tm *const timeinfo = localtime(&rawtime);
     strftime(buffer, 99, "%Y-%m-%d_%H-%M-%S", timeinfo);
 
     const std::string serverName = settings.serverName;

@@ -137,7 +137,7 @@ void parseOptions(const int argc, char *const argv[])
 {
     const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r:e:V";
 
-    const struct option long_options[] =
+    const option long_options[] =
     {
         { "config-dir",     required_argument, nullptr, 'C' },
         { "data",           required_argument, nullptr, 'd' },

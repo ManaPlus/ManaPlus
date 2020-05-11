@@ -129,7 +129,7 @@ std::string ChatLogger::getDir() const
     char buffer [81];
 
     time(&rawtime);
-    struct tm *const timeinfo = localtime(&rawtime);
+    tm *const timeinfo = localtime(&rawtime);
 
     strftime(buffer, 79, "%Y-%m/%d", timeinfo);
 

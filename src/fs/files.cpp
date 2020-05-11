@@ -271,7 +271,7 @@ void Files::saveTextFile(const std::string &path,
 void Files::deleteFilesInDirectory(std::string path)
 {
     path = pathJoin(path, dirSeparator);
-    const struct dirent *next_file = nullptr;
+    const dirent *next_file = nullptr;
     DIR *const dir = opendir(path.c_str());
 
     if (dir != nullptr)
@@ -296,7 +296,7 @@ void Files::enumFiles(StringVect &files,
 
     if (dir != nullptr)
     {
-        const struct dirent *next_file = nullptr;
+        const dirent *next_file = nullptr;
         while ((next_file = readdir(dir)) != nullptr)
         {
             const std::string file = next_file->d_name;

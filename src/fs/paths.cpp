@@ -264,7 +264,7 @@ std::string getHomePath()
     if (path == nullptr)
     {
         const uid_t uid = getuid();
-        const struct passwd *const pw = getpwuid(uid);
+        const passwd *const pw = getpwuid(uid);
         if (pw != nullptr &&
             pw->pw_dir != nullptr)
         {
