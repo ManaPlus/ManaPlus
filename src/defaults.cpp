@@ -519,7 +519,7 @@ void setBrandingDefaults(Configuration &cfg)
     AddDEF("androidDownloadText", "Google Play");
     AddDEF("otherDownloadUrl", "https://manaplus.germantmw.de/");
     AddDEF("otherDownloadText", "https://manaplus.germantmw.de/");
-    AddDEF("windowsDownloadUrl", "https://manaplus.germantmw.de/"
+    AddDEF("windowsDownloadUrl", "https://manaplus.germantmw.de/");
     AddDEF("windowsDownloadText", "download here");
     AddDEF("updateMirror1", "https://manaplus.germantmw.de/manaplus/");
     AddDEF("updateMirror2", "https://www.manaplus.germantmw.de/manaplus/");
