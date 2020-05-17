@@ -171,3 +171,8 @@ gmon.out
 
 #english po
 /po/en.po
+
+#AppImage & .deb build
+/AppDir
+**/.debhelper
+packaging/*.AppImage
