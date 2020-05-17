@@ -5,8 +5,9 @@
     <option name="appIcon" value="evol/icons/evol-client"/>
     <option name="screenshots" value="EvolOnline"/>
     <option name="loginMusic" value="Artis - The Adventure Begins.ogg"/>
-    <option name="onlineServerList" value="http://www.evolonline.org/serverlist.xml"/>
-    <option name="onlineServerList2" value="http://evolonline.org/serverlist.xml"/>
+    <!-- atm not used, but i keep the same serverlist as it is from tmw -->
+    <option name="onlineServerList" value="https://manaplus.germantmw.de/manaplus/evol_serverlist.xml"/>
+    <option name="onlineServerList2" value="https://www.manaplus.germantmw.de/manaplus/evol_serverlist.xml"/>
     <option name="onlineServerFile" value="evol.xml"/>
     <option name="defaultServer" value="world.evolonline.org"/>
     <option name="defaultPort" value="6901"/>

@@ -5,8 +5,8 @@
     <option name="appIcon" value="tmw/icons/tmw.png"/>
     <option name="screenshots" value="TheManaWorld"/>
     <option name="loginMusic" value="Magick - Real.ogg"/>
-    <option name="onlineServerList" value="http://manaplus.org/serverlist.xml"/>
-    <option name="onlineServerList2" value="http://www.manaplus.org/serverlist.xml"/>
+    <option name="onlineServerList" value="https://manaplus.germantmw.de/manaplus/serverlist.xml"/>
+    <option name="onlineServerList2" value="https://www.manaplus.germantmw.de/manaplus/serverlist.xml"/>
     <option name="defaultServer" value="server.themanaworld.org"/>
     <option name="defaultPort" value="6901"/>
     <option name="defaultServerType" value="tmwathena"/>
