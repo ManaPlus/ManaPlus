@@ -2459,10 +2459,10 @@ void LocalPlayer::imitateDirection(const Being *const being,
                 dir2 |= BeingDirection::RIGHT;
             else if ((dir & BeingDirection::RIGHT) != 0)
                 dir2 |= BeingDirection::LEFT;
-            if ((dir & BeingDirection::UP) != 0)
-                dir2 |= BeingDirection::DOWN;
-            else if ((dir & BeingDirection::DOWN) != 0)
+            if ((dir & BeingDirection::DOWN) != 0)
                 dir2 |= BeingDirection::UP;
+            else if ((dir & BeingDirection::UP) != 0)
+                dir2 |= BeingDirection::DOWN;
 
             setDirection(dir2);
             playerHandler->setDirection(dir2);
