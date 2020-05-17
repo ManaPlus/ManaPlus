@@ -2,7 +2,10 @@
 
 source ./winvars.sh || exit 1
 
-mkdir tmp
+if [ ! -d tmp ]; then
+	mkdir tmp
+fi
+
 cd ..
 
 dir=`pwd`
