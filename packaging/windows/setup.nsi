@@ -265,7 +265,7 @@ Section "Core files (required)" SecCore
 ;  File "${DLLDIR}\SDL_mixer.dll"
   File "${DLLDIR}\SDL_net.dll"
   File "${DLLDIR}\SDL_ttf.dll"
-  File "${DLLDIR}\libSDL_gfx-15.dll"
+  File "${DLLDIR}\libSDL_gfx-16.dll"
   File "${DLLDIR}\libcurl-4.dll"
   File "${DLLDIR}\libfreetype-6.dll"
   File "${DLLDIR}\${SEHDLL}"
@@ -398,7 +398,7 @@ SectionEnd
 ;   File "${EXEDIR}\dyecmd.exe"
 ; SectionEnd
 
-Section "Evol Online shortcuts" SecEvol
+Section /o "Evol Online shortcuts" SecEvol
   SetOutPath "$INSTDIR"
   CreateDirectory "$INSTDIR\data\evol"
   CreateDirectory "$INSTDIR\data\evol\icons"
@@ -427,9 +427,9 @@ SectionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SecPortable} "Portable client. (If selected client will work as portable client.)"
   !insertmacro MUI_DESCRIPTION_TEXT ${SecEvol} "Create shortcuts for Evol Online."
   !insertmacro MUI_DESCRIPTION_TEXT ${SecTrans} "Translations for the user interface. Uncheck this component to leave it in English."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to detect stability issues."
-  !insertmacro MUI_DESCRIPTION_TEXT ${SecProfiler} "Install profiler build to detect perfomance issues."
-;   !insertmacro MUI_DESCRIPTION_TEXT ${SecTools} "Install tools like dyecmd."
+;  !insertmacro MUI_DESCRIPTION_TEXT ${SecDebug} "Install debugger for try to detect stability issues."
+;  !insertmacro MUI_DESCRIPTION_TEXT ${SecProfiler} "Install profiler build to detect perfomance issues."
+;  !insertmacro MUI_DESCRIPTION_TEXT ${SecTools} "Install tools like dyecmd."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
