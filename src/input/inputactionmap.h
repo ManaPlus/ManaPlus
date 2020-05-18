@@ -388,6 +388,8 @@ static const InputActionData inputActionData
         addKey(SDLK_AC_BACK),
 #elif defined(__SWITCH__)
         joystickButton(11),
+#else  // defined(ANDROID)
+        emptyKey,
 #endif  // defined(ANDROID)
 #else  // defined(USE_SDL2)
         emptyKey,
@@ -2824,6 +2826,8 @@ static const InputActionData inputActionData
         addKey(SDLK_AC_BACK),
 #elif defined(__SWITCH__)
         joystickButton(11),
+#else  // defined(ANDROID)
+        emptyKey,
 #endif  // defined(ANDROID)
 #else  // defined(USE_SDL2)
         emptyKey,
