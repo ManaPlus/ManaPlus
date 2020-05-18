@@ -28,6 +28,7 @@ export CXXFLAGS="${CXXFLAGS} -Walloca"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wampersand"
 #export CXXFLAGS="${CXXFLAGS} -Wargument-mismatch"
+export CXXFLAGS="${CXXFLAGS} -Warith-conversion"
 export CXXFLAGS="${CXXFLAGS} -Warray-bounds"
 # +++ need try it
 export CXXFLAGS="${CXXFLAGS} -Warray-bounds=2"

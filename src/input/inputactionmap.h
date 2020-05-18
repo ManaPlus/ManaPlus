@@ -388,9 +388,9 @@ static const InputActionData inputActionData
         addKey(SDLK_AC_BACK),
 #elif defined(__SWITCH__)
         joystickButton(11),
-#else
+#endif  // defined(ANDROID)
+#else  // defined(USE_SDL2)
         emptyKey,
-#endif
 #endif  // defined(USE_SDL2)
         Input::GRP_DEFAULT,
         &Actions::quit,
@@ -2824,9 +2824,9 @@ static const InputActionData inputActionData
         addKey(SDLK_AC_BACK),
 #elif defined(__SWITCH__)
         joystickButton(11),
-#else
+#endif  // defined(ANDROID)
+#else  // defined(USE_SDL2)
         emptyKey,
-#endif
 #endif  // defined(USE_SDL2)
         Input::GRP_GUICHAN,
         nullptr,
