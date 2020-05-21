@@ -31,5 +31,5 @@ for (( i=0; i <= $#; i++ )); do
         ;;
   esac
 done
-
+echo "added '$buildargs'"
 build $buildargs
