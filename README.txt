@@ -1,7 +1,7 @@
 THE MANA PLUS CLIENT
 ===============
 
- Version: 1.10.3.22        Date: 2020-03-22
+ Version: 1.10.5.21        Date: 2020-05-21
 
  Development team:
   - See AUTHORS file for a list
@@ -175,4 +175,3 @@ they not have any rights to do so.
 This hostings have rights to remove ManaPlus repositories if they want violate given licenses.
 
 ManaPlus main repository hosted on https://gitlab.com/manaplus/manaplus/
-

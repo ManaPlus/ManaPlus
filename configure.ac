@@ -1,5 +1,5 @@
 AC_PREREQ(2.60)
-AC_INIT([ManaPlus], [1.10.3.22], [jak1@germantmw.de], [manaplus])
+AC_INIT([ManaPlus], [1.10.5.21], [jak1@germantmw.de], [manaplus])
 AM_INIT_AUTOMAKE([1.9])
 AC_LANG_CPLUSPLUS
 
@@ -262,7 +262,7 @@ CPPFLAGS="$CPPFLAGS `$PKG_CONFIG --cflags libpng`"
 AM_GNU_GETTEXT([external],[need-ngettext])
 AM_GNU_GETTEXT_VERSION([0.19])
 
-case $host in 
+case $host in
   (*mingw*)
     skip_check_lib="yes"
     mingw=true
@@ -633,7 +633,7 @@ else
     else
         LDFLAGS="$LDFLAGS -framework OpenGL"
     fi
-case $host in 
+case $host in
   (*mingw*) LIBS="$LIBS `$PKG_CONFIG --libs gl`"
 esac
 
