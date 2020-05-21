@@ -229,15 +229,18 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
     {
         case ActorType::Player:
         {
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: trade with player
-            mBrowserBox->addRow("/trade 'NAME'", _("Trade"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: trade attack player
-            mBrowserBox->addRow("/attack 'NAME'", _("Attack"));
-            // TRANSLATORS: popup menu item
-            // TRANSLATORS: send whisper to player
-            mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
+            if(being != localPlayer)
+            {
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: trade with player
+                mBrowserBox->addRow("/trade 'NAME'", _("Trade"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: trade attack player
+                mBrowserBox->addRow("/attack 'NAME'", _("Attack"));
+                // TRANSLATORS: popup menu item
+                // TRANSLATORS: send whisper to player
+                mBrowserBox->addRow("/whispertext 'NAME'", _("Whisper"));
+            }
             addMailCommands();
             addGmCommands();
             mBrowserBox->addSeparator("##3---");
@@ -251,11 +254,13 @@ void PopupMenu::showPopup(const int x, const int y, const Being *const being)
                 mBrowserBox->addSeparator("##3---");
             }
 #endif  // TMWA_SUPPORT
+            if(being != localPlayer)
+            {
+                addPlayerRelation(name);
+                mBrowserBox->addSeparator("##3---");
+                addFollow();
+            }
 
-            addPlayerRelation(name);
-            mBrowserBox->addSeparator("##3---");
-
-            addFollow();
             addPartyName(being->getPartyName());
 
             const Guild *const guild1 = being->getGuild();
