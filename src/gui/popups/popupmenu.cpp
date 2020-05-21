@@ -1605,7 +1605,7 @@ void PopupMenu::showPopup(Window *const parent,
         case InventoryType::Inventory:
             if (tradeWindow != nullptr &&
                 tradeWindow->isWindowVisible() &&
-                !isProtected)
+                !isProtected && item->isEquipped() == Equipped_false)
             {
                 // TRANSLATORS: popup menu item
                 // TRANSLATORS: add item to trade

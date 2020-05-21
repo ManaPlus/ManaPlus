@@ -1106,7 +1106,10 @@ void ItemContainer::mouseReleased(MouseEvent &event)
                     if (!checkProtection || !PlayerInfo::isItemProtected(
                         item->getId()))
                     {
-                        tradeHandler->addItem(item, item->getQuantity());
+                        if (item->isEquipped() == Equipped_false)
+                        {
+                            tradeHandler->addItem(item, item->getQuantity());
+                        }
                     }
                 }
             }
