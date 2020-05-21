@@ -32,6 +32,7 @@
 #include "gui/widgets/createwidget.h"
 
 #include "gui/widgets/tabs/setup_audio.h"
+#include "gui/widgets/tabs/setup_advanced.h"
 #include "gui/widgets/tabs/setup_chat.h"
 #include "gui/widgets/tabs/setup_colors.h"
 #include "gui/widgets/tabs/setup_input.h"
@@ -147,6 +148,7 @@ void SetupWindow::postInit()
     mTabs.push_back(new Setup_Relations(this));
     mTabs.push_back(new Setup_Theme(this));
     mTabs.push_back(new Setup_Misc(this));
+    mTabs.push_back(new Setup_Advanced(this));
 
     FOR_EACH (std::list<SetupTab*>::const_iterator, i, mTabs)
     {

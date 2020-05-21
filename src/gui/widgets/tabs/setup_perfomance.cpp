@@ -214,16 +214,6 @@ Setup_Perfomance::Setup_Perfomance(const Widget2 *const widget) :
         "uselonglivesoundsEvent",
         MainConfig_true);
 
-    // TRANSLATORS: settings group
-    new SetupItemLabel(_("Critical options (DO NOT change if you don't "
-        "know what you're doing)"), "", this,
-        Separator_true);
-
-    // TRANSLATORS: settings option
-    new SetupItemCheckBox(_("Disable logging in game (do not enable)"),
-        "", "disableLoggingInGame", this, "disableLoggingInGameEvent",
-        MainConfig_true);
-
     setDimension(Rect(0, 0, 550, 350));
 }
 

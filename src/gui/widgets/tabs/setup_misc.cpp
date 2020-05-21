@@ -130,6 +130,10 @@ Setup_Misc::Setup_Misc(const Widget2 *const widget) :
     place(0, 0, mScroll, 10, 10);
 
     // TRANSLATORS: settings option
+    new SetupItemLabel(_("DEPRECATED SECTION"), "", this,
+        Separator_true);
+
+    // TRANSLATORS: settings option
     new SetupItemLabel(_("Monsters"), "", this,
         Separator_true);
 

@@ -20,33 +20,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GUI_WIDGETS_TABS_SETUP_MISC_H
-#define GUI_WIDGETS_TABS_SETUP_MISC_H
+#ifndef GUI_WIDGETS_TABS_SETUP_ADVANCED_H
+#define GUI_WIDGETS_TABS_SETUP_ADVANCED_H
 
 #include "gui/widgets/tabs/setuptabscroll.h"
 
-class NamesModel;
-
-class [[deprecated("use setup_advanced instead")]] Setup_Misc final : public SetupTabScroll
+class Setup_Advanced final : public SetupTabScroll
 {
     public:
-        explicit Setup_Misc(const Widget2 *const widget);
+        explicit Setup_Advanced(const Widget2 *const widget);
 
-        A_DELETE_COPY(Setup_Misc)
-
-        ~Setup_Misc() override final;
-
-        void apply() override final;
-
-        void externalUpdated() override final;
-
-    protected:
-        NamesModel *mProxyTypeList;
-        NamesModel *mShortcutsList;
-#ifdef USE_SDL2
-        NamesModel *mSdlLogList;
-#endif  // USE_SDL2
-        NamesModel *mDensityList;
+        A_DELETE_COPY(Setup_Advanced)
 };
 
-#endif  // GUI_WIDGETS_TABS_SETUP_MISC_H
+#endif  // GUI_WIDGETS_TABS_SETUP_ADVANCED_H

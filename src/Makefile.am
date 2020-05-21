@@ -17,14 +17,14 @@ else
 if ENABLE_DYECMD
 bin_PROGRAMS = dyecmd
 else
-bin_PROGRAMS = 
+bin_PROGRAMS =
 endif
 endif
 if ENABLE_UNITTESTSBIN
 bin_PROGRAMS += manaplustests
 endif
 
-manaplustests_CXXFLAGS = 
+manaplustests_CXXFLAGS =
 if ENABLE_UNITTESTS_CATCH
 manaplustests_CXXFLAGS += -DUNITTESTS_CATCH
 endif
@@ -186,7 +186,7 @@ dyecmd_CXXFLAGS += -DENABLE_CHECKS
 manaplus_CXXFLAGS += -DENABLE_CHECKS
 endif
 
-BASE_SRC = 
+BASE_SRC =
 
 if USE_SDL2
 if USE_INTERNALSDLGFX
@@ -1194,6 +1194,8 @@ SRC = ${BASE_SRC} \
 	      gui/widgets/statspagebasic.h \
 	      gui/widgets/selldialog.cpp \
 	      gui/widgets/selldialog.h \
+	      gui/widgets/tabs/setup_advanced.cpp \
+	      gui/widgets/tabs/setup_advanced.h \
 	      gui/widgets/tabs/setup_audio.cpp \
 	      gui/widgets/tabs/setup_audio.h \
 	      gui/widgets/tabs/setup_colors.cpp \
@@ -2132,7 +2134,7 @@ endif
 
 manaplustests_CXXFLAGS += ${manaplus_CXXFLAGS} \
 	      -DUNITTESTS
-manaplustests_LDFLAGS = 
+manaplustests_LDFLAGS =
 if ENABLE_PUGIXML
 manaplustests_CXXFLAGS += -DENABLE_PUGIXML
 endif
