@@ -33,6 +33,8 @@
 
 #include "gui/widgets/createwidget.h"
 
+#include "gui/widgets/tabs/chat/chattab.h"
+
 #include "gui/windows/skilldialog.h"
 #include "gui/windows/textselectdialog.h"
 
@@ -421,8 +423,12 @@ void SkillRecv::processSkillFailed(Net::MessageIn &msg)
             UNIMPLEMENTEDPACKETFIELD(reason);
             break;
     }
-
-    NotifyManager::notify(NotifyTypes::SKILL_FAIL_MESSAGE, txt);
+    if (debugChatTab != nullptr)
+        debugChatTab->chatLog("SKILL: "
+            + txt,
+            ChatMsgType::BY_SERVER,
+            IgnoreRecord_false,
+            TryRemoveColors_true);
 }
 
 void SkillRecv::processSkillWarpPoint(Net::MessageIn &msg)
