@@ -66,7 +66,7 @@ gcc-8-i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -84,7 +84,7 @@ gcc-7-i386:
   - ./tools/ci/jobs/gcc7.sh
   - ./tools/ci/scripts/runtests.sh
   - ./tools/ci/scripts/rundyecmd.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-7 g++-7 

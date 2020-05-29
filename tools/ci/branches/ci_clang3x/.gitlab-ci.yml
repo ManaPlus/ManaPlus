@@ -113,7 +113,7 @@ clang-3.4_i386:
   script:
   - ./tools/ci/jobs/clang34.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:jessie-i386
+  image: i386/debian:jessie
   <<: *job-push
   variables:
     PACKAGES: clang-3.4 libc++-dev 
@@ -207,7 +207,7 @@ clang-3.7_i386:
   script:
   - ./tools/ci/jobs/clang37.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/ubuntu:xenial-i386
+  image: i386/ubuntu:xenial
   <<: *job-push
   variables:
     PACKAGES: clang-3.7 libc++-dev 
@@ -239,7 +239,7 @@ clang-3.8_i386:
   script:
   - ./tools/ci/jobs/clang38.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/ubuntu:xenial-i386
+  image: i386/ubuntu:xenial
   <<: *job-push
   variables:
     PACKAGES: clang-3.8 libc++-dev libc++abi-dev 
@@ -269,7 +269,7 @@ clang-3.8_i386:
   script:
   - ./tools/ci/jobs/clang39.sh_c++11.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: clang-3.9 libc++-dev libc++abi-dev 

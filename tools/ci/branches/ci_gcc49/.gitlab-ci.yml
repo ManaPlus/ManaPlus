@@ -35,7 +35,7 @@ gcc-4.9_sanitize_tests_i386:
   script:
   - ./tools/ci/jobs/gcc49_sanitize_tests.sh
   - ldd ./src/manaplustests | grep "libasan"
-  image: vicamo/debian:jessie-i386
+  image: i386/debian:jessie
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
@@ -66,7 +66,7 @@ gcc-4.9_sanitize_i386:
   script:
   - ./tools/ci/jobs/gcc49_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:jessie-i386
+  image: i386/debian:jessie
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 
@@ -151,7 +151,7 @@ gcc-4.9_i386:
   script:
   - ./tools/ci/jobs/gcc49.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:jessie-i386
+  image: i386/debian:jessie
   <<: *job-push
   variables:
     PACKAGES: gcc-4.9 g++-4.9 

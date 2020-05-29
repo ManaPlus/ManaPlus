@@ -57,7 +57,7 @@ gcc-8_doctest_tests_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -138,7 +138,7 @@ gcc-8_tests_lto_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
     PACKAGES: gcc-8 g++-8 
@@ -154,7 +154,7 @@ gcc-8_tests_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -200,7 +200,7 @@ gcc-8_sdl2_tests_i386:
   stage: build
   script:
   - ./tools/ci/jobs/gcc8_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -237,7 +237,7 @@ gcc-8_sdl2_tests_i386:
   - echo test valgrind
   - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
   - grep "invalid" logs/valg.log && exit 1 || true
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -320,7 +320,7 @@ gcc-8_separate_doctest_i386:
   - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
@@ -336,7 +336,7 @@ gcc-8_separate_doctest_sdl2_i386:
   - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
   - ./tools/ci/scripts/separateunittests.sh
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 

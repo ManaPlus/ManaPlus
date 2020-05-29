@@ -35,7 +35,7 @@ gcc-8_sdl2_i386:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
@@ -113,7 +113,7 @@ gcc-8_lto_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_lto.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 

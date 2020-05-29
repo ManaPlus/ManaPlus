@@ -21,7 +21,7 @@ gcc-8_tests_glibcdebug_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -53,7 +53,7 @@ gcc-8_glibcdebug_i386:
   - ./tools/ci/jobs/gcc8.sh --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
@@ -80,7 +80,7 @@ gcc-8_glibcdebug_sdl2_i386:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 

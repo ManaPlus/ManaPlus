@@ -36,7 +36,7 @@ gcc-8_pugixml_tests_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -67,7 +67,7 @@ gcc-8_pugixml_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 

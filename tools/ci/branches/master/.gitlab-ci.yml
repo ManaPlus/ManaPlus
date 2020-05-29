@@ -48,7 +48,7 @@ gcc-5_c++11_i386:
   script:
   - ./tools/ci/jobs/gcc5_c++11.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -64,7 +64,7 @@ gcc-6-i386:
   script:
   - ./tools/ci/jobs/gcc6.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-6 g++-6 
@@ -80,7 +80,7 @@ gcc-7-i386:
   script:
   - ./tools/ci/jobs/gcc7.sh
   - ./tools/ci/scripts/runtests.sh
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-7 g++-7 
@@ -285,7 +285,7 @@ gcc-5_h_all_i386:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
-  image: vicamo/debian:sid-i386
+  image: i386/debian:unstable
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
