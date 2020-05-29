@@ -22,7 +22,7 @@ gcc-7-i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7.sh
   - ./tools/ci/scripts/runtests.sh
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-7 g++-7 
@@ -66,7 +66,7 @@ gcc-7_sdl2_i386:
   - ./tools/ci/jobs/gcc7.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
@@ -115,7 +115,7 @@ gcc-7_sanitize:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-7 g++-7 
@@ -162,7 +162,7 @@ gcc-7_lto_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc7_lto.sh
   - ./tools/ci/scripts/runtests.sh
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-7 g++-7 
@@ -181,7 +181,7 @@ gcc-7_default_i386:
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
     LOGFILE: gcc7.log
     CC: gcc-7
