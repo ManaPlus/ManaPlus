@@ -650,7 +650,10 @@ void GraphicsManager::updateExtensions()
     logger->log1("opengl extensions: ");
     if (checkGLVersion(3, 0))
     {   // get extensions in new way
+PRAGMA49(GCC diagnostic push)
+PRAGMA49(GCC diagnostic ignored "-Wconditionally-supported")
         assignFunction2(glGetStringi, "glGetStringi")
+PRAGMA49(GCC diagnostic pop)
         std::string extList;
         int num = 0;
         glGetIntegerv(GL_NUM_EXTENSIONS, &num);
@@ -1032,10 +1035,13 @@ void GraphicsManager::initOpenGLFunctions()
     if (is10 && (is33 || supportExtension("GL_ARB_sampler_objects")))
     {
         logger->log1("found GL_ARB_sampler_objects");
+PRAGMA49(GCC diagnostic push)
+PRAGMA49(GCC diagnostic ignored "-Wconditionally-supported")
         assignFunction(glGenSamplers)
         assignFunction(glDeleteSamplers)
         assignFunction(glBindSampler)
         assignFunction(glSamplerParameteri)
+PRAGMA49(GCC diagnostic pop)
         if (isGLNotNull(mglGenSamplers)
             && config.getBoolValue("useTextureSampler"))
         {
@@ -1059,6 +1065,8 @@ void GraphicsManager::initOpenGLFunctions()
         return;
     }
 
+PRAGMA49(GCC diagnostic push)
+PRAGMA49(GCC diagnostic ignored "-Wconditionally-supported")
 /*
     if (findI(mGlVendor, "NVIDIA") != std::string::npos ||
         mGlVersionString.find("Mesa 10.6.") != std::string::npos ||
@@ -1396,6 +1404,7 @@ void GraphicsManager::initOpenGLFunctions()
 #ifdef WIN32
     assignFunctionARB(wglGetExtensionsString)
 #endif  // WIN32
+PRAGMA49(GCC diagnostic pop)
 #endif  // __native_client__
 }
 
