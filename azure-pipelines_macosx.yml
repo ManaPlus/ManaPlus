@@ -1,7 +1,7 @@
 jobs:
 - job: list_xcode
   pool:
-    vmImage: 'macOS 10.13'
+    vmImage: 'macOS-latest'
   steps:
   - script: |
       ls /Applications/ | grep Xcode|sort

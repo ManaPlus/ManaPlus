@@ -1,7 +1,7 @@
 parameters:
   name: ''
   xcode: ''
-  vmImage: 'macOS 10.13'
+  vmImage: 'macOS-latest'
 
 jobs:
 - job: ${{ parameters.name }}
