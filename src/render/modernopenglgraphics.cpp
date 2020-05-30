@@ -20,7 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
+#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__) \
+    && !defined(__SWITCH__)
 
 #include "render/modernopenglgraphics.h"
 

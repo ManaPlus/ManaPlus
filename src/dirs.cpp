@@ -360,7 +360,7 @@ void Dirs::initLocalDataDir()
 #elif defined __native_client__
         settings.localDataDir = pathJoin(_nacl_dir, "local");
 #elif defined __SWITCH__
-        settings.localDataDir = pathJoin(VirtFs::getUserDir(),"local");
+        settings.localDataDir = pathJoin(VirtFs::getUserDir(), "local");
 #else  // __APPLE__
 
         settings.localDataDir = pathJoin(VirtFs::getUserDir(),

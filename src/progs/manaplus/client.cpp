@@ -863,7 +863,8 @@ void Client::stateConnectServer1()
 #ifdef SAVE_PASSWORD
         LoginDialog::savedPassword = loginData.remember ?
                 serverConfig.getValue("password", "") : "";
-        loginData.password = settings.options.password = LoginDialog::savedPassword;
+        loginData.password = LoginDialog::savedPassword;
+        settings.options.password = LoginDialog::savedPassword;
 #endif
         settings.login = loginData.username;
         WindowManager::updateTitle();
