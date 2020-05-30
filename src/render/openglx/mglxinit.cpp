@@ -34,8 +34,6 @@
 
 void Glx::initFunctions()
 {
-PRAGMA49(GCC diagnostic push)
-PRAGMA49(GCC diagnostic ignored "-Wconditionally-supported")
     assignFunction(glXCreateContext)
     assignFunction(glXGetCurrentContext)
     assignFunctionARB(glXCreateContextAttribs)
@@ -43,7 +41,6 @@ PRAGMA49(GCC diagnostic ignored "-Wconditionally-supported")
     assignFunction(glXDestroyContext)
     assignFunction(glXMakeCurrent)
     assignFunction(glXSwapBuffers)
-PRAGMA49(GCC diagnostic pop)
 }
 
 #endif  // defined(USE_OPENGL) && defined(USE_X11)
