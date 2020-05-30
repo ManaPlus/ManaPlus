@@ -107,7 +107,8 @@ export CXXFLAGS="${CXXFLAGS} -Wduplicated-cond"
 export CXXFLAGS="${CXXFLAGS} -Wempty-body"
 export CXXFLAGS="${CXXFLAGS} -Wendif-labels"
 export CXXFLAGS="${CXXFLAGS} -Wenum-compare"
-export CXXFLAGS="${CXXFLAGS} -Wenum-conversion"
+# not for C++
+#export CXXFLAGS="${CXXFLAGS} -Wenum-conversion"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Werror-implicit-function-declaration"
 export CXXFLAGS="${CXXFLAGS} -Wexpansion-to-defined"
