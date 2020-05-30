@@ -23,8 +23,8 @@
 #ifndef RENDER_NORMALOPENGLGRAPHICS_H
 #define RENDER_NORMALOPENGLGRAPHICS_H
 
-#if defined USE_OPENGL && !defined ANDROID && \
-    !defined(__native_client__) && !defined(__SWITCH__)
+#ifdef USE_OPENGL
+#if !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
 
 #include "localconsts.h"
 
@@ -128,7 +128,8 @@ class NormalOpenGLGraphics final : public Graphics
 
         FBOInfo mFbo;
 };
-#endif  // defined USE_OPENGL && !defined ANDROID &&
-        // !defined(__native_client__)
+#endif  // !defined ANDROID && !defined(__native_client__) &&
+        // !defined(__SWITCH__)
+#endif  // USE_OPENGL
 
 #endif  // RENDER_NORMALOPENGLGRAPHICS_H

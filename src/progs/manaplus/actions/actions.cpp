@@ -1528,11 +1528,12 @@ impHandler(dumpTests)
 
 impHandler0(dumpOGL)
 {
-#if defined(USE_OPENGL) && !defined(ANDROID) && !defined(__native_client__) \
-    && !defined(__SWITCH__)
+#ifdef USE_OPENGL
+#if !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
     NormalOpenGLGraphics::dumpSettings();
-#endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
-        // !defined(__native_client__)
+#endif  // !defined(ANDROID) && !defined(__native_client__) &&
+        // !defined(__SWITCH__)
+#endif  // USE_OPENGL
 
     return true;
 }

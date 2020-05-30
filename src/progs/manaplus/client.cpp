@@ -411,8 +411,8 @@ void Client::gameInit()
     Cpu::detect();
     DyePalette::initFunctions();
 #if defined(USE_OPENGL)
-#if !defined(ANDROID) && !defined(__APPLE__) && \
-    !defined(__native_client__) && !defined(__SWITCH__) && !defined(UNITTESTS)
+#if !defined(ANDROID) && !defined(__APPLE__)
+#if !defined(__native_client__) && !defined(__SWITCH__) && !defined(UNITTESTS)
     if (!settings.options.safeMode &&
         settings.options.renderer < 0 &&
         settings.options.test.empty() &&
@@ -421,8 +421,9 @@ void Client::gameInit()
     {
         graphicsManager.detectVideoSettings();
     }
+#endif  // !defined(__native_client__) && !defined(__SWITCH__) &&
+        // !defined(UNITTESTS)
 #endif  // !defined(ANDROID) && !defined(__APPLE__) &&
-        // !defined(__native_client__) && !defined(UNITTESTS)
 #endif  // defined(USE_OPENGL)
 
     initGraphics();

@@ -23,8 +23,8 @@
 #ifndef RENDER_MODERNOPENGLGRAPHICS_H
 #define RENDER_MODERNOPENGLGRAPHICS_H
 
-#if defined(USE_OPENGL) && !defined(ANDROID) && \
-    !defined(__native_client__) && !defined(__SWITCH__)
+#ifdef USE_OPENGL
+#if !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
 
 #include "localconsts.h"
 
@@ -156,5 +156,6 @@ class ModernOpenGLGraphics final : public Graphics
 };
 #endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
         // !defined(__native_client__)
+#endif  // USE_OPENGL
 
 #endif  // RENDER_MODERNOPENGLGRAPHICS_H
