@@ -14,11 +14,11 @@ jobs:
       cp -rf . "$(Build.ArtifactStagingDirectory)"
       ls "$(Build.ArtifactStagingDirectory)"
       echo done
+    env:
+      GITLABTOKEN: $(gitlabtoken)
   - task: PublishBuildArtifacts@1
     inputs:
       artifactName: manaplus32
-    env:
-      GITLABTOKEN: $(gitlabtoken)
 
 - job: mxe_32_test
   dependsOn: mxe_32_build

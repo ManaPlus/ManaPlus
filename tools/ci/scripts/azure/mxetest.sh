@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo docker login registry.gitlab.com
-docker login registry.gitlab.com -u azure -p $GITLABTOKEN
+echo docker login --help
+docker login --help
+echo docker login registry.gitlab.com -u azure -p TOKEN
+docker login registry.gitlab.com -u azure -p $GITLABTOKEN || exit 1
 
 export IMAGE="registry.gitlab.com/manaplus/mxe:gcc6_shared_${BITS}"
 export COMMAND="./tools/ci/jobs/mxe_gcc6_tests.sh --without-manaplusgame --without-dyecmd"
