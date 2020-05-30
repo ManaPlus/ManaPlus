@@ -8,26 +8,38 @@ jobs:
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
-    name: xcode_9
-    xcode: Xcode_9.app
+    name: xcode_10_3
+    xcode: Xcode_10.3.app
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
-    name: xcode_8_3_3
-    xcode: Xcode_8.3.3.app
+    name: xcode_11_1
+    xcode: Xcode_11.1.app
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
-    name: xcode_9_4_1
-    xcode: Xcode_9.4.1.app
+    name: xcode_11_5
+    xcode: Xcode_11.5.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_11
+    xcode: Xcode_11.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_11_2
+    xcode: Xcode_11.2.app
 
 - job: vars
   pool:
     name: 'Hosted Ubuntu 1604'
   dependsOn:
-    - xcode_9
-    - xcode_8_3_3
-    - xcode_9_4_1
+    - xcode_10_3
+    - xcode_11
+    - xcode_11_1
+    - xcode_11_2
+    - xcode_11_5
   steps:
   - script: |
       curl -X POST \
