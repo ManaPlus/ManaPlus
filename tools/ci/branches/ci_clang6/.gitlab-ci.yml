@@ -20,6 +20,7 @@ clang-6.0_tests:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang60_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
+  image: debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
@@ -35,7 +36,7 @@ clang-6.0_tests_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/clang60_tests.sh --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
@@ -50,6 +51,7 @@ clang-6.0_tests_sdl2:
   script:
   - ./tools/ci/jobs/clang60_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
+  image: debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
@@ -64,7 +66,7 @@ clang-6.0_tests_sdl2_i386:
   script:
   - ./tools/ci/jobs/clang60_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
@@ -81,6 +83,7 @@ clang-6.0:
   - ./tools/ci/jobs/clang60.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
+  image: debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
@@ -97,7 +100,7 @@ clang-6.0_i386:
   - ./tools/ci/jobs/clang60.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
@@ -113,6 +116,7 @@ clang-6.0_sdl2:
   - ./tools/ci/jobs/clang60.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
+  image: debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
@@ -128,7 +132,7 @@ clang-6.0_sdl2_i386:
   - ./tools/ci/jobs/clang60.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:bullseye
   variables:
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
