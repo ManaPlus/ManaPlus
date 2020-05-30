@@ -6,7 +6,7 @@ echo "CROSS: ${CROSS}"
 echo "COMMAND: ${COMMAND}"
 echo "JOBS: ${JOBS}"
 
-docker pull ${IMAGE}
+docker pull ${IMAGE} || exit 1
 docker run \
     --volume=$(pwd):/build:rw \
     -e PACKAGES="${PACKAGES}" \
