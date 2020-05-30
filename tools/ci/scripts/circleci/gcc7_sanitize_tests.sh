@@ -8,7 +8,7 @@ case $CIRCLE_NODE_INDEX in
         echo nothing
     ;;
     1)
-        export IMAGE=debian:unstable
+        export IMAGE=debian:buster
         export COMMAND="./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --without-dyecmd --without-manaplusgame --without-opengl"
         export PACKAGES="gcc-7 g++-7 ${LIBS_PACKAGES} ${SDL1} valgrind"
         ./tools/ci/scripts/docker_run.sh
@@ -17,7 +17,7 @@ case $CIRCLE_NODE_INDEX in
         echo nothing
     ;;
     3)
-        export IMAGE=debian:unstable
+        export IMAGE=debian:buster
         export COMMAND="./tools/ci/jobs/gcc7_sanitize_tests.sh --enable-unittests=yes --without-dyecmd --without-manaplusgame --without-opengl --with-sdl2"
         export PACKAGES="gcc-7 g++-7 ${LIBS_PACKAGES} ${SDL2} valgrind"
         ./tools/ci/scripts/docker_run.sh
