@@ -113,6 +113,7 @@ gitstatsh:
   - ./tools/ci/scripts/clonesrc.sh
   - cd manaplus
   - ./tools/ci/jobs/gitstatsh.sh
+  image: debian:buster
   artifacts:
     paths:
     - manaplus/stats2
