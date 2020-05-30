@@ -16,15 +16,15 @@
     expire_in: 3 week
   dependencies: []
 
-gcc-10_tests_mse_i386:
+gcc-7_tests_mse_i386:
   stage: build
   script:
   - ./tools/ci/scripts/patchsdl1.sh
-  - ./tools/ci/jobs/gcc10_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
-  image: i386/debian:unstable
+  - ./tools/ci/jobs/gcc7_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
+  image: i386/debian:buster
   <<: *job-push
   variables:
-    PACKAGES: gcc-10 g++-10 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev 
@@ -32,57 +32,59 @@ gcc-10_tests_mse_i386:
   tags:
     - docker
 
-gcc-10_mse:
+gcc-7_mse:
   stage: build
   script:
   - ./tools/ci/scripts/patchsdl1.sh
-  - ./tools/ci/jobs/gcc10.sh --enable-stldebug --without-dyecmd
+  - ./tools/ci/jobs/gcc7.sh --enable-stldebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
-    PACKAGES: gcc-10 g++-10 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc-10_mse_i386:
+gcc-7_mse_i386:
   stage: build
   script:
   - ./tools/ci/scripts/patchsdl1.sh
-  - ./tools/ci/jobs/gcc10.sh --enable-stldebug --without-dyecmd
+  - ./tools/ci/jobs/gcc7.sh --enable-stldebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
-    PACKAGES: gcc-10 g++-10 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc-10_mse_sdl2:
+gcc-7_mse_sdl2:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc10.sh --with-sdl2 --enable-stldebug --without-dyecmd
+  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-stldebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
-    PACKAGES: gcc-10 g++-10 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
               git gdb valgrind netcat-openbsd procps
 
-gcc-10_mse_sdl2_i386:
+gcc-7_mse_sdl2_i386:
   stage: build
   script:
-  - ./tools/ci/jobs/gcc10.sh --with-sdl2 --enable-stldebug --without-dyecmd
+  - ./tools/ci/jobs/gcc7.sh --with-sdl2 --enable-stldebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
-    PACKAGES: gcc-10 g++-10 
+    PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
               libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
