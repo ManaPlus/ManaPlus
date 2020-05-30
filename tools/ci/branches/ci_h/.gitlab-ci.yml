@@ -24,7 +24,7 @@ gcc-5_h_all:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
   <<: *job-push
-  image: ubuntu:cosmic
+  image: ubuntu:xenial
   variables:
     PACKAGES: gcc-5 g++-5 
               make autoconf automake autopoint gettext 
@@ -41,7 +41,7 @@ gcc-5_h_all_i386:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -I/usr/include/SDL
-  image: i386/ubuntu:cosmic
+  image: i386/ubuntu:xenial
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -61,7 +61,7 @@ gcc-5_h_pugi_all:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_PUGIXML -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_PUGIXML -I/usr/include/SDL
-  image: ubuntu:cosmic
+  image: ubuntu:xenial
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -79,7 +79,7 @@ gcc-5_h_tinyxml2_all:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_TINYXML2 -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_TINYXML2 -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -I/usr/include/SDL
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DENABLE_NLS -DUSE_OPENGL -DENABLE_TINYXML2 -I/usr/include/SDL
-  image: ubuntu:cosmic
+  image: ubuntu:xenial
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -95,7 +95,7 @@ gcc-5_h_sdl2:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -DUSE_SDL2 -I/usr/include/SDL2
-  image: ubuntu:cosmic
+  image: ubuntu:xenial
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
@@ -111,7 +111,7 @@ gcc-5_h_sdl2_i386:
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DENABLE_LIBXML -DUSE_SDL2 -I/usr/include/SDL2
   - ./tools/ci/jobs/gcc5_h.sh -std=c++0x -DDEBUGBUILD -DTMWA_SUPPORT -DENABLE_NLS -DUSE_OPENGL -DENABLE_LIBXML -DUNITTESTS -DUNITTESTS_CATCH -DUNITTESTS_EMBED -DUSE_SDL2 -I/usr/include/SDL2
-  image: i386/ubuntu:cosmic
+  image: i386/ubuntu:xenial
   <<: *job-push
   variables:
     PACKAGES: gcc-5 g++-5 
