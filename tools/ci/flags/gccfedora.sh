@@ -31,6 +31,7 @@ export CXXFLAGS="${CXXFLAGS} -Warray-bounds=2"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Warray-temporaries"
 #export CXXFLAGS="${CXXFLAGS} -Wassign-intercept"
+export CXXFLAGS="${CXXFLAGS} -Wattribute-alias=2"
 export CXXFLAGS="${CXXFLAGS} -Wattributes"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wbad-function-cast"
@@ -49,22 +50,26 @@ export CXXFLAGS="${CXXFLAGS} -Wc++1z-compat"
 #export CXXFLAGS="${CXXFLAGS} -Wc90-c99-compat"
 #export CXXFLAGS="${CXXFLAGS} -Wc99-c11-compat"
 export CXXFLAGS="${CXXFLAGS} -Wcast-align"
+export CXXFLAGS="${CXXFLAGS} -Wcast-function-type"
+# probably fix in future
+#export CXXFLAGS="${CXXFLAGS} -Wcast-align=strict"
 export CXXFLAGS="${CXXFLAGS} -Wcast-qual"
-# +++ enable after. some warnings
+# probably fix in future
 #export CXXFLAGS="${CXXFLAGS} -Wcatch-value=3"
 export CXXFLAGS="${CXXFLAGS} -Wchar-subscripts"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wcharacter-truncation"
-# not supporter
+# depricated
 #export CXXFLAGS="${CXXFLAGS} -Wchkp"
-# still missing in fedora
-#export CXXFLAGS="${CXXFLAGS} -Wclass-memaccess"
+export CXXFLAGS="${CXXFLAGS} -Wclass-memaccess"
 export CXXFLAGS="${CXXFLAGS} -Wclobbered"
+export CXXFLAGS="${CXXFLAGS} -Wcomma-subscript"
 export CXXFLAGS="${CXXFLAGS} -Wcomment"
 export CXXFLAGS="${CXXFLAGS} -Wcomments"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wcompare-reals"
-export CXXFLAGS="${CXXFLAGS} -Wconditionally-supported"
+# triggered in opengl
+#export CXXFLAGS="${CXXFLAGS} -Wconditionally-supported"
 # +++ need fix in future
 #export CXXFLAGS="${CXXFLAGS} -Wconversion"
 # not for C++
@@ -83,11 +88,14 @@ export CXXFLAGS="${CXXFLAGS} -Wdeprecated"
 export CXXFLAGS="${CXXFLAGS} -Wdeprecated-declarations"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wdesignated-init"
-export CXXFLAGS="${CXXFLAGS} -Wdisabled-optimization"
+# disabled for now
+#export CXXFLAGS="${CXXFLAGS} -Wdisabled-optimization"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wdiscarded-array-qualifiers"
 #export CXXFLAGS="${CXXFLAGS} -Wdiscarded-qualifiers"
 export CXXFLAGS="${CXXFLAGS} -Wdiv-by-zero"
+# not for C++
+#export CXXFLAGS="${CXXFLAGS} -Wdo-subscript"
 # +++ need fix in future
 #export CXXFLAGS="${CXXFLAGS} -Wdouble-promotion"
 # not for C++
@@ -99,19 +107,19 @@ export CXXFLAGS="${CXXFLAGS} -Wduplicated-cond"
 export CXXFLAGS="${CXXFLAGS} -Wempty-body"
 export CXXFLAGS="${CXXFLAGS} -Wendif-labels"
 export CXXFLAGS="${CXXFLAGS} -Wenum-compare"
+export CXXFLAGS="${CXXFLAGS} -Wenum-conversion"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Werror-implicit-function-declaration"
 export CXXFLAGS="${CXXFLAGS} -Wexpansion-to-defined"
 export CXXFLAGS="${CXXFLAGS} -Wextra"
-
-# not in all snapshots. need return after
-#export CXXFLAGS="${CXXFLAGS} -Wextra-semi"
+export CXXFLAGS="${CXXFLAGS} -Wextra-semi"
 # +++ need fix in future
 #export CXXFLAGS="${CXXFLAGS} -Wfloat-conversion"
 # +++ need fix in future
 #export CXXFLAGS="${CXXFLAGS} -Wfloat-equal"
 export CXXFLAGS="${CXXFLAGS} -Wformat=1"
 export CXXFLAGS="${CXXFLAGS} -Wformat-contains-nul"
+export CXXFLAGS="${CXXFLAGS} -Wformat-diag"
 export CXXFLAGS="${CXXFLAGS} -Wformat-extra-args"
 # +++ ignoring. probably need use some times
 #export CXXFLAGS="${CXXFLAGS} -Wformat-nonliteral"
@@ -128,17 +136,18 @@ export CXXFLAGS="${CXXFLAGS} -Wfree-nonheap-object"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wfunction-elimination"
 export CXXFLAGS="${CXXFLAGS} -Whsa"
+export CXXFLAGS="${CXXFLAGS} -Wif-not-aligned"
 export CXXFLAGS="${CXXFLAGS} -Wignored-attributes"
 export CXXFLAGS="${CXXFLAGS} -Wignored-qualifiers"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-fallthrough"
 export CXXFLAGS="${CXXFLAGS} -Wimplicit-fallthrough=5"
-# not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-function-declaration"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-int"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-interface"
 #export CXXFLAGS="${CXXFLAGS} -Wimplicit-procedure"
+export CXXFLAGS="${CXXFLAGS} -Winaccessible-base"
 #export CXXFLAGS="${CXXFLAGS} -Wincompatible-pointer-types"
 export CXXFLAGS="${CXXFLAGS} -Winherited-variadic-ctor"
 export CXXFLAGS="${CXXFLAGS} -Winit-self"
@@ -170,6 +179,8 @@ export CXXFLAGS="${CXXFLAGS} -Wmaybe-uninitialized"
 export CXXFLAGS="${CXXFLAGS} -Wmemset-elt-size"
 export CXXFLAGS="${CXXFLAGS} -Wmemset-transposed-args"
 export CXXFLAGS="${CXXFLAGS} -Wmisleading-indentation"
+export CXXFLAGS="${CXXFLAGS} -Wmismatched-tags"
+export CXXFLAGS="${CXXFLAGS} -Wmissing-attributes"
 export CXXFLAGS="${CXXFLAGS} -Wmissing-braces"
 export CXXFLAGS="${CXXFLAGS} -Wmissing-declarations"
 export CXXFLAGS="${CXXFLAGS} -Wmissing-field-initializers"
@@ -182,6 +193,7 @@ export CXXFLAGS="${CXXFLAGS} -Wmissing-noreturn"
 export CXXFLAGS="${CXXFLAGS} -Wmultichar"
 # ignoring
 #export CXXFLAGS="${CXXFLAGS} -Wmultiple-inheritance"
+export CXXFLAGS="${CXXFLAGS} -Wmultistatement-macros"
 # ignoring
 #export CXXFLAGS="${CXXFLAGS} -Wnamespaces"
 export CXXFLAGS="${CXXFLAGS} -Wnarrowing"
@@ -210,6 +222,7 @@ export CXXFLAGS="${CXXFLAGS} -Woverloaded-virtual"
 #export CXXFLAGS="${CXXFLAGS} -Woverride-init-side-effects"
 export CXXFLAGS="${CXXFLAGS} -Wpacked"
 export CXXFLAGS="${CXXFLAGS} -Wpacked-bitfield-compat"
+export CXXFLAGS="${CXXFLAGS} -Wpacked-not-aligned"
 # +++ may be need fix in future?
 #export CXXFLAGS="${CXXFLAGS} -Wpadded"
 export CXXFLAGS="${CXXFLAGS} -Wparentheses"
@@ -231,6 +244,8 @@ export CXXFLAGS="${CXXFLAGS} -Wpsabi"
 #export CXXFLAGS="${CXXFLAGS} -Wrealloc-lhs"
 #export CXXFLAGS="${CXXFLAGS} -Wrealloc-lhs-all"
 export CXXFLAGS="${CXXFLAGS} -Wredundant-decls"
+export CXXFLAGS="${CXXFLAGS} -Wredundant-move"
+export CXXFLAGS="${CXXFLAGS} -Wredundant-tags"
 export CXXFLAGS="${CXXFLAGS} -Wregister"
 export CXXFLAGS="${CXXFLAGS} -Wreorder"
 export CXXFLAGS="${CXXFLAGS} -Wrestrict"
@@ -254,8 +269,7 @@ export CXXFLAGS="${CXXFLAGS} -Wsign-compare"
 export CXXFLAGS="${CXXFLAGS} -Wsign-promo"
 export CXXFLAGS="${CXXFLAGS} -Wsized-deallocation"
 export CXXFLAGS="${CXXFLAGS} -Wsizeof-array-argument"
-# still missing in fedora
-#export CXXFLAGS="${CXXFLAGS} -Wsizeof-pointer-div"
+export CXXFLAGS="${CXXFLAGS} -Wsizeof-pointer-div"
 export CXXFLAGS="${CXXFLAGS} -Wsizeof-pointer-memaccess"
 export CXXFLAGS="${CXXFLAGS} -Wstack-protector"
 #export CXXFLAGS="${CXXFLAGS} -Wstack-usage="
@@ -268,11 +282,17 @@ export CXXFLAGS="${CXXFLAGS} -Wstrict-null-sentinel"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wstrict-prototypes"
 export CXXFLAGS="${CXXFLAGS} -Wstringop-overflow=4"
+export CXXFLAGS="${CXXFLAGS} -Wstringop-truncation"
 #export CXXFLAGS="${CXXFLAGS} -Wstrict-selector-match"
+export CXXFLAGS="${CXXFLAGS} -Wstring-compare"
 export CXXFLAGS="${CXXFLAGS} -Wsubobject-linkage"
+# fix probably in future
+#export CXXFLAGS="${CXXFLAGS} -Wsuggest-attribute=cold"
 # +++ ignoring
 #export CXXFLAGS="${CXXFLAGS} -Wsuggest-attribute=const"
 #export CXXFLAGS="${CXXFLAGS} -Wsuggest-attribute=format"
+export CXXFLAGS="${CXXFLAGS} -Wsuggest-attribute=malloc"
+export CXXFLAGS="${CXXFLAGS} -Wsuggest-attribute=malloc"
 export CXXFLAGS="${CXXFLAGS} -Wsuggest-attribute=noreturn"
 # +++ ignoring
 #export CXXFLAGS="${CXXFLAGS} -Wsuggest-attribute=pure"
@@ -285,6 +305,7 @@ export CXXFLAGS="${CXXFLAGS} -Wswitch"
 export CXXFLAGS="${CXXFLAGS} -Wswitch-bool"
 export CXXFLAGS="${CXXFLAGS} -Wswitch-default"
 export CXXFLAGS="${CXXFLAGS} -Wswitch-enum"
+export CXXFLAGS="${CXXFLAGS} -Wswitch-outside-range"
 export CXXFLAGS="${CXXFLAGS} -Wswitch-unreachable"
 export CXXFLAGS="${CXXFLAGS} -Wsync-nand"
 export CXXFLAGS="${CXXFLAGS} -Wsynth"
@@ -342,9 +363,11 @@ export CXXFLAGS="${CXXFLAGS} -Wvirtual-inheritance"
 export CXXFLAGS="${CXXFLAGS} -Wvirtual-move-assign"
 export CXXFLAGS="${CXXFLAGS} -Wvla"
 #export CXXFLAGS="${CXXFLAGS} -Wvla-larger-than="
+export CXXFLAGS="${CXXFLAGS} -Wvolatile"
 export CXXFLAGS="${CXXFLAGS} -Wvolatile-register-var"
 export CXXFLAGS="${CXXFLAGS} -Wwrite-strings"
 export CXXFLAGS="${CXXFLAGS} -Wzero-as-null-pointer-constant"
+export CXXFLAGS="${CXXFLAGS} -Wzero-length-bounds"
 # not for C++
 #export CXXFLAGS="${CXXFLAGS} -Wzerotrip"
 #export CXXFLAGS="${CXXFLAGS} -frequire-return-statement"
