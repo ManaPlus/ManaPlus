@@ -1402,5 +1402,6 @@ void ModernOpenGLGraphics::debugBindTexture(const Image *restrict const
 }
 #endif  // DEBUG_BIND_TEXTURE
 
-#endif  // !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
+#endif  // !defined(ANDROID) && !defined(__native_client__) &&
+        // !defined(__SWITCH__)
 #endif  // USE_OPENGL
