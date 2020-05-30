@@ -70,7 +70,7 @@ env:
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL1}"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:unstable
         COMMAND="./tools/ci/jobs/gcc10.sh --enable-werror --disable-tmwa"
         PACKAGES="gcc-10 g++-10 
                   ${LIBS_PACKAGES} ${SDL1}"
@@ -84,7 +84,7 @@ env:
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL1}
                   valgrind"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:unstable
         COMMAND="./tools/ci/jobs/gcc10_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame"
         PACKAGES="gcc-10 g++-10 
                   ${LIBS_PACKAGES} ${SDL1}
@@ -133,7 +133,7 @@ env:
         COMMAND="./tools/ci/jobs/gcc6.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL2}"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:unstable
         COMMAND="./tools/ci/jobs/gcc10.sh --enable-werror --disable-tmwa --with-sdl2"
         PACKAGES="gcc-10 g++-10 
                   ${LIBS_PACKAGES} ${SDL2}"
@@ -147,7 +147,7 @@ env:
         PACKAGES="gcc-6 g++-6 
                   ${LIBS_PACKAGES} ${SDL2}
                   valgrind"
-      - IMAGE=vicamo/debian:sid-i386
+      - IMAGE=i386/debian:unstable
         COMMAND="./tools/ci/jobs/gcc10_tests.sh --disable-tmwa --without-dyecmd --without-manaplusgame --with-sdl2"
         PACKAGES="gcc-10 g++-10 
                   ${LIBS_PACKAGES} ${SDL2}
