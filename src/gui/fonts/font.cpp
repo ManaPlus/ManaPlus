@@ -98,7 +98,7 @@ const unsigned int CLEAN_TIME = 7;
 
 bool Font::mSoftMode(false);
 
-extern char *strBuf;
+extern char *restrict strBuf;
 
 static int fontCounter;
 
