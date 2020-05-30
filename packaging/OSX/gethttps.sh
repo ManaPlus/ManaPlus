@@ -1,4 +1,3 @@
 #!/bin/sh
 
-# if not have account in gitlab.com
-git clone https://gitlab.com/manaplus/manaplus-xcode.git ../../Xcode
+git clone https://azure:${gitlabtoken}gitlab.com/manaplus/manaplus-xcode.git ../../Xcode
