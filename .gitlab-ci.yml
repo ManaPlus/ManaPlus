@@ -182,6 +182,8 @@ gcc-10_default:
               gdb valgrind netcat-openbsd procps
 
 mxe_gcc6_shared_32:
+  only:
+  - branches@manaplus/manaplus
   stage: prebuild
   script:
   - ls /mxe
@@ -195,6 +197,8 @@ mxe_gcc6_shared_32:
     - docker
 
 mxe_gcc6_shared_64:
+  only:
+  - branches@manaplus/manaplus
   stage: prebuild
   script:
   - ls /mxe
@@ -325,6 +329,8 @@ gcc-5_h_all_i386:
 
 triggers:
   stage: build
+  only:
+  - branches@manaplus/manaplus
   script:
   - ./tools/ci/scripts/triggers.sh
   <<: *job-push
