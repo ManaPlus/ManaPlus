@@ -16,6 +16,37 @@
     expire_in: 3 week
   dependencies: []
 
+gcc-8-i386:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/gcc8.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: i386/debian:unstable
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-8:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/gcc8.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-8 g++-8 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+
 gcc-8_sdl2:
   stage: build
   script:
