@@ -1,0 +1,157 @@
+.job-push: &job-push
+  artifacts:
+    paths:
+    - logs
+    - manaplus/logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+.job-always: &job-always
+  artifacts:
+    paths:
+    - logs
+    - manaplus/logs
+    when: always
+    expire_in: 3 week
+  dependencies: []
+
+gcc-9-i386:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/gcc9.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: i386/debian:unstable
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-9:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/gcc9.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-9_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc9.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-9_sdl2_i386:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc9.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  image: i386/debian:unstable
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-9_default:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/any_compiler.sh --enable-werror
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    LOGFILE: gcc9.log
+    CC: gcc-9
+    CXX: g++-9
+    CXXFLAGS: "-Wall -Wextra"
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+
+gcc-9_sanitize:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/gcc9_sanitize.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-9_sanitize_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gcc9_sanitize.sh --with-sdl2
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
+gcc-9_lto:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/gcc9_lto.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+    POST_CXXFLAGS: "-Wno-null-dereference"
+
+gcc-9_lto_i386:
+  stage: build
+  script:
+  - ./tools/ci/scripts/patchsdl1.sh
+  - ./tools/ci/jobs/gcc9_lto.sh
+  - ./tools/ci/scripts/runtests.sh
+  image: i386/debian:unstable
+  <<: *job-push
+  variables:
+    PACKAGES: gcc-9 g++-9 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl-gfx1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
+              git gdb valgrind netcat-openbsd procps
+    POST_CXXFLAGS: "-Wno-null-dereference"
+  tags:
+    - docker
