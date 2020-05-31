@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined(USE_OPENGL) && !defined(ANDROID) && \
-    !defined(__native_client__) && !defined(__SWITCH__)
+#ifdef USE_OPENGL
+#if !defined(ANDROID) && !defined(__native_client__) && !defined(__SWITCH__)
 
 #include "render/normalopenglgraphics.h"
 
@@ -1779,5 +1779,6 @@ void NormalOpenGLGraphics::debugBindTexture(const Image *restrict const
 }
 #endif  // DEBUG_BIND_TEXTURE
 
-#endif  // defined(USE_OPENGL) && !defined(ANDROID) &&
-        // !defined(__native_client__)
+#endif  // !defined(ANDROID) && !defined(__native_client__) &&
+        // !defined(__SWITCH__)
+#endif  // USE_OPENGL
