@@ -42,7 +42,14 @@ run "ci_gcc8_tests"
 run "ci_gcc7"
 sleep 15s
 run "ci_gcc3"
+run "ci_gcc10_tests"
+sleep 15s
 run "ci_gcc8"
+run "ci_gcc9_tests"
+sleep 15s
+run "ci_gcc9"
+run "ci_gcc10"
 sleep 15s
 run "ci_clang7"
+sleep 5s
 run "ci_site"
