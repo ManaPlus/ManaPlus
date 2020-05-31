@@ -18,6 +18,36 @@ jobs:
 
 - template: tools/ci/templates/azure/macosx.yml
   parameters:
+    name: xcode_11_2
+    xcode: Xcode_11.2.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_11_2_1
+    xcode: Xcode_11.2.1.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_11_3
+    xcode: Xcode_11.3.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_11_3_1
+    xcode: Xcode_11.3.1.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_11_4
+    xcode: Xcode_11.4.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
+    name: xcode_11_4_1
+    xcode: Xcode_11.4.1.app
+
+- template: tools/ci/templates/azure/macosx.yml
+  parameters:
     name: xcode_11_5
     xcode: Xcode_11.5.app
 
@@ -25,11 +55,6 @@ jobs:
   parameters:
     name: xcode_11
     xcode: Xcode_11.app
-
-- template: tools/ci/templates/azure/macosx.yml
-  parameters:
-    name: xcode_11_2
-    xcode: Xcode_11.2.app
 
 - job: vars
   pool:
@@ -39,6 +64,11 @@ jobs:
     - xcode_11
     - xcode_11_1
     - xcode_11_2
+    - xcode_11_2_1
+    - xcode_11_3
+    - xcode_11_3_1
+    - xcode_11_4
+    - xcode_11_4_1
     - xcode_11_5
   steps:
   - script: |
