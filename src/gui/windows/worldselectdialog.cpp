@@ -115,7 +115,7 @@ void WorldSelectDialog::action(const ActionEvent &event)
     }
     else if (eventId == "login")
     {
-        client->setState(State::PRE_LOGIN);
+        client->setState(State::SWITCH_LOGIN);
     }
 }
 
