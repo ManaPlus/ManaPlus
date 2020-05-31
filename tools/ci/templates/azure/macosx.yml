@@ -12,6 +12,8 @@ jobs:
       export xcodename="${{ parameters.xcode }}"
       export artifacts="$(Build.ArtifactStagingDirectory)"
       ./tools/ci/jobs/xcode.sh
+    env:
+      GITLABTOKEN: $(gitlabtoken)
   - task: PublishBuildArtifacts@1
     inputs:
       artifactName: ${{ parameters.name }}
