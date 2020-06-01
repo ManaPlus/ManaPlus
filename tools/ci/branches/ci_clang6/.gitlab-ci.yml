@@ -118,6 +118,7 @@ clang-6.0_sdl2:
   <<: *job-push
   image: debian:bullseye
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -134,6 +135,7 @@ clang-6.0_sdl2_i386:
   <<: *job-push
   image: i386/debian:bullseye
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc g++ clang-6.0 libc++-dev libc++abi-dev libclang-6.0-dev 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 

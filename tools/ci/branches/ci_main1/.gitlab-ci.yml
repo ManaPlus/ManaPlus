@@ -139,6 +139,7 @@ gcc8_without_mumble_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -245,6 +246,7 @@ gcc-8_unsigned_char_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -273,6 +275,7 @@ gcc-8_password_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 

@@ -56,6 +56,7 @@ gcc-7_sdl2:
   image: debian:buster
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -70,6 +71,7 @@ gcc-7_sdl2_i386:
   <<: *job-push
   image: i386/debian:buster
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -138,6 +140,7 @@ gcc-7_sanitize_sdl2:
   image: debian:buster
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-7 g++-7 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 

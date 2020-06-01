@@ -62,6 +62,7 @@ gcc8_googleprofiler_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -89,6 +90,7 @@ gcc8_checks_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 

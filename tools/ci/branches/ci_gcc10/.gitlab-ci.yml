@@ -54,6 +54,7 @@ gcc-10_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-10 g++-10 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -68,6 +69,7 @@ gcc-10_sdl2_i386:
   <<: *job-push
   image: i386/debian:unstable
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-10 g++-10 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -115,6 +117,7 @@ gcc-10_sanitize_sdl2:
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
   variables:
+    ABOUTYOFFSET: 380
     PACKAGES: gcc-10 g++-10 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
