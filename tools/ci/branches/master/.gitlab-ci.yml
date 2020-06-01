@@ -75,6 +75,22 @@ gcc-6-i386:
   tags:
     - docker
 
+gcc-snapshot_sdl2:
+  stage: build
+  script:
+  - ./tools/ci/jobs/gccsnapshot_sdl2.sh
+  - ./tools/ci/scripts/runtests.sh
+  <<: *job-push
+  variables:
+    ABOUTYOFFSET: 380
+    PACKAGES: gcc-snapshot 
+              make autoconf automake autopoint gettext 
+              libxml2-dev libcurl4-gnutls-dev libpng-dev 
+              libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev
+              git gdb valgrind netcat-openbsd procps
+  tags:
+    - docker
+
 gcc-10-i386:
   stage: prebuild
   script:
