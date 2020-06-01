@@ -26,9 +26,9 @@
 
 #include "render/openglx/mglx.h"
 
-#ifdef USE_SDL2
+#if defined(USE_SDL2) && defined(__SWITCH__)
 #include <SDL_video.h>
-#endif
+#endif  // defined(USE_SDL2) && defined(__SWITCH__)
 
 #include "debug.h"
 
