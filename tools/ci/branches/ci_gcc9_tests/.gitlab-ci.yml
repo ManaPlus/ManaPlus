@@ -279,7 +279,8 @@ gcc-9_separate_doctest_sanitize:
                     -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
                     -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
                     -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
+                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict
+                    -fno-var-tracking-assignments"
     PACKAGES: gcc-9 g++-9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
@@ -304,7 +305,8 @@ gcc-9_separate_doctest_sanitize_sdl2:
                     -fsanitize=signed-integer-overflow -fsanitize=bounds -fsanitize=alignment
                     -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
                     -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
-                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict"
+                    -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-stric
+                    -fno-var-tracking-assignments"
     PACKAGES: gcc-9 g++-9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
