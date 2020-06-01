@@ -14,10 +14,10 @@ export LOGFILE=gcc9.log
 
 source ./tools/ci/scripts/init.sh
 
-export CXXFLAGS="$CXXFLAGS -pedantic -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
+export CXXFLAGS="$CXXFLAGS -ggdb3 -O2 -pipe -Wstrict-aliasing=2 \
 -Wstrict-overflow=1 -Wformat=1 -D_FORTIFY_SOURCE=2 \
 -std=gnu++2a -Wformat=1 \
--Wno-attributes -fno-omit-frame-pointer"
+-Wno-attributes -fno-omit-frame-pointer -Wno-unused-result"
 
 source ./tools/ci/flags/gcc9.sh
 
