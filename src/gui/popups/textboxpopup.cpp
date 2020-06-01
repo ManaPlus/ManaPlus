@@ -46,6 +46,9 @@ void TextBoxPopup::postInit()
     setMinHeight(fontHeight);
     mTextBox->setEditable(false);
     mTextBox->setOpaque(Opaque_false);
+    mTextBox->setForegroundColorAll(
+        getThemeColor(ThemeColorId::POPUP, 255U),
+        getThemeColor(ThemeColorId::POPUP_OUTLINE, 255U));
     add(mTextBox);
     addMouseListener(this);
 }
