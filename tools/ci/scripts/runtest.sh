@@ -131,6 +131,10 @@ function imagessame {
     fi
 }
 
+if [[ -z "${ABOUTYOFFSET}" ]]; then
+    export ABOUTYOFFSET="395"
+fi
+
 run
 check_is_run
 
@@ -232,7 +236,7 @@ send_command "/sendmousekey 500 20 1"
 send_command "/screenshot about.png"
 
 # open about manaplus page
-send_command "/sendmousekey 300 395 1"
+send_command "/sendmousekey 300 ${ABOUTYOFFSET} 1"
 send_command "/screenshot about2.png"
 imagesdiff about.png about2.png
 
