@@ -91,7 +91,7 @@ function final_log {
 
 function send_command {
     echo -n "$1" | nc 127.0.0.1 44007
-    sleep 5s
+    sleep 7s
     check_is_run
     check_assert
 }
