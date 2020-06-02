@@ -280,7 +280,8 @@ gcc-9_separate_doctest_sanitize:
                     -fsanitize=object-size -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow
                     -fsanitize=nonnull-attribute -fsanitize=returns-nonnull-attribute -fsanitize=bool
                     -fsanitize=enum -fsanitize=vptr -fsanitize=bounds-strict
-                    -fno-var-tracking-assignments"
+                    -fno-var-tracking-assignments -Wno-terminate -Wno-noexcept -Wno-suggest-override
+                    -Wno-suggest-attribute=noreturn -Wno-unused-result"
     PACKAGES: gcc-9 g++-9 
               make autoconf automake autopoint gettext 
               libxml2-dev libcurl4-gnutls-dev libpng-dev 
