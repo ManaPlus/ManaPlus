@@ -308,12 +308,16 @@ void BeingPopup::show(const int x, const int y, Being *const b)
         }
     }
 
-    ptr = mLabels[num];
-    // TRANSLATORS: being popup label
-    ptr->setCaption(strprintf(_("Particles: %u"),
-        CAST_U32(b->getParticlesCount())));
-    ptr->adjustSize();
-    num ++;
+    const uint32_t particleCount = CAST_U32(b->getParticlesCount());
+    if (particleCount != 0)
+    {
+        ptr = mLabels[num];
+        // TRANSLATORS: being popup label
+        ptr->setCaption(strprintf(_("Particles: %u"),
+            particleCount));
+        ptr->adjustSize();
+        num ++;
+    }
 
     const size_t sz = mLabels.size();
     for (size_t f = num; f < sz; f ++)
