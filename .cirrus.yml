@@ -1,0 +1,138 @@
+task:
+  name: build_sdl1
+  timeout_in: 120m
+  freebsd_instance:
+    matrix:
+      image_family: freebsd-13-0-snap
+#      image_family: freebsd-12-1
+      image_family: freebsd-12-0
+#      image_family: freebsd-12-1-snap
+#      image_family: freebsd-11-3-snap
+
+  env:
+    CIRRUS_CLONE_DEPTH: 1
+    MAKE_FLAGS: -j 2
+    PACKAGES: autoconf automake libtool pkgconf gcc libxml2 freetype2 png curl build xorg glib xorgproto intltool gettext gettext-runtime gettext-tools git sdl sdl_gfx sdl_image sdl_mixer sdl_net sdl_ttf git gdb valgrind
+    LOCALBASE: /usr/local
+    LDFLAGS: -L${LOCALBASE}/lib -lintl
+    CXX: clang++
+    CC: clang
+    LOGFILE: clang.log
+
+  before_script:
+    - gcc --version || true
+    - clang --version || true
+    - echo ${LOCALBASE}
+    - echo ${LDFLAGS}
+    - mkdir logs || true
+
+  pkginstall_script:
+    - pkg update -f
+    - pkg install -y ${PACKAGES}
+
+  env_script:
+    - env
+
+  build_script:
+    - ./tools/ci/jobs/any_compiler.sh --with-libintl-prefix=${LOCALBASE}
+
+  always:
+    config_artifacts:
+      path: "config.log"
+
+  always:
+    all_artifacts:
+      path: "*"
+
+  always:
+    logs_artifacts:
+      path: "logs/*"
+
+  run_script:
+    - ./tools/ci/scripts/runtests.sh
+
+  build_tests_script:
+    - make clean
+    - ./tools/ci/jobs/any_compiler_tests.sh --without-dyecmd --without-manaplusgame --with-libintl-prefix=${LOCALBASE}
+
+  always:
+    config_tests_artifacts:
+      path: "config.log"
+
+  always:
+    all_tests_artifacts:
+      path: "*"
+
+  always:
+    logs_tests_artifacts:
+      path: "logs/*"
+
+
+task:
+  name: build_sdl2
+  timeout_in: 120m
+  freebsd_instance:
+    matrix:
+      image_family: freebsd-13-0-snap
+#      image_family: freebsd-12-1
+      image_family: freebsd-12-0
+#      image_family: freebsd-12-1-snap
+#      image_family: freebsd-11-3-snap
+
+  env:
+    CIRRUS_CLONE_DEPTH: 1
+    MAKE_FLAGS: -j 2
+    PACKAGES: autoconf automake libtool pkgconf gcc libxml2 freetype2 png curl build xorg glib xorgproto intltool gettext gettext-runtime gettext-tools git sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf git gdb valgrind
+    LOCALBASE: /usr/local
+    LDFLAGS: -L${LOCALBASE}/lib -lintl
+    CXX: clang++
+    CC: clang
+    LOGFILE: clang.log
+
+  before_script:
+    - gcc --version || true
+    - clang --version || true
+    - echo ${LOCALBASE}
+    - echo ${LDFLAGS}
+    - mkdir logs || true
+
+  pkginstall_script:
+    - pkg update -f
+    - pkg install -y ${PACKAGES}
+
+  env_script:
+    - env
+
+  build_script:
+    - ./tools/ci/jobs/any_compiler.sh --with-sdl2 --with-libintl-prefix=${LOCALBASE}
+
+  always:
+    config_artifacts:
+      path: "config.log"
+
+  always:
+    all_artifacts:
+      path: "*"
+
+  always:
+    logs_artifacts:
+      path: "logs/*"
+
+  run_script:
+    - ./tools/ci/scripts/runtests.sh
+
+  build_tests_script:
+    - make clean
+    - ./tools/ci/jobs/any_compiler_tests.sh --without-dyecmd --without-manaplusgame --with-libintl-prefix=${LOCALBASE} --with-sdl2
+
+  always:
+    config_tests_artifacts:
+      path: "config.log"
+
+  always:
+    all_tests_artifacts:
+      path: "*"
+
+  always:
+    logs_tests_artifacts:
+      path: "logs/*"
