@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "CI nodes: ${CIRCLE_NODE_TOTAL}"
 echo "Current node: ${CIRCLE_NODE_INDEX}"

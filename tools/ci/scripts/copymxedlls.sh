@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source ./tools/ci/scripts/winvars.sh || exit 1
 source ./tools/ci/flags/mingw6.sh || exit 1

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export LOGFILE=mxe_gcc6.log
 

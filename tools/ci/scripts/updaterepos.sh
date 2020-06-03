@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ ${CI_RUNNER_TAGS} != *"docker"* ]]; then
     echo "Running from shell. Skipping update repos"

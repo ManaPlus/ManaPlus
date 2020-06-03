@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 identify -verbose $1 | egrep -i "profile|iCCP" >/dev/null
 

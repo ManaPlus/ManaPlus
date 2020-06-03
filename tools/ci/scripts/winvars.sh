@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export PATH=/mxe/usr/bin:/mxe/usr/x86_64-unknown-linux-gnu/bin:/mxe/usr/${CROSS}/bin:$PATH
 

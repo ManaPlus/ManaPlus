@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # skip if we not in docker
 if [[ ${CI_RUNNER_TAGS} != *"docker"* ]]; then

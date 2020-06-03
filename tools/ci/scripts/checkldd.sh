@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo "Custom libs linked"
 grep "spm" "$(ldd $1)"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export CC=clang-4.0
 export CXX=clang++-4.0

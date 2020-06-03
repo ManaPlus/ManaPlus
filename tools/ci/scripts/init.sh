@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export dir=$(pwd)
 export ERRFILE=${dir}/logs/${LOGFILE}

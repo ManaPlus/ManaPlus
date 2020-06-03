@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 #export CXXFLAGS="${CXXFLAGS} --all-warnings"
 #export CXXFLAGS="${CXXFLAGS} --extra-warnings"

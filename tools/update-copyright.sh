@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Copyright (C) 2001-2010 Wormux Team.
 # Copyright (C) 2010 The ManaWorld Development Team.
 # Copyright (C) 2012-2016 The ManaPlus Developers.

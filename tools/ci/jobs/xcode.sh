@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 uname -a
 sudo xcode-select -switch /Applications/${xcodename} || exit 1

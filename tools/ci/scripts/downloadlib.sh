@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export zipname="lib.zip"
 export libname="$1_$2"

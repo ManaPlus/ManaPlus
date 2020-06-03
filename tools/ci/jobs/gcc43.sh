@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export CC=gcc-4.3.6-r1
 export CXX=g++-4.3.6-r1
