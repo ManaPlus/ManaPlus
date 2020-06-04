@@ -8,7 +8,7 @@ function check_is_run {
         echo "Run with gdb"
         cp ./src/manaplus ./logs/
         cp -r core* ./logs/
-        sleep 10s
+        sleep 10
         COREFILE=$(find . -maxdepth 1 -name "core*" | head -n 1)
         if [[ -f "$COREFILE" ]]; then
             gdb -c "$COREFILE" ./src/manaplus -ex "thread apply all bt" -ex "set pagination 0" -batch
@@ -42,7 +42,7 @@ function wait_for_servers_list {
         if [[ $n -ge 150 ]]; then
             break
         fi
-        sleep 5s
+        sleep 5
         n=$((n+1))
     done
     echo "Waiting time for servers list update is up"
@@ -52,7 +52,8 @@ function wait_for_servers_list {
 function run {
     ./src/manaplus --hide-cursor --enable-ipc --renderer=0 >logs/run.log 2>&1 &
     export PID=$!
-    sleep 20s
+    echo "manaplus PID: ${PID}"
+    sleep 20
     echo "pause after run"
     wait_for_servers_list
     check_assert
@@ -62,7 +63,7 @@ function kill_app {
     kill -s SIGTERM ${PID}
     export RET=$?
 
-    sleep 10s
+    sleep 10
 
     if [ "${RET}" != 0 ]; then
         echo "Error: process not responsing to termination signal"
@@ -91,21 +92,21 @@ function final_log {
 
 function send_command {
     echo -n "$1" | nc 127.0.0.1 44007
-    sleep 7s
+    sleep 7
     check_is_run
     check_assert
 }
 
 function check_exists {
     if [ ! -f "logs/home/Desktop/ManaPlus/$1" ]; then
-        sleep 10s
+        sleep 10
         if [ ! -f "logs/home/Desktop/ManaPlus/$1" ]; then
             echo "Error: image $1 not exists"
             exit 1
         fi
     fi
     if [ ! -f "logs/home/Desktop/ManaPlus/$2" ]; then
-        sleep 10s
+        sleep 10
         if [ ! -f "logs/home/Desktop/ManaPlus/$2" ]; then
             echo "Error: image $2 not exists"
             exit 1
@@ -280,7 +281,7 @@ imagesdiff help.png about.png
 imagesdiff help.png help2.png
 
 # final delay
-sleep 5s
+sleep 5
 
 kill_app
 final_log
