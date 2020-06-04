@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 if [[ ${CI_RUNNER_TAGS} != *"docker"* ]]; then
-    echo "Running from shell. Skipping run tests $*"
-    exit 0
+    if [[ ${CIRRUS_CI} != "true" ]]; then
+        echo "Running from shell. Skipping run tests $*"
+        exit 0
+    fi
 fi
 
 export SDL_VIDEODRIVER="dummy"
