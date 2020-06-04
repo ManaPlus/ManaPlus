@@ -5,14 +5,14 @@ task:
     matrix:
       image_family: freebsd-13-0-snap
       image_family: freebsd-12-1
-      image_family: freebsd-12-0
+#      image_family: freebsd-12-0
       image_family: freebsd-12-1-snap
       image_family: freebsd-11-3-snap
 
   env:
     CIRRUS_CLONE_DEPTH: 1
     MAKE_FLAGS: -j 2
-    PACKAGES: autoconf automake libtool pkgconf gcc libxml2 freetype2 png curl build xorg glib xorgproto intltool gettext gettext-runtime gettext-tools git sdl sdl_gfx sdl_image sdl_mixer sdl_net sdl_ttf git gdb valgrind
+    PACKAGES: autoconf automake libtool pkgconf gcc libxml2 freetype2 png curl build xorg glib xorgproto intltool gettext gettext-runtime gettext-tools git sdl sdl_gfx sdl_image sdl_mixer sdl_net sdl_ttf git gdb
     LOCALBASE: /usr/local
     LDFLAGS: -L${LOCALBASE}/lib -lintl
     CXX: clang++
@@ -75,19 +75,20 @@ task:
     matrix:
       image_family: freebsd-13-0-snap
       image_family: freebsd-12-1
-      image_family: freebsd-12-0
+#      image_family: freebsd-12-0
       image_family: freebsd-12-1-snap
       image_family: freebsd-11-3-snap
 
   env:
     CIRRUS_CLONE_DEPTH: 1
     MAKE_FLAGS: -j 2
-    PACKAGES: autoconf automake libtool pkgconf gcc libxml2 freetype2 png curl build xorg glib xorgproto intltool gettext gettext-runtime gettext-tools git sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf git gdb valgrind
+    PACKAGES: autoconf automake libtool pkgconf gcc libxml2 freetype2 png curl build xorg glib xorgproto intltool gettext gettext-runtime gettext-tools git sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf git gdb
     LOCALBASE: /usr/local
     LDFLAGS: -L${LOCALBASE}/lib -lintl
     CXX: clang++
     CC: clang
     LOGFILE: clang.log
+    ABOUTYOFFSET: 380
 
   before_script:
     - gcc --version || true
