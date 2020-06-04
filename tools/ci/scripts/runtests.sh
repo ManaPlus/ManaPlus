@@ -35,7 +35,7 @@ while true; do
     if [[ $n -ge 3 ]]; then
         break
     fi
-    sleep 5s
+    sleep 5
     n=$((n+1))
 done
 
@@ -54,6 +54,6 @@ while true; do
     if [[ $n -ge 1 ]]; then
         exit 0
     fi
-    sleep 5s
+    sleep 5
     n=$((n+1))
 done
