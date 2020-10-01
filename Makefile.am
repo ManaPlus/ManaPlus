@@ -6,9 +6,9 @@ desktopdir = $(datarootdir)/applications
 desktop_DATA = manaplus.desktop \
 	     manaplustest.desktop
 
-appdatadir = $(datarootdir)/appdata
+appdatadir = $(datarootdir)/metainfo
 
-appdata_DATA = manaplus.appdata.xml
+appdata_DATA = manaplus.metainfo.xml
 
 # Extra files to include
 EXTRA_DIST = $(desktop_DATA) \
