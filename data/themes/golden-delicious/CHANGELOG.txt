@@ -1,7 +1,25 @@
 Legend:
-[!] Bug fixed (usability issues/visual defects/etc).
-[*] Some changes or misc. stuff.
-[+] Something new.
+ [!] Bug fixed (usability issues/visual defects/etc).
+ [*] Some changes or misc. stuff.
+ [+] Something new.
+
+Version 2. Five years later I've revisited TMW and randomly crafted
+glossy button. So I've got curious how far I can get. The story continues.
+
+Changes:
+ [+] Far more complicated and glamourous window title. I like it.
+     NB: window title is kind of cheat. It uses slightly incorrect lighting.
+     Good luck to notice it though.
+ [+] Glass-like buttons FTW. Looks much better. Buttons also look a bit larger.
+ [+] Minor color tweaks in few places.
+ [+] Some elements size tweaked & some repixeled for better usability.
+ [+] Cursors were recolored a bit to better match overall theme.
+
+TODO:
+ [*] My hourglass isn't best pixel art ever. Still need something better.
+ [*] Progressbars could use bitmaps. This apparently allows superb
+     appearance of progressbars. Should give it a try!
+ [*] Target "ring" could be more stylish/themed.
 
 Version 0.3. Three years later I've finally spotted obvious bugs.
 Changes;
@@ -19,11 +37,6 @@ Changes;
      now also move accordingly.
  [*] Buttons of drop-downs repix'd to look better (they were too small).
 
-TODO:
- [*] My hourglass isn't best pixel art ever and could be improved.
- [*] Now progressbars could use bitmaps. This apparently allows superb
-     appearance of progressbars. Should give it a try!
- [*] Mouse cursors could match theme a bit better than that.
 
 Version 0.2. Reworked lot stuff and recolored a bit. 
 Load of "new" ManaPlus compatibility improvements.
