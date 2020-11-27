@@ -42,12 +42,19 @@
 #endif  // USE_SDL2
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
+// ignore -Wredundant-decls for SDL 1.2
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wredundant-decls")
 #include <SDL_opengl.h>
+PRAGMA45(GCC diagnostic pop)
 PRAGMA48(GCC diagnostic pop)
 #if defined(__APPLE__)
 #include <OpenGL/glext.h>
 #elif !defined(__native_client__)
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wredundant-decls")
 #include <GL/glext.h>
+PRAGMA45(GCC diagnostic pop)
 #endif  // defined(__APPLE__)
 #endif  // ANDROID
 

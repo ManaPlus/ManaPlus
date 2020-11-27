@@ -35,10 +35,17 @@
 #endif  // HAVE_GLEXT
 PRAGMA48(GCC diagnostic push)
 PRAGMA48(GCC diagnostic ignored "-Wshadow")
+// ignore -Wredundant-decls for SDL 1.2
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wredundant-decls")
 #include <SDL_opengl.h>
+PRAGMA45(GCC diagnostic pop)
 PRAGMA48(GCC diagnostic pop)
 #ifdef HAVE_GLEXT
+PRAGMA45(GCC diagnostic push)
+PRAGMA45(GCC diagnostic ignored "-Wredundant-decls")
 #include <GL/glext.h>
+PRAGMA45(GCC diagnostic pop)
 #endif  // HAVE_GLEXT
 // hack to hide warnings
 #undef GL_GLEXT_VERSION
