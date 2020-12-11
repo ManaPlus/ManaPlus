@@ -447,7 +447,7 @@ Resource *get(const std::string &idPath,
     }
     else
     {
-        reportAlways("Error loading image: %s", idPath.c_str())
+        reportAlways("Error loading resource: %s", idPath.c_str())
     }
 #else  // DISABLE_RESOURCE_CACHING
 
@@ -464,7 +464,7 @@ Resource *get(const std::string &idPath,
     }
     else
     {
-        reportAlways("Error loading image: " + idPath)
+        reportAlways("Error loading resource: " + idPath)
     }
 #endif  // DISABLE_RESOURCE_CACHING
 
