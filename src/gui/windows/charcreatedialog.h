@@ -166,8 +166,6 @@ class CharCreateDialog final : public Window,
 
         unsigned int mAction;
         unsigned int mDirection;
-
-        bool mShowHiddenGender;
 };
 
 #endif  // GUI_WINDOWS_CHARCREATEDIALOG_H

@@ -29,7 +29,6 @@
 namespace
 {
     bool mLoaded = false;
-    bool showHiddenGender = false;
     unsigned mMinHairColor = 0;
     unsigned mMaxHairColor = 0;
     unsigned mMinHairStyle = 0;
@@ -105,10 +104,6 @@ void CharDB::load()
         {
             loadMinMax(node, &mMinRace, &mMaxRace);
         }
-        else if (xmlNameEqual(node, "flags"))
-        {
-            loadFlags(node);
-        }
     }
 
     delete doc;
@@ -124,11 +119,6 @@ void CharDB::loadMinMax(XmlNodeConstPtr node,
         *min = XML::getProperty(node, "min", 1);
     if (max != nullptr)
         *max = XML::getProperty(node, "max", 10);
-}
-
-void CharDB::loadFlags(XmlNodeConstPtr node)
-{
-    showHiddenGender = XML::getBoolProperty(node, "showHiddeGender", false);
 }
 
 void CharDB::unload()
@@ -196,9 +186,4 @@ unsigned CharDB::getMaxRace()
 const STD_VECTOR<BeingSlot> &CharDB::getDefaultItems()
 {
     return mDefaultItems;
-}
-
-bool CharDB::getShowHiddenGender()
-{
-    return showHiddenGender;
 }
