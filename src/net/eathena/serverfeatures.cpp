@@ -70,11 +70,6 @@ bool ServerFeatures::haveMove3() const
     return serverVersion > 0;
 }
 
-bool ServerFeatures::haveCharHiddenGender() const
-{
-    return true;
-}
-
 bool ServerFeatures::haveMonsterAttackRange() const
 {
     return false;

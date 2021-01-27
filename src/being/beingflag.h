@@ -28,7 +28,6 @@ namespace BeingFlag
         SHOP = 1,
         AWAY = 2,
         INACTIVE = 4,
-        GENDER_HIDDEN = 32,
         GM = 64,
         GENDER_MALE = 128,
         SPECIAL = 128 + 64

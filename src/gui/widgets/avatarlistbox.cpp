@@ -264,7 +264,6 @@ void AvatarListBox::draw(Graphics *const graphics)
                         break;
                     default:
                     case Gender::UNSPECIFIED:
-                    case Gender::HIDDEN:
                         break;
                 }
             }
@@ -285,7 +284,6 @@ void AvatarListBox::draw(Graphics *const graphics)
                         break;
                     default:
                     case Gender::UNSPECIFIED:
-                    case Gender::HIDDEN:
                         break;
                 }
             }
@@ -502,7 +500,6 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
                         break;
                     default:
                     case Gender::UNSPECIFIED:
-                    case Gender::HIDDEN:
                         break;
                 }
             }
@@ -523,7 +520,6 @@ void AvatarListBox::safeDraw(Graphics *const graphics)
                         break;
                     default:
                     case Gender::UNSPECIFIED:
-                    case Gender::HIDDEN:
                         break;
                 }
             }

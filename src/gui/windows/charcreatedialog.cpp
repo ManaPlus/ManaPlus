@@ -285,30 +285,15 @@ CharCreateDialog::CharCreateDialog(CharSelectDialog *const parent,
             mGenderStrip->addButton(_("F"), "f", false);
             if (features.getIntValue("forceAccountGender") == -1)
             {
-                if (serverFeatures->haveCharHiddenGender())
-                {
-                    // TRANSLATORS: one char size male character gender
-                    mGenderStrip->addButton(_("M"), "m", true);
-                    // TRANSLATORS: one char size hidden character gender
-                    mGenderStrip->addButton(_("H"), "h", false);
-                }
-                else
-                {
-                    // TRANSLATORS: one char size male character gender
-                    mGenderStrip->addButton(_("M"), "m", false);
-                    // TRANSLATORS: one char size unknown character gender
-                    mGenderStrip->addButton(_("U"), "u", true);
-                }
+                // TRANSLATORS: one char size male character gender
+                mGenderStrip->addButton(_("M"), "m", false);
+                // TRANSLATORS: one char size unknown character gender
+                mGenderStrip->addButton(_("U"), "u", true);
             }
             else
             {
                 // TRANSLATORS: one char size male character gender
                 mGenderStrip->addButton(_("M"), "m", true);
-                if (serverFeatures->haveCharHiddenGender())
-                {
-                    // TRANSLATORS: one char size hidden character gender
-                    mGenderStrip->addButton(_("H"), "h", false);
-                }
             }
 
             mGenderStrip->setVisible(Visible_true);
@@ -589,11 +574,6 @@ void CharCreateDialog::action(const ActionEvent &event)
     {
         mGender = Gender::UNSPECIFIED;
         mPlayer->setGender(mDefaultGender);
-    }
-    else if (id == "gender_h")
-    {
-        mGender = Gender::HIDDEN;
-        mPlayer->setGender(Gender::HIDDEN);
     }
 }
 

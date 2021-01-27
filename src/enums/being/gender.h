@@ -30,7 +30,6 @@ enumStart(Gender)
     MALE = 0,
     FEMALE = 1,
     UNSPECIFIED = 2,
-    HIDDEN = 3
 }
 enumEnd(Gender);
 

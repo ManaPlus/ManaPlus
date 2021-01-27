@@ -173,7 +173,6 @@ void ItemDB::load()
     std::string errFile = paths.getStringValue("spriteErrorFile");
     mUnknown->setSprite(errFile, Gender::MALE, 0);
     mUnknown->setSprite(errFile, Gender::FEMALE, 0);
-    mUnknown->setSprite(errFile, Gender::HIDDEN, 0);
     mUnknown->addTag(mTags["All"]);
     loadXmlFile(paths.getStringValue("itemsFile"),
         tagNum,
@@ -975,9 +974,6 @@ static void loadSpriteRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
         itemInfo->setSprite(filename, Gender::MALE, race);
     if (gender == "female" || gender == "unisex")
         itemInfo->setSprite(filename, Gender::FEMALE, race);
-    // "other" is legacy from 20180630
-    if (gender == "hidden" || gender == "other" || gender == "unisex")
-        itemInfo->setSprite(filename, Gender::HIDDEN, race);
 }
 
 static void loadSoundRef(ItemInfo *const itemInfo, XmlNodeConstPtr node)
