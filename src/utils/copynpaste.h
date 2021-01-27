@@ -2,6 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2001-2010  Wormux Team
  *  Copyright (C) 2011-2019  The ManaPlus Developers
+ *  Copyright (C) 2019-2021  Andrei Karas
  *
  *  This file is part of The ManaPlus Client.
  *

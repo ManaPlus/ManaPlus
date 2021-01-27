@@ -1,6 +1,7 @@
 /*
  *  The ManaPlus Client
  *  Copyright (C) 2013-2019  The ManaPlus Developers
+ *  Copyright (C) 2009-2021  Andrei Karas
  *
  *  This file is part of The ManaPlus Client.
  *
@@ -40,6 +41,7 @@
  *  This file was written by Ryan C. Gordon. (icculus@icculus.org).
  *
  *  Copyright (C) 2012-2019  The ManaPlus Developers
+ *  Copyright (C) 2009-2021  Andrei Karas
  */
 
 #ifndef SRC_FS_VIRTFSRWOPS_H

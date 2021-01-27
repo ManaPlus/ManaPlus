@@ -3,6 +3,7 @@
  *  Copyright (C) 2007-2009  The Mana World Development Team
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2019  The ManaPlus Developers
+ *  Copyright (C) 2019-2021  Andrei Karas
  *
  *  This file is part of The ManaPlus Client.
  *
