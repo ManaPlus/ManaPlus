@@ -1,7 +1,6 @@
 idxdir = $(pkgdatadir)/data/help/idx
 
 idx_DATA =				\
-	about-tmw.idx \
 	about.idx \
 	chatcommands.idx \
 	chatguild.idx \

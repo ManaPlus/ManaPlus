@@ -21,12 +21,6 @@
 ##2     #manaplus #evolonline ##9@##2 irc.freenode.net
 
 
- <<For TMW support:>>
-
-##2     @@http://forums.themanaworld.org/viewforum.php?f=3|http://forums.themanaworld.org@@
- <<or come visit us on our IRC channel:>>
-##2     #themanaworld ##9@##2 irc.freenode.net
-
  <<Otherwise see the @@team|Development Team@@ section to have a list of
  developers and how to contact them.>>
 

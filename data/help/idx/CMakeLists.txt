@@ -1,5 +1,4 @@
 SET(FILES
-    about-tmw.idx
     about.idx
     chatcommands.idx
     chatguild.idx

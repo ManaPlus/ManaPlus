@@ -14,8 +14,6 @@
  -> @@team|<<Manaplus Developers>>, http://manaplus.org@@
 
 ##9 Copyright (C) 2004-2017  The Mana World Development Team
- -> @@about-tmw|<<About The Mana World>>@@
-
  -> @@about-server|<<About current server>>@@
 
 ##9 <<For other servers may exists other copyrights.>>
