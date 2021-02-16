@@ -80,6 +80,7 @@ gcc-8-i386:
 gcc-snapshot_sdl2:
   stage: prebuild
   script:
+  - export PATH="/usr/lib/gcc-snapshot/bin:/usr/lib/gcc-snapshot/lib:$PATH"
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
