@@ -112,12 +112,12 @@ void LoginHandler::registerAccount(const LoginData *const loginData1) const
     switch (loginData1->gender)
     {
         case Gender::FEMALE:
+        case Gender::UNSPECIFIED:
             username.append("_F");
             break;
         case Gender::MALE:
             username.append("_M");
             break;
-        case Gender::UNSPECIFIED:
         default:
             break;
     }
