@@ -2553,6 +2553,8 @@ std::string Being::getGenderSign() const restrict2
             str = "\u2640";
         else if (getGender() == Gender::MALE)
             str = "\u2642";
+        else if (mType == ActorType::Player)
+            str = "\u2640";
     }
     if (mShowPlayersStatus &&
         mShowBadges == BadgeDrawType::Hide)
