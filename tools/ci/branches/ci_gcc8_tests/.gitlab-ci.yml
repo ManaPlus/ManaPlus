@@ -23,6 +23,7 @@
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_sanitize_tests.sh --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   - ldd ./src/manaplustests | grep "libasan"
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -41,6 +42,7 @@
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_sanitize_tests.sh --enable-glibcdebug --enable-unittests=doctest --without-dyecmd --without-manaplusgame
   - ldd ./src/manaplustests | grep "libasan"
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -74,6 +76,7 @@ gcc-8_tests_simd:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests_simd.sh --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -89,6 +92,7 @@ gcc-8_tests_O0:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests_simd.sh --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-O0"
@@ -105,6 +109,7 @@ gcc-8_tests_O1:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests_simd.sh --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-O1"
@@ -121,6 +126,7 @@ gcc-8_tests_lto:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-ffast-math -O9 -flto -fwhole-program -funswitch-loops"
@@ -137,6 +143,7 @@ gcc-8_tests_lto_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   image: i386/debian:unstable
   variables:
@@ -171,6 +178,7 @@ gcc-8_tests_flags:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-stldebug
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -186,6 +194,7 @@ gcc-8_tests:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -219,6 +228,7 @@ gcc-8_sdl2_tests_i386:
   - echo test valgrind
   - valgrind -q --read-var-info=yes --track-origins=yes --malloc-fill=11 --free-fill=55 --show-reachable=yes --leak-check=full --leak-resolution=high --partial-loads-ok=yes --error-limit=no ./src/manaplustests 2>logs/valg.log
   - grep "invalid" logs/valg.log && exit 1 || true
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -254,6 +264,7 @@ gcc-8_separate_doctest:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -269,6 +280,7 @@ gcc-8_separate_doctest_sanitize:
   - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd
   - ./tools/ci/scripts/separateunittests.sh
   - ldd ./src/manaplustests | grep "libasan"
+  image: debian:buster
   <<: *job-push
   variables:
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
@@ -294,6 +306,7 @@ gcc-8_separate_doctest_sanitize_sdl2:
   - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin=doctest --without-manaplusgame --without-dyecmd --with-sdl2
   - ./tools/ci/scripts/separateunittests.sh
   - ldd ./src/manaplustests | grep "libasan"
+  image: debian:buster
   <<: *job-push
   variables:
     LSAN_OPTIONS: "suppressions=./tools/ci/scripts/lsansuppression_tests.txt"
@@ -352,6 +365,7 @@ gcc-8_all_and_unittestsbin:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_silent.sh --enable-unittestsbin
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -365,6 +379,7 @@ gcc-8_systemcatch_tests:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --enable-unittests=systemcatch --without-dyecmd --without-manaplusgame 
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -381,6 +396,7 @@ gcc-8_systemdoctest_tests:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --enable-unittests=systemdoctest --without-dyecmd --without-manaplusgame 
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -397,6 +413,7 @@ gcc-8_unsigned_char_tests:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-funsigned-char"
@@ -412,6 +429,7 @@ gcc-8_sdl2_unsigned_char_tests:
   stage: build
   script:
   - ./tools/ci/jobs/gcc8_tests.sh --with-sdl2 --without-dyecmd --without-manaplusgame
+  image: debian:buster
   <<: *job-push
   variables:
     POST_CXXFLAGS: "-funsigned-char"

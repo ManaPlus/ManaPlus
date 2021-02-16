@@ -21,6 +21,7 @@ gcc-8_pugixml_tests:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -36,7 +37,7 @@ gcc-8_pugixml_tests_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-libxml=pugixml
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -53,6 +54,7 @@ gcc-8_pugixml:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -67,7 +69,7 @@ gcc-8_pugixml_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -81,6 +83,7 @@ gcc-8_pugixml_sdl2:
   script:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380
@@ -95,6 +98,7 @@ gcc-8_pugixml_sdl2_i386:
   script:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-libxml=pugixml
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380

@@ -21,7 +21,7 @@ gcc-8_tests_glibcdebug_i386:
   script:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_tests.sh --without-dyecmd --without-manaplusgame --enable-glibcdebug
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -38,6 +38,7 @@ gcc-8_glibcdebug:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -53,7 +54,7 @@ gcc-8_glibcdebug_i386:
   - ./tools/ci/jobs/gcc8.sh --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
@@ -66,6 +67,7 @@ gcc-8_glibcdebug_sdl2:
   script:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380
@@ -81,7 +83,7 @@ gcc-8_glibcdebug_sdl2_i386:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2 --enable-glibcdebug --without-dyecmd
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
     ABOUTYOFFSET: 380
     PACKAGES: gcc-8 g++-8 

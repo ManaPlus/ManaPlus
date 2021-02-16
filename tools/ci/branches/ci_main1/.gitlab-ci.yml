@@ -124,6 +124,7 @@ gcc8_without_mumble_sdl1:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --without-mumble --enable-werror
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -137,6 +138,7 @@ gcc8_without_mumble_sdl2:
   script:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2 --without-mumble --enable-werror
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380
@@ -152,6 +154,7 @@ gcc_portable:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --with-opengl --enable-tmwa --enable-portable=yes
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -166,6 +169,7 @@ gcc-8_no_asserts:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --disable-asserts
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -181,7 +185,7 @@ gcc-8_default_i386:
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
     LOGFILE: gcc8.log
     CC: gcc-8
@@ -202,7 +206,7 @@ gcc-8_openglerrors_i386:
   - ./tools/ci/jobs/gcc8.sh --enable-openglerrors
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
     PACKAGES: gcc-8 g++-8 
               make autoconf automake autopoint gettext 
@@ -216,6 +220,7 @@ gcc-8_openglerrors:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-openglerrors
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -230,6 +235,7 @@ gcc-8_unsigned_char:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -244,6 +250,7 @@ gcc-8_unsigned_char_sdl2:
   script:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380
@@ -260,6 +267,7 @@ gcc-8_password:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh --enable-commandlinepassword
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -273,6 +281,7 @@ gcc-8_password_sdl2:
   script:
   - ./tools/ci/jobs/gcc8.sh --enable-commandlinepassword --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380

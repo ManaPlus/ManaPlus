@@ -22,7 +22,7 @@ gcc-8-i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh
   - ./tools/ci/scripts/runtests.sh
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -39,6 +39,7 @@ gcc-8:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8.sh
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -52,6 +53,7 @@ gcc-8_sdl2:
   script:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380
@@ -66,8 +68,9 @@ gcc-8_sdl2_i386:
   script:
   - ./tools/ci/jobs/gcc8.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
-  image: i386/debian:unstable
+  image: i386/debian:buster
   variables:
     ABOUTYOFFSET: 380
     PACKAGES: gcc-8 g++-8 
@@ -82,6 +85,7 @@ gcc-8_default:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/any_compiler.sh --enable-werror
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     LOGFILE: gcc8.log
@@ -100,6 +104,7 @@ gcc-8_sanitize:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_sanitize.sh
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -115,6 +120,7 @@ gcc-8_sanitize_sdl2:
   script:
   - ./tools/ci/jobs/gcc8_sanitize.sh --with-sdl2
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     ABOUTYOFFSET: 380
@@ -132,6 +138,7 @@ gcc-8_lto:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_lto.sh
   - ./tools/ci/scripts/runtests.sh
+  image: debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
@@ -147,7 +154,7 @@ gcc-8_lto_i386:
   - ./tools/ci/scripts/patchsdl1.sh
   - ./tools/ci/jobs/gcc8_lto.sh
   - ./tools/ci/scripts/runtests.sh
-  image: i386/debian:unstable
+  image: i386/debian:buster
   <<: *job-push
   variables:
     PACKAGES: gcc-8 g++-8 
