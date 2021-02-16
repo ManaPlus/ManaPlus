@@ -97,8 +97,8 @@ RegisterDialog::RegisterDialog(LoginData &data) :
         mMaleButton = new RadioButton(this, _("Male"), "sex", true);
         // TRANSLATORS: register dialog. button.
         mFemaleButton = new RadioButton(this, _("Female"), "sex", false);
-        placer(1, row, mMaleButton, 1, 1);
-        placer(2, row, mFemaleButton, 1, 1);
+        placer(0, row, mMaleButton, 1, 1);
+        placer(1, row, mFemaleButton, 1, 1);
 
         row++;
     }
