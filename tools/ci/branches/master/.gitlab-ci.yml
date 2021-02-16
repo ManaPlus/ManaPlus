@@ -78,6 +78,8 @@ gcc-6-i386:
 gcc-snapshot_sdl2:
   stage: build
   script:
+  - export PATH="/usr/lib/gcc-snapshot/bin:/usr/lib/gcc-snapshot/lib:$PATH"
+  - export LD_LIBRARY_PATH="/usr/lib/gcc-snapshot/lib:$LD_LIBRARY_PATH"
   - ./tools/ci/jobs/gccsnapshot_sdl2.sh
   - ./tools/ci/scripts/runtests.sh
   <<: *job-push
