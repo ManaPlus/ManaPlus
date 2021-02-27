@@ -149,4 +149,7 @@ emotes, icons
 ##9Cori Samuel
 ##9psi-plus contributors
 
+##3== <<Music>> ==
+##9Obani
+
 @@otherteam|Mana contributors@@
