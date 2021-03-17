@@ -1,3 +1,17 @@
+2021-03-17 New release 2.1.3.17
+fix: clear background under too small maps.
+fix: porting fix for mumblemanager from NetBSD.
+fix: alternate ip address for char and map servers.
+fix: back to login button in world selection window.
+fix: foreground theme color in popups.
+add: separate auto move sync distance for legacy servers.
+add: support for items with id bigger than 65535.
+add: chat command /trimmemory for force trim freed memory.
+add: switch game console support in source (by cpasjuste).
+update: golden delicious theme.
+change: protocol version changed to 26.
+change: installed desktop icon type to svg (*nix).
+
 2019-03-23 New release 1.9.3.23
 fix: guild members in 2018 packet versions.
 fix: dynamic walls on windows.
