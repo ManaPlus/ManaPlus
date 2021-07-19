@@ -684,9 +684,6 @@ void Game::slowLogic()
     const time_t time = cur_time;
     if (mTime != time)
     {
-        if (valTest(Updated))
-            mValidSpeed = false;
-
         mTime = time + 1;
         if (debugWindow != nullptr)
             debugWindow->slowLogic();
@@ -1249,7 +1246,6 @@ void Game::updateHistory(const SDL_Event &event)
 void Game::checkKeys()
 {
     const int timeRange = 120;
-    const int cntInTime = 130;
 
     if ((localPlayer == nullptr) || (settings.attackType == 0U))
         return;
@@ -1262,8 +1258,6 @@ void Game::checkKeys()
         {
             if (lastKey.time + timeRange < time)
             {
-                if (lastKey.cnt > cntInTime)
-                    mValidSpeed = false;
                 lastKey.key = InputAction::NO_VALUE;
             }
         }
