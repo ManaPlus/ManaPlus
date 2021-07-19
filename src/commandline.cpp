@@ -136,7 +136,7 @@ static void printVersion()
 
 void parseOptions(const int argc, char *const argv[])
 {
-    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r:e:V";
+    const char *const optstring = "hvud:U:P:Dc:p:y:l:L:C:s:t:T:a:r:e:V:S";
 
     const option long_options[] =
     {
@@ -166,6 +166,7 @@ void parseOptions(const int argc, char *const argv[])
         { "hide-cursor",    no_argument,       nullptr, 'q' },
         { "error",          no_argument,       nullptr, 'e' },
         { "validate",       no_argument,       nullptr, 'V' },
+        { "unique-session", no_argument,       nullptr, 'S' },
         { nullptr,          0,                 nullptr, 0 }
     };
 
