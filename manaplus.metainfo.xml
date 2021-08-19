@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application>
+<component>
   <id type="desktop">manaplus.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0</project_license>
@@ -18,15 +18,21 @@
 	interactive world.
     </p>
   </description>
-  <url type="homepage">http://manaplus.org/</url>
+  <url type="homepage">https://manaplus.org/</url>
   <screenshots>
-    <screenshot type="default">http://manaplus.org/_media/manaplus_screenshot_8.png</screenshot>
-    <screenshot>http://manaplus.org/_media/manaplus_screenshot_11.png</screenshot>
-    <screenshot>http://manaplus.org/_media/manaplus_screenshot_15.png</screenshot>
+    <screenshot type="default">
+        <image type="source">https://manaplus.org/_media/manaplus_screenshot_8.png</image>
+    </screenshot>
+    <screenshot>
+        <image type="source">https://manaplus.org/_media/manaplus_screenshot_11.png</image>
+    </screenshot>
+    <screenshot>
+        <image type="source">https://manaplus.org/_media/manaplus_screenshot_15.png</image>
+    </screenshot>
   </screenshots>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">mild</content_attribute>
     <content_attribute id="violence-fantasy">mild</content_attribute>
     <content_attribute id="social-chat">intense</content_attribute>
   </content_rating>
-</application>
+</component>
