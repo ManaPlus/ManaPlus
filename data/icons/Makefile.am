@@ -10,7 +10,7 @@ icons_DATA = manaplus.png \
 
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(datarootdir)/icons/hicolor/scalable/apps
-	$(INSTALL) $(srcdir)/manaplus.svg $(DESTDIR)$(datarootdir)/icons/hicolor/scalable/apps/manaplus.svg
+	$(INSTALL_DATA) $(srcdir)/manaplus.svg $(DESTDIR)$(datarootdir)/icons/hicolor/scalable/apps/manaplus.svg
 
 uninstall-local:
 	rm -f $(DESTDIR)$(datarootdir)/icons/hicolor/scalable/apps/manaplus.svg
