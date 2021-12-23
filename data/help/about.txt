@@ -10,7 +10,12 @@
  and diverse interactive world. It is licensed under the GPL, making
  sure this game can't ever run away from you.>>
 
-##9 Copyright (C) 2012-2017  The ManaPlus Developers
+##3                      === <<Donation>> ===
+  Bitcoin - 1Gi24vFaa92f5gLyoHwhiz8A5EYFexv9gn
+  Litecoin - MPt5Ke7wD63F3YnbG32kCAUJ7KpCD9EWi7
+  <<@@https://manaplus.org/donate|https://manaplus.org/donate@@>>
+
+##9 Copyright (C) 2012-2021  The ManaPlus Developers
  -> @@team|<<Manaplus Developers>>, http://manaplus.org@@
 
 ##9 Copyright (C) 2004-2017  The Mana World Development Team

@@ -4,6 +4,12 @@
 
 Version: 2.1.3.17        Date: 2021-03-17
 
+### Donation
+
+Bitcoin - 1Gi24vFaa92f5gLyoHwhiz8A5EYFexv9gn
+
+Litecoin - MPt5Ke7wD63F3YnbG32kCAUJ7KpCD9EWi7
+
 ### Build status
 
 Gitlab CI: [![gitlab build status](https://gitlab.com/manaplus/manaplus/badges/master/build.svg)](https://gitlab.com/manaplus/manaplus/commits/master)
