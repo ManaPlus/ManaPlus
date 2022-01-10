@@ -2,7 +2,7 @@
  *  The ManaPlus Client
  *  Copyright (C) 2009-2010  The Mana Developers
  *  Copyright (C) 2011-2019  The ManaPlus Developers
- *  Copyright (C) 2009-2021  Andrei Karas
+ *  Copyright (C) 2009-2022  Andrei Karas
  *
  *  This file is part of The ManaPlus Client.
  *
