@@ -101,7 +101,7 @@ class Palette notfinal
 
         struct ColorElem final
         {
-            ColorElem() :
+            ColorElem() noexcept2 :
                 type(0),
                 color(0),
                 testColor(0),
