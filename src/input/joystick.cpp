@@ -47,7 +47,7 @@ bool Joystick::mEnabled = false;
 Joystick::Joystick(const int no) :
     mDirection(0),
     mJoystick(nullptr),
-    mAxisThreshold(0f),
+    mAxisThreshold(0.0f),
     mUpTolerance(0),
     mDownTolerance(0),
     mLeftTolerance(0),
