@@ -35,6 +35,7 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/slider.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -58,11 +59,14 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mNamesModel(new NamesModel),
     mNamesDropDown(new DropDown(this, mNamesModel,
         false, Modal_false, nullptr, std::string())),
+    mAxisThresholdLabel(new Label(this)),
+    mAxisThresholdSlider(new Slider(this, 0.01, 1, 0.01)),
     mUseInactiveCheckBox(new CheckBox(this,
         // TRANSLATORS: joystick settings tab checkbox
         _("Use joystick if client window inactive"),
         config.getBoolValue("useInactiveJoystick"),
         nullptr, std::string())),
+    mAxisThreshold(config.getFloatValue("axisThreshold")),
     mOriginalJoystickEnabled(config.getBoolValue("joystickEnabled"))
 {
     // TRANSLATORS: joystick settings tab name
@@ -74,9 +78,16 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mJoystickEnabled->setActionEventId("joystick");
     mJoystickEnabled->addActionListener(this);
     mCalibrateButton->setEnabled(mOriginalJoystickEnabled);
+    // TRANSLATORS: joystick settings tab label
+    mAxisThresholdLabel->setCaption(_("Axis threshold: ") + strprintf("%.2f", mAxisThreshold));
+    mAxisThresholdLabel->setWidth(150);
+    mAxisThresholdLabel->setHeight(20);
+    mAxisThresholdSlider->setValue(mAxisThreshold);
 
     mNamesDropDown->setActionEventId("name");
     mNamesDropDown->addActionListener(this);
+    mAxisThresholdSlider->setActionEventId("axisthresholdslider");
+    mAxisThresholdSlider->addActionListener(this);
 
     if (joystick != nullptr)
     {
@@ -96,12 +107,16 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
 
     place(0, 0, mJoystickEnabled, 1, 1);
     place(0, 1, mNamesDropDown, 1, 1);
-    place(0, 2, mUseInactiveCheckBox, 1, 1);
-    place(0, 3, mDetectButton, 1, 1);
-    place(0, 4, mCalibrateLabel, 1, 1);
-    place(0, 5, mCalibrateButton, 1, 1);
 
-    setDimension(Rect(0, 0, 365, 75));
+    place(0, 2, mAxisThresholdSlider, 1, 1);
+    place(1, 2, mAxisThresholdLabel, 1, 1).setPadding(3);
+
+    place(0, 3, mUseInactiveCheckBox, 1, 1);
+    place(0, 4, mDetectButton, 1, 1);
+    place(0, 5, mCalibrateLabel, 1, 1);
+    place(0, 6, mCalibrateButton, 1, 1);
+
+    setDimension(Rect(0, 0, 365, 95));
 }
 
 Setup_Joystick::~Setup_Joystick()
@@ -129,6 +144,12 @@ void Setup_Joystick::action(const ActionEvent &event)
             Joystick::getNames(mNamesModel->getNames());
             mNamesDropDown->setSelected(joystick->getNumber());
         }
+    }
+    else if (source == mAxisThresholdSlider)
+    {
+        mAxisThreshold = mAxisThresholdSlider->getValue();
+        // TRANSLATORS: joystick settings tab label
+        mAxisThresholdLabel->setCaption(_("Axis threshold: ") + strprintf("%.2f", mAxisThreshold));
     }
     else
     {
@@ -188,4 +209,6 @@ void Setup_Joystick::apply()
 
     config.setValue("useInactiveJoystick", mUseInactiveCheckBox->isSelected());
     joystick->setUseInactive(mUseInactiveCheckBox->isSelected());
+    config.setValue("axisThreshold", mAxisThreshold);
+    joystick->setAxisThreshold(mAxisThreshold);
 }

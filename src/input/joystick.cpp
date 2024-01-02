@@ -47,6 +47,7 @@ bool Joystick::mEnabled = false;
 Joystick::Joystick(const int no) :
     mDirection(0),
     mJoystick(nullptr),
+    mAxisThreshold(0f),
     mUpTolerance(0),
     mDownTolerance(0),
     mLeftTolerance(0),
@@ -188,6 +189,7 @@ bool Joystick::open()
     mCalibrated = config.getValueBool("joystick"
         + toString(mNumber) + "calibrated", false);
 
+    mAxisThreshold = config.getFloatValue("axisThreshold");
     mUpTolerance = config.getIntValue("upTolerance" + toString(mNumber));
     mDownTolerance = config.getIntValue("downTolerance" + toString(mNumber));
     mLeftTolerance = config.getIntValue("leftTolerance" + toString(mNumber));
@@ -251,16 +253,16 @@ void Joystick::logic()
     {
         // X-Axis
         int position = SDL_JoystickGetAxis(mJoystick, 0);
-        if (position >= mRightTolerance)
+        if (position >= mRightTolerance * mAxisThreshold)
             mDirection |= RIGHT;
-        else if (position <= mLeftTolerance)
+        else if (position <= mLeftTolerance * mAxisThreshold)
             mDirection |= LEFT;
 
         // Y-Axis
         position = SDL_JoystickGetAxis(mJoystick, 1);
-        if (position <= mUpTolerance)
+        if (position <= mUpTolerance * mAxisThreshold)
             mDirection |= UP;
-        else if (position >= mDownTolerance)
+        else if (position >= mDownTolerance * mAxisThreshold)
             mDirection |= DOWN;
 
 #ifdef DEBUG_JOYSTICK

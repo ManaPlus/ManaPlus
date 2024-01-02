@@ -117,6 +117,9 @@ class Joystick final
         int getNumber() const noexcept2 A_WARN_UNUSED
         { return mNumber; }
 
+        void setAxisThreshold(const float f)
+        { mAxisThreshold = f; }
+
         void setUseInactive(const bool b)
         { mUseInactive = b; }
 
@@ -145,6 +148,7 @@ class Joystick final
 
         SDL_Joystick *mJoystick;
 
+        float mAxisThreshold;
         int mUpTolerance;
         int mDownTolerance;
         int mLeftTolerance;
