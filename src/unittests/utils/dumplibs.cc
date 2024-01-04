@@ -57,7 +57,7 @@ TEST_CASE("dumplibs tests", "")
 #ifdef ENABLE_LIBXML
     SECTION("libxml2")
     {
-        const char **xmlVersion = __xmlParserVersion();
+        const char *const *xmlVersion = __xmlParserVersion();
         REQUIRE(xmlVersion != nullptr);
         REQUIRE(*xmlVersion != nullptr);
         REQUIRE(std::string(*xmlVersion) ==

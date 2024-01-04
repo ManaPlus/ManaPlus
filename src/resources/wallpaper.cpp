@@ -37,11 +37,9 @@
 
 #ifdef WIN32
 #include <sys/time.h>
-#endif  // WIN32
-
-#ifdef __clang__
+#else  // WIN32
 #include <ctime>
-#endif  // __clang__
+#endif  // WIN32
 
 #include "debug.h"
 
