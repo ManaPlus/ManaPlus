@@ -24,6 +24,10 @@
 
 #ifdef ENABLE_LIBXML
 
+#ifdef HAVE_LIBXML2
+#include <libxml/parser.h>
+#endif  // HAVE_LIBXML2
+
 #include <libxml/xmlwriter.h>
 
 __XML_XMLWRITER_H__
