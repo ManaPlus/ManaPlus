@@ -93,13 +93,6 @@ class Joystick final
          */
         void logic();
 
-        void startCalibration();
-
-        void finishCalibration();
-
-        bool isCalibrating() const noexcept2 A_WARN_UNUSED
-        { return mCalibrating; }
-
         bool buttonPressed(const unsigned char no) const A_WARN_UNUSED;
 
         bool isUp() const noexcept2 A_WARN_UNUSED
@@ -149,9 +142,7 @@ class Joystick final
         SDL_Joystick *mJoystick;
 
         int mTolerance;
-        bool mCalibrating;
         int mNumber;
-        bool mCalibrated;
         int mButtonsNumber;
         bool mUseInactive;
         bool mHaveHats;
@@ -167,8 +158,6 @@ class Joystick final
          */
         static bool mEnabled;
         static int joystickCount;
-
-        void doCalibration();
 };
 
 extern Joystick *joystick;

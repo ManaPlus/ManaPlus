@@ -44,12 +44,6 @@
 
 Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     SetupTab(widget),
-    mCalibrateLabel(new Label(this,
-        // TRANSLATORS: joystick settings tab label
-        _("Press the button to start calibration"))),
-    // TRANSLATORS: joystick settings tab button
-    mCalibrateButton(new Button(this, _("Calibrate"), "calibrate",
-        BUTTON_SKIN, this)),
     // TRANSLATORS: joystick settings tab button
     mDetectButton(new Button(this, _("Detect joysticks"), "detect",
         BUTTON_SKIN, this)),
@@ -76,7 +70,6 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mJoystickEnabled->setSelected(mOriginalJoystickEnabled);
     mJoystickEnabled->setActionEventId("joystick");
     mJoystickEnabled->addActionListener(this);
-    mCalibrateButton->setEnabled(mOriginalJoystickEnabled);
 
     int tolerance = config.getIntValue("joystickTolerance");
     mToleranceSlider->setValue(tolerance);
@@ -114,10 +107,8 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
 
     place(0, 3, mUseInactiveCheckBox, 1, 1);
     place(0, 4, mDetectButton, 1, 1);
-    place(0, 5, mCalibrateLabel, 1, 1);
-    place(0, 6, mCalibrateButton, 1, 1);
 
-    setDimension(Rect(0, 0, 365, 95));
+    setDimension(Rect(0, 0, 365, 60));
 }
 
 Setup_Joystick::~Setup_Joystick()
@@ -152,36 +143,11 @@ void Setup_Joystick::action(const ActionEvent &event)
             mNamesDropDown->setSelected(joystick->getNumber());
         }
     }
-    else
-    {
-        if (joystick == nullptr)
-            return;
-
-        if (joystick->isCalibrating())
-        {
-            // TRANSLATORS: joystick settings tab button
-            mCalibrateButton->setCaption(_("Calibrate"));
-            mCalibrateLabel->setCaption
-                // TRANSLATORS: joystick settings tab label
-                (_("Press the button to start calibration"));
-            joystick->finishCalibration();
-        }
-        else
-        {
-            // TRANSLATORS: joystick settings tab button
-            mCalibrateButton->setCaption(_("Stop"));
-            mCalibrateLabel->setCaption(
-                // TRANSLATORS: joystick settings tab label
-                _("Rotate the stick and don't press buttons"));
-            joystick->startCalibration();
-        }
-    }
 }
 
 void Setup_Joystick::setTempEnabled(const bool sel)
 {
     Joystick::setEnabled(sel);
-    mCalibrateButton->setEnabled(sel);
     if (joystick != nullptr)
     {
         if (sel)

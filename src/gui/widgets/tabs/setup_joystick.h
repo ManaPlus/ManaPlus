@@ -51,8 +51,6 @@ class Setup_Joystick final : public SetupTab
         void setTempEnabled(const bool sel);
 
     private:
-        Label *mCalibrateLabel A_NONNULLPOINTER;
-        Button *mCalibrateButton A_NONNULLPOINTER;
         Button *mDetectButton A_NONNULLPOINTER;
         CheckBox *mJoystickEnabled A_NONNULLPOINTER;
         NamesModel *mNamesModel A_NONNULLPOINTER;

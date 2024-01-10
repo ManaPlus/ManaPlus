@@ -48,9 +48,7 @@ Joystick::Joystick(const int no) :
     mDirection(0),
     mJoystick(nullptr),
     mTolerance(0),
-    mCalibrating(false),
     mNumber(no >= joystickCount ? joystickCount : no),
-    mCalibrated(false),
     mButtonsNumber(MAX_BUTTONS),
     mUseInactive(false),
     mHaveHats(false),
@@ -176,12 +174,8 @@ bool Joystick::open()
         mButtonsNumber = MAX_BUTTONS;
 
 #ifdef __SWITCH__
-    config.setValue("joystick" + toString(mNumber) + "calibrated", true);
     config.setValue("joystickTolerance", 10000);
 #endif
-    mCalibrated = config.getValueBool("joystick"
-        + toString(mNumber) + "calibrated", false);
-
     mTolerance = config.getIntValue("joystickTolerance");
     mUseInactive = config.getBoolValue("useInactiveJoystick");
 
@@ -221,15 +215,7 @@ void Joystick::setNumber(const int n)
 void Joystick::logic()
 {
     BLOCK_START("Joystick::logic")
-    // When calibrating, don't bother the outside with our state
-    if (mCalibrating)
-    {
-        doCalibration();
-        BLOCK_END("Joystick::logic")
-        return;
-    }
-
-    if (!mEnabled || !mCalibrated)
+    if (!mEnabled)
     {
         BLOCK_END("Joystick::logic")
         return;
@@ -296,37 +282,6 @@ void Joystick::logic()
             mActiveButtons[i] = false;
     }
     BLOCK_END("Joystick::logic")
-}
-
-void Joystick::startCalibration()
-{
-    mTolerance = 0;
-    mCalibrating = true;
-}
-
-void Joystick::doCalibration()
-{
-    // X-Axis
-    int position = SDL_JoystickGetAxis(mJoystick, 0);
-    if (position > mTolerance)
-        mTolerance = position;
-    else if (position < -mTolerance)
-        mTolerance = -position;
-
-    // Y-Axis
-    position = SDL_JoystickGetAxis(mJoystick, 1);
-    if (position > mTolerance)
-        mTolerance = position;
-    else if (position < -mTolerance)
-        mTolerance = -position;
-}
-
-void Joystick::finishCalibration()
-{
-    mCalibrated = true;
-    mCalibrating = false;
-    config.setValue("joystick" + toString(mNumber) + "calibrated", true);
-    config.setValue("joystickTolerance", mTolerance);
 }
 
 bool Joystick::buttonPressed(const unsigned char no) const
@@ -399,7 +354,7 @@ bool Joystick::isActionActive(const InputActionT index) const
 
 bool Joystick::validate() const
 {
-    if (mCalibrating || !mEnabled || !mCalibrated)
+    if (!mEnabled)
         return false;
 
     return mUseInactive ||
