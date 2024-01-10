@@ -117,6 +117,9 @@ class Joystick final
         int getNumber() const noexcept2 A_WARN_UNUSED
         { return mNumber; }
 
+        void setTolerance(const int tolerance)
+        { mTolerance = tolerance; }
+
         void setUseInactive(const bool b)
         { mUseInactive = b; }
 

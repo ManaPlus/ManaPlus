@@ -31,6 +31,7 @@ class CheckBox;
 class DropDown;
 class Label;
 class NamesModel;
+class Slider;
 
 class Setup_Joystick final : public SetupTab
 {
@@ -56,6 +57,8 @@ class Setup_Joystick final : public SetupTab
         CheckBox *mJoystickEnabled A_NONNULLPOINTER;
         NamesModel *mNamesModel A_NONNULLPOINTER;
         DropDown *mNamesDropDown A_NONNULLPOINTER;
+        Label *mToleranceLabel A_NONNULLPOINTER;
+        Slider *mToleranceSlider A_NONNULLPOINTER;
         CheckBox *mUseInactiveCheckBox A_NONNULLPOINTER;
         bool mOriginalJoystickEnabled A_NONNULLPOINTER;
 };

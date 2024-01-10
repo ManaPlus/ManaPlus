@@ -177,12 +177,12 @@ bool Joystick::open()
 
 #ifdef __SWITCH__
     config.setValue("joystick" + toString(mNumber) + "calibrated", true);
-    config.setValue("joystickTolerance" + toString(mNumber), 10000);
+    config.setValue("joystickTolerance", 10000);
 #endif
     mCalibrated = config.getValueBool("joystick"
         + toString(mNumber) + "calibrated", false);
 
-    mTolerance = config.getIntValue("joystickTolerance" + toString(mNumber));
+    mTolerance = config.getIntValue("joystickTolerance");
     mUseInactive = config.getBoolValue("useInactiveJoystick");
 
     return true;
@@ -326,7 +326,7 @@ void Joystick::finishCalibration()
     mCalibrated = true;
     mCalibrating = false;
     config.setValue("joystick" + toString(mNumber) + "calibrated", true);
-    config.setValue("joystickTolerance" + toString(mNumber), mTolerance);
+    config.setValue("joystickTolerance", mTolerance);
 }
 
 bool Joystick::buttonPressed(const unsigned char no) const
