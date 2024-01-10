@@ -43,6 +43,7 @@ PRAGMA48(GCC diagnostic pop)
 Joystick *joystick = nullptr;
 int Joystick::joystickCount = 0;
 bool Joystick::mEnabled = false;
+bool Joystick::mInitialized = false;
 
 Joystick::Joystick(const int no) :
     mDirection(0),
@@ -72,21 +73,41 @@ Joystick::~Joystick()
 
 void Joystick::init()
 {
-    SDL_InitSubSystem(SDL_INIT_JOYSTICK);
     // +++ possible to use SDL_EventState with different joystick features.
     SDL_JoystickEventState(SDL_ENABLE);
+    mEnabled = config.getBoolValue("joystickEnabled");
+    detect();
+}
+
+void Joystick::detect()
+{
+    // close current joystick device
+    if (joystick != nullptr)
+    {
+        delete joystick;
+        joystick = nullptr;
+    }
+
+    // need to completely reinitialize joystick subsystem
+    // because SDL does not support hotplugging
+    if (mInitialized)
+        SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
+    SDL_InitSubSystem(SDL_INIT_JOYSTICK);
+    mInitialized = true;
+
     joystickCount = SDL_NumJoysticks();
     logger->log("%i joysticks/gamepads found", joystickCount);
     for (int i = 0; i < joystickCount; i++)
         logger->log("- %s", SDL_JoystickNameForIndex(i));
 
-    mEnabled = config.getBoolValue("joystickEnabled");
-
     if (joystickCount > 0)
     {
         joystick = new Joystick(config.getIntValue("selectedJoystick"));
         if (mEnabled)
+        {
             joystick->open();
+            joystick->update();
+        }
     }
 }
 
@@ -205,12 +226,6 @@ void Joystick::close()
         SDL_JoystickClose(mJoystick);
         mJoystick = nullptr;
     }
-}
-
-void Joystick::reload()
-{
-    joystickCount = SDL_NumJoysticks();
-    setNumber(mNumber);
 }
 
 void Joystick::setNumber(const int n)

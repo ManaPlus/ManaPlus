@@ -59,6 +59,11 @@ class Joystick final
         static void init();
 
         /**
+         * Detects joysticks and (re)connects.
+         */
+        static void detect();
+
+        /**
          * Returns the number of available joysticks.
          */
         static int getNumberOfJoysticks() A_WARN_UNUSED
@@ -136,8 +141,6 @@ class Joystick final
 
         void resetRepeat(const int key);
 
-        void reload();
-
     protected:
         unsigned char mDirection;
 
@@ -166,6 +169,7 @@ class Joystick final
          * Is joystick support enabled.
          */
         static bool mEnabled;
+        static bool mInitialized;
         static int joystickCount;
 
         void doCalibration();
