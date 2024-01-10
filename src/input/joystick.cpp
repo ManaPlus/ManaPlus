@@ -47,10 +47,7 @@ bool Joystick::mEnabled = false;
 Joystick::Joystick(const int no) :
     mDirection(0),
     mJoystick(nullptr),
-    mUpTolerance(0),
-    mDownTolerance(0),
-    mLeftTolerance(0),
-    mRightTolerance(0),
+    mTolerance(0),
     mCalibrating(false),
     mNumber(no >= joystickCount ? joystickCount : no),
     mCalibrated(false),
@@ -180,18 +177,12 @@ bool Joystick::open()
 
 #ifdef __SWITCH__
     config.setValue("joystick" + toString(mNumber) + "calibrated", true);
-    config.setValue("leftTolerance" + toString(mNumber), -10000);
-    config.setValue("rightTolerance" + toString(mNumber), 10000);
-    config.setValue("upTolerance" + toString(mNumber), -10000);
-    config.setValue("downTolerance" + toString(mNumber), 10000);
+    config.setValue("joystickTolerance" + toString(mNumber), 10000);
 #endif
     mCalibrated = config.getValueBool("joystick"
         + toString(mNumber) + "calibrated", false);
 
-    mUpTolerance = config.getIntValue("upTolerance" + toString(mNumber));
-    mDownTolerance = config.getIntValue("downTolerance" + toString(mNumber));
-    mLeftTolerance = config.getIntValue("leftTolerance" + toString(mNumber));
-    mRightTolerance = config.getIntValue("rightTolerance" + toString(mNumber));
+    mTolerance = config.getIntValue("joystickTolerance" + toString(mNumber));
     mUseInactive = config.getBoolValue("useInactiveJoystick");
 
     return true;
@@ -251,16 +242,16 @@ void Joystick::logic()
     {
         // X-Axis
         int position = SDL_JoystickGetAxis(mJoystick, 0);
-        if (position >= mRightTolerance)
+        if (position >= mTolerance)
             mDirection |= RIGHT;
-        else if (position <= mLeftTolerance)
+        else if (position <= -mTolerance)
             mDirection |= LEFT;
 
         // Y-Axis
         position = SDL_JoystickGetAxis(mJoystick, 1);
-        if (position <= mUpTolerance)
+        if (position <= -mTolerance)
             mDirection |= UP;
-        else if (position >= mDownTolerance)
+        else if (position >= mTolerance)
             mDirection |= DOWN;
 
 #ifdef DEBUG_JOYSTICK
@@ -309,10 +300,7 @@ void Joystick::logic()
 
 void Joystick::startCalibration()
 {
-    mUpTolerance = 0;
-    mDownTolerance = 0;
-    mLeftTolerance = 0;
-    mRightTolerance = 0;
+    mTolerance = 0;
     mCalibrating = true;
 }
 
@@ -320,17 +308,17 @@ void Joystick::doCalibration()
 {
     // X-Axis
     int position = SDL_JoystickGetAxis(mJoystick, 0);
-    if (position > mRightTolerance)
-        mRightTolerance = position;
-    else if (position < mLeftTolerance)
-        mLeftTolerance = position;
+    if (position > mTolerance)
+        mTolerance = position;
+    else if (position < -mTolerance)
+        mTolerance = -position;
 
     // Y-Axis
     position = SDL_JoystickGetAxis(mJoystick, 1);
-    if (position > mDownTolerance)
-        mDownTolerance = position;
-    else if (position < mUpTolerance)
-        mUpTolerance = position;
+    if (position > mTolerance)
+        mTolerance = position;
+    else if (position < -mTolerance)
+        mTolerance = -position;
 }
 
 void Joystick::finishCalibration()
@@ -338,10 +326,7 @@ void Joystick::finishCalibration()
     mCalibrated = true;
     mCalibrating = false;
     config.setValue("joystick" + toString(mNumber) + "calibrated", true);
-    config.setValue("leftTolerance" + toString(mNumber), mLeftTolerance);
-    config.setValue("rightTolerance" + toString(mNumber), mRightTolerance);
-    config.setValue("upTolerance" + toString(mNumber), mUpTolerance);
-    config.setValue("downTolerance" + toString(mNumber), mDownTolerance);
+    config.setValue("joystickTolerance" + toString(mNumber), mTolerance);
 }
 
 bool Joystick::buttonPressed(const unsigned char no) const

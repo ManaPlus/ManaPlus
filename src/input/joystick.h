@@ -145,10 +145,7 @@ class Joystick final
 
         SDL_Joystick *mJoystick;
 
-        int mUpTolerance;
-        int mDownTolerance;
-        int mLeftTolerance;
-        int mRightTolerance;
+        int mTolerance;
         bool mCalibrating;
         int mNumber;
         bool mCalibrated;
