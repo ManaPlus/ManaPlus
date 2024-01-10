@@ -53,6 +53,9 @@ class Joystick final
             RIGHT = 8
         };
 
+        static const int AXIS_MIN = -32768;
+        static const int AXIS_MAX = 32767;
+
         /**
          * Initializes the joystick subsystem.
          */
@@ -110,7 +113,7 @@ class Joystick final
         int getNumber() const noexcept2 A_WARN_UNUSED
         { return mNumber; }
 
-        void setTolerance(const int tolerance)
+        void setTolerance(const float tolerance)
         { mTolerance = tolerance; }
 
         void setUseInactive(const bool b)
@@ -141,7 +144,7 @@ class Joystick final
 
         SDL_Joystick *mJoystick;
 
-        int mTolerance;
+        float mTolerance;
         int mNumber;
         int mButtonsNumber;
         bool mUseInactive;

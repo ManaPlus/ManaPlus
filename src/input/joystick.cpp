@@ -174,9 +174,9 @@ bool Joystick::open()
         mButtonsNumber = MAX_BUTTONS;
 
 #ifdef __SWITCH__
-    config.setValue("joystickTolerance", 10000);
+    config.setValue("joystickTolerance", 0.1F);
 #endif
-    mTolerance = config.getIntValue("joystickTolerance");
+    mTolerance = config.getFloatValue("joystickTolerance");
     mUseInactive = config.getBoolValue("useInactiveJoystick");
 
     return true;
@@ -228,16 +228,16 @@ void Joystick::logic()
     {
         // X-Axis
         int position = SDL_JoystickGetAxis(mJoystick, 0);
-        if (position >= mTolerance)
+        if (position >= mTolerance * AXIS_MAX)
             mDirection |= RIGHT;
-        else if (position <= -mTolerance)
+        else if (position <= mTolerance * AXIS_MIN)
             mDirection |= LEFT;
 
         // Y-Axis
         position = SDL_JoystickGetAxis(mJoystick, 1);
-        if (position <= -mTolerance)
+        if (position <= mTolerance * AXIS_MIN)
             mDirection |= UP;
-        else if (position >= mTolerance)
+        else if (position >= mTolerance * AXIS_MAX)
             mDirection |= DOWN;
 
 #ifdef DEBUG_JOYSTICK

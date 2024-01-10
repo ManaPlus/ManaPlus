@@ -54,7 +54,7 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mNamesDropDown(new DropDown(this, mNamesModel,
         false, Modal_false, nullptr, std::string())),
     mToleranceLabel(new Label(this)),
-    mToleranceSlider(new Slider(this, 1000, 32767, 1000)),
+    mToleranceSlider(new Slider(this, 0.01, 1, 0.01)),
     mUseInactiveCheckBox(new CheckBox(this,
         // TRANSLATORS: joystick settings tab checkbox
         _("Use joystick if client window inactive"),
@@ -71,10 +71,10 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mJoystickEnabled->setActionEventId("joystick");
     mJoystickEnabled->addActionListener(this);
 
-    int tolerance = config.getIntValue("joystickTolerance");
+    float tolerance = config.getFloatValue("joystickTolerance");
     mToleranceSlider->setValue(tolerance);
     // TRANSLATORS: joystick settings tab label
-    mToleranceLabel->setCaption(_("Axis tolerance: ") + strprintf("%d", tolerance));
+    mToleranceLabel->setCaption(_("Axis tolerance: ") + strprintf("%.2f", tolerance));
     mToleranceLabel->setWidth(150);
     mToleranceLabel->setHeight(20);
 
@@ -130,9 +130,9 @@ void Setup_Joystick::action(const ActionEvent &event)
     }
     else if (source == mToleranceSlider)
     {
-        int tolerance = mToleranceSlider->getValue();
+        float tolerance = mToleranceSlider->getValue();
         // TRANSLATORS: joystick settings tab label
-        mToleranceLabel->setCaption(_("Axis tolerance: ") + strprintf("%d", tolerance));
+        mToleranceLabel->setCaption(_("Axis tolerance: ") + strprintf("%.2f", tolerance));
     }
     else if (source == mDetectButton)
     {
@@ -177,7 +177,7 @@ void Setup_Joystick::apply()
     config.setValue("useInactiveJoystick", mUseInactiveCheckBox->isSelected());
     joystick->setUseInactive(mUseInactiveCheckBox->isSelected());
 
-    int tolerance = mToleranceSlider->getValue();
+    float tolerance = mToleranceSlider->getValue();
     config.setValue("joystickTolerance", tolerance);
     joystick->setTolerance(tolerance);
 }
