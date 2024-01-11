@@ -326,6 +326,11 @@ void Joystick::update()
         mKeyTimeMap, InputType::JOYSTICK);
 }
 
+bool Joystick::isActionEvent(const SDL_Event &event)
+{
+    return getButtonFromEvent(event) >= 0;
+}
+
 KeysVector *Joystick::getActionVector(const SDL_Event &event)
 {
     const int i = getButtonFromEvent(event);

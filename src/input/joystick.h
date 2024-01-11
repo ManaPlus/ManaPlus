@@ -136,6 +136,8 @@ class Joystick final
 
         void update();
 
+        bool isActionEvent(const SDL_Event &event) A_WARN_UNUSED;
+
         KeysVector *getActionVector(const SDL_Event &event) A_WARN_UNUSED;
 
         KeysVector *getActionVectorByKey(const int i) A_WARN_UNUSED;

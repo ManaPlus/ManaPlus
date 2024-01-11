@@ -710,7 +710,8 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
     if (gui != nullptr)
     {
         const bool res = gui->handleInput();
-        if (res && (event.type == SDL_KEYDOWN || event.type == SDL_JOYBUTTONDOWN))
+        const bool joystickActionEvent = joystick != nullptr && joystick->isActionEvent(event);
+        if (res && (event.type == SDL_KEYDOWN || joystickActionEvent))
         {
             BLOCK_END("InputManager::handleEvent")
             return true;
@@ -1084,7 +1085,7 @@ InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
             return idx;
         }
     }
-    if (joystick != nullptr && event.type == SDL_JOYBUTTONDOWN)
+    if (joystick != nullptr && joystick->isActionEvent(event))
     {
         const InputActionT idx = joystick->getActionId(event);
         if (CAST_S32(idx) >= 0 &&
