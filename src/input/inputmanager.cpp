@@ -417,7 +417,16 @@ std::string InputManager::getKeyStringLong(const InputActionT index) const
         else if (key.type == InputType::JOYSTICK)
         {
             // TRANSLATORS: long joystick button name. must be short.
-            str = strprintf(_("JButton%d"), key.value + 1);
+            if (key.value < Joystick::MAX_BUTTONS)
+                str = strprintf(_("JButton%d"), key.value + 1);
+            if (key.value == Joystick::KEY_UP)
+                str = _("JUp");
+            if (key.value == Joystick::KEY_DOWN)
+                str = _("JDown");
+            if (key.value == Joystick::KEY_LEFT)
+                str = _("JLeft");
+            if (key.value == Joystick::KEY_RIGHT)
+                str = _("JRight");
         }
         if (!str.empty())
         {
@@ -460,7 +469,16 @@ void InputManager::updateKeyString(const InputFunction &ki,
         else if (key.type == InputType::JOYSTICK)
         {
             // TRANSLATORS: short joystick button name. muse be very short
-            str = strprintf(_("JB%d"), key.value + 1);
+            if (key.value < Joystick::MAX_BUTTONS)
+                str = strprintf(_("JB%d"), key.value + 1);
+            if (key.value == Joystick::KEY_UP)
+                str = _("JUp");
+            if (key.value == Joystick::KEY_DOWN)
+                str = _("JDown");
+            if (key.value == Joystick::KEY_LEFT)
+                str = _("JLeft");
+            if (key.value == Joystick::KEY_RIGHT)
+                str = _("JRight");
         }
         if (!str.empty())
         {
@@ -650,6 +668,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
             break;
         }
         case SDL_JOYBUTTONDOWN:
+        case SDL_JOYHATMOTION:
         {
             updateConditionMask(true);
 //            joystick.handleActicateButton(event);
@@ -724,6 +743,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
 //            break;
 
         case SDL_JOYBUTTONDOWN:
+        case SDL_JOYHATMOTION:
             if ((joystick != nullptr) && joystick->validate())
             {
                 if (triggerAction(joystick->getActionVector(event)))

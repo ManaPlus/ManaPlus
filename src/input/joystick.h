@@ -43,6 +43,18 @@ class Joystick final
         };
 
         /**
+         * Additional "buttons" for hat 0 (d-pad).
+         */
+        enum
+        {
+            KEY_UP = MAX_BUTTONS,
+            KEY_DOWN,
+            KEY_LEFT,
+            KEY_RIGHT,
+            KEY_LAST = KEY_RIGHT
+        };
+
+        /**
          * Directions, to be used as bitmask values.
          */
         enum
@@ -96,7 +108,7 @@ class Joystick final
          */
         void logic();
 
-        bool buttonPressed(const unsigned char no) const A_WARN_UNUSED;
+        bool buttonPressed(const int no) const A_WARN_UNUSED;
 
         bool isUp() const noexcept2 A_WARN_UNUSED
         { return mEnabled && ((mDirection & UP) != 0); }
@@ -140,6 +152,7 @@ class Joystick final
     protected:
         unsigned char mDirection;
 
+        unsigned char mHatPosition;
         bool mActiveButtons[MAX_BUTTONS];
 
         SDL_Joystick *mJoystick;
