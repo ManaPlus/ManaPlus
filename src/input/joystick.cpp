@@ -342,6 +342,16 @@ KeysVector *Joystick::getActionVectorByKey(const int i)
     return nullptr;
 }
 
+InputActionT Joystick::getActionId(const SDL_Event &event)
+{
+    const int i = getButtonFromEvent(event);
+    if (i < 0)
+        return InputAction::NO_VALUE;
+    if (mKeyToId.find(i) != mKeyToId.end())
+        return mKeyToId[i];
+    return InputAction::NO_VALUE;
+}
+
 int Joystick::getButtonFromEvent(const SDL_Event &event) const
 {
     if (event.type == SDL_JOYBUTTONDOWN)

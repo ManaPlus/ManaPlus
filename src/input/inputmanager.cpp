@@ -710,7 +710,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
     if (gui != nullptr)
     {
         const bool res = gui->handleInput();
-        if (res && event.type == SDL_KEYDOWN)
+        if (res && (event.type == SDL_KEYDOWN || event.type == SDL_JOYBUTTONDOWN))
         {
             BLOCK_END("InputManager::handleEvent")
             return true;
@@ -1075,10 +1075,18 @@ InputActionT InputManager::getKeyIndex(const int value,
 InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
                                           const restrict2
 {
-    // for now support only keyboard events
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
     {
         const InputActionT idx = keyboard.getActionId(event);
+        if (CAST_S32(idx) >= 0 &&
+            checkKey(&inputActionData[CAST_SIZE(idx)]))
+        {
+            return idx;
+        }
+    }
+    if (joystick != nullptr && event.type == SDL_JOYBUTTONDOWN)
+    {
+        const InputActionT idx = joystick->getActionId(event);
         if (CAST_S32(idx) >= 0 &&
             checkKey(&inputActionData[CAST_SIZE(idx)]))
         {

@@ -140,6 +140,8 @@ class Joystick final
 
         KeysVector *getActionVectorByKey(const int i) A_WARN_UNUSED;
 
+        InputActionT getActionId(const SDL_Event &event) A_WARN_UNUSED;
+
         int getButtonFromEvent(const SDL_Event &event) const A_WARN_UNUSED;
 
         bool isActionActive(const InputActionT index) const A_WARN_UNUSED;
