@@ -42,8 +42,15 @@ class Joystick final
             MAX_BUTTONS = 64
         };
 
+        enum
+        {
+            RESERVED_AXES = 2,  // reserved for movement
+            MAX_AXES = 8  // number of axes we can handle
+        };
+
         /**
-         * Additional "buttons" for hat 0 (d-pad).
+         * Additional "buttons" for hat 0 (d-pad),
+         * sticks and triggers.
          */
         enum
         {
@@ -51,7 +58,9 @@ class Joystick final
             KEY_DOWN,
             KEY_LEFT,
             KEY_RIGHT,
-            KEY_LAST = KEY_RIGHT
+            KEY_NEGATIVE_AXIS_FIRST,
+            KEY_POSITIVE_AXIS_FIRST = KEY_NEGATIVE_AXIS_FIRST + MAX_AXES,
+            KEY_END = KEY_POSITIVE_AXIS_FIRST + MAX_AXES
         };
 
         /**
@@ -160,12 +169,14 @@ class Joystick final
         unsigned char mDirection;
 
         unsigned char mHatPosition;
+        int mAxesPositions[MAX_AXES];
         bool mActiveButtons[MAX_BUTTONS];
 
         SDL_Joystick *mJoystick;
 
         float mTolerance;
         int mNumber;
+        int mAxesNumber;
         int mButtonsNumber;
         bool mUseHatForMovement;
         bool mUseInactive;

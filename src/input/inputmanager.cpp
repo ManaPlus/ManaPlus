@@ -427,6 +427,10 @@ std::string InputManager::getKeyStringLong(const InputActionT index) const
                 str = _("JLeft");
             if (key.value == Joystick::KEY_RIGHT)
                 str = _("JRight");
+            if (key.value >= Joystick::KEY_NEGATIVE_AXIS_FIRST && key.value < Joystick::KEY_POSITIVE_AXIS_FIRST)
+                str = strprintf(_("JAxis%dMinus"), key.value - Joystick::KEY_NEGATIVE_AXIS_FIRST);
+            if (key.value >= Joystick::KEY_POSITIVE_AXIS_FIRST && key.value < Joystick::KEY_END)
+                str = strprintf(_("JAxis%dPlus"), key.value - Joystick::KEY_POSITIVE_AXIS_FIRST);
         }
         if (!str.empty())
         {
@@ -479,6 +483,10 @@ void InputManager::updateKeyString(const InputFunction &ki,
                 str = _("JLeft");
             if (key.value == Joystick::KEY_RIGHT)
                 str = _("JRight");
+            if (key.value >= Joystick::KEY_NEGATIVE_AXIS_FIRST && key.value < Joystick::KEY_POSITIVE_AXIS_FIRST)
+                str = strprintf(_("JA%d-"), key.value - Joystick::KEY_NEGATIVE_AXIS_FIRST);
+            if (key.value >= Joystick::KEY_POSITIVE_AXIS_FIRST && key.value < Joystick::KEY_END)
+                str = strprintf(_("JA%d+"), key.value - Joystick::KEY_POSITIVE_AXIS_FIRST);
         }
         if (!str.empty())
         {
@@ -669,6 +677,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
         }
         case SDL_JOYBUTTONDOWN:
         case SDL_JOYHATMOTION:
+        case SDL_JOYAXISMOTION:
         {
             updateConditionMask(true);
 //            joystick.handleActicateButton(event);
@@ -745,6 +754,7 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
 
         case SDL_JOYBUTTONDOWN:
         case SDL_JOYHATMOTION:
+        case SDL_JOYAXISMOTION:
             if ((joystick != nullptr) && joystick->validate())
             {
                 if (triggerAction(joystick->getActionVector(event)))

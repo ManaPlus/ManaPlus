@@ -173,6 +173,7 @@ void SDLInput::pushInput(const SDL_Event &event)
 
         case SDL_JOYBUTTONDOWN:
         case SDL_JOYHATMOTION:
+        case SDL_JOYAXISMOTION:
         {
             const InputActionT actionId = inputManager.getActionByKey(event);
             if (actionId > InputAction::NO_VALUE)
