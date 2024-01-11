@@ -453,37 +453,8 @@ void Joystick::handleRepeat(const int time)
     BLOCK_START("Joystick::handleRepeat")
     FOR_EACH (KeyTimeMapIter, it, mKeyTimeMap)
     {
-        bool repeat(false);
         const int key = (*it).first;
-        if (key >= 0 && key < mButtonsNumber)
-        {
-            if (mActiveButtons[key])
-                repeat = true;
-        }
-        if (!mUseHatForMovement)
-        {
-            if (key == KEY_UP && (mHatPosition & UP) != 0)
-                repeat = true;
-            if (key == KEY_DOWN && (mHatPosition & DOWN) != 0)
-                repeat = true;
-            if (key == KEY_LEFT && (mHatPosition & LEFT) != 0)
-                repeat = true;
-            if (key == KEY_RIGHT && (mHatPosition & RIGHT) != 0)
-                repeat = true;
-        }
-        if (key >= KEY_NEGATIVE_AXIS_FIRST && key < KEY_POSITIVE_AXIS_FIRST)
-        {
-            const int axis = key - KEY_NEGATIVE_AXIS_FIRST;
-            if (axis >= RESERVED_AXES && mAxesPositions[axis] < mTolerance * AXIS_MIN)
-                repeat = true;
-        }
-        if (key >= KEY_POSITIVE_AXIS_FIRST && key < KEY_END)
-        {
-            const int axis = key - KEY_POSITIVE_AXIS_FIRST;
-            if (axis >= RESERVED_AXES && mAxesPositions[axis] > mTolerance * AXIS_MAX)
-                repeat = true;
-        }
-        if (repeat)
+        if (buttonPressed(key))
         {
             int &keyTime = (*it).second;
             if (time > keyTime && abs(time - keyTime)
