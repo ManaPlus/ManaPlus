@@ -60,7 +60,10 @@ Joystick::Joystick(const int no) :
     mKeyTimeMap()
 {
     for (int i = 0; i < MAX_AXES; i++)
+    {
+        mIsTrigger[i] = 0;
         mAxesPositions[i] = 0;
+    }
     for (int i = 0; i < MAX_BUTTONS; i++)
         mActiveButtons[i] = false;
 }
@@ -190,6 +193,13 @@ bool Joystick::open()
     mUseHatForMovement = config.getBoolValue("useHatForMovement");
     mUseInactive = config.getBoolValue("useInactiveJoystick");
 
+    for (int i = 0; i < mAxesNumber; i++)
+    {
+        // heuristic to detect controller triggers. their resting position is at AXIS_MIN = -32768
+        if (SDL_JoystickGetAxis(mJoystick, i) == AXIS_MIN)
+            mIsTrigger[i] = true;
+    }
+
     return true;
 }
 
@@ -251,8 +261,12 @@ void Joystick::logic()
         else if (position >= mTolerance * AXIS_MAX)
             mDirection |= DOWN;
 
-        for (int i = 0; i < mAxesNumber; i++)
-            mAxesPositions[i] = SDL_JoystickGetAxis(mJoystick, i);
+        for (int i = 0; i < mAxesNumber; i++) {
+            int position = SDL_JoystickGetAxis(mJoystick, i);
+            if (mIsTrigger[i]) // translate from range [AXIS_MIN, AXIS_MAX] to [0, AXIS_MAX]
+                position = (position - AXIS_MIN) / 2;
+            mAxesPositions[i] = position;
+        }
 
 #ifdef DEBUG_JOYSTICK
         if (SDL_JoystickGetAxis(mJoystick, 2))
@@ -415,9 +429,12 @@ int Joystick::getButtonFromEvent(const SDL_Event &event) const
         const int axis = event.jaxis.axis;
         if (axis < RESERVED_AXES)
             return -1;
-        if (event.jaxis.value < mTolerance * AXIS_MIN && mAxesPositions[axis] > mTolerance * AXIS_MIN)
+        int position = event.jaxis.value;
+        if (mIsTrigger[axis]) // translate from range [AXIS_MIN, AXIS_MAX] to [0, AXIS_MAX]
+            position = (position - AXIS_MIN) / 2;
+        if (position < mTolerance * AXIS_MIN && mAxesPositions[axis] > mTolerance * AXIS_MIN)
             return KEY_NEGATIVE_AXIS_FIRST + axis;
-        if (event.jaxis.value > mTolerance * AXIS_MAX && mAxesPositions[axis] < mTolerance * AXIS_MAX)
+        if (position > mTolerance * AXIS_MAX && mAxesPositions[axis] < mTolerance * AXIS_MAX)
             return KEY_POSITIVE_AXIS_FIRST + axis;
     }
     return -1;

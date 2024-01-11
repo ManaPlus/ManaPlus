@@ -170,6 +170,7 @@ class Joystick final
 
         unsigned char mHatPosition;
         int mAxesPositions[MAX_AXES];
+        bool mIsTrigger[MAX_AXES];
         bool mActiveButtons[MAX_BUTTONS];
 
         SDL_Joystick *mJoystick;
