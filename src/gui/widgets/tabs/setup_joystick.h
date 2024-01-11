@@ -57,6 +57,7 @@ class Setup_Joystick final : public SetupTab
         DropDown *mNamesDropDown A_NONNULLPOINTER;
         Label *mToleranceLabel A_NONNULLPOINTER;
         Slider *mToleranceSlider A_NONNULLPOINTER;
+        CheckBox *mUseHatForMovementCheckBox A_NONNULLPOINTER;
         CheckBox *mUseInactiveCheckBox A_NONNULLPOINTER;
         bool mOriginalJoystickEnabled A_NONNULLPOINTER;
 };

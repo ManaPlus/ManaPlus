@@ -128,6 +128,9 @@ class Joystick final
         void setTolerance(const float tolerance)
         { mTolerance = tolerance; }
 
+        void setUseHatForMovement(const bool b)
+        { mUseHatForMovement = b; }
+
         void setUseInactive(const bool b)
         { mUseInactive = b; }
 
@@ -160,6 +163,7 @@ class Joystick final
         float mTolerance;
         int mNumber;
         int mButtonsNumber;
+        bool mUseHatForMovement;
         bool mUseInactive;
         bool mHaveHats;
 

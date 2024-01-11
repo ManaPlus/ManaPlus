@@ -55,6 +55,11 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
         false, Modal_false, nullptr, std::string())),
     mToleranceLabel(new Label(this)),
     mToleranceSlider(new Slider(this, 0.01, 1, 0.01)),
+    mUseHatForMovementCheckBox(new CheckBox(this,
+        // TRANSLATORS: joystick settings tab checkbox
+        _("Use joystick hat (d-pad) for movement"),
+        config.getBoolValue("useHatForMovement"),
+        nullptr, std::string())),
     mUseInactiveCheckBox(new CheckBox(this,
         // TRANSLATORS: joystick settings tab checkbox
         _("Use joystick if client window inactive"),
@@ -105,10 +110,11 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     place(0, 2, mToleranceSlider, 1, 1);
     place(1, 2, mToleranceLabel, 1, 1).setPadding(3);
 
-    place(0, 3, mUseInactiveCheckBox, 1, 1);
-    place(0, 4, mDetectButton, 1, 1);
+    place(0, 3, mUseHatForMovementCheckBox, 1, 1);
+    place(0, 4, mUseInactiveCheckBox, 1, 1);
+    place(0, 5, mDetectButton, 1, 1);
 
-    setDimension(Rect(0, 0, 365, 60));
+    setDimension(Rect(0, 0, 365, 75));
 }
 
 Setup_Joystick::~Setup_Joystick()
@@ -174,6 +180,8 @@ void Setup_Joystick::apply()
 
     config.setValue("joystickEnabled", Joystick::isEnabled());
 
+    config.setValue("useHatForMovement", mUseHatForMovementCheckBox->isSelected());
+    joystick->setUseHatForMovement(mUseHatForMovementCheckBox->isSelected());
     config.setValue("useInactiveJoystick", mUseInactiveCheckBox->isSelected());
     joystick->setUseInactive(mUseInactiveCheckBox->isSelected());
 
