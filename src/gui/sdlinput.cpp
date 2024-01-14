@@ -171,6 +171,22 @@ void SDLInput::pushInput(const SDL_Event &event)
             break;
         }
 
+        case SDL_JOYBUTTONDOWN:
+        case SDL_JOYHATMOTION:
+        case SDL_JOYAXISMOTION:
+        {
+            const InputActionT actionId = inputManager.getActionByKey(event);
+            if (actionId > InputAction::NO_VALUE)
+            {
+                keyInput.setActionId(actionId);
+                keyInput.setType(KeyEventType::PRESSED);
+                mKeyInputQueue.push(keyInput);
+                keyInput.setType(KeyEventType::RELEASED);
+                mKeyInputQueue.push(keyInput);
+            }
+            break;
+        }
+
 #ifdef USE_SDL2
         case SDL_TEXTINPUT:
             keyInput.setType(KeyEventType::PRESSED);

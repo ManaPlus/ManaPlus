@@ -193,10 +193,8 @@ void setConfigDefaults(Configuration &cfg)
 #else
     AddDEF("joystickEnabled", false);
 #endif
-    AddDEF("upTolerance", 100);
-    AddDEF("downTolerance", 100);
-    AddDEF("leftTolerance", 100);
-    AddDEF("rightTolerance", 100);
+    AddDEF("joystickTolerance", 0.1F);
+    AddDEF("useHatForMovement", true);
     AddDEF("logNpcInGui", true);
     AddDEF("download-music", true);
     AddDEF("guialpha", 0.8F);
