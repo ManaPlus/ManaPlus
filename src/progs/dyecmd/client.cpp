@@ -86,11 +86,9 @@ PRAGMA48(GCC diagnostic pop)
 #include <sys/time.h>
 #include "fs/specialfolder.h"
 #undef ERROR
-#endif  // WIN32
-
-#ifdef __clang__
+#else // WIN32
 #include <ctime>
-#endif  // __clang__
+#endif  // WIN32
 
 #ifdef ANDROID
 #ifndef USE_SDL2

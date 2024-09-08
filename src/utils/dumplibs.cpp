@@ -140,7 +140,7 @@ void dumpLibs()
     LIBXML_TEST_VERSION
 #endif  // LIBXML_TEST_VERSION
 #ifdef ENABLE_LIBXML
-    const char **xmlVersion = __xmlParserVersion();
+    const char *const *xmlVersion = __xmlParserVersion();
     if (xmlVersion != nullptr)
         logger->log(" libxml2: %s", *xmlVersion);
 #endif  // ENABLE_LIBXML
