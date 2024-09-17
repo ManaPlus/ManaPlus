@@ -42,6 +42,27 @@ class Joystick final
             MAX_BUTTONS = 64
         };
 
+        enum
+        {
+            RESERVED_AXES = 2,  // reserved for movement
+            MAX_AXES = 8  // number of axes we can handle
+        };
+
+        /**
+         * Additional "buttons" for hat 0 (d-pad),
+         * sticks and triggers.
+         */
+        enum
+        {
+            KEY_UP = MAX_BUTTONS,
+            KEY_DOWN,
+            KEY_LEFT,
+            KEY_RIGHT,
+            KEY_NEGATIVE_AXIS_FIRST,
+            KEY_POSITIVE_AXIS_FIRST = KEY_NEGATIVE_AXIS_FIRST + MAX_AXES,
+            KEY_END = KEY_POSITIVE_AXIS_FIRST + MAX_AXES
+        };
+
         /**
          * Directions, to be used as bitmask values.
          */
@@ -52,6 +73,9 @@ class Joystick final
             LEFT  = 4,
             RIGHT = 8
         };
+
+        static const int AXIS_MIN = -32768;
+        static const int AXIS_MAX = 32767;
 
         /**
          * Initializes the joystick subsystem.
@@ -93,14 +117,7 @@ class Joystick final
          */
         void logic();
 
-        void startCalibration();
-
-        void finishCalibration();
-
-        bool isCalibrating() const noexcept2 A_WARN_UNUSED
-        { return mCalibrating; }
-
-        bool buttonPressed(const unsigned char no) const A_WARN_UNUSED;
+        bool buttonPressed(const int no) const A_WARN_UNUSED;
 
         bool isUp() const noexcept2 A_WARN_UNUSED
         { return mEnabled && ((mDirection & UP) != 0); }
@@ -117,14 +134,24 @@ class Joystick final
         int getNumber() const noexcept2 A_WARN_UNUSED
         { return mNumber; }
 
+        void setTolerance(const float tolerance)
+        { mTolerance = tolerance; }
+
+        void setUseHatForMovement(const bool b)
+        { mUseHatForMovement = b; }
+
         void setUseInactive(const bool b)
         { mUseInactive = b; }
 
         void update();
 
+        bool isActionEvent(const SDL_Event &event) A_WARN_UNUSED;
+
         KeysVector *getActionVector(const SDL_Event &event) A_WARN_UNUSED;
 
         KeysVector *getActionVectorByKey(const int i) A_WARN_UNUSED;
+
+        InputActionT getActionId(const SDL_Event &event) A_WARN_UNUSED;
 
         int getButtonFromEvent(const SDL_Event &event) const A_WARN_UNUSED;
 
@@ -141,18 +168,18 @@ class Joystick final
     protected:
         unsigned char mDirection;
 
+        unsigned char mHatPosition;
+        int mAxesPositions[MAX_AXES];
+        bool mIsTrigger[MAX_AXES];
         bool mActiveButtons[MAX_BUTTONS];
 
         SDL_Joystick *mJoystick;
 
-        int mUpTolerance;
-        int mDownTolerance;
-        int mLeftTolerance;
-        int mRightTolerance;
-        bool mCalibrating;
+        float mTolerance;
         int mNumber;
-        bool mCalibrated;
+        int mAxesNumber;
         int mButtonsNumber;
+        bool mUseHatForMovement;
         bool mUseInactive;
         bool mHaveHats;
 
@@ -167,8 +194,6 @@ class Joystick final
          */
         static bool mEnabled;
         static int joystickCount;
-
-        void doCalibration();
 };
 
 extern Joystick *joystick;

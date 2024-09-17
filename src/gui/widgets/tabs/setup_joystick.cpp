@@ -35,6 +35,7 @@
 #include "gui/widgets/dropdown.h"
 #include "gui/widgets/label.h"
 #include "gui/widgets/layouthelper.h"
+#include "gui/widgets/slider.h"
 
 #include "utils/delete2.h"
 #include "utils/gettext.h"
@@ -43,12 +44,6 @@
 
 Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     SetupTab(widget),
-    mCalibrateLabel(new Label(this,
-        // TRANSLATORS: joystick settings tab label
-        _("Press the button to start calibration"))),
-    // TRANSLATORS: joystick settings tab button
-    mCalibrateButton(new Button(this, _("Calibrate"), "calibrate",
-        BUTTON_SKIN, this)),
     // TRANSLATORS: joystick settings tab button
     mDetectButton(new Button(this, _("Detect joysticks"), "detect",
         BUTTON_SKIN, this)),
@@ -58,6 +53,13 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mNamesModel(new NamesModel),
     mNamesDropDown(new DropDown(this, mNamesModel,
         false, Modal_false, nullptr, std::string())),
+    mToleranceLabel(new Label(this)),
+    mToleranceSlider(new Slider(this, 0.01, 1, 0.01)),
+    mUseHatForMovementCheckBox(new CheckBox(this,
+        // TRANSLATORS: joystick settings tab checkbox
+        _("Use joystick hat (d-pad) for movement"),
+        config.getBoolValue("useHatForMovement"),
+        nullptr, std::string())),
     mUseInactiveCheckBox(new CheckBox(this,
         // TRANSLATORS: joystick settings tab checkbox
         _("Use joystick if client window inactive"),
@@ -73,10 +75,18 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
     mJoystickEnabled->setSelected(mOriginalJoystickEnabled);
     mJoystickEnabled->setActionEventId("joystick");
     mJoystickEnabled->addActionListener(this);
-    mCalibrateButton->setEnabled(mOriginalJoystickEnabled);
+
+    float tolerance = config.getFloatValue("joystickTolerance");
+    mToleranceSlider->setValue(tolerance);
+    // TRANSLATORS: joystick settings tab label
+    mToleranceLabel->setCaption(_("Axis tolerance: ") + strprintf("%.2f", tolerance));
+    mToleranceLabel->setWidth(150);
+    mToleranceLabel->setHeight(20);
 
     mNamesDropDown->setActionEventId("name");
     mNamesDropDown->addActionListener(this);
+    mToleranceSlider->setActionEventId("toleranceslider");
+    mToleranceSlider->addActionListener(this);
 
     if (joystick != nullptr)
     {
@@ -96,10 +106,13 @@ Setup_Joystick::Setup_Joystick(const Widget2 *const widget) :
 
     place(0, 0, mJoystickEnabled, 1, 1);
     place(0, 1, mNamesDropDown, 1, 1);
-    place(0, 2, mUseInactiveCheckBox, 1, 1);
-    place(0, 3, mDetectButton, 1, 1);
-    place(0, 4, mCalibrateLabel, 1, 1);
-    place(0, 5, mCalibrateButton, 1, 1);
+
+    place(0, 2, mToleranceSlider, 1, 1);
+    place(1, 2, mToleranceLabel, 1, 1).setPadding(3);
+
+    place(0, 3, mUseHatForMovementCheckBox, 1, 1);
+    place(0, 4, mUseInactiveCheckBox, 1, 1);
+    place(0, 5, mDetectButton, 1, 1);
 
     setDimension(Rect(0, 0, 365, 75));
 }
@@ -121,6 +134,12 @@ void Setup_Joystick::action(const ActionEvent &event)
         if (joystick != nullptr)
             joystick->setNumber(mNamesDropDown->getSelected());
     }
+    else if (source == mToleranceSlider)
+    {
+        float tolerance = mToleranceSlider->getValue();
+        // TRANSLATORS: joystick settings tab label
+        mToleranceLabel->setCaption(_("Axis tolerance: ") + strprintf("%.2f", tolerance));
+    }
     else if (source == mDetectButton)
     {
         if (joystick != nullptr)
@@ -130,36 +149,11 @@ void Setup_Joystick::action(const ActionEvent &event)
             mNamesDropDown->setSelected(joystick->getNumber());
         }
     }
-    else
-    {
-        if (joystick == nullptr)
-            return;
-
-        if (joystick->isCalibrating())
-        {
-            // TRANSLATORS: joystick settings tab button
-            mCalibrateButton->setCaption(_("Calibrate"));
-            mCalibrateLabel->setCaption
-                // TRANSLATORS: joystick settings tab label
-                (_("Press the button to start calibration"));
-            joystick->finishCalibration();
-        }
-        else
-        {
-            // TRANSLATORS: joystick settings tab button
-            mCalibrateButton->setCaption(_("Stop"));
-            mCalibrateLabel->setCaption(
-                // TRANSLATORS: joystick settings tab label
-                _("Rotate the stick and don't press buttons"));
-            joystick->startCalibration();
-        }
-    }
 }
 
 void Setup_Joystick::setTempEnabled(const bool sel)
 {
     Joystick::setEnabled(sel);
-    mCalibrateButton->setEnabled(sel);
     if (joystick != nullptr)
     {
         if (sel)
@@ -186,6 +180,12 @@ void Setup_Joystick::apply()
 
     config.setValue("joystickEnabled", Joystick::isEnabled());
 
+    config.setValue("useHatForMovement", mUseHatForMovementCheckBox->isSelected());
+    joystick->setUseHatForMovement(mUseHatForMovementCheckBox->isSelected());
     config.setValue("useInactiveJoystick", mUseInactiveCheckBox->isSelected());
     joystick->setUseInactive(mUseInactiveCheckBox->isSelected());
+
+    float tolerance = mToleranceSlider->getValue();
+    config.setValue("joystickTolerance", tolerance);
+    joystick->setTolerance(tolerance);
 }

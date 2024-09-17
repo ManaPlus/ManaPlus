@@ -417,7 +417,20 @@ std::string InputManager::getKeyStringLong(const InputActionT index) const
         else if (key.type == InputType::JOYSTICK)
         {
             // TRANSLATORS: long joystick button name. must be short.
-            str = strprintf(_("JButton%d"), key.value + 1);
+            if (key.value < Joystick::MAX_BUTTONS)
+                str = strprintf(_("JButton%d"), key.value + 1);
+            if (key.value == Joystick::KEY_UP)
+                str = _("JUp");
+            if (key.value == Joystick::KEY_DOWN)
+                str = _("JDown");
+            if (key.value == Joystick::KEY_LEFT)
+                str = _("JLeft");
+            if (key.value == Joystick::KEY_RIGHT)
+                str = _("JRight");
+            if (key.value >= Joystick::KEY_NEGATIVE_AXIS_FIRST && key.value < Joystick::KEY_POSITIVE_AXIS_FIRST)
+                str = strprintf(_("JAxis%dMinus"), key.value - Joystick::KEY_NEGATIVE_AXIS_FIRST);
+            if (key.value >= Joystick::KEY_POSITIVE_AXIS_FIRST && key.value < Joystick::KEY_END)
+                str = strprintf(_("JAxis%dPlus"), key.value - Joystick::KEY_POSITIVE_AXIS_FIRST);
         }
         if (!str.empty())
         {
@@ -460,7 +473,20 @@ void InputManager::updateKeyString(const InputFunction &ki,
         else if (key.type == InputType::JOYSTICK)
         {
             // TRANSLATORS: short joystick button name. muse be very short
-            str = strprintf(_("JB%d"), key.value + 1);
+            if (key.value < Joystick::MAX_BUTTONS)
+                str = strprintf(_("JB%d"), key.value + 1);
+            if (key.value == Joystick::KEY_UP)
+                str = _("JUp");
+            if (key.value == Joystick::KEY_DOWN)
+                str = _("JDown");
+            if (key.value == Joystick::KEY_LEFT)
+                str = _("JLeft");
+            if (key.value == Joystick::KEY_RIGHT)
+                str = _("JRight");
+            if (key.value >= Joystick::KEY_NEGATIVE_AXIS_FIRST && key.value < Joystick::KEY_POSITIVE_AXIS_FIRST)
+                str = strprintf(_("JA%d-"), key.value - Joystick::KEY_NEGATIVE_AXIS_FIRST);
+            if (key.value >= Joystick::KEY_POSITIVE_AXIS_FIRST && key.value < Joystick::KEY_END)
+                str = strprintf(_("JA%d+"), key.value - Joystick::KEY_POSITIVE_AXIS_FIRST);
         }
         if (!str.empty())
         {
@@ -650,6 +676,8 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
             break;
         }
         case SDL_JOYBUTTONDOWN:
+        case SDL_JOYHATMOTION:
+        case SDL_JOYAXISMOTION:
         {
             updateConditionMask(true);
 //            joystick.handleActicateButton(event);
@@ -691,7 +719,8 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
     if (gui != nullptr)
     {
         const bool res = gui->handleInput();
-        if (res && event.type == SDL_KEYDOWN)
+        const bool joystickActionEvent = joystick != nullptr && joystick->isActionEvent(event);
+        if (res && (event.type == SDL_KEYDOWN || joystickActionEvent))
         {
             BLOCK_END("InputManager::handleEvent")
             return true;
@@ -724,6 +753,8 @@ bool InputManager::handleEvent(const SDL_Event &restrict event) restrict2
 //            break;
 
         case SDL_JOYBUTTONDOWN:
+        case SDL_JOYHATMOTION:
+        case SDL_JOYAXISMOTION:
             if ((joystick != nullptr) && joystick->validate())
             {
                 if (triggerAction(joystick->getActionVector(event)))
@@ -1055,10 +1086,18 @@ InputActionT InputManager::getKeyIndex(const int value,
 InputActionT InputManager::getActionByKey(const SDL_Event &restrict event)
                                           const restrict2
 {
-    // for now support only keyboard events
     if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
     {
         const InputActionT idx = keyboard.getActionId(event);
+        if (CAST_S32(idx) >= 0 &&
+            checkKey(&inputActionData[CAST_SIZE(idx)]))
+        {
+            return idx;
+        }
+    }
+    if (joystick != nullptr && joystick->isActionEvent(event))
+    {
+        const InputActionT idx = joystick->getActionId(event);
         if (CAST_S32(idx) >= 0 &&
             checkKey(&inputActionData[CAST_SIZE(idx)]))
         {
