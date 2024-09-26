@@ -123,12 +123,12 @@ void Setup_Joystick::action(const ActionEvent &event)
     }
     else if (source == mDetectButton)
     {
+        Joystick::detect();
+        Joystick::getNames(mNamesModel->getNames());
         if (joystick != nullptr)
-        {
-            joystick->reload();
-            Joystick::getNames(mNamesModel->getNames());
             mNamesDropDown->setSelected(joystick->getNumber());
-        }
+        else
+            mNamesDropDown->setSelected(0);
     }
     else
     {
